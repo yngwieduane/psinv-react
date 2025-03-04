@@ -1,0 +1,10 @@
+{
+    "HomePage": {
+      "title": "Hello world!",
+      "about": "Go to the about page"
+    },
+    "LocaleSwitcher": {
+      "label": "Change language",
+      "locale": "{locale, select, ar {🇩🇪 Arabic} en {🇺🇸 English} cn {🇺🇸 Chinese} ru {🇺🇸 Russian} other {Unknown}}"
+    }
+}
