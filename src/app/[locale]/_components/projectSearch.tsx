@@ -1,7 +1,6 @@
 import React, { FC, useState } from "react";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useTranslation } from "react-i18next";
 
 interface ProjectSearchProps {
   modalState: boolean;

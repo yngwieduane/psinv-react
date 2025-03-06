@@ -24,8 +24,6 @@ import {
   ChevronDownIcon,
   PhoneIcon,
   PlayCircleIcon,
-  CheckIcon,
-  ChevronUpDownIcon,
 } from '@heroicons/react/20/solid';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -180,7 +178,6 @@ function classNames(...classes: (string | false | null | undefined)[]) {
 const Navigation: FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>('');
-  const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
   const [modal, setModal] = useState<boolean>(false);
 
   const modalHandler = () => {
@@ -483,7 +480,7 @@ const Navigation: FC = () => {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Property Shop Investment</span>
-              <img className="h-8 w-auto" src="PSI-Logo.svg" alt="Logo" />
+              <Image height={200} width={200} className="h-8 w-auto" src="PSI-Logo.svg" alt="Logo" />
             </Link>
             <button
               type="button"
