@@ -24,3 +24,62 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.breadcrumb a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.fas.fa-phone-alt {
+  color: #111954;
+  transition: color 0.3s ease-in-out;
+}
+
+.button:hover .fas.fa-phone-alt {
+  color: white;
+}
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+}
+.contact-swiper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+.contact-swiper .swiper-pagination {
+  bottom: 10px !important;
+}
+.contact-swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  opacity: 0.5;
+  transition: all 0.3s ease-in-out;
+}
+.contact-swiper .swiper-pagination-bullet-active {
+  background: #111954;
+  opacity: 1;
+  transform: scale(1.2);
+}
+.contact-swiper .swiper-pagination {
+  display: none !important;
+}
+.contact-swiper .swiper-button-prev,
+.contact-swiper .swiper-button-next {
+  display: none !important;
+}
