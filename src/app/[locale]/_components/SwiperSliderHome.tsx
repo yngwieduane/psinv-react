@@ -14,7 +14,6 @@ import 'swiper/css';
 
 const SwiperSlider = (props: any) => {
   const swiperElRef2 = useRef<any>(null);
-
   return (
     <div className="relative">
       <div className="absolute end-0 bottom-0 grid grid-cols-3">
