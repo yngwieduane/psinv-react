@@ -5,7 +5,7 @@ const MainNavbarHeader = (props:any) => {
   return (
     <>
       <nav className="flex space-x-4 ">
-        <div className="text-xl mx-2 mb-5 border-b w-full">
+        <div className="text-xl mx-2 mb-5 w-full">
           {props.data.map((tab:any, index:any) => (
             <button
               key={index}

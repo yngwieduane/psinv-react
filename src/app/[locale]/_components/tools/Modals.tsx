@@ -8,11 +8,11 @@ import ContactFormPopUp from "./ContactFormPopUp";
 const Modals = (props:any) => {
   const [open, setOpen] = useState(props.modalState);
 
-  const onCloseModal = (event) => {
+  const onCloseModal = (event:any) => {
     props.onModalUpdate(false);
   };
 
-  const saveFormDataHandler = (formData) => {
+  const saveFormDataHandler = (formData:any) => {
     console.log(formData);
   };
 
