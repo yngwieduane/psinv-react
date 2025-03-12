@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import InquiryForm from "../../_components/InquiryForm";
 import { ContactLocation, contactLocations } from "@/data/contactLocations";
+import MainFooter from "../../_components/MainFooter";
 
 export default function ContactPage() {
   const params = useParams();
@@ -123,6 +124,9 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="w-full mt-10">
+      <MainFooter />
       </div>
     </>
   );
