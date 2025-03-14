@@ -6,5 +6,13 @@
     "LocaleSwitcher": {
       "label": "Change language",
       "locale": "{locale, select, ar {🇩🇪 Arabic} en {🇺🇸 English} cn {🇺🇸 Chinese} ru {🇺🇸 Russian} other {Unknown}}"
+    },
+    "ProjectPage": {
+      "overview": "Overview",
+      "gallery": "Gallery",
+      "floor_plan": "Floor Plan",
+      "location": "Location",
+      "photo_gallery":"Photo Gallery",
+      "unit_models":"Unit Models"
     }
 }

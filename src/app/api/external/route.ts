@@ -33,8 +33,6 @@ export async function GET(request: NextRequest) {
   
     if (!response.ok) {
       const error = new Error("An error occurred while fetching projects");
-      error.code = response.status;
-        error.info = await response.json();
       throw error;
     }
   

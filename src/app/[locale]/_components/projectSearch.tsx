@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, FormEvent } from "react";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -6,7 +6,10 @@ interface ProjectSearchProps {
   modalState: boolean;
   onModalUpdate: (state: boolean) => void;
 }
-
+type SearchResult = {
+    result: [];
+    totalCount: string;
+};
 const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) => {
   // Optionally, you can maintain local state if needed:
   const [open, setOpen] = useState<boolean>(modalState);
@@ -14,6 +17,27 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
   const onCloseModal = () => {
     setOpen(false);
     onModalUpdate(false);
+  };
+
+  const [query, setQuery] = useState<string>('');
+  const [results, setResults] = useState<SearchResult[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleSearch = async (e: FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/external/search?query=${encodeURIComponent(query)}`)
+      const data: SearchResult[] = await res.json();
+      console.log(data);
+      setResults(data['result']);
+    } catch (error) {
+      console.error('Search failed', error);
+      setResults([]);
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -47,9 +71,34 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
                   </div>
                 </div>
                 <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                  <form className="flex h-full flex-col divide-y divide-gray-200 bg-white shadow-xl">
-                    {/* Add your search form content here */}
-                  </form>
+                    <form onSubmit={handleSearch} className="flex  divide-y divide-gray-200 bg-white shadow-xl">
+                        <input
+                        type="text"
+                        placeholder="Search..."
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        className="flex-1 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring focus:border-blue-300"
+                        />
+                        <button
+                        type="submit"
+                        className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring"
+                        >
+                        {loading ? 'Searching...' : 'Search'}
+                        </button>
+                    </form>
+                    <div className="mt-4">
+                        {results.length === 0 && query.trim() !== '' ? (
+                        <p>No results found.</p>
+                        ) : (
+                        <ul className="space-y-2">
+                            {results.map((project:any,index:any) => (
+                            <li key={index} className="border p-2 rounded-md">
+                                {project.propertyName}
+                            </li>
+                            ))}
+                        </ul>
+                        )}
+                    </div>
                 </div>
               </div>
             </DialogPanel>
