@@ -1,6 +1,9 @@
 import React, { FC, useState, FormEvent } from "react";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import { useLocale } from 'next-intl';
+import slugify from "react-slugify";
 
 interface ProjectSearchProps {
   modalState: boolean;
@@ -11,7 +14,7 @@ type SearchResult = {
     totalCount: string;
 };
 const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) => {
-  // Optionally, you can maintain local state if needed:
+
   const [open, setOpen] = useState<boolean>(modalState);
 
   const onCloseModal = () => {
@@ -23,10 +26,29 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
   const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
+  const locale = useLocale();
+
+  
+  const searchHandler = async (event:any) => {
+    setQuery(event.target.value);
+    
+    setLoading(true);
+    try {
+      const res = await fetch(`http://localhost:3000/api/external/search?query=${encodeURIComponent(query)}`)
+      const data: SearchResult[] = await res.json();
+      console.log(data);
+      setResults(data['result']);
+    } catch (error) {
+      console.error('Search failed', error);
+      setResults([]);
+    }
+
+    setLoading(false);
+  };
+
   const handleSearch = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
     try {
       const res = await fetch(`http://localhost:3000/api/external/search?query=${encodeURIComponent(query)}`)
       const data: SearchResult[] = await res.json();
@@ -76,7 +98,7 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
                         type="text"
                         placeholder="Search..."
                         value={query}
-                        onChange={(e) => setQuery(e.target.value)}
+                        onChange={e => setQuery(e.target.value)}
                         className="flex-1 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring focus:border-blue-300"
                         />
                         <button
@@ -91,11 +113,15 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
                         <p>No results found.</p>
                         ) : (
                         <ul className="space-y-2">
-                            {results.map((project:any,index:any) => (
-                            <li key={index} className="border p-2 rounded-md">
-                                {project.propertyName}
-                            </li>
-                            ))}
+                            {results.map((project:any,index:any) => {
+                                const subCommunity = project.subCommunity ? project.subCommunity : "n-a";
+                                const url = "/" + locale + '/projects/' + slugify(project.city) + "/" + slugify(project.community) + "/" + slugify(subCommunity) + "/" + slugify(project.propertyName);
+                                return(
+                                    <li key={index} className="border p-2 rounded-md">
+                                        <Link href={url}>{project.propertyName} </Link>
+                                    </li>
+                                );
+                            })}
                         </ul>
                         )}
                     </div>

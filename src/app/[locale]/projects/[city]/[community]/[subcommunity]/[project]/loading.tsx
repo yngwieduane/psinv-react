@@ -5,6 +5,7 @@ export default function Loading(props:any) {
     return <ContentLoader 
         speed={2}
         width={600}
+        className="w-full"
         height={500}
         viewBox="0 0 600 500"
         backgroundColor="#f3f3f3"

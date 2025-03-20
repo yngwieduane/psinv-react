@@ -63,7 +63,14 @@ const UnitModels = (props:any) => {
                                     {props.data[visibleTab1].options.map((page:any, index:any) => (
                                         <tr key={index}>
                                             <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <img src={page.floorPlanlImage} className="object-cover object-center h-24 w-24" />
+                                                {page.floorPlanlImage !== ''
+                                                    ? (
+                                                    <div className="w-full h-20 background-image relative bg-cover bg-center"
+                                                    style={{ backgroundImage: `url(${page.floorPlanlImage.replace('?width=0&height=0','?width=200&height=200')})` }} 
+                                                    ></div>
+                                                ) : (
+                                                    <div className="w-full h-10 bg-gray-300"></div>
+                                                )}
                                             </td>
                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{page.modelName}</td>
                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{page.area}</td>

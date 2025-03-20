@@ -31,16 +31,21 @@ const Gallery = (props:any) => {
                             }}
                         >
                             <div className="grid grid-cols-4 gap-4">
-                                {props.data[visibleTab].image.map((page:any, index:any) => (
-                                    <div key={index}>
-                                        <a data-fancybox="gallery" href={page.imageURL}>
-                                            <img className="w-full" src={page.imageURL} />
-                                        </a>
-                                    </div>
-                                ))}
+                                {props.data[visibleTab].image.map((page:any, index:any) => {
+                                    const thumbimg = page.imageURL.replace('?width=0&height=0','?width=400&height=200');
+                                    return(
+                                        <div key={index}>
+                                            <a data-fancybox="gallery" href={page.imageURL}>
+                                                <div className="w-full h-50 background-image relative bg-cover bg-center"
+                                                style={{ backgroundImage: `url(${thumbimg})` }} 
+                                                ></div>
+                                            </a>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </GalleryImages>
-                        : "null"
+                        : ""
                     }
                 </MainNavbarContentEmpty>
             </div>
