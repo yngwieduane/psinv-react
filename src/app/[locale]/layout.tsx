@@ -28,6 +28,7 @@ import {
     QueryClient,
     QueryClientProvider,
   } from '@tanstack/react-query'
+import MainFooter from "./_components/MainFooter";
 
 export default async function LocaleLayout({
   children,
@@ -53,6 +54,9 @@ export default async function LocaleLayout({
       <NextIntlClientProvider messages={messages}>
             <Navigation/>
             <Providers>{children}</Providers>
+            <div className="w-full mt-10">
+            <MainFooter />
+            </div>
         </NextIntlClientProvider>
       </body>
     </html>

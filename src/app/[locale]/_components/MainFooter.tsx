@@ -11,7 +11,7 @@ import {
   faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
 import { faPhone, faGlobe, faPaperPlane, faDownload } from "@fortawesome/free-solid-svg-icons";
-import { Poppins } from "@next/font/google";
+import { Poppins } from "next/font/google";;
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],

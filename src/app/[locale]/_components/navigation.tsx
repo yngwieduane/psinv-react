@@ -421,10 +421,10 @@ const Navigation: FC = () => {
             </Popover>
 
             <PopoverGroup className="hidden lg:flex lg:gap-x-10">
-  <Link href="/en/contact-us" className="text-sm font-normal text-gray-900 hover:text-indigo-600">
-    Contact Us
-  </Link>
-</PopoverGroup>
+              <Link href="/en/contact-us" className="text-sm font-normal text-gray-900 hover:text-indigo-600">
+                Contact Us
+              </Link>
+            </PopoverGroup>
           <button
             className="text-sm font-normal text-gray-900"
             onClick={modalHandler}

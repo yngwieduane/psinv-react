@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
     };
   
     const response = await fetch(
-      "https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex=1&pageSize=1",
+      "https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex=1&pageSize=10",
       {
         method: "POST",
         headers:{
