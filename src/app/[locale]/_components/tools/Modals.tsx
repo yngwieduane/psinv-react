@@ -6,7 +6,7 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 import ContactFormPopUp from "./ContactFormPopUp";
 
 const Modals = (props:any) => {
-  //const [open, setOpen] = useState(props.modalState);
+  const [open, setOpen] = useState(props.modalState);
 
   const onCloseModal = (event:any) => {
     props.onModalUpdate(false);

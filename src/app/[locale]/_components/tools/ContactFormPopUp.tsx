@@ -4,13 +4,12 @@ import PhoneInput from 'react-phone-number-input'
 import "./ContactForm.css";
 import { useTranslation } from "react-i18next";
 
-
 import {
   UserIcon,
   EnvelopeIcon,
 } from "@heroicons/react/24/outline";
 
-const ContactFormPopUp = (props) => {
+const ContactFormPopUp = (props:any) => {
   const { t } = useTranslation();
 
   const [enteredName, setEnteredName] = useState("");
@@ -19,14 +18,14 @@ const ContactFormPopUp = (props) => {
 
   const [postId, setPostId] = useState();
 
-  const nameChangeHandler = (event) => {
+  const nameChangeHandler = (event:any) => {
     setEnteredName(event.target.value);
   };
-  const emailChangeHandler = (event) => {
+  const emailChangeHandler = (event:any) => {
     setEnteredEmail(event.target.value);
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = (event:any) => {
     event.preventDefault();
     const formData = {
       name: enteredName,
@@ -150,13 +149,17 @@ const ContactFormPopUp = (props) => {
             </label>
             <div className="">
               <PhoneInput
-              className="block bg-white w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block bg-white w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 international
                 defaultCountry="AE"
                 placeholder="Enter phone number"
                 value={enteredPhone}
                 countryCallingCodeEditable={false}
-                onChange={setEnteredPhone}/>
+                //onChange={setEnteredPhone}
+                onChange={(e:any) => {
+                  setEnteredPhone(e);
+                }}
+                />
               
             </div>
           </div>
