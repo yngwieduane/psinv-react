@@ -1,7 +1,7 @@
 import PropertyCardSlider from "./tools/PropertyCardSlider";
 
 export default async function FeaturedProjects(){
-    const data = await fetch('http://localhost:3000/api/external')
+    const data = await fetch('https://psinv-react.vercel.app/api/external')
     const posts = await data.json() 
   return (
     <div className="relative">

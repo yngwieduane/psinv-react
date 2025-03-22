@@ -57,7 +57,7 @@ export default async function Page({ params }: Props){
     // Extract only numeric part
     const code = lastString.replace(/\D/g, ""); 
 
-    const data = await fetch('http://localhost:3000/api/external/units?unitid='+code)
+    const data = await fetch('https://psinv-react.vercel.app/api/external/units?unitid='+code)
     const posts = await data.json();
     
     return (

@@ -48,7 +48,7 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:3000/api/external/search?query=${encodeURIComponent(query)}`)
+      const res = await fetch(`https://psinv-react.vercel.app/api/external/search?query=${encodeURIComponent(query)}`)
       const data = (await res.json()) as { result: SearchResult[] };
       console.log(data);
       setResults(data.result);

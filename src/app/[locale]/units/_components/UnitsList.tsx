@@ -12,7 +12,7 @@ export default async function UnitsList({
     currentPage: number;
   }) {
 
-    const data = await fetch('http://localhost:3000/api/external/units?unitid='+unitid+'&category='+category)
+    const data = await fetch('https://psinv-react.vercel.app/api/external/units?unitid='+unitid+'&category='+category)
     const posts = await data.json() ;
     return (
         <>
