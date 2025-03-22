@@ -1,6 +1,5 @@
 'use client'
-import React, { useState } from "react";
-import {useTranslations} from 'next-intl';
+import React from "react";
 
 const CardOne = (props:any) => {
 

@@ -1,11 +1,9 @@
 'use client';
 
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
 const Breadcrumb = () => {
-    const locale = useLocale();
     const pathname = usePathname();
     const pathSegments = pathname.split('/').filter((segment) => segment);
     pathSegments.shift();
@@ -19,7 +17,7 @@ const Breadcrumb = () => {
         </li>
         {pathSegments.map((segment, index) => {
           const isLast = index === pathSegments.length - 1;
-          const href = '/' + locale + '/' + pathSegments.slice(0, index + 1).join('/');
+          const href =  '/' + pathSegments.slice(0, index + 1).join('/');
 
           return (
             <li key={index} className="flex items-center space-x-2">

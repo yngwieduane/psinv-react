@@ -8,7 +8,7 @@ import { Dialog, Disclosure,DialogPanel,
   Popover,
   PopoverButton,
   PopoverGroup,
-  PopoverPanel, Transition } from '@headlessui/react';
+  PopoverPanel, } from '@headlessui/react';
 import {
   ArrowPathIcon,
   Bars3Icon,
@@ -18,7 +18,6 @@ import {
   SquaresPlusIcon,
   XMarkIcon,
   HeartIcon,
-  MagnifyingGlassIcon,
 } from '@heroicons/react/24/outline';
 import {
   ChevronDownIcon,
@@ -177,7 +176,6 @@ function classNames(...classes: (string | false | null | undefined)[]) {
 
 const Navigation: FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-  const [query, setQuery] = useState<string>('');
   const [modal, setModal] = useState<boolean>(false);
 
   const modalHandler = () => {
@@ -189,13 +187,6 @@ const Navigation: FC = () => {
     console.log(state);
     setModal(state);
   };
-
-  const filteredPeople =
-    query === ''
-      ? people
-      : people.filter((person) =>
-          person.name.toLowerCase().includes(query.toLowerCase())
-        );
 
   return (
     <header className="bg-white">

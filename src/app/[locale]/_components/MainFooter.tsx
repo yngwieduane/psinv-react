@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -10,8 +9,10 @@ import {
   faYoutube,
   faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
-import { faPhone, faGlobe, faPaperPlane, faDownload } from "@fortawesome/free-solid-svg-icons";
-import { Poppins } from "next/font/google";;
+import { faPaperPlane, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { Poppins } from "next/font/google";import Image from "next/image";
+import { Link } from "@/i18n/navigation";
+;
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -37,25 +38,25 @@ const MainFooter = () => {
             <div className="mt-4 space-y-4 sm:text-center text-left">
               <p className="flex items-center gap-2 justify-center sm:justify-start">
                 <span className="w-6 h-6 flex items-center justify-center border border-white rounded-full">
-                  <img src="/tel-icon.svg" alt="Phone Icon" className="w-[10px]" />
+                  <Image width={200} height={200} src="/tel-icon.svg" alt="Phone Icon" className="w-[10px]" />
                 </span>
                 <span className="font-semibold">Local Tel: 600 548 200</span>
               </p>
 
               <p className="flex items-center gap-2 justify-center sm:justify-start">
                 <span className="w-6 h-6 flex items-center justify-center border border-white rounded-full">
-                  <img src="/tel-icon.svg" alt="Phone Icon" className="w-[10px]" />
+                  <Image width={200} height={200} src="/tel-icon.svg" alt="Phone Icon" className="w-[10px]" />
                 </span>
                 <span className="font-semibold">Int'l Tel: +971 2205 2999</span>
               </p>
             </div>
             <div className="flex space-x-4 mb-3 mt-5 sm:text-[14px] justify-center sm:justify-start">
-              <a href="https://www.instagram.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faInstagram} size="lg" /></a>
-              <a href="https://www.facebook.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faFacebook} size="lg" /></a>
-              <a href="https://twitter.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faTwitter} size="lg" /></a>
-              <a href="https://www.linkedin.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faLinkedin} size="lg" /></a>
-              <a href="https://www.youtube.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faYoutube} size="lg" /></a>
-              <a href="https://www.tiktok.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faTiktok} size="lg" /></a>
+              <Link href="https://www.instagram.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faInstagram} size="lg" /></Link>
+              <Link href="https://www.facebook.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faFacebook} size="lg" /></Link>
+              <Link href="https://twitter.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faTwitter} size="lg" /></Link>
+              <Link href="https://www.linkedin.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faLinkedin} size="lg" /></Link>
+              <Link href="https://www.youtube.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faYoutube} size="lg" /></Link>
+              <Link href="https://www.tiktok.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faTiktok} size="lg" /></Link>
             </div>
           </div>
 
@@ -138,8 +139,8 @@ const MainFooter = () => {
   <p>All Rights Reserved. © 2025 Property Shop Investment LLC.</p>
   <p className="mt-1">
     License No.: CN-1100434 | Brokerage No.: 20240000258226 |
-    <a href="/privacy" className="ml-1 cursor-pointer hover:underline">Privacy</a> |
-    <a href="/terms" className="ml-1 cursor-pointer hover:underline">Terms of Use</a>
+    <Link href="/privacy" className="ml-1 cursor-pointer hover:underline">Privacy</Link> |
+    <Link href="/terms" className="ml-1 cursor-pointer hover:underline">Terms of Use</Link>
   </p>
 </div>
     </footer>

@@ -1,6 +1,4 @@
 'use client'
-import Link from "next/link";
-import slugify from 'react-slugify';
 import {useTranslations} from 'next-intl';
 import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import Gallery from "./Gallery";

@@ -1,4 +1,3 @@
-import { useLocale } from "next-intl";
 import UnitsPage from "./_components/UnitsPage";
 
 export default async function Units(props: {

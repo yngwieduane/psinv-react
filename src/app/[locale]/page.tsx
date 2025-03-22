@@ -1,6 +1,5 @@
 
 import {useTranslations} from 'next-intl';
-import {Link} from '@/i18n/navigation';
 import SwiperSlider from "./_components/SwiperSliderHome";
 import MainNavbar from './_components/MainNavbar';
 import FeaturedProjects from './_components/FeaturedProjects';
@@ -132,7 +131,6 @@ const citiesData = [
   ];
 
 export default function HomePage() {
-  const t = useTranslations('HomePage');
   return (
     <div>
       {/* <h1>{t('title')}</h1>

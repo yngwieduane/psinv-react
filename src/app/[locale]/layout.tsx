@@ -23,11 +23,6 @@ import {getMessages} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import Navigation from "./_components/navigation";
-import {
-    HydrationBoundary,
-    QueryClient,
-    QueryClientProvider,
-  } from '@tanstack/react-query'
 import MainFooter from "./_components/MainFooter";
 
 export default async function LocaleLayout({
@@ -47,7 +42,6 @@ export default async function LocaleLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
  
-    const queryClient = new QueryClient();
   return (
     <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

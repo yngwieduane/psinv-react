@@ -18,16 +18,12 @@ const ContactFormPopUp = (props) => {
   const [enteredPhone, setEnteredPhone] = useState("");
 
   const [postId, setPostId] = useState();
-  const [statusAct, setStatusAct] = useState();
 
   const nameChangeHandler = (event) => {
     setEnteredName(event.target.value);
   };
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
-  };
-  const phoneChangeHandler = (event) => {
-    setEnteredPhone(event.target.value);
   };
 
   const submitHandler = (event) => {

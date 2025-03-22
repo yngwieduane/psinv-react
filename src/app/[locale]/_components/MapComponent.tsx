@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 interface MapComponentProps {
@@ -23,7 +24,9 @@ const MapComponent: React.FC<MapComponentProps> = ({ latitude, longitude, fallba
           onError={() => setHasError(true)}
         />
       ) : (
-        <img
+        <Image
+          width={200}
+          height={200}
           src={fallbackImage}
           alt="Fallback Map"
           className="w-full h-auto rounded-lg"

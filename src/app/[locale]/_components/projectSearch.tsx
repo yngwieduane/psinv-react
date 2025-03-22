@@ -15,10 +15,8 @@ type SearchResult = {
 };
 const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) => {
 
-  const [open, setOpen] = useState<boolean>(modalState);
-
   const onCloseModal = () => {
-    setOpen(false);
+    //setOpen(false);
     onModalUpdate(false);
   };
 
@@ -29,31 +27,31 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
   const locale = useLocale();
 
   
-  const searchHandler = async (event:any) => {
-    setQuery(event.target.value);
+  // const searchHandler = async (event:any) => {
+  //   setQuery(event.target.value);
     
-    setLoading(true);
-    try {
-      const res = await fetch(`http://localhost:3000/api/external/search?query=${encodeURIComponent(query)}`)
-      const data: SearchResult[] = await res.json();
-      console.log(data);
-      setResults(data['result']);
-    } catch (error) {
-      console.error('Search failed', error);
-      setResults([]);
-    }
+  //   setLoading(true);
+  //   try {
+  //     const res = await fetch(`http://localhost:3000/api/external/search?query=${encodeURIComponent(query)}`)
+  //     const data: SearchResult[] = await res.json();
+  //     console.log(data);
+  //     setResults(data['result']);
+  //   } catch (error) {
+  //     console.error('Search failed', error);
+  //     setResults([]);
+  //   }
 
-    setLoading(false);
-  };
+  //   setLoading(false);
+  // };
 
   const handleSearch = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
       const res = await fetch(`http://localhost:3000/api/external/search?query=${encodeURIComponent(query)}`)
-      const data: SearchResult[] = await res.json();
+      const data = (await res.json()) as { result: SearchResult[] };
       console.log(data);
-      setResults(data['result']);
+      setResults(data.result);
     } catch (error) {
       console.error('Search failed', error);
       setResults([]);

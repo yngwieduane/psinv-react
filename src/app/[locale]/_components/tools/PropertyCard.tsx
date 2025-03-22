@@ -1,11 +1,9 @@
 'use client'
-import {useLocale, useTranslations} from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import React from "react";
-import Link from "next/link";
 import slugify from "react-slugify";
 
 const PropertyCard = (props:any) => {
-    const locale = useLocale();
     const propType = props.data["propertyType"] ? (<p className="text-sm">Types<br />{props.data["propertyType"]}</p>) : ("");
     const propBed = props.data["availableBedrooms"] ? (<p className="text-sm">Beds<br />
     {props.data["availableBedrooms"].map((img:any) => {
@@ -17,7 +15,7 @@ const PropertyCard = (props:any) => {
     const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'] : ("");
     const subCommunity = props.data["subCommunity"] ? props.data["subCommunity"] : "n-a";
 
-    const url = "/" + locale + '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['community']) + "/" + slugify(subCommunity) + "/" + slugify(props.data['propertyName']);
+    const url =  '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['community']) + "/" + slugify(subCommunity) + "/" + slugify(props.data['propertyName']);
 return (
     <Link href={url} className="h-full">
       <div className="w-96 group relative shadow-lg rounded-lg h-full">

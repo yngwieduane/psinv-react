@@ -10,14 +10,7 @@ export async function GET(request: NextRequest) {
     myHeaders.append("Content-Type", "application/json");
   
     const raw = JSON.stringify({});
-  
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-  
+
     const response = await fetch(
       "https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex=1&pageSize=10",
       {

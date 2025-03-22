@@ -1,8 +1,5 @@
-import Link from "next/link";
-import slugify from 'react-slugify';
-import {useTranslations} from 'next-intl';
+
 import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
-import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import UnitsList from "./UnitsList";
 import UnitsSidebar from "./UnitsSidebar";
 import Search from "./Search";

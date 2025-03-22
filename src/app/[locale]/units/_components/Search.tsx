@@ -1,29 +1,28 @@
 'use client';
  
-import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { useSearchParams,usePathname,useRouter } from 'next/navigation';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { useSearchParams } from 'next/navigation';
 import Form from 'next/form'
-import {useLocale, useTranslations} from 'next-intl';
-import { FormEvent } from 'react';
+import {useLocale} from 'next-intl';
  
 export default function Search({ placeholder }: { placeholder: string }) {
     
     const searchParams = useSearchParams();
-    const pathname = usePathname();
-    const { replace } = useRouter();
+    //const pathname = usePathname();
+    //const { replace } = useRouter();
     const locale = useLocale();
 
-    function handleSearch(term: string) {
+    // function handleSearch(term: string) {
 
-        console.log(`Searching... ${term}`);
-        const params = new URLSearchParams(searchParams);
-        if (term) {
-            params.set('unitid', term);
-        } else {
-            params.delete('unitid');
-        }
-        replace(`${pathname}?${params.toString()}`);
-    }
+    //     console.log(`Searching... ${term}`);
+    //     const params = new URLSearchParams(searchParams);
+    //     if (term) {
+    //         params.set('unitid', term);
+    //     } else {
+    //         params.delete('unitid');
+    //     }
+    //     replace(`${pathname}?${params.toString()}`);
+    // }
 
   return (
     <Form action={`/${locale}/units`}>

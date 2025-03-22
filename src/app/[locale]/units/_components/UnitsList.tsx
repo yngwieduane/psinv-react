@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import {Link} from '@/i18n/navigation';
 import { generateSeoData } from "../../_components/functions/generateSeoData";
+import { Link } from "@/i18n/navigation";
 export default async function UnitsList({
     unitid,
     category,
@@ -39,7 +39,7 @@ export default async function UnitsList({
                   
                 const seoData = generateSeoData(propertyData);
                 return(
-                <article key={index} className="relative isolate flex flex-col gap-8 lg:flex-row">
+                <article key={index} data-currentpage={currentPage} className="relative isolate flex flex-col gap-8 lg:flex-row">
                     <div className="relative aspect-video sm:aspect-2/1 lg:aspect-square lg:w-64 lg:shrink-0">
                         <img
                         alt=""
@@ -68,7 +68,7 @@ export default async function UnitsList({
                                 </Link>
                             </h3>
                             <p className="mt-5 text-normal/6 text-gray-600 truncate ">{post.marketingTitle}</p>
-                            <p className="mt-5 text-sm/6 text-gray-500">{post.category} | {post.bedrooms} Beds | {post.no_of_bathrooms} Baths | {post.parking} Parking</p>
+                            <p className="mt-5 text-sm/6 text-gray-500">{price} | {post.category} | {post.bedrooms} Beds | {post.no_of_bathrooms} Baths | {post.parking} Parking</p>
                         </div>
                         <div className="mt-6 flex border-t border-gray-900/5 pt-6">
                             <div className="relative flex items-center gap-x-4">
