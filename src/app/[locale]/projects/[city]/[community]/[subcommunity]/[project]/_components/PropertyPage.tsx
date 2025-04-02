@@ -155,6 +155,7 @@ const PropertyPage = (props:any) => {
                 latitude={props.data['mapLatitude']}
                 longitude={props.data['mapLongitude']}
                 fallbackImage={props.data["featuredImages"]}
+                height='500px'
               />
         </div>
         {props.data["communityMapAndMasterPlan"] !== null ? (<div>

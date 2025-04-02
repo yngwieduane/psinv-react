@@ -76,6 +76,7 @@ export default function ContactPage() {
                 latitude={selectedLocation.latitude}
                 longitude={selectedLocation.longitude}
                 fallbackImage={selectedLocation.img}
+                height="500px"
               />
             </div>
           </div>
