@@ -7,9 +7,10 @@ interface MapComponentProps {
   latitude?: number;
   longitude?: number;
   fallbackImage: string;
+  height: string;
 }
 
-const MapComponent: React.FC<MapComponentProps> = ({ latitude, longitude, fallbackImage }) => {
+const MapComponent: React.FC<MapComponentProps> = ({ latitude, longitude, fallbackImage,height }) => {
   const [hasError, setHasError] = useState(false);
 
   return (
@@ -18,7 +19,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ latitude, longitude, fallba
         <iframe
           src={`https://maps.google.com/maps?q=${latitude},${longitude}&output=embed`}
           width="100%"
-          height="300px"
+          height={height}
           style={{ borderRadius: "8px", border: "none" }}
           loading="lazy"
           onError={() => setHasError(true)}

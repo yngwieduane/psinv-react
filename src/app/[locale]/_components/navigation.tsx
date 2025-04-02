@@ -1,7 +1,7 @@
 'use client'
 
 import React, { FC, Fragment, useState } from 'react';
-import Link from 'next/link';
+import { Link } from "@/i18n/navigation";
 import { Dialog, Disclosure,DialogPanel, 
   DisclosureButton,
   DisclosurePanel,
@@ -92,7 +92,7 @@ const products: Product[] = [
   {
     name: 'UAE',
     description: 'Get a better understanding of your traffic',
-    href: '/projects/uae',
+    href: '/units',
     icon: ChartPieIcon,
   },
   {
@@ -232,7 +232,7 @@ const Navigation: FC = () => {
       {/* Main Navigation */}
       <nav aria-label="Global" className="mx-auto flex max-w-full items-center justify-between p-6 lg:px-8">
         <div className="flex items-center gap-x-12">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Property Shop Investment</span>
             <Image
               alt="Property Shop Investment"
@@ -241,7 +241,7 @@ const Navigation: FC = () => {
               width={200}
               height={200}
             />
-          </a>
+          </Link>
           <PopoverGroup className="hidden lg:flex lg:gap-x-10">
             <Popover className="relative">
               <PopoverButton className="flex items-center gap-x-1 text-sm font-normal text-gray-900">
@@ -260,10 +260,10 @@ const Navigation: FC = () => {
                       className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
                     >
                       <div className="flex-auto">
-                        <a href={item.href} className="block font-normal text-gray-900">
+                        <Link href={item.href} className="block font-normal text-gray-900">
                           {item.name}
                           <span className="absolute inset-0" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   ))}
@@ -287,10 +287,10 @@ const Navigation: FC = () => {
                       className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
                     >
                       <div className="flex-auto">
-                        <a href={item.href} className="block font-normal text-gray-900">
+                        <Link href={item.href} className="block font-normal text-gray-900">
                           {item.name}
                           <span className="absolute inset-0" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   ))}
@@ -314,10 +314,10 @@ const Navigation: FC = () => {
                       className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
                     >
                       <div className="flex-auto">
-                        <a href={item.href} className="block font-normal text-gray-900">
+                        <Link href={item.href} className="block font-normal text-gray-900">
                           {item.name}
                           <span className="absolute inset-0" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   ))}
@@ -341,10 +341,10 @@ const Navigation: FC = () => {
                       className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
                     >
                       <div className="flex-auto">
-                        <a href={item.href} className="block font-normal text-gray-900">
+                        <Link href={item.href} className="block font-normal text-gray-900">
                           {item.name}
                           <span className="absolute inset-0" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   ))}
@@ -368,10 +368,10 @@ const Navigation: FC = () => {
                       className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
                     >
                       <div className="flex-auto">
-                        <a href={item.href} className="block font-normal text-gray-900">
+                        <Link href={item.href} className="block font-normal text-gray-900">
                           {item.name}
                           <span className="absolute inset-0" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   ))}
@@ -379,9 +379,9 @@ const Navigation: FC = () => {
               </PopoverPanel>
             </Popover>
 
-            <a href="#" className="text-sm font-normal text-gray-900">
+            <Link href="/list-your-property" className="text-sm font-normal text-gray-900">
               List Your Property
-            </a>
+            </Link>
 
             <Popover className="relative">
               <PopoverButton className="flex items-center gap-x-1 text-sm font-normal text-gray-900">
@@ -400,10 +400,10 @@ const Navigation: FC = () => {
                       className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
                     >
                       <div className="flex-auto">
-                        <a href={item.href} className="block font-normal text-gray-900">
+                        <Link href={item.href} className="block font-normal text-gray-900">
                           {item.name}
                           <span className="absolute inset-0" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   ))}
@@ -448,13 +448,13 @@ const Navigation: FC = () => {
                 className="absolute top-full -left-8 z-10 mt-3 w-56 rounded-xl bg-white p-2 ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
               >
                 {company.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     className="block rounded-lg px-3 py-2 text-sm font-normal text-gray-900 hover:bg-gray-50"
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </PopoverPanel>
             </Popover>
@@ -526,12 +526,12 @@ const Navigation: FC = () => {
                 </Link>
               </div>
               <div className="py-6">
-                <a
+                <Link
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
-                </a>
+                </Link>
               </div>
             </div>
           </div>

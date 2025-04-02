@@ -31,7 +31,7 @@ export default function MySwiper(props: any) {
                     <img
                         alt={imagecontent[1]}
                         width={400}
-                        height={700}
+                        height={900}
                         className="swiper-slide-bg-image swiper-slide-bg-image-c61b"
                         data-swiper-material-scale="1.25"
                         loading="lazy"
