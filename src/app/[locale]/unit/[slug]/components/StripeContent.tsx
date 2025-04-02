@@ -22,7 +22,7 @@ const StripeContent = (props:any) => {
             <div className="grid md:grid-cols-3 grid-cols-1 gap-y-5">
                 <div className="col-span-2">
                     <h1 className="md:text-3xl text-xl">{props.data.marketingTitle}</h1>
-                    <h2 className="">{props.data.propertyname}, {props.data.community} by {props.data.developerName}</h2>
+                    <h2 className="mb-5">{props.data.propertyname}, {props.data.community} by {props.data.developerName}</h2>
                     <div className="grid grid-cols-2 md:grid-cols-3 mt-3 items-center content-center">
                         <div>
                             <p className=" ">Price</p>

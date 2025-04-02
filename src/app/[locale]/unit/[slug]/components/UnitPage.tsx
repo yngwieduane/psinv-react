@@ -5,6 +5,8 @@ import SwiperMaterial from "@/app/[locale]/_components/SwiperMaterial";
 import StripeContent from "./StripeContent";
 import { useState } from "react";
 import DrawerDetails from "./DrawerDetails";
+import { ReadMore } from "@/app/[locale]/_components/ReadMore";
+import { useFormatter } from "next-intl";
 
 export default function UnitPage(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -17,6 +19,9 @@ export default function UnitPage(props: any) {
         setDwDataTitle(content);
         setShowDrawer(true);
     }
+
+    const format = useFormatter();
+
     return (
         <>
             <div>
@@ -43,10 +48,26 @@ export default function UnitPage(props: any) {
                 <div key={index}>
                     {/* Swiper */}
                     {images !== null ? (
-                        <SwiperMaterial slides={images.slice(0, -1)}/>
+                        <div className="relative">
+                            <SwiperMaterial slides={images.slice(0, -1)}/>
+                            <div className="md:hidden absolute z-2 w-full">
+                                <div className="grid grid-cols-2 -mt-8 bg-white rounded-lg mx-6 text-center divide-x divide-gray-300 shadow px-2 py-2">
+                                    <p className="flex flex-col">
+                                        <span className="text-sm">Price</span>
+                                        <span className="text-lg">{format.number(price, { style: 'currency', currency: 'AED', minimumFractionDigits: 0 })}</span>
+                                    </p>
+                                    <p className="flex flex-col">
+                                        <span className="text-sm">Built-up Area</span>
+                                        <span className="text-lg">{format.number(post.built_upArea, { style: 'decimal' })} Sqft</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     ) : ("")}
                     {/* STRIPE CONTENT */}
-                    <StripeContent data={post}/>
+                    <div className="mt-7 md:mt-0">
+                        <StripeContent data={post}/>
+                    </div>
                     {/* DETAILS */}
                     <div className="mt-15 px-5">
                         <h4 className="font-bold text-xl mb-5">Details</h4>
@@ -110,7 +131,7 @@ export default function UnitPage(props: any) {
                         <h2 className="font-bold text-xl mb-5">
                             Property Remarks
                         </h2>
-                        <p className="whitespace-break-spaces">{post.remarks}</p>
+                        <ReadMore id="read-more-text" text={post.remarks} classes="whitespace-break-spaces"/>
                     </div>) : ("")}
                     {/* MAP */}
                     {coordinates !== null ? (
