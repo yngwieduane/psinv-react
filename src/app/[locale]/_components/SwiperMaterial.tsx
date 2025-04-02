@@ -13,11 +13,23 @@ import Image from "next/image";
 export default function MySwiper(props: any) {
   const swiperParameters = {
     modules: [A11y, EffectMaterial],
-    slidesPerView: 2,
-    spaceBetween: 16,
     loop: true,
     effect: "material",
     lazy: { enabled: true },
+    breakpoints:{
+      640: {
+        slidesPerView: 1,
+        spaceBetween: 16,
+      },
+      768: {
+        slidesPerView: 1,
+        spaceBetween: 16,
+      },
+      1024: {
+        slidesPerView: 2,
+        spaceBetween: 16,
+      },
+    },
   };
   return (
     <>

@@ -18,27 +18,27 @@ const StripeContent = (props:any) => {
 
 
     return (
-        <div className=" p-5 justify-items-stretch border-b border-gray-200">
-            <div className="grid grid-cols-3">
+        <div className=" px-0 md:px-5 py-5 justify-items-stretch border-b border-gray-200">
+            <div className="grid md:grid-cols-3 grid-cols-1 gap-y-5">
                 <div className="col-span-2">
-                    <h1 className="text-3xl">{props.data.marketingTitle}</h1>
+                    <h1 className="md:text-3xl text-xl">{props.data.marketingTitle}</h1>
                     <h2 className="">{props.data.propertyname}, {props.data.community} by {props.data.developerName}</h2>
-                    <div className="grid grid-cols-3 mt-3">
+                    <div className="grid grid-cols-2 md:grid-cols-3 mt-3 items-center content-center">
                         <div>
                             <p className=" ">Price</p>
-                            <p className="text-xl ">{format.number(price, {style: 'currency', currency: 'AED'})}</p>
+                            <p className="md:text-xl text-normal">{format.number(price, {style: 'currency', currency: 'AED'})}</p>
                         </div>
                         <div>
                             <p className=" ">Type</p>
-                            <p className="text-xl ">{props.data.sub_type}</p>
+                            <p className="md:text-xl text-normal">{props.data.sub_type}</p>
                         </div>
                         <div>
                             <p className=" ">Size</p>
-                            <p className="text-xl ">{format.number(props.data.built_upArea)} <span>Sqft</span></p>
+                            <p className="md:text-xl text-normal">{format.number(props.data.built_upArea)} <span>Sqft</span></p>
                         </div>
                     </div>
                 </div>
-                <div className="flex items-center justify-end gap-3">
+                <div className="grid grid-cols-2 text-center md:flex items-center justify-end gap-3">
                     <Link href="#" className="bg-gray-100 px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /> Call</Link>
                     <Link href="#" className="bg-green-600 px-5 py-3 rounded-lg text-white text-lg"><FontAwesomeIcon icon={faWhatsapp} /> WhatsApp</Link>
                 </div>
