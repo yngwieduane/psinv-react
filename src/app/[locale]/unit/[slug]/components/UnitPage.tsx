@@ -97,12 +97,20 @@ export default function UnitPage(props: any) {
                         </div>
                     </div>
                     {/* Overview */}
-                    {coordinates !== null ? (
+                    {post.property_overview !== null ? (
                     <div className="mt-15 px-5">
                         <h2 className="font-bold text-xl mb-5">
                             Property Overview
                         </h2>
-                        <p>{post.property_overview}</p>
+                        <p className="whitespace-break-spaces">{post.property_overview}</p>
+                    </div>) : ("")}
+                    {/* Remarks */}
+                    {post.remarks !== null ? (
+                    <div className="mt-15 px-5">
+                        <h2 className="font-bold text-xl mb-5">
+                            Property Remarks
+                        </h2>
+                        <p className="whitespace-break-spaces">{post.remarks}</p>
                     </div>) : ("")}
                     {/* MAP */}
                     {coordinates !== null ? (
