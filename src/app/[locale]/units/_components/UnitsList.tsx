@@ -43,8 +43,8 @@ export default async function UnitsList({
                   
                 const seoData = generateSeoData(propertyData);
                 return(
-                <article key={index} data-currentpage={currentPage} className="relative isolate flex flex-col gap-2 md:gap-8 lg:flex-row bg-gray-50 rounded-2xl">
-                    <div className="relative aspect-video sm:aspect-2/1 lg:aspect-square lg:w-64 lg:shrink-0">
+                <article key={index} data-currentpage={currentPage} className="relative isolate flex flex-col gap-2 md:gap-8 lg:flex-row bg-gray-50 rounded-2xl w-full">
+                    <div className="relative w-full h-64 sm:aspect-2/1 lg:aspect-square lg:w-64 lg:shrink-0">
                         {images.length <= 1 ? (
                             <img
                             alt=""
