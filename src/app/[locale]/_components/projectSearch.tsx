@@ -1,4 +1,4 @@
-import React, { FC, useState, FormEvent } from "react";
+import React, { FC, useState, FormEvent, useEffect } from "react";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
@@ -47,18 +47,37 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
   const handleSearch = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    try {
-      const res = await fetch(`https://psinv-react.vercel.app/api/external/search?query=${encodeURIComponent(query)}`)
-      const data = (await res.json()) as { result: SearchResult[] };
-      console.log(data);
-      setResults(data.result);
-    } catch (error) {
-      console.error('Search failed', error);
-      setResults([]);
-    }
+    // try {
+    //   const res = await fetch(`/api/external/search?query=${encodeURIComponent(query)}`)
+    //   const data = (await res.json()) as { result: SearchResult[] };
+    //   console.log(data);
+    //   setResults(data.result);
+    // } catch (error) {
+    //   console.error('Search failed', error);
+    //   setResults([]);
+    // }
 
     setLoading(false);
   };
+    useEffect(() => {
+      const timeout = setTimeout(() => {
+        if (query.trim() !== "") {
+          setLoading(true);
+          fetch(`/api/external/search?query=${query}`)
+            .then(res => res.json())
+            .then(data => {
+              setResults(data.result);
+              setLoading(false);
+            })
+            .catch(() => setLoading(false));
+        } else {
+          setResults([]);
+          setLoading(false);
+        }
+      }, 300);
+  
+      return () => clearTimeout(timeout);
+    }, [query]);
 
   return (
     <Dialog className="relative z-10" open={modalState} onClose={onCloseModal}>

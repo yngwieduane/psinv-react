@@ -17,7 +17,7 @@ export async function generateMetadata(
 
     const code = lastString.replace(/\D/g, ""); 
     // fetch data
-    const posts = await fetch(`https://psinv-react.vercel.app/api/external/units?unitid=${code}`).then((res) => res.json())
+    const posts = await fetch(`https://psi.properties/api/external/units?unitid=${code}`).then((res) => res.json())
 
     if (!posts[0]) {
         redirect('/en/units')
@@ -55,7 +55,7 @@ export default async function Page({ params }: Props){
     // Extract only numeric part
     const code = lastString.replace(/\D/g, ""); 
 
-    const data = await fetch('https://psinv-react.vercel.app/api/external/units?unitid='+code)
+    const data = await fetch('https://psi.properties/api/external/units?unitid='+code)
     const posts = await data.json();
     
     return (

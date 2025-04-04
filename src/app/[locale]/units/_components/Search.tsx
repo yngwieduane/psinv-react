@@ -4,6 +4,7 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useSearchParams } from 'next/navigation';
 import Form from 'next/form'
 import {useLocale} from 'next-intl';
+import Autocomplete from './AutocompleteSearch';
  
 export default function Search({ placeholder }: { placeholder: string }) {
     
