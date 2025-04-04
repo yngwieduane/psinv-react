@@ -1,7 +1,8 @@
 import { generateSeoData } from "../../_components/functions/generateSeoData";
 import UnitPage from "./components/UnitPage";
 import type { Metadata, ResolvingMetadata } from 'next'
- 
+import { redirect } from 'next/navigation'
+
 type Props = {
   params: Promise<{ slug: string }>
 } 
@@ -18,12 +19,9 @@ export async function generateMetadata(
     // fetch data
     const posts = await fetch(`https://psinv-react.vercel.app/api/external/units?unitid=${code}`).then((res) => res.json())
 
-
-    // const data = await fetch('http://localhost:3000/api/external/units?unitid='+code)
-    // const posts = await data.json();
-
-    // optionally access and extend (rather than replace) parent metadata
-    //const previousImages = (await parent).openGraph?.images || []
+    if (!posts[0]) {
+        redirect('/en/units')
+    }
 
     const propertyData = {
         bedrooms: posts[0].bedrooms,
@@ -35,7 +33,7 @@ export async function generateMetadata(
         refNo: posts[0].refNo,
         seoStart: "",
     };
-        
+
     const seoData = generateSeoData(propertyData);
 
     return {

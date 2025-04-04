@@ -1,3 +1,4 @@
+import PriceConvert from "@/app/[locale]/_components/tools/PriceConvert";
 import { Link } from "@/i18n/navigation";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
@@ -26,7 +27,7 @@ const StripeContent = (props:any) => {
                     <div className="grid grid-cols-2 md:grid-cols-3 mt-3 items-center content-center">
                         <div>
                             <p className=" ">Price</p>
-                            <p className="md:text-xl text-normal">{format.number(price, {style: 'currency', currency: 'AED'})}</p>
+                            <p className="md:text-xl text-normal"><PriceConvert price={price} minDecimal='0'/></p>
                         </div>
                         <div>
                             <p className=" ">Type</p>

@@ -26,7 +26,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
   return (
     <Form action={`/${locale}/units`}>
-        <div className="relative grid grid-cols-4 gap-5 items-center">
+        <div className="relative grid grid-cols-2 md:grid-cols-4 gap-5 items-center">
             <div>
                 <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                     Search By ID

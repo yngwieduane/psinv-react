@@ -7,6 +7,8 @@ import { useState } from "react";
 import DrawerDetails from "./DrawerDetails";
 import { ReadMore } from "@/app/[locale]/_components/ReadMore";
 import { useFormatter } from "next-intl";
+import PriceConvert from "@/app/[locale]/_components/tools/PriceConvert";
+import NumberConvert from "@/app/[locale]/_components/tools/NumberConvert";
 
 export default function UnitPage(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -54,11 +56,11 @@ export default function UnitPage(props: any) {
                                 <div className="grid grid-cols-2 -mt-8 bg-white rounded-lg mx-6 text-center divide-x divide-gray-300 shadow px-2 py-2">
                                     <p className="flex flex-col">
                                         <span className="text-sm">Price</span>
-                                        <span className="text-lg">{format.number(price, { style: 'currency', currency: 'AED', minimumFractionDigits: 0 })}</span>
+                                        <span className="text-lg"><PriceConvert price={price} minDecimal='0'/></span>
                                     </p>
                                     <p className="flex flex-col">
                                         <span className="text-sm">Built-up Area</span>
-                                        <span className="text-lg">{format.number(post.built_upArea, { style: 'decimal' })} Sqft</span>
+                                        <span className="text-lg"><NumberConvert number={post.built_upArea} minDecimal='0' label='Sqft'/></span>
                                     </p>
                                 </div>
                             </div>
@@ -123,7 +125,7 @@ export default function UnitPage(props: any) {
                         <h2 className="font-bold text-xl mb-5">
                             Property Overview
                         </h2>
-                        <p className="whitespace-break-spaces">{post.property_overview}</p>
+                        <ReadMore id="read-more-text" text={post.property_overview} classes="whitespace-break-spaces"/>
                     </div>) : ("")}
                     {/* Remarks */}
                     {post.remarks !== null ? (

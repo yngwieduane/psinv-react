@@ -1,0 +1,57 @@
+/** Swiper styles **/
+
+:root {
+    --swiper-navigation-color: rgb(255, 255, 255);
+  
+    --swiper-pagination-color: rgb(255, 255, 255);
+    --swiper-pagination-bullet-inactive-color: rgb(255, 255, 255);
+  }
+  
+  .swiper {
+    user-select: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 100%;
+  
+    height: 100%;
+  
+    padding: 0px 0px;
+  }
+  
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+  }
+  
+  .swiper-slide-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+  }
+  
+  .swiper-slide-4ffe {
+    background-color: rgba(51, 51, 51, 1);
+  }
+  .swiper-slide-content-2f5e {
+    padding: 48px 48px;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: center;
+  }
+  .swiper-slide-text-78dc {
+    color: rgba(255, 255, 255, 1);
+    text-align: left;
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: bold;
+  }
+  

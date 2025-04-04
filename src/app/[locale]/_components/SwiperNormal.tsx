@@ -1,0 +1,43 @@
+'use client'
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y, Keyboard, Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/a11y";
+import "swiper/css/keyboard";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import "./SwiperNormal.css";
+
+export default function SwiperNormal(props: any) {
+  const swiperParameters = {
+    modules: [A11y, Keyboard, Navigation, Pagination],
+    grabCursor: true,
+    navigation: true,
+    pagination: true,
+    keyboard: { enabled: true },
+    lazy: { enabled: true },
+    watchSlidesProgress: true,
+    observer: true,
+    observeParents: true,
+  };
+  return (
+    <>
+      <Swiper {...swiperParameters}>
+        {props.slides?.map((slide:any, index:any) => {
+            let imagecontent = slide.split('?');
+            return (
+                <SwiperSlide className="swiper-slide-4ffe bg-cover bg-center" style={{ backgroundImage: `url(${imagecontent[0]})` }}>
+                <div className="swiper-slide-content swiper-slide-content-2f5e">
+                    <div className="swiper-slide-text swiper-slide-text-78dc">
+                    </div>
+                </div>
+                </SwiperSlide>
+            )
+        })}
+      </Swiper>
+    </>
+  );
+}
