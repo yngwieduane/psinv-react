@@ -52,7 +52,7 @@ export default async function UnitsList({
                             className="absolute inset-0 size-full rounded-2xl bg-gray-50 object-cover"
                             />
                         ) : (
-                            <SwiperNormal slides={images}/>
+                            <SwiperNormal slides={images} width="400" height="300"/>
                         )}
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-gray-900/10 ring-inset" />
                         <div className="absolute left-5 md:hidden bottom-5 z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
@@ -83,7 +83,7 @@ export default async function UnitsList({
                         </div>
                         <div className="mt-2 md:mt-6">
                             <div className="relative flex items-center gap-x-4">
-                                <div className="text-sm/6 hidden md:flex">
+                                <div className="text-sm/6 hidden md:grid">
                                     <p className="font-semibold text-gray-900">
                                         <span className="absolute inset-0" />
                                         {post.agent}
