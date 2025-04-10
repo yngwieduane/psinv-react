@@ -4,8 +4,8 @@ import { Fragment, useState } from 'react'
 import { Dialog, DialogPanel, DialogTitle, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import MapComponent from '@/app/[locale]/_components/MapComponent';
-import SwiperMaterial from "@/app/[locale]/_components/SwiperMaterial";
 import TableDetails from './TableDetails';
+import SwiperNormal from '@/app/[locale]/_components/SwiperNormal';
 
 export default function DrawerDetails(props:any) {
     const [open, setOpen] = useState(props.open);
@@ -30,7 +30,7 @@ export default function DrawerDetails(props:any) {
             break;
         case 'gallery':
             images = props.drawerContent?? "";
-            content = <SwiperMaterial slides={images.slice(0, -1)} />
+            content = <SwiperNormal slides={images.slice(0, -1)} width="400" height="300"/>
             break;
     
         default:

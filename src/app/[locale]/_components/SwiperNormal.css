@@ -7,7 +7,7 @@
     --swiper-pagination-bullet-inactive-color: rgb(255, 255, 255);
   }
   
-  .swiper {
+  .swipernormal {
     user-select: none;
     box-sizing: border-box;
     overflow: hidden;
@@ -18,7 +18,7 @@
     padding: 0px 0px;
   }
   
-  .swiper-slide {
+  .swipernormal .swiper-slide {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,7 +28,7 @@
     box-sizing: border-box;
   }
   
-  .swiper-slide-content {
+  .swipernormal .swiper-slide-content {
     width: 100%;
     height: 100%;
     display: flex;
@@ -37,17 +37,17 @@
     box-sizing: border-box;
   }
   
-  .swiper-slide-4ffe {
+  .swipernormal .swiper-slide-4ffe {
     background-color: rgba(51, 51, 51, 1);
   }
-  .swiper-slide-content-2f5e {
+  .swipernormal .swiper-slide-content-2f5e {
     padding: 48px 48px;
     flex-direction: column;
     gap: 0px;
     align-items: center;
     justify-content: center;
   }
-  .swiper-slide-text-78dc {
+  .swipernormal .swiper-slide-text-78dc {
     color: rgba(255, 255, 255, 1);
     text-align: left;
     font-size: 24px;

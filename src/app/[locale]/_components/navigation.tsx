@@ -49,7 +49,13 @@ type Person = {
   name: string;
 };
 
-type Product = {
+type Buy = {
+  name: string;
+  description: string;
+  href: string;
+  icon: React.ElementType;
+};
+type Rent = {
   name: string;
   description: string;
   href: string;
@@ -88,37 +94,21 @@ const company = [
   { name: 'Ras Al Khaimah', href: '#' },
 ]
 
-const products: Product[] = [
+const products_buy: Buy[] = [
   {
-    name: 'UAE',
+    name: 'All Units',
     description: 'Get a better understanding of your traffic',
-    href: '/units',
+    href: '/units?category=Buy',
     icon: ChartPieIcon,
-  },
+  }
+];
+const products_rent: Rent[] = [
   {
-    name: 'Engagement',
-    description: 'Speak directly to your customers',
-    href: '#',
-    icon: CursorArrowRaysIcon,
-  },
-  {
-    name: 'Security',
-    description: 'Your customers’ data will be safe and secure',
-    href: '#',
-    icon: FingerPrintIcon,
-  },
-  {
-    name: 'Integrations',
-    description: 'Connect with third-party tools',
-    href: '#',
-    icon: SquaresPlusIcon,
-  },
-  {
-    name: 'Automations',
-    description: 'Build strategic funnels that will convert',
-    href: '#',
-    icon: ArrowPathIcon,
-  },
+    name: 'All Units',
+    description: 'Get a better understanding of your traffic',
+    href: '/units?category=Rent',
+    icon: ChartPieIcon,
+  }
 ];
 
 const callsToAction: CallToAction[] = [
@@ -254,7 +244,7 @@ const Navigation: FC = () => {
                 className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
               >
                 <div className="p-4">
-                  {products.map((item) => (
+                  {products_buy.map((item) => (
                     <div
                       key={item.name}
                       className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
@@ -281,7 +271,7 @@ const Navigation: FC = () => {
                 className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
               >
                 <div className="p-4">
-                  {products.map((item) => (
+                  {products_rent.map((item) => (
                     <div
                       key={item.name}
                       className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
@@ -308,19 +298,7 @@ const Navigation: FC = () => {
                 className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
               >
                 <div className="p-4">
-                  {products.map((item) => (
-                    <div
-                      key={item.name}
-                      className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
-                    >
-                      <div className="flex-auto">
-                        <Link href={item.href} className="block font-normal text-gray-900">
-                          {item.name}
-                          <span className="absolute inset-0" />
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
+                  
                 </div>
               </PopoverPanel>
             </Popover>
@@ -335,19 +313,7 @@ const Navigation: FC = () => {
                 className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
               >
                 <div className="p-4">
-                  {products.map((item) => (
-                    <div
-                      key={item.name}
-                      className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
-                    >
-                      <div className="flex-auto">
-                        <Link href={item.href} className="block font-normal text-gray-900">
-                          {item.name}
-                          <span className="absolute inset-0" />
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
+                  
                 </div>
               </PopoverPanel>
             </Popover>
@@ -362,19 +328,7 @@ const Navigation: FC = () => {
                 className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
               >
                 <div className="p-4">
-                  {products.map((item) => (
-                    <div
-                      key={item.name}
-                      className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
-                    >
-                      <div className="flex-auto">
-                        <Link href={item.href} className="block font-normal text-gray-900">
-                          {item.name}
-                          <span className="absolute inset-0" />
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
+                  
                 </div>
               </PopoverPanel>
             </Popover>
@@ -394,19 +348,6 @@ const Navigation: FC = () => {
                 className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
               >
                 <div className="p-4">
-                  {products.map((item) => (
-                    <div
-                      key={item.name}
-                      className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
-                    >
-                      <div className="flex-auto">
-                        <Link href={item.href} className="block font-normal text-gray-900">
-                          {item.name}
-                          <span className="absolute inset-0" />
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
                 </div>
               </PopoverPanel>
             </Popover>
@@ -501,7 +442,7 @@ const Navigation: FC = () => {
                         />
                       </DisclosureButton>
                       <DisclosurePanel className="mt-2 space-y-2">
-                        {[...products, ...callsToAction].map((item) => (
+                        {[...products_buy, ...callsToAction].map((item) => (
                           <DisclosureButton
                             key={item.name}
                             as="a"
@@ -525,7 +466,7 @@ const Navigation: FC = () => {
                     Contact Us
                 </Link>
               </div>
-              <div className="py-6">
+              <div className="py-6 hidden">
                 <Link
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"

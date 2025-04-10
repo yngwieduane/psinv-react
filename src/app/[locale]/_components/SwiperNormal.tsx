@@ -30,7 +30,7 @@ export default function SwiperNormal({ slides, width = '300', height = '300' }: 
   };
   return (
     <>
-      <Swiper {...swiperParameters}>
+      <Swiper {...swiperParameters} className="swipernormal">
         {slides?.map((slide:any, index:any) => {
             let imagecontent = slide.split('?');
             return (
