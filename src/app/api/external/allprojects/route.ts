@@ -5,6 +5,8 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
     const query = searchParams.get('query')
     const page = searchParams.get('page')
+    const propertyname = searchParams.get('propertyname')
+    const isFeaturedProjectOnWeb = searchParams.get('isFeaturedProjectOnWeb')
     const myHeaders = new Headers();
     myHeaders.append("accept", "*/*");
     myHeaders.append(
@@ -13,7 +15,14 @@ export async function GET(request: NextRequest) {
     );
     myHeaders.append("Content-Type", "application/json");
   
-    const raw = JSON.stringify({});
+    let raw;
+    if (propertyname) {
+      raw = JSON.stringify({
+        "propertyName": propertyname,
+      });
+    } else {
+      raw = JSON.stringify({});
+    }
   
     const requestOptions = {
       method: "POST",

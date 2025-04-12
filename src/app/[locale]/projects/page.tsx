@@ -2,19 +2,22 @@ import ProjectsPage from "./_components/ProjectsPage";
 
 export default async function Projects({
     params,
+    searchParams
 }:{
-    params: Promise<{city:string;community:string;subcommunity:string;project:string}>
+    params: Promise<{city:string;community:string;subcommunity:string;project:string;}>;
+    searchParams: Promise<{page?:number;propertyname?:string;isFeaturedProjectOnWeb?:string;}>;
 }){
     
     const {city, community, subcommunity, project} = await params;
-    const pagenumber = 1;
-
-    const data = await fetch('https://psi.properties/api/external/projects?page='+pagenumber)
-    const posts = await data.json() 
+    const {page = 1,propertyname,isFeaturedProjectOnWeb} = await searchParams;
+    const propertynamefinal = (await searchParams)?.propertyname || '';
+    const isFeaturedProjectOnWebfinal = (await searchParams)?.isFeaturedProjectOnWeb || '';
+    const currentPage = Number(page) || 1;
+    console.log("propertyname="+propertyname);
 
     return (
         <>
-            <ProjectsPage data={posts['result']} />
+            <ProjectsPage page={currentPage} city={city} community={community} subcommunity={subcommunity} project={project} propertyname={propertynamefinal} isFeaturedProjectOnWeb={isFeaturedProjectOnWebfinal}/>
         </>
     );
 }

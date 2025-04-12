@@ -14,7 +14,7 @@ const PropertyCardSlider = (props:any) => {
             key={index}
             className="inline-flex flex-col text-center lg:w-auto "
           >
-            <PropertyCard data={project} />
+            <PropertyCard csswidth="w-96" data={project} />
           </li>
         ))}
       </ul>
