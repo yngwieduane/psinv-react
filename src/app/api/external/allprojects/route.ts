@@ -4,7 +4,7 @@ import { headers } from 'next/headers'
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
     const query = searchParams.get('query')
-    const page = searchParams.get('page')
+    const page = searchParams.get('page') || 1;
     const propertyname = searchParams.get('propertyname')
     const isFeaturedProjectOnWeb = searchParams.get('isFeaturedProjectOnWeb')
     const myHeaders = new Headers();
@@ -19,7 +19,6 @@ export async function GET(request: NextRequest) {
     if (propertyname) {
       raw = JSON.stringify({
         "propertyName": propertyname,
-        "isFeaturedProjectOnWeb": true,
       });
     } else {
       raw = JSON.stringify({});
