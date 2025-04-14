@@ -19,6 +19,7 @@ export async function GET(request: NextRequest) {
     if (propertyname) {
       raw = JSON.stringify({
         "propertyName": propertyname,
+        "isFeaturedProjectOnWeb": true,
       });
     } else {
       raw = JSON.stringify({});

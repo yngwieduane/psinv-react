@@ -18,7 +18,7 @@ const PropertyCard = (props:any) => {
     const url =  '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['community']) + "/" + slugify(subCommunity) + "/" + slugify(props.data['propertyName']);
 return (
     <Link href={url} className="h-full">
-      <div className={`max-w-96 ${props.csswidth} group relative shadow-lg rounded-lg h-full`}>
+      <div className={`max-w-96 ${props.csswidth} group relative shadow-lg rounded-lg h-full hover:bg-gray-200 `}>
         <div className="aspect-h-2 aspect-w-4 overflow-hidden bg-gray-100 relative rounded-lg">
           {imgFeatured !== '' ? (
               <img
@@ -30,7 +30,7 @@ return (
               <div className='w-full h-50 bg-light'></div>
             )}
           <div
-            className="flex items-center justify-center absolute w-full h-full opacity-0 group-hover:opacity-100 ease-in duration-300"
+            className="flex items-center justify-center absolute w-full h-full opacity-0 ease-in duration-300"
             aria-hidden="true"
           >
             <div className="w-full h-full p-4 items-center grid grid-cols-1 my-auto rounded-md text-center text-white font-medium text-gray-900 bg-black/[.5]">
@@ -51,7 +51,7 @@ return (
             {props.data["community"]} | {props.data["masterDeveloper"]}
           </p>
         </div>
-        <div className="flex text-center justify-around border-t py-5 mt-5">
+        <div className="flex text-center justify-around border-t border-gray-200 py-5 mt-5">
           {propType}
           {propBed}
           {propHO}

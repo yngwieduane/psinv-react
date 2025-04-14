@@ -61,6 +61,12 @@ type Rent = {
   href: string;
   icon: React.ElementType;
 };
+type Communities = {
+  name: string;
+  description: string;
+  href: string;
+  icon: React.ElementType;
+};
 
 type CallToAction = {
   name: string;
@@ -107,6 +113,14 @@ const products_rent: Rent[] = [
     name: 'All Units',
     description: 'Get a better understanding of your traffic',
     href: '/units?category=Rent',
+    icon: ChartPieIcon,
+  }
+];
+const communities: Communities[] = [
+  {
+    name: 'All Projects',
+    description: 'Get a better understanding of your traffic',
+    href: '/projects',
     icon: ChartPieIcon,
   }
 ];
@@ -298,7 +312,19 @@ const Navigation: FC = () => {
                 className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
               >
                 <div className="p-4">
-                  
+                {communities.map((item) => (
+                    <div
+                      key={item.name}
+                      className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
+                    >
+                      <div className="flex-auto">
+                        <Link href={item.href} className="block font-normal text-gray-900">
+                          {item.name}
+                          <span className="absolute inset-0" />
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </PopoverPanel>
             </Popover>
