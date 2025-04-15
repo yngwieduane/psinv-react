@@ -482,16 +482,16 @@ const Navigation: FC = () => {
                     </>
                   )}
                 </Disclosure>
-                <Link href="/projects" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                <Link onClick={() => setMobileMenuOpen(false)} href="/projects" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                     Projects
                 </Link>
-                <Link href="/units" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                <Link onClick={() => setMobileMenuOpen(false)} href="/units" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                     Units
                 </Link>
-                <Link href="/landing-page" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                <Link onClick={() => setMobileMenuOpen(false)} href="/landing-page" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                     Landing Page
                 </Link>
-                <Link href="/contact-us" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                <Link onClick={() => setMobileMenuOpen(false)} href="/contact-us" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                     Contact Us
                 </Link>
               </div>
