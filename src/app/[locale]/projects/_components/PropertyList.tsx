@@ -25,7 +25,7 @@ export default async function PropertyList({
 
     const data = await fetch('https://psi.properties/api/external/allprojects?page='+page+'&propertyname='+propertyname+'&isFeaturedProjectOnWeb='+isFeaturedProjectOnWeb)
     const posts = await data.json() ;
-    const totalPages = Math.ceil(Number(posts['totalCount']) / 100);
+    const totalPages = Math.ceil(Number(posts['totalCount']) / 24);
     
     return (
         <div className="grid md:grid-cols-2 grid-cols-1 md:gap-y-10 gap-y-5">
