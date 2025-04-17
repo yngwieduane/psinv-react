@@ -8,6 +8,7 @@ export async function GET(request: NextRequest) {
     const propertyname = searchParams.get('propertyname')
     const isFeaturedProjectOnWeb = searchParams.get('isFeaturedProjectOnWeb')
     const myHeaders = new Headers();
+    const pagesize = 24;
     myHeaders.append("accept", "*/*");
     myHeaders.append(
       "apiKey",
@@ -32,7 +33,7 @@ export async function GET(request: NextRequest) {
     };
   
     const response = await fetch(
-      "https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex="+page+"&pageSize=100",
+      "https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex="+page+"&pageSize="+pagesize,
       {
         method: "POST",
         headers:{
