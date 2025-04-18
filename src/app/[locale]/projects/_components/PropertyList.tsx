@@ -61,14 +61,14 @@ export default function PropertyList({
   if (!data) return ;
 
   return (
-    <div className="grid md:grid-cols-2 grid-cols-1 md:gap-y-10 gap-y-5">
-      <div>
+    <div className="flex grid md:grid-cols-2 grid-cols-1 md:gap-y-10 gap-y-5">
+      <div className="order-1">
         <SearchProperty placeholder="Property Name" />
       </div>
-      <div className="content-center text-end">
+      <div className="order-3 md:order-2 content-center text-center md:text-end">
         <Pagination totalPages={totalPages} />
       </div>
-      <div className="col-span-1 md:col-span-2">
+      <div className="order-2 md:order-3 col-span-1 md:col-span-2">
         {isLoading ? (
             <Skeleton />
         ) : (

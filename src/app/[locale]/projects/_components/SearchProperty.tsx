@@ -27,7 +27,7 @@ export default function SearchProperty({ placeholder }: { placeholder: string })
 
   return (
     <Form action={`/${locale}/projects`} >
-        <div className="relative grid grid-cols-2 gap-5 items-center ">
+        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-5 items-center ">
             <div>
                 <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900 hidden">
                 {placeholder}
