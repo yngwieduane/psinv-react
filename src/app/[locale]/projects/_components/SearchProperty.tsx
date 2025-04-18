@@ -65,7 +65,7 @@ export default function SearchProperty({ placeholder }: { placeholder: string })
                     />
                 </div>
             </div>
-            <div>
+            <div className='hidden'>
                 <button type="submit"
                     className="rounded-md bg-white px-3 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-indigo-950 hover:text-white cursor-pointer"
                 >

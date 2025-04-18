@@ -42,6 +42,7 @@ import {
 import LanguageSwitcher from './languageSwitcher';
 import Image from 'next/image';
 import ProjectSearch from './projectSearch';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 //import ProjectSearch from './ProjectSearch';
 
 type Person = {
@@ -328,7 +329,7 @@ const Navigation: FC = () => {
                 </div>
               </PopoverPanel>
             </Popover>
-            <Popover className="relative">
+            <Popover className="relative hidden">
               <PopoverButton className="flex items-center gap-x-1 text-sm font-normal text-gray-900">
                 Developers
                 <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
@@ -343,7 +344,7 @@ const Navigation: FC = () => {
                 </div>
               </PopoverPanel>
             </Popover>
-            <Popover className="relative">
+            <Popover className="relative hidden">
               <PopoverButton className="flex items-center gap-x-1 text-sm font-normal text-gray-900">
                 Featured Projects
                 <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
@@ -363,7 +364,7 @@ const Navigation: FC = () => {
               List Your Property
             </Link>
 
-            <Popover className="relative">
+            <Popover className="relative hidden">
               <PopoverButton className="flex items-center gap-x-1 text-sm font-normal text-gray-900">
                 More
                 <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
@@ -387,7 +388,7 @@ const Navigation: FC = () => {
             className="text-sm font-normal text-gray-900"
             onClick={modalHandler}
           >
-            Search
+            <FontAwesomeIcon icon={faMagnifyingGlass}/>
           </button>
           </PopoverGroup>
         </div>

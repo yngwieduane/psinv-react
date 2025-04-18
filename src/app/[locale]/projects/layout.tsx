@@ -47,12 +47,8 @@ export default async function LocaleLayout({
  
     const queryClient = new QueryClient();
   return (
-    <html lang={locale}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <NextIntlClientProvider messages={messages}>
             <Providers>{children}</Providers>
         </NextIntlClientProvider>
-      </body>
-    </html>
   );
 }

@@ -13,7 +13,7 @@ const CardGroup = (props:any) => {
                 <div className="px-4 py-5 sm:p-6">
                     {thumbimg !== null
                         ? 
-                        <img className="w-full" src={thumbimg} />
+                        <img className="w-full hidden" src={thumbimg} />
                         : ""
                     }
                     <p>{item.name}</p>
