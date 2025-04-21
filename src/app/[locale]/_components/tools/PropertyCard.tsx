@@ -11,7 +11,7 @@ const PropertyCard = (props:any) => {
     })}
     </p>) : ("");
     const propHO = props.data["handoverDate"] ? (<p className="text-sm">Handover<br />{props.data["handoverDate"]}</p>) : ("");
-    const propSize = props.data["builtupArea_SQFT"] ? (<p className="text-sm">Size<br />{props.data["builtupArea_SQFT"]}</p>) : ("");
+    const propSize = (props.data["builtupArea_SQFT"] && props.data["builtupArea_SQFT"] !== '0') ? (<p className="text-sm">Size<br />{props.data["builtupArea_SQFT"]}</p>) : ("");
     const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0','?width=400&height=230') : ("");
     const subCommunity = props.data["subCommunity"] ? props.data["subCommunity"] : "n-a";
 
