@@ -2,14 +2,14 @@
 
 import PropertyCard from "./PropertyCard";
 
-const PropertyCardSlider = (props:any) => {
+const PropertyCardSlider = ({ data = [] }: any) => {
   return (
     <>
       <ul
         role="list"
         className="mx-4 inline-flex space-x-3 sm:mx-6"
       >
-        {props.data.map((project:any, index:any) => (
+        {data.map((project:any, index:any) => (
           <li
             key={index}
             className="inline-flex flex-col text-center lg:w-auto "
