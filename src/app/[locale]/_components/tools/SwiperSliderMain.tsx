@@ -21,9 +21,22 @@ function SwiperSliderMain(props:any) {
       <Swiper
         spaceBetween="30"
         modules={[Navigation,Pagination]}
-        slidesPerView={props.slidePerView}
         onSlideChange={() => console.log(swiperElRef3)}
         onSwiper={(swiper: any) => (swiperElRef3.current = swiper)}
+        breakpoints={{
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 16,
+          },
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 16,
+          },
+          1024: {
+            slidesPerView: props.slidePerView,
+            spaceBetween: 16,
+          },
+        }}
         navigation
       >
         {props.slides.map((project:any,index:any) => (
