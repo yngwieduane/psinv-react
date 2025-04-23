@@ -17,9 +17,9 @@ const montserrat = Montserrat({
     subsets: ["latin"],
   });
   
-interface Props {
-params: { locale: string }; // Capture the locale from the route
-}
+  interface PageProps {
+    params: { locale: string };
+  }
 
 const testimonialData = [
     {
@@ -42,14 +42,14 @@ const testimonialData = [
     },
 ]
 
-const AboutPage: FC<Props> = () => {
+export default function AboutPage({ params }: PageProps) {
     const searchParams = useSearchParams();
     const showDev = searchParams.has('dev');
 
     const data = {
-        image: `${process.env.IMAGES_DIRECTORY}/about-us/awards-img.jpg`,
+        image: '/assets/images/about-us/awards-img.jpg',
         title: 'ABOUT US',
-    };
+      };
         return (
             <div>
             {showDev ? (
@@ -243,5 +243,3 @@ const AboutPage: FC<Props> = () => {
         </div>
     );
 }
-      
-export default AboutPage;
