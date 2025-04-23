@@ -10,13 +10,15 @@ import PartnerSlider from "../_components/AboutPartnerSlider";
 
 const opensans = Open_Sans({
     variable: "--font-opensans",
-    display:"swap"
+    display:"swap",
+    subsets: ["latin"],
   });
 
-const montserrat = Montserrat({
+  const montserrat = Montserrat({
     variable: "--font-montserrat",
-    display:"swap"
-  });
+    display: "swap",
+    subsets: ["latin"],
+  });  
 
   const awards = [
     {
