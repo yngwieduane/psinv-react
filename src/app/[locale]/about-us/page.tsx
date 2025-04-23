@@ -13,7 +13,8 @@ import { useSearchParams } from "next/navigation";
 
 const montserrat = Montserrat({
     variable: "--font-montserrat",
-    display:"swap"
+    display: "swap",
+    subsets: ["latin"],
   });
   
 interface Props {
