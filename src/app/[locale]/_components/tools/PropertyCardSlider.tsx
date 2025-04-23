@@ -7,7 +7,7 @@ const PropertyCardSlider = ({ data = [] }: any) => {
     <>
       <ul
         role="list"
-        className="mx-4 inline-flex space-x-3 sm:mx-6"
+        className="mx-4 flex space-x-3 sm:mx-6 overflow-x-auto"
       >
         {data.map((project:any, index:any) => (
           <li

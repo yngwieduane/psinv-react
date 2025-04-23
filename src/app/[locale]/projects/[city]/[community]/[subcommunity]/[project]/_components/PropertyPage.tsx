@@ -7,6 +7,7 @@ import MapComponent from "@/app/[locale]/_components/MapComponent";
 import Image from "next/image";
 import CardGroup from "./CardGroup";
 import CardOne from "./CardOne";
+import AvailableUnits from './AvailableUnits';
 
 
 const PropertyPage = (props:any) => {
@@ -116,6 +117,18 @@ const PropertyPage = (props:any) => {
         </div>
         <div>
             <Breadcrumb/>
+        </div>
+        <div className="container mx-auto my-8 px-5">
+            <AvailableUnits
+                propid={props.data["propertyID"]}
+                category="Sale"
+            />
+        </div>
+        <div className="container mx-auto my-8 px-5">
+            <AvailableUnits
+                propid={props.data["propertyID"]}
+                category="Rent"
+            />
         </div>
         <div>
             <Gallery
