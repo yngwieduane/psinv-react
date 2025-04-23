@@ -5,7 +5,6 @@ import { Audrey, BrittanySignature } from "@/utils/fonts";
 import TopHeader from "../_components/TopHeader";
 import AboutTextSlider from "../_components/AboutTextSlider";
 import { Montserrat } from "next/font/google";
-import { PrinterIcon } from "@heroicons/react/24/outline";
 import DevPage from "./dev";
 
 import "../../about.css";
@@ -146,7 +145,7 @@ const AboutPage: FC<Props> = () => {
                         <div className="max-w-[1320] mx-auto flex flex-col items-center px-4">
                             <h2 className={`${Audrey.className} text-5xl tracking-widest mb-[40px]`}>OUR SERVICES</h2>
                             <p className="text-xl">Our reputation rests on excellence, transparency, and visionary leadership. Property Shop Investment sets industry benchmarks as Abu Dhabi&apos;s real estate influencer.</p>
-                            <Link target="_blank" href="https://psinv.net/assets/PSI-company-profile-2024.pdf" className="mb-5 bg-transparent hover:bg-white text-white hover:text-black rounded-xl border border-white p-[15px] flex text-center"><PrinterIcon width={30} style={{marginRight:'7px'}} /> Download Company Profile</Link>
+                            <Link target="_blank" href="https://psinv.net/assets/PSI-company-profile-2024.pdf" className="mb-5 bg-transparent hover:bg-white text-white hover:text-black rounded-xl border border-white p-[15px] flex text-center"> Download Company Profile</Link>
                         </div>   
                         <div className="mx-auto max-w-[1320] flex gap-[25] mt-5 px-4">
                             <div className="w-full grid lg:grid-cols-3 lg:grid-rows-2 sm:grid-cols-2 sm:grid-rows-3 grid-cols-1 gap-[25]">

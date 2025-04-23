@@ -398,8 +398,14 @@ const DevPage = () => {
                     <p className={`text-lg font ${montserrat.className} mt-5`}>Bringing Real Estate Excellence to Your Doorstep</p>
                 </div>
             </div>
+            <div  className="max-w-screen-xl mx-auto">
+                <div className="w-full">
+                    <div className="md:w-3/4 bg-[#000] h-[300px]">
+                            
+                    </div>
+                </div>
+            </div>
         </section>
-
         </>
     )
 }
