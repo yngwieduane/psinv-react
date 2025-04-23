@@ -179,7 +179,7 @@ const more: More[] = [
   {
     name: 'About Us',
     description: 'About PSI',
-    href: '//about-us',
+    href: '/about-us',
     icon: ChartPieIcon,
   }
 ];
