@@ -16,11 +16,8 @@ const montserrat = Montserrat({
     variable: "--font-montserrat",
     display:"swap",
     subsets: ["latin"],
-  });
-  
-interface Props {
-params: { locale: string }; // Capture the locale from the route
-}
+  }); 
+
 
 const testimonialData = [
     {
@@ -43,7 +40,7 @@ const testimonialData = [
     },
 ]
 
-const AboutPage: FC<Props> = () => {
+const AboutPage = () => {
     const searchParams = useSearchParams();
     const showDev = searchParams.has('dev');
 
