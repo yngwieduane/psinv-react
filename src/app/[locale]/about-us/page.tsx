@@ -1,15 +1,14 @@
 "use client";
 
-import { FC } from "react";
+import { Link } from "@/i18n/navigation";
 import { Audrey, BrittanySignature } from "@/utils/fonts";
 import TopHeader from "../_components/TopHeader";
-import AboutTextSlider from "../_components/AboutTextSlider";
+import AboutTextSlider from "./_components/AboutTextSlider";
 import { Montserrat } from "next/font/google";
 import { PrinterIcon } from "@heroicons/react/24/outline";
 import DevPage from "./dev";
 
 import "../../about.css";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 const montserrat = Montserrat({

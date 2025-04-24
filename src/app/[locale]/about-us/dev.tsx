@@ -2,10 +2,12 @@
 
 import { Audrey, BrittanySignature } from "@/utils/fonts";
 import { Montserrat, Open_Sans } from "next/font/google"; 
-import AboutCounter from "../_components/AboutCounter";
-import AwardSlider from "../_components/AboutAwardsSlider";
-import YoutubeVideo from "../_components/AboutYTVideo";
-import PartnerSlider from "../_components/AboutPartnerSlider";
+import AboutCounter from "./_components/AboutCounter";
+import AwardSlider from "./_components/AboutAwardsSlider";
+import YoutubeVideo from "../_components/YoutubeVideo";
+import PartnerSlider from "./_components/AboutPartnerSlider";
+import AboutTextSlider from "./_components/AboutTextSlider";
+import AboutCard from "./_components/AboutCard";
 
 
 const opensans = Open_Sans({
@@ -81,6 +83,36 @@ const partners = [
         "image":"/assets/images/about-us/partners/hydra.jpg",
     },
 ]
+
+const testimonialData = [
+    {
+        name:"Said Abu Laila",
+        designation: "Chairman",
+        text:"Since 2007, Property Shop Investment (PSI) has led the transformation of UAE's real estate. Moving into 2024, our goal is global recognition, driving innovation and exceeding investor expectations. We're committed to redefining real estate globally, aligning with our vision to lead and inspire across markets",
+        image: '/assets/images/about-us/ceo-said-photo.png',
+    },
+    {
+        name:"Firas Abu Laila",
+        designation: "Chief Executive Officer",
+        text:"PSI aligns with Abu Dhabi's growth and diversification goals, aiming to bolster its position as a top investment destination. Our global ambitions complement Abu Dhabi's vision, promising to surpass investor expectations and contribute to its economic prosperity",
+        image: '/assets/images/about-us/ceo-mr-firas.jpg',
+    },
+    {
+        name:"Amer Saadeh",
+        designation: "Chief Executive Officer",
+        text:"PSI aims to mirror Dubai's innovative spirit in real estate, contributing to its vision by attracting global investments and fostering economic growth. We're set to elevate Dubai's real estate market, enhancing investor confidence and setting new industry standards",
+        image: '/assets/images/about-us/ceo-mr-amer.jpg',
+    },
+]
+
+const aboutCardData = [
+    { title: "United Arab Emirates", background: "/assets/images/about-us/uae-image.jpg" },
+    { title: "India", background: "/assets/images/about-us/india-image.jpg" },
+    { title: "USA", background: "/assets/images/about-us/usa-image.jpg" },
+    { title: "Poland", background: "/assets/images/about-us/poland-image.jpg" },
+    { title: "Romania", background: "/assets/images/about-us/romania-image.jpg"},
+    { title: "UK", background: "/assets/images/about-us/uk-image.jpg" },
+  ];
 
 const DevPage = () => {
     return(
@@ -167,6 +199,8 @@ const DevPage = () => {
                 </div>
             </div>
         </section>
+
+        <AboutTextSlider slides={testimonialData} />
 
         <section className={`w-full my-4 ${opensans.className}`}>
             <div className="max-w-screen-xl mx-auto px-4">
@@ -392,14 +426,31 @@ const DevPage = () => {
         </section>
 
         <section className="w-full my-4">
-            <div  className="max-w-screen-xl mx-auto bg-center bg-cover py-10 px-5">
+            <div className="max-w-screen-xl mx-auto bg-center bg-cover py-10 px-5">
                 <div className="text-center mb-[70] ">
                     <h3 className={`text-darkblue  font-bold text-xl md:text-4xl ${Audrey.className}`}>
                     STRATEGIC <span className={`${BrittanySignature.className} text-[#CE641D]`}>Alliances</span>
                     </h3>
                     <p className={`text-lg font ${montserrat.className} mt-5`}>Bringing Real Estate Excellence to Your Doorstep</p>
                 </div>
-            </div>
+
+                <div className="aboutCards grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                {aboutCardData.map((card, idx) => {
+                    let spanClass = '';
+                    if(idx === 0) spanClass = 'lg:col-span-2';
+                    else if (idx === aboutCardData.length -1 ) spanClass = 'lg:col-span-2';
+                
+                    return (
+                        <div key={idx} className={spanClass}>
+                            <AboutCard background={card.background}>
+                                <h2 className="text-2xl font-[200] cardText rounded-xl">{card.title}</h2>                                
+                            </AboutCard>
+                        </div>
+                    );
+                })}
+        
+                </div>
+            </div>            
         </section>
 
         </>

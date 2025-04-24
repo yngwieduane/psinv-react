@@ -8,7 +8,7 @@ interface YoutubeVideoProps {
     thumb: string;
   }
 
-const AboutYTVideo: React.FC<YoutubeVideoProps> = ({ videoId, thumb }) => {
+  const YoutubeVideo: React.FC<YoutubeVideoProps> = ({ videoId, thumb }) => {
     const [isPlaying, setIsPlaying] = useState(false);
 
     const options: YouTubeProps["opts"] = {
@@ -23,17 +23,22 @@ const AboutYTVideo: React.FC<YoutubeVideoProps> = ({ videoId, thumb }) => {
     const handleClick = () => {
         setIsPlaying(true);
     };
-    const thumbnailUrl = `${thumb}`;
+    // const thumbnailUrl = `${thumb}`;
 
     // const onReady = (event: YouTubeEvent) => {
     //     event.target.pauseVideo();
     // };
 
+    if(!thumb || thumb.trim() === "") {
+        return <YouTube videoId={videoId} opts={options} id="video" />;
+    }
+
+    //else part
     return(
         <div style={{position: "relative", width:"100%", height:"690px"}}>
             {!isPlaying ? (
                 <div onClick={handleClick} style={{ cursor: "pointer" }}>
-                    <img src={thumbnailUrl}  alt="Video thumbnail"
+                    <img src={thumb}  alt="Video thumbnail"
                         style={{ width: "100%", height: "690px", objectFit: "cover", borderRadius: "8px" }}
                     />                    
                    <div className="blob-play" style={{                                               
@@ -57,4 +62,4 @@ const AboutYTVideo: React.FC<YoutubeVideoProps> = ({ videoId, thumb }) => {
     
 };
 
-export default AboutYTVideo;
+export default YoutubeVideo;
