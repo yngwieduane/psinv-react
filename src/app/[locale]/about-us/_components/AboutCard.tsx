@@ -12,12 +12,10 @@ const AboutCard = ({ background, width, children}: Props) => {
     };
     // const isImage = background.startsWith("http") || background.includes("base64");    
 
-    const style = isImage(background) ? {
-        backgroundImage: `url(${background})`,
-        backgroundSize:'cover',
-        backgroundRepeat:'no-repeat',
-        backgroundPosition:'center',
-    }
+    const style = isImage(background) 
+    ? {
+        '--bg-image': `url(${background})`, // use `background` directly if it's already the URL
+      }
     :
     {
         backgroundColor: background,
@@ -25,7 +23,7 @@ const AboutCard = ({ background, width, children}: Props) => {
 
     return(
         <>
-        <div className={`card rounded-xl shadow-md text-white h-full flex items-end min-h-[300px] ${width}`} style={style}>
+        <div className={`card group relative rounded-xl shadow-md text-white h-full flex items-end min-h-[300px] overflow-hidden ${width}`} style={style}>
             {children}
         </div>
         </>

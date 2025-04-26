@@ -31,8 +31,7 @@ const AboutPartnerSlider = (props: any) => {
                     }
                 }}
                 autoplay = {true}
-                centeredSlides = {true}                    
-                slidesPerView={4}
+                centeredSlides = {true}
                 loop = {true}
                 modules = {[Pagination, Autoplay]}
                 onSwiper = {(swiper: any) => (swiperElRef.current = swiper)}
@@ -41,7 +40,7 @@ const AboutPartnerSlider = (props: any) => {
                 {props.slides && Array.isArray(props.slides) && props.slides.map((slide: any, index: number) => (
                     <SwiperSlide key={index}>
                         <div className="w-full text-center">
-                            <div className="bg-contain bg-center h-[250] w-auto p-[50] partnerLogo">
+                            <div className="bg-contain bg-center h-[250] w-auto p-[50] border border-[#F9F9F9]">
                                 <img src={slide.image} alt={slide.title} />
                             </div>
                             <p className="text-darkblue fs-20 mt-3 fw-bold mb-0">{slide.title1}</p>

@@ -6,13 +6,14 @@ import YouTube,{YouTubeEvent, YouTubeProps} from "react-youtube";
 interface YoutubeVideoProps {
     videoId: string;
     thumb: string;
+    height: string;
   }
 
-  const YoutubeVideo: React.FC<YoutubeVideoProps> = ({ videoId, thumb }) => {
+  const YoutubeVideo: React.FC<YoutubeVideoProps> = ({ videoId, thumb, height }) => {
     const [isPlaying, setIsPlaying] = useState(false);
 
     const options: YouTubeProps["opts"] = {
-        height: "690",
+        height: "100%",
         width: "100%",
         playerVars: {
           autoplay: 1,
@@ -23,11 +24,6 @@ interface YoutubeVideoProps {
     const handleClick = () => {
         setIsPlaying(true);
     };
-    // const thumbnailUrl = `${thumb}`;
-
-    // const onReady = (event: YouTubeEvent) => {
-    //     event.target.pauseVideo();
-    // };
 
     if(!thumb || thumb.trim() === "") {
         return <YouTube videoId={videoId} opts={options} id="video" />;
@@ -35,26 +31,24 @@ interface YoutubeVideoProps {
 
     //else part
     return(
-        <div style={{position: "relative", width:"100%", height:"690px"}}>
+        <div className={`${height} w-full relative`}>
             {!isPlaying ? (
-                <div onClick={handleClick} style={{ cursor: "pointer" }}>
-                    <img src={thumb}  alt="Video thumbnail"
-                        style={{ width: "100%", height: "690px", objectFit: "cover", borderRadius: "8px" }}
+                <div onClick={handleClick} className="cursor-pointer relative h-full w-full">
+                    <img src={thumb}  alt="Video thumbnail" className="w-full h-full object-cover rounded-lg"
+                        style={{ width: "100%", objectFit: "cover", borderRadius: "8px" }}
                     />                    
-                   <div className="blob-play" style={{                                               
-                       display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        }}>
+                   <div className="blob-play absolute inset-0 flex items-center justify-center">
                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
                             <polygon points="16,12 28,20 16,28" fill="#2C2D65" />
                         </svg>
                     </div>
                 </div>
             ) : (
-                <YouTube videoId={videoId} opts={options} 
-                // onReady={onReady} 
-                id="video" />
+                <div className="w-full h-full">
+                    <YouTube videoId={videoId} opts={options} className="w-full h-full"
+                    // onReady={onReady} 
+                    id="video" />
+                </div>
             )}             
                 
         </div>        

@@ -8,6 +8,7 @@ import YoutubeVideo from "../_components/YoutubeVideo";
 import PartnerSlider from "./_components/AboutPartnerSlider";
 import AboutTextSlider from "./_components/AboutTextSlider";
 import AboutCard from "./_components/AboutCard";
+import LocationsSection from "./_components/LocationsSection";
 
 
 const opensans = Open_Sans({
@@ -111,7 +112,7 @@ const aboutCardData = [
     { title: "USA", background: "/assets/images/about-us/usa-image.jpg" },
     { title: "Poland", background: "/assets/images/about-us/poland-image.jpg" },
     { title: "Romania", background: "/assets/images/about-us/romania-image.jpg"},
-    { title: "UK", background: "/assets/images/about-us/uk-image.jpg" },
+    { title: "United Kingdom", background: "/assets/images/about-us/uk-image.jpg" },
   ];
 
 const DevPage = () => {
@@ -409,7 +410,7 @@ const DevPage = () => {
                     </h3>
                     <p className={`text-lg font ${montserrat.className}`}>Unveiling Our Vision, Innovations, and Commitment to Your Dream Home</p>
                 </div>
-                <YoutubeVideo videoId="f_K-ZrzuZLs" thumb="/assets/images/about-us/video-thumb.jpg" />
+                <YoutubeVideo videoId="f_K-ZrzuZLs" thumb="/assets/images/about-us/video-thumb.jpg" height="h-[350px] md:h-[690px]" />
             </div>
         </section>
 
@@ -442,7 +443,7 @@ const DevPage = () => {
                 
                     return (
                         <div key={idx} className={spanClass}>
-                            <AboutCard background={card.background}>
+                            <AboutCard background={card.background} >
                                 <h2 className="text-2xl font-[200] cardText rounded-xl">{card.title}</h2>                                
                             </AboutCard>
                         </div>
@@ -451,6 +452,10 @@ const DevPage = () => {
         
                 </div>
             </div>            
+        </section>
+
+        <section className="w-full my-4 locationsSection">            
+            <LocationsSection />
         </section>
 
         </>
