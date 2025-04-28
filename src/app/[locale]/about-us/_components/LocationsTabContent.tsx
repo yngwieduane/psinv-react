@@ -9,8 +9,7 @@ const LocationsTabContent = ({data, visibleTab, height}: any) => {
         {data[visibleTab] && (
             <div className={`w-full ${height}`}>
                 <Map 
-                latitude = {data[visibleTab].latitude}
-                longitude = {data[visibleTab].longitude} />
+                cityName={data[visibleTab].title} />
             </div>
             
         )}
