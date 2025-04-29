@@ -9,6 +9,7 @@ import PartnerSlider from "./_components/AboutPartnerSlider";
 import AboutTextSlider from "./_components/AboutTextSlider";
 import AboutCard from "./_components/AboutCard";
 import LocationsSection from "./_components/LocationsSection";
+import Script from "next/script";
 
 
 const opensans = Open_Sans({
@@ -17,10 +18,9 @@ const opensans = Open_Sans({
     subsets: ["latin"],
   });
 
-const montserrat = Montserrat({
-    variable: "--font-montserrat",
-    display:"swap",
-    subsets: ["latin"],
+  const montserrat = Montserrat({
+    subsets: ['latin'],
+    display: 'swap',
   });
 
   const awards = [
@@ -118,6 +118,7 @@ const aboutCardData = [
 const DevPage = () => {
     return(
         <>
+
         <section className={`w-full relative py-5 ${opensans.className}`}>
             {/* Background Grid */}
             <div className="absolute inset-0 w-full h-full grid-bg z-0"></div>

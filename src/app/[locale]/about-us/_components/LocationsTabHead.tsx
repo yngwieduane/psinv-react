@@ -13,6 +13,6 @@ const LocationsTabHead = ({data, visibleTab, setVisibleTab}: any) => {
             />
         </>
     );
-}
+};
 
 export default LocationsTabHead
