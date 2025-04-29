@@ -1,3 +1,4 @@
+'use client'
 import { Link } from "@/i18n/navigation";
 import SwiperNormal from "../../_components/SwiperNormal";
 import PriceConvert from "../../_components/tools/PriceConvert";
