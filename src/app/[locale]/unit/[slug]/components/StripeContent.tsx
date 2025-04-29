@@ -1,9 +1,11 @@
+import Modals from "@/app/[locale]/_components/tools/Modals";
 import PriceConvert from "@/app/[locale]/_components/tools/PriceConvert";
 import { Link } from "@/i18n/navigation";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {useFormatter} from 'next-intl';
+import { useState } from "react";
 
 const StripeContent = (props:any) => {
     let price,category ;
@@ -17,6 +19,16 @@ const StripeContent = (props:any) => {
         category = "Rent";
     }
 
+    const [setModal, setSetModal] = useState(false);
+    const modalHandler = (event:any) => {
+        console.log("clicked = " + setModal);
+        setSetModal(true);
+    };
+
+    const modalUpdate = (event:any) => {
+        console.log(event);
+        setSetModal(event);
+    };
 
     return (
         <div className=" px-0 md:px-5 py-5 justify-items-stretch border-b border-gray-200">
@@ -41,9 +53,16 @@ const StripeContent = (props:any) => {
                 </div>
                 <div className="grid grid-cols-2 text-center md:flex items-center justify-end gap-3">
                     <Link href="#" className="bg-gray-100 px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /> Call</Link>
+                    <button
+                        onClick={modalHandler}
+                        type="button"
+                        className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg"
+                    ><FontAwesomeIcon icon={faEnvelope} />
+                    </button>
                     <Link href="#" className="bg-green-600 px-5 py-3 rounded-lg text-white text-lg"><FontAwesomeIcon icon={faWhatsapp} /> WhatsApp</Link>
                 </div>
             </div>
+            <Modals modalState={setModal} onModalUpdate={modalUpdate} />
         </div>
     );
   }

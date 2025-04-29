@@ -8,6 +8,7 @@ import Image from "next/image";
 import CardGroup from "./CardGroup";
 import CardOne from "./CardOne";
 import AvailableUnits from './AvailableUnits';
+import { ReadMore } from '@/app/[locale]/_components/ReadMore';
 
 
 const PropertyPage = (props:any) => {
@@ -223,7 +224,7 @@ const PropertyPage = (props:any) => {
                 {props.data["propertyName"]} {t("overview")}
             </h2>
             <div className="">
-                {props.data["enPropertyOverView"]} 
+                <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]}  classes="whitespace-break-spaces"/>
             </div>
         </div>
         </>
