@@ -12,9 +12,8 @@ import "../../about.css";
 import { useSearchParams } from "next/navigation";
 
 const montserrat = Montserrat({
-    variable: "--font-montserrat",
-    display:"swap",
-    subsets: ["latin"],
+    subsets: ['latin'],
+    display: 'swap',
   }); 
 
 
