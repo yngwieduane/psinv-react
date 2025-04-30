@@ -124,6 +124,23 @@ html, body {
   .list-property-form button:hover {
     background-color: #cc1f1a;
   }
+  /* styles/slider-custom.css */
+.rc-slider-track {
+  background-color: #60a5fa !important; /* Tailwind's blue-400 */
+}
+.rc-slider-handle {
+  background-color: #1953a2 !important;
+  border-color: #1953a2 !important;
+  opacity: 1;
+  width: 18px;
+  height: 18px;
+  margin-top: -7px;
+}
+
+.rc-slider-rail {
+  background-color: #e5e7eb; /* Tailwind's gray-200 */
+}
+
   @media (max-width: 640px) {
     .mobile-margin {
       margin-left: 2% !important;
