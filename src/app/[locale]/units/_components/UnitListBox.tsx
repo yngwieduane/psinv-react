@@ -1,3 +1,4 @@
+'use client'
 import { Link } from "@/i18n/navigation";
 import SwiperNormal from "../../_components/SwiperNormal";
 import PriceConvert from "../../_components/tools/PriceConvert";
@@ -5,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import NumberConvert from "../../_components/tools/NumberConvert";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import Modals from "../../_components/tools/Modals";
+import { useState } from "react";
 
 export default function UnitListBox(props:any){
     let images, price;
@@ -16,6 +19,17 @@ export default function UnitListBox(props:any){
         ? price = props.data.sellprice
         : price = props.data.rent;
     }
+
+    const [setModal, setSetModal] = useState(false);
+    const modalHandler = (event:any) => {
+        console.log("clicked = " + setModal);
+        setSetModal(true);
+    };
+
+    const modalUpdate = (event:any) => {
+        console.log(event);
+        setSetModal(event);
+        };
     return (
         <>
         <article className="relative isolate flex flex-col gap-2 md:gap-8 lg:flex-row bg-gray-50 rounded-2xl w-full">
@@ -72,11 +86,17 @@ export default function UnitListBox(props:any){
                 </div>
                 <div className="grid grid-cols-2 text-center md:flex items-center justify-end gap-3 mt-3 border-t border-gray-900/5 pt-6">
                     <Link href="#" className="bg-gray-100 px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /> Call</Link>
-                    <Link href={`mailto:${props.data.salesmanemail}`} className="bg-gray-100 px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faEnvelope} /> Email Agent</Link>
+                    <button
+                        onClick={modalHandler}
+                        type="button"
+                        className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg"
+                    ><FontAwesomeIcon icon={faEnvelope} />
+                    </button>
                     <Link href="#" className="col-span-2 bg-green-600 px-5 py-3 rounded-lg text-white text-lg"><FontAwesomeIcon icon={faWhatsapp} /> WhatsApp</Link>
                 </div>
             </div>
         </article>
+        <Modals modalState={setModal} onModalUpdate={modalUpdate} />
         </>
     );
 }
