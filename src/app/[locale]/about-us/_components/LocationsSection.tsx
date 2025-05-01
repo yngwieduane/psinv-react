@@ -29,7 +29,7 @@ export default function LocationsSection() {
 
   return (
     <>      
-      <div className="flex max-w-screen-xl mx-auto px-5">
+      <div className="md:flex max-w-screen-xl mx-auto px-5">
         <div className="md:w-1/2">
           <div className="mb-[30px]">
             <h3 className={`text-darkblue font-bold text-xl md:text-4xl ${Audrey.className}`}>
@@ -40,7 +40,7 @@ export default function LocationsSection() {
             </p>
           </div>
         </div>
-        <div className="md:w-1/2 items-end locationsTabHead">
+        <div className="md:w-1/2 md:items-end items-center locationsTabHead">
           <LocationsTabHead
             data={locationsData}
             visibleTab={visibleTab}

@@ -9,9 +9,10 @@ interface GoogleMapEmbedProps {
   locations: ContactLocation[];
   selectedLocation: ContactLocation | null;
   onMapLoad?: (map: google.maps.Map) => void;
+  tabKey?: string;
 }
 
-export default function GoogleMapEmbed({ center, locations, selectedLocation, onMapLoad }: GoogleMapEmbedProps) {
+export default function GoogleMapEmbed({ center, locations, selectedLocation, onMapLoad, tabKey }: GoogleMapEmbedProps) {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || 'AIzaSyAL3vJzmlp-W6qUCjV7N75YFIwtQYH3s4I',
   });
@@ -24,11 +25,17 @@ export default function GoogleMapEmbed({ center, locations, selectedLocation, on
   }, [onMapLoad]);
 
  useEffect(() => {
-  if(selectedLocation && map) {
-    map.panTo({ lat: selectedLocation.latitude, lng: selectedLocation.longitude });
-    map.setZoom(16);
-  }
- }, [selectedLocation, map]);
+  if(map) {
+    if(selectedLocation) {
+      map.panTo({ lat: selectedLocation.latitude, lng: selectedLocation.longitude });
+      map.setZoom(16);
+    }
+    else {
+      map.panTo(center);
+      map.setZoom(12);
+    }
+  }  
+ }, [selectedLocation, center, map, tabKey]);
 
  if (!isLoaded) return <div>Loading Map...</div>;
 

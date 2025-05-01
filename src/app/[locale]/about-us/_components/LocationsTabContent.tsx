@@ -5,8 +5,6 @@ import dynamic from "next/dynamic";
 const Map = dynamic(() => import('./Map'), { ssr: false });
 import { ContactLocation } from "@/data/contactLocations";
 
-
-
 interface LocationsTabContentProps {
   cityCenter: { lat: number, lng: number};
   locations: ContactLocation[];
@@ -32,26 +30,26 @@ export default function LocationsTabContent({cityCenter, locations, height}: Loc
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 relative h-[600px] w-full">
+    <div className="flex flex-col md:flex-row gap-4 relative md:h-[600px] w-full">
       {/* Locations list */}
-      <div className="md:w-1/3 bg-white p-4 rounded shadow overflow-auto max-h-[600px] absolute right-30">        
-        {locations.length === 0 && <p>No locations found.</p>}
-        {locations.map((loc) => (
-          <div
-            key={loc.id}
-            className={`text-[#2C2D65] cursor-pointer p-2 mb-2 rounded ${selectedLocation?.id === loc.id ? 'border border-blue-500' : 'border-0'}`}
-            onClick={() => handleLocationClick(loc)}
-          >
-            <h2 className="font-semibold text-2xl mb-2">{loc.name}</h2>
-            <h3 className="text-lg mb-3">{loc.address_community}</h3>
-            <p className="text-sm">{loc.off_address}</p>
-            <a className="font-semibold text-sm" href={`${loc.location}`}>View map</a>
-          </div>
-        ))}
-      </div>
+      {/* case no location */}
+      {locations.length === 0 ? null : (        
+        <div className="md:w-1/3 bg-white p-0 rounded shadow overflow-auto h-[530px] md:absolute md:right-[30px] z-50 md:top-1/2 md:transform md:-translate-y-1/2">        
+          {locations.map((loc) => (
+            <div key={loc.id}
+              className={`text-[#2C2D65] cursor-pointer p-5 mb-2 rounded ${selectedLocation?.id === loc.id ? 'border-l-4 border-l-[#2C2D65]-500' : 'border-0'}`}
+              onClick={() => handleLocationClick(loc)} >
+              <h2 className="font-semibold text-2xl mb-2">{loc.name}</h2>
+              <h3 className="text-lg mb-3">{loc.address_community}</h3>
+              <p className="text-sm">{loc.off_address}</p>
+              <a className="font-semibold text-sm" href={`${loc.location}`} target="_blank">View map</a>
+            </div>
+          ))}
+        </div>
+      )}      
 
       {/* Map */}
-      <div className={`w-full absolute  ${height}`}>
+      <div className={`w-full md:absolute  ${height}`}>
         <Map
           center={cityCenter}
           locations={locations}
