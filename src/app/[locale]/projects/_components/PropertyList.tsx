@@ -5,7 +5,7 @@ import PropertyCard from "../../_components/tools/PropertyCard";
 import Pagination from "../../_components/tools/Pagination";
 import SearchProperty from "./SearchProperty";
 import PropertyBox from "./PropertyBox";
-import { Skeleton } from "../../_components/tools/Skeleteon";
+import { BlogItem, Skeleton } from "../../_components/tools/Skeleteon";
 
 interface PropertyListProps {
   page: number;
@@ -36,7 +36,7 @@ export default function PropertyList({
       try {
         setLoading(true);
         const response = await fetch(
-          `/api/external/allprojects?page=${page}&propertyname=${propertyname}&isFeaturedProjectOnWeb=${isFeaturedProjectOnWeb}`
+          `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${city}`
         );
 
         if (!response.ok) {
@@ -54,7 +54,7 @@ export default function PropertyList({
     };
 
     fetchData();
-  }, [page, propertyname, isFeaturedProjectOnWeb]);
+  }, [page, propertyname, isFeaturedProjectOnWeb, city]);
 
 
 
@@ -70,7 +70,12 @@ export default function PropertyList({
       </div>
       <div className="order-2 md:order-3 col-span-1 md:col-span-2">
         {isLoading ? (
-            <Skeleton />
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <BlogItem />
+                <BlogItem />
+                <BlogItem />
+                <BlogItem />
+            </div>
         ) : (
             <PropertyBox data={data['result']} />
         )}

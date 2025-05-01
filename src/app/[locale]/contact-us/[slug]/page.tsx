@@ -13,6 +13,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import InquiryForm from "../../_components/InquiryForm";
 import { ContactLocation, contactLocations } from "@/data/contactLocations";
+import { Poppins } from 'next/font/google';
+
+const poppins = Poppins({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function ContactPage() {
   const params = useParams();
@@ -97,9 +104,7 @@ export default function ContactPage() {
                 )}
               </div>
               <h2 className="mt-5 mb-3 text-[1.75em] text-[#333333]">{selectedOffice.name}</h2>
-              <p
-                style={{ fontFamily: "Poppins, sans-serif" }}
-                className="text-[#333333] text-[16px] font-[Poppins] leading-6 whitespace-normal break-words flex items-start gap-2"
+              <p className={`text-[#333333] text-[16px] ${poppins.className} leading-6 whitespace-normal break-words flex items-start gap-2}`}
               >
                 <FontAwesomeIcon icon={faMapMarkerAlt} className="text-[#014081] mt-1" />
                 <span className="flex flex-col">

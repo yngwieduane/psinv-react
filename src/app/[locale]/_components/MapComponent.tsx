@@ -14,7 +14,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ latitude, longitude, fallba
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className="w-full h-100 rounded-lg overflow-hidden">
+    <div className="mapSection w-full h-100 rounded-lg overflow-hidden">
       {latitude && longitude && !hasError ? (
         <iframe
           src={`https://maps.google.com/maps?q=${latitude},${longitude}&output=embed`}

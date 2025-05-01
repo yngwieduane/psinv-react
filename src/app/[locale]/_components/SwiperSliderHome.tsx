@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import {
@@ -11,9 +11,21 @@ import {
 import Link from "next/link";
 
 import 'swiper/css';
+import Modals from "./tools/Modals";
 
 const SwiperSlider = (props: any) => {
   const swiperElRef2 = useRef<any>(null);
+
+    const [setModal, setSetModal] = useState(false);
+    const modalHandler = (event:any) => {
+        console.log("clicked = " + setModal);
+        setSetModal(true);
+    };
+
+    const modalUpdate = (event:any) => {
+      console.log(event);
+      setSetModal(event);
+    };
   return (
     <div className="relative">
       <div className="absolute end-0 bottom-0 grid grid-cols-3">
@@ -70,7 +82,9 @@ const SwiperSlider = (props: any) => {
                   <p className="text-white text-xl my-8 md:text-2xl">
                     {slide.description}
                   </p>
-                  <button className="rounded-md bg-orange-600 px-5 py-2.5 text-2xl font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  <button 
+                      onClick={modalHandler}
+                      className="rounded-md bg-orange-600 px-5 py-2.5 text-2xl font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Sign Up
                   </button>
                   <Link href="#" className="px-5 py-2.5 text-white text-2xl font-semibold hover:text-gray-400">
@@ -83,6 +97,7 @@ const SwiperSlider = (props: any) => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <Modals modalState={setModal} onModalUpdate={modalUpdate} />
     </div>
   );
 };
