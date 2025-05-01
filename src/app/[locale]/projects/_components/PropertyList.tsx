@@ -36,7 +36,7 @@ export default function PropertyList({
       try {
         setLoading(true);
         const response = await fetch(
-          `/api/external/allprojects?page=${page}&propertyname=${propertyname}&isFeaturedProjectOnWeb=${isFeaturedProjectOnWeb}`
+          `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${city}`
         );
 
         if (!response.ok) {
@@ -54,7 +54,7 @@ export default function PropertyList({
     };
 
     fetchData();
-  }, [page, propertyname, isFeaturedProjectOnWeb]);
+  }, [page, propertyname, isFeaturedProjectOnWeb, city]);
 
 
 
