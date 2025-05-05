@@ -123,7 +123,7 @@ const aboutCardData = [
     { title: "United Kingdom", background: "/assets/images/about-us/uk-image.jpg" },
   ];
 
-const DevPage = () => {
+const AboutPage = () => {
     return(
         <>
 
@@ -437,4 +437,4 @@ const DevPage = () => {
     )
 }
 
-export default DevPage;
+export default AboutPage;
