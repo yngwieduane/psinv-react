@@ -21,7 +21,6 @@ const locationsData = [
 export default function LocationsSection() {
   const [visibleTab, setVisibleTab] = useState(0);
 
-  //
   const cityName = locationsData[visibleTab].title;
   const cityLocations = contactLocations.filter(
     (loc) => loc.address_city.toLowerCase() === cityName.toLowerCase()
@@ -40,7 +39,7 @@ export default function LocationsSection() {
             </p>
           </div>
         </div>
-        <div className="md:w-1/2 md:items-end items-center locationsTabHead">
+        <div className="md:w-1/2 md:items-end items-center content-center locationsTabHead">
           <LocationsTabHead
             data={locationsData}
             visibleTab={visibleTab}

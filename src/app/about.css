@@ -103,10 +103,10 @@ p.designation { margin-bottom:  40px !important;}
   
   .locationsTabHead nav { justify-self: flex-end !important; gap:10px; }
   .locationsSection .mapSection { height: 600px;}
-  .locationsTabHead nav button { background-color: #2C2D65; color: #fff; border-radius: .3rem !important; 
+  .locationsTabHead nav button { background-color: #fff; color: #2C2D65; border:1px solid #2C2D65!important;  border-radius: .3rem !important; 
     width: auto; margin-right: 10px; border: 0px; cursor: pointer; }
-  .locationsTabHead nav button:hover { background-color: #fff; color: #2C2D65; border:1px solid #2C2D65; }
-  .locationsTabHead nav button:last-child { margin-right: 0px; }
+  .locationsTabHead nav button:hover, .locationsTabHead nav button.active { background-color: #2C2D65; color: #fff;  }
+  .locationsTabHead nav button:last-child { margin-right: 0px; }  
 
   @media only screen and (max-width: 767px) { 
     .locationsTabHead nav { justify-self: flex-start !important; }
