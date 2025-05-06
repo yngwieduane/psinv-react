@@ -15,6 +15,7 @@ interface PropertyListProps {
   project: string;
   propertyname: string;
   isFeaturedProjectOnWeb: string;
+  cityId: string;
 }
 
 export default function PropertyList({
@@ -25,6 +26,7 @@ export default function PropertyList({
   project,
   propertyname,
   isFeaturedProjectOnWeb,
+  cityId
 }: PropertyListProps) {
   const [data, setData] = useState<any>(null);
   const [isLoading, setLoading] = useState(true);
@@ -35,8 +37,9 @@ export default function PropertyList({
     const fetchData = async () => {
       try {
         setLoading(true);
+        
         const response = await fetch(
-          `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${city}`
+          `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${cityId}`
         );
 
         if (!response.ok) {
@@ -54,7 +57,7 @@ export default function PropertyList({
     };
 
     fetchData();
-  }, [page, propertyname, isFeaturedProjectOnWeb, city]);
+  }, [page, propertyname, isFeaturedProjectOnWeb, cityId]);
 
 
 

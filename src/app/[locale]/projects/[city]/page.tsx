@@ -1,4 +1,6 @@
+import { getLookupId } from "@/utils/lookup";
 import ProjectsPage from "../_components/ProjectsPage";
+import { unslugify } from "@/utils/utils";
 
 
 export default async function Projects({
@@ -16,9 +18,11 @@ export default async function Projects({
     const currentPage = Number(page) || 1;
     console.log("propertyname="+propertyname);
 
+    const cityname = unslugify(city);
+    const cityId = await getLookupId(cityname, 'city');
     return (
         <>
-            <ProjectsPage page={currentPage} city={city} community={community} subcommunity={subcommunity} project={project} propertyname={propertynamefinal} isFeaturedProjectOnWeb={isFeaturedProjectOnWebfinal}/>
+            <ProjectsPage page={currentPage} city={city} cityId={cityId} community={community} subcommunity={subcommunity} project={project} propertyname={propertynamefinal} isFeaturedProjectOnWeb={isFeaturedProjectOnWebfinal}/>
         </>
     );
 }

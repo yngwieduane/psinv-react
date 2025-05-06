@@ -30,3 +30,9 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
       totalPages,
     ];
   };
+
+  export const unslugify = (slug: string): string => {
+    return slug
+      .replace(/-/g, ' ')           // Replace dashes with spaces
+      .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize each word
+  };
