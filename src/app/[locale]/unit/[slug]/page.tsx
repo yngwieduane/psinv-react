@@ -16,8 +16,15 @@ export async function generateMetadata(
     const lastString = slugString.split("-").pop() ?? "";
 
     const code = lastString.replace(/\D/g, ""); 
+    let category = 'rent';
+
+    if(slugString.split("-").includes('sale')){
+        category = 'sale';
+    }else{
+        category = 'rent';
+    }
     // fetch data
-    const posts = await fetch(`https://psi.properties/api/external/units?unitid=${code}`).then((res) => res.json())
+    const posts = await fetch(`https://psi.properties/api/external/units?unitid=${code}&category=${category}`).then((res) => res.json())
 
     if (!posts[0]) {
         redirect('/en/units')

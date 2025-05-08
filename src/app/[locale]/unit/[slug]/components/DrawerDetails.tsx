@@ -41,7 +41,7 @@ export default function DrawerDetails(props:any) {
   return (
     
     <Transition show={props.open} as={Fragment} appear={true} >
-    <Dialog as="div" onClose={setOpen} className="relative z-10">
+    <Dialog as="div" onClose={setOpen} className="relative z-100">
       <div className="fixed inset-0" />
 
       <div className="fixed inset-0 overflow-hidden">

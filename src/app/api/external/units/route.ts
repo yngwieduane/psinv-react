@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     } else {
       raw = JSON.stringify({});
     }
-    if (category && category == 'Rent') {
+    if (category && category == 'rent') {
       apiurl = 'https://integration.psi-crm.com/ExternalApis/GetRentListing';
       // apiurldxb = 'https://integration.dubai-crm.com/ExternalApis/GetRentListing';
       // apiurlassets = 'https://integration.psiassets-crm.com/ExternalApis/GetRentListing';
