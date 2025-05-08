@@ -20,7 +20,7 @@ const Modals = (props: any) => {
 
   return (
     <Transition show={props.modalState} as={Fragment} appear={true} >
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
+      <Dialog as="div" className="relative z-100" onClose={setOpen}>
         <TransitionChild
           as={Fragment}
           enter="ease-out duration-300"
