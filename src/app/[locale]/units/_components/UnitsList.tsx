@@ -15,10 +15,15 @@ export default async function UnitsList({
     return (
         <>
             {posts.slice(0, 11).map((post:any,index:any) => { 
+                let maincategory;
+                {post.sellprice !== null
+                    ? maincategory = "Sale"
+                    : maincategory = "Rent";
+                }
                 const propertyData = {
                     bedrooms: post.bedrooms,
                     propertyType: post.category,
-                    adType: category,
+                    adType: maincategory,
                     name: post.propertyname,
                     community: post.community,
                     emirate: post.city_name,

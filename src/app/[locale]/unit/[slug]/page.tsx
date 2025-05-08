@@ -61,8 +61,15 @@ export default async function Page({ params }: Props){
   
     // Extract only numeric part
     const code = lastString.replace(/\D/g, ""); 
+    let category = 'rent';
 
-    const data = await fetch('https://psi.properties/api/external/units?unitid='+code)
+    if(slugString.split("-").includes('sale')){
+        category = 'sale';
+    }else{
+        category = 'rent';
+    }
+
+    const data = await fetch(`https://psi.properties/api/external/units?unitid=${code}&category=${category}`)
     const posts = await data.json();
     
     return (

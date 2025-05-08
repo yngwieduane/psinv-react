@@ -12,7 +12,7 @@ import NumberConvert from "@/app/[locale]/_components/tools/NumberConvert";
 import TableDetails from "./TableDetails";
 import InquiryForm from "@/app/[locale]/_components/InquiryForm";
 import AmenitiesFeatures from "./AmenitiesFeatures";
-import AvailableUnits from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/AvailableUnits";
+import SimilarUnits from "./SimilarUnits";
 
 export default function UnitPage(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -35,7 +35,7 @@ export default function UnitPage(props: any) {
             </div>
             <div className="container mx-auto my-5 px-5">
                 {props.data.map((post:any,index:any) => { 
-                let images, price, category, map, video, amenities, facilities;
+                let images, price, category, map, video, amenities, facilities, coordinates;
                 {post.imageurl !== null
                     ? images = post.imageurl.split('|')
                     : images = '';
@@ -61,7 +61,10 @@ export default function UnitPage(props: any) {
                     : facilities = '';
                 }
                 map = post.pro_google_coordinates;
-                const coordinates = post.pro_google_coordinates.split(",")?? "";
+                {post.pro_google_coordinates !== null
+                    ? coordinates = post.pro_google_coordinates.split(",")
+                    : coordinates = '';
+                }
                 return(
                 <div key={index}>
                     {/* Swiper */}
@@ -106,7 +109,7 @@ export default function UnitPage(props: any) {
                                             Details
                                         </button>
                                     </div>
-                                    {map !== '' ? (
+                                    {map !== null ? (
                                     <div>
                                         <button
                                             type="button"
@@ -178,7 +181,7 @@ export default function UnitPage(props: any) {
                                 <ReadMore id="read-more-text" text={post.remarks} classes="whitespace-break-spaces"/>
                             </div>) : ("")}
                             {/* MAP */}
-                            {coordinates !== null ? (
+                            {map !== null ? (
                             <div className="">
                                 <h2 className="font-medium text-center text-3xl my-10">
                                     Location Map
@@ -191,10 +194,14 @@ export default function UnitPage(props: any) {
                                 />
                             </div>) : ("")}
                             {/* Similar Properties */}
-                            <div className="mt-7 md:mt-0">
-                                <AvailableUnits
-                                    propid={props.data["property_Pk"]}
+                            <div className="mt-15 px-5">
+                                <h2 className="font-bold text-xl mb-5">
+                                    Similar Units
+                                </h2>
+                                <SimilarUnits
+                                    propid={post.property_Pk}
                                     category={category}
+                                    display={3}
                                 />
                             </div>
                         </div>

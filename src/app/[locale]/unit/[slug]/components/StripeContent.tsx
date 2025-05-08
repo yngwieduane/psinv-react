@@ -23,7 +23,7 @@ const StripeContent = (props:any) => {
         price = props.data.sellprice;
         category = "Buy";
     }else{
-        price = props.data.rentprice;
+        price = props.data.rent;
         category = "Rent";
     }
 
