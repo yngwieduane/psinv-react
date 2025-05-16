@@ -24,6 +24,7 @@
     "i18next": "^24.2.2",
     "next": "^15.3.1",
     "next-intl": "^3.26.5",
+    "rc-slider": "^11.1.8",
     "react": "^19.0.0",
     "react-content-loader": "^7.0.2",
     "react-dom": "^19.0.0",
