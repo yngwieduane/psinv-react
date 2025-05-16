@@ -70,29 +70,29 @@ const StripeContent = (props:any) => {
         <div ref={stickyDev}>
             <div ref={stickyRef}
             className={`transition-all px-0 md:px-5 py-5 justify-items-stretch ${
-            isSticky ? 'fixed top-0 left-0 right-0 bg-white shadow-md z-50' : ' border-b border-gray-200'
+            isSticky ? 'fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-5' : ' border-b border-gray-200'
             }`}>
                 <div className='container mx-auto '>
                     <div className="grid md:grid-cols-3 grid-cols-1 gap-y-5">
                         <div className="col-span-2">
-                            <h1 className="md:text-2xl text-xl">{props.data.marketingTitle}</h1>
-                            <h2 className="mb-5">{props.data.propertyname}, {props.data.community} by {props.data.developerName}</h2>
-                            <div className="grid grid-cols-2 md:grid-cols-3 mt-3 items-center content-center">
+                            <h1 className="md:text-2xl text-xl text-[#111954]">{props.data.marketingTitle}</h1>
+                            <h2 className="mb-5 hidden md:flex">{props.data.propertyname}, {props.data.community} by {props.data.developerName}</h2>
+                            <div className="grid grid-cols-3 mt-3 items-center content-center">
                                 <div>
-                                    <p className=" ">Price</p>
+                                    <p className="text-[#111954]">Price</p>
                                     <p className="md:text-lg text-normal"><PriceConvert price={price} minDecimal='0'/></p>
                                 </div>
                                 <div>
-                                    <p className=" ">Type</p>
-                                    <p className="md:text-lg text-normal">{props.data.sub_type}</p>
+                                    <p className="text-[#111954]">Type</p>
+                                    <p className="md:text-lg text-normal">{props.data.category}</p>
                                 </div>
                                 <div>
-                                    <p className=" ">Size</p>
+                                    <p className="text-[#111954]">Size</p>
                                     <p className="md:text-lg text-normal">{format.number(props.data.built_upArea)} <span>Sqft</span></p>
                                 </div>
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 text-center md:flex items-center justify-end gap-3">
+                        <div className="grid grid-cols-3 text-center md:flex items-center justify-end gap-3">
                             <Link href="#" className="bg-gray-100 px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /></Link>
                             <button
                                 onClick={modalHandler}

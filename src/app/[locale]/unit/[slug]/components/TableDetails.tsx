@@ -1,11 +1,22 @@
+import { Link } from "@/i18n/navigation";
+import slugify from "react-slugify";
+
 const TableDetails = (props:any) => {
+    const subCommunity = props.data[0].sub_community ? props.data[0].sub_community : "n-a";
+    const url =  '/projects/' + slugify(props.data[0].city_name) + "/" + slugify(props.data[0].community) + "/" + slugify(subCommunity) + "/" + slugify(props.data[0].propertyname);
     return (
         <>
             <div className="inline-block min-w-full py-2 align-middle sm:px-0 lg:px-0">
                 <table className="min-w-full divide-y divide-gray-300">
                     <tbody className="divide-y divide-gray-200 bg-white">
+                        <tr  className="even:bg-gray-50">
+                            <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
+                            Property Name
+                            </td>
+                            <td className="px-2 py-2 text-sm whitespace-nowrap text-gray-500"><Link href={url}>{props.data[0].propertyname}</Link></td>
+                        </tr>
                         {props.data[0].category !== null ? (
-                        <tr  >
+                        <tr  className="even:bg-gray-50">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             Property Type
                             </td>
@@ -13,7 +24,7 @@ const TableDetails = (props:any) => {
                         </tr>
                         ) : ("")}
                         {props.data[0].refNo !== null ? (
-                        <tr  >
+                        <tr className="even:bg-gray-50" >
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             Reference Number
                             </td>
@@ -21,7 +32,7 @@ const TableDetails = (props:any) => {
                         </tr>
                         ) : ("")}
                         {props.data[0].bedrooms !== null ? (
-                        <tr  >
+                        <tr  className="even:bg-gray-50">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             No of Bedrooms
                             </td>
@@ -29,7 +40,7 @@ const TableDetails = (props:any) => {
                         </tr>
                         ) : ("")}
                         {props.data[0].no_of_bathrooms !== null ? (
-                        <tr  >
+                        <tr  className="even:bg-gray-50">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             No of Bathrooms
                             </td>
@@ -37,7 +48,7 @@ const TableDetails = (props:any) => {
                         </tr>
                         ) : ("")}
                         {props.data[0].parking !== null ? (
-                        <tr  >
+                        <tr  className="even:bg-gray-50">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             No of Parking
                             </td>
@@ -45,7 +56,7 @@ const TableDetails = (props:any) => {
                         </tr>
                         ) : ("")}
                         {props.data[0].developerName !== null ? (
-                        <tr  >
+                        <tr  className="even:bg-gray-50">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             Developer
                             </td>
@@ -53,7 +64,7 @@ const TableDetails = (props:any) => {
                         </tr>
                         ) : ("")}
                         {props.data[0].unitView !== null ? (
-                        <tr  >
+                        <tr  className="even:bg-gray-50">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             Unit View
                             </td>
@@ -61,7 +72,7 @@ const TableDetails = (props:any) => {
                         </tr>
                         ) : ("")}
                         {props.data[0].unitModel !== null ? (
-                        <tr  >
+                        <tr  className="even:bg-gray-50">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             Unit Model
                             </td>
@@ -69,7 +80,7 @@ const TableDetails = (props:any) => {
                         </tr>
                         ) : ("")}
                         {props.data[0].agent !== null ? (
-                        <tr  >
+                        <tr  className="even:bg-gray-50">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             Agent
                             </td>
@@ -77,7 +88,7 @@ const TableDetails = (props:any) => {
                         </tr>
                         ) : ("")}
                         {props.data[0].roi !== null ? (
-                        <tr  >
+                        <tr  className="even:bg-gray-50">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             ROI
                             </td>
@@ -85,7 +96,7 @@ const TableDetails = (props:any) => {
                         </tr>
                         ) : ("")}
                         {props.data[0].property_ownership_desc !== null ? (
-                        <tr  >
+                        <tr  className="even:bg-gray-50">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             Ownership
                             </td>
@@ -93,7 +104,7 @@ const TableDetails = (props:any) => {
                         </tr>
                         ) : ("")}
                         {props.data[0].last_updated !== null ? (
-                        <tr  >
+                        <tr  className="even:bg-gray-50">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             Last Updated
                             </td>

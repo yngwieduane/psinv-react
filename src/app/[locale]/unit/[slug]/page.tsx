@@ -26,9 +26,9 @@ export async function generateMetadata(
     // fetch data
     const posts = await fetch(`https://psi.properties/api/external/units?unitid=${code}&category=${category}`).then((res) => res.json())
 
-    if (!posts[0]) {
-        redirect('/en/units')
-    }
+    // if (!posts[0]) {
+    //     redirect('/en/units')
+    // }
 
     const propertyData = {
         bedrooms: posts[0].bedrooms,

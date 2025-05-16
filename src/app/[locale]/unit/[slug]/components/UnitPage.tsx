@@ -13,6 +13,7 @@ import TableDetails from "./TableDetails";
 import InquiryForm from "@/app/[locale]/_components/InquiryForm";
 import AmenitiesFeatures from "./AmenitiesFeatures";
 import SimilarUnits from "./SimilarUnits";
+import FancyboxWrapper from "@/app/[locale]/_components/tools/FancyboxWrapper";
 
 export default function UnitPage(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -90,14 +91,14 @@ export default function UnitPage(props: any) {
                         <StripeContent data={post}/>
                     </div>
                     {/* START DETAILS */}
-                    <div className="grid grid-cols-3">
+                    <div className="grid grid-cols-2 md:grid-cols-3">
                         <div className="col-span-2">
                             {/* DETAILS */}
                             <div className="mt-15 px-5">
                                 <TableDetails data={props.data} />
                             </div>
                             <div className="mt-15 px-5">
-                                <h4 className="font-bold text-xl mb-5">Details</h4>
+                                <h4 className="font-bold text-xl mb-5 text-[#111954]">Details</h4>
                                 <div className="flex gap-4">
                                     <div>
                                         <button
@@ -122,14 +123,23 @@ export default function UnitPage(props: any) {
                                     </div>) : ("")}
                                     {images !== '' ? (
                                     <div>
-                                        <button
-                                            type="button"
-                                            onClick={drawerHandler('gallery',images)}
-                                            name="gallery"
-                                            className="bg-gray-100 px-5 py-3 rounded-lg text-lg cursor-pointer"
-                                        >
-                                            Gallery
-                                        </button>
+                                        <FancyboxWrapper>
+                                            <a
+                                                type="button"
+                                                //onClick={drawerHandler('gallery',images)}
+                                                data-fancybox="gallery"
+                                                href={images[0].split('?')[0]}
+                                                className="bg-gray-100 px-5 py-3 rounded-lg text-lg cursor-pointer block"
+                                            >
+                                                Gallery
+                                            </a>
+                                            {images.slice(1, -1)?.map((slide:any, index:any) => {
+                                                let imagecontent = slide.split('?');
+                                                return (
+                                                    <a key={index} data-fancybox="gallery" href={imagecontent[0]}></a>
+                                                )
+                                            })}
+                                        </FancyboxWrapper>
                                     </div>) : ("")}
                                     {video !== '' ? (
                                     <div>
@@ -147,27 +157,27 @@ export default function UnitPage(props: any) {
                             {/* unit_Amenities */}
                             {amenities !== null ? (
                             <div className="mt-15 px-5">
-                                <h2 className="font-bold text-xl mb-5">
+                                <h2 className="font-bold text-xl mb-5 text-[#111954]">
                                     Amenities
                                 </h2>
-                                <div className="grid grid-cols-5">
+                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                                     <AmenitiesFeatures content={amenities.slice(0, -1)}/>
                                 </div>
                             </div>) : ("")}
                             {/* facilities */}
-                            {facilities !== null ? (
+                            {facilities !== 'null' ? (
                             <div className="mt-15 px-5">
-                                <h2 className="font-bold text-xl mb-5">
+                                <h2 className="font-bold text-xl mb-5 text-[#111954]">
                                     Facilities
                                 </h2>
-                                <div className="grid grid-cols-5">
+                                <div className="grid grid-cols-2 md:grid-cols-5">
                                     <AmenitiesFeatures content={facilities.slice(0, -1)}/>
                                 </div>
                             </div>) : ("")}
                             {/* Overview */}
                             {post.property_overview !== null ? (
                             <div className="mt-15 px-5">
-                                <h2 className="font-bold text-xl mb-5">
+                                <h2 className="font-bold text-xl mb-5 text-[#111954]">
                                     Property Overview
                                 </h2>
                                 <ReadMore id="read-more-text" text={post.property_overview} classes="whitespace-break-spaces"/>
@@ -175,7 +185,7 @@ export default function UnitPage(props: any) {
                             {/* Remarks */}
                             {post.remarks !== null ? (
                             <div className="mt-15 px-5">
-                                <h2 className="font-bold text-xl mb-5">
+                                <h2 className="font-bold text-xl mb-5 text-[#111954]">
                                     Property Remarks
                                 </h2>
                                 <ReadMore id="read-more-text" text={post.remarks} classes="whitespace-break-spaces"/>
@@ -183,7 +193,7 @@ export default function UnitPage(props: any) {
                             {/* MAP */}
                             {map !== null ? (
                             <div className="">
-                                <h2 className="font-medium text-center text-3xl my-10">
+                                <h2 className="font-medium text-center text-3xl my-10 text-[#111954]">
                                     Location Map
                                 </h2>
                                 <MapComponent
@@ -195,7 +205,7 @@ export default function UnitPage(props: any) {
                             </div>) : ("")}
                             {/* Similar Properties */}
                             <div className="mt-15 px-5">
-                                <h2 className="font-bold text-xl mb-5">
+                                <h2 className="font-bold text-xl mb-5 text-[#111954]">
                                     Similar Units
                                 </h2>
                                 <SimilarUnits
@@ -205,7 +215,7 @@ export default function UnitPage(props: any) {
                                 />
                             </div>
                         </div>
-                        <div>
+                        <div className="hidden md:flex">
                             <InquiryForm hideFeedbackButton={true}/>
                         </div>
                     </div>
