@@ -5,7 +5,77 @@ import FeaturedProjects from './_components/FeaturedProjects';
 import ListPropertyForm from './_components/ListPropertyForm';
 import WhyPSI from './_components/WhyPSI';
 import Calculator from'../[locale]/calculators/MortgageTabs';
+import AwardSlider from '../[locale]/about-us/_components/AboutAwardsSlider';
+import { Audrey, BrittanySignature } from "@/utils/fonts";
+import { Montserrat, Open_Sans } from "next/font/google";
+import AboutCounter from "../[locale]/about-us/_components/AboutCounter";
+import ReportDownloadSection from "../[locale]/_components/ReportDownloadSection";
+import PopupForm from "./_components/PopupForm";
 
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+});
+const awards = [
+  {
+      "title1":"ALDAR",
+      "title2":"TOP PERFORMING",
+      "title3": "Agency First Place - 2016",
+      "image": "aldar-2016.jpg",
+  },
+  {
+      "title1":"ALDAR",
+      "title2":"TOP PERFORMING",
+      "title3": "Agency First Place - 2022",
+      "image": "aldar-2022.jpg",
+  },
+  {
+      "title1":"ALDAR",
+      "title2":"TOP PERFORMING",
+      "title3": "Agency First Place - 2023",
+      "image": "aldar-2022.jpg",
+  },
+  {
+      "title1":"ALDAR",
+      "title2":"TOP PERFORMING",
+      "title3": "Agency First Place - 2023",
+      "image": "aldar-2022.jpg",
+  }
+];
+const partners = [
+  {
+      "title":"Aldar",
+      "image":"/assets/images/about-us/partners/aldar.jpg",
+  },
+  {
+      "title":"Emaar",
+      "image":"/assets/images/about-us/partners/emaar.jpg",
+  },
+  {
+      "title":"Imkan",
+      "image":"/assets/images/about-us/partners/imkan.jpg",
+  },
+  {
+      "title":"Meraas",
+      "image":"/assets/images/about-us/partners/meraas.jpg",
+  },
+  {
+      "title":"Nshama",
+      "image":"/assets/images/about-us/partners/nshama.jpg",
+  },
+  {
+      "title":"Dubai Properties",
+      "image":"/assets/images/about-us/partners/dubai-properties.jpg",
+  },
+  {
+      "title":"Aabar",
+      "image":"/assets/images/about-us/partners/aabar.jpg",
+  },
+  {
+      "title":"Hydra",
+      "image":"/assets/images/about-us/partners/hydra.jpg",
+  },
+]
 const mainSliderData = [
 {
     title: "Ramhan Island",
@@ -156,6 +226,84 @@ export default function HomePage() {
         </div>
         <div className="container mx-auto my-10">
             <Calculator/>
+        </div>
+                     <section className="w-full bg-secondary-color py-10 text-[var(--color-gray-500)]">
+                    <div  className="max-w-screen-xl mx-auto bg-center bg-cover py-10 px-5" style={{ backgroundImage: "url('/assets/images/about-us/pattern-1.png')",}}>
+                        {/* Heading */}
+                        <div className="text-center mt-[50px] mb-[70px]">
+                            <h3 className={`text-darkblue  font-bold text-xl md:text-4xl ${Audrey.className}`}>
+                                YOUR TRUSTED{" "}
+                                <span className={`font-brittany text-orange font-light ${BrittanySignature.className} text-[#CE641D]`}>
+                                Real Estate
+                                </span>{" "}
+                                PARTNER
+                            </h3>
+                        </div>
+        
+                        {/* script for counter working */}
+                        <AboutCounter />    
+        
+                        {/* Counter Section */}
+                        <div className="grid grid-cols-3 md:grid-cols-4 gap-6 text-center counter1">
+                            <div>
+                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="150">  0 </span>K</h4>
+                                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>Customers</p>
+                            </div>
+                            <div>
+                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="15"> 0</span></h4>
+                                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>Languages</p>
+                            </div>
+                            <div>
+                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="120"> 0</span></h4>
+                                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>Projects</p>
+                            </div>
+                            <div className="hidden md:block">
+                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="10"> 0</span></h4>
+                                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>Location Worldwide</p>
+                            </div>
+                        </div>
+        
+                        {/* Second Counter Section */}
+                        <div className="grid grid-cols-3 gap-6 text-center mt-10 counter2">
+                            <div>
+                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="17"> 0</span></h4>
+                                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>Years in Business</p>
+                            </div>
+                            <div>
+                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="12"> 0 </span></h4>
+                                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>Branches</p>
+                            </div>
+                            <div>
+                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="700"> 0</span></h4>
+                                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>Expert Employees</p>
+                            </div>
+                        </div>
+        
+                        {/* Mobile Only - Location Worldwide */}
+                        <div className="mt-10 text-center md:hidden">
+                            <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="10"> 0 </span></h4>
+                            <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>Location Worldwide</p>
+                        </div>
+                    </div>
+                </section>
+                   <section className="w-full py-10 text-[var(--color-gray-500)] text-center">
+            <div className="max-w-screen-xl mx-auto">
+                <h3 className={`text-darkblue font-bold text-xl md:text-4xl ${Audrey.className}`}>
+                AWARDS-DRIVEN
+                    <span className={`font-brittany text-orange font-light ${BrittanySignature.className} text-[#CE641D]`}>
+                    Excellence</span>
+                </h3>
+                <p className="text-lg mt-5">We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. 
+                    Explore our journey of accolades that inspire us to reach new pinnacles of success.</p>
+            </div>            
+            <section className="w-full">
+                <div className="max-w-screen-xl relative mx-auto">
+                    <AwardSlider slides={awards} />
+                </div>
+            </section>            
+        </section>
+        <div className="max-w-[1320px] mx-auto px-4 py-8">
+           <ReportDownloadSection />
         </div>
     </div>
   );
