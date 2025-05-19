@@ -34,7 +34,7 @@ export default function SwiperNormal({ slides, width = '300', height = '300' }: 
         {slides?.map((slide:any, index:any) => {
             let imagecontent = slide.split('?');
             return (
-                <SwiperSlide className="swiper-slide-4ffe bg-cover bg-center" style={{ backgroundImage: `url(${imagecontent[0]}?width=${width}&height=${height})` }}>
+                <SwiperSlide className="swiper-slide-4ffe bg-cover bg-center rounded-lg" style={{ backgroundImage: `url(${imagecontent[0]}?width=${width}&height=${height})` }}>
                 <div className="swiper-slide-content swiper-slide-content-2f5e">
                     <div className="swiper-slide-text swiper-slide-text-78dc">
                     </div>

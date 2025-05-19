@@ -75,7 +75,7 @@ const StripeContent = (props:any) => {
                 <div className='container mx-auto '>
                     <div className="grid md:grid-cols-3 grid-cols-1 gap-y-5">
                         <div className="col-span-2">
-                            <h1 className="md:text-2xl text-xl text-[#111954]">{props.data.marketingTitle}</h1>
+                            <h1 className="md:text-2xl text-xl text-[#111954] uppercase">{props.data.marketingTitle}</h1>
                             <h2 className="mb-5 hidden md:flex">{props.data.propertyname}, {props.data.community} by {props.data.developerName}</h2>
                             <div className="grid grid-cols-3 mt-3 items-center content-center">
                                 <div>

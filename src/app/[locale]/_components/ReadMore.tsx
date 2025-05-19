@@ -35,7 +35,7 @@ export const ReadMore = ({ id, text, amountOfWords = 36, classes }: ReadMoreProp
             {endText}
           </span>
           <span
-            className='text-violet-400 ml-2'
+            className='text-[#111954] underline ml-2 cursor-pointer'
             role="button"
             tabIndex={0}
             aria-expanded={isExpanded}
@@ -43,7 +43,7 @@ export const ReadMore = ({ id, text, amountOfWords = 36, classes }: ReadMoreProp
             onKeyDown={handleKeyboard}
             onClick={() => setIsExpanded(!isExpanded)}
           >
-            {isExpanded ? 'show less' : 'show more'}
+            {isExpanded ? 'Show Less' : 'Show More'}
           </span>
         </>
       )}

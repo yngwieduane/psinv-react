@@ -4,6 +4,7 @@ import {useTranslations} from 'next-intl';
 import MainNavbarHeader from "@/app/[locale]/_components/MainNavbarHeader";
 import MainNavbarContentEmpty from "@/app/[locale]/_components/MainNavbarContentEmpty";
 import GalleryImages from "@/app/[locale]/_components/tools/GalleryImages";
+import FancyboxWrapper from "@/app/[locale]/_components/tools/FancyboxWrapper";
 
 const UnitModels = (props:any) => {
     const t = useTranslations('ProjectPage');
@@ -30,7 +31,8 @@ const UnitModels = (props:any) => {
                                 },
                             }}
                         >
-                           <table className="min-w-full divide-y divide-gray-300">
+                            <FancyboxWrapper>
+                            <table className="min-w-full divide-y divide-gray-300">
                                 <thead className="bg-gray-50">
                                     <tr>
                                         <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
@@ -65,9 +67,17 @@ const UnitModels = (props:any) => {
                                             <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                 {page.floorPlanlImage !== ''
                                                     ? (
+                                                    <a
+                                                        type="button"
+                                                        //onClick={drawerHandler('gallery',images)}
+                                                        data-fancybox="floorplan"
+                                                        href={page.floorPlanlImage}
+                                                        className=" cursor-pointer block"
+                                                    >
                                                     <div className="w-full h-20 background-image relative bg-cover bg-center"
                                                     style={{ backgroundImage: `url(${page.floorPlanlImage.replace('?width=0&height=0','?width=200&height=200')})` }} 
                                                     ></div>
+                                                    </a>
                                                 ) : (
                                                     <div className="w-full h-10 bg-gray-300"></div>
                                                 )}
@@ -83,6 +93,7 @@ const UnitModels = (props:any) => {
                                     ))}
                                 </tbody>
                             </table>
+                            </FancyboxWrapper>
                         </GalleryImages>
                         : "null"
                     }

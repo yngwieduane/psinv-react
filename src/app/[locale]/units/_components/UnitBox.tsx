@@ -32,18 +32,18 @@ export default function UnitBox(props:any){
       };
     return (
         <>
-        <article className="relative isolate flex flex-col gap-2 bg-gray-50 rounded-2xl w-full">
+        <article className="relative isolate flex flex-col gap-2 bg-gray-50 rounded-lg w-full">
             <div className="relative w-full h-64 sm:aspect-2/1">
                 {images.length <= 1 ? (
                     <img
                     alt=""
                     src={images[0]}
-                    className="absolute inset-0 size-full rounded-2xl bg-gray-50 object-cover"
+                    className="absolute inset-0 size-full rounded-lg bg-gray-50 object-cover"
                     />
                 ) : (
                     <SwiperNormal slides={images} width="400" height="300"/>
                 )}
-                <div className="absolute inset-0 rounded-2xl ring-1 ring-gray-900/10 ring-inset" />
+                <div className="absolute inset-0 rounded-lg ring-1 ring-gray-900/10 ring-inset" />
                 <div className="absolute left-5 bottom-5 z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
                     <PriceConvert price={price} minDecimal='0' />
                 </div>
@@ -76,15 +76,15 @@ export default function UnitBox(props:any){
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-2 text-center items-center justify-end gap-3 mt-3 border-t border-gray-900/5 pt-6">
-                    <Link href="#" className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /> Call</Link>
+                <div className="grid grid-cols-3 text-center items-center justify-end gap-3 mt-3 border-t border-gray-900/5 pt-6">
+                    <Link href="#" className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /></Link>
                     <button
                         onClick={modalHandler}
                         type="button"
                         className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg"
                     ><FontAwesomeIcon icon={faEnvelope} />
                     </button>
-                    <Link href="#" className="col-span-2 bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg"><FontAwesomeIcon icon={faWhatsapp} /> WhatsApp</Link>
+                    <Link href="#" className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg"><FontAwesomeIcon icon={faWhatsapp} /></Link>
                 </div>
             </div>
         </article>

@@ -9,6 +9,7 @@ import CardGroup from "./CardGroup";
 import CardOne from "./CardOne";
 import AvailableUnits from './AvailableUnits';
 import { ReadMore } from '@/app/[locale]/_components/ReadMore';
+import FancyboxWrapper from '@/app/[locale]/_components/tools/FancyboxWrapper';
 
 
 const PropertyPage = (props:any) => {
@@ -177,7 +178,17 @@ const PropertyPage = (props:any) => {
                 <h2 className="font-medium text-center text-3xl my-10">
                     {props.data["propertyName"]} {t("master_plan")}
                 </h2>
-                <Image alt="Master Plan" src={props.data["communityMapAndMasterPlan"][0]['imageURL']} className="w-full" width={1000} height={500}/>
+               <FancyboxWrapper>
+                    <a
+                        type="button"
+                        //onClick={drawerHandler('gallery',images)}
+                        data-fancybox="masterplan"
+                        href={props.data["communityMapAndMasterPlan"][0]['imageURL']}
+                        className=" cursor-pointer block"
+                    >
+                    <Image alt="Master Plan" src={props.data["communityMapAndMasterPlan"][0]['imageURL']} className="w-full" width={1000} height={500}/>
+                    </a>
+               </FancyboxWrapper>
             </div>
         </div>) : ("")}
         {props.data['propertyPaymentPlans'] !== null
@@ -192,7 +203,17 @@ const PropertyPage = (props:any) => {
                 <h2 className="font-medium text-center text-3xl my-10">
                     {props.data["propertyName"]} {t("location_plan")}
                 </h2>
-                <Image alt="Location Map Plan" src={props.data["locationMapImages"][0]['imageURL']} className="w-full" width={1000} height={500}/>
+               <FancyboxWrapper>
+                    <a
+                        type="button"
+                        //onClick={drawerHandler('gallery',images)}
+                        data-fancybox="locationplan"
+                        href={props.data["locationMapImages"][0]['imageURL']}
+                        className=" cursor-pointer block"
+                    >
+                    <Image alt="Location Map Plan" src={props.data["locationMapImages"][0]['imageURL']} className="w-full" width={1000} height={500}/>
+                    </a>
+               </FancyboxWrapper>
             </div>
         </div>) : ("")}
         {props.data['facilities'] !== null

@@ -14,6 +14,8 @@ import InquiryForm from "@/app/[locale]/_components/InquiryForm";
 import AmenitiesFeatures from "./AmenitiesFeatures";
 import SimilarUnits from "./SimilarUnits";
 import FancyboxWrapper from "@/app/[locale]/_components/tools/FancyboxWrapper";
+import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
+import SimilarUnitsGrid from "./SimilarUnitsGrid";
 
 export default function UnitPage(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -90,133 +92,128 @@ export default function UnitPage(props: any) {
                     <div className="mt-7 md:mt-0">
                         <StripeContent data={post}/>
                     </div>
-                    {/* START DETAILS */}
+                    {/* START DETAILS UPPER*/}
                     <div className="grid grid-cols-2 md:grid-cols-3">
                         <div className="col-span-2">
                             {/* DETAILS */}
                             <div className="mt-15 px-5">
-                                <TableDetails data={props.data} />
-                            </div>
-                            <div className="mt-15 px-5">
-                                <h4 className="font-bold text-xl mb-5 text-[#111954]">Details</h4>
+                                <h4 className="text-xl mb-5 text-[#111954]">Details</h4>
                                 <div className="flex gap-4">
-                                    <div>
-                                        <button
-                                            type="button"
-                                            onClick={drawerHandler('details', props.data)}
-                                            name="details"
-                                            className="bg-gray-100 px-5 py-3 rounded-lg text-lg cursor-pointer"
-                                        >
-                                            Details
-                                        </button>
-                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={drawerHandler('details', props.data)}
+                                        name="details"
+                                        className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 bg-gray-100 cursor-pointer"
+                                    >
+                                        Details
+                                    </button>
                                     {map !== null ? (
-                                    <div>
-                                        <button
-                                            type="button"
-                                            onClick={drawerHandler('map',map)}
-                                            name="map"
-                                            className="bg-gray-100 px-5 py-3 rounded-lg text-lg cursor-pointer"
-                                        >
-                                            Map
-                                        </button>
-                                    </div>) : ("")}
+                                    <button
+                                        type="button"
+                                        onClick={drawerHandler('map',map)}
+                                        name="map"
+                                        className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 bg-gray-100 cursor-pointer"
+                                    >
+                                        Map
+                                    </button>
+                                    ) : ("")}
                                     {images !== '' ? (
-                                    <div>
-                                        <FancyboxWrapper>
-                                            <a
-                                                type="button"
-                                                //onClick={drawerHandler('gallery',images)}
-                                                data-fancybox="gallery"
-                                                href={images[0].split('?')[0]}
-                                                className="bg-gray-100 px-5 py-3 rounded-lg text-lg cursor-pointer block"
-                                            >
-                                                Gallery
-                                            </a>
-                                            {images.slice(1, -1)?.map((slide:any, index:any) => {
-                                                let imagecontent = slide.split('?');
-                                                return (
-                                                    <a key={index} data-fancybox="gallery" href={imagecontent[0]}></a>
-                                                )
-                                            })}
-                                        </FancyboxWrapper>
-                                    </div>) : ("")}
-                                    {video !== '' ? (
-                                    <div>
-                                        <button
+                                    <FancyboxWrapper>
+                                        <a
                                             type="button"
-                                            onClick={drawerHandler('video',video)}
-                                            name="video"
-                                            className="bg-gray-100 px-5 py-3 rounded-lg text-lg cursor-pointer"
+                                            //onClick={drawerHandler('gallery',images)}
+                                            data-fancybox="gallery"
+                                            href={images[0].split('?')[0]}
+                                            className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 bg-gray-100 cursor-pointer"
                                         >
-                                            Video
-                                        </button>
-                                    </div>) : ("")}
+                                            Gallery
+                                        </a>
+                                        {images.slice(1, -1)?.map((slide:any, index:any) => {
+                                            let imagecontent = slide.split('?');
+                                            return (
+                                                <a key={index} data-fancybox="gallery" href={imagecontent[0]}></a>
+                                            )
+                                        })}
+                                    </FancyboxWrapper>
+                                    ) : ("")}
+                                    {video !== '' ? (
+                                    <button
+                                        type="button"
+                                        onClick={drawerHandler('video',video)}
+                                        name="video"
+                                        className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 bg-gray-100 cursor-pointer"
+                                    >
+                                        Video
+                                    </button>
+                                    ) : ("")}
                                 </div>
                             </div>
                             {/* unit_Amenities */}
                             {amenities !== null ? (
                             <div className="mt-15 px-5">
-                                <h2 className="font-bold text-xl mb-5 text-[#111954]">
+                                <h2 className="text-xl mb-5 text-[#111954]">
                                     Amenities
                                 </h2>
-                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                                    <AmenitiesFeatures content={amenities.slice(0, -1)}/>
+                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
+                                    <AmenitiesFeatures content={amenities.slice(0, -1)} limit={12}/>
                                 </div>
                             </div>) : ("")}
                             {/* facilities */}
                             {facilities !== 'null' ? (
                             <div className="mt-15 px-5">
-                                <h2 className="font-bold text-xl mb-5 text-[#111954]">
+                                <h2 className="text-xl mb-5 text-[#111954]">
                                     Facilities
                                 </h2>
-                                <div className="grid grid-cols-2 md:grid-cols-5">
-                                    <AmenitiesFeatures content={facilities.slice(0, -1)}/>
+                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
+                                    <AmenitiesFeatures content={facilities.slice(0, -1)} limit={12}/>
                                 </div>
                             </div>) : ("")}
                             {/* Overview */}
                             {post.property_overview !== null ? (
                             <div className="mt-15 px-5">
-                                <h2 className="font-bold text-xl mb-5 text-[#111954]">
+                                <h2 className="text-xl mb-5 text-[#111954]">
                                     Property Overview
                                 </h2>
-                                <ReadMore id="read-more-text" text={post.property_overview} classes="whitespace-break-spaces"/>
+                                <ReadMore amountOfWords={100} id="read-more-text" text={post.property_overview} classes="whitespace-break-spaces"/>
                             </div>) : ("")}
                             {/* Remarks */}
                             {post.remarks !== null ? (
                             <div className="mt-15 px-5">
-                                <h2 className="font-bold text-xl mb-5 text-[#111954]">
+                                <h2 className="text-xl mb-5 text-[#111954]">
                                     Property Remarks
                                 </h2>
-                                <ReadMore id="read-more-text" text={post.remarks} classes="whitespace-break-spaces"/>
+                                <ReadMore amountOfWords={100} id="read-more-text" text={post.remarks} classes="whitespace-break-spaces"/>
                             </div>) : ("")}
-                            {/* MAP */}
-                            {map !== null ? (
-                            <div className="">
-                                <h2 className="font-medium text-center text-3xl my-10 text-[#111954]">
-                                    Location Map
-                                </h2>
-                                <MapComponent
-                                    latitude={coordinates['1']}
-                                    longitude={coordinates['0']}
-                                    fallbackImage={props.data["featuredImages"]}
-                                    height='500px'
-                                />
-                            </div>) : ("")}
-                            {/* Similar Properties */}
-                            <div className="mt-15 px-5">
-                                <h2 className="font-bold text-xl mb-5 text-[#111954]">
-                                    Similar Units
-                                </h2>
-                                <SimilarUnits
-                                    propid={post.property_Pk}
-                                    category={category}
-                                    display={3}
-                                />
-                            </div>
                         </div>
                         <div className="hidden md:flex">
                             <InquiryForm hideFeedbackButton={true}/>
+                        </div>
+                    </div>
+                    {/* START DETAILS LOWER*/}
+                    <div className="grid grid-cols-1">
+                        {/* MAP */}
+                        {map !== null ? (
+                        <div className="">
+                            <h2 className="font-medium text-center text-3xl my-10 text-[#111954]">
+                                Location Map
+                            </h2>
+                            <MapComponent
+                                latitude={coordinates['1']}
+                                longitude={coordinates['0']}
+                                fallbackImage={props.data["featuredImages"]}
+                                height='500px'
+                            />
+                        </div>) : ("")}
+                        {/* Similar Properties */}
+                        <div className="mt-15 px-5">
+                            <h2 className="text-xl mb-5 text-[#111954]">
+                                Similar Units
+                            </h2>
+                            <SimilarUnitsGrid
+                                propid={post.property_Pk}
+                                category={category}
+                                display={4}
+                            />
                         </div>
                     </div>
                     <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} />
