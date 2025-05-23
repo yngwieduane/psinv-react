@@ -9,13 +9,13 @@ import { ReadMore } from "@/app/[locale]/_components/ReadMore";
 import { useFormatter } from "next-intl";
 import PriceConvert from "@/app/[locale]/_components/tools/PriceConvert";
 import NumberConvert from "@/app/[locale]/_components/tools/NumberConvert";
-import TableDetails from "./TableDetails";
 import InquiryForm from "@/app/[locale]/_components/InquiryForm";
 import AmenitiesFeatures from "./AmenitiesFeatures";
-import SimilarUnits from "./SimilarUnits";
 import FancyboxWrapper from "@/app/[locale]/_components/tools/FancyboxWrapper";
-import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import SimilarUnitsGrid from "./SimilarUnitsGrid";
+import Sticky from 'react-sticky-el';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
 
 export default function UnitPage(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -93,7 +93,7 @@ export default function UnitPage(props: any) {
                         <StripeContent data={post}/>
                     </div>
                     {/* START DETAILS UPPER*/}
-                    <div className="grid grid-cols-2 md:grid-cols-3">
+                    <div className="mainuppper grid grid-cols-2 md:grid-cols-3">
                         <div className="col-span-2">
                             {/* DETAILS */}
                             <div className="mt-15 px-5">
@@ -185,9 +185,21 @@ export default function UnitPage(props: any) {
                                 <ReadMore amountOfWords={100} id="read-more-text" text={post.remarks} classes="whitespace-break-spaces"/>
                             </div>) : ("")}
                         </div>
-                        <div className="hidden md:flex">
-                            <InquiryForm hideFeedbackButton={true}/>
-                        </div>
+                        <Sticky boundaryElement=".mainuppper"  hideOnBoundaryHit={false}>
+                            <div className="hidden md:flex">
+                                <InquiryForm hideFeedbackButton={true}/>
+                            </div>
+                            <div className="px-5">
+                                <button
+                                    type="button"
+                                    onClick={drawerHandler('requestview', props.data)}
+                                    name="details"
+                                    className="w-full rounded-lg border border-[#111954] p-4 cursor-pointer"
+                                >
+                                    <FontAwesomeIcon icon={faCalendarCheck}/> Request a Meeting
+                                </button>
+                            </div>
+                        </Sticky>
                     </div>
                     {/* START DETAILS LOWER*/}
                     <div className="grid grid-cols-1">
