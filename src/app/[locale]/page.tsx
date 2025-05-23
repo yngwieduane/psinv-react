@@ -11,6 +11,8 @@ import { Montserrat, Open_Sans } from "next/font/google";
 import AboutCounter from "../[locale]/about-us/_components/AboutCounter";
 import ReportDownloadSection from "../[locale]/_components/ReportDownloadSection";
 import PopupForm from "./_components/PopupForm";
+import GoogleReviewSection from "./_components/GoogleReviewSection";
+import GetTheAppSection from "./_components/GetTheAppSection";
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -304,6 +306,12 @@ export default function HomePage() {
         </section>
         <div className="max-w-[1320px] mx-auto px-4 py-8">
            <ReportDownloadSection />
+        </div>
+         <div className="w-full py-10">
+           <GoogleReviewSection />
+        </div>
+                 <div className="w-full py-10">
+           <GetTheAppSection />
         </div>
     </div>
   );
