@@ -185,7 +185,7 @@ export default function UnitPage(props: any) {
                                 <ReadMore amountOfWords={100} id="read-more-text" text={post.remarks} classes="whitespace-break-spaces"/>
                             </div>) : ("")}
                         </div>
-                        <Sticky boundaryElement=".mainuppper"  hideOnBoundaryHit={false}>
+                        <Sticky stickyClassName="mt-28" boundaryElement=".mainuppper"  hideOnBoundaryHit={false}>
                             <div className="hidden md:flex">
                                 <InquiryForm hideFeedbackButton={true}/>
                             </div>

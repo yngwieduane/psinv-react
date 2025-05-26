@@ -38,7 +38,7 @@ const StripeContent = (props:any) => {
 
 
     return (
-        <Sticky >
+        <Sticky stickyClassName="z-1">
             <div
             className='bg-white border-b border-gray-100'>
                 <div className='container mx-auto '>
