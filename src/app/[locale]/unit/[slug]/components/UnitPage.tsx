@@ -93,7 +93,7 @@ export default function UnitPage(props: any) {
                         <StripeContent data={post}/>
                     </div>
                     {/* START DETAILS UPPER*/}
-                    <div className="mainuppper grid grid-cols-2 md:grid-cols-3">
+                    <div className="mainuppper grid grid-cols-1 md:grid-cols-3">
                         <div className="col-span-2">
                             {/* DETAILS */}
                             <div className="mt-15 px-5">
@@ -189,7 +189,7 @@ export default function UnitPage(props: any) {
                             <div className="hidden md:flex">
                                 <InquiryForm hideFeedbackButton={true}/>
                             </div>
-                            <div className="px-5">
+                            <div className="p-5">
                                 <button
                                     type="button"
                                     onClick={drawerHandler('requestview', props.data)}
