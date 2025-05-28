@@ -117,7 +117,7 @@ const SimilarUnitsGrid = ({
         {results.length > 0 && (
             <>
             <div
-                className="grid grid-cols-4 gap-5"
+                className="grid grid-cols-1 md:grid-cols-4 gap-5"
             >
                 {results.slice(0,display).map((post, index) => {
                     const propertyData = {

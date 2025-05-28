@@ -216,6 +216,24 @@ const PropertyPage = (props:any) => {
                </FancyboxWrapper>
             </div>
         </div>) : ("")}
+        {props.data["communityMapAndMasterPlan"] !== null ? (<div>
+            <div className="container mx-auto my-8 px-5">
+                <h2 className="font-medium text-center text-3xl my-10">
+                    {props.data["propertyName"]} {t("master_plan")}
+                </h2>
+               <FancyboxWrapper>
+                    <a
+                        type="button"
+                        //onClick={drawerHandler('gallery',images)}
+                        data-fancybox="masterplan"
+                        href={props.data["communityMapAndMasterPlan"][0]['imageURL']}
+                        className=" cursor-pointer block"
+                    >
+                    <Image alt="Master Plan" src={props.data["communityMapAndMasterPlan"][0]['imageURL']} className="w-full" width={1000} height={500}/>
+                    </a>
+               </FancyboxWrapper>
+            </div>
+        </div>) : ("")}
         {props.data['facilities'] !== null
             ? 
             <div className="container mx-auto my-8 px-5">
