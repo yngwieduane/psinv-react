@@ -41,7 +41,7 @@ const StripeContent = (props:any) => {
         <Sticky stickyClassName="z-1">
             <div
             className='bg-white border-b border-gray-100'>
-                <div className='container mx-auto '>
+                <div className='container mx-auto py-3'>
                     <div className="grid md:grid-cols-3 grid-cols-1 gap-y-5">
                         <div className="col-span-2">
                             <h1 className="md:text-2xl text-xl text-[#111954] uppercase">{props.data.marketingTitle}</h1>
