@@ -11,18 +11,23 @@ import {useFormatter} from 'next-intl';
 
 import Sticky from 'react-sticky-el';
 
-const StripeContent = (props:any) => {
+const StripContentPro = (props:any) => {
 
 
-    let price,category ;
+    let minprice,maxprice,areaRangeMin,areaRangeMax,category ;
 
     const format = useFormatter();
-    if(props.data.sellprice !== null){
-        price = props.data.sellprice;
-        category = "Buy";
-    }else{
-        price = props.data.rent;
-        category = "Rent";
+    if(props.data["minPrice"] !== null){
+        minprice = props.data["minPrice"];
+    }
+    if(props.data["maxPrice"] !== null){
+        maxprice = props.data["maxPrice"];
+    }
+    if(props.data["areaRangeMin"] !== null){
+        areaRangeMin = props.data["areaRangeMin"];
+    }
+    if(props.data["areaRangeMax"] !== null){
+        areaRangeMax = props.data["areaRangeMax"];
     }
 
     const [setModal, setSetModal] = useState(false);
@@ -44,20 +49,20 @@ const StripeContent = (props:any) => {
                 <div className='container mx-auto py-3'>
                     <div className="grid md:grid-cols-3 grid-cols-1 gap-y-5">
                         <div className="col-span-2">
-                            <h1 className="md:text-2xl text-xl text-[#111954] uppercase">{props.data.marketingTitle}</h1>
-                            <h2 className="mb-5 hidden md:flex">{props.data.propertyname}, {props.data.community} by {props.data.developerName}</h2>
+                            <h1 className="md:text-2xl text-xl text-[#111954] uppercase">{props.data["propertyName"]}</h1>
+                            <h2 className="mb-5 hidden md:flex">{props.data["propertyName"]}, {props.data["community"]} by {props.data['masterDeveloper']}</h2>
                             <div className="grid grid-cols-3 mt-3 items-center content-center">
                                 <div>
                                     <p className="text-[#111954]">Price</p>
-                                    <p className="md:text-lg text-normal"><PriceConvert price={price} minDecimal='0'/></p>
+                                    <p className="md:text-lg text-normal"><PriceConvert price={minprice} minDecimal='0'/> to <PriceConvert price={maxprice} minDecimal='0'/></p>
                                 </div>
                                 <div>
                                     <p className="text-[#111954]">Type</p>
-                                    <p className="md:text-lg text-normal">{props.data.category}</p>
+                                    <p className="md:text-lg text-normal">{props.data["propertyType"]}</p>
                                 </div>
                                 <div>
                                     <p className="text-[#111954]">Size</p>
-                                    <p className="md:text-lg text-normal">{format.number(props.data.built_upArea)} <span>Sqft</span></p>
+                                    <p className="md:text-lg text-normal">{format.number(areaRangeMin)} - {format.number(areaRangeMax)} <span>Sqft</span></p>
                                 </div>
                             </div>
                         </div>
@@ -80,4 +85,4 @@ const StripeContent = (props:any) => {
   }
 
 
-export default StripeContent;
+export default StripContentPro;

@@ -231,7 +231,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
         </div>
         <button
           type="submit"
-          className="w-full border border-[#111954] p-3 mb-6 rounded-md text-[#0c1445] bg-[#fff] hover:bg-[#0c1445] hover:text-[#fff] font-semibold"
+          className="w-full border border-[#111954] p-3 mb-6 rounded-md hover:text-[#0c1445] hover:bg-[#fff] bg-[#0c1445] text-[#fff] font-semibold cursor-pointer"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Submitting..." : "Submit"}
