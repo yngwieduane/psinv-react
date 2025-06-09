@@ -238,19 +238,24 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
         </button>
         <div className="mb-3">
           <label className="flex items-center space-x-2">
+            <span className="text-sm">By clicking Submit, you agree to our Terms & Conditions and Privacy Policy</span>
+          </label>
+        </div>
+        <div className="mb-3 hidden">
+          <label className="flex items-center space-x-2">
             <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
             <span className="text-sm">I agree to the Terms & Conditions and Privacy Policy</span>
           </label>
           {errors.agreement1 && <p className="text-red-500 text-sm">{errors.agreement1.message}</p>}
         </div>
 
-        <div className="mb-3">
+        <div className="mb-3 hidden">
           <label className="flex items-center space-x-2">
             <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
             <span className="text-sm">Agree to receive calls and communications</span>
           </label>
         </div>
-        <div className="mb-3">
+        <div className="mb-3 hidden">
           <label className="flex items-center space-x-2">
             <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
             <span className="text-sm">Receive calls about various projects</span>

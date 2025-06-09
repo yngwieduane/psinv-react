@@ -96,8 +96,8 @@ export default function UnitPage(props: any) {
                     </div>
                     <div className="container mx-auto my-5 px-5">
                         {/* START DETAILS UPPER*/}
-                        <div className="mainuppper grid grid-cols-1 md:grid-cols-3">
-                            <div className="col-span-2">
+                        <div className="mainuppper grid grid-cols-1 md:grid-cols-4">
+                            <div className="col-span-3">
                                 {/* DETAILS */}
                                 <div className="mt-15 px-5">
                                     <h4 className="text-xl mb-5 text-[#111954]">Details</h4>
