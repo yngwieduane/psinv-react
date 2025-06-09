@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImages } from "@fortawesome/free-solid-svg-icons";
 import FancyboxWrapper from "./tools/FancyboxWrapper";
 
-export default function MySwiper(props: any) {
+export default function SwiperMaterialProjectPage(props: any) {
   const swiperParameters = {
     modules: [A11y, EffectMaterial],
     loop: true,
@@ -38,13 +38,13 @@ export default function MySwiper(props: any) {
     <>
       <Swiper {...swiperParameters}>
         <FancyboxWrapper>
-          <a data-fancybox="gallerypopup" href={props.slides[0].split('?')[0]}className="absolute top-5 end-5 md:top-[unset] md:bottom-10 md:end-15 bg-[#00000050] z-10 text-white p-2 rounded-lg"><FontAwesomeIcon icon={faImages}/> {props.slides.length} </a>
+          <a data-fancybox="gallerypopup" href={props.slides[0].imageURL}className="absolute top-5 end-5 md:top-[unset] md:bottom-10 md:end-15 bg-[#00000050] z-10 text-white p-2 rounded-lg"><FontAwesomeIcon icon={faImages}/> {props.slides.length} </a>
         </FancyboxWrapper>
         {props.slides?.map((slide:any, index:any) => {
-            let imagecontent = slide.split('?');
+            let imagecontent = slide.imageURL.replace('?width=0&height=0','?width=400&height=300');
             return (
                 <SwiperSlide key={index} className="swiper-slide-1990">
-                  <a data-fancybox="gallerypopup" href={imagecontent[0]}>
+                  <a data-fancybox="gallerypopup" href={slide.imageURL}>
                   <div className="swiper-material-wrapper">
                       <div className="swiper-material-content">
                       <img
@@ -54,7 +54,7 @@ export default function MySwiper(props: any) {
                           className="swiper-slide-bg-image swiper-slide-bg-image-c61b"
                           data-swiper-material-scale="1.25"
                           loading="lazy"
-                          src={imagecontent[0]}
+                          src={imagecontent}
                       />
 
                       <div className="swiper-lazy-preloader"></div>

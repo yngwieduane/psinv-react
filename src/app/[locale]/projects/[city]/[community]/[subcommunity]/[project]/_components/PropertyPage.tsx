@@ -4,10 +4,12 @@ import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import Gallery from "./Gallery";
 import UnitModels from "./UnitModels";
 import MapComponent from "@/app/[locale]/_components/MapComponent";
+import SwiperMaterialProjectPage from "@/app/[locale]/_components/SwiperMaterialProjectPage";
 import Image from "next/image";
 import CardGroup from "./CardGroup";
 import CardOne from "./CardOne";
 import AvailableUnits from './AvailableUnits';
+import StripeContentPro from './StripeContentPro';
 import { ReadMore } from '@/app/[locale]/_components/ReadMore';
 import FancyboxWrapper from '@/app/[locale]/_components/tools/FancyboxWrapper';
 
@@ -23,10 +25,6 @@ const PropertyPage = (props:any) => {
     const unitModels = props.data["unitModels"] ? props.data["unitModels"] : ("");
 
     const galleryData = [
-        {
-            title: "General Images",
-            image: generalImages,
-        },
         {
             title: "Facilities and Amenities",
             image: facilitiesAndAmenitiesImages,
@@ -82,43 +80,29 @@ const PropertyPage = (props:any) => {
     const thumbimg = imgFeatured.replace('?width=0&height=0','?width=1400&height=600');
     return (
         <>
-        <div
-            className={`bg-white background-image relative bg-cover bg-center`}
-            style={{ backgroundImage: `url(${thumbimg})` }}
-        >
-            <div className="relative isolate px-6 py-14 lg:px-8 bg-[#00000069]">
-                <div className="container mx-auto py-32">
-                    <div className="text-center col-span-2">
-                        <h1 className="text-5xl font-bold tracking-tight text-white drop-shadow-md">
-                            {props.data["propertyName"]}
-                        </h1>
-                        <p className="mt-2 text-lg leading-8 text-white drop-shadow-md">
-                            in {props.data["community"]}
-                        </p>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-6 ">
-                            <div className="text-xl font-bold tracking-tight text-white drop-shadow-md">{props.data["marketing1stUSP"]}</div>
-                            <div className="text-xl font-bold tracking-tight text-white drop-shadow-md">{props.data["marketing2ndUSP"]}</div>
-                            <div className="text-xl font-bold tracking-tight text-white drop-shadow-md">{props.data["marketing3rdUSP"]}</div>
-                            <div className="text-xl font-bold tracking-tight text-white drop-shadow-md">{props.data["marketing4thUSP"]}</div>
-                        </div>
-                        <p className="mt-6 text-lg leading-8 text-white drop-shadow-md">
-                            by<br />{props.data["masterDeveloper"]}
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div>
+            <Breadcrumb/>
         </div>
-        <div className="grid grid-cols-2 gap-4 px-4 items-center">
+        <div className="container mx-auto my-5 px-5">
+            {/* Swiper */}
+            {galleryData !== null ? (
+                <div className="relative">
+                    <SwiperMaterialProjectPage slides={generalImages}/>
+                </div>
+            ) : ("")}
+        </div>
+        <div className="hidden grid grid-cols-2 gap-4 px-4 items-center">
             <div className="text-3xl">{props.data["propertyName"]}</div>
-            <div className="grid grid-cols-4 gap-4 items-center text-center">
+            <div className="grid grid-cols-4 gap-4 items-center text-center ">
                 <a className="py-2 md:py-4 border-l-1 border-gray-400">{t('overview')}</a>
                 <a className="py-2 md:py-4 border-l-1 border-gray-400">{t('gallery')}</a>
                 <a className="py-2 md:py-4 border-l-1 border-gray-400">{t('floor_plan')}</a>
                 <a className="py-2 md:py-4 border-l-1 border-gray-400">{t('location')}</a>
             </div>
         </div>
-        <div>
-            <Breadcrumb/>
+        {/* STRIPE CONTENT */}
+        <div className="mt-7 md:mt-0">
+            <StripeContentPro data={props.data}/>
         </div>
         <div className="container mx-auto my-8 px-5">
             <AvailableUnits
@@ -130,11 +114,6 @@ const PropertyPage = (props:any) => {
             <AvailableUnits
                 propid={props.data["propertyID"]}
                 category="Rent"
-            />
-        </div>
-        <div>
-            <Gallery
-                data={galleryData}
             />
         </div>
         {unitModels.length !== 0 ? (<div>
@@ -245,7 +224,7 @@ const PropertyPage = (props:any) => {
                 {props.data["propertyName"]} {t("overview")}
             </h2>
             <div className="">
-                <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]}  classes="whitespace-break-spaces"/>
+                <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]} amountOfWords={100} classes="whitespace-break-spaces"/>
             </div>
         </div>
         </>

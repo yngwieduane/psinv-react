@@ -30,7 +30,7 @@ export default function DrawerDetails(props:any) {
         case 'map':
             coordinates = props.drawerContent.split(",")?? "";
             title = "Map";
-            content = <MapComponent latitude={coordinates['1']} longitude={coordinates['0']} fallbackImage="" height="700px"/>;
+            content = <MapComponent latitude={coordinates['1']} longitude={coordinates['0']} fallbackImage="" height="100%"/>;
             break;
         case 'gallery':
             images = props.drawerContent?? "";
@@ -64,7 +64,7 @@ export default function DrawerDetails(props:any) {
               className="pointer-events-auto w-screen max-w-2xl transform transition duration-500 ease-in-out data-closed:translate-x-full sm:duration-700"
             >
               <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
-                <div className="px-4 sm:px-6">
+                <div className="px-4 sm:px-6 hidden">
                   <div className="flex items-start justify-between">
                     <DialogTitle className="text-base font-semibold text-gray-900 capitalize">{title}</DialogTitle>
                     <div className="ml-3 flex h-7 items-center">
@@ -80,7 +80,7 @@ export default function DrawerDetails(props:any) {
                     </div>
                   </div>
                 </div>
-                <div className="relative mt-6 flex-1 px-4 sm:px-6">{/* Your content */}
+                <div className="relative flex-1 p-0">{/* Your content */}
                     {content}
                 </div>
               </div>

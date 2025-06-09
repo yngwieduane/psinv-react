@@ -231,12 +231,17 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
         </div>
         <button
           type="submit"
-          className="w-full border border-[#111954] p-3 mb-6 rounded-md text-[#0c1445] bg-[#fff] hover:bg-[#0c1445] hover:text-[#fff] font-semibold"
+          className="w-full border border-[#111954] p-3 mb-6 rounded-md hover:text-[#0c1445] hover:bg-[#fff] bg-[#0c1445] text-[#fff] font-semibold cursor-pointer"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>
         <div className="mb-3">
+          <label className="flex items-center space-x-2">
+            <span className="text-sm">By clicking Submit, you agree to our Terms & Conditions and Privacy Policy</span>
+          </label>
+        </div>
+        <div className="mb-3 hidden">
           <label className="flex items-center space-x-2">
             <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
             <span className="text-sm">I agree to the Terms & Conditions and Privacy Policy</span>
@@ -244,13 +249,13 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
           {errors.agreement1 && <p className="text-red-500 text-sm">{errors.agreement1.message}</p>}
         </div>
 
-        <div className="mb-3">
+        <div className="mb-3 hidden">
           <label className="flex items-center space-x-2">
             <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
             <span className="text-sm">Agree to receive calls and communications</span>
           </label>
         </div>
-        <div className="mb-3">
+        <div className="mb-3 hidden">
           <label className="flex items-center space-x-2">
             <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
             <span className="text-sm">Receive calls about various projects</span>
