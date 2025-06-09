@@ -80,44 +80,64 @@ const partners = [
 ]
 const mainSliderData = [
 {
-    title: "Ramhan Island",
-    type: "Villa",
-    developer_img: '/images/banners/eagle-hills-logo.svg',
-    location: "Ramhan",
+    title: "Muheira",
+    type: "Apartment",
+    developer_img: '/images/banners/modon-white.webp',
+    location: "Maysan",
     description:
-    "An island that some may think is a fantasy, but it is one of Abu Dhabi's modern masterpieces. Choose to live luxury and serenity in our breathtaking standalone beachfront villas, 3 - 7 bedrooms, meticulously crafted in the glamorous Maldivian style.",
+    "Muheira by Modon is a canal-side community in Maysan offering 1 to 3-bedroom apartments with premium finishes, laundry rooms, and staff quarters in larger units. It blends modern comfort with natural surroundings and easy access to key services.",
     project_url: "",
-    image: '/images/banners/eagle-hills-slider.webp',
+    image: '/images/banners/muheira.webp',
 },
 {
-    title: "Bloom Granada",
-    type: "Villa",
-    developer_img: '/images/banners/eagle-hills-logo.svg',
-    location: "Zayed City",
-    description:
-    "The latest jewel in the prestigious Bloom Living project, perfectly situated in the heart of Zayed City, the bustling new downtown of Abu Dhabi.",
-    project_url: "",
-    image: '/images/banners/bloom-holding-slider.webp',
-},
-{
-    title: "Saadiyat Lagoons",
-    type: "Villa",
-    developer_img: '/images/banners/eagle-hills-logo.svg',
-    location: "Saddiyat Island",
-    description:
-    "Nestled in the heart of Abu Dhabi, the Saadiyat Lagoons is an upscale residential development Providing 4-6 BR Standalone villas With zero service charge.",
-    project_url: "",
-    image: '/images/banners/saadiyat-lagoons.jpg',
-},
-{
-    title: "Gardenia Bay",
-    type: "Villa",
-    developer_img: '/images/banners/eagle-hills-logo.svg',
+    title: "Waldorf Astoria Residences Yas",
+    type: "Apartment",
+    developer_img: '/images/banners/icon-design-homepage-02.svg',
     location: "Yas Island",
     description:
-    "Discover Gardenia: Aldar's latest masterpiece on Yas Island, Abu Dhabi. Gardenia offers a harmonious blend of luxurious apartments and elegant townhouses in a prime waterfront location that redefine your expectations of island living.",
+    "Developed by Aldar, Waldorf Astoria Residences Yas offers luxury 1 to 3-bedroom apartments on Yas Island, starting at AED 3.8M with a 60/40 payment plan. Handover is set for Q4 2028, near major entertainment attractions.",
     project_url: "",
-    image: '/images/banners/aldar-slider.webp',
+    image: '/images/banners/waldorf-astoria-residences-banner.webp',
+},
+{
+    title: "Hudayriyat Island",
+    type: "Villa",
+    developer_img: '/images/banners/modon-white.webp',
+    location: "Hudayriyat Island",
+    description:
+    "Hudayriyat Island by Modon is a vast coastal development with luxury villas and mansions, offering resort-style living across 11.6 square miles. Communities like Nawayef and Al Naseem embrace nature, sport, and elegant design.",
+    project_url: "",
+    image: '/images/banners/hudayriyat-island.webp',
+},
+{
+    title: "Bayn by ORA",
+    type: "Villa",
+    developer_img: '/images/banners/ora-logo-white.png',
+    location: "Ghantoot",
+    description:
+    "Bayn is a smart, green waterfront community in Ghantoot by ORA, set to house 32,000+ residents. With over 50% green space, it features parks, a marina, beach clubs, and retail, redefining sustainable coastal living.",
+    project_url: "",
+    image: '/images/banners/waldorf-astoria-residences-banner.webp',
+},
+{
+    title: "The Wilds – Moringa Mansions",
+    type: "Villa",
+    developer_img: '/images/banners/the-wilds-moringa-mansions-white-logo.png',
+    location: "Dubailand",
+    description:
+    "Moringa Mansions in Dubailand offers 38 exclusive 5- and 6-bedroom homes with pools, gardens, and elevators. Designed by Nabil Gholam Architects, each mansion combines luxury with lush park views.",
+    project_url: "",
+    image: '/images/banners/the-wilds-moringa-mansions-banner.webp',
+},
+{
+    title: "Athlon",
+    type: "Apartment",
+    developer_img: '/images/banners/icon-design-homepage-02.svg',
+    location: "Dubai",
+    description:
+    "Athlon by Aldar is Dubai’s first active wellness community, featuring 3 to 6-bedroom villas and townhouses. It integrates movement and health into daily life, supported by expert design and premium amenities.",
+    project_url: "",
+    image: '/images/banners/Athlon-banner-1.webp',
 },
 ];
 const citiesData = [
