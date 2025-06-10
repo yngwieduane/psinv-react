@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react';
 import {useTranslations} from 'next-intl';
 import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import Gallery from "./Gallery";
@@ -12,10 +13,25 @@ import AvailableUnits from './AvailableUnits';
 import StripeContentPro from './StripeContentPro';
 import { ReadMore } from '@/app/[locale]/_components/ReadMore';
 import FancyboxWrapper from '@/app/[locale]/_components/tools/FancyboxWrapper';
+import Nearbys from './Nearbys';
+import Sticky from 'react-sticky-el';
+import InquiryForm from '@/app/[locale]/_components/InquiryForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
+import DrawerDetails from '@/app/[locale]/unit/[slug]/components/DrawerDetails';
 
 
 const PropertyPage = (props:any) => {
-
+    const [showDrawer, setShowDrawer] = useState(false);
+    const [dwDataContent, setDwDataContent] = useState('details');
+    const [dwDataTitle, setDwDataTitle] = useState('details');
+    const drawerHandler = (content:string,valuesarray:any) => (e:any) => {
+        console.log(showDrawer);
+        console.log(content);
+        setDwDataContent(valuesarray);
+        setDwDataTitle(content);
+        setShowDrawer(true);
+    }
     const t = useTranslations('ProjectPage');
     const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'] : ("");
 
@@ -23,6 +39,9 @@ const PropertyPage = (props:any) => {
     const facilitiesAndAmenitiesImages = props.data["facilitiesAndAmenitiesImages"] ? props.data["facilitiesAndAmenitiesImages"] : ("");
     const communityImages = props.data["communityImages"] ? props.data["communityImages"] : ("");
     const unitModels = props.data["unitModels"] ? props.data["unitModels"] : ("");
+
+    const map = props.data["mapLongitude"]+","+props.data["mapLatitude"];
+    const video = props.data["propertyVideos"] ? props.data["propertyVideos"][0]['imageURL'] : ("");
 
     const galleryData = [
         {
@@ -80,7 +99,7 @@ const PropertyPage = (props:any) => {
     const thumbimg = imgFeatured.replace('?width=0&height=0','?width=1400&height=600');
     return (
         <>
-        <div>
+        <div id={props.data["propertyID"]}>
             <Breadcrumb/>
         </div>
         <div className="container mx-auto my-5 px-5">
@@ -104,6 +123,150 @@ const PropertyPage = (props:any) => {
         <div className="mt-7 md:mt-0">
             <StripeContentPro data={props.data}/>
         </div>
+        <div className="container mx-auto my-5 px-5">
+            {/* START DETAILS UPPER*/}
+            <div className="mainuppper grid grid-cols-1 md:grid-cols-4">
+                <div className="col-span-3">
+                    <div className="flex gap-4 my-10">
+                        {map !== null ? (
+                        <button
+                            type="button"
+                            onClick={drawerHandler('map',map)}
+                            name="map"
+                            className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                        >
+                            Map
+                        </button>
+                        ) : ("")}
+                        {video !== '' ? (
+                        <FancyboxWrapper>
+                            <a
+                                type="button"
+                                data-fancybox="video"
+                                href={video}
+                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                            >
+                                Video
+                            </a>
+                        </FancyboxWrapper>
+                        ) : ("")}
+                        {props.data["communityMapAndMasterPlan"] !== null ? (
+                        <FancyboxWrapper>
+                            <a
+                                type="button"
+                                //onClick={drawerHandler('gallery',images)}
+                                data-fancybox="masterplan"
+                                href={props.data["communityMapAndMasterPlan"][0]['imageURL']}
+                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                            >
+                                Master Plan
+                            </a>
+                        </FancyboxWrapper>
+                        ) : ("")}
+                        {props.data["locationMapImages"] !== null ? (
+                        <FancyboxWrapper>
+                            <a
+                                type="button"
+                                //onClick={drawerHandler('gallery',images)}
+                                data-fancybox="locationplan"
+                                href={props.data["locationMapImages"][0]['imageURL']}
+                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                            >
+                                Location Plan
+                            </a>
+                        </FancyboxWrapper>
+                        ) : ("")}
+                    </div>
+                    <div className="mb-10">
+                        <h2 className="text-xl mb-5 text-[#111954]">
+                            {t("property_details")}
+                        </h2>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
+                            {availbeds ? (<CardOne title="Available Bedrooms" content={availbeds} />) : ("")}
+                            {availtype ? (<CardOne title="Property Types" content={availtype} />) : ("")}
+                            {props.data['masterDeveloper'] ? (<CardOne title="Master Developer" content={props.data['masterDeveloper']} />) : ("")}
+                            {props.data['minPrice'] ? (<CardOne title="Price Range" content={`${props.data['minPrice']} - ${props.data['maxPrice']}`} />) : ("")}
+                            {props.data['areaRangeMin'] ? (<CardOne title="Area Range" content={`${props.data['areaRangeMin']} - ${props.data['areaRangeMax']}`} />) : ("")}
+                            {props.data['minPrice'] ? (<CardOne title="Price Range" content={props.data['minPrice']} />) : ("")}
+                            {props.data['numberOfApartment'] ? (<CardOne title="Number of Apartment" content={props.data['numberOfApartment']} />) : ("")}
+                            {props.data['propertyType'] ? (<CardOne title="Property Type" content={props.data['propertyType']} />) : ("")}
+                            {props.data['propertyPlan'] ? (<CardOne title="Property Plan" content={props.data['propertyPlan']} />) : ("")}
+                            {props.data['propertyUsage'] ? (<CardOne title="Property Usage" content={props.data['propertyUsage']} />) : ("")}
+                            {props.data['completionDate'] ? (<CardOne title="Completion Date" content={props.data['completionDate']} />) : ("")}
+                            {props.data['handoverDate'] ? (<CardOne title="Handover Date" content={props.data['handoverDate']} />) : ("")}
+                            {props.data['launchDate'] ? (<CardOne title="Launch Date" content={props.data['launchDate']} />) : ("")}
+                            {props.data['zoneType'] ? (<CardOne title="Property Types" content={props.data['zoneType']} />) : ("")}
+                        </div>
+                    </div>
+                    {unitModels.length !== 0 ? (<div>
+                        <UnitModels
+                            data={fpGroup}
+                        />
+                    </div>) : ("")}
+                    <div className="container mx-auto my-10 px-5">
+                        <Nearbys
+                            latitude={props.data["mapLatitude"]}
+                            longitude={props.data["mapLongitude"]}
+                            distance={10}
+                        />
+                    </div>
+                    {props.data['propertyPaymentPlans'] !== null
+                        ? (
+                    <div className="container mx-auto my-10 px-5">
+                        <h2 className="font-medium text-center text-3xl my-10">
+                            {props.data["propertyName"]} {t("payment_plan")}
+                        </h2>
+                    </div>) : ("")}
+                    {props.data['facilities'] !== null
+                        ? 
+                        <div className="container mx-auto my-10 px-5">
+                            <h2 className="text-xl mb-5 text-[#111954]">
+                                {t("facilities_in")} {props.data["propertyName"]}
+                            </h2>
+                            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                                <CardGroup data={props.data['facilities']}/>
+                            </div>
+                        </div>
+                        : ""
+                    }
+                    {props.data['aminities'] !== null
+                        ? 
+                        <div className="container mx-auto my-10 px-5">
+                            <h2 className="text-xl mb-5 text-[#111954]">
+                                {t("aminities_in")} {props.data["propertyName"]}
+                            </h2>
+                            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                                <CardGroup data={props.data['aminities']}/>
+                            </div>
+                        </div>
+                        : ""
+                    }
+                    <div className="container mx-auto my-10 px-5">
+                        <h2 className="text-xl mb-5 text-[#111954]">
+                            {props.data["propertyName"]} {t("overview")}
+                        </h2>
+                        <div className="">
+                            <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]} amountOfWords={100} classes="whitespace-break-spaces"/>
+                        </div>
+                    </div>
+                </div>
+                <Sticky stickyClassName="mt-28" boundaryElement=".mainuppper"  hideOnBoundaryHit={false}>
+                    <div className="hidden md:flex">
+                        <InquiryForm hideFeedbackButton={true}/>
+                    </div>
+                    <div className="p-5">
+                        <button
+                            type="button"
+                            onClick={drawerHandler('requestview', props.data)}
+                            name="details"
+                            className="w-full rounded-lg border border-[#111954] p-4 cursor-pointer"
+                        >
+                            <FontAwesomeIcon icon={faCalendarCheck}/> Request a Meeting
+                        </button>
+                    </div>
+                </Sticky>
+            </div>
+        </div>
         <div className="container mx-auto my-8 px-5">
             <AvailableUnits
                 propid={props.data["propertyID"]}
@@ -116,117 +279,7 @@ const PropertyPage = (props:any) => {
                 category="Rent"
             />
         </div>
-        {unitModels.length !== 0 ? (<div>
-            <UnitModels
-                data={fpGroup}
-            />
-        </div>) : ("")}
-        <div className="container mx-auto my-8 px-5">
-            <h2 className="font-medium text-center text-3xl my-10">
-                {props.data["propertyName"]} {t("property_details")}
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
-                <CardOne title="Available Bedrooms" content={availbeds} />
-                <CardOne title="Property Types" content={availtype} />
-                <CardOne title="Master Developer" content={props.data['masterDeveloper']} />
-                <CardOne title="Price Range" content={`${props.data['minPrice']} - ${props.data['maxPrice']}`} />
-                <CardOne title="Area Range" content={`${props.data['areaRangeMin']} - ${props.data['areaRangeMax']}`} />
-                <CardOne title="Price Range" content={props.data['minPrice']} />
-                <CardOne title="Number of Apartment" content={props.data['numberOfApartment']} />
-                <CardOne title="Property Type" content={props.data['propertyType']} />
-                <CardOne title="Property Plan" content={props.data['propertyPlan']} />
-                <CardOne title="Property Usage" content={props.data['propertyUsage']} />
-                <CardOne title="Completion Date" content={props.data['completionDate']} />
-                <CardOne title="Launch Date" content={props.data['launchDate']} />
-                <CardOne title="Zone Type" content={props.data['zoneType']} />
-            </div>
-        </div>
-        <div className="container mx-auto my-8 px-5">
-            <h2 className="font-medium text-center text-3xl my-10">
-                {props.data["propertyName"]} {t("location_map")}
-            </h2>
-            <MapComponent
-                latitude={props.data['mapLatitude']}
-                longitude={props.data['mapLongitude']}
-                fallbackImage={props.data["featuredImages"]}
-                height='500px'
-              />
-        </div>
-        {props.data["communityMapAndMasterPlan"] !== null ? (<div>
-            <div className="container mx-auto my-8 px-5">
-                <h2 className="font-medium text-center text-3xl my-10">
-                    {props.data["propertyName"]} {t("master_plan")}
-                </h2>
-               <FancyboxWrapper>
-                    <a
-                        type="button"
-                        //onClick={drawerHandler('gallery',images)}
-                        data-fancybox="masterplan"
-                        href={props.data["communityMapAndMasterPlan"][0]['imageURL']}
-                        className=" cursor-pointer block"
-                    >
-                    <Image alt="Master Plan" src={props.data["communityMapAndMasterPlan"][0]['imageURL']} className="w-full" width={1000} height={500}/>
-                    </a>
-               </FancyboxWrapper>
-            </div>
-        </div>) : ("")}
-        {props.data['propertyPaymentPlans'] !== null
-            ? (
-        <div className="container mx-auto my-8 px-5">
-            <h2 className="font-medium text-center text-3xl my-10">
-                {props.data["propertyName"]} {t("payment_plan")}
-            </h2>
-        </div>) : ("")}
-        {props.data["locationMapImages"] !== null ? (<div>
-            <div className="container mx-auto my-8 px-5">
-                <h2 className="font-medium text-center text-3xl my-10">
-                    {props.data["propertyName"]} {t("location_plan")}
-                </h2>
-               <FancyboxWrapper>
-                    <a
-                        type="button"
-                        //onClick={drawerHandler('gallery',images)}
-                        data-fancybox="locationplan"
-                        href={props.data["locationMapImages"][0]['imageURL']}
-                        className=" cursor-pointer block"
-                    >
-                    <Image alt="Location Map Plan" src={props.data["locationMapImages"][0]['imageURL']} className="w-full" width={1000} height={500}/>
-                    </a>
-               </FancyboxWrapper>
-            </div>
-        </div>) : ("")}
-        {props.data['facilities'] !== null
-            ? 
-            <div className="container mx-auto my-8 px-5">
-                <h2 className="font-medium text-center text-3xl my-10">
-                    {t("facilities_in")} {props.data["propertyName"]}
-                </h2>
-                <div className="grid grid-cols-5 gap-4">
-                    <CardGroup data={props.data['facilities']}/>
-                </div>
-            </div>
-            : ""
-        }
-        {props.data['aminities'] !== null
-            ? 
-            <div className="container mx-auto my-8 px-5">
-                <h2 className="font-medium text-center text-3xl my-10">
-                    {t("aminities_in")} {props.data["propertyName"]}
-                </h2>
-                <div className="grid grid-cols-5 gap-4">
-                    <CardGroup data={props.data['aminities']}/>
-                </div>
-            </div>
-            : ""
-        }
-        <div className="container mx-auto my-8 px-5">
-            <h2 className="font-medium text-center text-3xl my-10">
-                {props.data["propertyName"]} {t("overview")}
-            </h2>
-            <div className="">
-                <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]} amountOfWords={100} classes="whitespace-break-spaces"/>
-            </div>
-        </div>
+        <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} />
         </>
     );
 }

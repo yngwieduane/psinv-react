@@ -140,14 +140,16 @@ export default function UnitPage(props: any) {
                                         </FancyboxWrapper>
                                         ) : ("")}
                                         {video !== '' ? (
-                                        <button
-                                            type="button"
-                                            onClick={drawerHandler('video',video)}
-                                            name="video"
-                                            className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
-                                        >
-                                            Video
-                                        </button>
+                                        <FancyboxWrapper>
+                                            <a
+                                                type="button"
+                                                data-fancybox="video"
+                                                href={video}
+                                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                                            >
+                                                Video
+                                            </a>
+                                        </FancyboxWrapper>
                                         ) : ("")}
                                     </div>
                                 </div>

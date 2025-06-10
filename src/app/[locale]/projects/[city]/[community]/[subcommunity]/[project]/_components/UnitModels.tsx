@@ -13,8 +13,8 @@ const UnitModels = (props:any) => {
 
     return (
         <>
-        <div className="container mx-auto my-8 px-5">
-                <h2 className="font-medium text-center text-3xl my-10">
+        <div className="container mx-auto">
+                <h2 className="text-xl mb-5 text-[#111954]">
                     {t("unit_models")}
                 </h2>
                 <MainNavbarHeader
@@ -32,31 +32,31 @@ const UnitModels = (props:any) => {
                             }}
                         >
                             <FancyboxWrapper>
-                            <table className="min-w-full divide-y divide-gray-300">
+                            <table className="min-w-full ">
                                 <thead className="bg-gray-50">
                                     <tr>
-                                        <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                        <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm text-gray-900 sm:pl-6">
                                             Floor Plan
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
                                             Model Name
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
                                             Sizes
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
                                             Unit Type
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
                                             Bathrooms
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
                                             Laundry Room
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
                                             Maids Room
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
                                             Parking
                                         </th>
                                     </tr>

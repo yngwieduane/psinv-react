@@ -36,3 +36,32 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
       .replace(/-/g, ' ')           // Replace dashes with spaces
       .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize each word
   };
+
+export type Coordinate = {
+  lat: number;
+  lng: number;
+};
+
+/**
+ * Calculates the Haversine distance between two points
+ * @param pointA First coordinate { lat, lng }
+ * @param pointB Second coordinate { lat, lng }
+ * @returns Distance in kilometers
+ */
+export function calculateDistance(pointA: Coordinate, pointB: Coordinate): number {
+  const toRad = (value: number) => (value * Math.PI) / 180;
+  const R = 6371; // Earth radius in kilometers
+
+  const dLat = toRad(pointB.lat - pointA.lat);
+  const dLon = toRad(pointB.lng - pointA.lng);
+
+  const lat1 = toRad(pointA.lat);
+  const lat2 = toRad(pointB.lat);
+
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  return +(R * c).toFixed(2); // Return rounded to 2 decimal places
+}

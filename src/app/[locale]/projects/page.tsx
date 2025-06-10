@@ -16,7 +16,7 @@ export default async function Projects({
     const currentPage = Number(page) || 1;
     console.log("propertyname="+propertyname);
 
-    const cityId = await getLookupId('Dubai', 'city');
+    const cityId = await getLookupId('Abu Dhabi', 'city');
     return (
         <>
             <ProjectsPage page={currentPage} city={city} cityId={cityId} community={community} subcommunity={subcommunity} project={project} propertyname={propertynamefinal} isFeaturedProjectOnWeb={isFeaturedProjectOnWebfinal}/>

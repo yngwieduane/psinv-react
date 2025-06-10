@@ -53,16 +53,17 @@ const StripContentPro = (props:any) => {
                             <h2 className="mb-5 hidden md:flex">{props.data["propertyName"]}, {props.data["community"]} by {props.data['masterDeveloper']}</h2>
                             <div className="grid grid-cols-3 mt-3 items-center content-center">
                                 <div>
-                                    <p className="text-[#111954]">Price</p>
-                                    <p className="md:text-lg text-normal"><PriceConvert price={minprice} minDecimal='0'/> to <PriceConvert price={maxprice} minDecimal='0'/></p>
+                                    <p className="text-sm text-[#111954]">Price</p>
+                                    <p className="text-normal"><PriceConvert price={minprice} minDecimal='0'/> to <PriceConvert price={maxprice} minDecimal='0'/></p>
                                 </div>
+                                {props.data['propertyType'] ? (
                                 <div>
-                                    <p className="text-[#111954]">Type</p>
-                                    <p className="md:text-lg text-normal">{props.data["propertyType"]}</p>
-                                </div>
+                                    <p className="text-sm text-[#111954]">Type</p>
+                                    <p className="text-normal">{props.data["propertyType"]}</p>
+                                </div>) : ("")}
                                 <div>
-                                    <p className="text-[#111954]">Size</p>
-                                    <p className="md:text-lg text-normal">{format.number(areaRangeMin)} - {format.number(areaRangeMax)} <span>Sqft</span></p>
+                                    <p className="text-sm text-[#111954]">Size</p>
+                                    <p className="text-normal">{format.number(areaRangeMin)} - {format.number(areaRangeMax)} <span>Sqft</span></p>
                                 </div>
                             </div>
                         </div>

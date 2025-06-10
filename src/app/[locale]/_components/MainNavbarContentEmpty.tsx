@@ -2,7 +2,7 @@ import React from "react";
 
 const MainNavbarContentEmpty = (props:any) => {
   return (
-    <div className="container mx-auto my-8 px-5">
+    <div className="container mx-auto my-8">
         {props.children}
     </div>
   );
