@@ -50,7 +50,7 @@ const StripContentPro = (props:any) => {
                     <div className="grid md:grid-cols-3 grid-cols-1 gap-y-5">
                         <div className="col-span-2">
                             <h1 className="md:text-2xl text-xl text-[#111954] uppercase">{props.data["propertyName"]}</h1>
-                            <h2 className="mb-5 hidden md:flex">{props.data["propertyName"]}, {props.data["community"]} by {props.data['masterDeveloper']}</h2>
+                            <h2 className="mb-5 hidden md:flex text-sm">{props.data["propertyName"]}, {props.data["community"]} by {props.data['masterDeveloper']}</h2>
                             <div className="grid grid-cols-3 mt-3 items-center content-center">
                                 <div>
                                     <p className="text-sm text-[#111954]">Price</p>

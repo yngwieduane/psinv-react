@@ -19,6 +19,7 @@ import InquiryForm from '@/app/[locale]/_components/InquiryForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 import DrawerDetails from '@/app/[locale]/unit/[slug]/components/DrawerDetails';
+import Faqs from './Faqs';
 
 
 const PropertyPage = (props:any) => {
@@ -248,6 +249,9 @@ const PropertyPage = (props:any) => {
                         <div className="">
                             <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]} amountOfWords={100} classes="whitespace-break-spaces"/>
                         </div>
+                    </div>
+                    <div className="container mx-auto my-10 px-5">
+                        <Faqs data={props.data}/>
                     </div>
                 </div>
                 <Sticky stickyClassName="mt-28" boundaryElement=".mainuppper"  hideOnBoundaryHit={false}>

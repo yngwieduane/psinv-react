@@ -35,28 +35,28 @@ const UnitModels = (props:any) => {
                             <table className="min-w-full ">
                                 <thead className="bg-gray-50">
                                     <tr>
-                                        <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm text-gray-900 sm:pl-6">
+                                        <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm text-[#111954] sm:pl-6">
                                             Floor Plan
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
                                             Model Name
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
                                             Sizes
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
                                             Unit Type
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
                                             Bathrooms
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
                                             Laundry Room
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
                                             Maids Room
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-gray-900">
+                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
                                             Parking
                                         </th>
                                     </tr>
