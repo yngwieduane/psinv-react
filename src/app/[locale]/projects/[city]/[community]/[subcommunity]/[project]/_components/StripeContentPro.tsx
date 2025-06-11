@@ -54,7 +54,7 @@ const StripContentPro = (props:any) => {
                             <div className="grid grid-cols-3 mt-3 items-center content-center">
                                 <div>
                                     <p className="text-sm text-[#111954]">Price</p>
-                                    <p className="text-normal"><PriceConvert price={minprice} minDecimal='0'/> to <PriceConvert price={maxprice} minDecimal='0'/></p>
+                                    <p className="text-normal "><PriceConvert price={minprice} minDecimal='0'/> to <PriceConvert price={maxprice} minDecimal='0'/></p>
                                 </div>
                                 {props.data['propertyType'] ? (
                                 <div>

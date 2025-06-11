@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Head from 'next/head';
 
 type AccordionItem = {
   title: string;
@@ -13,12 +14,35 @@ type Props = {
 
 export default function AccordionTabs({ items }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [schemaJson, setSchemaJson] = useState<string | null>(null);
+
+  useEffect(() => {
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: items.map(item => ({
+        '@type': 'Question',
+        name: item.title,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.content,
+        },
+      })),
+    };
+    setSchemaJson(JSON.stringify(faqSchema));
+  }, [items]);
 
   const toggleIndex = (index: number) => {
     setActiveIndex(prev => (prev === index ? null : index));
   };
 
   return (
+    <>
+      {schemaJson && (
+        <Head>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schemaJson }} />
+        </Head>
+      )}
     <div className="w-full relative">
       {items.map((item, index) => {
         const isOpen = activeIndex === index;
@@ -40,5 +64,6 @@ export default function AccordionTabs({ items }: Props) {
         )
       })}
     </div>
+    </>
   );
 }
