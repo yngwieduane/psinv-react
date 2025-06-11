@@ -51,12 +51,12 @@ const MainFooter = () => {
               </p>
             </div>
             <div className="flex space-x-4 mb-3 mt-5 sm:text-[14px] justify-center sm:justify-start">
-              <Link href="https://www.instagram.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faInstagram} size="lg" /></Link>
-              <Link href="https://www.facebook.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faFacebook} size="lg" /></Link>
-              <Link href="https://twitter.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faTwitter} size="lg" /></Link>
-              <Link href="https://www.linkedin.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faLinkedin} size="lg" /></Link>
-              <Link href="https://www.youtube.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faYoutube} size="lg" /></Link>
-              <Link href="https://www.tiktok.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faTiktok} size="lg" /></Link>
+              <Link target="_blank" href="https://www.instagram.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faInstagram} size="lg" /></Link>
+              <Link target="_blank" href="https://www.facebook.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faFacebook} size="lg" /></Link>
+              <Link target="_blank" href="https://twitter.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faTwitter} size="lg" /></Link>
+              <Link target="_blank" href="https://www.linkedin.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faLinkedin} size="lg" /></Link>
+              <Link target="_blank" href="https://www.youtube.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faYoutube} size="lg" /></Link>
+              <Link target="_blank" href="https://www.tiktok.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faTiktok} size="lg" /></Link>
             </div>
           </div>
 

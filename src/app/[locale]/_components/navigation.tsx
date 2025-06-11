@@ -233,7 +233,7 @@ const Navigation: FC = () => {
         <div></div>
         <div className="grid grid-cols-10">
           {socialMedia.map((item) => (
-            <Link href={item.href} key={item.name} className="flex items-center justify-center text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
+            <Link target="_blank" href={item.href} key={item.name} className="flex items-center justify-center text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
               <FontAwesomeIcon
                 className="h-5 w-5 flex-none text-gray-400"
                 icon={item.icon}
