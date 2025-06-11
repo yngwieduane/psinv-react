@@ -16,21 +16,18 @@ export default function AccordionTabs({ items }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [schemaJson, setSchemaJson] = useState<string | null>(null);
 
-  useEffect(() => {
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: items.map(item => ({
-        '@type': 'Question',
-        name: item.title,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: item.content,
-        },
-      })),
-    };
-    setSchemaJson(JSON.stringify(faqSchema));
-  }, [items]);
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map(item => ({
+    '@type': 'Question',
+    name: item.title,
+    acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.content,
+    },
+    })),
+  }
 
   const toggleIndex = (index: number) => {
     setActiveIndex(prev => (prev === index ? null : index));
@@ -38,11 +35,14 @@ export default function AccordionTabs({ items }: Props) {
 
   return (
     <>
-      {schemaJson && (
-        <Head>
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schemaJson }} />
-        </Head>
-      )}
+      {/* Add JSON-LD to your page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
+      {/* ... */}
     <div className="w-full relative">
       {items.map((item, index) => {
         const isOpen = activeIndex === index;
