@@ -1,6 +1,4 @@
-
-import { generateSeoData } from "@/app/[locale]/_components/functions/generateSeoData";
-import UnitBox from "@/app/[locale]/units/_components/UnitBox";
+'use client'
 import { calculateDistance, Coordinate } from "@/utils/utils";
 import { useState, useEffect } from "react";
 

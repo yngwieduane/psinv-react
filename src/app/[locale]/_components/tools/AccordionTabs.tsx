@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
+import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 
 type AccordionItem = {
   title: string;
@@ -53,7 +54,7 @@ export default function AccordionTabs({ items }: Props) {
                 className={`w-full text-left px-4 py-3 font-medium ${isOpen ? 'bg-blue-100 ' : 'text-gray-800 '} hover:bg-blue-100 cursor-pointer transition`}
             >
                 {item.title}
-                <span className="text-xl absolute end-5 text-gray-500">{isOpen ? '−' : '+'}</span>
+                <span className="text-xl absolute end-5 text-gray-500">{isOpen ? <MinusIcon aria-hidden="true" className="size-4"/>: <PlusIcon aria-hidden="true" className="size-4"/>}</span>
             </button>
             {activeIndex === index && (
                 <div className="px-4 py-3 text-sm text-gray-700 bg-white">

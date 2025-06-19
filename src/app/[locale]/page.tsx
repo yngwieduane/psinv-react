@@ -143,6 +143,7 @@ const mainSliderData = [
 const citiesData = [
     {
       title: "Abu Dhabi",
+      id: "26792",
       content: "#",
       image: '/images/gallery-1-new.webp',
       projects: [
@@ -180,6 +181,7 @@ const citiesData = [
     },
     {
       title: "Dubai",
+      id: "26786",
       content: "#",
       image: '/images/gallery-2-new.webp',
       projects: [
@@ -202,6 +204,7 @@ const citiesData = [
     },
     {
       title: "Sharjah",
+      id: "26953",
       content: "#",
       image: '/images/gallery-3-new.webp',
       projects: [
@@ -330,7 +333,7 @@ export default function HomePage() {
          <div className="w-full py-10">
            <GoogleReviewSection />
         </div>
-                 <div className="w-full py-10">
+        <div className="w-full py-10">
            <GetTheAppSection />
         </div>
     </div>

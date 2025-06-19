@@ -1,6 +1,24 @@
 import { getLookupId } from "@/utils/lookup";
 import ProjectsPage from "../_components/ProjectsPage";
 import { unslugify } from "@/utils/utils";
+import type { Metadata } from 'next'
+
+type Props = {
+  params: Promise<{ city:string;community:string;subcommunity:string;project:string }>
+} 
+
+export async function generateMetadata(
+    { params }: Props,
+    ): Promise<Metadata> {
+    const {city, community, subcommunity, project} = await params;
+
+    const metatitle = "⚡  "+unslugify(city)+" Real Estate  - Property Shop Investment" ;
+    const metadesc = "⚡  "+unslugify(city)+" Real Estate  - PSI - Check out our stunning real estate projects - Property Shop Investments - Real Estate Projects - Buy or Rent";
+    return {
+        title: metatitle,
+        description: metadesc,
+    }
+}
 
 
 export default async function Projects({

@@ -17,7 +17,7 @@ import Nearbys from './Nearbys';
 import Sticky from 'react-sticky-el';
 import InquiryForm from '@/app/[locale]/_components/InquiryForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarCheck, faCirclePlay, faLayerGroup, faLocationDot, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
 import DrawerDetails from '@/app/[locale]/unit/[slug]/components/DrawerDetails';
 import Faqs from './Faqs';
 
@@ -136,6 +136,7 @@ const PropertyPage = (props:any) => {
                             name="map"
                             className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
                         >
+                            <FontAwesomeIcon icon={faLocationDot}/>
                             Map
                         </button>
                         ) : ("")}
@@ -147,6 +148,7 @@ const PropertyPage = (props:any) => {
                                 href={video}
                                 className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
                             >
+                                <FontAwesomeIcon icon={faCirclePlay}/>
                                 Video
                             </a>
                         </FancyboxWrapper>
@@ -160,6 +162,7 @@ const PropertyPage = (props:any) => {
                                 href={props.data["communityMapAndMasterPlan"][0]['imageURL']}
                                 className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
                             >
+                                <FontAwesomeIcon icon={faLayerGroup}/>
                                 Master Plan
                             </a>
                         </FancyboxWrapper>
@@ -173,6 +176,7 @@ const PropertyPage = (props:any) => {
                                 href={props.data["locationMapImages"][0]['imageURL']}
                                 className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
                             >
+                                <FontAwesomeIcon icon={faMapLocationDot}/>
                                 Location Plan
                             </a>
                         </FancyboxWrapper>

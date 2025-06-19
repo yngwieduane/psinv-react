@@ -19,6 +19,11 @@
     height: 100%;
     position: relative;
     box-sizing: border-box;
+    filter: grayscale(100%);
+  }
+
+  .swiper-slide-active {
+    filter: unset;
   }
   
   .swiper-slide-bg-image {

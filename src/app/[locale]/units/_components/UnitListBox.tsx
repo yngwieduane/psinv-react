@@ -32,8 +32,8 @@ export default function UnitListBox(props:any){
         };
     return (
         <>
-        <article className="relative isolate flex flex-col gap-2 md:gap-8 lg:flex-row bg-gray-50 rounded-2xl w-full">
-            <div className="relative w-full h-64 sm:aspect-2/1 lg:aspect-square lg:w-64 lg:shrink-0">
+        <article className="relative isolate flex flex-col gap-8 lg:flex-row rounded-2xl w-full border border-gray-300 p-2 items-center">
+            <div className="relative w-full h-52 sm:aspect-2/1 lg:aspect-square lg:w-64 lg:shrink-0">
                 {images.length <= 1 ? (
                     <img
                     alt=""
@@ -51,7 +51,7 @@ export default function UnitListBox(props:any){
                     {props.data.category}
                 </div>
             </div>
-            <div className="px-5 py-3">
+            <div className="w-full">
                 <div className="flex items-center gap-x-4 text-xs">
                     <Link
                         href="#"
@@ -67,32 +67,36 @@ export default function UnitListBox(props:any){
                             <p className="">{props.data.propertyname}</p>
                         </Link>
                     </h3>
-                    <p className="mt-2 md:mt-5 text-normal/6 text-gray-600 truncate ">{props.data.marketingTitle}</p>
-                    <p className="hidden md:flex mt-2 md:mt-5 text-sm/6 text-gray-500"><PriceConvert price={price} minDecimal='0' /> | {props.data.category} | <NumberConvert number={props.data.built_upArea} minDecimal='0' label='Sqft'/> | {props.data.bedrooms} Beds | {props.data.no_of_bathrooms} Baths | {props.data.parking} Parking</p>
+                    <p className="mt-2 md:mt-5 text-normal/6 text-gray-600 ">{props.data.marketingTitle}</p>
+                    <p className="hidden md:flex mt-2 md:mt-5 text-sm/6 text-gray-500">{props.data.category} | <NumberConvert number={props.data.built_upArea} minDecimal='0' label='Sqft'/> | {props.data.bedrooms} Beds | {props.data.no_of_bathrooms} Baths | {props.data.parking} Parking</p>
                 </div>
                 <div className="mt-2 md:mt-6">
-                    <div className="relative flex items-center gap-x-4">
-                        <div className="text-sm/6 hidden md:grid">
-                            <p className="font-semibold text-gray-900">
-                                <span className="absolute inset-0" />
-                                {props.data.agent}
-                            </p>
-                            <p className="text-gray-600">Agent ID: {props.data.agent_Pk}</p>
+                    <div className="grid grid-cols-2 items-center content-center">
+                        <div className="relative flex items-center gap-x-4">
+                            <div className="text-sm/6 hidden md:grid">
+                                <p className="text-gray-600">Price</p>
+                                <p className="font-normal text-xl">
+                                    <span className="absolute inset-0" />
+                                    {/* {props.data.agent} */}
+                                    <PriceConvert price={price} minDecimal='0' />
+                                </p>
+                                <p className="hidden text-gray-600">Agent ID: {props.data.agent_Pk}</p>
+                            </div>
+                            <div className="text-lg flex md:hidden">
+                                {props.data.bedrooms} Beds | {props.data.no_of_bathrooms} Baths | <NumberConvert number={props.data.built_upArea} minDecimal='0' label='Sqft'/>
+                            </div>
                         </div>
-                        <div className="text-lg flex md:hidden">
-                            {props.data.bedrooms} Beds | {props.data.no_of_bathrooms} Baths | <NumberConvert number={props.data.built_upArea} minDecimal='0' label='Sqft'/>
+                        <div className="flex gap-2 justify-end">
+                            <Link href="#" className="bg-gray-100 px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /></Link>
+                            <button
+                                onClick={modalHandler}
+                                type="button"
+                                className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg"
+                            ><FontAwesomeIcon icon={faEnvelope} />
+                            </button>
+                            <Link href="#" className="col-span-2 bg-green-600 px-5 py-3 rounded-lg text-white text-lg"><FontAwesomeIcon icon={faWhatsapp} /></Link>
                         </div>
                     </div>
-                </div>
-                <div className="grid grid-cols-2 text-center md:flex items-center justify-end gap-3 mt-3 border-t border-gray-900/5 pt-6">
-                    <Link href="#" className="bg-gray-100 px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /> Call</Link>
-                    <button
-                        onClick={modalHandler}
-                        type="button"
-                        className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg"
-                    ><FontAwesomeIcon icon={faEnvelope} />
-                    </button>
-                    <Link href="#" className="col-span-2 bg-green-600 px-5 py-3 rounded-lg text-white text-lg"><FontAwesomeIcon icon={faWhatsapp} /> WhatsApp</Link>
                 </div>
             </div>
         </article>
