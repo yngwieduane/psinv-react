@@ -1,7 +1,7 @@
 import { getLookupId } from "@/utils/lookup";
-import ProjectsPage from "../_components/ProjectsPage";
 import { unslugify } from "@/utils/utils";
 import type { Metadata } from 'next'
+import ProjectsPage from "./_components/ProjectsPage";
 
 type Props = {
   params: Promise<{ city:string;community:string;subcommunity:string;project:string }>
