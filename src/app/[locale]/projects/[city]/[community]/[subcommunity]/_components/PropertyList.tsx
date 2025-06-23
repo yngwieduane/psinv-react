@@ -1,11 +1,10 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import PropertyCard from "../../_components/tools/PropertyCard";
-import Pagination from "../../_components/tools/Pagination";
 import SearchProperty from "./SearchProperty";
 import PropertyBox from "./PropertyBox";
-import { BlogItem, Skeleton } from "../../_components/tools/Skeleteon";
+import Pagination from "@/app/[locale]/_components/tools/Pagination";
+import { BlogItem } from "@/app/[locale]/_components/tools/Skeleteon";
 
 interface PropertyListProps {
   page: number;
@@ -17,6 +16,7 @@ interface PropertyListProps {
   isFeaturedProjectOnWeb: string;
   cityId: string;
   communityId: string;
+  subcommunityId: string;
 }
 
 export default function PropertyList({
@@ -28,7 +28,8 @@ export default function PropertyList({
   propertyname,
   isFeaturedProjectOnWeb,
   cityId,
-  communityId
+  communityId,
+  subcommunityId
 }: PropertyListProps) {
   const [data, setData] = useState<any>(null);
   const [isLoading, setLoading] = useState(true);
@@ -41,7 +42,7 @@ export default function PropertyList({
         setLoading(true);
         
         const response = await fetch(
-          `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${cityId}&community=${communityId}`
+          `/api/external/allprojects/community/subcommunity?page=${page}&propertyname=${propertyname}&city=${cityId}&community=${communityId}&subcommunity=${subcommunityId}`
         );
 
         if (!response.ok) {

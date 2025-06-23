@@ -1,4 +1,5 @@
-import Breadcrumb from "../../_components/Breadcrumb";
+
+import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import PropertyList from "./PropertyList";
 
 

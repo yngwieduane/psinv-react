@@ -1,11 +1,10 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import PropertyCard from "../../_components/tools/PropertyCard";
-import Pagination from "../../_components/tools/Pagination";
 import SearchProperty from "./SearchProperty";
 import PropertyBox from "./PropertyBox";
-import { BlogItem, Skeleton } from "../../_components/tools/Skeleteon";
+import Pagination from "@/app/[locale]/_components/tools/Pagination";
+import { BlogItem } from "@/app/[locale]/_components/tools/Skeleteon";
 
 interface PropertyListProps {
   page: number;
@@ -41,7 +40,7 @@ export default function PropertyList({
         setLoading(true);
         
         const response = await fetch(
-          `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${cityId}&community=${communityId}`
+          `/api/external/allprojects/community?page=${page}&propertyname=${propertyname}&city=${cityId}&community=${communityId}`
         );
 
         if (!response.ok) {
