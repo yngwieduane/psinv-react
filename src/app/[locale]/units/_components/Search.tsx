@@ -28,11 +28,12 @@ export default function Search({ placeholder }: { placeholder: string }) {
   return (
     <Form action={`/${locale}/units`}>
         <div className="relative grid grid-cols-2 md:grid-cols-4 gap-5 items-center">
+            <Autocomplete />
             <div>
                 <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                     Search By ID
                 </label>
-                <div className="mt-2">
+                <div className="">
                 <input
                     placeholder={placeholder}
                     id="unitid"
@@ -49,7 +50,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
                 <label htmlFor="category" className="block text-sm/6 font-medium text-gray-900">
                     Category
                 </label>
-                <div className="mt-2 grid grid-cols-1">
+                <div className=" grid grid-cols-1">
                     <select
                         id="category"
                         name="category"

@@ -30,6 +30,7 @@ export default function Autocomplete() {
         setResults([]);
         setLoading(false);
         setShowDropdown(false);
+        setIDValue(0);
       }
     }, 300);
 
@@ -47,11 +48,16 @@ export default function Autocomplete() {
     setShowDropdown(false);
   }
   return (
-    <div className="relative w-96">
+    <div >
+      <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+          Property Name
+      </label>
       <input
         type="text"
+        id="propertyName"
+        name="propertyName"
         placeholder="Search project..."
-        className="border rounded p-2 w-full"
+        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
         value={inputValue}
         onChange={handleInputChange}
       />
@@ -67,7 +73,14 @@ export default function Autocomplete() {
           ))}
         </ul>
       )}
-      {iDValue}
+      <input
+        type="text"
+        id="propertyId"
+        name="propertyId"
+        className="hidden"
+        value={iDValue}
+        readOnly
+      />
     </div>
   );
 }

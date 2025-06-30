@@ -5,12 +5,12 @@ import UnitsSidebar from "./UnitsSidebar";
 import Search from "./Search";
 import { Suspense } from "react";
 import { Skeleton } from "../../_components/tools/Skeleteon";
-import Autocomplete from "./AutocompleteSearch";
 
 export default async function UnitsPage(props: any) {
     const unitid = props.unitid || '';
     const category = props.category || '';
     const currentPage = Number(props.page) || 1;
+    const propertyId = props.propertyId || '';
     return (
         <>
             <div>
@@ -20,12 +20,11 @@ export default async function UnitsPage(props: any) {
                 <div className="grid grid-cols-4 gap-4 mainuppper">
                     <div className="col-span-4">
                         <Search placeholder="Search by Reference ID"/>
-                        <Autocomplete/>
                     </div>
                     <div className="col-span-3 md:col-span-3    ">
                         <div className="mt-16 space-y-10 lg:mt-10 lg:space-y-5">
                             <Suspense key={unitid + currentPage} fallback={<Skeleton />}>
-                                <UnitsList unitid={unitid} category={category} currentPage={currentPage} />
+                                <UnitsList unitid={unitid} category={category} propertyId={propertyId} currentPage={currentPage} />
                             </Suspense>
                         </div>
                     </div>
