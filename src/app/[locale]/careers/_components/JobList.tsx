@@ -43,19 +43,16 @@ export default function JobList({ jobs: initialJobs }: JobListProps) {
   if (!Array.isArray(jobs) || jobs.length === 0) {
     return (
       <div className="relative w-full py-12 overflow-hidden transition-all duration-700">
-        {/* Left pattern background */}
         <div className="absolute inset-0 w-1/4 left-0 bg-left bg-[url('/images/career/pattern.svg')] bg-cover bg-no-repeat z-0 opacity-40" />
-
-        {/* Centered PSI Logo */}
         <div className="relative flex flex-col md:flex-row items-center max-w-[1320px] mx-auto gap-12 justify-center z-10">
           <div className="w-full md:w-1/2 flex justify-center transition-all duration-700">
             <Image
-              src="/images/career/PSI-Logo.svg"
-              alt="PSI Logo"
-              width={470}
-              height={300}
-              className="w-full max-w-[300px] h-auto"
-            />
+  src="/images/career/PSI-Logo.svg"
+  alt="PSI Logo"
+  width={470}
+  height={300}
+  className="w-[200px] md:w-[300px] h-auto transition-all duration-700"
+/>
           </div>
         </div>
       </div>
@@ -68,27 +65,21 @@ export default function JobList({ jobs: initialJobs }: JobListProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background pattern left */}
       <div
         className={`absolute inset-0 w-1/4 left-0 bg-left bg-[url('/images/career/pattern.svg')] bg-cover bg-no-repeat z-0 transition-all duration-700 ${
           isHovered ? "opacity-0" : "opacity-40"
         }`}
       />
-
-      {/* Background pattern right */}
       <div
         className={`absolute inset-0 w-1/4 right-0 ml-auto bg-right bg-[url('/images/career/pattern.svg')] bg-cover bg-no-repeat z-0 transition-all duration-700 ${
           isHovered ? "opacity-100" : "opacity-0"
         }`}
       />
-
-      {/* Content Layer */}
       <div
         className={`relative flex flex-col md:flex-row items-center max-w-[1320px] mx-auto gap-12 transition-all duration-700 ${
           isHovered ? "justify-between" : "justify-center"
         } z-10`}
       >
-        {/* Left PSI Logo */}
         <div
           className={`w-full md:w-1/2 flex transition-all duration-700 ${
             isHovered ? "justify-start" : "justify-center"
@@ -102,8 +93,6 @@ export default function JobList({ jobs: initialJobs }: JobListProps) {
             className="w-auto h-auto"
           />
         </div>
-
-        {/* Right Job List */}
         <div
           className={`w-full md:w-1/2 transition-all duration-700 ${
             isHovered
@@ -111,17 +100,23 @@ export default function JobList({ jobs: initialJobs }: JobListProps) {
               : "opacity-0 max-w-0 overflow-hidden"
           }`}
         >
-          <Swiper
-            direction="vertical"
-            slidesPerView={5}
-            spaceBetween={20}
-            centeredSlides
-            mousewheel
-            loop
-            modules={[Mousewheel]}
-            className="h-[330px]"
-            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-          >
+<Swiper
+  direction="vertical"
+  slidesPerView={3}
+  spaceBetween={16}
+  centeredSlides
+  mousewheel
+  loop
+  modules={[Mousewheel]}
+  className="h-[280px] md:h-[330px]"
+  breakpoints={{
+    768: {
+      slidesPerView: 5,
+      spaceBetween: 20,
+    },
+  }}
+  onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+>
             {jobs.map((job, index) => (
               <SwiperSlide key={job.id}>
                 <a

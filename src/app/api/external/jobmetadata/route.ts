@@ -14,9 +14,9 @@ export async function POST(req: Request) {
       jsonrpc: "2.0",
       method: "call",
       params: {
-db: process.env.ODOO_DB,
-    login: process.env.ODOO_USER,
-    password: process.env.ODOO_PASSWORD,
+    db: "Xeleration",
+    login: "psi_website",
+    password: "2wVtzjqYF4b3",
       },
     }),
   });
