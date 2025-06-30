@@ -78,7 +78,6 @@ export default function CareerJourney() {
 
   return (
     <div className="relative w-full px-4 py-16 overflow-hidden bg-white">
-      {/* Text Block */}
       <div className="relative max-w-[1320px] mx-auto z-10 mb-10">
         <h2
           className={`uppercase text-[#2C2D65] text-[32px] leading-[53px] ${poppins.className}`}
@@ -99,16 +98,14 @@ export default function CareerJourney() {
           the world (UAE).
         </p>
       </div>
-
-      {/* Roadmap */}
-      <div className="relative w-full h-[600px]">
+      <div className="relative w-full h-[300px] md:h-[600px]">
         <Image
           src="/images/career/careers-roadmap.svg"
           alt="Career Journey Roadmap"
           fill
           className="object-contain"
         />
-
+ <div className="hidden md:block">
         {hoverSteps.map((step) => (
           <div
             key={step.id}
@@ -117,7 +114,6 @@ export default function CareerJourney() {
             onMouseEnter={() => setHovered(step.id)}
             onMouseLeave={() => setHovered(null)}
           >
-            {/* Hover bubble OUTSIDE the small circle */}
             {hovered === step.id && (
               <div
                 className="absolute z-20 w-[450px] h-[450px] rounded-full border-[4px] border-[#E35F27] bg-white transition-all duration-500 p-8 flex flex-col justify-center shadow-[0px_10px_30px_rgba(0,0,0,0.12)]"
@@ -133,13 +129,12 @@ export default function CareerJourney() {
                 </div>
               </div>
             )}
-
-            {/* Numbered Circle */}
             <div className="relative z-10 w-[69px] h-[69px] bg-white border-[2px] border-orange-500 rounded-full flex items-center justify-center text-xl font-bold text-[#2C2D65] shadow-md cursor-pointer">
               {String(step.id).padStart(2, '0')}
             </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

@@ -58,34 +58,34 @@ export default function JobDetailsPage() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  useEffect(() => {
-    const fetchJob = async () => {
-      const id = slug?.split("-").pop();
-      if (!id) return;
+useEffect(() => {
+  const fetchJob = async () => {
+    const id = slug?.split("-").pop();
+    if (!id) return;
 
-      try {
-        const baseURL =
-          process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-        const res = await fetch(`${baseURL}/api/external/jobdetail`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ id }),
-        });
+    try {
+      const baseURL = "http://localhost:3000";
 
-        if (!res.ok) throw new Error("Failed to fetch job detail");
+      const res = await fetch(`${baseURL}/api/external/jobdetail`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
 
-        const data = await res.json();
-        setJob(data?.result?.[0] ?? null);
-      } catch (err) {
-        console.error("Error fetching job details:", err);
-        setJob(null);
-      } finally {
-        setLoading(false);
-      }
-    };
+      if (!res.ok) throw new Error("Failed to fetch job detail");
 
-    fetchJob();
-  }, [slug]);
+      const data = await res.json();
+      setJob(data?.result?.[0] ?? null);
+    } catch (err) {
+      console.error("Error fetching job details:", err);
+      setJob(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchJob();
+}, [slug]);
 
   useEffect(() => {
     if (!job || !Array.isArray(job.job_skills)) return;
@@ -146,18 +146,13 @@ export default function JobDetailsPage() {
   useEffect(() => {
     if (!job?.job_must_have || !Array.isArray(job.job_must_have)) return;
 
-    // Filter numeric IDs only
     const mustHaveIds = job.job_must_have.filter(
       (item): item is number => typeof item === "number"
     );
-
-    // If no IDs, or already resolved, return early
     if (mustHaveIds.length === 0 || resolvedMustHave.length > 0) return;
 
     const fetchMustHave = async () => {
       try {
-        console.log("📤 Fetching job must-have metadata for IDs:", mustHaveIds);
-
         const res = await fetch("/api/external/jobmetadata", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -186,8 +181,20 @@ export default function JobDetailsPage() {
       >
         <div className="absolute inset-0 bg-[#00000066] z-10" />
         <div className="relative z-20">
-          <h1 className="text-[64px] md:text-[96px] font-bold">CAREERS</h1>
-          <p className="text-lg mt-4">Home &gt; Careers &gt; {job.name}</p>
+               <p className="text-lg mt-4 space-x-2">
+        <Link href="/" className="hover:text-orange-300 transition">
+          Home
+        </Link>
+        <span>&gt;</span>
+        <Link
+          href={`/${locale}/careers`}
+          className="hover:text-orange-300 transition"
+        >
+          Careers
+        </Link>
+        <span>&gt;</span>
+        <span>{job.name}</span>
+      </p>
         </div>
       </section>
 
@@ -263,8 +270,8 @@ export default function JobDetailsPage() {
                 dangerouslySetInnerHTML={{ __html: job.description }}
               ></div>
 
-              <div className="absolute top-6 right-6 w-10 h-10 border-2 border-[#E35F27] rounded-full flex items-center justify-center">
-                <span className="text-[#E35F27] text-lg">↑</span>
+              <div className="absolute top-6 right-6 md:w-10 md:h-10 w-7 h-7 border-2 border-[#E35F27] rounded-full flex items-center justify-center">
+                <span className="text-[#E35F27] text-sm md:text-xl">↑</span>
               </div>
             </div>
           )}
@@ -279,8 +286,8 @@ export default function JobDetailsPage() {
                 <h3 className="text-[#2C2D65] text-lg md:text-xl font-semibold">
                   Qualifications:
                 </h3>
-                <div className="w-10 h-10 border-2 border-[#2C2D65] rounded-full flex items-center justify-center">
-                  <span className="text-[#2C2D65] text-xl">
+                <div className="md:w-10 md:h-10 w-7 h-7 border-2 border-[#2C2D65] rounded-full flex items-center justify-center">
+                  <span className="text-[#2C2D65] text-sm md:text-xl">
                     {openIndex === 0 ? "↑" : "↓"}
                   </span>
                 </div>
@@ -317,8 +324,8 @@ export default function JobDetailsPage() {
                   <h3 className="text-[#2C2D65] text-lg md:text-xl font-semibold">
                     Key Responsibilities:
                   </h3>
-                  <div className="w-10 h-10 border-2 border-[#2C2D65] rounded-full flex items-center justify-center">
-                    <span className="text-[#2C2D65] text-xl">
+                  <div className="md:w-10 md:h-10 w-7 h-7 border-2 border-[#2C2D65] rounded-full flex items-center justify-center">
+                    <span className="text-[#2C2D65] text-sm md:text-xl">
                       {openIndex === 1 ? "↑" : "↓"}
                     </span>
                   </div>
@@ -350,8 +357,8 @@ export default function JobDetailsPage() {
                 <h3 className="text-[#2C2D65] text-lg md:text-xl font-semibold">
                   Skills & Competencies:
                 </h3>
-                <div className="w-10 h-10 border-2 border-[#2C2D65] rounded-full flex items-center justify-center">
-                  <span className="text-[#2C2D65] text-xl">
+                <div className="md:w-10 md:h-10 w-7 h-7 border-2 border-[#2C2D65] rounded-full flex items-center justify-center">
+                  <span className="text-[#2C2D65] text-sm md:text-xl">
                     {openIndex === 2 ? "↑" : "↓"}
                   </span>
                 </div>

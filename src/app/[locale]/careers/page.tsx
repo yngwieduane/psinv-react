@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { Audrey, BrittanySignature } from "@/utils/fonts";
 import { Montserrat, Open_Sans } from "next/font/google";
@@ -51,11 +52,9 @@ export default function CareersPage() {
             <p className="text-lg mt-4">Home &gt; Careers</p>
           </div>
         </div>
-
         <div className="h-8 bg-transparent" />
-
         {/* Careers Section */}
-        <div className="container max-w-[1320px] mx-auto px-4 mt-32">
+        <div className="container max-w-[1320px] mx-auto px-4 mt-10 md:mt-32">
           <div className="w-full px-4 relative">
             <div
               className="flex flex-col md:flex-row gap-12 group"
@@ -63,17 +62,17 @@ export default function CareersPage() {
               onMouseLeave={() => setIsHovered(false)}
             >
               {/* Left Text */}
-              <div className="md:w-7/12 md:pr-8">
-                <h2 className="text-2xl md:text-3xl text-[#2C2D65] uppercase mb-4">
+              <div className="md:w-7/12 md:pr-8 pr-2">
+                <h2 className="text-xl md:text-3xl text-[#2C2D65] uppercase mb-4">
                   Unlock Your Professional{" "}
                   <span
-                    className={`${BrittanySignature.className} capitalize  text-orange-600`}
+                    className={`${BrittanySignature.className} text-2xl md:text-3xl capitalize  text-orange-600`}
                   >
                     Growth
                   </span>
                 </h2>
                 <p
-                  className={`text-sm md:text-base text-gray-700 leading-relaxed max-w-sm md:max-w-xl ${poppins.className}`}
+                  className={`text-base md:text-base text-gray-700 leading-relaxed max-w-sm md:max-w-xl ${poppins.className}`}
                 >
                   Driven by a passion for excellence, we believe in nurturing
                   talent and fostering career development. We offer continuous
@@ -82,9 +81,8 @@ export default function CareersPage() {
                   roles.
                 </p>
               </div>
-
               {/* Right Image Stack */}
-              <div className="relative md:w-5/12 h-[330px] flex items-center justify-center">
+              <div className="relative md:w-5/12 h-[330px] flex items-center justify-center hidden md:block">
                 {[...stackedImages].reverse().map((src, i) => (
                   <div
                     key={i}
@@ -108,9 +106,30 @@ export default function CareersPage() {
             </div>
           </div>
         </div>
+<div className="relative h-[267px] mt-10 w-full md:hidden">
+  <div className="absolute top-0 right-0 w-[70%] z-10">
+    <img
+      src="/images/career/careers-3.jpg"
+      alt="Left Image"
+      className="rounded-lg shadow-md w-full object-cover"
+    />
+  </div>
+  <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[70%] z-20">
+    <img
+      src="/images/career/careers-1.jpg"
+      alt="Center Image"
+      className="rounded-lg shadow-md w-full object-cover"
+    />
+  </div>
+  <div className="absolute top-20 left-0 w-[70%] z-30">
+    <img
+      src="/images/career/careers-2.jpg"
+      alt="Right Image"
+      className="rounded-lg shadow-md w-full object-cover"
+    />
+  </div>
+</div>
       </section>
-
-      {/* Hover Images Grid - Above Award Section */}
       {isHovered && (
         <div className="w-full flex justify-center">
           <div className="w-full max-w-[1320px] px-4 mt-8 mb-28 z-30">
@@ -128,7 +147,6 @@ export default function CareersPage() {
           </div>
         </div>
       )}
-
       {/* Award Section */}
       <section className="w-full bg-secondary-color py-10 text-[var(--color-gray-500)]">
         <div
@@ -150,10 +168,8 @@ export default function CareersPage() {
               PARTNER
             </h3>
           </div>
-
           <AboutCounter />
-
-          <div className="grid grid-cols-3 md:grid-cols-4 gap-6 text-center counter1">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center counter1">
             {/* Counters */}
             <div className="flex items-center gap-4">
               <h4
