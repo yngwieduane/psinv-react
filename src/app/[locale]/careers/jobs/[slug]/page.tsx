@@ -64,7 +64,7 @@ useEffect(() => {
     if (!id) return;
 
     try {
-      const baseURL = "http://localhost:3000";
+      const baseURL = "https://psi.properties";
 
       const res = await fetch(`${baseURL}/api/external/jobdetail`, {
         method: "POST",
