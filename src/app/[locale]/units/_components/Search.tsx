@@ -67,7 +67,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
             </div>
             <div>
                 <button type="submit"
-                    className="rounded-full bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50"
+                    className="rounded-xl bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50"
                 >Search</button>
             </div>
         </div>
