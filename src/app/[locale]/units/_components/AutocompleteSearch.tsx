@@ -60,8 +60,9 @@ export default function Autocomplete() {
         className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
         value={inputValue}
         onChange={handleInputChange}
+        autoComplete="off"
       />
-      {loading && <p className="text-sm text-gray-500 mt-1">Searching...</p>}
+      {loading && <p className="absolute left-0 right-0 bg-white border mt-1 z-10 max-h-60 overflow-auto shadow">Searching...</p>}
       {showDropdown && results.length > 0 && (
         <ul className="absolute left-0 right-0 bg-white border mt-1 z-10 max-h-60 overflow-auto shadow">
           {results.map((item, index) => (

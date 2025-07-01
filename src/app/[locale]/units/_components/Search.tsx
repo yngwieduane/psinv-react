@@ -5,13 +5,27 @@ import { useSearchParams } from 'next/navigation';
 import Form from 'next/form'
 import {useLocale} from 'next-intl';
 import Autocomplete from './AutocompleteSearch';
+import { useFormStatus } from 'react-dom';
+import { useState } from 'react';
  
 export default function Search({ placeholder }: { placeholder: string }) {
     
+    const [loading, setLoading] = useState(false);
+
+    const onSubmit = () => {
+        setLoading(true);
+
+        // Simulate async action (e.g., API call)
+        setTimeout(() => {
+            console.log('Action completed');
+            setLoading(false);
+        }, 2000); // Simulates a 2-second API call
+    };
     const searchParams = useSearchParams();
     //const pathname = usePathname();
     //const { replace } = useRouter();
     const locale = useLocale();
+    const { pending } = useFormStatus();
 
     // function handleSearch(term: string) {
 
@@ -26,10 +40,10 @@ export default function Search({ placeholder }: { placeholder: string }) {
     // }
 
   return (
-    <Form action={`/${locale}/units`}>
-        <div className="relative grid grid-cols-2 md:grid-cols-4 gap-5 items-center">
+    <Form action={`/${locale}/units`} onSubmit={onSubmit}>
+        <div className="relative grid grid-cols-2 md:grid-cols-4 gap-5 items-end">
             <Autocomplete />
-            <div>
+            <div className='hidden'>
                 <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                     Search By ID
                 </label>
@@ -67,9 +81,11 @@ export default function Search({ placeholder }: { placeholder: string }) {
                 </div>
             </div>
             <div>
-                <button type="submit"
-                    className="rounded-xl bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50"
-                >Search</button>
+                <button 
+                    type="submit"
+                    disabled={loading}
+                    className="rounded-xl bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 cursor-pointer"
+                >{loading ? 'Searching ...' : 'Search'}</button>
             </div>
         </div>
     </Form>

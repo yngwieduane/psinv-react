@@ -9,14 +9,10 @@ export async function GET(request: NextRequest) {
     // let apiurldxb = 'https://integration.dubai-crm.com/ExternalApis/GetSaleListing';
     // let apiurlassets = 'https://integration.psiassets-crm.com/ExternalApis/GetSaleListing';
     // let queryfilter;
-    console.log('Fetching units data...'+unitid);
+    console.log('Fetching units data...'+propertyId);
     let raw;
-    if(propertyId == '0'){
-      propertyId = '';
-    }
-    if (unitid) {
+    if (propertyId) {
       raw = JSON.stringify({
-        "unitId": unitid,
         "propertyId":propertyId
       });
     } else {
