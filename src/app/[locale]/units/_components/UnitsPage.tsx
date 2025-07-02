@@ -5,6 +5,7 @@ import UnitsSidebar from "./UnitsSidebar";
 import Search from "./Search";
 import { Suspense } from "react";
 import { Skeleton } from "../../_components/tools/Skeleteon";
+import UnitsSideSearch from "./UnitsSideSearch";
 
 export default async function UnitsPage(props: any) {
     const unitid = props.unitid || '';
@@ -29,7 +30,7 @@ export default async function UnitsPage(props: any) {
                         </div>
                     </div>
                     <div className="hidden md:flex">
-                        <UnitsSidebar data=""/>
+                        <UnitsSideSearch / >
                     </div>
                 </div>
             </div>

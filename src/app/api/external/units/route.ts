@@ -11,9 +11,9 @@ export async function GET(request: NextRequest) {
     // let queryfilter;
     console.log('Fetching units data...'+propertyId);
     let raw;
-    if (propertyId) {
+    if (unitid) {
       raw = JSON.stringify({
-        "propertyId":propertyId
+        "unitid":unitid
       });
     } else {
       raw = JSON.stringify({});

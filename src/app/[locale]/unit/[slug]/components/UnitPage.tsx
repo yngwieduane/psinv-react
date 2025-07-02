@@ -37,6 +37,7 @@ export default function UnitPage(props: any) {
                 <Breadcrumb/>
             </div>
             <div className="">
+                Count {props.data.length)}
                 {props.data.map((post:any,index:any) => { 
                 let images, price, category, map, video, amenities, facilities, coordinates;
                 {post.imageurl !== null
@@ -160,7 +161,7 @@ export default function UnitPage(props: any) {
                                         Amenities
                                     </h2>
                                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
-                                        <AmenitiesFeatures content={amenities.slice(0, -1)} limit={12}/>
+                                        {/* <AmenitiesFeatures content={amenities.slice(0, -1)} limit={12}/> */}
                                     </div>
                                 </div>) : ("")}
                                 {/* facilities */}
@@ -170,7 +171,7 @@ export default function UnitPage(props: any) {
                                         Facilities
                                     </h2>
                                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
-                                        <AmenitiesFeatures content={facilities.slice(0, -1)} limit={12}/>
+                                        {/* <AmenitiesFeatures content={facilities.slice(0, -1)} limit={12}/> */}
                                     </div>
                                 </div>) : ("")}
                                 {/* Overview */}
@@ -236,7 +237,7 @@ export default function UnitPage(props: any) {
                         <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} />
                     </div>
                 </div>
-            )
+                )
             })}
             </div>
         </>
