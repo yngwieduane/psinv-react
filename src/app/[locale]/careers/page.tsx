@@ -8,6 +8,8 @@ import AboutCounter from "../../[locale]/about-us/_components/AboutCounter";
 import { useEffect, useState } from "react";
 import JobList from "../careers/_components/JobList";
 import CareerJourney from "../careers/_components/CareerJourney";
+import SocialMediaTabs from "../_components/SocialMediaTabs";
+import FooterBannerCarousel from "../_components/FooterBannerCarousel";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -289,6 +291,13 @@ export default function CareersPage() {
         <section className="container px-4 mt-32">
           <CareerJourney />
         </section>
+            {/* Social media */}
+        <section className="container max-w-[1320px] mx-auto px-4 mt-10 md:mt-20 mt-0">
+          <SocialMediaTabs />
+        </section>  
+           <section className="container max-w-[1320px] mx-auto px-4 mt-10 md:mt-20 mt-10">
+          <FooterBannerCarousel />
+        </section>  
     </>
   );
 }
