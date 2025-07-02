@@ -36,8 +36,7 @@ export default function UnitPage(props: any) {
             <div>
                 <Breadcrumb/>
             </div>
-            <div className="">
-                Count {props.data.length)}
+            <div >
                 {props.data.map((post:any,index:any) => { 
                 let images, price, category, map, video, amenities, facilities, coordinates;
                 {post.imageurl !== null
