@@ -292,10 +292,10 @@ export default function CareersPage() {
           <CareerJourney />
         </section>
             {/* Social media */}
-        <section className="container max-w-[1320px] mx-auto px-4 mt-10 md:mt-20 mt-0">
+        <section className="container max-w-[1320px] mx-auto px-4 mt-10 md:mt-20 mt-0 hidden md:block">
           <SocialMediaTabs />
         </section>  
-           <section className="container max-w-[1320px] mx-auto px-4 mt-10 md:mt-20 mt-10">
+           <section className="container max-w-[1320px] mx-auto px-4 mt-10 md:mt-20 mt-10 hidden md:block">
           <FooterBannerCarousel />
         </section>  
     </>

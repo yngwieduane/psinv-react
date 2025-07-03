@@ -10,17 +10,17 @@ const banners = [
     alt: 'Nawayef Park Views banner',
   },
   {
-    link: '/en/project/saas-hills',
+    link: '/en/projects/dubai/al-barsha/al-barsha/saas-hills',
     src: '/images/footer-banner/saas-hills-footer-banner.webp',
     alt: 'SAAS Hills banner',
   },
   {
-    link: '/en/project/mamsha-gardens-registration',
+    link: '/en/projects/abu-dhabi/saadiyat-island/cultural-district/mamsha-gardens',
     src: '/images/footer-banner/footer-mamsha-gardens.jpg',
     alt: 'Mamsha Gardens banner',
   },
   {
-    link: '/en/project/bloom-living-almeria-registration',
+    link: '/en/projects/abu-dhabi/zayed-city/n-a/bloom-living-almeria',
     src: '/images/footer-banner/bloom-living-almeria-footer.jpg',
     alt: 'Bloom Living Almeria banner',
   },
@@ -30,12 +30,12 @@ const banners = [
     alt: 'Verdes banner',
   },
   {
-    link: '/en/project/hudayriyat-island',
+    link: '/en/projects/abu-dhabi/hudayriyat-island',
     src: '/images/footer-banner/footer-hudayriyat.webp',
     alt: 'Hudayriyat Island banner',
   },
   {
-    link: '/en/ramhan-island',
+    link: '/en/projects/abu-dhabi/ramhan-island/ramhan-island/ramhan-island',
     src: '/images/footer-banner/footer-ramhan.webp',
     alt: 'Ramhan Island banner',
   },
