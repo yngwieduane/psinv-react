@@ -44,6 +44,7 @@ export default function MySwiper(props: any) {
             let imagecontent = slide.split('?');
             return (
                 <SwiperSlide key={index} className="swiper-slide-1990">
+                  <a data-fancybox="gallerypopup" href={imagecontent[0]}>
                   <div className="swiper-material-wrapper">
                       <div className="swiper-material-content">
                       <img
@@ -55,7 +56,6 @@ export default function MySwiper(props: any) {
                           loading="lazy"
                           src={imagecontent[0]}
                       />
-                      <a key={index} data-fancybox="gallerypopup" href={imagecontent[0]}></a>
 
                       <div className="swiper-lazy-preloader"></div>
 
@@ -65,6 +65,7 @@ export default function MySwiper(props: any) {
                       </div>
                       </div>
                   </div>
+                  </a>
                 </SwiperSlide>
             )
         })}

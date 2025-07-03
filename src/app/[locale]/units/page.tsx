@@ -4,6 +4,8 @@ export default async function Units(props: {
   searchParams?: Promise<{
     unitid?: string;
     category?: string;
+    propertyName?: string;
+    propertyId?: string;
     page?: string;
   }>;
 }){
@@ -11,12 +13,14 @@ export default async function Units(props: {
   const unitid = searchParams?.unitid || '';
   const category = searchParams?.category || '';
   const currentPage = Number(searchParams?.page) || 1;
+  const propertyId = searchParams?.propertyId || '';
   console.log("mainPageUnits="+unitid);
+  console.log("propertyId="+propertyId);
 
 
     return (
         <>
-            <UnitsPage unitid={unitid} category={category} currentPage={currentPage}/>
+            <UnitsPage unitid={unitid} category={category} propertyId={propertyId} currentPage={currentPage}/>
         </>
     );
 }

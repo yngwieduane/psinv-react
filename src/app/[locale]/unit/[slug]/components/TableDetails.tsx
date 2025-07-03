@@ -1,4 +1,6 @@
 import { Link } from "@/i18n/navigation";
+import { faArrowRight, } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import slugify from "react-slugify";
 
 const TableDetails = (props:any) => {
@@ -13,7 +15,7 @@ const TableDetails = (props:any) => {
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
                             Property Name
                             </td>
-                            <td className="px-2 py-2 text-sm whitespace-nowrap text-gray-500"><Link href={url}>{props.data[0].propertyname}</Link></td>
+                            <td className="px-2 py-2 text-sm whitespace-nowrap text-gray-500"><Link href={url}>{props.data[0].propertyname} <FontAwesomeIcon icon={faArrowRight}/></Link></td>
                         </tr>
                         {props.data[0].category !== null ? (
                         <tr  className="even:bg-gray-50">

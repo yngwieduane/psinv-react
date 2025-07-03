@@ -31,7 +31,7 @@ export default function ReportDownloadSection() {
           </div>
 
           {/* Right Column - Image */}
-          <div className="relative w-[750px] h-[521px] mt-[-35px] mb-[-20px]">
+          <div className="relative w-[220px] h-[160px] md:w-[750px] md:h-[521px] mt-1 md:mt-[-35px] mb-6 md:mb-[-20px]">
             <Image
               src="/images/april-report.png"
               alt="Monthly Report DXB"

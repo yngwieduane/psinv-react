@@ -4,15 +4,16 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
     const unitid = searchParams.get('unitid') || '';
     const category = searchParams.get('category') || '';
+    let propertyId = searchParams.get('propertyId') || '';
     let apiurl = 'https://integration.psi-crm.com/ExternalApis/GetSaleListing';
     // let apiurldxb = 'https://integration.dubai-crm.com/ExternalApis/GetSaleListing';
     // let apiurlassets = 'https://integration.psiassets-crm.com/ExternalApis/GetSaleListing';
     // let queryfilter;
-    console.log('Fetching units data...'+unitid);
+    console.log('Fetching units data...'+propertyId);
     let raw;
     if (unitid) {
       raw = JSON.stringify({
-        "unitId": unitid,
+        "unitid":unitid
       });
     } else {
       raw = JSON.stringify({});

@@ -7,7 +7,7 @@ const PropertyCard = (props:any) => {
     const propType = props.data["propertyType"] ? (<p className="text-sm">Types<br />{props.data["propertyType"]}</p>) : ("");
     const propBed = props.data["availableBedrooms"] ? (<p className="text-sm">Beds<br />
     {props.data["availableBedrooms"].map((img:any) => {
-        return img['noOfBedroom'];
+        return img['noOfBedroom']+',';
     })}
     </p>) : ("");
     const propHO = props.data["handoverDate"] ? (<p className="text-sm">Handover<br />{props.data["handoverDate"]}</p>) : ("");

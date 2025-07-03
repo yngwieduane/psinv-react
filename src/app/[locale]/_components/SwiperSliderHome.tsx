@@ -15,6 +15,7 @@ import Modals from "./tools/Modals";
 
 const SwiperSlider = (props: any) => {
   const swiperElRef2 = useRef<any>(null);
+  const [currentSlide, setCurrentSlide] = useState(1);
 
     const [setModal, setSetModal] = useState(false);
     const modalHandler = (event:any) => {
@@ -30,8 +31,8 @@ const SwiperSlider = (props: any) => {
     <div className="relative">
       <div className="absolute end-0 bottom-0 grid grid-cols-3">
         <div className="swiper-pagination relative z-10 bg-white py-3 px-4">
-          <span className="swiper-pagination-current"></span>
-          <span className="swiper-pagination-total">{swiperElRef2.current?.pagination?.el?.childElementCount}</span>
+          <span className="swiper-pagination-current font-bold text-xl">{currentSlide} </span>/
+          <span className="swiper-pagination-total"> {props.slides.length}</span>
         </div>
         <button onClick={() => swiperElRef2.current?.slidePrev()} className="review-swiper-button-prev1 z-10 p-2 right-0 relative text-white bg-orange-600 hover:bg-orange-500">
           <ChevronLeftIcon className="w-10 h-10" />
@@ -54,7 +55,7 @@ const SwiperSlider = (props: any) => {
         modules={[Navigation,Pagination]}
         spaceBetween={50}
         slidesPerView={props.slidePerView}
-        onSlideChange={() => console.log(swiperElRef2)}
+        onSlideChange={(swiper: any) => setCurrentSlide(swiper.realIndex + 1)}
         onSwiper={(swiper: any) => (swiperElRef2.current = swiper)}
         className="h-[45rem]"
         >
@@ -65,10 +66,10 @@ const SwiperSlider = (props: any) => {
             style={{ backgroundImage: `url(${slide.image})` }}
           >
             <div className="bg-gradient-to-r from-blue-950 from-10% to-transparent to-70% h-full">
-              <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 h-full items-center text-center md:text-start">
+              <div className="container max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-2 h-full items-center text-center md:text-start">
                 <div className="px-4 md:px-auto">
-                  <img
-                    className="w-auto mb-5 mx-auto md:mx-0"
+                 <img
+                    className="w-[100px] h-auto mb-5 mx-auto md:mx-0"
                     src={slide.developer_img}
                     alt="Developer"
                   />

@@ -7,8 +7,8 @@ const CardOne = (props:any) => {
         <>
         <div className="overflow-hidden rounded-lg bg-gray-50">
             <div className="px-4 py-5 sm:p-6">
-                <h4>{props.title}</h4>
-                <p>{props.content}</p>
+                <h4 className="text-sm text-[#111954]">{props.title}</h4>
+                <p className="text-sm truncate">{props.content}</p>
             </div>
         </div>
         </>

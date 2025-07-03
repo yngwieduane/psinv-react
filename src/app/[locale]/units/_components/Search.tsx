@@ -5,13 +5,27 @@ import { useSearchParams } from 'next/navigation';
 import Form from 'next/form'
 import {useLocale} from 'next-intl';
 import Autocomplete from './AutocompleteSearch';
+import { useFormStatus } from 'react-dom';
+import { useState } from 'react';
  
 export default function Search({ placeholder }: { placeholder: string }) {
     
+    const [loading, setLoading] = useState(false);
+
+    const onSubmit = () => {
+        setLoading(true);
+
+        // Simulate async action (e.g., API call)
+        setTimeout(() => {
+            console.log('Action completed');
+            setLoading(false);
+        }, 2000); // Simulates a 2-second API call
+    };
     const searchParams = useSearchParams();
     //const pathname = usePathname();
     //const { replace } = useRouter();
     const locale = useLocale();
+    const { pending } = useFormStatus();
 
     // function handleSearch(term: string) {
 
@@ -26,20 +40,18 @@ export default function Search({ placeholder }: { placeholder: string }) {
     // }
 
   return (
-    <Form action={`/${locale}/units`}>
-        <div className="relative grid grid-cols-2 md:grid-cols-4 gap-5 items-center">
-            <div>
+    <Form action={`/${locale}/units`} onSubmit={onSubmit}>
+        <div className="relative grid grid-cols-2 md:grid-cols-4 gap-5 items-end">
+            <Autocomplete />
+            <div className='hidden'>
                 <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                     Search By ID
                 </label>
-                <div className="mt-2">
+                <div className="">
                 <input
                     placeholder={placeholder}
                     id="unitid"
                     name="unitid"
-                    // onChange={(e) => {
-                    // handleSearch(e.target.value);
-                    // }}
                     defaultValue={searchParams.get('unitid')?.toString()}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
@@ -49,7 +61,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
                 <label htmlFor="category" className="block text-sm/6 font-medium text-gray-900">
                     Category
                 </label>
-                <div className="mt-2 grid grid-cols-1">
+                <div className=" grid grid-cols-1">
                     <select
                         id="category"
                         name="category"
@@ -66,9 +78,11 @@ export default function Search({ placeholder }: { placeholder: string }) {
                 </div>
             </div>
             <div>
-                <button type="submit"
-                    className="rounded-full bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50"
-                >Search</button>
+                <button 
+                    type="submit"
+                    disabled={loading}
+                    className="rounded-xl bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 cursor-pointer"
+                >{loading ? 'Searching ...' : 'Search'}</button>
             </div>
         </div>
     </Form>

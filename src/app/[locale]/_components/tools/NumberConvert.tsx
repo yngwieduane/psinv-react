@@ -11,12 +11,9 @@ const NumberConvert = ({
   }) => {
 
     const format = useFormatter();
-
-
-
     return (
         <>
-        {format.number(number, { minimumFractionDigits: minDecimal })} {label}
+        {format.number(number, { maximumFractionDigits: minDecimal })} {label}
         </>
     );
 }

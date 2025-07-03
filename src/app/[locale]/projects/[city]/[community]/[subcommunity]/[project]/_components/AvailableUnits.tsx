@@ -1,4 +1,5 @@
 
+'use client'
 import { generateSeoData } from "@/app/[locale]/_components/functions/generateSeoData";
 import UnitBox from "@/app/[locale]/units/_components/UnitBox";
 import { useState, useEffect } from "react";

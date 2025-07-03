@@ -20,7 +20,7 @@ export default function SwiperNormal({ slides, width = '300', height = '300' }: 
   const swiperParameters = {
     modules: [A11y, Keyboard, Navigation, Pagination],
     grabCursor: true,
-    navigation: true,
+    navigation: false,
     pagination: true,
     keyboard: { enabled: true },
     lazy: { enabled: true },

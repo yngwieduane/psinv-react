@@ -1,17 +1,15 @@
-import ContentLoader from "react-content-loader"
+import Image from "next/image";
 
 export default function Loading(props:any) {
-    // You can add any UI inside Loading, including a Skeleton.
-    return <ContentLoader 
-        speed={2}
-        width={600}
-        className="w-full"
-        height={500}
-        viewBox="0 0 600 500"
-        backgroundColor="#f3f3f3"
-        foregroundColor="#ecebeb"
-        {...props}
-        >
-        <rect x="0" y="0" rx="0" ry="0" width="600" height="500" />
-        </ContentLoader>
+    return (
+        <div className="absolute w-full h-full top-0 bottom-0 left-0 right-0 bg-white bg-opacity-70 content-center justify-items-center ">
+            <Image
+                alt="Property Shop Investment"
+                src="/psi-gif.gif"
+                className="h-auto w-auto"
+                width={200}
+                height={200}
+            />
+        </div>
+    );
 }

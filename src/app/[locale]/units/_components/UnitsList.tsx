@@ -3,14 +3,16 @@ import UnitListBox from "./UnitListBox";
 export default async function UnitsList({
     unitid,
     category,
+    propertyId,
     currentPage,
   }: {
     unitid: string;
     category: string;
+    propertyId: string;
     currentPage: number;
   }) {
 
-    const data = await fetch('https://psi.properties/api/external/units?unitid='+unitid+'&category='+category)
+    const data = await fetch('http://localhost:3000/api/external/units/project?unitid='+unitid+'&propertyId='+propertyId+'&category='+category)
     const posts = await data.json() ;
     return (
         <>

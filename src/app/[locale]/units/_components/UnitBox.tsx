@@ -3,7 +3,7 @@ import { Link } from "@/i18n/navigation";
 import SwiperNormal from "../../_components/SwiperNormal";
 import PriceConvert from "../../_components/tools/PriceConvert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faAreaChart, faBathtub, faBed, faEnvelope, faExpand, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import NumberConvert from "../../_components/tools/NumberConvert";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
@@ -33,7 +33,7 @@ export default function UnitBox(props:any){
     return (
         <>
         <article className="relative isolate flex flex-col gap-2 bg-gray-50 rounded-lg w-full">
-            <div className="relative w-full h-64 sm:aspect-2/1">
+            <div className="relative w-full h-56 sm:aspect-2/1">
                 {images.length <= 1 ? (
                     <img
                     alt=""
@@ -69,10 +69,14 @@ export default function UnitBox(props:any){
                     </h3>
                     <p className="mt-2 text-normal/6 text-gray-600 truncate ">{props.data.marketingTitle}</p>
                 </div>
-                <div className="mt-2 ">
+                <div className="mt-2">
                     <div className="relative flex items-center gap-x-4">
-                        <div className="text-lg flex">
-                            {props.data.bedrooms} Beds | {props.data.no_of_bathrooms} Baths | <NumberConvert number={props.data.built_upArea} minDecimal='0' label='Sqft'/>
+                        <div className="text-lg flex gap-x-2">
+                            <div className="bg-gray-100 p-1 rounded-lg text-sm">{props.data.bedrooms} <FontAwesomeIcon icon={faBed}/></div>
+                            {props.data.no_of_bathrooms !== null ? (
+                                <div className="bg-gray-100 p-1 rounded-lg text-sm">{props.data.no_of_bathrooms} <FontAwesomeIcon icon={faBathtub}/></div>
+                            ) : ("")}
+                            <div className="bg-gray-100 p-1 rounded-lg text-sm"><FontAwesomeIcon icon={faExpand}/> <NumberConvert number={props.data.built_upArea} minDecimal='0' label='Sqft'/></div>
                         </div>
                     </div>
                 </div>
