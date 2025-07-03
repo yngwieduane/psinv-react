@@ -29,8 +29,8 @@ export default async function UnitsPage(props: any) {
                             </Suspense>
                         </div>
                     </div>
-                    <div className="hidden md:flex">
-                        <UnitsSideSearch / >
+                    <div className="hidden md:flex mt-16 space-y-10 lg:mt-10 lg:space-y-5">
+                        <UnitsSideSearch />
                     </div>
                 </div>
             </div>
