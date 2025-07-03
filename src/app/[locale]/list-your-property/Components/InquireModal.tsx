@@ -3,11 +3,10 @@ import React, { Fragment, useState } from "react";
 import { Dialog, Description, DialogPanel, DialogTitle, Transition, TransitionChild } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
-import ContactFormPopUp from "./ContactFormPopUp";
-import DynamicForm from "../DynamicForm";
-import InquiryForm from "../InquiryForm";
+import ListForm from "./ListForm";
+import ListModalForm from "./ListModalForm";
 
-const Modals = (props: any) => {
+const InquireModal = (props: any) => {
   const [open, setOpen] = useState(props.modalState);
 
   const onCloseModal = (event: any) => {
@@ -44,31 +43,31 @@ const Modals = (props: any) => {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <DialogPanel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+              <DialogPanel className="relative transform overflow-hidden rounded-3xl bg-white px-6 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-[500px] w-full">
                 <div>
                   <div className="">
                     <div className="grid grid-cols-3 gap-4 content-center">
                       <div className="col-span-2">
                         <DialogTitle
                           as="h3"
-                          className="text-start font-semibold text-2xl "
+                          className="text-start font-bold text-3xl text-[#E35F27]"
                         >
-                          Register Interest
+                          List Your Property
                         </DialogTitle>
                       </div>
                       <div className="text-end">
                         <button
                           type="button"
-                          className="inline-flex justify-end rounded-md bg-transparent h-full text-dark font-semibold text-gray hover:text-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                          className="cursor-pointer inline-flex justify-end rounded-md bg-transparent h-full text-gray font-semibold text-gray hover:text-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 width-10"
                           onClick={onCloseModal}
                         >
-                          <XMarkIcon className="h-full w-5 text-dark" />
+                          <XMarkIcon className="h-full w-10 h-10 text-gray-500" />
                         </button>
                       </div>
                     </div>
 
                     <div className="mt-2">
-                      <InquiryForm hideFeedbackButton={true}/>
+                      <ListModalForm fromModal={true} />
                     </div>
                   </div>
                 </div>
@@ -81,4 +80,4 @@ const Modals = (props: any) => {
   );
 };
 
-export default Modals;
+export default InquireModal;

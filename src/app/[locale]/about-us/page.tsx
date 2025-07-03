@@ -1,6 +1,5 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
 import { Audrey, BrittanySignature } from "@/utils/fonts";
 import { Montserrat, Open_Sans } from "next/font/google"; 
 import AboutCounter from "./_components/AboutCounter";
