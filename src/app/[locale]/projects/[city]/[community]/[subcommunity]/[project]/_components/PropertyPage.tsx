@@ -279,12 +279,14 @@ const PropertyPage = (props:any) => {
             <AvailableUnits
                 propid={props.data["propertyID"]}
                 category="Sale"
+                display={4}
             />
         </div>
         <div className="container mx-auto my-8 px-5">
             <AvailableUnits
                 propid={props.data["propertyID"]}
                 category="Rent"
+                display={4}
             />
         </div>
         <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} />

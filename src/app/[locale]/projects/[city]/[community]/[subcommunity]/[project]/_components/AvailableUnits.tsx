@@ -81,10 +81,12 @@ type Units = {
 };
 const AvailableUnits = ({
     propid,
-    category
+    category,
+    display
   }: {
     propid: number;
     category: string;
+    display: number;
   }) => {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<Units[]>([]);
@@ -122,7 +124,7 @@ const AvailableUnits = ({
                 role="list"
                 className="mx-4 flex space-x-3 sm:mx-6 overflow-x-auto"
             >
-                {results.map((post, index) => {
+                {results.slice(0,display).map((post, index) => {
                     const propertyData = {
                         bedrooms: post.bedrooms,
                         propertyType: post.category,
