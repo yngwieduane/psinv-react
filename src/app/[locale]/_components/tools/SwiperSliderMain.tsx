@@ -7,8 +7,11 @@ import {
   ChevronRightIcon,
 } from "@heroicons/react/24/outline";
 import 'swiper/css';
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 function SwiperSliderMain(props:any) {
+  const locale = useLocale();
   const swiperElRef3 = useRef<any>(null);
   return (
     <div className="relative">
@@ -45,6 +48,7 @@ function SwiperSliderMain(props:any) {
             className="bg-no-repeat bg-cover bg-center relative w-8 rounded-lg"
             style={{ backgroundImage: `url(${project.image})` }}
           >
+            <Link href={`/${locale}${project.project_url || ''}`}>
             <div className="bg-gradient-to-t from-blue-950 h-96 rounded-lg">
               <div className="absolute bottom-0 px-5">
                 <h2 className="flex items-center gap-2 text-3xl font-thin text-white mb-4 justify-center md:justify-start">
@@ -55,6 +59,7 @@ function SwiperSliderMain(props:any) {
                 </h3>
               </div>
             </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
