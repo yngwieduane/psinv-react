@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useCallback, useEffect, useState, useRef } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import './multiRangeSlider.css';
+import { useDebouncedCallback } from 'use-debounce';
 
 type MultiRangeSliderProps = {
   min: number;
@@ -10,6 +12,9 @@ type MultiRangeSliderProps = {
 };
 
 const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [minVal, setMinVal] = useState<number>(min);
   const [maxVal, setMaxVal] = useState<number>(max);
   const minValRef = useRef<number>(min);
@@ -43,15 +48,25 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange 
     }
   }, [maxVal, getPercent]);
 
+  const updateQuery = useDebouncedCallback((key: string, value: string | null) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (value === null || value === '') {
+      params.delete(key);
+    } else {
+      params.set(key, value);
+    }
+    console.log(key + " = " + value );
+    router.push(`${pathname}?${params.toString()}`);
+  },300);
   // Emit value changes
   useEffect(() => {
     onChange({ min: minVal, max: maxVal });
   }, [minVal, maxVal, onChange]);
 
   const formatNumber = (value: number) => new Intl.NumberFormat().format(value);
-
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <input
         type="range"
         min={min}
@@ -61,6 +76,7 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange 
           const value = Math.min(Number(event.target.value), maxVal - 1);
           setMinVal(value);
           minValRef.current = value;
+          updateQuery('minPrice',minVal.toString());
         }}
         className="thumb thumb--left"
         style={{ zIndex: minVal > max - 100 ? '5' : '1' }}
@@ -75,6 +91,7 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange 
           const value = Math.max(Number(event.target.value), minVal + 1);
           setMaxVal(value);
           maxValRef.current = value;
+          updateQuery('maxPrice',maxVal.toString());
         }}
         className="thumb thumb--right"
       />
@@ -84,28 +101,28 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange 
         <div ref={range} className="slider__range" />
         <div className="slider__left-value hidden">{minVal}</div>
         <div className="slider__right-value hidden">{maxVal}</div>
-        <div className="flex gap-4 mt-5">
-            <input
-                type="text"
-                value={formatNumber(minVal)}
-                disabled={true}
-                onChange={(e) => {
-                const val = Number(e.target.value.replace(/,/g, ''));
-                //updateQuery('minPrice', e.target.value.replace(/,/g, '').toString());
-                }}
-                className="w-full border rounded px-3 py-2 text-center"
-            />
-            <input
-                type="text"
-                value={formatNumber(maxVal)}
-                disabled={true}
-                onChange={(e) => {
-                const val = Number(e.target.value.replace(/,/g, ''));
-                //updateQuery('maxPrice', e.target.value.replace(/,/g, '').toString());
-                }}
-                className="w-full border rounded px-3 py-2 text-center"
-            />
-        </div>
+      </div>
+      <div className="flex gap-4 mt-5">
+          <input
+              type="text"
+              value={formatNumber(minVal)}
+              onChange={(e) => {
+              const val = Number(e.target.value.replace(/,/g, ''));
+              setMinVal(val);
+              updateQuery('minPrice',minVal.toString());
+              }}
+              className="w-full border rounded px-3 py-2 text-center"
+          />
+          <input
+              type="text"
+              value={formatNumber(maxVal)}
+              onChange={(e) => {
+              const val = Number(e.target.value.replace(/,/g, ''));
+              setMaxVal(val);
+              updateQuery('maxPrice',maxVal.toString());
+              }}
+              className="w-full border rounded px-3 py-2 text-center"
+          />
       </div>
     </div>
   );

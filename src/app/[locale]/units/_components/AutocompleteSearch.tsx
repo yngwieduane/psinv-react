@@ -1,11 +1,17 @@
 // components/Autocomplete.js
 'use client'
 import { useState, useEffect } from "react";
+import { useDebouncedCallback } from "use-debounce";
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 type Project = {
   propertyName: string;
   propertyID: string; 
 };
 export default function Autocomplete() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Project[]>([]);
   const [loading, setLoading] = useState(false);
@@ -42,26 +48,45 @@ export default function Autocomplete() {
     setQuery(e.target.value);
   };
 
+  const updateQuery = useDebouncedCallback((key: string, value: string | null) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (value === null || value === '') {
+      params.delete(key);
+    } else {
+      params.set(key, value);
+    }
+    console.log(key + " = " + value );
+    router.push(`${pathname}?${params.toString()}`);
+  },300);
+
   const handleOptionClick = (property:string,id:any) => (e:any) => {
     setIDValue(id);
     setInputValue(property);
     setShowDropdown(false);
+    updateQuery('propertyId',id);
   }
   return (
     <div >
       <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
           Property Name
       </label>
-      <input
-        type="text"
-        id="propertyName"
-        name="propertyName"
-        placeholder="Search project..."
-        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-        value={inputValue}
-        onChange={handleInputChange}
-        autoComplete="off"
-      />
+      <div className="mt-2 grid grid-cols-1">
+        <input
+          type="text"
+          id="propertyName"
+          name="propertyName"
+          placeholder="Search project..."
+          value={inputValue}
+          onChange={handleInputChange}
+          autoComplete="off"
+          className="col-start-1 row-start-1 block w-full rounded-md bg-white py-1.5 pr-3 pl-10 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:pl-9 sm:text-sm/6"
+        />
+        <MagnifyingGlassIcon
+          aria-hidden="true"
+          className="pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-gray-400 sm:size-4"
+        />
+      </div>
       {loading && <p className="absolute left-0 right-0 bg-white border mt-1 z-10 max-h-60 overflow-auto shadow">Searching...</p>}
       {showDropdown && results.length > 0 && (
         <ul className="absolute left-0 right-0 bg-white border mt-1 z-10 max-h-60 overflow-auto shadow">
