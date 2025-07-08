@@ -38,7 +38,7 @@ import {
 import LanguageSwitcher from './languageSwitcher';
 import Image from 'next/image';
 import ProjectSearch from './projectSearch';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
 //import ProjectSearch from './ProjectSearch';
 
 type Person = {
@@ -112,7 +112,7 @@ const company = [
 const products_buy: Buy[] = [
   {
     name: 'All Units',
-    description: 'Get a better understanding of your traffic',
+    description: 'All Units for Sale',
     href: '/units?category=Buy',
     icon: ChartPieIcon,
   }
@@ -120,7 +120,7 @@ const products_buy: Buy[] = [
 const products_rent: Rent[] = [
   {
     name: 'All Units',
-    description: 'Get a better understanding of your traffic',
+    description: 'All Units for Rent',
     href: '/units?category=Rent',
     icon: ChartPieIcon,
   }
@@ -131,11 +131,65 @@ const communitiesAbuDhabi: CommunitiesAbuDhabi[] = [
     description: '',
     href: '/projects/abu-dhabi',
     icon: ChartPieIcon,
+  },
+  {
+    name: 'Al Reem Island',
+    description: '',
+    href: '/projects/abu-dhabi/al-reem-island',
+    icon: ChartPieIcon,
+  },
+  {
+    name: 'Yas Island',
+    description: '',
+    href: '/projects/abu-dhabi/yas-island',
+    icon: ChartPieIcon,
+  },
+  {
+    name: 'Saadiyat Island',
+    description: '',
+    href: '/projects/abu-dhabi/saadiyat-island',
+    icon: ChartPieIcon,
+  },
+  {
+    name: 'Al Raha Beach',
+    description: '',
+    href: '/projects/abu-dhabi/al-raha-beach',
+    icon: ChartPieIcon,
+  },
+  {
+    name: 'View All',
+    description: '',
+    href: '/projects/abu-dhabi',
+    icon: ChartPieIcon,
   }
 ];
 const communitiesDubai: CommunitiesDubai[] = [
   {
     name: 'Dubai',
+    description: '',
+    href: '/projects/dubai',
+    icon: ChartPieIcon,
+  },
+  {
+    name: 'Downtown Dubai',
+    description: '',
+    href: '/projects/dubai/downtown-dubai',
+    icon: ChartPieIcon,
+  },
+  {
+    name: 'Dubai Creek',
+    description: '',
+    href: '/projects/dubai/dubai-creek',
+    icon: ChartPieIcon,
+  },
+  {
+    name: 'Town Square Dubai',
+    description: '',
+    href: '/projects/dubai/town-square-dubai',
+    icon: ChartPieIcon,
+  },
+  {
+    name: 'View All',
     description: '',
     href: '/projects/dubai',
     icon: ChartPieIcon,
@@ -148,6 +202,12 @@ const more: More[] = [
     description: 'About PSI',
     href: '/about-us',
     icon: ChartPieIcon,
+  },
+  {
+    name: 'Careers',
+    description: 'Careers',
+    href: '/careers',
+    icon: ChartPieIcon,
   }
 ];
 
@@ -159,7 +219,7 @@ const callsToAction: CallToAction[] = [
 const callsToAction2: CallToAction2[] = [
   { name: '600 538 200', href: 'tel:600538200', icon: PhoneIcon },
   { name: 'WhatsApp', href: 'tel:600538200', icon: faWhatsapp },
-  { name: 'Branches', href: 'tel:600538200', icon: PhoneIcon },
+  { name: 'Branches', href: 'tel:600538200', icon: faMapLocationDot },
 ];
 
 const socialMedia: SocialMedia[] = [
@@ -225,7 +285,7 @@ const Navigation: FC = () => {
         <div className="grid grid-cols-3">
           {callsToAction2.map((item) => (
             <Link href={item.href} key={item.name} className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
-                {item.name === 'WhatsApp' ? (
+                {item.name !== '600 538 200' ? (
                   <FontAwesomeIcon
                     className="h-5 w-5 flex-none text-gray-400"
                     icon={item.icon as IconDefinition}
@@ -250,7 +310,7 @@ const Navigation: FC = () => {
               />
             </Link>
           ))}
-          <Link href="/favorites" className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
+          <Link href="/favorites" className="hidden items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
             <HeartIcon
               className="h-5 w-5 flex-none text-gray-400"
               aria-hidden="true"
@@ -338,32 +398,36 @@ const Navigation: FC = () => {
                 className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
               >
                 <div className="p-4 grid grid-cols-2">
-                {communitiesAbuDhabi.map((item) => (
-                    <div
-                      key={item.name}
-                      className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
-                    >
-                      <div className="flex-auto">
-                        <Link href={item.href} className="block font-normal text-gray-900">
-                          {item.name}
-                          <span className="absolute inset-0" />
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
-                {communitiesDubai.map((item) => (
-                    <div
-                      key={item.name}
-                      className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
-                    >
-                      <div className="flex-auto">
-                        <Link href={item.href} className="block font-normal text-gray-900">
-                          {item.name}
-                          <span className="absolute inset-0" />
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
+                  <div>
+                    {communitiesAbuDhabi.map((item) => (
+                        <div
+                          key={item.name}
+                          className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
+                        >
+                          <div className="flex-auto">
+                            <Link href={item.href} className="block font-normal text-gray-900">
+                              {item.name}
+                              <span className="absolute inset-0" />
+                            </Link>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                  <div>
+                    {communitiesDubai.map((item) => (
+                        <div
+                          key={item.name}
+                          className="group relative flex gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50"
+                        >
+                          <div className="flex-auto">
+                            <Link href={item.href} className="block font-normal text-gray-900">
+                              {item.name}
+                              <span className="absolute inset-0" />
+                            </Link>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
                 </div>
               </PopoverPanel>
             </Popover>
@@ -402,27 +466,6 @@ const Navigation: FC = () => {
               List Your Property
             </Link>
 
-            <Popover className="relative hidden">
-              <PopoverButton className="flex items-center gap-x-1 text-sm font-normal text-gray-900">
-                More
-                <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
-              </PopoverButton>
-
-              <PopoverPanel
-                transition
-                className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
-              >
-                <div className="p-4">
-                </div>
-              </PopoverPanel>
-            </Popover>
-
-            <PopoverGroup className="hidden lg:flex lg:gap-x-10">
-              <Link href="/contact-us" className="text-sm font-normal text-gray-900 hover:text-indigo-600">
-                Contact Us
-              </Link>
-            </PopoverGroup>
-
             <Popover className="relative">
               <PopoverButton className="flex items-center gap-x-1 text-sm font-normal text-gray-900">
                 More
@@ -450,6 +493,12 @@ const Navigation: FC = () => {
                 </div>
               </PopoverPanel>
             </Popover>
+
+            <PopoverGroup className="hidden lg:flex lg:gap-x-10">
+              <Link href="/contact-us" className="text-sm font-normal text-gray-900 hover:text-indigo-600">
+                Contact Us
+              </Link>
+            </PopoverGroup>
 
           <button
             className="text-sm font-normal text-gray-900"

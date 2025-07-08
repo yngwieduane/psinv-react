@@ -41,7 +41,7 @@ export default function UnitListBox(props:any){
                     className="absolute inset-0 size-full rounded-2xl bg-gray-50 object-cover"
                     />
                 ) : (
-                    <SwiperNormal slides={images} width="400" height="300"/>
+                    <SwiperNormal slides={images.slice(0,5)} width="400" height="300"/>
                 )}
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-gray-900/10 ring-inset" />
                 <div className="absolute left-5 md:hidden bottom-5 z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">

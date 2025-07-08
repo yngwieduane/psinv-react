@@ -67,10 +67,10 @@ const MainFooter = () => {
     <ul className="space-y-2 text-sm sm:text-[14px]">
       <li><Link href="/buy" className="cursor-pointer no-underline hover:no-underline">Buy</Link></li>
       <li><Link href="/rent" className="cursor-pointer no-underline hover:no-underline">Rent</Link></li>
-      <li><Link href="/youngster-program" className="cursor-pointer no-underline hover:no-underline">Youngster Program</Link></li>
+      {/* <li><Link href="/youngster-program" className="cursor-pointer no-underline hover:no-underline">Youngster Program</Link></li>
       <li><Link href="/list-your-property" className="cursor-pointer no-underline hover:no-underline">List Your Property</Link></li>
       <li><Link href="/build-your-villa" className="cursor-pointer no-underline hover:no-underline">Build Your Villa</Link></li>
-      <li><Link href="/articles" className="cursor-pointer no-underline hover:no-underline">Articles</Link></li>
+      <li><Link href="/articles" className="cursor-pointer no-underline hover:no-underline">Articles</Link></li> */}
     </ul>
   </div>
 
@@ -81,10 +81,10 @@ const MainFooter = () => {
   <div className="w-full md:w-auto">
     <h4 className="font-bold text-lg sm:text-base mb-4">New Projects</h4>
     <ul className="space-y-2 text-sm sm:text-[14px]">
-      <li><Link href="/mamsha-gardens" className="cursor-pointer no-underline hover:no-underline">Mamsha Gardens</Link></li>
-      <li><Link href="/rivage" className="cursor-pointer no-underline hover:no-underline">Rivage</Link></li>
-      <li><Link href="/w-residences" className="cursor-pointer no-underline hover:no-underline">W Residences</Link></li>
-      <li><Link href="/reem-hills" className="cursor-pointer no-underline hover:no-underline">Reem Hills</Link></li>
+      <li><Link href="/projects/abu-dhabi/saadiyat-island/cultural-district/mamsha-gardens" className="cursor-pointer no-underline hover:no-underline">Mamsha Gardens</Link></li>
+      <li><Link href="/projects/abu-dhabi/al-reem-island/al-reem-island/rivage" className="cursor-pointer no-underline hover:no-underline">Rivage</Link></li>
+      <li><Link href="/projects/dubai/the-palm-jumeirah/the-palm-jumeirah/w-residences" className="cursor-pointer no-underline hover:no-underline">W Residences</Link></li>
+      <li><Link href="/projects/abu-dhabi/al-reem-island/al-reem-hills/reem-hills" className="cursor-pointer no-underline hover:no-underline">Reem Hills</Link></li>
       <li><Link href="/projects" className="cursor-pointer no-underline hover:no-underline font-bold">More</Link></li>
     </ul>
   </div>
@@ -96,12 +96,12 @@ const MainFooter = () => {
           <div className="md:col-span-1 md:order-3">
     <h4 className="font-bold text-lg mb-4">Important Links</h4>
     <ul className="space-y-2 text-sm text-left">
-      <li><Link href="/mortgage-calculator" className="cursor-pointer no-underline hover:no-underline">Mortgage Calculator</Link></li>
+      {/* <li><Link href="/mortgage-calculator" className="cursor-pointer no-underline hover:no-underline">Mortgage Calculator</Link></li> */}
       <li><Link href="/about-us" className="cursor-pointer no-underline hover:no-underline">About Us</Link></li>
       <li><Link href="/contact-us" className="cursor-pointer no-underline hover:no-underline">Contact Us</Link></li>
       <li><Link href="/careers" className="cursor-pointer no-underline hover:no-underline">Careers</Link></li>
-      <li><Link href="/blog" className="cursor-pointer no-underline hover:no-underline">Blog</Link></li>
-      <li><Link href="/sitemap" className="cursor-pointer no-underline hover:no-underline">Sitemap</Link></li>
+      {/* <li><Link href="/blog" className="cursor-pointer no-underline hover:no-underline">Blog</Link></li>
+      <li><Link href="/sitemap" className="cursor-pointer no-underline hover:no-underline">Sitemap</Link></li> */}
     </ul>
   </div>
 

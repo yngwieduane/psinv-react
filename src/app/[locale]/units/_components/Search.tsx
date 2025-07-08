@@ -84,6 +84,20 @@ export default function Search({ placeholder }: { placeholder: string }) {
                     className="rounded-xl bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 cursor-pointer"
                 >{loading ? 'Searching ...' : 'Search'}</button>
             </div>
+            <input
+                placeholder={placeholder}
+                id="minPrice"
+                name="minPrice"
+                defaultValue={searchParams.get('minPrice')?.toString()}
+                className="block"
+            />
+            <input
+                placeholder={placeholder}
+                id="maxPrice"
+                name="maxPrice"
+                defaultValue={searchParams.get('maxPrice')?.toString()}
+                className="block"
+            />
         </div>
     </Form>
   );

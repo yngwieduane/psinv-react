@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
 import { useDebouncedCallback } from 'use-debounce';
+import MultiRangeSlider from './MultiRangeSlider';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 100000000;
@@ -33,7 +34,8 @@ export default function FilterPanel() {
     setBaths(searchParams.get('baths') ? Number(searchParams.get('baths')) : null);
     setPropertyType(searchParams.get('propertyType') || null);
   }, [searchParams]);
-  const updateQuery = useDebouncedCallback((key: string, value: string | null) => {
+
+  const updateQuery = (key: string, value: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
 
     if (value === null || value === '') {
@@ -41,9 +43,21 @@ export default function FilterPanel() {
     } else {
       params.set(key, value);
     }
-
+    console.log(key + " = " + value );
     router.push(`${pathname}?${params.toString()}`);
-  }, 300);
+  }; 
+
+  const updateQuery1 = (key: string, value: string | null) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (value === null || value === '') {
+      params.delete(key);
+    } else {
+      params.set(key, value);
+    }
+    console.log(key + " = " + value );
+    router.push(`${pathname}?${params.toString()}`);
+  };
 
   const handleReset = () => {
     const params = new URLSearchParams(searchParams.toString());
@@ -60,6 +74,12 @@ export default function FilterPanel() {
     setPropertyType(null);
   };
 
+  const handleSliderRange = (e:any) => {
+        //console.log(e);
+        console.log(`min = ${e.min}, max = ${e.max}`)
+        // setPriceRange([e.min, e.max]);
+  };
+
   const formatNumber = (value: number) => new Intl.NumberFormat().format(value);
 
   return (
@@ -74,17 +94,11 @@ export default function FilterPanel() {
         {/* Price Filter */}
         <div>
             <p className="font-semibold mb-2">Price</p>
-            <RangeSlider min={1000} max={100000000} step={10000}
-                onInput={(e) => {
-                    console.log(e[0]);
-                    const val = Number(e[0]);
-                    if (val <= e[1]) {
-                        setPriceRange([val, e[1]]);
-                        updateQuery('minPrice', val.toString());
-                        updateQuery('maxPrice', e[1].toString());
-                    }
-                }}
-            />
+                <MultiRangeSlider
+                    min={0}
+                    max={50000000}
+                    onChange={handleSliderRange}
+                />
             <div className="flex gap-4 mt-5">
             <input
                 type="text"
@@ -92,6 +106,7 @@ export default function FilterPanel() {
                 disabled={true}
                 onChange={(e) => {
                 const val = Number(e.target.value.replace(/,/g, ''));
+                //updateQuery('minPrice', e.target.value.replace(/,/g, '').toString());
                 }}
                 className="w-full border rounded px-3 py-2 text-center"
             />
@@ -101,6 +116,7 @@ export default function FilterPanel() {
                 disabled={true}
                 onChange={(e) => {
                 const val = Number(e.target.value.replace(/,/g, ''));
+                //updateQuery('maxPrice', e.target.value.replace(/,/g, '').toString());
                 }}
                 className="w-full border rounded px-3 py-2 text-center"
             />
