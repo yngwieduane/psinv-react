@@ -87,6 +87,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .animate-rotateBack{
   animation: rotateBack 0.2s ease-in;
 }
+#providers .swiper-pagination { display: none; }
+
 @keyframes rotateToLeft {
   0% {
     transform: rotate(0deg);

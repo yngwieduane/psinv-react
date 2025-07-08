@@ -551,7 +551,7 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
 	    		ReferredToID= ReferredToID;
 				ReferredByID=ReferredByID;
 				ActivityAssignedTo=ActivityAssignedTo;
-				sendtomail = "callcenter@psidubai.com";
+				sendtomail = "callcenter@psinv.net";
 	    		break;
 	    }
             
@@ -576,14 +576,21 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
                 Asking price: ${data.askingprice} </br>
                 Status: ${data.status} </br>
                 Service: ${data.service} </br>
-                Ready to view: ${data.readytoview} </br>
-                ${uploadedFiles.propertyimages && uploadedFiles.propertyimages !== '' ? `Attach external image: ${baseURL}${uploadedFiles.propertyimages}</br>` : ''}              
-                ${uploadedFiles.spa && uploadedFiles.spa !== '' ? `Attach SPA: ${baseURL}${uploadedFiles.spa}</br>` : ''}                
-                ${uploadedFiles.deed && uploadedFiles.deed !== '' && uploadedFiles.deed !== 'null' && uploadedFiles.deed !== 'undefined' 
+                Ready to view: ${data.readytoview} </br>                              
+                
+                ${propertyImages 
+                    ? `Attach external image: ${baseURL}${uploadedFiles.propertyimages}</br>` 
+                    : ''}
+                ${propertySpa 
+                    ? `Attach SPA: ${baseURL}${uploadedFiles.spa}</br>` 
+                    : ''}               
+                ${propertyDeed 
                     ? `Attach Title Deed: ${baseURL}${uploadedFiles.deed}</br>` 
                     : ''}
-
-                ${uploadedFiles.passport && uploadedFiles.passport !== '' ? `Passport: ${baseURL}${uploadedFiles.passport}</br>` : ''}
+                ${passportFile 
+                    ? `Passport: ${baseURL}${uploadedFiles.passport}</br>` 
+                    : ''}
+                
                 Date to view: ${data.datetoview} </br>
                 Time to view: ${data.timetoview} </br>
                 URL coming from: ${currentUrl}

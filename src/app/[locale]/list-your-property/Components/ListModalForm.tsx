@@ -349,7 +349,7 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
             case 'Abu Dhabi':	    		
                 ReferredToID=3458;
                 ReferredByID=3458;
-                sendtomail='callcenter@psinv.net';
+                sendtomail='wd6@psinv.net';
                 break;
             case 'Dubai':	    		
                 ReferredToID=4421;
@@ -361,7 +361,7 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
                 ReferredToID= ReferredToID;
                 ReferredByID=ReferredByID;
                 ActivityAssignedTo=ActivityAssignedTo;
-                sendtomail = "callcenter@psidubai.com";
+                sendtomail = "callcenter@psinv.net";
                 break;
         }
             
@@ -445,20 +445,41 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
                     },
                     body: JSON.stringify(formDataToSend),
                 });
+                
+                // const mailRes = await fetch("/api/external/sendEmail", {
+                //     method: "POST",
+                //     headers : { "Content-Type" : "application/json" },
+                //     body: JSON.stringify({
+                //         remarks: {
+                //             name: data.fname + " " + data.lname,
+                //             email: data.email,
+                //             phone: data.phone,
+                //             purpose: data.purpose,
+                //             propType: data.proptype,
+                //             bedroom: data.beds,
+                //             location: data.cityName,
+                //             property: data.propName,
+                //         },
+                //         sendtomail: sendtomail,
+                //     }
+                        
+                //     ),
+                // });
+    
                 if(response.ok) {
                     setPostId("success");
                     setIsSubmitSuccess(true);
                     //window.location.href = `/${locale}/thankyou?${encodeURIComponent(data.email)}`
                 } else {
                     alert("Error submitting the form.");
-                }                    
+                }
+
             } catch(error) {
                 console.log(error);
                 setPostId("Error");
             } finally {
                 setIsSubmitting(false);
             }
-
 
         } catch(error){
             console.error("Submission failed:", error);
