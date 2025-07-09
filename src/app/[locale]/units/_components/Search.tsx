@@ -8,6 +8,7 @@ import { useFormStatus } from 'react-dom';
 import { useState } from 'react';
 import { useDebouncedCallback } from "use-debounce";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import FilterUnitsDrawer from './FilterUnitsDrawer';
  
 export default function Search({ placeholder }: { placeholder: string }) {
     
@@ -42,8 +43,10 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
   return (
     <Form action={`/${locale}/units`}>
-        <div className="relative grid grid-cols-1 md:grid-cols-4 gap-5 items-end">
-            <Autocomplete />
+        <div className="relative flex md:grid md:grid-cols-4 gap-5 items-end">
+            <div className="col-span-3 w-full">
+                <Autocomplete />
+            </div>
             <div className='hidden'>
                 <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                     Search By ID
@@ -58,7 +61,12 @@ export default function Search({ placeholder }: { placeholder: string }) {
                 />
                 </div>
             </div>
-            <div className="">
+            <div className="grid md:hidden min-w-[45px]">
+                <FilterUnitsDrawer
+                    // onChange={handleSliderRange}
+                />
+            </div>
+            <div className="hidden md:grid">
                 <label htmlFor="category" className="block text-sm/6 font-medium text-gray-900">
                     Category
                 </label>
