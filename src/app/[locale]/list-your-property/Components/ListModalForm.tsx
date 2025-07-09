@@ -8,8 +8,6 @@ import "react-phone-number-input/style.css";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormDataSchema2 } from "./lib/Schema2";
-import { faPaperclip, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'react-datepicker/dist/react-datepicker.css';
 import { usePathname } from "next/navigation";
 
@@ -349,7 +347,7 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
             case 'Abu Dhabi':	    		
                 ReferredToID=3458;
                 ReferredByID=3458;
-                sendtomail='wd6@psinv.net';
+                sendtomail='wd6@psinv.net,wd3@psinv.net';
                 break;
             case 'Dubai':	    		
                 ReferredToID=4421;
@@ -446,27 +444,30 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
                     body: JSON.stringify(formDataToSend),
                 });
                 
-                // const mailRes = await fetch("/api/external/sendEmail", {
-                //     method: "POST",
-                //     headers : { "Content-Type" : "application/json" },
-                //     body: JSON.stringify({
-                //         remarks: {
-                //             name: data.fname + " " + data.lname,
-                //             email: data.email,
-                //             phone: data.phone,
-                //             purpose: data.purpose,
-                //             propType: data.proptype,
-                //             bedroom: data.beds,
-                //             location: data.cityName,
-                //             property: data.propName,
-                //         },
-                //         sendtomail: sendtomail,
-                //     }
-                        
-                //     ),
-                // });
+                const mailRes = await fetch("https://psinv.net/api/sendemail.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        body: `
+                        List Your Property<br><br>
+                        Name: ${data.fname} ${data.lname}<br>
+                        Email: ${data.email}<br>
+                        Phone: ${data.phone}<br>
+                        Purpose: ${data.purpose}<br>
+                        Property Type: ${data.proptype}<br>
+                        Bedroom: ${data.beds}<br>
+                        Location: ${data.cityName}<br>
+                        Property: ${data.propName}<br>
+                        From URL: ${currentUrl}<br>
+                        `,
+                        receiver: sendtomail, // should be a string like "yngwie.g@psinv.net"
+                        subject: "New inquiry - List Your Property - Property Shop Investment",
+                        filename: "",
+                        filedata: ""
+                    }),
+                });
     
-                if(response.ok) {
+                if(response.ok && mailRes.ok) {
                     setPostId("success");
                     setIsSubmitSuccess(true);
                     //window.location.href = `/${locale}/thankyou?${encodeURIComponent(data.email)}`
