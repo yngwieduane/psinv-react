@@ -5,6 +5,7 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
     const query = searchParams.get('query')
     const myHeaders = new Headers();
+    let finquery;
     myHeaders.append("accept", "*/*");
     myHeaders.append(
       "apiKey",
@@ -12,7 +13,16 @@ export async function GET(request: NextRequest) {
     );
     myHeaders.append("Content-Type", "application/json");
   
-    const raw = JSON.stringify({"propertyName": query});
+    switch (query) {
+      case 'jacob co beachfront living by ohana':
+      case 'Jacob Co Beachfront Living By Ohana':
+        finquery = 'jacob & co. beachfront living by ohana'
+        break;
+      default:
+        finquery = query
+        break;
+    }
+    const raw = JSON.stringify({"propertyName": finquery});
   
     const requestOptions = {
       method: "POST",

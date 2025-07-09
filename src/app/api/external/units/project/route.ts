@@ -2,12 +2,12 @@ import { NextRequest } from 'next/server';
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
-    const propertyId = searchParams.get('propid') || '';
+    const propertyId = searchParams.get('propertyId') || '';
     const category = searchParams.get('category') || '';
     let apiurl = 'https://integration.psi-crm.com/ExternalApis/GetSaleListing';
     console.log('Fetching units data...'+propertyId);
     let raw;
-    if (propertyId) {
+    if (propertyId && propertyId != '0') {
       raw = JSON.stringify({
         "propertyId": propertyId,
       });

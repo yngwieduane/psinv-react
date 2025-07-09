@@ -95,7 +95,7 @@ const SimilarUnits = ({
       const timeout = setTimeout(() => {
         if (category.trim() !== "") {
           setLoading(true);
-          fetch(`/api/external/units/project?propid=${propid}&category=${category}`)
+          fetch(`/api/external/units/project?propertyId=${propid}&category=${category}`)
             .then(res => res.json())
             .then(data => {
               setResults(data);

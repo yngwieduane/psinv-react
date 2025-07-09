@@ -45,18 +45,6 @@ export default function FilterPanel() {
     }
     console.log(key + " = " + value );
     router.push(`${pathname}?${params.toString()}`);
-  }; 
-
-  const updateQuery1 = (key: string, value: string | null) => {
-    const params = new URLSearchParams(searchParams.toString());
-
-    if (value === null || value === '') {
-      params.delete(key);
-    } else {
-      params.set(key, value);
-    }
-    console.log(key + " = " + value );
-    router.push(`${pathname}?${params.toString()}`);
   };
 
   const handleReset = () => {
@@ -66,6 +54,8 @@ export default function FilterPanel() {
     params.delete('beds');
     params.delete('baths');
     params.delete('propertyType');
+    params.delete('propertyId');
+    params.delete('category');
     router.push(`${pathname}?${params.toString()}`);
 
     setPriceRange([minPriceDefault, maxPriceDefault]);
@@ -77,7 +67,7 @@ export default function FilterPanel() {
   const handleSliderRange = (e:any) => {
         //console.log(e);
         console.log(`min = ${e.min}, max = ${e.max}`)
-        // setPriceRange([e.min, e.max]);
+        //setPriceRange([e.min, e.max]);
   };
 
   const formatNumber = (value: number) => new Intl.NumberFormat().format(value);
@@ -94,33 +84,11 @@ export default function FilterPanel() {
         {/* Price Filter */}
         <div>
             <p className="font-semibold mb-2">Price</p>
-                <MultiRangeSlider
-                    min={0}
-                    max={50000000}
-                    onChange={handleSliderRange}
-                />
-            <div className="flex gap-4 mt-5">
-            <input
-                type="text"
-                value={formatNumber(priceRange[0])}
-                disabled={true}
-                onChange={(e) => {
-                const val = Number(e.target.value.replace(/,/g, ''));
-                //updateQuery('minPrice', e.target.value.replace(/,/g, '').toString());
-                }}
-                className="w-full border rounded px-3 py-2 text-center"
+            <MultiRangeSlider
+                min={0}
+                max={50000000}
+                onChange={handleSliderRange}
             />
-            <input
-                type="text"
-                value={formatNumber(priceRange[1])}
-                disabled={true}
-                onChange={(e) => {
-                const val = Number(e.target.value.replace(/,/g, ''));
-                //updateQuery('maxPrice', e.target.value.replace(/,/g, '').toString());
-                }}
-                className="w-full border rounded px-3 py-2 text-center"
-            />
-            </div>
         </div>
 
         {/* Beds Filter */}

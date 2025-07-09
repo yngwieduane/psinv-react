@@ -42,6 +42,11 @@ export default function DrawerDetails(props:any) {
             title = "Request a Viewing";
             content = <RequestViewing data={details}/>
             break;
+        case 'filterunitsearch':
+            details = props.drawerContent?? "";
+            title = "filterunitsearch";
+            content = <RequestViewing data={details}/>
+            break;
     
         default:
             details = props.drawerContent?? "";
