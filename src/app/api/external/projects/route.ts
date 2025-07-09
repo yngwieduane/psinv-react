@@ -15,6 +15,7 @@ export async function GET(request: NextRequest) {
   
     switch (query) {
       case 'jacob co beachfront living by ohana':
+      case 'Jacob Co Beachfront Living By Ohana':
         finquery = 'jacob & co. beachfront living by ohana'
         break;
       default:
