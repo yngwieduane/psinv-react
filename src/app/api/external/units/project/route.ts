@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
     let apiurl = 'https://integration.psi-crm.com/ExternalApis/GetSaleListing';
     console.log('Fetching units data...'+propertyId);
     let raw;
-    if (propertyId) {
+    if (propertyId && propertyId != '0') {
       raw = JSON.stringify({
         "propertyId": propertyId,
       });
