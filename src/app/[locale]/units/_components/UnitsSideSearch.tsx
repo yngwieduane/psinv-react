@@ -54,6 +54,8 @@ export default function FilterPanel() {
     params.delete('beds');
     params.delete('baths');
     params.delete('propertyType');
+    params.delete('propertyId');
+    params.delete('category');
     router.push(`${pathname}?${params.toString()}`);
 
     setPriceRange([minPriceDefault, maxPriceDefault]);

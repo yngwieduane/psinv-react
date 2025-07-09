@@ -22,7 +22,7 @@ export default async function UnitsPage(props: any) {
                     <div className="col-span-4">
                         <Search placeholder="Search by Reference ID"/>
                     </div>
-                    <div className="col-span-3 md:col-span-3    ">
+                    <div className="col-span-4 md:col-span-3">
                         <div className="mt-16 space-y-10 lg:mt-10 lg:space-y-5">
                             <Suspense key={unitid + currentPage} fallback={<Skeleton />}>
                                 <UnitsList unitid={unitid} category={category} propertyId={propertyId} currentPage={currentPage} />
