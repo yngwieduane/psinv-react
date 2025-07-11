@@ -48,6 +48,7 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
     setInputValue(e.target.value);
     setQuery(e.target.value);
     setResetStatus('false');
+    updateQuery('propertyName',e.target.value);
   };
 
   const updateQuery = useDebouncedCallback((key: string, value: string | null) => {
@@ -67,7 +68,6 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
     setInputValue(property);
     setShowDropdown(false);
     updateQuery('propertyId',id);
-    updateQuery('propertyName',property);
     setPropertyId(propertyId)
   }
   // if(isReset){

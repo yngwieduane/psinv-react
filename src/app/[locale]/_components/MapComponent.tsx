@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { MapProvider } from "../../../../providers/map-providers";
+import { MapContent } from "./MapContent";
 
 interface MapComponentProps {
   latitude?: number;
@@ -16,14 +18,9 @@ const MapComponent: React.FC<MapComponentProps> = ({ latitude, longitude, fallba
   return (
     <div className="mapSection w-full h-full rounded-lg overflow-hidden">
       {latitude && longitude && !hasError ? (
-        <iframe
-          src={`https://maps.google.com/maps?q=${latitude},${longitude}&output=embed`}
-          width="100%"
-          height={height}
-          style={{ borderRadius: "8px", border: "none" }}
-          loading="lazy"
-          onError={() => setHasError(true)}
-        />
+        <MapProvider>
+          <MapContent latitude={latitude} longitude={longitude}/>
+        </MapProvider>
       ) : (
         <Image
           width={200}
