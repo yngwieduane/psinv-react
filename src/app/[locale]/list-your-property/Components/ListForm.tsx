@@ -539,7 +539,7 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
 	    	case 'Abu Dhabi':	    		
 				ReferredToID=3458;
 				ReferredByID=3458;
-				sendtomail='callcenter@psinv.net';
+				sendtomail='wd6@psinv.net';
 	    		break;
 	    	case 'Dubai':	    		
 				ReferredToID=4421;
@@ -551,7 +551,7 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
 	    		ReferredToID= ReferredToID;
 				ReferredByID=ReferredByID;
 				ActivityAssignedTo=ActivityAssignedTo;
-				sendtomail = "callcenter@psidubai.com";
+				sendtomail = "callcenter@psinv.net";
 	    		break;
 	    }
             
@@ -576,14 +576,21 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
                 Asking price: ${data.askingprice} </br>
                 Status: ${data.status} </br>
                 Service: ${data.service} </br>
-                Ready to view: ${data.readytoview} </br>
-                ${uploadedFiles.propertyimages && uploadedFiles.propertyimages !== '' ? `Attach external image: ${baseURL}${uploadedFiles.propertyimages}</br>` : ''}              
-                ${uploadedFiles.spa && uploadedFiles.spa !== '' ? `Attach SPA: ${baseURL}${uploadedFiles.spa}</br>` : ''}                
-                ${uploadedFiles.deed && uploadedFiles.deed !== '' && uploadedFiles.deed !== 'null' && uploadedFiles.deed !== 'undefined' 
+                Ready to view: ${data.readytoview} </br>                              
+                
+                ${propertyImages 
+                    ? `Attach external image: ${baseURL}${uploadedFiles.propertyimages}</br>` 
+                    : ''}
+                ${propertySpa 
+                    ? `Attach SPA: ${baseURL}${uploadedFiles.spa}</br>` 
+                    : ''}               
+                ${propertyDeed 
                     ? `Attach Title Deed: ${baseURL}${uploadedFiles.deed}</br>` 
                     : ''}
-
-                ${uploadedFiles.passport && uploadedFiles.passport !== '' ? `Passport: ${baseURL}${uploadedFiles.passport}</br>` : ''}
+                ${passportFile 
+                    ? `Passport: ${baseURL}${uploadedFiles.passport}</br>` 
+                    : ''}
+                
                 Date to view: ${data.datetoview} </br>
                 Time to view: ${data.timetoview} </br>
                 URL coming from: ${currentUrl}
@@ -654,7 +661,57 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
                     },
                     body: JSON.stringify(formDataToSend),
                 });
-                if(response.ok) {
+
+                const mailRes = await fetch("https://psinv.net/api/sendemail.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        body: `
+                        List Your Property<br><br>
+                        Name: ${data.fname}  ${data.lname} </br>
+                        Email: ${data.email} </br>
+                        Phone: ${data.phone} </br>
+                        Message: ${data.description ? data.description : ""} </br>
+                        Purpose: ${data.purpose ? data.purpose : ""} </br>
+                        Property type: ${data.proptype ? data.proptype : ""} </br>
+                        Bedrooms: ${data.beds ? data.beds : ""} </br>
+                        Location: ${data.cityName} </br>
+                        Property: ${data.propName} </br>
+                        Unit view: ${data.unitview } </br>
+                        Unit size: ${data.unitsize } </br>
+                        Bathrooms: ${data.baths} </br>
+                        Parking: ${data.parking} </br>
+                        Unit number: ${data.unitnumber} </br>
+                        Asking price: ${data.askingprice} </br>
+                        Status: ${data.status} </br>
+                        Service: ${data.service} </br>
+                        Ready to view: ${data.readytoview} </br>                              
+                        
+                        ${propertyImages 
+                            ? `Attach external image: ${baseURL}${uploadedFiles.propertyimages}</br>` 
+                            : ''}
+                        ${propertySpa 
+                            ? `Attach SPA: ${baseURL}${uploadedFiles.spa}</br>` 
+                            : ''}               
+                        ${propertyDeed 
+                            ? `Attach Title Deed: ${baseURL}${uploadedFiles.deed}</br>` 
+                            : ''}
+                        ${passportFile 
+                            ? `Passport: ${baseURL}${uploadedFiles.passport}</br>` 
+                            : ''}
+                        
+                        Date to view: ${data.datetoview} </br>
+                        Time to view: ${data.timetoview} </br>
+                        URL coming from: ${currentUrl}
+                        `,
+                        receiver: sendtomail,
+                        subject: "New inquiry - List Your Property",
+                        filename: "",
+                        filedata: ""
+                    }),
+                });
+
+                if(response.ok && mailRes.ok) {
                     setPostId("success");
                     setIsSubmitSuccess(true);
                     //window.location.href = `/${locale}/thankyou?${encodeURIComponent(data.email)}`
@@ -681,9 +738,10 @@ return(
     <div className="flex justify-between mb-5">
         <h2 className={fromModal ? 
         'hidden text-4xl text-[#E35F27] font-[700] leading-normal' 
-        : 'text-4xl text-[#E35F27] font-[700] leading-normal'}>List Your Property</h2>
+        : 'md:text-4xl text-2xl text-[#E35F27] font-[700] leading-normal'}>List Your Property</h2>
+        {/* desktop progress bar */}
         {currentStep !== 0 && (
-            <div className="progree-bar">
+            <div className="progree-bar md:block hidden">
                 {/* {steps[currentStep].progressValue} */}
                 <img src={`${steps[currentStep].progressImg}`}></img>
             </div>
@@ -692,9 +750,9 @@ return(
     <form onSubmit={handleSubmit(onSubmit)} className="listForm">
         {!isSubmitSuccess && currentStep === 0 && (
             <>
-                <div className="w-full flex mb-4 gap-5">                                    
-                    <div className="inputGroup w-1/2">
-                        <label htmlFor="fname" className="text-sm block">First Name <sup className="imp text-[#E35F27]">*</sup></label>
+                <div className="w-full md:flex mb-4 gap-5">                                    
+                    <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
+                        <label htmlFor="fname" className="text-sm block leading-loose">First Name <sup className="imp text-[#E35F27]">*</sup></label>
                         <input type="text" 
                         {...register('fname')} placeholder="First Name"
                         className="block w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]" />
@@ -704,8 +762,8 @@ return(
                             </p>
                         )}
                     </div>
-                    <div className="inputGroup w-1/2">
-                        <label htmlFor="lname" className="text-sm block">Last Name <sup className="imp text-[#E35F27]">*</sup></label>
+                    <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
+                        <label htmlFor="lname" className="text-sm block leading-loose">Last Name <sup className="imp text-[#E35F27]">*</sup></label>
                         <input type="text" placeholder="Last Name"
                         {...register('lname')}
                         className="block w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]" />
@@ -716,9 +774,9 @@ return(
                         )}
                     </div>
                 </div>
-                <div className="w-full flex gap-5">            
-                    <div className="inputGroup w-1/2">
-                        <label htmlFor="lname" className="text-sm block">Phone Number <sup className="imp text-[#E35F27]">*</sup></label>
+                <div className="w-full md:flex gap-5">            
+                    <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
+                        <label htmlFor="lname" className="text-sm block leading-loose">Phone Number <sup className="imp text-[#E35F27]">*</sup></label>
                         <Controller name="phone"
                         control={control}                        
                         render={({field}) => (
@@ -737,8 +795,8 @@ return(
                         )} 
                         />
                     </div>
-                    <div className="inputGroup w-1/2">
-                        <label htmlFor="email" className="text-sm block">Email Address <sup className="imp text-[#E35F27]">*</sup></label>
+                    <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
+                        <label htmlFor="email" className="text-sm block leading-loose">Email Address <sup className="imp text-[#E35F27]">*</sup></label>
                         <input type="email" placeholder="Email Address"
                         {...register('email')}
                         className="block w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]" />
@@ -747,9 +805,12 @@ return(
                 </div>
                 <div className="w-full mb-5 mt-3">
                     <div className="inputGroup">
-                        <label htmlFor="purpose" className="text-sm block">Property Purpose</label>
-                        <Select {...register('purpose')} onChange={onChangeField}
-                        className="w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]">
+                        <label htmlFor="purpose" className="text-sm block leading-loose">Property Purpose</label>
+                        <Select
+                        {...register('purpose')}
+                        onChange={onChangeField}
+                        className={`w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] ${formValue.purpose === "" ? "select-placeholder placeholder-[#A6A6A6]" : ""}`}
+                        >
                             <option>Purpose</option>
                             <option value="Sale">Sale</option>
                             <option value="Rent">Rent</option>
@@ -759,7 +820,7 @@ return(
                 </div>
                 <div className="w-full">
                     <div className="inputGroup">
-                        <label htmlFor="description" className="text-sm block">Please describe your property</label>
+                        <label htmlFor="description" className="text-sm block leading-loose">Please describe your property</label>
                         <textarea {...register('description')} onChange={onChangeField}
                         className="w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6] h-[150px]" 
                         placeholder="Write Here">
@@ -774,20 +835,20 @@ return(
         {!isSubmitSuccess && currentStep === 1 && (
             <>
                 <div className="w-full mb-4 flex flex-col gap-5">
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="prop-type" className="text-sm w-1/3">Property Type</label>
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="prop-type" className="text-sm md:w-1/3 w-full leading-loose">Property Type</label>
                         <Select {...register('proptype')} onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] w-2/3 text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
                             <option>Select property type</option>
                             <option value="Villa">Villa</option>
                             <option value="Apartment">Apartment</option>
                             <option value="Townhouse">Townhouse</option>
                         </Select>
                     </div>
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="beds" className="text-sm w-1/3">Beds</label>
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="beds" className="text-sm md:w-1/3 w-full leading-loose">Beds</label>
                         <Select {...register('beds')} onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] w-2/3 text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
                             <option>Select number of bedrooms</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -797,9 +858,9 @@ return(
                             <option value="6">6</option>
                         </Select>
                     </div>
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="location" className="text-sm w-1/3">Location<sup className="imp text-[#E35F27]">*</sup></label>
-                        <div className="w-2/3">
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="location" className="text-sm md:w-1/3 w-full leading-loose">Location<sup className="imp text-[#E35F27]">*</sup></label>
+                        <div className="md:w-2/3 w-full">
                             <Select
                             {...register('location')} required onChange={onChangeLocation}
                             className="w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] text-[#2C2D65] text-sm font-[500]">
@@ -811,6 +872,10 @@ return(
                             </Select> 
                             {errors.location && <p className="block text-red-500 text-sm mt-3">{errors.location.message}</p>} 
                         </div>                                              
+                    </div>
+                    {/* mobile progress bar */}
+                    <div className="progree-bar md:hidden block justify-items-center">
+                        <img src={`${steps[currentStep].progressImg}`}></img>
                     </div>
                     
                     <div className="flex justify-between gap-5">
@@ -824,9 +889,9 @@ return(
         {!isSubmitSuccess && currentStep === 2 && (
             <>
                 <div className="w-full mb-4 flex flex-col gap-5">
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="property" className="text-sm w-1/3">Property <sup className="imp text-[#E35F27]">*</sup></label>
-                        <div className="w-2/3">
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="property" className="text-sm md:w-1/3 w-full leading-loose">Property <sup className="imp text-[#E35F27]">*</sup></label>
+                        <div className="md:w-2/3 w-full">
                             {loading ? (
                                 <p>Loading properties...</p>
                             ) : (
@@ -851,20 +916,20 @@ return(
                         
 
                     </div>
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="unitview" className="text-sm w-1/3">Unit View</label>
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="unitview" className="text-sm md:w-1/3 w-full leading-loose">Unit View</label>
                         <input type="text" {...register('unitview')} onChange={onChangeField}  placeholder="Unit View"
-                        className="block w-2/3 px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65]" />
+                        className="block md:w-2/3 w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65]" />
                     </div>
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="unitsize" className="text-sm w-1/3">Unit Size</label>
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="unitsize" className="text-sm md:w-1/3 w-full leading-loose">Unit Size</label>
                         <input type="text" {...register('unitsize')} onChange={onChangeField}  placeholder="Unit Size"
-                        className="block w-2/3 px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65]" />
+                        className="block md:w-2/3 w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65]" />
                     </div>
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="baths" className="text-sm w-1/3">Bathrooms</label>
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="baths" className="text-sm md:w-1/3 w-full leading-loose">Bathrooms</label>
                         <Select {...register('baths')}  onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] w-2/3 text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
                             <option>Bath</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -873,10 +938,10 @@ return(
                             <option value="5">5+</option>
                         </Select>
                     </div>
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="parking" className="text-sm w-1/3">Parking</label>
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="parking" className="text-sm md:w-1/3  w-full leading-loose">Parking</label>
                         <Select {...register('parking')} onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] w-2/3 text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
                             <option>Parking</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -885,11 +950,17 @@ return(
                             <option value="5">5+</option>
                         </Select>
                     </div>
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="unitnumber" className="text-sm w-1/3">Unit Number</label>
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="unitnumber" className="text-sm md:w-1/3 w-full leading-loose">Unit Number</label>
                         <input type="text" {...register('unitnumber')} onChange={onChangeField}  placeholder="Unit Number"
-                        className="block w-2/3 px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65]" />
+                        className="block md:w-2/3 w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65]" />
                     </div>
+
+                    {/* mobile progress bar */}
+                    <div className="progree-bar md:hidden block justify-items-center">
+                        <img src={`${steps[currentStep].progressImg}`}></img>
+                    </div>
+
                     <div className="flex justify-between gap-5">
                         <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>Previous</button>
                         <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={next}>Next</button>                        
@@ -901,24 +972,24 @@ return(
         {!isSubmitSuccess && currentStep === 3 && (
             <>
                 <div className="w-full mb-4 flex flex-col gap-5">                    
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="askingprice" className="text-sm w-1/3">Asking Price</label>
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="askingprice" className="text-sm md:w-1/3 w-full leading-loose">Asking Price</label>
                         <input type="text" {...register('askingprice')} onChange={onChangeField}  placeholder="Asking Price"
-                        className="block w-2/3 px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65]" />
+                        className="block md:w-2/3 w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65]" />
                     </div>                    
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="status" className="text-sm w-1/3">Unit Status</label>
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="status" className="text-sm md:w-1/3 w-full leading-loose">Unit Status</label>
                         <Select {...register('status')}  onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] w-2/3 text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
                             <option value="Rented">Rented</option>
                             <option value="Vacant">Vacant</option>
                             <option value="Owner_Occupied">Occupied</option>
                         </Select>
                     </div>
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="service" className="text-sm w-1/3">Service Type</label>
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="service" className="text-sm md:w-1/3 w-full leading-loose">Service Type</label>
                         <Select {...register('service')} onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] w-2/3 text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
                             <option value="">Service Type</option>
                             <option value="Residential_for_rent">Residential for Rent</option>
                             <option value="Residential_for_sale">Residential for Sale</option>
@@ -926,13 +997,17 @@ return(
                             <option value="Commercial_for_sale">Commercial for Sale</option>
                         </Select>
                     </div>
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="readytoview" className="text-sm w-1/3">Ready To View</label>
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="readytoview" className="text-sm md:w-1/3 w-full leading-loose">Ready To View</label>
                         <Select {...register('readytoview')} onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] w-2/3 text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
                         </Select>
+                    </div>
+                    {/* mobile progress bar */}
+                    <div className="progree-bar md:hidden block justify-items-center">
+                        <img src={`${steps[currentStep].progressImg}`}></img>
                     </div>
                     <div className="flex justify-between gap-5">
                         <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>Previous</button>
@@ -945,9 +1020,9 @@ return(
         {!isSubmitSuccess && currentStep === 4 && (
             <>
                 <div className="w-full mb-4 flex flex-col gap-5">                    
-                    <div className="inputGroup w-full flex items-center">
-                        <label className="text-sm w-1/3">Attach external image</label>
-                        <div className="relative w-2/3 flex items-center">
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label className="text-sm md:w-1/3 w-full leading-loose">Attach external image</label>
+                        <div className="relative md:w-2/3 w-full flex items-center">
                             <input
                             type="file"
                             name="propertyimages"
@@ -971,9 +1046,9 @@ return(
                         </div>
                     </div>
 
-                    <div className="inputGroup w-full flex items-center">
-                        <label className="text-sm w-1/3">Attach SPA</label>
-                        <div className="relative w-2/3 flex items-center">
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label className="text-sm md:w-1/3 w-full leading-loose">Attach SPA</label>
+                        <div className="relative md:w-2/3 w-full flex items-center">
                             <input
                             type="file"
                             name="propertyspa"
@@ -994,9 +1069,9 @@ return(
                         </div>
                     </div>
 
-                    <div className="inputGroup w-full flex items-center">
-                        <label className="text-sm w-1/3">Attach Title Deed</label>
-                        <div className="relative w-2/3 flex items-center">
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label className="text-sm md:w-1/3 w-full leading-loose">Attach Title Deed</label>
+                        <div className="relative md:w-2/3 w-full flex items-center">
                             <input
                             type="file"
                             name="propertydeed"
@@ -1016,9 +1091,9 @@ return(
                             </label>                            
                         </div>
                     </div>
-                    <div className="inputGroup w-full flex items-center">
-                        <label className="text-sm w-1/3">Attach Passport</label>
-                        <div className="relative w-2/3 flex items-center">
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label className="text-sm md:w-1/3 w-full leading-loose">Attach Passport</label>
+                        <div className="relative md:w-2/3 w-full flex items-center">
                             <input
                             type="file"
                             name="passportfile"
@@ -1038,6 +1113,10 @@ return(
                             </label>                            
                         </div>
                     </div>
+                    {/* mobile progress bar */}
+                    <div className="progree-bar md:hidden block justify-items-center">
+                        <img src={`${steps[currentStep].progressImg}`}></img>
+                    </div>
 
                     <div className="flex justify-between gap-5">
                         <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>Previous</button>
@@ -1051,9 +1130,9 @@ return(
             <>
             <p className="font-bold mb-5">The Best Time to Contact You</p>
                 <div className="w-full mb-4 flex flex-col gap-5">                    
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="datetoview" className="text-sm w-1/3">Date</label>
-                        <div className="block w-2/3 px-5 py-3 border border-[#E2E8F0] rounded-[7px] relative ">
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="datetoview" className="text-sm md:w-1/3 w-full leading-loose">Date</label>
+                        <div className="block md:w-2/3 w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] relative ">
                             <input type="date"                            
                             {...register('datetoview')} 
                             ref={setDateRef}                             
@@ -1062,9 +1141,9 @@ return(
                             onClick={handleDateClick}></FontAwesomeIcon>
                         </div>                        
                     </div>                    
-                    <div className="inputGroup w-full flex items-center">
-                        <label htmlFor="timetoview" className="text-sm w-1/3">Time</label>
-                        <div className="block w-2/3 px-5 py-3 border border-[#E2E8F0] rounded-[7px] relative ">
+                    <div className="inputGroup w-full md:flex items-center">
+                        <label htmlFor="timetoview" className="text-sm md:w-1/3 w-full leading-loose">Time</label>
+                        <div className="block md:w-2/3 w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] relative ">
                             <input type="time"                            
                             {...register('timetoview')}
                             ref={setTimeRef}                             
@@ -1079,6 +1158,11 @@ return(
                         {...register('cityName')} className="hidden" readOnly />
                     <input type="text" className="hidden gclid_field clid_field" id="gclid_field" name="gclid_field" 
                         placeholder= "gclid_field" />
+
+                    {/* mobile progress bar */}
+                    <div className="progree-bar md:hidden block justify-items-center">
+                        <img src={`${steps[currentStep].progressImg}`}></img>
+                    </div>
 
                     <div className="flex justify-between gap-5">
                         <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>Previous</button>

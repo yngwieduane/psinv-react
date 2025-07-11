@@ -8,8 +8,6 @@ import "react-phone-number-input/style.css";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormDataSchema2 } from "./lib/Schema2";
-import { faPaperclip, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'react-datepicker/dist/react-datepicker.css';
 import { usePathname } from "next/navigation";
 
@@ -361,7 +359,7 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
                 ReferredToID= ReferredToID;
                 ReferredByID=ReferredByID;
                 ActivityAssignedTo=ActivityAssignedTo;
-                sendtomail = "callcenter@psidubai.com";
+                sendtomail = "callcenter@psinv.net";
                 break;
         }
             
@@ -445,20 +443,44 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
                     },
                     body: JSON.stringify(formDataToSend),
                 });
-                if(response.ok) {
+                
+                const mailRes = await fetch("https://psinv.net/api/sendemail.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        body: `
+                        List Your Property<br><br>
+                        Name: ${data.fname} ${data.lname}<br>
+                        Email: ${data.email}<br>
+                        Phone: ${data.phone}<br>
+                        Purpose: ${data.purpose}<br>
+                        Property Type: ${data.proptype}<br>
+                        Bedroom: ${data.beds}<br>
+                        Location: ${data.cityName}<br>
+                        Property: ${data.propName}<br>
+                        URL coming from: ${currentUrl}<br>
+                        `,
+                        receiver: sendtomail,
+                        subject: "New inquiry - List Your Property",
+                        filename: "",
+                        filedata: ""
+                    }),
+                });
+    
+                if(response.ok && mailRes.ok) {
                     setPostId("success");
                     setIsSubmitSuccess(true);
                     //window.location.href = `/${locale}/thankyou?${encodeURIComponent(data.email)}`
                 } else {
                     alert("Error submitting the form.");
-                }                    
+                }
+
             } catch(error) {
                 console.log(error);
                 setPostId("Error");
             } finally {
                 setIsSubmitting(false);
             }
-
 
         } catch(error){
             console.error("Submission failed:", error);
