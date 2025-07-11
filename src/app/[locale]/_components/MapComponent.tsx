@@ -5,8 +5,8 @@ import { useState } from "react";
 import {APIProvider, Map} from '@vis.gl/react-google-maps';
 
 interface MapComponentProps {
-  latitude?: number;
-  longitude?: number;
+  latitude?: any;
+  longitude?: any;
   fallbackImage: string;
   height: string;
 }
@@ -20,7 +20,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ latitude, longitude, fallba
         <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API as string}>
           <Map
             style={{width: '100vw', height: '100vh'}}
-            defaultCenter={{lat: latitude, lng: longitude}}
+            defaultCenter={{lat: parseFloat(latitude), lng: parseFloat(longitude)}}
             defaultZoom={12}
             gestureHandling={'greedy'}
             disableDefaultUI={true}
