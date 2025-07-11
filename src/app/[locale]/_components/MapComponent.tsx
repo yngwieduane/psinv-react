@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { MapProvider } from "../../../../providers/map-providers";
-import { MapContent } from "./MapContent";
+import {APIProvider, Map} from '@vis.gl/react-google-maps';
 
 interface MapComponentProps {
   latitude?: number;
@@ -18,9 +17,15 @@ const MapComponent: React.FC<MapComponentProps> = ({ latitude, longitude, fallba
   return (
     <div className="mapSection w-full h-full rounded-lg overflow-hidden">
       {latitude && longitude && !hasError ? (
-        <MapProvider>
-          <MapContent latitude={latitude} longitude={longitude}/>
-        </MapProvider>
+        <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API as string}>
+          <Map
+            style={{width: '100vw', height: '100vh'}}
+            defaultCenter={{lat: latitude, lng: longitude}}
+            defaultZoom={12}
+            gestureHandling={'greedy'}
+            disableDefaultUI={true}
+          />
+        </APIProvider>
       ) : (
         <Image
           width={200}
