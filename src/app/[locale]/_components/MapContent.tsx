@@ -1,10 +1,9 @@
 'use client'
-
 import { GoogleMap, MarkerF } from "@react-google-maps/api";
 
 export const defaultMapContainerStyle = {
     width: '100%',
-    height: '100%',
+    height: '100vh',
     borderRadius: '0px 0px 0px 0px',
 };
 
