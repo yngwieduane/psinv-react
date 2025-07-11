@@ -88,6 +88,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   animation: rotateBack 0.2s ease-in;
 }
 #providers .swiper-pagination { display: none; }
+.select-placeholder { color: gray;}
 
 @keyframes rotateToLeft {
   0% {
@@ -134,5 +135,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   .formBg { background-image: url('/assets/images/list-property/contact-img.webp');}
 }
 @media only screen and (max-width:768px) {  
-  .formBg { background-image: url('/assets/images/list-property/form-bg-mob.webp');}
+  .formBg { background-image: url('/assets/images/list-property/form-bg-mob.webp'); position: relative;  z-index: 0;}
+  .formBg-grad { z-index: 1;}
 }

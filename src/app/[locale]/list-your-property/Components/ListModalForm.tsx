@@ -347,7 +347,7 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
             case 'Abu Dhabi':	    		
                 ReferredToID=3458;
                 ReferredByID=3458;
-                sendtomail='wd6@psinv.net,wd3@psinv.net';
+                sendtomail='callcenter@psinv.net';
                 break;
             case 'Dubai':	    		
                 ReferredToID=4421;
@@ -458,10 +458,10 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
                         Bedroom: ${data.beds}<br>
                         Location: ${data.cityName}<br>
                         Property: ${data.propName}<br>
-                        From URL: ${currentUrl}<br>
+                        URL coming from: ${currentUrl}<br>
                         `,
-                        receiver: sendtomail, // should be a string like "yngwie.g@psinv.net"
-                        subject: "New inquiry - List Your Property - Property Shop Investment",
+                        receiver: sendtomail,
+                        subject: "New inquiry - List Your Property",
                         filename: "",
                         filedata: ""
                     }),

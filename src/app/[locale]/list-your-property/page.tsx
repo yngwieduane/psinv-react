@@ -495,22 +495,22 @@ const ListYourPropertyPage = () => {
                 style={{backgroundImage:"url('/assets/images/list-property/bg-vector.svg')"}}></div>
             </div>
 
-            <div className="w-full bg-cover bg-no-repeat bg-center formBg relative">
-                <div className="w-full h-full md:hidden block absolute inset-0 z-9" 
+            <div className="w-full bg-cover bg-no-repeat bg-center formBg relative z-0">
+                <div className="w-full h-full md:hidden block absolute inset-0 z-[1] formBg-grad" 
                 style={{background:"linear-gradient(0deg, #f7f7f700, #f7f7f700), linear-gradient(0deg, rgba(39, 41, 99, 0.5), rgba(39, 41, 99, 0.5))"}} ></div>
-                    <div className="max-w-screen-xl flex mx-auto px-4 items-center">
-                        <div className="md:w-1/2 md:block hidden gap-4 py-10">
-                            <img src="/PSI-Logo.svg" alt="logo" width={104} className="mb-5"></img>
-                            <h5 className="text-sm text-[#E35F27] font-semibold mb-3">List Your Property</h5>
-                            <h2 className="text-4xl text-[#272963] font-[500] leading-normal mb-3">BE with the Brand you Trust</h2>
-                            <p className="text-[#212529]">Trust the brand that delivers quality, reliability, and meets your needs. Stick with the brand you trust.</p>
-                        </div> 
-                        <div className="md:w-1/2 md:pl-5" style={{zIndex:"9999"}}>
-                            <div className="formBox bg-white rounded-[16px] p-5 md:my-[-40px] my-10" style={{boxShadow:"0px 4px 40px 0px rgba(0, 0, 0, 0.25)"}}>                            
-                                <ListForm />
-                            </div>
+                <div className="max-w-screen-xl md:flex mx-auto px-4 items-center relative z-[10]">
+                    <div className="md:w-1/2 md:block hidden gap-4 py-10">
+                        <img src="/PSI-Logo.svg" alt="logo" width={104} className="mb-5"></img>
+                        <h5 className="text-sm text-[#E35F27] font-semibold mb-3">List Your Property</h5>
+                        <h2 className="text-4xl text-[#272963] font-[500] leading-normal mb-3">BE with the Brand you Trust</h2>
+                        <p className="text-[#212529]">Trust the brand that delivers quality, reliability, and meets your needs. Stick with the brand you trust.</p>
+                    </div> 
+                    <div className="md:w-1/2 md:pl-5 md:py-0 py-5" style={{zIndex:"9999"}}>
+                        <div className="formBox bg-white rounded-[16px] md:p-5 py-5 px-3 md:my-[-40px]" style={{boxShadow:"0px 4px 40px 0px rgba(0, 0, 0, 0.25)"}}>                            
+                            <ListForm />
                         </div>
                     </div>
+                </div>
             </div>
 
             <div className="spacer h-[50]"></div>
