@@ -32,7 +32,7 @@ export default function UnitListBox(props:any){
         };
     return (
         <>
-        <article className="relative isolate flex flex-col gap-8 lg:flex-row rounded-2xl w-full border border-gray-300 p-2 items-center">
+        <article className="relative isolate flex flex-col gap-5 lg:flex-row rounded-2xl w-full border border-gray-300 p-2 items-center">
             <div className="relative w-full h-52 sm:aspect-2/1 lg:aspect-square lg:w-64 lg:shrink-0">
                 {images.length <= 1 ? (
                     <img
@@ -55,7 +55,7 @@ export default function UnitListBox(props:any){
                 <div className="flex items-center gap-x-4 text-xs">
                     <Link
                         href="#"
-                        className="absolute top-5 md:top-0 md:relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+                        className="absolute left-7 top-7 md:left-0 md:top-0 md:relative z-10 rounded-full bg-gray-50 px-3 py-1.5 text-gray-600 hover:bg-gray-100"
                     >
                         <FontAwesomeIcon icon={faLocationDot} /> {props.data.community}
                     </Link>

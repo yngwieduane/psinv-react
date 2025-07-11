@@ -111,7 +111,7 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange 
               setMinVal(val);
               updateQuery('minPrice',minVal.toString());
               }}
-              className="w-full border rounded px-3 py-2 text-center"
+              className="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 text-lg"
           />
           <input
               type="text"
@@ -121,7 +121,7 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange 
               setMaxVal(val);
               updateQuery('maxPrice',maxVal.toString());
               }}
-              className="w-full border rounded px-3 py-2 text-center"
+              className="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 text-lg"
           />
       </div>
     </div>

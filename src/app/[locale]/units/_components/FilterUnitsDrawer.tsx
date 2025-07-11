@@ -10,20 +10,27 @@ import UnitsSideSearch from "./UnitsSideSearch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
 
-export default function FilterUnitsDrawer(){
+export default function FilterUnitsDrawer({ onChange }:{ onChange:any }){
   const [open, setOpen] = useState(false);
+  const [reset, setReset] = useState(false);
+
+  const handleReset = (e:any) => {
+    setReset(true);
+    onChange(e);
+    console.log("FilterUnitsDrawer = " + e);
+  };
   return (
     <div className="grid">
       <button
         onClick={() => setOpen(true)}
-        className="rounded bg-[#111954] px-4 py-2 text-white transition-colors hover:bg-[#111954]"
+        className="rounded bg-gray-50 outline outline-gray-300 px-4 py-2 text-xl transition-colors hover:bg-[#111954]"
       >
         <FontAwesomeIcon icon={faSliders} />
       </button>
 
       <DragCloseDrawer open={open} setOpen={setOpen}>
         <div className="mx-auto max-w-2xl space-y-4 ">
-          <UnitsSideSearch />
+          <UnitsSideSearch onChange={handleReset} />
         </div>
       </DragCloseDrawer>
     </div>

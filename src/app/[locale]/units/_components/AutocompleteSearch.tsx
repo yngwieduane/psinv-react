@@ -8,7 +8,7 @@ type Project = {
   propertyName: string;
   propertyID: string; 
 };
-export default function Autocomplete() {
+export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -16,9 +16,11 @@ export default function Autocomplete() {
   const [results, setResults] = useState<Project[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(searchParams.get('propertyName')?.toString());
   const [iDValue, setIDValue] = useState(0);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [resetStatus, setResetStatus] = useState(isReset);
+  const [propertyId, setPropertyId] = useState(searchParams.get('propertyId')?.toString());
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -39,13 +41,13 @@ export default function Autocomplete() {
         setIDValue(0);
       }
     }, 300);
-
     return () => clearTimeout(timeout);
   }, [query]);
   
   const handleInputChange = (e:any) => {
     setInputValue(e.target.value);
     setQuery(e.target.value);
+    setResetStatus('false');
   };
 
   const updateQuery = useDebouncedCallback((key: string, value: string | null) => {
@@ -65,10 +67,16 @@ export default function Autocomplete() {
     setInputValue(property);
     setShowDropdown(false);
     updateQuery('propertyId',id);
+    updateQuery('propertyName',property);
+    setPropertyId(propertyId)
   }
+  // if(isReset){
+  //   setResetStatus(isReset);
+  // }
+
   return (
     <div >
-      <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+      <label htmlFor="email" className=" md:block text-sm/6 font-medium text-gray-900 hidden">
           Property Name
       </label>
       <div className="mt-2 grid grid-cols-1">
@@ -77,14 +85,14 @@ export default function Autocomplete() {
           id="propertyName"
           name="propertyName"
           placeholder="Search project..."
-          value={inputValue}
+          value={isReset ? '' : inputValue}
           onChange={handleInputChange}
           autoComplete="off"
-          className="col-start-1 row-start-1 block w-full rounded-md bg-white py-1.5 pr-3 pl-10 text-xl text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:pl-9 sm:text-sm/6"
+          className="col-start-1 row-start-1 block w-full rounded-md bg-gray-50 md:bg-white py-2 pr-3 pl-10 text-xl text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:pl-9 placeholder:text-gray-500"
         />
         <MagnifyingGlassIcon
           aria-hidden="true"
-          className="pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-gray-400 sm:size-4"
+          className="pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-gray-800 sm:size-4"
         />
       </div>
       {loading && <p className="absolute left-0 right-0 bg-white border mt-1 z-10 max-h-60 overflow-auto shadow">Searching...</p>}
@@ -103,8 +111,8 @@ export default function Autocomplete() {
         type="text"
         id="propertyId"
         name="propertyId"
+        defaultValue={propertyId}
         className="hidden"
-        value={iDValue}
         readOnly
       />
     </div>

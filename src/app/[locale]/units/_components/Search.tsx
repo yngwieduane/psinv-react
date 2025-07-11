@@ -3,8 +3,7 @@
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import Form from 'next/form'
 import {useLocale} from 'next-intl';
-import Autocomplete from './AutocompleteSearch';
-import { useFormStatus } from 'react-dom';
+import AutocompleteSearch from './AutocompleteSearch';
 import { useState } from 'react';
 import { useDebouncedCallback } from "use-debounce";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -12,7 +11,17 @@ import FilterUnitsDrawer from './FilterUnitsDrawer';
  
 export default function Search({ placeholder }: { placeholder: string }) {
     
+    const searchParams = useSearchParams();
+    const locale = useLocale();
     const [loading, setLoading] = useState(false);
+    const [reset, setReset] = useState(false);
+
+    const [minPrice, setMinPrice] = useState(searchParams.get('minPrice')?.toString());
+    const [maxPrice, setMaxPrice] = useState(searchParams.get('maxPrice')?.toString());
+    const [beds, setBeds] = useState(searchParams.get('beds')?.toString());
+    const [baths, setBaths] = useState(searchParams.get('baths')?.toString());
+    const [propertyType, setPropertyType] = useState(searchParams.get('propertyType')?.toString());
+
     const router = useRouter();
     const pathname = usePathname();
 
@@ -26,26 +35,36 @@ export default function Search({ placeholder }: { placeholder: string }) {
             setLoading(false);
         }, 2000);
     };
-    const searchParams = useSearchParams();
-    const locale = useLocale();
 
-  const updateQuery = useDebouncedCallback((key: string, value: string | null) => {
-    const params = new URLSearchParams(searchParams.toString());
+    const updateQuery = useDebouncedCallback((key: string, value: string | null) => {
+        const params = new URLSearchParams(searchParams.toString());
 
-    if (value === null || value === '') {
-      params.delete(key);
-    } else {
-      params.set(key, value);
+        if (value === null || value === '') {
+        params.delete(key);
+        } else {
+        params.set(key, value);
+        }
+        console.log(key + " = " + value );
+        router.push(`${pathname}?${params.toString()}`);
+    },300);
+
+  const handleReset = (e:any) => {
+    setReset(e);
+    console.log("Search = " + e);
+    if(e === 'true'){
+        setMinPrice('');
+        setMaxPrice('');
+        setBeds('');
+        setBaths('');
+        setPropertyType('');
     }
-    console.log(key + " = " + value );
-    router.push(`${pathname}?${params.toString()}`);
-  },300);
+  };
 
   return (
     <Form action={`/${locale}/units`}>
         <div className="relative flex md:grid md:grid-cols-4 gap-5 items-end">
             <div className="col-span-3 w-full">
-                <Autocomplete />
+                <AutocompleteSearch isReset={reset}/>
             </div>
             <div className='hidden'>
                 <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
@@ -63,6 +82,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
             </div>
             <div className="grid md:hidden min-w-[45px]">
                 <FilterUnitsDrawer
+                    onChange={handleReset}
                     // onChange={handleSliderRange}
                 />
             </div>
@@ -98,35 +118,35 @@ export default function Search({ placeholder }: { placeholder: string }) {
                 placeholder={placeholder}
                 id="minPrice"
                 name="minPrice"
-                defaultValue={searchParams.get('minPrice')?.toString()}
+                defaultValue={minPrice}
                 className="hidden"
             />
             <input
                 placeholder={placeholder}
                 id="maxPrice"
                 name="maxPrice"
-                defaultValue={searchParams.get('maxPrice')?.toString()}
+                defaultValue={maxPrice}
                 className="hidden"
             />
             <input
                 placeholder={placeholder}
                 id="beds"
                 name="beds"
-                defaultValue={searchParams.get('beds')?.toString()}
+                defaultValue={beds}
                 className="hidden"
             />
             <input
                 placeholder={placeholder}
                 id="baths"
                 name="baths"
-                defaultValue={searchParams.get('baths')?.toString()}
+                defaultValue={baths}
                 className="hidden"
             />
             <input
                 placeholder={placeholder}
                 id="propertyType"
                 name="propertyType"
-                defaultValue={searchParams.get('propertyType')?.toString()}
+                defaultValue={propertyType}
                 className="hidden"
             />
         </div>
