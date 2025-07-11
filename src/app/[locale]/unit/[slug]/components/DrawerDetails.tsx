@@ -30,7 +30,7 @@ export default function DrawerDetails(props:any) {
         case 'map':
             coordinates = props.drawerContent.split(",")?? "";
             title = "Map";
-            content = <MapComponent latitude={coordinates['1']} longitude={coordinates['0']} fallbackImage="" height="100%"/>;
+            content = <MapComponent latitude={coordinates['1']} longitude={coordinates['0']} fallbackImage="" height="100%" />;
             break;
         case 'gallery':
             images = props.drawerContent?? "";
