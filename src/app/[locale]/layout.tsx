@@ -46,11 +46,7 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <NextIntlClientProvider messages={messages}>
-            <Navigation/>
             <Providers>{children}</Providers>
-            <div className="w-full mt-10">
-            <MainFooter />
-            </div>
         </NextIntlClientProvider>
       </body>
     </html>
