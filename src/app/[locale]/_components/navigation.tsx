@@ -208,6 +208,12 @@ const more: More[] = [
     description: 'Careers',
     href: '/careers',
     icon: ChartPieIcon,
+  },
+  {
+    name: 'Youngsters Program',
+    description: 'Youngsters Program',
+    href: '/psi-youngsters-program',
+    icon: ChartPieIcon,
   }
 ];
 
