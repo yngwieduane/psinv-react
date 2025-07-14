@@ -68,6 +68,7 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
     const [propName, setPropName] = useState('');
     const [gclidField, setGclidField] = useState('');
     const [apiUrl, setApiUrl] = useState('');
+    const [isAlreadySubmitted, setIsAlreadySubmitted] = useState(false);
 
     const {
     register,
@@ -201,6 +202,17 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
     }, [formValue.cityName]);
 
     const onSubmit = async (data: FormData) => {
+        if (typeof window === 'undefined') return; //ensure code runs only in browser
+
+        const lastSubmitTime = localStorage.getItem("formSubmitTime");
+        const now = Date.now();
+        const cooldown = 10 * 60 * 1000; // 10 minutes 
+
+        if(lastSubmitTime && now - parseInt(lastSubmitTime) < cooldown ) {  
+            setIsAlreadySubmitted(true);          
+            return;
+        }
+
         try{
             setIsSubmitting(true); 
             let bedrooms, bathrooms, contactType, requirementType,ReferredByID, 
@@ -470,7 +482,9 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
                 if(response.ok && mailRes.ok) {
                     setPostId("success");
                     setIsSubmitSuccess(true);
+                    setIsAlreadySubmitted(false);
                     //window.location.href = `/${locale}/thankyou?${encodeURIComponent(data.email)}`
+                    localStorage.setItem("formSubmitTime", Date.now().toString());
                 } else {
                     alert("Error submitting the form.");
                 }
@@ -690,6 +704,16 @@ return(
                 </div>
             </>
         )}    
+
+        {isAlreadySubmitted && (
+            <>
+                <div className="w-full">
+                    <div className='bg-yellow-100 text-center text-sm p-4 text-[#78350F]' role='alert'>
+                        You've already submitted. Please wait a few minutes before trying again.
+                    </div>
+                </div>
+            </>
+        )}
         
     </form>
     {!isSubmitSuccess && (

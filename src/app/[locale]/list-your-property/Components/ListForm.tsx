@@ -5,7 +5,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { z } from "zod";
+import { isValid, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormDataSchema } from "./lib/Schema";
 import { faPaperclip, faChevronDown } from "@fortawesome/free-solid-svg-icons";
@@ -115,6 +115,9 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
     const [propName, setPropName] = useState('');
     const [gclidField, setGclidField] = useState('');
     const [apiUrl, setApiUrl] = useState('');
+    const [sendToMail, setSendToMail] = useState('wd6@psinv.net');
+    const [hasSentMail, setHasSentMail] = useState(false);
+    const [isAlreadySubmitted, setIsAlreadySubmitted] = useState(false);
 
     const {
     register,
@@ -135,13 +138,53 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
     const next = async() => {
         const fields = steps[currentStep].fields;
         if(fields && fields.length >0) {
-            const isValid = await trigger(fields, { shouldFocus: true});
+            const isValid = await trigger(fields, { shouldFocus: true});            
+
             if(!isValid) { console.log(fields ,"Empty.."); return }
+            if (currentStep === 0 && !hasSentMail) {
+                const success = await sendEmail();
+                if(!success) {
+                    console.log("Email send failed.");
+                    return;
+                }
+                setHasSentMail(true);
+            }
         }
         
         if(currentStep < steps.length - 1) {                        
-            setCurrentStep(step => step + 1);
-        }
+            setCurrentStep((step) => step + 1);
+        }        
+    };
+
+    const sendEmail = async () => {
+        try {
+            const response = await fetch("https://psinv.net/api/sendemail.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",                
+            },
+            body: JSON.stringify({
+               body: `
+                Name: ${formValue.fname} ${formValue.lname}<br/>
+                Email: ${formValue.email}<br/>
+                Phone: ${formValue.phone}<br/>
+                Purpose: ${formValue.purpose}<br/>
+                Message: ${formValue.description ? formValue.description : ""} <br/>
+               `,
+               receiver: sendToMail,
+               subject: "New inquiry - List Your Property",
+                filename: "",
+                filedata: "",
+            }),
+        });
+
+        if (!response.ok) throw new Error('Email failed');
+
+        return true;
+        }  catch(err) {
+            console.error("sendEmail error:", err);
+            return false;
+        }      
     }
 
     const prev = () => {
@@ -357,10 +400,21 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
     }, [formValue.cityName]);
 
     const onSubmit = async (data: FormData) => {
+        if (typeof window === 'undefined') return; //ensure code runs only in browser
+
+        const lastSubmitTime = localStorage.getItem("formSubmitTime");
+        const now = Date.now();
+        const cooldown = 10 * 60 * 1000; // 10 minutes 
+
+        if(lastSubmitTime && now - parseInt(lastSubmitTime) < cooldown ) {  
+            setIsAlreadySubmitted(true);          
+            return;
+        }
+
         try{
             setIsSubmitting(true); 
             let bedrooms, bathrooms, contactType, requirementType,ReferredByID, 
-            ReferredToID, ActivityAssignedTo, Budget, Budget2, unitType, sendtomail;
+            ReferredToID, ActivityAssignedTo, Budget, Budget2, unitType;
 
             const uploadedFiles = {
             propertyimages: await uploadFiles(propertyImages, 'propertyimages'),
@@ -539,19 +593,19 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
 	    	case 'Abu Dhabi':	    		
 				ReferredToID=3458;
 				ReferredByID=3458;
-				sendtomail='wd6@psinv.net';
+				setSendToMail('wd6@psinv.net');
 	    		break;
 	    	case 'Dubai':	    		
 				ReferredToID=4421;
 				ReferredByID=4421;
 				ActivityAssignedTo=4421;
-				sendtomail = "callcenter@psidubai.com";
+				setSendToMail('callcenter@psidubai.com');
 	    		break;	    	
 	    	default:
 	    		ReferredToID= ReferredToID;
 				ReferredByID=ReferredByID;
 				ActivityAssignedTo=ActivityAssignedTo;
-				sendtomail = "callcenter@psinv.net";
+				setSendToMail('callcenter@psinv.net');
 	    		break;
 	    }
             
@@ -704,17 +758,18 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
                         Time to view: ${data.timetoview} </br>
                         URL coming from: ${currentUrl}
                         `,
-                        receiver: sendtomail,
+                        receiver: sendToMail,
                         subject: "New inquiry - List Your Property",
                         filename: "",
                         filedata: ""
                     }),
                 });
 
-                if(response.ok && mailRes.ok) {
+                if(response.ok || mailRes.ok) {
                     setPostId("success");
                     setIsSubmitSuccess(true);
                     //window.location.href = `/${locale}/thankyou?${encodeURIComponent(data.email)}`
+                    localStorage.setItem("formSubmitTime", Date.now().toString());
                 } else {
                     alert("Error submitting the form.");
                 }                    
@@ -724,7 +779,6 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
             } finally {
                 setIsSubmitting(false);
             }
-
 
         } catch(error){
             console.error("Submission failed:", error);
@@ -754,7 +808,7 @@ return(
                     <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
                         <label htmlFor="fname" className="text-sm block leading-loose">First Name <sup className="imp text-[#E35F27]">*</sup></label>
                         <input type="text" 
-                        {...register('fname')} placeholder="First Name"
+                        {...register('fname')} onChange={onChangeField} placeholder="First Name"
                         className="block w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]" />
                         {errors.fname?.message && (
                             <p className="text-red-500 text-sm mt-2">
@@ -765,7 +819,7 @@ return(
                     <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
                         <label htmlFor="lname" className="text-sm block leading-loose">Last Name <sup className="imp text-[#E35F27]">*</sup></label>
                         <input type="text" placeholder="Last Name"
-                        {...register('lname')}
+                        {...register('lname')} onChange={onChangeField}
                         className="block w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]" />
                         {errors.lname?.message && (
                             <p className="text-red-500 text-sm mt-2">
@@ -778,17 +832,23 @@ return(
                     <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
                         <label htmlFor="lname" className="text-sm block leading-loose">Phone Number <sup className="imp text-[#E35F27]">*</sup></label>
                         <Controller name="phone"
-                        control={control}                        
+                        control={control}                      
                         render={({field}) => (
                             <div>
                                 <PhoneInput                
                                     international
                                     {...field}
-                                    {...register('phone')}
+                                    {...register('phone')} 
                                     defaultCountry="AE"                       
                                     className="block w-full px-5 py-3 border rounded-md mb-3 border border-[#A6A6A6] 
                                     rounded-[7px] placeholder-[#A6A6A6]"
-                                    onChange={(value) => field.onChange(value)}
+                                    
+                                    onChange={(value) => {
+                                        field.onChange(value);
+                                        setFormValue(prev => ({ ...prev, phone: value?.toString() || '' }));
+                                    }} 
+ 
+
                                     />
                                 {errors.phone && <p className="text-red-500 text-sm mt-[-5px]">{errors.phone.message}</p>}                                    
                             </div>
@@ -798,7 +858,7 @@ return(
                     <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
                         <label htmlFor="email" className="text-sm block leading-loose">Email Address <sup className="imp text-[#E35F27]">*</sup></label>
                         <input type="email" placeholder="Email Address"
-                        {...register('email')}
+                        {...register('email')} onChange={onChangeField}
                         className="block w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]" />
                         {errors.email && <p className="text-red-500 text-sm mt-2">{errors.email.message}</p>}
                     </div>
@@ -1040,6 +1100,7 @@ return(
                             >
                                 {propertyImages.length > 0
                                     ? propertyImages.map((image) => image.name).join(", ")
+                                    
                                     : "Attach external image"}                            
                                 
                             </label>                            
@@ -1207,7 +1268,17 @@ return(
                     </div>
                 </div>
             </>
-        )}    
+        )} 
+
+         {isAlreadySubmitted && (
+            <>
+                <div className="w-full">
+                    <div className='bg-yellow-100 text-center text-sm p-4 text-[#78350F]' role='alert'>
+                        You've already submitted. Please wait a few minutes before trying again.
+                    </div>
+                </div>
+            </>
+        )}   
         
     </form>
     {!isSubmitSuccess && (

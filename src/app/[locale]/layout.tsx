@@ -24,6 +24,8 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import Navigation from "./_components/navigation";
 import MainFooter from "./_components/MainFooter";
+import ConditionalNavigation from "./_components/ConditionalNavigation";
+import ConditionalFooter from "./_components/ConditionalFooter";
 
 export default async function LocaleLayout({
   children,
@@ -46,10 +48,10 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <NextIntlClientProvider messages={messages}>
-            <Navigation/>
+            <ConditionalNavigation />
             <Providers>{children}</Providers>
             <div className="w-full mt-10">
-            <MainFooter />
+            <ConditionalFooter />
             </div>
         </NextIntlClientProvider>
       </body>
