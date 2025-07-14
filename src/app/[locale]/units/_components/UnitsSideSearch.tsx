@@ -104,7 +104,7 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
             }}>
               <Label className="block text-lg font-medium text-gray-900">Bedrooms</Label>
               <div className="relative mt-2">
-                <ListboxButton className="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 text-lg">
+                <ListboxButton className="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-2.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 text-xl">
                   <span className="col-start-1 row-start-1 truncate pr-6">{beds}</span>
                   <ChevronUpDownIcon
                     aria-hidden="true"
@@ -143,7 +143,7 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
             }}>
               <Label className="block text-lg font-medium text-gray-900">Bathrooms</Label>
               <div className="relative mt-2">
-                <ListboxButton className="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-lg">
+                <ListboxButton className="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-2.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-lg">
                   <span className="col-start-1 row-start-1 truncate pr-6">{baths}</span>
                   <ChevronUpDownIcon
                     aria-hidden="true"
@@ -182,7 +182,7 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
             }}>
               <Label className="block text-lg font-medium text-gray-900">Property Type</Label>
               <div className="relative mt-2">
-                <ListboxButton className="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-lg">
+                <ListboxButton className="grid w-full cursor-default grid-cols-1 rounded-md bg-white py-2.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-lg">
                   <span className="col-start-1 row-start-1 truncate pr-6">{propertyType}</span>
                   <ChevronUpDownIcon
                     aria-hidden="true"
