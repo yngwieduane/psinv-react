@@ -196,9 +196,11 @@ const ListYourPropertyPage = () => {
                                                                             
                             <ul className="flex flex-col h-full gap-4 py-4 text-md font-semibold text-[#272963] leading-loose mt-5">
                                 {navItems.map((item, index) => (
-                                    <li key={index}>
-                                        {item.name}
-                                    </li>
+                                    <a href={item.href} onClick={()=>setIsMobileMenuOpen(false)}>
+                                        <li key={index}>
+                                            {item.name}
+                                        </li>
+                                    </a>
                                 ))}
                             </ul>
                         </div>
@@ -520,7 +522,16 @@ const ListYourPropertyPage = () => {
                 <div className="w-full py-10">                   
                     <Accordion />
                 </div>                 
-            </div>            
+            </div>  
+            <div className="spacer h-[50]"></div>
+
+            <footer className="absolute w-full">
+                {/* Copyright Section */}
+                <div className="text-center text-[11px] sm:text-base py-4 bg-white text-[#111954] sm:bg-[#111954] sm:text-white">
+                  <p>© 2025 Property Shop Investment LLC. | All Rights Reserved.</p>                  
+                </div>
+            </footer>
+
             <InquireModal modalState={modal} onModalUpdate={modalUpdate} />
         </>
     )

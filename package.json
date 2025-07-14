@@ -22,7 +22,7 @@
     "@tanstack/react-query": "^5.67.2",
     "@types/google.maps": "^3.58.1",
     "chart.js": "^4.4.9",
-    "framer-motion": "^12.23.0",
+    "framer-motion": "^12.23.3",
     "i18next": "^24.2.2",
     "keen-slider": "^6.8.6",
     "next": "^15.3.4",
