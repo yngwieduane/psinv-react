@@ -1,0 +1,117 @@
+html {
+  scroll-behavior: smooth;
+}
+.detailsInner {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-left: 140px;
+}
+.dayCircle {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 120px;
+  width: 120px;
+  border-radius: 9999px;
+  background: #272964;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  z-index: 10;
+  transition: border 0.3s ease;
+}
+
+.dayText {
+  background-color: #272964;
+  color: white;
+  padding: 1rem 1.5rem;
+  flex-grow: 1;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: none;
+  min-height: 120px;
+  transition: border 0.3s ease;
+}
+
+.detailsInner:hover .dayCircle,
+.detailsInner:hover .dayText {
+  border: 1px solid white;
+}
+
+@media (min-width: 768px) {
+  .detailsInner {
+    flex-direction: row;
+    align-items: flex-start;
+    padding-left: 160px;
+  }
+
+  .dayCircle {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 140px;
+    width: 140px;
+  }
+
+  .dayText {
+    text-align: left;
+    height: 135px;
+  }
+}
+
+.shadow-custom {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  background-color: #4044a1;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.input:focus {
+  border: none;
+  outline: 2px solid #6366f1;
+}
+.PhoneInput {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #434D93;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  color: white;
+}
+
+
+.PhoneInputCountrySelect {
+  background-color: #434D93 !important;
+  color: white !important;
+  border: none !important;
+  font-size: 1rem !important;
+  border-radius: 0.375rem !important;
+}
+
+.PhoneInputCountrySelect option {
+  background-color: white;
+  color: black;
+}
