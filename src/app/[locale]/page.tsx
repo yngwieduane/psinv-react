@@ -4,7 +4,7 @@ import MainNavbar from './_components/MainNavbar';
 import FeaturedProjects from './_components/FeaturedProjects';
 import ListPropertyForm from './_components/ListPropertyForm';
 import WhyPSI from './_components/WhyPSI';
-import Calculator from'../[locale]/calculators/MortgageTabs';
+import Calculator from'./mortgage-calculator/MortgageTabs';
 import AwardSlider from '../[locale]/about-us/_components/AboutAwardsSlider';
 import { Audrey, BrittanySignature } from "@/utils/fonts";
 import { Montserrat, Open_Sans } from "next/font/google";
