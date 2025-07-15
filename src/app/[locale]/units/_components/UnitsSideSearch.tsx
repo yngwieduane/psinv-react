@@ -9,6 +9,7 @@ import MultiRangeSlider from './MultiRangeSlider';
 import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react'
 import { ChevronUpDownIcon } from '@heroicons/react/16/solid'
 import { CheckIcon } from '@heroicons/react/20/solid'
+import Sticky from 'react-sticky-el';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 100000000;
@@ -78,6 +79,7 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
   const formatNumber = (value: number) => new Intl.NumberFormat().format(value);
 
   return (
+    <Sticky stickyClassName="mt-28" boundaryElement=".mainuppper"  hideOnBoundaryHit={false}>
     <div>
         <div className="p-4 border border-gray-300 rounded-md space-y-6">
         <div className="flex justify-between items-center">
@@ -213,5 +215,6 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
         </div>
         </div>
     </div>
+    </Sticky>
   );
 }

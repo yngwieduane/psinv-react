@@ -56,7 +56,8 @@ export const CustomAdvancedMarker: FunctionComponent<Props> = ({
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         className={classNames('real-estate-marker', {clicked, hovered})}
-        onClick={() => setClicked(!clicked)}>
+        // onClick={() => setClicked(!clicked)} 
+        >
         {renderCustomPin()}
       </AdvancedMarker>
     </>

@@ -32,7 +32,7 @@ export default function UnitListBox(props:any){
         };
     return (
         <>
-        <article className="relative isolate flex flex-col gap-5 lg:flex-row rounded-2xl w-full border border-gray-300 p-2 items-center">
+        <article className="relative isolate flex flex-col gap-5 lg:flex-row rounded-lg w-full border border-gray-300 p-2 items-center">
             <div className="relative w-full h-52 sm:aspect-2/1 lg:aspect-square lg:w-64 lg:shrink-0">
                 {images.length <= 1 ? (
                     <img
@@ -67,7 +67,7 @@ export default function UnitListBox(props:any){
                             <p className="">{props.data.propertyname}</p>
                         </Link>
                     </h3>
-                    <p className="mt-2 md:mt-5 text-normal/6 text-gray-600 ">{props.data.marketingTitle}</p>
+                    <p className="mt-2 md:mt-5 text-normal/6 text-gray-600 truncate">{props.data.marketingTitle}</p>
                     <p className="hidden md:flex mt-2 md:mt-5 text-sm/6 text-gray-500">{props.data.category} | <NumberConvert number={props.data.built_upArea} minDecimal='0' label='Sqft'/> | {props.data.bedrooms} Beds | {props.data.no_of_bathrooms} Baths | {props.data.parking} Parking</p>
                 </div>
                 <div className="mt-2 md:mt-6">

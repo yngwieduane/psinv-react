@@ -24,13 +24,13 @@ export default async function UnitsPage(props: any) {
                         <Search placeholder="Search by Reference ID"/>
                     </div>
                     <div className="col-span-4 md:col-span-3">
-                        <div className="mt-0 space-y-5 lg:mt-10 lg:space-y-5">
+                        <div className="mt-0 space-y-5 lg:mt-2 lg:space-y-5">
                             <Suspense key={unitid + currentPage} fallback={<Skeleton />}>
                                 <UnitsList unitid={unitid} category={category} propertyId={propertyId} currentPage={currentPage} />
                             </Suspense>
                         </div>
                     </div>
-                    <div className="hidden md:flex mt-16 space-y-10 lg:mt-10 lg:space-y-5">
+                    <div className="hidden md:flex mt-16 space-y-10 lg:mt-2 lg:space-y-5">
                         <UnitsSideSearch onChange=''/>
                     </div>
                 </div>
