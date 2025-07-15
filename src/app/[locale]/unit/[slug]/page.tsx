@@ -69,7 +69,7 @@ export default async function Page({ params }: Props){
         category = 'rent';
     }
 
-    const data = await fetch(`https://psi.properties/api/external/units?unitid=${code}&category=${category}`)
+    const data = await fetch(`https://psi.properties/api/external/unit?unitid=${code}&category=${category}`)
     const posts = await data.json();
     
     return (

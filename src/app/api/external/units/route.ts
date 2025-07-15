@@ -2,69 +2,23 @@ import { NextRequest } from 'next/server';
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
-    const unitid = searchParams.get('unitid') || '';
+    const propertyId = searchParams.get('propertyId') || '';
     const category = searchParams.get('category') || '';
-    let propertyId = searchParams.get('propertyId') || '';
     let apiurl = 'https://integration.psi-crm.com/ExternalApis/GetSaleListing';
-    // let apiurldxb = 'https://integration.dubai-crm.com/ExternalApis/GetSaleListing';
-    // let apiurlassets = 'https://integration.psiassets-crm.com/ExternalApis/GetSaleListing';
-    // let queryfilter;
     console.log('Fetching units data...'+propertyId);
     let raw;
-    if (unitid) {
+    if (propertyId && propertyId != '0') {
       raw = JSON.stringify({
-        "unitid":unitid
+        "propertyId": propertyId,
       });
     } else {
       raw = JSON.stringify({});
     }
-    if (category && category == 'rent') {
+    if (category && category == 'Rent') {
       apiurl = 'https://integration.psi-crm.com/ExternalApis/GetRentListing';
-      // apiurldxb = 'https://integration.dubai-crm.com/ExternalApis/GetRentListing';
-      // apiurlassets = 'https://integration.psiassets-crm.com/ExternalApis/GetRentListing';
     } else {
       apiurl = 'https://integration.psi-crm.com/ExternalApis/GetSaleListing';
-      // apiurldxb = 'https://integration.dubai-crm.com/ExternalApis/GetSaleListing';
-      // apiurlassets = 'https://integration.psiassets-crm.com/ExternalApis/GetSaleListing';
     }
-    // const [data1, data2, data3] = await Promise.all([
-    //   fetch(
-    //     apiurl,
-    //     {
-    //       method: "POST",
-    //       headers:{
-    //           'accept':'*/*',
-    //           'Content-Type':'application/json',
-    //           'apiKey':'ONjViogekmFKvSkFhYNsgQS56WNG08EORGL9QGarF8gl5aObzzBikmJlmo2wHEQ'
-    //       },
-    //       body: raw,
-    //     }
-    //   ),
-    //   fetch(
-    //     apiurl,
-    //     {
-    //       method: "POST",
-    //       headers:{
-    //           'accept':'*/*',
-    //           'Content-Type':'application/json',
-    //           'apiKey':'ONjViogekmFKvSkFhYNsgQS56WNG08EORGL9QGarF8gl5aObzzBikmJlmo2wHEQ'
-    //       },
-    //       body: raw,
-    //     }
-    //   ),
-    //   fetch(
-    //     apiurl,
-    //     {
-    //       method: "POST",
-    //       headers:{
-    //           'accept':'*/*',
-    //           'Content-Type':'application/json',
-    //           'apiKey':'ONjViogekmFKvSkFhYNsgQS56WNG08EORGL9QGarF8gl5aObzzBikmJlmo2wHEQ'
-    //       },
-    //       body: raw,
-    //     }
-    //   ),
-    // ])
     const response = await fetch(
       apiurl,
       {

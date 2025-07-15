@@ -12,6 +12,7 @@ export default async function UnitsPage(props: any) {
     const category = props.category || '';
     const currentPage = Number(props.page) || 1;
     const propertyId = props.propertyId || '';
+    const beds = props.beds || '';
 
     return (
         <>
@@ -26,12 +27,14 @@ export default async function UnitsPage(props: any) {
                     <div className="col-span-4 md:col-span-3">
                         <div className="mt-0 space-y-5 lg:mt-2 lg:space-y-5">
                             <Suspense key={unitid + currentPage} fallback={<Skeleton />}>
-                                <UnitsList unitid={unitid} category={category} propertyId={propertyId} currentPage={currentPage} />
+                                <UnitsList unitid={unitid} category={category} propertyId={propertyId} beds={beds} currentPage={currentPage} />
                             </Suspense>
                         </div>
                     </div>
                     <div className="hidden md:flex mt-16 space-y-10 lg:mt-2 lg:space-y-5">
-                        <UnitsSideSearch onChange=''/>
+                        <div className="grid grid-cols-1">
+                            <UnitsSideSearch onChange=''/>
+                        </div>
                     </div>
                 </div>
             </div>

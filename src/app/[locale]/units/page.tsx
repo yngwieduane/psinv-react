@@ -6,6 +6,7 @@ export default async function Units(props: {
     category?: string;
     propertyName?: string;
     propertyId?: string;
+    beds?: string;
     page?: string;
   }>;
 }){
@@ -14,13 +15,14 @@ export default async function Units(props: {
   const category = searchParams?.category || '';
   const currentPage = Number(searchParams?.page) || 1;
   const propertyId = searchParams?.propertyId || '';
+  const beds = searchParams?.beds || '';
   console.log("mainPageUnits="+unitid);
   console.log("propertyId="+propertyId);
 
 
     return (
         <>
-            <UnitsPage unitid={unitid} category={category} propertyId={propertyId} currentPage={currentPage}/>
+            <UnitsPage unitid={unitid} category={category} propertyId={propertyId} beds={beds} currentPage={currentPage}/>
         </>
     );
 }

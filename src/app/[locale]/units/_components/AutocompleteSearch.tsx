@@ -85,7 +85,7 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
           id="propertyName"
           name="propertyName"
           placeholder="Search project..."
-          value={isReset ? '' : inputValue}
+          value={inputValue}
           onChange={handleInputChange}
           autoComplete="off"
           className="col-start-1 row-start-1 block w-full rounded-md bg-gray-50 md:bg-white py-1.5 pr-3 pl-10 text-lg text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:pl-9 placeholder:text-gray-500"

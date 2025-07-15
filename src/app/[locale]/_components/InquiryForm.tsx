@@ -8,6 +8,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { sendGTMEvent } from '@next/third-parties/google'
 
 const schema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
@@ -45,6 +46,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [postId, setPostId] = useState<string | null>(null);
   const onSubmit = async (data: FormData) => {
+    sendGTMEvent({ event: 'Inquiry', value: '1' })
     setIsSubmitting(true);
     const urlParams = new URLSearchParams(window.location.search);
     const source = urlParams.get("utm_source");

@@ -1,40 +1,72 @@
+'use client'
+import { UnitListing } from "@/types/types";
 import { generateSeoData } from "../../_components/functions/generateSeoData";
 import UnitListBox from "./UnitListBox";
-export default async function UnitsList({
-    unitid,
-    category,
-    propertyId,
-    currentPage,
-  }: {
-    unitid: string;
-    category: string;
-    propertyId: string;
-    currentPage: number;
-  }) {
+import { useState, useEffect } from "react";
+import { useRouter } from "@/i18n/navigation";
+import { useSearchParams } from "next/navigation";
+import { Skeleton } from "../../_components/tools/Skeleteon";
 
-    const data = await fetch('https://psi.properties/api/external/units/project?unitid='+unitid+'&propertyId='+propertyId+'&category='+category)
-    const posts = await data.json() ;
+export default function UnitsList(props:any) {
+
+    // const data = await fetch('http://localhost:3000/api/external/units/project?unitid='+unitid+'&propertyId='+propertyId+'&beds='+beds+'&category='+category)
+    // const posts = await data.json() ;
+
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const unitid = searchParams.get('unitid') || '';
+    const category = searchParams.get('category') || '';
+    const propertyId = searchParams.get('propertyId') || '';
+    const beds = searchParams.get('beds') || '';
+    const currentPage = searchParams.get('currentPage') || '';
+
+    const [query, setQuery] = useState("");
+    const [results, setResults] = useState<UnitListing[]>([]);
+    const [loading, setLoading] = useState(false);
+    
+    useEffect(() => {
+        const fetchData = async () => {
+        setLoading(true);
+        try {
+            const res = await fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`);
+            const result = await res.json();
+            setResults(result);
+        } catch (error) {
+            console.error("API fetch failed", error);
+        } finally {
+            setLoading(false);
+        }
+        };
+
+        fetchData();
+    }, [unitid,category,propertyId,currentPage,beds]);
+
     return (
         <>
-            {posts.slice(0, 11).map((post:any,index:any) => { 
-                let maincategory;
-                {post.sellprice !== null
-                    ? maincategory = "Sale"
-                    : maincategory = "Rent";
-                }
-                const propertyData = {
-                    bedrooms: post.bedrooms,
-                    propertyType: post.category,
-                    adType: maincategory,
-                    name: post.propertyname,
-                    community: post.community,
-                    emirate: post.city_name,
-                    refNo: post.refNo,
-                    seoStart: "",
-                };
-                const seoData = generateSeoData(propertyData);
-                return <UnitListBox key={index} data={post} seoUrl={seoData.seoUrl}/>
-            })}
+            {loading && <Skeleton />}
+            {results.length > 0 && (
+                <>
+                    {results.slice(0, 11).map((post:any,index:any) => { 
+                        let maincategory;
+                        {post.sellprice !== null
+                            ? maincategory = "Sale"
+                            : maincategory = "Rent";
+                        }
+                        const propertyData = {
+                            bedrooms: post.bedrooms,
+                            propertyType: post.category,
+                            adType: maincategory,
+                            name: post.propertyname,
+                            community: post.community,
+                            emirate: post.city_name,
+                            refNo: post.refNo,
+                            seoStart: "",
+                        };
+                        const seoData = generateSeoData(propertyData);
+                        return <UnitListBox key={index} data={post} seoUrl={seoData.seoUrl}/>
+                    })}
+                </>
+            )}
         </>
     );
 }
