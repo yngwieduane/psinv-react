@@ -18,7 +18,11 @@ export default function UnitsList(props:any) {
     const category = searchParams.get('category') || '';
     const propertyId = searchParams.get('propertyId') || '';
     const beds = searchParams.get('beds') || '';
+    const baths = searchParams.get('baths') || '';
+    const propertyType = searchParams.get('propertyType') || '';
     const currentPage = searchParams.get('currentPage') || '';
+    const minPrice = searchParams.get('minPrice') || '';
+    const maxPrice = searchParams.get('maxPrice') || '';
 
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<UnitListing[]>([]);
@@ -39,34 +43,40 @@ export default function UnitsList(props:any) {
         };
 
         fetchData();
-    }, [unitid,category,propertyId,currentPage,beds]);
+    }, [unitid,category,propertyId,currentPage,beds,baths,propertyType,maxPrice,minPrice]);
 
     return (
         <>
-            {loading && <Skeleton />}
-            {results.length > 0 && (
+            {loading ? (
+                <Skeleton />
+            ) : (
                 <>
-                    {results.slice(0, 11).map((post:any,index:any) => { 
-                        let maincategory;
-                        {post.sellprice !== null
-                            ? maincategory = "Sale"
-                            : maincategory = "Rent";
-                        }
-                        const propertyData = {
-                            bedrooms: post.bedrooms,
-                            propertyType: post.category,
-                            adType: maincategory,
-                            name: post.propertyname,
-                            community: post.community,
-                            emirate: post.city_name,
-                            refNo: post.refNo,
-                            seoStart: "",
-                        };
-                        const seoData = generateSeoData(propertyData);
-                        return <UnitListBox key={index} data={post} seoUrl={seoData.seoUrl}/>
-                    })}
+                {results.length > 0 && (
+                    <>
+                        {results.slice(0, 11).map((post:any,index:any) => { 
+                            let maincategory;
+                            {post.sellprice !== null
+                                ? maincategory = "Sale"
+                                : maincategory = "Rent";
+                            }
+                            const propertyData = {
+                                bedrooms: post.bedrooms,
+                                propertyType: post.category,
+                                adType: maincategory,
+                                name: post.propertyname,
+                                community: post.community,
+                                emirate: post.city_name,
+                                refNo: post.refNo,
+                                seoStart: "",
+                            };
+                            const seoData = generateSeoData(propertyData);
+                            return <UnitListBox key={index} data={post} seoUrl={seoData.seoUrl}/>
+                        })}
+                    </>
+                )}
                 </>
             )}
+            
         </>
     );
 }

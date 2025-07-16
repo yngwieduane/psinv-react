@@ -29,8 +29,6 @@ const MapComponent: React.FC<MapComponentProps> = ({ latitude, longitude, fallba
               style={{width: '100%', height: '100vh'}}
               defaultCenter={{lat: mainlat, lng: mainlng}}
               defaultZoom={12}
-              gestureHandling={'greedy'}
-              disableDefaultUI={true}
             >
             <CustomAdvancedMarker realEstateListing={{latitude,longitude,fallbackImage}} />
             </Map>
@@ -43,6 +41,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ latitude, longitude, fallba
           src={fallbackImage}
           alt="Fallback Map"
           className="w-full h-auto rounded-lg"
+          
         />
       )}
     </div>

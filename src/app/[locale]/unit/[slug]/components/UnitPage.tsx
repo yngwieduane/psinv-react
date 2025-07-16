@@ -16,6 +16,9 @@ import SimilarUnitsGrid from "./SimilarUnitsGrid";
 import Sticky from 'react-sticky-el';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
+import MortgageCalculator from "@/app/[locale]/mortgage-calculator/MortgageCalculator";
+import AgentDetails from "./AgentDetails";
+import Nearbys from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/Nearbys";
 
 export default function UnitPage(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -189,22 +192,37 @@ export default function UnitPage(props: any) {
                                     </h2>
                                     <ReadMore amountOfWords={100} id="read-more-text" text={post.remarks} classes="whitespace-break-spaces"/>
                                 </div>) : ("")}
+
+                                {map !== null ? (
+                                <div className="mt-15 px-5">
+                                    <Nearbys
+                                        latitude={coordinates['1']}
+                                        longitude={coordinates['0']}
+                                        distance={10}
+                                    />
+                                </div>) : ("")}
+                                <div className="container mx-auto my-10">
+                                    <MortgageCalculator/>
+                                </div>
                             </div>
-                            <Sticky stickyClassName="mt-28" boundaryElement=".mainuppper"  hideOnBoundaryHit={false}>
-                                <div className="hidden md:flex">
-                                    <InquiryForm hideFeedbackButton={true}/>
-                                </div>
-                                <div className="p-5">
-                                    <button
-                                        type="button"
-                                        onClick={drawerHandler('requestview', props.data)}
-                                        name="details"
-                                        className="w-full rounded-lg border border-[#111954] p-4 cursor-pointer"
-                                    >
-                                        <FontAwesomeIcon icon={faCalendarCheck}/> Request a Meeting
-                                    </button>
-                                </div>
-                            </Sticky>
+                            <div className="mainsidebar">
+                                <AgentDetails data={post.agent_Pk}/>
+                                <Sticky stickyClassName="" boundaryElement=".mainsidebar"  hideOnBoundaryHit={false}>
+                                    <div className="hidden md:flex">
+                                        <InquiryForm hideFeedbackButton={true}/>
+                                    </div>
+                                    <div className="p-5">
+                                        <button
+                                            type="button"
+                                            onClick={drawerHandler('requestview', props.data)}
+                                            name="details"
+                                            className="w-full rounded-lg border border-[#111954] p-4 cursor-pointer"
+                                        >
+                                            <FontAwesomeIcon icon={faCalendarCheck}/> Request a Meeting
+                                        </button>
+                                    </div>
+                                </Sticky>
+                            </div>
                         </div>
                         {/* START DETAILS LOWER*/}
                         <div className="grid grid-cols-1">

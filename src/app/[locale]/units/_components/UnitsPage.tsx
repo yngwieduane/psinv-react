@@ -31,9 +31,10 @@ export default async function UnitsPage(props: any) {
                             </Suspense>
                         </div>
                     </div>
-                    <div className="hidden md:flex mt-16 space-y-10 lg:mt-2 lg:space-y-5">
+                    <div className="hidden md:flex mt-16 space-y-10 lg:mt-2 lg:space-y-5 mainsidebar">
                         <div className="grid grid-cols-1">
                             <UnitsSideSearch onChange=''/>
+                            <button className="w-100 ">Test</button>
                         </div>
                     </div>
                 </div>

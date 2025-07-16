@@ -4,12 +4,21 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
     const propertyId = searchParams.get('propertyId') || '';
     const category = searchParams.get('category') || '';
+    const beds = searchParams.get('beds') || '';
+    const propertyType = searchParams.get('propertyType') || '';
+    const minPrice = searchParams.get('minPrice') || '';
+    const maxPrice = searchParams.get('maxPrice') || '';
     let apiurl = 'https://integration.psi-crm.com/ExternalApis/GetSaleListing';
     console.log('Fetching units data...'+propertyId);
     let raw;
     if (propertyId && propertyId != '0') {
       raw = JSON.stringify({
         "propertyId": propertyId,
+        "bedrooms": beds,
+        "bedroomsMax": beds,
+        "startPriceRange": minPrice,
+        "endPriceRange": maxPrice,
+        "propertyType": propertyType
       });
     } else {
       raw = JSON.stringify({});

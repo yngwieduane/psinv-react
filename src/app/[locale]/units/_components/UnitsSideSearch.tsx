@@ -79,7 +79,7 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
   const formatNumber = (value: number) => new Intl.NumberFormat().format(value);
 
   return (
-    <div className="w-full block mainsidebar">
+    <div className="w-full block">
       <Sticky stickyClassName="" boundaryElement=".mainsidebar"  hideOnBoundaryHit={false}>
         <div className="p-4 grid grid-cols-1 border border-gray-300 rounded-md space-y-6 ">
           <div className='w-full'>
