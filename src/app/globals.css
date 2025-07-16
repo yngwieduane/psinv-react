@@ -176,3 +176,10 @@ html, body {
 .topHeader { background-position: center; background-size: cover; background-repeat: no-repeat;}
 .font-montserrat { font-family: "Montserrat", sans-serif; }
 .text-darkblue { color: #2C2D65;}
+.tick-before::before {
+  content: '✓';
+  margin-right: 0.625rem; /* 10px */
+  color: #014081;
+  margin-left: -1.25rem; /* -20px */
+  display: inline-block;
+}

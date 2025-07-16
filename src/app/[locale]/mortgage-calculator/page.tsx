@@ -7,7 +7,7 @@ import Breadcrumb from '../_components/Breadcrumb';
 export default function MortgageCalculatorPage() {
   return (
     <>
-  <Breadcrumb /> {/* No container here */}
+  <Breadcrumb />
 
   <div className="container mx-auto px-4">
     <MortgageTabs />
