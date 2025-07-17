@@ -1,13 +1,17 @@
+// src/app/[locale]/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import TermsPage from '../_components/static-pages/TermsPage';
 import PrivacyPolicyPage from '../_components/static-pages/PrivacyPolicyPage';
 import CookiePolicyPage from '../_components/static-pages/CookiePolicyPage';
 
-export default function Page({
-  params,
-}: {
-  params: { slug: string; locale: string };
-}) {
+interface PageProps {
+  params: {
+    locale: string;
+    slug: string;
+  };
+}
+
+export default function Page({ params }: PageProps) {
   const { slug, locale } = params;
 
   switch (slug) {
@@ -22,16 +26,14 @@ export default function Page({
       return null;
   }
 }
-
 export async function generateStaticParams() {
   const slugs = ['terms', 'privacy', 'cookie-policy'];
   const locales = ['en', 'ar'];
 
   return locales.flatMap((locale) =>
     slugs.map((slug) => ({
-      slug,
       locale,
+      slug,
     }))
   );
 }
-
