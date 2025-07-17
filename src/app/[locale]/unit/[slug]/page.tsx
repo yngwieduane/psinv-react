@@ -24,7 +24,7 @@ export async function generateMetadata(
         category = 'rent';
     }
     // fetch data
-    const posts = await fetch(`https://psi.properties/api/external/units?unitid=${code}&category=${category}`).then((res) => res.json())
+    const posts = await fetch(`https://psi.properties/api/external/unit?unitid=${code}&category=${category}`).then((res) => res.json())
 
     // if (!posts[0]) {
     //     redirect('/en/units')
@@ -69,7 +69,7 @@ export default async function Page({ params }: Props){
         category = 'rent';
     }
 
-    const data = await fetch(`http://localhost:3000/api/external/unit?unitid=${code}&category=${category}`)
+    const data = await fetch(`https://psi.properties/api/external/unit?unitid=${code}&category=${category}`)
     const posts = await data.json();
     
     return (
