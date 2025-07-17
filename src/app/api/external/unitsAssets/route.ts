@@ -8,24 +8,20 @@ export async function GET(request: NextRequest) {
     const propertyType = searchParams.get('propertyType') || '';
     const minPrice = searchParams.get('minPrice') || '';
     const maxPrice = searchParams.get('maxPrice') || '';
-    let apiurl = 'https://integration.psi-crm.com/ExternalApis/GetSaleListing';
+    let apiurl = 'https://integration.psiassets-crm.com/ExternalApis/GetSaleListing';
     console.log('Fetching units data...'+propertyId);
     let raw;
     if ( (propertyId && propertyId != '0') ||  beds || minPrice || maxPrice) {
       raw = JSON.stringify({
         "propertyId": propertyId
-        // "bedrooms": beds,
-        // "bedroomsMax": beds,
-        // "startPriceRange": minPrice,
-        // "endPriceRange": maxPrice
       });
     } else {
       raw = JSON.stringify({});
     }
     if (category && category == 'Rent') {
-      apiurl = 'https://integration.psi-crm.com/ExternalApis/GetRentListing';
+      apiurl = 'https://integration.psiassets-crm.com/ExternalApis/GetRentListing';
     } else {
-      apiurl = 'https://integration.psi-crm.com/ExternalApis/GetSaleListing';
+      apiurl = 'https://integration.psiassets-crm.com/ExternalApis/GetSaleListing';
     }
     const response = await fetch(
       apiurl,

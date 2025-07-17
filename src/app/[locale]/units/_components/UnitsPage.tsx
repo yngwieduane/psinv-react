@@ -34,7 +34,7 @@ export default async function UnitsPage(props: any) {
                     <div className="hidden md:flex mt-16 space-y-10 lg:mt-2 lg:space-y-5 mainsidebar">
                         <div className="grid grid-cols-1">
                             <UnitsSideSearch onChange=''/>
-                            <button className="w-100 ">Test</button>
+                            <button className="w-100 "></button>
                         </div>
                     </div>
                 </div>
