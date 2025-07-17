@@ -1,17 +1,13 @@
-// app/[locale]/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import TermsPage from '../_components/static-pages/TermsPage';
 import PrivacyPolicyPage from '../_components/static-pages/PrivacyPolicyPage';
 import CookiePolicyPage from '../_components/static-pages/CookiePolicyPage';
 
-interface PageProps {
-  params: {
-    slug: string;
-    locale: string;
-  };
-}
-
-export default function Page({ params }: PageProps) {
+export default function Page({
+  params,
+}: {
+  params: { slug: string; locale: string };
+}) {
   const { slug, locale } = params;
 
   switch (slug) {
@@ -38,3 +34,4 @@ export async function generateStaticParams() {
     }))
   );
 }
+
