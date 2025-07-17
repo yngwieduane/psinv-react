@@ -34,9 +34,9 @@ export default function UnitsList(props:any) {
         const fetchData = async () => {
         setLoading(true);
         try {
-            // const res = await fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`);
-            // const result = await res.json();
-            // setResults(result);
+            const res = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`);
+            const result = await res.json();
+            setResults(result);
 
             // const [res1, res2] = await Promise.all([
             //     fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`),
@@ -49,11 +49,11 @@ export default function UnitsList(props:any) {
             // setResults(json1);
             // setResults1(json2);
 
-            const res = await fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`);
-            const result = await res.json();
-            const res1 = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`);
-            const result1 = await res1.json();
-            setAllData([...result, ...result1]);
+            // const res = await fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`);
+            // const result = await res.json();
+            // const res1 = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`);
+            // const result1 = await res1.json();
+            // setAllData([...result, ...result1]);
 
         } catch (error) {
             console.error("API fetch failed", error);
@@ -71,9 +71,9 @@ export default function UnitsList(props:any) {
                 <Skeleton />
             ) : (
                 <>
-                {allData.length > 0 && (
+                {results.length > 0 && (
                     <>
-                        {allData.slice(0, 11).map((post:any,index:any) => { 
+                        {results.slice(0, 11).map((post:any,index:any) => { 
                             let maincategory;
                             {post.sellprice !== null
                                 ? maincategory = "Sale"
