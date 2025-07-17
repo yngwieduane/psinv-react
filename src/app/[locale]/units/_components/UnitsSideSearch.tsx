@@ -91,13 +91,13 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
             </div>
           </div>
           {/* Price Filter */}
-          <div>
+          <div className='hidden'>
             <p className="block text-lg font-medium text-gray-900 mb-2">Price</p>
-            <MultiRangeSlider
+            {/* <MultiRangeSlider
               min={0}
               max={50000000}
               onChange={handleSliderRange}
-            />
+            /> */}
           </div>
           {/* Beds Filter */}
           <div>
@@ -138,8 +138,8 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
           </div>
 
           {/* Baths Filter */}
-          <div>
-            <Listbox value={baths} onChange={(e:any) => {
+          <div className='hidden'>
+            {/* <Listbox value={baths} onChange={(e:any) => {
                 let val = e;
                 setBaths(val ? Number(val) : null);
                 updateQuery('baths', val ? val : null);
@@ -172,7 +172,7 @@ export default function UnitsSideSearch({ onChange }:{ onChange:any }) {
                   ))}
                 </ListboxOptions>
               </div>
-            </Listbox>
+            </Listbox> */}
           </div>
 
           {/* Property Type */}
