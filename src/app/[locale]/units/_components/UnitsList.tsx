@@ -34,9 +34,9 @@ export default function UnitsList(props:any) {
         const fetchData = async () => {
         setLoading(true);
         try {
-            //const res = await fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`);
-            //const result = await res.json();
-            //setResults(result);
+            // const res = await fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`);
+            // const result = await res.json();
+            // setResults(result);
 
             // const [res1, res2] = await Promise.all([
             //     fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`),
@@ -53,7 +53,6 @@ export default function UnitsList(props:any) {
             const result = await res.json();
             const res1 = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`);
             const result1 = await res1.json();
-
             setAllData([...result, ...result1]);
 
         } catch (error) {
