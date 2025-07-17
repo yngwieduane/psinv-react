@@ -8,10 +8,7 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
-type TermsPageProps = {
-  locale: string;
-};
-export default function TermsPage({ locale }: TermsPageProps) {
+export default function TermsPage() {
   return (
     <>
       <div className="max-w-5xl mx-auto px-4 py-10">

@@ -7,10 +7,7 @@ const poppins = Poppins({
     weight: ["400", "500", "600", "700"],
     subsets: ["latin"],
 });
-type CookiePolicyPageProps = {
-  locale: string;
-};
-export default function CookiePolicyPage({ locale }: CookiePolicyPageProps) {
+export default function CookiePolicyPage() {
     return (
         <>
             <div className={`max-w-5xl mx-auto px-4 py-10 text-gray-800 ${poppins.className}`}>
