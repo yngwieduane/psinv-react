@@ -1,17 +1,18 @@
+// app/[locale]/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import TermsPage from '../_components/static-pages/TermsPage';
 import PrivacyPolicyPage from '../_components/static-pages/PrivacyPolicyPage';
 import CookiePolicyPage from '../_components/static-pages/CookiePolicyPage';
 
-type Props = {
+interface PageProps {
   params: {
     slug: string;
     locale: string;
   };
-};
+}
 
-export default async function Page({ params }: Props) {
-  const { slug, locale } = await Promise.resolve(params);
+export default function Page({ params }: PageProps) {
+  const { slug, locale } = params;
 
   switch (slug) {
     case 'terms':
@@ -30,7 +31,10 @@ export async function generateStaticParams() {
   const slugs = ['terms', 'privacy', 'cookie-policy'];
   const locales = ['en', 'ar'];
 
-  return locales.flatMap(locale =>
-    slugs.map(slug => ({ slug, locale }))
+  return locales.flatMap((locale) =>
+    slugs.map((slug) => ({
+      slug,
+      locale,
+    }))
   );
 }
