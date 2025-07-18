@@ -3,7 +3,6 @@ import React, { Fragment, useState } from "react";
 import { Dialog, Description, DialogPanel, DialogTitle, Transition, TransitionChild } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
-import ListForm from "./ListForm";
 import ListModalForm from "./ListModalForm";
 
 const InquireModal = (props: any) => {
