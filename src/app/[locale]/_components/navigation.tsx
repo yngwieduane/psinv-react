@@ -125,6 +125,17 @@ const products_rent: Rent[] = [
     icon: ChartPieIcon,
   }
 ];
+
+const developers = [
+  { name: 'Aldar Properties', href: '/developer/aldar-properties-pjsc' },
+  { name: 'Emaar Properties', href: '/developer/emaar' },
+  { name: 'Imkan', href: '/developer/imkan-properties-llc' },
+  { name: 'Meeras', href: '/developer/meeras' },
+  { name: 'Dubai Properties', href: '/developer/dubai-properties---idama' },
+  { name: 'NSHAMA', href: '/developer/nshama' },
+  { name: 'View All', href: '/developers' },
+];
+
 const communitiesAbuDhabi: CommunitiesAbuDhabi[] = [
   {
     name: 'Abu Dhabi',
@@ -404,7 +415,7 @@ const Navigation: FC = () => {
                 </div>
               </PopoverPanel>
             </Popover>
-            <Popover className="relative hidden">
+            <Popover className="relative">
               <PopoverButton className="flex items-center gap-x-1 text-sm font-normal text-gray-900">
                 Developers
                 <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
@@ -412,11 +423,18 @@ const Navigation: FC = () => {
 
               <PopoverPanel
                 transition
-                className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
+                className="absolute top-full -left-8 z-10 mt-3 w-56 rounded-xl bg-white p-2 ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
               >
-                <div className="p-4">
-                  
-                </div>
+                {developers.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`block rounded-lg px-3 py-2 text-sm font-normal text-gray-900 hover:bg-gray-50 
+                      ${item.name === 'View All' && "font-semibold text-primary-600 bg-gray-100" }`}                    
+                  >
+                    {item.name}
+                  </Link>
+                ))}
               </PopoverPanel>
             </Popover>
             <Popover className="relative hidden">

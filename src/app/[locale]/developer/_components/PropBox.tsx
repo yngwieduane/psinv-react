@@ -1,18 +1,17 @@
-import PropertyCard from "@/app/[locale]/_components/tools/PropertyCard";
+import PropertyCard from "../../_components/tools/PropertyCard";
 
-
-const PropertyBox = (props:any) => {
+const PropBox = (props:any) => {
 
     return (
         <>
             <ul
                 role="list"
-                className="grid grid-cols-1 md:grid-cols-4 gap-4"
+                className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-3 gap-4"
             >
                 {props.data.map((project:any, index:any) => (
                 <li
                     key={index}
-                    className="text-center"
+                    className="text-center "
                 >
                     <PropertyCard csswidth="w-full" data={project} />
                 </li>
@@ -22,4 +21,4 @@ const PropertyBox = (props:any) => {
     );
 }
 
-export default PropertyBox;
+export default PropBox;

@@ -359,7 +359,7 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
             case 'Abu Dhabi':	    		
                 ReferredToID=3458;
                 ReferredByID=3458;
-                sendtomail='callcenter@psinv.net';
+                sendtomail='wd6@psinv.net';
                 break;
             case 'Dubai':	    		
                 ReferredToID=4421;

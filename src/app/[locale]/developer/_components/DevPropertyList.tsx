@@ -1,50 +1,56 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import PropertyBox from "../../projects/_components/PropertyBox";
+import PropBox from "./PropBox";
 
 interface DevPropertyListProps {
-    masterDeveloper: string;
+    developer: string;
 }
 
-export default function DevPropertyList({masterDeveloper} : DevPropertyListProps) {
+const DevPropertyList = ({developer} : DevPropertyListProps) => {
 
-    const[data, setData] = useState<any>(null);
+    const [projects, setProjects] = useState<any[] | null>(null);
 
     useEffect(() => {
-        const fetchData = async () => {
-
+        const fetchProjects = async () => {
             try{
-                const response = await fetch(`/api/external/allprojects?masterDeveloper=${masterDeveloper}`);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                const res = await fetch('/api/external/developer');
+                const json = await res.json();
 
-                const result = await response.json();
-                setData(result);
+                const filtered = developer 
+                ?  json.result.filter(
+                    (proj: any) => 
+                        typeof proj.masterDeveloper === "string" &&
+                        proj.masterDeveloper?.toLowerCase().trim().includes(developer.toLowerCase().trim())
+                )
+                : json.result;
+
+                setProjects(filtered);
+                console.log("filtered REsult:", filtered);
             } catch(error) {
-                console.log(error, "Error fetching properties");
-            }
-            
+                console.log("Failed to load developer projects:", error);
+            }            
         };
-        fetchData();
-    },[masterDeveloper]);
+        fetchProjects();
+    },[developer]);
 
-    if(!data || !data.result){
-        return <p className="text-center text-gray-500">Loading properties...</p>;
+    if(!projects){
+        return(
+            developer !== "" ?
+                <p className="text-center text-gray-500">Loading properties of {developer}...</p>
+            :
+                <p className="text-center text-gray-500">Loading properties...</p>
+        )
+         }
+        
+     if (projects.length === 0) {
+        return <p className="text-center text-gray-400">No projects found for this developer.</p>;
     }
 
     return(
-        <>
-        <div>
-            <PropertyBox data={data.result} />
-
-            {/* {data.result.map((project: any, index:any) => (
-                <div key={index}>
-                    <h3>{project.propertyName}</h3>
-                </div>
-            ))} */}
-        </div>
-        </>
+            <PropBox data={projects} />           
+        
     )
 }
+
+export default DevPropertyList
