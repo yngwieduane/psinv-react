@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react';
-import {useTranslations} from 'next-intl';
+import {useFormatter, useTranslations} from 'next-intl';
 import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import Gallery from "./Gallery";
 import UnitModels from "./UnitModels";
@@ -23,6 +23,8 @@ import Faqs from './Faqs';
 
 
 const PropertyPage = (props:any) => {
+    const format = useFormatter();
+    let HOdate,launchDate,completionDate,minprice,maxPrice,areaRangeMin,areaRangeMax;
     const [showDrawer, setShowDrawer] = useState(false);
     const [dwDataContent, setDwDataContent] = useState('details');
     const [dwDataTitle, setDwDataTitle] = useState('details');
@@ -98,6 +100,38 @@ const PropertyPage = (props:any) => {
         ).map(([title, options]) => ({ title, options }));
     }
     const thumbimg = imgFeatured.replace('?width=0&height=0','?width=1400&height=600');
+
+    if(props.data["handoverDate"]){
+      HOdate = new Date(props.data["handoverDate"]);
+      HOdate = format.dateTime(HOdate, {year: 'numeric',month: 'short'});
+    }else{
+      HOdate = false;
+    }completionDate
+    if(props.data["launchDate"]){
+      launchDate = new Date(props.data["launchDate"]);
+      launchDate = format.dateTime(launchDate, {year: 'numeric',month: 'short'});
+    }else{
+      launchDate = false;
+    }
+    if(props.data["completionDate"]){
+      completionDate = new Date(props.data["completionDate"]);
+      completionDate = format.dateTime(completionDate, {year: 'numeric',month: 'short'});
+    }else{
+      completionDate = false;
+    }
+
+    if(props.data["minPrice"] !== null && parseInt(props.data["minPrice"]) > 1){
+        minprice = format.number(props.data["minPrice"]);
+    }else{minprice=""}
+    if(props.data["maxPrice"] !== null && parseInt(props.data["maxPrice"]) > 1){
+        maxPrice = format.number(props.data["maxPrice"]);
+    }else{maxPrice=""}
+    if(props.data["areaRangeMin"] !== null && parseInt(props.data["areaRangeMin"]) > 1){
+        areaRangeMin = format.number(props.data["areaRangeMin"]);
+    }else{areaRangeMin=""}
+    if(props.data["areaRangeMax"] !== null && parseInt(props.data["areaRangeMax"]) > 1){
+        areaRangeMax = format.number(props.data["areaRangeMax"]);
+    }else{areaRangeMax=""}
     return (
         <>
         <div id={props.data["propertyID"]}>
@@ -190,16 +224,15 @@ const PropertyPage = (props:any) => {
                             {availbeds ? (<CardOne title="Available Bedrooms" content={availbeds} />) : ("")}
                             {availtype ? (<CardOne title="Property Types" content={availtype} />) : ("")}
                             {props.data['masterDeveloper'] ? (<CardOne title="Master Developer" content={props.data['masterDeveloper']} />) : ("")}
-                            {props.data['minPrice'] ? (<CardOne title="Price Range" content={`${props.data['minPrice']} - ${props.data['maxPrice']}`} />) : ("")}
-                            {props.data['areaRangeMin'] ? (<CardOne title="Area Range" content={`${props.data['areaRangeMin']} - ${props.data['areaRangeMax']}`} />) : ("")}
-                            {props.data['minPrice'] ? (<CardOne title="Price Range" content={props.data['minPrice']} />) : ("")}
+                            {props.data['minPrice'] ? (<CardOne title="Price Range (AED)" content={`${minprice} ~ ${maxPrice}`} />) : ("")}
+                            {props.data['areaRangeMin'] ? (<CardOne title="Area Range (SqFt)" content={`${areaRangeMin} ~ ${areaRangeMax}`} />) : ("")}
                             {props.data['numberOfApartment'] ? (<CardOne title="Number of Apartment" content={props.data['numberOfApartment']} />) : ("")}
                             {props.data['propertyType'] ? (<CardOne title="Property Type" content={props.data['propertyType']} />) : ("")}
                             {props.data['propertyPlan'] ? (<CardOne title="Property Plan" content={props.data['propertyPlan']} />) : ("")}
                             {props.data['propertyUsage'] ? (<CardOne title="Property Usage" content={props.data['propertyUsage']} />) : ("")}
-                            {props.data['completionDate'] ? (<CardOne title="Completion Date" content={props.data['completionDate']} />) : ("")}
-                            {props.data['handoverDate'] ? (<CardOne title="Handover Date" content={props.data['handoverDate']} />) : ("")}
-                            {props.data['launchDate'] ? (<CardOne title="Launch Date" content={props.data['launchDate']} />) : ("")}
+                            {completionDate ? (<CardOne title="Completion Date" content={completionDate} />) : ("")}
+                            {HOdate ? (<CardOne title="Handover Date" content={HOdate} />) : ("")}
+                            {launchDate ? (<CardOne title="Launch Date" content={launchDate} />) : ("")}
                             {props.data['zoneType'] ? (<CardOne title="Property Types" content={props.data['zoneType']} />) : ("")}
                         </div>
                     </div>

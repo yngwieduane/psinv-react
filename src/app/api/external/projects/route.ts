@@ -3,7 +3,7 @@ import { headers } from 'next/headers'
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
-    const query = searchParams.get('query')
+    const query = searchParams.get('query')?.toLowerCase()
     const myHeaders = new Headers();
     let finquery;
     myHeaders.append("accept", "*/*");
@@ -15,8 +15,28 @@ export async function GET(request: NextRequest) {
   
     switch (query) {
       case 'jacob co beachfront living by ohana':
-      case 'Jacob Co Beachfront Living By Ohana':
         finquery = 'jacob & co. beachfront living by ohana'
+        break;
+      case 'the sustainable city auh':
+        finquery = 'the sustainable city - auh'
+        break;
+      case 'reem hills phase 2a':
+        finquery = 'Reem HIlls - Phase 2A'
+        break;
+      case 'yas golf collection views tower b':
+        finquery = 'Yas Golf Collection Views - Tower B'
+        break;
+      case 'saadiyat lagoons wilds phase 1':
+        finquery = 'Saadiyat Lagoons - Wilds Phase 1'
+        break;
+      case 'bloom living toledo':
+        finquery = 'Bloom Living - Toledo'
+        break;
+      case 'yas golf collection views tower c':
+        finquery = 'Yas Golf Collection Views - Tower C'
+        break;
+      case 'al jurf gardens phase 1-1':
+        finquery = 'Al Jurf Gardens Phase 1.1'
         break;
       default:
         finquery = query

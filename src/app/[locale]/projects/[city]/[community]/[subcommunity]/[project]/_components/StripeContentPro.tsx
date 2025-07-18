@@ -52,19 +52,21 @@ const StripContentPro = (props:any) => {
                             <h1 className="md:text-2xl text-xl text-[#111954] uppercase">{props.data["propertyName"]}</h1>
                             <h2 className="mb-5 hidden md:flex text-sm">{props.data["propertyName"]}, {props.data["community"]} by {props.data['masterDeveloper']}</h2>
                             <div className="grid grid-cols-3 mt-3 items-center content-center">
+                                {(parseInt(minprice) > 1 || parseInt(maxprice) > 1) ? (
                                 <div>
                                     <p className="text-sm text-[#111954]">Price</p>
-                                    <p className="text-normal "><PriceConvert price={minprice} minDecimal='0'/> to <PriceConvert price={maxprice} minDecimal='0'/></p>
-                                </div>
+                                    <p className="text-normal ">{(parseInt(minprice) > 1) ? <PriceConvert price={minprice} minDecimal='0'/> : "" } ~ {(parseInt(maxprice) > 1) ? <PriceConvert price={maxprice} minDecimal='0'/> : "" }</p>
+                                </div>) : ("")}
                                 {props.data['propertyType'] ? (
                                 <div>
                                     <p className="text-sm text-[#111954]">Type</p>
                                     <p className="text-normal">{props.data["propertyType"]}</p>
                                 </div>) : ("")}
+                                {(parseInt(areaRangeMin) > 1 || parseInt(areaRangeMax) > 1) ? (
                                 <div>
                                     <p className="text-sm text-[#111954]">Size</p>
-                                    <p className="text-normal">{format.number(areaRangeMin)} - {format.number(areaRangeMax)} <span>Sqft</span></p>
-                                </div>
+                                    <p className="text-normal">{(parseInt(areaRangeMin) > 1) ? format.number(areaRangeMin) : "" } ~ {(parseInt(areaRangeMax) > 1) ? format.number(areaRangeMax) : "" } <span>Sqft</span></p>
+                                </div>) : ("")}
                             </div>
                         </div>
                         <div className="grid grid-cols-3 text-center md:flex items-center justify-end gap-3">

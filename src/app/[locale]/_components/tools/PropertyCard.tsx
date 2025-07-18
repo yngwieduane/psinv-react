@@ -2,15 +2,27 @@
 import { Link } from '@/i18n/navigation';
 import React from "react";
 import slugify from "react-slugify";
+import {useFormatter} from 'next-intl';
 
 const PropertyCard = (props:any) => {
+  
+    const format = useFormatter();
+    let HOdate;
+
     const propType = props.data["propertyType"] ? (<p className="text-sm">Types<br />{props.data["propertyType"]}</p>) : ("");
     const propBed = props.data["availableBedrooms"] ? (<p className="text-sm">Beds<br />
     {props.data["availableBedrooms"].map((img:any) => {
         return img['noOfBedroom']+',';
     })}
     </p>) : ("");
-    const propHO = props.data["handoverDate"] ? (<p className="text-sm">Handover<br />{props.data["handoverDate"]}</p>) : ("");
+    if(props.data["handoverDate"]){
+      HOdate = new Date(props.data["handoverDate"]);
+      HOdate = format.dateTime(HOdate, {year: 'numeric',month: 'short'});
+    }else{
+      HOdate = false;
+    }
+
+    const propHO = HOdate ? (<p className="text-sm">Handover<br />{HOdate}</p>) : ("");
     const propSize = (props.data["builtupArea_SQFT"] && props.data["builtupArea_SQFT"] !== '0') ? (<p className="text-sm">Size<br />{props.data["builtupArea_SQFT"]}</p>) : ("");
     const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0','?width=400&height=230') : ("");
     const subCommunity = props.data["subCommunity"] ? props.data["subCommunity"] : "n-a";

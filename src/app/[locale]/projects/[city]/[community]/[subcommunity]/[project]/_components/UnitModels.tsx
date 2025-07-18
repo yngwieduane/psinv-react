@@ -10,6 +10,15 @@ const UnitModels = (props:any) => {
     const t = useTranslations('ProjectPage');
 
     const [visibleTab1, setVisibleTab1] = useState(0);
+    //props.data[visibleTab1].options
+
+    const unitType =[...new Set(props.data[visibleTab1].options.map((item: any) => item.unitType))]; 
+    const bathrooms = [...new Set(props.data[visibleTab1].options.map((item: any) => item.bathrooms))]; 
+    const laundryRoomNo = [...new Set(props.data[visibleTab1].options.map((item: any) => item.laundryRoomNo))]; 
+    const maidsRoomNo = [...new Set(props.data[visibleTab1].options.map((item: any) => item.maidsRoomNo))]; 
+    const parkingNo = [...new Set(props.data[visibleTab1].options.map((item: any) => item.parkingNo))]; 
+
+    //const unitType1 = props.data[visibleTab1].options.map((item: any) => item.unitType); 
 
     return (
         <>
@@ -44,53 +53,55 @@ const UnitModels = (props:any) => {
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
                                             Sizes
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
+                                        <th scope="col" className={`px-3 py-3.5 text-left text-sm text-[#111954] ${unitType || unitType[0] == 'UnitType' ? "" : ""}`}>
                                             Unit Type
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
+                                        <th scope="col" className={`px-3 py-3.5 text-left text-sm text-[#111954] ${bathrooms.length <= 1 && bathrooms[0] == '0' ? "hidden" : ""}`}>
                                             Bathrooms
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
+                                        <th scope="col" className={`px-3 py-3.5 text-left text-sm text-[#111954] ${laundryRoomNo.length <= 1 && laundryRoomNo[0] == '0' ? "hidden" : ""}`}>
                                             Laundry Room
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
+                                        <th scope="col" className={`px-3 py-3.5 text-left text-sm text-[#111954] ${maidsRoomNo.length <= 1 && maidsRoomNo[0] == '0' ? "hidden" : ""}`}>
                                             Maids Room
                                         </th>
-                                        <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
+                                        <th scope="col" className={`px-3 py-3.5 text-left text-sm text-[#111954] ${parkingNo.length <= 1 && parkingNo[0] == '0' ? "hidden" : ""}`}>
                                             Parking
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 bg-white">
-                                    {props.data[visibleTab1].options.map((page:any, index:any) => (
-                                        <tr key={index}>
-                                            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                {page.floorPlanlImage !== ''
-                                                    ? (
-                                                    <a
-                                                        type="button"
-                                                        //onClick={drawerHandler('gallery',images)}
-                                                        data-fancybox="floorplan"
-                                                        href={page.floorPlanlImage}
-                                                        className=" cursor-pointer block"
-                                                    >
-                                                    <div className="w-full h-20 background-image relative bg-cover bg-center"
-                                                    style={{ backgroundImage: `url(${page.floorPlanlImage.replace('?width=0&height=0','?width=200&height=200')})` }} 
-                                                    ></div>
-                                                    </a>
-                                                ) : (
-                                                    <div className="w-full h-10 bg-gray-300"></div>
-                                                )}
-                                            </td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{page.modelName}</td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{page.area}</td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{(page.unitType && page.unitType !== 'UnitType') ? page.unitType : "-"}</td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{(page.bathrooms && page.bathrooms !== '0') ? page.bathrooms : "-"}</td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{(page.laundryRoomNo && page.laundryRoomNo !== '0') ? page.laundryRoomNo : "-"}</td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{(page.maidsRoomNo && page.maidsRoomNo !== '0') ? page.maidsRoomNo : "-"}</td>
-                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{(page.parkingNo && page.parkingNo !== '0') ? page.parkingNo : "-"}</td>
-                                        </tr>
-                                    ))}
+                                    {props.data[visibleTab1].options.map((page:any, index:any) => {
+                                        return (
+                                            <tr key={index}>
+                                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                    {page.floorPlanlImage !== ''
+                                                        ? (
+                                                        <a
+                                                            type="button"
+                                                            //onClick={drawerHandler('gallery',images)}
+                                                            data-fancybox="floorplan"
+                                                            href={page.floorPlanlImage}
+                                                            className=" cursor-pointer block"
+                                                        >
+                                                        <div className="w-full h-20 background-image relative bg-cover bg-center"
+                                                        style={{ backgroundImage: `url(${page.floorPlanlImage.replace('?width=0&height=0','?width=200&height=200')})` }} 
+                                                        ></div>
+                                                        </a>
+                                                    ) : (
+                                                        <div className="w-full h-10 bg-gray-300"></div>
+                                                    )}
+                                                </td>
+                                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{page.modelName}</td>
+                                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{page.area}</td>
+                                                <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${unitType || unitType[0] == 'UnitType' ? "" : ""}`}>{(page.unitType && page.unitType !== 'UnitType') ? page.unitType : "-"}</td>
+                                                <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${bathrooms.length <= 1 && bathrooms[0] == '0' ? "hidden" : ""}`}>{(page.bathrooms && page.bathrooms !== '0') ? page.bathrooms : "-"}</td>
+                                                <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${laundryRoomNo.length <= 1 && laundryRoomNo[0] == '0' ? "hidden" : ""}`}>{(page.laundryRoomNo && page.laundryRoomNo !== '0') ? page.laundryRoomNo : "-"}</td>
+                                                <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${maidsRoomNo.length <= 1 && maidsRoomNo[0] == '0' ? "hidden" : ""}`}>{(page.maidsRoomNo && page.maidsRoomNo !== '0') ? page.maidsRoomNo : "-"}</td>
+                                                <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${parkingNo.length <= 1 && parkingNo[0] == '0' ? "hidden" : ""}`}>{(page.parkingNo && page.parkingNo !== '0') ? page.parkingNo : "-"}</td>
+                                            </tr>
+                                        );
+                                    })}
                                 </tbody>
                             </table>
                             </FancyboxWrapper>
