@@ -157,7 +157,7 @@ export default function UnitPage(props: any) {
                                     </div>
                                 </div>
                                 {/* unit_Amenities */}
-                                {amenities !== null ? (
+                                {amenities ? (
                                 <div className="mt-15 px-5">
                                     <h2 className="text-xl mb-5 text-[#111954]">
                                         Amenities
@@ -167,7 +167,7 @@ export default function UnitPage(props: any) {
                                     </div>
                                 </div>) : ("")}
                                 {/* facilities */}
-                                {facilities !== 'null' ? (
+                                {facilities ? (
                                 <div className="mt-15 px-5">
                                     <h2 className="text-xl mb-5 text-[#111954]">
                                         Facilities

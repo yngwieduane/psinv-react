@@ -60,10 +60,6 @@ export default function PropertyList({
     fetchData();
   }, [page, propertyname, isFeaturedProjectOnWeb, cityId]);
 
-
-
-  if (!data) return ;
-
   return (
     <div className="flex grid md:grid-cols-2 grid-cols-1 md:gap-y-10 gap-y-5">
       <div className="order-1">

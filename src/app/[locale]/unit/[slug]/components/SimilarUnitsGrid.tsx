@@ -128,6 +128,7 @@ const SimilarUnitsGrid = ({
                         community: post.community,
                         emirate: post.city_name,
                         refNo: post.refNo,
+                        code: post.code,
                         seoStart: "",
                     };
                     const seoData = generateSeoData(propertyData);
