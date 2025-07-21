@@ -1,5 +1,4 @@
 'use client'
-import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import MapComponent from "@/app/[locale]/_components/MapComponent";
 import SwiperMaterial from "@/app/[locale]/_components/SwiperMaterial";
 import StripeContent from "./StripeContent";
@@ -19,6 +18,7 @@ import { faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
 import MortgageCalculator from "@/app/[locale]/mortgage-calculator/MortgageCalculator";
 import AgentDetails from "./AgentDetails";
 import Nearbys from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/Nearbys";
+import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
 
 export default function UnitPage(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -37,7 +37,7 @@ export default function UnitPage(props: any) {
     return (
         <>
             <div>
-                <Breadcrumb/>
+                <BreadcrumbUnit/>
             </div>
             <div >
                 {props.data.map((post:any,index:any) => { 
@@ -59,11 +59,11 @@ export default function UnitPage(props: any) {
                     : video = '';
                 }
                 {post.unit_Amenities !== null
-                    ? amenities = post.unit_Amenities.split('|')
+                    ? amenities = post.unit_Amenities.split(' | ')
                     : amenities = '';
                 }
                 {post.facilities !== null
-                    ? facilities = post.facilities.split('|')
+                    ? facilities = post.facilities.split(' | ')
                     : facilities = '';
                 }
                 map = post.pro_google_coordinates;

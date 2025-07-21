@@ -106,7 +106,7 @@ const PropertyPage = (props:any) => {
       HOdate = format.dateTime(HOdate, {year: 'numeric',month: 'short'});
     }else{
       HOdate = false;
-    }completionDate
+    }
     if(props.data["launchDate"]){
       launchDate = new Date(props.data["launchDate"]);
       launchDate = format.dateTime(launchDate, {year: 'numeric',month: 'short'});
