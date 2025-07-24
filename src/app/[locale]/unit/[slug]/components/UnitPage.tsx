@@ -19,6 +19,7 @@ import MortgageCalculator from "@/app/[locale]/mortgage-calculator/MortgageCalcu
 import AgentDetails from "./AgentDetails";
 import Nearbys from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/Nearbys";
 import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
+import NearbysWithMap from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap";
 
 export default function UnitPage(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -192,15 +193,6 @@ export default function UnitPage(props: any) {
                                     </h2>
                                     <ReadMore amountOfWords={100} id="read-more-text" text={post.remarks} classes="whitespace-break-spaces"/>
                                 </div>) : ("")}
-
-                                {map !== null ? (
-                                <div className="mt-15 px-5">
-                                    <Nearbys
-                                        latitude={coordinates['1']}
-                                        longitude={coordinates['0']}
-                                        distance={10}
-                                    />
-                                </div>) : ("")}
                                 <div className="container mx-auto my-10">
                                     <MortgageCalculator/>
                                 </div>
@@ -229,14 +221,16 @@ export default function UnitPage(props: any) {
                             {/* MAP */}
                             {map !== null ? (
                             <div className="">
-                                <h2 className="font-medium text-center text-3xl my-10 text-[#111954]">
-                                    Location Map
-                                </h2>
-                                <MapComponent
+                                {/* <MapComponent
                                     latitude={coordinates['1']}
                                     longitude={coordinates['0']}
                                     fallbackImage={props.data["featuredImages"]}
                                     height='500px'
+                                /> */}
+                                <NearbysWithMap
+                                    latitude={coordinates['1']}
+                                    longitude={coordinates['0']}
+                                    distance={10}
                                 />
                             </div>) : ("")}
                             {/* Similar Properties */}
