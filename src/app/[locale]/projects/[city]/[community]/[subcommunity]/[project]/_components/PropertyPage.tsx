@@ -20,6 +20,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCheck, faCirclePlay, faLayerGroup, faLocationDot, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
 import DrawerDetails from '@/app/[locale]/unit/[slug]/components/DrawerDetails';
 import Faqs from './Faqs';
+import NearbysWithMap from './NearbyWithMap';
 
 
 const PropertyPage = (props:any) => {
@@ -242,7 +243,7 @@ const PropertyPage = (props:any) => {
                         />
                     </div>) : ("")}
                     <div className="container mx-auto my-10 px-5">
-                        <Nearbys
+                        <NearbysWithMap
                             latitude={props.data["mapLatitude"]}
                             longitude={props.data["mapLongitude"]}
                             distance={10}

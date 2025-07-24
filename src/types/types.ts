@@ -79,3 +79,28 @@ export interface UnitListing {
   reraStrNo: string | null;
   furnish_status: string;
 }
+
+export interface NearbysType {
+    landmarkId: string;
+    landmarkEnglishName: string;
+    landmarkArabicName: string;
+    categoryId: string;
+    categoryName: string;
+    longitude: string;
+    latitude: string;
+    addressLine1English: string;
+    addressLine1Arabic: string;
+    website: string;
+    youtubeLink: string;
+    usefulLink: string;
+    virtualTourLink: string;
+    facebookLink: string;
+    instagramLink: string;
+    cityName: string;
+    communityName: string;
+    subCommunityName: string;
+    isFeatured: string;
+    communityImages: string;
+    landmarkImageLogo: string;
+    landmarkLogo: string;
+};

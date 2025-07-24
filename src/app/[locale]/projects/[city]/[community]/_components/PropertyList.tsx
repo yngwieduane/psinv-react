@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import SearchProperty from "./SearchProperty";
-import PropertyBox from "./PropertyBox";
 import Pagination from "@/app/[locale]/_components/tools/Pagination";
 import { BlogItem } from "@/app/[locale]/_components/tools/Skeleteon";
+import SearchProperty from "../../../_components/SearchProperty";
+import PropertyBox from "../../../_components/PropertyBox";
 
 interface PropertyListProps {
   page: number;

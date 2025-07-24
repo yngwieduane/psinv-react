@@ -1,31 +1,8 @@
 'use client'
+import { NearbysType } from "@/types/types";
 import { calculateDistance, Coordinate } from "@/utils/utils";
 import { useState, useEffect } from "react";
 
-type Units = {
-    landmarkId: string;
-    landmarkEnglishName: string;
-    landmarkArabicName: string;
-    categoryId: string;
-    categoryName: string;
-    longitude: number;
-    latitude: number;
-    addressLine1English: string;
-    addressLine1Arabic: string;
-    website: string;
-    youtubeLink: string;
-    usefulLink: string;
-    virtualTourLink: string;
-    facebookLink: string;
-    instagramLink: string;
-    cityName: string;
-    communityName: string;
-    subCommunityName: string;
-    isFeatured: string;
-    communityImages: string;
-    landmarkImageLogo: string;
-    landmarkLogo: string;
-};
 const Nearbys = ({
     latitude,
     longitude,
@@ -36,7 +13,7 @@ const Nearbys = ({
     distance: number;
   }) => {
     const [query, setQuery] = useState("");
-    const [results, setResults] = useState<Units[]>([]);
+    const [results, setResults] = useState<NearbysType[]>([]);
     const [loading, setLoading] = useState(false);
   
     useEffect(() => {
@@ -70,7 +47,7 @@ const Nearbys = ({
             <ul role="list" className="grid grid-cols-2 md:grid-cols-4 space-y-3 space-x-3 overflow-auto max-h-92 py-2">
                 {results.slice(0, 20).map((post, index) => {
                     const pointA: Coordinate = { lat: latitude, lng: longitude }; 
-                    const pointB: Coordinate = { lat: post.latitude, lng: post.longitude }; 
+                    const pointB: Coordinate = { lat: parseFloat(post.latitude), lng: parseFloat(post.longitude) }; 
 
                     const distance = calculateDistance(pointA, pointB);
 
