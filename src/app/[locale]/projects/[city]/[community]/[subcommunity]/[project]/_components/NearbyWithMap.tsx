@@ -37,7 +37,7 @@ const NearbysWithMap = ({
     const [hovered, setHovered] = useState(false);
     const [clicked, setClicked] = useState(false);
     const [chosenLandmark, setChosenLandmark] = useState<Coordinate[]>([]);
-    const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAP_AP_DEV as string;
+    const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAP_API as string;
     useEffect(() => {
       const timeout = setTimeout(() => {
         if (latitude) {
