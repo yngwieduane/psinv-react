@@ -51,16 +51,6 @@ const TablePaymentPlans = (props:any) => {
                             </td>
                         </tr>
                         ) : ("")}
-                        {HO ? (
-                        <tr  className="even:bg-gray-50">
-                            <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
-                                Handover
-                            </td>
-                            <td className="px-2 py-2 text-sm whitespace-nowrap text-gray-500">
-                                { HO?.amountPercentage * 100 } %
-                            </td>
-                        </tr>
-                        ) : ("")}
                         {filtered.map((installment: { amountPercentage: number; instalmentDate: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; frequencyName: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; }, index: number) => {
                             return (
                                 <tr key={index} className="even:bg-gray-50">
@@ -73,6 +63,16 @@ const TablePaymentPlans = (props:any) => {
                                 </tr>
                             )}
                         )}
+                        {HO ? (
+                        <tr  className="even:bg-gray-50">
+                            <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90">
+                                Handover
+                            </td>
+                            <td className="px-2 py-2 text-sm whitespace-nowrap text-gray-500">
+                                { HO?.amountPercentage * 100 } %
+                            </td>
+                        </tr>
+                        ) : ("")}
                     </tbody>
                 </table>
             </div>
