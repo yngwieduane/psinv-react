@@ -67,7 +67,7 @@ const AvailableUnits = ({
                     return (
                         <li
                         key={index}
-                        className="inline-flex flex-col text-center w-96 "
+                        className="inline-flex flex-col w-96 "
                         >
                             <UnitBox data={post} seoUrl={seoData.seoUrl}/>
                         </li>

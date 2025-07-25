@@ -21,6 +21,7 @@ import { faCalendarCheck, faCirclePlay, faLayerGroup, faLocationDot, faMapLocati
 import DrawerDetails from '@/app/[locale]/unit/[slug]/components/DrawerDetails';
 import Faqs from './Faqs';
 import NearbysWithMap from './NearbyWithMap';
+import PaymentPlans from './PaymentPlans';
 
 
 const PropertyPage = (props:any) => {
@@ -242,6 +243,11 @@ const PropertyPage = (props:any) => {
                             data={fpGroup}
                         />
                     </div>) : ("")}
+                    <div className="container mx-auto my-8 px-5">
+                        <PaymentPlans
+                            propid={props.data["propertyID"]}
+                        />
+                    </div>
                     <div className="container mx-auto my-10 px-5">
                         <NearbysWithMap
                             latitude={props.data["mapLatitude"]}

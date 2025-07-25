@@ -20,6 +20,7 @@ import AgentDetails from "./AgentDetails";
 import Nearbys from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/Nearbys";
 import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
 import NearbysWithMap from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap";
+import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
 
 export default function UnitPage(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -156,6 +157,11 @@ export default function UnitPage(props: any) {
                                         </FancyboxWrapper>
                                         ) : ("")}
                                     </div>
+                                </div>
+                                <div className="container mx-auto my-8 px-5">
+                                    <PaymentPlans
+                                        propid={post.property_Pk}
+                                    />
                                 </div>
                                 {/* unit_Amenities */}
                                 {amenities ? (
