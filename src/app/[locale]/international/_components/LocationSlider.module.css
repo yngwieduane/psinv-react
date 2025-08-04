@@ -1,0 +1,18 @@
+:global(.swiper-button-prev),
+:global(.swiper-button-next) {
+  top: unset;
+  bottom: 0px;
+  transform: translateX(-50%);
+}
+
+:global(.swiper-button-prev) {
+  left: calc(50% - 30px);
+}
+
+:global(.swiper-button-next) {
+  left: calc(50% + 30px);
+}
+:global(.swiper-button-prev)::after,
+:global(.swiper-button-next)::after {
+  content: "\f104";
+}

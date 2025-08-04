@@ -14,3 +14,10 @@ export const BrittanySignature = localFont({
     style: 'normal',
     display: 'swap',
   });
+
+export const AudreyNormal = localFont({
+    src: '../../public/assets/fonts/Audrey-Normal.otf', // Adjust path if needed
+    weight: '400',
+    style: 'normal',
+    display: 'swap',
+  });

@@ -14,7 +14,7 @@ const DevPropertyList = ({developer} : DevPropertyListProps) => {
     useEffect(() => {
         const fetchProjects = async () => {
             try{
-                const res = await fetch('/api/external/developer');
+                const res = await fetch(`/api/external/developer?developer=${encodeURIComponent(developer)}`);
                 const json = await res.json();
 
                 const filtered = developer 

@@ -6,7 +6,7 @@ import DevPropertyList from "../_components/DevPropertyList";
 
 const developerMap : Record<string, string> = {
         "aldar-properties-pjsc" :"Aldar Properties PJSC",
-        "emaar": "Emaar",
+        "emaar": "Emaar Properties",
         "hydra-properties": "Hydra Properties",
         "imkan-properties-llc": "IMKAN PROPERTIES LLC",
         "meeras": "Meeras",
@@ -19,9 +19,8 @@ const developerMap : Record<string, string> = {
 
 export default function DeveloperPageClient() {
     const params = useParams();
-
     const developerSlug = params?.developer as string;
-    const developerName = developerMap[developerSlug];   
+    const developerName = developerMap[developerSlug]; // Maps slug to actual developer name   
   
     return(
         <>            

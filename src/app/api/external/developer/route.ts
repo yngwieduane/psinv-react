@@ -19,9 +19,10 @@ async function getDeveloperDetailsByName(name: string): Promise<number | undefin
     const data = await response.json();
 
     const developer = data.find((dev: any) =>
-        dev.name.trim().toLowerCase() === name.trim().toLowerCase()
+      dev.name?.toLowerCase().includes(name.toLowerCase())
     );
-    return developer;
+
+    return developer?.id;
     
   } catch (error) {
     console.error('External API fetch failed:', error);
@@ -35,7 +36,7 @@ export async function GET(request: NextRequest) {
     const page = searchParams.get('page') || 1;
     const developerName = searchParams.get('developer');
     const isFeaturedProjectOnWeb = searchParams.get('isFeaturedProjectOnWeb')
-    const pagesize = 300;
+    const pagesize = 1000;
 
     let developerId: number | undefined;
     if(developerName) {
@@ -46,6 +47,7 @@ export async function GET(request: NextRequest) {
 
     if (developerId) payload.developerId = developerId;
 
+  console.log('Payload being sent:', payload);
     const raw = JSON.stringify(payload);    
   
     const response = await fetch(
