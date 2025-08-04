@@ -45,6 +45,10 @@ const PropertyPage = (props:any) => {
     const communityImages = props.data["communityImages"] ? props.data["communityImages"] : ("");
     const unitModels = props.data["unitModels"] ? props.data["unitModels"] : ("");
 
+
+    const generalImagesNew = [{ imageURL: imgFeatured }, ...generalImages ]; 
+    console.log(generalImagesNew); 
+    
     const map = props.data["mapLongitude"]+","+props.data["mapLatitude"];
     const video = props.data["propertyVideos"] ? props.data["propertyVideos"][0]['imageURL'] : ("");
 
@@ -143,7 +147,7 @@ const PropertyPage = (props:any) => {
             {/* Swiper */}
             {galleryData !== null ? (
                 <div className="relative">
-                    <SwiperMaterialProjectPage slides={generalImages}/>
+                    <SwiperMaterialProjectPage slides={generalImagesNew}/>
                 </div>
             ) : ("")}
         </div>
@@ -217,6 +221,20 @@ const PropertyPage = (props:any) => {
                             </a>
                         </FancyboxWrapper>
                         ) : ("")}
+                    </div>
+                    <div className="my-8">
+                        <AvailableUnits
+                            propid={props.data["propertyID"]}
+                            category="Sale"
+                            display={4}
+                        />
+                    </div>
+                    <div className="my-8">
+                        <AvailableUnits
+                            propid={props.data["propertyID"]}
+                            category="Rent"
+                            display={4}
+                        />
                     </div>
                     <div className="mb-10">
                         <h2 className="text-xl mb-5 text-[#111954]">
@@ -314,20 +332,6 @@ const PropertyPage = (props:any) => {
                     </div>
                 </Sticky>
             </div>
-        </div>
-        <div className="container mx-auto my-8 px-5">
-            <AvailableUnits
-                propid={props.data["propertyID"]}
-                category="Sale"
-                display={4}
-            />
-        </div>
-        <div className="container mx-auto my-8 px-5">
-            <AvailableUnits
-                propid={props.data["propertyID"]}
-                category="Rent"
-                display={4}
-            />
         </div>
         <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} />
         </>

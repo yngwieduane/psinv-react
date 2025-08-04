@@ -305,6 +305,7 @@ function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:
                         }}
                         position={position}>
                         <Pin
+                        scale={.8}
                         background={selectedId === post.landmarkId ? '#22ccff' : null}
                         borderColor={selectedId === post.landmarkId ? '#1e89a1' : null}
                         glyphColor={selectedId === post.landmarkId ? '#0f677a' : null}

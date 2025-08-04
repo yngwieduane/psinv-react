@@ -34,7 +34,6 @@ export default async function Projects({
     const propertynamefinal = (await searchParams)?.propertyname || '';
     const isFeaturedProjectOnWebfinal = (await searchParams)?.isFeaturedProjectOnWeb || '';
     const currentPage = Number(page) || 1;
-    console.log("propertyname="+propertyname);
 
     const cityname = unslugify(city);
     const cityId = await getLookupId(cityname, 'city');

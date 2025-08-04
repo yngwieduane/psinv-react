@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
     const page = searchParams.get('page') || 1;
     const developerName = searchParams.get('developer');
     const isFeaturedProjectOnWeb = searchParams.get('isFeaturedProjectOnWeb')
-    const pagesize = 300;
+    const pagesize = 800;
 
     let developerId: number | undefined;
     if(developerName) {

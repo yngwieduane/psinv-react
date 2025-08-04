@@ -18,7 +18,7 @@ export default function SwiperMaterialProjectPage(props: any) {
     modules: [A11y, EffectMaterial],
     loop: true,
     effect: "material",
-    lazy: { enabled: true },
+    lazy: true,
     breakpoints:{
       640: {
         slidesPerView: 1,
@@ -41,7 +41,7 @@ export default function SwiperMaterialProjectPage(props: any) {
           <a data-fancybox="gallerypopup" href={props.slides[0].imageURL}className="absolute top-5 end-5 md:top-[unset] md:bottom-10 md:end-15 bg-[#00000050] z-10 text-white p-2 rounded-lg"><FontAwesomeIcon icon={faImages}/> {props.slides.length} </a>
         </FancyboxWrapper>
         {props.slides?.map((slide:any, index:any) => {
-            let imagecontent = slide.imageURL.replace('?width=0&height=0','?width=900&height=500');
+            let imagecontent = slide.imageURL.replace('?width=0&height=0','?width=500&height=300');
             return (
                 <SwiperSlide key={index} className="swiper-slide-1990">
                   <a data-fancybox="gallerypopup" href={slide.imageURL}>
@@ -57,7 +57,7 @@ export default function SwiperMaterialProjectPage(props: any) {
                           src={imagecontent}
                       />
 
-                      <div className="swiper-lazy-preloader"></div>
+                      <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
 
                       <div className="swiper-slide-content swiper-material-animate-opacity swiper-slide-content-609f">
                           <div className="swiper-slide-text swiper-slide-text-66a3">
