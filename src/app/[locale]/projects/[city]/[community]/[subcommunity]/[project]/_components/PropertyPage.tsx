@@ -2,9 +2,7 @@
 import { useState } from 'react';
 import {useFormatter, useTranslations} from 'next-intl';
 import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
-import Gallery from "./Gallery";
 import UnitModels from "./UnitModels";
-import MapComponent from "@/app/[locale]/_components/MapComponent";
 import SwiperMaterialProjectPage from "@/app/[locale]/_components/SwiperMaterialProjectPage";
 import Image from "next/image";
 import CardGroup from "./CardGroup";
@@ -13,7 +11,6 @@ import AvailableUnits from './AvailableUnits';
 import StripeContentPro from './StripeContentPro';
 import { ReadMore } from '@/app/[locale]/_components/ReadMore';
 import FancyboxWrapper from '@/app/[locale]/_components/tools/FancyboxWrapper';
-import Nearbys from './Nearbys';
 import Sticky from 'react-sticky-el';
 import InquiryForm from '@/app/[locale]/_components/InquiryForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,6 +19,7 @@ import DrawerDetails from '@/app/[locale]/unit/[slug]/components/DrawerDetails';
 import Faqs from './Faqs';
 import NearbysWithMap from './NearbyWithMap';
 import PaymentPlans from './PaymentPlans';
+import CardGroupImage from './CardGroupImage';
 
 
 const PropertyPage = (props:any) => {
@@ -287,7 +285,7 @@ const PropertyPage = (props:any) => {
                                 {t("facilities_in")} {props.data["propertyName"]}
                             </h2>
                             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                                <CardGroup data={props.data['facilities']}/>
+                                <CardGroupImage data={props.data['facilities']}/>
                             </div>
                         </div>
                         : ""
@@ -299,7 +297,7 @@ const PropertyPage = (props:any) => {
                                 {t("aminities_in")} {props.data["propertyName"]}
                             </h2>
                             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                                <CardGroup data={props.data['aminities']}/>
+                                <CardGroupImage data={props.data['aminities']}/>
                             </div>
                         </div>
                         : ""

@@ -136,3 +136,11 @@ export interface PaymentPlansResponse {
   result: PaymentPlan[];
   totalCount: number;
 }
+
+
+export interface Articles  {
+  name: string,
+  image: string,
+  category: string
+  content: string
+}

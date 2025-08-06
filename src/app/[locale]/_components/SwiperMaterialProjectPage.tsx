@@ -18,7 +18,7 @@ export default function SwiperMaterialProjectPage(props: any) {
     modules: [A11y, EffectMaterial],
     loop: true,
     effect: "material",
-    lazy: true,
+    lazy: { enabled: true },
     breakpoints:{
       640: {
         slidesPerView: 1,
