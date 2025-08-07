@@ -25,30 +25,48 @@ export async function GET(request: NextRequest) {
       body: raw,
       redirect: "follow",
     };
-  
-    const response = await fetch(
-      "https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex="+page+"&pageSize="+pagesize,
-      {
-        method: "POST",
-        headers:{
-            'accept':'*/*',
-            'Content-Type':'application/json',
-            'apiKey':'ONjViogekmFKvSkFhYNsgQS56WNG08EORGL9QGarF8gl5aObzzBikmJlmo2wHEQ'
-        },
-        body: raw,
-      }
-    );
-  
-    if (!response.ok) {
-      const error = new Error("An error occurred while fetching projects");
-      throw error;
+let allData: any[] = [];
+let currentPage = 1;
+let totalPages = 1;
+
+// while (currentPage <= totalPages) {
+//     const res = await fetch(`/api/external/pageprojects?page=${currentPage}`);
+//     if (!res.ok) throw new Error(`Failed on page ${currentPage}`);
+//     const json: ApiResponse = await res.json();
+
+//     allData = [...allData, ...json.result];
+//     totalPages = Math.round(json.totalCount / 100) + 1;
+//     currentPage++;
+// }
+
+// return allData;
+    while (currentPage <= totalPages) {
+        const response = await fetch(
+        "https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex="+page+"&pageSize="+pagesize,
+        {
+            method: "POST",
+            headers:{
+                'accept':'*/*',
+                'Content-Type':'application/json',
+                'apiKey':'ONjViogekmFKvSkFhYNsgQS56WNG08EORGL9QGarF8gl5aObzzBikmJlmo2wHEQ'
+            },
+            body: raw,
+        }
+        );
+        if (!response.ok) {
+            const error = new Error("An error occurred while fetching projects");
+            throw error;
+        }
+        const projects = await response.json();
+        allData = [...allData, ...projects.result];
+        totalPages = Math.round(projects.totalCount / 100) + 1;
+        currentPage++;
     }
   
-    const projects = await response.json();
     //setLoading(false);
     //return projects;
  
-  return new Response(JSON.stringify(projects), {
+  return new Response(JSON.stringify(allData), {
     headers: { 'Content-Type': 'application/json' },
   });
 }
