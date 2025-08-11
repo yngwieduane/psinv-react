@@ -90,8 +90,7 @@ const LocationsSlider_2 = ({ slides }: Props) => {
         spaceBetween={30}
         freeMode ={true}
         grabCursor = {true}
-        className={``}
-        
+        className={``}       
         
       >
         {slides?.map((slide, index) => (
@@ -99,10 +98,10 @@ const LocationsSlider_2 = ({ slides }: Props) => {
             <div className="w-full text-white flex flex-col md:pb-5 pb-0 md:text-center relative">
                 <div className="relative w-full ">
                     <img src={slide.image} alt={slide.location} className="w-full max-w-full mb-2 mx-auto" />
-                    <h3 className="text-3xl absolute bottom-[20px] right-0 left-0 font-light md:block hidden">{slide.location}</h3>
+                    <h3 className="text-2xl absolute bottom-[20px] right-0 left-0 font-light md:block hidden">{slide.location}</h3>
                 </div>              
-                <div className="md:relative absolute bottom-5 left-3"> 
-                    <h3 className="text-3xl text font-light md:hidden block">{slide.location}</h3>             
+                <div className="md:relative absolute bottom-0 md:left-0 left-3 md:mb-0 mb-2"> 
+                    <h3 className="text-3xl font-light md:hidden block">{slide.location}</h3>             
                     <h5 className={`text-5xl md:text-4xl ${AudreyNormal.className} my-0`}>{slide.value}</h5>
                     <p className="text-2xl font-light my-0">Tax: {slide.tax} </p>
                 </div>

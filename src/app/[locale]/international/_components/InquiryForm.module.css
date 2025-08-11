@@ -1,1 +1,2 @@
 .phoneField option { color: black; }
+.phoneField input:focus-visible { outline: none !important; }

@@ -7,7 +7,6 @@ import PhoneInput from "react-phone-number-input"
 import "react-phone-number-input/style.css";
 import styles from '../_components/InquiryForm.module.css'
 import { useState } from "react"
-import { error, log } from "console"
 import { usePathname } from "next/navigation"
 
 interface FormValue {
@@ -95,10 +94,10 @@ const InquireForm = () => {
             }
 
             // Default values for media types
-            let mediaType = "129475";
-            let mediaName = "165233";
+            let mediaType = "165232";
+            let mediaName = "63475";
             let propertyCampaignId = "";
-            let methodOfContact = "115747";
+            let methodOfContact = "62132";
 
             switch (source) {
                 case "newsletter":
@@ -120,9 +119,9 @@ const InquireForm = () => {
                     methodOfContact = "MethodOfContactVal";
                     break;
                 default:
-                    mediaType = "129475";
-                    mediaName = "165233";
-                    methodOfContact = "115747";
+                    mediaType = "165232";
+                    mediaName = "63475";
+                    methodOfContact = "62132";
                     break;
                 }
 
@@ -153,12 +152,12 @@ const InquireForm = () => {
                 NationalityID: "65946",
                 LanguageID: "115915",
                 CompanyID: "",
-                Remarks: "International Page Inquiry",
+                Remarks: "International Enquiry Form",
                 RequirementType: "91212",
                 ContactType: "3",
                 CountryID: "65946",
-                StateID: "",
-                CityID: "",
+                StateID: "91823",
+                CityID: "91823",
                 DistrictID: "",
                 CommunityID: "",
                 PropertyID: "",
@@ -169,10 +168,10 @@ const InquireForm = () => {
                 DeactivateNotification: "",
                 Bedroom: "21935",
                 Bathroom: "21935",
-                Budget: "2000000",
-                Budget2: "7000000",
-                AreaFrom: "",
-                AreaTo: "",
+                Budget: "100000",
+                Budget2: "1000000",
+                AreaFrom: "300",
+                AreaTo: "10000",
                 RequirementCountryID: "65946",
                 ExistingClient: "",
                 CompaignSource: "",
@@ -180,7 +179,7 @@ const InquireForm = () => {
                 Company: "",
                 NumberOfEmployee: "",
                 LeadStageId: "",
-                LeadRatingId: "",
+                LeadRatingId: "454",
                 UnitId: "",
                 ReferredToID: "3458",
                 ReferredByID: "3458",
@@ -218,7 +217,7 @@ const InquireForm = () => {
                         URL coming from: ${currentUrl}
                         `,
                         receiver: sendToMail,
-                        subject: "New inquiry - International",
+                        subject: "New Enquiry - International",
                         filename: "",
                         filedata: ""
                     }),

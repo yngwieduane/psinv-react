@@ -7,6 +7,7 @@ import MapComponent from '@/app/[locale]/_components/MapComponent';
 import TableDetails from './TableDetails';
 import SwiperNormal from '@/app/[locale]/_components/SwiperNormal';
 import RequestViewing from '@/app/[locale]/_components/RequestViewing';
+import TablePaymentPlans from './TablePaymentPlans';
 
 export default function DrawerDetails(props:any) {
     const [open, setOpen] = useState(props.open);
@@ -46,6 +47,11 @@ export default function DrawerDetails(props:any) {
             details = props.drawerContent?? "";
             title = "filterunitsearch";
             content = <RequestViewing data={details}/>
+            break;
+        case 'paymentplan':
+            details = props.drawerContent?? "";
+            title = "paymentplan";
+            content = <TablePaymentPlans data={details} />
             break;
     
         default:

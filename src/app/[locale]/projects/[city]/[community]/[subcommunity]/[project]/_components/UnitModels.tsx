@@ -5,6 +5,7 @@ import MainNavbarHeader from "@/app/[locale]/_components/MainNavbarHeader";
 import MainNavbarContentEmpty from "@/app/[locale]/_components/MainNavbarContentEmpty";
 import GalleryImages from "@/app/[locale]/_components/tools/GalleryImages";
 import FancyboxWrapper from "@/app/[locale]/_components/tools/FancyboxWrapper";
+import Image from "next/image";
 
 const UnitModels = (props:any) => {
     const t = useTranslations('ProjectPage');
@@ -84,9 +85,15 @@ const UnitModels = (props:any) => {
                                                             href={page.floorPlanlImage}
                                                             className=" cursor-pointer block"
                                                         >
-                                                        <div className="w-full h-20 background-image relative bg-cover bg-center"
-                                                        style={{ backgroundImage: `url(${page.floorPlanlImage.replace('?width=0&height=0','?width=200&height=200')})` }} 
-                                                        ></div>
+                                                        <div className="relative">
+                                                            <Image
+                                                            layout="fill"
+                                                            className="object-center object-cover pointer-events-none"
+                                                            src={page.floorPlanlImage.replace('?width=0&height=0','?width=200&height=200')}
+                                                            alt={page.modelName}
+                                                            />
+                                                            <div className="relative z-1 w-full h-20"/>
+                                                        </div>
                                                         </a>
                                                     ) : (
                                                         <div className="w-full h-10 bg-gray-300"></div>

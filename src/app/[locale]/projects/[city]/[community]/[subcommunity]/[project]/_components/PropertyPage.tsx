@@ -20,6 +20,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCheck, faCirclePlay, faLayerGroup, faLocationDot, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
 import DrawerDetails from '@/app/[locale]/unit/[slug]/components/DrawerDetails';
 import Faqs from './Faqs';
+import NearbysWithMap from './NearbyWithMap';
+import PaymentPlans from './PaymentPlans';
 
 
 const PropertyPage = (props:any) => {
@@ -43,6 +45,10 @@ const PropertyPage = (props:any) => {
     const communityImages = props.data["communityImages"] ? props.data["communityImages"] : ("");
     const unitModels = props.data["unitModels"] ? props.data["unitModels"] : ("");
 
+
+    const generalImagesNew = [{ imageURL: imgFeatured }, ...generalImages ]; 
+    console.log(generalImagesNew); 
+    
     const map = props.data["mapLongitude"]+","+props.data["mapLatitude"];
     const video = props.data["propertyVideos"] ? props.data["propertyVideos"][0]['imageURL'] : ("");
 
@@ -106,7 +112,7 @@ const PropertyPage = (props:any) => {
       HOdate = format.dateTime(HOdate, {year: 'numeric',month: 'short'});
     }else{
       HOdate = false;
-    }completionDate
+    }
     if(props.data["launchDate"]){
       launchDate = new Date(props.data["launchDate"]);
       launchDate = format.dateTime(launchDate, {year: 'numeric',month: 'short'});
@@ -141,7 +147,7 @@ const PropertyPage = (props:any) => {
             {/* Swiper */}
             {galleryData !== null ? (
                 <div className="relative">
-                    <SwiperMaterialProjectPage slides={generalImages}/>
+                    <SwiperMaterialProjectPage slides={generalImagesNew}/>
                 </div>
             ) : ("")}
         </div>
@@ -216,6 +222,20 @@ const PropertyPage = (props:any) => {
                         </FancyboxWrapper>
                         ) : ("")}
                     </div>
+                    <div className="my-8">
+                        <AvailableUnits
+                            propid={props.data["propertyID"]}
+                            category="Sale"
+                            display={4}
+                        />
+                    </div>
+                    <div className="my-8">
+                        <AvailableUnits
+                            propid={props.data["propertyID"]}
+                            category="Rent"
+                            display={4}
+                        />
+                    </div>
                     <div className="mb-10">
                         <h2 className="text-xl mb-5 text-[#111954]">
                             {t("property_details")}
@@ -241,8 +261,13 @@ const PropertyPage = (props:any) => {
                             data={fpGroup}
                         />
                     </div>) : ("")}
+                    <div className="container mx-auto my-8 px-5">
+                        <PaymentPlans
+                            propid={props.data["propertyID"]}
+                        />
+                    </div>
                     <div className="container mx-auto my-10 px-5">
-                        <Nearbys
+                        <NearbysWithMap
                             latitude={props.data["mapLatitude"]}
                             longitude={props.data["mapLongitude"]}
                             distance={10}
@@ -307,20 +332,6 @@ const PropertyPage = (props:any) => {
                     </div>
                 </Sticky>
             </div>
-        </div>
-        <div className="container mx-auto my-8 px-5">
-            <AvailableUnits
-                propid={props.data["propertyID"]}
-                category="Sale"
-                display={4}
-            />
-        </div>
-        <div className="container mx-auto my-8 px-5">
-            <AvailableUnits
-                propid={props.data["propertyID"]}
-                category="Rent"
-                display={4}
-            />
         </div>
         <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} />
         </>

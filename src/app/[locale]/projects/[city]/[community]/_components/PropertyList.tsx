@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import SearchProperty from "./SearchProperty";
-import PropertyBox from "./PropertyBox";
 import Pagination from "@/app/[locale]/_components/tools/Pagination";
 import { BlogItem } from "@/app/[locale]/_components/tools/Skeleteon";
+import SearchProperty from "../../../_components/SearchProperty";
+import PropertyBox from "../../../_components/PropertyBox";
 
 interface PropertyListProps {
   page: number;
@@ -59,10 +59,6 @@ export default function PropertyList({
 
     fetchData();
   }, [page, propertyname, isFeaturedProjectOnWeb, cityId]);
-
-
-
-  if (!data) return ;
 
   return (
     <div className="flex grid md:grid-cols-2 grid-cols-1 md:gap-y-10 gap-y-5">

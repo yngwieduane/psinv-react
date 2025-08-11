@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import React from "react";
 import slugify from "react-slugify";
 import {useFormatter} from 'next-intl';
+import Image from 'next/image';
 
 const PropertyCard = (props:any) => {
   
@@ -23,8 +24,8 @@ const PropertyCard = (props:any) => {
     }
 
     const propHO = HOdate ? (<p className="text-sm">Handover<br />{HOdate}</p>) : ("");
-    const propSize = (props.data["builtupArea_SQFT"] && props.data["builtupArea_SQFT"] !== '0') ? (<p className="text-sm">Size<br />{props.data["builtupArea_SQFT"]}</p>) : ("");
-    const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0','?width=400&height=230') : ("");
+    const propSize = (props.data["builtupArea_SQFT"] && props.data["builtupArea_SQFT"] !== '0') ? (<p className="text-sm">Size (BUA)<br />{props.data["builtupArea_SQFT"]}</p>) : ("");
+    const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0','?width=300&height=200') : ("");
     const subCommunity = props.data["subCommunity"] ? props.data["subCommunity"] : "n-a";
 
     const url =  '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['community']) + "/" + slugify(subCommunity) + "/" + slugify(props.data['propertyName']);
@@ -33,10 +34,12 @@ return (
       <div className={`max-w-96 ${props.csswidth} group relative shadow-lg rounded-lg h-full hover:bg-gray-200 `}>
         <div className="aspect-h-2 aspect-w-4 overflow-hidden bg-gray-100 relative rounded-lg">
           {imgFeatured !== '' ? (
-              <img
+              <Image
                 src={imgFeatured}
                 alt={imgFeatured}
-                className="object-cover object-center"
+                className="h-50 w-full"
+                width={100}
+                height={200}
               />
             ) : (
               <div className='w-full h-50 bg-light'></div>
@@ -67,7 +70,6 @@ return (
           {propType}
           {propBed}
           {propHO}
-          {propSize}
         </div>
       </div>
     </Link>

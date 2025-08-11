@@ -3,8 +3,6 @@ import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import UnitsList from "./UnitsList";
 import UnitsSidebar from "./UnitsSidebar";
 import Search from "./Search";
-import { Suspense } from "react";
-import { Skeleton } from "../../_components/tools/Skeleteon";
 import UnitsSideSearch from "./UnitsSideSearch";
 
 export default async function UnitsPage(props: any) {
@@ -26,9 +24,7 @@ export default async function UnitsPage(props: any) {
                     </div>
                     <div className="col-span-4 md:col-span-3">
                         <div className="mt-0 space-y-5 lg:mt-2 lg:space-y-5">
-                            <Suspense key={unitid + currentPage} fallback={<Skeleton />}>
-                                <UnitsList unitid={unitid} category={category} propertyId={propertyId} beds={beds} currentPage={currentPage} />
-                            </Suspense>
+                            <UnitsList unitid={unitid} category={category} propertyId={propertyId} beds={beds} currentPage={currentPage} />
                         </div>
                     </div>
                     <div className="hidden md:flex mt-16 space-y-10 lg:mt-2 lg:space-y-5 mainsidebar">

@@ -79,3 +79,60 @@ export interface UnitListing {
   reraStrNo: string | null;
   furnish_status: string;
 }
+
+export interface NearbysType {
+  landmarkId: string;
+  landmarkEnglishName: string;
+  landmarkArabicName: string;
+  categoryId: string;
+  categoryName: string;
+  longitude: string;
+  latitude: string;
+  addressLine1English: string;
+  addressLine1Arabic: string;
+  website: string;
+  youtubeLink: string;
+  usefulLink: string;
+  virtualTourLink: string;
+  facebookLink: string;
+  instagramLink: string;
+  cityName: string;
+  communityName: string;
+  subCommunityName: string;
+  isFeatured: string;
+  communityImages: string;
+  landmarkImageLogo: string;
+  landmarkLogo: string;
+};
+
+export interface Installment {
+  installmentTypeId: number;
+  installmentTypeName: string;
+  amountPercentage: number;
+  frequencyId: number;
+  frequencyName: string;
+  instalmentDate: string;
+  installmentNumber: number | null;
+  isBasedOnBookingDate: boolean;
+}
+
+export interface PaymentPlan {
+  propertyPaymentPlanId: number;
+  paymentPlanName: string | null;
+  description: string;
+  propertyPlanStatusId: number;
+  statusName: string;
+  planTypeId: number;
+  planTypeName: string;
+  isForSpecificProperty: boolean;
+  isSelectedUnit: boolean;
+  isConfigrationSelected: boolean;
+  propertyPlanInstallments: Installment[];
+  paymentPlanDevelopers: any[]; // Define more if structure is known
+  paymentPlanDocuments: any[]; // Define more if structure is known
+}
+
+export interface PaymentPlansResponse {
+  result: PaymentPlan[];
+  totalCount: number;
+}

@@ -453,23 +453,34 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
             let methodOfContact = "115747";
 
             switch (source) {
+                case 'HubspotEmail':
+                case 'HubSpotEmail':
+                case 'hubspotemail':
+                case 'hs_email':
+                case 'Hubspot':
+                case 'hubspot':
+                    mediaType = "63906";
+                    mediaName = "63907";
+                    propertyCampaignId = "";
+                    methodOfContact = methodOfContact;
+                    break;
                 case "newsletter":
                     mediaType = "166277";
                     mediaName = "166071";
                     propertyCampaignId = "";
-                    methodOfContact = "MethodOfContactVal";
+                    methodOfContact = methodOfContact;
                     break;
                 case "sms":
                     mediaType = "129474";
                     mediaName = "165366";
-                    methodOfContact = "MethodOfContactVal";
+                    methodOfContact = methodOfContact;
                     break;
                 case "Google":
                 case "google":
                     mediaType = "165269";
                     mediaName = "128455";
                     propertyCampaignId = "";
-                    methodOfContact = "MethodOfContactVal";
+                    methodOfContact = methodOfContact;
                     break;
                 default:
                     mediaType = "129475";

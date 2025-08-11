@@ -18,6 +18,12 @@ import WhyInvest from './_components/WhyInvest';
 import WhyInvest_2 from './_components/WhyInvest_2';
 import { url } from 'inspector';
 import LocationsSlider_2 from './_components/LocationsSlider_2';
+import WhyInvestMain from './_components/WhyInvestMain';
+import Solutions from './_components/Solutions';
+import AwardsSection from './_components/AwardsSection';
+import Partners from './_components/Partners';
+import ClientReview from './_components/ClientReview';
+import FooterSection from './_components/FooterSection';
 
 const latoLight = Lato({
   subsets: ['latin'],
@@ -402,18 +408,37 @@ export default function InternationalPage() {
             </div>
         </div>       
         
-        <div className="w-full bg-[url('/assets/images/international/international-bg-3.webp')] bg-cover bg-top-center md:px-0 px-4 md:overflow-visible relative">
+        <div className={`w-full md:bg-[url('/assets/images/international/international-bg-3.webp')] bg-[url('/assets/images/international/international-dubai-bg.webp')] bg-cover bg-top bg-center md:px-0 px-4 md:overflow-visible relative ${latoLight.className}`}>
             <div className="md:inline-block md:w-full">
-                <div className="max-w-screen-xl md:flex lg:gap-5 gap-2 md:pt-[80vh] pt-[20vh] px-4 mx-auto">
+                <div className="max-w-screen-xl md:flex lg:gap-5 gap-2 md:pt-[90vh] pt-[23vh] px-4 mx-auto">
                     <WhyInvest_2 />
                 </div>
                 <div className="w-full md:flex md:justify-end 2xl:-mt-[calc(16%+40px)] xl:-mt-[calc(21%+0px)] lg:-mt-[calc(28%)] mb-5">
-                    <div className="md:w-[51%] w-full md:pr-5">
+                    <div className="md:w-[52%] w-full md:pr-5">
                         <LocationsSlider_2 slides={LocationsData_2} />
                     </div>
                 </div>
+                <WhyInvestMain />
             </div>
         </div>
+
+        <div className="max-w-screen-xl md:flex lg:gap-5 gap-2 md:py-[20vh] py-5 px-4 mx-auto">
+            <Solutions />
+        </div>
+
+        <div className={`w-full md:py-30 py-7 bg-[url('/assets/images/international/international-awards.webp')] 
+            bg-cover bg-top bg-center`}>
+            <AwardsSection />
+        </div>
+        <div className="max-w-screen-xl md:py-30 py-7 mx-auto">
+            <Partners />
+        </div>
+        
+        <ClientReview />
+
+        <footer>
+            <FooterSection />
+        </footer>   
 
         
         </>

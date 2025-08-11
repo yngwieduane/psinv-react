@@ -1,5 +1,4 @@
 'use client'
-import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import MapComponent from "@/app/[locale]/_components/MapComponent";
 import SwiperMaterial from "@/app/[locale]/_components/SwiperMaterial";
 import StripeContent from "./StripeContent";
@@ -19,6 +18,9 @@ import { faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
 import MortgageCalculator from "@/app/[locale]/mortgage-calculator/MortgageCalculator";
 import AgentDetails from "./AgentDetails";
 import Nearbys from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/Nearbys";
+import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
+import NearbysWithMap from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap";
+import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
 
 export default function UnitPage(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -37,7 +39,7 @@ export default function UnitPage(props: any) {
     return (
         <>
             <div>
-                <Breadcrumb/>
+                <BreadcrumbUnit/>
             </div>
             <div >
                 {props.data.map((post:any,index:any) => { 
@@ -59,11 +61,11 @@ export default function UnitPage(props: any) {
                     : video = '';
                 }
                 {post.unit_Amenities !== null
-                    ? amenities = post.unit_Amenities.split('|')
+                    ? amenities = post.unit_Amenities.split(' | ')
                     : amenities = '';
                 }
                 {post.facilities !== null
-                    ? facilities = post.facilities.split('|')
+                    ? facilities = post.facilities.split(' | ')
                     : facilities = '';
                 }
                 map = post.pro_google_coordinates;
@@ -156,8 +158,13 @@ export default function UnitPage(props: any) {
                                         ) : ("")}
                                     </div>
                                 </div>
+                                <div className="container mx-auto my-8 px-5">
+                                    <PaymentPlans
+                                        propid={post.property_Pk}
+                                    />
+                                </div>
                                 {/* unit_Amenities */}
-                                {amenities !== null ? (
+                                {amenities ? (
                                 <div className="mt-15 px-5">
                                     <h2 className="text-xl mb-5 text-[#111954]">
                                         Amenities
@@ -167,7 +174,7 @@ export default function UnitPage(props: any) {
                                     </div>
                                 </div>) : ("")}
                                 {/* facilities */}
-                                {facilities !== 'null' ? (
+                                {facilities ? (
                                 <div className="mt-15 px-5">
                                     <h2 className="text-xl mb-5 text-[#111954]">
                                         Facilities
@@ -191,15 +198,6 @@ export default function UnitPage(props: any) {
                                         Property Remarks
                                     </h2>
                                     <ReadMore amountOfWords={100} id="read-more-text" text={post.remarks} classes="whitespace-break-spaces"/>
-                                </div>) : ("")}
-
-                                {map !== null ? (
-                                <div className="mt-15 px-5">
-                                    <Nearbys
-                                        latitude={coordinates['1']}
-                                        longitude={coordinates['0']}
-                                        distance={10}
-                                    />
                                 </div>) : ("")}
                                 <div className="container mx-auto my-10">
                                     <MortgageCalculator/>
@@ -229,14 +227,16 @@ export default function UnitPage(props: any) {
                             {/* MAP */}
                             {map !== null ? (
                             <div className="">
-                                <h2 className="font-medium text-center text-3xl my-10 text-[#111954]">
-                                    Location Map
-                                </h2>
-                                <MapComponent
+                                {/* <MapComponent
                                     latitude={coordinates['1']}
                                     longitude={coordinates['0']}
                                     fallbackImage={props.data["featuredImages"]}
                                     height='500px'
+                                /> */}
+                                <NearbysWithMap
+                                    latitude={coordinates['1']}
+                                    longitude={coordinates['0']}
+                                    distance={10}
                                 />
                             </div>) : ("")}
                             {/* Similar Properties */}

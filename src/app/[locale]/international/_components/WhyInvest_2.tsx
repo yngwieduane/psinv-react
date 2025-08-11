@@ -1,7 +1,13 @@
 'use client'
 
 import { AudreyNormal, Audrey } from "@/utils/fonts";
-import LocationsSlider_2 from "./LocationsSlider_2";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+    subsets: ['latin'],
+    weight: ['400'],
+    variable: '--font-montserrat',
+});
 
 function WhyInvest_2() {
     return(
@@ -15,30 +21,33 @@ function WhyInvest_2() {
                 </h3>
             </div>
             <div className="lg:w-8/9 md:w-1/2 w-full text-white">
-                <div className="w-full md:flex gap-5">
+                <div className="w-full md:flex gap-1">
                     <div className="md:w-[40%] w-full">
-                        <h2 className={`lg:text-4xl md:text-2xl text-4xl text-start md:mb-17 mb-7 ${AudreyNormal.className}`}>
+                        <h2 className={`lg:text-[40px] md:text-2xl text-4xl text-start md:mb-17 mb-7 ${AudreyNormal.className}`}>
                             ROI COMPARISON
                         </h2>
                     </div>
-                    <div className="md:w-[60%] w-full">
-                        <p className="lg:text-3xl md:text-2xl text-xl font-light leading-snug md:max-w-[650px]">
+                    <div className="md:w-[50%] w-full">
+                        <p className={`lg:text-[35px] md:text-2xl text-md font-light leading-snug md:max-w-[650px] 
+                            ${montserrat.className}`}>
                             Properties in the UAE regularly offer an average ROI above 5%, which compares favorably to other major cities.
                         </p>
                     </div>                    
                 </div>
                 <div className="w-full md:flex">
-                    <div className="relative md:w-1/3 my-10 flex flex-column items-center h-full md:py-15 pt-20 pb-10">
+                    <div className="relative md:w-1/3 my-10 flex flex-column items-center h-full py-15">
                         <h2 className="lg:text-5xl md:text-2xl text-4xl text-start md:mb-17 mb-7 z-10">
                             <p className={`my-0 text-[#ED9C4B] text-7xl ${AudreyNormal.className}`}>5.6%</p>
                             <p className={`my-0 text-white text-5xl uppercase ${AudreyNormal.className}`}>Dubai</p>
                             <p className="my-0 text-2xl text-white font-light">No property tax</p>
                         </h2> 
                         <img src="/assets/images/international/map.png" alt="map" title="map" 
-                            className="absolute top-0 right-0 w-full md:ml-10 ml-5" />                  
+                        className="absolute top-0 right-0 w-full md:ml-10 md:ml-5" />                  
                     </div>                    
                 </div> 
             </div>
+
+            
         </>
     )
 }
