@@ -37,7 +37,7 @@ export default function SwiperMaterialProjectPage(props: any) {
     <>
       <Swiper {...swiperParameters}>
         <FancyboxWrapper>
-          <a data-fancybox="gallerypopup" href={props.slides[0].imageURL}className="absolute top-5 end-5 md:top-[unset] md:bottom-10 md:end-15 bg-[#00000050] z-10 text-white p-2 rounded-lg flex justify-center gap-2"><Images/> {props.slides.length} </a>
+          <a data-fancybox="gallerypopup" href={props.slides[0].imageURL} className="absolute bg-[#00000050] text-white p-2 rounded-lg flex justify-center bottom-5 right-15 z-10"><Images/> {props.slides.length} </a>
         </FancyboxWrapper>
         {props.slides?.map((slide:any, index:any) => {
             let imagecontent = slide.imageURL.replace('?width=0&height=0','?width=500&height=300');
