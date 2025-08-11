@@ -19,7 +19,7 @@ const reviews = [
 export default function GoogleReviewSection() {
   return (
     <section className="bg-[#f8f9fa] py-12">
-      <div className="max-w-screen-xl mx-auto px-4">
+      <div className="max-w-(--breakpoint-xl) mx-auto px-4">
         <h3 className="text-3xl sm:text-3xl font-bold text-center mb-8 text-gray-800">
           Testimonials
         </h3>

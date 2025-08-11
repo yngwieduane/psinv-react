@@ -150,9 +150,9 @@ export default function CareersPage() {
         </div>
       )}
       {/* Award Section */}
-      <section className="w-full bg-secondary-color py-10 text-[var(--color-gray-500)]">
+      <section className="w-full bg-secondary-color py-10 text-gray-500">
         <div
-          className="max-w-screen-xl mx-auto bg-center bg-cover py-10 px-5"
+          className="max-w-(--breakpoint-xl) mx-auto bg-center bg-cover py-10 px-5"
           style={{
             backgroundImage: "url('/assets/images/about-us/pattern-1.png')",
           }}

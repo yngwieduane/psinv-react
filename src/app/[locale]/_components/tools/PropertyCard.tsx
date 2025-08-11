@@ -48,7 +48,7 @@ return (
             className="flex items-center justify-center absolute w-full h-full opacity-0 ease-in duration-300"
             aria-hidden="true"
           >
-            <div className="w-full h-full p-4 items-center grid grid-cols-1 my-auto rounded-md text-center text-white font-medium text-gray-900 bg-black/[.5]">
+            <div className="w-full h-full p-4 items-center grid grid-cols-1 my-auto rounded-md text-center text-white font-medium text-gray-900 bg-black/50">
               <div>
                 <h2 className="text-3xl">{props.data["propertyName"]}</h2>
                 <p>{props.data["community"]}</p>

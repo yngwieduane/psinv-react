@@ -507,8 +507,8 @@ return(
     <>
     <div className="flex justify-between mb-5 relative">
         <h2 className={fromModal ? 
-        'hidden text-4xl text-[#E35F27] font-[700] leading-normal' 
-        : 'text-4xl text-[#E35F27] font-[700] leading-normal'}>List Your Property</h2>
+        'hidden text-4xl text-[#E35F27] font-bold leading-normal' 
+        : 'text-4xl text-[#E35F27] font-bold leading-normal'}>List Your Property</h2>
         {isSubmitSuccess !== true && (
             <div className=" absolute right-0 bottom-[-30px]">           
                 <p>{currentStep + 1} of {steps.length}</p>
@@ -580,7 +580,7 @@ return(
                     <div className="inputGroup">
                         <label htmlFor="purpose" className="text-sm block">Property Purpose</label>
                         <Select {...register('purpose')} onChange={onChangeField}
-                        className="w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] text-[#2C2D65] text-sm font-[500]">
+                        className="w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] text-[#2C2D65] text-sm font-medium">
                             <option>Purpose</option>
                             <option value="Sale">Sale</option>
                             <option value="Rent">Rent</option>
@@ -593,7 +593,7 @@ return(
                         <label htmlFor="location" className="text-sm w-1/3">Location<sup className="imp text-[#E35F27]">*</sup></label>                    
                         <Select
                         {...register('location')} required onChange={onChangeLocation}
-                        className="w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] text-[#2C2D65] text-sm font-[500]">
+                        className="w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] text-[#2C2D65] text-sm font-medium">
                             <option>Select location</option>
                             <option value="91823" data-value="Abu Dhabi">Abu Dhabi</option>
                             <option value="91578" data-value="Dubai">Dubai</option>
@@ -607,7 +607,7 @@ return(
                     <div className="inputGroup">
                         <label htmlFor="prop-type" className="text-sm w-1/3">Property Type</label>
                         <Select {...register('proptype')} onChange={onChangeField}
-                        className="w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] text-[#2C2D65] text-sm font-[500]">
+                        className="w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] text-[#2C2D65] text-sm font-medium">
                             <option>Select property type</option>
                             <option value="Villa">Villa</option>
                             <option value="Apartment">Apartment</option>
@@ -626,7 +626,7 @@ return(
                                     value={formValue.property}
                                     {...register('property')}
                                     onChange={onChangeProperty}
-                                    className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] w-full text-[#2C2D65] text-sm font-[500] required"
+                                    className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] w-full text-[#2C2D65] text-sm font-medium required"
                                 >
                                     <option value="">Select a property</option>
                                     {props.map((prop: any) => (
@@ -644,7 +644,7 @@ return(
                     <div className="inputGroup">
                         <label htmlFor="beds" className="text-sm w-1/3">Beds</label>
                         <Select {...register('beds')} onChange={onChangeField}
-                        className="w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] text-[#2C2D65] text-sm font-[500]">
+                        className="w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] text-[#2C2D65] text-sm font-medium">
                             <option>Select number of bedrooms</option>
                             <option value="1">1</option>
                             <option value="2">2</option>

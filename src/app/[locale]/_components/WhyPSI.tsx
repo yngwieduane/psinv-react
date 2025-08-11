@@ -29,7 +29,7 @@ const WhyPSI = () => {
   onClick={() => setActiveTab(tab.key)}
   className={`text-[20px] opacity-50 font-light w-max text-center px-4 py-2 transition-all duration-200 ${
     activeTab === tab.key
-      ? "text-[#033f80] border-b-[2px] border-[#ea5b27] font-semibold opacity-100"
+      ? "text-[#033f80] border-b-2 border-[#ea5b27] font-semibold opacity-100"
       : "text-[#6c757d] hover:text-[#111954]"
   }`}
 >

@@ -170,7 +170,7 @@ function InputSlider({ label, value, setValue, suffix, min, max, step = 1 }: Inp
     <div className="mb-6 w-full">
       <label className="block text-gray-600 mb-2 text-sm">{label}</label>
       <div className="flex items-center gap-5">
-        <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white flex-grow">
+        <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white grow">
           <input
             type="number"
             value={value}

@@ -28,7 +28,7 @@ export default function LocationsSection() {
 
   return (
     <>      
-      <div className="md:flex max-w-screen-xl mx-auto px-5">
+      <div className="md:flex max-w-(--breakpoint-xl) mx-auto px-5">
         <div className="md:w-1/2">
           <div className="mb-[30px]">
             <h3 className={`text-darkblue font-bold text-xl md:text-4xl ${Audrey.className}`}>

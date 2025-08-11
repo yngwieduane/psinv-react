@@ -40,7 +40,7 @@ export default function LocaleSwitcherSelect({
     <div
       className={clsx(
         'relative text-gray-400',
-        isPending && 'transition-opacity [&:disabled]:opacity-30'
+        isPending && 'transition-opacity disabled:opacity-30'
       )}
     >
       <label className="sr-only">{label}</label>

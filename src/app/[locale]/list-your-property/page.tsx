@@ -210,7 +210,7 @@ const ListYourPropertyPage = () => {
                     </div>
 
                     {/* Desktop menu */}
-                    <div className="lg:flex hidden max-w-screen-xl mx-auto max-w-full items-center justify-between ">
+                    <div className="lg:flex hidden max-w-(--breakpoint-xl) mx-auto max-w-full items-center justify-between ">
                         <div>
                             <Link href="/">
                                 <span className="sr-only">Property Shop Investment</span>
@@ -244,7 +244,7 @@ const ListYourPropertyPage = () => {
                     </div>
                 </nav>
                 <div className="relative w-full h-full md:px-auto px-1 md:py-5 pt-[100px] pb-[70px]">
-                    <div className="max-w-screen-xl mx-auto md:flex max-w-full text-white h-full px-4">
+                    <div className="max-w-(--breakpoint-xl) mx-auto md:flex max-w-full text-white h-full px-4">
                         <div className="md:w-2/3 w-full h-full content-center md:text-start text-center">
                             <h1 className="md:text-6xl text-3xl font-bold capitalize leading-normal">We make your property stand out, list with us</h1>
                             <h3 className="md:text-2xl text-lg my-5 md:leading-normal leading-loose">Sell or rent out your property with PSI, #1 real estate agency in the UAE. We manage everything from marketing to bookings</h3> 
@@ -293,13 +293,13 @@ const ListYourPropertyPage = () => {
 
             <div className="spacer md:h-[100] h-[30px]"></div>
             <div className="w-full why-to-list pt-5" id="about">
-                <div className="max-w-screen-xl mx-auto md:flex px-4 justify-stretch">
+                <div className="max-w-(--breakpoint-xl) mx-auto md:flex px-4 justify-stretch">
                     <div className="md:w-1/2 h-full md:pr-5">
-                        <h2 className="md:text-4xl text-3xl max-w-[500px] text-[#272963] font-[500] leading-normal mb-5">Why To List Your Property With US?</h2>
+                        <h2 className="md:text-4xl text-3xl max-w-[500px] text-[#272963] font-medium leading-normal mb-5">Why To List Your Property With US?</h2>
                         <p className="text-[#808080] leading-loose mb-5 ">We try to make the process of listing and renting/selling your property as simple and easy as possible. 
                             With our expert team, you can avoid all the hassles of the traditional property market and get the desired results without any stress.
                         </p> 
-                        <ul className="text-[#686A93] font-[500]">
+                        <ul className="text-[#686A93] font-medium">
                             <li className="flex gap-6">
                                 <img src="https://psinv.net/assets/img/list-your-property/images/check.svg"
                                     alt="" className="w-6 h-6" />
@@ -386,7 +386,7 @@ const ListYourPropertyPage = () => {
             <div className="spacer h-[100]"></div>
 
             <div className="w-full why-to-list pt-5">
-                <div className="max-w-screen-xl mx-auto md:flex px-4 justify-stretch">
+                <div className="max-w-(--breakpoint-xl) mx-auto md:flex px-4 justify-stretch">
                     <div className="md:w-1/2 h-full md:pr-5 relative">
                         <div className="bg-[#e35f2733] rounded-[10px] w-[90%] h-[70%] absolute left-[-30px] top-[-30px] z-[-1]"></div>
                         <video width="100%" height="400" autoPlay loop muted playsInline className="rounded-[10px] z-99999">
@@ -395,7 +395,7 @@ const ListYourPropertyPage = () => {
                         </video>
                     </div>
                     <div className="md:w-1/2 md:pl-5">
-                        <h2 className="text-4xl text-[#272963] font-[500] leading-normal mb-5">Live in tours with 360° virtual view of your property</h2>
+                        <h2 className="text-4xl text-[#272963] font-medium leading-normal mb-5">Live in tours with 360° virtual view of your property</h2>
                         <p className="text-[#808080] leading-loose mb-5">Experience your home like never before! It is more than ever essential to stand out among the competition, 
                             PSI will provide a 360° tour of your property to be included within other marketing materials. 
                             The most remarkable presentation of a panorama is most definitely the 360° Virtual Tour. The need for Virtual Technology is growing fast. 
@@ -415,9 +415,9 @@ const ListYourPropertyPage = () => {
             <div className="spacer h-[100]"></div>
 
             <div className="w-full bg-[#f8f8f8] py-[80px]" id="providers">
-                <div className="max-w-screen-xl mx-auto md:flex px-4">
+                <div className="max-w-(--breakpoint-xl) mx-auto md:flex px-4">
                     <div className="md:w-4/7">
-                        <h2 className="text-4xl text-[#272963] font-[500] leading-normal mb-5">Where Will We List Your Property?</h2>
+                        <h2 className="text-4xl text-[#272963] font-medium leading-normal mb-5">Where Will We List Your Property?</h2>
                         <p className="text-[#808080] leading-loose mb-5">Property owners! List your property with us for sale or rent. 
                             Reach our specialized consultants to deliver the best value for your property.
                         </p>
@@ -460,7 +460,7 @@ const ListYourPropertyPage = () => {
                 <div className="md:block hidden md:w-1/6 bg-contain bg-repeat bg-center flex-1" 
                 style={{backgroundImage:"url('/assets/images/list-property/bg-vector.svg')"}}></div>
                 <div className="md:w-2/3 text-center flex-3 flex flex-col justify-center md:p-10 px-4 py-10 gap-8">
-                    <h2 className="text-4xl text-[#272963] font-[500] leading-normal">Benefits to list with Us</h2>
+                    <h2 className="text-4xl text-[#272963] font-medium leading-normal">Benefits to list with Us</h2>
                     <span className="w-[171px] h-[5px] self-center " style={{background:"linear-gradient(90deg, #FFFFFF 0%, #E35F27 100%)"}}></span>
                     <p className="text-[#808080] leading-loose mb-5">Properties with We understand how busy you are and that’s 
                         why we do everything in our power to make the process of renting/selling your property hassle free.
@@ -498,13 +498,13 @@ const ListYourPropertyPage = () => {
             </div>
 
             <div className="w-full bg-cover bg-no-repeat bg-center formBg relative z-0">
-                <div className="w-full h-full md:hidden block absolute inset-0 z-[1] formBg-grad" 
+                <div className="w-full h-full md:hidden block absolute inset-0 z-1 formBg-grad" 
                 style={{background:"linear-gradient(0deg, #f7f7f700, #f7f7f700), linear-gradient(0deg, rgba(39, 41, 99, 0.5), rgba(39, 41, 99, 0.5))"}} ></div>
-                <div className="max-w-screen-xl md:flex mx-auto px-4 items-center relative z-[10]">
+                <div className="max-w-(--breakpoint-xl) md:flex mx-auto px-4 items-center relative z-10">
                     <div className="md:w-1/2 md:block hidden gap-4 py-10">
                         <img src="/PSI-Logo.svg" alt="logo" width={104} className="mb-5"></img>
                         <h5 className="text-sm text-[#E35F27] font-semibold mb-3">List Your Property</h5>
-                        <h2 className="text-4xl text-[#272963] font-[500] leading-normal mb-3">BE with the Brand you Trust</h2>
+                        <h2 className="text-4xl text-[#272963] font-medium leading-normal mb-3">BE with the Brand you Trust</h2>
                         <p className="text-[#212529]">Trust the brand that delivers quality, reliability, and meets your needs. Stick with the brand you trust.</p>
                     </div> 
                     <div className="md:w-1/2 md:pl-5 md:py-0 py-5" style={{zIndex:"9999"}}>
@@ -517,8 +517,8 @@ const ListYourPropertyPage = () => {
 
             <div className="spacer h-[50]"></div>
 
-            <div className="max-w-screen-xl mx-auto px-4 items-center" id="faqs">
-                <h2 className="text-4xl text-[#272963] font-[500] leading-normal mb-3">FAQs</h2>
+            <div className="max-w-(--breakpoint-xl) mx-auto px-4 items-center" id="faqs">
+                <h2 className="text-4xl text-[#272963] font-medium leading-normal mb-3">FAQs</h2>
                 <div className="w-full py-10">                   
                     <Accordion />
                 </div>                 

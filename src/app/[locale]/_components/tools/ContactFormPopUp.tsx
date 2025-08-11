@@ -242,7 +242,7 @@ const ContactFormPopUp: React.FC<ContactFormPopUpProps> = (props) => {
         </div>
         <button
           type="submit"
-          className="w-full border border-[#E46027] p-3 mb-6 rounded-md text-[#fff] bg-[#E46027] hover:bg-orange-700 hover:text-[#fff] font-semibold"
+          className="w-full border border-[#E46027] p-3 mb-6 rounded-md text-white bg-[#E46027] hover:bg-orange-700 hover:text-white font-semibold"
           disabled={isSubmitting}
           >
             {isSubmitting ? "Submitting..." : (props.submitLabel || "Submit")}

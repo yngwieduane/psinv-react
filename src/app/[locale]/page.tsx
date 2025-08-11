@@ -258,8 +258,8 @@ export default function HomePage() {
         <div className="container mx-auto my-10">
             <Calculator/>
         </div>
-        <section className="w-full bg-secondary-color py-10 text-[var(--color-gray-500)]">
-          <div  className="max-w-screen-xl mx-auto bg-center bg-cover py-10 px-5" style={{ backgroundImage: "url('/assets/images/about-us/pattern-1.png')",}}>
+        <section className="w-full bg-secondary-color py-10 text-gray-500">
+          <div  className="max-w-(--breakpoint-xl) mx-auto bg-center bg-cover py-10 px-5" style={{ backgroundImage: "url('/assets/images/about-us/pattern-1.png')",}}>
             {/* Heading */}
             <div className="text-center mt-[50px] mb-[70px]">
                 <h3 className={`text-darkblue  font-bold text-xl md:text-4xl ${Audrey.className}`}>
@@ -317,8 +317,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <section className="w-full py-10 text-[var(--color-gray-500)] text-center">
-          <div className="max-w-screen-xl mx-auto">
+        <section className="w-full py-10 text-gray-500 text-center">
+          <div className="max-w-(--breakpoint-xl) mx-auto">
               <h3 className={`text-darkblue font-bold text-xl md:text-4xl ${Audrey.className}`}>
               AWARDS-DRIVEN
                   <span className={`font-brittany text-orange font-light ${BrittanySignature.className} text-[#CE641D]`}>
@@ -328,7 +328,7 @@ export default function HomePage() {
                   Explore our journey of accolades that inspire us to reach new pinnacles of success.</p>
           </div>            
           <section className="w-full">
-              <div className="max-w-screen-xl relative mx-auto">
+              <div className="max-w-(--breakpoint-xl) relative mx-auto">
                   <AwardSlider slides={awards} />
               </div>
           </section>            

@@ -153,10 +153,10 @@ const PropertyPage = (props:any) => {
         <div className="hidden grid grid-cols-2 gap-4 px-4 items-center">
             <div className="text-3xl">{props.data["propertyName"]}</div>
             <div className="grid grid-cols-4 gap-4 items-center text-center ">
-                <a className="py-2 md:py-4 border-l-1 border-gray-400">{t('overview')}</a>
-                <a className="py-2 md:py-4 border-l-1 border-gray-400">{t('gallery')}</a>
-                <a className="py-2 md:py-4 border-l-1 border-gray-400">{t('floor_plan')}</a>
-                <a className="py-2 md:py-4 border-l-1 border-gray-400">{t('location')}</a>
+                <a className="py-2 md:py-4 border-l border-gray-400">{t('overview')}</a>
+                <a className="py-2 md:py-4 border-l border-gray-400">{t('gallery')}</a>
+                <a className="py-2 md:py-4 border-l border-gray-400">{t('floor_plan')}</a>
+                <a className="py-2 md:py-4 border-l border-gray-400">{t('location')}</a>
             </div>
         </div>
         {/* STRIPE CONTENT */}

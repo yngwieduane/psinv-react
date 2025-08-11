@@ -58,7 +58,7 @@ const Accordion: React.FC<any> = () => {
                             className="w-full h-full text-left px-4 py-5 transition-all duration-200 md:text-lg text-sm cursor-pointer flex justify-between gap-15">
                                 {question}
                                 <div className={activeId === id ? "bg-[#E35F27] px-3 py-2 h-[43px] w-[43px] rounded-[8px] animate-rotateToLeft" : "animate-rotateBack bg-[#000B3333] px-3 py-2 h-[43px] w-[43px] rounded-[8px] flex items-center"}>
-                                    <FontAwesomeIcon icon={activeId === id ? faMinus : faPlus} className={activeId === id ? "transition-all duration-200 text-[#fff]" : "transition-all duration-200 text-[#000B33] text-[19px]"} />
+                                    <FontAwesomeIcon icon={activeId === id ? faMinus : faPlus} className={activeId === id ? "transition-all duration-200 text-white" : "transition-all duration-200 text-[#000B33] text-[19px]"} />
                                 </div>
                         </button>                        
                     </div>

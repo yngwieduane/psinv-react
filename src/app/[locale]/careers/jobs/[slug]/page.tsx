@@ -206,7 +206,7 @@ useEffect(() => {
               <span className="text-[#2C2D65] text-xl">&#8592;</span>
             </div>
           </Link>
-          <h2 className="text-[#272963] text-[18px] leading-[1.5] md:text-[40px] md:leading-[52px] uppercase font-bold">
+          <h2 className="text-[#272963] text-[18px] leading-normal md:text-[40px] md:leading-[52px] uppercase font-bold">
             RECRUITMENT APPLICATION
             <span
               className={`${BrittanySignature.className} capitalize text-orange-600`}
@@ -216,7 +216,7 @@ useEffect(() => {
           </h2>
         </div>
         <p
-          className={`text-[#1A1A1A] text-[14px] leading-[1.5] md:text-[16px] md:leading-[30.4px] ${poppins.className}`}
+          className={`text-[#1A1A1A] text-[14px] leading-normal md:text-[16px] md:leading-[30.4px] ${poppins.className}`}
         >
           This Application is to provide the employer with the information
           required to evaluate your profile transparently. Keeping a high level
@@ -266,7 +266,7 @@ useEffect(() => {
                 {job.name}
               </h2>
               <div
-                className="text-[#1A1A1A] text-[14px] md:text-[16px] leading-[1.5] md:leading-[30.4px] font-poppins"
+                className="text-[#1A1A1A] text-[14px] md:text-[16px] leading-normal md:leading-[30.4px] font-poppins"
                 dangerouslySetInnerHTML={{ __html: job.description }}
               ></div>
 

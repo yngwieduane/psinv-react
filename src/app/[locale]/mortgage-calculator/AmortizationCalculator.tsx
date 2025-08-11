@@ -88,7 +88,7 @@ useEffect(() => {
   <label className="block text-gray-600 mb-2">Loan Amount</label>
   <div className="flex items-center gap-4">
     {/* Input Group */}
-    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 flex-shrink-0 w-[260px]">
+    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 shrink-0 w-[260px]">
       <input
         type="number"
         value={loanAmount}
@@ -130,7 +130,7 @@ useEffect(() => {
   
   <div className="flex items-center gap-4">
     {/* Input Box */}
-    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] flex-shrink-0">
+    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
       <input
         type="number"
         step="0.01"
@@ -175,7 +175,7 @@ useEffect(() => {
 
   <div className="flex items-center gap-4">
     {/* Input Box */}
-    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] flex-shrink-0">
+    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
       <input
         type="number"
         value={loanTerm}
@@ -223,7 +223,7 @@ useEffect(() => {
 
   <div className="flex items-center gap-4">
     {/* Input Group */}
-    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] flex-shrink-0">
+    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
       <input
         type="number"
         value={earlyPayment}
@@ -267,7 +267,7 @@ useEffect(() => {
 
   <div className="flex items-center gap-4">
     {/* Input Group */}
-    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] flex-shrink-0">
+    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
       <input
         type="number"
         value={madeAfterMonth}

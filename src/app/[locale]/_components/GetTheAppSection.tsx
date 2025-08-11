@@ -13,7 +13,7 @@ export default function GetTheAppSection() {
 
         <div className="flex flex-col lg:flex-row mt-10 lg:mt-20 relative z-10">
           {/* Left Text */}
-          <div className="w-full lg:w-[22%] text-center lg:text-left px-4 pt-0 lg:pt-20 order-3 lg:order-none">
+          <div className="w-full lg:w-[22%] text-center lg:text-left px-4 pt-0 lg:pt-20 order-3 lg:order-0">
             <p className="text-blue-900 opacity-60 text-base text-[17px] md:text-[20px] md:text-lg font-medium leading-relaxed">
               Take control of your real estate journey with our app. Whether you're booking a viewing,
               tracking your property progress, or staying updated on the latest listings, everything you
@@ -26,7 +26,7 @@ export default function GetTheAppSection() {
   <div className="relative w-full h-[500px] bg-[url('/images/app-screens-mob.png')] bg-cover bg-top bg-no-repeat lg:hidden order-1" />
 
   {/* Desktop image */}
-  <div className="hidden lg:flex relative w-full lg:w-[75%] justify-center items-center my-6 z-0 order-1 lg:order-none">
+  <div className="hidden lg:flex relative w-full lg:w-[75%] justify-center items-center my-6 z-0 order-1 lg:order-0">
     <Image
       src="/images/app-screens-home.svg"
       alt="App Screens"
@@ -34,10 +34,10 @@ export default function GetTheAppSection() {
       height={1200}
       className="w-full max-w-[850px] h-auto -mt-20"
     />
-    <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white to-transparent -z-10" />
+    <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-white to-transparent -z-10" />
   </div>
           {/* Right Text */}
-  <div className="w-full lg:w-[25%] lg:absolute lg:top-1/2 lg:-translate-y-[50%] lg:right-[20px] text-center lg:text-right px-4 mt-10 lg:mt-0 z-10 order-2 lg:order-none">
+  <div className="w-full lg:w-[25%] lg:absolute lg:top-1/2 lg:-translate-y-[50%] lg:right-[20px] text-center lg:text-right px-4 mt-10 lg:mt-0 z-10 order-2 lg:order-0">
     <h4 className={`${BrittanySignature.className} text-orange-600 text-[24px] lg:text-[40px]`}>Start your journey today</h4>
     <p className="text-blue-900 text-lg mt-2">with just one tap.</p>
   </div>

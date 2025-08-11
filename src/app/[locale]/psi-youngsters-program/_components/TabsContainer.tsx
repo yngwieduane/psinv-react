@@ -22,7 +22,7 @@ const TabsContainer = ({ activeTab, setActiveTab, levels }: TabsContainerProps) 
   ];
 
   return (
-    <div className="max-w-screen-xl mx-auto px-4">
+    <div className="max-w-(--breakpoint-xl) mx-auto px-4">
       {/* Desktop Tabs */}
       <div className="hidden md:grid mt-10 grid-cols-3 gap-8 justify-items-center">
         {tabLabels.map((tab, idx) => {
@@ -32,7 +32,7 @@ const TabsContainer = ({ activeTab, setActiveTab, levels }: TabsContainerProps) 
           return (
             <div
               key={tab}
-              className={`text-center w-[400px] rounded-t-lg p-4 mb-[-1px] border border-transparent ${
+              className={`text-center w-[400px] rounded-t-lg p-4 -mb-px border border-transparent ${
                 !isComingSoon ? 'hover:border-white' : ''
               } transition-all duration-300`}
             >

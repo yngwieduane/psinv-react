@@ -791,8 +791,8 @@ return(
     <>
     <div className="flex justify-between mb-5">
         <h2 className={fromModal ? 
-        'hidden text-4xl text-[#E35F27] font-[700] leading-normal' 
-        : 'md:text-4xl text-2xl text-[#E35F27] font-[700] leading-normal'}>List Your Property</h2>
+        'hidden text-4xl text-[#E35F27] font-bold leading-normal' 
+        : 'md:text-4xl text-2xl text-[#E35F27] font-bold leading-normal'}>List Your Property</h2>
         {/* desktop progress bar */}
         {currentStep !== 0 && (
             <div className="progree-bar md:block hidden">
@@ -898,7 +898,7 @@ return(
                     <div className="inputGroup w-full md:flex items-center">
                         <label htmlFor="prop-type" className="text-sm md:w-1/3 w-full leading-loose">Property Type</label>
                         <Select {...register('proptype')} onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
                             <option>Select property type</option>
                             <option value="Villa">Villa</option>
                             <option value="Apartment">Apartment</option>
@@ -908,7 +908,7 @@ return(
                     <div className="inputGroup w-full md:flex items-center">
                         <label htmlFor="beds" className="text-sm md:w-1/3 w-full leading-loose">Beds</label>
                         <Select {...register('beds')} onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
                             <option>Select number of bedrooms</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -923,7 +923,7 @@ return(
                         <div className="md:w-2/3 w-full">
                             <Select
                             {...register('location')} required onChange={onChangeLocation}
-                            className="w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] text-[#2C2D65] text-sm font-[500]">
+                            className="w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] text-[#2C2D65] text-sm font-medium">
                                 <option>Select location</option>
                                 <option value="91823" data-value="Abu Dhabi">Abu Dhabi</option>
                                 <option value="91578" data-value="Dubai">Dubai</option>
@@ -959,7 +959,7 @@ return(
                                     value={formValue.property}
                                     {...register('property')}
                                     onChange={onChangeProperty}
-                                    className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] w-full text-[#2C2D65] text-sm font-[500] required"
+                                    className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] w-full text-[#2C2D65] text-sm font-medium required"
                                 >
                                     <option value="">Select a property</option>
                                     {props.map((prop: any) => (
@@ -989,7 +989,7 @@ return(
                     <div className="inputGroup w-full md:flex items-center">
                         <label htmlFor="baths" className="text-sm md:w-1/3 w-full leading-loose">Bathrooms</label>
                         <Select {...register('baths')}  onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
                             <option>Bath</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -1001,7 +1001,7 @@ return(
                     <div className="inputGroup w-full md:flex items-center">
                         <label htmlFor="parking" className="text-sm md:w-1/3  w-full leading-loose">Parking</label>
                         <Select {...register('parking')} onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
                             <option>Parking</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -1040,7 +1040,7 @@ return(
                     <div className="inputGroup w-full md:flex items-center">
                         <label htmlFor="status" className="text-sm md:w-1/3 w-full leading-loose">Unit Status</label>
                         <Select {...register('status')}  onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
                             <option value="Rented">Rented</option>
                             <option value="Vacant">Vacant</option>
                             <option value="Owner_Occupied">Occupied</option>
@@ -1049,7 +1049,7 @@ return(
                     <div className="inputGroup w-full md:flex items-center">
                         <label htmlFor="service" className="text-sm md:w-1/3 w-full leading-loose">Service Type</label>
                         <Select {...register('service')} onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
                             <option value="">Service Type</option>
                             <option value="Residential_for_rent">Residential for Rent</option>
                             <option value="Residential_for_sale">Residential for Sale</option>
@@ -1060,7 +1060,7 @@ return(
                     <div className="inputGroup w-full md:flex items-center">
                         <label htmlFor="readytoview" className="text-sm md:w-1/3 w-full leading-loose">Ready To View</label>
                         <Select {...register('readytoview')} onChange={onChangeField}
-                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-[500]">
+                        className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
                         </Select>
