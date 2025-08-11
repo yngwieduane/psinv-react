@@ -5,6 +5,7 @@ import {useParams} from 'next/navigation';
 import {ChangeEvent, ReactNode, useTransition} from 'react';
 import {Locale} from '@/i18n/routing';
 import {usePathname, useRouter} from '@/i18n/navigation';
+import { ChevronDownIcon } from 'lucide-react';
 
 type Props = {
   children: ReactNode;
@@ -36,22 +37,27 @@ export default function LocaleSwitcherSelect({
   }
 
   return (
-    <label
+    <div
       className={clsx(
         'relative text-gray-400',
         isPending && 'transition-opacity [&:disabled]:opacity-30'
       )}
     >
-      <p className="sr-only">{label}</p>
-      <select
-        className="inline-flex appearance-none bg-transparent py-3 pl-2 pr-6"
-        defaultValue={defaultValue}
-        disabled={isPending}
-        onChange={onSelectChange}
-      >
-        {children}
-      </select>
-      <span className="pointer-events-none absolute right-2 top-[8px]">⌄</span>
-    </label>
+      <label className="sr-only">{label}</label>
+      <div className="mt-2 grid grid-cols-1">
+        <select
+          className="col-start-1 row-start-1 w-full appearance-none rounded-md py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6"
+          defaultValue={defaultValue}
+          disabled={isPending}
+          onChange={onSelectChange}
+        >
+          {children}
+        </select>
+        <ChevronDownIcon
+          aria-hidden="true"
+          className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
+        />
+      </div>
+    </div>
   );
 }

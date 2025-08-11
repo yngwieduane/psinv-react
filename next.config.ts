@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'psi-crm.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'apigateway.dubai-crm.com',
+      },
     ],
   },
 };

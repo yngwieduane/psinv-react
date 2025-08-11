@@ -2,10 +2,10 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InquiryForm from "../../_components/InquiryForm";
-import { faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
 import DrawerDetails from "../../unit/[slug]/components/DrawerDetails";
 import { useState } from "react";
 import Sticky from 'react-sticky-el';
+import { CalendarCheck } from "lucide-react";
 
 const UnitsSidebar = (props:any) => {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -32,7 +32,7 @@ const UnitsSidebar = (props:any) => {
                         name="details"
                         className="w-full rounded-lg border border-[#111954] p-4 cursor-pointer"
                     >
-                        <FontAwesomeIcon icon={faCalendarCheck}/> Request a Meeting
+                        <CalendarCheck/> Request a Meeting
                     </button>
                 </div>
                 <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} />

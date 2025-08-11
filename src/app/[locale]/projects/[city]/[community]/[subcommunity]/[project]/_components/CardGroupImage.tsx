@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import {useTranslations} from 'next-intl';
 import Image from "next/image";
+import { Flame } from "lucide-react";
 
 const CardGroupImage = (props:any) => {
 
@@ -14,7 +15,7 @@ const CardGroupImage = (props:any) => {
                 <div className="px-4 py-5 sm:p-6 flex align-items-center">
                     {thumbimg !== null || !thumbimg
                         ? 
-                        <img alt={item.name} width={5} height={5} className="w-10" src={thumbimg || "/PSI-Logo.svg"} />
+                        <Flame/>
                         : ""
                     }
                     <p className="text-sm ps-2">{item.name}</p>

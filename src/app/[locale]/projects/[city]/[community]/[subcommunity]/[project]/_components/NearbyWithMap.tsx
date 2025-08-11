@@ -21,6 +21,7 @@ export type AnchorPointName = keyof typeof AdvancedMarkerAnchorPoint;
 
 import './NearbyWithMap.css';
 import { RealEstateIcon } from "../../../../../../../../../public/icons/real-estate-icon";
+import { DynamicIcon } from "lucide-react/dynamic";
 
 const NearbysWithMap = ({
     latitude,
@@ -116,22 +117,61 @@ const NearbysWithMap = ({
                         const pointB: Coordinate = { lat: parseFloat(post.latitude), lng: parseFloat(post.longitude) }; 
 
                         const distance = calculateDistance(pointA, pointB);
+                        let labelicon:any;
+                        switch (post.categoryName.toLocaleLowerCase()) {
+                            case 'parking':
+                                labelicon = 'square-parking';
+                                break;
+                            case 'car rentals':
+                                labelicon = 'car';
+                                break;
+                            case 'banks':
+                            case 'banking  / foreign exchange':
+                                labelicon = 'landmark';
+                                break;
+                            case 'coffee shops':
+                                labelicon = 'coffee';
+                                break;
+                            case 'pharmacy':
+                                labelicon = 'briefcase-medical';
+                                break;
+                            case 'restaurant':
+                                labelicon = 'utensils-crossed';
+                                break;
+                            case 'post office':
+                                labelicon = 'mails';
+                                break;
+                            case 'police station':
+                                labelicon = 'siren';
+                                break;
+                        
+                            default:
+                                labelicon = 'landmark';
+                                break;
+                        }
 
                         return (
                             <li
                             key={index}
                             className=""
                             >
-                                <button 
+                                <div 
                                     onClick={()=>{
                                         handleLocationClick(pointB);
                                     }}  
-                                    className="w-full overflow-hidden bg-white px-4 py-4 shadow-sm sm:rounded-md sm:px-6 cursor-pointer hover:bg-gray-100 focus:bg-gray-100"
+                                    className="w-full overflow-hidden bg-white px-4 py-4 shadow-lg sm:rounded-md sm:px-6 cursor-pointer hover:bg-gray-100 focus:bg-gray-100"
                                     >
-                                    <p className="text-xs">{post.categoryName}</p>
-                                    <p className="text-sm truncate normal-case">{post.landmarkEnglishName}, {post.addressLine1English}</p>
-                                    <p>{distance}km</p>
-                                </button>
+                                    <div className="flex gap-3 items-center">
+                                        <div className="">
+                                            <DynamicIcon name={labelicon} size={20} />
+                                        </div>
+                                        <div className="w-32">
+                                            <p>{distance}<span>km</span></p>
+                                            <p className="text-sm truncate">{post.landmarkEnglishName}, {post.addressLine1English}</p>
+                                            <p className="text-sm truncate">{post.categoryName}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                         )
                     })}

@@ -5,7 +5,7 @@
     },
     "LocaleSwitcher": {
       "label": "Change language",
-      "locale": "{locale, select, ar {🇩🇪 Arabic} en {🇺🇸 English} cn {🇺🇸 Chinese} ru {🇺🇸 Russian} other {Unknown}}"
+      "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} cn {🇨🇳 Chinese} ru {🇷🇺 Russian} other {Unknown}}"
     },
     "ProjectPage": {
       "overview": "Overview",

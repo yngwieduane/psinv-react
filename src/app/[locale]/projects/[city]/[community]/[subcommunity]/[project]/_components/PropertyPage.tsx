@@ -20,6 +20,7 @@ import Faqs from './Faqs';
 import NearbysWithMap from './NearbyWithMap';
 import PaymentPlans from './PaymentPlans';
 import CardGroupImage from './CardGroupImage';
+import { CalendarCheck, CirclePlay, LandPlot, MapPinCheck, MapPinIcon, MapPinned, PlayIcon, Video } from 'lucide-react';
 
 
 const PropertyPage = (props:any) => {
@@ -172,9 +173,9 @@ const PropertyPage = (props:any) => {
                             type="button"
                             onClick={drawerHandler('map',map)}
                             name="map"
-                            className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                            className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
                         >
-                            <FontAwesomeIcon icon={faLocationDot}/>
+                            <MapPinIcon/>
                             Map
                         </button>
                         ) : ("")}
@@ -184,9 +185,9 @@ const PropertyPage = (props:any) => {
                                 type="button"
                                 data-fancybox="video"
                                 href={video}
-                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
                             >
-                                <FontAwesomeIcon icon={faCirclePlay}/>
+                                <CirclePlay/>
                                 Video
                             </a>
                         </FancyboxWrapper>
@@ -198,9 +199,9 @@ const PropertyPage = (props:any) => {
                                 //onClick={drawerHandler('gallery',images)}
                                 data-fancybox="masterplan"
                                 href={props.data["communityMapAndMasterPlan"][0]['imageURL']}
-                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
                             >
-                                <FontAwesomeIcon icon={faLayerGroup}/>
+                                <LandPlot/>
                                 Master Plan
                             </a>
                         </FancyboxWrapper>
@@ -212,9 +213,9 @@ const PropertyPage = (props:any) => {
                                 //onClick={drawerHandler('gallery',images)}
                                 data-fancybox="locationplan"
                                 href={props.data["locationMapImages"][0]['imageURL']}
-                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
                             >
-                                <FontAwesomeIcon icon={faMapLocationDot}/>
+                                <MapPinned/>
                                 Location Plan
                             </a>
                         </FancyboxWrapper>
@@ -323,9 +324,9 @@ const PropertyPage = (props:any) => {
                             type="button"
                             onClick={drawerHandler('requestview', props.data)}
                             name="details"
-                            className="w-full rounded-lg border border-[#111954] p-4 cursor-pointer"
+                            className="w-full rounded-lg border border-[#111954] p-4 cursor-pointer flex justify-center gap-2"
                         >
-                            <FontAwesomeIcon icon={faCalendarCheck}/> Request a Meeting
+                            <CalendarCheck/> Request a Meeting
                         </button>
                     </div>
                 </Sticky>

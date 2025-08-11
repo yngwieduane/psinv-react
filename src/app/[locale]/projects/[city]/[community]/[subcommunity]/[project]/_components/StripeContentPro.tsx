@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {useFormatter} from 'next-intl';
 
 import Sticky from 'react-sticky-el';
+import { Mail, Phone } from 'lucide-react';
 
 const StripContentPro = (props:any) => {
 
@@ -70,14 +71,14 @@ const StripContentPro = (props:any) => {
                             </div>
                         </div>
                         <div className="grid grid-cols-3 text-center md:flex items-center justify-end gap-3">
-                            <Link href="#" className="bg-gray-200 hover:bg-gray-300  px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /></Link>
+                            <Link href="#" className="bg-gray-200 hover:bg-gray-300  px-5 py-3 rounded-lg text-lg flex justify-center gap-2 items-center"><Phone/><span className='text-sm'>Call</span></Link>
                             <button
                                 onClick={modalHandler}
                                 type="button"
-                                className="bg-gray-200 hover:bg-gray-300 px-5 py-3 rounded-lg text-lg"
-                            ><FontAwesomeIcon icon={faEnvelope} />
+                                className="bg-gray-200 hover:bg-gray-300 px-5 py-3 rounded-lg text-lg flex justify-center gap-2 cursor-pointer items-center"
+                            ><Mail /><span className='text-sm'>Email</span>
                             </button>
-                            <Link href="#" className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg"><FontAwesomeIcon icon={faWhatsapp} /></Link>
+                            <Link href="#" className="bg-green-600 hover:bg-green-700 px-5 py-2.5 rounded-lg text-white text-lg flex justify-center gap-2 items-center"><FontAwesomeIcon size='xl' icon={faWhatsapp} /><span className='text-sm'>WhatsApp</span></Link>
                         </div>
                     </div>
                 </div>
