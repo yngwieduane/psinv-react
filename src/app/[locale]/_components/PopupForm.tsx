@@ -229,7 +229,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ hideFeedbackButton = false }) => 
         </div>
         <button
           type="submit"
-          className="w-full border border-[#111954] p-3 mb-6 rounded-md text-[#fff] bg-[#111954] hover:bg-[#0c1445] hover:text-[#fff] font-semibold"
+          className="w-full border border-[#111954] p-3 mb-6 rounded-md text-white bg-[#111954] hover:bg-[#0c1445] hover:text-white font-semibold"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Submitting..." : "Submit"}

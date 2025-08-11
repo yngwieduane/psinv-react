@@ -144,6 +144,11 @@ const ContactForm = () => {
                     break;
                 }
 
+            switch (campaign) {
+                case 'test-campaign':
+                    propertyCampaignId = "1752";
+            }
+
             
             
             const remarks = `

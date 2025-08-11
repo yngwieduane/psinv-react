@@ -136,13 +136,13 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
         className="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
         <div>
-          <label className="text-[18px] text-[#252525] font-[400] mb-[10px] block font-['Open_Sans']">
+          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
             First Name <span className="text-red-500">*</span>
           </label>
           <input
             {...register("firstName")}
             placeholder="First name"
-            className="w-full text-[18px] font-[400] font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
+            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
           />
           {errors.firstName && (
             <p className="text-red-500 text-sm mt-1">
@@ -151,13 +151,13 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
           )}
         </div>
         <div>
-          <label className="text-[18px] text-[#252525] font-[400] mb-[10px] block font-['Open_Sans']">
+          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
             Last Name <span className="text-red-500">*</span>
           </label>
           <input
             {...register("lastName")}
             placeholder="Family name"
-            className="w-full text-[18px] font-[400] font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
+            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
           />
           {errors.lastName && (
             <p className="text-red-500 text-sm mt-1">
@@ -166,7 +166,7 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
           )}
         </div>
         <div>
-          <label className="text-[18px] text-[#252525] font-[400] mb-[10px] block font-['Open_Sans']">
+          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
             Phone number <span className="text-red-500">*</span>
           </label>
           <Controller
@@ -177,7 +177,7 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
                 {...field}
                 international
                 defaultCountry="AE"
-                className="w-full text-[18px] font-[400] font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
+                className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
               />
             )}
           />
@@ -186,12 +186,12 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
           )}
         </div>
         <div>
-          <label className="text-[18px] text-[#252525] font-[400] mb-[10px] block font-['Open_Sans']">
+          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
             Nationality <span className="text-red-500">*</span>
           </label>
           <select
             {...register("nationality")}
-            className="w-full text-[18px] font-[400] font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
+            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
             defaultValue=""
             required
           >
@@ -211,25 +211,25 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
           )}
         </div>
         <div>
-          <label className="text-[18px] text-[#252525] font-[400] mb-[10px] block font-['Open_Sans']">
+          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
             Email <span className="text-red-500">*</span>
           </label>
           <input
             {...register("email")}
             placeholder="Email address"
-            className="w-full text-[18px] font-[400] font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
+            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
           />
           {errors.email && (
             <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
           )}
         </div>
         <div>
-          <label className="text-[18px] text-[#252525] font-[400] mb-[10px] block font-['Open_Sans']">
+          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
             How did you hear about us? <span className="text-red-500">*</span>
           </label>
           <select
             {...register("hearAbout")}
-            className="w-full text-[18px] font-[400] font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded-md"
+            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded-md"
             defaultValue=""
           >
             <option value="" disabled>

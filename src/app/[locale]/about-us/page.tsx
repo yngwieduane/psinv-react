@@ -135,8 +135,8 @@ const AboutPage = () => {
                 {/* Left Content */}
                 <div className="md:w-[60%] w-full relative z-10 md:py-20 py-10">
                     <h2 className={`text-[#CE641D] text-5xl md:text-6xl mb-2 aboutTitle ${BrittanySignature.className}`}> About </h2>
-                    <h2 className="text-[var(--color-gray-900)] font-bold md:text-5xl text-4xl mb-6">Property Shop Investment</h2>
-                    <div className="text-[var(--color-gray-500)] sm:text-lg text-xs mt-6">
+                    <h2 className="text-gray-900 font-bold md:text-5xl text-4xl mb-6">Property Shop Investment</h2>
+                    <div className="text-gray-500 sm:text-lg text-xs mt-6">
                         <p className="mb-4">
                         Established in 2007{" "}
                         <span className="font-bold"> Property Shop Investment (PSI)</span> is
@@ -174,7 +174,7 @@ const AboutPage = () => {
                     </div>
                     <div className="w-full flex flex-row sm:gap-5 gap-3">                                    
                         <div className="sm:h-[200] w-1/2 h-[90] bg-cover bg-center rounded-xl" style={{backgroundImage: "url('/assets/images/about-us/main-office.webp')"}}></div>
-                        <div className="sm:h-[200] w-1/2 h-[90] flex-grow bg-cover bg-center rounded-xl img2" style={{backgroundImage: "url('/assets/images/about-us/corporate-office.webp')"}}></div>
+                        <div className="sm:h-[200] w-1/2 h-[90] grow bg-cover bg-center rounded-xl img2" style={{backgroundImage: "url('/assets/images/about-us/corporate-office.webp')"}}></div>
                         
                     </div>
                 </div>
@@ -184,10 +184,10 @@ const AboutPage = () => {
         <AboutTextSlider slides={testimonialData} />
 
         <section className={`w-full my-4 ${opensans.className}`}>
-            <div className="max-w-screen-xl mx-auto px-4">
+            <div className="max-w-(--breakpoint-xl) mx-auto px-4">
                 <h2 className={`text-5xl color-[var(--color-gray-900)] mb-6 ${opensans.className} font-bold`}>Our Core Values</h2>
                 <div className="w-full md:flex items-top gap-[50]">
-                    <div className="md:w-2/3 text-[var(--color-gray-600)]">
+                    <div className="md:w-2/3 text-gray-600">
                         <p className="sm:text-2xl text-lg leading-8 mt-0">Our strong reputation in the industry is founded on our continuous commitment to quality and excellence in all the services we provide. With a blend of vision, expertise, specialized teams, enthusiasm, and transparency, Property Shop Investment has established itself as a leading influencer in Abu Dhabi&apos;s real estate market.</p>
                         <p className="sm:text-lg text-xs text-xs leading-7">As an award-winning, full-service brokerage, Property Shop Investment is recognized for consistently exceeding expectations. We strive for the highest performance and have proudly held the title of &apos;Number One Real Estate Broker in Abu Dhabi&apos; for ten consecutive years. Our focus on delivering straightforward and dependable services to both corporate and private clients guarantee complete customer satisfaction.</p>
                         <p className="sm:text-lg text-xs text-xs leading-7">All our services are customized to meet individual client needs, and our dedication transforms promises into reality.</p>
@@ -195,16 +195,16 @@ const AboutPage = () => {
                     <div className="md:w-1/3 flex flex-col gap-[15px] md:ps-5">
                         <div className="w-full">
                             <h5 className="color-[var(--color-gray-900)] mb-4 md:text-3xl sm:text-2xl text-xl font-bold">We Gather</h5>
-                            <p className="sm:text-[16px] text-xs text-[var(--color-gray-600)]">Not only a slogan. We gather embodies everything we stand for in our culture, business philosophy and operations.</p>
+                            <p className="sm:text-[16px] text-xs text-gray-600">Not only a slogan. We gather embodies everything we stand for in our culture, business philosophy and operations.</p>
                         </div>
                         <div className="w-full">
                             <h5 className="color-[var(--color-gray-900)] mb-4 md:text-3xl sm:text-2xl text-xl font-bold">Novelty</h5>
-                            <p className="sm:text-[16px] text-xs text-[var(--color-gray-600)]">Devoted to originality in our services, efforts.</p>
+                            <p className="sm:text-[16px] text-xs text-gray-600">Devoted to originality in our services, efforts.</p>
                         </div>
                         
                         <div className="w-full">
                             <h5 className="color-[var(--color-gray-900)] mb-4 md:text-3xl sm:text-2xl text-xl font-bold">Accountability</h5>
-                            <p className="sm:text-[16px] text-xs text-[var(--color-gray-600)]">Ensuring fairness, integrity, honesty, transparency, effectiveness and commitment to responsibility.</p>
+                            <p className="sm:text-[16px] text-xs text-gray-600">Ensuring fairness, integrity, honesty, transparency, effectiveness and commitment to responsibility.</p>
                         </div>
                     </div>
                 </div>  
@@ -212,7 +212,7 @@ const AboutPage = () => {
         </section>
 
         <section className="w-full md:mb-20 mb-10 md:px-auto px-4"> 
-            <div className="mx-auto max-w-screen-xl bg-cover bg-center sm:h-[500px] h-[200px] rounded-3xl" style={{backgroundImage: "url('/assets/images/about-us/awards-img.jpg')"}}>
+            <div className="mx-auto max-w-(--breakpoint-xl) bg-cover bg-center sm:h-[500px] h-[200px] rounded-3xl" style={{backgroundImage: "url('/assets/images/about-us/awards-img.jpg')"}}>
             </div>
         </section>
 
@@ -297,8 +297,8 @@ const AboutPage = () => {
     </section>      
 
         
-        <section className="w-full bg-secondary-color py-10 text-[var(--color-gray-500)]">
-            <div  className="max-w-screen-xl mx-auto bg-center bg-cover py-10 px-5" style={{ backgroundImage: "url('/assets/images/about-us/pattern-1.png')",}}>
+        <section className="w-full bg-secondary-color py-10 text-gray-500">
+            <div  className="max-w-(--breakpoint-xl) mx-auto bg-center bg-cover py-10 px-5" style={{ backgroundImage: "url('/assets/images/about-us/pattern-1.png')",}}>
                 {/* Heading */}
                 <div className="text-center mt-[50px] mb-[70px]">
                     <h3 className={`text-darkblue  font-bold text-xl md:text-4xl ${Audrey.className}`}>
@@ -357,8 +357,8 @@ const AboutPage = () => {
             </div>
         </section>
 
-        <section className="w-full py-10 text-[var(--color-gray-500)] text-center">
-            <div className="max-w-screen-xl mx-auto">
+        <section className="w-full py-10 text-gray-500 text-center">
+            <div className="max-w-(--breakpoint-xl) mx-auto">
                 <h3 className={`text-darkblue font-bold text-xl md:text-4xl ${Audrey.className}`}>
                 AWARDS-DRIVEN
                     <span className={`font-brittany text-orange font-light ${BrittanySignature.className} text-[#CE641D]`}>
@@ -368,14 +368,14 @@ const AboutPage = () => {
                     Explore our journey of accolades that inspire us to reach new pinnacles of success.</p>
             </div>            
             <section className="w-full">
-                <div className="max-w-screen-xl relative mx-auto">
+                <div className="max-w-(--breakpoint-xl) relative mx-auto">
                     <AwardSlider slides={awards} />
                 </div>
             </section>            
         </section>
 
         <section className="w-full my-4">
-            <div  className="max-w-screen-xl mx-auto bg-center bg-cover py-10 px-5">
+            <div  className="max-w-(--breakpoint-xl) mx-auto bg-center bg-cover py-10 px-5">
                 <div className="text-center mb-[70] ">
                     <h3 className={`text-darkblue  font-bold text-xl md:text-4xl ${Audrey.className}`}>
                     DISCOVER PSI
@@ -387,7 +387,7 @@ const AboutPage = () => {
         </section>
 
         <section className="w-full my-4">
-            <div  className="max-w-screen-xl mx-auto bg-center bg-cover py-10 px-5">
+            <div  className="max-w-(--breakpoint-xl) mx-auto bg-center bg-cover py-10 px-5">
                 <div className="text-center mb-[70] ">
                     <h3 className={`text-darkblue  font-bold text-xl md:text-4xl ${Audrey.className} mb-4`}>
                     PARTNERS
@@ -399,7 +399,7 @@ const AboutPage = () => {
         </section>
 
         <section className="w-full my-4">
-            <div className="max-w-screen-xl mx-auto bg-center bg-cover py-10 px-5">
+            <div className="max-w-(--breakpoint-xl) mx-auto bg-center bg-cover py-10 px-5">
                 <div className="text-center mb-[70] ">
                     <h3 className={`text-darkblue  font-bold text-xl md:text-4xl ${Audrey.className}`}>
                     STRATEGIC <span className={`${BrittanySignature.className} text-[#CE641D]`}>Alliances</span>
@@ -418,7 +418,7 @@ const AboutPage = () => {
                     return (
                         <div key={idx} className={spanClass}>
                             <AboutCard background={card.background} >
-                                <h2 className="text-2xl font-[200] cardText rounded-xl">{card.title}</h2>                                
+                                <h2 className="text-2xl font-extralight cardText rounded-xl">{card.title}</h2>                                
                             </AboutCard>
                         </div>
                     );

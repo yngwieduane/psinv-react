@@ -135,4 +135,15 @@ export interface PaymentPlan {
 export interface PaymentPlansResponse {
   result: PaymentPlan[];
   totalCount: number;
+<<<<<<< HEAD
+=======
+}
+
+
+export interface Articles  {
+  name: string,
+  image: string,
+  category: string
+  content: string
+>>>>>>> origin/main
 }

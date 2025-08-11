@@ -67,10 +67,10 @@ const ListPropertyForm: React.FC = () => {
       
         {/* Logos */}
 <div className="overflow-x-auto sm:overflow-hidden flex space-x-4 mt-6 px-4 scrollbar-hide">
-  <img src="/images/psi-logo.png" alt="PSI" className="h-10 md:h-12 flex-shrink-0" />
-  <img src="/images/bayut-logo.png" alt="Bayut" className="h-10 md:h-12 flex-shrink-0" />
-  <img src="/images/dubizzle.png" alt="Dubizzle" className="h-10 md:h-12 flex-shrink-0" />
-  <img src="/images/property-finder.png" alt="Property Finder" className="h-10 md:h-12 flex-shrink-0" />
+  <img src="/images/psi-logo.png" alt="PSI" className="h-10 md:h-12 shrink-0" />
+  <img src="/images/bayut-logo.png" alt="Bayut" className="h-10 md:h-12 shrink-0" />
+  <img src="/images/dubizzle.png" alt="Dubizzle" className="h-10 md:h-12 shrink-0" />
+  <img src="/images/property-finder.png" alt="Property Finder" className="h-10 md:h-12 shrink-0" />
 </div>
 
       </div>

@@ -2,9 +2,7 @@
 import { useState } from 'react';
 import {useFormatter, useTranslations} from 'next-intl';
 import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
-import Gallery from "./Gallery";
 import UnitModels from "./UnitModels";
-import MapComponent from "@/app/[locale]/_components/MapComponent";
 import SwiperMaterialProjectPage from "@/app/[locale]/_components/SwiperMaterialProjectPage";
 import Image from "next/image";
 import CardGroup from "./CardGroup";
@@ -13,7 +11,6 @@ import AvailableUnits from './AvailableUnits';
 import StripeContentPro from './StripeContentPro';
 import { ReadMore } from '@/app/[locale]/_components/ReadMore';
 import FancyboxWrapper from '@/app/[locale]/_components/tools/FancyboxWrapper';
-import Nearbys from './Nearbys';
 import Sticky from 'react-sticky-el';
 import InquiryForm from '@/app/[locale]/_components/InquiryForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,6 +19,11 @@ import DrawerDetails from '@/app/[locale]/unit/[slug]/components/DrawerDetails';
 import Faqs from './Faqs';
 import NearbysWithMap from './NearbyWithMap';
 import PaymentPlans from './PaymentPlans';
+<<<<<<< HEAD
+=======
+import CardGroupImage from './CardGroupImage';
+import { CalendarCheck, CirclePlay, LandPlot, MapPinCheck, MapPinIcon, MapPinned, PlayIcon, Video } from 'lucide-react';
+>>>>>>> origin/main
 
 
 const PropertyPage = (props:any) => {
@@ -154,10 +156,10 @@ const PropertyPage = (props:any) => {
         <div className="hidden grid grid-cols-2 gap-4 px-4 items-center">
             <div className="text-3xl">{props.data["propertyName"]}</div>
             <div className="grid grid-cols-4 gap-4 items-center text-center ">
-                <a className="py-2 md:py-4 border-l-1 border-gray-400">{t('overview')}</a>
-                <a className="py-2 md:py-4 border-l-1 border-gray-400">{t('gallery')}</a>
-                <a className="py-2 md:py-4 border-l-1 border-gray-400">{t('floor_plan')}</a>
-                <a className="py-2 md:py-4 border-l-1 border-gray-400">{t('location')}</a>
+                <a className="py-2 md:py-4 border-l border-gray-400">{t('overview')}</a>
+                <a className="py-2 md:py-4 border-l border-gray-400">{t('gallery')}</a>
+                <a className="py-2 md:py-4 border-l border-gray-400">{t('floor_plan')}</a>
+                <a className="py-2 md:py-4 border-l border-gray-400">{t('location')}</a>
             </div>
         </div>
         {/* STRIPE CONTENT */}
@@ -174,9 +176,9 @@ const PropertyPage = (props:any) => {
                             type="button"
                             onClick={drawerHandler('map',map)}
                             name="map"
-                            className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                            className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
                         >
-                            <FontAwesomeIcon icon={faLocationDot}/>
+                            <MapPinIcon/>
                             Map
                         </button>
                         ) : ("")}
@@ -186,9 +188,9 @@ const PropertyPage = (props:any) => {
                                 type="button"
                                 data-fancybox="video"
                                 href={video}
-                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
                             >
-                                <FontAwesomeIcon icon={faCirclePlay}/>
+                                <CirclePlay/>
                                 Video
                             </a>
                         </FancyboxWrapper>
@@ -200,9 +202,9 @@ const PropertyPage = (props:any) => {
                                 //onClick={drawerHandler('gallery',images)}
                                 data-fancybox="masterplan"
                                 href={props.data["communityMapAndMasterPlan"][0]['imageURL']}
-                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
                             >
-                                <FontAwesomeIcon icon={faLayerGroup}/>
+                                <LandPlot/>
                                 Master Plan
                             </a>
                         </FancyboxWrapper>
@@ -214,9 +216,9 @@ const PropertyPage = (props:any) => {
                                 //onClick={drawerHandler('gallery',images)}
                                 data-fancybox="locationplan"
                                 href={props.data["locationMapImages"][0]['imageURL']}
-                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
                             >
-                                <FontAwesomeIcon icon={faMapLocationDot}/>
+                                <MapPinned/>
                                 Location Plan
                             </a>
                         </FancyboxWrapper>
@@ -287,7 +289,7 @@ const PropertyPage = (props:any) => {
                                 {t("facilities_in")} {props.data["propertyName"]}
                             </h2>
                             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                                <CardGroup data={props.data['facilities']}/>
+                                <CardGroupImage data={props.data['facilities']}/>
                             </div>
                         </div>
                         : ""
@@ -299,7 +301,7 @@ const PropertyPage = (props:any) => {
                                 {t("aminities_in")} {props.data["propertyName"]}
                             </h2>
                             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                                <CardGroup data={props.data['aminities']}/>
+                                <CardGroupImage data={props.data['aminities']}/>
                             </div>
                         </div>
                         : ""
@@ -325,9 +327,9 @@ const PropertyPage = (props:any) => {
                             type="button"
                             onClick={drawerHandler('requestview', props.data)}
                             name="details"
-                            className="w-full rounded-lg border border-[#111954] p-4 cursor-pointer"
+                            className="w-full rounded-lg border border-[#111954] p-4 cursor-pointer flex justify-center gap-2"
                         >
-                            <FontAwesomeIcon icon={faCalendarCheck}/> Request a Meeting
+                            <CalendarCheck/> Request a Meeting
                         </button>
                     </div>
                 </Sticky>

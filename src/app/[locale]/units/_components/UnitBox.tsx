@@ -3,11 +3,11 @@ import { Link } from "@/i18n/navigation";
 import SwiperNormal from "../../_components/SwiperNormal";
 import PriceConvert from "../../_components/tools/PriceConvert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAreaChart, faBathtub, faBed, faEnvelope, faExpand, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import NumberConvert from "../../_components/tools/NumberConvert";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import Modals from "../../_components/tools/Modals";
+import { Bath, BedDouble, Mail, MapPin, Phone, Scaling } from "lucide-react";
 
 export default function UnitBox(props:any){
     let images, price;
@@ -55,9 +55,9 @@ export default function UnitBox(props:any){
                 <div className="flex items-center gap-x-4 text-xs">
                     <Link
                         href="#"
-                        className="absolute top-5 z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+                        className="absolute top-5 z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100 flex items-center"
                     >
-                        <FontAwesomeIcon icon={faLocationDot} /> {props.data.community}
+                        <MapPin size={20}/> {props.data.community}
                     </Link>
                 </div>
                 <div className="group relative max-w-xl">
@@ -72,23 +72,23 @@ export default function UnitBox(props:any){
                 <div className="mt-2">
                     <div className="relative flex items-center gap-x-4">
                         <div className="text-lg flex gap-x-2">
-                            <div className="bg-gray-100 p-1 rounded-lg text-sm">{props.data.bedrooms} <FontAwesomeIcon icon={faBed}/></div>
+                            <div className="bg-gray-100 p-1 rounded-lg text-sm flex text-xl items-center gap-2">{props.data.bedrooms} <BedDouble size={20}/></div>
                             {props.data.no_of_bathrooms !== null ? (
-                                <div className="bg-gray-100 p-1 rounded-lg text-sm">{props.data.no_of_bathrooms} <FontAwesomeIcon icon={faBathtub}/></div>
+                                <div className="bg-gray-100 p-1 rounded-lg text-sm flex text-xl items-center gap-2">{props.data.no_of_bathrooms} <Bath size={20}/></div>
                             ) : ("")}
-                            <div className="bg-gray-100 p-1 rounded-lg text-sm"><FontAwesomeIcon icon={faExpand}/> <NumberConvert number={props.data.built_upArea} minDecimal='0' label='Sqft'/></div>
+                            <div className="bg-gray-100 p-1 rounded-lg text-sm flex text-xl items-center gap-2"><Scaling size={20}/> <NumberConvert number={props.data.built_upArea} minDecimal='0' label='Sqft'/></div>
                         </div>
                     </div>
                 </div>
                 <div className="grid grid-cols-3 text-center items-center justify-end gap-3 mt-3 border-t border-gray-900/5 pt-6">
-                    <Link href="#" className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /></Link>
+                    <Link href="#" className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg items-center flex justify-center"><Phone size={20} /></Link>
                     <button
                         onClick={modalHandler}
                         type="button"
-                        className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg"
-                    ><FontAwesomeIcon icon={faEnvelope} />
+                        className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg flex justify-center"
+                    ><Mail size={20} />
                     </button>
-                    <Link href="#" className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg"><FontAwesomeIcon icon={faWhatsapp} /></Link>
+                    <Link href="#" className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg flex justify-center"><FontAwesomeIcon icon={faWhatsapp} /></Link>
                 </div>
             </div>
         </article>

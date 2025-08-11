@@ -27,7 +27,7 @@ const MainFooter = () => {
         {/* Grid Layout for Footer Sections */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 pb-6 sm:text-[14px]">
           {/* Column 1 - Company Info */}
-          <div className="order-1 md:order-none md:text-left text-center">
+          <div className="order-1 md:order-0 md:text-left text-center">
             <h4 className="font-bold text-base mb-4">Property Shop Investment L.L.C</h4>
             <p className="text-sm leading-6">
               Office No. 4410 & 4411 <br />
@@ -60,7 +60,7 @@ const MainFooter = () => {
             </div>
           </div>
 
-          <div className="sm:col-span-2 flex sm:flex-row md:grid md:grid-cols-2 gap-8 order-first md:order-none">
+          <div className="sm:col-span-2 flex sm:flex-row md:grid md:grid-cols-2 gap-8 order-first md:order-0">
   {/* Column 2 - Explore Links */}
   <div className="w-full md:w-auto">
     <h4 className="font-bold text-lg sm:text-base mb-4">Explore</h4>
@@ -75,7 +75,7 @@ const MainFooter = () => {
   </div>
 
   {/* Vertical Divider (Visible only on mobile, hidden on desktop) */}
-  <div className="w-[1px] bg-white sm:block md:hidden"></div>
+  <div className="w-px bg-white sm:block md:hidden"></div>
 
   {/* Column 3 - New Projects */}
   <div className="w-full md:w-auto">

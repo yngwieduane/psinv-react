@@ -40,9 +40,9 @@ return (
                                     className="lazy bg-size-cover h-[220px] w-[220px] rounded-full bg-cover mb-4"
                                     style={{ backgroundImage: `url(${slide.image})` }}
                                 ></div>
-                                <p className={`text-[#2C2D65] md:text-xl sm:text-lg text-sm mt-3 !mb-0 font-normal ${montserrat.className}`}>{slide.text}</p>
-                                <p className={`text-uppercase font-700 ${Audrey.className} text-[#2C2D65] text-2xl uppercase mt-2 !mb-0`}>{slide.name}</p>
-                                <p className={`${BrittanySignature.className} text-[#CE641D] text-xl !mb-0`}>{slide.designation}</p>
+                                <p className={`text-[#2C2D65] md:text-xl sm:text-lg text-sm mt-3 mb-0! font-normal ${montserrat.className}`}>{slide.text}</p>
+                                <p className={`text-uppercase font-700 ${Audrey.className} text-[#2C2D65] text-2xl uppercase mt-2 mb-0!`}>{slide.name}</p>
+                                <p className={`${BrittanySignature.className} text-[#CE641D] text-xl mb-0!`}>{slide.designation}</p>
                             </div>
                         </div>
                     </SwiperSlide>

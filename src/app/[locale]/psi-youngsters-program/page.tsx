@@ -32,7 +32,7 @@ type CardProps = {
 
 const Card = ({ title, subtitle, iconName }: CardProps) => (
   <div className="bg-white rounded-[5px] shadow-md p-8 text-[#2A3066] flex flex-col justify-between relative h-full text-center">
-    <div className="flex flex-col flex-grow justify-between">
+    <div className="flex flex-col grow justify-between">
       <h3 className="font-bold text-xl mb-2">{title}</h3>
       <p className="text-[13px] whitespace-nowrap truncate mb-5">{subtitle}</p>
     </div>
@@ -129,7 +129,7 @@ export default function YoungstersProgramPage() {
             </div>
           </div>
         </div>
-        <div className="absolute -bottom-[20px] left-1/2 -translate-x-1/2 z-[100] pointer-events-none">
+        <div className="absolute -bottom-[20px] left-1/2 -translate-x-1/2 z-100 pointer-events-none">
           <a href="#introduction" className="block">
             <svg width="100" height="100" viewBox="0 0 24 24" className="fill-orange-600 block mb-[-67px]">
               <path d="M12 15.5l-6.5-6.5-1.5 1.5 8 8 8-8-1.5-1.5z" />
@@ -151,9 +151,9 @@ export default function YoungstersProgramPage() {
             className="w-full h-auto object-contain"
           />
         </div>
-        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
+        <div className="relative z-10 max-w-(--breakpoint-xl) mx-auto px-4">
           <div className="text-center mt-10">
-            <h2 className="font-[800] text-[#333A7B] leading-[130%] md:text-[42px] text-[20px] font-[Lato]">
+            <h2 className="font-extrabold text-[#333A7B] leading-[130%] md:text-[42px] text-[20px] font-[Lato]">
               <span className={`${BrittanySignature.className} text-[#333A7B] md:text-[42px] text-[20px] leading-none`}>
                 Join
               </span>{" "}
@@ -194,7 +194,7 @@ export default function YoungstersProgramPage() {
         </div>
       </section>
       <section className="bg-white py-16 px-4">
-        <div className="max-w-screen-xl mx-auto text-center">
+        <div className="max-w-(--breakpoint-xl) mx-auto text-center">
           <h2 className="text-[#333A7B] md:text-[42px] text-[20px] font-extrabold font-[Lato] leading-snug">
             Program <span className="relative inline-block">
               Objectives
@@ -217,7 +217,7 @@ export default function YoungstersProgramPage() {
         </div>
       </section>
       <section className="py-16 bg-white">
-        <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+        <div className="max-w-(--breakpoint-xl) mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
           <Card
             title="Empowering Tomorrow's Leaders"
             subtitle="Transformative Internship Experience"
@@ -367,7 +367,7 @@ export default function YoungstersProgramPage() {
         </div>
       </section>
       <section className="whySec pt-10 pb-20 text-white bg-[#2F3279] relative overflow-hidden">
-        <div className="w-[100px] md:w-[150px] lg:w-[594px] h-[6px] bg-[#FD661F] absolute top-[1px] left-1/2 transform -translate-x-1/2" />
+        <div className="w-[100px] md:w-[150px] lg:w-[594px] h-[6px] bg-[#FD661F] absolute top-px left-1/2 transform -translate-x-1/2" />
         <div className="text-center px-4 max-w-4xl mx-auto">
           <h2 className="text-xl md:text-4xl font-bold">
             <span className={`${BrittanySignature.className} text-white text-[48px] leading-none`}>Why </span>
@@ -406,7 +406,7 @@ export default function YoungstersProgramPage() {
             src="/images/youngsters/info-desk.png"
             alt="info"
             title="info"
-            className="hidden md:block !w-full"
+            className="hidden md:block w-full!"
             loading="lazy"
           />
           {/* Mobile Image */}
@@ -414,7 +414,7 @@ export default function YoungstersProgramPage() {
             src="/images/youngsters/info-mob-new.png"
             alt="info"
             title="info"
-            className="block md:hidden !w-full"
+            className="block md:hidden w-full!"
             loading="lazy"
           />
         </div>
@@ -503,7 +503,7 @@ export default function YoungstersProgramPage() {
                           <h4 className="text-orange-400 font-semibold text-[14px] tracking-wide uppercase mb-2 leading-tight">
                             {item.title}
                           </h4>
-                          <p className="text-[14.5px] font-light leading-[1.5]">
+                          <p className="text-[14.5px] font-light leading-normal">
                             {item.text}
                           </p>
                         </div>
@@ -523,7 +523,7 @@ export default function YoungstersProgramPage() {
                   </div>
 
                   <div className="hidden md:flex justify-center items-center col-span-1">
-                    <p className="text-[22px] font-[300] leading-[1.2] tracking-[-0.24px] text-center [word-spacing:6px] max-w-[620px] mx-auto">
+                    <p className="text-[22px] font-light leading-[1.2] tracking-[-0.24px] text-center [word-spacing:6px] max-w-[620px] mx-auto">
                       {item.text}
                     </p>
                   </div>

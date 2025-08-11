@@ -25,7 +25,11 @@ const PropertyCard = (props:any) => {
 
     const propHO = HOdate ? (<p className="text-sm">Handover<br />{HOdate}</p>) : ("");
     const propSize = (props.data["builtupArea_SQFT"] && props.data["builtupArea_SQFT"] !== '0') ? (<p className="text-sm">Size (BUA)<br />{props.data["builtupArea_SQFT"]}</p>) : ("");
+<<<<<<< HEAD
     const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0','?width=300&height=200') : ("");
+=======
+    const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0','?width=300&height=300') : ("");
+>>>>>>> origin/main
     const subCommunity = props.data["subCommunity"] ? props.data["subCommunity"] : "n-a";
 
     const url =  '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['community']) + "/" + slugify(subCommunity) + "/" + slugify(props.data['propertyName']);
@@ -48,7 +52,7 @@ return (
             className="flex items-center justify-center absolute w-full h-full opacity-0 ease-in duration-300"
             aria-hidden="true"
           >
-            <div className="w-full h-full p-4 items-center grid grid-cols-1 my-auto rounded-md text-center text-white font-medium text-gray-900 bg-black/[.5]">
+            <div className="w-full h-full p-4 items-center grid grid-cols-1 my-auto rounded-md text-center text-white font-medium text-gray-900 bg-black/50">
               <div>
                 <h2 className="text-3xl">{props.data["propertyName"]}</h2>
                 <p>{props.data["community"]}</p>

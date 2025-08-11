@@ -5,7 +5,11 @@ import MainFooter from './MainFooter';
 
 export default function ConditionalFooter() {
   const pathname = usePathname();
+<<<<<<< HEAD
   const isNoFooterPage = ['/list-your-property', '/psi-youngsters-program', '/international'].some((path) =>
+=======
+  const isNoFooterPage = ['/list-your-property'].some((path) =>
+>>>>>>> origin/main
     pathname.includes(path)
     );
 

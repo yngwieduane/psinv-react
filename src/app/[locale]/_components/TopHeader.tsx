@@ -23,7 +23,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ data }) => {
                     <div className="row d-flex flex-column justify-content-center align-items-center h-full">
                         <div className="col-12 my-auto">
                             <h1 className={`headerTitle text-2xl sm:text-4xl md:text-5xl lg:text-7xl text-center mb-4 ${Audrey.className}`}>{data ?.title} </h1>
-                            <nav className="bg-[transparent] text-xl">
+                            <nav className="bg-transparent text-xl">
                                 <ul className="flex justify-content-center space-x-2 text-white-500 text-center">
                                     <li>
                                         <Link href="/" className="hover:text-[#343a40]-600">

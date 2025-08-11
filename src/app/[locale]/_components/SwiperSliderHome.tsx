@@ -57,7 +57,7 @@ const SwiperSlider = (props: any) => {
         slidesPerView={props.slidePerView}
         onSlideChange={(swiper: any) => setCurrentSlide(swiper.realIndex + 1)}
         onSwiper={(swiper: any) => (swiperElRef2.current = swiper)}
-        className="h-[45rem]"
+        className="h-180"
         >
         {props.slides.map((slide:any, index:any) => (
           <SwiperSlide
@@ -65,7 +65,7 @@ const SwiperSlider = (props: any) => {
             className="bg-no-repeat bg-cover bg-center"
             style={{ backgroundImage: `url(${slide.image})` }}
           >
-            <div className="bg-gradient-to-r from-blue-950 from-10% to-transparent to-70% h-full">
+            <div className="bg-linear-to-r from-blue-950 from-10% to-transparent to-70% h-full">
               <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 h-full items-center text-center md:text-start">
                 <div className="px-4 md:px-auto">
                  <img

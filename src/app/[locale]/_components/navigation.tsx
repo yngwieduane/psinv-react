@@ -2,6 +2,7 @@
 
 import React, { FC, Fragment, useState } from 'react';
 import { Link } from "@/i18n/navigation";
+import { DynamicIcon } from 'lucide-react/dynamic';
 import { Dialog, Disclosure,DialogPanel, 
   DisclosureButton,
   DisclosurePanel,
@@ -93,7 +94,7 @@ type CallToAction2 = {
 type SocialMedia = {
   name: string;
   href: string;
-  icon: IconDefinition;
+  icon: any;
 };
 
 const people: Person[] = [
@@ -255,38 +256,33 @@ const socialMedia: SocialMedia[] = [
   {
     name: 'Facebook',
     href: 'https://www.facebook.com/PropertyShopInvestment',
-    icon: faFacebook,
+    icon: 'facebook',
   },
   {
     name: 'Twitter',
     href: 'https://twitter.com/psinv',
-    icon: faXTwitter,
+    icon: 'twitter',
   },
   {
     name: 'Instagram',
     href: 'https://www.instagram.com/property_shop_investment/',
-    icon: faInstagram,
+    icon: 'instagram',
   },
   {
     name: 'Snapchat',
     href: 'https://www.snapchat.com/add/property-shop',
-    icon: faSnapchat,
+    icon: 'camera',
   },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/company/property-shop-investment-llc',
-    icon: faLinkedin,
+    icon: 'linkedin',
   },
   {
     name: 'Youtube',
     href: 'https://www.youtube.com/user/propertyshopabudhabi',
-    icon: faYoutube,
-  },
-  {
-    name: 'VK',
-    href: 'https://vk.com/psinvuae',
-    icon: faVk,
-  },
+    icon: 'youtube',
+  }
 ];
 
 function classNames(...classes: (string | false | null | undefined)[]) {
@@ -310,7 +306,7 @@ const Navigation: FC = () => {
   return (
     <header className="bg-white">
       {/* Top Bar */}
-      <div className="grid grid-cols-3 gap-4 bg-indigo-950 hidden md:grid">
+      <div className="grid grid-cols-3 gap-4 bg-indigo-950 hidden md:grid px-5">
         <div className="grid grid-cols-3">
           {callsToAction2.map((item) => (
             <Link href={item.href} key={item.name} className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
@@ -330,21 +326,18 @@ const Navigation: FC = () => {
           ))}
         </div>
         <div></div>
-        <div className="grid grid-cols-10">
+        <div className="flex gap-5 justify-end">
           {socialMedia.map((item) => (
             <Link target="_blank" href={item.href} key={item.name} className="flex items-center justify-center text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
-              <FontAwesomeIcon
-                className="h-5 w-5 flex-none text-gray-400"
-                icon={item.icon}
-              />
+              <DynamicIcon name={item.icon} size={20} />
             </Link>
           ))}
-          <Link href="/favorites" className="hidden items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
+          {/* <Link href="/favorites" className="hidden items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
             <HeartIcon
               className="h-5 w-5 flex-none text-gray-400"
               aria-hidden="true"
             />
-          </Link>
+          </Link> */}
           <LanguageSwitcher />
         </div>
       </div>

@@ -217,7 +217,7 @@ const mailRes = await fetch("https://psinv.net/api/sendemail.php", {
                     <PhoneInput
                       {...field}
                       defaultCountry="AE"
-                      className="!w-full !pl-12 !pr-4 !py-3 !bg-[#2e3170] !border-transparent !rounded !text-white placeholder-gray-300"
+                      className="w-full! pl-12! pr-4! py-3! bg-[#2e3170]! border-transparent! rounded! text-white! placeholder-gray-300"
                       placeholder={
                         field.name === 'fatherContact'
                           ? "Father’s Contact number *"
@@ -256,7 +256,7 @@ const mailRes = await fetch("https://psinv.net/api/sendemail.php", {
         </div>
 
         <div className="flex items-center justify-between mt-6">
-          <div className="flex-grow">
+          <div className="grow">
             {step < steps.length - 1 ? (
               <button
                 type="button"
