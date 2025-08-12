@@ -8,6 +8,7 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {useFormatter} from 'next-intl';
+import { sendGTMEvent } from '@next/third-parties/google'
 
 import Sticky from 'react-sticky-el';
 
@@ -29,6 +30,7 @@ const StripeContent = (props:any) => {
     const modalHandler = (event:any) => {
         console.log("clicked = " + setModal);
         setSetModal(true);
+        sendGTMEvent({ event: 'OpenPopUpEmail', value: '1' })
     };
 
     const modalUpdate = (event:any) => {
@@ -62,14 +64,14 @@ const StripeContent = (props:any) => {
                             </div>
                         </div>
                         <div className="grid grid-cols-3 text-center md:flex items-center justify-end gap-3">
-                            <Link href="#" className="bg-gray-200 hover:bg-gray-300  px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /></Link>
+                            <Link href="#" className="bg-gray-200 hover:bg-gray-300  px-5 py-3 rounded-lg text-lg" onClick={() => sendGTMEvent({ event: 'Call', value: '1' })}><FontAwesomeIcon icon={faPhone} /></Link>
                             <button
                                 onClick={modalHandler}
                                 type="button"
                                 className="bg-gray-200 hover:bg-gray-300 px-5 py-3 rounded-lg text-lg"
                             ><FontAwesomeIcon icon={faEnvelope} />
                             </button>
-                            <Link href="#" className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg"><FontAwesomeIcon icon={faWhatsapp} /></Link>
+                            <Link href="#" className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg" onClick={() => sendGTMEvent({ event: 'WhatsApp', value: '1' })}><FontAwesomeIcon icon={faWhatsapp} /></Link>
                         </div>
                     </div>
                 </div>
