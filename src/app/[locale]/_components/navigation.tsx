@@ -132,23 +132,36 @@ const more: More[] = [
         icon: ChartPieIcon,
     },
     {
-    name: 'Youngsters Program',
-    description: 'Youngsters Program',
-    href: '/psi-youngsters-program',
-    icon: ChartPieIcon,
-  },
-      {
-    name: 'Newsletter',
-    description: 'Newsletter',
-    href: '/newsletter',
-    icon: ChartPieIcon,
-  },
-  {
-    name: 'International',
-    description: 'International',
-    href: '/international',
-    icon: ChartPieIcon,
-  }
+        name: 'Careers',
+        description: 'Careers',
+        href: '/careers',
+        icon: ChartPieIcon,
+    },
+    {
+        name: 'Mortgage Calculator',
+        description: 'Mortgage Calculator',
+        href: '/mortgage-calculator',
+        icon: ChartPieIcon,
+    },
+    {
+        name: 'Youngsters Program',
+        description: 'Youngsters Program',
+        href: '/psi-youngsters-program',
+        icon: ChartPieIcon,
+    },
+    {
+        name: 'Newsletter',
+        description: 'Newsletter',
+        href: '/newsletter',
+        icon: ChartPieIcon,
+    }
+    ,
+    {
+        name: 'International',
+        description: 'International',
+        href: '/international',
+        icon: ChartPieIcon,
+    }
 ];
 const callsToAction: CallToAction[] = [
     { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
