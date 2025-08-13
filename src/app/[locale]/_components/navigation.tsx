@@ -154,8 +154,7 @@ const more: More[] = [
         description: 'Newsletter',
         href: '/newsletter',
         icon: ChartPieIcon,
-    }
-    ,
+    },
     {
         name: 'International',
         description: 'International',

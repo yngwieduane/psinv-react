@@ -19,11 +19,8 @@ import DrawerDetails from '@/app/[locale]/unit/[slug]/components/DrawerDetails';
 import Faqs from './Faqs';
 import NearbysWithMap from './NearbyWithMap';
 import PaymentPlans from './PaymentPlans';
-<<<<<<< HEAD
-=======
 import CardGroupImage from './CardGroupImage';
 import { CalendarCheck, CirclePlay, LandPlot, MapPinCheck, MapPinIcon, MapPinned, PlayIcon, Video } from 'lucide-react';
->>>>>>> origin/main
 
 
 const PropertyPage = (props:any) => {

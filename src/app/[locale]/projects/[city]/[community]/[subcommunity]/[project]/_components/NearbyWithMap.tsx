@@ -21,10 +21,7 @@ export type AnchorPointName = keyof typeof AdvancedMarkerAnchorPoint;
 
 import './NearbyWithMap.css';
 import { RealEstateIcon } from "../../../../../../../../../public/icons/real-estate-icon";
-<<<<<<< HEAD
-=======
 import { DynamicIcon } from "lucide-react/dynamic";
->>>>>>> origin/main
 
 const NearbysWithMap = ({
     latitude,
@@ -121,8 +118,6 @@ const NearbysWithMap = ({
                         const pointB: Coordinate = { lat: parseFloat(post.latitude), lng: parseFloat(post.longitude) }; 
 
                         const distance = calculateDistance(pointA, pointB);
-<<<<<<< HEAD
-=======
                         let labelicon:any;
                         switch (post.categoryName.toLocaleLowerCase()) {
                             case 'parking':
@@ -161,25 +156,12 @@ const NearbysWithMap = ({
                                 labelicon = 'landmark';
                                 break;
                         }
->>>>>>> origin/main
 
                         return (
                             <li
                             key={index}
                             className=""
                             >
-<<<<<<< HEAD
-                                <button 
-                                    onClick={()=>{
-                                        handleLocationClick(pointB);
-                                    }}  
-                                    className="w-full overflow-hidden bg-white px-4 py-4 shadow-sm sm:rounded-md sm:px-6 cursor-pointer hover:bg-gray-100 focus:bg-gray-100"
-                                    >
-                                    <p className="text-xs">{post.categoryName}</p>
-                                    <p className="text-sm truncate normal-case">{post.landmarkEnglishName}, {post.addressLine1English}</p>
-                                    <p>{distance}km</p>
-                                </button>
-=======
                                 <div 
                                     onClick={()=>{
                                         handleLocationClick(pointB);
@@ -197,7 +179,6 @@ const NearbysWithMap = ({
                                         </div>
                                     </div>
                                 </div>
->>>>>>> origin/main
                             </li>
                         )
                     })}

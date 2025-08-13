@@ -135,8 +135,6 @@ export interface PaymentPlan {
 export interface PaymentPlansResponse {
   result: PaymentPlan[];
   totalCount: number;
-<<<<<<< HEAD
-=======
 }
 
 
@@ -145,5 +143,4 @@ export interface Articles  {
   image: string,
   category: string
   content: string
->>>>>>> origin/main
 }

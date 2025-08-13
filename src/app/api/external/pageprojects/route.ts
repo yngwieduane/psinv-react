@@ -25,32 +25,6 @@ export async function GET(request: NextRequest) {
       body: raw,
       redirect: "follow",
     };
-<<<<<<< HEAD
-  
-    const response = await fetch(
-      "https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex="+page+"&pageSize="+pagesize,
-      {
-        method: "POST",
-        headers:{
-            'accept':'*/*',
-            'Content-Type':'application/json',
-            'apiKey':'ONjViogekmFKvSkFhYNsgQS56WNG08EORGL9QGarF8gl5aObzzBikmJlmo2wHEQ'
-        },
-        body: raw,
-      }
-    );
-  
-    if (!response.ok) {
-      const error = new Error("An error occurred while fetching projects");
-      throw error;
-    }
-  
-    const projects = await response.json();
-    //setLoading(false);
-    //return projects;
- 
-  return new Response(JSON.stringify(projects), {
-=======
 let allData: any[] = [];
 let currentPage = 1;
 let totalPages = 1;
@@ -93,7 +67,6 @@ let totalPages = 1;
     //return projects;
  
   return new Response(JSON.stringify(allData), {
->>>>>>> origin/main
     headers: { 'Content-Type': 'application/json' },
   });
 }
