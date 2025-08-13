@@ -7,7 +7,6 @@ import { useRef } from "react";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import styles from '../_components/LocationSlider.module.css';
 import { AudreyNormal } from "@/utils/fonts";
 import type { NavigationOptions } from 'swiper/types';
 
@@ -35,7 +34,7 @@ const LocationsSlider:React.FC<Props> = ({ slides, openModal }) => {
 
 
   return (
-    <div className="w-full overflow-x-clip relative transition-all duration-500 pb-30">
+    <div className="w-full overflow-x-clip relative transition-all duration-500 pb-30 sliderContainer">
       {/* Custom Navigation Buttons */}
       <div
         ref={navigationPrevRef}
@@ -89,7 +88,7 @@ const LocationsSlider:React.FC<Props> = ({ slides, openModal }) => {
         centeredSlides={false}
         loop={true}
         spaceBetween={30}
-        className={`pl-5 md:pl-10 md:pr-0 px-5 ${styles.locSlider}`}
+        className={`pl-5 md:pl-10 md:pr-0 px-5`}
       >
         {slides?.map((slide, index) => (
           <SwiperSlide key={index} className="w-full">
