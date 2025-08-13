@@ -14,7 +14,11 @@ const montserrat = Montserrat({
     variable: '--font-montserrat-light',
 });
 
-function AwardsSection() {
+type Props = {
+    openModal: () => void;
+}
+
+const AwardsSection:React.FC<Props> = ({openModal}) => {
     return(
         <>
         <div className="max-w-screen-xl mx-auto text-white">
@@ -31,7 +35,7 @@ function AwardsSection() {
                     style={{writingMode:"vertical-rl"}}>Awards</div>
                 </h3>
             </div>
-            <div className={`md:w-1/2 w-full md:pr-0 md:px-0 px-4 relative pt-0 md:pl-10 ${montserratLight.className}`}>                
+            <div className={`md:w-1/2 w-full md:pr-0 md:px-0 px-6 relative pt-0 md:pl-10 ${montserratLight.className}`}>                
                 <img src="/assets/images/international/awards.webp" alt="awards" className="w-full" />
                 <h2 className={`md:hidden block text-3xl text-start uppercase ${AudreyNormal.className} my-7`}>
                 PSI Has Achieved Multiple Accolades And Recognition..
@@ -39,7 +43,7 @@ function AwardsSection() {
             </div>  
             <div className="md:w-1/2 flex flex-column">
                 <div className={`order-2 md:order-1 w-full grid md:grid-cols-3 md:grid-rows-2 grid-cols-2 grid-rows-3 
-                    text-black text-center gap-7 mb-10 uppercase md:px-0 px-5 ${montserrat.className}`}>
+                    text-black text-center gap-7 mb-10 uppercase md:px-0 px-6 ${montserrat.className}`}>
                     <div className="bg-white py-5 px-3 md:space-y-2 space-y-1">
                         <h3 className={`${AudreyNormal.className} text-3xl`}>Aldar</h3>
                         <p className="text-[16px] text-[#666] leading-tight">Top Performing Agency</p>
@@ -72,9 +76,8 @@ function AwardsSection() {
                     </div>
                 </div>
                 <div className='order-1 md:order-2 flex md:justify-start justify-end md:mb-0 mb-10 md:mr-0 mr-5'>
-                    <a
-                    href="#"
-                    className={`${AudreyNormal.className} 
+                    <button onClick={openModal}
+                    className={`${AudreyNormal.className} cursor-pointer
                     relative uppercase lg:text-lg text-sm md:px-5 md:py-8 px-7 py-5  hover:text-black self-end
                     after:content-[''] after:absolute lg:after:w-[195px] after:w-[175px] lg:after:h-[125px] after:h-[90px] 
                     after:border after:border-[#ED9C4B] after:inset-0  after:rounded-[50%] 
@@ -82,7 +85,7 @@ function AwardsSection() {
                     hover:after:bg-[#ED9C4B] text-white hover:text-black text-center`}
                     >
                         <span className="relative z-10">Get Free<br/>Consultation</span>
-                    </a> 
+                    </button> 
                 </div>
             </div> 
         </div>              

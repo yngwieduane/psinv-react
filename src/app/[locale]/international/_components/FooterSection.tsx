@@ -19,7 +19,7 @@ function FooterSection() {
         <>
         <div className="w-full relative py-30">
             <div className="max-w-screen-xl mx-auto">
-                <div className="w-full md:flex lg:flex-row grid px-4 md:gap-8 px-5">
+                <div className="w-full md:flex lg:flex-row grid md:gap-8 md:px-5 px-6">
                     <div className="lg:w-1/12 md:w-1/10 w-full">
                         <h3 className={`lg:text-[20px] text-[17px] ${montserratLight.className}`}>
                             Let us know if you’re interested!

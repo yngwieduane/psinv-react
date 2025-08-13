@@ -144,12 +144,13 @@ const ContactForm = () => {
                     break;
                 }
 
-            switch (campaign) {
-                case 'test-campaign':
-                    propertyCampaignId = "1752";
-            }
-
-            
+            // switch (campaign) {
+            //     case '':
+            //         propertyCampaignId = "";
+                
+            //     default:
+            //         propertyCampaignId = propertyCampaignId;
+            // }            
             
             const remarks = `
                 Additional consent 1 : ${data.agreement1 ? "Yes" : "No"} </br>
@@ -219,7 +220,16 @@ const ContactForm = () => {
             };
 
             try {
-                const res = await fetch(`https://api.portal.psi-crm.com/leads?APIKEY=${APIKey}`, {
+                let apiURL = "";
+
+                if (mediaName === "63907") {
+                    const token = "400b0c41cea6ae771d9090684ccbcd3696aab50aa47d7dcdddd3018934a337bc8ac18f7581f6664e";
+                    apiURL = `https://api.portal.psi-crm.com/integrations/hubspot/createLead?apiKey=${token}`;
+                } else {
+                    apiURL = `https://api.portal.psi-crm.com/leads?APIKEY=${APIKey}`;
+                }
+
+                const res = await fetch(apiURL, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -360,7 +370,7 @@ const ContactForm = () => {
                         <button type="submit" disabled={isSubmitting} className={`${AudreyNormal.className} 
                         relative uppercase lg:text-lg text-sm px-9 py-7 hover:text-white place-self-end
                         after:content-[''] after:absolute lg:after:w-[170px] after:w-[170px] lg:after:h-[80px] after:h-[80px]
-                        after:border after:border-black after:inset-0 after:rounded-[50%] 
+                        after:border after:border-black md:after:inset-0 after:-right-3 after:top-0 after:rounded-[50%] 
                         after:transition after:duration-300 after:rotate-[335deg]
                         hover:after:bg-black cursor-pointer`}>
                             <span className="relative z-10">Register</span>

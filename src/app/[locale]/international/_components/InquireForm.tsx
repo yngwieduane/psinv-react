@@ -17,10 +17,14 @@ interface FormValue {
     howtocontact: string,
 }
 
+interface props {
+    fromModal : boolean,
+}
+
 type FormData = z.infer<typeof formSchema>
 
 
-const InquireForm = () => {
+const InquireForm = (props:any) => {
     const pathname = usePathname();
     const locale = pathname.split("/")[1] || 'en';
 
@@ -100,23 +104,34 @@ const InquireForm = () => {
             let methodOfContact = "62132";
 
             switch (source) {
+                case 'HubspotEmail':
+                case 'HubSpotEmail':
+                case 'hubspotemail':
+                case 'hs_email':
+                case 'Hubspot':
+                case 'hubspot':
+                    mediaType = "63906";
+                    mediaName = "63907";
+                    propertyCampaignId = "";
+                    methodOfContact = methodOfContact;
+                    break;
                 case "newsletter":
                     mediaType = "166277";
                     mediaName = "166071";
                     propertyCampaignId = "";
-                    methodOfContact = "MethodOfContactVal";
+                    methodOfContact = methodOfContact;
                     break;
                 case "sms":
                     mediaType = "129474";
                     mediaName = "165366";
-                    methodOfContact = "MethodOfContactVal";
+                    methodOfContact = methodOfContact;
                     break;
                 case "Google":
                 case "google":
                     mediaType = "165269";
                     mediaName = "128455";
                     propertyCampaignId = "";
-                    methodOfContact = "MethodOfContactVal";
+                    methodOfContact = methodOfContact;
                     break;
                 default:
                     mediaType = "165232";
@@ -125,7 +140,13 @@ const InquireForm = () => {
                     break;
                 }
 
-            
+            // switch (campaign) {
+            //     case '':
+            //         propertyCampaignId = "";
+                
+            //     default:
+            //         propertyCampaignId = propertyCampaignId;
+            // }            
             
             const remarks = `
                 Additional consent 1 : ${data.agreement1 ? "Yes" : "No"} </br>
@@ -195,8 +216,16 @@ const InquireForm = () => {
                 google_gclid: gclidField,
             };
 
-            try {
-                const res = await fetch(`https://api.portal.psi-crm.com/leads?APIKEY=${APIKey}`, {
+            try {   
+                let apiURL = "";
+                if (mediaName === "63907") {
+                    const token = "400b0c41cea6ae771d9090684ccbcd3696aab50aa47d7dcdddd3018934a337bc8ac18f7581f6664e";
+                    apiURL = `https://api.portal.psi-crm.com/integrations/hubspot/createLead?apiKey=${token}`;
+                } else {
+                    apiURL = `https://api.portal.psi-crm.com/leads?APIKEY=${APIKey}`;
+                }
+
+                const res = await fetch(apiURL, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -332,9 +361,9 @@ const InquireForm = () => {
 
                 {!isSubmitting && !isSubmitSuccess ?  (
                     <>
-                        <p className="text-xs text-center">By creating an account, you agree to our <span className="text-[#ED9C4B]">Terms of Service</span> and
+                        <p className={` ${!props.fromModal ? "text-center" : ""} text-xs `}>By creating an account, you agree to our <span className="text-[#ED9C4B]">Terms of Service</span> and
                     have read and understood the <span className="text-[#ED9C4B]">Privacy Policy</span></p>
-                    <p className="text-xs text-center">Company Profile and International Investor Guide will be downloaded upon submitting your details</p>
+                    <p className={`${!props.fromModal ? "text-center" : ""} text-xs`}>Company Profile and International Investor Guide will be downloaded upon submitting your details</p>
                     <div className="flex flex-column gap-0">                    
                         <div className="mb-0">
                             <label className="flex items-center space-x-2">

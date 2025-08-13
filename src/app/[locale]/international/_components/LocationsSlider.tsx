@@ -21,9 +21,10 @@ type Slide = {
 
 type Props = {
   slides: Slide[];
+  openModal: () => void;
 };
 
-const LocationsSlider = ({ slides }: Props) => {
+const LocationsSlider:React.FC<Props> = ({ slides, openModal }) => {
   const navigationPrevRef = useRef<HTMLDivElement | null>(null);
   const navigationNextRef = useRef<HTMLDivElement | null>(null);
 
@@ -109,9 +110,8 @@ const LocationsSlider = ({ slides }: Props) => {
                   {slide.content}
                 </p>
                 <div className="md:w-auto w-full flex md:justify-start justify-end mt-8">
-                  <a
-                    href="#"
-                    className={`${AudreyNormal.className} 
+                  <button onClick={openModal}
+                    className={`${AudreyNormal.className} cursor-pointer 
                       relative uppercase lg:text-lg text-sm p-9 hover:text-black place-self-end
                       after:content-[''] after:absolute lg:after:w-[190px] after:w-[170px] lg:after:h-[100px] after:h-[80px] 
                       after:border after:border-[#ED9C4B] after:inset-0 after:rounded-[50%] 
@@ -119,7 +119,7 @@ const LocationsSlider = ({ slides }: Props) => {
                       hover:after:bg-[#ED9C4B]`}
                   >
                     <span className="relative z-10">Inquire Now</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

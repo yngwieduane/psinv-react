@@ -1,18 +1,11 @@
 'use client'
 
-import { AudreyNormal, Audrey } from "@/utils/fonts";
-import {Poppins, Montserrat } from "next/font/google";
+import { AudreyNormal } from "@/utils/fonts";
+import {Montserrat } from "next/font/google";
 import { TaxFree } from "./Icons/TaxFree";
 import { Architecture } from "./Icons/Architecture";
 import { Award } from "./Icons/Award";
 import { GlobalHub } from "./Icons/GlobalHub";
-
-
-const poppins = Poppins({
-    subsets: ['latin'],
-    weight: ['400'],
-    variable: '--font-poppins',
-});
 
 const montserratLight = Montserrat({
     subsets: ['latin'],
@@ -25,7 +18,11 @@ const montserrat = Montserrat({
     variable: '--font-montserrat',
 });
 
-function WhyInvestMain() {
+type Props = {
+    openModal: () => void;
+}
+
+const WhyInvestMain:React.FC<Props> = ({openModal}) => {
     return(
         <>
         <div className={`max-w-screen-xl md:flex lg:gap-5 gap-2 md:py-[20vh] py-7 mx-auto text-white ${montserratLight.className}`}>
@@ -108,9 +105,8 @@ function WhyInvestMain() {
                         4 Reasons Your Money Will Blossom in UAE
                     </h2>
                     <div className='flex md:justify-start justify-end md:mb-0 mb-10'>
-                        <a
-                        href="#"
-                        className={`${AudreyNormal.className} 
+                        <button onClick={openModal}
+                        className={`${AudreyNormal.className} cursor-pointer
                         relative uppercase lg:text-lg text-sm p-9 hover:text-black self-end
                         after:content-[''] after:absolute lg:after:w-[190px] after:w-[170px] lg:after:h-[100px] after:h-[80px] 
                         after:border after:border-[#ED9C4B] after:inset-0 after:rounded-[50%] 
@@ -118,7 +114,7 @@ function WhyInvestMain() {
                         hover:after:bg-[#ED9C4B] text-white hover:text-black`}
                         >
                             <span className="relative z-10">Learn More</span>
-                        </a> 
+                        </button> 
                     </div>
                 </div>
                 <div className="lg:w-3/5 w-full">

@@ -6,7 +6,11 @@ import { IconSafe } from "./Icons/IconSafe";
 import { IconEducation } from "./Icons/IconEducation";
 import { IconCulture } from "./Icons/IconCulture";
 
-function WhyInvest() {
+type Props = {
+    openModal: () => void;
+}
+
+const WhyInvest:React.FC<Props> = ({openModal}) => {
     return(
         <>            
             <div className="lg:w-1/12 md:w-1/12 w-full md:block hidden">
@@ -17,27 +21,27 @@ function WhyInvest() {
                     style={{writingMode:"vertical-rl"}}>Why Invest in UAE</div>
                 </h3>
             </div>
-            <div className="lg:w-1/2 md:w-1/2 w-full md:pr-0 relative md:pt-0 pt-10 md:pl-10">
-                <div className="absolute md:-left-10 left-5 md:top-20 -top-10 px-5">
+            <div className="lg:w-1/2 md:w-[40%] w-full md:pr-0 relative md:pt-0 pt-10 lg:pl-10">
+                <div className="absolute lg:-left-10 md:-left-5 left-0 md:top-20 -top-10 md:px-5">
                     <h2 className={`lg:text-5xl md:text-2xl text-4xl text-start uppercase ${AudreyNormal.className} md:mb-17 mb-7`}>
                         UAE: Where Family Dreams Flourish
                     </h2>
                     <div className="md:block flex justify-end">
-                        <a href="#" className={`${AudreyNormal.className} 
+                        <button onClick={openModal} className={`${AudreyNormal.className} cursor-pointer
                         relative uppercase lg:text-lg text-sm p-9 place-self-end
                         after:content-[''] after:absolute lg:after:w-[180px] after:w-[160px] lg:after:h-[100px] after:h-[80px]
                         after:border after:border-[#ED9C4B] after:inset-0 after:rounded-[50%] 
                         after:transition after:duration-300 after:rotate-[335deg]
                         hover:after:bg-[#ED9C4B]`}>
                             <span className="relative z-10">Learn More</span>
-                        </a>
+                        </button>
                     </div>                    
                 </div>                
                 <img src="/assets/images/international/family.webp" alt="international-family" title="international-family" 
-                className="h-full w-[90%] object-cover md:ml-10 ml-5"  />
+                className="h-full w-[90%] object-cover lg:ml-10 ml-5"  />
             </div>
             <div className="lg:w-5/12 md:w-1/2 w-full">
-                <div className="w-full flex flex-column md:gap-10 gap-5 py-2 md:px-auto px-4 md:pt-0 pt-10">
+                <div className="w-full flex flex-column md:gap-10 gap-5 py-2 md:px-auto px-0 md:pt-0 pt-10">
                     <div className="border-b border-b-1 border-b-[#00000057] md:py-5 py-4">
                         <div className="flex md:gap-8 gap-4 mb-5 items-center">
                             <IconFamily />

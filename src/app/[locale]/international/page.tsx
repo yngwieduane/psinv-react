@@ -24,6 +24,7 @@ import AwardsSection from './_components/AwardsSection';
 import Partners from './_components/Partners';
 import ClientReview from './_components/ClientReview';
 import FooterSection from './_components/FooterSection';
+import LearnMoreModal from './_components/LearnMoreModal';
 
 const latoLight = Lato({
   subsets: ['latin'],
@@ -45,10 +46,10 @@ interface props {
 
 const navItems = [
     { name: "UAE MARKET", href : "#UAE_MARKET"}, 
-    { name: "INVESTMENT OPPORTUNITIES", href : "#investment-opportunities"}, 
-    { name: "WHY INVEST IN UAE", href : "#why-invest-in-uae"}, 
-    { name: "ABOUT US", href : "#about-us"}, 
-    { name: "CLIENT", href : "#client"}, 
+    { name: "INVESTMENT OPPORTUNITIES", href : "#INVESTMENT"}, 
+    { name: "WHY INVEST IN UAE", href : "#WHY_INVEST"}, 
+    { name: "ABOUT US", href : "#ABOUT_US"}, 
+    { name: "CLIENT", href : "#CLIENT"}, 
 ];
 
 const locationsData = [
@@ -101,6 +102,7 @@ export default function InternationalPage() {
     const [iconColor, setIconColor] = useState('white');
     const [iconWidth, setIconWidth] = useState('100%');
     const [iconHeight, setIconHeight] = useState('100%');
+    const [modal, setModal] = useState(false);
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -113,12 +115,19 @@ export default function InternationalPage() {
         }
     }
 
+    const modalHandler = () => {
+        setModal(true);
+    }
+    const modalUpdate = (event:any) => {
+        setModal(event);
+    }
+
     return(
         <>
         <div className="w-full bg-[url('/assets/images/international/international-header.webp')] relative
         bg-cover bg-center bg-no-repeat items-stretch">
-            <nav className="w-full lg:px-5 text-white border-b border-white">                
-                <div className="lg:hidden flex relative items-center justify-between items-stretch">
+            <nav className="w-full xl:px-5 text-white border-b border-white">                
+                <div className="xl:hidden flex relative items-center justify-between items-stretch">
                     <a href="/">
                         <div className="w-[103px] border border-white border-b-0 p-5">
                             <img src="/logo-psi-white.svg" alt="PSI-logo" className="w-[50px]" />
@@ -149,7 +158,7 @@ export default function InternationalPage() {
                 </div>
                 {/* mobile menu */}
                 <div className={`flex flex-column justify-between fixed bottom-0 left-0 min-h-[96%] h-full w-[75%] bg-[#0000004d] backdrop-blur transform transition-transform duration-300 ease-in-out px-[25px]
-                ${ isMobileMenuOpen ? "translate-x-0" : "-translate-x-full" } lg:hidden z-50`}>
+                ${ isMobileMenuOpen ? "translate-x-0" : "-translate-x-full" } xl:hidden z-50`}>
                     <div>
                         <div className="border-b border-[#dee2e6] py-5">                            
                             <a href="/" className="justify-self-center translate-x-20">
@@ -174,7 +183,7 @@ export default function InternationalPage() {
                 </div>
 
                 {/* desktop menu */}
-                <div className="lg:flex hidden w-full items-center align-stretch">                   
+                <div className="xl:flex hidden w-full items-center align-stretch">                   
                     <div className="w-1/14 border border-white border-b-0 p-6">
                         <a href="/">
                             <img src="/logo-psi-white.svg" alt="PSI-logo" className="w-[50px]" />
@@ -245,7 +254,7 @@ export default function InternationalPage() {
         </div>
 
         <div className="w-full bg-[url('/assets/images/international/sec1-bg.webp')] md:pt-40 pt-20 bg-cover md:bg-right-top bg-top" id="UAE_MARKET">
-            <div className="max-w-screen-xl mx-auto md:flex md:flex-row grid px-5 lg:gap-8 gap-2">
+            <div className="max-w-screen-xl mx-auto md:flex md:flex-row grid md:px-5 px-6 lg:gap-8 gap-2">
                 <div className="md:w-[10%] w-full md:order-1 order-2">
                     <h3 className="lg:text-[20px] md:text-[17px] text-[16px]">
                         Market in 2025: Your Gateway to Growth
@@ -275,21 +284,21 @@ export default function InternationalPage() {
                         opportunity to capitalize on a robust economy, surging demand, and attractive returns.
                     </p>
                     <div className='md:w-auto w-full flex md:justify-start justify-end'>
-                        <a href="#" className={`${AudreyNormal.className} 
+                        <button className={`${AudreyNormal.className} cursor-pointer
                         relative uppercase lg:text-lg text-sm p-9 hover:text-white place-self-end
                         after:content-[''] after:absolute lg:after:w-[190px] after:w-[170px] lg:after:h-[100px] after:h-[80px]
                         after:border after:border-black after:inset-0 after:rounded-[50%] 
                         after:transition after:duration-300 after:rotate-[335deg]
-                        hover:after:bg-black`}>
+                        hover:after:bg-black`} onClick={modalHandler}>
                             <span className="relative z-10">Learn More</span>
-                        </a>
+                        </button>
                     </div>                    
                 </div>                
             </div>
 
             <div className='md:h-[350px] h-[50px]'></div>
 
-            <div className="max-w-screen-xl mx-auto md:flex md:flex-row grid px-4 md:gap-8 px-5">
+            <div className="max-w-screen-xl mx-auto md:flex md:flex-row grid md:gap-8 md:px-5 px-6" id='INVESTMENT'>
                 <div className="md:w-1/12 w-full md:order-1 order-2">
                     <h3 className="lg:text-[20px] md:text-[17px] text-[20px] text-white">
                         Market in 2025: Your Gateway to Growth
@@ -301,7 +310,7 @@ export default function InternationalPage() {
                     </h2>                    
                 </div> 
             </div>
-            <div className="w-full md:ml-10 md:px-0 px-5 flex flex-row px-0 gap-8 mt-10 overflow-visible items-center">
+            <div className="w-full md:ml-10 md:px-0 px-6 flex flex-row px-0 gap-8 mt-10 overflow-visible items-center">
                 <div className="md:w-2/12 w-full md:block hidden">
                     <h3 className="relative flex flex-column items-center gap-3 before:relative before:w-[1px] lg:w-[auto] w-[30px] before:h-[250px] before:bg-[#ED9C4B]" >
                         <div className=''></div>
@@ -309,11 +318,11 @@ export default function InternationalPage() {
                     </h3>
                 </div>
                 <div className="md:w-5/6 w-full md:pr-0 md:py-5 py-0">
-                    <LocationsSlider slides={locationsData} />           
+                    <LocationsSlider slides={locationsData} openModal ={modalHandler} />           
                 </div> 
             </div>
 
-            <div className="max-w-screen-xl mx-auto px-4 md:gap-8 pt-15 relative flex">
+            <div className="max-w-screen-xl mx-auto md:px-4 px-6 md:gap-8 pt-15 relative flex">
                 <div className=''>
                     <div className="absolute lg:left-0 md:left-10 left-0 h-full items-center flex">
                         <h3 className="relative md:flex hidden flex-column items-center gap-3 before:relative before:w-[1px] before:h-[350px] before:bg-[#ED9C4B] " >
@@ -330,9 +339,8 @@ export default function InternationalPage() {
                                 Real estate is an effective way to achieve portfolio diversity, grow wealth with that
                             </h2> 
                             <div className='flex md:justify-start justify-end md:mb-0 mb-10'>
-                                <a
-                                href="#"
-                                className={`${AudreyNormal.className} 
+                                <button onClick={modalHandler} 
+                                className={`${AudreyNormal.className} cursor-pointer
                                 relative uppercase lg:text-lg text-sm p-9 hover:text-black self-end
                                 after:content-[''] after:absolute lg:after:w-[190px] after:w-[170px] lg:after:h-[100px] after:h-[80px] 
                                 after:border after:border-[#ED9C4B] after:inset-0 after:rounded-[50%] 
@@ -340,19 +348,19 @@ export default function InternationalPage() {
                                 hover:after:bg-[#ED9C4B] text-white hover:text-black`}
                                 >
                                     <span className="relative z-10">Learn More</span>
-                                </a> 
+                                </button> 
                             </div>     
                         </div>                        
                     </div>  
 
-                    <div className='w-full flex justify-end pb-0'>
+                    <div className='w-full flex justify-end md:pb-0 pb-15'>
                         <div className="lg:w-1/2 md:w-3/4 w-full b-0">
                             <div className="md:grid md:grid-cols-3 md:grid-row-2 items-stretch flex flex-column gap-[1px] mb-0">
                                 <div className="order-first bg-[#00000080] md:px-3 px-10 md:py-15 py-20 text-white flex gap-5 align-center 
                                 transition ease-in-out duration-600
                                 hover:bg-white hover:text-black" onMouseOver={() => setIconColor('#ED9C4B')} 
                                 onMouseOut={() => setIconColor('white')}>
-                                    <div className='md:w-[45%] w-[25%]'>
+                                    <div className='md:w-[45%] w-[20%]'>
                                         <Handshake iconColor={iconColor} iconHeight={iconHeight} iconWidth={iconWidth}  />
                                     </div>                                
                                     <div>
@@ -365,7 +373,7 @@ export default function InternationalPage() {
                                 transition ease-in-out duration-600
                                 hover:bg-white hover:text-black" onMouseOver={() => setIconColor('#ED9C4B')} 
                                 onMouseOut={() => setIconColor('white')}>
-                                    <div className='md:w-[40%] w-[25%]'>
+                                    <div className='md:w-[40%] w-[20%]'>
                                         <Database iconColor={iconColor} iconHeight={iconHeight} iconWidth={iconWidth} />
                                     </div>                                
                                     <div>
@@ -379,7 +387,7 @@ export default function InternationalPage() {
                                 transition ease-in-out duration-600
                                 hover:bg-white hover:text-black" onMouseOver={() => setIconColor('#ED9C4B')} 
                                 onMouseOut={() => setIconColor('white')}>
-                                    <div className='md:w-[30%] w-[25%]'>
+                                    <div className='md:w-[30%] w-[20%]'>
                                         <Roi iconColor={iconColor} iconHeight="90%" iconWidth="90%" />
                                     </div>                                
                                     <div>
@@ -402,15 +410,17 @@ export default function InternationalPage() {
                 </h2> 
             </div>            
         </div>
-         <div className="w-full">
-            <div className="max-w-screen-xl md:flex lg:gap-5 gap-2 py-25 px-4 mx-auto">
-                <WhyInvest />
+         <div className="w-full" id='WHY_INVEST'>
+            <div className="max-w-screen-xl md:flex lg:gap-5 gap-2 py-25 md:px-4 px-6 mx-auto">
+                <WhyInvest openModal ={modalHandler} />
             </div>
         </div>       
         
-        <div className={`w-full md:bg-[url('/assets/images/international/international-bg-3.webp')] bg-[url('/assets/images/international/international-dubai-bg.webp')] bg-cover bg-top bg-center md:px-0 px-4 md:overflow-visible relative ${latoLight.className}`}>
+        <div className={`w-full md:bg-[url('/assets/images/international/international-bg-3.webp')] 
+        bg-[url('/assets/images/international/international-dubai-bg.webp')] 
+        bg-cover bg-top bg-center md:px-0 px-6 md:overflow-visible relative ${latoLight.className}`}>
             <div className="md:inline-block md:w-full">
-                <div className="max-w-screen-xl md:flex lg:gap-5 gap-2 md:pt-[90vh] pt-[23vh] px-4 mx-auto">
+                <div className="max-w-screen-xl md:flex lg:gap-5 gap-2 xl:pt-[90vh] lg:pt-[70vh] md:pt-[60vh] pt-[23vh] md:px-4 mx-auto">
                     <WhyInvest_2 />
                 </div>
                 <div className="w-full md:flex md:justify-end 2xl:-mt-[calc(16%+40px)] xl:-mt-[calc(21%+0px)] lg:-mt-[calc(28%)] mb-5">
@@ -418,27 +428,31 @@ export default function InternationalPage() {
                         <LocationsSlider_2 slides={LocationsData_2} />
                     </div>
                 </div>
-                <WhyInvestMain />
+                <WhyInvestMain openModal={modalHandler} />
             </div>
         </div>
 
-        <div className="max-w-screen-xl md:flex lg:gap-5 gap-2 md:py-[20vh] py-5 px-4 mx-auto">
+        <div className="max-w-screen-xl md:flex lg:gap-5 gap-2 md:py-[20vh] py-5 md:px-4 px-6 mx-auto" id='ABOUT_US'>
             <Solutions />
         </div>
 
         <div className={`w-full md:py-30 py-7 bg-[url('/assets/images/international/international-awards.webp')] 
             bg-cover bg-top bg-center`}>
-            <AwardsSection />
+            <AwardsSection openModal ={ modalHandler } />
         </div>
         <div className="max-w-screen-xl md:py-30 py-7 mx-auto">
             <Partners />
         </div>
         
-        <ClientReview />
+        <div className="w-full" id='CLIENT'>
+            <ClientReview />
+        </div>
 
         <footer>
             <FooterSection />
-        </footer>   
+        </footer> 
+
+        <LearnMoreModal modalState={modal} onModalUpdate={modalUpdate} />  
 
         
         </>

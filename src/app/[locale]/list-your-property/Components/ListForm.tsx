@@ -434,6 +434,7 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
             
             let urlParams = new URLSearchParams(window.location.search);
             let source = urlParams.get('utm_source') || '';
+            let campaign = urlParams.get('utm_campaign') || '';
             let gclid = urlParams.get('gclid_field') || '';
             let currentUrl = window.location.href;
 
@@ -488,6 +489,14 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
                     methodOfContact = "115747";
                     break;
                 }
+
+            // switch (campaign) {
+            //     case '':
+            //         propertyCampaignId = "";
+                
+            //     default:
+            //         propertyCampaignId = propertyCampaignId;
+            // } 
 
             switch(data.beds){
                 case "1":
@@ -719,6 +728,14 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
             };
 
             try {
+                // let api_URL = "";
+                // if (mediaName === "63907") {
+                //     const token = "400b0c41cea6ae771d9090684ccbcd3696aab50aa47d7dcdddd3018934a337bc8ac18f7581f6664e";
+                //     api_URL = `https://api.portal.psi-crm.com/integrations/hubspot/createLead?apiKey=${token}`;
+                // } else {
+                //     api_URL = `${apiUrl}`;
+                // }                
+
                 const response = await fetch(`${apiUrl}` , {
                     method: "POST",
                     headers : {

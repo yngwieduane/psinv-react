@@ -1,0 +1,13 @@
+@media (max-width: 768px) {
+      .scrollContainer {
+        overflow-x: auto; /* Enables horizontal scrolling */
+        white-space: nowrap; /* Prevents items from wrapping */
+        -webkit-overflow-scrolling: touch; /* Improves scrolling on iOS */
+      }
+
+      .item {
+        display: inline-block; /* Makes items display in a line for horizontal scrolling */
+        flex-shrink: 0; /* Prevents items from shrinking */
+        /* Add any other styling for your items */
+      }
+    }

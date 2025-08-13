@@ -20,7 +20,7 @@ function Solutions() {
                     style={{writingMode:"vertical-rl"}}>Solutions</div>
                 </h3>
             </div>
-            <div className={`lg:w-5/6 md:w-1/2 w-full md:pr-0 md:px-0 px-4 relative md:pt-0 pt-10 md:pl-10 ${montserratLight.className}`}>
+            <div className={`lg:w-5/6 md:w-1/2 w-full md:pr-0 px-0 relative md:pt-0 pt-10 md:pl-10 ${montserratLight.className}`}>
                 <h2 className={`lg:text-5xl md:text-2xl text-3xl text-center uppercase ${AudreyNormal.className} mb-7`}>
                     The Solutions We Offer
                 </h2>

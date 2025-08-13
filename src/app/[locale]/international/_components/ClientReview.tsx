@@ -20,7 +20,7 @@ function ClientReview() {
         <>
         <div className="w-full relative">
             <div className="max-w-screen-xl mx-auto">
-                <div className="w-full md:flex md:flex-row grid px-4 md:gap-8 px-5">
+                <div className="w-full md:flex md:flex-row grid md:gap-8 md:px-5 px-6">
                     <div className="md:w-1/12 w-full md:order-1 order-2">
                         <h3 className={`md:block hidden lg:text-[20px] md:text-[17px] text-[20px] ${montserratLight.className}`}>
                             Let us know if you’re interested!
