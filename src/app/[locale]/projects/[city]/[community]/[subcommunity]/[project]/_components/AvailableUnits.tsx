@@ -48,7 +48,7 @@ const AvailableUnits = ({
             </h2>
             <ul
                 role="list"
-                className="mx-4 flex space-x-3 sm:mx-6 overflow-x-auto"
+                className="flex space-x-3 overflow-x-auto"
             >
                 {results.slice(0,display).map((post, index) => {
                     const propertyData = {
