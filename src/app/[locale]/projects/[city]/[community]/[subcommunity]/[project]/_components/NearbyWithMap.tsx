@@ -40,6 +40,7 @@ const NearbysWithMap = ({
     const [loading, setLoading] = useState(false);
     const [hovered, setHovered] = useState(false);
     const [clicked, setClicked] = useState(false);
+    const [activeState, setActiveState] = useState(false);
     const [chosenLandmark, setChosenLandmark] = useState<Coordinate[]>([]);
     const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAP_API as string;
     useEffect(() => {
@@ -113,8 +114,8 @@ const NearbysWithMap = ({
             <h2 className="text-xl mb-5 text-[#111954]">
                 Nearbys
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 ">
-                <ul role="list" className="grid grid-cols-2 md:grid-cols-2 space-y-3 space-x-3 overflow-auto max-h-42 md:max-h-[600px] py-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 content-stretch">
+                <ul role="list" className="grid grid-cols-2 md:grid-cols-2 space-y-3 space-x-3 overflow-auto h-[70vh]  py-2">
                     {data.slice(0, 20).map((post, index) => {
                         const pointA: Coordinate = { lat: parseFloat(latitude), lng: parseFloat(longitude) }; 
                         const pointB: Coordinate = { lat: parseFloat(post.latitude), lng: parseFloat(post.longitude) }; 
@@ -148,6 +149,12 @@ const NearbysWithMap = ({
                                 break;
                             case 'police station':
                                 labelicon = 'siren';
+                                break;
+                            case 'gas station':
+                                labelicon = 'fuel';
+                                break;
+                            case 'hospitals':
+                                labelicon = 'hospital';
                                 break;
                         
                             default:
