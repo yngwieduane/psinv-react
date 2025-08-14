@@ -126,10 +126,10 @@ export default function InternationalPage() {
         <>
         <div className="w-full bg-[url('/assets/images/international/international-header.webp')] relative
         bg-cover bg-center bg-no-repeat items-stretch">
-            <nav className="w-full xl:px-5 text-white border-b border-white">                
+            <nav className="w-full xl:px-5 text-white border-b border-[#ffffff80]">                
                 <div className="xl:hidden flex relative items-center justify-between items-stretch">
                     <a href="/">
-                        <div className="w-[103px] border border-white border-b-0 p-5">
+                        <div className="w-[103px] border border-[#ffffff80] border-b-0 p-5">
                             <img src="/logo-psi-white.svg" alt="PSI-logo" className="w-[50px]" />
                         </div>                        
                     </a>
@@ -184,7 +184,7 @@ export default function InternationalPage() {
 
                 {/* desktop menu */}
                 <div className="xl:flex hidden w-full items-center align-stretch">                   
-                    <div className="w-1/14 border border-white border-b-0 p-6">
+                    <div className="w-1/14 border border-[#ffffff80] border-b-0 p-6">
                         <a href="/">
                             <img src="/logo-psi-white.svg" alt="PSI-logo" className="w-[50px]" />
                         </a>
@@ -207,7 +207,7 @@ export default function InternationalPage() {
             </nav>
 
             <div className="w-full flex px-5 text-white min-h-full">
-                <div className="lg:block hidden  w-1/14 border border-white border-t-0 border-l-0 p-6 min-h-full">
+                <div className="lg:block hidden  w-1/14 border border-[#ffffff80] border-t-0 border-l-0 p-6 min-h-full">
                         
                 </div>
                 <div className="lg:w-12/14 w-full min-h-full lg:flex lg:px-5 lg:py-0 pb-20 px-2 items-center gap-5">
@@ -240,7 +240,7 @@ export default function InternationalPage() {
                         </div>
                     </div>
                 </div>
-                <div className="lg:block hidden  w-1/14 border border-white border-t-0 border-r-0 p-6 min-h-full">
+                <div className="lg:block hidden  w-1/14 border border-[#ffffff80] border-t-0 border-r-0 p-6 min-h-full">
                         
                 </div>
             </div>
