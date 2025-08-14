@@ -154,8 +154,15 @@ const more: More[] = [
         description: 'Newsletter',
         href: '/newsletter',
         icon: ChartPieIcon,
+    },
+    {
+        name: 'International',
+        description: 'International',
+        href: '/international',
+        icon: ChartPieIcon,
     }
 ];
+
 const callsToAction: CallToAction[] = [
     { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
     { name: 'Contact sales', href: '#', icon: PhoneIcon },
