@@ -65,7 +65,7 @@ const InquireForm = (props:any) => {
         if(typeof window === 'undefined') return ; //ensure code runs only in browser
 
         const APIKey = '160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a';
-        const sendToMail = "wd6@psinv.net";
+        const sendToMail = "callcenter@psinv.net";
 
         const lastSubmitTime = localStorage.getItem("formSubmitTime");
         const now = Date.now();
@@ -253,6 +253,21 @@ const InquireForm = (props:any) => {
                 });
 
                 if(res.ok || mailRes.ok) {
+                    const files = [
+                        { path:"/assets/documents/international/PSI-Company-Profile.pdf", name: "PSI-Company-Profile.pdf" },
+                        { path:"/assets/documents/international/PSI-International-Investor-Guide.pdf", name: "PSI-International-Investor-Guide.pdf" }
+                    ];
+                    
+                    files.forEach(file => {
+                        const a = document.createElement("a");
+                        a.href= file.path;
+                        a.download = file.name;
+                        a.style.display = "none";
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                    });
+
                     setPostId("success");
                     setIsSubmitSuccess(true);
                     setIsAlreadySubmitted(false);
@@ -361,8 +376,8 @@ const InquireForm = (props:any) => {
 
                 {!isSubmitting && !isSubmitSuccess ?  (
                     <>
-                        <p className={` ${!props.fromModal ? "text-center" : ""} text-xs `}>By creating an account, you agree to our <span className="text-[#ED9C4B]">Terms of Service</span> and
-                    have read and understood the <span className="text-[#ED9C4B]">Privacy Policy</span></p>
+                        <p className={` ${!props.fromModal ? "text-center" : ""} text-xs `}>By creating an account, you agree to our <a href="terms" target="_blank"><span className="text-[#ED9C4B]">Terms of Service</span></a> and
+                    have read and understood the <a href="privacy" target="_blank"><span className="text-[#ED9C4B]">Privacy Policy</span></a></p>
                     <p className={`${!props.fromModal ? "text-center" : ""} text-xs`}>Company Profile and International Investor Guide will be downloaded upon submitting your details</p>
                     <div className="flex flex-column gap-0">                    
                         <div className="mb-0">

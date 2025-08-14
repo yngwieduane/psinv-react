@@ -69,7 +69,7 @@ const ContactForm = () => {
         if(typeof window === 'undefined') return ; //ensure code runs only in browser
 
         const APIKey = '160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a';
-        const sendToMail = "wd6@psinv.net";
+        const sendToMail = "callcenter@psinv.net";
 
         const lastSubmitTime = localStorage.getItem("formSubmitTime");
         const now = Date.now();
@@ -256,16 +256,21 @@ const ContactForm = () => {
                     }),
                 });
 
-                if(res.ok || mailRes.ok) {
+                if(res.ok || mailRes.ok) {   
+                    const files = [
+                        { path:"/assets/documents/international/PSI-Company-Profile.pdf", name: "PSI-Company-Profile.pdf" },
+                        { path:"/assets/documents/international/PSI-International-Investor-Guide.pdf", name: "PSI-International-Investor-Guide.pdf" }
+                    ];
                     
-                    const file1 = "/assets/documents/international/PSI-Company-Profile.pdf";
-                    const a = document.createElement("a");
-                    a.href= file1;
-                    a.download = "PSI-Company-Profile.pdf";
-                    a.style.display = "none";
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
+                    files.forEach(file => {
+                        const a = document.createElement("a");
+                        a.href= file.path;
+                        a.download = file.name;
+                        a.style.display = "none";
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                    });                    
 
                     setPostId("success");
                     setIsSubmitSuccess(true);
