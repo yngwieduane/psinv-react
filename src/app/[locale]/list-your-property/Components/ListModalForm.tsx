@@ -224,6 +224,7 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
             
             let urlParams = new URLSearchParams(window.location.search);
             let source = urlParams.get('utm_source') || '';
+            let campaign = urlParams.get('utm_campaign') || '';
             let gclid = urlParams.get('gclid_field') || '';
             let currentUrl = window.location.href;
 
@@ -267,6 +268,14 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
                     methodOfContact = "115747";
                     break;
                 }
+
+            // switch (campaign) {
+            //     case '':
+            //         propertyCampaignId = "";
+                
+            //     default:
+            //         propertyCampaignId = propertyCampaignId;
+            // } 
 
             switch(data.beds){
                 case "1":
@@ -332,48 +341,48 @@ const ListModalForm: React.FC<ListFormProps> = ({fromModal}) => {
             }
 
             switch (data.proptype) {
-            case 'Apartment':
-                unitType = 19;
-                break;
-            case 'Villa':
-                unitType = 20;
-                break;
-            case 'Townhouse':
-                unitType = 131090;
-                break;
-            case 'Residential%20Land':
-                unitType = 47390;
-                break;
-            case 'Office':
-                unitType = 24;
-                break;
-            case 'Commercial%20Plot':
-                unitType = 47388;
-                break;
-            default:
-                unitType = 19;
-                break;
+                case 'Apartment':
+                    unitType = 19;
+                    break;
+                case 'Villa':
+                    unitType = 20;
+                    break;
+                case 'Townhouse':
+                    unitType = 131090;
+                    break;
+                case 'Residential%20Land':
+                    unitType = 47390;
+                    break;
+                case 'Office':
+                    unitType = 24;
+                    break;
+                case 'Commercial%20Plot':
+                    unitType = 47388;
+                    break;
+                default:
+                    unitType = 19;
+                    break;
             }   
             
             switch (cityName) {
-            case 'Abu Dhabi':	    		
-                ReferredToID=3458;
-                ReferredByID=3458;
-                sendtomail='wd6@psinv.net';
-                break;
-            case 'Dubai':	    		
-                ReferredToID=4421;
-                ReferredByID=4421;
-                ActivityAssignedTo=4421;
-                sendtomail = "callcenter@psidubai.com";
-                break;	    	
-            default:
-                ReferredToID= ReferredToID;
-                ReferredByID=ReferredByID;
-                ActivityAssignedTo=ActivityAssignedTo;
-                sendtomail = "callcenter@psinv.net";
-                break;
-        }
+                case 'Abu Dhabi':	    		
+                    ReferredToID=3458;
+                    ReferredByID=3458;
+                    sendtomail='wd6@psinv.net';
+                    break;
+                case 'Dubai':	    		
+                    ReferredToID=4421;
+                    ReferredByID=4421;
+                    ActivityAssignedTo=4421;
+                    sendtomail = "callcenter@psidubai.com";
+                    break;	    	
+                default:
+                    ReferredToID= ReferredToID;
+                    ReferredByID=ReferredByID;
+                    ActivityAssignedTo=ActivityAssignedTo;
+                    sendtomail = "callcenter@psinv.net";
+                    break;
+            }
             
             const remarks = `
                 Additional consent 1 : ${data.agreement1 ? "Yes" : "No"} </br>

@@ -133,7 +133,7 @@ const AboutPage = () => {
             {/* Main Content */}
             <div className="relative md:flex mx-auto px-4 max-w-[1320px] items-center py-5 gap-10">
                 {/* Left Content */}
-                <div className="md:w-[60%] w-full relative z-10 md:py-20 py-10">
+                <div className="md:w-[60%] w-full relative md:py-20 py-10">
                     <h2 className={`text-[#CE641D] text-5xl md:text-6xl mb-2 aboutTitle ${BrittanySignature.className}`}> About </h2>
                     <h2 className="text-gray-900 font-bold md:text-5xl text-4xl mb-6">Property Shop Investment</h2>
                     <div className="text-gray-500 sm:text-lg text-xs mt-6">

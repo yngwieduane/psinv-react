@@ -62,7 +62,7 @@ export default function YoungstersProgramPage() {
             backgroundBlendMode: 'multiply',
           }}
         />
-        <header className="relative z-20 text-white py-4 px-6">
+        <header className="relative text-white py-4 px-6">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center space-x-10">
               <a href="/" className="w-[72px] h-[64px] block">
@@ -105,7 +105,7 @@ export default function YoungstersProgramPage() {
           )}
         </header>
         {/* Hero Content */}
-        <div className="relative z-10 text-white py-16 px-6">
+        <div className="relative text-white py-16 px-6">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-10">
             <div className="space-y-6">
               <h1 className="text-[32px] leading-[45px] tracking-wide font-sans md:text-[2.5rem] md:leading-none">

@@ -32,7 +32,10 @@ export default function TabContent({ levelData, isComingSoon }: TabContentProps)
           <h3 className="text-2xl font-bold mb-6">{levelData.title}</h3>
           {levelData.days.map((day, idx) => (
             <div className={styles.detailsInner} key={idx}>
-              <div className={styles.dayCircle}>{day.day}</div>
+              <div className={styles.circleOuter}>
+                <div className={styles.dayCircle}>{day.day}</div>
+              </div>
+              
               <div className={styles.dayText}>
                 <p className="text-lg font-semibold mb-1">{day.title}</p>
                 {day.descriptions.map((desc, dIdx) => (

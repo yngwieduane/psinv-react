@@ -118,7 +118,7 @@ const MainFooter = () => {
       </button>
     </div>
     {/* Download Buttons */}
-    <div className="mt-4 mb-3">
+    <div className="mt-4">
       <a href="/docs/holiday-homes-abu-dhabi.pdf" download="holiday-homes-abu-dhabi.pdf"
          className="flex bg-[#E46027] text-white py-4 px-4 items-center justify-between mt-2 text-xs rounded-lg">
         Holiday Homes Abu Dhabi Guides
@@ -130,6 +130,16 @@ const MainFooter = () => {
         <FontAwesomeIcon icon={faDownload} />
       </a>
     </div>
+
+    <div className="flex w-full gap-2 mt-5 justify-between">              
+      <div className="w-1/2">
+        <a href="https://apps.apple.com/us/app/psi-real-estate/id6736644035" target="_blank"><img src="/assets/images/appstore.svg" alt="App Store" title="App Store" className="w-full" /></a>
+      </div>
+      <div className="w-1/2">
+        <a href="https://play.google.com/store/apps/details?id=com.psi.psirealestate" target="_blank"><img src="/assets/images/googleplay.svg" alt="Google Play" title="Google Play" className="w-full" /></a>
+      </div>
+    </div>
+
   </div>
         </div>
       </div>

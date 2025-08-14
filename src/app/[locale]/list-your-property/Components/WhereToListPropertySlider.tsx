@@ -11,6 +11,7 @@ type Slide  = {
     title: string
 }
 
+
 type Props = {
     slides : Slide[];
 }
