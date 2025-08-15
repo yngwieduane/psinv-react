@@ -320,12 +320,12 @@ const Navigation: FC = () => {
 
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link href="/units?category=Buy">Buy</Link>
+                                <Link className="hover:bg-psiblue hover:text-white" href="/units?category=Buy">Buy</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link href="/units?category=Rent">Rent</Link>
+                                <Link className="hover:bg-psiblue hover:text-white" href="/units?category=Rent">Rent</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
@@ -369,7 +369,7 @@ const Navigation: FC = () => {
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link href="/list-your-property">List Your Property</Link>
+                                <Link className="hover:bg-psiblue hover:text-white" href="/list-your-property">List Your Property</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
@@ -388,7 +388,7 @@ const Navigation: FC = () => {
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link href="/contact-us">Contact Us</Link>
+                                <Link className="hover:bg-psiblue hover:text-white" href="/contact-us">Contact Us</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <button
