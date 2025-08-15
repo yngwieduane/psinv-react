@@ -4,19 +4,17 @@ import { walkinFormConfig } from '@/utils/walkinConfig';
 import { WalkinFormProvider } from '@/context/WalkinFormContext';
 import { WalkInFormContents } from '@/app/[locale]/_components/walkin/WalkInFormContents';
 
-
 type WalkInFormPageProps = {
-  params: Promise<{ slug: string }>;
-  locale: string;
+  params: Promise<{ locale: string; slug: string }>;
 };
 
-export default async function WalkInFormPage({ params, locale }: WalkInFormPageProps) {
-  const { slug } = await params;
+export default async function WalkInFormPage({ params }: WalkInFormPageProps) {
+  const { slug, locale } = await params;
 
-  const config = walkinFormConfig[slug] || {
-    title: slug.replace(/-/g, " "),
-    developerLogoUrl: "",
-    logo: "",
+  const config = walkinFormConfig[slug] ?? {
+    title: slug.replace(/-/g, ' '),
+    developerLogoUrl: '',
+    logo: '',
     showClientProfession: true,
     showContactInformation: true,
     showHostedBy: true,
@@ -24,9 +22,13 @@ export default async function WalkInFormPage({ params, locale }: WalkInFormPageP
 
   return (
     <div className="min-h-screen py-10">
-      <div className="max-w-[1140px] mx-auto bg-white shadow-xl rounded-md">
+      <div className="mx-auto max-w-[1140px] rounded-md bg-white shadow-xl">
         <WalkinFormProvider>
-          <WalkinHeader title={config.title} logo={config.logo || '/images/psi-logo.png'} developerLogoUrl={config.developerLogoUrl}/>
+          <WalkinHeader
+            title={config.title}
+            logo={config.logo || '/images/psi-logo.png'}
+            developerLogoUrl={config.developerLogoUrl}
+          />
           <hr className="border-t border-[#dee2e6]" />
           <WalkInFormContents slug={slug} locale={locale} />
         </WalkinFormProvider>
@@ -34,4 +36,3 @@ export default async function WalkInFormPage({ params, locale }: WalkInFormPageP
     </div>
   );
 }
-
