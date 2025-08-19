@@ -25,7 +25,7 @@ const PropertyCard = (props:any) => {
 
     const propHO = HOdate ? (<p className="text-sm">Handover<br />{HOdate}</p>) : ("");
     const propSize = (props.data["builtupArea_SQFT"] && props.data["builtupArea_SQFT"] !== '0') ? (<p className="text-sm">Size (BUA)<br />{props.data["builtupArea_SQFT"]}</p>) : ("");
-    const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0','?width=300&height=300') : ("");
+    const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0','?width=600&height=400') : ("");
     const subCommunity = props.data["subCommunity"] ? props.data["subCommunity"] : "n-a";
 
     const url =  '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['community']) + "/" + slugify(subCommunity) + "/" + slugify(props.data['propertyName']);
@@ -43,7 +43,7 @@ return (
               />
             ) : (
               <div className='w-full h-50 bg-light'></div>
-            )}
+          )}
           <div
             className="flex items-center justify-center absolute w-full h-full opacity-0 ease-in duration-300"
             aria-hidden="true"
