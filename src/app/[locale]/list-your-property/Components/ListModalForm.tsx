@@ -726,7 +726,7 @@ return(
         
     </form>
     {!isSubmitSuccess && (
-         <p className="text-sm text-[#8A8A8A] mt-5">By clicking Submit, you agree to our Terms & Conditions and Privacy Policy</p>
+         <p className="text-sm text-[#8A8A8A] mt-5">By clicking Submit, you agree to our <a href="terms">Terms & Conditions</a> and <a href="privacy">Privacy Policy</a></p>
     )}
    
     </>

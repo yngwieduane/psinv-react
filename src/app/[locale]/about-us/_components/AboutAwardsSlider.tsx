@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay} from "swiper/modules";
 
 import 'swiper/css';
 
@@ -11,11 +11,7 @@ const AboutAwardsSlider = (props: any) => {
 
     return (
         <>       
-            <Swiper
-                pagination = {{
-                    type:"bullets",
-                    clickable:true, 
-                }}
+            <Swiper                
                 breakpoints = {{
                     576: {
                         slidesPerView : 1
@@ -30,7 +26,7 @@ const AboutAwardsSlider = (props: any) => {
                 autoplay = {true}
                 centeredSlides = {true}
                 loop = {true}
-                modules = {[Pagination, Autoplay]}
+                modules = {[Autoplay]}
                 onSwiper = {(swiper: any) => (swiperElRef.current = swiper)}
                 >
 

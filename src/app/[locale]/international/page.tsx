@@ -6,7 +6,7 @@ import Link from "next/link";
 import { AudreyNormal, Audrey } from "@/utils/fonts";
 import { Lato } from "next/font/google";
 import { useState } from "react";
-import { FaWhatsapp, FaArrowDown, FaChevronLeft } from "react-icons/fa";
+import { FaWhatsapp, FaArrowDown} from "react-icons/fa";
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LocationsSlider from './_components/LocationsSlider';
