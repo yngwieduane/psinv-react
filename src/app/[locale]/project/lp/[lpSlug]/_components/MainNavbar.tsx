@@ -10,7 +10,6 @@ export default function MainNavbar({ locale }: { locale: string }) {
   const t = useTranslations("Navbar");
   const [open, setOpen] = useState(false);
 
-  // Map labels to section ids you rendered on the page
   const items = [
     { id: "home",       label: t("home") },
     { id: "about",      label: t("about") },
@@ -22,14 +21,11 @@ export default function MainNavbar({ locale }: { locale: string }) {
   return (
     <nav className="w-full text-white">
       <div className="container mx-auto px-4 py-3 lg:py-4 flex items-center">
-        {/* Left: Logo */}
         <div className="shrink-0">
           <Link href={`/${locale}`}>
             <img src="/images/logo-psi-white.svg" alt="PSI Logo" className="h-8 w-auto" />
           </Link>
         </div>
-
-        {/* Middle: centered menu */}
         <div className="flex-1 hidden lg:flex justify-center">
           <ul className="flex items-center gap-8">
             {items.map(item => (
@@ -41,8 +37,6 @@ export default function MainNavbar({ locale }: { locale: string }) {
             ))}
           </ul>
         </div>
-
-        {/* Right: language + mobile toggle */}
         <div className="hidden lg:flex items-center gap-4 shrink-0">
           <LanguageSwitch current={locale} />
         </div>
@@ -55,8 +49,6 @@ export default function MainNavbar({ locale }: { locale: string }) {
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
-
-      {/* Mobile menu */}
       {open && (
         <div className="lg:hidden bg-[#1b0e3d] px-4 pb-4 space-y-3">
           <div className="pt-2 pb-3 border-b border-white/10">

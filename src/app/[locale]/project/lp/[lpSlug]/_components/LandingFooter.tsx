@@ -17,7 +17,7 @@ type SocialKey =
   | "snapchat";
 
 type Props = {
-  crm?: CRMMeta;  // 👈 pass CRM meta directly
+  crm?: CRMMeta;
 
   heading?: string;
   address?: string;
@@ -28,7 +28,7 @@ type Props = {
 
   className?: string;
   dir?: "ltr" | "rtl";
-  variant?: "glass" | "solid"; // optional styling for the footer wrapper
+  variant?: "glass" | "solid";
 };
 
 const icons = {
@@ -90,7 +90,6 @@ export default function LandingFooter({
 }: Props) {
   const t = useTranslations("LandingFooter");
 
-  // Prefer translations; fall back to props/defaults
   const headingText = t("heading", { default: heading } as any);
   const formHeadingText = t("formHeading", { default: formHeading } as any);
   const localTelLabel = t("localTel", { default: "Local Tel" } as any);
@@ -104,17 +103,14 @@ export default function LandingFooter({
       : "bg-[#272964]",
     className
   );
-
   return (
     <footer dir={dir} className={wrapper}>
       <div className="mx-auto w-full max-w-7xl px-4 py-14">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* LEFT */}
           <div className="self-start">
             <h2 className="whitespace-pre-line text-3xl md:text-5xl font-semibold leading-tight">
               {headingText}
             </h2>
-
             {addressText && (
               <p className="mt-10 flex items-start gap-3 text-white/90">
                 <span className="mt-1" aria-hidden="true">
@@ -125,7 +121,6 @@ export default function LandingFooter({
                 <span>{addressText}</span>
               </p>
             )}
-
             <div className="mt-6 space-y-3 text-white/90">
               {localTel && (
                 <a
@@ -156,7 +151,6 @@ export default function LandingFooter({
                 </a>
               )}
             </div>
-
             {socials.length > 0 && (
               <div className="mt-8 flex items-center gap-5">
                 {socials.map((s, i) => (
@@ -175,15 +169,9 @@ export default function LandingFooter({
               </div>
             )}
           </div>
-
-          {/* RIGHT: form card */}
           <div className="lg:pl-8">
-            <div className="max-w-[560px] rounded-xl bg-white/10 backdrop-blur shadow-[0_10px_30px_rgba(0,0,0,0.25)] ring-1 ring-white/10">
-              <div className="px-6 pt-6 pb-2">
-                <h3 className="text-xl font-semibold text-white">{formHeadingText}</h3>
-              </div>
+            <div>
               <div className="px-6 pb-6">
-                {/* ✅ matches new InquiryForm signature */}
                 {crm && <InquiryForm crm={crm} variant="solid" />}
               </div>
             </div>

@@ -12,7 +12,6 @@ export default function UspSection({
   items: ReadonlyArray<UspItem>;
   className?: string;
 }) {
-  // allow either strings or objects and filter empties
   const normalized = items.filter(Boolean);
 
   return (

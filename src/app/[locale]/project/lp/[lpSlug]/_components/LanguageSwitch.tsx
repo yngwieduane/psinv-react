@@ -8,9 +8,9 @@ export const SUPPORTED = ["en", "ar"] as const;
 type Locale = (typeof SUPPORTED)[number];
 
 type Props = {
-  current?: string;       // optional; inferred from URL if omitted
+  current?: string;
   className?: string;
-  variant?: "glass" | "solid"; // match your existing theme styles
+  variant?: "glass" | "solid";
 };
 
 export default function LanguageSwitch({ current, className, variant = "solid" }: Props) {
@@ -19,20 +19,17 @@ export default function LanguageSwitch({ current, className, variant = "solid" }
   const search = useSearchParams();
   const qs = search?.toString();
 
-  // Infer current locale from the URL if not passed
-  const parts = pathname.split("/"); // ["", "en", "project", ...] or ["", "project", ...]
+  const parts = pathname.split("/");
   const urlLocale = (parts[1] as Locale) || "en";
   const rawValue = (current ?? urlLocale).toLowerCase();
   const value: Locale = (SUPPORTED.includes(rawValue as Locale) ? rawValue : "en") as Locale;
 
-  // Build a localized href, preserving query string and hash
   const toHref = (next: Locale) => {
     const p = [...parts];
-    if (SUPPORTED.includes(p[1] as Locale)) p[1] = next; // replace /{locale}
-    else p.splice(1, 0, next);                           // or insert it
+    if (SUPPORTED.includes(p[1] as Locale)) p[1] = next;
+    else p.splice(1, 0, next);
     const pathOnly = p.join("/") || "/";
     const withQs = qs ? `${pathOnly}?${qs}` : pathOnly;
-    // Preserve hash if present (usePathname excludes it; read from window)
     if (typeof window !== "undefined" && window.location.hash) {
       return `${withQs}${window.location.hash}`;
     }
@@ -42,10 +39,8 @@ export default function LanguageSwitch({ current, className, variant = "solid" }
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const next = e.target.value as Locale;
     router.push(toHref(next));
-    router.refresh?.(); // helpful if server components read locale
+    router.refresh?.();
   };
-
-  // Styling tokens for theme variants
   const base =
     "uppercase border rounded-md px-3 py-1 pr-8 text-xs tracking-wide focus:outline-none focus:ring-2 appearance-none";
   const solid =
@@ -72,8 +67,6 @@ export default function LanguageSwitch({ current, className, variant = "solid" }
           </option>
         ))}
       </select>
-
-      {/* Chevron */}
       <svg
         aria-hidden="true"
         className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 text-white/80"

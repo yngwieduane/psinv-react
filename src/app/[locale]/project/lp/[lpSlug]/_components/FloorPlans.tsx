@@ -152,7 +152,6 @@ export default function FloorPlans({
 
       {hasGroups ? (
         <>
-          {/* Tabs */}
           <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
             {safeGroups.map((g, i) => {
               const tabLabel =
@@ -180,10 +179,7 @@ export default function FloorPlans({
               );
             })}
           </div>
-
-          {/* Two-side layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* LEFT: hero image */}
             <div className="rounded-xl overflow-hidden border border-[#E6E8F3]">
               {heroImage ? (
                 <img src={heroImage} alt="Project image" className="w-full h-full object-cover" />
@@ -191,13 +187,10 @@ export default function FloorPlans({
                 <div className="min-h-[320px] bg-gray-100" />
               )}
             </div>
-
-            {/* RIGHT: slider + download */}
             <div className="bg-[#F6FAFF] rounded-xl p-6 flex flex-col relative">
               <h3 className="text-2xl md:text-3xl font-semibold text-[#111954] mb-4 w-full flex justify-center">
                 {tabTitleFor(current, t)}
               </h3>
-
               {!!currentImages.length && (
                 <div className="relative rounded-lg overflow-hidden border border-[#E6E8F3]">
                   <img
@@ -211,7 +204,6 @@ export default function FloorPlans({
                       setShowLB(true);
                     }}
                   />
-
                   {hasSlides && (
                     <>
                       <button
@@ -228,8 +220,6 @@ export default function FloorPlans({
                       >
                         ›
                       </button>
-
-                      {/* Dots */}
                       <div className="absolute inset-x-0 bottom-2 flex items-center justify-center gap-2">
                         {currentImages.map((_, i) => (
                           <button
@@ -247,8 +237,6 @@ export default function FloorPlans({
                   )}
                 </div>
               )}
-
-              {/* Download */}
               {(current as any)?.pdfUrl && (
                 <div className="mt-4 w-full flex justify-center">
                   <a
@@ -262,7 +250,6 @@ export default function FloorPlans({
               )}
             </div>
           </div>
-
           {showLB && (
             <Lightbox
               images={currentImages}
@@ -273,7 +260,6 @@ export default function FloorPlans({
           )}
         </>
       ) : (
-        // Fallback list (no tabs)
         <ul className="mx-auto max-w-2xl space-y-3">
           {files.map((f) => (
             <li
@@ -291,10 +277,6 @@ export default function FloorPlans({
     </section>
   );
 }
-
-/* =========================
-   Helpers
-   ========================= */
 function safeT(
   t: ReturnType<typeof useTranslations> | null,
   key?: string,
@@ -309,7 +291,6 @@ function safeT(
     return fallback ?? "";
   }
 }
-
 function tabTitleFor(
   g: FloorGroup | undefined,
   t: ReturnType<typeof useTranslations> | null

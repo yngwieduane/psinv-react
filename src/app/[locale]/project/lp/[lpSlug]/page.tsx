@@ -70,7 +70,6 @@ export default async function Page({ params }: PageProps) {
   const cfg = landingConfigs[lpSlug] as LandingConfig;
   if (!cfg) return notFound();
 
-  // Integration (from LandingConfig only)
   const crmMeta = cfg.data.integration?.meta;
   const heroVariant = cfg.data.integration?.heroVariant ?? "glass";
   const footerVariant = cfg.data.integration?.footerVariant ?? "solid";
@@ -120,7 +119,6 @@ export default async function Page({ params }: PageProps) {
 
     if (translated.length) uspItems = translated;
   } catch {
-    // keep fallback
   }
 
   // -------------------- ABOUT --------------------
@@ -195,18 +193,15 @@ export default async function Page({ params }: PageProps) {
         description={description}
         ctaText={ctaText}
         topSlot={<MainNavbar locale={locale} />}
-        /* ✅ InquiryForm is driven only by LandingConfig.integration.meta */
         rightSlot={
           crmMeta ? (
             <InquiryForm crm={crmMeta} variant={heroVariant} />
           ) : null
         }
       />
-
       {cfg.sections.includes("usp") && uspItems.length > 0 && (
         <UspSection items={uspItems} />
       )}
-
       {cfg.sections.includes("about") && (
         <AboutSection
           image={cfg.data.about?.img}
@@ -218,7 +213,6 @@ export default async function Page({ params }: PageProps) {
           videoId={cfg.data.about?.videoId}
         />
       )}
-
       {cfg.sections.includes("gallery") && galleryImages.length > 0 && (
         <GallerySection
           images={galleryImages}
@@ -229,7 +223,6 @@ export default async function Page({ params }: PageProps) {
           className="mt-12"
         />
       )}
-
       {cfg.sections.includes("amenities") && amenitiesItems.length > 0 && (
         <AmenitiesSection
           sectionId="amenities"
@@ -241,7 +234,6 @@ export default async function Page({ params }: PageProps) {
           className="mt-14"
         />
       )}
-
       {cfg.sections.includes("floor-plan") && floorCfg && (
         <FloorPlans
           title="Floor Plans"
@@ -252,7 +244,6 @@ export default async function Page({ params }: PageProps) {
           ns={floorCfg.ns}
         />
       )}
-
       {cfg.sections.includes("location") && mapEmbedUrl && (
         <LocationMap
           mapEmbedUrl={mapEmbedUrl}
@@ -260,19 +251,18 @@ export default async function Page({ params }: PageProps) {
           titleKey="title"
         />
       )}
-
       {cfg.sections.includes("footer") && (
-<LandingFooter
-  crm={crmMeta}
-  heading={cfg.data.footer?.heading}
-  address={cfg.data.footer?.address}
-  localTel={cfg.data.footer?.localTel}
-  intlTel={cfg.data.footer?.intlTel}
-  socials={cfg.data.footer?.socials}
-  formHeading={cfg.data.footer?.formHeading}
-  dir={isRTL ? "rtl" : "ltr"}
-  variant={footerVariant}
-/>
+        <LandingFooter
+          crm={crmMeta}
+          heading={cfg.data.footer?.heading}
+          address={cfg.data.footer?.address}
+          localTel={cfg.data.footer?.localTel}
+          intlTel={cfg.data.footer?.intlTel}
+          socials={cfg.data.footer?.socials}
+          formHeading={cfg.data.footer?.formHeading}
+          dir={isRTL ? "rtl" : "ltr"}
+          variant={footerVariant}
+        />
       )}
     </main>
   );

@@ -9,9 +9,9 @@ type Props = {
   images: string[];
   split?: "alternate" | "half";
   className?: string;
-  ns?: string;          // e.g. "LandingPages.sama-yas.gallery"
-  titleKey?: string;    // default "title"
-  sectionId?: string;   // default "gallery"
+  ns?: string;
+  titleKey?: string;
+  sectionId?: string;
   rtl?: boolean;
 };
 
@@ -92,8 +92,6 @@ function SliderRow({
           </figure>
         ))}
       </div>
-
-      {/* arrows; mirrored in RTL */}
       <Arrow side={rtl ? "right" : "left"} onClick={scroller.prev} label={prevLabel} />
       <Arrow side={rtl ? "left" : "right"} onClick={scroller.next} label={nextLabel} />
     </div>
@@ -113,7 +111,6 @@ function Arrow({ side, onClick, label }: { side: "left" | "right"; onClick: () =
   );
 }
 
-/* ---------- helpers ---------- */
 function safeTWithNs(
   t: ReturnType<typeof useTranslations>,
   ns: string,
@@ -122,7 +119,6 @@ function safeTWithNs(
 ) {
   try {
     const val = t(key);
-    // if next-intl returns the key path when missing, fall back
     if (val === `${ns}.${key}`) return fallback;
     return val;
   } catch {

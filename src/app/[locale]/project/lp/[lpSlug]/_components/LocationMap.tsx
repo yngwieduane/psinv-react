@@ -5,18 +5,14 @@ import { useTranslations } from "next-intl";
 
 type Props = {
   mapEmbedUrl?: string;
-  /** If you pass a plain string, it wins */
   title?: string;
-  /** i18n namespace to read from (e.g. "LandingPages.sama-yas.ProjectPage") */
   titleNs?: string;
-  /** i18n key inside the namespace (default: "location") */
   titleKey?: string;
 };
 
 const LocationMap = ({ mapEmbedUrl, title, titleNs, titleKey = "location" }: Props) => {
   if (!mapEmbedUrl) return null;
 
-  // Use a specific namespace if provided; otherwise use the generic "ProjectPage"
   const t = useTranslations(titleNs ?? "ProjectPage");
   const heading = title ?? t(titleKey);
 

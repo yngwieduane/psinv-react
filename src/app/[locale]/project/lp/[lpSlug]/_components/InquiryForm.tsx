@@ -11,14 +11,11 @@ import { User, Mail } from "lucide-react";
 import clsx from "clsx";
 
 import type { CRMMeta } from "../LandingConfig";
-
-/* ---------------- props ---------------- */
 export interface InquiryFormProps {
-  crm: CRMMeta;                        // driven only by LandingConfig.integration.meta
+  crm: CRMMeta;
   variant?: "glass" | "solid";
   className?: string;
 }
-
 /* ---------------- language map ---------------- */
 const languageMap: Record<string, string> = {
   en: "115915",
@@ -33,7 +30,6 @@ const languageMap: Record<string, string> = {
   tr: "115930",
   nl: "115914",
 };
-
 /* ---------------- media/source mapping ---------------- */
 type MediaMap = { MediaType: number; MediaName: number; MethodOfContact?: number };
 
@@ -51,19 +47,14 @@ const SOURCE_MAP: Record<string, MediaMap> = {
   tiktok:     { MediaType: 165269, MediaName: 167836 },
   chatbot:    { MediaType: 167696, MediaName: 167697, MethodOfContact: 167215 },
 };
-
-// Fallback when nothing is detected
 const DEFAULT_MEDIA: MediaMap = { MediaType: 165232, MediaName: 165233 };
-
-// Put near SOURCE_MAP
+// SOURCE_MAP
 const SOURCE_ALIASES: Record<string, string> = {
-  // HubSpot email variants
   hubspotemail: "hubspot",
   hs_email: "hubspot",
   hsemail: "hubspot",
   hubspot: "hubspot",
 
-  // Google ads variants
   google: "google",
   googleadwordsbanner: "google",
   googleadwords: "google",
@@ -71,7 +62,6 @@ const SOURCE_ALIASES: Record<string, string> = {
   googleads: "google",
   google_ads: "google",
 
-  // Socials
   facebook: "facebook",
   instagram: "instagram",
   youtube: "youtube",
@@ -80,7 +70,6 @@ const SOURCE_ALIASES: Record<string, string> = {
   whatsapp: "whatsapp",
   tiktok: "tiktok",
 
-  // Others
   newsletter: "newsletter",
   sms: "sms",
   blog: "blog",
@@ -105,8 +94,6 @@ function detectSourceFromReferrer(ref: string, path: string): string | undefined
   if (path.includes("/blog")) return "blog";
   return undefined;
 }
-
-/* ---------------- styled input helpers ---------------- */
 const inputShell =
   "relative flex items-center h-14 overflow-hidden rounded-md bg-white " +
   "border border-[#E6E8F3] shadow-sm focus-within:ring-2 focus-within:ring-[#F26522]/40";
@@ -114,15 +101,11 @@ const inputShell =
 const inputIcon = "absolute left-3 text-[#7C86A5]";
 const inputBase =
   "w-full h-full bg-white text-[#1A1A1A] placeholder:text-[#667085] pl-10 pr-4 outline-none";
-
-/** Toggle off when you’re ready to POST */
 const DEBUG = false;
 
 export default function InquiryForm({ crm, variant = "glass", className }: InquiryFormProps) {
   const t = useTranslations("InquiryForm");
   const locale = useLocale() as string;
-
-  /* --------- schema WITH translations --------- */
   const schema = z.object({
     firstName: z.string().min(1, { message: t("errors.firstName") }),
     lastName: z.string().min(1, { message: t("errors.lastName") }),
@@ -136,8 +119,6 @@ export default function InquiryForm({ crm, variant = "glass", className }: Inqui
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-
-  /* ---------------- dedupe helpers (use pathname as scope) ---------------- */
   const formScope = typeof window !== "undefined" ? window.location.pathname : "lp";
   const getSubmitKey = (email: string) => `lastSubmit:${email}:${formScope}`;
   const hasRecentlySubmitted = (email: string) => {
@@ -148,21 +129,15 @@ export default function InquiryForm({ crm, variant = "glass", className }: Inqui
   const markAsSubmitted = (email: string) =>
     typeof window !== "undefined" &&
     localStorage.setItem(getSubmitKey(email), Date.now().toString());
-
-  /* ---------------- RHF ---------------- */
   const { register, control, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: { consent1: true, consent2: true, consent3: true },
   });
-
-  /* ---------------- submit ---------------- */
   const onSubmit = async (data: FormData) => {
     if (hasRecentlySubmitted(data.email)) {
       alert(t("alerts.duplicate"));
       return;
     }
-
-// --- UTM from URL only ---
 const qp = typeof window !== "undefined"
   ? new URLSearchParams(window.location.search)
   : new URLSearchParams();
@@ -173,15 +148,9 @@ const utmFromUrl = {
   campaign: qp.get("utm_campaign") || "",
 };
 const hasUTM = !!(utmFromUrl.source || utmFromUrl.medium || utmFromUrl.campaign);
-
-// Normalize + map source
 const sourceKey = normalizeSource(utmFromUrl.source);
 const mapped = sourceKey ? SOURCE_MAP[sourceKey] : undefined;
-
-// Campaign-specific overrides (from LandingConfig.integration.meta)
 const utmRawMeta = crm?.utmMetaMap?.[utmFromUrl.campaign] || undefined;
-
-// Final resolved values (priority: source map → campaign map → defaults)
 const resolvedMedia = {
   MediaType: mapped?.MediaType ?? utmRawMeta?.media_Type ?? DEFAULT_MEDIA.MediaType,
   MediaName: mapped?.MediaName ?? utmRawMeta?.media_Name ?? DEFAULT_MEDIA.MediaName,
@@ -203,7 +172,6 @@ ${t("remarks.clientPhone")}: ${data.phone}</br>
 branch: ${crm?.Branch || ""}</br>
 URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
 
-    // build payload
     const payload = {
       TitleID: "129932",
       FirstName: data.firstName,
@@ -218,7 +186,6 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
       NationalityID: "65946",
       LanguageID: languageMap[locale] || "115915",
       CompanyID: "",
-
       Remarks: crm?.utmRemarksMap?.[utmFromUrl.campaign] || crm?.remarks || "",
       RequirementType: crm?.RequirementType ?? 91212,
       ContactType: crm?.ContactType,
@@ -226,16 +193,13 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
       StateID: crm?.StateID,
       CityID: crm?.CityID,
       DistrictID: crm?.DistrictID || "",
-
       CommunityID: crm?.CommunityID ?? "",
       SubCommunityID: crm?.SubCommunityID ?? "",
-      PropertyID: (crm as any)?.PropertyID ?? "",            // empty string, not undefined
+      PropertyID: (crm as any)?.PropertyID ?? "",
       UnitType: crm?.UnitType,
-
       MediaType: resolvedMedia.MediaType,
       MediaName: resolvedMedia.MediaName,
       MethodOfContact: resolvedMedia.MethodOfContact ?? 0,
-
       DeactivateNotification: "",
       Bedroom: crm?.Bedroom ?? 21935,
       Bathroom: crm?.Bathroom ?? 21935,
@@ -251,7 +215,6 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
       LeadStageId: "",
       LeadRatingId: "",
       UnitId: "",
-
       ReferredToID: (crm?.refto ?? 3458).toString(),
       ReferredByID: (crm?.refby ?? 3458).toString(),
       ActivityAssignedTo: (crm?.assignto ?? 3458).toString(),
@@ -260,11 +223,9 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
       ActivitySubject: "Email Inquiry Copy",
       ActivityRemarks: stripDirectionChars(fullRemark),
       IsForAutoRotation: "true",
-
       PropertyCampaignId: hasUTM ? (crm?.utmCampaignMap?.[utmFromUrl.campaign] ?? "") : "",
       google_gclid: "",
 
-      // Include UTM only if present in URL
       ...(hasUTM
         ? {
             utm_campaign: utmFromUrl.campaign,
@@ -287,8 +248,6 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
         setSuccessMessage("✅ Captured locally. Open the console to see the payload.");
         return;
       }
-
-      // --- live POST (enable when DEBUG=false) ---
       const res = await fetch("/api/external/registrationlp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -303,9 +262,9 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
 
       markAsSubmitted(data.email);
       setSuccessMessage(t("alerts.success"));
-      // setTimeout(() => {
-      //   window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
-      // }, 1500);
+      setTimeout(() => {
+        window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
+      }, 1500);
     } catch (err) {
       console.error(err);
       alert(t("alerts.error"));
