@@ -23,7 +23,7 @@ export default function SwiperNormal({ slides, width = '300', height = '300' }: 
     navigation: false,
     pagination: true,
     keyboard: { enabled: true },
-    lazy: true,
+    lazy: "true",
     watchSlidesProgress: true,
     observer: true,
     observeParents: true,

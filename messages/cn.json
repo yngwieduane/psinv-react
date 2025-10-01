@@ -6,5 +6,24 @@
     "LocaleSwitcher": {
       "label": "Change language",
       "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} cn {🇨🇳 Chinese} ru {🇷🇺 Russian} other {Unknown}}"
+    },
+    "ProjectPage": {
+      "overview": "Overview",
+      "gallery": "Gallery",
+      "floor_plan": "Floor Plan",
+      "location": "Location",
+      "photo_gallery": "Photo Gallery",
+      "unit_models": "Unit Models",
+      "facts": "Facts",
+      "faqs": "FAQs",
+      "facilities_in": "Facilities in",
+      "amenities_in": "Amenities in",
+      "vicinities_in": "Vicinities in",
+      "location_plan": "Location Plan",
+      "payment_plan": "Payment Plan",
+      "master_plan": "Master Plan",
+      "location_map": "Location Map",
+      "property_details": "Property Details",
+      "aminities_in": "Amenities in"
     }
 }

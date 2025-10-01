@@ -23,7 +23,8 @@
     "payment_plan": "Payment Plan",
     "master_plan": "Master Plan",
     "location_map": "Location Map",
-    "property_details": "Property Details"
+    "property_details": "Property Details",
+    "aminities_in": "Amenities in"
   },
   "UnitsPage": {
     "title": "Hello world!",
