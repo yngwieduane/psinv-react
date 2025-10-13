@@ -79,6 +79,14 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
       return () => clearTimeout(timeout);
     }, [query]);
 
+    const handleFocus = (e:any) => {
+        //setShowDropdown(true);
+        //setQuery('Al Reem');
+    };
+    const handleBlur = (e:any) => {
+        //setShowDropdown(false);
+    };
+
   return (
     <Dialog className="relative z-10" open={modalState} onClose={onCloseModal}>
       <div className="fixed inset-0" />
@@ -116,6 +124,8 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
                         placeholder="Search..."
                         value={query}
                         onChange={e => setQuery(e.target.value)}
+                        onClick={handleFocus}
+                        onBlur={handleBlur}
                         className="flex-1 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring focus:border-blue-300"
                         />
                         <button

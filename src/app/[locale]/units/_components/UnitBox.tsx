@@ -30,6 +30,10 @@ export default function UnitBox(props:any){
         console.log(event);
         setSetModal(event);
       };
+
+
+    const phoneNumber = process.env.NEXT_PUBLIC_CALLNUMBER;
+    const wappNumber = process.env.NEXT_PUBLIC_WAPPNUMBER;
     return (
         <>
         <article className="relative isolate flex flex-col gap-2 bg-gray-50 rounded-lg w-full">
@@ -81,14 +85,14 @@ export default function UnitBox(props:any){
                     </div>
                 </div>
                 <div className="grid grid-cols-3 text-center items-center justify-end gap-3 mt-3 border-t border-gray-900/5 pt-6">
-                    <Link href="#" className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg items-center flex justify-center"><Phone size={20} /></Link>
+                    <Link href={`tel:${phoneNumber}`} className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg items-center flex justify-center"><Phone size={20} /></Link>
                     <button
                         onClick={modalHandler}
                         type="button"
-                        className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg flex justify-center"
+                        className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg flex justify-center cursor-pointer"
                     ><Mail size={20} />
                     </button>
-                    <Link href="#" className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg flex justify-center"><FontAwesomeIcon icon={faWhatsapp} /></Link>
+                    <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${props.seoUrl}`} className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg flex justify-center"><FontAwesomeIcon icon={faWhatsapp} /></Link>
                 </div>
             </div>
         </article>

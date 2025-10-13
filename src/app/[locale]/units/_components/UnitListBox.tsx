@@ -30,6 +30,9 @@ export default function UnitListBox(props:any){
         console.log(event);
         setSetModal(event);
         };
+
+    const phoneNumber = process.env.NEXT_PUBLIC_CALLNUMBER;
+    const wappNumber = process.env.NEXT_PUBLIC_WAPPNUMBER;
     return (
         <>
         <article className="relative isolate flex flex-col gap-5 lg:flex-row rounded-lg w-full border border-gray-300 p-2 items-center">
@@ -87,14 +90,14 @@ export default function UnitListBox(props:any){
                             </div>
                         </div>
                         <div className="flex gap-2 justify-end">
-                            <Link href="#" className="bg-gray-100 px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /></Link>
+                            <Link href={`tel:${phoneNumber}`} className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg"><FontAwesomeIcon icon={faPhone} /></Link>
                             <button
                                 onClick={modalHandler}
                                 type="button"
-                                className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg"
+                                className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg cursor-pointer"
                             ><FontAwesomeIcon icon={faEnvelope} />
                             </button>
-                            <Link href="#" className="col-span-2 bg-green-600 px-5 py-3 rounded-lg text-white text-lg"><FontAwesomeIcon icon={faWhatsapp} /></Link>
+                            <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${props.seoUrl}`} className="col-span-2 bg-green-600 px-5 py-3 rounded-lg text-white text-lg"><FontAwesomeIcon icon={faWhatsapp} /></Link>
                         </div>
                     </div>
                 </div>

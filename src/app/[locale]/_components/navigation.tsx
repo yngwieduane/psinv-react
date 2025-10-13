@@ -162,15 +162,14 @@ const more: More[] = [
         icon: ChartPieIcon,
     }
 ];
-
 const callsToAction: CallToAction[] = [
     { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
     { name: 'Contact sales', href: '#', icon: PhoneIcon },
 ];
 const callsToAction2: CallToAction2[] = [
     { name: '600 538 200', href: 'tel:600538200', icon: PhoneIcon },
-    { name: 'WhatsApp', href: 'tel:600538200', icon: faWhatsapp },
-    { name: 'Branches', href: 'tel:600538200', icon: faMapLocationDot },
+    { name: 'WhatsApp', href: 'https://wa.me/97122052999?text=%0AI%20am%20Interested%20.%20Kindly%20send%20me%20more%20information.%0Ahttps://psinv.net/%0A%0A', icon: faWhatsapp },
+    { name: 'Branches', href: '/contact-us', icon: faMapLocationDot },
 ];
 const socialMedia: SocialMedia[] = [
     {
