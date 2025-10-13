@@ -47,7 +47,7 @@ export default async function LocaleLayout({
  
   return (
     <html lang={locale}>
-      <GoogleTagManager gtmId="GTM-PMQ9XT65" />
+      <GoogleTagManager gtmId="GTM-KDDP2SR" />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <NextIntlClientProvider messages={messages}>
             <ConditionalNavigation />

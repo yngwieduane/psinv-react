@@ -36,7 +36,7 @@ export default function MySwiper(props: any) {
   };
   return (
     <>
-      <Swiper {...swiperParameters}>
+      <Swiper {...swiperParameters} className="h-120">
         <FancyboxWrapper>
           <a data-fancybox="gallerypopup" href={props.slides[0].split('?')[0]}className="absolute top-5 end-5 md:top-[unset] md:bottom-10 md:end-15 bg-[#00000050] z-10 text-white p-2 rounded-lg"><FontAwesomeIcon icon={faImages}/> {props.slides.length} </a>
         </FancyboxWrapper>
