@@ -13,6 +13,7 @@ import ReportDownloadSection from "../[locale]/_components/ReportDownloadSection
 import PopupForm from "./_components/PopupForm";
 import GoogleReviewSection from "./_components/GoogleReviewSection";
 import GetTheAppSection from "./_components/GetTheAppSection";
+import { Organization, WithContext } from "schema-dts";
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -281,9 +282,33 @@ const citiesData = [
   ];
 
 export default function HomePage() {
-
+  const organizationSchema: WithContext<Organization> = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": "https://psinv.net",
+    "logo": "/PSI-Logo.svg"
+  }
+  const organizationSchema1: WithContext<Organization> = {
+    "@context": "https://schema.org",
+    "@type" : "Organization",
+    "name" : "Property Shop Investment",
+    "url" : "https://psinv.net",
+    "sameAs" : [ "https://www.facebook.com/PropertyShopInvestment","https://twitter.com/psinv","https://www.facebook.com/PropertyShopInvestment","https://www.instagram.com/property_shop_investment/","https://www.linkedin.com/company/property-shop-investment-llc","https://www.youtube.com/user/propertyshopabudhabi"]
+  }
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema).replace(/</g, '\\u003c'),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema1).replace(/</g, '\\u003c'),
+        }}
+      />
       {/* <h1>{t('title')}</h1>
       <Link href="/about">{t('about')}</Link> */}
         <div className="relative">
