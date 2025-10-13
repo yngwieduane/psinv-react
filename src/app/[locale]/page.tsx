@@ -279,19 +279,6 @@ const citiesData = [
       ],
     },
   ];
-import type {Organization,WebSite} from 'schema-dts';
-
-const organizationSchema: Organization = {
-  "@type": "Organization",
-  "url": "https://psinv.net",
-  "logo": "/PSI-Logo.svg"
-}
-const organizationSchema1: Organization = {
-  "@type" : "Organization",
-  "name" : "Property Shop Investment",
-  "url" : "https://psinv.net",
-  "sameAs" : [ "https://www.facebook.com/PropertyShopInvestment","https://twitter.com/psinv","https://www.facebook.com/PropertyShopInvestment","https://www.instagram.com/property_shop_investment/","https://www.linkedin.com/company/property-shop-investment-llc","https://www.youtube.com/user/propertyshopabudhabi"]
-}
 
 export default function HomePage() {
 
