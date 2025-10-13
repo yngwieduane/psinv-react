@@ -330,7 +330,7 @@ const Navigation: FC = () => {
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuTrigger>Communities</NavigationMenuTrigger>
-                            <NavigationMenuContent className='z-10 border-0 rounded-xl bg-white p-2 ring-1 shadow-lg ring-gray-900/5'>
+                            <NavigationMenuContent className='z-40 border-0 rounded-xl bg-white p-2 ring-1 shadow-lg ring-gray-900/5'>
                                 <div className='grid grid-cols-2 w-[400px] md:w-[500px] lg:w-[600px]'>
                                     <ul className="">
                                     {communitiesAbuDhabi.map((component) => (
@@ -355,7 +355,7 @@ const Navigation: FC = () => {
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuTrigger>Developers</NavigationMenuTrigger>
-                            <NavigationMenuContent className='z-10 border-0 rounded-xl bg-white p-2 ring-1 shadow-lg ring-gray-900/5'>
+                            <NavigationMenuContent className='z-40 border-0 rounded-xl bg-white p-2 ring-1 shadow-lg ring-gray-900/5'>
                                 <ul className="grid w-[200px] gap-2 md:w-[200px] md:grid-cols-1 lg:w-[200px]">
                                 {developers.map((component) => (
                                     <ListItem
@@ -374,7 +374,7 @@ const Navigation: FC = () => {
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuTrigger>More</NavigationMenuTrigger>
-                            <NavigationMenuContent className='z-10 rounded-xl bg-white p-2 ring-1 shadow-lg ring-gray-900/5'>
+                            <NavigationMenuContent className='z-40 rounded-xl bg-white p-2 ring-1 shadow-lg ring-gray-900/5'>
                                 <ul className="grid w-[200px] gap-2 md:w-[200px] md:grid-cols-1 lg:w-[200px]">
                                 {more.map((component) => (
                                     <ListItem
@@ -420,7 +420,7 @@ const Navigation: FC = () => {
                         </PopoverButton>
                         <PopoverPanel
                             transition
-                            className="absolute top-full -left-8 z-10 mt-3 w-56 rounded-xl bg-white p-2 ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
+                            className="absolute top-full -left-8 z-40 mt-3 w-56 rounded-xl bg-white p-2 ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
                         >
                             {company.map((item) => (
                                 <Link
