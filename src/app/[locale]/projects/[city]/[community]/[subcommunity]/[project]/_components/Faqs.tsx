@@ -32,29 +32,8 @@ const Faqs = (props:any) => {
     },
     ];
 
-    const itemListElement = accordionData.map((segment, index) => {
-        const question = segment;
-        const answer = segment;
-        return {
-        '@type': 'Question',
-        'name': question,
-        'acceptedAnswer': {
-            "@type": "Answer",
-            "text": answer
-        }
-        };
-    });
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        'mainEntity': itemListElement,
-    };
     return (
         <>
-        <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
         <div className="">
                 <h2 className="text-xl mb-5 text-[#111954]">
                     {t("faqs")}
