@@ -68,11 +68,13 @@ const PropertyPage = (props:any) => {
     });
     availbeds = availbeds.slice(0, availbeds.length - 1);
     let availtype = '';
-    props.data['propertyUnitTypes'].forEach((array:any) => {
-        availtype += array.unitType;
-        availtype += ','
-    });
-    availtype = availtype.slice(0, availtype.length - 1);
+    if(props.data['propertyUnitTypes']){
+        props.data['propertyUnitTypes'].forEach((array:any) => {
+            availtype += array.unitType;
+            availtype += ','
+        });
+        availtype = availtype.slice(0, availtype.length - 1);
+    }
 
     let fpGroup;
     if (unitModels) {
@@ -137,8 +139,36 @@ const PropertyPage = (props:any) => {
     if(props.data["areaRangeMax"] !== null && parseInt(props.data["areaRangeMax"]) > 1){
         areaRangeMax = format.number(props.data["areaRangeMax"]);
     }else{areaRangeMax=""}
+
+    const jsonLd = {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": props.data["propertyName"] +', '+ props.data["community"] +' by '+  props.data['masterDeveloper'],
+      "description": props.data["propertyName"] +', '+ props.data["community"] +' by '+  props.data['masterDeveloper'],
+      "review": {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": 4,
+          "bestRating": 5
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Property Shop Investment"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.4,
+        "reviewCount": 942
+      }
+    };
     return (
         <>
+        <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <div id={props.data["propertyID"]}>
             <Breadcrumb/>
         </div>

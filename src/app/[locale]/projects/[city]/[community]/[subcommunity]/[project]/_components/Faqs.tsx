@@ -5,10 +5,13 @@ const Faqs = (props:any) => {
     const t = useTranslations('ProjectPage');
     const propCommunity = props.data['propertyName'] + " in " +props.data['subCommunity'];
     let availtype = '';
-    props.data['propertyUnitTypes'].forEach((array:any) => {
-        availtype += array.unitType;
-        availtype += ', '
-    });
+    if(props.data['propertyUnitTypes']){
+        props.data['propertyUnitTypes'].forEach((array:any) => {
+            availtype += array.unitType;
+            availtype += ','
+        });
+        availtype = availtype.slice(0, availtype.length - 1);
+    }
     availtype = availtype.slice(0, availtype.length - 1);
     const accordionData = [
     {
@@ -28,8 +31,30 @@ const Faqs = (props:any) => {
         content: 'The best property management company in ' + propCommunity + ' is Property Shop Investment',
     },
     ];
+
+    const itemListElement = accordionData.map((segment, index) => {
+        const question = segment;
+        const answer = segment;
+        return {
+        '@type': 'Question',
+        'name': question,
+        'acceptedAnswer': {
+            "@type": "Answer",
+            "text": answer
+        }
+        };
+    });
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': itemListElement,
+    };
     return (
         <>
+        <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <div className="">
                 <h2 className="text-xl mb-5 text-[#111954]">
                     {t("faqs")}
