@@ -7,8 +7,27 @@ const BreadcrumbUnit = () => {
     const pathname = usePathname();
     const pathSegments = pathname.split('/').filter((segment) => segment);
     pathSegments.shift();
+    const itemListElement = pathSegments.map((segment, index) => {
+      const url = '/' + pathSegments.slice(0, index + 1).join('/');
+      const name = segment;
+      return {
+        '@type': 'ListItem',
+        'position': index + 1,
+        'name': name,
+        'item': url
+      };
+    });
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      'itemListElement': itemListElement,
+    };
   return (
     <nav className="bg-[#f4f4f4] py-2 px-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ul className="flex items-center space-x-2 text-gray-500">
         <li>
             <Link href="/" className="hover:text-blue-600">
