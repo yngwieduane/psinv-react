@@ -287,7 +287,7 @@ const Navigation: FC = () => {
             <div></div>
             <div className="flex gap-5 justify-end">
                 {socialMedia.map((item) => (
-                    <Link target="_blank" href={item.href} key={item.name} className="flex items-center justify-center text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
+                    <Link target="_blank" href={item.href} key={item.name} aria-label={item.name} className="flex items-center justify-center text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
                     <DynamicIcon name={item.icon} size={20} />
                     </Link>
                 ))}
@@ -393,6 +393,7 @@ const Navigation: FC = () => {
                         <button
                             className="text-sm font-normal text-gray-900"
                             onClick={modalHandler}
+                            aria-label="Project Search"
                         >
                             <FontAwesomeIcon icon={faMagnifyingGlass}/>
                         </button>

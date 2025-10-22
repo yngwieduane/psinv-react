@@ -183,12 +183,12 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
       <Controller
         name="phone"
         control={control}
-        render={({ field }) => <PhoneInput {...field} international defaultCountry="AE" className="w-full border p-3 rounded" />}
+        render={({ field }) => <PhoneInput {...field} international defaultCountry="AE" className="w-full border p-3 rounded" aria-label="Phone Number"/>}
       />
       {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
 
       <label className="block mb-1 text-sm font-medium">Property Purpose *</label>
-      <select {...register("propertyPurpose")} className="w-full border p-3 rounded">
+      <select {...register("propertyPurpose")} className="w-full border p-3 rounded" aria-label="Property Purpose">
         <option value="">Choose purpose</option>
         <option value="sell">Sell</option>
         <option value="rent">Rent</option>

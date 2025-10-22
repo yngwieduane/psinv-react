@@ -85,7 +85,7 @@ const MainFooter = () => {
       <li><Link href="/projects/abu-dhabi/al-reem-island/al-reem-island/rivage" className="cursor-pointer no-underline hover:no-underline">Rivage</Link></li>
       <li><Link href="/projects/dubai/the-palm-jumeirah/the-palm-jumeirah/w-residences" className="cursor-pointer no-underline hover:no-underline">W Residences</Link></li>
       <li><Link href="/projects/abu-dhabi/al-reem-island/al-reem-hills/reem-hills" className="cursor-pointer no-underline hover:no-underline">Reem Hills</Link></li>
-      <li><Link href="/projects" className="cursor-pointer no-underline hover:no-underline font-bold">More</Link></li>
+      <li><Link href="/projects" className="cursor-pointer no-underline hover:no-underline font-bold">More Projects</Link></li>
     </ul>
   </div>
 </div>
@@ -113,7 +113,7 @@ const MainFooter = () => {
         placeholder="Your Email"
         className="w-full p-2 border border-gray-400 rounded-l bg-[#111954] text-white"
       />
-      <button className="border border-[#ABB0B2] p-2 rounded-r">
+      <button className="border border-[#ABB0B2] p-2 rounded-r" aria-label="Subscribe to Newsletter">
         <FontAwesomeIcon icon={faPaperPlane} className="text-white" />
       </button>
     </div>

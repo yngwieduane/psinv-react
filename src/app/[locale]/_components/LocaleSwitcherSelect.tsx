@@ -50,6 +50,7 @@ export default function LocaleSwitcherSelect({
           defaultValue={defaultValue}
           disabled={isPending}
           onChange={onSelectChange}
+          aria-label="Language Switcher"
         >
           {children}
         </select>

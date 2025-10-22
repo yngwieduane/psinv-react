@@ -96,6 +96,7 @@ export default function MortgageCalculator() {
                     value={propertyPrice}
                     onChange={(e) => setPropertyPrice(+e.target.value)}
                     className="w-full px-4 py-2 rounded-none focus:outline-none"
+                    aria-label="Property Price"
                   />
                   <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">AED</span>
                 </div>
@@ -118,6 +119,7 @@ export default function MortgageCalculator() {
                     value={loanTerm}
                     onChange={(e) => setLoanTerm(+e.target.value)}
                     className="w-full px-4 py-2 rounded-none focus:outline-none"
+                    aria-label="Loan Period"
                   />
                   <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">Years</span>
                 </div>
@@ -139,6 +141,7 @@ export default function MortgageCalculator() {
                     value={downPayment}
                     onChange={(e) => setDownPayment(+e.target.value)}
                     className="w-full px-4 py-2 rounded-none focus:outline-none"
+                    aria-label="Downpayment"
                   />
                   <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{((downPayment / propertyPrice) * 100).toFixed(0)}%</span>
                 </div>
@@ -162,6 +165,7 @@ export default function MortgageCalculator() {
                     value={interestRate}
                     onChange={(e) => setInterestRate(+e.target.value)}
                     className="w-full px-4 py-2 rounded-none focus:outline-none"
+                    aria-label="Interest Rate"
                   />
                   <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">%</span>
                 </div>

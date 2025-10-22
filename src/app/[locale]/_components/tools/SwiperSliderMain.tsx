@@ -16,9 +16,9 @@ function SwiperSliderMain(props:any) {
   return (
     <div className="relative">
       <div className="absolute start-0 end-0 top-1/2 flex justify-between px-5">
-        <button onClick={() => swiperElRef3.current?.slidePrev()} className="review-swiper-button-prev-main z-10 w-12 h-12 left-0 relative text-white text-start">
+        <button aria-label="Previous Slide" onClick={() => swiperElRef3.current?.slidePrev()} className="review-swiper-button-prev-main z-10 w-12 h-12 left-0 relative text-white text-start">
           <ChevronLeftIcon className="w-12 h-12 rounded-full bg-blue-950 opacity-80 p-3" /></button>
-        <button onClick={() => swiperElRef3.current?.slideNext()} className="review-swiper-button-next-main z-10 w-12 h-12 right-0 relative text-white text-right">
+        <button aria-label="Next Slide" onClick={() => swiperElRef3.current?.slideNext()} className="review-swiper-button-next-main z-10 w-12 h-12 right-0 relative text-white text-right">
           <ChevronRightIcon className="w-12 h-12 rounded-full bg-blue-950 opacity-80 p-3" /></button>
       </div>
       <Swiper

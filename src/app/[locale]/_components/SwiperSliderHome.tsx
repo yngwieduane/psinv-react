@@ -69,6 +69,7 @@ const SwiperSlider = (props: any) => {
         <button
           onClick={() => swiperElRef2.current?.slidePrev()}
           className="cursor-pointer z-10 px-2 py-[12px] text-white bg-orange-600 hover:bg-orange-500"
+          aria-label="Previous Slide"
         >
           <ChevronLeftIcon className="w-8 h-8" />
         </button>
@@ -77,6 +78,7 @@ const SwiperSlider = (props: any) => {
         <button
           onClick={() => swiperElRef2.current?.slideNext()}
           className="cursor-pointer z-10 px-2 py-[12px] text-white bg-orange-600 hover:bg-orange-500"
+          aria-label="Next Slide"
         >
           <ChevronRightIcon className="w-8 h-8" />
         </button>
@@ -179,11 +181,11 @@ const SwiperSlider = (props: any) => {
                         onClick={() => modalHandler(slide)}
                         className="rounded-md bg-orange-600 px-5 py-2.5 text-2xl font-semibold text-white shadow-sm hover:bg-orange-500 
                         focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                      Sign Up
+                        Sign Up
                       </button>
 
                       <Link href={slide.project_url} className="px-5 py-2.5 text-white text-2xl font-semibold hover:text-gray-400">
-                          Learn More <ChevronRightIcon className="w-7 inline-flex" />
+                          Explore More <ChevronRightIcon className="w-7 inline-flex" />
                       </Link>
                     </>
                   )}

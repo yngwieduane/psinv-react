@@ -38,7 +38,7 @@ return (
                 src={imgFeatured}
                 alt={imgFeatured}
                 className="h-50 w-full"
-                width={100}
+                width={300}
                 height={200}
               />
             ) : (
