@@ -62,11 +62,13 @@ const PropertyPage = (props:any) => {
         }
     ];
     let availbeds = '';
-    props.data['availableBedrooms'].forEach((array:any) => {
-        availbeds += array.noOfBedroom;
-        availbeds += ','
-    });
-    availbeds = availbeds.slice(0, availbeds.length - 1);
+    if(props.data['availableBedrooms']){
+        props.data['availableBedrooms'].forEach((array:any) => {
+            availbeds += array.noOfBedroom;
+            availbeds += ','
+        });
+        availbeds = availbeds.slice(0, availbeds.length - 1);
+    }
     let availtype = '';
     if(props.data['propertyUnitTypes']){
         props.data['propertyUnitTypes'].forEach((array:any) => {
