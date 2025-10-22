@@ -277,7 +277,7 @@ const SwiperSlider = (props: any) => {
                       </button>
 
                       <Link href={slide.project_url}><div className=" text-center w-full px-5 py-2.5 text-black text-xl font-thin hover:text-gray-400">
-                          Learn More <ChevronRightIcon className="w-7 inline-flex" /></div>
+                          Explore More <ChevronRightIcon className="w-7 inline-flex" /></div>
                       </Link>
                     </>
                   )}

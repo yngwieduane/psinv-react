@@ -1,23 +1,50 @@
 "use client";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faInstagram,
-  faLinkedin,
-  faTwitter,
-  faYoutube,
-  faTiktok,
-} from "@fortawesome/free-brands-svg-icons";
+import { DynamicIcon } from 'lucide-react/dynamic';
 import { faPaperPlane, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { Poppins } from "next/font/google";import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-;
+import { SocialMedia } from "@/types/navigation";
+
+const socialMedia: SocialMedia[] = [
+  {
+      name: 'Facebook',
+      href: 'https://www.facebook.com/PropertyShopInvestment',
+      icon: 'facebook',
+  },
+  {
+      name: 'Twitter',
+      href: 'https://twitter.com/psinv',
+      icon: 'twitter',
+  },
+  {
+      name: 'Instagram',
+      href: 'https://www.instagram.com/property_shop_investment/',
+      icon: 'instagram',
+  },
+  {
+      name: 'Snapchat',
+      href: 'https://www.snapchat.com/add/property-shop',
+      icon: 'camera',
+  },
+  {
+      name: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/property-shop-investment-llc',
+      icon: 'linkedin',
+  },
+  {
+      name: 'Youtube',
+      href: 'https://www.youtube.com/user/propertyshopabudhabi',
+      icon: 'youtube',
+  }
+];
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
+
 
 const MainFooter = () => {
   return (
@@ -51,12 +78,11 @@ const MainFooter = () => {
               </p>
             </div>
             <div className="flex space-x-4 mb-3 mt-5 sm:text-[14px] justify-center sm:justify-start">
-              <Link target="_blank" href="https://www.instagram.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faInstagram} size="lg" /></Link>
-              <Link target="_blank" href="https://www.facebook.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faFacebook} size="lg" /></Link>
-              <Link target="_blank" href="https://twitter.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faTwitter} size="lg" /></Link>
-              <Link target="_blank" href="https://www.linkedin.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faLinkedin} size="lg" /></Link>
-              <Link target="_blank" href="https://www.youtube.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faYoutube} size="lg" /></Link>
-              <Link target="_blank" href="https://www.tiktok.com" className="text-white hover:text-gray-400"><FontAwesomeIcon icon={faTiktok} size="lg" /></Link>
+              {socialMedia.map((item) => (
+                  <Link target="_blank" href={item.href} key={item.name} aria-label={item.name} className="flex items-center justify-center text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
+                  <DynamicIcon name={item.icon} size={20} />
+                  </Link>
+              ))}
             </div>
           </div>
 

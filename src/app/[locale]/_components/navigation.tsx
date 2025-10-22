@@ -6,7 +6,6 @@ import { DynamicIcon } from 'lucide-react/dynamic';
 import { Dialog, Disclosure,DialogPanel, DisclosureButton,DisclosurePanel,Popover,PopoverButton,PopoverGroup,PopoverPanel, } from '@headlessui/react';
 import { Bars3Icon,ChartPieIcon,XMarkIcon,} from '@heroicons/react/24/outline';
 import { ChevronDownIcon,PhoneIcon,PlayCircleIcon} from '@heroicons/react/20/solid';
-import {  motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faWhatsapp,} from '@fortawesome/free-brands-svg-icons';
@@ -14,14 +13,10 @@ import LanguageSwitcher from './languageSwitcher';
 import Image from 'next/image';
 import ProjectSearch from './projectSearch';
 import { faMagnifyingGlass, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { Buy, CallToAction, CallToAction2, CommunitiesAbuDhabi, CommunitiesDubai, More, Person, Rent, SocialMedia } from '@/types/navigation';
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
+import { Buy, CallToAction, CallToAction2, CommunitiesAbuDhabi, CommunitiesDubai, More, Rent, SocialMedia } from '@/types/navigation';
 import {NavigationMenu,NavigationMenuContent,NavigationMenuItem,NavigationMenuLink,NavigationMenuList,NavigationMenuTrigger,navigationMenuTriggerStyle,} from "@/components/ui/navigation-menu"
 
 
-const people: Person[] = [
-    { id: 1, name: 'Leslie Alexander' },
-];
 const company = [
     { name: 'Abu Dhabi', href: '#' },
     { name: 'Dubai', href: '#' },
