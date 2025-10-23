@@ -101,6 +101,7 @@ export default function MortgageCalculator() {
                   <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">AED</span>
                 </div>
                 <Slider
+                  ariaLabelForHandle="Property Price"
                   min={100000}
                   max={50000000}
                   step={10000}
@@ -124,6 +125,7 @@ export default function MortgageCalculator() {
                   <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">Years</span>
                 </div>
                 <Slider
+                  ariaLabelForHandle="Loan Period"
                   min={1}
                   max={30}
                   value={loanTerm}
@@ -146,6 +148,7 @@ export default function MortgageCalculator() {
                   <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{((downPayment / propertyPrice) * 100).toFixed(0)}%</span>
                 </div>
                 <Slider
+                  ariaLabelForHandle="Downpayment"
                   min={0}
                   max={propertyPrice}
                   step={10000}
@@ -170,6 +173,7 @@ export default function MortgageCalculator() {
                   <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">%</span>
                 </div>
                 <Slider
+                  ariaLabelForHandle="Interest Rate"
                   min={1}
                   max={15}
                   step={0.1}

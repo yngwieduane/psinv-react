@@ -80,6 +80,86 @@ const partners = [
   },
 ]
 const mainSliderData = [
+{
+    title: "Yas Island Living",
+    type: "Apartment",
+    developer_img: '/images/banners/aldar-logo.svg',
+    developer_img_mob:'/images/banners/aldar-logo-black.svg',
+    location: "Yas Island",
+    description:
+    "Yas Living by Aldar Properties offers a contemporary residential community in the heart of Yas Island. Designed for modern families, it features elegant homes with high-quality finishes, open layouts, and access to world-class leisure and entertainment destinations. Combining comfort, connectivity, and a vibrant island lifestyle, Yas Living is the ideal address for those seeking refined urban living in Abu Dhabi.",
+    project_url: "/projects/abu-dhabi/yas-island/yas-island/yas-living",
+    image: '/images/banners/yas-living-new-banner.webp',
+    bannerpropertyid : '24034',
+    bannerunittype : '19',
+    bannersubcommunityid : '63724',
+    bannercommunityid : '63721',
+    bannerdistrictid : '63720',
+    bannercityid : '63719',
+    bannerstateid : '91823',
+    bannercountryid : '65948',
+    bannerbedroom : '21937',
+},
+{
+    title: "Bloom Living - Malaga",
+    type: "Villa",
+    developer_img: '/images/banners/bloom-holding-logo.svg',
+    developer_img_mob:'/images/banners/bloom-holding-logo-black.png',
+    location: "Zayed City",
+    description:
+    "Malaga marks the final phase of Bloom Living, a vibrant community inspired by Mediterranean charm. The development offers a selection of 3–6 bedroom villas designed for modern family living, combining privacy, comfort, and contemporary elegance. Surrounded by landscaped parks and tranquil lagoons, Málaga provides residents with a refined lifestyle in the heart of Abu Dhabi.",
+    project_url: "/projects/abu-dhabi/yas-island/yas-island/yas-living",
+    image: '/images/banners/bloom-living-malaga.webp',
+    bannerpropertyid : '24034',
+    bannerunittype : '19',
+    bannersubcommunityid : '63724',
+    bannercommunityid : '63721',
+    bannerdistrictid : '63720',
+    bannercityid : '63719',
+    bannerstateid : '91823',
+    bannercountryid : '65948',
+    bannerbedroom : '21937',
+},
+{
+    title: "Al Deem",
+    type: "Villa",
+    developer_img: '/images/banners/aldar-logo.svg',
+    developer_img_mob:'/images/banners/aldar-logo-black.svg',
+    location: "Yas Island",
+    description:
+    "Al Deem on Yas Island is a community created exclusively for Emirati families.It merges modern architecture with traditional values and green surroundings.Homes are designed for privacy, comfort, and strong family connections.Unique live-work units allow residents to combine business with home life.",
+    project_url: "/en/projects/ras-al-hekma/ras-al-hekma/ras-al-hekma/ogami",
+    image: '/images/banners/al-deem-banner.jpg',
+    bannerpropertyid : '24034',
+    bannerunittype : '19',
+    bannersubcommunityid : '63724',
+    bannercommunityid : '63721',
+    bannerdistrictid : '63720',
+    bannercityid : '63719',
+    bannerstateid : '91823',
+    bannercountryid : '65948',
+    bannerbedroom : '21937',
+},
+{
+    title: "Seamont",
+    type: "Apartment",
+    developer_img: '/images/banners/saas-hills-logo.png',
+    developer_img_mob:'/images/banners/saas-hills-logo-black.png',
+    location: "Al Reem Island",
+    description:
+    "Seamont on Al Reem Island combines elegant design with the serenity of waterfront living.Residences range from modern apartments to spacious townhouses and penthouses.Private terraces and garden spaces bring outdoor tranquility into daily life.The development blends luxury, comfort, and breathtaking sea views.",
+    project_url: "/en/projects/ras-al-hekma/ras-al-hekma/ras-al-hekma/ogami",
+    image: '/images/banners/Seamont-banner.webp',
+    bannerpropertyid : '24034',
+    bannerunittype : '19',
+    bannersubcommunityid : '63724',
+    bannercommunityid : '63721',
+    bannerdistrictid : '63720',
+    bannercityid : '63719',
+    bannerstateid : '91823',
+    bannercountryid : '65948',
+    bannerbedroom : '21937',
+},
   { 
     name:"loyalty",   
     loyaltyTitle: "Beyond Real Estate, Beyond Limits",
@@ -94,99 +174,7 @@ const mainSliderData = [
     developer_img: '/images/banners/loyalty-logo-3.png',
     developer_img_mob: '/images/banners/loyalty-logo-3-mob.png',
     image: '/images/banners/loyalty-program-background-new.webp',
-},
-{
-    title: "Wadi Yemm by Modon",
-    type: "Apartment",
-    developer_img: '/images/banners/modon-white.webp',
-    developer_img_mob:'/images/banners/modon-mobile.webp',
-    location: 'Ras El Hekma',
-    description:
-    "Wadi Yemm is Modon’s first ultra-premium beachfront residential destination in Ras El Hekma, North Coast Egypt, offering smart-enabled apartments and spacious villas with sea or pool views. Residents enjoy direct beach access, lush parks, golf, equestrian trails, and wellness facilities in a Mediterranean-inspired community.",
-    project_url: "/en/projects/ras-al-hekma/ras-al-hekma/ras-al-hekma/wadi-yemm",
-    image: '/images/banners/wadiyem-banner.webp',
-    bannerpropertyid: '24466',
-    bannerunittype: '20',
-    bannersubcommunityid: '63724',
-    bannercommunityid: '63721',
-    bannerdistrictid: '63720',
-    bannercityid:'63719',
-    bannerstateid:'63719',
-    bannercountryid: '65948',
-    bannerbedroom: '21935',
-
-},
-{
-    title: "Ogami by SODIC",
-    type: "Apartment",
-    developer_img: '/images/banners/sodic-logo-white.png',
-    developer_img_mob:'/images/banners/sodic-logo-black.png',
-    location: "Ras El Hekma",
-    description:
-    "Located in Ras El Hekma, Ogami by SODIC is a 440-acre coastal retreat designed for relaxation, connection, and unforgettable summer moments. Inspired by Japan’s Ogami Island, the development blends Mediterranean charm with elegant design and curated amenities for every type of traveler.",
-    project_url: "/en/projects/ras-al-hekma/ras-al-hekma/ras-al-hekma/ogami",
-    image: '/images/banners/ogami-banner.webp',
-    bannerpropertyid : '24034',
-    bannerunittype : '19',
-    bannersubcommunityid : '63724',
-    bannercommunityid : '63721',
-    bannerdistrictid : '63720',
-    bannercityid : '63719',
-    bannerstateid : '91823',
-    bannercountryid : '65948',
-    bannerbedroom : '21937',
-},
-{
-    title: "Bashayer by Modon",
-    type: "Apartment",
-    developer_img: '/images/banners/modon-white.webp',
-    developer_img_mob:'/images/banners/modon-mobile.webp',
-    location: "Hudayriyat Island",
-    description:
-    "Bashayer Villas on Hudayriyat Island, Abu Dhabi, feature elegant 4- and 5-bedroom villas designed to embody peace, harmony, and the beauty of nature. More than just homes, they are a poetic reflection of serene living where sea, sky, and soul unite.",
-    project_url: "/en/projects/abu-dhabi/hudayriyat-island/hudayriyat-island/bashayer-hudayriyat-island",
-    image: '/images/banners/basayer-banner.webp',
-    bannerpropertyid : '25351',
-    bannerunittype : '20',
-    bannersubcommunityid : '62081',
-    bannercommunityid : '62080',
-    bannerdistrictid : '102625',
-    bannercityid : '91823',
-    bannerstateid : '91823',
-    bannercountryid : '65946',
-    bannerbedroom : '21935',
-},
-// {
-//     title: "Muheira",
-//     type: "Apartment",
-//     developer_img: '/images/banners/modon-white.webp',
-//     location: "Maysan",
-//     description:
-//     "Muheira by Modon is a canal-side community in Maysan offering 1 to 3-bedroom apartments with premium finishes, laundry rooms, and staff quarters in larger units. It blends modern comfort with natural surroundings and easy access to key services.",
-//     project_url: "",
-//     image: '/images/banners/muheira.webp',
-// },
-// {
-//     title: "Waldorf Astoria Residences Yas",
-//     type: "Apartment",
-//     developer_img: '/images/banners/icon-design-homepage-02.svg',
-//     location: "Yas Island",
-//     description:
-//     "Developed by Aldar, Waldorf Astoria Residences Yas offers luxury 1 to 3-bedroom apartments on Yas Island, starting at AED 3.8M with a 60/40 payment plan. Handover is set for Q4 2028, near major entertainment attractions.",
-//     project_url: "",
-//     image: '/images/banners/waldorf-astoria-residences-banner.webp',
-// },
-// {
-//     title: "Hudayriyat Island",
-//     type: "Villa",
-//     developer_img: '/images/banners/modon-white.webp',
-//     location: "Hudayriyat Island",
-//     description:
-//     "Hudayriyat Island by Modon is a vast coastal development with luxury villas and mansions, offering resort-style living across 11.6 square miles. Communities like Nawayef and Al Naseem embrace nature, sport, and elegant design.",
-//     project_url: "",
-//     image: '/images/banners/hudayriyat-island.webp',
-// },
-// {
+}
 ];
 const citiesData = [
     {
@@ -309,8 +297,6 @@ export default function HomePage() {
           __html: JSON.stringify(organizationSchema1).replace(/</g, '\\u003c'),
         }}
       />
-      {/* <h1>{t('title')}</h1>
-      <Link href="/about">{t('about')}</Link> */}
         <div className="relative">
             <SwiperSlider slidePerView="1" slides={mainSliderData}></SwiperSlider>
         </div>
