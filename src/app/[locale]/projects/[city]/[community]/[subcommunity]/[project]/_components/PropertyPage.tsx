@@ -13,8 +13,6 @@ import { ReadMore } from '@/app/[locale]/_components/ReadMore';
 import FancyboxWrapper from '@/app/[locale]/_components/tools/FancyboxWrapper';
 import Sticky from 'react-sticky-el';
 import InquiryForm from '@/app/[locale]/_components/InquiryForm';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarCheck, faCirclePlay, faLayerGroup, faLocationDot, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
 import DrawerDetails from '@/app/[locale]/unit/[slug]/components/DrawerDetails';
 import Faqs from './Faqs';
 import NearbysWithMap from './NearbyWithMap';

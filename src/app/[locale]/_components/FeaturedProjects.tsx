@@ -43,7 +43,7 @@ export default function FeaturedProjects(){
                 <PropertyCardSlider data={data['result']} />
             )}
             {!data ? (
-                <p>No properties found.</p>
+                <p></p>
             ) : (
                 <></>
             )}

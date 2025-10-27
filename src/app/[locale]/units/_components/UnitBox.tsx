@@ -36,7 +36,7 @@ export default function UnitBox(props:any){
     const wappNumber = process.env.NEXT_PUBLIC_WAPPNUMBER;
     return (
         <>
-        <article className="relative isolate flex flex-col gap-2 bg-gray-50 rounded-lg w-full">
+        <article className="relative isolate flex flex-col gap-2 bg-gray-50 rounded-lg w-full hover:bg-gray-200">
             <div className="relative w-full h-56 sm:aspect-2/1">
                 {images.length <= 1 ? (
                     <img
@@ -84,7 +84,7 @@ export default function UnitBox(props:any){
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-3 text-center items-center justify-end gap-3 mt-3 border-t border-gray-900/5 pt-6">
+                <div className="grid grid-cols-3 text-center items-center justify-end gap-3 mt-3 border-t border-gray-900/9 pt-6">
                     <Link href={`tel:${phoneNumber}`} className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg items-center flex justify-center"><Phone size={20} /></Link>
                     <button
                         onClick={modalHandler}

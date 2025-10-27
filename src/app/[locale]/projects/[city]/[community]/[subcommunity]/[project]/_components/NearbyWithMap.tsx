@@ -22,6 +22,7 @@ export type AnchorPointName = keyof typeof AdvancedMarkerAnchorPoint;
 import './NearbyWithMap.css';
 import { RealEstateIcon } from "../../../../../../../../../public/icons/real-estate-icon";
 import { DynamicIcon } from "lucide-react/dynamic";
+import { RealEstateIconNearby } from "../../../../../../../../../public/icons/real-estate-icon-nearbys";
 
 const NearbysWithMap = ({
     latitude,
@@ -76,10 +77,6 @@ const NearbysWithMap = ({
             </button>
 
             <div className="image-container">
-                {/* <RealEstateGallery
-                images={realEstateListing.fallbackImage}
-                isExtended={clicked}
-                /> */}
                 <span className="icon">
                 <RealEstateIcon />
                 </span>
@@ -315,6 +312,25 @@ function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:
         });
 
     };
+
+    const renderCustomPinNearbys = () => {
+        return (
+        <>
+            <div className="custom-pin">
+                <button className="close-button">
+                    <span className="material-symbols-outlined"> close </span>
+                </button>
+                <div className="image-container">
+                    <span className="icon">
+                    <RealEstateIconNearby />
+                    </span>
+                </div>
+            </div>
+
+            <div className="tip" />
+        </>
+        );
+    };
     return (
         <>
             {data.slice(0, 20).map((post: NearbysType, index: any) => {
@@ -334,30 +350,27 @@ function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:
                 };
 
                 return (
-                    <AdvancedMarkerWithRef
-                        onMarkerClick={(
-                        marker: google.maps.marker.AdvancedMarkerElement
-                        ) => {
-                            //onMarkerClick(post.landmarkId, marker);
-                            handleDirectionsRequest(position);
-                            setSelectedLandmark([post]);
-                        }}
-                        onMouseEnter={() => onMouseEnter(post.landmarkId)}
-                        onMouseLeave={onMouseLeave}
-                        key={post.landmarkId}
-                        className="custom-marker"
-                        style={{
-                            transform: `scale(${[hoverId, selectedId].includes(post.landmarkId) ? 1.3 : 1})`,
-                            transformOrigin: AdvancedMarkerAnchorPoint['BOTTOM'].join(' ')
-                        }}
-                        position={position}>
-                        <Pin
-                        scale={.8}
-                        background={selectedId === post.landmarkId ? '#22ccff' : null}
-                        borderColor={selectedId === post.landmarkId ? '#1e89a1' : null}
-                        glyphColor={selectedId === post.landmarkId ? '#0f677a' : null}
-                        />
-                    </AdvancedMarkerWithRef>
+                    <div className="advanced-marker-example">
+                        <AdvancedMarkerWithRef
+                            onMarkerClick={(
+                            marker: google.maps.marker.AdvancedMarkerElement
+                            ) => {
+                                //onMarkerClick(post.landmarkId, marker); //InfoWindow
+                                handleDirectionsRequest(position);
+                                setSelectedLandmark([post]);
+                            }}
+                            onMouseEnter={() => onMouseEnter(post.landmarkId)}
+                            onMouseLeave={onMouseLeave}
+                            key={post.landmarkId}
+                            className="real-estate-marker"
+                            style={{
+                                transform: `scale(${[hoverId, selectedId].includes(post.landmarkId) ? 1.3 : 1})`,
+                                transformOrigin: AdvancedMarkerAnchorPoint['BOTTOM'].join(' ')
+                            }}
+                            position={position}>
+                            {renderCustomPinNearbys()}
+                        </AdvancedMarkerWithRef>
+                    </div>
                 );
             })}
             {infoWindowShown && selectedMarker && (
