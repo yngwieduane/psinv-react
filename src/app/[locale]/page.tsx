@@ -1,5 +1,5 @@
 
-import SwiperSlider from "./_components/SwiperSliderHome";
+//import SwiperSlider from "./_components/SwiperSliderHome";
 //import MainNavbar from './_components/MainNavbar';
 //import FeaturedProjects from './_components/FeaturedProjects';
 //import ListPropertyForm from './_components/ListPropertyForm';
@@ -10,12 +10,13 @@ import SwiperSlider from "./_components/SwiperSliderHome";
 //import ReportDownloadSection from "../[locale]/_components/ReportDownloadSection";
 //import GoogleReviewSection from "./_components/GoogleReviewSection";
 //import GetTheAppSection from "./_components/GetTheAppSection";
-import { Organization, WithContext } from "schema-dts";
 import dynamic from "next/dynamic";
+import { Organization, WithContext } from "schema-dts";
 import { Audrey, BrittanySignature } from "@/utils/fonts";
 import { Montserrat, Open_Sans } from "next/font/google";
 
 
+const SwiperSlider = dynamic(() => import('./_components/SwiperSliderHome'));
 const MainNavbar = dynamic(() => import('./_components/MainNavbar'));
 const FeaturedProjects = dynamic(() => import('./_components/FeaturedProjects'));
 const ListPropertyForm = dynamic(() => import('./_components/ListPropertyForm'));
