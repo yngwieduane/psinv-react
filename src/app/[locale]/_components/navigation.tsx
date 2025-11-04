@@ -301,7 +301,7 @@ const Navigation: FC = () => {
                 <Link href="/" className="-m-1.5 p-1.5">
                     <span className="sr-only">Property Shop Investment</span>
                     <Image
-                        alt="Property Shop Investment"
+                        alt="PSI"
                         src="/PSI-Logo.svg"
                         className="h-8 w-auto"
                         width={200}

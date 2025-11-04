@@ -91,11 +91,11 @@ const MainFooter = () => {
   <div className="w-full md:w-auto">
     <h4 className="font-bold text-lg sm:text-base mb-4">Explore</h4>
     <ul className="space-y-2 text-sm sm:text-[14px]">
-      <li><Link href="/buy" className="cursor-pointer no-underline hover:no-underline">Buy</Link></li>
-      <li><Link href="/rent" className="cursor-pointer no-underline hover:no-underline">Rent</Link></li>
-      {/* <li><Link href="/youngster-program" className="cursor-pointer no-underline hover:no-underline">Youngster Program</Link></li>
+      <li><Link href="/units?category=Buy" className="cursor-pointer no-underline hover:no-underline">Buy</Link></li>
+      <li><Link href="/units?category=Rent" className="cursor-pointer no-underline hover:no-underline">Rent</Link></li>
+      <li><Link href="/psi-youngsters-program" className="cursor-pointer no-underline hover:no-underline">Youngster Program</Link></li>
       <li><Link href="/list-your-property" className="cursor-pointer no-underline hover:no-underline">List Your Property</Link></li>
-      <li><Link href="/build-your-villa" className="cursor-pointer no-underline hover:no-underline">Build Your Villa</Link></li>
+      {/* <li><Link href="/build-your-villa" className="cursor-pointer no-underline hover:no-underline">Build Your Villa</Link></li>
       <li><Link href="/articles" className="cursor-pointer no-underline hover:no-underline">Articles</Link></li> */}
     </ul>
   </div>
