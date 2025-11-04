@@ -3,7 +3,7 @@
 import React, { FC, useState } from 'react';
 import { Link } from "@/i18n/navigation";
 import { DynamicIcon } from 'lucide-react/dynamic';
-import { Dialog, Disclosure,DialogPanel, DisclosureButton,DisclosurePanel,Popover,PopoverButton,PopoverGroup,PopoverPanel, } from '@headlessui/react';
+import { Dialog, Disclosure,DialogPanel, DisclosureButton,DisclosurePanel,Popover,PopoverButton,PopoverGroup,PopoverPanel, Button, } from '@headlessui/react';
 import { Bars3Icon,ChartPieIcon,XMarkIcon,} from '@heroicons/react/24/outline';
 import { ChevronDownIcon,PhoneIcon,PlayCircleIcon} from '@heroicons/react/20/solid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -385,13 +385,17 @@ const Navigation: FC = () => {
                                 <Link className="hover:bg-psiblue hover:text-white" href="/contact-us">Contact Us</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
-                        <button
-                            className="text-sm font-normal text-gray-900"
-                            onClick={modalHandler}
-                            aria-label="Project Search"
-                        >
-                            <FontAwesomeIcon icon={faMagnifyingGlass}/>
-                        </button>
+                        <NavigationMenuItem className='pointer'>
+                            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                <Button
+                                    className="text-sm font-normal text-gray-900 cursor-pointer"
+                                    onClick={modalHandler}
+                                    aria-label="Project Search"
+                                >
+                                    <FontAwesomeIcon icon={faMagnifyingGlass}/>
+                                </Button>
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
                         
                     </NavigationMenuList>
                 </NavigationMenu>

@@ -41,6 +41,9 @@ export async function GET(request: NextRequest) {
       case 'saadiyat lagoons al ghaf':
         finquery = 'Saadiyat Lagoons - Al Ghaf'
         break;
+      case 'juman 1 luluat al raha':
+        finquery = 'Juman 1 - Luluat Al Raha'
+        break;
       default:
         finquery = query
         break;
