@@ -16,8 +16,8 @@ export async function generateMetadata(
     const classify = (project: string) => project.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
     const projectId = classify(project);
 
-    //const data = await fetch('https://psi.properties/api/external/projects?query='+projectId)
-    const data = await fetch('http://localhost:3000/api/external/projects?query='+projectId)
+    const data = await fetch('https://psi.properties/api/external/projects?query='+projectId)
+    //const data = await fetch('http://localhost:3000/api/external/projects?query='+projectId)
     const posts = await data.json() ;
     const metatitle = "⚡ " + posts['result'][0]['propertyName'] + " in " + posts['result'][0]['community'] + " " + posts['result'][0]['city'];
     const subCommunity = posts['result'][0]["subCommunity"] ? posts['result'][0]["subCommunity"] : "n-a";
@@ -39,8 +39,8 @@ export default async function ProjectPage({
     const classify = (project: string) => project.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
     const projectId = classify(project);
 
-    //const data = await fetch('https://psi.properties/api/external/projects?query='+projectId)
-    const data = await fetch('http://localhost:3000/api/external/projects?query='+projectId)
+    const data = await fetch('https://psi.properties/api/external/projects?query='+projectId)
+    //const data = await fetch('http://localhost:3000/api/external/projects?query='+projectId)
     const posts = await data.json() 
 
     return (
