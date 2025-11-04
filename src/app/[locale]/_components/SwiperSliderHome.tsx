@@ -11,9 +11,9 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from "@heroicons/react/24/outline";
-import Link from "next/link";
 import BannerModals from "./HomeBannerModal";
 import "./SwiperSliderHome.css";
+import { Link } from "@/i18n/navigation";
 
 const SwiperSlider = (props: any) => {
   const swiperElRef2 = useRef<any>(null);

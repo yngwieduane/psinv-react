@@ -67,7 +67,7 @@ export default async function LocaleLayout({
             <ConditionalFooter />
             </div>
         </NextIntlClientProvider>
-        <GoogleTagManager gtmId="GTM-KDDP2SR" />
+        {/* <GoogleTagManager gtmId="GTM-KDDP2SR" /> */}
       </body>
     </html>
   );

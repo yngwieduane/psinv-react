@@ -61,7 +61,7 @@ const WhyPSI = () => {
             {/* Image Section */}
             <div className="flex-1 rounded-xl p-4 md:p-6"
       style={{
-        backgroundImage: "url('/assets/bg-cover.webp')",
+        backgroundImage: "url('/images/bg-cover.webp')",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -98,7 +98,7 @@ const WhyPSI = () => {
           {/* Image Section */}
           <div className="flex-1 rounded-xl p-4 md:p-6"
       style={{
-        backgroundImage: "url('/assets/img/icons/bg-cover.webp')",
+        backgroundImage: "url('/images/bg-cover.webp')",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -135,7 +135,7 @@ const WhyPSI = () => {
           {/* Image Section */}
           <div className="flex-1 rounded-xl p-4 md:p-6"
       style={{
-        backgroundImage: "url('/assets/img/icons/bg-cover.webp')",
+        backgroundImage: "url('/images/bg-cover.webp')",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -176,7 +176,7 @@ const WhyPSI = () => {
           {/* Image Section */}
           <div className="flex-1 rounded-xl p-4 md:p-6"
       style={{
-        backgroundImage: "url('/assets/img/icons/bg-cover.webp')",
+        backgroundImage: "url('/images/bg-cover.webp')",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -212,7 +212,7 @@ const WhyPSI = () => {
           {/* Image Section */}
           <div className="flex-1 rounded-xl p-4 md:p-6"
       style={{
-        backgroundImage: "url('/assets/img/icons/bg-cover.webp')",
+        backgroundImage: "url('/images/bg-cover.webp')",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",

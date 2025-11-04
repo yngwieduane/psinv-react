@@ -117,7 +117,7 @@ const mainSliderData = [
     title: "Bloom Living - Malaga",
     type: "Villa",
     developer_img: '/images/banners/bloom-holding-logo.svg',
-    developer_img_mob:'/images/banners/bloom-holding-logo-black.png',
+    developer_img_mob:'/images/banners/bloom-holding-logo-black.svg',
     location: "Zayed City",
     description:
     "Malaga marks the final phase of Bloom Living, a vibrant community inspired by Mediterranean charm. The development offers a selection of 3–6 bedroom villas designed for modern family living, combining privacy, comfort, and contemporary elegance. Surrounded by landscaped parks and tranquil lagoons, Málaga provides residents with a refined lifestyle in the heart of Abu Dhabi.",
@@ -141,7 +141,7 @@ const mainSliderData = [
     location: "Yas Island",
     description:
     "Al Deem on Yas Island is a community created exclusively for Emirati families.It merges modern architecture with traditional values and green surroundings.Homes are designed for privacy, comfort, and strong family connections.Unique live-work units allow residents to combine business with home life.",
-    project_url: "/en/projects/ras-al-hekma/ras-al-hekma/ras-al-hekma/ogami",
+    project_url: "/projects/ras-al-hekma/ras-al-hekma/ras-al-hekma/ogami",
     image: '/images/banners/al-deem-banner.jpg',
     bannerpropertyid : '24034',
     bannerunittype : '19',
@@ -161,7 +161,7 @@ const mainSliderData = [
     location: "Al Reem Island",
     description:
     "Seamont on Al Reem Island combines elegant design with the serenity of waterfront living.Residences range from modern apartments to spacious townhouses and penthouses.Private terraces and garden spaces bring outdoor tranquility into daily life.The development blends luxury, comfort, and breathtaking sea views.",
-    project_url: "/en/projects/ras-al-hekma/ras-al-hekma/ras-al-hekma/ogami",
+    project_url: "/projects/ras-al-hekma/ras-al-hekma/ras-al-hekma/ogami",
     image: '/images/banners/Seamont-banner.webp',
     bannerpropertyid : '24034',
     bannerunittype : '19',
