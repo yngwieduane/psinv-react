@@ -59,7 +59,6 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
-      <GoogleTagManager gtmId="GTM-KDDP2SR" />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <NextIntlClientProvider messages={messages}>
             <ConditionalNavigation />
@@ -68,6 +67,7 @@ export default async function LocaleLayout({
             <ConditionalFooter />
             </div>
         </NextIntlClientProvider>
+        <GoogleTagManager gtmId="GTM-KDDP2SR" />
       </body>
     </html>
   );
