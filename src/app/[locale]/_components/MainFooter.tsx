@@ -138,11 +138,11 @@ const MainFooter = () => {
                         </div>
                         {/* Download Buttons */}
                         <div className="mt-4">
-                            <a href="/docs/holiday-homes-abu-dhabi.pdf" download="holiday-homes-abu-dhabi.pdf" className="flex bg-[#E46027] text-white py-4 px-4 items-center justify-between mt-2 text-xs rounded-lg">
+                            <a href="/docs/holiday-homes-abu-dhabi.pdf" download="holiday-homes-abu-dhabi.pdf" className="flex  bg-orange-700  text-white py-4 px-4 items-center justify-between mt-2 text-xs rounded-lg">
                                 Holiday Homes Abu Dhabi Guides
                                 <DownloadIcon size={16} />
                             </a>
-                            <a href="/docs/holiday-homes-dubai.pdf" download="holiday-homes-dubai.pdf" className="flex bg-[#E46027] text-white py-4 px-4 items-center justify-between mt-5 text-xs rounded-lg">
+                            <a href="/docs/holiday-homes-dubai.pdf" download="holiday-homes-dubai.pdf" className="flex  bg-orange-700  text-white py-4 px-4 items-center justify-between mt-5 text-xs rounded-lg">
                                 Holiday Homes Dubai Guides
                                 <DownloadIcon size={16} />
                             </a>

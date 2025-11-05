@@ -52,7 +52,7 @@ const WhyPSI = () => {
           </p>
               <a
                 href="#"
-                className="inline-block bg-[#ea5b27] text-white px-6 py-3 rounded-md font-medium hover:bg-[#d94f1f] transition"
+                className="inline-block  bg-orange-700  text-white px-6 py-3 rounded-md font-medium hover:bg-[#d94f1f] transition"
               >
                Learn more  about PSI
               </a>
@@ -167,7 +167,7 @@ const WhyPSI = () => {
           </p>
             <a
               href="#"
-              className="inline-block bg-[#ea5b27] text-white px-6 py-3 rounded-md font-medium hover:bg-[#d94f1f] transition"
+              className="inline-block  bg-orange-700  text-white px-6 py-3 rounded-md font-medium hover:bg-[#d94f1f] transition"
             >
               Learn more about PSI
             </a>
@@ -203,7 +203,7 @@ const WhyPSI = () => {
           </p>
             <a
               href="#"
-              className="inline-block bg-[#ea5b27] text-white px-6 py-3 rounded-md font-medium hover:bg-[#d94f1f] transition"
+              className="inline-block  bg-orange-700  text-white px-6 py-3 rounded-md font-medium hover:bg-[#d94f1f] transition"
             >
              Learn more about PSI International
             </a>

@@ -22,8 +22,7 @@ export default function ReportDownloadSection() {
             <h5 className="text-[36px] text-[#333] font-bold">Monthly Report DXB</h5>
             
             <button
-              className="mt-4 px-8 py-2 text-white text-lg font-medium rounded-lg"
-              style={{ backgroundColor: '#E46027' }}
+              className="mt-4 px-8 py-2 text-white text-lg font-medium rounded-lg  bg-orange-700 "
               onClick={() => setIsModalOpen(true)}
             >
               Download Now

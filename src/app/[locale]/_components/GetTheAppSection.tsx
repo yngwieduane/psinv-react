@@ -14,7 +14,7 @@ export default function GetTheAppSection() {
         <div className="flex flex-col lg:flex-row mt-10 lg:mt-20 relative z-10">
           {/* Left Text */}
           <div className="w-full lg:w-[22%] text-center lg:text-left px-4 pt-0 lg:pt-20 order-3 lg:order-0">
-            <p className="text-blue-900 opacity-60 text-base text-[17px] md:text-[20px] md:text-lg font-medium leading-relaxed">
+            <p className="text-blue-900 text-base text-[17px] md:text-[20px] md:text-lg font-medium leading-relaxed">
               Take control of your real estate journey with our app. Whether you're booking a viewing,
               tracking your property progress, or staying updated on the latest listings, everything you
               need is at your fingertips. <br /> Download the app now and start your journey today!
