@@ -1,10 +1,4 @@
 "use client";
-
-import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import DynamicForm from "../_components/DynamicForm";
 
@@ -43,16 +37,6 @@ const ListPropertyForm: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Form - Below Image */}
-      <div className="md:hidden w-full px-4 relative -mt-30">
-        <div className="w-full bg-white p-8 rounded-xl shadow-lg">
-          <h2 className="text-2xl font-bold text-[#212529] mb-4 text-center">
-            List Your Property
-          </h2>
-          <DynamicForm formType="propertyListing" />
-        </div>
-      </div>
-
       {/* Branding Section - Always Below Form */}
       <div className="max-w-[1320px] mx-auto text-left py-10 mt-10 md:mt-20 px-4 md:px-0">
         <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
@@ -66,12 +50,12 @@ const ListPropertyForm: React.FC = () => {
         </p>
       
         {/* Logos */}
-<div className="overflow-x-auto sm:overflow-hidden flex space-x-4 mt-6 px-4 scrollbar-hide">
-  <img src="/images/psi-logo.png" alt="PSI" className="h-10 md:h-12 shrink-0" />
-  <img src="/images/bayut-logo.png" alt="Bayut" className="h-10 md:h-12 shrink-0" />
-  <img src="/images/dubizzle.png" alt="Dubizzle" className="h-10 md:h-12 shrink-0" />
-  <img src="/images/property-finder.png" alt="Property Finder" className="h-10 md:h-12 shrink-0" />
-</div>
+        <div className="overflow-x-auto sm:overflow-hidden flex space-x-4 mt-6 px-4 scrollbar-hide">
+          <img src="/images/psi-logo.png" alt="PSI" className="h-10 md:h-12 shrink-0" />
+          <img src="/images/bayut-logo.png" alt="Bayut" className="h-10 md:h-12 shrink-0" />
+          <img src="/images/dubizzle.png" alt="Dubizzle" className="h-10 md:h-12 shrink-0" />
+          <img src="/images/property-finder.png" alt="Property Finder" className="h-10 md:h-12 shrink-0" />
+        </div>
 
       </div>
     </>

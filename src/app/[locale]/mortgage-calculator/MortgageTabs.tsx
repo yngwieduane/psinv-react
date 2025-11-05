@@ -39,10 +39,10 @@ export default function MortgageTabs() {
           <li key={tab.id} className="mr-2">
             <button
               onClick={() => handleTabClick(tab.id)}
-              className={`inline-block px-4 py-2 rounded-t-md ${
+              className={`inline-block px-4 py-2 rounded-t-md cursor-pointer ${
                 activeTab === tab.id
                   ? 'border-b-[3px] border-[#dc481a] font-bold text-[#111954] opacity-100 text-[20px]'
-                  : 'border-b-2 border-transparent text-[#7e7f7f] hover:border-gray-300 opacity-100 font-light text-[20px]'
+                  : 'border-b-2 border-transparent text-[#6c757d] hover:border-gray-300 opacity-100 font-light text-[20px]'
               }`}
             >
               {tab.title}

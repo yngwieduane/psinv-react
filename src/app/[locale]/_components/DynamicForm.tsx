@@ -196,12 +196,12 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
       </select>
       {errors.propertyPurpose && <p className="text-red-500 text-sm">{errors.propertyPurpose.message}</p>}
 
-      <button type="submit" className="w-full bg-orange-600 text-white p-3 rounded hover:bg-orange-700" disabled={isSubmitting}>
+      <button type="submit" className="w-full bg-orange-700 text-white p-3 rounded hover:bg-orange-600 cursor-pointer" disabled={isSubmitting}>
         {isSubmitting ? "Submitting..." : "Submit"}
       </button>
 
       <p className="text-gray-600 text-sm mt-2 italic">
-        By clicking Submit, you agree to our <a href="#" className="text-blue-500">Terms & Conditions</a> and Privacy Policy
+        By clicking Submit, you agree to our <a href="#" className="text-blue-600">Terms & Conditions</a> and Privacy Policy
       </p>
 
       <div className="space-y-2 mt-4 text-[12px]">

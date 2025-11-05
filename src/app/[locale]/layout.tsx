@@ -20,26 +20,73 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import ConditionalNavigation from "./_components/ConditionalNavigation";
 import ConditionalFooter from "./_components/ConditionalFooter";
-import { Organization, WithContext } from "schema-dts";
+import { locales,siteBaseUrl,defaultLocale } from "@/utils/i18n-config";
 
-export const metadata: Metadata = {
-  title: "⚡  Abu Dhabi Real Estate  - Property Shop Investment",
-  description: "⚡  Abu Dhabi Real Estate  - PSI - Check out our stunning real estate projects - Property Shop Investments - Real Estate Projects - Buy or Rent",
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
+// export const metadata: Metadata = {
+//   title: "⚡  Abu Dhabi Real Estate  - Property Shop Investment",
+//   description: "⚡  Abu Dhabi Real Estate  - PSI - Check out our stunning real estate projects - Property Shop Investments - Real Estate Projects - Buy or Rent",
+//   robots: {
+//     index: true,
+//     follow: true,
+//     nocache: false,
+//     googleBot: {
+//       index: true,
+//       follow: true,
+//       noimageindex: false,
+//       'max-video-preview': -1,
+//       'max-image-preview': 'large',
+//       'max-snippet': -1,
+//     },
+//   },
+//   metadataBase: new URL('https://psi.properties'),
+// };
+
+type Props = {
+  children: React.ReactNode;
+  params: { locale: string };
+};
+
+// ✅ Dynamic metadata generator
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = params;
+
+  // Ensure locale is valid (fallback to default)
+  const currentLocale = locales.includes(locale as any) ? locale : defaultLocale;
+
+  // Build alternates dynamically
+  const languageAlternates: Record<string, string> = {};
+
+  locales.forEach((lang) => {
+    languageAlternates[lang] = `${siteBaseUrl}/${lang}`;
+  });
+
+  // Add x-default
+  languageAlternates["x-default"] = siteBaseUrl;
+
+  return {
+    title: "⚡ Abu Dhabi Real Estate  - Property Shop Investment",
+    description: "⚡ Abu Dhabi Real Estate  - PSI - Check out our stunning real estate projects - Property Shop Investments - Real Estate Projects - Buy or Rent",
+    alternates: {
+      canonical: `${siteBaseUrl}/${currentLocale}`,
+      languages: languageAlternates,
+    },
+    robots: {
       index: true,
       follow: true,
-      noimageindex: false,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
-  },
-  metadataBase: new URL('https://psi.properties'),
-};
+    metadataBase: new URL('https://psi.properties'),
+  };
+}
+
 
 export default async function LocaleLayout({
   children,
