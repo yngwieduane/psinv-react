@@ -51,15 +51,15 @@ const StripeContent = (props:any) => {
     const wappNumber = process.env.NEXT_PUBLIC_WAPPNUMBER;
 
     return (
-        <Sticky stickyClassName="z-2">
+        <Sticky stickyClassName="stickyact">
             <div
             className='bg-gray-100 border-b border-gray-100 px-5'>
                 <div className='container mx-auto py-3'>
                     <div className="grid md:grid-cols-3 grid-cols-1 gap-y-5">
                         <div className="col-span-2">
                             <h1 className="md:text-2xl text-xl text-[#111954] uppercase">{props.data.marketingTitle}</h1>
-                            <h2 className="mb-5 hidden md:flex">{props.data.propertyname}, {props.data.community} by {props.data.developerName}</h2>
-                            <div className="grid grid-cols-3 mt-3 items-center content-center">
+                            <h2 className="hidden md:flex">{props.data.propertyname}, {props.data.community} by {props.data.developerName}</h2>
+                            <div className="grid grid-cols-3 mt-3 items-center content-center proptypes">
                                 <div>
                                     <p className="text-[#111954]">Price</p>
                                     <p className="md:text-lg text-normal"><PriceConvert price={price} minDecimal='0'/></p>

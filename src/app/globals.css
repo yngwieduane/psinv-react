@@ -24,155 +24,40 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  color: #666;
-}
-
-.breadcrumb a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline;
-}
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-.fas.fa-phone-alt {
-  color: #111954;
-  transition: color 0.3s ease-in-out;
-}
-
-.button:hover .fas.fa-phone-alt {
-  color: white;
-}
-html, body {
-  overflow-x: hidden !important;
-  width: 100%;
-}
-.contact-swiper {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow-x: hidden;
-}
-.contact-swiper .swiper-pagination {
-  bottom: 10px !important;
-}
-.contact-swiper .swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background: #fff;
-  opacity: 0.5;
-  transition: all 0.3s ease-in-out;
-}
-.contact-swiper .swiper-pagination-bullet-active {
-  background: #111954;
-  opacity: 1;
-  transform: scale(1.2);
-}
-.contact-swiper .swiper-pagination {
-  display: none !important;
-}
-.contact-swiper .swiper-button-prev,
-.contact-swiper .swiper-button-next {
-  display: none !important;
-}
+body {background: var(--background);color: var(--foreground);font-family: Arial, Helvetica, sans-serif;}
+.breadcrumb {display: flex;align-items: center;font-size: 14px;color: #666;}
+.breadcrumb a {color: #007bff;text-decoration: none;}
+.breadcrumb a:hover {text-decoration: underline;}
+.row {display: flex;flex-wrap: wrap;}
+.fas.fa-phone-alt {color: #111954;transition: color 0.3s ease-in-out;}
+.button:hover .fas.fa-phone-alt {color: white;}
+html, body {overflow-x: hidden !important;width: 100%;}
+.contact-swiper {width: 100%;max-width: 1200px;margin: 0 auto;overflow-x: hidden;}
+.contact-swiper .swiper-pagination {bottom: 10px !important;}
+.contact-swiper .swiper-pagination-bullet {width: 8px;height: 8px;background: #fff;opacity: 0.5;transition: all 0.3s ease-in-out;}
+.contact-swiper .swiper-pagination-bullet-active {background: #111954;opacity: 1;transform: scale(1.2);}
+.contact-swiper .swiper-pagination {display: none !important;}
+.contact-swiper .swiper-button-prev,.contact-swiper .swiper-button-next {display: none !important;}
 @layer components {
-  .list-property-form {
-    background-color: #fff;
-    padding: 40px;
-    width: 450px;
-    border-radius: 17px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .list-property-form .form-control {
-    display: block;
-    width: 100%;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    background-color: #fff;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  }
-
-  .list-property-form .form-control:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
-  }
-
-  .list-property-form button {
-    background-color: #e3342f;
-    color: white;
-    font-weight: bold;
-    padding: 12px;
-    border-radius: 6px;
-    width: 100%;
-    transition: background-color 0.3s ease;
-  }
-
-  .list-property-form button:hover {
-    background-color: #cc1f1a;
-  }
+  .list-property-form {background-color: #fff;padding: 40px;width: 450px;border-radius: 17px;box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);}
+  .list-property-form .form-control {display: block;width: 100%;padding: 0.375rem 0.75rem;font-size: 1rem;font-weight: 400;line-height: 1.5;color: #212529;background-color: #fff;border: 1px solid #ced4da;border-radius: 0.25rem;transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}
+  .list-property-form .form-control:focus {border-color: #2563eb;box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);}
+  .list-property-form button {background-color: #e3342f;color: white;font-weight: bold;padding: 12px;border-radius: 6px;width: 100%;transition: background-color 0.3s ease;}
+  .list-property-form button:hover {background-color: #cc1f1a;}
   /* styles/slider-custom.css */
-.rc-slider-track {
-  background-color: #60a5fa !important; /* Tailwind's blue-400 */
-}
-.rc-slider-handle {
-  background-color: #1953a2 !important;
-  border-color: #1953a2 !important;
-  opacity: 1;
-  width: 18px;
-  height: 18px;
-  margin-top: -7px;
-}
-
-.rc-slider-rail {
-  background-color: #e5e7eb; /* Tailwind's gray-200 */
-}
-
-  @media (max-width: 640px) {
-    .mobile-margin {
-      margin-left: 2% !important;
-      margin-right: 2% !important;
-      background-position: -120px -120px !important;
-    }
-    .mobile-bottom {
-      top: 415px;
-      background-color: #fff;
-      padding: 28px;
-      border-radius: 17px;
-    }
-  }
+  .rc-slider-track {background-color: #60a5fa !important; /* Tailwind's blue-400 */}
+  .rc-slider-handle {background-color: #1953a2 !important;border-color: #1953a2 !important;opacity: 1;width: 18px;height: 18px;margin-top: -7px;}
+  .rc-slider-rail {background-color: #e5e7eb; /* Tailwind's gray-200 */}
   /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for Firefox */
-.scrollbar-hide {
-  scrollbar-width: none;
-}
-
-/* Hide scrollbar for IE/Edge */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-}
+  .scrollbar-hide::-webkit-scrollbar {display: none;}
+  /* Hide scrollbar for Firefox */
+  .scrollbar-hide {scrollbar-width: none;}
+  /* Hide scrollbar for IE/Edge */
+  .scrollbar-hide {-ms-overflow-style: none;}
+  @media (max-width: 640px) {
+    .mobile-margin {margin-left: 2% !important;margin-right: 2% !important;background-position: -120px -120px !important;}
+    .mobile-bottom {top: 415px;background-color: #fff;padding: 28px;border-radius: 17px;}
+  }
 }
 
 .flex-column { flex-direction: column; }
@@ -181,10 +66,6 @@ html, body {
 .topHeader { background-position: center; background-size: cover; background-repeat: no-repeat;}
 .font-montserrat { font-family: "Montserrat", sans-serif; }
 .text-darkblue { color: #2C2D65;}
-.tick-before::before {
-  content: '✓';
-  margin-right: 0.625rem;
-  color: #014081;
-  margin-left: -1.25rem;
-  display: inline-block;
-}
+.tick-before::before {content: '✓';margin-right: 0.625rem;color: #014081;margin-left: -1.25rem;display: inline-block;}
+.stickyact{z-index: 2; }
+.stickyact .proptypes{display: none;}
