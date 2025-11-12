@@ -75,14 +75,14 @@ const StripeContent = (props:any) => {
                             </div>
                         </div>
                         <div className="grid grid-cols-3 text-center md:flex items-center justify-end gap-3">
-                            <Link href={`tel:${phoneNumber}`} className="bg-gray-200 hover:bg-gray-300  px-5 py-3 rounded-lg text-lg" onClick={() => sendGTMEvent({ event: 'Call', value: '1' })}><FontAwesomeIcon icon={faPhone} /></Link>
+                            <Link title="Phone" href={`tel:${phoneNumber}`} className="bg-gray-200 hover:bg-gray-300  px-5 py-3 rounded-lg text-lg" onClick={() => sendGTMEvent({ event: 'Call', value: '1' })}><FontAwesomeIcon icon={faPhone} /></Link>
                             <button
                                 onClick={modalHandler}
                                 type="button"
                                 className="bg-gray-200 hover:bg-gray-300 px-5 py-3 rounded-lg text-lg"
                             ><FontAwesomeIcon icon={faEnvelope} />
                             </button>
-                            <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${fullUrl}`} className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg" onClick={() => sendGTMEvent({ event: 'WhatsApp', value: '1' })}><FontAwesomeIcon icon={faWhatsapp} /></Link>
+                            <Link title="WhatsApp" target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${fullUrl}`} className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg" onClick={() => sendGTMEvent({ event: 'WhatsApp', value: '1' })}><FontAwesomeIcon icon={faWhatsapp} /></Link>
                         </div>
                     </div>
                 </div>

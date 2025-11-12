@@ -8,7 +8,11 @@ const AmenitiesFeatures = (props:any) => {
         {arrayconst.map((item:any, index:any) => {
             const feat = item.split('^');
             return (
-                <p key={index}>{feat[1]}</p>
+                <div key={index} className="overflow-hidden rounded-lg bg-gray-50">
+                    <div className="px-4 py-5 sm:p-6 flex align-items-center">
+                        <p className="text-sm ps-2">{feat[1]}</p>
+                    </div>
+                </div>
             )
         })}
         </>

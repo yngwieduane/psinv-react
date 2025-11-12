@@ -263,7 +263,7 @@ const Navigation: FC = () => {
         <div className="grid grid-cols-3 gap-4 bg-indigo-950 hidden md:grid px-5">
             <div className="grid grid-cols-3">
                 {callsToAction2.map((item) => (
-                    <Link href={item.href} key={item.name} className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
+                    <Link href={item.href} key={item.name} title={item.name} className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
                     {item.name !== '600 538 200' ? (
                         <FontAwesomeIcon
                             className="h-5 w-5 flex-none text-gray-400"
@@ -282,7 +282,7 @@ const Navigation: FC = () => {
             <div></div>
             <div className="flex gap-5 justify-end">
                 {socialMedia.map((item) => (
-                    <Link target="_blank" href={item.href} key={item.name} aria-label={item.name} className="flex items-center justify-center text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
+                    <Link target="_blank" href={item.href} key={item.name} title={item.name} aria-label={item.name} className="flex items-center justify-center text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
                     <DynamicIcon name={item.icon} size={20} />
                     </Link>
                 ))}
@@ -298,10 +298,11 @@ const Navigation: FC = () => {
         {/* Main Navigation */}
         <nav aria-label="Global" className="mx-auto flex max-w-full items-center justify-between p-6 lg:px-8">
             <div className="flex items-center gap-x-12">
-                <Link href="/" className="-m-1.5 p-1.5">
+                <Link href="/" className="-m-1.5 p-1.5" title="PSI">
                     <span className="sr-only">Property Shop Investment</span>
                     <Image
                         alt="PSI"
+                        title="PSI"
                         src="/PSI-Logo.svg"
                         className="h-8 w-auto"
                         width={200}
@@ -314,12 +315,12 @@ const Navigation: FC = () => {
 
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="hover:bg-psiblue hover:text-white" href="/units?category=Buy">Buy</Link>
+                                <Link className="hover:bg-psiblue hover:text-white" href="/units?category=Buy" title="BUY">Buy</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="hover:bg-psiblue hover:text-white" href="/units?category=Rent">Rent</Link>
+                                <Link className="hover:bg-psiblue hover:text-white" href="/units?category=Rent" title="RENT">Rent</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
@@ -363,7 +364,7 @@ const Navigation: FC = () => {
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="hover:bg-psiblue hover:text-white" href="/list-your-property">List Your Property</Link>
+                                <Link className="hover:bg-psiblue hover:text-white" href="/list-your-property" title="List Your Property">List Your Property</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
@@ -382,7 +383,7 @@ const Navigation: FC = () => {
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="hover:bg-psiblue hover:text-white" href="/contact-us">Contact Us</Link>
+                                <Link className="hover:bg-psiblue hover:text-white" href="/contact-us" title="Contact Us">Contact Us</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem className='pointer'>
@@ -425,6 +426,7 @@ const Navigation: FC = () => {
                                 <Link
                                 key={item.name}
                                 href={item.href}
+                                title={item.name}
                                 className="block rounded-lg px-3 py-2 text-sm font-normal text-gray-900 hover:bg-gray-50"
                                 >
                                     {item.name}
@@ -446,7 +448,7 @@ const Navigation: FC = () => {
             <div className="fixed inset-0 z-10" />
             <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                 <div className="flex items-center justify-between">
-                    <Link href="/" className="-m-1.5 p-1.5">
+                    <Link href="/" className="-m-1.5 p-1.5" title="PSI">
                         <span className="sr-only">Property Shop Investment</span>
                         <Image height={200} width={200} className="h-8 w-auto" src="PSI-Logo.svg" alt="Logo" />
                     </Link>
@@ -490,21 +492,22 @@ const Navigation: FC = () => {
                                     </>
                                 )}
                             </Disclosure>
-                            <Link onClick={() => setMobileMenuOpen(false)} href="/projects" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                            <Link title="Projects" onClick={() => setMobileMenuOpen(false)} href="/projects" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Projects
                             </Link>
-                            <Link onClick={() => setMobileMenuOpen(false)} href="/units" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                            <Link title="Units" onClick={() => setMobileMenuOpen(false)} href="/units" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Units
                             </Link>
-                            <Link onClick={() => setMobileMenuOpen(false)} href="/landing-page" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                            <Link title="Landing Page" onClick={() => setMobileMenuOpen(false)} href="/landing-page" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Landing Page
                             </Link>
-                            <Link onClick={() => setMobileMenuOpen(false)} href="/contact-us" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                            <Link title="Contact Us" onClick={() => setMobileMenuOpen(false)} href="/contact-us" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Contact Us
                             </Link>
                         </div>
                         <div className="py-6 hidden">
                             <Link
+                                title="Log In"
                                 href="#"
                                 className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                             >
@@ -529,7 +532,7 @@ function ListItem({
     return (
         <li {...props}>
         <NavigationMenuLink className='flex content-center' asChild>
-            <Link href={href}>
+            <Link href={href} title={title}>
             <div className="text-sm leading-none font-medium">{title}</div>
             </Link>
         </NavigationMenuLink>

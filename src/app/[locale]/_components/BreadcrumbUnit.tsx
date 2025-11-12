@@ -30,13 +30,13 @@ const BreadcrumbUnit = () => {
       />
       <ul className="flex items-center space-x-2 text-gray-500">
         <li>
-            <Link href="/" className="hover:text-blue-600">
+            <Link title="Home" href="/" className="hover:text-blue-600">
                 Home
             </Link>
         </li>
         <li className="flex items-center space-x-2">
             <span>/</span>
-            <Link href="/units" className="hover:text-blue-600">
+            <Link title="Units" href="/units" className="hover:text-blue-600">
                 Units
             </Link>
         </li>
@@ -52,7 +52,7 @@ const BreadcrumbUnit = () => {
                   {segment.replaceAll('-', ' ')}
                 </span>
               ) : (
-                <Link href={href} className="hover:text-blue-600 capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
+                <Link title={segment.replaceAll('-', ' ')} href={href} className="hover:text-blue-600 capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
                   {segment.replaceAll('-', ' ')}
                 </Link>
               )}

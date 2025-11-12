@@ -1,5 +1,6 @@
 'use client'
-import MapComponent from "@/app/[locale]/_components/MapComponent";
+
+import dynamic from "next/dynamic";
 import SwiperMaterial from "@/app/[locale]/_components/SwiperMaterial";
 import StripeContent from "./StripeContent";
 import { useState } from "react";
@@ -11,16 +12,16 @@ import NumberConvert from "@/app/[locale]/_components/tools/NumberConvert";
 import InquiryForm from "@/app/[locale]/_components/InquiryForm";
 import AmenitiesFeatures from "./AmenitiesFeatures";
 import FancyboxWrapper from "@/app/[locale]/_components/tools/FancyboxWrapper";
-import SimilarUnitsGrid from "./SimilarUnitsGrid";
 import Sticky from 'react-sticky-el';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
 import MortgageCalculator from "@/app/[locale]/mortgage-calculator/MortgageCalculator";
 import AgentDetails from "./AgentDetails";
-import Nearbys from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/Nearbys";
 import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
-import NearbysWithMap from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap";
 import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
+
+const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap'));
+const SimilarUnitsGrid = dynamic(() => import('./SimilarUnitsGrid'));
 
 export default function UnitPage(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -169,7 +170,7 @@ export default function UnitPage(props: any) {
                                     <h2 className="text-xl mb-5 text-[#111954]">
                                         Amenities
                                     </h2>
-                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
+                                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                                         <AmenitiesFeatures content={amenities.slice(0, -1)} limit={12}/>
                                     </div>
                                 </div>) : ("")}
@@ -179,7 +180,7 @@ export default function UnitPage(props: any) {
                                     <h2 className="text-xl mb-5 text-[#111954]">
                                         Facilities
                                     </h2>
-                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
+                                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                                         <AmenitiesFeatures content={facilities.slice(0, -1)} limit={12}/>
                                     </div>
                                 </div>) : ("")}

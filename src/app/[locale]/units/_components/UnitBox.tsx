@@ -58,6 +58,7 @@ export default function UnitBox(props:any){
             <div className="px-5 py-3">
                 <div className="flex items-center gap-x-4 text-xs">
                     <Link
+                        title={props.data.community}
                         href="#"
                         className="absolute top-5 z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100 flex items-center"
                     >
@@ -66,7 +67,7 @@ export default function UnitBox(props:any){
                 </div>
                 <div className="group relative max-w-xl">
                     <h3 className="mt-0 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
-                        <Link href={`/unit/${props.seoUrl}`} >
+                        <Link title={props.data.propertyname} href={`/unit/${props.seoUrl}`} >
                             <span className="absolute inset-0 " />
                             <p className="">{props.data.propertyname}</p>
                         </Link>
@@ -85,14 +86,14 @@ export default function UnitBox(props:any){
                     </div>
                 </div>
                 <div className="grid grid-cols-3 text-center items-center justify-end gap-3 mt-3 border-t border-gray-900/9 pt-6">
-                    <Link href={`tel:${phoneNumber}`} className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg items-center flex justify-center"><Phone size={20} /></Link>
+                    <Link title="Phone" href={`tel:${phoneNumber}`} className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg items-center flex justify-center"><Phone size={20} /></Link>
                     <button
                         onClick={modalHandler}
                         type="button"
                         className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg flex justify-center cursor-pointer"
                     ><Mail size={20} />
                     </button>
-                    <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${props.seoUrl}`} className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg flex justify-center"><FontAwesomeIcon icon={faWhatsapp} /></Link>
+                    <Link title="Whatsapp" target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${props.seoUrl}`} className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg flex justify-center"><FontAwesomeIcon icon={faWhatsapp} /></Link>
                 </div>
             </div>
         </article>

@@ -15,7 +15,7 @@ const CardGroupImage = (props:any) => {
                 <div className="px-4 py-5 sm:p-6 flex align-items-center">
                     {thumbimg !== null || !thumbimg
                         ? 
-                        <Flame/>
+                        ""
                         : ""
                     }
                     <p className="text-sm ps-2">{item.name}</p>

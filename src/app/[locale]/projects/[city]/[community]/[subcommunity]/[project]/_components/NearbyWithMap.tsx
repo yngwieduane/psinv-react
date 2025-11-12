@@ -350,7 +350,7 @@ function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:
                 };
 
                 return (
-                    <div className="advanced-marker-example">
+                    <div key={index} className="advanced-marker-example">
                         <AdvancedMarkerWithRef
                             onMarkerClick={(
                             marker: google.maps.marker.AdvancedMarkerElement

@@ -44,11 +44,12 @@ export default function MySwiper(props: any) {
             let imagecontent = slide.split('?');
             return (
                 <SwiperSlide key={index} className="swiper-slide-1990">
-                  <a data-fancybox="gallerypopup" href={imagecontent[0]}>
+                  <a title={imagecontent[1]} data-fancybox="gallerypopup" href={imagecontent[0]}>
                   <div className="swiper-material-wrapper">
                       <div className="swiper-material-content">
                       <img
                           alt={imagecontent[1]}
+                          title={imagecontent[1]}
                           width={400}
                           height={900}
                           className="swiper-slide-bg-image swiper-slide-bg-image-c61b"
