@@ -46,7 +46,7 @@ const StripContentPro = (props:any) => {
 
 
     return (
-        <Sticky stickyClassName="z-1">
+        <Sticky stickyClassName="stickyact">
             <div
             className='bg-gray-100 border-b border-gray-100 px-5'>
                 <div className='container mx-auto py-3'>
@@ -54,7 +54,7 @@ const StripContentPro = (props:any) => {
                         <div className="col-span-2">
                             <h1 className="md:text-2xl text-xl text-[#111954] uppercase">{props.data["propertyName"]}</h1>
                             <h2 className="mb-5 hidden md:flex text-sm">{props.data["propertyName"]}, {props.data["community"]} by {props.data['masterDeveloper']}</h2>
-                            <div className="grid grid-cols-3 mt-3 items-center content-center">
+                            <div className="grid grid-cols-3 mt-3 items-center content-center proptypes">
                                 {(parseInt(minprice) > 1 || parseInt(maxprice) > 1) ? (
                                 <div>
                                     <p className="text-sm text-[#111954]">Price</p>

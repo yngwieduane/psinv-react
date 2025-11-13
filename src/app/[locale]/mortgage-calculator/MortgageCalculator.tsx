@@ -9,8 +9,11 @@ import PopupForm from '../_components/PopupForm';
 
 Chart.register(ArcElement, Tooltip, DoughnutController);
 
-export default function MortgageCalculator() {
-  const [propertyPrice, setPropertyPrice] = useState(1000000);
+export default function MortgageCalculator(props:any) {
+
+  const baseprice = props.baseprice ?? 1000000;
+
+  const [propertyPrice, setPropertyPrice] = useState(baseprice);
   const [loanTerm, setLoanTerm] = useState(25);
   const [downPayment, setDownPayment] = useState(250000);
   const [interestRate, setInterestRate] = useState(4.5);

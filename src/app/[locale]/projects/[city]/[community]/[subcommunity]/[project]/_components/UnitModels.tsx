@@ -54,9 +54,6 @@ const UnitModels = (props:any) => {
                                         <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
                                             Sizes
                                         </th>
-                                        <th scope="col" className={`px-3 py-3.5 text-left text-sm text-[#111954] ${unitType || unitType[0] == 'UnitType' ? "" : ""}`}>
-                                            Unit Type
-                                        </th>
                                         <th scope="col" className={`px-3 py-3.5 text-left text-sm text-[#111954] ${bathrooms.length <= 1 && bathrooms[0] == '0' ? "hidden" : ""}`}>
                                             Bathrooms
                                         </th>
@@ -96,12 +93,11 @@ const UnitModels = (props:any) => {
                                                         </div>
                                                         </a>
                                                     ) : (
-                                                        <div className="w-full h-10 bg-gray-300"></div>
+                                                        <div className="w-full h-20 bg-gray-300"></div>
                                                     )}
                                                 </td>
                                                 <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{page.modelName}</td>
                                                 <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{page.area}</td>
-                                                <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${unitType || unitType[0] == 'UnitType' ? "" : ""}`}>{(page.unitType && page.unitType !== 'UnitType') ? page.unitType : "-"}</td>
                                                 <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${bathrooms.length <= 1 && bathrooms[0] == '0' ? "hidden" : ""}`}>{(page.bathrooms && page.bathrooms !== '0') ? page.bathrooms : "-"}</td>
                                                 <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${laundryRoomNo.length <= 1 && laundryRoomNo[0] == '0' ? "hidden" : ""}`}>{(page.laundryRoomNo && page.laundryRoomNo !== '0') ? page.laundryRoomNo : "-"}</td>
                                                 <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${maidsRoomNo.length <= 1 && maidsRoomNo[0] == '0' ? "hidden" : ""}`}>{(page.maidsRoomNo && page.maidsRoomNo !== '0') ? page.maidsRoomNo : "-"}</td>
