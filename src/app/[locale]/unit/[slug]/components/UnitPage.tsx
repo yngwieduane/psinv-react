@@ -200,9 +200,10 @@ export default function UnitPage(props: any) {
                                     </h2>
                                     <ReadMore amountOfWords={100} id="read-more-text" text={post.remarks} classes="whitespace-break-spaces"/>
                                 </div>) : ("")}
+                                {category == "Sale" ? (
                                 <div className="container mx-auto my-10">
                                     <MortgageCalculator baseprice={price}/>
-                                </div>
+                                </div>) : ("")}
                             </div>
                             <div className="mainsidebar">
                                 <AgentDetails data={post.agent_Pk}/>
