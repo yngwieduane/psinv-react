@@ -14,6 +14,7 @@ import {
 import BannerModals from "./HomeBannerModal";
 import "./SwiperSliderHome.css";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
 
 const SwiperSlider = (props: any) => {
   const swiperElRef2 = useRef<any>(null);
@@ -85,7 +86,7 @@ const SwiperSlider = (props: any) => {
     )}
       
       <Swiper
-      ref={swiperElRef2}
+        ref={swiperElRef2}
         navigation={false}
         pagination={isMobile ? { clickable: true, el: ".custom-pagination" } : false}
               // pagination={{
@@ -121,8 +122,17 @@ const SwiperSlider = (props: any) => {
             key={index}            
           >
           {/* DESKTOP */}
-          <div className="bg-no-repeat bg-cover bg-center h-full md:block hidden"
-            style={{ backgroundImage: !isMobile ? `url(${slide.image})` : 'none'}} >              
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              sizes="100vw"
+              className=" md:block hidden object-cover z-10"
+              loading="lazy"
+              blurDataURL="data:..."
+              placeholder="blur"
+            />      
+          <div className="bg-no-repeat bg-cover bg-center h-full md:block hidden absolute z-20 right-0 left-0" >              
             <div className="md:bg-linear-to-r from-blue-950 from-10% to-transparent to-70% h-full">              
               <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 h-full items-center text-center md:text-start xl:px-0 lg-px-4 md:px-4">
                 <div className="px-4 md:px-auto ">
