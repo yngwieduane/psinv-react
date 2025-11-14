@@ -12,7 +12,7 @@ export default function ReportDownloadSection() {
     const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-    <section className="report py-10 my-10"> 
+    <div className="report py-10 my-10"> 
       <div className="container mx-auto px-4">
         <div className="flex flex-col-reverse md:flex-row items-center rounded-xl bg-[#F0F0F0] md:h-[340px]">
           
@@ -40,7 +40,7 @@ export default function ReportDownloadSection() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
           {isModalOpen && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
               <div className="bg-white p-6 rounded-xl w-full max-w-lg relative overflow-y-auto max-h-[90vh]">

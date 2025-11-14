@@ -18,7 +18,7 @@ const WhyPSI = () => {
   const [activeTab, setActiveTab] = useState("company");
 
   return (
-    <section className="bg-white py-16 px-4">
+    <div className="bg-white py-16 px-4">
       <div className="max-w-[1320px] mx-auto">
 
         {/* Tabs Header */}
@@ -227,7 +227,7 @@ const WhyPSI = () => {
         </div>
         )}
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -4,7 +4,7 @@ import { Audrey, BrittanySignature } from "@/utils/fonts";
 
 export default function GetTheAppSection() {
   return (
-    <section className="relative bg-white">
+    <div className="relative bg-white">
       <div className="container mx-auto px-3 lg:px-6 lg:px-12 py-0 md:py-20">
         <div className="text-center">
           <h3 className= {`${BrittanySignature.className} text-orange-600 text-[30px] md:text-[40px]`}>Get the app</h3>
@@ -77,6 +77,6 @@ export default function GetTheAppSection() {
   </div>
 </div>
       </div>
-    </section>
+    </div>
   );
 }

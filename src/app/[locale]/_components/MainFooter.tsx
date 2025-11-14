@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DynamicIcon } from 'lucide-react/dynamic';
-import { faPaperPlane, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { Poppins } from "next/font/google";import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { SocialMedia } from "@/types/navigation";
