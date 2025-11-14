@@ -124,7 +124,7 @@ const SwiperSlider = (props: any) => {
           {/* DESKTOP */}
             <Image
               src={slide.image}
-              alt={slide.title}
+              alt="Main Slider"
               fill
               sizes="100vw"
               className=" md:block hidden object-cover z-10"
