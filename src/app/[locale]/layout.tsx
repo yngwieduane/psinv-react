@@ -112,7 +112,7 @@ export default async function LocaleLayout({
             <Providers><main>{children}</main></Providers>
             <ConditionalFooter />
         </NextIntlClientProvider>
-        {/* <GoogleTagManager gtmId="GTM-KDDP2SR" /> */}
+        <GoogleTagManager gtmId="GTM-PMQ9XT65R" />
       </body>
     </html>
   );
