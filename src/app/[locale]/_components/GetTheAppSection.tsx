@@ -7,7 +7,7 @@ export default function GetTheAppSection() {
     <div className="relative bg-white">
       <div className="container mx-auto px-3 lg:px-6 lg:px-12 py-0 md:py-20">
         <div className="text-center">
-          <h3 className= {`${BrittanySignature.className} text-orange-600 text-[30px] md:text-[40px]`}>Get the app</h3>
+          <h2 className= {`${BrittanySignature.className} text-orange-600 text-[30px] md:text-[40px]`}>Get the app</h2>
           <h2 className="text-blue-900 font-bold text-[24px] md:text-[48px] mt-2">Your Journey Starts Here</h2>
         </div>
 
@@ -38,7 +38,7 @@ export default function GetTheAppSection() {
   </div>
           {/* Right Text */}
   <div className="w-full lg:w-[25%] lg:absolute lg:top-1/2 lg:-translate-y-[50%] lg:right-[20px] text-center lg:text-right px-4 mt-10 lg:mt-0 z-10 order-2 lg:order-0">
-    <h4 className={`${BrittanySignature.className} text-orange-600 text-[24px] lg:text-[40px]`}>Start your journey today</h4>
+    <h5 className={`${BrittanySignature.className} text-orange-600 text-[24px] lg:text-[40px]`}>Start your journey today</h5>
     <p className="text-blue-900 text-lg mt-2">with just one tap.</p>
   </div>
         </div>
