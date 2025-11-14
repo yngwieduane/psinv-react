@@ -200,6 +200,7 @@ const PropertyPage = (props:any) => {
                     <div className="flex gap-4 my-10">
                         {map !== null ? (
                         <button
+                            title="Map"
                             type="button"
                             onClick={drawerHandler('map',map)}
                             name="map"
@@ -212,6 +213,7 @@ const PropertyPage = (props:any) => {
                         {video !== '' ? (
                         <FancyboxWrapper>
                             <a
+                                title="Video"
                                 type="button"
                                 data-fancybox="video"
                                 href={video}
@@ -226,6 +228,7 @@ const PropertyPage = (props:any) => {
                         <FancyboxWrapper>
                             <a
                                 type="button"
+                                title="Master Plan"
                                 //onClick={drawerHandler('gallery',images)}
                                 data-fancybox="masterplan"
                                 href={props.data["communityMapAndMasterPlan"][0]['imageURL']}
@@ -240,6 +243,7 @@ const PropertyPage = (props:any) => {
                         <FancyboxWrapper>
                             <a
                                 type="button"
+                                title="Location Plan"
                                 //onClick={drawerHandler('gallery',images)}
                                 data-fancybox="locationplan"
                                 href={props.data["locationMapImages"][0]['imageURL']}

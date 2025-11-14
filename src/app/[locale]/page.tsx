@@ -330,7 +330,7 @@ export default function HomePage() {
         <div className="container mx-auto my-10">
             <Calculator/>
         </div>
-        <section className="w-full bg-secondary-color py-10 text-gray-500">
+        <div className="w-full bg-secondary-color py-10 text-gray-500">
           <div  className="max-w-(--breakpoint-xl) mx-auto bg-center bg-cover py-10 px-5" style={{ backgroundImage: "url('/assets/images/about-us/pattern-1.png')",}}>
             {/* Heading */}
             <div className="text-center mt-[50px] mb-[70px]">
@@ -388,8 +388,8 @@ export default function HomePage() {
                 <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>Location Worldwide</p>
             </div>
           </div>
-        </section>
-        <section className="w-full py-10 text-gray-500 text-center">
+        </div>
+        <div className="w-full py-10 text-gray-500 text-center">
           <div className="max-w-(--breakpoint-xl) mx-auto">
               <h3 className={`text-darkblue font-bold text-xl md:text-4xl ${Audrey.className}`}>
               AWARDS-DRIVEN
@@ -399,12 +399,12 @@ export default function HomePage() {
               <p className="text-lg mt-5">We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. 
                   Explore our journey of accolades that inspire us to reach new pinnacles of success.</p>
           </div>            
-          <section className="w-full">
+          <div className="w-full">
               <div className="max-w-(--breakpoint-xl) relative mx-auto">
                   <AwardSlider slides={awards} />
               </div>
-          </section>            
-        </section>
+          </div>            
+        </div>
         <div className="max-w-[1320px] mx-auto px-4 py-8">
            <ReportDownloadSection />
         </div>

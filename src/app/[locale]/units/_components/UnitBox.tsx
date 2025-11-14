@@ -40,7 +40,8 @@ export default function UnitBox(props:any){
             <div className="relative w-full h-56 sm:aspect-2/1">
                 {images.length <= 1 ? (
                     <img
-                    alt=""
+                    alt="No Image"
+                    title="No Image"
                     src={images[0]}
                     className="absolute inset-0 size-full rounded-lg bg-gray-50 object-cover"
                     />

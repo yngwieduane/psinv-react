@@ -76,7 +76,8 @@ const UnitModels = (props:any) => {
                                                     {page.floorPlanlImage !== ''
                                                         ? (
                                                         <a
-                                                            type="button"
+                                                            title={`floorplan ${page.modelName}`}
+                                                            type="floorplan"
                                                             //onClick={drawerHandler('gallery',images)}
                                                             data-fancybox="floorplan"
                                                             href={page.floorPlanlImage}
@@ -88,6 +89,7 @@ const UnitModels = (props:any) => {
                                                             className="object-center object-cover pointer-events-none"
                                                             src={page.floorPlanlImage.replace('?width=0&height=0','?width=200&height=200')}
                                                             alt={page.modelName}
+                                                            title={page.modelName}
                                                             />
                                                             <div className="relative z-1 w-full h-20"/>
                                                         </div>
