@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { Providers } from "./providers";
 import { GoogleTagManager } from '@next/third-parties/google'
-import { headers } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,10 +48,6 @@ type Props = {
 
 // ✅ Dynamic metadata generator
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const headersList = headers();
-  const fullUrl = (await headersList).get("referer") || "";
-  const host = (await headersList).get("host") || "psi.properties";
-
   const { locale } = params;
 
   // Ensure locale is valid (fallback to default)
@@ -67,39 +62,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   // Add x-default
   languageAlternates["x-default"] = siteBaseUrl;
-// Build absolute URL using host
-  const currentURL = `https://${host}${fullUrl.replace(/^https?:\/\/[^/]+/, "")}`;
-
-  // Extract pathname (e.g /en/community/marina-bay)
-  const path = new URL(currentURL).pathname;
-
-  // Detect current language
-  const lang = path.split("/")[1]; // "en", "ar", "ru" or something else
-
-  // Build language-free path → e.g. remove /en or /ar from beginning
-  const cleanPath =
-    ["en", "ar", "ru", "cn"].includes(lang)
-      ? path.replace(`/${lang}`, "")
-      : path;
-
-  const finalPath = cleanPath === "" ? "/" : cleanPath;
 
   return {
     title: "⚡ Abu Dhabi Real Estate  - Property Shop Investment",
     description: "⚡ Abu Dhabi Real Estate  - PSI - Check out our stunning real estate projects - Property Shop Investments - Real Estate Projects - Buy or Rent",
-    // alternates: {
-    //   canonical: `${siteBaseUrl}/${currentLocale}`,
-    //   languages: languageAlternates,
-    // },
     alternates: {
-      canonical: `https://psi.properties${finalPath}`,
-
-      languages: {
-        en: `https://psi.properties/en${finalPath}`,
-        ar: `https://psi.properties/ar${finalPath}`,
-        ru: `https://psi.properties/ru${finalPath}`,
-        "x-default": `https://psi.properties${finalPath}`,
-      },
+      canonical: `${siteBaseUrl}/${currentLocale}`,
+      languages: languageAlternates,
     },
     robots: {
       index: true,
