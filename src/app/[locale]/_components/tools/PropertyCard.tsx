@@ -30,13 +30,14 @@ const PropertyCard = (props:any) => {
 
     const url =  '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['community']) + "/" + slugify(subCommunity) + "/" + slugify(props.data['propertyName']);
 return (
-    <Link href={url} className="h-full">
+    <Link title={props.data["propertyName"]} href={url} className="h-full">
       <div className={`max-w-96 ${props.csswidth} group relative shadow-lg rounded-lg h-full hover:bg-gray-200 `}>
         <div className="aspect-h-2 aspect-w-4 overflow-hidden bg-gray-100 relative rounded-lg">
           {imgFeatured !== '' ? (
               <Image
                 src={imgFeatured}
                 alt={imgFeatured}
+                title={imgFeatured}
                 className="h-50 w-full"
                 width={300}
                 height={200}
@@ -66,7 +67,7 @@ return (
             {props.data["community"]} | {props.data["masterDeveloper"]}
           </p>
         </div>
-        <div className="flex text-center justify-around border-t border-gray-200 py-5 mt-5">
+        <div className="flex text-center justify-around border-t border-gray-200 py-5 mt-5 group-hover:border-white">
           {propType}
           {propBed}
           {propHO}

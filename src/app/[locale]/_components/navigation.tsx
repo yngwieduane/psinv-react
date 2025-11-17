@@ -28,7 +28,7 @@ const products_buy: Buy[] = [
     {
         name: 'All Units',
         description: 'All Units for Sale',
-        href: '/units?category=Buy',
+        href: '/units?category=Sale',
         icon: ChartPieIcon,
     }
 ];
@@ -315,7 +315,7 @@ const Navigation: FC = () => {
 
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="hover:bg-psiblue hover:text-white" href="/units?category=Buy" title="BUY">Buy</Link>
+                                <Link className="hover:bg-psiblue hover:text-white" href="/units?category=Sale" title="BUY">Buy</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>

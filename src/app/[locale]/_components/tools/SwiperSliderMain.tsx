@@ -48,7 +48,7 @@ function SwiperSliderMain(props:any) {
             className="bg-no-repeat bg-cover bg-center relative w-8 rounded-lg"
             style={{ backgroundImage: `url(${project.image})` }}
           >
-            <Link href={`/${locale}${project.project_url || ''}`}>
+            <Link title={project.title} href={`/${locale}${project.project_url || ''}`}>
             <div className="bg-linear-to-t from-blue-950 h-96 rounded-lg">
               <div className="absolute bottom-0 px-5">
                 <h2 className="flex items-center gap-2 text-3xl font-thin text-white mb-4 justify-center md:justify-start">

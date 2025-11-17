@@ -42,7 +42,7 @@ export default function MortgageTabs() {
               className={`inline-block px-4 py-2 rounded-t-md cursor-pointer ${
                 activeTab === tab.id
                   ? 'border-b-[3px] border-[#dc481a] font-bold text-[#111954] opacity-100 text-[20px]'
-                  : 'border-b-2 border-transparent text-[#6c757d] hover:border-gray-300 opacity-100 font-light text-[20px]'
+                  : 'text-[20px] relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100'
               }`}
             >
               {tab.title}

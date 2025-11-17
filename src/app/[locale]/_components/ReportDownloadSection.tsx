@@ -22,7 +22,7 @@ export default function ReportDownloadSection() {
             <h5 className="text-[36px] text-[#333] font-bold">Monthly Report DXB</h5>
             
             <button
-              className="mt-4 px-8 py-2 text-white text-lg font-medium rounded-lg  bg-orange-700 "
+              className="mt-4 relative text-lg overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer font-semibold"
               onClick={() => setIsModalOpen(true)}
             >
               Download Now
@@ -34,8 +34,9 @@ export default function ReportDownloadSection() {
             <Image
               src="/images/april-report.png"
               alt="Monthly Report DXB"
+              title="Monthly Report DXB"
               fill
-    className="object-contain rounded-md"
+              className="object-contain rounded-md"
             />
           </div>
         </div>

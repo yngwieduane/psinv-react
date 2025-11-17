@@ -88,12 +88,12 @@ const MainFooter = () => {
                         <div className="w-full md:w-auto">
                             <h4 className="font-bold text-lg sm:text-base mb-4">Explore</h4>
                             <ul className="space-y-2 text-sm sm:text-[14px]">
-                                <li><Link title="Buy" href="/units?category=Buy" className="cursor-pointer no-underline hover:no-underline">Buy</Link></li>
-                                <li><Link title="Rent" href="/units?category=Rent" className="cursor-pointer no-underline hover:no-underline">Rent</Link></li>
-                                <li><Link title="Youngster Program" href="/psi-youngsters-program" className="cursor-pointer no-underline hover:no-underline">Youngster Program</Link></li>
-                                <li><Link title="List Your Property" href="/list-your-property" className="cursor-pointer no-underline hover:no-underline">List Your Property</Link></li>
-                                {/* <li><Link href="/build-your-villa" className="cursor-pointer no-underline hover:no-underline">Build Your Villa</Link></li>
-                                <li><Link href="/articles" className="cursor-pointer no-underline hover:no-underline">Articles</Link></li> */}
+                                <li><Link title="Buy" href="/units?category=Buy" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Buy</Link></li>
+                                <li><Link title="Rent" href="/units?category=Rent" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Rent</Link></li>
+                                <li><Link title="Youngster Program" href="/psi-youngsters-program" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Youngster Program</Link></li>
+                                <li><Link title="List Your Property" href="/list-your-property" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">List Your Property</Link></li>
+                                {/* <li><Link href="/build-your-villa" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Build Your Villa</Link></li>
+                                <li><Link href="/articles" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Articles</Link></li> */}
                             </ul>
                         </div>
                         {/* Vertical Divider (Visible only on mobile, hidden on desktop) */}
@@ -102,11 +102,11 @@ const MainFooter = () => {
                         <div className="w-full md:w-auto">
                             <h4 className="font-bold text-lg sm:text-base mb-4">New Projects</h4>
                             <ul className="space-y-2 text-sm sm:text-[14px]">
-                                <li><Link title="Mamsha Garden" href="/projects/abu-dhabi/saadiyat-island/cultural-district/mamsha-gardens" className="cursor-pointer no-underline hover:no-underline">Mamsha Gardens</Link></li>
-                                <li><Link title="Rivage" href="/projects/abu-dhabi/al-reem-island/al-reem-island/rivage" className="cursor-pointer no-underline hover:no-underline">Rivage</Link></li>
-                                <li><Link title="W Residences" href="/projects/dubai/the-palm-jumeirah/the-palm-jumeirah/w-residences" className="cursor-pointer no-underline hover:no-underline">W Residences</Link></li>
-                                <li><Link title="Reem Hills" href="/projects/abu-dhabi/al-reem-island/al-reem-hills/reem-hills" className="cursor-pointer no-underline hover:no-underline">Reem Hills</Link></li>
-                                <li><Link title="More Projects" href="/projects" className="cursor-pointer no-underline hover:no-underline font-bold">More Projects</Link></li>
+                                <li><Link title="Mamsha Garden" href="/projects/abu-dhabi/saadiyat-island/cultural-district/mamsha-gardens" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Mamsha Gardens</Link></li>
+                                <li><Link title="Rivage" href="/projects/abu-dhabi/al-reem-island/al-reem-island/rivage" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Rivage</Link></li>
+                                <li><Link title="W Residences" href="/projects/dubai/the-palm-jumeirah/the-palm-jumeirah/w-residences" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">W Residences</Link></li>
+                                <li><Link title="Reem Hills" href="/projects/abu-dhabi/al-reem-island/al-reem-hills/reem-hills" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Reem Hills</Link></li>
+                                <li><Link title="More Projects" href="/projects" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100 font-bold">More Projects</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -114,12 +114,12 @@ const MainFooter = () => {
                     <div className="md:col-span-1 md:order-3">
                         <h4 className="font-bold text-lg mb-4">Important Links</h4>
                         <ul className="space-y-2 text-sm text-left">
-                            {/* <li><Link href="/mortgage-calculator" className="cursor-pointer no-underline hover:no-underline">Mortgage Calculator</Link></li> */}
-                            <li><Link title="About Us" href="/about-us" className="cursor-pointer no-underline hover:no-underline">About Us</Link></li>
-                            <li><Link title="Contact Us" href="/contact-us" className="cursor-pointer no-underline hover:no-underline">Contact Us</Link></li>
-                            <li><Link title="Careers" href="/careers" className="cursor-pointer no-underline hover:no-underline">Careers</Link></li>
-                            {/* <li><Link href="/blog" className="cursor-pointer no-underline hover:no-underline">Blog</Link></li>
-                            <li><Link href="/sitemap" className="cursor-pointer no-underline hover:no-underline">Sitemap</Link></li> */}
+                            {/* <li><Link href="/mortgage-calculator" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Mortgage Calculator</Link></li> */}
+                            <li><Link title="About Us" href="/about-us" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">About Us</Link></li>
+                            <li><Link title="Contact Us" href="/contact-us" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Contact Us</Link></li>
+                            <li><Link title="Careers" href="/careers" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Careers</Link></li>
+                            {/* <li><Link href="/blog" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Blog</Link></li>
+                            <li><Link href="/sitemap" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Sitemap</Link></li> */}
                         </ul>
                     </div>
                     <div className="md:col-span-1 md:order-4">
@@ -136,11 +136,11 @@ const MainFooter = () => {
                         </div>
                         {/* Download Buttons */}
                         <div className="mt-4">
-                            <a title="Holiday Homes Abu Dhabi Guides" href="/docs/holiday-homes-abu-dhabi.pdf" download="holiday-homes-abu-dhabi.pdf" className="flex  bg-orange-700  text-white py-4 px-4 items-center justify-between mt-2 text-xs rounded-lg">
+                            <a title="Holiday Homes Abu Dhabi Guides" href="/docs/holiday-homes-abu-dhabi.pdf" download="holiday-homes-abu-dhabi.pdf" className="flex justify-between text-xs items-center relative overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer">
                                 Holiday Homes Abu Dhabi Guides
                                 <DownloadIcon size={16} />
                             </a>
-                            <a title="Holiday Homes Dubai Guides" href="/docs/holiday-homes-dubai.pdf" download="holiday-homes-dubai.pdf" className="flex  bg-orange-700  text-white py-4 px-4 items-center justify-between mt-5 text-xs rounded-lg">
+                            <a title="Holiday Homes Dubai Guides" href="/docs/holiday-homes-dubai.pdf" download="holiday-homes-dubai.pdf" className="flex w-ful justify-between mt-5 text-xs items-center relative overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer">
                                 Holiday Homes Dubai Guides
                                 <DownloadIcon size={16} />
                             </a>

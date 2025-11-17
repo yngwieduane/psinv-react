@@ -125,6 +125,7 @@ const SwiperSlider = (props: any) => {
             <Image
               src={slide.image}
               alt="Main Slider"
+              title="Main Slider"
               fill
               sizes="100vw"
               className=" md:block hidden object-cover z-10"
@@ -137,10 +138,13 @@ const SwiperSlider = (props: any) => {
               <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 h-full items-center text-center md:text-start xl:px-0 lg-px-4 md:px-4">
                 <div className="px-4 md:px-auto ">
                   {slide.developer_img && (
-                    <img
+                    <Image
                       className={`${slide.name === 'loyalty' ? 'w-[200px]' : 'w-[100px]' }  h-auto mb-5 mx-auto md:mx-0`}
+                      width={300}
+                      height={200}
                       src={slide.developer_img}
                       alt="Developer"
+                      title="Developer"
                     />
                   )}
 
@@ -177,24 +181,22 @@ const SwiperSlider = (props: any) => {
                   
                   
                   {slide.name === 'loyalty' && (
-                    <a 
-                        href="https://loyalty-program.psinv.net/" target="_blank"
-                        className="rounded-md bg-orange-600 px-5 py-2.5 text-2xl font-semibold text-white shadow-sm hover:bg-orange-500 
-                        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                      Sign Up
-                    </a>
+                    <Link title="Sign Up" href="https://loyalty-program.psinv.net/" target="_blank" className="relative text-2xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer font-semibold">
+                      <span className="relative">Sign Up</span>
+                    </Link>
                   )}
                   {slide.name !== 'loyalty' && (
                     <>
                       <button 
                         onClick={() => modalHandler(slide)}
-                        className="rounded-md bg-orange-600 px-5 py-2.5 text-2xl font-semibold text-white shadow-sm hover:bg-orange-500 
-                        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                        className="rrelative text-2xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer font-semibold">
                         Sign Up
                       </button>
-
-                      <Link href={slide.project_url} className="px-5 py-2.5 text-white text-2xl font-semibold hover:text-gray-400">
-                          Explore More <ChevronRightIcon className="w-7 inline-flex" />
+                      <Link title="Explore More" href={slide.project_url} className="group relative text-2xl font-semibold inline-flex h-12 items-center justify-center overflow-hidden rounded-md px-6 font-medium text-white cursor-pointer">
+                        <span>Explore More</span>
+                        <div className="ml-1 transition group-hover:translate-x-1">
+                          <ChevronRightIcon className="w-7 inline-flex" />
+                        </div>
                       </Link>
                     </>
                   )}
@@ -202,10 +204,13 @@ const SwiperSlider = (props: any) => {
                 </div>
                 <div className="">
                   {slide.img2 && (
-                    <img
+                    <Image
                       className="w-[90%] h-auto mb-5 mx-auto md:mx-0"
                       src={slide.img2}
+                      width={300}
+                      height={200}
                       alt="loyalty"
+                      title="loyalty"
                     />
                   )}
                 </div>
@@ -218,10 +223,13 @@ const SwiperSlider = (props: any) => {
               <div className={`relative h-[240px] w-full bg-cover bg-no-repeat mb-5`} style={{ backgroundImage: `url(${slide.image})` }}>
                 <div className="flex h-full justify-center items-center">
                   {slide.name === 'loyalty' && slide.img2 && (
-                    <img
+                    <Image
                       className="w-[60%] h-auto mb-5 md:mx-0"
                       src={slide.img2}
+                      width={300}
+                      height={200}
                       alt="loyalty"
+                      title="loyalty"
                     />
                   )}
                 </div>
@@ -229,10 +237,13 @@ const SwiperSlider = (props: any) => {
                 <div className="px-4">
                   <div className="flex justify-end">
                     {slide.developer_img_mob && (
-                      <img
+                      <Image
                         className="w-[100px] h-auto mb-5 text-end"
+                        width={300}
+                        height={200}
                         src={slide.developer_img_mob}
                         alt="Developer"
+                        title="Developer"
                       />
                     )}
                   </div>                  
@@ -269,25 +280,27 @@ const SwiperSlider = (props: any) => {
                   )}                  
                   
                   {slide.name === 'loyalty' && (
-                    <a 
+                    <Link
+                      title="Sign Up" 
                       href="https://loyalty-program.psinv.net/" target="_blank">
                         <div
-                      className="w-full text-center rounded-md bg-orange-600 px-5 py-2.5 text-2xl font-semibold text-white shadow-sm hover:bg-orange-500 
-                      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                      className="relative text-2xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer font-semibold">
                       Sign Up </div>
-                    </a>
+                    </Link>
                   )}
                   {slide.name !== 'loyalty' && (
                     <>
                       <button 
                         onClick={() => modalHandler(slide)}
-                        className="mb-5 w-full rounded-md bg-orange-600 px-5 py-2.5 text-xl font-thin text-white shadow-sm hover:bg-orange-500 
-                        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                        className="relative text-2xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer font-semibold">
                       Sign Up
                       </button>
 
-                      <Link href={slide.project_url}><div className=" text-center w-full px-5 py-2.5 text-black text-xl font-thin hover:text-gray-400">
-                          Explore More <ChevronRightIcon className="w-7 inline-flex" /></div>
+                      <Link title="Explore More" href={slide.project_url} className="group relative text-2xl font-semibold inline-flex h-12 items-center justify-center overflow-hidden rounded-md px-6 font-medium text-white cursor-pointer">
+                        <span>Explore More</span>
+                        <div className="ml-1 transition group-hover:translate-x-1">
+                          <ChevronRightIcon className="w-7 inline-flex" />
+                        </div>
                       </Link>
                     </>
                   )}

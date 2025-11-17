@@ -1,6 +1,7 @@
 "use client";
 import "react-phone-number-input/style.css";
 import DynamicForm from "../_components/DynamicForm";
+import Image from "next/image";
 
 const ListPropertyForm: React.FC = () => {
   return (
@@ -10,10 +11,13 @@ const ListPropertyForm: React.FC = () => {
           
           {/* Image Section */}
           <div className="relative w-full md:w-full h-[400px] md:h-[450px] overflow-hidden sm:px-2 px-1.5">
-            <img 
+            <Image 
               src="/images/list-your-property-main-homepage-new.webp" 
               alt="List Your Property" 
+              title="List Your Property" 
               className="w-full h-full object-cover rounded-lg"
+              width={1000}
+              height={300}
             />
 
             {/* Play Button */}
@@ -51,10 +55,10 @@ const ListPropertyForm: React.FC = () => {
       
         {/* Logos */}
         <div className="overflow-x-auto sm:overflow-hidden flex space-x-4 mt-6 px-4 scrollbar-hide">
-          <img src="/images/psi-logo.png" alt="PSI" className="h-10 md:h-12 shrink-0" />
-          <img src="/images/bayut-logo.png" alt="Bayut" className="h-10 md:h-12 shrink-0" />
-          <img src="/images/dubizzle.png" alt="Dubizzle" className="h-10 md:h-12 shrink-0" />
-          <img src="/images/property-finder.png" alt="Property Finder" className="h-10 md:h-12 shrink-0" />
+          <Image src="/images/psi-logo.png" alt="PSI" title="PSI" width={70} height={50} className="h-10 md:h-12 shrink-0" />
+          <Image src="/images/bayut-logo.png" alt="Bayut" title="Bayut" width={130} height={50} className="h-10 md:h-12 shrink-0" />
+          <Image src="/images/dubizzle.png" alt="Dubizzle" title="Dubizzle" width={120} height={50} className="h-10 md:h-12 shrink-0" />
+          <Image src="/images/property-finder.png" alt="Property Finder" title="Property Finder" width={150} height={50} className="h-10 md:h-12 shrink-0" />
         </div>
 
       </div>

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Poppins } from "next/font/google";
+import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
@@ -30,7 +32,7 @@ const WhyPSI = () => {
   className={`text-[20px] font-light w-max text-center px-4 py-2 transition-all duration-200 cursor-pointer ${
     activeTab === tab.key
       ? "text-[#033f80] border-b-2 border-[#ea5b27] font-semibold opacity-100"
-      : "text-[#6c757d] hover:text-[#111954]"
+      : "relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100"
   }`}
 >
   {tab.label}
@@ -50,12 +52,13 @@ const WhyPSI = () => {
  <p className={`text-[18px] sm:text-[24px] leading-[1.77] mb-4 text-[#333] font-normal tracking-[-0.5px] ${poppins.className}`}>
             Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi’s Real Estate Market.
           </p>
-              <a
+              <Link
                 href="#"
-                className="inline-block  bg-orange-700  text-white px-6 py-3 rounded-md font-medium hover:bg-[#d94f1f] transition"
+                title="Learn more about PSI"
+                className="w-full relative text-xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
-               Learn more  about PSI
-              </a>
+               Learn more about PSI
+              </Link>
             </div>
 
             {/* Image Section */}
@@ -67,10 +70,13 @@ const WhyPSI = () => {
         backgroundSize: "cover",
       }}
     >
-              <img
+              <Image
                 src="/images/corporate_cover.webp"
                 alt="Property Shop Investment"
+                title="Property Shop Investment"
                 className="w-full rounded-xl"
+                width={600}
+                height={300}
               />
             </div>
           </div>
@@ -83,16 +89,17 @@ const WhyPSI = () => {
             <h2 className={`text-[22px] sm:text-[36px] text-[#333] font-bold ${poppins.className}`}>
               PSI Emirati Hub
             </h2>
-          <p className={`text-[18px] sm:text-[24px] leading-[1.77] mb-4 text-[#333] font-normal tracking-[-0.5px] ${poppins.className}`}>
-            Empowering UAE nationals to excel and lead in the real estate sector through 
-            <span className="text-[#E46027] font-semibold"> PSI Emirati Hub.</span>
-          </p>
-        <a
-  href="#"
-  className="inline-block text-[20px] bg-[#E46027] text-white px-[20px] py-[8px] rounded-[8px] font-medium hover:bg-[#d94f1f] transition"
->
-  Learn more about PSI
-</a>
+            <p className={`text-[18px] sm:text-[24px] leading-[1.77] mb-4 text-[#333] font-normal tracking-[-0.5px] ${poppins.className}`}>
+              Empowering UAE nationals to excel and lead in the real estate sector through 
+              <span className="text-[#E46027] font-semibold"> PSI Emirati Hub.</span>
+            </p>
+              <Link
+                href="#"
+                title="Learn more about PSI Emirati Hub"
+                className="w-full relative text-xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+              >
+               Learn more about PSI Emirati Hub
+              </Link>
           </div>
 
           {/* Image Section */}
@@ -104,10 +111,13 @@ const WhyPSI = () => {
         backgroundSize: "cover",
       }}
     >
-            <img
+            <Image
               src="/images/national-hub-home.webp"
               alt="Property Shop Investment"
+              title="Property Shop Investment"
               className="w-full rounded-xl"
+              width={600}
+              height={300}
             />
           </div>
         </div>
@@ -124,12 +134,13 @@ const WhyPSI = () => {
            Unlock your potential through 
             <span className="text-[#E46027] font-semibold"> PSI Abu Dhabi Youngster</span> Program by empowering minds, and shaping futures
           </p>
-            <a
-              href="#"
-               className="inline-block text-[20px] bg-[#E46027] text-white px-[20px] py-[8px] rounded-[8px] font-medium hover:bg-[#d94f1f] transition"
-            >
-              Learn more
-            </a>
+              <Link
+                href="#"
+                title="Learn more about PSI Youngsters"
+                className="w-full relative text-xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+              >
+               Learn more about PSI Youngsters
+              </Link>
           </div>
 
           {/* Image Section */}
@@ -141,10 +152,13 @@ const WhyPSI = () => {
         backgroundSize: "cover",
       }}
       >
-            <img
+            <Image
               src="/images/youngster_cover2.webp"
               alt="Property Shop Investment"
+              title="Property Shop Investment"
               className="w-full rounded-xl"
+              width={600}
+              height={300}
             />
           </div>
         </div>
@@ -165,12 +179,13 @@ const WhyPSI = () => {
 
 
           </p>
-            <a
-              href="#"
-              className="inline-block  bg-orange-700  text-white px-6 py-3 rounded-md font-medium hover:bg-[#d94f1f] transition"
-            >
-              Learn more about PSI
-            </a>
+              <Link
+                href="#"
+                title="Learn more about Crypto"
+                className="w-full relative text-xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+              >
+               Learn more about Crypto
+              </Link>
           </div>
 
           {/* Image Section */}
@@ -182,10 +197,13 @@ const WhyPSI = () => {
         backgroundSize: "cover",
       }}
     >
-            <img
+            <Image
               src="/images/crypto_cover-new.webp"
               alt="Property Shop Investment"
+              title="Property Shop Investment"
               className="w-full rounded-xl"
+              width={600}
+              height={300}
             />
           </div>
         </div>
@@ -201,12 +219,13 @@ const WhyPSI = () => {
              <p className={`text-[18px] sm:text-[24px] leading-[1.77] mb-4 text-[#333] font-normal tracking-[-0.5px] ${poppins.className}`}>
            50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.
           </p>
-            <a
-              href="#"
-              className="inline-block  bg-orange-700  text-white px-6 py-3 rounded-md font-medium hover:bg-[#d94f1f] transition"
-            >
-             Learn more about PSI International
-            </a>
+              <Link
+                href="#"
+                title="Learn more about PSI International"
+                className="w-full relative text-xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+              >
+               Learn more about PSI International
+              </Link>
           </div>
 
           {/* Image Section */}
@@ -218,10 +237,13 @@ const WhyPSI = () => {
         backgroundSize: "cover",
       }}
     >
-            <img
+            <Image
               src="/images/international_cover.webp"
               alt="Property Shop Investment"
+              title="Property Shop Investment"
               className="w-full rounded-xl"
+              width={600}
+              height={300}
             />
           </div>
         </div>

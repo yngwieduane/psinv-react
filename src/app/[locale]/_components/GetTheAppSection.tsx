@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Audrey, BrittanySignature } from "@/utils/fonts";
+import { Link } from "@/i18n/navigation";
 
 export default function GetTheAppSection() {
   return (
@@ -30,6 +31,7 @@ export default function GetTheAppSection() {
     <Image
       src="/images/app-screens-home.svg"
       alt="App Screens"
+      title="App Screens"
       width={1200}
       height={1200}
       className="w-full max-w-[850px] h-auto -mt-20"
@@ -50,30 +52,34 @@ export default function GetTheAppSection() {
   </p>
 
   <div className="flex items-center justify-center space-x-4">
-    <a
+    <Link
       href="https://apps.apple.com/us/app/psi-real-estate/id6736644035"
       target="_blank"
       rel="noopener noreferrer"
+      title="App Store Link"
     >
       <Image
         src="/images/appstore.svg"
         alt="App Store"
+        title="App Store"
         width={180}
         height={60}
       />
-    </a>
-    <a
+    </Link>
+    <Link
       href="https://play.google.com/store/apps/details?id=com.psi.psirealestate"
       target="_blank"
       rel="noopener noreferrer"
+      title="Gogle Store Link"
     >
       <Image
         src="/images/googleplay.svg"
         alt="Google Play"
+        title="Google Play"
         width={180}
         height={60}
       />
-    </a>
+    </Link>
   </div>
 </div>
       </div>

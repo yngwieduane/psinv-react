@@ -28,9 +28,9 @@ export default function GoogleReviewSection() {
           {reviews.map((review) => (
             <div
               key={review.id}
-         className="bg-white p-6 rounded text-left flex flex-col justify-between" style={{ boxShadow: "0 .5rem 1rem rgba(0, 0, 0, .15)"}}>
-  <div className="flex items-center justify-start mb-4">
-                <Image src="/images/google-icon.png" alt="Google" width={40} height={40} />
+              className="bg-white p-6 rounded text-left flex flex-col justify-between" style={{ boxShadow: "0 .5rem 1rem rgba(0, 0, 0, .15)"}}>
+              <div className="flex items-center justify-start mb-4">
+                <Image src="/images/google-icon.png" alt="Google" title="Google" width={40} height={40} />
                 <span className="ml-2 text-lg font-semibold">Google</span>
               </div>
               <p className="text-gray-700 text-sm sm:text-base mb-4 leading-relaxed">

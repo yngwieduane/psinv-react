@@ -207,13 +207,13 @@ export default function MortgageCalculator(props:any) {
                   const url = `http://localhost:3000/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
                   window.location.href = url;
                 }}
-                className="bg-[#0c1356] text-white rounded-full px-6 py-2 hover:bg-blue-900 transition"
+                className="bg-[#0c1356] relative overflow-hidden rounded-full px-5 py-2.5 text-white transition-all duration-300 hover:bg-[#0c1356] hover:ring-2 hover:ring-[#0c1356] hover:ring-offset-2 cursor-pointer"
               >
                 View Units
               </button>
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="bg-[#0c1356] text-white rounded-full px-6 py-2 hover:bg-blue-900 transition"
+                className="bg-[#0c1356] relative overflow-hidden rounded-full px-5 py-2.5 text-white transition-all duration-300 hover:bg-[#0c1356] hover:ring-2 hover:ring-[#0c1356] hover:ring-offset-2 cursor-pointer"
               >
                 Get pre-approval today
               </button>
@@ -231,7 +231,7 @@ export default function MortgageCalculator(props:any) {
             >
               &times;
             </button>
-            <h2 className="text-2xl font-semibold text-center mb-4 text-purple-800">Register Your Interest</h2>
+            <h2 className="text-2xl font-semibold text-center mb-4 text-purple-800 ">Register Your Interest</h2>
             <PopupForm />
           </div>
         </div>
