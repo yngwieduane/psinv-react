@@ -338,17 +338,6 @@ const emailTableBody = `
     };
   try {
     setIsSubmitting(true);
-
-    console.log("[RegistrationForm] submitting", {
-      slug,
-      locale,
-      utm_campaign,
-      utm_source,
-      utm_medium,
-      projectMeta,
-      formDataToSend,
-    });
-
     const res = await fetch("/api/external/registration", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -358,7 +347,6 @@ const emailTableBody = `
     const result = await res.json();
 
     if (res.ok) {
-      // 🔹 Direct email call to psinv.net
       try {
         const mailRes = await fetch("https://psinv.net/api/sendemail.php", {
           method: "POST",
