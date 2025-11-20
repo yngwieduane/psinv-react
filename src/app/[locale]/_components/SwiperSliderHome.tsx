@@ -155,9 +155,9 @@ const SwiperSlider = (props: any) => {
                     </h2>
                  )}
                   {slide.title && (
-                    <h1 className="text-white text-4xl md:text-5xl font-medium">
+                    <h2 className="text-white text-4xl md:text-5xl font-medium">
                       {slide.title}
-                    </h1>
+                    </h2>
                   )}
                   
                   {slide.description && (
@@ -167,9 +167,9 @@ const SwiperSlider = (props: any) => {
                   )}
 
                   {slide.loyaltyTitle && (
-                    <h1 className={`text-[#FF7D45] text-2xl md:text-3xl font-medium ${BrittanySignature.className}`}>
+                    <h2 className={`text-[#FF7D45] text-2xl md:text-3xl font-medium ${BrittanySignature.className}`}>
                       {slide.loyaltyTitle}
-                    </h1>
+                    </h2>
                   )}
                   {slide.features && (
                     <ul className="list-disc text-white text-xl my-8 md:text-2xl ml-7 leading-normal">
@@ -255,9 +255,9 @@ const SwiperSlider = (props: any) => {
                     </h2>
                  )}
                   {slide.title && (
-                    <h1 className="text-2xl font-medium">
+                    <h2 className="text-2xl font-medium">
                       {slide.title}
-                    </h1>
+                    </h2>
                   )}
                   
                   {slide.description && (
@@ -267,9 +267,9 @@ const SwiperSlider = (props: any) => {
                   )}
 
                   {slide.loyaltyTitle && (
-                    <h1 className={`text-[#FF7D45] text-2xl md:text-3xl font-medium ${BrittanySignature.className}`}>
+                    <h2 className={`text-[#FF7D45] text-2xl md:text-3xl font-medium ${BrittanySignature.className}`}>
                       {slide.loyaltyTitle}
-                    </h1>
+                    </h2>
                   )}
                   {slide.features && (
                     <ul className="list-disc text-md my-8 ml-7 leading-normal">

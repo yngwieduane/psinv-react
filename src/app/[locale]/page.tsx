@@ -1,14 +1,14 @@
 import SwiperSlider from "./_components/SwiperSliderHome";
-import MainNavbar from './_components/MainNavbar';
-import FeaturedProjects from './_components/FeaturedProjects';
-import ListPropertyForm from './_components/ListPropertyForm';
-import WhyPSI from './_components/WhyPSI';
-import Calculator from'./mortgage-calculator/MortgageTabs';
-import AwardSlider from '../[locale]/about-us/_components/AboutAwardsSlider';
-import AboutCounter from "../[locale]/about-us/_components/AboutCounter";
-import ReportDownloadSection from "../[locale]/_components/ReportDownloadSection";
-import GoogleReviewSection from "./_components/GoogleReviewSection";
-import GetTheAppSection from "./_components/GetTheAppSection";
+// import MainNavbar from './_components/MainNavbar';
+// import FeaturedProjects from './_components/FeaturedProjects';
+// import ListPropertyForm from './_components/ListPropertyForm';
+// import WhyPSI from './_components/WhyPSI';
+// import Calculator from'./mortgage-calculator/MortgageTabs';
+// import AwardSlider from '../[locale]/about-us/_components/AboutAwardsSlider';
+// import AboutCounter from "../[locale]/about-us/_components/AboutCounter";
+// import ReportDownloadSection from "../[locale]/_components/ReportDownloadSection";
+// import GoogleReviewSection from "./_components/GoogleReviewSection";
+// import GetTheAppSection from "./_components/GetTheAppSection";
 
 import dynamic from "next/dynamic";
 import { Organization, WithContext } from "schema-dts";
@@ -17,16 +17,16 @@ import { Montserrat, Open_Sans } from "next/font/google";
 
 
 // const SwiperSlider = dynamic(() => import('./_components/SwiperSliderHome'));
-// const MainNavbar = dynamic(() => import('./_components/MainNavbar'));
-// const FeaturedProjects = dynamic(() => import('./_components/FeaturedProjects'));
-// const ListPropertyForm = dynamic(() => import('./_components/ListPropertyForm'));
-// const WhyPSI = dynamic(() => import('./_components/WhyPSI'));
-// const Calculator = dynamic(() => import('./mortgage-calculator/MortgageTabs'));
-// const AwardSlider = dynamic(() => import('../[locale]/about-us/_components/AboutAwardsSlider'));
-// const AboutCounter = dynamic(() => import('../[locale]/about-us/_components/AboutCounter'));
-// const ReportDownloadSection = dynamic(() => import('../[locale]/_components/ReportDownloadSection'));
-// const GoogleReviewSection = dynamic(() => import('./_components/GoogleReviewSection'));
-// const GetTheAppSection = dynamic(() => import('./_components/GetTheAppSection'));
+const MainNavbar = dynamic(() => import('./_components/MainNavbar'));
+const FeaturedProjects = dynamic(() => import('./_components/FeaturedProjects'));
+const ListPropertyForm = dynamic(() => import('./_components/ListPropertyForm'));
+const WhyPSI = dynamic(() => import('./_components/WhyPSI'));
+const Calculator = dynamic(() => import('./mortgage-calculator/MortgageTabs'));
+const AwardSlider = dynamic(() => import('../[locale]/about-us/_components/AboutAwardsSlider'));
+const AboutCounter = dynamic(() => import('../[locale]/about-us/_components/AboutCounter'));
+const ReportDownloadSection = dynamic(() => import('../[locale]/_components/ReportDownloadSection'));
+const GoogleReviewSection = dynamic(() => import('./_components/GoogleReviewSection'));
+const GetTheAppSection = dynamic(() => import('./_components/GetTheAppSection'));
 
 const montserrat = Montserrat({
   subsets: ['latin'],
