@@ -5,7 +5,7 @@
   },
   "LocaleSwitcher": {
     "label": "Change language",
-    "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} cn {🇨🇳 Chinese} ru {🇷🇺 Russian} other {Unknown}}"
+    "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} zh {🇨🇳 Chinese} ru {🇷🇺 Russian} other {Unknown}}"
   },
   "ProjectPage": {
     "overview": "Overview",
@@ -94,7 +94,19 @@
       "firstName": { "label": "الاسم الأول", "placeholder": "الاسم الأول" },
       "lastName": { "label": "اسم العائلة", "placeholder": "اسم العائلة" },
       "phone": { "label": "الهاتف", "placeholder": "+971 5xxxxxxxx" },
-      "email": { "label": "البريد الإلكتروني", "placeholder": "البريد الإلكتروني" }
+      "email": { "label": "البريد الإلكتروني", "placeholder": "البريد الإلكتروني" },
+    "timeSlot": {
+      "label": "الفترة المفضلة للاتصال",
+      "placeholder": "اختر الوقت",
+      "opt": {
+        "10_11": "١٠ ص – ١١ ص",
+        "11_12": "١١ ص – ١٢ م",
+        "13_14": "١ م – ٢ م",
+        "14_15": "٢ م – ٣ م",
+        "16_17": "٤ م – ٥ م",
+        "17_18": "٥ م – ٦ م"
+      }
+    }
     },
     "buttons": {
       "submit": "إرسال",
