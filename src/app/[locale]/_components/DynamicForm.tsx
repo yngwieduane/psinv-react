@@ -196,7 +196,7 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
       </select>
       {errors.propertyPurpose && <p className="text-red-500 text-sm">{errors.propertyPurpose.message}</p>}
 
-      <button type="submit" className="w-full relative text-xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer" disabled={isSubmitting}>
+      <button type="submit" className="w-full relative text-xl overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer" disabled={isSubmitting}>
         {isSubmitting ? "Submitting..." : "Submit"}
       </button>
 

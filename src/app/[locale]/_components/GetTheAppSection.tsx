@@ -40,7 +40,7 @@ export default function GetTheAppSection() {
   </div>
           {/* Right Text */}
   <div className="w-full lg:w-[25%] lg:absolute lg:top-1/2 lg:-translate-y-[50%] lg:right-[20px] text-center lg:text-right px-4 mt-10 lg:mt-0 z-10 order-2 lg:order-0">
-    <h5 className={`${BrittanySignature.className} text-orange-600 text-[24px] lg:text-[40px]`}>Start your journey today</h5>
+    <p className={`${BrittanySignature.className} text-orange-600 text-[24px] lg:text-[40px]`}>Start your journey today</p>
     <p className="text-blue-900 text-lg mt-2">with just one tap.</p>
   </div>
         </div>

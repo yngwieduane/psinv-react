@@ -55,7 +55,7 @@ const WhyPSI = () => {
               <Link
                 href="#"
                 title="Learn more about PSI"
-                className="w-full relative text-xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+                className="w-full relative text-xl overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
                Learn more about PSI
               </Link>
@@ -96,7 +96,7 @@ const WhyPSI = () => {
               <Link
                 href="#"
                 title="Learn more about PSI Emirati Hub"
-                className="w-full relative text-xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+                className="w-full relative text-xl overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
                Learn more about PSI Emirati Hub
               </Link>
@@ -137,7 +137,7 @@ const WhyPSI = () => {
               <Link
                 href="#"
                 title="Learn more about PSI Youngsters"
-                className="w-full relative text-xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+                className="w-full relative text-xl overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
                Learn more about PSI Youngsters
               </Link>
@@ -182,7 +182,7 @@ const WhyPSI = () => {
               <Link
                 href="#"
                 title="Learn more about Crypto"
-                className="w-full relative text-xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+                className="w-full relative text-xl overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
                Learn more about Crypto
               </Link>
@@ -222,7 +222,7 @@ const WhyPSI = () => {
               <Link
                 href="#"
                 title="Learn more about PSI International"
-                className="w-full relative text-xl overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+                className="w-full relative text-xl overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
                Learn more about PSI International
               </Link>

@@ -19,10 +19,10 @@ export default function ReportDownloadSection() {
           {/* Left Column - Text and Button */}
           <div className="w-full md:w-1/2 text-center md:text-left px-4 md:px-12 mb-6 md:mb-0">
             <p className="text-[28px] text-gray-900">Market Insights</p>
-            <h5 className="text-[36px] text-[#333] font-bold">Monthly Report DXB</h5>
+            <p className="text-[36px] text-[#333] font-bold">Monthly Report DXB</p>
             
             <button
-              className="mt-4 relative text-lg overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer font-semibold"
+              className="mt-4 relative text-lg overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer font-semibold"
               onClick={() => setIsModalOpen(true)}
             >
               Download Now

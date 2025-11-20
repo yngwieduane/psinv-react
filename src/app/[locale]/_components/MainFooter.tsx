@@ -136,11 +136,11 @@ const MainFooter = () => {
                         </div>
                         {/* Download Buttons */}
                         <div className="mt-4">
-                            <a title="Holiday Homes Abu Dhabi Guides" href="/docs/holiday-homes-abu-dhabi.pdf" download="holiday-homes-abu-dhabi.pdf" className="flex justify-between text-xs items-center relative overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer">
+                            <a title="Holiday Homes Abu Dhabi Guides" href="/docs/holiday-homes-abu-dhabi.pdf" download="holiday-homes-abu-dhabi.pdf" className="flex justify-between text-xs items-center relative overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer">
                                 Holiday Homes Abu Dhabi Guides
                                 <DownloadIcon size={16} />
                             </a>
-                            <a title="Holiday Homes Dubai Guides" href="/docs/holiday-homes-dubai.pdf" download="holiday-homes-dubai.pdf" className="flex w-ful justify-between mt-5 text-xs items-center relative overflow-hidden rounded bg-orange-600 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer">
+                            <a title="Holiday Homes Dubai Guides" href="/docs/holiday-homes-dubai.pdf" download="holiday-homes-dubai.pdf" className="flex w-ful justify-between mt-5 text-xs items-center relative overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer">
                                 Holiday Homes Dubai Guides
                                 <DownloadIcon size={16} />
                             </a>
