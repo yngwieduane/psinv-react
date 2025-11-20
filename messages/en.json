@@ -5,7 +5,7 @@
   },
   "LocaleSwitcher": {
     "label": "Change language",
-    "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} cn {🇨🇳 Chinese} ru {🇷🇺 Russian} other {Unknown}}"
+    "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} zh {🇨🇳 Chinese} ru {🇷🇺 Russian} other {Unknown}}"
   },
   "ProjectPage": {
     "overview": "Overview",
@@ -94,11 +94,24 @@
   },
   "InquiryForm": {
     "title": "Let us know if you’re interested!",
-    "fields": {
+      "fields": {
       "firstName": { "label": "First Name", "placeholder": "First Name" },
-      "lastName": { "label": "Last Name", "placeholder": "Last Name" },
-      "phone": { "label": "Phone", "placeholder": "+971 5xxxxxxxx" },
-      "email": { "label": "Email", "placeholder": "Email" }
+      "lastName":  { "label": "Last Name",  "placeholder": "Last Name"  },
+      "phone":     { "label": "Phone",      "placeholder": "+971 5xxxxxxxx" },
+      "email":     { "label": "Email",      "placeholder": "Email" },
+      "timeSlot": {
+        "label": "Preferred time slot",
+        "placeholder": "Select a time",
+        "opt": {
+          "10_11": "10AM – 11AM",
+          "11_12": "11AM – 12PM",
+          "13_14": "1PM – 2PM",
+          "14_15": "2PM – 3PM",
+          "16_17": "4PM – 5PM",
+          "17_18": "5PM – 6PM"
+        }
+      },
+      "invitedBy": { "label": "Who invited you?", "placeholder": "e.g. Inviter" }
     },
     "buttons": {
       "submit": "Submit",

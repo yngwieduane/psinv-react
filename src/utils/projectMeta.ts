@@ -1,196 +1,83 @@
-import type { ProjectMeta } from '@/types/projectMeta';
+// src/app/utils/projectMeta.ts
+import type { ProjectMeta, FieldConfig } from "@/types/projectMeta";
+import { GLOBAL_DEFAULTS, BRANCH_DEFAULTS, type Branch } from "@/utils/projectDefaults";
+import { PROJECTS } from "@/utils/projectOverrides";
 
-export const projectMetaMap: Record<string, ProjectMeta> = {
-  'al-durrah-open-house-registration': {
-    PropertyID: 24463,
-    sendto: 'callcenter@psinv.net',
-    ContactType: 3,
-    Bathroom: 21935,
-    Bedroom: 21935,
-    assignto: 3458,
-    refby: 3458,
-    refto: 3458,
-    CountryID: 65946,
-    StateID: 91823,
-    CityID: 91823,
-    DistrictID: 102625,
-    UnitType: 19,
-    Branch:'AUH',
-    RequirementType: 91212,
-    MethodOfContactVal: 115747, 
-    remarks: 'Al Durrah',
+/* ---------------- core merge ---------------- */
+function mergeBranch(branch: Branch, override?: Partial<ProjectMeta>): ProjectMeta {
+  return {
+    ...GLOBAL_DEFAULTS,
+    ...BRANCH_DEFAULTS[branch],
+    ...(override ?? {}),
+  } as ProjectMeta;
+}
+export const projectMetaMap: Record<string, ProjectMeta> = Object.fromEntries(
+  Object.entries(PROJECTS).map(([slug, { branch, override }]) => [
+    slug,
+    mergeBranch(branch, override),
+  ])
+);
+export function getProjectMeta(slug: string): ProjectMeta {
+  const meta = projectMetaMap[slug];
+  if (meta) return meta;
+  if (process.env.NODE_ENV !== "production") {
+    console.warn(
+      "[projectMeta] Fallback meta used for slug:",
+      slug,
+      "Available slugs:",
+      Object.keys(projectMetaMap)
+    );
+  }
+  return {
+    ...GLOBAL_DEFAULTS,
+    ...BRANCH_DEFAULTS.auh,
+    remarks: `Unregistered project slug: ${slug}`,
+  };
+}
+export function visibleExtraFields(meta: ProjectMeta | undefined, utmCampaign?: string): FieldConfig[] {
+  const list = meta?.form?.extraFields ?? [];
+  if (!list.length) return [];
+  if (!utmCampaign) return list.filter(f => !f.showIfUtm || f.showIfUtm.length === 0);
+  return list.filter(f => !f.showIfUtm || f.showIfUtm.includes(utmCampaign));
+}
+export function defaultsForExtraFields(fields: FieldConfig[]): Record<string, any> {
+  const dv: Record<string, any> = {};
+  for (const f of fields) {
+    if (typeof f.defaultValue !== "undefined") dv[f.id] = f.defaultValue as any;
+  }
+  return dv;
+}
+export function applyExtraFieldsToPayload(
+  payload: Record<string, any>,
+  fields: FieldConfig[],
+  formData: Record<string, any>
+): void {
+  const setDeep = (obj: any, path: string, value: unknown) => {
+    const parts = path.split(".");
+    let cur = obj;
+    parts.forEach((p, i) => {
+      if (i === parts.length - 1) cur[p] = value;
+      else cur = cur[p] ??= {};
+    });
+  };
 
-    utmCampaignMap: {
-      'ebin-al-durrah-open-house-news': 2834,
-      'zaineh-al-durrah-internal-campaign': 2999,
-      'aldurrah-whatsapp-broadcast': 3055,
-    },
-
-    utmRemarksMap: {
-      'ebin-al-durrah-open-house-news': 'Rotation: Company, Campaign name: Irani: Al Durrah Open House - July 16',
-      'zaineh-al-durrah-internal-campaign': 'Internal Al Durrah Campaign Lead',
-      'aldurrah-whatsapp-broadcast': 'WhatsApp Al Durrah Lead',
-    },
-
-    utmMetaMap: {
-      'ebin-al-durrah-open-house-news': {
-    media_Type: 63906,
-    media_Name: 63907,
-    MethodOfContactVal: 115747,
-      },
-      'zaineh-al-durrah-internal-campaign': {
-    media_Type: 63906,
-    media_Name: 63907,
-    MethodOfContactVal: 115747,
-      },
-      'aldurrah-whatsapp-broadcast': {
-    media_Type: 63906,
-    media_Name: 63907,
-    MethodOfContactVal: 115747,
-      },
-    },
-  },
-
- 'rak-general-registration': {
-    sendto: 'callcenter@psinv.net',
-    ContactType: 3,
-    Bathroom: 21935,
-    Bedroom: 21935,
-    assignto: 3458,
-    refby: 3458,
-    refto: 3458,
-    CountryID: 65946,
-    StateID: 91823,
-    CityID: 91823,
-    DistrictID: 102625,
-    UnitType: 19,
-    remarks: 'Company',
-    RequirementType: 91212,
-    Branch: 'AUH',
-    MethodOfContactVal: 115747,
-
-    utmCampaignMap: {
-      'Irani_RAK_General_Newsletter': 2836,
-    },
-
-    utmRemarksMap: {
-      'Irani_RAK_General_Newsletter': 'Rotation: Company, Campaign name: Irani: RAK General Newsletter',
-    },
-
-    utmMetaMap: {
-      'Irani_RAK_General_Newsletter': {
-    media_Type: 63906,
-    media_Name: 63907,
-    MethodOfContactVal: 115747,
-      },
-    },
-  },
-  'ogami-registration': {
-    sendto: 'callcenter@psinv.net',
-    ContactType: 3,
-    Bathroom: 21935,
-    Bedroom: 21935,
-    assignto: 3458,
-    refby: 3458,
-    refto: 3458,
-    CountryID: 65948,
-    StateID: 63719,
-    CityID: 63719,
-    PropertyID: 24034,
-    UnitType: 19,
-    remarks: 'Company',
-    RequirementType: 91212,
-    Branch: 'AUH',
-    MethodOfContactVal: 115747,
-
-    utmCampaignMap: {
-      'Irani_Ogami_Newsletter_2025': 2847,
-    },
-
-    utmRemarksMap: {
-      'Irani_Ogami_Newsletter_2025': 'Rotation: Company, Campaign name: Irani: Ogami Newsletter 2025',
-    },
-
-    utmMetaMap: {
-      'Irani_Ogami_Newsletter_2025': {
-    media_Type: 63906,
-    media_Name: 63907,
-    MethodOfContactVal: 115747,
-      },
-    },
-  },
-    'yas-acres-registration': {
-    sendto: 'callcenter@psinv.net',
-    ContactType: 3,
-    Bathroom: 21935,
-    Bedroom: 21935,
-    assignto: 3458,
-    refby: 3458,
-    refto: 3458,
-    CountryID: 65946,
-    StateID: 91823,
-    CityID: 91823,
-    DistrictID: 102625,
-    CommunityID: 165011,
-    SubCommunityID: 167636,
-    PropertyID: 14524,
-    UnitType: 19,
-    remarks: 'Company',
-    RequirementType: 91212,
-    Branch: 'AUH',
-    MethodOfContactVal: 115747,
-
-    utmCampaignMap: {
-      'Irani-Yas-Acres-Open-House-News': 2850,
-    },
-
-    utmRemarksMap: {
-      'Irani-Yas-Acres-Open-House-News': 'Rotation: Open House for Yas Acres – Magnolias and Dahlias, Campaign name:Irani: Yas Acres Open House Newsletter',
-    },
-
-    utmMetaMap: {
-      'Irani-Yas-Acres-Open-House-News': {
-    media_Type: 63906,
-    media_Name: 63907,
-    MethodOfContactVal: 115747,
-      },
-    },
-  },
-    'landlord-listing-registration': {
-    sendto: 'callcenter@psiassets.com',
-    ContactType: 3,
-    Bathroom: 21935,
-    Bedroom: 21935,
-    assignto: 4794,
-    refby: 4794,
-    refto: 4794,
-    CountryID: 65946,
-    StateID: 91823,
-    CityID: 91823,
-    DistrictID: 102625,
-    CommunityID: 95259,
-    //SubCommunityID: 167636,
-    PropertyID: 20799,
-    UnitType: 19,
-    remarks: 'Company',
-    RequirementType: 91212,
-    Branch: 'assets',
-    MethodOfContactVal: 115747,
-
-    utmCampaignMap: {
-      'landlord-listing-newsletter': 2259,
-    },
-
-    utmRemarksMap: {
-      'landlord-listing-newsletter': 'Rotation:LRO Rotation , Campaign name: Landlord listing newsletter hubspot',
-    },
-
-    utmMetaMap: {
-      'landlord-listing-newsletter': {
-    media_Type: 63906,
-    media_Name: 63907,
-    MethodOfContactVal: 115747,
-      },
-    },
-  },
-};
+  for (const f of fields) {
+    if (!f.payloadKey) continue;
+    if (!(f.id in formData)) continue;
+    setDeep(payload, f.payloadKey, formData[f.id]);
+  }
+}
+export function appendExtrasToRemarks(
+  baseHtmlRemark: string,
+  fields: FieldConfig[],
+  formData: Record<string, any>
+): string {
+  let out = baseHtmlRemark;
+  for (const f of fields) {
+    const v = formData[f.id];
+    if (typeof v === "undefined") continue;
+    const label = f.label ?? f.labelKey ?? f.id;
+    out += `</br>${label}: ${String(v)}`;
+  }
+  return out;
+}

@@ -1,29 +1,83 @@
 {
-    "HomePage": {
-      "title": "Hello world! Chinese",
-      "about": "Go to the about page"
+  "HomePage": {
+    "title": "你好，世界！（中文）",
+    "about": "前往关于页面"
+  },
+  "LocaleSwitcher": {
+    "label": "切换语言",
+    "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} cn {🇨🇳 Chinese} ru {🇷🇺 Russian} other {Unknown}}"
+  },
+  "ProjectPage": {
+    "overview": "概览",
+    "gallery": "相册",
+    "floor_plan": "户型图",
+    "location": "位置",
+    "photo_gallery": "图片库",
+    "unit_models": "户型",
+    "facts": "要点",
+    "faqs": "常见问题",
+    "facilities_in": "配套设施",
+    "amenities_in": "配套",
+    "vicinities_in": "周边",
+    "location_plan": "区位图",
+    "payment_plan": "付款计划",
+    "master_plan": "总平面图",
+    "location_map": "位置地图",
+    "property_details": "物业详情",
+    "aminities_in": "配套"
+  },
+  "InquiryForm": {
+    "title": "登记信息",
+    "fields": {
+      "firstName": { "label": "名字", "placeholder": "请输入名字" },
+      "lastName": { "label": "姓氏", "placeholder": "请输入姓氏" },
+      "email": { "label": "电子邮箱地址", "placeholder": "name@example.com" },
+      "phone": { "label": "联系电话", "placeholder": "+971 5x xxx xxxx" },
+      "timeSlot": {
+        "label": "首选联系时间",
+        "placeholder": "请选择时间",
+        "opt": {
+          "10_11": "10:00–11:00",
+          "11_12": "11:00–12:00",
+          "13_14": "13:00–14:00",
+          "14_15": "14:00–15:00",
+          "16_17": "16:00–17:00",
+          "17_18": "17:00–18:00"
+        }
+      },
+      "invitedBy": { "label": "谁邀请了您？", "placeholder": "例如：朋友、顾问姓名" }
     },
-    "LocaleSwitcher": {
-      "label": "Change language",
-      "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} cn {🇨🇳 Chinese} ru {🇷🇺 Russian} other {Unknown}}"
+    "buttons": {
+      "submit": "提交",
+      "submitting": "提交中…"
     },
-    "ProjectPage": {
-      "overview": "Overview",
-      "gallery": "Gallery",
-      "floor_plan": "Floor Plan",
-      "location": "Location",
-      "photo_gallery": "Photo Gallery",
-      "unit_models": "Unit Models",
-      "facts": "Facts",
-      "faqs": "FAQs",
-      "facilities_in": "Facilities in",
-      "amenities_in": "Amenities in",
-      "vicinities_in": "Vicinities in",
-      "location_plan": "Location Plan",
-      "payment_plan": "Payment Plan",
-      "master_plan": "Master Plan",
-      "location_map": "Location Map",
-      "property_details": "Property Details",
-      "aminities_in": "Amenities in"
+    "fineprint": {
+      "text": "点击“提交”即表示您同意我们的<terms>条款与条件</terms>和<privacy>隐私政策</privacy>。"
+    },
+    "consents": {
+      "c1": "同意在每天 09:00–21:00 接收来自 PSI 的电话与消息",
+      "c2": "同意就本次咨询接收多次联系与沟通",
+      "c3": "同意接收关于项目、产品和服务的沟通",
+      "additional1": "额外同意 1",
+      "additional2": "额外同意 2",
+      "additional3": "额外同意 3"
+    },
+    "alerts": {
+      "duplicate": "您刚刚提交过此表单，请稍后再试。",
+      "success": "感谢您的登记，我们会尽快与您联系。",
+      "error": "提交出错。"
+    },
+    "remarks": {
+      "label": "备注",
+      "clientName": "客户姓名",
+      "clientEmail": "客户邮箱",
+      "clientPhone": "客户电话"
+    },
+    "errors": {
+      "firstName": "名字为必填项",
+      "lastName": "姓氏为必填项",
+      "email": "邮箱格式不正确",
+      "phone": "电话号码不正确"
     }
+  }
 }

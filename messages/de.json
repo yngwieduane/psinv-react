@@ -1,0 +1,49 @@
+{
+  "LocaleSwitcher": {
+  "label": "Sprache ändern",
+  "locale": "{locale, select, ar {🇦🇪 Arabisch} en {🇺🇸 Englisch} de {🇩🇪 Deutsch} cn {🇨🇳 Chinesisch} ru {🇷🇺 Russisch} other {Unbekannt}}"
+},
+
+    "InquiryForm": {
+  "title": "Lassen Sie uns wissen, ob Sie interessiert sind!",
+  "fields": {
+    "firstName": { "label": "Vorname", "placeholder": "Vorname" },
+    "lastName": { "label": "Nachname", "placeholder": "Nachname" },
+    "phone": { "label": "Telefonnummer", "placeholder": "+49 1xxxxxxxx" },
+    "email": { "label": "E-Mail", "placeholder": "E-Mail-Adresse" }
+  },
+  "buttons": {
+    "submit": "Absenden",
+    "submitting": "Wird gesendet..."
+  },
+  "fineprint": {
+    "text": "Mit dem Klick auf „Absenden“ stimmen Sie unseren <terms>Allgemeinen Geschäftsbedingungen</terms> und unserer <privacy>Datenschutzerklärung</privacy> zu."
+  },
+  "consents": {
+    "c1": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle von PSI zwischen 09:00 und 21:00 Uhr zu erhalten.",
+    "c2": "Ich stimme zu, mehrere Anrufe und Mitteilungen über verschiedene Kanäle in Bezug auf meine Anfrage zu erhalten.",
+    "c3": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle zu Projekten, Produkten und Dienstleistungen zu erhalten.",
+    "additional1": "Zusätzliche Zustimmung 1",
+    "additional2": "Zusätzliche Zustimmung 2",
+    "additional3": "Zusätzliche Zustimmung 3"
+  },
+  "alerts": {
+    "duplicate": "Sie haben dieses Formular kürzlich gesendet. Bitte versuchen Sie es in ein paar Minuten erneut.",
+    "success": "Vielen Dank für Ihre Anfrage. Wir werden uns bald mit Ihnen in Verbindung setzen.",
+    "error": "Beim Senden des Formulars ist ein Fehler aufgetreten."
+  },
+  "remarks": {
+    "label": "Bemerkungen",
+    "clientName": "Kundenname",
+    "clientEmail": "E-Mail des Kunden",
+    "clientPhone": "Telefonnummer des Kunden"
+  },
+  "errors": {
+    "firstName": "Vorname ist erforderlich",
+    "lastName": "Nachname ist erforderlich",
+    "email": "Ungültige E-Mail-Adresse",
+    "phone": "Ungültige Telefonnummer"
+  }
+}
+}
+
