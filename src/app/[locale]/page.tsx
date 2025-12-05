@@ -1,6 +1,5 @@
 import SwiperSlider from "./_components/SwiperSliderHome";
 import MainNavbar from './_components/MainNavbar';
-import FeaturedProjects from './_components/FeaturedProjects';
 import ListPropertyForm from './_components/ListPropertyForm';
 import WhyPSI from './_components/WhyPSI';
 import Calculator from'./mortgage-calculator/MortgageTabs';
@@ -319,7 +318,6 @@ export default function HomePage() {
             />
         </div>
         <div className="container mx-auto my-10">
-            <FeaturedProjects/>
         </div>
         <div className="container mx-auto my-10">
             <ListPropertyForm/>
