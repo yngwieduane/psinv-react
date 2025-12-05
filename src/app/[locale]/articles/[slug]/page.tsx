@@ -57,9 +57,9 @@ const renderContent = (part:any, index:any) => {
     }
 };
 export default async function ArticleSingle({
-    params,news
+    params
 }:{
-    params: Promise<{slug:string;}>,news:any;
+    params: Promise<{slug:string;}>;
 }){
     const {slug} = await params;
     const article = MOCK_ARTICLE_DATA;
