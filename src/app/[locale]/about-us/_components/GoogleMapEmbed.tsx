@@ -14,7 +14,7 @@ interface GoogleMapEmbedProps {
 
 export default function GoogleMapEmbed({ center, locations, selectedLocation, onMapLoad, tabKey }: GoogleMapEmbedProps) {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API as string,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string,
   });
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
