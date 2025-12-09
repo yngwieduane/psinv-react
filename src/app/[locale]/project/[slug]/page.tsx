@@ -2,6 +2,7 @@ import RegistrationHeroImage from "../../_components/RegistrationHeroImage";
 import RegistrationForm from "../../_components/RegistrationForm";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { PROJECTS } from "@/utils/projectOverrides";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -17,7 +18,9 @@ export default async function Page({ params }: PageProps) {
   const { slug } = await params;
   const locale = "en";
 
-  if (!slug) return notFound();
+  if (!slug || !PROJECTS[slug]) { 
+    return notFound();
+  }
 
   return (
     <div>

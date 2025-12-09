@@ -36,7 +36,6 @@ export async function GET(request: NextRequest) {
       }
     );
   
-    //const mergedsearchfilters = [...data1, ...data2, ...data3]
 
     if (!response) {
       const error = new Error("An error occurred while fetching projects");
@@ -45,8 +44,7 @@ export async function GET(request: NextRequest) {
 
     const projects = await response.json();
   
-    //setLoading(false);
-    //return projects;
+    
  
   return new Response(JSON.stringify(projects), {
     headers: { 'Content-Type': 'application/json' },

@@ -1,0 +1,49 @@
+.iconImage { 
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+    width: 60px;
+    height: 60px;
+    }
+.iconSeparator, .iconSeparator2 { 
+    width: calc(100% - 60px);
+    height: 1px;
+    background-color: #ffffff12;
+    position: absolute;
+    bottom: 71px;
+    right:60px;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+#entertainment .swiper-button-next, #entertainment .swiper-button-prev {
+  z-index: 99999 !important;  cursor: pointer !important; top: 20%;
+}
+#entertainment .swiper-button-prev {  right: 15%;  z-index: 99999 !important;}
+#entertainment .swiper-button-next {  right: 7%; z-index: 99999 !important; }
+#entertainment .swiper-button-prev:after, #entertainment .swiper-button-next:after { width: auto; cursor: pointer; }
+
+#connect label { color: #D6AD60; font-size: 20px;}
+#connect .inuputGroup { 
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+#connect .PhoneInputCountrySelect { color: #000;}
+
+@media only screen and (max-width: 767px) {
+    .iconImage {     
+    width: 45px;
+    height: 45px;
+    }
+    .iconSeparator, .iconSeparator2 {
+        width: calc(100% - 45px);
+        right: 45px;
+        bottom: 65%;
+    }
+    
+    #entertainment .swiper-button-next, #entertainment .swiper-button-prev { top: unset; bottom: 5%; }
+    #entertainment .swiper-button-prev {  left: 20%; right: unset; z-index: 99999 !important;}
+    #entertainment .swiper-button-next {  right: 20%;  z-index: 99999 !important; }
+}
