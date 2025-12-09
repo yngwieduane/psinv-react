@@ -42,7 +42,6 @@ const sliderData = [
     { name: "Warner Bros", image: "/assets/images/luxury-project-uae/luxury-warner-bros.webp" }
 ];
 
-
 const EntertainmentSlider = () => {
 
   const swiperRef = useRef<SwiperType | null>(null);

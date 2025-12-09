@@ -7,12 +7,10 @@ const montserratSemiBold = Montserrat({
     variable: '--font-montserrat-bolder',
 
 });
-
 const libreBaskervilleBold = Libre_Baskerville({
     subsets: ['latin'],
     weight: ['700'],
     variable: '--font-libre-baskerville-bold',
-
 });
 
 export default function Contact() {

@@ -113,9 +113,7 @@ export default function LuxuryProjectPageClient() {
             allFetched.push(...res.result);
             }
         });
-
         const allowedTypes = ["residential", "residential building"];
-
         const filtered = allFetched.filter(proj => {
                 const maxPriceNum = Number(
                     typeof proj.maxPrice === "string" 
@@ -133,9 +131,8 @@ export default function LuxuryProjectPageClient() {
                     proj.featuredImages &&
                     proj.featuredImages.length > 0
                 );            
-            });
-            
-        // Show partial results immediately by batch by batch 
+            });            
+        
         setProjects(prev => {
             const combined = [...prev, ...filtered];
             return combined.slice(0, 7);
