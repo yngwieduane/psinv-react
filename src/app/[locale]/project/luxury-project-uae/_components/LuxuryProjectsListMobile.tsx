@@ -7,9 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faTag } from "@fortawesome/free-solid-svg-icons";
 import { Montserrat } from "next/font/google";
 
-import { LuxuryProjectsData } from "@/types/LuxuryProjectsTypes";
-
-
 const montserratLighter = Montserrat({
     subsets: ['latin'],
     weight: ['200'],

@@ -1,6 +1,6 @@
 'use client'
 
-import { Montserrat, Parisienne } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { useEffect, useState } from "react";
 import Opportunities from "./_components/Opportunities";
 import LuxuryProjects from "./_components/LuxuryProjects";
@@ -12,7 +12,6 @@ import FutureHome from "./_components/FutureHome";
 import PropertyTours from "./_components/PropertyTours";
 import "./_components/LuxuryProjectsUae.css";
 import EntertainmentSlider from "./_components/EntertainmentSlider";
-import { Metadata } from "next";
 import FAQs from "./_components/FAQs";
 import Contact from "./_components/Contact";
 import LuxuryFooter from "./_components/LuxuryFooter";
@@ -22,12 +21,6 @@ const montserrat = Montserrat({
     subsets: ['latin'],
     weight: ['400'],
     variable: '--font-montserrat',
-});
-
-const parisienne = Parisienne({
-    subsets: ['latin'],
-    weight: ['400'],
-    variable: '--font-parisienne',
 });
 
 interface Project {

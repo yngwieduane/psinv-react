@@ -48,7 +48,7 @@ const UltraLuxuryProjectsData = [
             { label: 'Location', value:'Abu Dhabi', FaIcon: faLocationDot },
             { label: 'Downpayment', value:'10%', FaIcon: faTag },
         ],
-        brochure : '/assets/images/landing-page/luxury-project-uae/brochures/hudayriyat-island-brochure.pdf',   
+        brochure : '/assets/images/luxury-project-uae/brochures/hudayriyat-island-brochure.pdf',   
     },
     {
         proj_name : 'Saadiyat Island Grove', 
@@ -129,7 +129,7 @@ const UltraLuxuryProjectsData = [
             { label: 'Handover', value:'Q3 2025', icon:'/assets/images/luxury-project-uae/icons/hand.svg' },
             { label: 'Downpayment', value:'10%',  FaIcon: faTag },
         ],            
-        brochure : '/assets/images/landing-page/luxury-project-uae/brochures/reem-hills-brochure.pdf',
+        brochure : '/assets/images/luxury-project-uae/brochures/reem-hills-brochure.pdf',
    
     },
     {

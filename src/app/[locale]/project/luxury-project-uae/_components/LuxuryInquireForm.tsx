@@ -9,7 +9,6 @@ import "react-phone-number-input/style.css";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { sendGTMEvent } from '@next/third-parties/google'
-import { url } from "inspector";
 
 interface Props {
   project?: any;

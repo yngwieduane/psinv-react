@@ -16,7 +16,6 @@ import LuxuryProjectsListMobile from "./LuxuryProjectsListMobile";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 import { LuxuryProjectsData } from "@/types/LuxuryProjectsTypes";
-import { any } from "zod";
 
 const montserratLighter = Montserrat({
     subsets: ['latin'],

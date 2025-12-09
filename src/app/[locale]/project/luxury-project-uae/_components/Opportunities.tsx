@@ -2,7 +2,6 @@
 import { Montserrat, Libre_Baskerville, Parisienne } from "next/font/google"
 import { FaWhatsapp } from "react-icons/fa";
 
-
 const montserratBolder = Montserrat({
     subsets: ['latin'],
     weight: ['900'],

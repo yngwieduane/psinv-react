@@ -5,9 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTag } from "@fortawesome/free-solid-svg-icons";
-import { Montserrat, Libre_Baskerville, Parisienne } from "next/font/google";
+import { Libre_Baskerville} from "next/font/google";
 import { FreeMode, Navigation} from "swiper/modules";
-import { UnitListing } from "@/types/types";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
