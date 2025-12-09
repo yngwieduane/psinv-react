@@ -52,12 +52,10 @@ const ContactForm = () => {
     const currentUrl = window.location.href;
     let sendtomail = 'callcenter@psinv.net';    
 
-    // Default values for media types
     let mediaType = "129475";
     let mediaName = "165233";
     let propertyCampaignId = "";
     let methodOfContact = "115747";
-
     let prop_type = 19;
     let beds = 21935;
     let locId = 91823;
@@ -87,7 +85,6 @@ const ContactForm = () => {
         methodOfContact = "115747";
         break;
     }
-
     const remarks = `
         Additional consent 1: ${data.agreement1 ? "Yes" : "No"} </br>
         Additional consent 2: ${data.agreement2 ? "Yes" : "No"} </br>
