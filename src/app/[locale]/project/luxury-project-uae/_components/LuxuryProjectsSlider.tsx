@@ -171,7 +171,7 @@ const LuxuryProjectsSlider = ({ data, slides, onAction, loadingStatus }: SliderP
                                     { slide.handoverDate && 
                                         <p className="text-md font-bold mt-5 flex gap-2">
                                             <img src="/assets/images/luxury-project-uae/icons/hand.svg" alt="type" title="type" />
-                                            {formattedDate}
+                                            <span>{formattedDate}</span>
                                         </p>
                                     }
                                 </div>

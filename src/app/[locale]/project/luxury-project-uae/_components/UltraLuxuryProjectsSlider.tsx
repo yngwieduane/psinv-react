@@ -18,7 +18,6 @@ const libreBaskervilleBold = Libre_Baskerville({
     subsets: ['latin'],
     weight: ['700'],
     variable: '--font-libre-baskerville-bold',
-
 });
 
 type Slide = {
