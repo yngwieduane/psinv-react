@@ -155,6 +155,12 @@ const more: More[] = [
         description: 'International',
         href: '/international',
         icon: ChartPieIcon,
+    },
+    {
+        name: 'Luxury Projects',
+        description: 'Luxury Projects',
+        href: '/project/luxury-project-uae',
+        icon: ChartPieIcon,
     }
 ];
 const callsToAction: CallToAction[] = [

@@ -4,7 +4,7 @@ import { makeUtm } from './registrationUtils';
 
 export type PerSlug = { branch: 'auh' | 'dubai' | 'assets'; override?: Partial<ProjectMeta> };
 
-export const PROJECTS = {
+export const PROJECTS :Record<string, PerSlug> = {
   'al-hayat-island-registration': {
     branch: 'auh',
     override: {

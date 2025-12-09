@@ -1,0 +1,12 @@
+.swiper-button-prev { right: 10%; left: auto; } 
+.swiper-button-prev, .swiper-button-next { top: 20px; width: 91px; } 
+.swiper-button-prev::after, .swiper-button-next::after { content: url(/assets/images/luxury-project-uae/icons/arrow-active.svg); width: 91px; } 
+.swiper-button-prev::after { transform: scaleX(-1); }
+
+@media only screen and (max-width: 768px) {
+     
+    .swiper-button-prev, .swiper-button-next { bottom: 0px; top:unset; width: 91px; }
+    .swiper-button-prev { left: 20%; right: unset; }
+    .swiper-button-next { left: unset; right: 20%; }    
+    .swiper-button-prev::after, .swiper-button-next::after { content: url(/assets/images/luxury-project-uae/icons/arrow-active-mob.svg); width: 71px; }  
+}

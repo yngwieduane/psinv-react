@@ -250,7 +250,6 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
           </label>
           {errors.agreement1 && <p className="text-red-500 text-sm">{errors.agreement1.message}</p>}
         </div>
-
         <div className="mb-3 hidden">
           <label className="flex items-center space-x-2">
             <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />

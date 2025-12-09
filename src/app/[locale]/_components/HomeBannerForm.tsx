@@ -261,7 +261,7 @@ const HomeBannerForm: React.FC<BannerFormProps> = ({ hideFeedbackButton = false,
         >
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>
-        <div className="md:flex w-full gap-5 space-y-3">
+        <div className="md:flex w-full gap-5 md:space-y-0 space-y-3">
 		      <a title="Whatsapp" target="_blank" className="border border-1 border-[#c3c3c3] text-center py-2 rounded-md w-full md:w-1/2 flex items-center gap-2 justify-center" 
           href={`https://wa.me/97122052888?text=*${propData?.title || propData?.name || ""}* %0AI%20am%20Interested%20.%20Kindly%20send%20me%20more%20information.%0A%0A`}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -274,7 +274,7 @@ const HomeBannerForm: React.FC<BannerFormProps> = ({ hideFeedbackButton = false,
           </a>
           <a title="phone number" className="border border-1 border-[#c3c3c3] text-center py-2 rounded-md w-full md:w-1/2 flex items-center gap-2 justify-center" 
           href="tel:+971600548200">
-            <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="15" height="17" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.8332 14.1V16.6C17.8341 16.8321 17.7866 17.0618 17.6936 17.2744C17.6006 17.4871 17.4643 17.678 17.2933 17.8349C17.1222 17.9918 16.9203 18.1112 16.7005 18.1856C16.4806 18.2599 16.2477 18.2875 16.0165 18.2666C13.4522 17.988 10.989 17.1118 8.82486 15.7083C6.81139 14.4289 5.10431 12.7218 3.82486 10.7083C2.41651 8.53432 1.54007 6.05914 1.26653 3.48331C1.2457 3.25287 1.27309 3.02061 1.34695 2.80133C1.4208 2.58205 1.53951 2.38055 1.6955 2.20966C1.8515 2.03877 2.04137 1.90224 2.25302 1.80875C2.46468 1.71526 2.69348 1.66686 2.92486 1.66665H5.42486C5.82928 1.66267 6.22136 1.80588 6.528 2.06959C6.83464 2.3333 7.03493 2.69952 7.09153 3.09998C7.19705 3.90003 7.39274 4.68558 7.67486 5.44165C7.78698 5.73992 7.81125 6.06407 7.74478 6.37571C7.67832 6.68735 7.52392 6.9734 7.29986 7.19998L6.24153 8.25831C7.42783 10.3446 9.15524 12.072 11.2415 13.2583L12.2999 12.2C12.5264 11.9759 12.8125 11.8215 13.1241 11.7551C13.4358 11.6886 13.7599 11.7129 14.0582 11.825C14.8143 12.1071 15.5998 12.3028 16.3999 12.4083C16.8047 12.4654 17.1744 12.6693 17.4386 12.9812C17.7029 13.2931 17.8433 13.6913 17.8332 14.1Z" stroke="#212529" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg> <span className="text-[15px]">600 548 200</span>
           </a>
