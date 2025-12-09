@@ -152,89 +152,84 @@ export default function LuxuryProjectPageClient() {
     return(
         <>
         <LuxuryHeader onAction = {(modalTitle?: string) => modalHandler(undefined, modalTitle)} 
-        pageURL = {currentUrl} />
-        
-    <div className={`w-full bg-[#353B58] ${montserrat.className}`}>        
-        <Opportunities onAction = {(modalTitle?: string) => modalHandler(undefined, modalTitle)} 
-        pageURL = {currentUrl} />
-    </div>    
-   <div className={`w-full bg-[#353B58] ${montserrat.className}`} id="luxury-projects">
-        <div className="h-[100px]"></div>
-        <LuxuryProjects onAction={modalHandler} data={projects} loadingStatus={loading} />
-    </div>
-
-    <div className={`w-full bg-[#353B58] ${montserrat.className} relative 
-    bg-[url("/assets/images/luxury-project-uae/ultra-luxury-bg.webp")] bg-cover bg-no-repeat md:pb-20 md:pt-10 py-5`}
-     id="ultra-luxury-projects">
-        <div className="h-[500px] w-full absolute inset-0" style={{ backgroundImage: "linear-gradient(0deg, #FFFFFF00 10%, #353B58 100%, #131f526e 0%)" }}></div>
-        <div className="h-[100px]"></div>
-        <UltraLuxuryProjects onAction={modalHandler} data={projects} loadingStatus={loading} />
-        <div className="h-[70%] w-full absolute bottom-0 left-0" style={{ backgroundImage: "linear-gradient(180deg, #FFFFFF00 10%, #131f526e 37%, #353b58 100%)" }}></div>
-    </div>
-
-    <div className={`w-full relative bg-[#353B58] ${montserrat.className} 
-     bg-cover bg-center bg-no-repeat bg-right md:bg-[url("/assets/images/luxury-project-uae/dream-residence.webp")] bg-none`} 
-     id="future-residence">
-        <div className=" h-full absolute inset-0 w-full" 
-            style={{ backgroundImage: "linear-gradient(0deg, #FFFFFF00 10%, #131f52ad 100%, #131f526e 0%)" }}>
-        </div>
-        <div className="md:h-[590px] "></div>
-        <FutureHome onAction={modalHandler2} />
-    </div>
-
-    <div className={`w-full bg-[#353B58] ${montserrat.className} bg-[url("/assets/images/luxury-project-uae/property-tours.webp")] 
-    h-[798px] bg-cover bg-center`} id="vip-tours">
-        <div style={{ background:"linear-gradient(0deg, #FFFFFF00 10%, #353B58 100%, #131f526e 0%),url('')"}} className="h-full relative">
+        pageURL = {currentUrl} />        
+        <div className={`w-full bg-[#353B58] ${montserrat.className}`}>        
+            <Opportunities onAction = {(modalTitle?: string) => modalHandler(undefined, modalTitle)} 
+            pageURL = {currentUrl} />
+        </div>    
+    <div className={`w-full bg-[#353B58] ${montserrat.className}`} id="luxury-projects">
             <div className="h-[100px]"></div>
-            <PropertyTours onAction={modalHandler} /> 
-            <div className="h-[150px] absolute bottom-0 w-full"
-            style={{ background:"linear-gradient(180deg, #FFFFFF00 10%, #131f526e 37%, #353b58 100%)"}}>
-            </div>    
-        </div>  
-    </div>
-    <div className="w-full bg-[#353B58] text-white">        
-        <div className="w-full mx-auto flex justify-between text-center content-center px-4 py-5 gap-0 relative">
-            <div className="flex flex-column items-center gap-3 relative w-1/3">                
-                <div className="z-10 iconImage" 
-                style={{backgroundImage: "url('/assets/images/luxury-project-uae/icons/readytomove.svg')"}}></div>
-                <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">Ready to move in</p>                
+            <LuxuryProjects onAction={modalHandler} data={projects} loadingStatus={loading} />
+        </div>
+
+        <div className={`w-full bg-[#353B58] ${montserrat.className} relative 
+        bg-[url("/assets/images/luxury-project-uae/ultra-luxury-bg.webp")] bg-cover bg-no-repeat md:pb-20 md:pt-10 py-5`}
+        id="ultra-luxury-projects">
+            <div className="h-[500px] w-full absolute inset-0" style={{ backgroundImage: "linear-gradient(0deg, #FFFFFF00 10%, #353B58 100%, #131f526e 0%)" }}></div>
+            <div className="h-[100px]"></div>
+            <UltraLuxuryProjects onAction={modalHandler} data={projects} loadingStatus={loading} />
+            <div className="h-[70%] w-full absolute bottom-0 left-0" style={{ backgroundImage: "linear-gradient(180deg, #FFFFFF00 10%, #131f526e 37%, #353b58 100%)" }}></div>
+        </div>
+        <div className={`w-full relative bg-[#353B58] ${montserrat.className} 
+        bg-cover bg-center bg-no-repeat bg-right md:bg-[url("/assets/images/luxury-project-uae/dream-residence.webp")] bg-none`} 
+        id="future-residence">
+            <div className=" h-full absolute inset-0 w-full" 
+                style={{ backgroundImage: "linear-gradient(0deg, #FFFFFF00 10%, #131f52ad 100%, #131f526e 0%)" }}>
             </div>
-            <div className="flex flex-column items-center gap-3 relative w-1/3">
-                <div className="iconSeparator"></div>                
-                <div className="z-10 iconImage" 
-                style={{backgroundImage: "url('/assets/images/luxury-project-uae/icons/sitevisit.svg')"}}></div>
-                <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">Site visits</p>                
-            </div> 
-            <div className="flex flex-column items-center gap-3 relative w-1/3">
-                <div className="iconSeparator2"></div>                
-                <div className="z-10 iconImage" 
-                style={{backgroundImage: "url('/assets/images/luxury-project-uae/icons/key.svg')"}}></div>                
-                <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">Get your keys</p>                
-            </div> 
+            <div className="md:h-[590px] "></div>
+            <FutureHome onAction={modalHandler2} />
         </div>
-    </div>
 
-    {/* Entertainment section */}
-    <div id="entertainment"
-    className={`md:min-h-[1100px] min-h-[600px] relative w-full bg-[#353B58] ${montserrat.className} md:pb-20 md:pt-10 py-5 pt-25`} >   
-        <div className="absolute inset-0 z-[5]">
-            <EntertainmentSlider />
+        <div className={`w-full bg-[#353B58] ${montserrat.className} bg-[url("/assets/images/luxury-project-uae/property-tours.webp")] 
+        h-[798px] bg-cover bg-center`} id="vip-tours">
+            <div style={{ background:"linear-gradient(0deg, #FFFFFF00 10%, #353B58 100%, #131f526e 0%),url('')"}} className="h-full relative">
+                <div className="h-[100px]"></div>
+                <PropertyTours onAction={modalHandler} /> 
+                <div className="h-[150px] absolute bottom-0 w-full"
+                style={{ background:"linear-gradient(180deg, #FFFFFF00 10%, #131f526e 37%, #353b58 100%)"}}>
+                </div>    
+            </div>  
         </div>
-    </div>
-    {/* FAQs */}
-    <div id="faqs"
-    className={`w-full bg-[#353B58] ${montserrat.className} py-35`} >   
-        <FAQs data={faqs} />
-    </div>
-
-    { /* contact */}
-    <div id="connect" className={`w-full bg-[#353B58] ${montserrat.className} py-5`}>
-        <Contact />
-    </div>
-    { /* footer */ }
-    <LuxuryFooter />
-
-    <LuxuryInquireModal modalState ={modal} onModalUpdate = {modalUpdate} project = {selectedProject} location = {location} title={modalTitle} />
+        <div className="w-full bg-[#353B58] text-white">        
+            <div className="w-full mx-auto flex justify-between text-center content-center px-4 py-5 gap-0 relative">
+                <div className="flex flex-column items-center gap-3 relative w-1/3">                
+                    <div className="z-10 iconImage" 
+                    style={{backgroundImage: "url('/assets/images/luxury-project-uae/icons/readytomove.svg')"}}></div>
+                    <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">Ready to move in</p>                
+                </div>
+                <div className="flex flex-column items-center gap-3 relative w-1/3">
+                    <div className="iconSeparator"></div>                
+                    <div className="z-10 iconImage" 
+                    style={{backgroundImage: "url('/assets/images/luxury-project-uae/icons/sitevisit.svg')"}}></div>
+                    <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">Site visits</p>                
+                </div> 
+                <div className="flex flex-column items-center gap-3 relative w-1/3">
+                    <div className="iconSeparator2"></div>                
+                    <div className="z-10 iconImage" 
+                    style={{backgroundImage: "url('/assets/images/luxury-project-uae/icons/key.svg')"}}></div>                
+                    <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">Get your keys</p>                
+                </div> 
+            </div>
+        </div>
+        {/* Entertainment section */}
+        <div id="entertainment"
+        className={`md:min-h-[1100px] min-h-[600px] relative w-full bg-[#353B58] ${montserrat.className} md:pb-20 md:pt-10 py-5 pt-25`} >   
+            <div className="absolute inset-0 z-[5]">
+                <EntertainmentSlider />
+            </div>
+        </div>
+        {/* FAQs */}
+        <div id="faqs"
+        className={`w-full bg-[#353B58] ${montserrat.className} py-35`} >   
+            <FAQs data={faqs} />
+        </div>
+        { /* contact */}
+        <div id="connect" className={`w-full bg-[#353B58] ${montserrat.className} py-5`}>
+            <Contact />
+        </div>
+        { /* footer */ }
+        <LuxuryFooter />
+        <LuxuryInquireModal modalState ={modal} onModalUpdate = {modalUpdate} project = {selectedProject} location = {location} title={modalTitle} />
 
  </>
 
