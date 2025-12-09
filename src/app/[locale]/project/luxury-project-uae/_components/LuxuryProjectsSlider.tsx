@@ -21,7 +21,6 @@ const montserratLighter = Montserrat({
     subsets: ['latin'],
     weight: ['200'],
     variable: '--font-montserrat-lighter',
-
 });
 
 type Slide = {
@@ -42,12 +41,6 @@ interface SliderProps {
   onAction: (dataToSend?: LuxuryProjectsData) => void;    //data is optional
   loadingStatus : boolean;
 }
-
-// interface SliderProps {
-//   data: any[];
-//   slides: Slide[];
-//   onAction: (dataToSend?: LuxuryProjectsData) => void;
-// }
 
 const LuxuryProjectsSlider = ({ data, slides, onAction, loadingStatus }: SliderProps) => {    
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);

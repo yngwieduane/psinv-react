@@ -29,8 +29,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownload } : Props) => {
-  const router = useRouter();
+const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownload } : Props) => {  
   const pathname = usePathname();
   const locale = pathname.split("/")[1] || "en"; 
   const {

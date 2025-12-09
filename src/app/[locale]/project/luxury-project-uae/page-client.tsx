@@ -176,7 +176,8 @@ export default function LuxuryProjectPageClient() {
     </div>
 
     <div className={`w-full relative bg-[#353B58] ${montserrat.className} 
-     bg-cover bg-center bg-no-repeat bg-right md:bg-[url("/assets/images/luxury-project-uae/dream-residence.webp")] bg-none`}>
+     bg-cover bg-center bg-no-repeat bg-right md:bg-[url("/assets/images/luxury-project-uae/dream-residence.webp")] bg-none`} 
+     id="future-residence">
         <div className=" h-full absolute inset-0 w-full" 
             style={{ backgroundImage: "linear-gradient(0deg, #FFFFFF00 10%, #131f52ad 100%, #131f526e 0%)" }}>
         </div>
@@ -185,7 +186,7 @@ export default function LuxuryProjectPageClient() {
     </div>
 
     <div className={`w-full bg-[#353B58] ${montserrat.className} bg-[url("/assets/images/luxury-project-uae/property-tours.webp")] 
-    h-[798px] bg-cover bg-center`}>
+    h-[798px] bg-cover bg-center`} id="vip-tours">
         <div style={{ background:"linear-gradient(0deg, #FFFFFF00 10%, #353B58 100%, #131f526e 0%),url('')"}} className="h-full relative">
             <div className="h-[100px]"></div>
             <PropertyTours onAction={modalHandler} /> 

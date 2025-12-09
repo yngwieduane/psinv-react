@@ -11,7 +11,6 @@ const montserratLighter = Montserrat({
     subsets: ['latin'],
     weight: ['200'],
     variable: '--font-montserrat-lighter',
-
 });
 
 type Tabs = {
@@ -48,8 +47,7 @@ const LuxuryProjectsListMobile = ({ tabs, onAction, loadingStatus }: TabProps) =
     <>    
     <div className="min-h-[500px] pt-3 pb-7">
     {loadingStatus ? (      
-        <p className="text-center text-white text-xl mt-5">Loading projects...</p>          
-      
+        <p className="text-center text-white text-xl mt-5">Loading projects...</p>
       )
       : (
           tabs.length > 0 ? (
