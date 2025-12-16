@@ -21,6 +21,8 @@ import {routing} from '@/i18n/routing';
 import ConditionalNavigation from "./_components/ConditionalNavigation";
 import ConditionalFooter from "./_components/ConditionalFooter";
 import { locales,siteBaseUrl,defaultLocale } from "@/utils/i18n-config";
+import { TranslationProvider } from "@/context/translationContext";
+import { UserProvider } from "@/context/userContext";
 
 // export const metadata: Metadata = {
 //   title: "⚡  Abu Dhabi Real Estate  - Property Shop Investment",
@@ -108,9 +110,13 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider messages={messages}>
+          <UserProvider>
+              <TranslationProvider>
             <ConditionalNavigation />
             <Providers><main>{children}</main></Providers>
             <ConditionalFooter />
+              </TranslationProvider>
+              </UserProvider>
         </NextIntlClientProvider>
         <GoogleTagManager gtmId="GTM-PMQ9XT65R" />
       </body>
