@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Navigation from './navigation';
+import NavigationAI from './NavigationAI';
 
 export default function ConditionalNavigation() {
   const pathname = usePathname();  
@@ -9,5 +10,5 @@ export default function ConditionalNavigation() {
     pathname.includes(path)
   );
   if (isNoNavPage) return null;
-  return <Navigation />;
+  return <NavigationAI onNavigate={() => {}} currentPage="home" />;
 }

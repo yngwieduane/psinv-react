@@ -144,3 +144,141 @@ export interface Articles  {
   category: string
   content: string
 }
+
+
+
+export type Page = 'home' | 'about' | 'careers' | 'list-property' | 'search' | 'property' | 'project-search' | 'project-details' | 'favorites' | 'compare' | 'developers' | 'mortgage-calculator' | 'luxury-projects' | 'articles' | 'newsletters' | 'invest' | 'youngster' | 'villa-calculator' | 'contact' | 'sitemap' | 'emirati-hub' | 'agents' | 'agent-profile' | 'reem-hills';
+
+export interface NavItem {
+  label: string;
+  page: Page;
+  href?: string; // For hash links on home
+}
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  avatar: string;
+}
+
+export interface SavedItem {
+  id: string;
+  type: 'property' | 'project';
+}
+
+export interface PropertyCategory {
+  id: string;
+  name: string;
+  image: string;
+  count: string;
+  location: string;
+}
+
+export interface StatItem {
+  value: string;
+  label: string;
+}
+
+export interface Testimonial {
+  id: number;
+  author: string;
+  role: string;
+  text: string;
+  rating: number;
+}
+
+export interface ChatMessage {
+  role: 'user' | 'model';
+  text: string;
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface Agent {
+  id: string;
+  name: string;
+  role: string;
+  image: string;
+  languages: string[];
+  phone: string;
+  whatsapp: string;
+  email: string;
+  brn: string; // Broker Registration Number
+  experience: string;
+  description: string;
+  activeListings: number;
+  location: string;
+}
+
+export interface Property {
+  id: string;
+  title: string;
+  location: string;
+  community: string;
+  price: number;
+  currency: string;
+  type: string;
+  beds: number;
+  baths: number;
+  area: number; // sqft
+  images: string[];
+  refNumber: string;
+  description: string;
+  amenities: string[];
+  coordinates?: { lat: number; lng: number }; // Mock coordinates for map (0-100%)
+  badges?: string[];
+  furnished?: string;
+  view?: string;
+  completion?: string;
+}
+
+export interface Project {
+  id: string;
+  maxPrice: number;
+  community: string;
+  propertyName: string;
+  propertyID: string;
+  title: string;
+  location: string;
+  developer: string;
+  status: 'Ready' | 'Off Plan' | 'Under Construction';
+  handover: string;
+  priceFrom: number;
+  currency: string;
+  types: string[]; // e.g. ['AP', 'TH', 'VI']
+  beds: string; // "1 to 4"
+  images: string[];
+  featuredImages: string[];
+  description: string;
+  mapLatitude: string;
+  mapLongitude: string;
+  masterDeveloper: string;
+  propertyType: string;
+  availableBedrooms: [];
+  handoverDate: string;
+  facts: {
+    label: string;
+    value: string;
+  }[];
+  floorPlans: {
+    name: string;
+    beds: number;
+    area: number;
+    image: string;
+  }[];
+  faqs: FAQ[];
+  amenities: string[];
+  city: string;
+  subCommunity: string;
+  coordinates?: { lat: number; lng: number }; // Mock coordinates for map (0-100%)
+}
+
+export interface Developer {
+  id: string;
+  name: string;
+  logo: string;
+}

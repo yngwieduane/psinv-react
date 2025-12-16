@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 //import MainFooter from './MainFooter';
 import dynamic from 'next/dynamic';
+const MainFooterAI = dynamic(() => import('./MainFooterAI'));
 const MainFooter = dynamic(() => import('./MainFooter'));
 
 export default function ConditionalFooter() {
@@ -12,5 +13,5 @@ export default function ConditionalFooter() {
     );
 
   if (isNoFooterPage) return null;
-  return <MainFooter />;
+  return <MainFooterAI onNavigate={(page) => { }} />;
 }

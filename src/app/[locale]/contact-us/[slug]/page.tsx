@@ -15,6 +15,8 @@ import InquiryForm from "../../_components/InquiryForm";
 import { ContactLocation, contactLocations } from "@/data/contactLocations";
 import { Poppins } from 'next/font/google';
 import { Outfit } from "next/font/google";
+import { MapPin } from "lucide-react";
+
 export const outfit = Outfit({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -46,21 +48,17 @@ export default function ContactPage() {
       {/* <div className="container-fluid px-0">
         <Breadcrumb />
       </div> */}
-      <div id="contact-container" className="container mx-auto px-6 md:px-12">
+        <div className="mx-auto px-6 md:px-12 pt-30">
+      <div id="contact-container" className="container mx-auto">
         <h1 className="text-3xl md:text-4xl font-outfit font-bold text-[#111954] mb-8 md:mb-12">Contact Us</h1>
         <div className="w-full">
           <Swiper
-            modules={[Navigation, Pagination]}
-            slidesPerView={1.5}
-            spaceBetween={5}
-            navigation={false}
-            pagination={false}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              768: { slidesPerView: 3 },
-              1024: { slidesPerView: 6 },
-            }}
-            className="!w-auto"
+    modules={[Navigation, Pagination]}
+    slidesPerView="auto"
+    spaceBetween={16}   // ✅ same as gap-4 (16px)
+    navigation={false}
+    pagination={false}
+    className="!w-auto"
           >
             {contactLocations.map((location) => (
               <SwiperSlide key={location.id} className="!w-auto">
@@ -116,7 +114,7 @@ export default function ContactPage() {
 
       <div className={`flex items-start gap-2 text-gray-600 ${poppins.className}`}>
         <FontAwesomeIcon icon={faMapMarkerAlt} className="mt-1 text-[#014081] shrink-jShrink-0" />
-        <p className="text-sm leading-relaxed break-words">
+        <p className="text-sm leading-relaxed break-words text-gray-600">
           {selectedOffice.off_address.split(", ").map((line, index) => (
             <span key={index}>
               {line}
@@ -134,24 +132,41 @@ export default function ContactPage() {
   </div>
 
   {/* Right */}
-  <div className="order-1 lg:order-2 lg:w-7/12">
-    <div className="rounded-xl overflow-hidden border border-gray-300 bg-gray-200 h-[420px] md:h-[600px] lg:h-full relative">
-      <MapComponent
-        latitude={selectedOffice.latitude}
-        longitude={selectedOffice.longitude}
-        fallbackImage={selectedOffice.img}
-        height="100%"
-      />
+<div className="order-1 lg:order-2 lg:w-7/12">
+  <div className="rounded-xl overflow-hidden border border-gray-300 bg-gray-200 h-[420px] md:h-[600px] lg:h-full relative">
 
-      {/* optional design-only controls */}
-      <div className="absolute top-4 left-4 flex bg-white rounded shadow-md text-xs font-bold text-gray-700 overflow-hidden">
-        <button className="px-3 py-2 hover:bg-gray-100 border-r border-gray-200">Map</button>
-        <button className="px-3 py-2 hover:bg-gray-100 text-gray-500">Satellite</button>
-      </div>
+    {/* Map */}
+    <MapComponent
+      latitude={selectedOffice.latitude}
+      longitude={selectedOffice.longitude}
+      fallbackImage={selectedOffice.img}
+      height="100%"
+    />
+
+    {/* ✅ CENTER BOUNCING PIN */}
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <MapPin
+        size={48}
+        className="text-red-600 drop-shadow-lg animate-bounce"
+        fill="currentColor"
+      />
     </div>
+
+    {/* Map Controls (design only) */}
+    <div className="absolute top-4 left-4 flex bg-white rounded shadow-md text-xs font-bold text-gray-700 overflow-hidden">
+      <button className="px-3 py-2 hover:bg-gray-100 border-r border-gray-200">
+        Map
+      </button>
+      <button className="px-3 py-2 hover:bg-gray-100 text-gray-500">
+        Satellite
+      </button>
+    </div>
+
   </div>
 </div>
+</div>
 
+      </div>
       </div>
     </>
   );
