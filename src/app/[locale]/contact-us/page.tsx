@@ -14,9 +14,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import InquiryForm from "../../[locale]/_components/InquiryForm";
 import { Phone, MapPin, Search, Maximize, Locate } from 'lucide-react';
-
+import { Outfit } from "next/font/google";
 import { ContactLocation, contactLocations } from "@/data/contactLocations";
-
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
 export default function ContactPage() {
   const router = useRouter();
   const [selectedLocation, setSelectedLocation] = useState<ContactLocation>(contactLocations[0]);
@@ -29,7 +33,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white pt-28 md:pt-32 pb-20">
       <div className="container mx-auto px-6 md:px-12">
-        <h1 className="text-3xl md:text-4xl font-serif font-bold text-[#111954] mb-8 md:mb-12">
+        <h1 className={`${outfit.className} text-3xl md:text-4xl font-bold text-[#111954] mb-8 md:mb-12`}>
           Contact Us
         </h1>
 

@@ -17,7 +17,7 @@ import { Poppins } from 'next/font/google';
 import { Outfit } from "next/font/google";
 import { MapPin } from "lucide-react";
 
-export const outfit = Outfit({
+const outfit = Outfit({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
@@ -49,7 +49,7 @@ export default function ContactPage() {
         <Breadcrumb />
       </div> */}
         <div className="mx-auto px-6 md:px-12 pt-30">
-      <div id="contact-container" className="container mx-auto">
+      <div id="contact-container" className="container mx-auto px-6 md:px-12">
         <h1 className="text-3xl md:text-4xl font-outfit font-bold text-[#111954] mb-8 md:mb-12">Contact Us</h1>
         <div className="w-full">
           <Swiper
