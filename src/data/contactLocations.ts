@@ -32,7 +32,7 @@ export interface ContactLocation {
         longitude: 54.4030951693129,
         latitude: 24.499508550193866,
         google_map: "https://goo.gl/maps/LjKdHThYp57u2fka7",
-        img: "https://psinv.net/assets/img/icons/map/psi-headoffice.webp?ver=2",
+        img: "/images/psi-headoffice.webp",
     },
     {
         id: 2,
@@ -48,7 +48,7 @@ export interface ContactLocation {
         location: "https://www.google.com/maps/place/20+Al+Reema+St+-+Jazeerat+Al+Reem+-+Abu+Dhabi/",
         longitude: 54.40789730524954,
         latitude: 24.49630487299215,
-        img: "https://psinv.net/assets/img/icons/map/psi-assets.webp",
+        img: "/images/psi-headoffice.webp",
     },
     {
         id: 3,
@@ -64,7 +64,7 @@ export interface ContactLocation {
         location: "https://www.google.com/maps/place/Dubai+Hills+Estate+Business+Park+3/",
         longitude: 55.2402619,
         latitude: 25.1064621,
-        img: "https://psinv.net/assets/img/icons/map/dubai-hills-psi.png",
+        img: "/images/psi-headoffice.webp",
     },
     {
         id: 4,
@@ -80,7 +80,7 @@ export interface ContactLocation {
         location: "https://www.google.ae/maps/place/Property+Shop+Investment+(PSI)+-+Mamsha+Branch/",
         longitude: 54.4048641,
         latitude: 24.5386169,
-        img: "https://psinv.net/assets/img/icons/map/mamsha-psi.png",
+        img: "/images/psi-headoffice.webp",
     },
     {
         id: 5,
@@ -96,7 +96,7 @@ export interface ContactLocation {
         location: "https://www.google.com/maps/place/Property+Shop+Investment+(PSI)+Water's+Edge+Branch/",
         longitude: 54.614587,
         latitude: 24.4799716,
-        img: "https://psinv.net/assets/img/icons/map/waters-edge-psi.png",
+        img: "/images/psi-headoffice.webp",
     },
     {
         id: 6,
@@ -112,7 +112,7 @@ export interface ContactLocation {
         location: "https://www.google.ae/maps/place/Property+Shop+Investment+(PSI)+-+Mamsha+Branch/",
         longitude: 54.4048641,
         latitude: 24.5386169,
-        img: "https://psinv.net/assets/img/icons/map/mamsha-psi.png",
+       img: "/images/psi-headoffice.webp",
     },
     {
         id: 7,
@@ -128,7 +128,7 @@ export interface ContactLocation {
         location: "https://www.google.com/maps/place/Golden+Mile+8/",
         longitude: 55.14143045391955,
         latitude: 25.11119355668974,
-        img: "https://psinv.net/assets/img/icons/map/palm-psi.png",
+        img: "/images/psi-headoffice.webp",
     },
     {
         id: 8,
@@ -143,7 +143,7 @@ export interface ContactLocation {
         location: "https://www.google.com/maps/place/Conrad+Abu+Dhabi+Etihad+Towers/",
         longitude: 54.3197303,
         latitude: 24.4584551,
-        img: "https://psinv.net/assets/img/icons/map/conrad-psi.png",
+        img: "/images/psi-headoffice.webp",
     },
     {
         id: 9,
@@ -159,7 +159,7 @@ export interface ContactLocation {
         location: "https://www.google.ae/maps/place/Fifty+One+Tower/",
         longitude: 55.2822495,
         latitude: 25.1898642,
-        img: "https://psinv.net/assets/img/icons/map/business-bay-psi.png",
+        img: "/images/psi-headoffice.webp",
     }
   ];
   

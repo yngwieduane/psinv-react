@@ -174,111 +174,138 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
   };
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full bg-white p-6 rounded-lg">
-        {/* Success/Error Messages */}
-        {postId === "Success" && <div className="p-3 mb-3 rounded bg-green-500 text-white">Form submitted successfully!</div>}
-        {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">Submission failed. Try again.</div>}
-        <h2 className="text-lg font-bold mb-4 text-[#111954]">Inquire</h2>
-        <div className="mb-3">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full bg-white"
+    >
+      {/* Success/Error Messages */}
+      {postId === "Success" && (
+        <div className="p-3 mb-4 rounded bg-green-500 text-white">
+          Form submitted successfully!
+        </div>
+      )}
+      {postId === "Error" && (
+        <div className="p-3 mb-4 rounded bg-red-500 text-white">
+          Submission failed. Try again.
+        </div>
+      )}
+
+      <h2 className="text-xl font-serif font-bold text-gray-900 mb-6">
+        Inquire
+      </h2>
+
+      {/* Grid like screenshot */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* First Name */}
+        <div>
           <input
             type="text"
             {...register("firstName")}
             placeholder="First Name"
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
           />
-          {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
+          {errors.firstName && (
+            <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>
+          )}
         </div>
-        <div className="mb-3">
+
+        {/* Last Name */}
+        <div>
           <input
             type="text"
             {...register("lastName")}
             placeholder="Last Name"
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
           />
-          {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
+          {errors.lastName && (
+            <p className="text-red-500 text-xs mt-1">{errors.lastName.message}</p>
+          )}
         </div>
-        <div className="mb-3">
+
+        {/* Email */}
+        <div>
           <input
             type="email"
             {...register("email")}
-            placeholder="Email"
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            placeholder="E-mail"
+            className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
           />
-          {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+          {errors.email && (
+            <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+          )}
         </div>
-        <div className="mb-3">
-          <Controller
-            name="phone"
-            control={control}
-            render={({ field }) => (
-              <PhoneInput
-                {...field}
-                international
-                defaultCountry="AE"
-                placeholder="+971-555555555"
-                className="w-full p-3 border rounded-md mb-3"
-              />
-            )}
-          />
-          {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
-        </div>
-        <div className="mb-3">
-          <textarea
-            {...register("message")}
-            placeholder="Hi, I would like to contact you"
-            rows={4}
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
-        </div>
-        <button
-          type="submit"
-          className="w-full border border-[#111954] p-3 mb-6 rounded-md hover:text-[#0c1445] hover:bg-white bg-[#0c1445] text-white font-semibold cursor-pointer"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? "Submitting..." : "Submit"}
-        </button>
-        <div className="mb-3">
-          <label className="flex items-center space-x-2">
-            <span className="text-sm">By clicking Submit, you agree to our Terms & Conditions and Privacy Policy</span>
-          </label>
-        </div>
-        <div className="mb-3 hidden">
-          <label className="flex items-center space-x-2">
-            <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
-            <span className="text-sm">I agree to the Terms & Conditions and Privacy Policy</span>
-          </label>
-          {errors.agreement1 && <p className="text-red-500 text-sm">{errors.agreement1.message}</p>}
-        </div>
-        <div className="mb-3 hidden">
-          <label className="flex items-center space-x-2">
-            <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
-            <span className="text-sm">Agree to receive calls and communications</span>
-          </label>
-        </div>
-        <div className="mb-3 hidden">
-          <label className="flex items-center space-x-2">
-            <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
-            <span className="text-sm">Receive calls about various projects</span>
-          </label>
-        </div>
-      </form>
-      {!hideFeedbackButton && (
-        <div className="mt-4">
-          <button
-            type="button"
-            className="w-full bg-[#111954] text-white p-3 rounded-md hover:bg-[#0c1445] transition"
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-              router.push("/en/customer-feedback");
-            }}
-          >
-            Your Feedback
-          </button>
-        </div>
+
+        {/* Phone (styled like screenshot) */}
+<div>
+  <div className="border border-gray-300 rounded overflow-hidden">
+    <Controller
+      name="phone"
+      control={control}
+      render={({ field }) => (
+        <PhoneInput
+          {...field}
+          international
+          defaultCountry="AE"
+          countryCallingCodeEditable={false}
+          placeholder="536356356"
+          className="psi-phone-input"
+        />
       )}
-    </>
+    />
+  </div>
+
+  {errors.phone && (
+    <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
+  )}
+</div>
+      </div>
+
+      {/* Message */}
+      <div className="mt-4">
+        <textarea
+          {...register("message")}
+          placeholder="Hi, I would like to contact you"
+          className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 h-40 resize-none"
+        />
+        {errors.message && (
+          <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
+        )}
+      </div>
+
+      {/* Submit */}
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full mt-6 border border-gray-400 text-gray-700 font-bold py-3 rounded hover:bg-gray-800 hover:text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+      >
+        {isSubmitting ? "Submitting..." : "Submit"}
+      </button>
+
+      {/* Consent text like screenshot */}
+      <div className="text-[10px] text-gray-500 space-y-2 mt-4">
+        <p className="italic">
+          By clicking Submit, you agree to our Terms &amp; Conditions and Privacy Policy
+        </p>
+
+        <label className="flex items-start gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            {...register("agreement1")}
+            className="mt-0.5 accent-[#111954]"
+            defaultChecked
+          />
+          <span>
+            Agree to receive calls and communications via various channels from PSI from
+            09:00 am to 09:00 pm
+          </span>
+        </label>
+
+        {errors.agreement1 && (
+          <p className="text-red-500 text-xs">{errors.agreement1.message}</p>
+        )}
+      </div>
+    </form>
+  </>
   );
 };
 
