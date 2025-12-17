@@ -298,7 +298,7 @@ const Navigation: FC = () => {
                 aria-hidden="true"
                 />
                 </Link> */}
-                <LanguageSwitcher />
+                <LanguageSwitcher css=""/>
             </div>
         </div>
         {/* Main Navigation */}
