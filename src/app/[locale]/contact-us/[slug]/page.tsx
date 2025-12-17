@@ -53,8 +53,8 @@ export default function ContactPage() {
       {/* <div className="container-fluid px-0">
         <Breadcrumb />
       </div> */}
-        <div dir={isRTL ? "rtl" : "ltr"} className="mx-auto px-6 md:px-12 pt-30">
-      <div id="contact-container" className="container mx-auto px-6 md:px-12">
+        <div dir={isRTL ? "rtl" : "ltr"} className="mx-auto px-3 md:px-12 pt-30">
+      <div id="contact-container" className="container mx-auto px-3 md:px-12">
         <h1 className="text-3xl md:text-4xl font-outfit font-bold text-[#111954] mb-8 md:mb-12">{t("title")}</h1>
         <div className="w-full">
           <Swiper
@@ -143,13 +143,8 @@ export default function ContactPage() {
   className="w-full h-full"
   loading="lazy"
 />
-
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <MapPin
-        size={48}
-        className="text-red-600 drop-shadow-lg animate-bounce"
-        fill="currentColor"
-      />
+ <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+  <MapPin size={48} className="text-red-600 drop-shadow-lg animate-bounce -translate-y-6" />
     </div>
     <div className="absolute top-4 left-4 flex bg-white rounded shadow-md text-xs font-bold text-gray-700 overflow-hidden">
       <button className="px-3 py-2 hover:bg-gray-100 border-r border-gray-200">

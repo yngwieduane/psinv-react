@@ -47,15 +47,15 @@ export default function GoogleMapEmbed({ center, locations, selectedLocation, on
       onLoad={onLoad}
     >
       {locations.map((loc) => (
-        <Marker 
-        key={loc.id} 
-        position={{lat: loc.latitude, lng:loc.longitude}} title={loc.name}
-        icon={
-          selectedLocation?.id === loc.id
-            ? "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-            : "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
-        }
-        />
+<Marker 
+  key={loc.id} 
+  position={{ lat: loc.latitude, lng: loc.longitude }}
+  icon={
+    selectedLocation?.id === loc.id
+      ? "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+      : "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+  }
+/>
       ))}
       
     </GoogleMap>
