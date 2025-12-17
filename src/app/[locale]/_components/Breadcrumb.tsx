@@ -25,7 +25,7 @@ const Breadcrumb = () => {
   };
 
   return (
-    <nav className="bg-[#f4f4f4] py-2 px-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <nav className="container mx-auto text-gray-600 text-sm sm:text-xs md:text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

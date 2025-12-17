@@ -1,4 +1,5 @@
 import PropertyCard from "../../_components/tools/PropertyCard";
+import PropertyCardAI from "../../_components/tools/PropertyCardAI";
 
 const PropertyBox = (props:any) => {
 
@@ -11,9 +12,9 @@ const PropertyBox = (props:any) => {
                 {props.data.map((project:any, index:any) => (
                 <li
                     key={index}
-                    className="text-center "
+                    className=""
                 >
-                    <PropertyCard csswidth="w-full" data={project} />
+                    <PropertyCardAI csswidth="w-full" data={project} />
                 </li>
                 ))}
             </ul>

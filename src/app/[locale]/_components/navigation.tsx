@@ -457,7 +457,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
         </div> */}
         {/* Main Navigation */}
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
-            <div className="container mx-auto px-6 md:px-12 flex justify-between items-center relative">
+            <div className="container mx-auto flex justify-between items-center relative">
                 {/* LOGO */}
                 <Link className="flex items-center cursor-pointer group z-50" href="/">
                     <span className="sr-only">Property Shop Investment</span>
@@ -504,7 +504,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                             <UserIcon size={16} /> Login
                         </button>
                     )}
-                    <LanguageSwitcher/>
+                    <LanguageSwitcher css={linkColor}/>
                 </div>
 
                 {/* Mobile Menu Button */}

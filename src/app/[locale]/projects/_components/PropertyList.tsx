@@ -6,6 +6,7 @@ import Pagination from "../../_components/tools/Pagination";
 import SearchProperty from "./SearchProperty";
 import PropertyBox from "./PropertyBox";
 import { BlogItem, Skeleton } from "../../_components/tools/Skeleteon";
+import SearchPropertyAI from "./SearchPropertyAI";
 
 interface PropertyListProps {
   page: number;
@@ -60,14 +61,14 @@ export default function PropertyList({
   }, [page, propertyname, isFeaturedProjectOnWeb, cityId]);
 
   return (
-    <div className="flex grid md:grid-cols-2 grid-cols-1 md:gap-y-10 gap-y-5">
-      <div className="order-1">
-        <SearchProperty placeholder="Property Name" />
+    <div className="flex grid md:grid-cols-2 grid-cols-1">
+      <div className="col-span-2">
+        <SearchPropertyAI placeholder="Property Name" />
       </div>
-      <div className="order-3 md:order-2 content-center text-center md:text-end">
+      {/* <div className="order-3 md:order-2 content-center text-center md:text-end">
         <Pagination totalPages={totalPages} />
-      </div>
-      <div className="order-2 md:order-3 col-span-1 md:col-span-2">
+      </div> */}
+      <div className="order-2 md:order-3 col-span-1 md:col-span-2 mx-auto container ">
         {isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <BlogItem />

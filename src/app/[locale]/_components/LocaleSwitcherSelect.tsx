@@ -11,12 +11,14 @@ type Props = {
   children: ReactNode;
   defaultValue: string;
   label: string;
+  css: string;
 };
 
 export default function LocaleSwitcherSelect({
   children,
   defaultValue,
-  label
+  label,
+  css
 }: Props) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -46,7 +48,7 @@ export default function LocaleSwitcherSelect({
       <label className="sr-only">{label}</label>
       <div className="mt-2 grid grid-cols-1">
         <select
-          className="col-start-1 row-start-1 w-full appearance-none rounded-md py-1.5 pr-8 pl-3 text-base text-white outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6"
+          className={`col-start-1 row-start-1 w-full appearance-none rounded-md py-1.5 pr-8 pl-3 text-base ${css}  outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6`}
           defaultValue={defaultValue}
           disabled={isPending}
           onChange={onSelectChange}
