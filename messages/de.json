@@ -1,7 +1,32 @@
 {
   "LocaleSwitcher": {
-  "label": "Sprache ändern",
-  "locale": "{locale, select, ar {🇦🇪 Arabisch} en {🇺🇸 Englisch} de {🇩🇪 Deutsch} cn {🇨🇳 Chinesisch} ru {🇷🇺 Russisch} other {Unbekannt}}"
+    "label": "Sprache ändern",
+    "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} cn {🇨🇳 Chinese} ru {🇷🇺 Russian} de {🇩🇪 Dutch} other {Unknown}}",
+
+    "buy": "Buy",
+    "rent": "Rent",
+    "communities": "Communities",
+    "about": "About Us",
+    "careers": "Careers",
+    "list": "List Your Property",
+    "contact": "Contact Us",
+    "developers": "Developers",
+    "featured": "Featured Projects",
+    "more": "More",
+    "mortgage": "Mortgage Calculator",
+    "luxury": "Luxury Projects",
+    "properties": "Properties",
+    "projects": "Projects",
+    "services": "Services",
+    "company": "Company",
+    "insights": "Insights",
+    "psi emirati hub": "PSI Emirati Hub",
+    "youngsters program": "Youngsters Program",
+    "invest in uae": "Invest in UAE",
+    "villa calculator": "Villa Calculator",
+    "newsletters": "Newsletters",
+    "articles": "Articles",
+    "property management": "Property Management"
 },
 
     "InquiryForm": {

@@ -1,12 +1,14 @@
 'use client'
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef,ChangeEvent, useTransition } from 'react';
 import { Menu, X, Phone, Search, ChevronDown, Heart, Shuffle, User as UserIcon, Globe, ArrowRight, Coins } from 'lucide-react';
 
 import { useTranslation, Language, Currency } from '@/context/translationContext';
 import { useUser } from '@/context/userContext';
 import { Page } from '@/types/types';
 import Image from 'next/image';
-import { Link } from '@/i18n/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
+import {Locale,routing} from '@/i18n/routing';
+import { useLocale, useTranslations } from 'next-intl';
 
 interface NavbarProps {
   onNavigate: (page: Page) => void;
@@ -17,12 +19,12 @@ const LANGUAGES: { code: Language; label: string; flag: string }[] = [
   { code: 'en', label: 'English', flag: 'https://flagcdn.com/w40/gb.png' },
   { code: 'ar', label: 'العربية', flag: 'https://flagcdn.com/w40/ae.png' },
   { code: 'ru', label: 'Русский', flag: 'https://flagcdn.com/w40/ru.png' },
-  { code: 'es', label: 'Español', flag: 'https://flagcdn.com/w40/es.png' },
-  { code: 'zh', label: '中文', flag: 'https://flagcdn.com/w40/cn.png' },
+  { code: 'cn', label: '中文', flag: 'https://flagcdn.com/w40/cn.png' },
   { code: 'de', label: 'Deutsch', flag: 'https://flagcdn.com/w40/de.png' },
-  { code: 'fr', label: 'Français', flag: 'https://flagcdn.com/w40/fr.png' },
-  { code: 'tr', label: 'Türkçe', flag: 'https://flagcdn.com/w40/tr.png' },
-  { code: 'it', label: 'Italiano', flag: 'https://flagcdn.com/w40/it.png' },
+//   { code: 'es', label: 'Español', flag: 'https://flagcdn.com/w40/es.png' },
+//   { code: 'fr', label: 'Français', flag: 'https://flagcdn.com/w40/fr.png' },
+//   { code: 'tr', label: 'Türkçe', flag: 'https://flagcdn.com/w40/tr.png' },
+//   { code: 'it', label: 'Italiano', flag: 'https://flagcdn.com/w40/it.png' },
 ];
 
 const CURRENCIES: Currency[] = ['AED', 'USD', 'EUR', 'GBP', 'RUB', 'CNY'];
@@ -30,7 +32,7 @@ const CURRENCIES: Currency[] = ['AED', 'USD', 'EUR', 'GBP', 'RUB', 'CNY'];
 // Simplified Mega Menu Structure
 const NAV_GROUPS = [
     {
-        label: 'Featured Projects',
+        label: 'Featured',
         image: 'https://psinv.net/assets/img/landing-page/reem-hills-villa-reem-island/main-img-1.webp?ver=2',
         columns: [
             {
@@ -148,12 +150,15 @@ const NavigationAI: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [isCurrMenuOpen, setIsCurrMenuOpen] = useState(false);
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
+
+    const t = useTranslations('LocaleSwitcher');
+    const locale = useLocale();
   
   // Mobile Menu States
   const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null);
   const [mobileSettingsOpen, setMobileSettingsOpen] = useState<'currency' | 'language' | null>(null);
   
-  const { language, setLanguage, currency, setCurrency, t, dir } = useTranslation();
+  const { language, setLanguage, currency, setCurrency, dir } = useTranslation();
   const { user, login, logout, favorites, compareList } = useUser();
   const langMenuRef = useRef<HTMLDivElement>(null);
   const currMenuRef = useRef<HTMLDivElement>(null);
@@ -198,6 +203,23 @@ const NavigationAI: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
     window.scrollTo(0, 0);
   };
 
+
+    const router = useRouter();
+    const [isPending, startTransition] = useTransition();
+
+    function onSelectChange(event: ChangeEvent<HTMLSelectElement>) {
+        const nextLocale = event.target.value as Locale;
+        startTransition(() => {
+        router.replace(
+            // @ts-expect-error -- TypeScript will validate that only known `params`
+            // are used in combination with a given `pathname`. Since the two will
+            // always match for the current route, we can skip runtime checks.
+            {pathname, params},
+            {locale: nextLocale}
+        );
+        });
+    }
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${navbarClasses}`} dir={dir} onMouseLeave={() => setHoveredMenu(null)}>
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center relative">
@@ -226,7 +248,7 @@ const NavigationAI: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                 <button 
                   className={`text-sm font-bold tracking-widest uppercase hover:text-secondary transition-colors flex items-center gap-1 ${linkColor}`}
                 >
-                  {t(`nav.${group.label.toLowerCase()}`, group.label)}
+                  {t(`${group.label.toLowerCase()}`)}
                   <ChevronDown size={10} className={`transform transition-transform duration-300 ${hoveredMenu === group.label ? 'rotate-180' : ''}`}/>
                 </button>
               </div>
@@ -267,7 +289,7 @@ const NavigationAI: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                                     setCurrency(curr);
                                     setIsCurrMenuOpen(false);
                                 }}
-                                className={`w-full text-left rtl:text-right px-5 py-2 text-xs font-bold hover:bg-gray-100 transition-colors ${currency === curr ? 'text-secondary bg-blue-50/50' : 'text-gray-800'}`}
+                                className={`w-full text-left rtl:text-right px-5 py-2 text-xs font-bold hover:bg-gray-100 transition-colors ${currency === curr ? 'text-gray-800 bg-blue-50/50' : 'text-gray-400'}`}
                             >
                                 {curr}
                             </button>
@@ -286,6 +308,7 @@ const NavigationAI: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                 </button>
                 {isLangMenuOpen && (
                     <div className={`absolute top-full mt-2 w-48 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 py-2 overflow-hidden z-50 ${dir === 'rtl' ? 'left-0' : 'right-0'}`}>
+                    
                         {LANGUAGES.map(lang => (
                             <button
                                 key={lang.code}
@@ -293,7 +316,7 @@ const NavigationAI: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                                     setLanguage(lang.code);
                                     setIsLangMenuOpen(false);
                                 }}
-                                className={`w-full text-left rtl:text-right px-5 py-3 text-xs font-bold flex items-center gap-3 hover:bg-gray-100 transition-colors ${language === lang.code ? 'text-secondary bg-blue-50/50' : 'text-gray-800'}`}
+                                className={`w-full text-left rtl:text-right px-5 py-3 text-xs font-bold flex items-center gap-3 hover:bg-gray-100 transition-colors cursor-pointer ${language === lang.code ? 'text-gray-800 bg-blue-50/50' : 'text-gray-400'}`}
                             >
                                 <img src={lang.flag} alt={lang.label} className="w-5 h-3.5 object-cover rounded-[2px]" />
                                 <span>{lang.label}</span>

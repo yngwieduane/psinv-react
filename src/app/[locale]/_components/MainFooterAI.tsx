@@ -2,19 +2,54 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 import { Page } from '@/types/types';
-import { useTranslation } from '@/context/translationContext';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+import { SocialMedia } from '@/types/navigation';
+import { DynamicIcon } from 'lucide-react/dynamic';
+
+const socialMedia: SocialMedia[] = [
+    {
+        name: 'Facebook',
+        href: 'https://www.facebook.com/PropertyShopInvestment',
+        icon: 'facebook',
+    },
+    {
+        name: 'Twitter',
+        href: 'https://twitter.com/psinv',
+        icon: 'twitter',
+    },
+    {
+        name: 'Instagram',
+        href: 'https://www.instagram.com/property_shop_investment/',
+        icon: 'instagram',
+    },
+    {
+        name: 'Snapchat',
+        href: 'https://www.snapchat.com/add/property-shop',
+        icon: 'camera',
+    },
+    {
+        name: 'LinkedIn',
+        href: 'https://www.linkedin.com/company/property-shop-investment-llc',
+        icon: 'linkedin',
+    },
+    {
+        name: 'Youtube',
+        href: 'https://www.youtube.com/user/propertyshopabudhabi',
+        icon: 'youtube',
+    }
+];
 
 interface FooterProps {
   onNavigate: (page: Page) => void;
 }
 
 const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
-  const { t, dir } = useTranslation();
+  const t = useTranslations('FooterAI');
 
   return (
-    <footer className="bg-primary-dark text-gray-800 pt-24 pb-12 border-t border-white/5" dir={dir}>
+    <footer className="bg-primary-dark text-gray-800 pt-24 pb-12 border-t border-white/5" >
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
           
@@ -31,62 +66,62 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
                 height={200}
             /></Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-8 font-light">
-              {t('footer.brand_desc')}
+              {t('footer_brand_desc')}
             </p>
             <div className="flex space-x-5 rtl:space-x-reverse text-gray-400">
-               <a href="#" className="hover:text-secondary transition-colors"><Facebook size={20} /></a>
-               <a href="#" className="hover:text-secondary transition-colors"><Twitter size={20} /></a>
-               <a href="#" className="hover:text-secondary transition-colors"><Instagram size={20} /></a>
-               <a href="#" className="hover:text-secondary transition-colors"><Linkedin size={20} /></a>
-               <a href="#" className="hover:text-secondary transition-colors"><Youtube size={20} /></a>
+                {socialMedia.map((item) => (
+                    <Link target="_blank" href={item.href} key={item.name} title={item.name} aria-label={item.name} className="hover:text-secondary transition-colors">
+                    <DynamicIcon name={item.icon} size={20} />
+                    </Link>
+                ))}
             </div>
           </div>
 
           {/* Company */}
           <div>
-            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer.company')}</h3>
+            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_company')}</h3>
             <ul className="space-y-4 text-sm text-gray-800 font-light">
-              <li><button onClick={() => onNavigate('about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer.links.about')}</button></li>
-              <li><button onClick={() => onNavigate('about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer.links.team')}</button></li>
-              <li><button onClick={() => onNavigate('careers')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer.links.careers')}</button></li>
-              <li><button onClick={() => onNavigate('about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer.links.awards')}</button></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer.links.media')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer.links.testi')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer.links.intl')}</a></li>
+              <li><button onClick={() => onNavigate('about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_about')}</button></li>
+              <li><button onClick={() => onNavigate('about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_team')}</button></li>
+              <li><button onClick={() => onNavigate('careers')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_careers')}</button></li>
+              <li><button onClick={() => onNavigate('about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_awards')}</button></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_media')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_testi')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_intl')}</a></li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer.services')}</h3>
+            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_services')}</h3>
             <ul className="space-y-4 text-sm text-gray-800 font-light">
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer.links.buy')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer.links.rent')}</a></li>
-              <li><button onClick={() => onNavigate('list-property')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer.links.list')}</button></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer.links.manage')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer.links.mortgage')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer.links.offplan')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer.links.reports')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_buy')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_rent')}</a></li>
+              <li><button onClick={() => onNavigate('list-property')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_list')}</button></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_manage')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_mortgage')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_offplan')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_reports')}</a></li>
             </ul>
           </div>
 
           {/* Popular Areas */}
           <div>
-            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer.popular_areas')}</h3>
+            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_popular_areas')}</h3>
             <ul className="space-y-4 text-sm text-gray-800 font-light">
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc.Al Reem Island')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc.Yas Island')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc.Saadiyat Island')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc.Al Raha Beach')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc.Dubai Marina')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc.Downtown Dubai')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc.Palm Jumeirah')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Al Reem Island')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Yas Island')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Saadiyat Island')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Al Raha Beach')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Dubai Marina')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Downtown Dubai')}</a></li>
+              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Palm Jumeirah')}</a></li>
             </ul>
           </div>
 
           {/* Contact & Newsletter */}
           <div>
-            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer.get_in_touch')}</h3>
+            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_get_in_touch')}</h3>
             <ul className="space-y-5 text-sm text-gray-800 mb-10 font-light">
               <li className="flex items-start gap-4">
                 <Phone size={18} className="text-secondary shrink-0 mt-0.5" />
@@ -102,22 +137,22 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
             </ul>
 
-            <h3 className="font-bold text-base uppercase tracking-wider mb-4 text-gray-900">{t('footer.newsletter')}</h3>
+            <h3 className="font-bold text-base uppercase tracking-wider mb-4 text-gray-900">{t('footer_newsletter')}</h3>
             <div className="flex">
-              <input type="email" placeholder={t('form.email')} className="bg-white/5 border border-gray-400 outline-none text-white px-4 py-3 rounded-l rtl:rounded-l-none rtl:rounded-r w-full text-sm focus:bg-white/10 transition-colors" />
-              <button className="bg-secondary hover:bg-secondary-dark border border-gray-400 text-gray-800 px-6 py-3 rounded-r rtl:rounded-r-none rtl:rounded-l font-bold text-sm transition-colors">{t('btn.join')}</button>
+              <input type="email" placeholder={t('form_email')} className="bg-white/5 border border-gray-400 outline-none text-white px-4 py-3 rounded-l rtl:rounded-l-none rtl:rounded-r w-full text-sm focus:bg-white/10 transition-colors" />
+              <button className="bg-secondary hover:bg-secondary-dark border border-gray-400 text-gray-800 px-6 py-3 rounded-r rtl:rounded-r-none rtl:rounded-l font-bold text-sm transition-colors">{t('btn_join')}</button>
             </div>
           </div>
 
         </div>
 
         <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-800 font-light">
-          <p>&copy; {new Date().getFullYear()} Property Shop Investment. {t('footer.rights')}</p>
+          <p>&copy; {new Date().getFullYear()} Property Shop Investment. {t('footer_rights')}</p>
           <div className="flex space-x-8 rtl:space-x-reverse mt-4 md:mt-0">
-            <a href="#" className="hover:text-gray-400 transition-colors">{t('footer.privacy')}</a>
-            <a href="#" className="hover:text-gray-400 transition-colors">{t('footer.terms')}</a>
-            <button onClick={() => onNavigate('sitemap')} className="hover:text-gray-400 transition-colors">{t('footer.sitemap')}</button>
-            <a href="#" className="hover:text-gray-400 transition-colors">{t('footer.cookies')}</a>
+            <a href="#" className="hover:text-gray-400 transition-colors">{t('footer_privacy')}</a>
+            <a href="#" className="hover:text-gray-400 transition-colors">{t('footer_terms')}</a>
+            <button onClick={() => onNavigate('sitemap')} className="hover:text-gray-400 transition-colors">{t('footer_sitemap')}</button>
+            <a href="#" className="hover:text-gray-400 transition-colors">{t('footer_cookies')}</a>
           </div>
         </div>
       </div>

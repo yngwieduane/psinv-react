@@ -2,7 +2,7 @@
 import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { PROPERTIES } from '@/constants/main';
 
-export type Language = 'en' | 'ar' | 'ru' | 'zh' | 'fr' | 'de' | 'tr' | 'it' | 'es';
+export type Language = 'en' | 'ar' | 'ru' | 'cn' | 'fr' | 'de' | 'tr' | 'it' | 'es';
 export type Currency = 'AED' | 'USD' | 'EUR' | 'GBP' | 'RUB' | 'CNY';
 
 interface TranslationContextType {
