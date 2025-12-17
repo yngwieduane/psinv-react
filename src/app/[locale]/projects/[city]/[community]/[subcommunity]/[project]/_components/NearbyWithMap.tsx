@@ -23,6 +23,7 @@ import './NearbyWithMap.css';
 import { RealEstateIcon } from "../../../../../../../../../public/icons/real-estate-icon";
 import { DynamicIcon } from "lucide-react/dynamic";
 import { RealEstateIconNearby } from "../../../../../../../../../public/icons/real-estate-icon-nearbys";
+import { MapPin } from "lucide-react";
 
 const NearbysWithMap = ({
     latitude,
@@ -105,10 +106,10 @@ const NearbysWithMap = ({
         {loading && <p className="text-sm text-gray-500 mt-1">Loading...</p>}
         {results.length > 0 && (
             <>
-            <h2 className="text-xl mb-5 text-[#111954]">
+            <h2 className="text-3xl font-bold text-primary mb-8">
                 Nearbys
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 content-stretch">
+            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 content-stretch">
                 <ul role="list" className="grid grid-cols-2 md:grid-cols-2 space-y-3 space-x-3 overflow-auto h-[70vh]  py-2">
                     {data.slice(0, 20).map((post, index) => {
                         const pointA: Coordinate = { lat: parseFloat(latitude), lng: parseFloat(longitude) }; 
@@ -159,22 +160,16 @@ const NearbysWithMap = ({
                             key={index}
                             className=""
                             >
-                                <div 
-                                    onClick={()=>{
+                                <div onClick={()=>{
                                         handleLocationClick(pointB);
-                                    }}  
-                                    className="w-full overflow-hidden bg-white px-4 py-4 shadow-lg sm:rounded-md sm:px-6 cursor-pointer hover:bg-gray-100 focus:bg-gray-100"
-                                    >
-                                    <div className="flex gap-3 items-center">
-                                        <div className="">
-                                            <DynamicIcon name={labelicon} size={20} />
-                                        </div>
-                                        <div className="w-32">
-                                            <p>{distance}<span>km</span></p>
-                                            <p className="text-sm truncate">{post.landmarkEnglishName}, {post.addressLine1English}</p>
-                                            <p className="text-sm truncate">{post.categoryName}</p>
-                                        </div>
+                                    }} 
+                                    className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+                                    <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center text-secondary">
+                                        {/* <MapPin size={28} /> */}
+                                        <DynamicIcon name={labelicon} size={20} />
                                     </div>
+                                    <h4 className="font-bold text-gray-800 text-sm mb-1">{post.landmarkEnglishName}, {post.addressLine1English}</h4>
+                                    <p className="text-xs text-gray-400 font-bold uppercase">{distance}<span>km</span></p>
                                 </div>
                             </li>
                         )
