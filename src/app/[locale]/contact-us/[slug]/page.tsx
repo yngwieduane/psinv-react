@@ -16,6 +16,8 @@ import { ContactLocation, contactLocations } from "@/data/contactLocations";
 import { Poppins } from 'next/font/google';
 import { Outfit } from "next/font/google";
 import { MapPin } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -32,6 +34,9 @@ export default function ContactPage() {
   const params = useParams();
   const router = useRouter();
   const slug = params.slug as string | undefined;
+  const locale = useLocale();
+  const t = useTranslations("ContactPage");
+  const isRTL = locale.toLowerCase().startsWith("ar");
 
   const initialOffice =
     contactLocations.find((location) => location.slug === slug) || contactLocations[0];
@@ -39,23 +44,23 @@ export default function ContactPage() {
 
   useEffect(() => {
     if (selectedOffice.slug !== slug) {
-      router.push(`/en/contact-us/${selectedOffice.slug}`, { scroll: false });
+      router.push(`/${locale}/contact-us/${selectedOffice.slug}`, { scroll: false });
     }
   }, [selectedOffice, slug, router]);
-
+  const branchKey = (slug: string) => `branches.${slug}`;
   return (
     <>
       {/* <div className="container-fluid px-0">
         <Breadcrumb />
       </div> */}
-        <div className="mx-auto px-6 md:px-12 pt-30">
+        <div dir={isRTL ? "rtl" : "ltr"} className="mx-auto px-6 md:px-12 pt-30">
       <div id="contact-container" className="container mx-auto px-6 md:px-12">
-        <h1 className="text-3xl md:text-4xl font-outfit font-bold text-[#111954] mb-8 md:mb-12">Contact Us</h1>
+        <h1 className="text-3xl md:text-4xl font-outfit font-bold text-[#111954] mb-8 md:mb-12">{t("title")}</h1>
         <div className="w-full">
           <Swiper
     modules={[Navigation, Pagination]}
     slidesPerView="auto"
-    spaceBetween={16}   // ✅ same as gap-4 (16px)
+    spaceBetween={16}
     navigation={false}
     pagination={false}
     className="!w-auto"
@@ -70,9 +75,9 @@ export default function ContactPage() {
                   }`}
                   onClick={() => setSelectedOffice(location)}
                 >
-                  <h3 className="font-bold text-sm mb-1 text-primary font-outfit">{location.name}</h3>
+                  <h3 className="font-bold text-sm mb-1 text-primary font-outfit"> {t(`${branchKey(location.slug)}.name`)}</h3>
                   
-                  <p className="text-xs text-gray-500 leading-tight font-outfit group-hover:text-gray-600">{location.address_community},{location.address_city}</p>
+                  <p className="text-xs text-gray-500 leading-tight font-outfit group-hover:text-gray-600"> {t(`${branchKey(location.slug)}.community`)}, {t(`${branchKey(location.slug)}.city`)}</p>
                 </div>
               </SwiperSlide>
             ))}
@@ -91,7 +96,6 @@ export default function ContactPage() {
           <FontAwesomeIcon icon={faPhoneAlt} className="w-4 h-4 fa-flip-horizontal" />
           {selectedOffice.phone1}
         </a>
-
         {selectedOffice.phone2 ? (
           <a
             href={`tel:${selectedOffice.phone2}`}
@@ -106,16 +110,16 @@ export default function ContactPage() {
           </div>
         )}
       </div>
-
       {/* Office */}
       <h2 className="text-2xl font-serif font-bold text-gray-900 mb-2">
-        {selectedOffice.name}
+        {t(`${branchKey(selectedOffice.slug)}.name`)}
       </h2>
-
       <div className={`flex items-start gap-2 text-gray-600 ${poppins.className}`}>
         <FontAwesomeIcon icon={faMapMarkerAlt} className="mt-1 text-[#014081] shrink-jShrink-0" />
         <p className="text-sm leading-relaxed break-words text-gray-600">
-          {selectedOffice.off_address.split(", ").map((line, index) => (
+        {(t(`${branchKey(selectedOffice.slug)}.offAddress`) || "")
+          .split(", ")
+          .map((line: string, index: number) => (
             <span key={index}>
               {line}
               <br />
@@ -124,26 +128,22 @@ export default function ContactPage() {
         </p>
       </div>
     </div>
-
     {/* Form */}
     <div className="w-full">
       <InquiryForm />
     </div>
   </div>
-
   {/* Right */}
 <div className="order-1 lg:order-2 lg:w-7/12">
   <div className="rounded-xl overflow-hidden border border-gray-300 bg-gray-200 h-[420px] md:h-[600px] lg:h-full relative">
-
     {/* Map */}
-    <MapComponent
-      latitude={selectedOffice.latitude}
-      longitude={selectedOffice.longitude}
-      fallbackImage={selectedOffice.img}
-      height="100%"
-    />
+<iframe
+  key={`${selectedOffice.longitude}-${selectedOffice.latitude}`}
+  src={`https://www.google.com/maps?q=${selectedOffice.latitude},${selectedOffice.longitude}&z=15&output=embed`}
+  className="w-full h-full"
+  loading="lazy"
+/>
 
-    {/* ✅ CENTER BOUNCING PIN */}
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
       <MapPin
         size={48}
@@ -151,21 +151,17 @@ export default function ContactPage() {
         fill="currentColor"
       />
     </div>
-
-    {/* Map Controls (design only) */}
     <div className="absolute top-4 left-4 flex bg-white rounded shadow-md text-xs font-bold text-gray-700 overflow-hidden">
       <button className="px-3 py-2 hover:bg-gray-100 border-r border-gray-200">
-        Map
+       {t("map")}
       </button>
       <button className="px-3 py-2 hover:bg-gray-100 text-gray-500">
-        Satellite
+        {t("satellite")}
       </button>
     </div>
-
   </div>
 </div>
 </div>
-
       </div>
       </div>
     </>

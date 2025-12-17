@@ -5,7 +5,31 @@
   },
   "LocaleSwitcher": {
     "label": "Change language",
-    "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} zh {🇨🇳 Chinese} ru {🇷🇺 Russian} other {Unknown}}"
+    "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} cn {🇨🇳 Chinese} ru {🇷🇺 Russian} de {🇩🇪 Dutch} other {Unknown}}",
+    "buy": "Buy",
+    "rent": "Rent",
+    "communities": "Communities",
+    "about": "About Us",
+    "careers": "Careers",
+    "list": "List Your Property",
+    "contact": "Contact Us",
+    "developers": "Developers",
+    "featured": "Featured Projects",
+    "more": "More",
+    "mortgage": "Mortgage Calculator",
+    "luxury": "Luxury Projects",
+    "properties": "Properties",
+    "projects": "Projects",
+    "services": "Services",
+    "company": "Company",
+    "insights": "Insights",
+    "psi emirati hub": "PSI Emirati Hub",
+    "youngsters program": "Youngsters Program",
+    "invest in uae": "Invest in UAE",
+    "villa calculator": "Villa Calculator",
+    "newsletters": "Newsletters",
+    "articles": "Articles",
+    "property management": "Property Management"
   },
   "ProjectPage": {
     "overview": "Overview",
@@ -152,5 +176,193 @@
     "formHeading": "Let us know if you’re interested!",
     "localTel": "Local Tel",
     "intlTel": "Int’l Tel"
+  },
+  "FooterAI": {
+    "footer_brand_desc": "Property Shop Investment is the leading real estate agency in Abu Dhabi, helping you find your perfect home since 2007.",
+    "footer_company": "Company",
+    "footer_services": "Services",
+    "footer_popular_areas": "Popular Areas",
+    "footer_get_in_touch": "Get in Touch",
+    "footer_newsletter": "Newsletter",
+    "footer_rights": "All Rights Reserved.",
+    "footer_privacy": "Privacy Policy",
+    "footer_terms": "Terms of Use",
+    "footer_sitemap": "Sitemap",
+    "footer_cookies": "Cookies Policy",
+    "footer_links_about": "About PSI",
+    "footer_links_team": "Our Team",
+    "footer_links_careers": "Careers",
+    "footer_links_awards": "Awards & Recognition",
+    "footer_links_media": "Media Center",
+    "footer_links_testi": "Testimonials",
+    "footer_links_intl": "PSI International",
+    "footer_links_buy": "Buy a Property",
+    "footer_links_rent": "Rent a Property",
+    "footer_links_list": "List Your Property",
+    "footer_links_manage": "Property Management",
+    "footer_links_mortgage": "Mortgage Services",
+    "footer_links_offplan": "Off-Plan Projects",
+    "footer_links_reports": "Market Reports",
+    "loc_Abu Dhabi": "Abu Dhabi",
+    "loc_Dubai": "Dubai",
+    "loc_Sharjah": "Sharjah",
+    "loc_Al Ain": "Al Ain",
+    "loc_Ras Al Khaimah": "Ras Al Khaimah",
+    "loc_Al Reem Island": "Al Reem Island",
+    "loc_Yas Island": "Yas Island",
+    "loc_Saadiyat Island": "Saadiyat Island",
+    "loc_Al Raha Beach": "Al Raha Beach",
+    "loc_Dubai Marina": "Dubai Marina",
+    "loc_Downtown Dubai": "Downtown Dubai",
+    "loc_Palm Jumeirah": "Palm Jumeirah",
+    "loc_coming_soon": "Coming Soon",
+    "loc_updating": "We are currently updating our listings for",
+    "form_firstName": "First Name",
+    "form_lastName": "Last Name",
+    "form_email": "Email Address",
+    "form_phone": "Phone Number",
+    "form_submit": "Submit",
+    "form_schedule": "Schedule Viewing",
+    "form_property_purpose": "Property Purpose",
+    "form_choose_purpose": "Choose purpose",
+    "form_sell": "Sell",
+    "form_rent": "Rent",
+    "form_manage": "Property Management",
+    "form_describe_prop": "Please describe your property",
+    "form_describe_placeholder": "Provide details about size, location, bedrooms...",
+    "form_agreement": "By clicking Submit, you agree to our Terms & Conditions and Privacy Policy.",
+    "form_marketing_consent": "I agree to receive calls and communications via various channels from PSI.",
+    "form_register_interest": "Register Your Interest",
+    "btn_search": "Search",
+    "btn_preview": "Preview",
+    "btn_inquire": "Inquire",
+    "btn_whatsapp": "WhatsApp",
+    "btn_details": "Unit Details",
+    "btn_call": "Call Now",
+    "btn_view_map": "View Map",
+    "btn_download_profile": "Download Company Profile",
+    "btn_discover_hub": "Discover PSI Emirati Hub",
+    "btn_download_report": "Download Now",
+    "btn_signup": "Sign up",
+    "btn_submit_request": "Submit Request",
+    "btn_next_step": "Next Step",
+    "btn_join": "Join",
+    "btn_load_more": "Load More Projects",
+    "btn_view_project": "View Project",
+    "btn_download_brochure": "Download Brochure",
+    "btn_gallery": "Gallery",
+    "btn_compare": "Compare",
+    "btn_list": "List",
+    "btn_overview": "Overview",
+    "btn_units": "Units",
+    "btn_floor_plans": "Floor Plans",
+    "btn_location": "Location",
+    "btn_brochure": "Brochure",
+    "btn_save": "Save",
+    "btn_saved": "Saved",
+    "btn_remove": "Remove",
+    "btn_master_plan": "Master Plan",
+    "btn_nearby": "Nearby",
+    "btn_developer": "Developer",
+    "btn_video_tour": "Video Tour"
+  },
+"ContactPage": {
+    "title": "Contact Us",
+    "inquire": "Inquire",
+    "map": "Map",
+    "satellite": "Satellite",
+
+    "branches": {
+      "main-branch": {
+        "name": "PSI Head Office",
+        "community": "Al Reem Island",
+        "city": "Abu Dhabi",
+        "offAddress": "Office No. 4410 & 4411, Addax Tower Level 44, Al Reem Island, City of Lights, Abu Dhabi, United Arab Emirates"
+      },
+      "psi-assets": {
+        "name": "PSI Assets",
+        "community": "Al Reem Island",
+        "city": "Abu Dhabi",
+        "offAddress": "1st Floor, Shams Boutik, Jazeerat Al Reem, Al Reem Island, Abu Dhabi, United Arab Emirates"
+      },
+      "dubai-hills-branch": {
+        "name": "Dubai Hills Branch",
+        "community": "Dubai Hills Estate",
+        "city": "Dubai",
+        "offAddress": "Office #104, Business Park 3, Dubai Hills Estate, Dubai, United Arab Emirates"
+      },
+      "mamsha-saadiyat-branch": {
+        "name": "Mamsha Branch",
+        "community": "Saadiyat Island",
+        "city": "Abu Dhabi",
+        "offAddress": "Mamsha Al Saadiyat Building 9, Unit No. P3 - R13, Saadiyat Island, Abu Dhabi, United Arab Emirates"
+      },
+      "waters-edge-branch": {
+        "name": "Waters Edge Branch",
+        "community": "Yas Island",
+        "city": "Abu Dhabi",
+        "offAddress": "Al Maha St, Yas Island, Abu Dhabi, United Arab Emirates"
+      },
+      "st-regis-office": {
+        "name": "St. Regis Office",
+        "community": "Saadiyat Island",
+        "city": "Abu Dhabi",
+        "offAddress": "St. Regis, Saadiyat Island, Abu Dhabi, United Arab Emirates"
+      },
+      "palm-jumeirah-branch": {
+        "name": "Palm Jumeirah Branch",
+        "community": "Palm Jumeirah",
+        "city": "Dubai",
+        "offAddress": "Golden Mile Building 8, Palm Jumeirah, Dubai, United Arab Emirates"
+      },
+      "conrad-abu-dhabi-etihad-towers": {
+        "name": "Conrad Etihad Towers",
+        "community": "Al Bateen",
+        "city": "Abu Dhabi",
+        "offAddress": "Conrad Abu Dhabi Etihad Towers, Corniche Rd, Al Bateen, Abu Dhabi, United Arab Emirates"
+      },
+      "business-bay-branch": {
+        "name": "Benelux Branch",
+        "community": "Business Bay",
+        "city": "Dubai",
+        "offAddress": "Office 403, Sobha Sapphire, Business Bay, Dubai, United Arab Emirates"
+      }
+    }
+  },
+  "ContactInquiryForm": {
+  "title": "Inquire",
+  "placeholders": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "E-mail",
+    "phone": "536356356",
+    "message": "Hi, I would like to contact you"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "submitting": "Submitting..."
+  },
+  "alerts": {
+    "success": "Form submitted successfully!",
+    "error": "Submission failed. Try again.",
+    "serverError": "Error submitting the form."
+  },
+  "fineprint": {
+    "agreementText": "By clicking Submit, you agree to our Terms & Conditions and Privacy Policy"
+  },
+  "consents": {
+    "c1": "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm"
+  },
+  "errors": {
+    "firstNameRequired": "First name is required",
+    "lastNameRequired": "Last name is required",
+    "invalidEmail": "Invalid email address",
+    "invalidPhone": "Invalid phone number",
+    "messageRequired": "Message is required",
+    "mustAgree": "You must agree to this"
   }
+}
+
+  
+
 }
