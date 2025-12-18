@@ -1,13 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { Poppins } from "next/font/google";
+import { Poppins, Outfit } from "next/font/google";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
+
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
 const tabs = [
   { label: "Emirati Hub", key: "emirati" },
   { label: "Youngsters Program", key: "youngsters" },
@@ -20,42 +27,40 @@ const WhyPSI = () => {
   const [activeTab, setActiveTab] = useState("company");
 
   return (
-    <div className="bg-white py-16 px-4">
-      <div className="max-w-[1320px] mx-auto">
-
+    <div className={`container mx-auto py-16 px-4 ${outfit.className}`}>
+      <div className="container mx-auto px-4 md:px-8">
         {/* Tabs Header */}
-        <div className="flex border-b border-gray-200 overflow-x-auto mb-0 scrollbar-hide">
+        <div className="flex border-b overflow-x-auto mb-0 scrollbar-hide">
           {tabs.map((tab) => (
-<button
-  key={tab.key}
-  onClick={() => setActiveTab(tab.key)}
-  className={`text-[20px] font-light w-max text-center px-4 py-2 transition-all duration-200 cursor-pointer ${
-    activeTab === tab.key
-      ? "text-[#033f80] border-b-2 border-[#ea5b27] font-semibold opacity-100"
-      : "relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100"
-  }`}
->
-  {tab.label}
-</button>
-
+          <button
+            key={tab.key}
+            onClick={() => setActiveTab(tab.key)}
+            className={`pb-4 font-bold mr-6 whitespace-nowrap text-center cursor-pointer ${
+              activeTab === tab.key
+                ? "text-primary border-b-2 border-secondary font-bold"
+                : "text-gray-500 hover:text-gray-800 font-light"
+            }`}
+          >
+            {tab.label}
+          </button>
           ))}
         </div>
 
         {/* Tab Content */}
         {activeTab === "company" && (
-          <div className="flex flex-col md:flex-row items-center gap-10">
+          <div className="flex flex-col md:flex-row items-center gap-10 py-10 bg-gray-50">
             {/* Text Section */}
             <div className="flex-1">
-               <h2 className={`text-[22px] sm:text-[36px] text-[#333] font-bold ${poppins.className}`}>
+               <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
                Why PSI ?
               </h2>
- <p className={`text-[18px] sm:text-[24px] leading-[1.77] mb-4 text-[#333] font-normal tracking-[-0.5px] ${poppins.className}`}>
+            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
             Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi’s Real Estate Market.
           </p>
               <Link
-                href="#"
+                href="/corporate/"
                 title="Learn more about PSI"
-                className="w-full relative text-xl overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+                className="w-full relative text-md md:text-lg px-3 overflow-hidden rounded bg-orange-700 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
                Learn more about PSI
               </Link>
@@ -83,20 +88,20 @@ const WhyPSI = () => {
         )}
 
         {activeTab === "emirati" && (
-          <div className="flex flex-col md:flex-row items-center gap-10">
+          <div className="flex flex-col md:flex-row items-center gap-10 py-10 md:py-0">
           {/* Text Section */}
           <div className="flex-1">
-            <h2 className={`text-[22px] sm:text-[36px] text-[#333] font-bold ${poppins.className}`}>
+            <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
               PSI Emirati Hub
             </h2>
-            <p className={`text-[18px] sm:text-[24px] leading-[1.77] mb-4 text-[#333] font-normal tracking-[-0.5px] ${poppins.className}`}>
+            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
               Empowering UAE nationals to excel and lead in the real estate sector through 
-              <span className="text-[#E46027] font-semibold"> PSI Emirati Hub.</span>
+              <span className="font-bold text-secondary"> PSI Emirati Hub.</span>
             </p>
               <Link
-                href="#"
+                href="/project/emirati-hub/"
                 title="Learn more about PSI Emirati Hub"
-                className="w-full relative text-xl overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+                className="w-full relative text-md md:text-lg px-3 overflow-hidden rounded bg-orange-700 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
                Learn more about PSI Emirati Hub
               </Link>
@@ -124,20 +129,20 @@ const WhyPSI = () => {
         )}
 
         {activeTab === "youngsters" && (
-          <div className="flex flex-col md:flex-row items-center gap-10">
+          <div className="flex flex-col md:flex-row items-center gap-10 py-10 md:py-0">
           {/* Text Section */}
           <div className="flex-1">
-            <h2 className={`text-[22px] sm:text-[36px] text-[#333] font-bold ${poppins.className}`}>
+            <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
               PSI Abu Dhabi Youngsters
             </h2>
-           <p className={`text-[18px] sm:text-[24px] leading-[1.77] mb-4 text-[#333] font-normal tracking-[-0.5px] ${poppins.className}`}>
+           <p className="text-gray-600 text-lg mb-8 leading-relaxed">
            Unlock your potential through 
-            <span className="text-[#E46027] font-semibold"> PSI Abu Dhabi Youngster</span> Program by empowering minds, and shaping futures
+            <span className="font-bold text-secondary"> PSI Abu Dhabi Youngster</span> Program by empowering minds, and shaping futures
           </p>
               <Link
-                href="#"
+                href="/psi-youngsters-program"
                 title="Learn more about PSI Youngsters"
-                className="w-full relative text-xl overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+                className="w-full relative text-md md:text-lg px-3 overflow-hidden rounded bg-orange-700 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
                Learn more about PSI Youngsters
               </Link>
@@ -165,13 +170,13 @@ const WhyPSI = () => {
         )}
 
         {activeTab === "crypto" && (
-          <div className="flex flex-col md:flex-row items-center gap-10">
+          <div className="flex flex-col md:flex-row items-center gap-10 py-10 md:py-0">
           {/* Text Section */}
           <div className="flex-1">
-             <h2 className={`text-[22px] sm:text-[36px] text-[#333] font-bold ${poppins.className}`}>
+             <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
               Buy property with Crypto
             </h2>
-           <p className={`text-[18px] sm:text-[24px] leading-[1.77] mb-4 text-[#333] font-normal tracking-[-0.5px] ${poppins.className}`}>
+           <p className="text-gray-600 text-lg mb-8 leading-relaxed">
             With connections, network, knowledge and country guides, we build and design investment journeys based on
           </p>
            <p className={`text-[18px] font-semibold sm:text-[24px] leading-[1.77] mb-4 text-[#E46027] font-normal tracking-[-0.5px] uppercase ${poppins.className}`}>
@@ -180,9 +185,9 @@ const WhyPSI = () => {
 
           </p>
               <Link
-                href="#"
+                href="/crypto"
                 title="Learn more about Crypto"
-                className="w-full relative text-xl overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+                className="w-full relative text-md md:text-lg px-3 overflow-hidden rounded bg-orange-700 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
                Learn more about Crypto
               </Link>
@@ -210,19 +215,19 @@ const WhyPSI = () => {
         )}
 
         {activeTab === "international" && (
-          <div className="flex flex-col md:flex-row items-center gap-10">
+          <div className="flex flex-col md:flex-row items-center gap-10 py-10 md:py-0">
           {/* Text Section */}
           <div className="flex-1">
-            <h2 className={`text-[22px] sm:text-[36px] text-[#333] font-bold ${poppins.className}`}>
+            <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
               PSI International
             </h2>
-             <p className={`text-[18px] sm:text-[24px] leading-[1.77] mb-4 text-[#333] font-normal tracking-[-0.5px] ${poppins.className}`}>
+             <p className="text-gray-600 text-lg mb-8 leading-relaxed">
            50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.
           </p>
               <Link
-                href="#"
+                href="/international/"
                 title="Learn more about PSI International"
-                className="w-full relative text-xl overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
+                className="w-full relative text-md md:text-lg px-3 overflow-hidden rounded bg-orange-700  py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
                Learn more about PSI International
               </Link>

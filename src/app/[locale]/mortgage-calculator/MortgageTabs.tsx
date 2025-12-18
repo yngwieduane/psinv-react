@@ -5,6 +5,7 @@ import AmortizationCalculator from './AmortizationCalculator';
 import RefinancingCalculator from './RefinancingCalculator';
 import RentVsBuyCalculator from './RentVsBuyCalculator';
 import HouseAffordabilityCalculator from './HouseAffordabilityCalculator';
+import { Outfit } from 'next/font/google';
 
 const tabs = [
   { id: 'mortgage', title: 'Mortgage Calculator' },
@@ -13,6 +14,12 @@ const tabs = [
   { id: 'rentvsbuy', title: 'Rent vs Buy' },
   { id: 'houseafford', title: 'House Affordability' },
 ];
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
 
 export default function MortgageTabs() {
   const [activeTab, setActiveTab] = useState('mortgage');
@@ -32,17 +39,17 @@ export default function MortgageTabs() {
 
   return (
     <div className="max-w-[1320px] mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8">Mortgage Tools</h1>
+      <h1 className={`text-center text-2xl md:text-4xl font-bold text-gray-900 mb-8 ${outfit.className}`}>Mortgage Tools</h1>
 
       <ul className="flex flex-wrap justify-center mb-6 text-sm font-medium">
         {tabs.map((tab) => (
           <li key={tab.id} className="mr-2">
             <button
               onClick={() => handleTabClick(tab.id)}
-              className={`inline-block px-4 py-2 rounded-t-md cursor-pointer ${
+              className={`${outfit.className} inline-block px-4 py-2 rounded-t-md pb-4 font-bold mr-6 whitespace-nowrap text-center cursor-pointer ${
                 activeTab === tab.id
-                  ? 'border-b-[3px] border-[#dc481a] font-bold text-[#111954] opacity-100 text-[20px]'
-                  : 'text-[20px] relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100'
+                  ? 'text-primary border-b-2 border-secondary font-bold'
+                  : 'text-gray-500 hover:text-gray-800 font-light'
               }`}
             >
               {tab.title}

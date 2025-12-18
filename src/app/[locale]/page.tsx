@@ -12,7 +12,9 @@ import GetTheAppSection from "./_components/GetTheAppSection";
 import dynamic from "next/dynamic";
 import { Organization, WithContext } from "schema-dts";
 import { Audrey, BrittanySignature } from "@/utils/fonts";
-import { Montserrat, Open_Sans } from "next/font/google";
+import { Montserrat, Open_Sans, Outfit } from "next/font/google";
+import HomeBanner from "./_components/HomeBanner";
+import CitiesTab from "./_components/CitiesTab";
 
 
 // const SwiperSlider = dynamic(() => import('./_components/SwiperSliderHome'));
@@ -31,7 +33,24 @@ const montserrat = Montserrat({
   subsets: ['latin'],
   display: 'swap',
 });
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
 const awards = [
+  {
+      "title1":"EMAAR",
+      "title2":"ANNUAL BROKER",
+      "title3": "AWARDS - 2018",
+      "image": "emaar-2018.webp",
+  },
+  {
+      "title1":"ALDAR",
+      "title3": "AMBASSADOR - 2021",
+      "image": "aldar-2021.webp",
+  },
   {
       "title1":"ALDAR",
       "title2":"TOP PERFORMING",
@@ -55,6 +74,12 @@ const awards = [
       "title2":"TOP PERFORMING",
       "title3": "Agency First Place - 2023",
       "image": "aldar-2022.jpg",
+  },
+  {
+      "title1":"IMKAN",
+      "title2":"TOP PERFORMING",
+      "title3": "Agency First Place - 2021",
+      "image": "imkan-2021.webp",
   }
 ];
 const partners = [
@@ -92,85 +117,101 @@ const partners = [
   },
 ]
 const mainSliderData = [
-{
-    title: "Yas Island Living",
+  {
+    title: "Bashayer Residences",
     type: "Apartment",
-    developer_img: '/images/banners/aldar-logo.svg',
-    developer_img_mob:'/images/banners/aldar-logo-black.svg',
-    location: "Yas Island",
-    description:
-    "Yas Living by Aldar Properties offers a contemporary residential community in the heart of Yas Island. Designed for modern families, it features elegant homes with high-quality finishes, open layouts, and access to world-class leisure and entertainment destinations. Combining comfort, connectivity, and a vibrant island lifestyle, Yas Living is the ideal address for those seeking refined urban living in Abu Dhabi.",
-    project_url: "/projects/abu-dhabi/yas-island/yas-island/yas-living",
-    image: '/images/banners/yas-living-new-banner.webp',
-    bannerpropertyid : '24034',
+    developer_img: '/images/banners/modon-white.webp',
+    developer_img_mob:'/images/banners/modon-white.webp',
+    location: "Hudayriyat Island",
+    description:"Situated on Hudayriyat Island, Abu Dhabi, Bashayer Residences is a refined collection of waterfront apartments with modern layouts, elegant finishes, and expansive skyline views - enhanced by community amenities that elevate everyday living.",
+    project_url: "",
+    image: '/images/banners/bashayer-residences-banner.webp',
+    bannerpropertyid : '25477',
     bannerunittype : '19',
-    bannersubcommunityid : '63724',
-    bannercommunityid : '63721',
-    bannerdistrictid : '63720',
-    bannercityid : '63719',
+    bannersubcommunityid : '',
+    bannercommunityid : '62080',
+    bannerdistrictid : '102625',
+    bannercityid : '91823',
     bannerstateid : '91823',
-    bannercountryid : '65948',
-    bannerbedroom : '21937',
+    bannercountryid : '65946',
+    bannerbedroom : '21935',
 },
 {
-    title: "Bloom Living - Malaga",
+    title: "Bashayer Villas",
     type: "Villa",
-    developer_img: '/images/banners/bloom-holding-logo.svg',
-    developer_img_mob:'/images/banners/bloom-holding-logo-black.svg',
-    location: "Zayed City",
-    description:
-    "Malaga marks the final phase of Bloom Living, a vibrant community inspired by Mediterranean charm. The development offers a selection of 3–6 bedroom villas designed for modern family living, combining privacy, comfort, and contemporary elegance. Surrounded by landscaped parks and tranquil lagoons, Málaga provides residents with a refined lifestyle in the heart of Abu Dhabi.",
-    project_url: "/projects/abu-dhabi/yas-island/yas-island/yas-living",
-    image: '/images/banners/bloom-living-malaga.webp',
-    bannerpropertyid : '24034',
-    bannerunittype : '19',
-    bannersubcommunityid : '63724',
-    bannercommunityid : '63721',
-    bannerdistrictid : '63720',
-    bannercityid : '63719',
+    developer_img: '/images/banners/modon-white.webp',
+    developer_img_mob:'/images/banners/modon-white.webp',
+    location: "Hudayriyat Island",
+    description:"Situated on Hudayriyat Island, Abu Dhabi, Bashayer Villas is a serene gated community where every villa features spacious interiors, elegant finishes, and seamless waterfront views. With an array of world-class amenities, it stands as a distinctive retreat designed for exceptional living.",
+    project_url: "/projects/abu-dhabi/hudayriyat-island/hudayriyat-island/bashayer-villas",
+    image: '/images/banners/bashayer-villas-banner.webp',
+    bannerpropertyid : '25351',
+    bannerunittype : '20',
+    bannersubcommunityid : '',
+    bannercommunityid : '62080',
+    bannerdistrictid : '102625',
+    bannercityid : '91823',
     bannerstateid : '91823',
-    bannercountryid : '65948',
-    bannerbedroom : '21937',
+    bannercountryid : '65946',
+    bannerbedroom : '21935',
 },
 {
-    title: "Al Deem",
-    type: "Villa",
-    developer_img: '/images/banners/aldar-logo.svg',
-    developer_img_mob:'/images/banners/aldar-logo-black.svg',
-    location: "Yas Island",
-    description:
-    "Al Deem on Yas Island is a community created exclusively for Emirati families.It merges modern architecture with traditional values and green surroundings.Homes are designed for privacy, comfort, and strong family connections.Unique live-work units allow residents to combine business with home life.",
-    project_url: "/projects/ras-al-hekma/ras-al-hekma/ras-al-hekma/ogami",
-    image: '/images/banners/al-deem-banner.jpg',
-    bannerpropertyid : '24034',
-    bannerunittype : '19',
-    bannersubcommunityid : '63724',
-    bannercommunityid : '63721',
-    bannerdistrictid : '63720',
-    bannercityid : '63719',
-    bannerstateid : '91823',
-    bannercountryid : '65948',
-    bannerbedroom : '21937',
-},
-{
-    title: "Seamont",
+    title: "Muheira 2",
     type: "Apartment",
-    developer_img: '/images/banners/saas-hills-logo.png',
-    developer_img_mob:'/images/banners/saas-hills-logo-black.png',
+    developer_img: '/images/banners/modon-white.webp',
+    developer_img_mob:'/images/banners/modon-white.webp',
     location: "Al Reem Island",
-    description:
-    "Seamont on Al Reem Island combines elegant design with the serenity of waterfront living.Residences range from modern apartments to spacious townhouses and penthouses.Private terraces and garden spaces bring outdoor tranquility into daily life.The development blends luxury, comfort, and breathtaking sea views.",
-    project_url: "/projects/ras-al-hekma/ras-al-hekma/ras-al-hekma/ogami",
-    image: '/images/banners/Seamont-banner.webp',
-    bannerpropertyid : '24034',
+    description:"Muheira comprises two thoughtfully designed residential towers located on Reem Island. Offering a perfect blend of modern living and waterfront tranquility, Muheira provides residents with the opportunity to experience urban vibrancy surrounded by natural beauty.",
+    project_url: "/projects/abu-dhabi/al-reem-island/maysan/muheira",
+    image: '/images/banners/muheira-banner.webp',
+    bannerpropertyid : '',
     bannerunittype : '19',
-    bannersubcommunityid : '63724',
-    bannercommunityid : '63721',
-    bannerdistrictid : '63720',
-    bannercityid : '63719',
+    bannersubcommunityid : '',
+    bannercommunityid : '',
+    bannerdistrictid : '102625',
+    bannercityid : '91823',
     bannerstateid : '91823',
-    bannercountryid : '65948',
+    bannercountryid : '65946',
+    bannerbedroom : '21935',
+},
+{
+    title: "Stellar By Elie Saab",
+    type: "Villa",
+    developer_img: '/images/banners/emirates-developments-white-logo.svg',
+    developer_img_mob:'/images/banners/emirates-developments-white-logo.svg',
+    location: "Yas Island",
+    description:"Stellar By Elie Saab stands as a masterpiece of form and fluidity. Its sculpted design blends soft lines with refined geometry, creating a seamless connection between architecture and nature.",
+    project_url: "/projects/abu-dhabi/yas-island/yas-bay/stellar-by-elie-saab",
+    image: '/images/banners/stellar-banner.webp',
+    bannerpropertyid : '',
+    bannerunittype : '20',
+    bannersubcommunityid : '',
+    bannercommunityid : '',
+    bannerdistrictid : '102625',
+    bannercityid : '91823',
+    bannerstateid : '91823',
+    bannercountryid : '65946',
     bannerbedroom : '21937',
+},
+{
+    title: "Hilton Residences",
+    type: "Apartment",
+    developer_img: '/images/banners/emirates-developments-white-logo.svg',
+    developer_img_mob:'/images/banners/emirates-developments-white-logo.svg',
+    location: "Dubai",
+    description:
+    "Rising 38 floors above Jumeirah Lake Towers, Hilton Residences Dubai JLT reimagines urban luxury through the lens of Hilton’s timeless hospitality. Every detail reflects sophistication designed for modern city living.",
+    project_url: "/project/hilton-residences-registration",
+    image: '/images/banners/hilton-banner.webp',
+    bannerpropertyid : '25396',
+    bannerunittype : '19',
+    bannersubcommunityid : '',
+    bannercommunityid : '',
+    bannerdistrictid : '102625',
+    bannercityid : '91823',
+    bannerstateid : '91823',
+    bannercountryid : '65946',
+    bannerbedroom : '21935',
 },
   { 
     name:"loyalty",   
@@ -183,7 +224,7 @@ const mainSliderData = [
       "Scalable with revenue potential through partner deals",
     ],
     img2: '/images/banners/Loyalty-gif.gif',
-    developer_img: '/images/banners/loyalty-logo-3.png',
+    developer_img: '/images/banners/loyalty-logo-new.webp',
     developer_img_mob: '/images/banners/loyalty-logo-3-mob.png',
     image: '/images/banners/loyalty-program-background-new.webp',
 }
@@ -309,24 +350,31 @@ export default function HomePage() {
           __html: JSON.stringify(organizationSchema1).replace(/</g, '\\u003c'),
         }}
       />
-        <div className="relative">
+        {/* <div className="relative">
             <SwiperSlider slidePerView="1" slides={mainSliderData}></SwiperSlider>
+        </div> */}
+        <div className={`relative ${outfit.className}`}>
+            <HomeBanner slidePerView="1" slides={mainSliderData}></HomeBanner>
         </div>
-        <div className="container mx-auto my-10">
-            <MainNavbar
+        <div className={`bg-gray-50`}>
+            <CitiesTab
             cities={citiesData}
             />
         </div>
         <div className="container mx-auto my-10">
         </div>
-        <div className="container mx-auto my-10">
+        <div className="my-10 bg-white">
             <ListPropertyForm/>
         </div>
-        <div className="container mx-auto my-10">
+        <div className="my-10 bg-gray-50 ">
             <WhyPSI/>
         </div>
         <div className="container mx-auto my-10">
             <Calculator/>
+        </div>        
+        
+        <div className="bg-gray-50 px-4">
+           <ReportDownloadSection />
         </div>
         <div className="w-full bg-secondary-color py-10 text-gray-500">
           <div  className="max-w-(--breakpoint-xl) mx-auto bg-center bg-cover py-10 px-5" style={{ backgroundImage: "url('/assets/images/about-us/pattern-1.png')",}}>
@@ -388,23 +436,18 @@ export default function HomePage() {
           </div>
         </div>
         <div className="w-full py-10 text-gray-500 text-center">
-          <div className="max-w-(--breakpoint-xl) mx-auto">
-              <h3 className={`text-darkblue font-bold text-xl md:text-4xl ${Audrey.className}`}>
-              AWARDS-DRIVEN
-                  <span className={`font-brittany text-orange font-light ${BrittanySignature.className} text-[#CE641D]`}>
-                  Excellence</span>
+          <div className="container mx-auto px-4 md:px-8">
+              <h3 className="text-3xl text-gray-900 mb-4">
+              AWARDS-DRIVEN Excellence
               </h3>
-              <p className="text-lg mt-5">We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. 
+              <p className="text-gray-500 max-w-2xl mx-auto mb-12">We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. 
                   Explore our journey of accolades that inspire us to reach new pinnacles of success.</p>
           </div>            
           <div className="w-full">
-              <div className="max-w-(--breakpoint-xl) relative mx-auto">
+              <div className="container mx-auto px-4 md:px-8 relative mx-auto">
                   <AwardSlider slides={awards} />
               </div>
           </div>            
-        </div>
-        <div className="max-w-[1320px] mx-auto px-4 py-8">
-           <ReportDownloadSection />
         </div>
          <div className="w-full py-10">
            <GoogleReviewSection />
