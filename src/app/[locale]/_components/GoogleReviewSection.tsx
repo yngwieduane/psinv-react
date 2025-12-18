@@ -1,5 +1,12 @@
 import { H3Icon } from '@heroicons/react/24/outline';
+import { Outfit } from 'next/font/google';
 import Image from 'next/image';
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
 
 const reviews = [
   {
@@ -12,33 +19,33 @@ const reviews = [
   },
   {
     id: 3,
-    text: "It was a good experience, as engineer Wissam Atef provided us with excellent support in all maintenance work. Thank you, Engineer Wissam.",
+    text: "It was a good experience, as engineer Wissam Atef provided us with excellent support in all maintenance work. Thank you, Engineer Wissam",
   },
 ];
 
 export default function GoogleReviewSection() {
   return (
-    <div className="bg-[#f8f9fa] py-12">
-      <div className="max-w-(--breakpoint-xl) mx-auto px-4">
-        <h3 className="text-3xl sm:text-3xl font-bold text-center mb-8 text-gray-800">
+    <div className="py-20 bg-gray-50">
+      <div className="container mx-auto px-4 md:px-8">
+        <h3 className={`text-center text-3xl font-serif mb-12 ${outfit.className}`}>
           Testimonials
         </h3>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="bg-white p-6 rounded text-left flex flex-col justify-between" style={{ boxShadow: "0 .5rem 1rem rgba(0, 0, 0, .15)"}}>
+              className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center justify-start mb-4">
                 <Image src="/images/google-icon.png" alt="Google" title="Google" width={40} height={40} />
                 <span className="ml-2 text-lg font-semibold">Google</span>
               </div>
-              <p className="text-gray-700 text-sm sm:text-base mb-4 leading-relaxed">
-                {review.text}
-              </p>
-              <div className="text-yellow-400 text-xl">
+              <div className="text-yellow-400 text-xl mb-5">
                 ★★★★★
               </div>
+              <p className="text-gray-600 text-sm leading-relaxed italic">
+                "{review.text}"
+              </p>              
             </div>
           ))}
         </div>

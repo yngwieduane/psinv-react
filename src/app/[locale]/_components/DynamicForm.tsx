@@ -164,31 +164,31 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="flex gap-4">
         <div className="w-1/2">
-          <label className="block mb-1 text-sm font-medium">First Name</label>
-          <input {...register("firstName")} placeholder="Enter First Name" className="w-full border p-3 rounded" />
+          <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">First Name</label>
+          <input {...register("firstName")} placeholder="Enter First Name" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
           {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
         </div>
         <div className="w-1/2">
-          <label className="block mb-1 text-sm font-medium">Last Name</label>
-          <input {...register("lastName")} placeholder="Enter Last Name" className="w-full border p-3 rounded" />
+          <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Last Name</label>
+          <input {...register("lastName")} placeholder="Enter Last Name" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
           {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
         </div>
       </div>
 
-      <label className="block mb-1 text-sm font-medium">Email</label>
-      <input {...register("email")} placeholder="Enter Email" className="w-full border p-3 rounded" />
+      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Email</label>
+      <input {...register("email")} placeholder="Enter Email" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
       {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
-      <label className="block mb-1 text-sm font-medium">Phone Number</label>
+      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Phone Number</label>
       <Controller
         name="phone"
         control={control}
-        render={({ field }) => <PhoneInput {...field} international defaultCountry="AE" className="w-full border p-3 rounded" aria-label="Phone Number"/>}
+        render={({ field }) => <PhoneInput {...field} international defaultCountry="AE" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" aria-label="Phone Number"/>}
       />
       {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
 
-      <label className="block mb-1 text-sm font-medium">Property Purpose *</label>
-      <select {...register("propertyPurpose")} className="w-full border p-3 rounded" aria-label="Property Purpose">
+      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Property Purpose *</label>
+      <select {...register("propertyPurpose")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" aria-label="Property Purpose">
         <option value="">Choose purpose</option>
         <option value="sell">Sell</option>
         <option value="rent">Rent</option>
@@ -196,25 +196,25 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
       </select>
       {errors.propertyPurpose && <p className="text-red-500 text-sm">{errors.propertyPurpose.message}</p>}
 
-      <button type="submit" className="w-full relative text-xl overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer" disabled={isSubmitting}>
+      <button type="submit" className="w-full relative text-md overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer" disabled={isSubmitting}>
         {isSubmitting ? "Submitting..." : "Submit"}
       </button>
 
-      <p className="text-gray-600 text-sm mt-2 italic">
+      <p className="text-[10px] text-gray-400 mt-2">
         By clicking Submit, you agree to our <a href="#" className="text-blue-600">Terms & Conditions</a> and Privacy Policy
       </p>
 
-      <div className="space-y-2 mt-4 text-[12px]">
+      <div className="space-y-2 mt-4 text-[10px] text-gray-400">
         <label className="flex items-start gap-2">
-          <input type="checkbox" {...register("agreement1")} className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded defaultChecked" />
+          <input type="checkbox" {...register("agreement1")} className="mt-0.5 accent-secondary w-4 h-4 border-gray-300 rounded defaultChecked" />
           <span>Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm</span>
         </label>
         <label className="flex items-start gap-2">
-          <input type="checkbox" {...register("agreement2")} className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded defaultChecked" />
+          <input type="checkbox" {...register("agreement2")} className="mt-0.5 accent-secondary w-4 h-4 border-gray-300 rounded defaultChecked" />
           <span>Agree to receive multiple calls and communications via various channels regarding my enquiry</span>
         </label>
         <label className="flex items-start gap-2">
-          <input type="checkbox" {...register("agreement3")} className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded defaultChecked" />
+          <input type="checkbox" {...register("agreement3")} className="mt-0.5 accent-secondary w-4 h-4 border-gray-300 rounded defaultChecked" />
           <span>Agree to receive calls and communications via various channels on various projects, products, and services</span>
         </label>
       </div>
