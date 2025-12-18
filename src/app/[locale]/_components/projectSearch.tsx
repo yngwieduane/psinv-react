@@ -88,7 +88,7 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
     };
 
   return (
-    <Dialog className="relative z-10" open={modalState} onClose={onCloseModal}>
+    <Dialog className="relative z-80" open={modalState} onClose={onCloseModal}>
       <div className="fixed inset-0" />
 
       <div className="fixed inset-0 overflow-hidden">

@@ -1,4 +1,5 @@
 import UnitsPage from "./_components/UnitsPage";
+import UnitsPageAI from "./_components/UnitsPageAI";
 
 export default async function Units(props: {
   searchParams?: Promise<{
@@ -22,7 +23,7 @@ export default async function Units(props: {
 
     return (
         <>
-            <UnitsPage unitid={unitid} category={category} propertyId={propertyId} beds={beds} currentPage={currentPage}/>
+            <UnitsPageAI unitid={unitid} category={category} propertyId={propertyId} beds={beds} currentPage={currentPage}/>
         </>
     );
 }

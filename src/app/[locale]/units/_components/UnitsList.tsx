@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { Skeleton } from "../../_components/tools/Skeleteon";
+import UnitListBoxAI from "./UnitListBoxAI";
 
 export default function UnitsList(props:any) {
 
@@ -91,7 +92,7 @@ export default function UnitsList(props:any) {
                                 seoStart: "",
                             };
                             const seoData = generateSeoData(propertyData);
-                            return <UnitListBox key={index} data={post} seoUrl={seoData.seoUrl}/>
+                            return <UnitListBoxAI key={index} data={post} seoUrl={seoData.seoUrl} seoTitle={seoData.seoTitle} adType={maincategory} />
                         })}
                     </>
                 )}

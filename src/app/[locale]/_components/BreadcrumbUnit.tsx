@@ -23,18 +23,18 @@ const BreadcrumbUnit = () => {
       'itemListElement': itemListElement,
     };
   return (
-    <nav className="bg-[#f4f4f4] py-2 px-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <nav className="bg-gray-50 py-4 border-b border-gray-100 py-2 px-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ul className="flex items-center space-x-2 text-gray-500">
-        <li>
+      <ul className="container mx-auto px-6 md:px-12 flex items-center space-x-2 text-gray-500">
+        <li className='text-sm'>
             <Link title="Home" href="/" className="hover:text-blue-600">
                 Home
             </Link>
         </li>
-        <li className="flex items-center space-x-2">
+        <li className="text-sm flex items-center space-x-2">
             <span>/</span>
             <Link title="Units" href="/units" className="hover:text-blue-600">
                 Units
@@ -48,11 +48,11 @@ const BreadcrumbUnit = () => {
             <li key={index} className="flex items-center space-x-2">
               <span>/</span>
               {isLast ? (
-                <span className="text-gray-900 font-medium capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
+                <span className="text-sm text-dark font-medium capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
                   {segment.replaceAll('-', ' ')}
                 </span>
               ) : (
-                <Link title={segment.replaceAll('-', ' ')} href={href} className="hover:text-blue-600 capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
+                <Link title={segment.replaceAll('-', ' ')} href={href} className="text-sm text-black hover:text-blue-600 capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
                   {segment.replaceAll('-', ' ')}
                 </Link>
               )}

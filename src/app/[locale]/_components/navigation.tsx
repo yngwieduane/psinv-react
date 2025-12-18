@@ -491,7 +491,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
                 {/* Right Actions */}
                 <div className={`hidden lg:flex items-center gap-6 ${linkColor}`}>
-                    <button className="hover:text-secondary transition-colors"><Search size={20} /></button>
+                    <button onClick={modalHandler} className="hover:text-secondary transition-colors cursor-pointer"><Search size={20} /></button>
                     <button className="hover:text-secondary transition-colors relative">
                         <Heart size={20} />
                         {favorites.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}

@@ -2,6 +2,7 @@ import { generateSeoData } from "../../_components/functions/generateSeoData";
 import UnitPage from "./components/UnitPage";
 import type { Metadata, ResolvingMetadata } from 'next'
 import { redirect } from 'next/navigation'
+import UnitPageAI from "./components/UnitPageAI";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -74,7 +75,7 @@ export default async function Page({ params }: Props){
     
     return (
         <>
-        <UnitPage data={posts}/>
+        <UnitPageAI data={posts}/>
         </>
     );
 }
