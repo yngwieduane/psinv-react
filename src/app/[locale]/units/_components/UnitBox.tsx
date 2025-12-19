@@ -8,17 +8,21 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import Modals from "../../_components/tools/Modals";
 import { Bath, BedDouble, Mail, MapPin, Phone, Scaling } from "lucide-react";
+import { UnitListing } from "@/types/types";
+import { generateSeoData } from "../../_components/functions/generateSeoData";
 
-export default function UnitBox(props:any){
-    let images, price;
-    {props.data.imageurl !== null
-        ? images = props.data.imageurl.split('|').slice(0, -1)
+export default function UnitBox(props:UnitListing){
+    let images,category;
+    {props.imageurl !== null
+        ? images = props.imageurl.split('|').slice(0, -1)
         : images = '';
     }
-    {props.data.sellprice !== null
-        ? price = props.data.sellprice
-        : price = props.data.rent;
-    }
+    // Ensure price is always a number, fallback to 0 if both are null
+    const price: number = typeof props.sellprice === 'number'
+        ? props.sellprice
+        : typeof props.rent === 'number'
+            ? props.rent
+            : 0;
 
     const [setModal, setSetModal] = useState(false);
     const modalHandler = (event:any) => {
@@ -34,6 +38,23 @@ export default function UnitBox(props:any){
 
     const phoneNumber = process.env.NEXT_PUBLIC_CALLNUMBER;
     const wappNumber = process.env.NEXT_PUBLIC_WAPPNUMBER;
+    {props.sellprice !== null
+        ? category = "Sale"
+        : category = "Rent";
+    }
+    const propertyData = {
+        bedrooms: props.bedrooms,
+        propertyType: props.category,
+        adType: category,
+        name: props.propertyname,
+        community: props.community,
+        emirate: props.city_name,
+        refNo: props.refNo,
+        code: props.code,
+        seoStart: "",
+    };
+    const seoData = generateSeoData(propertyData);
+    
     return (
         <>
         <article className="relative isolate flex flex-col gap-2 bg-gray-50 rounded-lg w-full hover:bg-gray-200">
@@ -53,36 +74,36 @@ export default function UnitBox(props:any){
                     <PriceConvert price={price} minDecimal='0' />
                 </div>
                 <div className="absolute right-5 bottom-5 z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
-                    {props.data.category}
+                    {props.category}
                 </div>
             </div>
             <div className="px-5 py-3">
                 <div className="flex items-center gap-x-4 text-xs">
                     <Link
-                        title={props.data.community}
+                        title={props.community}
                         href="#"
                         className="absolute top-5 z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100 flex items-center"
                     >
-                        <MapPin size={20}/> {props.data.community}
+                        <MapPin size={20}/> {props.community}
                     </Link>
                 </div>
                 <div className="group relative max-w-xl">
                     <h3 className="mt-0 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
-                        <Link title={props.data.propertyname} href={`/unit/${props.seoUrl}`} >
+                        <Link title={props.propertyname} href={`/unit/${seoData.seoUrl}`} >
                             <span className="absolute inset-0 " />
-                            <p className="">{props.data.propertyname}</p>
+                            <p className="">{props.propertyname}</p>
                         </Link>
                     </h3>
-                    <p className="mt-2 text-normal/6 text-gray-600 truncate ">{props.data.marketingTitle}</p>
+                    <p className="mt-2 text-normal/6 text-gray-600 truncate ">{props.marketingTitle}</p>
                 </div>
                 <div className="mt-2">
                     <div className="relative flex items-center gap-x-4">
                         <div className="text-lg flex gap-x-2">
-                            <div className="bg-gray-100 p-1 rounded-lg text-sm flex text-xl items-center gap-2">{props.data.bedrooms} <BedDouble size={20}/></div>
-                            {props.data.no_of_bathrooms !== null ? (
-                                <div className="bg-gray-100 p-1 rounded-lg text-sm flex text-xl items-center gap-2">{props.data.no_of_bathrooms} <Bath size={20}/></div>
+                            <div className="bg-gray-100 p-1 rounded-lg text-sm flex text-xl items-center gap-2">{props.bedrooms} <BedDouble size={20}/></div>
+                            {props.no_of_bathrooms !== null ? (
+                                <div className="bg-gray-100 p-1 rounded-lg text-sm flex text-xl items-center gap-2">{props.no_of_bathrooms} <Bath size={20}/></div>
                             ) : ("")}
-                            <div className="bg-gray-100 p-1 rounded-lg text-sm flex text-xl items-center gap-2"><Scaling size={20}/> <NumberConvert number={props.data.built_upArea} minDecimal='0' label='Sqft'/></div>
+                            <div className="bg-gray-100 p-1 rounded-lg text-sm flex text-xl items-center gap-2"><Scaling size={20}/> <NumberConvert number={Number(props.built_upArea)} minDecimal='0' label='Sqft'/></div>
                         </div>
                     </div>
                 </div>
@@ -94,7 +115,7 @@ export default function UnitBox(props:any){
                         className="bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-lg text-lg flex justify-center cursor-pointer"
                     ><Mail size={20} />
                     </button>
-                    <Link title="Whatsapp" target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${props.seoUrl}`} className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg flex justify-center"><FontAwesomeIcon icon={faWhatsapp} /></Link>
+                    <Link title="Whatsapp" target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${seoData.seoUrl}`} className="bg-green-600 hover:bg-green-700 px-5 py-3 rounded-lg text-white text-lg flex justify-center"><FontAwesomeIcon icon={faWhatsapp} /></Link>
                 </div>
             </div>
         </article>

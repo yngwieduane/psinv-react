@@ -21,6 +21,7 @@ import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
 import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
 import { Bath, BedDouble, CheckCircle2, Heart, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
 import { useUser } from "@/context/userContext";
+import RequestViewing from "@/app/[locale]/_components/RequestViewing";
 
 const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap'));
 const SimilarUnitsGrid = dynamic(() => import('./SimilarUnitsGrid'));
@@ -92,7 +93,7 @@ export default function UnitPageAI(props: any) {
                         {/* Title Section */}
                         <div className="flex flex-col md:flex-row justify-between items-start mb-8 md:mb-10 gap-6 md:gap-8">
                             <div className="w-full">
-                                <h1 className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-primary mb-2 md:mb-4 leading-tight">{post.marketingTitle}</h1>
+                                <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary mb-2 md:mb-4 leading-tight">{post.marketingTitle}</h1>
                                 <div className="flex items-center text-gray-500 text-sm md:text-base font-medium">
                                     <MapPin size={18} className="text-secondary mr-2 rtl:ml-2" />
                                     {post.community}
@@ -192,7 +193,7 @@ export default function UnitPageAI(props: any) {
 
                                 {/* Property Overview */}
                                 <div className="mb-10 md:mb-14 animate-[fadeIn_0.5s_ease-out]">
-                                    <h3 className="text-2xl md:text-3xl font-serif font-bold text-primary mb-6 md:mb-8">Details</h3>
+                                    <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">Details</h3>
                                     <div className="bg-gray-50 rounded-3xl p-6 md:p-10 border border-gray-100">
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 md:gap-y-8">
                                             {[
@@ -200,8 +201,8 @@ export default function UnitPageAI(props: any) {
                                                 { label: "Location", value: post.community },
                                                 { label: "Type", value: post.category },
                                                 { label: "Contract", value: category },
-                                                { label: "Price", value: price, isBold: true },
-                                                { label: "Area", value: `${post.area} Sqft`, isBold: true },
+                                                { label: "Price", value: <PriceConvert price={price} minDecimal='0'/>, isBold: true },
+                                                { label: "Area", value: <NumberConvert number={Number(post.built_upArea)} minDecimal='0' label='Sqft'/>, isBold: true },
                                                 { label: "Beds", value: post.bedrooms, isBold: true },
                                                 { label: "Baths", value: post.no_of_bathrooms, isBold: true },
                                             ].map((item, idx) => (
@@ -216,7 +217,7 @@ export default function UnitPageAI(props: any) {
 
                                 {/* Description & Amenities */}
                                 <div className="mb-10 md:mb-14">
-                                    <h3 className="text-2xl md:text-3xl font-serif font-bold text-primary mb-6 md:mb-8">Description</h3>
+                                    <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">Description</h3>
                                     <div className="bg-white text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line font-light mb-10">
                                         {post.property_overview}
                                     </div>
@@ -265,7 +266,7 @@ export default function UnitPageAI(props: any) {
                                         <div className="flex justify-between items-end mb-8">
                                             <div>
                                                 <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-2">Total Price</span>
-                                                <span className="text-3xl md:text-4xl font-serif font-bold text-primary"><PriceConvert price={price} minDecimal='0'/></span>
+                                                <span className="text-3xl md:text-4xl font-bold text-primary"><PriceConvert price={price} minDecimal='0'/></span>
                                             </div>
                                         </div>
                                         
@@ -281,18 +282,18 @@ export default function UnitPageAI(props: any) {
                                         <hr className="border-gray-100 mb-8" />
 
                                         {/* Schedule Viewing Form */}
-                                        <div>
-                                            <h3 className="text-xl font-bold text-gray-800 mb-6">Schedule</h3>
-                                            <form className="space-y-4">
-                                                <input type="text" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-5 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" placeholder="First Name" />
-                                                <div className="flex gap-2">
-                                                    <span className="bg-gray-100 border border-gray-200 rounded-lg px-4 py-3.5 text-sm flex items-center justify-center text-gray-500 font-bold min-w-[70px]" dir="ltr">+971</span>
-                                                    <input type="tel" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-5 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" placeholder="Phone" dir="ltr" />
-                                                </div>
-                                                <button type="button" className="w-full bg-primary text-black font-bold py-4 rounded-xl text-base transition-all hover:bg-primary-dark mt-4 shadow-md">
-                                                    Submit
-                                                </button>
-                                            </form>
+                                        <div className="hidden md:flex">
+                                            <InquiryForm hideFeedbackButton={true}/>
+                                        </div>
+                                        <div className="p-5">
+                                            <button
+                                                type="button"
+                                                onClick={drawerHandler('requestview', props.data)}
+                                                name="details"
+                                                className="w-full rounded-lg border border-[#111954] p-4 cursor-pointer"
+                                            >
+                                                <FontAwesomeIcon icon={faCalendarCheck}/> Request a Meeting
+                                            </button>
                                         </div>
                                     </div>
                                 </Sticky>
@@ -316,7 +317,7 @@ export default function UnitPageAI(props: any) {
                                 />
                             </div>) : ("")}
                             
-                            <h2 className="text-3xl font-serif font-bold text-primary mb-8 mt-10">Similar Properties</h2>
+                            <h2 className="text-3xl font-bold text-primary mb-8 mt-10">Similar Properties</h2>
                             <SimilarUnitsGrid
                                 propid={post.property_Pk}
                                 category={category}
@@ -324,6 +325,7 @@ export default function UnitPageAI(props: any) {
                             />
                         </div>
                     </div>
+                    <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} />
                 </div>
                 )
             })}
