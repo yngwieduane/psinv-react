@@ -4,6 +4,7 @@ import { generateSeoData } from "@/app/[locale]/_components/functions/generateSe
 import UnitBox from "@/app/[locale]/units/_components/UnitBox";
 import { useState, useEffect } from "react";
 import { UnitListing } from "@/types/types";
+import UnitBoxAI from "@/app/[locale]/units/_components/UnitBoxAI";
 
 const AvailableUnits = ({
     propid,
@@ -69,7 +70,7 @@ const AvailableUnits = ({
                         key={index}
                         className="inline-flex flex-col w-96 "
                         >
-                            <UnitBox data={post} seoUrl={seoData.seoUrl}/>
+                            <UnitBoxAI data={post} seoUrl={seoData.seoUrl}/>
                         </li>
                     )
                 })}
