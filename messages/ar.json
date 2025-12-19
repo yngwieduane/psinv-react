@@ -171,5 +171,44 @@
     "formHeading": "أخبرنا إن كنت مهتمًا!",
     "localTel": "هاتف محلي",
     "intlTel": "هاتف دولي"
+  },
+  "ContactPage": {
+    "title": "تواصل معنا",
+    "inquire": "استفسار",
+    "map": "الخريطة",
+    "satellite": "القمر الصناعي",
+    "phoneNA": "—"
+  },
+    "ContactInquiryForm": {
+    "placeholders": {
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "message": "اكتب رسالتك هنا"
+    },
+    "buttons": {
+      "submit": "إرسال",
+      "submitting": "جارٍ الإرسال..."
+    },
+    "alerts": {
+      "success": "تم إرسال طلبك بنجاح.",
+      "error": "حدث خطأ. حاول مرة أخرى.",
+      "serverError": "تعذر إرسال الطلب. حاول مرة أخرى."
+    },
+    "errors": {
+      "firstNameRequired": "الاسم الأول مطلوب",
+      "lastNameRequired": "اسم العائلة مطلوب",
+      "invalidEmail": "البريد الإلكتروني غير صحيح",
+      "invalidPhone": "رقم الهاتف غير صحيح",
+      "messageRequired": "الرسالة مطلوبة",
+      "mustAgree": "يجب الموافقة للمتابعة"
+    },
+    "fineprint": {
+      "agreementText": "بالنقر على إرسال، فإنك توافق على الشروط والأحكام وسياسة الخصوصية."
+    },
+    "consents": {
+      "c1": "أوافق على تلقي المكالمات والرسائل من PSI."
+    }
   }
 }
