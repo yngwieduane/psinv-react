@@ -44,9 +44,6 @@ const PaymentPlans = ({
         <>
         {loading > 0 && (
             <>
-            <h2 className="text-xl mb-5 text-[#111954]">
-                Payment Plans
-            </h2>
             <div
                 role="list"
                 className="grid grid-cols-1 md:grid-cols-3 gap-3"

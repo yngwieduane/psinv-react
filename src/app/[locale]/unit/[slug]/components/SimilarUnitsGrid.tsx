@@ -1,6 +1,7 @@
 
 import { generateSeoData } from "@/app/[locale]/_components/functions/generateSeoData";
 import UnitBox from "@/app/[locale]/units/_components/UnitBox";
+import UnitBoxAI from "@/app/[locale]/units/_components/UnitBoxAI";
 import { useState, useEffect } from "react";
 
 type Units = {
@@ -117,7 +118,7 @@ const SimilarUnitsGrid = ({
         {results.length > 0 && (
             <>
             <div
-                className="grid grid-cols-1 md:grid-cols-4 gap-5"
+                className="grid grid-cols-1 md:grid-cols-3 gap-5"
             >
                 {results.slice(0,display).map((post, index) => {
                     const propertyData = {
@@ -135,7 +136,7 @@ const SimilarUnitsGrid = ({
                     
                     return (
                         <div key={index} >
-                            <UnitBox data={post} seoUrl={seoData.seoUrl}/>
+                            <UnitBoxAI data={post} seoUrl={seoData.seoUrl}/>
                         </div>
                     )
                 })}
