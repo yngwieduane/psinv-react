@@ -265,5 +265,44 @@
     "btn_nearby": "Nearby",
     "btn_developer": "Developer",
     "btn_video_tour": "Video Tour"
+  },
+  "ContactPage": {
+    "title": "Contact Us",
+    "inquire": "Inquire",
+    "map": "Map",
+    "satellite": "Satellite",
+    "phoneNA": "—"
+  },
+  "ContactInquiryForm": {
+    "placeholders": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email address",
+      "phone": "Phone number",
+      "message": "Your message"
+    },
+    "buttons": {
+      "submit": "Submit",
+      "submitting": "Submitting..."
+    },
+    "alerts": {
+      "success": "Your inquiry has been sent successfully.",
+      "error": "Something went wrong.",
+      "serverError": "Server error. Please try again."
+    },
+    "fineprint": {
+      "agreementText": "By submitting this form, you agree to our terms and privacy policy."
+    },
+    "consents": {
+      "c1": "I agree to be contacted by PSI through different communication channels."
+    },
+    "errors": {
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "invalidEmail": "Invalid email address",
+      "invalidPhone": "Invalid phone number",
+      "messageRequired": "Message is required",
+      "mustAgree": "You must agree to continue"
+    }
   }
 }
