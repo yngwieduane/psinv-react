@@ -114,8 +114,218 @@
         "download": "Download floor plans"
       },
       "ProjectPage": { "location": "Location" }
+    },
+    
+    "yas-riva": {
+      "hero": {
+        "heading": "Yas Riva - Yas Island",
+        "sub": "Exclusive Waterfront Villa Living",
+        "description": "Yas Riva is an exclusive villa community on Yas Island, offering canal-front and canal-accessible homes designed for refined relaxation in a tranquil waterfront setting. Surrounded by world-class attractions, Yas Riva blends elegant architecture with direct canal access to create a distinctive lifestyle where the water becomes an extension of the home.",
+        "cta": "Download Brochure"
+      },
+      "usp": {
+        "item1": { "title": "4 – 6 BR", "desc": "Bedroom" },
+        "item2": { "title": "8.3M AED", "desc": "Starting From" },
+        "item3": { "title": "5%", "desc": "Downpayment" },
+        "item4": { "title": "Flexible", "desc": "Payment Plan" },
+        "item5": { "title": "Q2 2028", "desc": "Handover" },
+        "item6": { "title": "Standalone", "desc": "Villa" }
+      },
+      "about": {
+        "heading": "Yas Riva - Yas Island",
+        "subheading": "About the Project",
+        "description": "Yas Riva is a premium villa destination on Yas Island, offering a curated selection of canal-front and canal-accessible residences. Designed with sleek, modern principles, the community delivers a calm waterfront lifestyle in close proximity to Yas Island’s iconic attractions. With direct canal access available to select homes, Yas Riva offers one of Abu Dhabi’s most distinctive residential experiences.",
+        "cta": "Download Brochure"
+      },
+      "gallery": {
+        "title": "Gallery",
+        "prev": "Previous",
+        "next": "Next"
+      },
+      "amenities": {
+        "title": "Indulge In Bespoke Amenities",
+        "desc": "4 to 6 bedroom villas for sale at Yas Riva",
+        "cta": "Contact us now!",
+        "items": {
+          "item1": { "label": "Waterfront Living", "icon": "/images/landing-page/lp-icons/water-front.svg" },
+          "item2": { "label": "Community Market", "icon": "/images/landing-page/lp-icons/retail.svg" },
+          "item3": { "label": "Pocket Parks", "icon": "/images/landing-page/lp-icons/park.svg" },
+          "item4": { "label": "Relaxation Spots", "icon": "/images/landing-page/lp-icons/relaxation.svg" },
+          "item5": { "label": "Treatment Room", "icon": "/images/landing-page/lp-icons/treatment.svg" },
+          "item6": { "label": "Swimming Pool", "icon": "/images/landing-page/lp-icons/shared-pool.svg" }
+        }
+      },
+      "floorPlans": {
+        "title": "Floor Plan",
+        "oneBed": "4 Bedroom",
+        "twoBed": "5 Bedroom",
+        "threeBed": "6 Bedroom",
+        "download": "Download floor plans"
+      },
+      "ProjectPage": { "location": "Location" }
+    },
+    "manarat-living-saadiyat": {
+  "hero": {
+    "heading": "Manarat Living - Saadiyat Island",
+    "sub": "A NEW DESIGN CONCEPT BY ALDAR",
+    "description": "Own a studio, 1 bed, 2-bed, or 2-bed + maid apartment in the first living development in Saadiyat Island’s Cultural District.",
+    "cta": "Download Brochure"
+  },
+  "usp": {
+    "item1": { "title": "Studio - 2BR", "desc": "Apartments" },
+    "item2": { "title": "Flexible", "desc": "Payment Plan" },
+    "item3": { "title": "AED 634,000", "desc": "Starting From" },
+    "item4": { "title": "2026", "desc": "Handover" },
+    "item5": { "title": "5%", "desc": "Down Payment" },
+    "item6": { "title": "By", "desc": "ALDAR" }
+  },
+  "about": {
+    "heading": "Manarat Living - Saadiyat Island",
+    "subheading": "ABOUT THE PROJECT",
+    "description": "A groundbreaking new approach that’s bringing home ownership down to earth, with properties to suit your tastes, amenities made for your needs, in locations that connect you to everything. Whether you’re growing your family or building a career, leave that rental behind and make the smart move to a home at Manarat Living.",
+    "cta": "Download Brochure"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "amenities": {
+    "title": "Exceptional Amenities Await You at Manarat Living",
+    "desc": "Choose your space, add your flavor, and create a home as individual as you are.",
+    "cta": "Contact us now!",
+    "items": {
+      "item1": { "label": "Concierge Service", "icon": "/images/landing-page/lp-icons/concierge-service.svg" },
+      "item2": { "label": "Kids Play Area", "icon": "/images/landing-page/lp-icons/child.svg" },
+      "item3": { "label": "Park", "icon": "/images/landing-page/lp-icons/park.svg" },
+      "item4": { "label": "Gym", "icon": "/images/landing-page/lp-icons/shared-gym.svg" },
+      "item5": { "label": "Retail", "icon": "/images/landing-page/lp-icons/retail.svg" },
+      "item6": { "label": "Cafés", "icon": "/images/landing-page/lp-icons/cafe.svg" },
+      "item7": { "label": "Pets Allowed", "icon": "/images/landing-page/lp-icons/pets.svg" },
+      "item8": { "label": "View of Landmark", "icon": "/images/landing-page/lp-icons/landmark.svg" },
+      "item9": { "label": "Pool", "icon": "/images/landing-page/lp-icons/shared-pool.svg" }
     }
   },
+  "floorPlans": {
+    "title": "Floor Plan",
+    "studio": "Studio",
+    "oneBed": "1 Bedroom",
+    "twoBed": "2 Bedroom",
+    "twoBedMaid": "2 Bedroom + Maid",
+    "download": "Download floor plans"
+  },
+  "ProjectPage": { "location": "Location" }
+    },
+  "the-arthouse": {
+    "hero": {
+      "heading": "The Arthouse - Saadiyat Grove",
+      "sub": "Life Between Art & Elegance",
+      "description": "The Arthouse by Aldar is a refined residential destination in Saadiyat Grove, offering apartments and sky villas designed around creativity, culture, and elevated living in Abu Dhabi’s cultural district.",
+      "cta": "Download Brochure"
+    },
+
+    "usp": {
+      "item1": { "title": "1 - 3 BR", "desc": "Apartments" },
+      "item2": { "title": "5 BR", "desc": "Sky Villas" },
+      "item3": { "title": "Flexible", "desc": "Payment Plan" },
+      "item4": { "title": "Q2 2028", "desc": "Handover" },
+      "item5": { "title": "10%", "desc": "Down Payment" },
+      "item6": { "title": "By", "desc": "ALDAR" }
+    },
+
+    "about": {
+      "heading": "The Arthouse - Saadiyat Grove",
+      "subheading": "ABOUT THE PROJECT",
+      "description": "The Arthouse Saadiyat Grove is a luxury residential development by Aldar Properties, located within the heart of Saadiyat Grove. Designed to blend artistic expression with modern living, the project offers thoughtfully crafted homes surrounded by cultural landmarks, green spaces, and world-class lifestyle amenities.",
+      "cta": "Download Brochure"
+    },
+
+    "gallery": {
+      "title": "Gallery",
+      "prev": "Previous",
+      "next": "Next"
+    },
+
+    "amenities": {
+      "title": "A Symphony of Luxury Amenities",
+      "desc": "Residents enjoy a curated collection of lifestyle amenities designed to inspire creativity, wellness, and social connection.",
+      "cta": "Contact us now!",
+      "items": {
+        "item1": { "label": "Secret Garden", "icon": "/images/landing-page/lp-icons/park.svg" },
+        "item2": { "label": "Tennis Court", "icon": "/images/landing-page/lp-icons/fitness-area.svg" },
+        "item3": { "label": "Grand Lobby", "icon": "/images/landing-page/lp-icons/private-lounge.svg" },
+        "item4": { "label": "Arthouse Cinema", "icon": "/images/landing-page/lp-icons/theatre.svg" },
+        "item5": { "label": "Health Club Gym", "icon": "/images/landing-page/lp-icons/health.svg" },
+        "item6": { "label": "Kids Playroom", "icon": "/images/landing-page/lp-icons/kids-play.svg" },
+        "item7": { "label": "Entertainment Lounge", "icon": "/images/landing-page/lp-icons/bbq.svg" },
+        "item8": { "label": "Yoga Rooms", "icon": "/images/landing-page/lp-icons/fitness-area.svg" },
+        "item9": { "label": "Creative Majlis", "icon": "/images/landing-page/lp-icons/meeting.svg" }
+      }
+    },
+"floorPlans": {
+  "title": "Floor Plan",
+  "oneBed": "1 Bedroom",
+  "twoBed": "2 Bedroom",
+  "threeBed": "3 Bedroom",
+  "fiveBed": "5 Bedroom",
+  "download": "Download floor plans"
+}
+  },
+  "bloom-living-almeria": {
+  "hero": {
+    "heading": "Bloom Living - Almeria",
+    "sub": "A Contemporary Community in Zayed City",
+    "description": "Bloom Living – Almeria is a thoughtfully planned residential community in Zayed City, near Zayed International Airport. It offers spacious villas designed around nature, connectivity, and a balanced lifestyle in Abu Dhabi.",
+    "cta": "Download Brochure"
+  },
+
+  "usp": {
+    "item1": { "title": "3 - 6 BR", "desc": "Villas" },
+    "item2": { "title": "40/60", "desc": "Payment Plan" },
+    "item3": { "title": "3.7M AED", "desc": "Starting From" },
+    "item4": { "title": "Q4 2027", "desc": "Handover" },
+    "item5": { "title": "10%", "desc": "Down Payment" },
+    "item6": { "title": "Standalone", "desc": "Villas" }
+  },
+
+  "about": {
+    "heading": "Bloom Living - Almeria",
+    "subheading": "ABOUT THE PROJECT",
+    "description": "Bloom Living – Almeria is part of a fully integrated master community featuring villas, townhouses, and apartments. Designed to promote walkability and wellbeing, the community includes interconnected parks, cycling tracks, a central lake, clubhouse facilities, retail outlets, dining options, schools, and places of worship—creating a complete lifestyle destination.",
+    "cta": "Download Brochure"
+  },
+
+  "gallery": {
+    "title": "Gallery",
+    "prev": "Previous",
+    "next": "Next"
+  },
+
+  "amenities": {
+    "title": "Lifestyle Amenities at Bloom Living",
+    "desc": "A wide range of amenities designed to support wellness, leisure, and community living for the whole family.",
+    "cta": "Contact us now!",
+    "items": {
+      "item1": { "label": "Gym & Sauna", "icon": "/images/landing-page/lp-icons/shared-gym.svg" },
+      "item2": { "label": "24/7 Security", "icon": "/images/landing-page/lp-icons/security24-7.svg" },
+      "item3": { "label": "Walking & Jogging Tracks", "icon": "/images/landing-page/lp-icons/fitness-area.svg" },
+      "item4": { "label": "Central Lake", "icon": "/images/landing-page/lp-icons/water-front.svg" },
+      "item5": { "label": "Retail & Dining", "icon": "/images/landing-page/lp-icons/retail.svg" },
+      "item6": { "label": "Places of Worship", "icon": "/images/landing-page/lp-icons/mosque-1.svg" }
+    }
+  },
+
+  "floorPlans": {
+    "title": "Floor Plan",
+    "threeBed": "3 Bedroom",
+    "fourBed": "4 Bedroom",
+    "fiveBed": "5 Bedroom",
+    "sixBed": "6 Bedroom",
+    "download": "Download floor plans"
+  }
+}
+
+},
   "InquiryForm": {
     "title": "Let us know if you’re interested!",
       "fields": {

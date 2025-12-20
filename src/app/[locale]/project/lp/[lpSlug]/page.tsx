@@ -2,8 +2,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { landingConfigs, type LpSlug, type LandingConfig } from "./LandingConfig";
-
+import { landingConfigs, type LandingConfig } from "./LandingConfig";
 import HeroSection from "./_components/HeroSection";
 import MainNavbar from "./_components/MainNavbar";
 import InquiryForm from "./_components/InquiryForm";
@@ -15,6 +14,7 @@ import FloorPlans from "./_components/FloorPlans";
 import LocationMap from "./_components/LocationMap";
 import LandingFooter from "./_components/LandingFooter";
 
+type LpSlug = keyof typeof landingConfigs;
 type Params = { locale: string; lpSlug: LpSlug };
 type UspItem = { title: string; desc?: string };
 
@@ -23,42 +23,61 @@ export async function generateMetadata(
   { params }: { params: Promise<Params> }
 ): Promise<Metadata> {
   const { locale, lpSlug } = await params;
+ const cfg = (landingConfigs as Record<string, LandingConfig>)[lpSlug];
 
-  const cfg = landingConfigs[lpSlug];
-  if (!cfg) return { title: "Property Shop Investment" };
 
-  const tHero = await getTranslations({
-    locale,
-    namespace: `LandingPages.${lpSlug}.hero`,
-  });
+  if (!cfg) {
+    return {
+      title: "Property Shop Investment",
+      description: "Discover premier properties with PSI.",
+    };
+  }
+  const seoTitle =
+    cfg.meta?.title ??
+    cfg.title ??
+    "Property Shop Investment";
 
-  const opt = (key: string): string | undefined => {
-    try { return tHero(key); } catch { return undefined; }
-  };
+  const seoDescription =
+    cfg.meta?.description ??
+    cfg.description ??
+    "Discover premier properties with PSI.";
 
-  const rawTitle = opt("heading") ?? cfg.title ?? "Property Shop Investment";
-  const title = `${rawTitle} - Property Shop Investment`;
+  const ogImage =
+    cfg.meta?.ogImage ??
+    cfg.ogImage ??
+    cfg.data.hero?.img ??
+    "/images/og/default.jpg";
 
-  const description =
-    opt("description") ?? opt("sub") ?? cfg.description ?? "Discover premier properties with PSI.";
-
-  const ogImage = cfg.ogImage ?? cfg.data.hero?.img ?? "/images/og/default.jpg";
-  const url = `/${locale}/project/lp/${lpSlug}`;
+  const canonicalUrl = `/${locale}/project/lp/${lpSlug}`;
 
   return {
-    title,
-    description,
-    alternates: { canonical: url },
+    title: seoTitle,
+    description: seoDescription,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
-      title,
-      description,
-      url,
+      title: seoTitle,
+      description: seoDescription,
+      url: canonicalUrl,
       siteName: "PSI",
-      images: [{ url: ogImage, width: 1200, height: 630, alt: rawTitle }],
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: seoTitle,
+        },
+      ],
       locale,
       type: "website",
     },
-    twitter: { card: "summary_large_image", title, description, images: [ogImage] },
+    twitter: {
+      card: "summary_large_image",
+      title: seoTitle,
+      description: seoDescription,
+      images: [ogImage],
+    },
   };
 }
 
@@ -203,15 +222,15 @@ export default async function Page({ params }: PageProps) {
         <UspSection items={uspItems} />
       )}
       {cfg.sections.includes("about") && (
-        <AboutSection
-          image={cfg.data.about?.img}
-          heading={aboutFrom("heading", cfg.data.about?.heading)}
-          subheading={aboutFrom("subheading", cfg.data.about?.subheading)}
-          description={aboutFrom("description", cfg.data.about?.description)}
-          ctaText={aboutFrom("cta", cfg.data.about?.ctaText)}
-          ctaHref={cfg.data.about?.ctaHref}
-          videoId={cfg.data.about?.videoId}
-        />
+<AboutSection
+  img={cfg.data.about?.img}
+  heading={aboutFrom("heading", cfg.data.about?.heading)}
+  subheading={aboutFrom("subheading", cfg.data.about?.subheading)}
+  description={aboutFrom("description", cfg.data.about?.description)}
+  ctaText={aboutFrom("cta", cfg.data.about?.ctaText)}
+  ctaHref={cfg.data.about?.ctaHref}
+  videoId={cfg.data.about?.videoId}
+/>
       )}
       {cfg.sections.includes("gallery") && galleryImages.length > 0 && (
         <GallerySection
