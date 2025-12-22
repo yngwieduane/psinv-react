@@ -1,7 +1,7 @@
 export interface RealEstateListing {
   latitude: string;
   longitude: string;
-  fallbackImage:string;
+  fallbackImage: string;
 }
 
 export interface UnitListing {
@@ -138,7 +138,7 @@ export interface PaymentPlansResponse {
 }
 
 
-export interface Articles  {
+export interface Articles {
   name: string,
   image: string,
   category: string
@@ -165,6 +165,7 @@ export interface User {
 export interface SavedItem {
   id: string;
   type: 'property' | 'project';
+  data?: any;
 }
 
 export interface PropertyCategory {

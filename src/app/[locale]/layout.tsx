@@ -14,15 +14,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
-import {notFound} from 'next/navigation';
-import {routing} from '@/i18n/routing';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
 import ConditionalNavigation from "./_components/ConditionalNavigation";
 import ConditionalFooter from "./_components/ConditionalFooter";
-import { locales,siteBaseUrl,defaultLocale } from "@/utils/i18n-config";
+import { locales, siteBaseUrl, defaultLocale } from "@/utils/i18n-config";
 import { TranslationProvider } from "@/context/translationContext";
 import { UserProvider } from "@/context/userContext";
+import CompareFloatingButton from "./_components/CompareFloatingButton";
 
 // export const metadata: Metadata = {
 //   title: "⚡  Abu Dhabi Real Estate  - Property Shop Investment",
@@ -95,14 +96,14 @@ export default async function LocaleLayout({
   params
 }: {
   children: React.ReactNode;
-  params: Promise<{locale: string}>;
+  params: Promise<{ locale: string }>;
 }) {
   // Ensure that the incoming `locale` is valid
-  const {locale} = await params;
+  const { locale } = await params;
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
- 
+
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
@@ -111,9 +112,10 @@ export default async function LocaleLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <UserProvider>
           <NextIntlClientProvider messages={messages}>
-              <ConditionalNavigation />
-              <Providers><main>{children}</main></Providers>
-              <ConditionalFooter />
+            <ConditionalNavigation />
+            <Providers><main>{children}</main></Providers>
+            <ConditionalFooter />
+            <CompareFloatingButton />
           </NextIntlClientProvider>
         </UserProvider>
         <GoogleTagManager gtmId="GTM-PMQ9XT65R" />

@@ -8,7 +8,11 @@ import { useUser } from '@/context/userContext';
 const FavoritesPage: React.FC<{}> = ({ }) => {
     const { favorites, toggleFavorite } = useUser();
 
-    const properties = favorites.filter(f => f.type === 'property').map(f => PROPERTIES.find(p => p.id === f.id)).filter(Boolean);
+    const favoriteItems = favorites.filter(f => f.type === 'property' || f.type === 'project').map(f => {
+        const data = f.data || PROPERTIES.find(p => p.id === f.id);
+        return data ? { item: f, data } : null;
+    }).filter((i): i is { item: typeof favorites[0], data: any } => i !== null);
+
     //const projects = favorites.filter(f => f.type === 'project').map(f => PROJECTS.find(p => p.id === f.id)).filter(Boolean);
 
     if (favorites.length === 0) {
@@ -28,15 +32,15 @@ const FavoritesPage: React.FC<{}> = ({ }) => {
             <div className="container mx-auto px-6 md:px-12">
                 <h1 className="text-4xl font-serif font-bold text-primary mb-12">Favorites ({favorites.length})</h1>
 
-                {properties.length > 0 && (
+                {favoriteItems.length > 0 && (
                     <div className="mb-16">
                         <h3 className="text-2xl font-bold text-gray-800 mb-6 border-b border-gray-100 pb-4">Properties</h3>
-                        <div className="flex flex-col gap-6">
-                            {properties.map(p => p && (
-                                <div key={p.id} className="relative group">
-                                    <PropertyCardAI data={p} />
+                        <div className="grid grid-cols-3 gap-6">
+                            {favoriteItems.map(({ item, data }) => (
+                                <div key={item.id} className="relative group">
+                                    <PropertyCardAI data={data} />
                                     <button
-                                        onClick={() => toggleFavorite({ id: p.id, type: 'property' })}
+                                        onClick={() => toggleFavorite(item)}
                                         className="absolute top-4 right-4 bg-white text-red-500 p-2 rounded-full shadow-md z-20 hover:bg-red-50"
                                         title="Remove"
                                     >
