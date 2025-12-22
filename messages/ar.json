@@ -110,7 +110,216 @@
         }
       },
       "ProjectPage": { "location": "الموقع" }
+    },
+    "yas-riva": {
+  "hero": {
+    "heading": "ياس ريفا - جزيرة ياس",
+    "sub": "فلل فاخرة على الواجهة المائية",
+    "description": "ياس ريفا هو مجتمع فلل حصري في جزيرة ياس، يضم منازل مطلة على القناة وأخرى بإمكانية الوصول إليها، صُممت لتجربة معيشية راقية في أجواء هادئة على الواجهة المائية. وبالقرب من أبرز الوجهات العالمية، يجمع ياس ريفا بين عمارة أنيقة وإطلالات مميزة مع وصول مباشر للقناة، لتصبح المياه امتدادًا طبيعيًا للمنزل وأسلوب الحياة.",
+    "cta": "حمّل الكتيّب"
+  },
+  "usp": {
+    "item1": { "title": "4 – 6 غرف", "desc": "نوم" },
+    "item2": { "title": "8.3 مليون درهم", "desc": "ابتداءً من" },
+    "item3": { "title": "5%", "desc": "دفعة أولى" },
+    "item4": { "title": "مرنة", "desc": "خطة سداد" },
+    "item5": { "title": "الربع الثاني 2028", "desc": "التسليم" },
+    "item6": { "title": "مستقلة", "desc": "فيلا" }
+  },
+  "about": {
+    "heading": "ياس ريفا - جزيرة ياس",
+    "subheading": "عن المشروع",
+    "description": "ياس ريفا وجهة فلل متميزة في جزيرة ياس، تقدم مجموعة مختارة من المساكن المطلة على القناة وأخرى بإمكانية الوصول إليها. صُمم المجتمع بأسلوب عصري أنيق ليمنح نمط حياة هادئًا على الواجهة المائية بالقرب من أبرز معالم جزيرة ياس. ومع توفر وصول مباشر للقناة في بعض الفلل، يقدّم ياس ريفا واحدة من أكثر التجارب السكنية تميزًا في أبوظبي.",
+    "cta": "حمّل الكتيّب"
+  },
+  "gallery": {
+    "title": "المعرض",
+    "prev": "السابق",
+    "next": "التالي"
+  },
+  "amenities": {
+    "title": "استمتع بمرافق مصممة خصيصًا لك",
+    "desc": "فلل من 4 إلى 6 غرف نوم للبيع في ياس ريفا",
+    "cta": "تواصل معنا الآن!",
+    "items": {
+      "item1": { "label": "معيشة على الواجهة المائية", "icon": "/images/landing-page/lp-icons/water-front.svg" },
+      "item2": { "label": "سوق مجتمعي", "icon": "/images/landing-page/lp-icons/retail.svg" },
+      "item3": { "label": "حدائق جيبية", "icon": "/images/landing-page/lp-icons/park.svg" },
+      "item4": { "label": "مناطق للاسترخاء", "icon": "/images/landing-page/lp-icons/relaxation.svg" },
+      "item5": { "label": "غرفة علاج", "icon": "/images/landing-page/lp-icons/treatment.svg" },
+      "item6": { "label": "مسبح", "icon": "/images/landing-page/lp-icons/shared-pool.svg" }
     }
+  },
+  "floorPlans": {
+    "title": "المخطط",
+    "oneBed": "4 غرف نوم",
+    "twoBed": "5 غرف نوم",
+    "threeBed": "6 غرف نوم",
+    "download": "تحميل المخططات"
+  },
+  "ProjectPage": { "location": "الموقع" }
+},
+"manarat-living-saadiyat": {
+  "hero": {
+    "heading": "منارات ليفينغ - جزيرة السعديات",
+    "sub": "مفهوم تصميم جديد من الدار",
+    "description": "امتلك شقة استوديو أو غرفة نوم واحدة أو غرفتين أو غرفتين مع غرفة خادمة في أول مشروع سكني من نوعه في المنطقة الثقافية بجزيرة السعديات.",
+    "cta": "حمّل الكتيّب"
+  },
+  "usp": {
+    "item1": { "title": "استوديو - غرفتين", "desc": "شقق" },
+    "item2": { "title": "مرنة", "desc": "خطة سداد" },
+    "item3": { "title": "634,000 درهم", "desc": "ابتداءً من" },
+    "item4": { "title": "2026", "desc": "التسليم" },
+    "item5": { "title": "5%", "desc": "دفعة أولى" },
+    "item6": { "title": "من", "desc": "الدار" }
+  },
+  "about": {
+    "heading": "منارات ليفينغ - جزيرة السعديات",
+    "subheading": "عن المشروع",
+    "description": "نهج جديد ومبتكر يجعل تملك المنازل أقرب وأسهل من أي وقت مضى، مع وحدات سكنية مصممة لتناسب ذوقك، ومرافق تلبي احتياجاتك، وموقع يربطك بكل ما يهمك. سواء كنت تؤسس عائلة أو تبني مستقبلك المهني، اترك الإيجار خلفك واتخذ القرار الذكي بالانتقال إلى منزل في منارات ليفينغ.",
+    "cta": "حمّل الكتيّب"
+  },
+  "gallery": {
+    "title": "المعرض",
+    "prev": "السابق",
+    "next": "التالي"
+  },
+  "amenities": {
+    "title": "مرافق استثنائية بانتظارك في منارات ليفينغ",
+    "desc": "اختر مساحتك، وأضف لمستك الخاصة، واصنع منزلًا يعكس شخصيتك.",
+    "cta": "تواصل معنا الآن!",
+    "items": {
+      "item1": { "label": "خدمة كونسيرج", "icon": "/images/landing-page/lp-icons/concierge-service.svg" },
+      "item2": { "label": "منطقة ألعاب للأطفال", "icon": "/images/landing-page/lp-icons/child.svg" },
+      "item3": { "label": "حديقة", "icon": "/images/landing-page/lp-icons/park.svg" },
+      "item4": { "label": "نادي رياضي", "icon": "/images/landing-page/lp-icons/shared-gym.svg" },
+      "item5": { "label": "متاجر", "icon": "/images/landing-page/lp-icons/retail.svg" },
+      "item6": { "label": "مقاهي", "icon": "/images/landing-page/lp-icons/cafe.svg" },
+      "item7": { "label": "مسموح بالحيوانات الأليفة", "icon": "/images/landing-page/lp-icons/pets.svg" },
+      "item8": { "label": "إطلالة على معلم بارز", "icon": "/images/landing-page/lp-icons/landmark.svg" },
+      "item9": { "label": "مسبح", "icon": "/images/landing-page/lp-icons/shared-pool.svg" }
+    }
+  },
+  "floorPlans": {
+    "title": "المخطط",
+    "studio": "استوديو",
+    "oneBed": "غرفة نوم واحدة",
+    "twoBed": "غرفتا نوم",
+    "twoBedMaid": "غرفتا نوم + غرفة خادمة",
+    "download": "تحميل المخططات"
+  },
+  "ProjectPage": { "location": "الموقع" }
+},
+"the-arthouse": {
+  "hero": {
+    "heading": "ذا آرت هاوس - سعديات جروف",
+    "sub": "حياة بين الفن والأناقة",
+    "description": "ذا آرت هاوس من الدار هو وجهة سكنية راقية في سعديات جروف، يقدّم شققًا سكنية وفلل سكاي مصممة حول الإبداع والثقافة وأسلوب الحياة الراقي في المنطقة الثقافية بأبوظبي.",
+    "cta": "حمّل الكتيّب"
+  },
+
+  "usp": {
+    "item1": { "title": "1 - 3 غرف", "desc": "شقق" },
+    "item2": { "title": "5 غرف", "desc": "فلل سكاي" },
+    "item3": { "title": "مرنة", "desc": "خطة سداد" },
+    "item4": { "title": "الربع الثاني 2028", "desc": "التسليم" },
+    "item5": { "title": "10%", "desc": "دفعة أولى" },
+    "item6": { "title": "من", "desc": "الدار" }
+  },
+
+  "about": {
+    "heading": "ذا آرت هاوس - سعديات جروف",
+    "subheading": "عن المشروع",
+    "description": "ذا آرت هاوس في سعديات جروف هو مشروع سكني فاخر من تطوير شركة الدار العقارية، يقع في قلب سعديات جروف. يجمع التصميم بين التعبير الفني والحياة العصرية، مع منازل مصممة بعناية تحيط بها معالم ثقافية ومساحات خضراء ومرافق عالمية المستوى.",
+    "cta": "حمّل الكتيّب"
+  },
+
+  "gallery": {
+    "title": "المعرض",
+    "prev": "السابق",
+    "next": "التالي"
+  },
+
+  "amenities": {
+    "title": "تناغم من المرافق الفاخرة",
+    "desc": "يستمتع السكان بمجموعة مختارة من المرافق المصممة لتعزيز الإبداع، والعافية، والتواصل الاجتماعي.",
+    "cta": "تواصل معنا الآن!",
+    "items": {
+      "item1": { "label": "حديقة سرّية", "icon": "/images/landing-page/lp-icons/park.svg" },
+      "item2": { "label": "ملعب تنس", "icon": "/images/landing-page/lp-icons/fitness-area.svg" },
+      "item3": { "label": "ردهة فاخرة", "icon": "/images/landing-page/lp-icons/private-lounge.svg" },
+      "item4": { "label": "سينما آرت هاوس", "icon": "/images/landing-page/lp-icons/theatre.svg" },
+      "item5": { "label": "نادي صحي ورياضي", "icon": "/images/landing-page/lp-icons/health.svg" },
+      "item6": { "label": "غرفة ألعاب للأطفال", "icon": "/images/landing-page/lp-icons/kids-play.svg" },
+      "item7": { "label": "صالة ترفيه", "icon": "/images/landing-page/lp-icons/bbq.svg" },
+      "item8": { "label": "غرف يوغا", "icon": "/images/landing-page/lp-icons/fitness-area.svg" },
+      "item9": { "label": "مجلس إبداعي", "icon": "/images/landing-page/lp-icons/meeting.svg" }
+    }
+  },
+
+  "floorPlans": {
+    "title": "المخطط",
+    "oneBed": "غرفة نوم واحدة",
+    "twoBed": "غرفتا نوم",
+    "threeBed": "ثلاث غرف نوم",
+    "fiveBed": "خمس غرف نوم",
+    "download": "تحميل المخططات"
+  }
+},
+"bloom-living-almeria": {
+  "hero": {
+    "heading": "بلوم ليفينغ - الميريا",
+    "sub": "مجتمع سكني عصري في مدينة زايد",
+    "description": "بلوم ليفينغ – الميريا هو مجتمع سكني مخطط بعناية في مدينة زايد بالقرب من مطار زايد الدولي. يضم فللًا واسعة صُممت حول الطبيعة، وسهولة الاتصال، ونمط حياة متوازن في أبوظبي.",
+    "cta": "حمّل الكتيّب"
+  },
+
+  "usp": {
+    "item1": { "title": "3 - 6 غرف", "desc": "فلل" },
+    "item2": { "title": "40/60", "desc": "خطة سداد" },
+    "item3": { "title": "3.7 مليون درهم", "desc": "ابتداءً من" },
+    "item4": { "title": "الربع الرابع 2027", "desc": "التسليم" },
+    "item5": { "title": "10%", "desc": "دفعة أولى" },
+    "item6": { "title": "مستقلة", "desc": "فلل" }
+  },
+
+  "about": {
+    "heading": "بلوم ليفينغ - الميريا",
+    "subheading": "عن المشروع",
+    "description": "بلوم ليفينغ – الميريا هو جزء من مجتمع متكامل يضم فللًا وتاون هاوس وشققًا سكنية. صُمم المشروع لتعزيز سهولة المشي والرفاهية، ويضم حدائق مترابطة، ومسارات للدراجات، وبحيرة مركزية، ونادٍ اجتماعي، ومتاجر ومطاعم، ومدارس، ودور عبادة، ليشكّل وجهة سكنية متكاملة تلبي جميع احتياجات الحياة العصرية.",
+    "cta": "حمّل الكتيّب"
+  },
+
+  "gallery": {
+    "title": "المعرض",
+    "prev": "السابق",
+    "next": "التالي"
+  },
+
+  "amenities": {
+    "title": "مرافق أسلوب الحياة في بلوم ليفينغ",
+    "desc": "مجموعة متكاملة من المرافق المصممة لدعم العافية والترفيه والحياة المجتمعية لجميع أفراد العائلة.",
+    "cta": "تواصل معنا الآن!",
+    "items": {
+      "item1": { "label": "نادي رياضي وساونا", "icon": "/images/landing-page/lp-icons/shared-gym.svg" },
+      "item2": { "label": "أمن على مدار الساعة", "icon": "/images/landing-page/lp-icons/security24-7.svg" },
+      "item3": { "label": "مسارات للمشي والركض", "icon": "/images/landing-page/lp-icons/fitness-area.svg" },
+      "item4": { "label": "بحيرة مركزية", "icon": "/images/landing-page/lp-icons/water-front.svg" },
+      "item5": { "label": "متاجر ومطاعم", "icon": "/images/landing-page/lp-icons/retail.svg" },
+      "item6": { "label": "دور عبادة", "icon": "/images/landing-page/lp-icons/mosque-1.svg" }
+    }
+  },
+
+  "floorPlans": {
+    "title": "المخطط",
+    "threeBed": "ثلاث غرف نوم",
+    "fourBed": "أربع غرف نوم",
+    "fiveBed": "خمس غرف نوم",
+    "sixBed": "ست غرف نوم",
+    "download": "تحميل المخططات"
+  }
+}
   },
   "InquiryForm": {
     "title": "أخبرنا إن كنت مهتمًا!",

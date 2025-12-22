@@ -1,9 +1,10 @@
 // src/app/[locale]/project/lp/[lpSlug]/_components/GallerySection.tsx
 "use client";
 
-import { useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
+import Lightbox from "./Lightbox";
 
 type Props = {
   images: string[];
@@ -40,21 +41,68 @@ export default function GallerySection({
   const prevLabel = t ? safeTWithNs(t, ns!, "prev", "Previous") : "Previous";
   const nextLabel = t ? safeTWithNs(t, ns!, "next", "Next") : "Next";
 
-  const rowA = split === "alternate" ? images.filter((_, i) => i % 2 === 0)
-                                     : images.slice(0, Math.ceil(images.length / 2));
-  const rowB = split === "alternate" ? images.filter((_, i) => i % 2 === 1)
-                                     : images.slice(Math.ceil(images.length / 2));
+  const allImages = useMemo(() => images, [images]);
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (src: string) => {
+    const idx = allImages.indexOf(src);
+    setLightboxIndex(idx >= 0 ? idx : 0);
+    setLightboxOpen(true);
+  };
+
+  const rowA =
+    split === "alternate"
+      ? images.filter((_, i) => i % 2 === 0)
+      : images.slice(0, Math.ceil(images.length / 2));
+
+  const rowB =
+    split === "alternate"
+      ? images.filter((_, i) => i % 2 === 1)
+      : images.slice(Math.ceil(images.length / 2));
 
   const r1 = useRowScroller();
   const r2 = useRowScroller();
 
   return (
-    <section id={sectionId} dir={rtl ? "rtl" : "ltr"} className={clsx("w-full space-y-6", className)}>
-      <h2 className="text-center text-3xl font-semibold text-orange-600">{title}</h2>
+    <>
+      <section
+        id={sectionId}
+        dir={rtl ? "rtl" : "ltr"}
+        className={clsx("w-full space-y-6", className)}
+      >
+        <h2 className="text-center text-3xl font-semibold text-orange-600">
+          {title}
+        </h2>
 
-      <SliderRow images={rowA} scroller={r1} prevLabel={prevLabel} nextLabel={nextLabel} rtl={rtl} />
-      <SliderRow images={rowB} scroller={r2} prevLabel={prevLabel} nextLabel={nextLabel} rtl={rtl} />
-    </section>
+        <SliderRow
+          images={rowA}
+          scroller={r1}
+          prevLabel={prevLabel}
+          nextLabel={nextLabel}
+          rtl={rtl}
+          onImageClick={openLightbox}
+        />
+
+        <SliderRow
+          images={rowB}
+          scroller={r2}
+          prevLabel={prevLabel}
+          nextLabel={nextLabel}
+          rtl={rtl}
+          onImageClick={openLightbox}
+        />
+      </section>
+
+      {lightboxOpen && (
+        <Lightbox
+          images={allImages}
+          startIndex={lightboxIndex}
+          onClose={() => setLightboxOpen(false)}
+        />
+      )}
+    </>
   );
 }
 
@@ -64,12 +112,14 @@ function SliderRow({
   prevLabel,
   nextLabel,
   rtl = false,
+  onImageClick,
 }: {
   images: string[];
   scroller: ReturnType<typeof useRowScroller>;
   prevLabel: string;
   nextLabel: string;
   rtl?: boolean;
+  onImageClick: (src: string) => void;
 }) {
   return (
     <div className="relative">
@@ -82,31 +132,76 @@ function SliderRow({
         )}
       >
         {images.map((src, i) => (
-          <figure key={i} className={clsx("snap-start shrink-0", "min-w-[90%] sm:min-w-[60%] md:min-w-[45%] lg:min-w-[32%]")}>
+          <figure
+            key={i}
+            className={clsx(
+              "snap-start shrink-0",
+              "min-w-[90%] sm:min-w-[60%] md:min-w-[45%] lg:min-w-[32%]"
+            )}
+          >
             <img
               src={src}
               alt=""
               loading="lazy"
-              className={clsx("w-full object-cover", "h-[240px] md:h-[320px]", "rounded-[4px] border border-[rgba(39,41,100,0.2)]")}
+              onClick={() => onImageClick(src)}
+              className={clsx(
+                "w-full object-cover cursor-zoom-in",
+                "h-[240px] md:h-[320px]",
+                "rounded-[4px] border border-[rgba(39,41,100,0.2)]"
+              )}
             />
           </figure>
         ))}
       </div>
-      <Arrow side={rtl ? "right" : "left"} onClick={scroller.prev} label={prevLabel} />
-      <Arrow side={rtl ? "left" : "right"} onClick={scroller.next} label={nextLabel} />
+
+      <Arrow
+        side={rtl ? "right" : "left"}
+        onClick={scroller.prev}
+        label={prevLabel}
+      />
+      <Arrow
+        side={rtl ? "left" : "right"}
+        onClick={scroller.next}
+        label={nextLabel}
+      />
     </div>
   );
 }
 
-function Arrow({ side, onClick, label }: { side: "left" | "right"; onClick: () => void; label: string }) {
+function Arrow({
+  side,
+  onClick,
+  label,
+}: {
+  side: "left" | "right";
+  onClick: () => void;
+  label: string;
+}) {
   const pos = side === "left" ? "left-2" : "right-2";
-  const path = side === "left"
-    ? "M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-    : "M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z";
+  const path =
+    side === "left"
+      ? "M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+      : "M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z";
+
   return (
-    <button type="button" aria-label={label} onClick={onClick}
-      className={clsx("absolute top-1/2 -translate-y-1/2 z-10", pos, "rounded-full bg-white/90 backdrop-blur shadow p-2 hover:bg-white", "hidden sm:inline-flex")}>
-      <svg viewBox="0 0 24 24" className="h-6 w-6 text-[#272964]" fill="currentColor"><path d={path} /></svg>
+    <button
+      type="button"
+      aria-label={label}
+      onClick={onClick}
+      className={clsx(
+        "absolute top-1/2 -translate-y-1/2 z-10",
+        pos,
+        "rounded-full bg-white/90 backdrop-blur shadow p-2 hover:bg-white",
+        "hidden sm:inline-flex"
+      )}
+    >
+      <svg
+        viewBox="0 0 24 24"
+        className="h-6 w-6 text-[#272964]"
+        fill="currentColor"
+      >
+        <path d={path} />
+      </svg>
     </button>
   );
 }

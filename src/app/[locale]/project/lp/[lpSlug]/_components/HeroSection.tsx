@@ -45,7 +45,7 @@ export default function HeroSection({
             {topSlot}
           </div>
         )}
-        <div className="container mx-auto h-full px-4 pb-6">
+        <div className="container mx-auto h-full px-4 pb-6 md:mt-12">
           <div className="grid h-full grid-cols-1 gap-6 lg:grid-cols-12">
             <div className="lg:col-span-7 flex items-center">
               <div className="text-white pb-4">
@@ -62,7 +62,7 @@ export default function HeroSection({
                 )}
               </div>
             </div>
-            <div className="lg:col-span-5 flex items-center justify-end">
+            <div className="lg:col-span-5 flex items-center justify-center">
               {rightSlot}
             </div>
           </div>

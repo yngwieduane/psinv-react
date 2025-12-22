@@ -21,12 +21,12 @@ export default function MainNavbar({ locale }: { locale: string }) {
   return (
     <nav className="w-full text-white">
       <div className="container mx-auto px-4 py-3 lg:py-4 flex items-center">
-        <div className="shrink-0">
+        {/* <div className="shrink-0">
           <Link href={`/${locale}`}>
             <img src="/images/logo-psi-white.svg" alt="PSI Logo" className="h-8 w-auto" />
           </Link>
-        </div>
-        <div className="flex-1 hidden lg:flex justify-center">
+        </div> */}
+        {/* <div className="flex-1 hidden lg:flex justify-center">
           <ul className="flex items-center gap-8">
             {items.map(item => (
               <li key={item.id}>
@@ -36,10 +36,10 @@ export default function MainNavbar({ locale }: { locale: string }) {
               </li>
             ))}
           </ul>
-        </div>
-        <div className="hidden lg:flex items-center gap-4 shrink-0">
+        </div> */}
+        {/* <div className="hidden lg:flex items-center gap-4 shrink-0">
           <LanguageSwitch current={locale} />
-        </div>
+        </div> */}
 
         <button
           onClick={() => setOpen(!open)}

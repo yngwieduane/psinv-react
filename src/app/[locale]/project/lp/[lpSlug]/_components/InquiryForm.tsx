@@ -274,13 +274,13 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
   };
 
   /* ---------------- wrapper style by variant ---------------- */
-  const wrapper = clsx(
-    "rounded-2xl p-6 md:p-8 shadow-xl",
-    variant === "glass"
-      ? "bg-gradient-to-b from-black/40 via-black/35 to-black/30 backdrop-blur-md text-white"
-      : "bg-[#2B2F66] text-white",
-    className
-  );
+const wrapper = clsx(
+  "w-full max-w-md rounded-lg p-6 md:p-8 shadow-2xl",
+  variant === "glass"
+    ? "bg-white/10 backdrop-blur-md border border-white/20 text-white"
+    : "bg-[#2B2F66] text-white",
+  className
+);
 
   const isRTL = locale === "ar";
 
