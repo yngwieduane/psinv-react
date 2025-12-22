@@ -1,7 +1,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
 
 // Configuration for PSI Real Estate Firebase Project
 const firebaseConfig = {
@@ -16,4 +16,16 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+
+// Enable offline persistence
+if (typeof window !== 'undefined') {
+  enableIndexedDbPersistence(db).catch((err) => {
+    if (err.code == 'failed-precondition') {
+      console.warn('Firestore persistence failed-precondition');
+    } else if (err.code == 'unimplemented') {
+      console.warn('Firestore persistence unimplemented');
+    }
+  });
+}
+
 export const auth = getAuth(app);
