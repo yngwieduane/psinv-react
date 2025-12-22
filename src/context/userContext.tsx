@@ -25,7 +25,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [user, setUser] = useState<User | null>(null);
   const [favorites, setFavorites] = useState<SavedItem[]>([]);
   const [compareList, setCompareList] = useState<SavedItem[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // Load from local storage on mount
   // Load from local storage on mount
@@ -38,7 +38,8 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     // Listen for auth state changes
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      setLoading(true);
+      console.log("Auth State Changed:", currentUser ? "User found" : "No user");
+
       if (currentUser) {
         // User is signed in
         const userData: User = {
@@ -48,25 +49,48 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           avatar: currentUser.photoURL || ''
         };
         setUser(userData);
+        console.log("User Set:", userData.email);
 
-        // Sync with firestore quietly
+        // Turn off loading immediately so UI renders
+        setLoading(false);
+        console.log("Loading set to false (User found)");
+
+        // Sync with firestore in background (don't await)
         try {
           const userRef = doc(db, "users", currentUser.uid);
-          await setDoc(userRef, {
+          setDoc(userRef, {
             ...userData,
             lastLogin: new Date().toISOString(),
-            role: 'Client' // Default role, specific logic might be needed if roles are critical
-          }, { merge: true });
+            role: 'Client'
+          }, { merge: true }).catch(err => console.error("Firestore sync error:", err));
         } catch (e) {
-          console.error("Error auto-syncing user to firestore", e);
+          console.error("Error initiating firestore sync", e);
         }
 
       } else {
         // User is signed out
         setUser(null);
+        console.log("User Set: null");
+        setLoading(false);
+        console.log("Loading set to false (No user)");
       }
-      setLoading(false);
     });
+
+    // Failsafe: If Firebase doesn't respond in 4 seconds, verify locally
+    const timer = setTimeout(() => {
+      setLoading(prev => {
+        if (prev) {
+          console.warn("Auth check timed out, forcing loading false");
+          return false;
+        }
+        return prev;
+      });
+    }, 4000);
+
+    return () => {
+      unsubscribe();
+      clearTimeout(timer);
+    };
 
     return () => unsubscribe();
   }, []);
