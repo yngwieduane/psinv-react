@@ -9,6 +9,7 @@ type HeroSectionProps = {
   description?: string;
   ctaText?: string;
   ctaHref?: string;
+  ctaSlot?: React.ReactNode;
   img: string;
   rightSlot?: React.ReactNode;
   topSlot?: React.ReactNode;
@@ -22,6 +23,7 @@ export default function HeroSection({
   description,
   ctaText,
   ctaHref,
+  ctaSlot,
   img,
   rightSlot,
   topSlot,
@@ -52,14 +54,18 @@ export default function HeroSection({
                 <h1 className="text-3xl md:text-5xl font-bold">{heading}</h1>
                 {sub && <p className="mt-3 max-w-[640px] text-lg">{sub}</p>}
                 {description && <p className="mt-3 max-w-[640px]">{description}</p>}
-                {ctaText && (
-                  <a
-                    href={ctaHref || "#"}
-                    className="inline-block mt-4 rounded bg-orange-600 px-5 py-3 text-white hover:bg-orange-700"
-                  >
-                    {ctaText}
-                  </a>
-                )}
+                <div className="mt-4">
+                  {ctaSlot ? (
+                    ctaSlot
+                  ) : ctaText ? (
+                    <a
+                      href={ctaHref || "#"}
+                      className="inline-block rounded bg-orange-600 px-5 py-3 text-white hover:bg-orange-700"
+                    >
+                      {ctaText}
+                    </a>
+                  ) : null}
+                </div>
               </div>
             </div>
             <div className="lg:col-span-5 flex items-center justify-center">

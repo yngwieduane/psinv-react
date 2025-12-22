@@ -104,11 +104,11 @@ export default function LandingFooter({
     className
   );
   return (
-    <footer dir={dir} className={wrapper}>
+    <footer dir={dir} className={wrapper} id="contact">
       <div className="mx-auto w-full max-w-7xl px-4 py-14">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="self-start">
-            <h2 className="whitespace-pre-line text-3xl md:text-5xl font-semibold leading-tight">
+            <h2 className="whitespace-pre-line text-2xl md:text-3xl font-semibold leading-tight">
               {headingText}
             </h2>
             {addressText && (

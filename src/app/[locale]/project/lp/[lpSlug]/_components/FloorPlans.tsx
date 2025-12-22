@@ -4,6 +4,9 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import InquiryModal from "./InquiryModal";
+import type { CRMMeta } from "../LandingConfig";
+
 
 /* =========================
    Types (self-contained)
@@ -106,7 +109,8 @@ export default function FloorPlans({
   groups = [],
   files = [],
   sectionId = "floor-plans",
-  ns, // e.g. "LandingPages.sama-yas.floorPlans"
+  ns,
+  crm,
 }: {
   title?: string;
   heroImage?: string;
@@ -114,6 +118,7 @@ export default function FloorPlans({
   files?: FileLink[];
   sectionId?: string;
   ns?: string;
+  crm?: CRMMeta;
 }) {
   const t = ns ? useTranslations(ns) : null;
 
@@ -239,13 +244,23 @@ export default function FloorPlans({
               )}
               {(current as any)?.pdfUrl && (
                 <div className="mt-4 w-full flex justify-center">
-                  <a
-                    href={(current as any).pdfUrl}
-                    download
-                    className="inline-flex items-center gap-2 text-[#111954] underline underline-offset-4 hover:opacity-80"
-                  >
-                    <span>{safeT(t, "download", "Download floor plans")}</span>
-                  </a>
+              {crm ? (
+                <InquiryModal
+                  crm={crm}
+                  triggerText={safeT(t, "download", "Download floor plans")}
+                  triggerClassName="inline-flex items-center gap-2 text-[#111954] underline underline-offset-4 hover:opacity-80"
+                  variant="glass"
+                />
+              ) : (
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 text-[#111954] underline underline-offset-4 opacity-60 cursor-not-allowed"
+                  disabled
+                  title="CRM not configured for this landing page"
+                >
+                  {safeT(t, "download", "Download floor plans")}
+                </button>
+              )}
                 </div>
               )}
             </div>

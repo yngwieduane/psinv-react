@@ -19,6 +19,7 @@ import { ArrowRight, ChevronDown, Globe, Heart, Menu, Search, UserIcon, X } from
 import { useUser } from '@/context/userContext';
 import { useLocale, useTranslations } from 'next-intl';
 
+
 export type Page = '/en' | '/ar' | '/ru' | '/du' | '/cn';
 
 const company = [
@@ -218,7 +219,11 @@ const NAV_GROUPS = [
             {
                 title: 'Abu Dhabi',
                 items: [
-                    { label: 'Reem Hills', page: 'reem-hills' },
+                    { label: "Sama Yas", lpSlug: "sama-yas" },
+                    { label: "Yas Riva", lpSlug: "yas-riva" },
+                    { label: "Manarat Living – Saadiyat", lpSlug: "manarat-living-saadiyat" },
+                    { label: "The Arthouse", lpSlug: "the-arthouse" },
+                    { label: "Bloom Living – Almeria", lpSlug: "bloom-living-almeria" },
                 ]
             }
         ]
@@ -270,7 +275,7 @@ const NAV_GROUPS = [
             {
                 title: 'By Developer',
                 items: [
-                    { label: 'Aldar Properties', page: 'developers' },
+                    { label: 'Aldar Properties',  href: "/developer/aldar-properties-pjsc" },
                     { label: 'Emaar', page: 'developers' },
                     { label: 'Sobha Realty', page: 'developers' },
                 ]
@@ -284,9 +289,9 @@ const NAV_GROUPS = [
             {
                 title: 'Valuation & Finance',
                 items: [
-                    { label: 'Mortgage Calculator', page: 'mortgage-calculator' },
+                    { label: 'Mortgage Calculator', href: "/mortgage-calculator" },
                     { label: 'Villa Cost Calculator', page: 'villa-calculator' },
-                    { label: 'Property Valuation', page: 'list-property' },
+                    { label: 'Property Valuation', href: "/list-your-property" },
                 ]
             },
             {
@@ -306,18 +311,18 @@ const NAV_GROUPS = [
             {
                 title: 'About PSI',
                 items: [
-                    { label: 'Our Story', page: 'about' },
-                    { label: 'Careers', page: 'careers' },
-                    { label: 'Awards', page: 'about' },
+                    { label: 'Our Story', href: "/about-us" },
+                    { label: 'Careers', href: "/careers" },
+                    { label: 'Awards', page: 'awards' },
                     { label: 'Our Agents', page: 'agents' }, // Added Agent Link
                 ]
             },
             {
                 title: 'Media',
                 items: [
-                    { label: 'Market Insights', page: 'articles' },
-                    { label: 'Newsletters', page: 'newsletters' },
-                    { label: 'Contact Us', page: 'contact' },
+                    { label: 'Market Insights', page: 'market-insight' },
+                    { label: 'Newsletters', href: "/newsletter" },
+                    { label: 'Contact Us', href: "/contact-us" },
                 ]
             }
         ]
@@ -365,6 +370,17 @@ const components: { title: string; href: string; description: string }[] = [
 
 function classNames(...classes: (string | false | null | undefined)[]) {
     return classes.filter(Boolean).join(' ');
+}
+type MenuItem = {
+  label: string;
+  href?: string;
+  lpSlug?: string;
+};
+
+function resolveHref(item: MenuItem) {
+  if (item.href) return item.href;
+  if (item.lpSlug) return `/project/lp/${item.lpSlug}`;
+  return "#";
 }
 
 const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
@@ -492,10 +508,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 {/* Right Actions */}
                 <div className={`hidden lg:flex items-center gap-6 ${linkColor}`}>
                     <button onClick={modalHandler} className="hover:text-secondary transition-colors cursor-pointer"><Search size={20} /></button>
-                    <Link href="/favorites" aria-label="Favorites"  className="hover:text-secondary transition-colors relative">
+                    <button className="hover:text-secondary transition-colors relative">
                         <Heart size={20} />
                         {favorites.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}
-                    </Link>
+                    </button>
                     <div className="h-4 w-px bg-current opacity-30"></div>
                     {user ? (
                         <button onClick={logout} className="text-xs font-bold uppercase hover:text-secondary">Logout</button>
@@ -550,11 +566,13 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                         <ul className="space-y-3">
                                             {col.items.map((item, i) => (
                                                 <li key={i}>
-                                                    <button 
+                                                        <Link
+                                                        href={resolveHref(item as any)}
                                                         className="text-gray-600 hover:text-secondary text-sm font-medium transition-colors hover:pl-1 rtl:hover:pr-1"
-                                                    >
+                                                        onClick={() => setHoveredMenu(null)} // closes menu after click
+                                                        >
                                                         {item.label}
-                                                    </button>
+                                                        </Link>
                                                 </li>
                                             ))}
                                         </ul>

@@ -13,6 +13,7 @@ import AmenitiesSection from "./_components/AmenitiesSection";
 import FloorPlans from "./_components/FloorPlans";
 import LocationMap from "./_components/LocationMap";
 import LandingFooter from "./_components/LandingFooter";
+import InquiryModal from "./_components/InquiryModal";
 
 type LpSlug = keyof typeof landingConfigs;
 type Params = { locale: string; lpSlug: LpSlug };
@@ -212,11 +213,24 @@ export default async function Page({ params }: PageProps) {
         description={description}
         ctaText={ctaText}
         topSlot={<MainNavbar locale={locale} />}
-        rightSlot={
-          crmMeta ? (
-            <InquiryForm crm={crmMeta} variant={heroVariant} />
-          ) : null
-        }
+          ctaSlot={
+    crmMeta ? (
+      <InquiryModal
+        crm={crmMeta}
+        variant={heroVariant}
+        triggerText={ctaText ?? "Download Brochure"}
+        triggerClassName="inline-block rounded bg-orange-600 px-5 py-3 text-white hover:bg-orange-700"
+      />
+    ) : (
+      <a
+        href="#"
+        className="inline-block rounded bg-orange-600 px-5 py-3 text-white hover:bg-orange-700"
+      >
+        {ctaText ?? "Download Brochure"}
+      </a>
+    )
+  }
+       rightSlot={crmMeta ? <InquiryForm crm={crmMeta} variant={heroVariant} /> : null}
       />
       {cfg.sections.includes("usp") && uspItems.length > 0 && (
         <UspSection items={uspItems} />
@@ -255,6 +269,7 @@ export default async function Page({ params }: PageProps) {
       )}
       {cfg.sections.includes("floor-plan") && floorCfg && (
         <FloorPlans
+          crm={crmMeta}   // ✅ ADD THIS
           title="Floor Plans"
           heroImage={floorCfg.heroImage}
           groups={floorCfg.groups}
@@ -263,6 +278,7 @@ export default async function Page({ params }: PageProps) {
           ns={floorCfg.ns}
         />
       )}
+
       {cfg.sections.includes("location") && mapEmbedUrl && (
         <LocationMap
           mapEmbedUrl={mapEmbedUrl}
