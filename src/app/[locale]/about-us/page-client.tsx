@@ -117,7 +117,6 @@ const coreValues = [
 const AboutPageClient = () => {
     return (
         <>
-            {/* Hero Section */}
             <div className="relative h-[60vh] flex items-center justify-center">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
@@ -129,16 +128,14 @@ const AboutPageClient = () => {
                     <h1 className={`text-5xl md:text-7xl font-bold mb-4 tracking-widest ${outfit.className}`}>ABOUT US</h1>
                     <p className="text-sm uppercase tracking-widest text-gray-300 font-medium">Home &gt; About Us</p>
                 </div>
-            </div>
-            {/* Intro Text */}
+            </div>            
             <section className="py-24 container mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
                     <div className="md:col-span-4 relative">
                         <h4 className={`text-5xl mb-2 absolute -top-8 -left-2 z-10 transform -rotate-6 font-great-vibes text-gray-800 ${greatVibes.className}`}>About</h4>
                         <h2 className={`text-4xl md:text-5xl font-serif font-bold text-primary uppercase leading-none pt-4 relative z-0 ${outfit.className}`}>
                             PROPERTY SHOP<br />INVESTMENT
-                        </h2>
-                        {/* <div className="w-20 h-1 bg-secondary mt-6"></div> */}
+                        </h2>                        
                     </div>
                     <div className={`md:col-span-8 text-gray-600 font-thin text-base leading-relaxed space-y-6 text-justify ${opensans.className}`}>
                         <p className="font-light">
@@ -154,7 +151,6 @@ const AboutPageClient = () => {
                 </div>
             </section>
 
-            {/* Office Images Strip */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-1 px-1">
                 <div className="overflow-hidden h-72">
                     <img src="/assets/images/about-us/psi-office.webp" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" alt="Office" />
@@ -289,7 +285,6 @@ const AboutPageClient = () => {
                 </div>
             </section>
 
-
             <section className="w-full bg-secondary-color py-10 text-gray-500">
                 <div className="max-w-(--breakpoint-xl) mx-auto bg-center bg-cover py-10 px-5" style={{ backgroundImage: "url('/assets/images/about-us/pattern-1.png')", }}>
                     {/* Heading */}
@@ -302,11 +297,9 @@ const AboutPageClient = () => {
                             PARTNER
                         </h3>
                     </div>
-
-                    {/* script for counter working */}
+                    
                     <AboutCounter />
-
-                    {/* Counter Section */}
+                    
                     <div className="grid grid-cols-3 md:grid-cols-4 gap-6 text-center counter1">
                         <div>
                             <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="150">  0 </span>K</h4>
@@ -324,9 +317,7 @@ const AboutPageClient = () => {
                             <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="10"> 0</span></h4>
                             <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>Location Worldwide</p>
                         </div>
-                    </div>
-
-                    {/* Second Counter Section */}
+                    </div>                   
                     <div className="grid grid-cols-3 gap-6 text-center mt-10 counter2">
                         <div>
                             <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="17"> 0</span></h4>
@@ -341,8 +332,7 @@ const AboutPageClient = () => {
                             <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>Expert Employees</p>
                         </div>
                     </div>
-
-                    {/* Mobile Only - Location Worldwide */}
+                   
                     <div className="mt-10 text-center md:hidden">
                         <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="10"> 0 </span></h4>
                         <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>Location Worldwide</p>
@@ -414,7 +404,6 @@ const AboutPageClient = () => {
                     </div>
                 </div>
             </section>
-
             <section className="w-full my-4 locationsSection">
                 <LocationsSection />
             </section>
