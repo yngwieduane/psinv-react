@@ -416,7 +416,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     }, []);
 
     // Determine if the current page has a dark hero section where the navbar should start transparent with white text
-    const isDarkHeroPage = ['/en', '/ar','/ru','/du','/cn'].includes(currentPage);
+    const isDarkHeroPage = ['/en', '/ar','/ru','/du','/cn', '/en/about-us'].includes(currentPage);
     // Updated transparency: Clear at top, frosted glass on scroll
     const navbarClasses = isScrolled || hoveredMenu
         ? 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20'
