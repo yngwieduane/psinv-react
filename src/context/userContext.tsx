@@ -19,6 +19,11 @@ interface UserContextType {
   loading: boolean;
 }
 
+// Helper to remove undefined values which cause Firestore errors
+const sanitizeData = (data: any) => {
+  return JSON.parse(JSON.stringify(data));
+};
+
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -54,6 +59,30 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         // Turn off loading immediately so UI renders
         setLoading(false);
         console.log("Loading set to false (User found)");
+
+        // Fetch user data from Firestore (Favorites & Compare)
+        try {
+          console.log("Fetching user data from Firestore...");
+          const userRef = doc(db, "users", currentUser.uid);
+          const userSnap = await getDoc(userRef);
+
+          if (userSnap.exists()) {
+            const data = userSnap.data();
+            console.log("User data fetched:", data);
+            if (data.favorites) {
+              setFavorites(data.favorites);
+              console.log("Favorites restored from Firestore:", data.favorites.length);
+            }
+            if (data.compareList) {
+              setCompareList(data.compareList);
+              console.log("Compare list restored from Firestore:", data.compareList.length);
+            }
+          } else {
+            console.log("No user document found in Firestore");
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
 
         // Sync with firestore in background (don't await)
         try {
@@ -130,32 +159,74 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     });
   };
 
-  const toggleFavorite = (item: SavedItem) => {
+  const toggleFavorite = async (item: SavedItem) => {
     if (!user) {
       alert("Please login to save favorites.");
       login();
       return;
     }
-    setFavorites(prev => {
-      const exists = prev.find(i => i.id === item.id);
-      if (exists) return prev.filter(i => i.id !== item.id);
-      return [...prev, item];
-    });
+
+    // Calculate new list based on current state
+    let newFavorites: SavedItem[];
+    if (favorites.find(i => i.id === item.id)) {
+      newFavorites = favorites.filter(i => i.id !== item.id);
+    } else {
+      newFavorites = [...favorites, item];
+    }
+
+    setFavorites(newFavorites);
+
+    // Sync to Firestore
+    try {
+      // Sanitize to remove undefined values
+      const safeFavorites = sanitizeData(newFavorites);
+      console.log("Syncing favorites to Firestore...", safeFavorites.length);
+
+      const userRef = doc(db, "users", user.id);
+      await setDoc(userRef, { favorites: safeFavorites }, { merge: true });
+      console.log("Favorites synced successfully to Firestore");
+    } catch (e) {
+      console.error("Error syncing favorites to Firestore", e);
+    }
   };
 
-  const addToCompare = (item: SavedItem) => {
-    setCompareList(prev => {
-      if (prev.find(i => i.id === item.id)) return prev;
-      if (prev.length >= 3) {
-        alert("You can compare up to 3 items only.");
-        return prev;
+  const addToCompare = async (item: SavedItem) => {
+    if (compareList.find(i => i.id === item.id)) return;
+    if (compareList.length >= 3) {
+      alert("You can compare up to 3 items only.");
+      return;
+    }
+
+    const newCompareList = [...compareList, item];
+    setCompareList(newCompareList);
+
+    // Sync to Firestore
+    if (user) {
+      try {
+        const safeCompareList = sanitizeData(newCompareList);
+        const userRef = doc(db, "users", user.id);
+        await setDoc(userRef, { compareList: safeCompareList }, { merge: true });
+        console.log("Compare list synced successfully!");
+      } catch (e) {
+        console.error("Error syncing compare list to Firestore", e);
       }
-      return [...prev, item];
-    });
+    }
   };
 
-  const removeFromCompare = (id: string) => {
-    setCompareList(prev => prev.filter(i => i.id !== id));
+  const removeFromCompare = async (id: string) => {
+    const newCompareList = compareList.filter(i => i.id !== id);
+    setCompareList(newCompareList);
+
+    // Sync to Firestore
+    if (user) {
+      try {
+        const safeCompareList = sanitizeData(newCompareList);
+        const userRef = doc(db, "users", user.id);
+        await setDoc(userRef, { compareList: safeCompareList }, { merge: true });
+      } catch (e) {
+        console.error("Error syncing compare list to Firestore", e);
+      }
+    }
   };
 
   const isFavorite = (id: string) => !!favorites.find(i => i.id === id);
