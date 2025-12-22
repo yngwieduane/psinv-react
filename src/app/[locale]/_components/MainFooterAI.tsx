@@ -81,7 +81,7 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
           <div>
             <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_company')}</h3>
             <ul className="space-y-4 text-sm text-gray-800 font-light">
-              <li><button onClick={() => onNavigate('about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_about')}</button></li>
+              <li><Link href="/about-us" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_about')}</Link></li>
               <li><button onClick={() => onNavigate('about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_team')}</button></li>
               <li><button onClick={() => onNavigate('careers')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_careers')}</button></li>
               <li><button onClick={() => onNavigate('about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_awards')}</button></li>

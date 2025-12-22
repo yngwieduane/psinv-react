@@ -306,9 +306,9 @@ const NAV_GROUPS = [
             {
                 title: 'About PSI',
                 items: [
-                    { label: 'Our Story', page: 'about' },
+                    { label: 'Our Story', page: 'about-us' },
                     { label: 'Careers', page: 'careers' },
-                    { label: 'Awards', page: 'about' },
+                    { label: 'Awards', page: 'about-us#awards' },
                     { label: 'Our Agents', page: 'agents' }, // Added Agent Link
                 ]
             },
@@ -381,6 +381,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     const currMenuRef = useRef<HTMLDivElement>(null);
     const t = useTranslations('LocaleSwitcher');
 
+    const locale = useLocale();
+
     const { user, login, logout, favorites, compareList } = useUser();
 
     const modalHandler = () => {
@@ -415,7 +417,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
 
     // Determine if the current page has a dark hero section where the navbar should start transparent with white text
-    const isDarkHeroPage = ['/en', '/ar','/ru','/du','/cn'].includes(currentPage);
+    const isDarkHeroPage = ['/en', '/ar','/ru','/du','/cn', '/en/about-us'].includes(currentPage);
     // Updated transparency: Clear at top, frosted glass on scroll
     const navbarClasses = isScrolled || hoveredMenu
         ? 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20' 
@@ -474,6 +476,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 {/* Desktop Links */}
                 <div className="hidden lg:flex items-center space-x-10 rtl:space-x-reverse h-full">
                     {NAV_GROUPS.map((group) => (
+                        
                     <div 
                         key={group.label} 
                         className="h-full flex items-center py-2"
@@ -486,6 +489,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                         <ChevronDown size={10} className={`transform transition-transform duration-300 ${hoveredMenu === group.label ? 'rotate-180' : ''}`}/>
                         </button>
                     </div>
+                    
                     ))}
                 </div>
 
@@ -550,11 +554,11 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                         <ul className="space-y-3">
                                             {col.items.map((item, i) => (
                                                 <li key={i}>
-                                                    <button 
+                                                    <Link href={`/${item.page}`} 
                                                         className="text-gray-600 hover:text-secondary text-sm font-medium transition-colors hover:pl-1 rtl:hover:pr-1"
                                                     >
                                                         {item.label}
-                                                    </button>
+                                                    </Link>
                                                 </li>
                                             ))}
                                         </ul>
