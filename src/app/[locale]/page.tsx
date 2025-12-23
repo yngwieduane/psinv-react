@@ -1,5 +1,3 @@
-import SwiperSlider from "./_components/SwiperSliderHome";
-import MainNavbar from './_components/MainNavbar';
 import ListPropertyForm from './_components/ListPropertyForm';
 import WhyPSI from './_components/WhyPSI';
 import Calculator from'./mortgage-calculator/MortgageTabs';
@@ -9,10 +7,9 @@ import ReportDownloadSection from "../[locale]/_components/ReportDownloadSection
 import GoogleReviewSection from "./_components/GoogleReviewSection";
 import GetTheAppSection from "./_components/GetTheAppSection";
 
-import dynamic from "next/dynamic";
 import { Organization, WithContext } from "schema-dts";
 import { Audrey, BrittanySignature } from "@/utils/fonts";
-import { Montserrat, Open_Sans, Outfit } from "next/font/google";
+import { Montserrat, Outfit } from "next/font/google";
 import HomeBanner from "./_components/HomeBanner";
 import CitiesTab from "./_components/CitiesTab";
 
@@ -39,49 +36,6 @@ const outfit = Outfit({
   display: 'swap',
 })
 
-const awards = [
-  {
-      "title1":"EMAAR",
-      "title2":"ANNUAL BROKER",
-      "title3": "AWARDS - 2018",
-      "image": "emaar-2018.webp",
-  },
-  {
-      "title1":"ALDAR",
-      "title3": "AMBASSADOR - 2021",
-      "image": "aldar-2021.webp",
-  },
-  {
-      "title1":"ALDAR",
-      "title2":"TOP PERFORMING",
-      "title3": "Agency First Place - 2016",
-      "image": "aldar-2016.jpg",
-  },
-  {
-      "title1":"ALDAR",
-      "title2":"TOP PERFORMING",
-      "title3": "Agency First Place - 2022",
-      "image": "aldar-2022.jpg",
-  },
-  {
-      "title1":"ALDAR",
-      "title2":"TOP PERFORMING",
-      "title3": "Agency First Place - 2023",
-      "image": "aldar-2022.jpg",
-  },
-  {
-      "title1":"ALDAR",
-      "title2":"TOP PERFORMING",
-      "title3": "Agency First Place - 2023",
-      "image": "aldar-2022.jpg",
-  },
-  {
-      "title1":"IMKAN",
-      "title2":"TOP PERFORMING",
-      "title3": "Agency First Place - 2021",
-      "image": "imkan-2021.webp",
-  }
-];
 const partners = [
   {
       "title":"Aldar",
@@ -445,7 +399,7 @@ export default function HomePage() {
           </div>            
           <div className="w-full">
               <div className="container mx-auto px-4 md:px-8 relative mx-auto">
-                  <AwardSlider slides={awards} />
+                  <AwardSlider />
               </div>
           </div>            
         </div>

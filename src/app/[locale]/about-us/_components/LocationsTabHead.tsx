@@ -1,12 +1,12 @@
 'use client'
 
-import MainNavbarHeader from "../../_components/MainNavbarHeader";
+import LocationTabHeadContent from "./LocationTabHeadContent";
 
 const LocationsTabHead = ({data, visibleTab, setVisibleTab}: any) => {
 
     return(
         <>
-            <MainNavbarHeader 
+            <LocationTabHeadContent
                 data={data}
                 visibleTab={visibleTab}
                 setVisibleTab={setVisibleTab}

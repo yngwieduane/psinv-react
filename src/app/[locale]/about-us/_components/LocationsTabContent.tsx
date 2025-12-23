@@ -14,7 +14,6 @@ interface LocationsTabContentProps {
 export default function LocationsTabContent({cityCenter, locations, height}: LocationsTabContentProps) {
 
   const [selectedLocation, setSelectedLocation] = useState<ContactLocation | null>(null);
-
   const [mapRef, setMapRef] = useState<google.maps.Map | null> (null);
 
   const onMapLoad = useCallback((map: google.maps.Map) => {
@@ -30,9 +29,7 @@ export default function LocationsTabContent({cityCenter, locations, height}: Loc
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 relative md:h-[600px] w-full">
-      {/* Locations list */}
-      {/* case no location */}
+    <div className="flex flex-col md:flex-row gap-4 relative md:h-[600px] w-full">      
       {locations.length === 0 ? null : (        
         <div className="md:w-1/3 bg-white p-0 rounded shadow overflow-auto h-[530px] md:absolute md:right-[30px] z-50 md:top-1/2 md:transform md:-translate-y-1/2">        
           {locations.map((loc) => (
@@ -46,9 +43,8 @@ export default function LocationsTabContent({cityCenter, locations, height}: Loc
             </div>
           ))}
         </div>
-      )}      
-
-      {/* Map */}
+      )}
+      
       <div className={`w-full md:absolute  ${height}`}>
         <Map
           center={cityCenter}

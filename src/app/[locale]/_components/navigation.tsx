@@ -306,9 +306,9 @@ const NAV_GROUPS = [
             {
                 title: 'About PSI',
                 items: [
-                    { label: 'Our Story', page: 'about' },
+                    { label: 'Our Story', page: 'about-us' },
                     { label: 'Careers', page: 'careers' },
-                    { label: 'Awards', page: 'about' },
+                    { label: 'Awards', page: 'about-us#awards' },
                     { label: 'Our Agents', page: 'agents' }, // Added Agent Link
                 ]
             },
@@ -381,6 +381,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     const currMenuRef = useRef<HTMLDivElement>(null);
     const t = useTranslations('LocaleSwitcher');
 
+    const locale = useLocale();
+
     const { user, login, logout, favorites, compareList } = useUser();
 
     const modalHandler = () => {
@@ -413,9 +415,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
         };
     }, []);
 
-
     // Determine if the current page has a dark hero section where the navbar should start transparent with white text
-    const isDarkHeroPage = ['/en', '/ar', '/ru', '/du', '/cn'].includes(currentPage);
+    const isDarkHeroPage = ['/en', '/ar','/ru','/du','/cn', '/en/about-us'].includes(currentPage);
     // Updated transparency: Clear at top, frosted glass on scroll
     const navbarClasses = isScrolled || hoveredMenu
         ? 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20'
@@ -471,23 +472,23 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                         />
                     </Link>
 
-                    {/* Desktop Links */}
-                    <div className="hidden lg:flex items-center space-x-10 rtl:space-x-reverse h-full">
-                        {NAV_GROUPS.map((group) => (
-                            <div
-                                key={group.label}
-                                className="h-full flex items-center py-2"
-                                onMouseEnter={() => setHoveredMenu(group.label)}
-                            >
-                                <button
-                                    className={`text-sm font-bold tracking-widest uppercase hover:text-secondary transition-colors flex items-center gap-1 ${linkColor}`}
-                                >
-                                    {t(`${group.label.toLowerCase()}`)}
-                                    <ChevronDown size={10} className={`transform transition-transform duration-300 ${hoveredMenu === group.label ? 'rotate-180' : ''}`} />
-                                </button>
-                            </div>
-                        ))}
+                {/* Desktop Links */}
+                <div className="hidden lg:flex items-center space-x-10 rtl:space-x-reverse h-full">
+                    {NAV_GROUPS.map((group) => (
+                    <div 
+                        key={group.label} 
+                        className="h-full flex items-center py-2"
+                        onMouseEnter={() => setHoveredMenu(group.label)}
+                    >
+                        <button 
+                        className={`text-sm font-bold tracking-widest uppercase hover:text-secondary transition-colors flex items-center gap-1 ${linkColor}`}
+                        >
+                        {t(`${group.label.toLowerCase()}`)}
+                        <ChevronDown size={10} className={`transform transition-transform duration-300 ${hoveredMenu === group.label ? 'rotate-180' : ''}`}/>
+                        </button>
                     </div>
+                    ))}
+                </div>
 
                     {/* Right Actions */}
                     <div className={`hidden lg:flex items-center gap-6 ${linkColor}`}>
@@ -519,56 +520,56 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     </button>
                 </div>
 
-                {/* SLEEK MEGA MENU (Transparent Glass) - Desktop Only */}
-                <div
-                    className={`absolute top-full left-0 w-full bg-white/80 backdrop-blur-2xl border-t border-white/20 shadow-xl transition-all duration-300 ease-out overflow-hidden hidden lg:block ${hoveredMenu ? 'max-h-[500px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}
-                    onMouseEnter={() => setHoveredMenu(hoveredMenu)}
-                    onMouseLeave={() => setHoveredMenu(null)}
-                >
-                    <div className="container mx-auto px-12 py-8">
-                        {NAV_GROUPS.map((group) => (
-                            <div key={group.label} className={`${hoveredMenu === group.label ? 'block' : 'hidden'} animate-[fadeIn_0.3s_ease-out]`}>
-                                <div className="flex gap-12">
-
-                                    {/* Left: Elegant Featured Card */}
-                                    <div className="w-1/4 hidden xl:block">
-                                        <div className="rounded-lg h-64 overflow-hidden relative cursor-pointer group/promo">
-                                            <img src={group.image} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/promo:scale-110" alt="Promo" />
-                                            <div className="absolute inset-0 bg-black/30 group-hover/promo:bg-black/20 transition-colors"></div>
-                                            <div className="absolute bottom-6 left-6 text-white">
-                                                <span className="text-[10px] font-bold uppercase tracking-widest bg-secondary px-2 py-1 rounded mb-2 inline-block">Featured</span>
-                                                <h4 className="font-serif font-bold text-2xl">{group.label}</h4>
-                                                <div className="flex items-center gap-2 text-xs font-bold uppercase mt-2 opacity-0 group-hover/promo:opacity-100 transition-opacity transform translate-y-2 group-hover/promo:translate-y-0">
-                                                    Explore <ArrowRight size={12} />
-                                                </div>
-                                            </div>
+            {/* SLEEK MEGA MENU (Transparent Glass) - Desktop Only */}
+            <div 
+                className={`absolute top-full left-0 w-full bg-white/80 backdrop-blur-2xl border-t border-white/20 shadow-xl transition-all duration-300 ease-out overflow-hidden hidden lg:block ${hoveredMenu ? 'max-h-[500px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}
+                onMouseEnter={() => setHoveredMenu(hoveredMenu)} 
+                onMouseLeave={() => setHoveredMenu(null)}
+            >
+                <div className="container mx-auto px-12 py-8">
+                    {NAV_GROUPS.map((group) => (
+                    <div key={group.label} className={`${hoveredMenu === group.label ? 'block' : 'hidden'} animate-[fadeIn_0.3s_ease-out]`}>
+                        <div className="flex gap-12">
+                            
+                            {/* Left: Elegant Featured Card */}
+                            <div className="w-1/4 hidden xl:block">
+                                <div className="rounded-lg h-64 overflow-hidden relative cursor-pointer group/promo">
+                                    <img src={group.image} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/promo:scale-110" alt="Promo"/>
+                                    <div className="absolute inset-0 bg-black/30 group-hover/promo:bg-black/20 transition-colors"></div>
+                                    <div className="absolute bottom-6 left-6 text-white">
+                                        <span className="text-[10px] font-bold uppercase tracking-widest bg-secondary px-2 py-1 rounded mb-2 inline-block">Featured</span>
+                                        <h4 className="font-serif font-bold text-2xl">{group.label}</h4>
+                                        <div className="flex items-center gap-2 text-xs font-bold uppercase mt-2 opacity-0 group-hover/promo:opacity-100 transition-opacity transform translate-y-2 group-hover/promo:translate-y-0">
+                                            Explore <ArrowRight size={12} />
                                         </div>
-                                    </div>
-
-                                    {/* Right: Clean Link Columns */}
-                                    <div className="flex-1 grid grid-cols-3 gap-8">
-                                        {group.columns.map((col, idx) => (
-                                            <div key={idx}>
-                                                <h4 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>
-                                                <ul className="space-y-3">
-                                                    {col.items.map((item, i) => (
-                                                        <li key={i}>
-                                                            <button
-                                                                className="text-gray-600 hover:text-secondary text-sm font-medium transition-colors hover:pl-1 rtl:hover:pr-1"
-                                                            >
-                                                                {item.label}
-                                                            </button>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        ))}
                                     </div>
                                 </div>
                             </div>
-                        ))}
+        
+                            {/* Right: Clean Link Columns */}
+                            <div className="flex-1 grid grid-cols-3 gap-8">
+                                {group.columns.map((col, idx) => (
+                                    <div key={idx}>
+                                        <h4 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>
+                                        <ul className="space-y-3">
+                                            {col.items.map((item, i) => (
+                                                <li key={i}>
+                                                    <button 
+                                                        className="text-gray-600 hover:text-secondary text-sm font-medium transition-colors hover:pl-1 rtl:hover:pr-1"
+                                                    >
+                                                        {item.label}
+                                                    </button>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
+                    ))}
                 </div>
+            </div>
 
             </nav>
 

@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+    .home-banner-swiper .swiper-pagination, .home-awards-slider .swiper-pagination  { 
+        display: none;
+    }
+}
+@media (max-width: 767px) {
+    .home-awards-slider .swiper-pagination-bullet-active {
+        background: #ffffff7a;
+        border: 1px solid #a9a3a37d;
+    }
+}
