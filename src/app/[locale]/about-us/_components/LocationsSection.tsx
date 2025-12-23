@@ -1,15 +1,10 @@
 'use client'
 
-import { Montserrat, Outfit } from "next/font/google";
+import { Outfit } from "next/font/google";
 import { useState } from "react";
 import LocationsTabContent from "./LocationsTabContent";
 import LocationsTabHead from "./LocationsTabHead";
 import { contactLocations } from "@/data/contactLocations";
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 const outfit = Outfit({
   subsets: ["latin"],

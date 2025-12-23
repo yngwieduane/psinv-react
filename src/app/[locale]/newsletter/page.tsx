@@ -17,7 +17,7 @@ export default function NewsletterPage() {
   // In a real app, you'd filter by category here if `newsletters` had a category field
   const filteredItems = activeCategory === ALL_NEWSLETTER 
     ? newsletters 
-    : newsletters; // Placeholder: replace with actual filtering if data exists
+    : newsletters;
 
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const currentItems = filteredItems.slice(

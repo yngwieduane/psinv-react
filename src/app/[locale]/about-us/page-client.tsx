@@ -1,12 +1,11 @@
 "use client";
 
 import { Audrey, BrittanySignature } from "@/utils/fonts";
-import { Great_Vibes, Inter, Montserrat, Open_Sans, Outfit } from "next/font/google";
+import { Great_Vibes, Montserrat, Open_Sans, Outfit } from "next/font/google";
 import AboutCounter from "./_components/AboutCounter";
 import AwardSlider from "./_components/AboutAwardsSlider";
 import PartnerSlider from "./_components/AboutPartnerSlider";
 import AboutTextSlider from "./_components/AboutTextSlider";
-import AboutCard from "./_components/AboutCard";
 import LocationsSection from "./_components/LocationsSection";
 import { PrinterIcon } from "@heroicons/react/24/outline";
 import LandlordsIcon from "./_components/Icons/LandlordsIcon";
