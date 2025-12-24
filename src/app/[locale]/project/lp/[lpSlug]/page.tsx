@@ -13,6 +13,7 @@ import AmenitiesSection from "./_components/AmenitiesSection";
 import FloorPlans from "./_components/FloorPlans";
 import LocationMap from "./_components/LocationMap";
 import LandingFooter from "./_components/LandingFooter";
+import InquiryModal from "./_components/InquiryModal";
 
 type LpSlug = keyof typeof landingConfigs;
 type Params = { locale: string; lpSlug: LpSlug };
@@ -117,23 +118,19 @@ export default async function Page({ params }: PageProps) {
     const unresolved = (key: string, val: string) =>
       val === `LandingPages.${lpSlug}.usp.${key}`;
 
-    const collect = (n: number): UspItem | null => {
-      const keyTitle = `item${n}.title`;
-      const title = tUsp(keyTitle);
-      if (!title || unresolved(keyTitle, title)) return null;
+const collect = (n: number): UspItem | null => {
+  const keyTitle = `item${n}.title`;
+  if (!tUsp.has(keyTitle)) return null;
 
-      const keyDesc = `item${n}.desc`;
-      let desc: string | undefined;
-      try {
-        const d = tUsp(keyDesc);
-        desc = unresolved(keyDesc, d) ? undefined : d;
-      } catch {
-        desc = undefined;
-      }
-      return { title, desc };
-    };
+  const title = tUsp(keyTitle);
+  if (!title || unresolved(keyTitle, title)) return null;
 
-    const translated: UspItem[] = Array.from({ length: MAX_USP }, (_, i) => collect(i + 1))
+  const keyDesc = `item${n}.desc`;
+  const desc = tUsp.has(keyDesc) ? tUsp(keyDesc) : undefined;
+
+  return { title, desc: desc && !unresolved(keyDesc, desc) ? desc : undefined };
+};
+ const translated: UspItem[] = Array.from({ length: MAX_USP }, (_, i) => collect(i + 1))
       .filter((x): x is UspItem => x !== null);
 
     if (translated.length) uspItems = translated;
@@ -211,12 +208,24 @@ export default async function Page({ params }: PageProps) {
         sub={sub}
         description={description}
         ctaText={ctaText}
-        topSlot={<MainNavbar locale={locale} />}
-        rightSlot={
-          crmMeta ? (
-            <InquiryForm crm={crmMeta} variant={heroVariant} />
-          ) : null
-        }
+        ctaSlot={
+    crmMeta ? (
+      <InquiryModal
+        crm={crmMeta}
+        variant={heroVariant}
+        triggerText={ctaText ?? "Download Brochure"}
+        triggerClassName="inline-block rounded bg-orange-600 px-5 py-3 text-white hover:bg-orange-700"
+      />
+    ) : (
+      <a
+        href="#"
+        className="inline-block rounded bg-orange-600 px-5 py-3 text-white hover:bg-orange-700"
+      >
+        {ctaText ?? "Download Brochure"}
+      </a>
+    )
+  }
+       rightSlot={crmMeta ? <InquiryForm crm={crmMeta} variant={heroVariant} /> : null}
       />
       {cfg.sections.includes("usp") && uspItems.length > 0 && (
         <UspSection items={uspItems} />
@@ -255,6 +264,7 @@ export default async function Page({ params }: PageProps) {
       )}
       {cfg.sections.includes("floor-plan") && floorCfg && (
         <FloorPlans
+          crm={crmMeta}
           title="Floor Plans"
           heroImage={floorCfg.heroImage}
           groups={floorCfg.groups}
@@ -263,6 +273,7 @@ export default async function Page({ params }: PageProps) {
           ns={floorCfg.ns}
         />
       )}
+
       {cfg.sections.includes("location") && mapEmbedUrl && (
         <LocationMap
           mapEmbedUrl={mapEmbedUrl}

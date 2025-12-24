@@ -104,7 +104,7 @@ export default function LandingFooter({
     className
   );
   return (
-    <footer dir={dir} className={wrapper}>
+    <footer id="contact" dir={dir} className={wrapper}>
       <div className="mx-auto w-full max-w-7xl px-4 py-14">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="self-start">
