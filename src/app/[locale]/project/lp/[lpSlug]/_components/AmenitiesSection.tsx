@@ -4,9 +4,8 @@ import clsx from "clsx";
 
 export type AmenityItem = {
   label: string;
-  icon?: string; // path to an svg/png
+  icon?: string;
 };
-
 export default function AmenitiesSection({
   title,
   desc,
@@ -25,20 +24,16 @@ export default function AmenitiesSection({
   className?: string;
 }) {
   const normalized = (items ?? []).filter(Boolean);
-
   return (
     <section id={sectionId} className={clsx("bg-[#272964] relative", className)}>
       <div className="mx-auto w-full max-w-7xl px-4 py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-        {/* Left column (copy) */}
         <div className="relative text-white max-w-[593px]">
-          {/* decorative bg image */}
           <img
             src="/images/landing-page/lp-icons/international-buildings.svg"
             alt=""
             aria-hidden="true"
             className="pointer-events-none select-none absolute -left-8 w-[420px] max-w-none opacity-20 md:opacity-30"
           />
-
           <div className="relative z-10">
             {title && (
               <h2 className="mb-4 text-4xl md:text-5xl font-semibold leading-tight">
@@ -59,8 +54,6 @@ export default function AmenitiesSection({
             )}
           </div>
         </div>
-
-        {/* Right column (icons grid) */}
         <div className="grid grid-cols-3 gap-y-16 text-center text-white">
           {normalized.map((a, i) => (
             <div key={`${a.label}-${i}`} className="flex flex-col items-center">
