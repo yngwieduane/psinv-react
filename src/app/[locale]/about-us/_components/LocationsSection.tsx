@@ -33,7 +33,7 @@ export default function LocationsSection() {
           <h3 className={`text-3xl font-bold text-primary text-center md:text-left mb-5 md:mb-0 ${outfit.className}`}>
             OUR LOCATIONS
           </h3>
-          <div className="md:w-1/2 md:items-end items-center flex md:block md:justify-end justify-center locationsTabHead">
+          <div className="md:w-1/2 md:items-end items-center flex justify-center md:justify-end locationsTabHead">
             <LocationsTabHead
               data={locationsData}
               visibleTab={visibleTab}

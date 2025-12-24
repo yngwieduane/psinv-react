@@ -554,11 +554,13 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                         <ul className="space-y-3">
                                             {col.items.map((item, i) => (
                                                 <li key={i}>
-                                                    <button 
+                                                    <Link 
+                                                    href={`/${item.page}`} 
                                                         className="text-gray-600 hover:text-secondary text-sm font-medium transition-colors hover:pl-1 rtl:hover:pr-1"
                                                     >
                                                         {item.label}
-                                                    </button>
+                                                    </Link>
+                                                    
                                                 </li>
                                             ))}
                                         </ul>

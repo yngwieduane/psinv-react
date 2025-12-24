@@ -17,7 +17,7 @@ export default function NewsletterPage() {
   // In a real app, you'd filter by category here if `newsletters` had a category field
   const filteredItems = activeCategory === ALL_NEWSLETTER 
     ? newsletters 
-    : newsletters;
+    : newsletters; 
 
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const currentItems = filteredItems.slice(
@@ -131,7 +131,7 @@ export default function NewsletterPage() {
                         href={item.link}
                         className="inline-flex items-center gap-2 mt-4 font-semibold text-psiblue hover:text-blue-700 transition-colors group/link"
                       >
-                        Read Article
+                        Read Newsletter
                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                       </Link>
                     )}

@@ -185,7 +185,7 @@ const AboutPageClient = () => {
                         <div className="lg:w-7/12 space-y-6">
                             {coreValues.map((val, idx) => (
                                 <div key={idx} className="flex gap-8 items-center bg-white p-8 rounded-lg shadow-sm border-l-4 border-primary hover:border-secondary transition-colors duration-300 group">
-                                    <div className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-2xl flex-shrink-0 font-serif group-hover:bg-secondary group-hover:text-[#000] transition-colors duration-300 shadow-lg">
+                                    <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center font-bold text-2xl flex-shrink-0 font-serif group-hover:bg-secondary text-[#000] transition-colors duration-300 shadow-lg">
                                         {idx + 1}
                                     </div>
                                     <div>
@@ -209,7 +209,7 @@ const AboutPageClient = () => {
                     <div className="max-w-[1320] mx-auto flex flex-col items-center px-4">
                         <h2 className={`${outfit.className} text-5xl tracking-widest mb-[40px]`}>OUR SERVICES</h2>
                         <p className={`${outfit.className} text-xl`}>Our reputation rests on excellence, transparency, and visionary leadership. Property Shop Investment sets industry benchmarks as Abu Dhabi&apos;s real estate influencer.</p>
-                        <a target="_blank" href="/assets/documents/PSI-company-profile-2025.pdf" className="mb-5 bg-transparent hover:bg-white text-white hover:text-black rounded-xl border border-white p-[15px] flex text-center"><PrinterIcon width={30} style={{ marginRight: '7px' }} /> Download Company Profile</a>
+                        <a target="_blank" href="/assets/documents/PSI-company-profile-2025.pdf" className="my-5 bg-transparent hover:bg-white text-white hover:text-black rounded-xl border border-white p-[15px] flex text-center"><PrinterIcon width={30} style={{ marginRight: '7px' }} /> Download Company Profile</a>
                     </div>
                     <div className={`${outfit.className} mx-auto max-w-[1320] flex gap-[25] mt-5 px-4`}>
                         <div className="w-full grid lg:grid-cols-3 lg:grid-rows-2 sm:grid-cols-2 sm:grid-rows-3 grid-cols-1 gap-[25]">
