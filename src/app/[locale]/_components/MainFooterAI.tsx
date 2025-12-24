@@ -84,7 +84,7 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
               <li><Link href="/about-us" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_about')}</Link></li>
               <li><button onClick={() => onNavigate('about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_team')}</button></li>
               <li><button onClick={() => onNavigate('careers')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_careers')}</button></li>
-              <li><button onClick={() => onNavigate('about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_awards')}</button></li>
+              <li><Link href="/about-us#awards"  className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_awards')}</Link></li>
               <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_media')}</a></li>
               <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_testi')}</a></li>
               <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_intl')}</a></li>

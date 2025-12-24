@@ -10,8 +10,8 @@ const LocationTabHeadContent = (props:any) => {
             <button
               key={index}
               className={`px-4 py-1 text-xs uppercase rounded w-max transition-all duration-200 cursor-pointer ${props.visibleTab === index
-                    ? "bg-primary text-white active"
-                    : "border border-gray-300 text-gray-500"
+                    ? "bg-gray-100 text-gray-500 active"
+                    : "border border-gray-300 text-gray-500 hover:bg-gray-100"
                 }`}
               onClick={() => props.setVisibleTab(index)}
             >
