@@ -15,7 +15,7 @@ type Slide = {
 };
 
 type Props = {
-  slides: Slide[];
+  slides: Slide[]; 
   modal: boolean;
   onOpenModal: () => void;
   onUpdateModal: (value: boolean) => void;

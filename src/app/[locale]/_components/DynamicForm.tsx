@@ -7,18 +7,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { usePathname } from "next/navigation";
-
-// Define Schema (Only `propertyListing` Now)
-const propertyListingSchema = z.object({
-  firstName: z.string().min(1, { message: "First name is required" }),
-  lastName: z.string().min(1, { message: "Last name is required" }),
-  email: z.string().email({ message: "Invalid email address" }),
-  phone: z.string().min(7, { message: "Invalid phone number" }),
-  propertyPurpose: z.string().min(1, { message: "Property purpose is required" }),
-  agreement1: z.boolean().optional(),
-  agreement2: z.boolean().optional(),
-  agreement3: z.boolean().optional(),
-});
+import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 
 type PropertyListingFormData = z.infer<typeof propertyListingSchema>;
 
@@ -26,9 +16,23 @@ interface DynamicFormProps {
   formType: "propertyListing"; // Ensure it's explicitly defined
 }
 
-const DynamicForm = ({ formType }: DynamicFormProps) => {
-    const pathname = usePathname();
-    const locale = pathname.split("/")[1] || "en"; 
+const DynamicForm = ({ formType }: DynamicFormProps) => { 
+    const locale = useLocale();
+    const isRTL = locale.toLowerCase().startsWith("ar");    
+    const t = useTranslations("ListPropertyForm"); 
+    const agreements_t = useTranslations("Common_Form_Agreements");
+
+    const propertyListingSchema = z.object({
+      firstName: z.string().min(1, { message: t("errors.firstNameRequired") }),
+      lastName: z.string().min(1, { message: t("errors.lastNameRequired") }),
+      email: z.string().email({ message: t("errors.invalidEmail") }),
+      phone: z.string().min(7, { message: t("errors.invalidPhone") }),
+      propertyPurpose: z.string().min(1, { message: t("errors.choosePurpose") }),
+      agreement1: z.boolean().optional(),
+      agreement2: z.boolean().optional(),
+      agreement3: z.boolean().optional(),
+    });
+
   const {
     register,
     handleSubmit,
@@ -67,6 +71,7 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
       Client Name: ${data.firstName} ${data.lastName} </br>
       Client Email: ${data.email} </br>
       Client Phone: ${data.phone} </br>
+      Purpose: ${data.propertyPurpose} </br>
       URL coming from: ${currentUrl}
     `;
 
@@ -164,58 +169,58 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="flex gap-4">
         <div className="w-1/2">
-          <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">First Name</label>
-          <input {...register("firstName")} placeholder="Enter First Name" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
+          <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t("firstName")}</label>
+          <input {...register("firstName")} placeholder={t("Enter First Name")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
           {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
         </div>
         <div className="w-1/2">
-          <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Last Name</label>
-          <input {...register("lastName")} placeholder="Enter Last Name" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
+          <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t("lastName")}</label>
+          <input {...register("lastName")} placeholder={t("Enter Last Name")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
           {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
         </div>
       </div>
 
-      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Email</label>
-      <input {...register("email")} placeholder="Enter Email" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
+      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t("email")}</label>
+      <input {...register("email")} placeholder={t("Enter Email")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
       {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
-      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Phone Number</label>
+      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t("phone")}</label>
       <Controller
         name="phone"
         control={control}
-        render={({ field }) => <PhoneInput {...field} international defaultCountry="AE" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" aria-label="Phone Number"/>}
+        render={({ field }) => <PhoneInput {...field} dir={isRTL ? "rtl" : "ltr"} international defaultCountry="AE" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" aria-label="Phone Number"/>}
       />
       {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
 
-      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Property Purpose *</label>
+      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t("purpose")} *</label>
       <select {...register("propertyPurpose")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" aria-label="Property Purpose">
-        <option value="">Choose purpose</option>
-        <option value="sell">Sell</option>
-        <option value="rent">Rent</option>
-        <option value="invest">Invest</option>
+        <option value="">{t("Choose purpose")}</option>
+        <option value="sell">{t("sell_purpose")}</option>
+        <option value="rent">{t("rent_purpose")}</option>
+        <option value="invest">{t("invest_purpose")}</option>
       </select>
       {errors.propertyPurpose && <p className="text-red-500 text-sm">{errors.propertyPurpose.message}</p>}
 
       <button type="submit" className="w-full relative text-md overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer" disabled={isSubmitting}>
-        {isSubmitting ? "Submitting..." : "Submit"}
+        {isSubmitting ? t("form_submitting") : t("form_submit")}
       </button>
 
       <p className="text-[10px] text-gray-400 mt-2">
-        By clicking Submit, you agree to our <a href="#" className="text-blue-600">Terms & Conditions</a> and Privacy Policy
+        {t("clickingTerms.part1")} <Link href={`${locale}/terms`} className="text-blue-600">{t("clickingTerms.part2")}</Link> {t("clickingTerms.part3")}
       </p>
 
       <div className="space-y-2 mt-4 text-[10px] text-gray-400">
         <label className="flex items-start gap-2">
           <input type="checkbox" {...register("agreement1")} className="mt-0.5 accent-secondary w-4 h-4 border-gray-300 rounded defaultChecked" />
-          <span>Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm</span>
+          <span>{agreements_t("agreement1")}</span>
         </label>
         <label className="flex items-start gap-2">
           <input type="checkbox" {...register("agreement2")} className="mt-0.5 accent-secondary w-4 h-4 border-gray-300 rounded defaultChecked" />
-          <span>Agree to receive multiple calls and communications via various channels regarding my enquiry</span>
+          <span>{agreements_t("agreement2")}</span>
         </label>
         <label className="flex items-start gap-2">
           <input type="checkbox" {...register("agreement3")} className="mt-0.5 accent-secondary w-4 h-4 border-gray-300 rounded defaultChecked" />
-          <span>Agree to receive calls and communications via various channels on various projects, products, and services</span>
+          <span>{agreements_t("agreement3")}</span>
         </label>
       </div>
     </form>

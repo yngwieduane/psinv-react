@@ -230,27 +230,27 @@ const NAV_GROUPS = [
             {
                 title: 'Residential',
                 items: [
-                    { label: 'Buy Apartments', page: 'search' },
-                    { label: 'Buy Villas', page: 'search' },
-                    { label: 'Rent Apartments', page: 'search' },
-                    { label: 'Rent Villas', page: 'search' },
+                    { label: 'Buy Apartments', page: 'units?category=Sale&propertyType=Apartment' },
+                    { label: 'Buy Villas', page: 'units?category=Sale&propertyType=Villa' },
+                    { label: 'Rent Apartments', page: 'units?category=Rent&propertyType=Apartment' },
+                    { label: 'Rent Villas', page: 'units?category=Rent&propertyType=Villa' },
                 ]
             },
             {
                 title: 'Commercial',
                 items: [
-                    { label: 'Offices for Sale', page: 'search' },
-                    { label: 'Offices for Rent', page: 'search' },
-                    { label: 'Retail Spaces', page: 'search' },
+                    { label: 'Offices for Sale', page: 'units?category=Sale&propertyType=Office' },
+                    { label: 'Offices for Rent', page: 'units?category=Rent&propertyType=Office' },
+                    { label: 'Retail Spaces', page: 'units?propertyType=Retail' },
                 ]
             },
             {
                 title: 'Popular Areas',
                 items: [
-                    { label: 'Al Reem Island', page: 'search' },
-                    { label: 'Yas Island', page: 'search' },
-                    { label: 'Saadiyat Island', page: 'search' },
-                    { label: 'Dubai Marina', page: 'search' },
+                    { label: 'Al Reem Island', page: 'projects/abu-dhabi/al-reem-island' },
+                    { label: 'Yas Island', page: 'projects/abu-dhabi/yas-island' },
+                    { label: 'Saadiyat Island', page: 'projects/abu-dhabi/saadiyat-island' },
+                    { label: 'Palm Jumeirah', page: 'projects/dubai/the-palm-jumeirah' },
                 ]
             }
         ]
@@ -262,7 +262,7 @@ const NAV_GROUPS = [
             {
                 title: 'New Launches',
                 items: [
-                    { label: 'Luxury Projects', page: 'luxury-projects' },
+                    { label: 'Luxury Projects', page: 'project/luxury-project-uae' },
                     { label: 'Off-Plan Projects', page: 'projects' },
                     { label: 'Ready to Move', page: 'projects' },
                 ]

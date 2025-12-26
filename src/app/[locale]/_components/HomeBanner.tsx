@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react';
-import { ChevronRight, ChevronLeft, MapPin } from 'lucide-react';
+import { ChevronRight, ChevronLeft, MapPin, ChevronLeftIcon } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {  Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -12,7 +12,7 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import BannerModals from './HomeBannerModal';
 import Image from 'next/image';
 import { Outfit } from 'next/font/google';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -23,6 +23,10 @@ const outfit = Outfit({
 const HomeBanner = (props: any) => {
 const totalSlides = props.slides.length;
 const locale = useLocale();
+const t = useTranslations("HomePageBanner");
+const isRTL = locale.toLowerCase().startsWith("ar");
+
+const L = (en: string, ar?: string) => (isRTL && ar ? ar : en);
 
 const handlePrev = () => {
     if(swiperElRef2.current) {
@@ -74,7 +78,7 @@ const swiperElRef2 = useRef<any>(null);
         };
 
   return (
-    <section className="relative h-auto w-full overflow-hidden">
+    <section className="relative h-auto w-full overflow-hidden" dir={isRTL ? 'rtl' : "ltr"}>
       {/* Background Image - Ultra Luxury Modern Mansion */}
       <Swiper
         ref={swiperElRef2}
@@ -128,7 +132,7 @@ const swiperElRef2 = useRef<any>(null);
               <>
                 <MapPin size={20} />            
                 <span className="uppercase tracking-[0.3em] text-sm font-bold">
-                    {slide.location}
+                    {L(slide.location, slide.location_ar)}
                 </span>
               </>
             </div>
@@ -136,24 +140,31 @@ const swiperElRef2 = useRef<any>(null);
 
           {slide.title && (
           <h1 className={`text-5xl md:text-8xl font-serif font-bold mb-6 leading-tight animate-[fadeIn_1.4s_ease-out] ${outfit.className}`}>
-            {slide.title}
+            {L(slide.title, slide.title_ar) }
           </h1>
           )}
           
           {slide.description && (
             <p className="text-lg md:text-xl mb-10 text-gray-100 leading-relaxed max-w-2xl font-light animate-[fadeIn_1.6s_ease-out]">
-            {slide.description}
+            {L(slide.description, slide.description_ar)}
             </p>
           )}
 
           {slide.loyaltyTitle && (
             <h2 className="text-4xl md:text-6xl font-serif font-bold mb-2 leading-tight animate-[fadeIn_1.4s_ease-out]">
-                {slide.loyaltyTitle}
+                {L(slide.loyaltyTitle, slide.loyaltyTitle_ar)}
             </h2>
             )}
-        {slide.features && (
+        {slide.features && !isRTL && (
             <ul className="list-disc text-white text-xl my-8 md:text-2xl ml-7 leading-normal">
                 {slide.features?.map((item:any, idx:any) => (
+                <li key={idx}>{item}</li>
+                ))}
+            </ul>                    
+        )}
+        {slide.features_ar && isRTL && (
+            <ul className="list-disc text-white text-xl my-8 md:text-2xl ml-7 leading-normal">
+                {slide.features_ar?.map((item:any, idx:any) => (
                 <li key={idx}>{item}</li>
                 ))}
             </ul>                    
@@ -161,7 +172,7 @@ const swiperElRef2 = useRef<any>(null);
           
           {slide.name === 'loyalty' && (
             <Link title="Sign Up" href="https://loyalty-program.psinv.net/" target="_blank" className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
-                <span className="relative">Sign Up</span>
+                <span className="relative">{t("sign_up_btn")}</span>
             </Link>
             )}
             {slide.name !== 'loyalty' && (
@@ -170,13 +181,19 @@ const swiperElRef2 = useRef<any>(null);
                 <button 
                 onClick={() => modalHandler(slide)}
                 className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
-                Sign Up
+                {t("sign_up_btn")}
                 </button>
                 {slide.project_url !== '' && (
-                  <Link title="Explore More" href={`${locale}${slide.project_url}`} className="flex items-center bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
-                    <span>Explore More</span>
+                  <Link dir={isRTL ? "rtl" : "ltr"} title="Explore More" href={`${locale}${slide.project_url}`} className="flex items-center bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
+                    <span>{t("more_btn")}</span>
                     <div className="ml-1 transition group-hover:translate-x-1">
+                      {isRTL && (
+                        <ChevronLeftIcon className="w-7 inline-flex" />
+                      )}
+                      {!isRTL &&(
                         <ChevronRightIcon className="w-7 inline-flex" />
+                      )}
+                        
                     </div>
                 </Link>
                 )}
@@ -188,8 +205,19 @@ const swiperElRef2 = useRef<any>(null);
       </div>
 
       {/* Minimalist Slider Controls */}
-      <div className="absolute bottom-12 right-12 flex items-center gap-6 z-20 hidden md:flex">
-         <div className="flex gap-2">
+      <div className={`absolute bottom-12 ${isRTL ? "left-12" : "right-12"} flex items-center gap-6 z-20 hidden md:flex`} dir={isRTL ? "rtl" : "ltr"}>
+         {isRTL && (
+          <div className="flex gap-2">
+             <button onClick={handlePrev} className="p-3 text-white/50 hover:text-white transition-colors border border-white/20 hover:border-white rounded-full">
+                <ChevronRight size={20} />
+             </button>
+             <button onClick={handleNext} className="p-3 text-white/50 hover:text-white transition-colors border border-white/20 hover:border-white rounded-full">
+                <ChevronLeft size={20} />
+             </button>
+         </div>
+         )}
+         {!isRTL && (
+          <div className="flex gap-2">
              <button onClick={handlePrev} className="p-3 text-white/50 hover:text-white transition-colors border border-white/20 hover:border-white rounded-full">
                 <ChevronLeft size={20} />
              </button>
@@ -197,6 +225,7 @@ const swiperElRef2 = useRef<any>(null);
                 <ChevronRight size={20} />
              </button>
          </div>
+         )}         
          <div className="h-px w-20 bg-white/30"></div>
          <span className="text-white font-serif text-xl">{currentSlide} / {totalSlides}</span>
       </div>

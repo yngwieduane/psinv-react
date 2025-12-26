@@ -4,10 +4,24 @@ import { useState, useEffect, useRef } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { Chart, ArcElement, Tooltip } from 'chart.js';
+import { useTranslations } from 'next-intl';
+import BannerModals from '../_components/HomeBannerModal';
 
 Chart.register(ArcElement, Tooltip);
 
-export default function HouseAffordabilityCalculator() {
+type Props = {
+  modal: boolean;
+  onOpenModal : () => void;
+  onModalUpdate : (value: boolean) => void;  
+}
+
+export default function HouseAffordabilityCalculator({
+  modal, 
+  onOpenModal, 
+  onModalUpdate
+  } : Props )  {
+  const t = useTranslations("Mortgage_Tabs");
+
   const [grossIncome, setGrossIncome] = useState(5000);
   const [extraIncome, setExtraIncome] = useState(0);
   const [debtRepayment, setDebtRepayment] = useState(0);
@@ -74,18 +88,19 @@ export default function HouseAffordabilityCalculator() {
   }, [totalAfford]);
 
   return (
+    <>
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="bg-white p-6 rounded-2xl shadow-md">
-          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">House Affordability</h2>
+          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">{t("houseAffordTab.Title")}</h2>
 
           <div className="grid grid-cols-1 gap-4">
-            <InputSlider label="Gross Monthly Income" value={grossIncome} setValue={setGrossIncome} suffix="AED" min={0} max={100000} />
-            <InputSlider label="Extra Monthly Income" value={extraIncome} setValue={setExtraIncome} suffix="AED" min={0} max={100000} />
-            <InputSlider label="Monthly Debt Repayment" value={debtRepayment} setValue={setDebtRepayment} suffix="AED" min={0} max={100000} />
+            <InputSlider label={t("houseAffordTab.Grossmonthlyincome")} value={grossIncome} setValue={setGrossIncome} suffix={t("aed")} min={0} max={100000} />
+            <InputSlider label={t("houseAffordTab.Extramonthlyincome")} value={extraIncome} setValue={setExtraIncome} suffix={t("aed")} min={0} max={100000} />
+            <InputSlider label={t("houseAffordTab.Monthlydebtrepayment")} value={debtRepayment} setValue={setDebtRepayment} suffix={t("aed")} min={0} max={100000} />
 
             <div className="mb-6 w-full">
-              <label className="block text-gray-600 mb-2 text-sm">Downpayment</label>
+              <label className="block text-gray-600 mb-2 text-sm">{t("houseAffordTab.Downpayment")}</label>
               <div className="flex items-center gap-5">
               <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white mb-2">
                 <input
@@ -115,8 +130,8 @@ export default function HouseAffordabilityCalculator() {
             </div>
 
             <div className="flex flex-col md:flex-row gap-4">
-              <InputSlider label="Interest Rate" value={interestRate} setValue={setInterestRate} suffix="%" min={0} max={10} step={0.1} />
-              <InputSlider label="Payment Period" value={loanTermYears} setValue={setLoanTermYears} suffix="yrs" min={1} max={30} />
+              <InputSlider label={t("houseAffordTab.Interestrate")} value={interestRate} setValue={setInterestRate} suffix="%" min={0} max={10} step={0.1} />
+              <InputSlider label={t("houseAffordTab.Paymentperiod")} value={loanTermYears} setValue={setLoanTermYears} suffix={t("Yrs")} min={1} max={30} />
             </div>
           </div>
         </div>
@@ -126,32 +141,34 @@ export default function HouseAffordabilityCalculator() {
             <canvas ref={chartRef} className="w-full h-full" />
             <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
               <span className="text-2xl font-bold">{Math.round(totalAfford).toLocaleString()}</span>
-              <span className="text-sm">AED</span>
+              <span className="text-sm">{t("aed")}</span>
             </div>
           </div>
-          <p className="text-xl font-semibold mt-2 mb-6">Can Afford</p>
+          <p className="text-xl font-semibold mt-2 mb-6">{t("houseAffordTab.Canafford")}</p>
 
           <div className="bg-yellow-400 rounded-2xl w-full text-[#0c1356] p-8 text-center">
-            <p className="text-sm">Total Afford</p>
-            <p className="text-2xl font-bold mb-4">{Math.round(totalAfford).toLocaleString()} AED</p>
+            <p className="text-sm">{t("houseAffordTab.Totalafford")}</p>
+            <p className="text-2xl font-bold mb-4">{Math.round(totalAfford).toLocaleString()} {t("aed")}</p>
             <button
-  onClick={() => {
-    const minPrice = Math.floor(totalAfford);
-    const maxPrice = Math.ceil(totalAfford + 200000);
-    const url = `http://localhost:3000/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
-    window.location.href = url;
-  }}
-  className="bg-[#0c1356] text-white rounded-full px-6 py-2 hover:bg-blue-900 transition"
->
-  View Units
-</button>
+              onClick={() => {
+                const minPrice = Math.floor(totalAfford);
+                const maxPrice = Math.ceil(totalAfford + 200000);
+                const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
+                window.location.href = url;
+              }}
+              className="bg-[#0c1356] text-white rounded-full px-6 py-2 hover:bg-blue-900 transition">
+              {t("ViewUnits")}
+            </button>
 
             <br />
-            <a href="#" className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition">Get pre-approval today</a>
+            <button onClick={onOpenModal} className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition">{t("houseAffordTab.GeApprovalToday")}</button>
           </div>
         </div>
       </div>
     </div>
+
+    
+    </>
   );
 }
 
@@ -197,5 +214,6 @@ function InputSlider({ label, value, setValue, suffix, min, max, step = 1 }: Inp
       />
       </div>
     </div>
+
   );
 }

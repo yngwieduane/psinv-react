@@ -4,7 +4,7 @@ import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin } 
 import { Page } from '@/types/types';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { SocialMedia } from '@/types/navigation';
 import { DynamicIcon } from 'lucide-react/dynamic';
 
@@ -46,12 +46,14 @@ interface FooterProps {
 }
 
 const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
+  const locale = useLocale();
+  const isRtl = locale.toLowerCase().startsWith("ar");
   const t = useTranslations('FooterAI');
 
   return (
-    <footer className="bg-primary-dark text-gray-800 pt-24 pb-12 border-t border-white/5" >
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
+    <footer className="bg-primary-dark text-gray-800 pt-24 pb-12 border-t border-white/5" dir={isRtl ? "rtl" : "ltr"} >
+      <div className="container mx-auto px-6 md:px-12"  dir={isRtl ? "rtl" : "ltr"}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-20"  dir={isRtl ? "rtl" : "ltr"}>
           
           {/* Brand Column */}
           <div className="lg:col-span-1">
@@ -125,15 +127,22 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-5 text-sm text-gray-800 mb-10 font-light">
               <li className="flex items-start gap-4">
                 <Phone size={18} className="text-secondary shrink-0 mt-0.5" />
-                <span className="hover:text-gray-400 cursor-pointer transition-colors font-medium" dir="ltr">600 548 200</span>
+                <a href='tel:600548200'>
+                  <span className="hover:text-gray-400 cursor-pointer transition-colors font-medium" dir="ltr">600 548 200</span>
+                </a>
               </li>
               <li className="flex items-start gap-4">
-                <Mail size={18} className="text-secondary shrink-0 mt-0.5" />
-                <span className="hover:text-gray-400 cursor-pointer transition-colors">info@psi.properties</span>
+                <Phone size={18} className="text-secondary shrink-0 mt-0.5" />
+                <a href='tel:+97122052999'>
+                  <span className="hover:text-gray-400 cursor-pointer transition-colors font-medium" dir="ltr">+971 2205 2999</span>
+                </a>
               </li>
               <li className="flex items-start gap-4">
                 <MapPin size={18} className="text-secondary shrink-0 mt-0.5" />
-                <span>Guardian Towers, Abu Dhabi, UAE</span>
+                <span>{t('company_address.part1')}<br />
+                {t('company_address.part2')}<br/>
+                {t('company_address.part3')}<br/>
+                {t('company_address.part4')}</span> 
               </li>
             </ul>
 
@@ -147,7 +156,7 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-800 font-light">
-          <p>&copy; {new Date().getFullYear()} Property Shop Investment. {t('footer_rights')}</p>
+          <p>&copy; {new Date().getFullYear()} {t('footer_psi')} {t('footer_rights')}</p>
           <div className="flex space-x-8 rtl:space-x-reverse mt-4 md:mt-0">
             <a href="#" className="hover:text-gray-400 transition-colors">{t('footer_privacy')}</a>
             <a href="#" className="hover:text-gray-400 transition-colors">{t('footer_terms')}</a>
