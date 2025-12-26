@@ -39,6 +39,13 @@ const PropertyListItem = (props: any) => {
     const imgFeatured = (props.data["featuredImages"] && props.data["featuredImages"].length > 0 && props.data["featuredImages"][0]['imageURL'])
         ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0', '?width=400&height=300')
         : "/images/placeholder.jpg"; // Basic placeholder fallback
+    let minprice, maxPrice;
+    if (props.data["minPrice"] !== null && parseInt(props.data["minPrice"]) > 1) {
+        minprice = format.number(props.data["minPrice"]);
+    } else { minprice = "" }
+    if (props.data["maxPrice"] !== null && parseInt(props.data["maxPrice"]) > 1) {
+        maxPrice = format.number(props.data["maxPrice"]);
+    } else { maxPrice = "" }
 
     const handleShare = async (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -181,7 +188,7 @@ const PropertyListItem = (props: any) => {
                             {props.data["priceFrom"] !== 0 ? (
                                 <>
                                     <span className="text-xs text-gray-400 font-normal uppercase mr-1">From</span>
-                                    {props.data["currency"] || 'AED'} {Number(props.data["priceFrom"]).toLocaleString()}
+                                    {props.data["currency"] || 'AED'} {minprice} ~ {maxPrice}
                                 </>
                             ) : (
                                 <span className="text-gray-500 text-sm">Ask for Price</span>

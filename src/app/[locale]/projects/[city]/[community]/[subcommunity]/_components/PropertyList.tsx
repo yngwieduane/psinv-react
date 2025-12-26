@@ -6,6 +6,8 @@ import { BlogItem } from "@/app/[locale]/_components/tools/Skeleteon";
 import SearchProperty from "@/app/[locale]/projects/_components/SearchProperty";
 import PropertyBox from "@/app/[locale]/projects/_components/PropertyBox";
 import SearchPropertyAI, { TabType } from "@/app/[locale]/projects/_components/SearchPropertyAI";
+import PropertyMapBox from "@/app/[locale]/projects/_components/PropertyMapBox";
+import PropertyListView from "@/app/[locale]/projects/_components/PropertyListView";
 
 interface PropertyListProps {
     page: number;
@@ -78,17 +80,21 @@ export default function PropertyList({
         <Pagination totalPages={totalPages} />
       </div> */}
             <div className="order-2 md:order-3 col-span-1 md:col-span-2 mx-auto container">
-                {isLoading ? (
+                {activeTab === 'map' ? (
+                    <PropertyMapBox data={data['result']} />
+                ) : isLoading ? (
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                         <BlogItem />
                         <BlogItem />
                         <BlogItem />
                         <BlogItem />
                     </div>
+                ) : activeTab === 'list' ? (
+                    <PropertyListView data={data['result']} />
                 ) : (
                     <PropertyBox data={data['result']} />
                 )}
-                {!data ? (
+                {!isLoading && activeTab !== 'map' && !data ? (
                     <p>No properties found.</p>
                 ) : (
                     <></>

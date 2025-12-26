@@ -7,6 +7,7 @@ import SearchProperty from "../../../_components/SearchProperty";
 import PropertyBox from "../../../_components/PropertyBox";
 import PropertyMapBox from "../../../_components/PropertyMapBox";
 import SearchPropertyAI, { TabType } from "../../../_components/SearchPropertyAI";
+import PropertyListView from "../../../_components/PropertyListView";
 
 interface PropertyListProps {
   page: number;
@@ -77,19 +78,20 @@ export default function PropertyList({
       <div className="order-2 md:order-3 col-span-1 md:col-span-2 mx-auto container">
         {activeTab === 'map' ? (
           <PropertyMapBox data={data['result']} />
-        ) : activeTab === 'gallery' ? (
-          <>
-            {isLoading ? (
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <BlogItem />
-                <BlogItem />
-                <BlogItem />
-                <BlogItem />
-              </div>
-            ) : (
-              <PropertyBox data={data['result']} />
-            )}
-          </>
+        ) : isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <BlogItem />
+            <BlogItem />
+            <BlogItem />
+            <BlogItem />
+          </div>
+        ) : activeTab === 'list' ? (
+          <PropertyListView data={data['result']} />
+        ) : (
+          <PropertyBox data={data['result']} />
+        )}
+        {!isLoading && activeTab !== 'map' && !data ? (
+          <p>No properties found.</p>
         ) : (
           <></>
         )}

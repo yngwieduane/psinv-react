@@ -7,6 +7,7 @@ import SearchProperty from "../../_components/SearchProperty";
 import PropertyBox from "../../_components/PropertyBox";
 import PropertyMapBox from "../../_components/PropertyMapBox";
 import SearchPropertyAI, { TabType } from "../../_components/SearchPropertyAI";
+import PropertyListView from "../../_components/PropertyListView";
 
 interface PropertyListProps {
   page: number;
@@ -81,6 +82,8 @@ export default function PropertyList({
             <BlogItem />
             <BlogItem />
           </div>
+        ) : activeTab === 'list' ? (
+          <PropertyListView data={data['result']} />
         ) : (
           <PropertyBox data={data['result']} />
         )}
