@@ -11,7 +11,7 @@ export default async function ProjectsPage({
     propertyname,
     isFeaturedProjectOnWeb,
     cityId,
-  }: {
+}: {
     page: number;
     city: string;
     community: string;
@@ -20,19 +20,19 @@ export default async function ProjectsPage({
     propertyname: string;
     isFeaturedProjectOnWeb: string;
     cityId: string;
-  }) {
+}) {
 
-    return (  
+    return (
         <div className="bg-white min-h-screen pt-32 pb-32 md:pb-24 mx-5 mt-10 md:mt-0 md:mx-0">
             <div>
-                <Breadcrumb/>
+                <Breadcrumb />
             </div>
             <div className="mt-5">
                 <div className="grid grid-cols-1 gap-4">
                     <div className="">
                         <h1 className="mx-auto container text-3xl md:text-4xl font-bold text-gray-900 leading-tight truncate mb-6 md:mb-10">Real Estate Projects in UAE</h1>
                         <div className="">
-                            <PropertyList page={page} city={city} cityId={cityId} community={community} subcommunity={subcommunity} project={project} propertyname={propertyname} isFeaturedProjectOnWeb={isFeaturedProjectOnWeb}/>
+                            <PropertyList page={page} city={city} cityId={cityId} community={community} subcommunity={subcommunity} project={project} propertyname={propertyname} isFeaturedProjectOnWeb={isFeaturedProjectOnWeb} />
                         </div>
                     </div>
                 </div>

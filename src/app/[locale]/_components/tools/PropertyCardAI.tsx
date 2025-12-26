@@ -31,7 +31,9 @@ const PropertyCardAI = (props: any) => {
 
     const propHO = HOdate ? (<p className="text-sm">Handover<br />{HOdate}</p>) : ("");
     const propSize = (props.data["builtupArea_SQFT"] && props.data["builtupArea_SQFT"] !== '0') ? (<p className="text-sm">Size (BUA)<br />{props.data["builtupArea_SQFT"]}</p>) : ("");
-    const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0', '?width=384&height=200') : ("");
+    const imgFeatured = (props.data["featuredImages"] && props.data["featuredImages"].length > 0 && props.data["featuredImages"][0]['imageURL'])
+        ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0', '?width=400&height=300')
+        : "/images/placeholder.jpg"; // Basic placeholder fallback
     const subCommunity = props.data["subCommunity"] ? props.data["subCommunity"] : "n-a";
 
     const url = '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['community']) + "/" + slugify(subCommunity) + "/" + slugify(props.data['propertyName']);
