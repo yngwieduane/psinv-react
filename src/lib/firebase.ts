@@ -5,13 +5,13 @@ import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
 
 // Configuration for PSI Real Estate Firebase Project
 const firebaseConfig = {
-  apiKey: "AIzaSyCh8BZUyZGCKMPgRAJHG1uyBsl6tkVvrW0",
-  authDomain: "crm-preview-1479282468386.firebaseapp.com",
-  projectId: "crm-preview-1479282468386",
-  storageBucket: "crm-preview-1479282468386.firebasestorage.app",
-  messagingSenderId: "412114535579",
-  appId: "1:412114535579:web:6a98970e5b5a8b7e7d323e",
-  measurementId: "G-4J9GK4SWEB"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
