@@ -254,33 +254,72 @@
   },
 
   "LocaleSwitcher": {
-    "label": "Change language",
-    "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} cn {🇨🇳 Chinese} ru {🇷🇺 Russian} de {🇩🇪 Dutch} other {Unknown}}",
-    "buy": "Buy",
-    "rent": "Rent",
-    "communities": "Communities",
-    "about": "About Us",
-    "careers": "Careers",
-    "list": "List Your Property",
-    "contact": "Contact Us",
-    "developers": "Developers",
-    "featured": "Featured Projects",
-    "more": "More",
-    "mortgage": "Mortgage Calculator",
-    "luxury": "Luxury Projects",
-    "properties": "Properties",
-    "projects": "Projects",
-    "services": "Services",
-    "company": "Company",
-    "insights": "Insights",
-    "psi emirati hub": "PSI Emirati Hub",
-    "youngsters program": "Youngsters Program",
-    "invest in uae": "Invest in UAE",
-    "villa calculator": "Villa Calculator",
-    "newsletters": "Newsletters",
-    "articles": "Articles",
-    "property management": "Property Management"
+    "label": "تغيير اللغة",
+    "locale": "{locale, select, ar {🇦🇪 العربية} en {🇺🇸 الإنجليزية} cn {🇨🇳 الصينية} ru {🇷🇺 الروسية} de {🇩🇪 الهولندية} other {غير معروف}}",
+    "buy": "شراء",
+    "rent": "استئجار",
+    "communities": "المجتمعات",
+    "about": "من نحن",
+    "careers": "الوظائف",
+    "list": "أضف عقارك",
+    "international": "دولي",
+    "contact": "اتصل بنا",
+    "developers": "المطورون",
+    "featured projects": "المشاريع المميزة",
+    "more": "المزيد",
+    "mortgage": "حاسبة التمويل العقاري",
+    "luxury": "المشاريع الفاخرة",
+    "properties": "العقارات",
+    "projects": "المشاريع",
+    "services": "الخدمات",
+    "company": "الشركة",
+    "insights": "التحليلات",
+    "psi emirati hub": "مركز PSI الإماراتي",
+    "youngsters program": "برنامج الشباب",
+    "invest in uae": "استثمر في الإمارات",
+    "villa calculator": "حاسبة الفلل",
+    "newsletters": "النشرات الإخبارية",
+    "articles": "المقالات",
+    "property management": "إدارة العقارات",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",    
+    "Featured": "مميزة",
+    "Explore": "استكشاف",
+    "Abu Dhabi": "أبوظبي",
+    "Sama Yas": "سما ياس",
+    "Yas Riva": "ياس ريفا",
+    "Manarat Living - Saadiyat": "منارات ليفينج - السعديات",
+    "The Arthouse": "ذا آرتهاوس",
+    "Bloom Living - Almeria": "بلوم ليفينج - ألميريا",
+    "Residential": "سكني",
+    "Buy Apartments": "شراء شقق",
+    "Buy Villas": "شراء فلل",
+    "Rent Apartments": "استئجار شقق",
+    "Rent Villas": "استئجار فلل",
+    "Commercial": "تجاري",
+    "Offices for Sale": "مكاتب للبيع",
+    "Offices for Rent": "مكاتب للإيجار",
+    "Retail Spaces": "مساحات تجارية",
+    "Popular Areas": "المناطق الشهيرة",
+    "Al Reem Island": "جزيرة الريم",
+    "Yas Island": "جزيرة ياس",
+    "Saadiyat Island": "جزيرة السعديات",
+    "Palm Jumeirah": "نخلة جميرا",
+    "New Launches": "إطلاقات جديدة",
+    "Aldar": "الدّار",
+    "Emaar": "إعمار",
+    "Imkan": "إمكان",
+    "Meraas": "مراس",
+    "Dubai Properties": "عقارات دبي",
+    "NSHAMA": "نشاما",
+    "Valuation & Finance": "التقييم والتمويل",
+    "Client Services": "خدمات العملاء",
+    "About PSI": "عن PSI",
+    "Our Story": "قصتنا",
+    "Awards": "الجوائز",
+    "Media": "الإعلام"
   },
+
   "ProjectPage": {
     "overview": "Overview",
     "gallery": "Gallery",
@@ -631,6 +670,7 @@
     "localTel": "هاتف محلي",
     "intlTel": "هاتف دولي"
   },
+
   "FooterAI": {
     "footer_brand_desc": "تُعد شركة بروبرتي شوب إنفستمنت الوكالة العقارية الرائدة في أبوظبي، تساعدك على إيجاد منزلك المثالي منذ عام 2007.",
     "footer_company": "الشركة",
@@ -650,12 +690,12 @@
     "footer_links_awards": "الجوائز والتقديرات",
     "footer_links_media": "المركز الإعلامي",
     "footer_links_testi": "آراء العملاء",
-    "footer_links_intl": "PSI الدولية",
+    "footer_links_intl": "دولي",
     "footer_links_buy": "شراء عقار",
     "footer_links_rent": "استئجار عقار",
     "footer_links_list": "أدرج عقارك",
     "footer_links_manage": "إدارة العقارات",
-    "footer_links_mortgage": "خدمات الرهن العقاري",
+    "footer_links_mortgage": "حاسبة الرهن العقاري",
     "footer_links_offplan": "مشاريع قيد الإنشاء",
     "footer_links_reports": "تقارير السوق",
     "loc_Abu Dhabi": "أبوظبي",
@@ -669,6 +709,7 @@
     "loc_Al Raha Beach": "شاطئ الراحة",
     "loc_Dubai Marina": "مرسى دبي",
     "loc_Downtown Dubai": "وسط مدينة دبي",
+    "loc_Dubai Creek": "خور دبي",
     "loc_Palm Jumeirah": "نخلة جميرا",
     "loc_coming_soon": "قريباً",
     "loc_updating": "نقوم حالياً بتحديث قوائمنا الخاصة بـ",

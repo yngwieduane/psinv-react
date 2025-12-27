@@ -70,10 +70,10 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
             <p className="text-gray-400 text-sm leading-relaxed mb-8 font-light">
               {t('footer_brand_desc')}
             </p>
-            <div className="flex space-x-5 rtl:space-x-reverse text-gray-400">
+            <div className="flex space-x-5 text-gray-400">
                 {socialMedia.map((item) => (
                     <Link target="_blank" href={item.href} key={item.name} title={item.name} aria-label={item.name} className="hover:text-secondary transition-colors">
-                    <DynamicIcon name={item.icon} size={20} />
+                      <DynamicIcon name={item.icon} size={20} />
                     </Link>
                 ))}
             </div>
@@ -83,13 +83,10 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
           <div>
             <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_company')}</h3>
             <ul className="space-y-4 text-sm text-gray-800 font-light">
-              <li><Link href="/about-us" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_about')}</Link></li>
-              <li><button onClick={() => onNavigate('about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_team')}</button></li>
-              <li><button onClick={() => onNavigate('careers')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_careers')}</button></li>
-              <li><Link href="/about-us#awards"  className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_awards')}</Link></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_media')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_testi')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_intl')}</a></li>
+              <li><Link href="/en/about-us" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_about')}</Link></li>
+              <li><Link href="/en/careers" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_careers')}</Link></li>
+              <li><Link href="/en/about-us#awards" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_awards')}</Link></li>
+              <li><Link href="/en/international" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_intl')}</Link></li>
             </ul>
           </div>
 
@@ -97,13 +94,10 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
           <div>
             <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_services')}</h3>
             <ul className="space-y-4 text-sm text-gray-800 font-light">
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_buy')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_rent')}</a></li>
-              <li><button onClick={() => onNavigate('list-property')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_list')}</button></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_manage')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_mortgage')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_offplan')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_reports')}</a></li>
+              <li><a href="/en/units?category=Sale" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_buy')}</a></li>
+              <li><a href="/en/units?category=Rent" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_rent')}</a></li>
+              <li><a href="/en/list-your-property" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_list')}</a></li>
+              <li><a href="/en/mortgage-calculator" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_mortgage')}</a></li>
             </ul>
           </div>
 
@@ -111,13 +105,13 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
           <div>
             <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_popular_areas')}</h3>
             <ul className="space-y-4 text-sm text-gray-800 font-light">
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Al Reem Island')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Yas Island')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Saadiyat Island')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Al Raha Beach')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Dubai Marina')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Downtown Dubai')}</a></li>
-              <li><a href="#" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Palm Jumeirah')}</a></li>
+              <li><a href="/en/projects/abu-dhabi/al-reem-island" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Al Reem Island')}</a></li>
+              <li><a href="/en/projects/abu-dhabi/yas-island" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Yas Island')}</a></li>
+              <li><a href="/en/projects/abu-dhabi/saadiyat-island" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Saadiyat Island')}</a></li>
+              <li><a href="/en/projects/abu-dhabi/al-raha-beach" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Al Raha Beach')}</a></li>
+              <li><a href="/en/projects/dubai/the-palm-jumeirah" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Palm Jumeirah')}</a></li>
+              <li><a href="/en/projects/dubai/downtown-dubai" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Downtown Dubai')}</a></li>
+              <li><a href="/en/projects/dubai/dubai-creek" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Dubai Creek')}</a></li>
             </ul>
           </div>
 
@@ -157,11 +151,10 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
 
         <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-800 font-light">
           <p>&copy; {new Date().getFullYear()} {t('footer_psi')} {t('footer_rights')}</p>
-          <div className="flex space-x-8 rtl:space-x-reverse mt-4 md:mt-0">
-            <a href="#" className="hover:text-gray-400 transition-colors">{t('footer_privacy')}</a>
-            <a href="#" className="hover:text-gray-400 transition-colors">{t('footer_terms')}</a>
-            <button onClick={() => onNavigate('sitemap')} className="hover:text-gray-400 transition-colors">{t('footer_sitemap')}</button>
-            <a href="#" className="hover:text-gray-400 transition-colors">{t('footer_cookies')}</a>
+          <div className="flex space-x-8 mt-4 md:mt-0">
+            <a href="/en/privacy" className="hover:text-gray-400 transition-colors">{t('footer_privacy')}</a>
+            <a href="/en/terms" className="hover:text-gray-400 transition-colors">{t('footer_terms')}</a>
+            {/* <a href="/en/sitemap/" className="hover:text-gray-400 transition-colors">{t('footer_sitemap')}</a>  */}
           </div>
         </div>
       </div>
