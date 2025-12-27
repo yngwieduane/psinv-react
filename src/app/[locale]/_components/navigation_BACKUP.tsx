@@ -44,7 +44,7 @@ const developers = [
     { name: 'Aldar Properties', href: '/developer/aldar-properties-pjsc' },
     { name: 'Emaar Properties', href: '/developer/emaar' },
     { name: 'Imkan', href: '/developer/imkan-properties-llc' },
-    { name: 'Meeras', href: '/developer/meeras' },
+    { name: 'Meraas', href: '/developer/meraas' },
     { name: 'Dubai Properties', href: '/developer/dubai-properties---idama' },
     { name: 'NSHAMA', href: '/developer/nshama' },
     { name: 'View All', href: '/developers' },

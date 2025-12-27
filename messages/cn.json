@@ -1,20 +1,370 @@
 {
-  "HomePage": {
-    "title": "你好，世界！（中文）",
-    "about": "前往关于页面"
+  "HomePageBanner": {    
+        "sign_up_btn" : "Sign Up",
+        "more_btn" : "Explore More"   
   },
+  "ListPropertySection": {    
+        "title" : "BE with the Brand you Trust",
+        "desc" : "Where will we list your property?",
+        "title2" : "List Your Property" 
+  },
+  "ListPropertyForm": {    
+        "firstName" : "First Name", "Enter First Name" : "Enter First Name",
+        "lastName" : "Last Name", "Enter Last Name" : "Enter Last Name",
+        "email" : "Email" , "Enter Email" : "Enter Email",
+        "phone" : "Phone Number", 
+        "purpose" : "Property Purpose", "Choose purpose": "Choose purpose",
+        "sell_purpose" : "Sell", "rent_purpose" : "Rent", "invest_purpose" : "Invest",
+        "errors" : {
+          "firstNameRequired" : "First name is required",
+          "lastNameRequired" : "Last name is required",
+          "invalidEmail" : "Invalid email address",
+          "invalidPhone" : "Invalid phone number",
+          "choosePurpose" : "Property purpose is required"
+        },
+        "clickingTerms" : {
+          "part1" : "By clicking Submit, you agree to our",
+          "part2" : "Terms & Conditions",
+          "part3" : "and Privacy Policy"
+        },
+        "form_submit" : "Submit",
+        "form_submitting" : "Submitting..."
+  },
+
+  "Why_PSI" : {
+    "emirati_title" : "Emirati Hub",
+    "youngster_title" : "Youngsters Program",
+    "crypto_title" : "Crypto",
+    "international_title" : "PSI International",
+    "company_title" : "Company Profile",
+
+    "why_psi" : {
+      "title" : "Why PSI ?",
+      "desc" : "Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi's Real Estate Market.",
+      "btn" : "Learn more about PSI"
+    },   
+    
+    "emirati_hub" : {
+      "title" : "PSI Emirati Hub",
+      "desc" : {
+        "part1" : "Empowering UAE nationals to excel and lead in the real estate sector through",
+        "part2" : "PSI Emirati Hub."
+      },
+      "btn" : "Learn more about PSI Emirati Hub"
+    },
+
+    "youngster_program": {
+      "title": "PSI Abu Dhabi Youngsters",
+      "desc": {
+        "part1": "Unlock your potential through",
+        "part2": "PSI Abu Dhabi Youngster",
+        "part3": "Program by empowering minds, and shaping futures"
+      },
+      "btn": "Learn more about PSI Youngsters"
+    },
+
+    "crypto": {
+      "title": "Buy property with Crypto",
+      "desc": {
+        "part1": "With connections, network, knowledge and country guides, we build and design investment journeys based on",
+        "part2": "your needs, values, lifestyle and your goals."
+      },
+      "btn": "Learn more about Crypto"
+    },
+
+    "international": {
+      "title": "PSI International",
+      "desc": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
+      "btn": "Learn more about PSI International"
+    }
+
+  },
+
+  "Mortgage_Tabs": {
+    "mortgage": "Mortgage Calculator",
+    "amortization": "Amortization",
+    "refinancing": "Refinancing",
+    "rentvsbuy": "Rent vs Buy",
+    "houseafford": "House Affordability",
+    "Mortgage Tools" : "Mortgage Tools", 
+    "aed" : "AED",
+    "ViewUnits" : "View Units", 
+    "GetApproval" : "Get pre-approval today",
+    "MonthlyPayment" : "Monthly Payment",
+    "Yrs" : "yrs",
+    "mortgageTab" : {
+      "title" : "Mortgage Calculator",
+      "PropertyPrice" : "Property Price (AED)",
+      "LoanPeriod" : "Loan Period (Years)",
+      "Years" : "Years",
+      "Downpayment" : "Downpayment (AED)",
+      "InterestRate" : "Interest Rate (%)",      
+      "TotalLoanAmount" : "Total Loan Amount"
+    },
+    "amortizationTab" : {
+      "title" : "Amortization",
+      "LoanAmount" : "Loan Amount",
+      "LoanInterestRate" : "Loan Interest Rate",
+      "LoanTermYears" : "Loan Term Years",
+      "Years" : "Years",
+      "EarlyPayment" : "EARLY PAYMENT",
+      "EffectOfLargerPayment" : "Effect of making a larger payment",
+      "PaymentAmount" : "Payment Amount",
+      "MadeAfterMonth" : "Made After Month",
+      "Months" : "months",
+      "MonthlyAmortization" : "Monthly Amortization",
+      "TotalCost" : "Total Cost",
+      "ExploreProperties" : "Explore Properties"
+    },
+
+    "refinancingTab": {
+      "title": "Refinancing",
+      "MortgageInformation": "Mortgage Information",
+      "CurrentLoanBalance": "Current loan balance",
+      "CurrentMonthlyPayments": "Current monthly payments",
+      "EarlySettlementFees": "Early settlement fees",
+      "Percentage": "Percentage",
+      "CurrentLoanInterestRate": "Current loan interest rate in %",      
+      "RefinanceInformation": "Refinance Information",
+      "CurrentPropertyValue": "Current property value",
+      "CurrentEstimated": "Current estimated value",
+      "TermOfNewLoan": "Term of new loan",
+      "FeesToObtainNewLoan": "Fees to obtain new loan",
+      "NewLoanPercentage": "Percentage",
+      "NewLoanInterestRate": "Interest rate of the new loan in %",  
+      "MortgageCost": "Mortgage Cost",
+      "MonthlyPay": "Monthly Pay",
+      "PayDiff": "Pay Diff",
+      "RefinancePay": "Refinance Pay",
+      "BreakMonth": "Break Month",
+      "Month(s)" : "month(s)"
+    },
+    "rentVsBuyTab": {
+      "Title": "Rent vs Buying",
+      "Currentmonthlyrent": "Current monthly rent",
+      "Expectedloanamount": "Expected loan amount",
+      "Yearlyrentincrease": "Yearly rent increase in %",
+      "Loantermyears": "Loan term in years",
+      "Loaninterestrate": "Loan interest rate in %",
+      "Expectedpropertyprice": "Expected property price",
+      "Downpayment": "Downpayment",
+      "Downpaymentpercentage": "Downpayment %",
+      "Yearlypropertyappreciation": "Yearly property appreciation",
+      "Planyearstolive": "Plan years to live",      
+      "Totalrentamount": "Total Rent Amount",
+      "Totalbuyamount": "Total Buy Amount",
+      "Viewsaleunits": "View Sale Units",
+      "Getpreapproval": "Get Pre-Approval"
+    },
+    "houseAffordTab": {
+      "Title": "House Affordability",
+      "Grossmonthlyincome": "Gross Monthly Income",
+      "Extramonthlyincome": "Extra Monthly Income",
+      "Monthlydebtrepayment": "Monthly Debt Repayment",
+      "Downpayment": "Downpayment",
+      "Interestrate": "Interest Rate",
+      "Paymentperiod": "Payment Period",
+      "Canafford": "Can Afford",
+      "Totalafford": "Total Afford",
+      "GeApprovalToday" : "Get pre-approval today"
+    }
+  },
+
+  "ReportDownload" : {
+    "title" : "Market Insights",
+    "desc" : "Monthly Report DXB",
+    "download" : "Download Now"
+  },
+  "RealEstatePartner" : {
+    "title" : {
+      "part1" : "YOUR TRUSTED",
+      "part2" : "Real Estate",
+      "part3" : "PARTNER"
+    },
+    "aboutCounter" : {
+      "customers" : "Customers",
+      "languages" : "Languages",
+      "projects" : "Projects",
+      "locationWorldwide" : "Location Worldwide",
+      "years" : "Years in Business",
+      "branches" : "Branches",
+      "expertEmployees" : "Expert Employees"
+    }
+  },
+
+  "AwardsSectionHome" : {
+    "title" : "AWARDS-DRIVEN Excellence",
+    "desc" : "We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. Explore our journey of accolades that inspire us to reach new pinnacles of success.",
+    "awards" : {
+      "emaar" :  {
+        "title1":"EMAAR",
+        "title2":"ANNUAL BROKER",
+        "title3": "AWARDS - 2018"
+       },
+      "aldar2021" : {
+        "title1":"ALDAR",
+        "title3": "AMBASSADOR - 2021"
+      },
+      "aldar2016" : {
+        "title1":"ALDAR",
+        "title2":"TOP PERFORMING",
+        "title3": "Agency First Place - 2016"
+      },
+      "aldar2020" : {
+          "title1":"ALDAR",
+          "title2":"TOP PERFORMING",
+          "title3": "Agency First Place - 2020"
+      },
+      "aldar2022" : {
+          "title1":"ALDAR",
+          "title2":"TOP PERFORMING",
+          "title3": "Agency First Place - 2022"
+      },
+      "imkan" : {
+          "title1":"IMKAN",
+          "title2":"TOP PERFORMING",
+          "title3": "Agency First Place - 2021"
+      }
+    }
+  },
+  "googleReview" : {
+    "title" : "Testimonials",
+    "google" : "Google",
+    "review1" : "My experience with them was awesome! They really made my home-buying journey smooth and stress-free.",
+    "review2" : "Hello from Turkey. Lilit took very good care of us and answered all our questions and queries very clearly.",
+    "review3" : "It was a good experience, as engineer Wissam Atef provided us with excellent support in all maintenance work. Thank you, Engineer Wissam"
+  },
+  "getTheApp" : {
+    "title1" : "Get the app",
+    "title2" : "Your Journey Starts Here",
+    "desc" : {
+      "part1" : "Take control of your real estate journey with our app. Whether you're booking a viewing, tracking your property progress, or staying updated on the latest listings, everything you need is at your fingertips.",
+      "part2" : "Download the app now and start your journey today!"
+    },
+    "rightSideContent" : {
+      "title" : "Start your journey today",
+      "para" : "with just one tap."
+    },
+    "appLinks" : "Available on App Store and Google Play"
+  },
+
+  "Common_Form_Agreements" : {
+    "agreement1" : "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
+    "agreement2" : "Agree to receive multiple calls and communications via various channels regarding my enquiry",
+    "agreement3" : "Agree to receive calls and communications via various channels on various projects, products, and services"
+  },
+
+  "FooterAI": {
+    "footer_brand_desc": "Property Shop Investment is the leading real estate agency in Abu Dhabi, helping you find your perfect home since 2007.",
+    "footer_company": "Company",
+    "footer_psi" : "Property Shop Investment.",
+    "footer_services": "Services",
+    "footer_popular_areas": "Popular Areas",
+    "footer_get_in_touch": "Get in Touch",
+    "footer_newsletter": "Newsletter",
+    "footer_rights": "All Rights Reserved.",
+    "footer_privacy": "Privacy Policy",
+    "footer_terms": "Terms of Use",
+    "footer_sitemap": "Sitemap",
+    "footer_cookies": "Cookies Policy",
+    "footer_links_about": "About PSI",
+    "footer_links_team": "Our Team",
+    "footer_links_careers": "Careers",
+    "footer_links_awards": "Awards & Recognition",
+    "footer_links_media": "Media Center",
+    "footer_links_testi": "Testimonials",
+    "footer_links_intl": "International",
+    "footer_links_buy": "Buy a Property",
+    "footer_links_rent": "Rent a Property",
+    "footer_links_list": "List Your Property",
+    "footer_links_manage": "Property Management",
+    "footer_links_mortgage": "Mortgage Calculator",
+    "footer_links_offplan": "Off-Plan Projects",
+    "footer_links_reports": "Market Reports",
+    "loc_Abu Dhabi": "Abu Dhabi",
+    "loc_Dubai": "Dubai",
+    "loc_Sharjah": "Sharjah",
+    "loc_Al Ain": "Al Ain",
+    "loc_Ras Al Khaimah": "Ras Al Khaimah",
+    "loc_Al Reem Island": "Al Reem Island",
+    "loc_Yas Island": "Yas Island",
+    "loc_Saadiyat Island": "Saadiyat Island",
+    "loc_Al Raha Beach": "Al Raha Beach",
+    "loc_Dubai Marina": "Dubai Marina",
+    "loc_Downtown Dubai": "Downtown Dubai",
+    "loc_Dubai Creek": "Dubai Creek",
+    "loc_Palm Jumeirah": "Palm Jumeirah",
+    "loc_coming_soon": "Coming Soon",
+    "loc_updating": "We are currently updating our listings for",
+    "form_firstName": "First Name",
+    "form_lastName": "Last Name",
+    "form_email": "Email Address",
+    "form_phone": "Phone Number",
+    "form_submit": "Submit",
+    "form_schedule": "Schedule Viewing",
+    "form_property_purpose": "Property Purpose",
+    "form_choose_purpose": "Choose purpose",
+    "form_sell": "Sell",
+    "form_rent": "Rent",
+    "form_manage": "Property Management",
+    "form_describe_prop": "Please describe your property",
+    "form_describe_placeholder": "Provide details about size, location, bedrooms...",
+    "form_agreement": "By clicking Submit, you agree to our Terms & Conditions and Privacy Policy.",
+    "form_marketing_consent": "I agree to receive calls and communications via various channels from PSI.",
+    "form_register_interest": "Register Your Interest",
+    "btn_search": "Search",
+    "btn_preview": "Preview",
+    "btn_inquire": "Inquire",
+    "btn_whatsapp": "WhatsApp",
+    "btn_details": "Unit Details",
+    "btn_call": "Call Now",
+    "btn_view_map": "View Map",
+    "btn_download_profile": "Download Company Profile",
+    "btn_discover_hub": "Discover PSI Emirati Hub",
+    "btn_download_report": "Download Now",
+    "btn_signup": "Sign up",
+    "btn_submit_request": "Submit Request",
+    "btn_next_step": "Next Step",
+    "btn_join": "Join",
+    "btn_load_more": "Load More Projects",
+    "btn_view_project": "View Project",
+    "btn_download_brochure": "Download Brochure",
+    "btn_gallery": "Gallery",
+    "btn_compare": "Compare",
+    "btn_list": "List",
+    "btn_overview": "Overview",
+    "btn_units": "Units",
+    "btn_floor_plans": "Floor Plans",
+    "btn_location": "Location",
+    "btn_brochure": "Brochure",
+    "btn_save": "Save",
+    "btn_saved": "Saved",
+    "btn_remove": "Remove",
+    "btn_master_plan": "Master Plan",
+    "btn_nearby": "Nearby",
+    "btn_developer": "Developer",
+    "btn_video_tour": "Video Tour",
+    "company_address" : {
+      "part1" : "Office No. 4410 & 4411",
+      "part2" : "Addax Tower Level 44",
+      "part3" : "Al Reem Island, City of Lights",
+      "part4" : "Abu Dhabi, United Arab Emirates"
+    }
+  },
+
   "LocaleSwitcher": {
-    "label": "切换语言",
-    "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} cn {🇨🇳 Chinese} ru {🇷🇺 Russian} de {🇩🇪 Dutch} other {Unknown}}",
+    "label": "Change language",
+    "locale": "{locale, select, ar {🇦🇪 阿拉伯语} en {🇺🇸 英语} cn {🇨🇳 中文} ru {🇷🇺 俄语} de {🇩🇪 德语} other {未知}}",
     "buy": "Buy",
     "rent": "Rent",
     "communities": "Communities",
     "about": "About Us",
     "careers": "Careers",
     "list": "List Your Property",
+    "international": "International",
     "contact": "Contact Us",
     "developers": "Developers",
-    "featured": "Featured Projects",
+    "featured projects": "Featured Projects",
     "more": "More",
     "mortgage": "Mortgage Calculator",
     "luxury": "Luxury Projects",
@@ -29,8 +379,46 @@
     "villa calculator": "Villa Calculator",
     "newsletters": "Newsletters",
     "articles": "Articles",
-    "property management": "Property Management"
+    "property management": "Property Management",
+    "login": "Login",
+    "logout": "Logout",    
+    "Featured": "Featured",
+    "Explore": "Explore",
+    "Abu Dhabi": "Abu Dhabi",
+    "Sama Yas": "Sama Yas",
+    "Yas Riva": "Yas Riva",
+    "Manarat Living - Saadiyat": "Manarat Living - Saadiyat",
+    "The Arthouse": "The Arthouse",
+    "Bloom Living - Almeria": "Bloom Living - Almeria",
+    "Residential": "Residential",
+    "Buy Apartments": "Buy Apartments",
+    "Buy Villas": "Buy Villas",
+    "Rent Apartments": "Rent Apartments",
+    "Rent Villas": "Rent Villas",
+    "Commercial": "Commercial",
+    "Offices for Sale": "Offices for Sale",
+    "Offices for Rent": "Offices for Rent",
+    "Retail Spaces": "Retail Spaces",
+    "Popular Areas": "Popular Areas",
+    "Al Reem Island": "Al Reem Island",
+    "Yas Island": "Yas Island",
+    "Saadiyat Island": "Saadiyat Island",
+    "Palm Jumeirah": "Palm Jumeirah",
+    "New Launches": "New Launches",
+    "Aldar": "Aldar",
+    "Emaar": "Emaar",
+    "Imkan": "Imkan",
+    "Meraas": "Meraas",
+    "Dubai Properties": "Dubai Properties",
+    "NSHAMA": "NSHAMA",
+    "Valuation & Finance": "Valuation & Finance",
+    "Client Services": "Client Services",
+    "About PSI": "About PSI",
+    "Our Story": "Our Story",
+    "Awards": "Awards",
+    "Media": "Media"
   },
+
   "ProjectPage": {
     "overview": "概览",
     "gallery": "相册",

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import CitiesTabHeader from "./CitiesTabHeader";
 import { Outfit } from "next/font/google";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -13,14 +14,16 @@ const outfit = Outfit({
 
 interface Project {
   image: string;
-  title: string;
+  title: string; 
+  title_ar?: string;
   type: string;
   project_url: string;
 }
 
 interface City {
   id: string;
-  title: string;
+  title: string; 
+  title_ar?: string;
   content: string;
   image: string;
   projects: Project[];
@@ -31,12 +34,17 @@ interface CitiesTabProps {
 }
 
 const CitiesTab: React.FC<CitiesTabProps> = ({ cities }) => {
+  const locale = useLocale();
+  const isRtl = locale.toLowerCase().startsWith("ar");
+
+  const L = (en: string, ar?: string) => (isRtl && ar ? ar : en);
+
   const [visibleTab, setVisibleTab] = useState(0);
   const currentCity = cities[visibleTab];
   const hasProjects = currentCity?.projects?.length > 0;
   return (
     <>
-      <div className="container mx-auto py-10">
+      <div className="container mx-auto py-10" dir={isRtl ? "rtl" : "ltr"}>
         <div className={`px-4 md:px-8 `}>
           <CitiesTabHeader
             data={cities}
@@ -59,7 +67,7 @@ const CitiesTab: React.FC<CitiesTabProps> = ({ cities }) => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity" />
 
                     <div className="absolute bottom-0 left-0 p-6 text-white w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <h3 className={`text-2xl font-serif font-bold mb-1 ${outfit.className}`}>{project.title}</h3>
+                      <h3 className={`text-2xl font-serif font-bold mb-1 ${outfit.className}`}>{L(project.title, project.title_ar)}</h3>
                       <p className={`text-xs font-light tracking-widest text-gray-300 ${outfit.className} `}>{project.type}</p>
                       <div className="h-0.5 w-0 bg-secondary mt-4 transition-all duration-500 group-hover:w-16" />
                     </div>

@@ -26,9 +26,9 @@ const DevelopersList = ({slug} : {slug : string}) => {
         "nameRef" : "Imkan Properties LLC",
     },
     {
-        "name" : "Meeras",
-        "url" : "meeras",
-        "nameRef" : "Meeras",
+        "name" : "Meraas",
+        "url" : "meraas",
+        "nameRef" : "Meraas",
     },
     {
         "name" : "Dubai Properties",

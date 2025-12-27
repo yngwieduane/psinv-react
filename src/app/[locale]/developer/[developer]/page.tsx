@@ -9,7 +9,7 @@ const developerMap : Record<string, string> = {
         "emaar": "Emaar Properties",
         "hydra-properties": "Hydra Properties",
         "imkan-properties-llc": "IMKAN PROPERTIES LLC",
-        "meeras": "Meeras",
+        "meraas": "Meraas",
         "nshama": "NSHAMA ",
         "aabar-properties-llc": "Aabar Properties LLC",
         "bloom": "Bloom",

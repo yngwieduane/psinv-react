@@ -6,14 +6,8 @@ import RefinancingCalculator from './RefinancingCalculator';
 import RentVsBuyCalculator from './RentVsBuyCalculator';
 import HouseAffordabilityCalculator from './HouseAffordabilityCalculator';
 import { Outfit } from 'next/font/google';
-
-const tabs = [
-  { id: 'mortgage', title: 'Mortgage Calculator' },
-  { id: 'amortization', title: 'Amortization' },
-  { id: 'refinancing', title: 'Refinancing' },
-  { id: 'rentvsbuy', title: 'Rent vs Buy' },
-  { id: 'houseafford', title: 'House Affordability' },
-];
+import { useLocale, useTranslations } from 'next-intl';
+import BannerModals from '../_components/HomeBannerModal';
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -22,6 +16,18 @@ const outfit = Outfit({
 });
 
 export default function MortgageTabs() {
+  const locale = useLocale();
+  const isRtl = locale.toLowerCase().startsWith("ar");
+  const t = useTranslations("Mortgage_Tabs");
+
+  const tabs = [
+    { id: 'mortgage', title: t("mortgage") },
+    { id: 'amortization', title: t("amortization") },
+    { id: 'refinancing', title: t("refinancing") },
+    { id: 'rentvsbuy', title: t("rentvsbuy") },
+    { id: 'houseafford', title: t("houseafford") }
+  ];
+
   const [activeTab, setActiveTab] = useState('mortgage');
 
   useEffect(() => {
@@ -35,12 +41,21 @@ export default function MortgageTabs() {
     setActiveTab(tabId);
     window.location.hash = tabId;
   };
-  
+
+  const [modal, setModal] = useState(false);      
+  const modalHandler = () => {
+      setModal(true);
+  };
+
+  const modalUpdate = (event:any) => {
+    console.log(event);
+    setModal(event);
+  };  
 
   return (
-    <div className="max-w-[1320px] mx-auto px-4 py-8">
-      <h1 className={`text-center text-2xl md:text-4xl font-bold text-gray-900 mb-8 ${outfit.className}`}>Mortgage Tools</h1>
-
+    <>
+    <div className="max-w-[1320px] mx-auto px-4 py-8" dir = {isRtl ? "rtl" : "ltr"}>
+      <h1 className={`text-center text-2xl md:text-4xl font-bold text-gray-900 mb-8 ${outfit.className}`}>{t("Mortgage Tools")}</h1>
       <ul className="flex flex-wrap justify-center mb-6 text-sm font-medium">
         {tabs.map((tab) => (
           <li key={tab.id} className="mr-2">
@@ -59,12 +74,14 @@ export default function MortgageTabs() {
       </ul>
 
       <div className="bg-white">
-        {activeTab === 'mortgage' && <MortgageCalculator />}
-        {activeTab === 'amortization' && <AmortizationCalculator amount={1000000} />}
-        {activeTab === 'refinancing' && <RefinancingCalculator />}
-        {activeTab === 'rentvsbuy' && <RentVsBuyCalculator />}
-        {activeTab === 'houseafford' && <HouseAffordabilityCalculator />}
+        {activeTab === 'mortgage' && <MortgageCalculator modal={modal} onOpenModal = {modalHandler} onModalUpdate= {modalUpdate} />}
+        {activeTab === 'amortization' && <AmortizationCalculator amount={1000000} modal={modal} onOpenModal = {modalHandler} onModalUpdate= {modalUpdate} />}
+        {activeTab === 'refinancing' && <RefinancingCalculator modal={modal} onOpenModal = {modalHandler} onModalUpdate= {modalUpdate} />}
+        {activeTab === 'rentvsbuy' && <RentVsBuyCalculator modal={modal} onOpenModal = {modalHandler} onModalUpdate= {modalUpdate} />}
+        {activeTab === 'houseafford' && <HouseAffordabilityCalculator modal={modal} onOpenModal = {modalHandler} onModalUpdate= {modalUpdate} />}
       </div>
     </div>
+    <BannerModals modalState={modal} onOpenModal={modalHandler} onModalUpdate={modalUpdate} propData="" />    
+    </>
   );
 }

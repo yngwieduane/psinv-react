@@ -115,7 +115,7 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
     const [propName, setPropName] = useState('');
     const [gclidField, setGclidField] = useState('');
     const [apiUrl, setApiUrl] = useState('');
-    const [sendToMail, setSendToMail] = useState('wd6@psinv.net');
+    const [sendToMail, setSendToMail] = useState('callcenter@psinv.net');
     const [hasSentMail, setHasSentMail] = useState(false);
     const [isAlreadySubmitted, setIsAlreadySubmitted] = useState(false);
 
@@ -613,7 +613,7 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
 	    	case 'Abu Dhabi':	    		
 				ReferredToID=3458;
 				ReferredByID=3458;
-				setSendToMail('wd6@psinv.net');
+				setSendToMail('callcenter@psinv.net');
 	    		break;
 	    	case 'Dubai':	    		
 				ReferredToID=4421;

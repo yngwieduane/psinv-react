@@ -4,12 +4,27 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { Chart, ArcElement, Tooltip } from 'chart.js';
+import { useLocale, useTranslations } from 'next-intl';
 
 Chart.register(ArcElement, Tooltip);
 
-export default function AmortizationCalculator({ amount }: { amount: number }) {
+type Props = {
+  amount: number;
+  modal: boolean;
+  onOpenModal : () => void;
+  onModalUpdate : (value: boolean) => void;  
+}
+
+export default function AmortizationCalculator({
+  amount,
+  modal,
+  onOpenModal,
+  onModalUpdate,
+}: Props) {
+  const t = useTranslations("Mortgage_Tabs");
+
   const chartRef = useRef<HTMLCanvasElement | null>(null);
-const chartInstance = useRef<Chart | null>(null);
+  const chartInstance = useRef<Chart | null>(null);
 
 
 useEffect(() => {
@@ -81,11 +96,11 @@ useEffect(() => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side Form */}
         <div className="bg-white p-6 rounded-2xl shadow-md">
-          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">Amortization</h2>
+          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">{t("amortizationTab.title")}</h2>
 
           {/* Loan Amount */}
           <div className="mb-6">
-  <label className="block text-gray-600 mb-2">Loan Amount</label>
+  <label className="block text-gray-600 mb-2">{t("amortizationTab.LoanAmount")}</label>
   <div className="flex items-center gap-4">
     {/* Input Group */}
     <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 shrink-0 w-[260px]">
@@ -95,7 +110,7 @@ useEffect(() => {
         onChange={(e) => setLoanAmount(+e.target.value)}
         className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
       />
-      <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">AED</span>
+      <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
     </div>
 
     {/* Slider */}
@@ -126,7 +141,7 @@ useEffect(() => {
   </div>
 </div>
 <div className="mb-6">
-  <label className="block text-gray-600 mb-2">Loan Interest Rate</label>
+  <label className="block text-gray-600 mb-2">{t("amortizationTab.LoanInterestRate")}</label>
   
   <div className="flex items-center gap-4">
     {/* Input Box */}
@@ -171,7 +186,7 @@ useEffect(() => {
 
 
 <div className="mb-6">
-  <label className="block text-gray-600 mb-2">Loan Term Years</label>
+  <label className="block text-gray-600 mb-2">{t("amortizationTab.LoanTermYears")}</label>
 
   <div className="flex items-center gap-4">
     {/* Input Box */}
@@ -182,7 +197,7 @@ useEffect(() => {
         onChange={(e) => setLoanTerm(+e.target.value)}
         className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
       />
-      <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">yrs</span>
+      <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("amortizationTab.Years")}</span>
     </div>
 
     {/* Slider */}
@@ -215,11 +230,11 @@ useEffect(() => {
 
           {/* Early Payment Section */}
           <div className="mt-10">
-            <p className="text-black font-bold mb-2">EARLY PAYMENT</p>
-            <p className="text-gray-400 mb-4 text-sm">Effect of making a larger payment</p>
+            <p className="text-black font-bold mb-2">{t("amortizationTab.EarlyPayment")}</p>
+            <p className="text-gray-400 mb-4 text-sm">{t("amortizationTab.EffectOfLargerPayment")}</p>
 
             <div className="mb-6">
-  <label className="block text-gray-600 mb-2">Payment Amount</label>
+  <label className="block text-gray-600 mb-2">{t("amortizationTab.PaymentAmount")}</label>
 
   <div className="flex items-center gap-4">
     {/* Input Group */}
@@ -230,7 +245,7 @@ useEffect(() => {
         onChange={(e) => setEarlyPayment(+e.target.value)}
         className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
       />
-      <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">AED</span>
+      <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
     </div>
 
     {/* Slider */}
@@ -263,7 +278,7 @@ useEffect(() => {
 
 
 <div className="mb-6">
-  <label className="block text-gray-600 mb-2">Made After Month</label>
+  <label className="block text-gray-600 mb-2">{t("amortizationTab.MadeAfterMonth")}</label>
 
   <div className="flex items-center gap-4">
     {/* Input Group */}
@@ -274,7 +289,7 @@ useEffect(() => {
         onChange={(e) => setMadeAfterMonth(+e.target.value)}
         className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
       />
-      <span className="px-4 text-gray-500 bg-white">months</span>
+      <span className="px-4 text-gray-500 bg-white">{t("amortizationTab.Months")}</span>
     </div>
 
     {/* Slider */}
@@ -312,37 +327,37 @@ useEffect(() => {
             <canvas ref={chartRef} className="w-full h-full" />
             <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
               <span className="text-2xl font-bold">{Math.round(monthlyPayment).toLocaleString()}</span>
-              <span className="text-sm">AED</span>
+              <span className="text-sm">{t("aed")}</span>
             </div>
           </div>
-          <p className="text-white-700 mt-5 text-2xl">Monthly Payment</p>
+          <p className="text-white-700 mt-5 text-2xl">{t("MonthlyPayment")}</p>
           {/* Yellow Section */}
           <div className="bg-yellow-400 rounded-2xl text-[#0c1356] py-6 w-full text-center mt-8">
             <div className="flex justify-between w-full text-center mb-8">
               <div className="flex-1">
-                <p className="text-sm text-white-500">Monthly Amortization</p>
-                <p className="text-2xl font-bold text-[#2B1362]">{Math.round(monthlyPayment).toLocaleString()} AED</p>
+                <p className="text-sm text-white-500">{t("amortizationTab.MonthlyAmortization")}</p>
+                <p className="text-2xl font-bold text-[#2B1362]">{Math.round(monthlyPayment).toLocaleString()} {t("aed")}</p>
               </div>
               <div className="flex-1">
-                <p className="text-sm text-white-500">Total Cost</p>
-                <p className="text-2xl font-bold text-[#2B1362]">{Math.round(totalCost).toLocaleString()} AED</p>
+                <p className="text-sm text-white-500">{t("amortizationTab.TotalCost")}</p>
+                <p className="text-2xl font-bold text-[#2B1362]">{Math.round(totalCost).toLocaleString()} {t("aed")}</p>
               </div>
             </div>
             {/* Buttons */}
-            <p className="font-semibold mb-3">Explore Properties</p>
+            <p className="font-semibold mb-3">{t("amortizationTab.ExploreProperties")}</p>
             <button
                 onClick={() => {
                   const minPrice = loanAmount;
                   const maxPrice = loanAmount + 200000;
-                  const url = `http://localhost:3000/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
+                  const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
                   window.location.href = url;
                 }}
                 className="bg-[#0c1356] text-white rounded-full px-6 py-2 hover:bg-blue-900 transition"
               >
-                View Units
+                {t("ViewUnits")}
               </button>
             <br />
-            <a href="#" className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block mt-4 hover:bg-blue-800 transition">Get Pre-Approval</a>
+            <button onClick={onOpenModal} className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block mt-4 hover:bg-blue-800 transition">{t("GetApproval")}</button>
           </div>
         </div>
       </div>

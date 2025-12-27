@@ -25,7 +25,10 @@ interface BannerFormProps {
   }
 type FormData = z.infer<typeof schema>;
 
-const HomeBannerForm: React.FC<BannerFormProps> = ({ hideFeedbackButton = false, propData }) => {
+const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
+  hideFeedbackButton = false,
+  propData,
+} = {}) => {
   //console.log("Banner Form prop ID:", propData?.bannerpropertyid);
   const router = useRouter();
   const pathname = usePathname();
@@ -102,7 +105,7 @@ const HomeBannerForm: React.FC<BannerFormProps> = ({ hideFeedbackButton = false,
         Client Name: ${data.firstName} ${data.lastName} </br>
         Client Email: ${data.email} </br>
         Client Phone: ${data.phone} </br>
-        ${propData?.title !== '' ?  `Interested Project: ${propData?.title}` : ''}
+        ${propData?.title ? `Interested Project: ${propData.title} </br>` : ''}
         URL coming from: ${currentUrl}
     `;
 
@@ -179,8 +182,8 @@ const HomeBannerForm: React.FC<BannerFormProps> = ({ hideFeedbackButton = false,
             body: `
               Client Name: ${data.firstName} ${data.lastName} </br>
               Client Email: ${data.email} </br>
-              Client Phone: ${data.phone} </br>
-              ${propData?.title !== '' ?  `Interested Project: ${propData?.title}` : ''} </br>
+              Client Phone: ${data.phone} </br>              
+              ${propData?.title ? `Interested Project: ${propData.title} </br>` : ''}
               URL coming from: ${currentUrl}</br>
             `,
             receiver: "callcenter@psinv.net",
