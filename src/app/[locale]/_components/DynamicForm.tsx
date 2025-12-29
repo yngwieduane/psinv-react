@@ -10,6 +10,18 @@ import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
+// Define Schema (Only `propertyListing` Now)
+const propertyListingSchema = z.object({
+  firstName: z.string().min(1, { message: "First name is required" }),
+  lastName: z.string().min(1, { message: "Last name is required" }),
+  email: z.string().email({ message: "Invalid email address" }),
+  phone: z.string().min(7, { message: "Invalid phone number" }),
+  propertyPurpose: z.string().min(1, { message: "Property purpose is required" }),
+  agreement1: z.boolean().optional(),
+  agreement2: z.boolean().optional(),
+  agreement3: z.boolean().optional(),
+});
+
 type PropertyListingFormData = z.infer<typeof propertyListingSchema>;
 
 interface DynamicFormProps {

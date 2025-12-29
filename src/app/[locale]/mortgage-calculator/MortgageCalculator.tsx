@@ -9,9 +9,9 @@ import { useLocale, useTranslations } from 'next-intl';
 Chart.register(ArcElement, Tooltip, DoughnutController);
 
 type Props = {
-  modal : boolean;
-  onOpenModal : () => void;
-  onModalUpdate : (value: boolean) => void;
+  modal? : boolean;
+  onOpenModal? : () => void;
+  onModalUpdate? : (value: boolean) => void;
   basePrice?: number;
 }
 

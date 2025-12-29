@@ -339,7 +339,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     ]
                 },
                 {
-                    title: t('Developers'),
+                    title: t('developers'),
                     items: [
                         { label: t('Aldar'),  href: "/developer/aldar-properties-pjsc" },
                         { label: t('Emaar'), href: "/developer/emaar" },
