@@ -63,7 +63,7 @@ const ComparePage: React.FC<{}> = ({ }) => {
                                     <th key={item.propertyID || item.id} className="p-4 w-1/3 min-w-[250px] align-top bg-white border-b border-gray-100 relative group">
                                         <button
                                             onClick={() => removeFromCompare(item.propertyID || item.id)}
-                                            className="absolute top-2 right-2 p-1.5 bg-gray-100 rounded-full text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors"
+                                            className="absolute top-2 right-2 p-1.5 bg-gray-100 rounded-full text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors z-10 cursor-pointer"
                                             title="Remove"
                                         >
                                             <X size={16} />
