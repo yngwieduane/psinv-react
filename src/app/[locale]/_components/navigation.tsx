@@ -589,80 +589,108 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             </nav>
 
             {/* Mobile Menu */}
+            {/* Mobile Menu */}
             <Dialog
                 as="div"
                 className="lg:hidden"
                 open={isMobileMenuOpen}
                 onClose={setIsMobileMenuOpen}
             >
-                <div className="fixed inset-0 z-70" />
-                <DialogPanel className="fixed inset-y-0 right-0 z-80 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                    <div className="flex items-center justify-between">
+                <div className="fixed inset-0 z-50 bg-gray-900/20 backdrop-blur-sm" />
+                <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white/95 backdrop-blur-xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-transform duration-500 ease-in-out">
+                    <div className="flex items-center justify-between border-b border-gray-100 pb-6">
                         <Link href="/" className="-m-1.5 p-1.5" title="PSI">
                             <span className="sr-only">Property Shop Investment</span>
                             <Image height={200} width={200} className="h-8 w-auto" src="/PSI-Logo.svg" alt="Logo" />
                         </Link>
                         <button
                             type="button"
-                            className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                            className="-m-2.5 rounded-md p-2.5 text-gray-700 hover:bg-gray-100 transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             <span className="sr-only">Close menu</span>
                             <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                         </button>
                     </div>
+
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
-                                <Disclosure as="div" className="-mx-3 hidden">
-                                    {({ open }) => (
-                                        <>
-                                            <DisclosureButton className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                                Projects
-                                                <ChevronDownIcon
-                                                    className={classNames(
-                                                        open ? 'rotate-180' : '',
-                                                        'h-5 w-5 flex-none'
-                                                    )}
-                                                    aria-hidden="true"
-                                                />
-                                            </DisclosureButton>
-                                            <DisclosurePanel className="mt-2 space-y-2">
-                                                {[...products_buy, ...callsToAction].map((item) => (
-                                                    <DisclosureButton
-                                                        key={item.name}
-                                                        as="a"
-                                                        href={item.href}
-                                                        className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                                    >
-                                                        {item.name}
-                                                    </DisclosureButton>
-                                                ))}
-                                            </DisclosurePanel>
-                                        </>
-                                    )}
-                                </Disclosure>
-                                <Link title="Projects" onClick={() => setIsMobileMenuOpen(false)} href="/projects" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                    Projects
-                                </Link>
-                                <Link title="Units" onClick={() => setIsMobileMenuOpen(false)} href="/units" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                    Units
-                                </Link>
-                                <Link title="Landing Page" onClick={() => setIsMobileMenuOpen(false)} href="/landing-page" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                    Landing Page
-                                </Link>
-                                <Link title="Contact Us" onClick={() => setIsMobileMenuOpen(false)} href="/contact-us" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                    Contact Us
-                                </Link>
+                                {/* Dynamic Mobile Menu Groups */}
+                                {NAV_GROUPS.map((group) => (
+                                    <Disclosure as="div" className="-mx-3" key={group.label}>
+                                        {({ open }) => (
+                                            <>
+                                                <DisclosureButton className="flex w-full items-center justify-between rounded-lg py-3 pl-3 pr-3.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50 transition-colors">
+                                                    {t(group.label.toLowerCase())}
+                                                    <ChevronDownIcon
+                                                        className={classNames(
+                                                            open ? 'rotate-180' : '',
+                                                            'h-5 w-5 flex-none text-gray-400 transition-transform duration-300'
+                                                        )}
+                                                        aria-hidden="true"
+                                                    />
+                                                </DisclosureButton>
+                                                <DisclosurePanel className="mt-2 space-y-4 pl-4 border-l-2 border-gray-100 ml-3">
+                                                    {group.columns.map((col, idx) => (
+                                                        <div key={idx} className="pb-2">
+                                                            <h5 className="text-xs font-bold uppercase text-gray-400 tracking-wider mb-2 px-3">{col.title}</h5>
+                                                            {col.items.map((item, i) => (
+                                                                <Link
+                                                                    key={i}
+                                                                    href={resolveHref(item as any)}
+                                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                                    className="block rounded-lg py-2 pl-3 pr-3 text-sm font-semibold leading-7 text-gray-600 hover:text-[#111954] hover:bg-gray-50 transition-all"
+                                                                >
+                                                                    {item.label}
+                                                                </Link>
+                                                            ))}
+                                                        </div>
+                                                    ))}
+                                                </DisclosurePanel>
+                                            </>
+                                        )}
+                                    </Disclosure>
+                                ))}
                             </div>
-                            <div className="py-6 hidden">
-                                <Link
-                                    title="Log In"
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+
+                            {/* Mobile Utility Links */}
+                            <div className="py-6 space-y-4">
+                                <button
+                                    onClick={() => {
+                                        setIsMobileMenuOpen(false);
+                                        modalHandler();
+                                    }}
+                                    className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2"
                                 >
-                                    Log in
-                                </Link>
+                                    <Search size={18} /> Search Projects
+                                </button>
+
+                                <div className="-mx-3 px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2">
+                                    <LanguageSwitcher css={linkColor} />
+                                </div>
+
+                                {user ? (
+                                    <button
+                                        onClick={() => {
+                                            logout();
+                                            setIsMobileMenuOpen(false);
+                                        }}
+                                        className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2"
+                                    >
+                                        Log out
+                                    </button>
+                                ) : (
+                                    <button
+                                        onClick={() => {
+                                            if (login) login();
+                                            setIsMobileMenuOpen(false);
+                                        }}
+                                        className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2"
+                                    >
+                                        <UserIcon size={18} /> Log in
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
