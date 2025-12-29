@@ -202,7 +202,7 @@ export default function UnitPage(props: any) {
                                 </div>) : ("")}
                                 {category == "Sale" ? (
                                 <div className="container mx-auto my-10">
-                                    <MortgageCalculator baseprice={price}/>
+                                    <MortgageCalculator basePrice={price}/>
                                 </div>) : ("")}
                             </div>
                             <div className="mainsidebar">

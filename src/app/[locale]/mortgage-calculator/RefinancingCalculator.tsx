@@ -4,10 +4,23 @@ import { useState, useRef, useEffect } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { Chart, ArcElement, Tooltip } from 'chart.js';
+import { useTranslations } from 'next-intl';
 
 Chart.register(ArcElement, Tooltip);
 
-export default function RefinancingCalculator() {
+type Props = {
+  modal : boolean;
+  onOpenModal : () => void;
+  onModalUpdate : (value: boolean) => void;
+}
+
+export default function RefinancingCalculator({
+  modal,
+  onOpenModal,
+  onModalUpdate,
+}: Props) {
+  const t = useTranslations("Mortgage_Tabs");
+
   const [currentLoanBalance, setCurrentLoanBalance] = useState(2000000);
   const [currentMonthlyPayments, setCurrentMonthlyPayments] = useState(0);
   const [earlySettlementFees, setEarlySettlementFees] = useState(40000);
@@ -81,27 +94,27 @@ export default function RefinancingCalculator() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Form */}
         <div className="bg-white p-6 rounded-2xl shadow-md">
-          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">Refinancing</h2>
+          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">{t("refinancingTab.title")}</h2>
 
           {/* Mortgage Information */}
-          <p className="text-lg font-semibold mb-4">Mortgage Information</p>
+          <p className="text-lg font-semibold mb-4">{t("refinancingTab.MortgageInformation")}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <InputSlider label="Current loan balance" value={currentLoanBalance} setValue={setCurrentLoanBalance} suffix="AED" min={0} max={10000000} />
-            <InputSlider label="Current monthly payments" value={currentMonthlyPayments} setValue={setCurrentMonthlyPayments} suffix="AED" min={0} max={1000000} />
-            <InputSlider label="Early settlement fees" value={earlySettlementFees} setValue={setEarlySettlementFees} suffix="AED" min={0} max={500000} />
-            <InputSlider label="Percentage" value={percentage} setValue={setPercentage} suffix="%" min={0} max={10} step={0.1} />
-            <InputSlider label="Current loan interest rate in %" value={currentLoanInterestRate} setValue={setCurrentLoanInterestRate} suffix="%" min={0} max={10} step={0.1} />
+            <InputSlider label={t("refinancingTab.CurrentLoanBalance")} value={currentLoanBalance} setValue={setCurrentLoanBalance} suffix={t("aed")} min={0} max={10000000} />
+            <InputSlider label={t("refinancingTab.CurrentMonthlyPayments")} value={currentMonthlyPayments} setValue={setCurrentMonthlyPayments} suffix={t("aed")} min={0} max={1000000} />
+            <InputSlider label={t("refinancingTab.EarlySettlementFees")} value={earlySettlementFees} setValue={setEarlySettlementFees} suffix={t("aed")} min={0} max={500000} />
+            <InputSlider label={t("refinancingTab.Percentage")} value={percentage} setValue={setPercentage} suffix="%" min={0} max={10} step={0.1} />
+            <InputSlider label={t("refinancingTab.CurrentLoanInterestRate")} value={currentLoanInterestRate} setValue={setCurrentLoanInterestRate} suffix="%" min={0} max={10} step={0.1} />
           </div>
 
           {/* Refinance Information */}
-          <p className="text-lg font-semibold mt-8 mb-4">Refinance Information</p>
+          <p className="text-lg font-semibold mt-8 mb-4">{t("refinancingTab.RefinanceInformation")}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <InputSlider label="Current property value" value={currentPropertyValue} setValue={setCurrentPropertyValue} suffix="AED" min={0} max={10000000} />
-            <InputSlider label="Current estimated" value={currentEstimated} setValue={setCurrentEstimated} suffix="AED" min={0} max={10000000} />
-            <InputSlider label="Term of new loan" value={termOfNewLoan} setValue={setTermOfNewLoan} suffix="yrs" min={1} max={30} />
-            <InputSlider label="Fees to obtain new loan" value={feesToObtainNewLoan} setValue={setFeesToObtainNewLoan} suffix="AED" min={0} max={500000} />
-            <InputSlider label="Percentage" value={newLoanPercentage} setValue={setNewLoanPercentage} suffix="%" min={0} max={10} step={0.1} />
-            <InputSlider label="Interest rate of the new loan in %" value={newLoanInterestRate} setValue={setNewLoanInterestRate} suffix="%" min={0} max={10} step={0.1} />
+            <InputSlider label={t("refinancingTab.CurrentPropertyValue")} value={currentPropertyValue} setValue={setCurrentPropertyValue} suffix={t("aed")} min={0} max={10000000} />
+            <InputSlider label={t("refinancingTab.CurrentEstimated")} value={currentEstimated} setValue={setCurrentEstimated} suffix={t("aed")} min={0} max={10000000} />
+            <InputSlider label={t("refinancingTab.TermOfNewLoan")} value={termOfNewLoan} setValue={setTermOfNewLoan} suffix={t("Yrs")} min={1} max={30} />
+            <InputSlider label={t("refinancingTab.FeesToObtainNewLoan")} value={feesToObtainNewLoan} setValue={setFeesToObtainNewLoan} suffix={t("aed")} min={0} max={500000} />
+            <InputSlider label={t("refinancingTab.NewLoanPercentage")} value={newLoanPercentage} setValue={setNewLoanPercentage} suffix="%" min={0} max={10} step={0.1} />
+            <InputSlider label={t("refinancingTab.NewLoanInterestRate")} value={newLoanInterestRate} setValue={setNewLoanInterestRate} suffix="%" min={0} max={10} step={0.1} />
           </div>
         </div>
 
@@ -112,47 +125,47 @@ export default function RefinancingCalculator() {
             <canvas ref={chartRef} className="w-full h-full" />
             <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
               <span className="text-2xl font-bold">{Math.round(refinanceMonthlyPayment).toLocaleString()}</span>
-              <span className="text-sm">AED</span>
+              <span className="text-sm">{t("aed")}</span>
             </div>
           </div>
-          <p className="text-xl font-semibold mt-2 mb-6 text-white">Monthly Payment</p>
+          <p className="text-xl font-semibold mt-2 mb-6 text-white">{t("MonthlyPayment")}</p>
 
           {/* Yellow Section */}
           <div className="bg-yellow-400 rounded-2xl w-full text-[#0c1356] p-8 text-center">
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div>
-                <p className="text-sm">Mortgage Cost</p>
-                <p className="text-2xl font-bold">{Math.round(mortgageCost).toLocaleString()} AED</p>
+                <p className="text-sm">{t("refinancingTab.MortgageCost")}</p>
+                <p className="text-2xl font-bold">{Math.round(mortgageCost).toLocaleString()} {t("aed")}</p>
               </div>
               <div>
-                <p className="text-sm">Monthly Pay</p>
-                <p className="text-2xl font-bold">{Math.round(oldMonthlyPayment).toLocaleString()} AED</p>
+                <p className="text-sm">{t("refinancingTab.MonthlyPay")}</p>
+                <p className="text-2xl font-bold">{Math.round(oldMonthlyPayment).toLocaleString()} {t("aed")}</p>
               </div>
               <div>
-                <p className="text-sm">Pay Diff</p>
-                <p className="text-2xl font-bold">{Math.round(payDiff).toLocaleString()} AED</p>
+                <p className="text-sm">{t("refinancingTab.PayDiff")}</p>
+                <p className="text-2xl font-bold">{Math.round(payDiff).toLocaleString()} {t("aed")}</p>
               </div>
               <div>
-                <p className="text-sm">Refinance Pay</p>
-                <p className="text-2xl font-bold">{Math.round(refinanceMonthlyPayment).toLocaleString()} AED</p>
+                <p className="text-sm">{t("refinancingTab.RefinancePay")}</p>
+                <p className="text-2xl font-bold">{Math.round(refinanceMonthlyPayment).toLocaleString()} {t("aed")}</p>
               </div>
             </div>
-            <p className="text-sm">Break Month</p>
-            <p className="text-2xl font-bold mb-4">{isFinite(breakMonth) ? breakMonth : 0} month(s)</p>
+            <p className="text-sm">{t("refinancingTab.BreakMonth")}</p>
+            <p className="text-2xl font-bold mb-4">{isFinite(breakMonth) ? breakMonth : 0} {t("refinancingTab.Month(s)")}</p>
             <button
   onClick={() => {
     const minPrice = Math.floor(newLoanAmount);
     const maxPrice = Math.ceil(newLoanAmount + 200000);
-    const url = `http://localhost:3000/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
+    const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
     window.location.href = url;
   }}
   className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition mb-2"
 >
-  View Units
+  {t("ViewUnits")}
 </button>
 
             <br />
-            <a href="#" className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition">Get Pre-Approval</a>
+            <button onClick={onOpenModal} className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition">{t("GetApproval")}</button>
           </div>
         </div>
       </div>

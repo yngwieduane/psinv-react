@@ -4,20 +4,29 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { Chart, ArcElement, Tooltip, DoughnutController } from 'chart.js';
-import InquiryForm from '../_components/InquiryForm';
-import PopupForm from '../_components/PopupForm';
+import { useLocale, useTranslations } from 'next-intl';
 
 Chart.register(ArcElement, Tooltip, DoughnutController);
 
-export default function MortgageCalculator(props:any) {
+type Props = {
+  modal? : boolean;
+  onOpenModal? : () => void;
+  onModalUpdate? : (value: boolean) => void;
+  basePrice?: number;
+}
 
-  const baseprice = props.baseprice ?? 1000000;
+const MortgageCalculator = ({modal, onOpenModal, onModalUpdate, basePrice} : Props) => {
+
+  const locale = useLocale();
+  const isRtl = locale.toLowerCase().startsWith("ar");
+  const t = useTranslations("Mortgage_Tabs");
+
+  const baseprice = basePrice ?? 1000000;
 
   const [propertyPrice, setPropertyPrice] = useState(baseprice);
   const [loanTerm, setLoanTerm] = useState(25);
   const [downPayment, setDownPayment] = useState(250000);
   const [interestRate, setInterestRate] = useState(4.5);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const chartRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -80,18 +89,16 @@ export default function MortgageCalculator(props:any) {
     return () => chart.destroy();
   }, [downPayment, loanAmount]);
 
-  useEffect(() => {
-    document.body.style.overflow = isModalOpen ? 'hidden' : 'auto';
-  }, [isModalOpen]);
+ 
 
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="bg-white shadow-lg rounded-xl p-6">
-          <h2 className="text-lg font-semibold mb-4 text-center">Mortgage Calculator</h2>
+          <h2 className="text-lg font-semibold mb-4 text-center">{t("mortgageTab.title")}</h2>
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium mb-1">Property Price (AED)</label>
+              <label className="block text-sm font-medium mb-1">{t("mortgageTab.PropertyPrice")}</label>
               <div className='flex items-center gap-2'>
                 <div className="flex w-full items-center gap-0 rounded-[12px] border border-gray-300 overflow-hidden">
                   <input
@@ -101,7 +108,7 @@ export default function MortgageCalculator(props:any) {
                     className="w-full px-4 py-2 rounded-none focus:outline-none"
                     aria-label="Property Price"
                   />
-                  <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">AED</span>
+                  <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
                 </div>
                 <Slider
                   ariaLabelForHandle="Property Price"
@@ -115,7 +122,7 @@ export default function MortgageCalculator(props:any) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Loan Period (Years)</label>
+              <label className="block text-sm font-medium mb-1">{t("mortgageTab.LoanPeriod")}</label>
               <div className='flex items-center gap-2'>
                 <div className="flex w-full items-center gap-0 rounded-[12px] border border-gray-300 overflow-hidden">
                   <input
@@ -125,7 +132,7 @@ export default function MortgageCalculator(props:any) {
                     className="w-full px-4 py-2 rounded-none focus:outline-none"
                     aria-label="Loan Period"
                   />
-                  <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">Years</span>
+                  <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("mortgageTab.Years")}</span>
                 </div>
                 <Slider
                   ariaLabelForHandle="Loan Period"
@@ -138,7 +145,7 @@ export default function MortgageCalculator(props:any) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Downpayment (AED)</label>
+              <label className="block text-sm font-medium mb-1">{t("mortgageTab.Downpayment")}</label>
               <div className='flex items-center gap-2'>
                 <div className="flex w-full items-center gap-0 rounded-[12px] border border-gray-300 overflow-hidden">
                   <input
@@ -162,7 +169,7 @@ export default function MortgageCalculator(props:any) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Interest Rate (%)</label>
+              <label className="block text-sm font-medium mb-1">{t("mortgageTab.InterestRate")}</label>
               <div className="flex items-center gap-2">
                 <div className="flex w-full items-center gap-0 rounded-[12px] border border-gray-300 overflow-hidden">
                   <input
@@ -194,48 +201,36 @@ export default function MortgageCalculator(props:any) {
           </div>
           <div className="text-center mt-6">
             <div className="text-3xl font-bold mb-1">{Math.round(monthlyPayment).toLocaleString()} AED</div>
-            <p className="text-sm">Monthly Payment</p>
+            <p className="text-sm">{t("MonthlyPayment")}</p>
           </div>
           <div className="mt-8 bg-[#f0b647] text-[#0c1356] rounded-lg py-3 px-6 w-full text-center">
-            <p className="text-sm">Total Loan Amount</p>
+            <p className="text-sm">{t("mortgageTab.TotalLoanAmount")}</p>
             <p className="text-lg font-semibold">{loanAmount.toLocaleString()} AED</p>
             <div className="flex justify-center gap-4 mt-6">
               <button
                 onClick={() => {
                   const minPrice = propertyPrice;
                   const maxPrice = propertyPrice + 200000;
-                  const url = `http://localhost:3000/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
+                  const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
                   window.location.href = url;
                 }}
                 className="bg-[#0c1356] relative overflow-hidden rounded-full px-5 py-2.5 text-white transition-all duration-300 hover:bg-[#0c1356] hover:ring-2 hover:ring-[#0c1356] hover:ring-offset-2 cursor-pointer"
               >
-                View Units
+                {t("ViewUnits")}
               </button>
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={onOpenModal}
                 className="bg-[#0c1356] relative overflow-hidden rounded-full px-5 py-2.5 text-white transition-all duration-300 hover:bg-[#0c1356] hover:ring-2 hover:ring-[#0c1356] hover:ring-offset-2 cursor-pointer"
               >
-                Get pre-approval today
+                {t("GetApproval")}
               </button>
             </div>
           </div>
         </div>
       </div>
-
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
-          <div className="bg-white p-6 rounded-xl w-full max-w-lg relative overflow-y-auto max-h-[90vh]">
-            <button
-              className="absolute top-3 right-3 text-xl font-bold text-gray-700 hover:text-black"
-              onClick={() => setIsModalOpen(false)}
-            >
-              &times;
-            </button>
-            <h2 className="text-2xl font-semibold text-center mb-4 text-purple-800 ">Register Your Interest</h2>
-            <PopupForm />
-          </div>
-        </div>
-      )}
+       
     </>
   );
 }
+
+export default MortgageCalculator

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Poppins, Outfit } from "next/font/google";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -15,19 +16,23 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const tabs = [
-  { label: "Emirati Hub", key: "emirati" },
-  { label: "Youngsters Program", key: "youngsters" },
-  { label: "Crypto", key: "crypto" },
-  { label: "PSI International", key: "international" },
-  { label: "Company Profile", key: "company" },
-];
-
 const WhyPSI = () => {
+  const locale = useLocale();
+  const isRtl = locale.toLowerCase().startsWith("ar");
+  const t = useTranslations("Why_PSI");
+
+  const tabs = [
+    { label: t("emirati_title"), key: "emirati" },
+    { label: t("youngster_title"), key: "youngsters" },
+    { label: t("crypto_title"), key: "crypto" },
+    { label: t("international_title"), key: "international" },
+    { label: t("company_title"), key: "company" },
+  ];
+    
   const [activeTab, setActiveTab] = useState("company");
 
   return (
-    <div className={`container mx-auto py-16 px-4 ${outfit.className}`}>
+    <div className={`container mx-auto py-16 px-4 ${outfit.className}`} dir={isRtl ? "rtl" : "ltr"}>
       <div className="container mx-auto px-4 md:px-8">
         {/* Tabs Header */}
         <div className="flex border-b overflow-x-auto mb-0 scrollbar-hide">
@@ -52,17 +57,17 @@ const WhyPSI = () => {
             {/* Text Section */}
             <div className="flex-1">
                <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
-               Why PSI ?
+               {t("why_psi.title")}
               </h2>
             <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-            Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi’s Real Estate Market.
+            {t("why_psi.desc")}
           </p>
               <Link
                 href="/corporate/"
                 title="Learn more about PSI"
                 className="w-full relative text-md md:text-lg px-3 overflow-hidden rounded bg-orange-700 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
-               Learn more about PSI
+               {t("why_psi.btn")}
               </Link>
             </div>
 
@@ -92,18 +97,18 @@ const WhyPSI = () => {
           {/* Text Section */}
           <div className="flex-1">
             <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
-              PSI Emirati Hub
+              {t("emirati_hub.title")}
             </h2>
             <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-              Empowering UAE nationals to excel and lead in the real estate sector through 
-              <span className="font-bold text-secondary"> PSI Emirati Hub.</span>
+              {t("emirati_hub.desc.part1")}
+              <span className="font-bold text-secondary"> {t("emirati_hub.desc.part2")}</span>
             </p>
               <Link
                 href="/project/emirati-hub/"
                 title="Learn more about PSI Emirati Hub"
                 className="w-full relative text-md md:text-lg px-3 overflow-hidden rounded bg-orange-700 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
-               Learn more about PSI Emirati Hub
+               {t("emirati_hub.btn")}
               </Link>
           </div>
 
@@ -133,18 +138,18 @@ const WhyPSI = () => {
           {/* Text Section */}
           <div className="flex-1">
             <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
-              PSI Abu Dhabi Youngsters
+              {t("youngster_program.title")}
             </h2>
            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-           Unlock your potential through 
-            <span className="font-bold text-secondary"> PSI Abu Dhabi Youngster</span> Program by empowering minds, and shaping futures
+           {t("youngster_program.desc.part1")}
+            <span className="font-bold text-secondary"> {t("youngster_program.desc.part2")}</span> {t("youngster_program.desc.part3")}
           </p>
               <Link
                 href="/psi-youngsters-program"
                 title="Learn more about PSI Youngsters"
                 className="w-full relative text-md md:text-lg px-3 overflow-hidden rounded bg-orange-700 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
-               Learn more about PSI Youngsters
+               {t("youngster_program.btn")}
               </Link>
           </div>
 
@@ -174,22 +179,20 @@ const WhyPSI = () => {
           {/* Text Section */}
           <div className="flex-1">
              <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
-              Buy property with Crypto
+              {t("crypto.title")}
             </h2>
            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-            With connections, network, knowledge and country guides, we build and design investment journeys based on
+            {t("crypto.desc.part1")}
           </p>
            <p className={`text-[18px] font-semibold sm:text-[24px] leading-[1.77] mb-4 text-[#E46027] font-normal tracking-[-0.5px] uppercase ${poppins.className}`}>
-            your needs, values, lifestyle and your goals.
-
-
+            {t("crypto.desc.part2")}
           </p>
               <Link
                 href="/crypto"
                 title="Learn more about Crypto"
                 className="w-full relative text-md md:text-lg px-3 overflow-hidden rounded bg-orange-700 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
-               Learn more about Crypto
+               {t("crypto.btn")}
               </Link>
           </div>
 
@@ -219,17 +222,17 @@ const WhyPSI = () => {
           {/* Text Section */}
           <div className="flex-1">
             <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
-              PSI International
+              {t("international.title")}
             </h2>
              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-           50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.
+           {t("international.desc")}
           </p>
               <Link
                 href="/international/"
                 title="Learn more about PSI International"
                 className="w-full relative text-md md:text-lg px-3 overflow-hidden rounded bg-orange-700  py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >
-               Learn more about PSI International
+               {t("international.btn")}
               </Link>
           </div>
 

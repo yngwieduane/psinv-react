@@ -18,6 +18,7 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { ArrowRight, ChevronDown, Globe, Heart, Menu, Search, UserIcon, X } from 'lucide-react';
 import { useUser } from '@/context/userContext';
 import { useLocale, useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 
 
 export type Page = '/en' | '/ar' | '/ru' | '/du' | '/cn';
@@ -44,15 +45,6 @@ const products_rent: Rent[] = [
         href: '/units?category=Rent',
         icon: ChartPieIcon,
     }
-];
-const developers = [
-    { name: 'Aldar Properties', href: '/developer/aldar-properties-pjsc' },
-    { name: 'Emaar Properties', href: '/developer/emaar' },
-    { name: 'Imkan', href: '/developer/imkan-properties-llc' },
-    { name: 'Meeras', href: '/developer/meeras' },
-    { name: 'Dubai Properties', href: '/developer/dubai-properties---idama' },
-    { name: 'NSHAMA', href: '/developer/nshama' },
-    { name: 'View All', href: '/developers' },
 ];
 const communitiesAbuDhabi: CommunitiesAbuDhabi[] = [
     {
@@ -386,6 +378,8 @@ function resolveHref(item: MenuItem) {
 
 const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     console.log(currentPage);
+    const pathname = usePathname();
+
     const [isScrolled, setIsScrolled] = useState(false);
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
     const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
@@ -397,6 +391,133 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     const langMenuRef = useRef<HTMLDivElement>(null);
     const currMenuRef = useRef<HTMLDivElement>(null);
     const t = useTranslations('LocaleSwitcher');
+    const locale = useLocale();
+    const isRTL = locale.toLowerCase().startsWith("ar");
+
+
+    // Simplified Mega Menu Structure
+    const NAV_GROUPS = [
+        {
+            label: t('featured projects'),
+            image: 'https://psinv.net/assets/img/landing-page/reem-hills-villa-reem-island/main-img-1.webp?ver=2',
+            columns: [
+                {
+                    title: t('Abu Dhabi'),
+                    items: [
+                        { label: t("Sama Yas"), lpSlug: "sama-yas" },
+                        { label: t("Yas Riva"), lpSlug: "yas-riva" },
+                        { label: t("Manarat Living - Saadiyat"), lpSlug: "manarat-living-saadiyat" },
+                        { label: t("The Arthouse"), lpSlug: "the-arthouse" },
+                        { label: t("Bloom Living - Almeria"), lpSlug: "bloom-living-almeria" },
+                    ]
+                }
+            ]
+        },
+        {
+            label: t('properties'),
+            image: '/images/properties-featured.webp',
+            columns: [
+                {
+                    title: t('Residential'),
+                    items: [
+                        { label: t('Buy Apartments'), href: '/units?category=Sale' },
+                        { label: t('Buy Villas'), href: '/units?category=Sale' },
+                        { label: t('Rent Apartments'), href: '/units?category=Rent' },
+                        { label: t('Rent Villas'), href: '/units?category=Rent' },
+                    ]
+                },
+                {
+                    title: t('Commercial'),
+                    items: [
+                        { label: t('Offices for Sale'), href: '/units' },
+                        { label: t('Offices for Rent'), href: '/units' },
+                        { label: t('Retail Spaces'), href: '/units' },
+                    ]
+                },
+                {
+                    title: t('Popular Areas'),
+                    items: [
+                        { label: t('Al Reem Island'), href: '/projects/abu-dhabi/al-reem-island' },
+                        { label: t('Yas Island'), href: '/projects/abu-dhabi/yas-island' },
+                        { label: t('Saadiyat Island'), href: '/projects/abu-dhabi/saadiyat-island' },
+                        { label: t('Palm Jumeirah'), href: '/projects/dubai/the-palm-jumeirah' },
+                    ]
+                }
+            ]
+        },
+        {
+            label: t('projects'),
+            image: '/images/landing-page/manarat-living-saadiyat/manarat-living.webp',
+            columns: [
+                {
+                    title: t('New Launches'),
+                    items: [
+                        { label: t("Sama Yas"), href: "/project/sama-yas" },
+                        { label: t("Yas Riva"), href: "/project/yas-riva" },
+                        { label: t("Manarat Living - Saadiyat"), href: "/project/manarat-living-saadiyat" },
+                        { label: t("The Arthouse"), href: "/project/the-arthouse" },
+                        { label: t("Bloom Living - Almeria"), href: "/project/bloom-living-almeria" },
+                    ]
+                },
+                {
+                    title: t('developers'),
+                    items: [
+                        { label: t('Aldar'),  href: "/developer/aldar-properties-pjsc" },
+                        { label: t('Emaar'), href: "/developer/emaar" },
+                        { label: t('Imkan'), href: '/developer/imkan-properties-llc' },
+                        { label: t('Meraas'), href: '/developer/meraas' },
+                        { label: t('Dubai Properties'), href: '/developer/dubai-properties---idama' },
+                        { label: t('NSHAMA'), href: '/developer/nshama' },
+                    ]
+                }
+            ]
+        },
+        {
+            label: t('services'),
+            image: '/assets/images/about-us/main-office.webp',
+            columns: [
+                {
+                    title: t('Valuation & Finance'),
+                    items: [
+                        { label: t('mortgage'), href: "/mortgage-calculator" },
+                        // { label: t('Mortgage Loan'), page: '/mortgage/' },                    
+                    ]
+                },
+                {
+                    title: t('Client Services'),
+                    items: [
+                        { label: t('list'), href: '/list-your-property/' },   
+                        { label: t('international'), href: '/international' },
+                        { label: t('youngsters program'), href: '/psi-youngsters-program' },
+                        { label: t('luxury'), href: '/project/luxury-project-uae/' }                 
+                    ]
+                }
+            ]
+        },
+        {
+            label: t('company'),
+            image: '/images/psi-office-featured.webp',
+            columns: [
+                {
+                    title: t('About PSI'), 
+                    items: [
+                        { label: t('Our Story'), href: "/about-us" },
+                        { label: t('careers'), href: "/careers" },
+                        { label: t('Awards'), href: "/about-us#awards" },
+                    ]
+                },
+                {
+                    title: t('Media'),
+                    items: [
+                        { label: t('newsletters'), href: "/newsletter" },
+                        { label: t('contact'), href: "/contact-us" },
+                        { label: t('articles'), href: "/articles" },
+                    ]
+                }
+            ]
+        }
+    ];
+
 
     const { user, login, logout, favorites, compareList } = useUser();
 
@@ -433,6 +554,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
     // Determine if the current page has a dark hero section where the navbar should start transparent with white text
     const isDarkHeroPage = ['/en', '/ar', '/ru', '/du', '/cn'].includes(currentPage);
+    const isAboutUsPage = pathname.endsWith('/about-us');
     // Updated transparency: Clear at top, frosted glass on scroll
     const navbarClasses = isScrolled || hoveredMenu
         ? 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20'
@@ -488,41 +610,40 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                         />
                     </Link>
 
-                    {/* Desktop Links */}
-                    <div className="hidden lg:flex items-center space-x-10 rtl:space-x-reverse h-full">
-                        {NAV_GROUPS.map((group) => (
-                            <div
-                                key={group.label}
-                                className="h-full flex items-center py-2"
-                                onMouseEnter={() => setHoveredMenu(group.label)}
-                            >
-                                <button
-                                    className={`text-sm font-bold tracking-widest uppercase hover:text-secondary transition-colors flex items-center gap-1 ${linkColor}`}
-                                >
-                                    {t(`${group.label.toLowerCase()}`)}
-                                    <ChevronDown size={10} className={`transform transition-transform duration-300 ${hoveredMenu === group.label ? 'rotate-180' : ''}`} />
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Right Actions */}
-                    <div className={`hidden lg:flex items-center gap-6 ${linkColor}`}>
-                        <button onClick={modalHandler} className="hover:text-secondary transition-colors cursor-pointer"><Search size={20} /></button>
-                        <button className="hover:text-secondary transition-colors relative">
-                            <Heart size={20} />
-                            {favorites.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}
+                {/* Desktop Links */}
+                <div className="hidden lg:flex items-center space-x-10 rtl:space-x-reverse h-full">
+                    {NAV_GROUPS.map((group) => (
+                    <div 
+                        key={group.label} 
+                        className="h-full flex items-center py-2"
+                        onMouseEnter={() => setHoveredMenu(group.label)}
+                    >
+                        <button className={`text-sm font-bold tracking-widest uppercase hover:text-secondary transition-colors flex items-center gap-1 ${linkColor}`}
+                        >
+                         { group.label.toLowerCase() }
+                        <ChevronDown size={10} className={`transform transition-transform duration-300 ${hoveredMenu === group.label ? 'rotate-180' : ''}`}/>
                         </button>
-                        <div className="h-4 w-px bg-current opacity-30"></div>
-                        {user ? (
-                            <button onClick={logout} className="text-xs font-bold uppercase hover:text-secondary">Logout</button>
-                        ) : (
-                            <button onClick={login} className="text-xs font-bold uppercase hover:text-secondary flex items-center gap-2">
-                                <UserIcon size={16} /> Login
-                            </button>
-                        )}
-                        <LanguageSwitcher css={linkColor} />
                     </div>
+                    ))}
+                </div>
+
+                {/* Right Actions */}
+                <div className={`hidden lg:flex items-center gap-6 ${linkColor}`}>
+                    <button onClick={modalHandler} className="hover:text-secondary transition-colors cursor-pointer"><Search size={20} /></button>
+                    <button className="hover:text-secondary transition-colors relative">
+                        <Heart size={20} />
+                        {favorites.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}
+                    </button>
+                    <div className="h-4 w-px bg-current opacity-30"></div>
+                    {user ? (
+                        <button onClick={logout} className="text-xs font-bold uppercase hover:text-secondary">{t("logout")}</button>
+                    ) : (
+                        <button onClick={login} className="text-xs font-bold uppercase hover:text-secondary flex items-center gap-2">
+                            <UserIcon size={16} /> {t("login")}
+                        </button>
+                    )}
+                    <LanguageSwitcher css={linkColor}/>
+                </div>
 
                     {/* Mobile Menu Button */}
                     <button
@@ -533,58 +654,58 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     </button>
                 </div>
 
-                {/* SLEEK MEGA MENU (Transparent Glass) - Desktop Only */}
-                <div
-                    className={`absolute top-full left-0 w-full bg-white/80 backdrop-blur-2xl border-t border-white/20 shadow-xl transition-all duration-300 ease-out overflow-hidden hidden lg:block ${hoveredMenu ? 'max-h-[500px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}
-                    onMouseEnter={() => setHoveredMenu(hoveredMenu)}
-                    onMouseLeave={() => setHoveredMenu(null)}
-                >
-                    <div className="container mx-auto px-12 py-8">
-                        {NAV_GROUPS.map((group) => (
-                            <div key={group.label} className={`${hoveredMenu === group.label ? 'block' : 'hidden'} animate-[fadeIn_0.3s_ease-out]`}>
-                                <div className="flex gap-12">
-
-                                    {/* Left: Elegant Featured Card */}
-                                    <div className="w-1/4 hidden xl:block">
-                                        <div className="rounded-lg h-64 overflow-hidden relative cursor-pointer group/promo">
-                                            <img src={group.image} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/promo:scale-110" alt="Promo" />
-                                            <div className="absolute inset-0 bg-black/30 group-hover/promo:bg-black/20 transition-colors"></div>
-                                            <div className="absolute bottom-6 left-6 text-white">
-                                                <span className="text-[10px] font-bold uppercase tracking-widest bg-secondary px-2 py-1 rounded mb-2 inline-block">Featured</span>
-                                                <h4 className="font-serif font-bold text-2xl">{group.label}</h4>
-                                                <div className="flex items-center gap-2 text-xs font-bold uppercase mt-2 opacity-0 group-hover/promo:opacity-100 transition-opacity transform translate-y-2 group-hover/promo:translate-y-0">
-                                                    Explore <ArrowRight size={12} />
-                                                </div>
-                                            </div>
+            {/* SLEEK MEGA MENU (Transparent Glass) - Desktop Only */}
+            <div 
+                className={`absolute top-full left-0 w-full bg-white/80 backdrop-blur-2xl border-t border-white/20 shadow-xl transition-all duration-300 ease-out overflow-hidden hidden lg:block ${hoveredMenu ? 'max-h-[500px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}
+                onMouseEnter={() => setHoveredMenu(hoveredMenu)} 
+                onMouseLeave={() => setHoveredMenu(null)}
+            >
+                <div className="container mx-auto px-12 py-8">
+                    {NAV_GROUPS.map((group) => (
+                    <div key={group.label} className={`${hoveredMenu === group.label ? 'block' : 'hidden'} animate-[fadeIn_0.3s_ease-out]`}>
+                        <div className="flex gap-12">
+                            
+                            {/* Left: Elegant Featured Card */}
+                            <div className="w-1/4 hidden xl:block">
+                                <div className="rounded-lg h-64 overflow-hidden relative cursor-pointer group/promo">
+                                    <img src={group.image} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/promo:scale-110" alt="Promo"/>
+                                    <div className="absolute inset-0 bg-black/30 group-hover/promo:bg-black/20 transition-colors"></div>
+                                    <div className="absolute bottom-6 left-6 text-white">
+                                        <span className="text-[10px] font-bold uppercase tracking-widest bg-secondary px-2 py-1 rounded mb-2 inline-block">{t('Featured')}</span>
+                                        <h4 className="font-serif font-bold text-2xl">{group.label}</h4>
+                                        <div className="flex items-center gap-2 text-xs font-bold uppercase mt-2 opacity-0 group-hover/promo:opacity-100 transition-opacity transform translate-y-2 group-hover/promo:translate-y-0">
+                                            {t('Explore')} <ArrowRight size={12} />
                                         </div>
-                                    </div>
-
-                                    {/* Right: Clean Link Columns */}
-                                    <div className="flex-1 grid grid-cols-3 gap-8">
-                                        {group.columns.map((col, idx) => (
-                                            <div key={idx}>
-                                                <h4 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>
-                                                <ul className="space-y-3">
-                                                    {col.items.map((item, i) => (
-                                                        <li key={i}>
-                                                            <Link
-                                                                href={resolveHref(item as any)}
-                                                                className="text-gray-600 hover:text-secondary text-sm font-medium transition-colors hover:pl-1 rtl:hover:pr-1"
-                                                                onClick={() => setHoveredMenu(null)} // closes menu after click
-                                                            >
-                                                                {item.label}
-                                                            </Link>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        ))}
                                     </div>
                                 </div>
                             </div>
-                        ))}
+        
+                            {/* Right: Clean Link Columns */}
+                            <div className="flex-1 grid grid-cols-3 gap-8">
+                                {group.columns.map((col, idx) => (
+                                    <div key={idx}>
+                                        <h4 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>
+                                        <ul className="space-y-3">
+                                            {col.items.map((item, i) => (
+                                                <li key={i}>
+                                                    <Link
+                                                    href={`${resolveHref(item as any)}`}
+                                                    className="text-gray-600 hover:text-secondary text-sm font-medium transition-colors hover:pl-1 rtl:hover:pr-1"
+                                                    onClick={() => setHoveredMenu(null)} // closes menu after click
+                                                    >
+                                                    {item.label}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
+                    ))}
                 </div>
+            </div>
 
             </nav>
 

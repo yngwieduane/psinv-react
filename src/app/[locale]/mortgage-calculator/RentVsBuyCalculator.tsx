@@ -13,6 +13,7 @@ import {
   CategoryScale,
   LinearScale,
 } from 'chart.js';
+import { useTranslations } from 'next-intl';
 
 Chart.register(
   DoughnutController,
@@ -24,8 +25,20 @@ Chart.register(
   LinearScale
 );
 
+type Props = {
+  modal: boolean;
+  onOpenModal : () => void;
+  onModalUpdate : (value: boolean) => void;  
+}
 
-export default function RentVsBuyCalculator() {
+
+export default function RentVsBuyCalculator({
+  modal,
+  onOpenModal,
+  onModalUpdate,
+}: Props) {
+  const t = useTranslations("Mortgage_Tabs");
+
   const [monthlyRent, setMonthlyRent] = useState(0);
   const [expectedLoan, setExpectedLoan] = useState(1000000);
   const [yearlyRentIncrease, setYearlyRentIncrease] = useState(5);
@@ -89,19 +102,19 @@ export default function RentVsBuyCalculator() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Form Panel */}
         <div className="bg-white p-6 rounded-2xl shadow-md">
-          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">Rent vs Buying</h2>
+          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">{t("rentVsBuyTab.Title")}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <InputSlider label="Current monthly rent" value={monthlyRent} setValue={setMonthlyRent} suffix="AED" min={0} max={50000} />
-            <InputSlider label="Expected loan amount" value={expectedLoan} setValue={setExpectedLoan} suffix="AED" min={0} max={10000000} />
-            <InputSlider label="Yearly rent increase in %" value={yearlyRentIncrease} setValue={setYearlyRentIncrease} suffix="%" min={0} max={20} />
-            <InputSlider label="Loan term in years" value={loanTerm} setValue={setLoanTerm} suffix="yrs" min={1} max={30} />
-            <InputSlider label="Loan interest rate in %" value={interestRate} setValue={setInterestRate} suffix="%" min={0} max={10} step={0.1} />
-            <InputSlider label="Expected property price" value={propertyPrice} setValue={setPropertyPrice} suffix="AED" min={0} max={10000000} />
-            <InputSlider label="Downpayment" value={downpayment} setValue={setDownpayment} suffix="AED" min={0} max={propertyPrice} />
-            <InputSlider label="Downpayment %" value={dpPercentage} setValue={setDpPercentage} suffix="%" min={0} max={100} />
-            <InputSlider label="Yearly property appreciation" value={propertyAppreciation} setValue={setPropertyAppreciation} suffix="%" min={0} max={10} />
-            <InputSlider label="Plan years to live" value={planYearsToLive} setValue={setPlanYearsToLive} suffix="yrs" min={1} max={30} />
+            <InputSlider label={t("rentVsBuyTab.Currentmonthlyrent")} value={monthlyRent} setValue={setMonthlyRent} suffix={t("aed")} min={0} max={50000} />
+            <InputSlider label={t("rentVsBuyTab.Expectedloanamount")} value={expectedLoan} setValue={setExpectedLoan} suffix={t("aed")} min={0} max={10000000} />
+            <InputSlider label={t("rentVsBuyTab.Yearlyrentincrease")} value={yearlyRentIncrease} setValue={setYearlyRentIncrease} suffix="%" min={0} max={20} />
+            <InputSlider label={t("rentVsBuyTab.Loantermyears")} value={loanTerm} setValue={setLoanTerm} suffix={t("Yrs")} min={1} max={30} />
+            <InputSlider label={t("rentVsBuyTab.Loaninterestrate")} value={interestRate} setValue={setInterestRate} suffix="%" min={0} max={10} step={0.1} />
+            <InputSlider label={t("rentVsBuyTab.Expectedpropertyprice")} value={propertyPrice} setValue={setPropertyPrice} suffix={t("aed")} min={0} max={10000000} />
+            <InputSlider label={t("rentVsBuyTab.Downpayment")} value={downpayment} setValue={setDownpayment} suffix={t("aed")} min={0} max={propertyPrice} />
+            <InputSlider label={t("rentVsBuyTab.Downpaymentpercentage")} value={dpPercentage} setValue={setDpPercentage} suffix="%" min={0} max={100} />
+            <InputSlider label={t("rentVsBuyTab.Yearlypropertyappreciation")} value={propertyAppreciation} setValue={setPropertyAppreciation} suffix="%" min={0} max={10} />
+            <InputSlider label={t("rentVsBuyTab.Planyearstolive")} value={planYearsToLive} setValue={setPlanYearsToLive} suffix={t("Yrs")} min={1} max={30} />
           </div>
         </div>
 
@@ -111,20 +124,20 @@ export default function RentVsBuyCalculator() {
             <canvas ref={chartRef} className="w-full h-full" />
             <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
               <span className="text-2xl font-bold">{Math.round(monthlyPayment).toLocaleString()}</span>
-              <span className="text-sm">AED</span>
+              <span className="text-sm">{t("aed")}</span>
             </div>
           </div>
-          <p className="text-xl font-semibold mt-2 mb-6">Monthly Payment</p>
+          <p className="text-xl font-semibold mt-2 mb-6">{t("MonthlyPayment")}</p>
 
           <div className="bg-yellow-400 rounded-2xl w-full text-[#0c1356] p-8 text-center">
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div>
-                <p className="text-sm">Total Rent Amount</p>
-                <p className="text-2xl font-bold">{Math.round(totalRentAmount).toLocaleString()} AED</p>
+                <p className="text-sm">{t("rentVsBuyTab.Totalrentamount")}</p>
+                <p className="text-2xl font-bold">{Math.round(totalRentAmount).toLocaleString()} {t("aed")}</p>
               </div>
               <div>
-                <p className="text-sm">Total Buy Amount</p>
-                <p className="text-2xl font-bold">{Math.round(totalBuyAmount).toLocaleString()} AED</p>
+                <p className="text-sm">{t("rentVsBuyTab.Totalbuyamount")}</p>
+                <p className="text-2xl font-bold">{Math.round(totalBuyAmount).toLocaleString()} {t("aed")}</p>
               </div>
             </div>
             <button
@@ -136,11 +149,11 @@ export default function RentVsBuyCalculator() {
   }}
   className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition mb-2"
 >
-  View Sale Units
+  {t("rentVsBuyTab.Viewsaleunits")}
 </button>
 
             <br />
-            <a href="#" className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition">Get Pre-Approval</a>
+            <button onClick={onOpenModal} className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition">{t("GetApproval")}</button>
           </div>
         </div>
       </div>

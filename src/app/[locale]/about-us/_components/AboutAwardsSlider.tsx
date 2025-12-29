@@ -6,6 +6,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { Outfit } from "next/font/google";
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { useLocale, useTranslations } from "next-intl";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -13,45 +14,49 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const awards = [
-  {
-      "title1":"EMAAR",
-      "title2":"ANNUAL BROKER",
-      "title3": "AWARDS - 2018",
-      "image": "emaar-2018.webp",
-  },
-  {
-      "title1":"ALDAR",
-      "title3": "AMBASSADOR - 2021",
-      "image": "aldar-2021.webp",
-  },
-  {
-      "title1":"ALDAR",
-      "title2":"TOP PERFORMING",
-      "title3": "Agency First Place - 2016",
-      "image": "aldar-2016.jpg",
-  },
-  {
-      "title1":"ALDAR",
-      "title2":"TOP PERFORMING",
-      "title3": "Agency First Place - 2020",
-      "image": "aldar-2022.jpg",
-  },
-  {
-      "title1":"ALDAR",
-      "title2":"TOP PERFORMING",
-      "title3": "Agency First Place - 2022",
-      "image": "aldar-2022.jpg",
-  },
-  {
-      "title1":"IMKAN",
-      "title2":"TOP PERFORMING",
-      "title3": "Agency First Place - 2021",
-      "image": "imkan-2021.webp",
-  }
-];
+
 
 const AboutAwardsSlider = () => {
+  const t = useTranslations("AwardsSectionHome");
+
+  const awards = [
+    {
+        "title1": t("awards.emaar.title1"),
+        "title2": t("awards.emaar.title2"),
+        "title3": t("awards.emaar.title3"),
+        "image": "emaar-2018.webp",
+    },
+    {
+        "title1": t("awards.aldar2021.title1"),
+        "title3": t("awards.aldar2021.title3"),
+        "image": "aldar-2021.webp",
+    },
+    {
+        "title1": t("awards.aldar2016.title1"),
+        "title2": t("awards.aldar2016.title2"),
+        "title3": t("awards.aldar2016.title3"),
+        "image": "aldar-2016.jpg",
+    },
+    {
+        "title1": t("awards.aldar2020.title1"),
+        "title2": t("awards.aldar2020.title2"),
+        "title3": t("awards.aldar2020.title3"),
+        "image": "aldar-2022.jpg",
+    },
+    {
+        "title1": t("awards.aldar2022.title1"),
+        "title2": t("awards.aldar2022.title2"),
+        "title3": t("awards.aldar2022.title3"),
+        "image": "aldar-2022.jpg",
+    },
+    {
+        "title1": t("awards.imkan.title1"),
+        "title2": t("awards.imkan.title2"),
+        "title3": t("awards.imkan.title3"),
+        "image": "imkan-2021.webp",
+    }
+  ];
+
   const swiperElRef = useRef<any>(null);
   const paginationId = useRef(`awards-pagination-${Math.random().toString(36).substring(2, 9)}`).current;
 

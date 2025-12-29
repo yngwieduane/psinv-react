@@ -252,7 +252,7 @@ export default function UnitPageAI(props: any) {
                                     {/* Mortgage Calculator Grid */}
                                     {category == "Sale" ? (
                                     <div className="">
-                                        <MortgageCalculator baseprice={price}/>
+                                        <MortgageCalculator basePrice={price}/>
                                     </div>) : ("")}
                                 </div>
 
