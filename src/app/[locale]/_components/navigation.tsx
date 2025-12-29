@@ -3,18 +3,18 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { Link } from "@/i18n/navigation";
 import { DynamicIcon } from 'lucide-react/dynamic';
-import { Dialog, Disclosure,DialogPanel, DisclosureButton,DisclosurePanel,Popover,PopoverButton,PopoverGroup,PopoverPanel, Button, } from '@headlessui/react';
-import { Bars3Icon,ChartPieIcon,XMarkIcon,} from '@heroicons/react/24/outline';
-import { ChevronDownIcon,PhoneIcon,PlayCircleIcon} from '@heroicons/react/20/solid';
+import { Dialog, Disclosure, DialogPanel, DisclosureButton, DisclosurePanel, Popover, PopoverButton, PopoverGroup, PopoverPanel, Button, } from '@headlessui/react';
+import { Bars3Icon, ChartPieIcon, XMarkIcon, } from '@heroicons/react/24/outline';
+import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faWhatsapp,} from '@fortawesome/free-brands-svg-icons';
+import { faWhatsapp, } from '@fortawesome/free-brands-svg-icons';
 import LanguageSwitcher from './languageSwitcher';
 import Image from 'next/image';
 import ProjectSearch from './projectSearch';
 import { faMagnifyingGlass, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { Buy, CallToAction, CallToAction2, CommunitiesAbuDhabi, CommunitiesDubai, More, Rent, SocialMedia } from '@/types/navigation';
-import {NavigationMenu,NavigationMenuContent,NavigationMenuItem,NavigationMenuLink,NavigationMenuList,NavigationMenuTrigger,navigationMenuTriggerStyle,} from "@/components/ui/navigation-menu"
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle, } from "@/components/ui/navigation-menu"
 import { ArrowRight, ChevronDown, Globe, Heart, Menu, Search, UserIcon, X } from 'lucide-react';
 import { useUser } from '@/context/userContext';
 import { useLocale, useTranslations } from 'next-intl';
@@ -202,57 +202,178 @@ const socialMedia: SocialMedia[] = [
     }
 ];
 
+// Simplified Mega Menu Structure
+const NAV_GROUPS = [
+    {
+        label: 'Featured',
+        image: 'https://psinv.net/assets/img/landing-page/reem-hills-villa-reem-island/main-img-1.webp?ver=2',
+        columns: [
+            {
+                title: 'Abu Dhabi',
+                items: [
+                    { label: "Sama Yas", lpSlug: "sama-yas" },
+                    { label: "Yas Riva", lpSlug: "yas-riva" },
+                    { label: "Manarat Living – Saadiyat", lpSlug: "manarat-living-saadiyat" },
+                    { label: "The Arthouse", lpSlug: "the-arthouse" },
+                    { label: "Bloom Living – Almeria", lpSlug: "bloom-living-almeria" },
+                ]
+            }
+        ]
+    },
+    {
+        label: 'Properties',
+        image: 'https://images.unsplash.com/photo-1600596542815-2495db98dada?q=80&w=800&auto=format&fit=crop',
+        columns: [
+            {
+                title: 'Residential',
+                items: [
+                    { label: 'Buy Apartments', page: 'search' },
+                    { label: 'Buy Villas', page: 'search' },
+                    { label: 'Rent Apartments', page: 'search' },
+                    { label: 'Rent Villas', page: 'search' },
+                ]
+            },
+            {
+                title: 'Commercial',
+                items: [
+                    { label: 'Offices for Sale', page: 'search' },
+                    { label: 'Offices for Rent', page: 'search' },
+                    { label: 'Retail Spaces', page: 'search' },
+                ]
+            },
+            {
+                title: 'Popular Areas',
+                items: [
+                    { label: 'Al Reem Island', page: 'search' },
+                    { label: 'Yas Island', page: 'search' },
+                    { label: 'Saadiyat Island', page: 'search' },
+                    { label: 'Dubai Marina', page: 'search' },
+                ]
+            }
+        ]
+    },
+    {
+        label: 'Projects',
+        image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop',
+        columns: [
+            {
+                title: 'New Launches',
+                items: [
+                    { label: 'Luxury Projects', page: 'luxury-projects' },
+                    { label: 'Off-Plan Projects', page: 'projects' },
+                    { label: 'Ready to Move', page: 'projects' },
+                ]
+            },
+            {
+                title: 'By Developer',
+                items: [
+                    { label: 'Aldar Properties', href: "/developer/aldar-properties-pjsc" },
+                    { label: 'Emaar', page: 'developers' },
+                    { label: 'Sobha Realty', page: 'developers' },
+                ]
+            }
+        ]
+    },
+    {
+        label: 'Services',
+        image: 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=800&auto=format&fit=crop',
+        columns: [
+            {
+                title: 'Valuation & Finance',
+                items: [
+                    { label: 'Mortgage Calculator', href: "/mortgage-calculator" },
+                    { label: 'Villa Cost Calculator', page: 'villa-calculator' },
+                    { label: 'Property Valuation', href: "/list-your-property" },
+                ]
+            },
+            {
+                title: 'Client Services',
+                items: [
+                    { label: 'List Your Property', page: 'list-property' },
+                    { label: 'Property Management', page: 'about' },
+                    { label: 'Golden Visa', page: 'invest' },
+                ]
+            }
+        ]
+    },
+    {
+        label: 'Company',
+        image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
+        columns: [
+            {
+                title: 'About PSI',
+                items: [
+                    { label: 'Our Story', href: "/about-us" },
+                    { label: 'Careers', href: "/careers" },
+                    { label: 'Awards', page: 'awards' },
+                    { label: 'Our Agents', page: 'agents' }, // Added Agent Link
+                ]
+            },
+            {
+                title: 'Media',
+                items: [
+                    { label: 'Market Insights', page: 'market-insight' },
+                    { label: 'Newsletters', href: "/newsletter" },
+                    { label: 'Contact Us', href: "/contact-us" },
+                    { label: 'Articles', href: "/articles" },
+                ]
+            }
+        ]
+    }
+];
+
+
 const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
+    {
+        title: "Alert Dialog",
+        href: "/docs/primitives/alert-dialog",
+        description:
+            "A modal dialog that interrupts the user with important content and expects a response.",
+    },
+    {
+        title: "Hover Card",
+        href: "/docs/primitives/hover-card",
+        description:
+            "For sighted users to preview content available behind a link.",
+    },
+    {
+        title: "Progress",
+        href: "/docs/primitives/progress",
+        description:
+            "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    },
+    {
+        title: "Scroll-area",
+        href: "/docs/primitives/scroll-area",
+        description: "Visually or semantically separates content.",
+    },
+    {
+        title: "Tabs",
+        href: "/docs/primitives/tabs",
+        description:
+            "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    },
+    {
+        title: "Tooltip",
+        href: "/docs/primitives/tooltip",
+        description:
+            "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    },
 ]
 
 function classNames(...classes: (string | false | null | undefined)[]) {
     return classes.filter(Boolean).join(' ');
 }
 type MenuItem = {
-  label: string;
-  href?: string;
-  lpSlug?: string;
+    label: string;
+    href?: string;
+    lpSlug?: string;
 };
 
 function resolveHref(item: MenuItem) {
-  if (item.href) return item.href;
-  if (item.lpSlug) return `/project/lp/${item.lpSlug}`;
-  return "#";
+    if (item.href) return item.href;
+    if (item.lpSlug) return `/project/lp/${item.lpSlug}`;
+    return "#";
 }
 
 const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
@@ -409,7 +530,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
         console.log(state);
         setModal(state);
     };
-    
+
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
@@ -432,22 +553,19 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
 
     // Determine if the current page has a dark hero section where the navbar should start transparent with white text
-    const isDarkHeroPage = ['/en', '/ar','/ru','/du','/cn'].includes(currentPage);
+    const isDarkHeroPage = ['/en', '/ar', '/ru', '/du', '/cn'].includes(currentPage);
     const isAboutUsPage = pathname.endsWith('/about-us');
     // Updated transparency: Clear at top, frosted glass on scroll
     const navbarClasses = isScrolled || hoveredMenu
-        ? 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20' 
+        ? 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20'
         : 'bg-transparent py-6';
+    const linkColor = (isScrolled || hoveredMenu || !isDarkHeroPage) ? 'text-gray-800' : 'text-white';
+    const mainLogo = (isScrolled || hoveredMenu || !isDarkHeroPage) ? '/PSI-Logo.svg' : '/logo-psi-white.svg';
 
-    const showWhiteTheme = !isScrolled && !hoveredMenu && (isDarkHeroPage || isAboutUsPage);
-
-    const linkColor = showWhiteTheme ? 'text-white' : 'text-gray-800';
-    const mainLogo = showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
-        
     return (
-    <header className="bg-white">
-        {/* Top Bar */}
-        {/* <div className="grid grid-cols-3 gap-4 bg-indigo-950 hidden md:grid px-5">
+        <header className="bg-white">
+            {/* Top Bar */}
+            {/* <div className="grid grid-cols-3 gap-4 bg-indigo-950 hidden md:grid px-5">
             <div className="grid grid-cols-3">
                 {callsToAction2.map((item) => (
                     <Link href={item.href} key={item.name} title={item.name} className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
@@ -476,21 +594,21 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 <LanguageSwitcher />
             </div>
         </div> */}
-        {/* Main Navigation */}
-        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
-            <div className="container mx-auto flex justify-between items-center relative">
-                {/* LOGO */}
-                <Link className="flex items-center cursor-pointer group z-50" href="/">
-                    <span className="sr-only">Property Shop Investment</span>
-                    <Image
-                        alt="PSI"
-                        title="PSI"
-                        src={mainLogo}
-                        className="h-15 w-auto"
-                        width={200}
-                        height={200}
-                    />
-                </Link>
+            {/* Main Navigation */}
+            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
+                <div className="container mx-auto flex justify-between items-center relative">
+                    {/* LOGO */}
+                    <Link className="flex items-center cursor-pointer group z-50" href="/">
+                        <span className="sr-only">Property Shop Investment</span>
+                        <Image
+                            alt="PSI"
+                            title="PSI"
+                            src={mainLogo}
+                            className="h-15 w-auto"
+                            width={200}
+                            height={200}
+                        />
+                    </Link>
 
                 {/* Desktop Links */}
                 <div className="hidden lg:flex items-center space-x-10 rtl:space-x-reverse h-full">
@@ -527,14 +645,14 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     <LanguageSwitcher css={linkColor}/>
                 </div>
 
-                {/* Mobile Menu Button */}
-                <button 
-                    className="lg:hidden p-2 rounded-lg"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
-            </div>
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="lg:hidden p-2 rounded-lg"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                    </button>
+                </div>
 
             {/* SLEEK MEGA MENU (Transparent Glass) - Desktop Only */}
             <div 
@@ -589,90 +707,118 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 </div>
             </div>
 
-        </nav>
+            </nav>
 
-        {/* Mobile Menu */}
-        <Dialog
-            as="div"
-            className="lg:hidden"
-            open={mobileMenuOpen}
-            onClose={setMobileMenuOpen}
-        >
-            <div className="fixed inset-0 z-10" />
-            <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                <div className="flex items-center justify-between">
-                    <Link href="/" className="-m-1.5 p-1.5" title="PSI">
-                        <span className="sr-only">Property Shop Investment</span>
-                        <Image height={200} width={200} className="h-8 w-auto" src="PSI-Logo.svg" alt="Logo" />
-                    </Link>
-                    <button
-                        type="button"
-                        className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                        onClick={() => setMobileMenuOpen(false)}
-                    >
-                        <span className="sr-only">Close menu</span>
-                        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                </div>
-                <div className="mt-6 flow-root">
-                    <div className="-my-6 divide-y divide-gray-500/10">
-                        <div className="space-y-2 py-6">
-                            <Disclosure as="div" className="-mx-3 hidden">
-                                {({ open }) => (
-                                    <>
-                                        <DisclosureButton className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                            Projects
-                                            <ChevronDownIcon
-                                                className={classNames(
-                                                open ? 'rotate-180' : '',
-                                                'h-5 w-5 flex-none'
-                                                )}
-                                                aria-hidden="true"
-                                            />
-                                        </DisclosureButton>
-                                        <DisclosurePanel className="mt-2 space-y-2">
-                                            {[...products_buy, ...callsToAction].map((item) => (
-                                                <DisclosureButton
-                                                    key={item.name}
-                                                    as="a"
-                                                    href={item.href}
-                                                    className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                                >
-                                                    {item.name}
+            {/* Mobile Menu */}
+            {/* Mobile Menu */}
+            <Dialog
+                as="div"
+                className="lg:hidden"
+                open={isMobileMenuOpen}
+                onClose={setIsMobileMenuOpen}
+            >
+                <div className="fixed inset-0 z-50 bg-gray-900/20 backdrop-blur-sm" />
+                <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white/95 backdrop-blur-xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-transform duration-500 ease-in-out">
+                    <div className="flex items-center justify-between border-b border-gray-100 pb-6">
+                        <Link href="/" className="-m-1.5 p-1.5" title="PSI">
+                            <span className="sr-only">Property Shop Investment</span>
+                            <Image height={200} width={200} className="h-8 w-auto" src="/PSI-Logo.svg" alt="Logo" />
+                        </Link>
+                        <button
+                            type="button"
+                            className="-m-2.5 rounded-md p-2.5 text-gray-700 hover:bg-gray-100 transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            <span className="sr-only">Close menu</span>
+                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                        </button>
+                    </div>
+
+                    <div className="mt-6 flow-root">
+                        <div className="-my-6 divide-y divide-gray-500/10">
+                            <div className="space-y-2 py-6">
+                                {/* Dynamic Mobile Menu Groups */}
+                                {NAV_GROUPS.map((group) => (
+                                    <Disclosure as="div" className="-mx-3" key={group.label}>
+                                        {({ open }) => (
+                                            <>
+                                                <DisclosureButton className="flex w-full items-center justify-between rounded-lg py-3 pl-3 pr-3.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50 transition-colors">
+                                                    {t(group.label.toLowerCase())}
+                                                    <ChevronDownIcon
+                                                        className={classNames(
+                                                            open ? 'rotate-180' : '',
+                                                            'h-5 w-5 flex-none text-gray-400 transition-transform duration-300'
+                                                        )}
+                                                        aria-hidden="true"
+                                                    />
                                                 </DisclosureButton>
-                                            ))}
-                                        </DisclosurePanel>
-                                    </>
+                                                <DisclosurePanel className="mt-2 space-y-4 pl-4 border-l-2 border-gray-100 ml-3">
+                                                    {group.columns.map((col, idx) => (
+                                                        <div key={idx} className="pb-2">
+                                                            <h5 className="text-xs font-bold uppercase text-gray-400 tracking-wider mb-2 px-3">{col.title}</h5>
+                                                            {col.items.map((item, i) => (
+                                                                <Link
+                                                                    key={i}
+                                                                    href={resolveHref(item as any)}
+                                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                                    className="block rounded-lg py-2 pl-3 pr-3 text-sm font-semibold leading-7 text-gray-600 hover:text-[#111954] hover:bg-gray-50 transition-all"
+                                                                >
+                                                                    {item.label}
+                                                                </Link>
+                                                            ))}
+                                                        </div>
+                                                    ))}
+                                                </DisclosurePanel>
+                                            </>
+                                        )}
+                                    </Disclosure>
+                                ))}
+                            </div>
+
+                            {/* Mobile Utility Links */}
+                            <div className="py-6 space-y-4">
+                                <button
+                                    onClick={() => {
+                                        setIsMobileMenuOpen(false);
+                                        modalHandler();
+                                    }}
+                                    className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2"
+                                >
+                                    <Search size={18} /> Search Projects
+                                </button>
+
+                                <div className="-mx-3 px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2">
+                                    <LanguageSwitcher css={linkColor} />
+                                </div>
+
+                                {user ? (
+                                    <button
+                                        onClick={() => {
+                                            logout();
+                                            setIsMobileMenuOpen(false);
+                                        }}
+                                        className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2"
+                                    >
+                                        Log out
+                                    </button>
+                                ) : (
+                                    <button
+                                        onClick={() => {
+                                            if (login) login();
+                                            setIsMobileMenuOpen(false);
+                                        }}
+                                        className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2"
+                                    >
+                                        <UserIcon size={18} /> Log in
+                                    </button>
                                 )}
-                            </Disclosure>
-                            <Link title="Projects" onClick={() => setMobileMenuOpen(false)} href="/projects" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                Projects
-                            </Link>
-                            <Link title="Units" onClick={() => setMobileMenuOpen(false)} href="/units" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                Units
-                            </Link>
-                            <Link title="Landing Page" onClick={() => setMobileMenuOpen(false)} href="/landing-page" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                Landing Page
-                            </Link>
-                            <Link title="Contact Us" onClick={() => setMobileMenuOpen(false)} href="/contact-us" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                Contact Us
-                            </Link>
-                        </div>
-                        <div className="py-6 hidden">
-                            <Link
-                                title="Log In"
-                                href="#"
-                                className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                            >
-                                Log in
-                            </Link>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </DialogPanel>
-        </Dialog>
-        <ProjectSearch modalState={modal} onModalUpdate={modalUpdate} />
-    </header>
+                </DialogPanel>
+            </Dialog>
+            <ProjectSearch modalState={modal} onModalUpdate={modalUpdate} />
+        </header>
     );
 };
 
@@ -681,14 +827,14 @@ function ListItem({
     children,
     href,
     ...props
-    }: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
     return (
         <li {...props}>
-        <NavigationMenuLink className='flex content-center' asChild>
-            <Link href={href} title={title}>
-            <div className="text-sm leading-none font-medium">{title}</div>
-            </Link>
-        </NavigationMenuLink>
+            <NavigationMenuLink className='flex content-center' asChild>
+                <Link href={href} title={title}>
+                    <div className="text-sm leading-none font-medium">{title}</div>
+                </Link>
+            </NavigationMenuLink>
         </li>
     )
 }

@@ -3,6 +3,7 @@ import { X, ChevronLeft, ChevronRight, Share2, Maximize2, Tag, BedDouble, Bath, 
 import { Link } from '@/i18n/navigation';
 import { useFormatter } from 'next-intl';
 import slugify from 'react-slugify';
+import InquiryForm from '../../_components/InquiryForm';
 
 interface ProjectPreviewModalProps {
     project: any;
@@ -174,24 +175,7 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                         </div>
 
                         {/* Quick Register Form */}
-                        <div className="bg-white border border-gray-100 rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.03)] p-6">
-                            <h4 className="font-serif font-bold text-lg text-primary mb-4">Register Interest</h4>
-                            <form className="space-y-3">
-                                <div className="grid grid-cols-2 gap-3">
-                                    <input type="text" placeholder="First name" className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white transition-all" />
-                                    <input type="text" placeholder="Last name" className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white transition-all" />
-                                </div>
-                                <input type="email" placeholder="Email" className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white transition-all" />
-                                <div className="flex gap-2">
-                                    <div className="w-1/3 bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-center text-sm text-gray-500 font-medium">+971</div>
-                                    <input type="tel" placeholder="Phone" className="w-2/3 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white transition-all" />
-                                </div>
-
-                                <button type="button" className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 mt-2">
-                                    Submit
-                                </button>
-                            </form>
-                        </div>
+                        <InquiryForm hideFeedbackButton={true} />
 
                         <div className="mt-6 flex flex-col gap-3">
                             <Link
