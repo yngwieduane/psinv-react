@@ -21,14 +21,14 @@ const schema = z.object({
   agreement3: z.boolean().optional(),
 });
 interface InquiryFormProps {
-    hideFeedbackButton?: boolean;
-  }
+  hideFeedbackButton?: boolean;
+}
 type FormData = z.infer<typeof schema>;
 
 const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false }) => {
   const router = useRouter();
   const pathname = usePathname();
-  const locale = pathname.split("/")[1] || "en"; 
+  const locale = pathname.split("/")[1] || "en";
   const {
     register,
     handleSubmit,
@@ -158,13 +158,13 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
         },
         body: JSON.stringify(formDataToSend),
       });
-      
+
       if (response.ok) {
         setPostId("Success");
         window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
-    } else {
+      } else {
         alert("Error submitting the form.");
-    }
+      }
     } catch (error) {
       console.error("Error:", error);
       setPostId("Error");
@@ -174,138 +174,139 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
   };
   return (
     <>
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="w-full bg-white"
-    >
-      {/* Success/Error Messages */}
-      {postId === "Success" && (
-        <div className="p-3 mb-4 rounded bg-green-500 text-white">
-          Form submitted successfully!
-        </div>
-      )}
-      {postId === "Error" && (
-        <div className="p-3 mb-4 rounded bg-red-500 text-white">
-          Submission failed. Try again.
-        </div>
-      )}
-
-      <h2 className="text-xl font-serif font-bold text-gray-900 mb-6">
-        Inquire
-      </h2>
-
-      {/* Grid like screenshot */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {/* First Name */}
-        <div>
-          <input
-            type="text"
-            {...register("firstName")}
-            placeholder="First Name"
-            className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
-          />
-          {errors.firstName && (
-            <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>
-          )}
-        </div>
-
-        {/* Last Name */}
-        <div>
-          <input
-            type="text"
-            {...register("lastName")}
-            placeholder="Last Name"
-            className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
-          />
-          {errors.lastName && (
-            <p className="text-red-500 text-xs mt-1">{errors.lastName.message}</p>
-          )}
-        </div>
-
-        {/* Email */}
-        <div>
-          <input
-            type="email"
-            {...register("email")}
-            placeholder="E-mail"
-            className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
-          />
-          {errors.email && (
-            <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
-          )}
-        </div>
-
-        {/* Phone (styled like screenshot) */}
-<div>
-  <div className="border border-gray-300 rounded overflow-hidden">
-    <Controller
-      name="phone"
-      control={control}
-      render={({ field }) => (
-        <PhoneInput
-          {...field}
-          international
-          defaultCountry="AE"
-          countryCallingCodeEditable={false}
-          placeholder="536356356"
-          className="psi-phone-input"
-        />
-      )}
-    />
-  </div>
-
-  {errors.phone && (
-    <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
-  )}
-</div>
-      </div>
-
-      {/* Message */}
-      <div className="mt-4">
-        <textarea
-          {...register("message")}
-          placeholder="Hi, I would like to contact you"
-          className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 h-40 resize-none"
-        />
-        {errors.message && (
-          <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
-        )}
-      </div>
-
-      {/* Submit */}
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full mt-6 border border-gray-400 text-gray-700 font-bold py-3 rounded hover:bg-gray-800 hover:text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full bg-white"
       >
-        {isSubmitting ? "Submitting..." : "Submit"}
-      </button>
-
-      {/* Consent text like screenshot */}
-      <div className="text-[10px] text-gray-500 space-y-2 mt-4">
-        <p className="italic">
-          By clicking Submit, you agree to our Terms &amp; Conditions and Privacy Policy
-        </p>
-
-        <label className="flex items-start gap-2 cursor-pointer">
-          <input
-            type="checkbox"
-            {...register("agreement1")}
-            className="mt-0.5 accent-[#111954]"
-            defaultChecked
-          />
-          <span>
-            Agree to receive calls and communications via various channels from PSI from
-            09:00 am to 09:00 pm
-          </span>
-        </label>
-
-        {errors.agreement1 && (
-          <p className="text-red-500 text-xs">{errors.agreement1.message}</p>
+        {/* Success/Error Messages */}
+        {postId === "Success" && (
+          <div className="p-3 mb-4 rounded bg-green-500 text-white">
+            Form submitted successfully!
+          </div>
         )}
-      </div>
-    </form>
-  </>
+        {postId === "Error" && (
+          <div className="p-3 mb-4 rounded bg-red-500 text-white">
+            Submission failed. Try again.
+          </div>
+        )}
+
+        <h2 className="text-xl font-serif font-bold text-gray-900 mb-6">
+          Inquire
+        </h2>
+
+        <div className="grid grid-cols-1 gap-4">
+          {/* Grid like screenshot */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* First Name */}
+            <div>
+              <input
+                type="text"
+                {...register("firstName")}
+                placeholder="First Name"
+                className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
+              />
+              {errors.firstName && (
+                <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>
+              )}
+            </div>
+
+            {/* Last Name */}
+            <div>
+              <input
+                type="text"
+                {...register("lastName")}
+                placeholder="Last Name"
+                className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
+              />
+              {errors.lastName && (
+                <p className="text-red-500 text-xs mt-1">{errors.lastName.message}</p>
+              )}
+            </div>
+          </div>
+          {/* Email */}
+          <div>
+            <input
+              type="email"
+              {...register("email")}
+              placeholder="E-mail"
+              className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+            )}
+          </div>
+
+          {/* Phone (styled like screenshot) */}
+          <div>
+            <div className="border border-gray-300 rounded overflow-hidden">
+              <Controller
+                name="phone"
+                control={control}
+                render={({ field }) => (
+                  <PhoneInput
+                    {...field}
+                    international
+                    defaultCountry="AE"
+                    countryCallingCodeEditable={false}
+                    placeholder="536356356"
+                    className="psi-phone-input"
+                  />
+                )}
+              />
+            </div>
+
+            {errors.phone && (
+              <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
+            )}
+          </div>
+        </div>
+
+        {/* Message */}
+        <div className="mt-4">
+          <textarea
+            {...register("message")}
+            placeholder="Hi, I would like to contact you"
+            className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 h-40 resize-none"
+          />
+          {errors.message && (
+            <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
+          )}
+        </div>
+
+        {/* Submit */}
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="cursor-pointer w-full mt-6 border bg-indigo-950 border-indigo-950 text-white font-bold py-3 rounded-xl hover:bg-gray-800 hover:text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? "Submitting..." : "Submit"}
+        </button>
+
+        {/* Consent text like screenshot */}
+        <div className="text-[10px] text-gray-500 space-y-2 mt-4">
+          <p className="italic">
+            By clicking Submit, you agree to our Terms &amp; Conditions and Privacy Policy
+          </p>
+
+          <label className="flex items-start gap-2 cursor-pointer">
+            <input
+              type="checkbox"
+              {...register("agreement1")}
+              className="mt-0.5 accent-[#111954]"
+              defaultChecked
+            />
+            <span>
+              Agree to receive calls and communications via various channels from PSI from
+              09:00 am to 09:00 pm
+            </span>
+          </label>
+
+          {errors.agreement1 && (
+            <p className="text-red-500 text-xs">{errors.agreement1.message}</p>
+          )}
+        </div>
+      </form>
+    </>
   );
 };
 

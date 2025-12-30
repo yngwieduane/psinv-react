@@ -6,9 +6,9 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 type Project = {
   propertyName: string;
-  propertyID: string; 
+  propertyID: string;
 };
-export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
+export default function AutocompleteSearch({ isReset }: { isReset: any }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -43,12 +43,12 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
     }, 300);
     return () => clearTimeout(timeout);
   }, [query]);
-  
-  const handleInputChange = (e:any) => {
+
+  const handleInputChange = (e: any) => {
     setInputValue(e.target.value);
     setQuery(e.target.value);
     setResetStatus('false');
-    updateQuery('propertyName',e.target.value);
+    updateQuery('propertyName', e.target.value);
   };
 
   const updateQuery = useDebouncedCallback((key: string, value: string | null) => {
@@ -59,15 +59,15 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
     } else {
       params.set(key, value);
     }
-    console.log(key + " = " + value );
+    console.log(key + " = " + value);
     router.push(`${pathname}?${params.toString()}`);
-  },300);
+  }, 300);
 
-  const handleOptionClick = (property:string,id:any) => (e:any) => {
+  const handleOptionClick = (property: string, id: any) => (e: any) => {
     setIDValue(id);
     setInputValue(property);
     setShowDropdown(false);
-    updateQuery('propertyId',id);
+    updateQuery('propertyId', id);
     setPropertyId(propertyId)
   }
   // if(isReset){
@@ -75,9 +75,9 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
   // }
 
   return (
-    <div >
+    <div className="relative">
       <label htmlFor="email" className=" md:block text-sm/6 font-medium text-gray-900 hidden">
-          Property Name {isReset}
+        Property Name {isReset}
       </label>
       <div className="mt-2 grid grid-cols-1">
         <input
@@ -88,21 +88,28 @@ export default function AutocompleteSearch({ isReset }:{ isReset:any }) {
           //value={inputValue}
           onChange={handleInputChange}
           autoComplete="off"
-          className="col-start-1 row-start-1 block w-full rounded-md bg-gray-50 md:bg-white py-1.5 pr-3 pl-10 text-lg text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:pl-9 placeholder:text-gray-500"
+          className="col-start-1 row-start-1 block w-full rounded-xl bg-white/50 border border-gray-200 py-3.5 pr-10 pl-11 text-base text-gray-800 outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all duration-200 shadow-sm hover:bg-white/80"
         />
         <MagnifyingGlassIcon
           aria-hidden="true"
-          className="pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-gray-800 sm:size-4"
+          className="pointer-events-none col-start-1 row-start-1 ml-4 size-5 self-center text-gray-500"
         />
       </div>
-      {loading && <p className="absolute left-0 right-0 bg-white border mt-1 z-10 max-h-60 overflow-auto shadow">Searching...</p>}
+      {loading && (
+        <div className="absolute left-0 right-0 mt-2 p-4 rounded-xl backdrop-blur-xl bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.08)]">
+          <p className="text-gray-500 text-sm">Searching...</p>
+        </div>
+      )}
       {showDropdown && results.length > 0 && (
-        <ul className="absolute left-0 right-0 bg-white border mt-1 z-10 max-h-60 overflow-auto shadow">
+        <ul className="absolute left-0 right-0 mt-2 z-10 max-h-60 overflow-auto rounded-xl backdrop-blur-xl bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.08)] py-2">
           {results.map((item, index) => (
-            <li key={index} onClick={handleOptionClick(item.propertyName,item.propertyID)} className="p-2 hover:bg-gray-100 cursor-pointer">
-              <strong>{item.propertyName}</strong>
-              <br />
-              <span className="text-sm text-gray-500">{item.propertyID}</span>
+            <li
+              key={index}
+              onClick={handleOptionClick(item.propertyName, item.propertyID)}
+              className="px-4 py-3 hover:bg-[#353455]/5 cursor-pointer transition-colors duration-200 border-b border-gray-100 last:border-0"
+            >
+              <strong className="block text-[#353455] text-sm font-semibold">{item.propertyName}</strong>
+              <span className="text-xs text-gray-500 mt-0.5 block">{item.propertyID}</span>
             </li>
           ))}
         </ul>

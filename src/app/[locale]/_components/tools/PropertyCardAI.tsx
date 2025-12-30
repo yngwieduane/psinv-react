@@ -82,7 +82,7 @@ const PropertyCardAI = (props: any) => {
                             addToCompare({ id: props.data["propertyID"], type: 'project', data: props.data });
                         }
                     }}
-                    className={`cursor-pointer p-2 rounded-full shadow-md transition-colors ${compared ? 'bg-primary text-white' : 'bg-white/90 text-gray-500 hover:text-primary'}`}
+                    className={`cursor-pointer p-2 rounded-full shadow-md transition-colors ${compared ? 'bg-[#0c1356] text-white' : 'bg-white/90 text-gray-500 hover:text-primary'}`}
                 >
                     <Shuffle size={16} />
                 </button>

@@ -156,6 +156,7 @@ export interface NavItem {
 }
 
 export interface User {
+  displayName: string;
   id: string;
   name: string;
   email: string;
@@ -164,7 +165,7 @@ export interface User {
 
 export interface SavedItem {
   id: string;
-  type: 'property' | 'project';
+  type: 'property' | 'project' | 'units';
   data?: any;
 }
 
