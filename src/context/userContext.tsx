@@ -51,7 +51,8 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           id: currentUser.uid,
           name: currentUser.displayName || 'Anonymous',
           email: currentUser.email || '',
-          avatar: currentUser.photoURL || ''
+          avatar: currentUser.photoURL || '',
+          displayName: currentUser.displayName || ''
         };
         setUser(userData);
         console.log("User Set:", userData.email);
