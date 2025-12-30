@@ -67,11 +67,7 @@
   "ListPropertySection": {
     "title": "BE with the Brand you Trust",
     "desc": "Where will we list your property?",
-    "title2": "List Your Property""ListPropertySection": {
-      "title": "BE with the Brand you Trust",
-      "desc": "Where will we list your property?",
-      "title2": "List Your Property"
-    },
+    "title2": "List Your Property",
     "ListPropertyForm": {
       "firstName": "First Name",
       "Enter First Name": "Enter First Name",
