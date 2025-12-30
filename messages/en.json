@@ -1,57 +1,121 @@
 {
-  "HomePageBanner": {    
-        "sign_up_btn" : "Sign Up",
-        "more_btn" : "Explore More"   
+  "HomePageBanner": {
+    "sign_up_btn": "Sign Up",
+    "more_btn": "Explore More"
   },
-   "ListPropertySection": {    
-        "title" : "BE with the Brand you Trust",
-        "desc" : "Where will we list your property?",
-        "title2" : "List Your Property" 
-  },
-  "ListPropertyForm": {    
-        "firstName" : "First Name", "Enter First Name" : "Enter First Name",
-        "lastName" : "Last Name", "Enter Last Name" : "Enter Last Name",
-        "email" : "Email" , "Enter Email" : "Enter Email",
-        "phone" : "Phone Number", 
-        "purpose" : "Property Purpose", "Choose purpose": "Choose purpose",
-        "sell_purpose" : "Sell", "rent_purpose" : "Rent", "invest_purpose" : "Invest",
-        "errors" : {
-          "firstNameRequired" : "First name is required",
-          "lastNameRequired" : "Last name is required",
-          "invalidEmail" : "Invalid email address",
-          "invalidPhone" : "Invalid phone number",
-          "choosePurpose" : "Property purpose is required"
-        },
-        "clickingTerms" : {
-          "part1" : "By clicking Submit, you agree to our",
-          "part2" : "Terms & Conditions",
-          "part3" : "and Privacy Policy"
-        },
-        "form_submit" : "Submit",
-        "form_submitting" : "Submitting..."
-  },
-  "Why_PSI" : {
-    "emirati_title" : "Emirati Hub",
-    "youngster_title" : "Youngsters Program",
-    "crypto_title" : "Crypto",
-    "international_title" : "PSI International",
-    "company_title" : "Company Profile",
-
-    "why_psi" : {
-      "title" : "Why PSI ?",
-      "desc" : "Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi's Real Estate Market.",
-      "btn" : "Learn more about PSI"
-    },   
-    
-    "emirati_hub" : {
-      "title" : "PSI Emirati Hub",
-      "desc" : {
-        "part1" : "Empowering UAE nationals to excel and lead in the real estate sector through",
-        "part2" : "PSI Emirati Hub."
+  "MainSliderHome": {
+    "slides": {
+      "bashayer_residences": {
+        "title": "Bashayer Residences",
+        "location": "Hudayriyat Island",
+        "description": "Situated on Hudayriyat Island, Abu Dhabi, Bashayer Residences is a refined collection of waterfront apartments with modern layouts, elegant finishes, and expansive skyline views - enhanced by community amenities that elevate everyday living."
       },
-      "btn" : "Learn more about PSI Emirati Hub"
+      "bashayer_villas": {
+        "title": "Bashayer Villas",
+        "location": "Hudayriyat Island",
+        "description": "Situated on Hudayriyat Island, Abu Dhabi, Bashayer Villas is a serene gated community where every villa features spacious interiors, elegant finishes, and seamless waterfront views. With an array of world-class amenities, it stands as a distinctive retreat designed for exceptional living."
+      },
+      "muheira_2": {
+        "title": "Muheira 2",
+        "location": "Al Reem Island",
+        "description": "Muheira comprises two thoughtfully designed residential towers located on Reem Island. Offering a perfect blend of modern living and waterfront tranquility, Muheira provides residents with the opportunity to experience urban vibrancy surrounded by natural beauty."
+      },
+      "stellar_by_elie_saab": {
+        "title": "Stellar By Elie Saab",
+        "location": "Yas Island",
+        "description": "Stellar By Elie Saab stands as a masterpiece of form and fluidity. Its sculpted design blends soft lines with refined geometry, creating a seamless connection between architecture and nature."
+      },
+      "hilton_residences": {
+        "title": "Hilton Residences",
+        "location": "Dubai",
+        "description": "Rising 38 floors above Jumeirah Lake Towers, Hilton Residences Dubai JLT reimagines urban luxury through the lens of Hilton’s timeless hospitality. Every detail reflects sophistication designed for modern city living."
+      },
+      "loyalty_program": {
+        "title": "Beyond Real Estate, Beyond Limits",
+        "features": [
+          "Exclusive discounts on furniture, landscaping, smart tech, tourism, and more",
+          "B2B partnerships adding value beyond the sale",
+          "Easy client registration via direct sign-up",
+          "Boosts satisfaction, loyalty, and partner exposure",
+          "Scalable with revenue potential through partner deals"
+        ]
+      }
+    }
+  },
+  "citiesHome": {
+    "abu_dhabi": {
+      "title": "Abu Dhabi",
+      "al_reem_island": "Al Reem Island",
+      "saadiyat_island": "Saadiyat Island",
+      "yas_island": "Yas Island",
+      "al_raha_beach": "Al Raha Beach"
     },
-
+    "dubai": {
+      "title": "Dubai",
+      "palm_jumeirah": "Palm Jumeirah",
+      "downtown_dubai": "Downtown Dubai",
+      "dubai_creek": "Dubai Creek",
+      "town_square_dubai": "Town Square Dubai"
+    },
+    "sharjah": {
+      "title": "Sharjah",
+      "al_khan": "Al Khan",
+      "sharjah_waterfront_city": "Sharjah Waterfront City",
+      "aljada": "Aljada"
+    }
+  },
+  "ListPropertySection": {
+    "title": "BE with the Brand you Trust",
+    "desc": "Where will we list your property?",
+    "title2": "List Your Property"
+  },
+  "ListPropertyForm": {
+    "firstName": "First Name",
+    "Enter First Name": "Enter First Name",
+    "lastName": "Last Name",
+    "Enter Last Name": "Enter Last Name",
+    "email": "Email",
+    "Enter Email": "Enter Email",
+    "phone": "Phone Number",
+    "purpose": "Property Purpose",
+    "Choose purpose": "Choose purpose",
+    "sell_purpose": "Sell",
+    "rent_purpose": "Rent",
+    "invest_purpose": "Invest",
+    "errors": {
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "invalidEmail": "Invalid email address",
+      "invalidPhone": "Invalid phone number",
+      "choosePurpose": "Property purpose is required"
+    },
+    "clickingTerms": {
+      "part1": "By clicking Submit, you agree to our",
+      "part2": "Terms & Conditions",
+      "part3": "and Privacy Policy"
+    },
+    "form_submit": "Submit",
+    "form_submitting": "Submitting..."
+  },
+  "Why_PSI": {
+    "emirati_title": "Emirati Hub",
+    "youngster_title": "Youngsters Program",
+    "crypto_title": "Crypto",
+    "international_title": "PSI International",
+    "company_title": "Company Profile",
+    "why_psi": {
+      "title": "Why PSI ?",
+      "desc": "Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi's Real Estate Market.",
+      "btn": "Learn more about PSI"
+    },
+    "emirati_hub": {
+      "title": "PSI Emirati Hub",
+      "desc": {
+        "part1": "Empowering UAE nationals to excel and lead in the real estate sector through",
+        "part2": "PSI Emirati Hub."
+      },
+      "btn": "Learn more about PSI Emirati Hub"
+    },
     "youngster_program": {
       "title": "PSI Abu Dhabi Youngsters",
       "desc": {
@@ -61,7 +125,6 @@
       },
       "btn": "Learn more about PSI Youngsters"
     },
-
     "crypto": {
       "title": "Buy property with Crypto",
       "desc": {
@@ -70,52 +133,48 @@
       },
       "btn": "Learn more about Crypto"
     },
-
     "international": {
       "title": "PSI International",
       "desc": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
       "btn": "Learn more about PSI International"
     }
-
   },
-
   "Mortgage_Tabs": {
     "mortgage": "Mortgage Calculator",
     "amortization": "Amortization",
     "refinancing": "Refinancing",
     "rentvsbuy": "Rent vs Buy",
     "houseafford": "House Affordability",
-    "Mortgage Tools" : "Mortgage Tools", 
-    "aed" : "AED",
-    "ViewUnits" : "View Units", 
-    "GetApproval" : "Get pre-approval today",
-    "MonthlyPayment" : "Monthly Payment",
-    "Yrs" : "yrs",
-    "mortgageTab" : {
-      "title" : "Mortgage Calculator",
-      "PropertyPrice" : "Property Price (AED)",
-      "LoanPeriod" : "Loan Period (Years)",
-      "Years" : "Years",
-      "Downpayment" : "Downpayment (AED)",
-      "InterestRate" : "Interest Rate (%)",      
-      "TotalLoanAmount" : "Total Loan Amount"
+    "Mortgage Tools": "Mortgage Tools",
+    "aed": "AED",
+    "ViewUnits": "View Units",
+    "GetApproval": "Get pre-approval today",
+    "MonthlyPayment": "Monthly Payment",
+    "Yrs": "yrs",
+    "mortgageTab": {
+      "title": "Mortgage Calculator",
+      "PropertyPrice": "Property Price (AED)",
+      "LoanPeriod": "Loan Period (Years)",
+      "Years": "Years",
+      "Downpayment": "Downpayment (AED)",
+      "InterestRate": "Interest Rate (%)",
+      "TotalLoanAmount": "Total Loan Amount"
     },
-    "amortizationTab" : {
-      "title" : "Amortization",
-      "LoanAmount" : "Loan Amount",
-      "LoanInterestRate" : "Loan Interest Rate",
-      "LoanTermYears" : "Loan Term Years",
-      "Years" : "Years",
-      "EarlyPayment" : "EARLY PAYMENT",
-      "EffectOfLargerPayment" : "Effect of making a larger payment",
-      "PaymentAmount" : "Payment Amount",
-      "MadeAfterMonth" : "Made After Month",
-      "Months" : "months",
-      "MonthlyAmortization" : "Monthly Amortization",
-      "TotalCost" : "Total Cost",
-      "ExploreProperties" : "Explore Properties"
+    "amortizationTab": {
+      "title": "Amortization",
+      "LoanAmount": "Loan Amount",
+      "LoanInterestRate": "Loan Interest Rate",
+      "LoanTermYears": "Loan Term Years",
+      "Years": "Years",
+      "EarlyPayment": "EARLY PAYMENT",
+      "EffectOfLargerPayment": "Effect of making a larger payment",
+      "PaymentAmount": "Payment Amount",
+      "MadeAfterMonth": "Made After Month",
+      "Months": "months",
+      "MonthlyAmortization": "Monthly Amortization",
+      "TotalCost": "Total Cost",
+      "ExploreProperties": "Explore Properties"
     },
-
     "refinancingTab": {
       "title": "Refinancing",
       "MortgageInformation": "Mortgage Information",
@@ -123,20 +182,20 @@
       "CurrentMonthlyPayments": "Current monthly payments",
       "EarlySettlementFees": "Early settlement fees",
       "Percentage": "Percentage",
-      "CurrentLoanInterestRate": "Current loan interest rate in %",      
+      "CurrentLoanInterestRate": "Current loan interest rate in %",
       "RefinanceInformation": "Refinance Information",
       "CurrentPropertyValue": "Current property value",
       "CurrentEstimated": "Current estimated value",
       "TermOfNewLoan": "Term of new loan",
       "FeesToObtainNewLoan": "Fees to obtain new loan",
       "NewLoanPercentage": "Percentage",
-      "NewLoanInterestRate": "Interest rate of the new loan in %",  
+      "NewLoanInterestRate": "Interest rate of the new loan in %",
       "MortgageCost": "Mortgage Cost",
       "MonthlyPay": "Monthly Pay",
       "PayDiff": "Pay Diff",
       "RefinancePay": "Refinance Pay",
       "BreakMonth": "Break Month",
-      "Month(s)" : "month(s)"
+      "Month(s)": "month(s)"
     },
     "rentVsBuyTab": {
       "Title": "Rent vs Buying",
@@ -149,7 +208,7 @@
       "Downpayment": "Downpayment",
       "Downpaymentpercentage": "Downpayment %",
       "Yearlypropertyappreciation": "Yearly property appreciation",
-      "Planyearstolive": "Plan years to live",      
+      "Planyearstolive": "Plan years to live",
       "Totalrentamount": "Total Rent Amount",
       "Totalbuyamount": "Total Buy Amount",
       "Viewsaleunits": "View Sale Units",
@@ -165,93 +224,90 @@
       "Paymentperiod": "Payment Period",
       "Canafford": "Can Afford",
       "Totalafford": "Total Afford",
-      "GeApprovalToday" : "Get pre-approval today"
+      "GeApprovalToday": "Get pre-approval today"
     }
   },
-
-  "ReportDownload" : {
-    "title" : "Market Insights",
-    "desc" : "Monthly Report DXB",
-    "download" : "Download Now"
+  "ReportDownload": {
+    "title": "Market Insights",
+    "desc": "Monthly Report DXB",
+    "download": "Download Now"
   },
-  "RealEstatePartner" : {
-    "title" : {
-      "part1" : "YOUR TRUSTED",
-      "part2" : "Real Estate",
-      "part3" : "PARTNER"
+  "RealEstatePartner": {
+    "title": {
+      "part1": "YOUR TRUSTED",
+      "part2": "Real Estate",
+      "part3": "PARTNER"
     },
-    "aboutCounter" : {
-      "customers" : "Customers",
-      "languages" : "Languages",
-      "projects" : "Projects",
-      "locationWorldwide" : "Location Worldwide",
-      "years" : "Years in Business",
-      "branches" : "Branches",
-      "expertEmployees" : "Expert Employees"
+    "aboutCounter": {
+      "customers": "Customers",
+      "languages": "Languages",
+      "projects": "Projects",
+      "locationWorldwide": "Location Worldwide",
+      "years": "Years in Business",
+      "branches": "Branches",
+      "expertEmployees": "Expert Employees"
     }
   },
-  "AwardsSectionHome" : {
-    "title" : "AWARDS-DRIVEN Excellence",
-    "desc" : "We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. Explore our journey of accolades that inspire us to reach new pinnacles of success.",
-    "awards" : {
-      "emaar" :  {
-        "title1":"EMAAR",
-        "title2":"ANNUAL BROKER",
+  "AwardsSectionHome": {
+    "title": "AWARDS-DRIVEN Excellence",
+    "desc": "We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. Explore our journey of accolades that inspire us to reach new pinnacles of success.",
+    "awards": {
+      "emaar": {
+        "title1": "EMAAR",
+        "title2": "ANNUAL BROKER",
         "title3": "AWARDS - 2018"
-       },
-      "aldar2021" : {
-        "title1":"ALDAR",
+      },
+      "aldar2021": {
+        "title1": "ALDAR",
         "title3": "AMBASSADOR - 2021"
       },
-      "aldar2016" : {
-        "title1":"ALDAR",
-        "title2":"TOP PERFORMING",
+      "aldar2016": {
+        "title1": "ALDAR",
+        "title2": "TOP PERFORMING",
         "title3": "Agency First Place - 2016"
       },
-      "aldar2020" : {
-          "title1":"ALDAR",
-          "title2":"TOP PERFORMING",
-          "title3": "Agency First Place - 2020"
+      "aldar2020": {
+        "title1": "ALDAR",
+        "title2": "TOP PERFORMING",
+        "title3": "Agency First Place - 2020"
       },
-      "aldar2022" : {
-          "title1":"ALDAR",
-          "title2":"TOP PERFORMING",
-          "title3": "Agency First Place - 2022"
+      "aldar2022": {
+        "title1": "ALDAR",
+        "title2": "TOP PERFORMING",
+        "title3": "Agency First Place - 2022"
       },
-      "imkan" : {
-          "title1":"IMKAN",
-          "title2":"TOP PERFORMING",
-          "title3": "Agency First Place - 2021"
+      "imkan": {
+        "title1": "IMKAN",
+        "title2": "TOP PERFORMING",
+        "title3": "Agency First Place - 2021"
       }
     }
   },
-  "googleReview" : {
-    "title" : "Testimonials",
-    "google" : "Google",
-    "review1" : "My experience with them was awesome! They really made my home-buying journey smooth and stress-free.",
-    "review2" : "Hello from Turkey. Lilit took very good care of us and answered all our questions and queries very clearly.",
-    "review3" : "It was a good experience, as engineer Wissam Atef provided us with excellent support in all maintenance work. Thank you, Engineer Wissam"
+  "googleReview": {
+    "title": "Testimonials",
+    "google": "Google",
+    "review1": "My experience with them was awesome! They really made my home-buying journey smooth and stress-free.",
+    "review2": "Hello from Turkey. Lilit took very good care of us and answered all our questions and queries very clearly.",
+    "review3": "It was a good experience, as engineer Wissam Atef provided us with excellent support in all maintenance work. Thank you, Engineer Wissam"
   },
-  "getTheApp" : {
-    "title1" : "Get the app",
-    "title2" : "Your Journey Starts Here",
-    "desc" : {
-      "part1" : "Take control of your real estate journey with our app. Whether you're booking a viewing, tracking your property progress, or staying updated on the latest listings, everything you need is at your fingertips.",
-      "part2" : "Download the app now and start your journey today!"
+  "getTheApp": {
+    "title1": "Get the app",
+    "title2": "Your Journey Starts Here",
+    "desc": {
+      "part1": "Take control of your real estate journey with our app. Whether you're booking a viewing, tracking your property progress, or staying updated on the latest listings, everything you need is at your fingertips.",
+      "part2": "Download the app now and start your journey today!"
     },
-    "rightSideContent" : {
-      "title" : "Start your journey today",
-      "para" : "with just one tap."
+    "rightSideContent": {
+      "title": "Start your journey today",
+      "para": "with just one tap."
     },
-    "appLinks" : "Available on App Store and Google Play"
+    "appLinks": "Available on App Store and Google Play"
   },
-
-  "Common_Form_Agreements" : {
-    "agreement1" : "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
-    "agreement2" : "Agree to receive multiple calls and communications via various channels regarding my enquiry",
-    "agreement3" : "Agree to receive calls and communications via various channels on various projects, products, and services"
+  "Common_Form_Agreements": {
+    "agreement1": "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
+    "agreement2": "Agree to receive multiple calls and communications via various channels regarding my enquiry",
+    "agreement3": "Agree to receive calls and communications via various channels on various projects, products, and services"
   },
-
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} cn {🇨🇳 Chinese} ru {🇷🇺 Russian} de {🇩🇪 Dutch} other {Unknown}}",
@@ -281,7 +337,7 @@
     "articles": "Articles",
     "property management": "Property Management",
     "login": "Login",
-    "logout": "Logout",    
+    "logout": "Logout",
     "Featured": "Featured",
     "Explore": "Explore",
     "Abu Dhabi": "Abu Dhabi",
@@ -318,8 +374,173 @@
     "Awards": "Awards",
     "Media": "Media"
   },
-
-
+  "About_Us_Page": {
+    "heroTitle": "ABOUT US",
+    "heroBreadcrumb": "Home > About Us",
+    "aboutTag": "About",
+    "mainHeading": "PROPERTY SHOP INVESTMENT",
+    "paragraph1": {
+      "part1": "Established in 2007",
+      "part2": "Property Shop Investment (PSI)",
+      "part3": "has evolved into a preeminent force within the real estate sector, demonstrating a robust track record both within the UAE and across international markets. Headquartered in Abu Dhabi, and consistently recognized as the UAE’s leading brokerage firm, PSI’s sustained growth is underpinned by a commitment to innovation, superior performance, and an unwavering dedication to its clientele."
+    },
+    "paragraph2": "Currently, PSI comprises a diverse team of over 1,500 professionals representing more than 50 nationalities, operating through 17 branches globally. This extensive expertise and international reach facilitate the provision of a fully integrated real estate ecosystem.",
+    "paragraph3": "Our capabilities span residential and commercial investments, off-plan and resale transactions, comprehensive asset management, sophisticated mortgage solutions, and pioneering AI-powered property technologies. Guided by a clear strategic vision and decisive leadership, PSI is actively pursuing expansion to deliver a unified, world-class real estate experience for institutional investors, developers, and global enterprises.",
+    "Testimonials": {
+      "Said": "Said Abu Laila",
+      "Said_designation": "Chairman",
+      "Said_text": "Since 2007, Property Shop Investment (PSI) has led the transformation of UAE's real estate. Moving into 2024, our goal is global recognition, driving innovation and exceeding investor expectations. We're committed to redefining real estate globally, aligning with our vision to lead and inspire across markets.",
+      "Firas": "Firas Abu Laila",
+      "Firas_designation": "Chief Executive Officer",
+      "Firas_text": "PSI aligns with Abu Dhabi's growth and diversification goals, aiming to bolster its position as a top investment destination. Our global ambitions complement Abu Dhabi's vision, promising to surpass investor expectations and contribute to its economic prosperity.",
+      "Amer": "Amer Saadeh",
+      "Amer_designation": "Chief Executive Officer",
+      "Amer_text": "PSI aims to mirror Dubai's innovative spirit in real estate, contributing to its vision by attracting global investments and fostering economic growth. We're set to elevate Dubai's real estate market, enhancing investor confidence and setting new industry standards."
+    },
+    "CoreValues": {
+      "title": "Our Core Values",
+      "paragraph1": "Our strong reputation in the industry is founded on our continuous commitment to quality and excellence in all the services we provide. With a blend of vision, expertise, specialized teams, enthusiasm, and transparency, Property Shop Investment has established itself as a leading influencer in Abu Dhabi's real estate market.",
+      "paragraph2": "As an award-winning, full-service brokerage, Property Shop Investment is recognized for consistently exceeding expectations. We strive for the highest performance and have proudly held the title of 'Number One Real Estate Broker in Abu Dhabi' for ten consecutive years. Our focus on delivering straightforward and dependable services to both corporate and private clients guarantee complete customer satisfaction.",
+      "paragraph3": "All our services are customized to meet individual client needs, and our dedication transforms promises into reality."
+    },
+    "CoreValues_List": {
+      "WE_GATHER": {
+        "title": "WE GATHER",
+        "description": "Not only a slogan. We gather embodies everything we stand for in our culture, business philosophy and operations."
+      },
+      "NOVELTY": {
+        "title": "NOVELTY",
+        "description": "Devoted to originality in our services, efforts."
+      },
+      "ACCOUNTABILITY": {
+        "title": "ACCOUNTABILITY",
+        "description": "Ensuring fairness, integrity, honesty, transparency, effectiveness and commitment to responsibility."
+      }
+    },
+    "Our_Services": {
+      "heroTitle": "OUR SERVICES",
+      "heroDescription": "Our reputation rests on excellence, transparency, and visionary leadership. Property Shop Investment sets industry benchmarks as Abu Dhabi's real estate influencer.",
+      "downloadProfile": "Download Company Profile",
+      "SALES_title": "SALES",
+      "SALES_description": "Our sales team serves as your trusted guide, simplifying the complex property market. From negotiations to legalities, we ensure fair deals and protect your interests, providing tailored advice to match your financial needs.",
+      "LANDLORDS_title": "LANDLORDS",
+      "LANDLORDS_description": "Our listing teams, for sales and leasing, strategically maximize property value while prioritizing client confidentiality. Close collaboration with our marketing team ensures a robust inventory of property listings across the UAE.",
+      "LEASING_title": "LEASING",
+      "LEASING_description": "Our listing teams, for sales and leasing, maximize property value with strict confidentiality. Collaborating closely with marketing ensures a vast inventory for your property needs.",
+      "DEVELOPMENT_MANAGEMENT_title": "DEVELOPMENT MANAGEMENT",
+      "DEVELOPMENT_MANAGEMENT_description": "PSI builds on best practices and trusted partners to deliver high-quality, innovative developments that provide lasting value for clients and investors, aiming to redefine the standards in quality, creativity, and client focus.",
+      "PROPERTY_MANAGEMENT_title": "PROPERTY MANAGEMENT",
+      "PROPERTY_MANAGEMENT_description": "PSI has a centralised property management department that manages residential, commercial, and industrial properties on behalf of owners to preserve the value of their property and maintaining promising returns on investments.",
+      "MARKETING_title": "MARKETING",
+      "MARKETING_description": "PSI's in-house marketing hub offers tailored solutions for client journeys. With multi-channel strategies and deep insights, we create seamless experiences for developers, investors, sellers, and landlords, fostering brand loyalty and recognition."
+    },
+    "RealEstatePartner": {
+      "title": {
+        "part1": "YOUR TRUSTED",
+        "part2": "Real Estate",
+        "part3": "PARTNER"
+      },
+      "aboutCounter": {
+        "customers": "Customers",
+        "languages": "Languages",
+        "projects": "Projects",
+        "locationWorldwide": "Location Worldwide",
+        "years": "Years in Business",
+        "branches": "Branches",
+        "expertEmployees": "Expert Employees"
+      }
+    },
+    "DISCOVER_title": "DISCOVER PSI",
+    "DISCOVER_desc": "Unveiling Our Vision, Innovations, and Commitment to Your Dream Home",
+    "PARTNERS_title": "PARTNERS",
+    "PARTNERS_desc": "Meet the Visionaries Behind Your Dreams: Our Real Estate Developers.",
+    "STRATEGIC_title": {
+      "part1": "STRATEGIC",
+      "part2": "Alliances"
+    },
+    "STRATEGIC_desc": "Bringing Real Estate Excellence to Your Doorstep",
+    "STRATEGIC_places": {
+      "UAE": "United Arab Emirates",
+      "India": "India",
+      "USA": "USA",
+      "Poland": "Poland",
+      "Romania": "Romania",
+      "UK": "United Kingdom"
+    }
+  },
+  "About_Locations": {
+    "title": "OUR LOCATIONS",
+    "desc": "Discover Our Destinations: Unveiling the Map of Opportunities.",
+    "AbuDhabi_title": "Abu Dhabi",
+    "Dubai_title": "Dubai",
+    "Sharjah_title": "Sharjah"
+  },
+  "PSI_Map_Locations": {
+    "view_map": "View map",
+    "PSI_Head_Office": {
+      "name": "PSI Head Office",
+      "address": "Al Reem Island, Abu Dhabi",
+      "address_community": "Al Reem Island",
+      "address_city": "Abu Dhabi",
+      "off_address": "Office No. 4410 & 4411, Addax Tower Level 44, Al Reem Island, City of Lights, Abu Dhabi, United Arab Emirates"
+    },
+    "PSI_Assets": {
+      "name": "PSI Assets",
+      "address": "PSI Assets, Al Reem Island, Abu Dhabi",
+      "address_community": "Al Reem Island",
+      "address_city": "Abu Dhabi",
+      "off_address": "1st Floor, Shams Boutik | Jazeerat Al Reem, Al Reem Island | Abu Dhabi, United Arab Emirates"
+    },
+    "Dubai_Hills_Branch": {
+      "name": "Dubai Hills Branch",
+      "address": "Business Park 3, Dubai Hills Estate",
+      "address_community": "Dubai Hills Estate",
+      "address_city": "Dubai",
+      "off_address": "Office #104, Business Park 3, Dubai Hills Estate"
+    },
+    "Mamsha_Branch": {
+      "name": "Mamsha Branch",
+      "address": "Saadiyat Island, Abu Dhabi",
+      "address_community": "Saadiyat Island",
+      "address_city": "Abu Dhabi",
+      "off_address": "Mamsha Al Saadiyat, Building 9, Unit P3-R13, Abu Dhabi, United Arab Emirates"
+    },
+    "Waters_Edge_Branch": {
+      "name": "Waters Edge Branch",
+      "address": "Yas Island, Abu Dhabi",
+      "address_community": "Yas Island",
+      "address_city": "Abu Dhabi",
+      "off_address": "Al Maha St, Yas Island, Abu Dhabi, United Arab Emirates"
+    },
+    "St_Regis_Office": {
+      "name": "St. Regis Office",
+      "address": "Saadiyat Island, Abu Dhabi",
+      "address_community": "Saadiyat Island",
+      "address_city": "Abu Dhabi",
+      "off_address": "PSI St Regis, Saadiyat Island, Abu Dhabi, United Arab Emirates"
+    },
+    "Palm_Jumeirah_Branch": {
+      "name": "Palm Jumeirah Branch",
+      "address": "Palm Jumeirah, Dubai",
+      "address_community": "Palm Jumeirah",
+      "address_city": "Dubai",
+      "off_address": "Golden Mile Building 8, Palm Jumeirah, Dubai, United Arab Emirates"
+    },
+    "Conrad_Etihad_Towers": {
+      "name": "Conrad Etihad Towers",
+      "address": "Al Bateen, Abu Dhabi",
+      "address_community": "Al Bateen",
+      "address_city": "Abu Dhabi",
+      "off_address": "Conrad Abu Dhabi Etihad Towers, Corniche Rd, Abu Dhabi, United Arab Emirates"
+    },
+    "Benelux_Branch": {
+      "name": "Benelux Branch",
+      "address": "Business Bay, Dubai",
+      "address_community": "Business Bay",
+      "address_city": "Dubai",
+      "off_address": "Office 403, Sobha Sapphire, Business Bay, Dubai"
+    }
+  },
   "ProjectPage": {
     "overview": "Overview",
     "gallery": "Gallery",
@@ -359,14 +580,38 @@
         "cta": "Download Brochure"
       },
       "usp": {
-        "item1": { "title": "1 - 3 BR", "desc": "Apartments" },
-        "item2": { "title": "Duplexes", "desc": "Penthouses" },
-        "item3": { "title": "Flexible", "desc": "payment plan" },
-        "item4": { "title": "AED 1,900,000", "desc": "Starting from" },
-        "item5": { "title": "2027", "desc": "Handover" },
-        "item6": { "title": "10%", "desc": "Down Payment" },
-        "item7": { "title": "For All", "desc": "Nationalities" },
-        "item8": { "title": "YAS", "desc": "Island" }
+        "item1": {
+          "title": "1 - 3 BR",
+          "desc": "Apartments"
+        },
+        "item2": {
+          "title": "Duplexes",
+          "desc": "Penthouses"
+        },
+        "item3": {
+          "title": "Flexible",
+          "desc": "payment plan"
+        },
+        "item4": {
+          "title": "AED 1,900,000",
+          "desc": "Starting from"
+        },
+        "item5": {
+          "title": "2027",
+          "desc": "Handover"
+        },
+        "item6": {
+          "title": "10%",
+          "desc": "Down Payment"
+        },
+        "item7": {
+          "title": "For All",
+          "desc": "Nationalities"
+        },
+        "item8": {
+          "title": "YAS",
+          "desc": "Island"
+        }
       },
       "about": {
         "heading": "Sama Yas - Yas Island",
@@ -384,27 +629,55 @@
         "desc": "Sama Yas brings you luxury 1, 2 & 3 bedroom apartments, duplexes, and penthouses in Yas Island with easy payment plans.",
         "cta": "Contact us now!",
         "items": {
-          "item1": { "label": "Theatre Room", "icon": "/images/landing-page/icons/theatre.svg" },
-          "item2": { "label": "Concierge Service", "icon": "/images/landing-page/icons/concierge-service.svg" },
-          "item3": { "label": "Community Gardens", "icon": "/images/landing-page/icons/park.svg" },
-          "item4": { "label": "Gym", "icon": "/images/landing-page/icons/shared-gym.svg" },
-          "item5": { "label": "Retail", "icon": "/images/landing-page/icons/retail.svg" },
-          "item6": { "label": "Cafés", "icon": "/images/landing-page/icons/cafe.svg" },
-          "item7": { "label": "Spa", "icon": "/images/landing-page/icons/spa-icon.svg" },
-          "item8": { "label": "Cycling", "icon": "/images/landing-page/icons/vector-new.svg" },
-          "item9": { "label": "Jogging Tracks", "icon": "/images/landing-page/icons/jogging-new.svg" }
+          "item1": {
+            "label": "Theatre Room",
+            "icon": "/images/landing-page/icons/theatre.svg"
+          },
+          "item2": {
+            "label": "Concierge Service",
+            "icon": "/images/landing-page/icons/concierge-service.svg"
+          },
+          "item3": {
+            "label": "Community Gardens",
+            "icon": "/images/landing-page/icons/park.svg"
+          },
+          "item4": {
+            "label": "Gym",
+            "icon": "/images/landing-page/icons/shared-gym.svg"
+          },
+          "item5": {
+            "label": "Retail",
+            "icon": "/images/landing-page/icons/retail.svg"
+          },
+          "item6": {
+            "label": "Cafés",
+            "icon": "/images/landing-page/icons/cafe.svg"
+          },
+          "item7": {
+            "label": "Spa",
+            "icon": "/images/landing-page/icons/spa-icon.svg"
+          },
+          "item8": {
+            "label": "Cycling",
+            "icon": "/images/landing-page/icons/vector-new.svg"
+          },
+          "item9": {
+            "label": "Jogging Tracks",
+            "icon": "/images/landing-page/icons/jogging-new.svg"
+          }
         }
       },
-       "floorPlans": {
+      "floorPlans": {
         "title": "Floor Plan",
         "oneBed": "1 Bedroom",
         "twoBed": "2 Bedroom",
         "threeBed": "3 Bedroom",
         "download": "Download floor plans"
       },
-      "ProjectPage": { "location": "Location" }
+      "ProjectPage": {
+        "location": "Location"
+      }
     },
-    
     "yas-riva": {
       "hero": {
         "heading": "Yas Riva - Yas Island",
@@ -413,12 +686,30 @@
         "cta": "Download Brochure"
       },
       "usp": {
-        "item1": { "title": "4 – 6 BR", "desc": "Bedroom" },
-        "item2": { "title": "8.3M AED", "desc": "Starting From" },
-        "item3": { "title": "5%", "desc": "Downpayment" },
-        "item4": { "title": "Flexible", "desc": "Payment Plan" },
-        "item5": { "title": "Q2 2028", "desc": "Handover" },
-        "item6": { "title": "Standalone", "desc": "Villa" }
+        "item1": {
+          "title": "4 – 6 BR",
+          "desc": "Bedroom"
+        },
+        "item2": {
+          "title": "8.3M AED",
+          "desc": "Starting From"
+        },
+        "item3": {
+          "title": "5%",
+          "desc": "Downpayment"
+        },
+        "item4": {
+          "title": "Flexible",
+          "desc": "Payment Plan"
+        },
+        "item5": {
+          "title": "Q2 2028",
+          "desc": "Handover"
+        },
+        "item6": {
+          "title": "Standalone",
+          "desc": "Villa"
+        }
       },
       "about": {
         "heading": "Yas Riva - Yas Island",
@@ -436,12 +727,30 @@
         "desc": "4 to 6 bedroom villas for sale at Yas Riva",
         "cta": "Contact us now!",
         "items": {
-          "item1": { "label": "Waterfront Living", "icon": "/images/landing-page/lp-icons/water-front.svg" },
-          "item2": { "label": "Community Market", "icon": "/images/landing-page/lp-icons/retail.svg" },
-          "item3": { "label": "Pocket Parks", "icon": "/images/landing-page/lp-icons/park.svg" },
-          "item4": { "label": "Relaxation Spots", "icon": "/images/landing-page/lp-icons/relaxation.svg" },
-          "item5": { "label": "Treatment Room", "icon": "/images/landing-page/lp-icons/treatment.svg" },
-          "item6": { "label": "Swimming Pool", "icon": "/images/landing-page/lp-icons/shared-pool.svg" }
+          "item1": {
+            "label": "Waterfront Living",
+            "icon": "/images/landing-page/lp-icons/water-front.svg"
+          },
+          "item2": {
+            "label": "Community Market",
+            "icon": "/images/landing-page/lp-icons/retail.svg"
+          },
+          "item3": {
+            "label": "Pocket Parks",
+            "icon": "/images/landing-page/lp-icons/park.svg"
+          },
+          "item4": {
+            "label": "Relaxation Spots",
+            "icon": "/images/landing-page/lp-icons/relaxation.svg"
+          },
+          "item5": {
+            "label": "Treatment Room",
+            "icon": "/images/landing-page/lp-icons/treatment.svg"
+          },
+          "item6": {
+            "label": "Swimming Pool",
+            "icon": "/images/landing-page/lp-icons/shared-pool.svg"
+          }
         }
       },
       "floorPlans": {
@@ -451,177 +760,309 @@
         "threeBed": "6 Bedroom",
         "download": "Download floor plans"
       },
-      "ProjectPage": { "location": "Location" }
-    },
-    "manarat-living-saadiyat": {
-  "hero": {
-    "heading": "Manarat Living - Saadiyat Island",
-    "sub": "A NEW DESIGN CONCEPT BY ALDAR",
-    "description": "Own a studio, 1 bed, 2-bed, or 2-bed + maid apartment in the first living development in Saadiyat Island’s Cultural District.",
-    "cta": "Download Brochure"
-  },
-  "usp": {
-    "item1": { "title": "Studio - 2BR", "desc": "Apartments" },
-    "item2": { "title": "Flexible", "desc": "Payment Plan" },
-    "item3": { "title": "AED 634,000", "desc": "Starting From" },
-    "item4": { "title": "2026", "desc": "Handover" },
-    "item5": { "title": "5%", "desc": "Down Payment" },
-    "item6": { "title": "By", "desc": "ALDAR" }
-  },
-  "about": {
-    "heading": "Manarat Living - Saadiyat Island",
-    "subheading": "ABOUT THE PROJECT",
-    "description": "A groundbreaking new approach that’s bringing home ownership down to earth, with properties to suit your tastes, amenities made for your needs, in locations that connect you to everything. Whether you’re growing your family or building a career, leave that rental behind and make the smart move to a home at Manarat Living.",
-    "cta": "Download Brochure"
-  },
-  "gallery": {
-    "title": "Gallery",
-    "prev": "Previous",
-    "next": "Next"
-  },
-  "amenities": {
-    "title": "Exceptional Amenities Await You at Manarat Living",
-    "desc": "Choose your space, add your flavor, and create a home as individual as you are.",
-    "cta": "Contact us now!",
-    "items": {
-      "item1": { "label": "Concierge Service", "icon": "/images/landing-page/lp-icons/concierge-service.svg" },
-      "item2": { "label": "Kids Play Area", "icon": "/images/landing-page/lp-icons/child.svg" },
-      "item3": { "label": "Park", "icon": "/images/landing-page/lp-icons/park.svg" },
-      "item4": { "label": "Gym", "icon": "/images/landing-page/lp-icons/shared-gym.svg" },
-      "item5": { "label": "Retail", "icon": "/images/landing-page/lp-icons/retail.svg" },
-      "item6": { "label": "Cafés", "icon": "/images/landing-page/lp-icons/cafe.svg" },
-      "item7": { "label": "Pets Allowed", "icon": "/images/landing-page/lp-icons/pets.svg" },
-      "item8": { "label": "View of Landmark", "icon": "/images/landing-page/lp-icons/landmark.svg" },
-      "item9": { "label": "Pool", "icon": "/images/landing-page/lp-icons/shared-pool.svg" }
-    }
-  },
-  "floorPlans": {
-    "title": "Floor Plan",
-    "studio": "Studio",
-    "oneBed": "1 Bedroom",
-    "twoBed": "2 Bedroom",
-    "twoBedMaid": "2 Bedroom + Maid",
-    "download": "Download floor plans"
-  },
-  "ProjectPage": { "location": "Location" }
-    },
-  "the-arthouse": {
-    "hero": {
-      "heading": "The Arthouse - Saadiyat Grove",
-      "sub": "Life Between Art & Elegance",
-      "description": "The Arthouse by Aldar is a refined residential destination in Saadiyat Grove, offering apartments and sky villas designed around creativity, culture, and elevated living in Abu Dhabi’s cultural district.",
-      "cta": "Download Brochure"
-    },
-
-    "usp": {
-      "item1": { "title": "1 - 3 BR", "desc": "Apartments" },
-      "item2": { "title": "5 BR", "desc": "Sky Villas" },
-      "item3": { "title": "Flexible", "desc": "Payment Plan" },
-      "item4": { "title": "Q2 2028", "desc": "Handover" },
-      "item5": { "title": "10%", "desc": "Down Payment" },
-      "item6": { "title": "By", "desc": "ALDAR" }
-    },
-
-    "about": {
-      "heading": "The Arthouse - Saadiyat Grove",
-      "subheading": "ABOUT THE PROJECT",
-      "description": "The Arthouse Saadiyat Grove is a luxury residential development by Aldar Properties, located within the heart of Saadiyat Grove. Designed to blend artistic expression with modern living, the project offers thoughtfully crafted homes surrounded by cultural landmarks, green spaces, and world-class lifestyle amenities.",
-      "cta": "Download Brochure"
-    },
-
-    "gallery": {
-      "title": "Gallery",
-      "prev": "Previous",
-      "next": "Next"
-    },
-
-    "amenities": {
-      "title": "A Symphony of Luxury Amenities",
-      "desc": "Residents enjoy a curated collection of lifestyle amenities designed to inspire creativity, wellness, and social connection.",
-      "cta": "Contact us now!",
-      "items": {
-        "item1": { "label": "Secret Garden", "icon": "/images/landing-page/lp-icons/park.svg" },
-        "item2": { "label": "Tennis Court", "icon": "/images/landing-page/lp-icons/fitness-area.svg" },
-        "item3": { "label": "Grand Lobby", "icon": "/images/landing-page/lp-icons/private-lounge.svg" },
-        "item4": { "label": "Arthouse Cinema", "icon": "/images/landing-page/lp-icons/theatre.svg" },
-        "item5": { "label": "Health Club Gym", "icon": "/images/landing-page/lp-icons/health.svg" },
-        "item6": { "label": "Kids Playroom", "icon": "/images/landing-page/lp-icons/kids-play.svg" },
-        "item7": { "label": "Entertainment Lounge", "icon": "/images/landing-page/lp-icons/bbq.svg" },
-        "item8": { "label": "Yoga Rooms", "icon": "/images/landing-page/lp-icons/fitness-area.svg" },
-        "item9": { "label": "Creative Majlis", "icon": "/images/landing-page/lp-icons/meeting.svg" }
+      "ProjectPage": {
+        "location": "Location"
       }
     },
-"floorPlans": {
-  "title": "Floor Plan",
-  "oneBed": "1 Bedroom",
-  "twoBed": "2 Bedroom",
-  "threeBed": "3 Bedroom",
-  "fiveBed": "5 Bedroom",
-  "download": "Download floor plans"
-}
-  },
-  "bloom-living-almeria": {
-  "hero": {
-    "heading": "Bloom Living - Almeria",
-    "sub": "A Contemporary Community in Zayed City",
-    "description": "Bloom Living – Almeria is a thoughtfully planned residential community in Zayed City, near Zayed International Airport. It offers spacious villas designed around nature, connectivity, and a balanced lifestyle in Abu Dhabi.",
-    "cta": "Download Brochure"
-  },
-
-  "usp": {
-    "item1": { "title": "3 - 6 BR", "desc": "Villas" },
-    "item2": { "title": "40/60", "desc": "Payment Plan" },
-    "item3": { "title": "3.7M AED", "desc": "Starting From" },
-    "item4": { "title": "Q4 2027", "desc": "Handover" },
-    "item5": { "title": "10%", "desc": "Down Payment" },
-    "item6": { "title": "Standalone", "desc": "Villas" }
-  },
-
-  "about": {
-    "heading": "Bloom Living - Almeria",
-    "subheading": "ABOUT THE PROJECT",
-    "description": "Bloom Living – Almeria is part of a fully integrated master community featuring villas, townhouses, and apartments. Designed to promote walkability and wellbeing, the community includes interconnected parks, cycling tracks, a central lake, clubhouse facilities, retail outlets, dining options, schools, and places of worship—creating a complete lifestyle destination.",
-    "cta": "Download Brochure"
-  },
-
-  "gallery": {
-    "title": "Gallery",
-    "prev": "Previous",
-    "next": "Next"
-  },
-
-  "amenities": {
-    "title": "Lifestyle Amenities at Bloom Living",
-    "desc": "A wide range of amenities designed to support wellness, leisure, and community living for the whole family.",
-    "cta": "Contact us now!",
-    "items": {
-      "item1": { "label": "Gym & Sauna", "icon": "/images/landing-page/lp-icons/shared-gym.svg" },
-      "item2": { "label": "24/7 Security", "icon": "/images/landing-page/lp-icons/security24-7.svg" },
-      "item3": { "label": "Walking & Jogging Tracks", "icon": "/images/landing-page/lp-icons/fitness-area.svg" },
-      "item4": { "label": "Central Lake", "icon": "/images/landing-page/lp-icons/water-front.svg" },
-      "item5": { "label": "Retail & Dining", "icon": "/images/landing-page/lp-icons/retail.svg" },
-      "item6": { "label": "Places of Worship", "icon": "/images/landing-page/lp-icons/mosque-1.svg" }
+    "manarat-living-saadiyat": {
+      "hero": {
+        "heading": "Manarat Living - Saadiyat Island",
+        "sub": "A NEW DESIGN CONCEPT BY ALDAR",
+        "description": "Own a studio, 1 bed, 2-bed, or 2-bed + maid apartment in the first living development in Saadiyat Island’s Cultural District.",
+        "cta": "Download Brochure"
+      },
+      "usp": {
+        "item1": {
+          "title": "Studio - 2BR",
+          "desc": "Apartments"
+        },
+        "item2": {
+          "title": "Flexible",
+          "desc": "Payment Plan"
+        },
+        "item3": {
+          "title": "AED 634,000",
+          "desc": "Starting From"
+        },
+        "item4": {
+          "title": "2026",
+          "desc": "Handover"
+        },
+        "item5": {
+          "title": "5%",
+          "desc": "Down Payment"
+        },
+        "item6": {
+          "title": "By",
+          "desc": "ALDAR"
+        }
+      },
+      "about": {
+        "heading": "Manarat Living - Saadiyat Island",
+        "subheading": "ABOUT THE PROJECT",
+        "description": "A groundbreaking new approach that’s bringing home ownership down to earth, with properties to suit your tastes, amenities made for your needs, in locations that connect you to everything. Whether you’re growing your family or building a career, leave that rental behind and make the smart move to a home at Manarat Living.",
+        "cta": "Download Brochure"
+      },
+      "gallery": {
+        "title": "Gallery",
+        "prev": "Previous",
+        "next": "Next"
+      },
+      "amenities": {
+        "title": "Exceptional Amenities Await You at Manarat Living",
+        "desc": "Choose your space, add your flavor, and create a home as individual as you are.",
+        "cta": "Contact us now!",
+        "items": {
+          "item1": {
+            "label": "Concierge Service",
+            "icon": "/images/landing-page/lp-icons/concierge-service.svg"
+          },
+          "item2": {
+            "label": "Kids Play Area",
+            "icon": "/images/landing-page/lp-icons/child.svg"
+          },
+          "item3": {
+            "label": "Park",
+            "icon": "/images/landing-page/lp-icons/park.svg"
+          },
+          "item4": {
+            "label": "Gym",
+            "icon": "/images/landing-page/lp-icons/shared-gym.svg"
+          },
+          "item5": {
+            "label": "Retail",
+            "icon": "/images/landing-page/lp-icons/retail.svg"
+          },
+          "item6": {
+            "label": "Cafés",
+            "icon": "/images/landing-page/lp-icons/cafe.svg"
+          },
+          "item7": {
+            "label": "Pets Allowed",
+            "icon": "/images/landing-page/lp-icons/pets.svg"
+          },
+          "item8": {
+            "label": "View of Landmark",
+            "icon": "/images/landing-page/lp-icons/landmark.svg"
+          },
+          "item9": {
+            "label": "Pool",
+            "icon": "/images/landing-page/lp-icons/shared-pool.svg"
+          }
+        }
+      },
+      "floorPlans": {
+        "title": "Floor Plan",
+        "studio": "Studio",
+        "oneBed": "1 Bedroom",
+        "twoBed": "2 Bedroom",
+        "twoBedMaid": "2 Bedroom + Maid",
+        "download": "Download floor plans"
+      },
+      "ProjectPage": {
+        "location": "Location"
+      }
+    },
+    "the-arthouse": {
+      "hero": {
+        "heading": "The Arthouse - Saadiyat Grove",
+        "sub": "Life Between Art & Elegance",
+        "description": "The Arthouse by Aldar is a refined residential destination in Saadiyat Grove, offering apartments and sky villas designed around creativity, culture, and elevated living in Abu Dhabi’s cultural district.",
+        "cta": "Download Brochure"
+      },
+      "usp": {
+        "item1": {
+          "title": "1 - 3 BR",
+          "desc": "Apartments"
+        },
+        "item2": {
+          "title": "5 BR",
+          "desc": "Sky Villas"
+        },
+        "item3": {
+          "title": "Flexible",
+          "desc": "Payment Plan"
+        },
+        "item4": {
+          "title": "Q2 2028",
+          "desc": "Handover"
+        },
+        "item5": {
+          "title": "10%",
+          "desc": "Down Payment"
+        },
+        "item6": {
+          "title": "By",
+          "desc": "ALDAR"
+        }
+      },
+      "about": {
+        "heading": "The Arthouse - Saadiyat Grove",
+        "subheading": "ABOUT THE PROJECT",
+        "description": "The Arthouse Saadiyat Grove is a luxury residential development by Aldar Properties, located within the heart of Saadiyat Grove. Designed to blend artistic expression with modern living, the project offers thoughtfully crafted homes surrounded by cultural landmarks, green spaces, and world-class lifestyle amenities.",
+        "cta": "Download Brochure"
+      },
+      "gallery": {
+        "title": "Gallery",
+        "prev": "Previous",
+        "next": "Next"
+      },
+      "amenities": {
+        "title": "A Symphony of Luxury Amenities",
+        "desc": "Residents enjoy a curated collection of lifestyle amenities designed to inspire creativity, wellness, and social connection.",
+        "cta": "Contact us now!",
+        "items": {
+          "item1": {
+            "label": "Secret Garden",
+            "icon": "/images/landing-page/lp-icons/park.svg"
+          },
+          "item2": {
+            "label": "Tennis Court",
+            "icon": "/images/landing-page/lp-icons/fitness-area.svg"
+          },
+          "item3": {
+            "label": "Grand Lobby",
+            "icon": "/images/landing-page/lp-icons/private-lounge.svg"
+          },
+          "item4": {
+            "label": "Arthouse Cinema",
+            "icon": "/images/landing-page/lp-icons/theatre.svg"
+          },
+          "item5": {
+            "label": "Health Club Gym",
+            "icon": "/images/landing-page/lp-icons/health.svg"
+          },
+          "item6": {
+            "label": "Kids Playroom",
+            "icon": "/images/landing-page/lp-icons/kids-play.svg"
+          },
+          "item7": {
+            "label": "Entertainment Lounge",
+            "icon": "/images/landing-page/lp-icons/bbq.svg"
+          },
+          "item8": {
+            "label": "Yoga Rooms",
+            "icon": "/images/landing-page/lp-icons/fitness-area.svg"
+          },
+          "item9": {
+            "label": "Creative Majlis",
+            "icon": "/images/landing-page/lp-icons/meeting.svg"
+          }
+        }
+      },
+      "floorPlans": {
+        "title": "Floor Plan",
+        "oneBed": "1 Bedroom",
+        "twoBed": "2 Bedroom",
+        "threeBed": "3 Bedroom",
+        "fiveBed": "5 Bedroom",
+        "download": "Download floor plans"
+      }
+    },
+    "bloom-living-almeria": {
+      "hero": {
+        "heading": "Bloom Living - Almeria",
+        "sub": "A Contemporary Community in Zayed City",
+        "description": "Bloom Living – Almeria is a thoughtfully planned residential community in Zayed City, near Zayed International Airport. It offers spacious villas designed around nature, connectivity, and a balanced lifestyle in Abu Dhabi.",
+        "cta": "Download Brochure"
+      },
+      "usp": {
+        "item1": {
+          "title": "3 - 6 BR",
+          "desc": "Villas"
+        },
+        "item2": {
+          "title": "40/60",
+          "desc": "Payment Plan"
+        },
+        "item3": {
+          "title": "3.7M AED",
+          "desc": "Starting From"
+        },
+        "item4": {
+          "title": "Q4 2027",
+          "desc": "Handover"
+        },
+        "item5": {
+          "title": "10%",
+          "desc": "Down Payment"
+        },
+        "item6": {
+          "title": "Standalone",
+          "desc": "Villas"
+        }
+      },
+      "about": {
+        "heading": "Bloom Living - Almeria",
+        "subheading": "ABOUT THE PROJECT",
+        "description": "Bloom Living – Almeria is part of a fully integrated master community featuring villas, townhouses, and apartments. Designed to promote walkability and wellbeing, the community includes interconnected parks, cycling tracks, a central lake, clubhouse facilities, retail outlets, dining options, schools, and places of worship—creating a complete lifestyle destination.",
+        "cta": "Download Brochure"
+      },
+      "gallery": {
+        "title": "Gallery",
+        "prev": "Previous",
+        "next": "Next"
+      },
+      "amenities": {
+        "title": "Lifestyle Amenities at Bloom Living",
+        "desc": "A wide range of amenities designed to support wellness, leisure, and community living for the whole family.",
+        "cta": "Contact us now!",
+        "items": {
+          "item1": {
+            "label": "Gym & Sauna",
+            "icon": "/images/landing-page/lp-icons/shared-gym.svg"
+          },
+          "item2": {
+            "label": "24/7 Security",
+            "icon": "/images/landing-page/lp-icons/security24-7.svg"
+          },
+          "item3": {
+            "label": "Walking & Jogging Tracks",
+            "icon": "/images/landing-page/lp-icons/fitness-area.svg"
+          },
+          "item4": {
+            "label": "Central Lake",
+            "icon": "/images/landing-page/lp-icons/water-front.svg"
+          },
+          "item5": {
+            "label": "Retail & Dining",
+            "icon": "/images/landing-page/lp-icons/retail.svg"
+          },
+          "item6": {
+            "label": "Places of Worship",
+            "icon": "/images/landing-page/lp-icons/mosque-1.svg"
+          }
+        }
+      },
+      "floorPlans": {
+        "title": "Floor Plan",
+        "threeBed": "3 Bedroom",
+        "fourBed": "4 Bedroom",
+        "fiveBed": "5 Bedroom",
+        "sixBed": "6 Bedroom",
+        "download": "Download floor plans"
+      }
     }
   },
-
-  "floorPlans": {
-    "title": "Floor Plan",
-    "threeBed": "3 Bedroom",
-    "fourBed": "4 Bedroom",
-    "fiveBed": "5 Bedroom",
-    "sixBed": "6 Bedroom",
-    "download": "Download floor plans"
-  }
-}
-
-},
   "InquiryForm": {
     "title": "Let us know if you’re interested!",
-      "fields": {
-      "firstName": { "label": "First Name", "placeholder": "First Name" },
-      "lastName":  { "label": "Last Name",  "placeholder": "Last Name"  },
-      "phone":     { "label": "Phone",      "placeholder": "+971 5xxxxxxxx" },
-      "email":     { "label": "Email",      "placeholder": "Email" },
+    "fields": {
+      "firstName": {
+        "label": "First Name",
+        "placeholder": "First Name"
+      },
+      "lastName": {
+        "label": "Last Name",
+        "placeholder": "Last Name"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "+971 5xxxxxxxx"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Email"
+      },
       "timeSlot": {
         "label": "Preferred time slot",
         "placeholder": "Select a time",
@@ -634,7 +1075,10 @@
           "17_18": "5PM – 6PM"
         }
       },
-      "invitedBy": { "label": "Who invited you?", "placeholder": "e.g. Inviter" }
+      "invitedBy": {
+        "label": "Who invited you?",
+        "placeholder": "e.g. Inviter"
+      }
     },
     "buttons": {
       "submit": "Submit",
@@ -669,18 +1113,17 @@
       "phone": "Invalid phone number"
     }
   },
-   "LandingFooter": {
+  "LandingFooter": {
     "heading": "OUR EXPERT WILL HELP YOU\nBUY THE BEST",
     "address": "Addax Tower Level 44, Al Reem Island, City of Lights, Abu Dhabi, United Arab Emirates",
     "formHeading": "Let us know if you're interested!",
     "localTel": "Local Tel",
     "intlTel": "Int'l Tel"
-  },  
-
+  },
   "FooterAI": {
     "footer_brand_desc": "Property Shop Investment is the leading real estate agency in Abu Dhabi, helping you find your perfect home since 2007.",
     "footer_company": "Company",
-    "footer_psi" : "Property Shop Investment.",
+    "footer_psi": "Property Shop Investment.",
     "footer_services": "Services",
     "footer_popular_areas": "Popular Areas",
     "footer_get_in_touch": "Get in Touch",
@@ -767,11 +1210,11 @@
     "btn_nearby": "Nearby",
     "btn_developer": "Developer",
     "btn_video_tour": "Video Tour",
-    "company_address" : {
-      "part1" : "Office No. 4410 & 4411",
-      "part2" : "Addax Tower Level 44",
-      "part3" : "Al Reem Island, City of Lights",
-      "part4" : "Abu Dhabi, United Arab Emirates"
+    "company_address": {
+      "part1": "Office No. 4410 & 4411",
+      "part2": "Addax Tower Level 44",
+      "part3": "Al Reem Island, City of Lights",
+      "part4": "Abu Dhabi, United Arab Emirates"
     }
   },
   "ContactPage": {
