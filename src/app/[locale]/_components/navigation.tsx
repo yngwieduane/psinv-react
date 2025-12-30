@@ -382,6 +382,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
     const [isScrolled, setIsScrolled] = useState(false);
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
+    const [userMenuOpen, setUserMenuOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
@@ -595,7 +596,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             </div>
         </div> */}
             {/* Main Navigation */}
-            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
+            <nav className={`fixed top-0 left-0 right-0 z-90 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
                 <div className="container mx-auto flex justify-between items-center relative">
                     {/* LOGO */}
                     <Link className="flex items-center cursor-pointer group z-50" href="/">
@@ -636,7 +637,29 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                         </Link>
                         <div className="h-4 w-px bg-current opacity-30"></div>
                         {user ? (
-                            <button onClick={logout} className="text-xs font-bold uppercase hover:text-secondary">{t("logout")}</button>
+                            <div className="relative" onMouseEnter={() => setUserMenuOpen(true)} onMouseLeave={() => setUserMenuOpen(false)}>
+                                <button className="text-xs font-bold uppercase hover:text-secondary flex items-center gap-2 py-2">
+                                    <UserIcon size={16} /> {user.displayName || 'User'}
+                                </button>
+                                {/* User Dropdown */}
+                                <div className={`absolute top-full right-0 w-48 bg-white border border-gray-100 shadow-xl rounded-xl overflow-hidden transition-all duration-200 z-50 ${userMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
+                                    <ul className="py-2">
+                                        <li>
+                                            <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">
+                                                {t("Profile")}
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <button
+                                                onClick={() => { logout(); setUserMenuOpen(false); }}
+                                                className="block w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-50 transition-colors"
+                                            >
+                                                {t("logout")}
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         ) : (
                             <button onClick={login} className="text-xs font-bold uppercase hover:text-secondary flex items-center gap-2">
                                 <UserIcon size={16} /> {t("login")}
@@ -656,7 +679,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
                 {/* SLEEK MEGA MENU (Transparent Glass) - Desktop Only */}
                 <div
-                    className={`absolute top-full left-0 w-full bg-white/80 backdrop-blur-2xl border-t border-white/20 shadow-xl transition-all duration-300 ease-out overflow-hidden hidden lg:block ${hoveredMenu ? 'max-h-[500px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}
+                    className={`absolute top-full left-0 w-full bg-white backdrop-blur-2xl border-t border-white/20 shadow-xl transition-all duration-300 ease-out overflow-hidden hidden lg:block ${hoveredMenu ? 'max-h-[500px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}
                     onMouseEnter={() => setHoveredMenu(hoveredMenu)}
                     onMouseLeave={() => setHoveredMenu(null)}
                 >

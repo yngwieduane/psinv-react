@@ -140,14 +140,14 @@ export default function UnitListBoxAI(props: any) {
                     <div className="flex gap-2 mt-auto pt-4 border-t border-gray-50">
                         <button
                             onClick={() => setPreviewProperty(props.data)}
-                            className="flex-1 border border-gray-300 text-gray-600 py-2 rounded text-sm font-medium hover:bg-gray-50 transition-colors"
+                            className="cursor-pointer flex-1 border border-gray-300 text-gray-600 py-2 rounded text-sm font-medium hover:bg-gray-50 transition-colors"
                         >
                             Preview
                         </button>
-                        <button onClick={modalHandler} className="flex-1 border border-gray-300 text-gray-600 py-2 rounded text-sm font-medium hover:bg-gray-50 transition-colors">
+                        <button onClick={modalHandler} className="cursor-pointer flex-1 border border-gray-300 text-gray-600 py-2 rounded text-sm font-medium hover:bg-gray-50 transition-colors">
                             Inquire
                         </button>
-                        <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${props.seoUrl}`} className="flex-1 bg-[#25D366] text-white py-2 rounded text-sm font-medium hover:bg-[#128c7e] transition-colors flex items-center justify-center gap-1">
+                        <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${props.seoUrl}`} className="cursor-pointer flex-1 bg-[#25D366] text-white py-2 rounded text-sm font-medium hover:bg-[#128c7e] transition-colors flex items-center justify-center gap-1">
                             WhatsApp
                         </Link>
                     </div>

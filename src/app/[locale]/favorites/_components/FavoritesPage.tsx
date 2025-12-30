@@ -53,7 +53,7 @@ const FavoritesPage: React.FC<{}> = ({ }) => {
                     <div className="flex bg-gray-100 p-1 rounded-xl">
                         <button
                             onClick={() => setActiveTab('project')}
-                            className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${activeTab === 'project'
+                            className={`cursor-pointer px-6 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${activeTab === 'project'
                                 ? 'bg-white text-[#353455] shadow-sm'
                                 : 'text-gray-500 hover:text-gray-700'
                                 }`}
@@ -63,7 +63,7 @@ const FavoritesPage: React.FC<{}> = ({ }) => {
                         </button>
                         <button
                             onClick={() => setActiveTab('units')}
-                            className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${activeTab === 'units'
+                            className={`cursor-pointer px-6 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${activeTab === 'units'
                                 ? 'bg-white text-[#353455] shadow-sm'
                                 : 'text-gray-500 hover:text-gray-700'
                                 }`}

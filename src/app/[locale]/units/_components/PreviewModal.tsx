@@ -25,8 +25,8 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
     let images, price, marketingTitle, maincategory;
     {
         property.sellprice !== null
-        ? maincategory = "Sale"
-        : maincategory = "Rent";
+            ? maincategory = "Sale"
+            : maincategory = "Rent";
     }
     const propertyData = {
         bedrooms: property.bedrooms,
@@ -47,8 +47,8 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
     }
     {
         property.sellprice !== null
-        ? price = property.sellprice
-        : price = property.rent;
+            ? price = property.sellprice
+            : price = property.rent;
     }
     if (property.marketingTitle !== null) {
         marketingTitle = property.marketingTitle;
@@ -192,7 +192,7 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
                         <div className="mt-6 flex flex-col gap-3">
                             <Link
                                 href={`/unit/${seoData.seoUrl}`}
-                                className="w-full py-3 border-2 border-gray-200 text-center  text-gray-600 font-bold rounded-xl hover:bg-gray-800 hover:text-white transition-colors"
+                                className="cursor-pointer text-center mt-6 border bg-indigo-950 border-indigo-950 text-white font-bold py-3 rounded-xl hover:bg-gray-800 hover:text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                             >
                                 Details
                             </Link>
@@ -201,10 +201,10 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
 
                     {/* Bottom Sticky Action Bar (Mobile/Desktop) */}
                     <div className="p-4 border-t border-gray-100 bg-white flex gap-3">
-                        <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20./en/unit/${seoData.seoUrl}`} className="flex-1 bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors shadow-sm">
+                        <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20./en/unit/${seoData.seoUrl}`} className="cursor-pointer flex-1 bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors shadow-sm">
                             <MessageCircle size={20} /> WhatsApp
                         </Link>
-                        <Link href={`tel:${phoneNumber}`} className="flex-1 bg-secondary hover:bg-gray-800 hover:text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors shadow-sm">
+                        <Link href={`tel:${phoneNumber}`} className="cursor-pointer flex-1 bg-indigo-950 border-indigo-950 hover:bg-gray-800 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors shadow-sm">
                             <Phone size={20} /> Call
                         </Link>
                     </div>
