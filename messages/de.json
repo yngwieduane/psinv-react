@@ -1,58 +1,60 @@
 {
-  "HomePageBanner": {    
-        "sign_up_btn" : "Sign Up",
-        "more_btn" : "Explore More"   
+  "HomePageBanner": {
+    "sign_up_btn": "Sign Up",
+    "more_btn": "Explore More"
   },
-  "ListPropertySection": {    
-        "title" : "BE with the Brand you Trust",
-        "desc" : "Where will we list your property?",
-        "title2" : "List Your Property" 
+  "ListPropertySection": {
+    "title": "BE with the Brand you Trust",
+    "desc": "Where will we list your property?",
+    "title2": "List Your Property"
   },
-  "ListPropertyForm": {    
-        "firstName" : "First Name", "Enter First Name" : "Enter First Name",
-        "lastName" : "Last Name", "Enter Last Name" : "Enter Last Name",
-        "email" : "Email" , "Enter Email" : "Enter Email",
-        "phone" : "Phone Number", 
-        "purpose" : "Property Purpose", "Choose purpose": "Choose purpose",
-        "sell_purpose" : "Sell", "rent_purpose" : "Rent", "invest_purpose" : "Invest",
-        "errors" : {
-          "firstNameRequired" : "First name is required",
-          "lastNameRequired" : "Last name is required",
-          "invalidEmail" : "Invalid email address",
-          "invalidPhone" : "Invalid phone number",
-          "choosePurpose" : "Property purpose is required"
-        },
-        "clickingTerms" : {
-          "part1" : "By clicking Submit, you agree to our",
-          "part2" : "Terms & Conditions",
-          "part3" : "and Privacy Policy"
-        },
-        "form_submit" : "Submit",
-        "form_submitting" : "Submitting..."
-  },
-
-  "Why_PSI" : {
-    "emirati_title" : "Emirati Hub",
-    "youngster_title" : "Youngsters Program",
-    "crypto_title" : "Crypto",
-    "international_title" : "PSI International",
-    "company_title" : "Company Profile",
-
-    "why_psi" : {
-      "title" : "Why PSI ?",
-      "desc" : "Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi's Real Estate Market.",
-      "btn" : "Learn more about PSI"
-    },   
-    
-    "emirati_hub" : {
-      "title" : "PSI Emirati Hub",
-      "desc" : {
-        "part1" : "Empowering UAE nationals to excel and lead in the real estate sector through",
-        "part2" : "PSI Emirati Hub."
-      },
-      "btn" : "Learn more about PSI Emirati Hub"
+  "ListPropertyForm": {
+    "firstName": "First Name",
+    "Enter First Name": "Enter First Name",
+    "lastName": "Last Name",
+    "Enter Last Name": "Enter Last Name",
+    "email": "Email",
+    "Enter Email": "Enter Email",
+    "phone": "Phone Number",
+    "purpose": "Property Purpose",
+    "Choose purpose": "Choose purpose",
+    "sell_purpose": "Sell",
+    "rent_purpose": "Rent",
+    "invest_purpose": "Invest",
+    "errors": {
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "invalidEmail": "Invalid email address",
+      "invalidPhone": "Invalid phone number",
+      "choosePurpose": "Property purpose is required"
     },
-
+    "clickingTerms": {
+      "part1": "By clicking Submit, you agree to our",
+      "part2": "Terms & Conditions",
+      "part3": "and Privacy Policy"
+    },
+    "form_submit": "Submit",
+    "form_submitting": "Submitting..."
+  },
+  "Why_PSI": {
+    "emirati_title": "Emirati Hub",
+    "youngster_title": "Youngsters Program",
+    "crypto_title": "Crypto",
+    "international_title": "PSI International",
+    "company_title": "Company Profile",
+    "why_psi": {
+      "title": "Why PSI ?",
+      "desc": "Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi's Real Estate Market.",
+      "btn": "Learn more about PSI"
+    },
+    "emirati_hub": {
+      "title": "PSI Emirati Hub",
+      "desc": {
+        "part1": "Empowering UAE nationals to excel and lead in the real estate sector through",
+        "part2": "PSI Emirati Hub."
+      },
+      "btn": "Learn more about PSI Emirati Hub"
+    },
     "youngster_program": {
       "title": "PSI Abu Dhabi Youngsters",
       "desc": {
@@ -62,7 +64,6 @@
       },
       "btn": "Learn more about PSI Youngsters"
     },
-
     "crypto": {
       "title": "Buy property with Crypto",
       "desc": {
@@ -71,52 +72,48 @@
       },
       "btn": "Learn more about Crypto"
     },
-
     "international": {
       "title": "PSI International",
       "desc": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
       "btn": "Learn more about PSI International"
     }
-
   },
-
   "Mortgage_Tabs": {
     "mortgage": "Mortgage Calculator",
     "amortization": "Amortization",
     "refinancing": "Refinancing",
     "rentvsbuy": "Rent vs Buy",
     "houseafford": "House Affordability",
-    "Mortgage Tools" : "Mortgage Tools", 
-    "aed" : "AED",
-    "ViewUnits" : "View Units", 
-    "GetApproval" : "Get pre-approval today",
-    "MonthlyPayment" : "Monthly Payment",
-    "Yrs" : "yrs",
-    "mortgageTab" : {
-      "title" : "Mortgage Calculator",
-      "PropertyPrice" : "Property Price (AED)",
-      "LoanPeriod" : "Loan Period (Years)",
-      "Years" : "Years",
-      "Downpayment" : "Downpayment (AED)",
-      "InterestRate" : "Interest Rate (%)",      
-      "TotalLoanAmount" : "Total Loan Amount"
+    "Mortgage Tools": "Mortgage Tools",
+    "aed": "AED",
+    "ViewUnits": "View Units",
+    "GetApproval": "Get pre-approval today",
+    "MonthlyPayment": "Monthly Payment",
+    "Yrs": "yrs",
+    "mortgageTab": {
+      "title": "Mortgage Calculator",
+      "PropertyPrice": "Property Price (AED)",
+      "LoanPeriod": "Loan Period (Years)",
+      "Years": "Years",
+      "Downpayment": "Downpayment (AED)",
+      "InterestRate": "Interest Rate (%)",
+      "TotalLoanAmount": "Total Loan Amount"
     },
-    "amortizationTab" : {
-      "title" : "Amortization",
-      "LoanAmount" : "Loan Amount",
-      "LoanInterestRate" : "Loan Interest Rate",
-      "LoanTermYears" : "Loan Term Years",
-      "Years" : "Years",
-      "EarlyPayment" : "EARLY PAYMENT",
-      "EffectOfLargerPayment" : "Effect of making a larger payment",
-      "PaymentAmount" : "Payment Amount",
-      "MadeAfterMonth" : "Made After Month",
-      "Months" : "months",
-      "MonthlyAmortization" : "Monthly Amortization",
-      "TotalCost" : "Total Cost",
-      "ExploreProperties" : "Explore Properties"
+    "amortizationTab": {
+      "title": "Amortization",
+      "LoanAmount": "Loan Amount",
+      "LoanInterestRate": "Loan Interest Rate",
+      "LoanTermYears": "Loan Term Years",
+      "Years": "Years",
+      "EarlyPayment": "EARLY PAYMENT",
+      "EffectOfLargerPayment": "Effect of making a larger payment",
+      "PaymentAmount": "Payment Amount",
+      "MadeAfterMonth": "Made After Month",
+      "Months": "months",
+      "MonthlyAmortization": "Monthly Amortization",
+      "TotalCost": "Total Cost",
+      "ExploreProperties": "Explore Properties"
     },
-
     "refinancingTab": {
       "title": "Refinancing",
       "MortgageInformation": "Mortgage Information",
@@ -124,20 +121,20 @@
       "CurrentMonthlyPayments": "Current monthly payments",
       "EarlySettlementFees": "Early settlement fees",
       "Percentage": "Percentage",
-      "CurrentLoanInterestRate": "Current loan interest rate in %",      
+      "CurrentLoanInterestRate": "Current loan interest rate in %",
       "RefinanceInformation": "Refinance Information",
       "CurrentPropertyValue": "Current property value",
       "CurrentEstimated": "Current estimated value",
       "TermOfNewLoan": "Term of new loan",
       "FeesToObtainNewLoan": "Fees to obtain new loan",
       "NewLoanPercentage": "Percentage",
-      "NewLoanInterestRate": "Interest rate of the new loan in %",  
+      "NewLoanInterestRate": "Interest rate of the new loan in %",
       "MortgageCost": "Mortgage Cost",
       "MonthlyPay": "Monthly Pay",
       "PayDiff": "Pay Diff",
       "RefinancePay": "Refinance Pay",
       "BreakMonth": "Break Month",
-      "Month(s)" : "month(s)"
+      "Month(s)": "month(s)"
     },
     "rentVsBuyTab": {
       "Title": "Rent vs Buying",
@@ -150,7 +147,7 @@
       "Downpayment": "Downpayment",
       "Downpaymentpercentage": "Downpayment %",
       "Yearlypropertyappreciation": "Yearly property appreciation",
-      "Planyearstolive": "Plan years to live",      
+      "Planyearstolive": "Plan years to live",
       "Totalrentamount": "Total Rent Amount",
       "Totalbuyamount": "Total Buy Amount",
       "Viewsaleunits": "View Sale Units",
@@ -166,97 +163,94 @@
       "Paymentperiod": "Payment Period",
       "Canafford": "Can Afford",
       "Totalafford": "Total Afford",
-      "GeApprovalToday" : "Get pre-approval today"
+      "GeApprovalToday": "Get pre-approval today"
     }
   },
-
-  "ReportDownload" : {
-    "title" : "Market Insights",
-    "desc" : "Monthly Report DXB",
-    "download" : "Download Now"
+  "ReportDownload": {
+    "title": "Market Insights",
+    "desc": "Monthly Report DXB",
+    "download": "Download Now"
   },
-  "RealEstatePartner" : {
-    "title" : {
-      "part1" : "YOUR TRUSTED",
-      "part2" : "Real Estate",
-      "part3" : "PARTNER"
+  "RealEstatePartner": {
+    "title": {
+      "part1": "YOUR TRUSTED",
+      "part2": "Real Estate",
+      "part3": "PARTNER"
     },
-    "aboutCounter" : {
-      "customers" : "Customers",
-      "languages" : "Languages",
-      "projects" : "Projects",
-      "locationWorldwide" : "Location Worldwide",
-      "years" : "Years in Business",
-      "branches" : "Branches",
-      "expertEmployees" : "Expert Employees"
+    "aboutCounter": {
+      "customers": "Customers",
+      "languages": "Languages",
+      "projects": "Projects",
+      "locationWorldwide": "Location Worldwide",
+      "years": "Years in Business",
+      "branches": "Branches",
+      "expertEmployees": "Expert Employees"
     }
   },
-  "AwardsSectionHome" : {
-    "title" : "AWARDS-DRIVEN Excellence",
-    "desc" : "We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. Explore our journey of accolades that inspire us to reach new pinnacles of success.",
-    "awards" : {
-      "emaar" :  {
-        "title1":"EMAAR",
-        "title2":"ANNUAL BROKER",
+  "AwardsSectionHome": {
+    "title": "AWARDS-DRIVEN Excellence",
+    "desc": "We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. Explore our journey of accolades that inspire us to reach new pinnacles of success.",
+    "awards": {
+      "emaar": {
+        "title1": "EMAAR",
+        "title2": "ANNUAL BROKER",
         "title3": "AWARDS - 2018"
-       },
-      "aldar2021" : {
-        "title1":"ALDAR",
+      },
+      "aldar2021": {
+        "title1": "ALDAR",
         "title3": "AMBASSADOR - 2021"
       },
-      "aldar2016" : {
-        "title1":"ALDAR",
-        "title2":"TOP PERFORMING",
+      "aldar2016": {
+        "title1": "ALDAR",
+        "title2": "TOP PERFORMING",
         "title3": "Agency First Place - 2016"
       },
-      "aldar2020" : {
-          "title1":"ALDAR",
-          "title2":"TOP PERFORMING",
-          "title3": "Agency First Place - 2020"
+      "aldar2020": {
+        "title1": "ALDAR",
+        "title2": "TOP PERFORMING",
+        "title3": "Agency First Place - 2020"
       },
-      "aldar2022" : {
-          "title1":"ALDAR",
-          "title2":"TOP PERFORMING",
-          "title3": "Agency First Place - 2022"
+      "aldar2022": {
+        "title1": "ALDAR",
+        "title2": "TOP PERFORMING",
+        "title3": "Agency First Place - 2022"
       },
-      "imkan" : {
-          "title1":"IMKAN",
-          "title2":"TOP PERFORMING",
-          "title3": "Agency First Place - 2021"
+      "imkan": {
+        "title1": "IMKAN",
+        "title2": "TOP PERFORMING",
+        "title3": "Agency First Place - 2021"
       }
     }
   },
-  "googleReview" : {
-    "title" : "Testimonials",
-    "google" : "Google",
-    "review1" : "My experience with them was awesome! They really made my home-buying journey smooth and stress-free.",
-    "review2" : "Hello from Turkey. Lilit took very good care of us and answered all our questions and queries very clearly.",
-    "review3" : "It was a good experience, as engineer Wissam Atef provided us with excellent support in all maintenance work. Thank you, Engineer Wissam"
+  "googleReview": {
+    "title": "Testimonials",
+    "google": "Google",
+    "review1": "My experience with them was awesome! They really made my home-buying journey smooth and stress-free.",
+    "review2": "Hello from Turkey. Lilit took very good care of us and answered all our questions and queries very clearly.",
+    "review3": "It was a good experience, as engineer Wissam Atef provided us with excellent support in all maintenance work. Thank you, Engineer Wissam"
   },
-  "getTheApp" : {
-    "title1" : "Get the app",
-    "title2" : "Your Journey Starts Here",
-    "desc" : {
-      "part1" : "Take control of your real estate journey with our app. Whether you're booking a viewing, tracking your property progress, or staying updated on the latest listings, everything you need is at your fingertips.",
-      "part2" : "Download the app now and start your journey today!"
+  "getTheApp": {
+    "title1": "Get the app",
+    "title2": "Your Journey Starts Here",
+    "desc": {
+      "part1": "Take control of your real estate journey with our app. Whether you're booking a viewing, tracking your property progress, or staying updated on the latest listings, everything you need is at your fingertips.",
+      "part2": "Download the app now and start your journey today!"
     },
-    "rightSideContent" : {
-      "title" : "Start your journey today",
-      "para" : "with just one tap."
+    "rightSideContent": {
+      "title": "Start your journey today",
+      "para": "with just one tap."
     },
-    "appLinks" : "Available on App Store and Google Play"
+    "appLinks": "Available on App Store and Google Play"
   },
-
-  "Common_Form_Agreements" : {
-    "agreement1" : "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
-    "agreement2" : "Agree to receive multiple calls and communications via various channels regarding my enquiry",
-    "agreement3" : "Agree to receive calls and communications via various channels on various projects, products, and services"
+  "Common_Form_Agreements": {
+    "agreement1": "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
+    "agreement2": "Agree to receive multiple calls and communications via various channels regarding my enquiry",
+    "agreement3": "Agree to receive calls and communications via various channels on various projects, products, and services"
   },
-
   "FooterAI": {
     "footer_brand_desc": "Property Shop Investment is the leading real estate agency in Abu Dhabi, helping you find your perfect home since 2007.",
     "footer_company": "Company",
-    "footer_psi" : "Property Shop Investment.",
+    "footer_psi": "Property Shop Investment.",
     "footer_services": "Services",
     "footer_popular_areas": "Popular Areas",
     "footer_get_in_touch": "Get in Touch",
@@ -343,14 +337,13 @@
     "btn_nearby": "Nearby",
     "btn_developer": "Developer",
     "btn_video_tour": "Video Tour",
-    "company_address" : {
-      "part1" : "Office No. 4410 & 4411",
-      "part2" : "Addax Tower Level 44",
-      "part3" : "Al Reem Island, City of Lights",
-      "part4" : "Abu Dhabi, United Arab Emirates"
+    "company_address": {
+      "part1": "Office No. 4410 & 4411",
+      "part2": "Addax Tower Level 44",
+      "part3": "Al Reem Island, City of Lights",
+      "part4": "Abu Dhabi, United Arab Emirates"
     }
   },
-
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, ar {🇦🇪 Arabisch} en {🇺🇸 Englisch} cn {🇨🇳 Chinesisch} ru {🇷🇺 Russisch} de {🇩🇪 Deutsch} other {Unbekannt}}",
@@ -380,7 +373,7 @@
     "articles": "Articles",
     "property management": "Property Management",
     "login": "Login",
-    "logout": "Logout",    
+    "logout": "Logout",
     "Featured": "Featured",
     "Explore": "Explore",
     "Abu Dhabi": "Abu Dhabi",
@@ -417,47 +410,57 @@
     "Awards": "Awards",
     "Media": "Media"
   },
-
-    "InquiryForm": {
-  "title": "Lassen Sie uns wissen, ob Sie interessiert sind!",
-  "fields": {
-    "firstName": { "label": "Vorname", "placeholder": "Vorname" },
-    "lastName": { "label": "Nachname", "placeholder": "Nachname" },
-    "phone": { "label": "Telefonnummer", "placeholder": "+49 1xxxxxxxx" },
-    "email": { "label": "E-Mail", "placeholder": "E-Mail-Adresse" }
-  },
-  "buttons": {
-    "submit": "Absenden",
-    "submitting": "Wird gesendet..."
-  },
-  "fineprint": {
-    "text": "Mit dem Klick auf „Absenden“ stimmen Sie unseren <terms>Allgemeinen Geschäftsbedingungen</terms> und unserer <privacy>Datenschutzerklärung</privacy> zu."
-  },
-  "consents": {
-    "c1": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle von PSI zwischen 09:00 und 21:00 Uhr zu erhalten.",
-    "c2": "Ich stimme zu, mehrere Anrufe und Mitteilungen über verschiedene Kanäle in Bezug auf meine Anfrage zu erhalten.",
-    "c3": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle zu Projekten, Produkten und Dienstleistungen zu erhalten.",
-    "additional1": "Zusätzliche Zustimmung 1",
-    "additional2": "Zusätzliche Zustimmung 2",
-    "additional3": "Zusätzliche Zustimmung 3"
-  },
-  "alerts": {
-    "duplicate": "Sie haben dieses Formular kürzlich gesendet. Bitte versuchen Sie es in ein paar Minuten erneut.",
-    "success": "Vielen Dank für Ihre Anfrage. Wir werden uns bald mit Ihnen in Verbindung setzen.",
-    "error": "Beim Senden des Formulars ist ein Fehler aufgetreten."
-  },
-  "remarks": {
-    "label": "Bemerkungen",
-    "clientName": "Kundenname",
-    "clientEmail": "E-Mail des Kunden",
-    "clientPhone": "Telefonnummer des Kunden"
-  },
-  "errors": {
-    "firstName": "Vorname ist erforderlich",
-    "lastName": "Nachname ist erforderlich",
-    "email": "Ungültige E-Mail-Adresse",
-    "phone": "Ungültige Telefonnummer"
+  "InquiryForm": {
+    "title": "Lassen Sie uns wissen, ob Sie interessiert sind!",
+    "fields": {
+      "firstName": {
+        "label": "Vorname",
+        "placeholder": "Vorname"
+      },
+      "lastName": {
+        "label": "Nachname",
+        "placeholder": "Nachname"
+      },
+      "phone": {
+        "label": "Telefonnummer",
+        "placeholder": "+49 1xxxxxxxx"
+      },
+      "email": {
+        "label": "E-Mail",
+        "placeholder": "E-Mail-Adresse"
+      }
+    },
+    "buttons": {
+      "submit": "Absenden",
+      "submitting": "Wird gesendet..."
+    },
+    "fineprint": {
+      "text": "Mit dem Klick auf „Absenden“ stimmen Sie unseren <terms>Allgemeinen Geschäftsbedingungen</terms> und unserer <privacy>Datenschutzerklärung</privacy> zu."
+    },
+    "consents": {
+      "c1": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle von PSI zwischen 09:00 und 21:00 Uhr zu erhalten.",
+      "c2": "Ich stimme zu, mehrere Anrufe und Mitteilungen über verschiedene Kanäle in Bezug auf meine Anfrage zu erhalten.",
+      "c3": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle zu Projekten, Produkten und Dienstleistungen zu erhalten.",
+      "additional1": "Zusätzliche Zustimmung 1",
+      "additional2": "Zusätzliche Zustimmung 2",
+      "additional3": "Zusätzliche Zustimmung 3"
+    },
+    "alerts": {
+      "duplicate": "Sie haben dieses Formular kürzlich gesendet. Bitte versuchen Sie es in ein paar Minuten erneut.",
+      "success": "Vielen Dank für Ihre Anfrage. Wir werden uns bald mit Ihnen in Verbindung setzen.",
+      "error": "Beim Senden des Formulars ist ein Fehler aufgetreten."
+    },
+    "remarks": {
+      "label": "Bemerkungen",
+      "clientName": "Kundenname",
+      "clientEmail": "E-Mail des Kunden",
+      "clientPhone": "Telefonnummer des Kunden"
+    },
+    "errors": {
+      "firstName": "Vorname ist erforderlich",
+      "lastName": "Nachname ist erforderlich",
+      "email": "Ungültige E-Mail-Adresse",
+      "phone": "Ungültige Telefonnummer"
+    }
   }
 }
-}
-

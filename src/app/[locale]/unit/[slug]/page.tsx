@@ -5,27 +5,27 @@ import { redirect } from 'next/navigation'
 import UnitPageAI from "./components/UnitPageAI";
 
 type Props = {
-  params: Promise<{ slug: string }>
-} 
+    params: Promise<{ slug: string }>
+}
 export async function generateMetadata(
     { params }: Props,
-    ): Promise<Metadata> {
+): Promise<Metadata> {
     // read route params
     const { slug } = await params
 
     const slugString = Array.isArray(slug) ? slug[0] : slug || "";
     const lastString = slugString.split("-").pop() ?? "";
 
-    const code = lastString.replace(/\D/g, ""); 
+    const code = lastString.replace(/\D/g, "");
     let category = 'rent';
 
-    if(slugString.split("-").includes('sale')){
+    if (slugString.split("-").includes('sale')) {
         category = 'sale';
-    }else{
+    } else {
         category = 'rent';
     }
     // fetch data
-    const posts = await fetch(`https://psi.properties/api/external/unit?unitid=${code}&category=${category}`).then((res) => res.json())
+    const posts = await fetch(`https://psinv-react.vercel.app/api/external/unit?unitid=${code}&category=${category}`).then((res) => res.json())
 
     // if (!posts[0]) {
     //     redirect('/en/units')
@@ -49,9 +49,9 @@ export async function generateMetadata(
     }
 }
 
-export default async function Page({ params }: Props){
-    
-    const {slug} = await params;
+export default async function Page({ params }: Props) {
+
+    const { slug } = await params;
 
     // const classify = (slug: string) => slug.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
     // const projectId = classify(slug);
@@ -59,23 +59,23 @@ export default async function Page({ params }: Props){
 
     const slugString = Array.isArray(slug) ? slug[0] : slug || "";
     const lastString = slugString.split("-").pop() ?? "";
-  
+
     // Extract only numeric part
-    const code = lastString.replace(/\D/g, ""); 
+    const code = lastString.replace(/\D/g, "");
     let category = 'rent';
 
-    if(slugString.split("-").includes('sale')){
+    if (slugString.split("-").includes('sale')) {
         category = 'sale';
-    }else{
+    } else {
         category = 'rent';
     }
 
-    const data = await fetch(`https://psi.properties/api/external/unit?unitid=${code}&category=${category}`)
+    const data = await fetch(`https://psinv-react.vercel.app/api/external/unit?unitid=${code}&category=${category}`)
     const posts = await data.json();
-    
+
     return (
         <>
-            <UnitPageAI data={posts}/>
+            <UnitPageAI data={posts} />
         </>
     );
 }
