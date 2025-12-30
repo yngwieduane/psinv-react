@@ -10,11 +10,11 @@ import UnitsSideSearch from "./UnitsSideSearch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
 
-export default function FilterUnitsDrawer({ onChange }:{ onChange:any }){
+export default function FilterUnitsDrawer({ onChange }: { onChange: any }) {
   const [open, setOpen] = useState(false);
   const [reset, setReset] = useState(false);
 
-  const handleReset = (e:any) => {
+  const handleReset = (e: any) => {
     setReset(true);
     onChange(e);
     console.log("FilterUnitsDrawer = " + e);
@@ -23,7 +23,7 @@ export default function FilterUnitsDrawer({ onChange }:{ onChange:any }){
     <div className="grid">
       <button
         onClick={() => setOpen(true)}
-        className="rounded bg-gray-50 outline outline-gray-300 px-4 py-2 text-xl transition-colors hover:bg-[#111954]"
+        className="rounded-xl bg-white/50 border border-gray-200 px-4 py-3 text-lg text-[#353455] transition-all hover:bg-[#353455] hover:text-white shadow-sm"
       >
         <FontAwesomeIcon icon={faSliders} />
       </button>
@@ -37,7 +37,7 @@ export default function FilterUnitsDrawer({ onChange }:{ onChange:any }){
   );
 };
 
-const DragCloseDrawer = ({ open, setOpen, children }:{open:any;setOpen:any,children:any}) => {
+const DragCloseDrawer = ({ open, setOpen, children }: { open: any; setOpen: any, children: any }) => {
   const [scope, animate] = useAnimate();
   const [drawerRef, { height }] = useMeasure();
 

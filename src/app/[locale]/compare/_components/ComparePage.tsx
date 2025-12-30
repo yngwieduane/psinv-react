@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import { PROPERTIES } from '@/constants/main'
 import { Shuffle, X, Check, CheckCircle2 } from 'lucide-react';
 import { useUser } from '@/context/userContext';
@@ -9,13 +9,47 @@ import slugify from 'react-slugify';
 
 const ComparePage: React.FC<{}> = ({ }) => {
     const { compareList, removeFromCompare } = useUser();
+    const [activeTab, setActiveTab] = useState<'project' | 'units'>('units');
 
-    // Enrich compare list with data (prefer saved data, fallback to static list)
-    const compareItems = compareList.map(item => {
-        return item.data || PROPERTIES.find(p => p.id === item.id);
-    }).filter(Boolean);
+    // Filter and enrich items
+    const projectItems = compareList
+        .filter(item => item.type === 'project')
+        .map(item => item.data || PROPERTIES.find(p => p.id === item.id))
+        .filter(Boolean);
 
-    if (compareItems.length === 0) {
+    const unitItems = compareList
+        .filter(item => item.type === 'units' || item.type === 'property')
+        .map(item => item.data || PROPERTIES.find(p => p.id === item.id))
+        .filter(Boolean);
+
+    const activeItems = activeTab === 'project' ? projectItems : unitItems;
+
+    const features = [
+        { label: 'Location', key: 'location', render: (d: any) => d.community || d.location },
+        { label: 'Type', key: 'type', render: (d: any) => d.propertyType || d.type || d.category },
+        { label: 'Status', key: 'status', render: (d: any) => d.status },
+        { label: 'Developer', key: 'developer', render: (d: any) => d.masterDeveloper || d.developer || d.developerName || d.agent },
+        {
+            label: 'Beds', key: 'beds', render: (d: any) => {
+                if (d.availableBedrooms && Array.isArray(d.availableBedrooms)) {
+                    return d.availableBedrooms.map((b: any) => b.noOfBedroom).join(', ');
+                }
+                return d.beds || d.bedrooms;
+            }
+        },
+        {
+            label: 'Price (AED)', key: 'price', render: (d: any) =>
+                d.priceFrom ? d.priceFrom.toLocaleString() : (d.sellprice ? Number(d.sellprice).toLocaleString() : (d.rent ? Number(d.rent).toLocaleString() : 'TBD'))
+        },
+        {
+            label: 'Handover', key: 'handover', render: (d: any) => {
+                if (d.handoverDate) return new Date(d.handoverDate).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+                return d.handover;
+            }
+        }
+    ];
+
+    if (compareList.length === 0) {
         return (
             <div className="min-h-screen pt-40 pb-20 container mx-auto px-6 text-center">
                 <div className="bg-gray-50 rounded-3xl p-20 flex flex-col items-center">
@@ -27,97 +61,115 @@ const ComparePage: React.FC<{}> = ({ }) => {
         );
     }
 
-    const features = [
-        { label: 'Location', key: 'location', render: (d: any) => d.community || d.location },
-        { label: 'Type', key: 'type', render: (d: any) => d.propertyType || d.type },
-        { label: 'Status', key: 'status', render: (d: any) => d.status },
-        { label: 'Developer', key: 'developer', render: (d: any) => d.masterDeveloper || d.developer },
-        {
-            label: 'Beds', key: 'beds', render: (d: any) => {
-                if (d.availableBedrooms && Array.isArray(d.availableBedrooms)) {
-                    return d.availableBedrooms.map((b: any) => b.noOfBedroom).join(', ');
-                }
-                return d.beds;
-            }
-        },
-        { label: 'Price From', key: 'price', render: (d: any) => d.priceFrom ? `AED ${d.priceFrom.toLocaleString()}` : 'TBD' },
-        {
-            label: 'Handover', key: 'handover', render: (d: any) => {
-                if (d.handoverDate) return new Date(d.handoverDate).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
-                return d.handover;
-            }
-        }
-    ];
-
     return (
         <div className="min-h-screen pt-40 pb-20 bg-white">
             <div className="container mx-auto px-6 md:px-12">
-                <h1 className="text-4xl font-serif font-bold text-primary mb-12">Compare Properties ({compareItems.length}/3)</h1>
+                <div className="flex flex-col md:flex-row justify-between items-end md:items-center mb-12 gap-6">
+                    <h1 className="text-4xl font-serif font-bold text-primary">Compare Properties</h1>
 
-                <div className="overflow-x-auto pb-8">
-                    <table className="w-full min-w-[800px] border-collapse">
-                        <thead>
-                            <tr>
-                                <th className="p-4 text-left w-48 bg-gray-50 rounded-tl-xl">Feature</th>
-                                {compareItems.map((item: any) => (
-                                    <th key={item.propertyID || item.id} className="p-4 w-1/3 min-w-[250px] align-top bg-white border-b border-gray-100 relative group">
-                                        <button
-                                            onClick={() => removeFromCompare(item.propertyID || item.id)}
-                                            className="absolute top-2 right-2 p-1.5 bg-gray-100 rounded-full text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors z-10 cursor-pointer"
-                                            title="Remove"
-                                        >
-                                            <X size={16} />
-                                        </button>
-                                        <div className="relative h-48 w-full rounded-lg overflow-hidden mb-4">
-                                            <img
-                                                src={item.featuredImages ? item.featuredImages[0].imageURL : (item.images ? item.images[0] : '')}
-                                                className="w-full h-full object-cover"
-                                                alt={item.propertyName || item.title}
-                                            />
-                                            <div className="absolute top-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
-                                                {item.status}
+                    {/* Tabs */}
+                    <div className="flex bg-gray-100 p-1 rounded-xl">
+                        <button
+                            onClick={() => setActiveTab('units')}
+                            className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all ${activeTab === 'units'
+                                ? 'bg-white text-[#353455] shadow-sm'
+                                : 'text-gray-500 hover:text-gray-700'
+                                }`}
+                        >
+                            Units ({unitItems.length})
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('project')}
+                            className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all ${activeTab === 'project'
+                                ? 'bg-white text-[#353455] shadow-sm'
+                                : 'text-gray-500 hover:text-gray-700'
+                                }`}
+                        >
+                            Projects ({projectItems.length})
+                        </button>
+                    </div>
+                </div>
+
+                {activeItems.length === 0 ? (
+                    <div className="bg-gray-50/50 rounded-2xl p-12 text-center border-2 border-dashed border-gray-100">
+                        <p className="text-gray-500 font-medium">No {activeTab} added to compare yet.</p>
+                    </div>
+                ) : (
+                    <div className="overflow-x-auto pb-8">
+                        <table className="w-full min-w-[800px] border-collapse">
+                            <thead>
+                                <tr>
+                                    <th className="p-4 text-left w-48 bg-gray-50 rounded-tl-xl">Feature</th>
+                                    {activeItems.map((item: any) => (
+                                        <th key={item.propertyID || item.id} className="p-4 w-1/3 min-w-[250px] align-top bg-white border-b border-gray-100 relative group">
+                                            <button
+                                                onClick={() => removeFromCompare(item.propertyID || item.id)}
+                                                className="absolute top-2 right-2 p-1.5 bg-gray-100 rounded-full text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors z-10 cursor-pointer"
+                                                title="Remove"
+                                            >
+                                                <X size={16} />
+                                            </button>
+                                            <div className="relative h-48 w-full rounded-lg overflow-hidden mb-4">
+                                                <img
+                                                    src={
+                                                        item.featuredImages && item.featuredImages.length > 0
+                                                            ? item.featuredImages[0].imageURL
+                                                            : (item.images && Array.isArray(item.images) && item.images.length > 0
+                                                                ? item.images[0]
+                                                                : (item.imageurl ? item.imageurl.split('|')[0] : '')
+                                                            )
+                                                    }
+                                                    className="w-full h-full object-cover"
+                                                    alt={item.propertyName || item.marketingTitle || item.title}
+                                                />
+                                                <div className="absolute top-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
+                                                    {item.status || (item.rent ? 'For Rent' : 'For Sale')}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <h3 className="text-xl font-serif font-bold text-gray-900 mb-1">{item.propertyName || item.title}</h3>
-                                        <p className="text-sm text-gray-500 font-normal flex items-center gap-1 mb-4">
-                                            {item.community}
-                                        </p>
-                                        <Link
-                                            href={`/projects/${slugify(item.city)}/${slugify(item.community)}/${slugify(item.subCommunity || 'n-a')}/${slugify(item.propertyName)}`}
-                                            className="inline-block w-full py-2 bg-primary text-white text-center rounded-lg hover:bg-primary/90 transition-colors font-medium text-sm"
-                                        >
-                                            View Details
-                                        </Link>
-                                    </th>
-                                ))}
-                                {/* Fill empty columns if less than 3 */}
-                                {[...Array(3 - compareItems.length)].map((_, i) => (
-                                    <th key={`empty-${i}`} className="p-4 w-1/3 bg-gray-50/30 border-dashed border-2 border-gray-100 rounded-lg m-2">
-                                        <div className="h-full flex flex-col items-center justify-center text-gray-300 min-h-[300px]">
-                                            <Shuffle size={48} className="mb-4 opacity-20" />
-                                            <p className="font-medium">Add property</p>
-                                        </div>
-                                    </th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {features.map((feature, idx) => (
-                                <tr key={feature.key} className={idx % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
-                                    <td className="p-4 font-bold text-gray-700 border-r border-gray-100">{feature.label}</td>
-                                    {compareItems.map((item: any) => (
-                                        <td key={item.propertyID || item.id} className="p-4 text-center text-gray-600 border-b border-gray-50">
-                                            {feature.render(item)}
-                                        </td>
+                                            <h3 className="text-xl font-serif font-bold text-gray-900 mb-1">{item.propertyName || item.marketingTitle || item.title}</h3>
+                                            <p className="text-sm text-gray-500 font-normal flex items-center gap-1 mb-4">
+                                                {item.community}
+                                            </p>
+                                            <Link
+                                                href={activeTab === 'project'
+                                                    ? `/projects/${slugify(item.city)}/${slugify(item.community)}/${slugify(item.subCommunity || 'n-a')}/${slugify(item.propertyName)}`
+                                                    : `/unit/${item.slug || slugify(item.marketingTitle)}` // Adjust logic for unit linking if needed
+                                                }
+                                                className="inline-block w-full py-2 bg-[#0c1356] text-white text-center rounded-lg hover:bg-primary/90 transition-colors font-medium text-sm"
+                                            >
+                                                View Details
+                                            </Link>
+                                        </th>
                                     ))}
-                                    {[...Array(3 - compareItems.length)].map((_, i) => (
-                                        <td key={`empty-cell-${i}`} className="p-4"></td>
+                                    {/* Fill empty columns if less than 3 */}
+                                    {[...Array(3 - activeItems.length)].map((_, i) => (
+                                        <th key={`empty-${i}`} className="p-4 w-1/3 bg-gray-50/30 border-dashed border-2 border-gray-100 rounded-lg m-2">
+                                            <div className="h-full flex flex-col items-center justify-center text-gray-300 min-h-[300px]">
+                                                <Shuffle size={48} className="mb-4 opacity-20" />
+                                                <p className="font-medium">Add {activeTab}</p>
+                                            </div>
+                                        </th>
                                     ))}
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                {features.map((feature, idx) => (
+                                    <tr key={feature.key} className={idx % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
+                                        <td className="p-4 font-bold text-gray-700 border-r border-gray-100">{feature.label}</td>
+                                        {activeItems.map((item: any) => (
+                                            <td key={item.propertyID || item.id} className="p-4 text-center text-gray-600 border-b border-gray-50">
+                                                {feature.render(item)}
+                                            </td>
+                                        ))}
+                                        {[...Array(3 - activeItems.length)].map((_, i) => (
+                                            <td key={`empty-cell-${i}`} className="p-4"></td>
+                                        ))}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
             </div>
         </div>
     );

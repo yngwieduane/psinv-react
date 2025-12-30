@@ -164,7 +164,7 @@ export interface User {
 
 export interface SavedItem {
   id: string;
-  type: 'property' | 'project';
+  type: 'property' | 'project' | 'units';
   data?: any;
 }
 

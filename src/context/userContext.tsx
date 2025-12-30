@@ -192,8 +192,17 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const addToCompare = async (item: SavedItem) => {
     if (compareList.find(i => i.id === item.id)) return;
-    if (compareList.length >= 3) {
-      alert("You can compare up to 3 items only.");
+
+    // Determine category of the new item
+    const isProject = item.type === 'project';
+
+    // Count existing items of same category
+    const sameCategoryCount = compareList.filter(i =>
+      isProject ? i.type === 'project' : (i.type === 'property' || i.type === 'units')
+    ).length;
+
+    if (sameCategoryCount >= 3) {
+      alert(`You can compare up to 3 ${isProject ? 'projects' : 'properties'} only.`);
       return;
     }
 
