@@ -262,30 +262,31 @@
     }
   },
   "googleReview": {
-    "title": "Testimonials",
+    "title": "Referenzen",
     "google": "Google",
-    "review1": "My experience with them was awesome! They really made my home-buying journey smooth and stress-free.",
-    "review2": "Hello from Turkey. Lilit took very good care of us and answered all our questions and queries very clearly.",
-    "review3": "It was a good experience, as engineer Wissam Atef provided us with excellent support in all maintenance work. Thank you, Engineer Wissam"
+    "review1": "Meine Erfahrung mit ihnen war großartig! Sie haben meinen Hauskauf reibungslos und stressfrei gestaltet.",
+    "review2": "Hallo aus der Türkei. Lilit hat sich sehr gut um uns gekümmert und all unsere Fragen und Anliegen sehr klar beantwortet.",
+    "review3": "Es war eine gute Erfahrung, da Ingenieur Wissam Atef uns bei allen Wartungsarbeiten hervorragend unterstützt hat. Vielen Dank, Ingenieur Wissam."
   },
   "getTheApp": {
-    "title1": "Get the app",
-    "title2": "Your Journey Starts Here",
+    "title1": "App herunterladen",
+    "title2": "Ihre Reise beginnt hier",
     "desc": {
-      "part1": "Take control of your real estate journey with our app. Whether you're booking a viewing, tracking your property progress, or staying updated on the latest listings, everything you need is at your fingertips.",
-      "part2": "Download the app now and start your journey today!"
+      "part1": "Übernehmen Sie die Kontrolle über Ihre Immobilienreise mit unserer App. Egal, ob Sie eine Besichtigung buchen, den Fortschritt Ihrer Immobilie verfolgen oder über die neuesten Angebote informiert bleiben – alles, was Sie brauchen, ist nur einen Fingertipp entfernt.",
+      "part2": "Laden Sie die App jetzt herunter und beginnen Sie noch heute Ihre Reise!"
     },
     "rightSideContent": {
-      "title": "Start your journey today",
-      "para": "with just one tap."
+      "title": "Starten Sie noch heute Ihre Reise",
+      "para": "mit nur einem Fingertipp."
     },
-    "appLinks": "Available on App Store and Google Play"
+    "appLinks": "Verfügbar im App Store und bei Google Play"
   },
   "Common_Form_Agreements": {
-    "agreement1": "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
-    "agreement2": "Agree to receive multiple calls and communications via various channels regarding my enquiry",
-    "agreement3": "Agree to receive calls and communications via various channels on various projects, products, and services"
+    "agreement1": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle von PSI zwischen 09:00 Uhr und 21:00 Uhr zu erhalten.",
+    "agreement2": "Ich stimme zu, mehrere Anrufe und Mitteilungen über verschiedene Kanäle bezüglich meiner Anfrage zu erhalten.",
+    "agreement3": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle zu verschiedenen Projekten, Produkten und Dienstleistungen zu erhalten."
   },
+
   "FooterAI": {
     "footer_brand_desc": "Property Shop Investment is the leading real estate agency in Abu Dhabi, helping you find your perfect home since 2007.",
     "footer_company": "Company",

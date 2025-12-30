@@ -284,30 +284,31 @@
     }
   },
   "googleReview": {
-    "title": "Testimonials",
-    "google": "Google",
-    "review1": "My experience with them was awesome! They really made my home-buying journey smooth and stress-free.",
-    "review2": "Hello from Turkey. Lilit took very good care of us and answered all our questions and queries very clearly.",
-    "review3": "It was a good experience, as engineer Wissam Atef provided us with excellent support in all maintenance work. Thank you, Engineer Wissam"
+    "title": "客户评价",
+    "google": "谷歌",
+    "review1": "与他们的合作体验非常棒！他们让我的购房之旅顺畅且无压力。",
+    "review2": "来自土耳其的问候。Lilit非常照顾我们，并清晰地回答了我们所有的问题与疑虑。",
+    "review3": "这是一段很好的体验，工程师Wissam Atef在所有维护工作中为我们提供了出色的支持。谢谢你，Wissam工程师。"
   },
   "getTheApp": {
-    "title1": "Get the app",
-    "title2": "Your Journey Starts Here",
+    "title1": "下载应用",
+    "title2": "您的旅程从这里开始",
     "desc": {
-      "part1": "Take control of your real estate journey with our app. Whether you're booking a viewing, tracking your property progress, or staying updated on the latest listings, everything you need is at your fingertips.",
-      "part2": "Download the app now and start your journey today!"
+      "part1": "通过我们的应用掌控您的房地产旅程。无论是预约看房、跟踪房产进度，还是随时了解最新房源，您所需的一切尽在掌中。",
+      "part2": "立即下载应用，开启您的旅程吧！"
     },
     "rightSideContent": {
-      "title": "Start your journey today",
-      "para": "with just one tap."
+      "title": "今天开始您的旅程",
+      "para": "只需轻轻一点。"
     },
-    "appLinks": "Available on App Store and Google Play"
+    "appLinks": "可在 App Store 和 Google Play 获取"
   },
   "Common_Form_Agreements": {
-    "agreement1": "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
-    "agreement2": "Agree to receive multiple calls and communications via various channels regarding my enquiry",
-    "agreement3": "Agree to receive calls and communications via various channels on various projects, products, and services"
+    "agreement1": "同意在上午09:00至晚上09:00期间，通过多种渠道接收来自PSI的来电和通信。",
+    "agreement2": "同意就我的咨询，通过多种渠道接收多次来电和通信。",
+    "agreement3": "同意通过多种渠道接收有关不同项目、产品和服务的来电和通信。"
   },
+
   "FooterAI": {
     "footer_brand_desc": "Property Shop Investment is the leading real estate agency in Abu Dhabi, helping you find your perfect home since 2007.",
     "footer_company": "Company",
