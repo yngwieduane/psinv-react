@@ -1,58 +1,121 @@
 {
-    "HomePageBanner": {    
-        "sign_up_btn" : "Sign Up",
-        "more_btn" : "Explore More"   
+  "HomePageBanner": {
+    "sign_up_btn": "Sign Up",
+    "more_btn": "Explore More"
   },
-  "ListPropertySection": {    
-        "title" : "BE with the Brand you Trust",
-        "desc" : "Where will we list your property?",
-        "title2" : "List Your Property" 
-  },
-  "ListPropertyForm": {    
-        "firstName" : "First Name", "Enter First Name" : "Enter First Name",
-        "lastName" : "Last Name", "Enter Last Name" : "Enter Last Name",
-        "email" : "Email" , "Enter Email" : "Enter Email",
-        "phone" : "Phone Number", 
-        "purpose" : "Property Purpose", "Choose purpose": "Choose purpose",
-        "sell_purpose" : "Sell", "rent_purpose" : "Rent", "invest_purpose" : "Invest",
-        "errors" : {
-          "firstNameRequired" : "First name is required",
-          "lastNameRequired" : "Last name is required",
-          "invalidEmail" : "Invalid email address",
-          "invalidPhone" : "Invalid phone number",
-          "choosePurpose" : "Property purpose is required"
-        },
-        "clickingTerms" : {
-          "part1" : "By clicking Submit, you agree to our",
-          "part2" : "Terms & Conditions",
-          "part3" : "and Privacy Policy"
-        },
-        "form_submit" : "Submit",
-        "form_submitting" : "Submitting..."
-  },
-
-  "Why_PSI" : {
-    "emirati_title" : "Emirati Hub",
-    "youngster_title" : "Youngsters Program",
-    "crypto_title" : "Crypto",
-    "international_title" : "PSI International",
-    "company_title" : "Company Profile",
-
-    "why_psi" : {
-      "title" : "Why PSI ?",
-      "desc" : "Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi's Real Estate Market.",
-      "btn" : "Learn more about PSI"
-    },   
-    
-    "emirati_hub" : {
-      "title" : "PSI Emirati Hub",
-      "desc" : {
-        "part1" : "Empowering UAE nationals to excel and lead in the real estate sector through",
-        "part2" : "PSI Emirati Hub."
+  "MainSliderHome": {
+    "slides": {
+      "bashayer_residences": {
+        "title": "Bashayer Residences",
+        "location": "Остров Худайрият",
+        "description": "Расположенные на острове Худайрият, Абу-Даби, Bashayer Residences представляют собой изысканную коллекцию квартир у воды с современными планировками, элегантной отделкой и широкими видами на городской горизонт — дополненные общественными удобствами, которые повышают комфорт повседневной жизни."
       },
-      "btn" : "Learn more about PSI Emirati Hub"
+      "bashayer_villas": {
+        "title": "Bashayer Villas",
+        "location": "Остров Худайрият",
+        "description": "Расположенные на острове Худайрият, Абу-Даби, Bashayer Villas — это спокойный закрытый жилой комплекс, где каждая вилла оснащена просторными интерьерами, элегантной отделкой и непрерывными видами на воду. С набором мирового класса удобств, это уникальное место для исключительной жизни."
+      },
+      "muheira_2": {
+        "title": "Muheira 2",
+        "location": "Остров Аль-Рим",
+        "description": "Muheira состоит из двух продуманно спроектированных жилых башен на острове Аль-Рим. Предлагая идеальное сочетание современной жизни и спокойствия у воды, Muheira дает жителям возможность ощутить городскую энергетику в окружении природной красоты."
+      },
+      "stellar_by_elie_saab": {
+        "title": "Stellar By Elie Saab",
+        "location": "Остров Яс",
+        "description": "Stellar By Elie Saab представляет собой шедевр формы и плавности. Его скульптурный дизайн сочетает мягкие линии с утонченной геометрией, создавая гармоничное соединение архитектуры и природы."
+      },
+      "hilton_residences": {
+        "title": "Hilton Residences",
+        "location": "Дубай",
+        "description": "Поднимаясь на 38 этажей над Jumeirah Lake Towers, Hilton Residences Dubai JLT переосмысливает городскую роскошь через призму вечной гостеприимности Hilton. Каждая деталь отражает утонченность, созданную для современной городской жизни."
+      },
+      "loyalty_program": {
+        "title": "За пределами недвижимости, за пределами границ",
+        "features": [
+          "Эксклюзивные скидки на мебель, ландшафтный дизайн, умные технологии, туризм и многое другое",
+          "B2B-партнерства, добавляющие ценность сверх продаж",
+          "Простая регистрация клиентов через прямую запись",
+          "Повышает удовлетворенность, лояльность и узнаваемость партнеров",
+          "Масштабируемо с потенциалом дохода через партнерские сделки"
+        ]
+      }
+    }
+  },
+  "citiesHome": {
+    "abu_dhabi": {
+      "title": "Абу-Даби",
+      "al_reem_island": "Остров Аль-Рим",
+      "saadiyat_island": "Остров Саадият",
+      "yas_island": "Остров Яс",
+      "al_raha_beach": "Пляж Аль-Раха"
     },
-
+    "dubai": {
+      "title": "Дубай",
+      "palm_jumeirah": "Пальма Джумейра",
+      "downtown_dubai": "Центр Дубая",
+      "dubai_creek": "Дубай-Крик",
+      "town_square_dubai": "Town Square Dubai"
+    },
+    "sharjah": {
+      "title": "Шарджа",
+      "al_khan": "Аль-Кхан",
+      "sharjah_waterfront_city": "Sharjah Waterfront City",
+      "aljada": "Альджада"
+    }
+  },
+  "ListPropertySection": {
+    "title": "BE with the Brand you Trust",
+    "desc": "Where will we list your property?",
+    "title2": "List Your Property"
+  },
+  "ListPropertyForm": {
+    "firstName": "First Name",
+    "Enter First Name": "Enter First Name",
+    "lastName": "Last Name",
+    "Enter Last Name": "Enter Last Name",
+    "email": "Email",
+    "Enter Email": "Enter Email",
+    "phone": "Phone Number",
+    "purpose": "Property Purpose",
+    "Choose purpose": "Choose purpose",
+    "sell_purpose": "Sell",
+    "rent_purpose": "Rent",
+    "invest_purpose": "Invest",
+    "errors": {
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "invalidEmail": "Invalid email address",
+      "invalidPhone": "Invalid phone number",
+      "choosePurpose": "Property purpose is required"
+    },
+    "clickingTerms": {
+      "part1": "By clicking Submit, you agree to our",
+      "part2": "Terms & Conditions",
+      "part3": "and Privacy Policy"
+    },
+    "form_submit": "Submit",
+    "form_submitting": "Submitting..."
+  },
+  "Why_PSI": {
+    "emirati_title": "Emirati Hub",
+    "youngster_title": "Youngsters Program",
+    "crypto_title": "Crypto",
+    "international_title": "PSI International",
+    "company_title": "Company Profile",
+    "why_psi": {
+      "title": "Why PSI ?",
+      "desc": "Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi's Real Estate Market.",
+      "btn": "Learn more about PSI"
+    },
+    "emirati_hub": {
+      "title": "PSI Emirati Hub",
+      "desc": {
+        "part1": "Empowering UAE nationals to excel and lead in the real estate sector through",
+        "part2": "PSI Emirati Hub."
+      },
+      "btn": "Learn more about PSI Emirati Hub"
+    },
     "youngster_program": {
       "title": "PSI Abu Dhabi Youngsters",
       "desc": {
@@ -62,7 +125,6 @@
       },
       "btn": "Learn more about PSI Youngsters"
     },
-
     "crypto": {
       "title": "Buy property with Crypto",
       "desc": {
@@ -71,52 +133,48 @@
       },
       "btn": "Learn more about Crypto"
     },
-
     "international": {
       "title": "PSI International",
       "desc": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
       "btn": "Learn more about PSI International"
     }
-
   },
-
   "Mortgage_Tabs": {
     "mortgage": "Mortgage Calculator",
     "amortization": "Amortization",
     "refinancing": "Refinancing",
     "rentvsbuy": "Rent vs Buy",
     "houseafford": "House Affordability",
-    "Mortgage Tools" : "Mortgage Tools", 
-    "aed" : "AED",
-    "ViewUnits" : "View Units", 
-    "GetApproval" : "Get pre-approval today",
-    "MonthlyPayment" : "Monthly Payment",
-    "Yrs" : "yrs",
-    "mortgageTab" : {
-      "title" : "Mortgage Calculator",
-      "PropertyPrice" : "Property Price (AED)",
-      "LoanPeriod" : "Loan Period (Years)",
-      "Years" : "Years",
-      "Downpayment" : "Downpayment (AED)",
-      "InterestRate" : "Interest Rate (%)",      
-      "TotalLoanAmount" : "Total Loan Amount"
+    "Mortgage Tools": "Mortgage Tools",
+    "aed": "AED",
+    "ViewUnits": "View Units",
+    "GetApproval": "Get pre-approval today",
+    "MonthlyPayment": "Monthly Payment",
+    "Yrs": "yrs",
+    "mortgageTab": {
+      "title": "Mortgage Calculator",
+      "PropertyPrice": "Property Price (AED)",
+      "LoanPeriod": "Loan Period (Years)",
+      "Years": "Years",
+      "Downpayment": "Downpayment (AED)",
+      "InterestRate": "Interest Rate (%)",
+      "TotalLoanAmount": "Total Loan Amount"
     },
-    "amortizationTab" : {
-      "title" : "Amortization",
-      "LoanAmount" : "Loan Amount",
-      "LoanInterestRate" : "Loan Interest Rate",
-      "LoanTermYears" : "Loan Term Years",
-      "Years" : "Years",
-      "EarlyPayment" : "EARLY PAYMENT",
-      "EffectOfLargerPayment" : "Effect of making a larger payment",
-      "PaymentAmount" : "Payment Amount",
-      "MadeAfterMonth" : "Made After Month",
-      "Months" : "months",
-      "MonthlyAmortization" : "Monthly Amortization",
-      "TotalCost" : "Total Cost",
-      "ExploreProperties" : "Explore Properties"
+    "amortizationTab": {
+      "title": "Amortization",
+      "LoanAmount": "Loan Amount",
+      "LoanInterestRate": "Loan Interest Rate",
+      "LoanTermYears": "Loan Term Years",
+      "Years": "Years",
+      "EarlyPayment": "EARLY PAYMENT",
+      "EffectOfLargerPayment": "Effect of making a larger payment",
+      "PaymentAmount": "Payment Amount",
+      "MadeAfterMonth": "Made After Month",
+      "Months": "months",
+      "MonthlyAmortization": "Monthly Amortization",
+      "TotalCost": "Total Cost",
+      "ExploreProperties": "Explore Properties"
     },
-
     "refinancingTab": {
       "title": "Refinancing",
       "MortgageInformation": "Mortgage Information",
@@ -124,20 +182,20 @@
       "CurrentMonthlyPayments": "Current monthly payments",
       "EarlySettlementFees": "Early settlement fees",
       "Percentage": "Percentage",
-      "CurrentLoanInterestRate": "Current loan interest rate in %",      
+      "CurrentLoanInterestRate": "Current loan interest rate in %",
       "RefinanceInformation": "Refinance Information",
       "CurrentPropertyValue": "Current property value",
       "CurrentEstimated": "Current estimated value",
       "TermOfNewLoan": "Term of new loan",
       "FeesToObtainNewLoan": "Fees to obtain new loan",
       "NewLoanPercentage": "Percentage",
-      "NewLoanInterestRate": "Interest rate of the new loan in %",  
+      "NewLoanInterestRate": "Interest rate of the new loan in %",
       "MortgageCost": "Mortgage Cost",
       "MonthlyPay": "Monthly Pay",
       "PayDiff": "Pay Diff",
       "RefinancePay": "Refinance Pay",
       "BreakMonth": "Break Month",
-      "Month(s)" : "month(s)"
+      "Month(s)": "month(s)"
     },
     "rentVsBuyTab": {
       "Title": "Rent vs Buying",
@@ -150,7 +208,7 @@
       "Downpayment": "Downpayment",
       "Downpaymentpercentage": "Downpayment %",
       "Yearlypropertyappreciation": "Yearly property appreciation",
-      "Planyearstolive": "Plan years to live",      
+      "Planyearstolive": "Plan years to live",
       "Totalrentamount": "Total Rent Amount",
       "Totalbuyamount": "Total Buy Amount",
       "Viewsaleunits": "View Sale Units",
@@ -166,275 +224,438 @@
       "Paymentperiod": "Payment Period",
       "Canafford": "Can Afford",
       "Totalafford": "Total Afford",
-      "GeApprovalToday" : "Get pre-approval today"
+      "GeApprovalToday": "Get pre-approval today"
     }
   },
-
-  "ReportDownload" : {
-    "title" : "Market Insights",
-    "desc" : "Monthly Report DXB",
-    "download" : "Download Now"
+  "ReportDownload": {
+    "title": "Market Insights",
+    "desc": "Monthly Report DXB",
+    "download": "Download Now"
   },
-  "RealEstatePartner" : {
-    "title" : {
-      "part1" : "YOUR TRUSTED",
-      "part2" : "Real Estate",
-      "part3" : "PARTNER"
+  "RealEstatePartner": {
+    "title": {
+      "part1": "YOUR TRUSTED",
+      "part2": "Real Estate",
+      "part3": "PARTNER"
     },
-    "aboutCounter" : {
-      "customers" : "Customers",
-      "languages" : "Languages",
-      "projects" : "Projects",
-      "locationWorldwide" : "Location Worldwide",
-      "years" : "Years in Business",
-      "branches" : "Branches",
-      "expertEmployees" : "Expert Employees"
+    "aboutCounter": {
+      "customers": "Customers",
+      "languages": "Languages",
+      "projects": "Projects",
+      "locationWorldwide": "Location Worldwide",
+      "years": "Years in Business",
+      "branches": "Branches",
+      "expertEmployees": "Expert Employees"
     }
   },
-  "AwardsSectionHome" : {
-    "title" : "AWARDS-DRIVEN Excellence",
-    "desc" : "We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. Explore our journey of accolades that inspire us to reach new pinnacles of success.",
-    "awards" : {
-      "emaar" :  {
-        "title1":"EMAAR",
-        "title2":"ANNUAL BROKER",
+  "AwardsSectionHome": {
+    "title": "AWARDS-DRIVEN Excellence",
+    "desc": "We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. Explore our journey of accolades that inspire us to reach new pinnacles of success.",
+    "awards": {
+      "emaar": {
+        "title1": "EMAAR",
+        "title2": "ANNUAL BROKER",
         "title3": "AWARDS - 2018"
-       },
-      "aldar2021" : {
-        "title1":"ALDAR",
+      },
+      "aldar2021": {
+        "title1": "ALDAR",
         "title3": "AMBASSADOR - 2021"
       },
-      "aldar2016" : {
-        "title1":"ALDAR",
-        "title2":"TOP PERFORMING",
+      "aldar2016": {
+        "title1": "ALDAR",
+        "title2": "TOP PERFORMING",
         "title3": "Agency First Place - 2016"
       },
-      "aldar2020" : {
-          "title1":"ALDAR",
-          "title2":"TOP PERFORMING",
-          "title3": "Agency First Place - 2020"
+      "aldar2020": {
+        "title1": "ALDAR",
+        "title2": "TOP PERFORMING",
+        "title3": "Agency First Place - 2020"
       },
-      "aldar2022" : {
-          "title1":"ALDAR",
-          "title2":"TOP PERFORMING",
-          "title3": "Agency First Place - 2022"
+      "aldar2022": {
+        "title1": "ALDAR",
+        "title2": "TOP PERFORMING",
+        "title3": "Agency First Place - 2022"
       },
-      "imkan" : {
-          "title1":"IMKAN",
-          "title2":"TOP PERFORMING",
-          "title3": "Agency First Place - 2021"
+      "imkan": {
+        "title1": "IMKAN",
+        "title2": "TOP PERFORMING",
+        "title3": "Agency First Place - 2021"
       }
     }
   },
-  "googleReview" : {
-    "title" : "Testimonials",
-    "google" : "Google",
-    "review1" : "My experience with them was awesome! They really made my home-buying journey smooth and stress-free.",
-    "review2" : "Hello from Turkey. Lilit took very good care of us and answered all our questions and queries very clearly.",
-    "review3" : "It was a good experience, as engineer Wissam Atef provided us with excellent support in all maintenance work. Thank you, Engineer Wissam"
+  "googleReview": {
+      "title": "Отзывы",
+      "google": "Google",
+      "review1": "Мой опыт с ними был потрясающим! Они действительно сделали процесс покупки дома плавным и без стресса.",
+      "review2": "Привет из Турции. Лилит очень хорошо о нас позаботилась и ясно ответила на все наши вопросы и запросы.",
+      "review3": "Это был отличный опыт, инженер Виссам Атеф оказал нам превосходную поддержку во всех работах по обслуживанию. Спасибо, инженер Виссам."
   },
-  "getTheApp" : {
-    "title1" : "Get the app",
-    "title2" : "Your Journey Starts Here",
-    "desc" : {
-      "part1" : "Take control of your real estate journey with our app. Whether you're booking a viewing, tracking your property progress, or staying updated on the latest listings, everything you need is at your fingertips.",
-      "part2" : "Download the app now and start your journey today!"
-    },
-    "rightSideContent" : {
-      "title" : "Start your journey today",
-      "para" : "with just one tap."
-    },
-    "appLinks" : "Available on App Store and Google Play"
+  "getTheApp": {
+      "title1": "Скачайте приложение",
+      "title2": "Ваш путь начинается здесь",
+      "desc": {
+          "part1": "Возьмите под контроль свое путешествие в сфере недвижимости с нашим приложением. Будь то бронирование просмотра, отслеживание прогресса объекта или получение обновлений о новых предложениях — всё, что вам нужно, в одном месте.",
+          "part2": "Скачайте приложение сейчас и начните свой путь уже сегодня!"
+      },
+      "rightSideContent": {
+          "title": "Начните свой путь сегодня",
+          "para": "всего одним касанием."
+      },
+      "appLinks": "Доступно в App Store и Google Play"
   },
-
-  "Common_Form_Agreements" : {
-    "agreement1" : "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
-    "agreement2" : "Agree to receive multiple calls and communications via various channels regarding my enquiry",
-    "agreement3" : "Agree to receive calls and communications via various channels on various projects, products, and services"
+  "Common_Form_Agreements": {
+      "agreement1": "Согласен(а) получать звонки и сообщения по различным каналам от PSI с 09:00 до 21:00",
+      "agreement2": "Согласен(а) получать несколько звонков и сообщений по различным каналам, касающихся моего запроса",
+      "agreement3": "Согласен(а) получать звонки и сообщения по различным каналам о различных проектах, продуктах и услугах"
   },
 
   "FooterAI": {
-    "footer_brand_desc": "Property Shop Investment is the leading real estate agency in Abu Dhabi, helping you find your perfect home since 2007.",
-    "footer_company": "Company",
-    "footer_psi" : "Property Shop Investment.",
-    "footer_services": "Services",
-    "footer_popular_areas": "Popular Areas",
-    "footer_get_in_touch": "Get in Touch",
-    "footer_newsletter": "Newsletter",
-    "footer_rights": "All Rights Reserved.",
-    "footer_privacy": "Privacy Policy",
-    "footer_terms": "Terms of Use",
-    "footer_sitemap": "Sitemap",
-    "footer_cookies": "Cookies Policy",
-    "footer_links_about": "About PSI",
-    "footer_links_team": "Our Team",
-    "footer_links_careers": "Careers",
-    "footer_links_awards": "Awards & Recognition",
-    "footer_links_media": "Media Center",
-    "footer_links_testi": "Testimonials",
-    "footer_links_intl": "International",
-    "footer_links_buy": "Buy a Property",
-    "footer_links_rent": "Rent a Property",
-    "footer_links_list": "List Your Property",
-    "footer_links_manage": "Property Management",
-    "footer_links_mortgage": "Mortgage Calculator",
-    "footer_links_offplan": "Off-Plan Projects",
-    "footer_links_reports": "Market Reports",
-    "loc_Abu Dhabi": "Abu Dhabi",
-    "loc_Dubai": "Dubai",
-    "loc_Sharjah": "Sharjah",
-    "loc_Al Ain": "Al Ain",
-    "loc_Ras Al Khaimah": "Ras Al Khaimah",
-    "loc_Al Reem Island": "Al Reem Island",
-    "loc_Yas Island": "Yas Island",
-    "loc_Saadiyat Island": "Saadiyat Island",
-    "loc_Al Raha Beach": "Al Raha Beach",
-    "loc_Dubai Marina": "Dubai Marina",
-    "loc_Downtown Dubai": "Downtown Dubai",
-    "loc_Dubai Creek": "Dubai Creek",
-    "loc_Palm Jumeirah": "Palm Jumeirah",
-    "loc_coming_soon": "Coming Soon",
-    "loc_updating": "We are currently updating our listings for",
-    "form_firstName": "First Name",
-    "form_lastName": "Last Name",
-    "form_email": "Email Address",
-    "form_phone": "Phone Number",
-    "form_submit": "Submit",
-    "form_schedule": "Schedule Viewing",
-    "form_property_purpose": "Property Purpose",
-    "form_choose_purpose": "Choose purpose",
-    "form_sell": "Sell",
-    "form_rent": "Rent",
-    "form_manage": "Property Management",
-    "form_describe_prop": "Please describe your property",
-    "form_describe_placeholder": "Provide details about size, location, bedrooms...",
-    "form_agreement": "By clicking Submit, you agree to our Terms & Conditions and Privacy Policy.",
-    "form_marketing_consent": "I agree to receive calls and communications via various channels from PSI.",
-    "form_register_interest": "Register Your Interest",
-    "btn_search": "Search",
-    "btn_preview": "Preview",
-    "btn_inquire": "Inquire",
-    "btn_whatsapp": "WhatsApp",
-    "btn_details": "Unit Details",
-    "btn_call": "Call Now",
-    "btn_view_map": "View Map",
-    "btn_download_profile": "Download Company Profile",
-    "btn_discover_hub": "Discover PSI Emirati Hub",
-    "btn_download_report": "Download Now",
-    "btn_signup": "Sign up",
-    "btn_submit_request": "Submit Request",
-    "btn_next_step": "Next Step",
-    "btn_join": "Join",
-    "btn_load_more": "Load More Projects",
-    "btn_view_project": "View Project",
-    "btn_download_brochure": "Download Brochure",
-    "btn_gallery": "Gallery",
-    "btn_compare": "Compare",
-    "btn_list": "List",
-    "btn_overview": "Overview",
-    "btn_units": "Units",
-    "btn_floor_plans": "Floor Plans",
-    "btn_location": "Location",
-    "btn_brochure": "Brochure",
-    "btn_save": "Save",
-    "btn_saved": "Saved",
-    "btn_remove": "Remove",
-    "btn_master_plan": "Master Plan",
-    "btn_nearby": "Nearby",
-    "btn_developer": "Developer",
-    "btn_video_tour": "Video Tour",
-    "company_address" : {
-      "part1" : "Office No. 4410 & 4411",
-      "part2" : "Addax Tower Level 44",
-      "part3" : "Al Reem Island, City of Lights",
-      "part4" : "Abu Dhabi, United Arab Emirates"
+      "footer_brand_desc": "Property Shop Investment — ведущая агентство недвижимости в Абу-Даби, помогая вам найти идеальный дом с 2007 года.",
+      "footer_company": "Компания",
+      "footer_psi": "Property Shop Investment.",
+      "footer_services": "Услуги",
+      "footer_popular_areas": "Популярные районы",
+      "footer_get_in_touch": "Свяжитесь с нами",
+      "footer_newsletter": "Новостная рассылка",
+      "footer_rights": "Все права защищены.",
+      "footer_privacy": "Политика конфиденциальности",
+      "footer_terms": "Условия использования",
+      "footer_sitemap": "Карта сайта",
+      "footer_cookies": "Политика использования файлов cookie",
+      "footer_links_about": "О компании PSI",
+      "footer_links_team": "Наша команда",
+      "footer_links_careers": "Карьера",
+      "footer_links_awards": "Награды и признание",
+      "footer_links_media": "Медиацентр",
+      "footer_links_testi": "Отзывы",
+      "footer_links_intl": "Международные проекты",
+      "footer_links_buy": "Купить недвижимость",
+      "footer_links_rent": "Арендовать недвижимость",
+      "footer_links_list": "Разместить объект",
+      "footer_links_manage": "Управление недвижимостью",
+      "footer_links_mortgage": "Ипотечный калькулятор",
+      "footer_links_offplan": "Проекты на этапе планирования",
+      "footer_links_reports": "Отчёты о рынке",
+      "loc_Abu Dhabi": "Абу-Даби",
+      "loc_Dubai": "Дубай",
+      "loc_Sharjah": "Шарджа",
+      "loc_Al Ain": "Аль-Айн",
+      "loc_Ras Al Khaimah": "Рас-эль-Хайма",
+      "loc_Al Reem Island": "Остров Аль-Рим",
+      "loc_Yas Island": "Остров Яс",
+      "loc_Saadiyat Island": "Остров Саадият",
+      "loc_Al Raha Beach": "Пляж Аль-Раха",
+      "loc_Dubai Marina": "Дубай Марина",
+      "loc_Downtown Dubai": "Центр Дубая",
+      "loc_Dubai Creek": "Дубай-Крик",
+      "loc_Palm Jumeirah": "Пальма Джумейра",
+      "loc_coming_soon": "Скоро появится",
+      "loc_updating": "Мы сейчас обновляем список для",
+      "form_firstName": "Имя",
+      "form_lastName": "Фамилия",
+      "form_email": "Электронная почта",
+      "form_phone": "Номер телефона",
+      "form_submit": "Отправить",
+      "form_schedule": "Запланировать просмотр",
+      "form_property_purpose": "Цель недвижимости",
+      "form_choose_purpose": "Выберите цель",
+      "form_sell": "Продажа",
+      "form_rent": "Аренда",
+      "form_manage": "Управление недвижимостью",
+      "form_describe_prop": "Пожалуйста, опишите вашу недвижимость",
+      "form_describe_placeholder": "Укажите детали о размере, местоположении, количестве спален...",
+      "form_agreement": "Нажимая «Отправить», вы соглашаетесь с нашими Условиями и Политикой конфиденциальности.",
+      "form_marketing_consent": "Я согласен(а) получать звонки и сообщения по различным каналам от PSI.",
+      "form_register_interest": "Зарегистрировать интерес",
+      "btn_search": "Поиск",
+      "btn_preview": "Предпросмотр",
+      "btn_inquire": "Запросить",
+      "btn_whatsapp": "WhatsApp",
+      "btn_details": "Детали объекта",
+      "btn_call": "Позвонить",
+      "btn_view_map": "Посмотреть карту",
+      "btn_download_profile": "Скачать профиль компании",
+      "btn_discover_hub": "Откройте PSI Emirati Hub",
+      "btn_download_report": "Скачать сейчас",
+      "btn_signup": "Зарегистрироваться",
+      "btn_submit_request": "Отправить запрос",
+      "btn_next_step": "Следующий шаг",
+      "btn_join": "Присоединиться",
+      "btn_load_more": "Загрузить больше проектов",
+      "btn_view_project": "Посмотреть проект",
+      "btn_download_brochure": "Скачать брошюру",
+      "btn_gallery": "Галерея",
+      "btn_compare": "Сравнить",
+      "btn_list": "Список",
+      "btn_overview": "Обзор",
+      "btn_units": "Объекты",
+      "btn_floor_plans": "Планировки этажей",
+      "btn_location": "Локация",
+      "btn_brochure": "Брошюра",
+      "btn_save": "Сохранить",
+      "btn_saved": "Сохранено",
+      "btn_remove": "Удалить",
+      "btn_master_plan": "Генеральный план",
+      "btn_nearby": "Рядом",
+      "btn_developer": "Застройщик",
+      "btn_video_tour": "Видео-тур",
+      "company_address": {
+          "part1": "Офис №4410 и 4411",
+          "part2": "Башня Addax, 44 этаж",
+          "part3": "Остров Аль-Рим, Город Света",
+          "part4": "Абу-Даби, Объединённые Арабские Эмираты"
+      }
+  },
+  "LocaleSwitcher": {
+      "label": "Сменить язык",
+      "locale": "{locale, select, ar {🇦🇪 Арабский} en {🇺🇸 Английский} cn {🇨🇳 Китайский} ru {🇷🇺 Русский} de {🇩🇪 Голландский} other {Неизвестный}}",
+      "buy": "Купить",
+      "rent": "Аренда",
+      "communities": "Сообщества",
+      "about": "О нас",
+      "careers": "Карьера",
+      "list": "Разместить недвижимость",
+      "international": "Международные проекты",
+      "contact": "Связаться с нами",
+      "developers": "Застройщики",
+      "featured projects": "Избранные проекты",
+      "more": "Ещё",
+      "mortgage": "Ипотечный калькулятор",
+      "luxury": "Элитные проекты",
+      "properties": "Недвижимость",
+      "projects": "Проекты",
+      "services": "Услуги",
+      "company": "Компания",
+      "insights": "Аналитика",
+      "psi emirati hub": "PSI Emirati Hub",
+      "youngsters program": "Программа для молодёжи",
+      "invest in uae": "Инвестировать в ОАЭ",
+      "villa calculator": "Калькулятор вилл",
+      "newsletters": "Рассылки",
+      "articles": "Статьи",
+      "property management": "Управление недвижимостью",
+      "login": "Войти",
+      "logout": "Выйти",
+      "Featured": "Избранное",
+      "Explore": "Исследовать",
+      "Abu Dhabi": "Абу-Даби",
+      "Sama Yas": "Sama Yas",
+      "Yas Riva": "Yas Riva",
+      "Manarat Living - Saadiyat": "Manarat Living - Саадият",
+      "The Arthouse": "The Arthouse",
+      "Bloom Living - Almeria": "Bloom Living - Альмерия",
+      "Residential": "Жилая недвижимость",
+      "Buy Apartments": "Купить апартаменты",
+      "Buy Villas": "Купить виллы",
+      "Rent Apartments": "Арендовать апартаменты",
+      "Rent Villas": "Арендовать виллы",
+      "Commercial": "Коммерческая недвижимость",
+      "Offices for Sale": "Офисы на продажу",
+      "Offices for Rent": "Офисы в аренду",
+      "Retail Spaces": "Торговые помещения",
+      "Popular Areas": "Популярные районы",
+      "Al Reem Island": "Остров Аль-Рим",
+      "Yas Island": "Остров Яс",
+      "Saadiyat Island": "Остров Саадият",
+      "Palm Jumeirah": "Пальма Джумейра",
+      "New Launches": "Новые запуски",
+      "Aldar": "Aldar",
+      "Emaar": "Emaar",
+      "Imkan": "Imkan",
+      "Meraas": "Meraas",
+      "Dubai Properties": "Dubai Properties",
+      "NSHAMA": "NSHAMA",
+      "Valuation & Finance": "Оценка и финансы",
+      "Client Services": "Клиентские услуги",
+      "About PSI": "О компании PSI",
+      "Our Story": "Наша история",
+      "Awards": "Награды",
+      "Media": "Медиа"
+  },
+  "About_Us_Page": {
+    "heroTitle": "О НАС",
+    "heroBreadcrumb": "Главная > О нас",
+    "aboutTag": "О компании",
+    "mainHeading": "PROPERTY SHOP INVESTMENT",
+    "paragraph1": {
+      "part1": "Основана в 2007 году",
+      "part2": "Property Shop Investment (PSI)",
+      "part3": "превратилась в ведущую силу на рынке недвижимости, демонстрируя успешный опыт как в ОАЭ, так и на международных рынках. Штаб-квартира находится в Абу-Даби, и компания постоянно признается ведущей брокерской фирмой ОАЭ. Устойчивый рост PSI обеспечивается приверженностью инновациям, высокой результативностью и безупречной заботой о клиентах."
+    },
+    "paragraph2": "В настоящее время в PSI работает разнообразная команда из более чем 1500 специалистов, представляющих более 50 национальностей, с 17 филиалами по всему миру. Этот обширный опыт и международное присутствие обеспечивают предоставление полностью интегрированной экосистемы недвижимости.",
+    "paragraph3": "Наши возможности охватывают жилые и коммерческие инвестиции, сделки на этапе планирования и перепродажи, комплексное управление активами, современные ипотечные решения и передовые технологии недвижимости на базе ИИ. Руководствуясь ясным стратегическим видением и решительным лидерством, PSI активно расширяет свою деятельность, чтобы предоставить единый, мирового класса опыт в сфере недвижимости для институциональных инвесторов, застройщиков и глобальных компаний.",
+    "Testimonials": {
+      "Said": "Саид Абу Лайла",
+      "Said_designation": "Председатель",
+      "Said_text": "С 2007 года Property Shop Investment (PSI) ведет трансформацию рынка недвижимости ОАЭ. В 2024 году наша цель — глобальное признание, внедрение инноваций и превышение ожиданий инвесторов. Мы стремимся к переосмыслению рынка недвижимости на глобальном уровне, в соответствии с нашим видением лидировать и вдохновлять рынки.",
+      "Firas": "Фирас Абу Лайла",
+      "Firas_designation": "Генеральный директор",
+      "Firas_text": "PSI соответствует целям роста и диверсификации Абу-Даби, укрепляя его позицию как ведущего инвестиционного направления. Наши глобальные амбиции дополняют видение Абу-Даби, обещая превзойти ожидания инвесторов и способствовать экономическому процветанию.",
+      "Amer": "Амер Сааде",
+      "Amer_designation": "Генеральный директор",
+      "Amer_text": "PSI стремится отражать инновационный дух Дубая в недвижимости, способствуя его видению путем привлечения глобальных инвестиций и стимулирования экономического роста. Мы готовы поднять рынок недвижимости Дубая на новый уровень, укрепляя доверие инвесторов и устанавливая новые отраслевые стандарты."
+    },
+    "CoreValues": {
+      "title": "Наши ключевые ценности",
+      "paragraph1": "Наша сильная репутация в отрасли основана на постоянной приверженности качеству и совершенству во всех предоставляемых услугах. Сочетая видение, экспертизу, специализированные команды, энтузиазм и прозрачность, Property Shop Investment зарекомендовала себя как ведущий игрок на рынке недвижимости Абу-Даби.",
+      "paragraph2": "Будучи отмеченной наградами брокерской компанией полного цикла, Property Shop Investment признана за постоянное превышение ожиданий. Мы стремимся к наивысшей эффективности и с гордостью удерживаем звание «№1 брокера по недвижимости в Абу-Даби» уже десять лет подряд. Наш фокус на предоставлении простых и надежных услуг корпоративным и частным клиентам гарантирует полное удовлетворение потребностей.",
+      "paragraph3": "Все наши услуги адаптированы под индивидуальные потребности клиентов, а наша преданность превращает обещания в реальность."
+    },
+    "CoreValues_List": {
+      "WE_GATHER": {
+        "title": "МЫ СОБИРАЕМ",
+        "description": "Не просто слоган. Мы собираем воплощает всё, что мы представляем в нашей культуре, философии бизнеса и деятельности."
+      },
+      "NOVELTY": {
+        "title": "НОВИЗНА",
+        "description": "Приверженность оригинальности в наших услугах и усилиях."
+      },
+      "ACCOUNTABILITY": {
+        "title": "ОТВЕТСТВЕННОСТЬ",
+        "description": "Обеспечение справедливости, честности, прозрачности, эффективности и приверженности ответственности."
+      }
+    },
+    "Our_Services": {
+      "heroTitle": "НАШИ УСЛУГИ",
+      "heroDescription": "Наша репутация основана на совершенстве, прозрачности и дальновидном руководстве. Property Shop Investment задает отраслевые стандарты как влиятельный игрок на рынке недвижимости Абу-Даби.",
+      "downloadProfile": "Скачать профиль компании",
+      "SALES_title": "ПРОДАЖИ",
+      "SALES_description": "Наша команда продаж является вашим надежным проводником, упрощая сложный рынок недвижимости. От переговоров до юридических вопросов — мы обеспечиваем справедливые сделки и защищаем ваши интересы, предоставляя персонализированные рекомендации в соответствии с вашими финансовыми потребностями.",
+      "LANDLORDS_title": "АРЕНДОДАТЕЛИ",
+      "LANDLORDS_description": "Наши команды по размещению объявлений, для продаж и аренды, стратегически максимизируют стоимость недвижимости, при этом соблюдая конфиденциальность клиента. Тесное сотрудничество с нашей маркетинговой командой обеспечивает широкий ассортимент объектов недвижимости по всей территории ОАЭ.",
+      "LEASING_title": "АРЕНДА",
+      "LEASING_description": "Наши команды по размещению объявлений для продаж и аренды максимизируют стоимость недвижимости при строгой конфиденциальности. Тесное сотрудничество с маркетингом обеспечивает обширный выбор объектов для ваших потребностей.",
+      "DEVELOPMENT_MANAGEMENT_title": "УПРАВЛЕНИЕ РАЗВИТИЕМ",
+      "DEVELOPMENT_MANAGEMENT_description": "PSI опирается на лучшие практики и проверенных партнеров, чтобы предоставлять высококачественные, инновационные проекты, обеспечивающие долгосрочную ценность для клиентов и инвесторов, стремясь переопределить стандарты качества, креативности и ориентации на клиента.",
+      "PROPERTY_MANAGEMENT_title": "УПРАВЛЕНИЕ НЕДВИЖИМОСТЬЮ",
+      "PROPERTY_MANAGEMENT_description": "PSI имеет централизованный отдел управления недвижимостью, который управляет жилыми, коммерческими и промышленными объектами от имени владельцев для сохранения их стоимости и обеспечения стабильной доходности.",
+      "MARKETING_title": "МАРКЕТИНГ",
+      "MARKETING_description": "Внутренний маркетинговый центр PSI предлагает персонализированные решения для пути клиента. С многоуровневыми стратегиями и глубокими аналитическими данными мы создаем бесшовный опыт для застройщиков, инвесторов, продавцов и арендодателей, способствуя лояльности и узнаваемости бренда."
+    },
+    "RealEstatePartner": {
+      "title": {
+        "part1": "ВАШ НАДЕЖНЫЙ",
+        "part2": "ПАРТНЕР В НЕДВИЖИМОСТИ",
+        "part3": ""
+      },
+      "aboutCounter": {
+        "customers": "Клиенты",
+        "languages": "Языки",
+        "projects": "Проекты",
+        "locationWorldwide": "Локации по миру",
+        "years": "Лет в бизнесе",
+        "branches": "Филиалы",
+        "expertEmployees": "Экспертные сотрудники"
+      }
+    },
+    "DISCOVER_title": "ОТКРОЙТЕ PSI",
+    "DISCOVER_desc": "Раскрывая наше видение, инновации и приверженность вашей мечте о доме",
+    "PARTNERS_title": "ПАРТНЕРЫ",
+    "PARTNERS_desc": "Познакомьтесь с визионерами, стоящими за вашими мечтами: наши застройщики.",
+    "STRATEGIC_title": {
+      "part1": "СТРАТЕГИЧЕСКИЕ",
+      "part2": "СОЮЗЫ"
+    },
+    "STRATEGIC_desc": "Привносим совершенство в недвижимость прямо к вам",
+    "STRATEGIC_places": {
+      "UAE": "Объединенные Арабские Эмираты",
+      "India": "Индия",
+      "USA": "США",
+      "Poland": "Польша",
+      "Romania": "Румыния",
+      "UK": "Великобритания"
     }
   },
-
-    "LocaleSwitcher": {
-    "label": "Change language",
-    "locale": "{locale, select, ar {🇦🇪 Арабский} en {🇺🇸 Английский} cn {🇨🇳 Китайский} ru {🇷🇺 Русский} de {🇩🇪 Немецкий} other {Неизвестный}}",
-    "buy": "Buy",
-    "rent": "Rent",
-    "communities": "Communities",
-    "about": "About Us",
-    "careers": "Careers",
-    "list": "List Your Property",
-    "international": "International",
-    "contact": "Contact Us",
-    "developers": "Developers",
-    "featured projects": "Featured Projects",
-    "more": "More",
-    "mortgage": "Mortgage Calculator",
-    "luxury": "Luxury Projects",
-    "properties": "Properties",
-    "projects": "Projects",
-    "services": "Services",
-    "company": "Company",
-    "insights": "Insights",
-    "psi emirati hub": "PSI Emirati Hub",
-    "youngsters program": "Youngsters Program",
-    "invest in uae": "Invest in UAE",
-    "villa calculator": "Villa Calculator",
-    "newsletters": "Newsletters",
-    "articles": "Articles",
-    "property management": "Property Management",
-    "login": "Login",
-    "logout": "Logout",    
-    "Featured": "Featured",
-    "Explore": "Explore",
-    "Abu Dhabi": "Abu Dhabi",
-    "Sama Yas": "Sama Yas",
-    "Yas Riva": "Yas Riva",
-    "Manarat Living - Saadiyat": "Manarat Living - Saadiyat",
-    "The Arthouse": "The Arthouse",
-    "Bloom Living - Almeria": "Bloom Living - Almeria",
-    "Residential": "Residential",
-    "Buy Apartments": "Buy Apartments",
-    "Buy Villas": "Buy Villas",
-    "Rent Apartments": "Rent Apartments",
-    "Rent Villas": "Rent Villas",
-    "Commercial": "Commercial",
-    "Offices for Sale": "Offices for Sale",
-    "Offices for Rent": "Offices for Rent",
-    "Retail Spaces": "Retail Spaces",
-    "Popular Areas": "Popular Areas",
-    "Al Reem Island": "Al Reem Island",
-    "Yas Island": "Yas Island",
-    "Saadiyat Island": "Saadiyat Island",
-    "Palm Jumeirah": "Palm Jumeirah",
-    "New Launches": "New Launches",
-    "Aldar": "Aldar",
-    "Emaar": "Emaar",
-    "Imkan": "Imkan",
-    "Meraas": "Meraas",
-    "Dubai Properties": "Dubai Properties",
-    "NSHAMA": "NSHAMA",
-    "Valuation & Finance": "Valuation & Finance",
-    "Client Services": "Client Services",
-    "About PSI": "About PSI",
-    "Our Story": "Our Story",
-    "Awards": "Awards",
-    "Media": "Media"
+  "About_Locations": {
+    "title": "НАШИ ЛОКАЦИИ",
+    "desc": "Откройте наши направления: раскрывая карту возможностей.",
+    "AbuDhabi_title": "Абу-Даби",
+    "Dubai_title": "Дубай",
+    "Sharjah_title": "Шарджа"
   },
-
-    "ProjectPage": {
-      "overview": "Overview",
-      "gallery": "Gallery",
-      "floor_plan": "Floor Plan",
-      "location": "Location",
-      "photo_gallery": "Photo Gallery",
-      "unit_models": "Unit Models",
-      "facts": "Facts",
-      "faqs": "FAQs",
-      "facilities_in": "Facilities in",
-      "amenities_in": "Amenities in",
-      "vicinities_in": "Vicinities in",
-      "location_plan": "Location Plan",
-      "payment_plan": "Payment Plan",
-      "master_plan": "Master Plan",
-      "location_map": "Location Map",
-      "property_details": "Property Details",
-      "aminities_in": "Amenities in"
+  "PSI_Map_Locations": {
+    "view_map": "Посмотреть карту",
+    "PSI_Head_Office": {
+      "name": "Главный офис PSI",
+      "address": "Остров Аль-Рим, Абу-Даби",
+      "address_community": "Остров Аль-Рим",
+      "address_city": "Абу-Даби",
+      "off_address": "Офис №4410 и 4411, Addax Tower, 44 этаж, Остров Аль-Рим, Город Света, Абу-Даби, ОАЭ"
+    },
+    "PSI_Assets": {
+      "name": "Активы PSI",
+      "address": "Активы PSI, Остров Аль-Рим, Абу-Даби",
+      "address_community": "Остров Аль-Рим",
+      "address_city": "Абу-Даби",
+      "off_address": "1-й этаж, Shams Boutik | Jazeerat Al Reem, Остров Аль-Рим | Абу-Даби, ОАЭ"
+    },
+    "Dubai_Hills_Branch": {
+      "name": "Филиал Dubai Hills",
+      "address": "Бизнес-парк 3, Dubai Hills Estate",
+      "address_community": "Dubai Hills Estate",
+      "address_city": "Дубай",
+      "off_address": "Офис №104, Бизнес-парк 3, Dubai Hills Estate"
+    },
+    "Mamsha_Branch": {
+      "name": "Филиал Mamsha",
+      "address": "Остров Саадият, Абу-Даби",
+      "address_community": "Остров Саадият",
+      "address_city": "Абу-Даби",
+      "off_address": "Mamsha Al Saadiyat, Здание 9, Юнит P3-R13, Абу-Даби, ОАЭ"
+    },
+    "Waters_Edge_Branch": {
+      "name": "Филиал Waters Edge",
+      "address": "Остров Яс, Абу-Даби",
+      "address_community": "Остров Яс",
+      "address_city": "Абу-Даби",
+      "off_address": "ул. Al Maha, Остров Яс, Абу-Даби, ОАЭ"
+    },
+    "St_Regis_Office": {
+      "name": "Офис St. Regis",
+      "address": "Остров Саадият, Абу-Даби",
+      "address_community": "Остров Саадият",
+      "address_city": "Абу-Даби",
+      "off_address": "PSI St Regis, Остров Саадият, Абу-Даби, ОАЭ"
+    },
+    "Palm_Jumeirah_Branch": {
+      "name": "Филиал Palm Jumeirah",
+      "address": "Пальма Джумейра, Дубай",
+      "address_community": "Пальма Джумейра",
+      "address_city": "Дубай",
+      "off_address": "Здание Golden Mile 8, Пальма Джумейра, Дубай, ОАЭ"
+    },
+    "Conrad_Etihad_Towers": {
+      "name": "Conrad Etihad Towers",
+      "address": "Аль-Батин, Абу-Даби",
+      "address_community": "Аль-Батин",
+      "address_city": "Абу-Даби",
+      "off_address": "Conrad Abu Dhabi Etihad Towers, Corniche Rd, Абу-Даби, ОАЭ"
+    },
+    "Benelux_Branch": {
+      "name": "Филиал Benelux",
+      "address": "Бизнес-Бэй, Дубай",
+      "address_community": "Бизнес-Бэй",
+      "address_city": "Дубай",
+      "off_address": "Офис 403, Sobha Sapphire, Бизнес-Бэй, Дубай, ОАЭ"
     }
+  },
+  "ProjectPage": {
+    "overview": "Overview",
+    "gallery": "Gallery",
+    "floor_plan": "Floor Plan",
+    "location": "Location",
+    "photo_gallery": "Photo Gallery",
+    "unit_models": "Unit Models",
+    "facts": "Facts",
+    "faqs": "FAQs",
+    "facilities_in": "Facilities in",
+    "amenities_in": "Amenities in",
+    "vicinities_in": "Vicinities in",
+    "location_plan": "Location Plan",
+    "payment_plan": "Payment Plan",
+    "master_plan": "Master Plan",
+    "location_map": "Location Map",
+    "property_details": "Property Details",
+    "aminities_in": "Amenities in"
+  }
 }

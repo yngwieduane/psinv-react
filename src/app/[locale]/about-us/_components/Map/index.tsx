@@ -1,18 +1,18 @@
 'use client';
 
 import dynamic from "next/dynamic";
-import { ContactLocation } from "@/data/contactLocations";
+import { psiMapLocation } from "@/data/psiMapLocations";
 
 const GoogleMapEmbedNoSSR = dynamic(() => import('../GoogleMapEmbed'), { ssr: false });
 
 interface mapProps {
-  center:{lat: number, lng: number};
-  locations: ContactLocation[];
-  selectedLocation: ContactLocation | null;
-  onMapLoad : (map: google.maps.Map) => void;
+  center: { lat: number, lng: number };
+  locations: psiMapLocation[];
+  selectedLocation: psiMapLocation | null;
+  onMapLoad: (map: google.maps.Map) => void;
 }
 
-export default function Map({center, locations,selectedLocation,onMapLoad}: mapProps) {
+export default function Map({ center, locations, selectedLocation, onMapLoad }: mapProps) {
   return (
     <GoogleMapEmbedNoSSR
       center={center}

@@ -4,7 +4,8 @@ import { Outfit } from "next/font/google";
 import { useState } from "react";
 import LocationsTabContent from "./LocationsTabContent";
 import LocationsTabHead from "./LocationsTabHead";
-import { contactLocations } from "@/data/contactLocations";
+import { psiMapLocations } from "@/data/psiMapLocations";
+import { useLocale, useTranslations } from "next-intl";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -12,26 +13,29 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const locationsData = [
-  { title: "Abu Dhabi", content: "Map Data 1", latitude: 24.497503, longitude: 54.402572 },
-  { title: "Dubai", content: "Map Data 2", latitude: 24.497503, longitude: 54.402572 },
-  { title: "Sharjah", content: "Map Data 3", latitude: 24.497503, longitude: 54.402572 }
-];
-
 export default function LocationsSection() {
+  const t = useTranslations('About_Locations');
+  const locale = useLocale();
+  const isRTL = locale.toLowerCase().startsWith("ar");
+
+  const locationsData = [
+    { title: t('AbuDhabi_title'), filterKey: "Abu Dhabi", content: "Map Data 1", latitude: 24.497503, longitude: 54.402572 },
+    { title: t('Dubai_title'), filterKey: "Dubai", content: "Map Data 2", latitude: 24.497503, longitude: 54.402572 },
+    { title: t('Sharjah_title'), filterKey: "Sharjah", content: "Map Data 3", latitude: 24.497503, longitude: 54.402572 }
+  ];
   const [visibleTab, setVisibleTab] = useState(0);
 
-  const cityName = locationsData[visibleTab].title;
-  const cityLocations = contactLocations.filter(
-    (loc) => loc.address_city.toLowerCase() === cityName.toLowerCase()
+  const cityFilterKey = locationsData[visibleTab].filterKey;
+  const cityLocations = psiMapLocations.filter(
+    (loc) => loc.address_city.toLowerCase() === cityFilterKey.toLowerCase()
   );
 
   return (
     <>
-      <div className="container mx-auto px-4 md:px-8">
+      <div className="container mx-auto px-4 md:px-8" dir={isRTL ? 'rtl' : 'ltr'}>
         <div className="md:flex md:justify-between items-center border-b pb-4 border-gray-200">
-          <h3 className={`text-3xl font-bold text-primary text-center md:text-left mb-5 md:mb-0 ${outfit.className}`}>
-            OUR LOCATIONS
+          <h3 className={`text-3xl font-bold text-primary text-center mb-5 md:mb-0 ${outfit.className} ${isRTL ? 'md:text-right' : 'md:text-left'}`}>
+            {t('title')}
           </h3>
           <div className="md:w-1/2 md:items-end items-center flex justify-center md:justify-end locationsTabHead">
             <LocationsTabHead
@@ -41,8 +45,8 @@ export default function LocationsSection() {
             />
           </div>
         </div>
-        <p className="text-gray-500 text-sm mt-2 mb-8 text-center md:text-left">
-          Discover Our Destinations: Unveiling the Map of Opportunities.
+        <p className={`text-gray-500 text-sm mt-2 mb-8 text-center ${isRTL ? 'md:text-right' : 'md:text-left'}`}>
+          {t('desc')}
         </p>
         <div className="flex w-full mx-auto">
           <LocationsTabContent
