@@ -1527,6 +1527,9 @@
   },
   "EmiratiHub": {
     "Hero": {
+      "nav_about": "About Program",
+      "nav_awards": "Awards",
+      "nav_faqs": "FAQs",
       "title_line1": "PSI Emirati Hub",
       "title_line2": "Join the Leader's Territory",
       "subtitle": "PSI’s Emirati Hub partners with Dubai Broker Program to encourage UAE nationals to enter real estate.",
@@ -1605,11 +1608,20 @@
     "FAQ": {
       "title": "FAQs",
       "q1": "What is the Emirati Hub program?",
+      "a1": "PSI, through its Emirati Hub, has established a strategic partnership with the Dubai Real Estate Brokers Program to encourage UAE nationals to join the real estate sector. This initiative aims to increase their employment rate in the industry from 5% to 15% within the next three years.",
       "q2": "Is holding dual employment permitted?",
+      "a2": "Yes, dual employment is permitted provided aligns with company policies and does not conflict with primary job responsibilities.",
       "q3": "Where and How Can you join?",
+      "a3": "You’re not required to attend the office daily, but when needed, you can work from our offices in either Dubai or Abu Dhabi.",
       "q4": "What qualifications make you eligible to join?",
+      "a4": "You are required to be a licensed broker. If you are not yet licensed, we provide a mandatory 3 days training program followed by an exam to help you obtain your license.",
       "q5": "Are brokers allowed to make investments?",
-      "q6": "What benefits do we offer at PSI?"
+      "a5": "Yes, brokers at PSI can invest.",
+      "q6": "What benefits do we offer at PSI?",
+      "a6": "PSI provides extensive and effective training to ensure you are always ahead of the game. Tailored programs for PSI Emirati Hub team member from extensive training sessions, partnering up with the top developers, incorporating new technologies seemingly to our identity, harvesting endless valuable market insights provided by our business development department to countless top-notch services that elevate, simplify and support every agent to achieve their real estate goals"
+    },
+    "Footer": {
+      "copyright": "© 2025 Property Shop Investment LLC. | All Rights Reserved."
     }
   }
 }

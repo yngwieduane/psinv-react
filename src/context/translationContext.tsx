@@ -256,8 +256,6 @@ const EN_DICTIONARY: Record<string, string> = {
   'app.cta_title': 'Start your journey today',
   'app.cta_sub': 'with just one tap.',
   'app.available': 'Available on App Store and Google Play',
-
-  'footer.brand_desc': 'Property Shop Investment is the leading real estate agency in Abu Dhabi, helping you find your perfect home since 2007.',
   'footer.company': 'Company',
   'footer.services': 'Services',
   'footer.popular_areas': 'Popular Areas',
