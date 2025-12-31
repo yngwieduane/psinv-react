@@ -15,7 +15,7 @@ type Params = {
 };
 
 type Props = {
-  params: Params; // ✅ NOT Promise
+  params: Promise<Params>; // ✅ must be Promise in your setup
 };
 
 const CITY_BY_SLUG: Record<string, string> = {
@@ -28,7 +28,7 @@ const CITY_BY_SLUG: Record<string, string> = {
 };
 
 export async function generateMetadata({ params }: Props) {
-  const { slug, locale } = params;
+  const { slug, locale } = await params;
 
   // City pages
   if (CITY_BY_SLUG[slug]) {
@@ -111,7 +111,7 @@ async function CityListing({ city, locale }: { city: string; locale: string }) {
 }
 
 export default async function Page({ params }: Props) {
-  const { slug, locale } = params;
+  const { slug, locale } = await params;
 
   const city = CITY_BY_SLUG[slug];
   if (city) {

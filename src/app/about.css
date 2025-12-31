@@ -142,7 +142,8 @@ p.designation { margin-bottom:  40px !important;}
 
   @layer base {
   * {
-    @apply border-border outline-ring/50;}
+    @apply border border-gray-200 outline outline-2 outline-gray-300/50;
+  }
   body {
     @apply bg-background text-foreground;}}
 
