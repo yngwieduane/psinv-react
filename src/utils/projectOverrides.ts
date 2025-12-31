@@ -4,7 +4,100 @@ import { makeUtm } from './registrationUtils';
 
 export type PerSlug = { branch: 'auh' | 'dubai' | 'assets'; override?: Partial<ProjectMeta> };
 
-export const PROJECTS :Record<string, PerSlug> = {
+export const PROJECTS: Record<string, PerSlug> = {
+  'muheira-maysan-registration': {
+    branch: 'auh',
+    override: {
+      PropertyID: 24389,
+      CommunityID: 95259,
+      SubCommunityID: 83452,
+      remarks: 'Muheira Maysan',
+      ...makeUtm({
+        'shaza_muheira_news': {
+          campaign: 3338,
+          remarks:
+            'Rotation: Reem Island Muheira , Campaign name: shaza: Muheira Newsletter',
+        },
+        'zaineh_muheira_news': {
+          campaign: 2485,
+          remarks:
+            'Rotation: Muheira company rotation , Campaign name: Zaineh_Muheira_News',
+        },
+      }),
+    },
+  },
+  'reem-island-registration': {
+    branch: 'auh',
+    override: {
+      CommunityID: 95259,
+      remarks: 'General Campaign',
+      ...makeUtm({
+        'irani_reem_island_4_projects_newsletter': {
+          campaign: 3335,
+          remarks:
+            'Rotation: Reem Island 4 Projects Company ( Radiant, Radisson, One Residence, Muheira) , Campaign name: Irani: Reem Island 4 Projects Newsletter',
+        },
+      }),
+    },
+  },
+  'one-residence-registration': {
+    branch: 'auh',
+    override: {
+      PropertyID: 25582,
+      CommunityID: 95259,
+      remarks: 'One Residence',
+      ...makeUtm({
+        'zaineh_one_residence_news': {
+          campaign: 3331,
+          remarks:
+            'Rotation: One development - company , Campaign name: Zaineh:One Residence News',
+        },
+      }),
+    },
+  },
+  'yas-riva-registration': {
+    branch: 'auh',
+    override: {
+      PropertyID: 25481,
+      CommunityID: 165011,
+      remarks: 'Yas Riva',
+      ...makeUtm({
+        'zaineh_yas_riva_news': {
+          campaign: 3269,
+          remarks:
+            'Rotation:Yas Riva Company , Campaign name: Zaineh: Yas Riva News',
+        },
+      }),
+    },
+  },
+  'bashayer-apartments-registration': {
+    branch: 'auh',
+    override: {
+      PropertyID: 25477,
+      remarks: 'Bashayer Apartments',
+      ...makeUtm({
+        'ali-bashayer-apartments-newsletter-nov25': {
+          campaign: 3276,
+          remarks:
+            'Rotation: Bashayer Apartments- company , Campaign name: Ali Bashayer Apartments Newsletter Nov25',
+        },
+      }),
+    },
+  },
+  'taraf-masdar-city-registration': {
+    branch: 'auh',
+    override: {
+      PropertyID: 25484,
+      remarks: 'Taraf Masdar city',
+      ...makeUtm({
+        'zaineh_fay_hills_by_taraf_news': {
+          campaign: 3258,
+          remarks:
+            'Rotation: Taraf Masdar city Company , Campaign name:  Irani: Fay Hills Taraf Newsletter',
+        },
+      }),
+    },
+  },
   'al-hayat-island-registration': {
     branch: 'auh',
     override: {
@@ -47,55 +140,55 @@ export const PROJECTS :Record<string, PerSlug> = {
       }),
     },
   },
-'full-moon-festival-chinese-registration': {
-  branch: 'auh',
-  override: {
-    remarks: 'Full Moon Festival – Chinese audience campaign',
-    form: {
-      extraFields: [
-        {
-          id: 'invitedBy',
-          type: 'text',
-          labelKey: 'fields.invitedBy.label',
-          placeholderKey: 'fields.invitedBy.placeholder',
-          required: false,
-          payloadKey: 'InvitedBy',
-        },
-      ],
-    },
-    ...makeUtm({
-      'qiuzi_li_mid_autumn_event_chinese_newsletter': {
-        campaign: 3075,
-        remarks:
-          'Rotation: Mid Autumn Event - Chinese Team, Campaign name:	Qiuzi Li: Mid Autumn Event - Chinese',
+  'full-moon-festival-chinese-registration': {
+    branch: 'auh',
+    override: {
+      remarks: 'Full Moon Festival – Chinese audience campaign',
+      form: {
+        extraFields: [
+          {
+            id: 'invitedBy',
+            type: 'text',
+            labelKey: 'fields.invitedBy.label',
+            placeholderKey: 'fields.invitedBy.placeholder',
+            required: false,
+            payloadKey: 'InvitedBy',
+          },
+        ],
       },
-    }),
-  },
-},  
-'sodic-event-registration': {
-  branch: 'auh',
-  override: {
-    remarks: 'SODIC event general campaign',
-     form: {
-  extraFields: [
-    {
-      id: 'timeSlot',
-      type: 'select',
-      labelKey: 'fields.timeSlot.label',
-      placeholderKey: 'fields.timeSlot.placeholder',
-      options: [
-        { value: '10_11', labelKey: 'fields.timeSlot.opt.10_11' },
-        { value: '11_12', labelKey: 'fields.timeSlot.opt.11_12' },
-        { value: '13_14', labelKey: 'fields.timeSlot.opt.13_14' },
-        { value: '14_15', labelKey: 'fields.timeSlot.opt.14_15' },
-        { value: '16_17', labelKey: 'fields.timeSlot.opt.16_17' },
-        { value: '17_18', labelKey: 'fields.timeSlot.opt.17_18' },
-      ],
-      required: true,
-      payloadKey: 'PreferredTimeSlot',
+      ...makeUtm({
+        'qiuzi_li_mid_autumn_event_chinese_newsletter': {
+          campaign: 3075,
+          remarks:
+            'Rotation: Mid Autumn Event - Chinese Team, Campaign name:	Qiuzi Li: Mid Autumn Event - Chinese',
+        },
+      }),
     },
-  ],
-},
+  },
+  'sodic-event-registration': {
+    branch: 'auh',
+    override: {
+      remarks: 'SODIC event general campaign',
+      form: {
+        extraFields: [
+          {
+            id: 'timeSlot',
+            type: 'select',
+            labelKey: 'fields.timeSlot.label',
+            placeholderKey: 'fields.timeSlot.placeholder',
+            options: [
+              { value: '10_11', labelKey: 'fields.timeSlot.opt.10_11' },
+              { value: '11_12', labelKey: 'fields.timeSlot.opt.11_12' },
+              { value: '13_14', labelKey: 'fields.timeSlot.opt.13_14' },
+              { value: '14_15', labelKey: 'fields.timeSlot.opt.14_15' },
+              { value: '16_17', labelKey: 'fields.timeSlot.opt.16_17' },
+              { value: '17_18', labelKey: 'fields.timeSlot.opt.17_18' },
+            ],
+            required: true,
+            payloadKey: 'PreferredTimeSlot',
+          },
+        ],
+      },
       ...makeUtm({
         'irani-sodic-event-confirmation-news': {
           campaign: 3139,

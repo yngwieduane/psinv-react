@@ -2,16 +2,17 @@
 
 import React from "react";
 import { PlayCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type VideoItem = {
-  id: string;     // youtube video id
-  title: string;
+  id: string;
+  titleKey: string;
 };
 
 const VIDEOS: VideoItem[] = [
-  { id: "nInSXXQ9j7o", title: "UAE Real estate investment" },
-  { id: "yawdZO52bKM", title: "Invest in UAE real estate" },
-  { id: "dFSSo7qMcDA", title: "Why Abu Dhabi?" },
+  { id: "nInSXXQ9j7o", titleKey: "videoTitles.video1" },
+  { id: "yawdZO52bKM", titleKey: "videoTitles.video2" },
+  { id: "dFSSo7qMcDA", titleKey: "videoTitles.video3" },
 ];
 
 function YouTubeEmbed({ id, title }: { id: string; title: string }) {
@@ -26,10 +27,14 @@ function YouTubeEmbed({ id, title }: { id: string; title: string }) {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         />
-        {/* Optional overlay look (like your screenshot) */}
+
+        {/* Optional overlay look */}
         <div className="pointer-events-none absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity" />
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          <PlayCircle className="h-14 w-14 text-white drop-shadow" fill="currentColor" />
+          <PlayCircle
+            className="h-14 w-14 text-white drop-shadow"
+            fill="currentColor"
+          />
         </div>
       </div>
 
@@ -41,15 +46,16 @@ function YouTubeEmbed({ id, title }: { id: string; title: string }) {
 }
 
 export default function VideosSection() {
+  const t = useTranslations("Articles");
   return (
     <section className="mb-20">
       <h2 className="text-2xl font-serif font-bold mb-8 border-b border-gray-100 pb-4">
-        Videos
+        {t("videos")}
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {VIDEOS.map((v) => (
-          <YouTubeEmbed key={v.id} id={v.id} title={v.title} />
+          <YouTubeEmbed key={v.id} id={v.id} title={t(v.titleKey)} />
         ))}
       </div>
     </section>

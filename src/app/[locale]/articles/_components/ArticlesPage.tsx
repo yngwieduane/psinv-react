@@ -57,16 +57,20 @@ const NewsSection = ({ newsItems }: { newsItems: NewsItem[] }) => {
 export default function ArticlesPage() {
   const [articleQuery, setArticleQuery] = useState("");
 
-  const filteredNews = useMemo(() => {
-    if (!articleQuery) return NEWS;
-    const q = articleQuery.toLowerCase();
-    return NEWS.filter(
-      (news) =>
-        news.title.toLowerCase().includes(q) ||
-        news.summary.toLowerCase().includes(q) ||
-        news.category.toLowerCase().includes(q)
-    );
-  }, [articleQuery]);
+const filteredNews = useMemo(() => {
+  if (!articleQuery) return NEWS;
+
+  const q = articleQuery.toLowerCase().trim();
+
+  return NEWS.filter((news) => {
+    const title = (news.title ?? "").toLowerCase();
+    const summary = (news.summary ?? "").toLowerCase();
+    const category = (news.category ?? "").toLowerCase();
+
+    return title.includes(q) || summary.includes(q) || category.includes(q);
+  });
+}, [articleQuery]);
+
 
   return (
     <section className="mb-12">

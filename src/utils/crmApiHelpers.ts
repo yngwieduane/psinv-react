@@ -6,8 +6,11 @@ const TOKENS = {
   HUBSPOT_ASSETS: "9f2eb4da2719c67820ce17c519e3ced3934a6283a58900876bdf48d5b2aac75331e626f6c4ab813b",
   DUBAI: "d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0"
 };
+type JsonPrimitive = string | number | boolean | null;
+type JsonObject = { [key: string]: JsonValue };
+type JsonValue = JsonPrimitive | JsonObject | JsonValue[];
 
-export async function insertPSILead(body: any) {
+export async function insertPSILead(body: JsonObject) {
   return await fetch(`https://api.portal.psi-crm.com/leads?APIKEY=${TOKENS.PSI}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -15,7 +18,7 @@ export async function insertPSILead(body: any) {
   });
 }
 
-export async function insertHubspotLead(body: any, isAssets: boolean = false) {
+export async function insertHubspotLead(body: JsonObject, isAssets: boolean = false) {
   const token = isAssets ? TOKENS.HUBSPOT_ASSETS : TOKENS.HUBSPOT;
   const url = isAssets
     ? "https://portal.psiassets-crm.com/api/integrations/hubspot/createLead"
@@ -52,23 +55,27 @@ export async function insertAssetsLead(queryParams: Record<string, string>) {
   });
 }
 
-export async function submitLeadToCorrectCRM(payload: any, options: { isHubspot: boolean; branch: string }) {
+export async function submitLeadToCorrectCRM(
+  payload: JsonObject,
+  options: { isHubspot: boolean; branch: string }
+) {
   const { isHubspot, branch } = options;
 
-  if (isHubspot && branch === 'Assets') {
-    return { simulated: true, source: 'hubspot-assets', payload };
+  if (isHubspot && branch === "Assets") {
+    return { simulated: true, source: "hubspot-assets", payload };
   }
 
   if (isHubspot) {
-    return { simulated: true, source: 'hubspot-auh', payload };
+    return { simulated: true, source: "hubspot-auh", payload };
   }
 
-  if (branch === 'Dubai') {
-    return { simulated: true, source: 'dubai', payload };
+  if (branch === "Dubai") {
+    return { simulated: true, source: "dubai", payload };
   }
 
-  if (branch === 'Assets') {
-    return { simulated: true, source: 'assets', payload };
+  if (branch === "Assets") {
+    return { simulated: true, source: "assets", payload };
   }
-  return { simulated: true, source: 'auh', payload };
+
+  return { simulated: true, source: "auh", payload };
 }
