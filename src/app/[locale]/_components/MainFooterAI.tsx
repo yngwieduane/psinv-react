@@ -83,10 +83,10 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
           <div>
             <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_company')}</h3>
             <ul className="space-y-4 text-sm text-gray-800 font-light">
-              <li><Link href="/en/about-us" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_about')}</Link></li>
-              <li><Link href="/en/careers" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_careers')}</Link></li>
-              <li><Link href="/en/about-us#awards" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_awards')}</Link></li>
-              <li><Link href="/en/international" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_intl')}</Link></li>
+              <li><Link href="/about-us"   title={t('footer_links_about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_about')}</Link></li>
+              <li><Link href="/careers"   title={t('footer_links_careers')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_careers')}</Link></li>
+              <li><Link href="/about-us#awards"   title={t('footer_links_awards')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_awards')}</Link></li>
+              <li><Link href="/international"   title={t('footer_links_intl')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_intl')}</Link></li>
             </ul>
           </div>
 
@@ -105,13 +105,13 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
           <div>
             <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_popular_areas')}</h3>
             <ul className="space-y-4 text-sm text-gray-800 font-light">
-              <li><a href="/en/projects/abu-dhabi/al-reem-island" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Al Reem Island')}</a></li>
-              <li><a href="/en/projects/abu-dhabi/yas-island" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Yas Island')}</a></li>
-              <li><a href="/en/projects/abu-dhabi/saadiyat-island" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Saadiyat Island')}</a></li>
-              <li><a href="/en/projects/abu-dhabi/al-raha-beach" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Al Raha Beach')}</a></li>
-              <li><a href="/en/projects/dubai/the-palm-jumeirah" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Palm Jumeirah')}</a></li>
-              <li><a href="/en/projects/dubai/downtown-dubai" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Downtown Dubai')}</a></li>
-              <li><a href="/en/projects/dubai/dubai-creek" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Dubai Creek')}</a></li>
+              <li><a href="/en/projects/abu-dhabi/al-reem-island" title={t('loc_Al_Reem_Island')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Al Reem Island')}</a></li>
+              <li><a href="/en/projects/abu-dhabi/yas-island" title={t('loc_Yas_Island')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Yas Island')}</a></li>
+              <li><a href="/en/projects/abu-dhabi/saadiyat-island" title={t('loc_Saadiyat_Island')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Saadiyat Island')}</a></li>
+              <li><a href="/en/projects/abu-dhabi/al-raha-beach" title={t('loc_Al_Raha_Beach')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Al Raha Beach')}</a></li>
+              <li><a href="/en/projects/dubai/the-palm-jumeirah" title={t('loc_Palm_Jumeirah')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Palm Jumeirah')}</a></li>
+              <li><a href="/en/projects/dubai/downtown-dubai" title={t('loc_Downtown_Dubai')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Downtown Dubai')}</a></li>
+              <li><a href="/en/projects/dubai/dubai-creek" title={t('loc_Dubai_Creek')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Dubai Creek')}</a></li>
             </ul>
           </div>
 
@@ -121,13 +121,13 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-5 text-sm text-gray-800 mb-10 font-light">
               <li className="flex items-start gap-4">
                 <Phone size={18} className="text-secondary shrink-0 mt-0.5" />
-                <a href='tel:600548200'>
+                <a href='tel:600548200' title="Call Property Shop Investment at 600 548 200">
                   <span className="hover:text-gray-400 cursor-pointer transition-colors font-medium" dir="ltr">600 548 200</span>
                 </a>
               </li>
               <li className="flex items-start gap-4">
                 <Phone size={18} className="text-secondary shrink-0 mt-0.5" />
-                <a href='tel:+97122052999'>
+                <a href='tel:+97122052999' title="Call Property Shop Investment at +971 2205 2999">
                   <span className="hover:text-gray-400 cursor-pointer transition-colors font-medium" dir="ltr">+971 2205 2999</span>
                 </a>
               </li>
@@ -152,8 +152,8 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-800 font-light">
           <p>&copy; {new Date().getFullYear()} {t('footer_psi')} {t('footer_rights')}</p>
           <div className="flex space-x-8 mt-4 md:mt-0">
-            <a href="/en/privacy" className="hover:text-gray-400 transition-colors">{t('footer_privacy')}</a>
-            <a href="/en/terms" className="hover:text-gray-400 transition-colors">{t('footer_terms')}</a>
+            <a href="/en/privacy" title={t('footer_privacy')} className="hover:text-gray-400 transition-colors">{t('footer_privacy')}</a>
+            <a href="/en/terms" title={t('footer_terms')} className="hover:text-gray-400 transition-colors">{t('footer_terms')}</a>
             {/* <a href="/en/sitemap/" className="hover:text-gray-400 transition-colors">{t('footer_sitemap')}</a>  */}
           </div>
         </div>

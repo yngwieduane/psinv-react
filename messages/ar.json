@@ -1203,6 +1203,13 @@
     "btn_nearby": "المناطق القريبة",
     "btn_developer": "المطور",
     "btn_video_tour": "جولة فيديو",
+    "loc_Al_Reem_Island": "جزيرة الريم",
+    "loc_Yas_Island": "جزيرة ياس",
+    "loc_Saadiyat_Island": "جزيرة السعديات",
+    "loc_Al_Raha_Beach": "شاطئ الراحة",
+    "loc_Palm_Jumeirah": "نخلة جميرا",
+    "loc_Downtown_Dubai": "وسط مدينة دبي",
+    "loc_Dubai_Creek": "خور دبي",
     "company_address": {
       "part1": "المكتب رقم 4410 و 4411",
       "part2": "برج أداكس، الطابق 44",
