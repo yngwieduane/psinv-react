@@ -560,8 +560,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     const navbarClasses = isScrolled || hoveredMenu
         ? 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20'
         : 'bg-transparent py-6';
-    const linkColor = (isScrolled || hoveredMenu || !isDarkHeroPage) ? 'text-gray-800' : 'text-white';
-    const mainLogo = (isScrolled || hoveredMenu || !isDarkHeroPage) ? '/PSI-Logo.svg' : '/logo-psi-white.svg';
+    const showWhiteTheme = !isScrolled && !hoveredMenu && (isDarkHeroPage || isAboutUsPage);
+
+    const linkColor = showWhiteTheme ? 'text-white' : 'text-gray-800';
+    const mainLogo = showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
 
     return (
         <header className="bg-white">

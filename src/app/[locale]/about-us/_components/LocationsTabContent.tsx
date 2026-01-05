@@ -3,48 +3,51 @@
 import React, { useCallback, useState } from "react";
 import dynamic from "next/dynamic";
 const Map = dynamic(() => import('./Map'), { ssr: false });
-import { ContactLocation } from "@/data/contactLocations";
+import { psiMapLocation } from "@/data/psiMapLocations";
+import { useTranslations } from "next-intl";
 
 interface LocationsTabContentProps {
-  cityCenter: { lat: number, lng: number};
-  locations: ContactLocation[];
+  cityCenter: { lat: number, lng: number };
+  locations: psiMapLocation[];
   height: string;
 }
 
-export default function LocationsTabContent({cityCenter, locations, height}: LocationsTabContentProps) {
+export default function LocationsTabContent({ cityCenter, locations, height }: LocationsTabContentProps) {
 
-  const [selectedLocation, setSelectedLocation] = useState<ContactLocation | null>(null);
-  const [mapRef, setMapRef] = useState<google.maps.Map | null> (null);
+  const t = useTranslations('PSI_Map_Locations');
+
+  const [selectedLocation, setSelectedLocation] = useState<psiMapLocation | null>(null);
+  const [mapRef, setMapRef] = useState<google.maps.Map | null>(null);
 
   const onMapLoad = useCallback((map: google.maps.Map) => {
     setMapRef(map);
-  },[]);
+  }, []);
 
-  const handleLocationClick = (location: ContactLocation) => {
+  const handleLocationClick = (location: psiMapLocation) => {
     setSelectedLocation(location);
-    if(mapRef) {
-      mapRef.panTo({lat: location.latitude, lng:location.longitude});
+    if (mapRef) {
+      mapRef.panTo({ lat: location.latitude, lng: location.longitude });
       mapRef.setZoom(16);
     }
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 relative md:h-[600px] w-full">      
-      {locations.length === 0 ? null : (        
-        <div className="md:w-1/3 bg-white p-0 rounded shadow overflow-auto h-[530px] md:absolute md:right-[30px] z-10 md:top-1/2 md:transform md:-translate-y-1/2">        
+    <div className="flex flex-col md:flex-row gap-4 relative md:h-[600px] w-full">
+      {locations.length === 0 ? null : (
+        <div className="md:w-1/3 bg-white p-0 rounded shadow overflow-auto h-[530px] md:absolute md:right-[30px] z-10 md:top-1/2 md:transform md:-translate-y-1/2">
           {locations.map((loc) => (
             <div key={loc.id}
               className={`text-[#2C2D65] cursor-pointer p-5 mb-2 rounded ${selectedLocation?.id === loc.id ? 'border-l-4 border-l-[#2C2D65]-500' : 'border-0'}`}
               onClick={() => handleLocationClick(loc)} >
-              <h2 className="font-semibold text-2xl mb-2">{loc.name}</h2>
-              <h3 className="text-lg mb-3">{loc.address_community}</h3>
-              <p className="text-sm">{loc.off_address}</p>
-              <a className="font-semibold text-sm" href={`${loc.location}`} target="_blank">View map</a>
+              <h2 className="font-semibold text-2xl mb-2">{t(loc.name)}</h2>
+              <h3 className="text-lg mb-3">{t(loc.address_community)}</h3>
+              <p className="text-sm">{t(loc.off_address)}</p>
+              <a className="font-semibold text-sm" href={loc.location} target="_blank">{t('view_map')}</a>
             </div>
           ))}
         </div>
       )}
-      
+
       <div className={`w-full md:absolute  ${height}`}>
         <Map
           center={cityCenter}

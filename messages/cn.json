@@ -1,424 +1,646 @@
 {
-  "HomePageBanner": {    
-        "sign_up_btn" : "Sign Up",
-        "more_btn" : "Explore More"   
+  "HomePageBanner": {
+    "sign_up_btn": "注册",
+    "more_btn": "探索更多"
   },
-  "ListPropertySection": {    
-        "title" : "BE with the Brand you Trust",
-        "desc" : "Where will we list your property?",
-        "title2" : "List Your Property" 
-  },
-  "ListPropertyForm": {    
-        "firstName" : "First Name", "Enter First Name" : "Enter First Name",
-        "lastName" : "Last Name", "Enter Last Name" : "Enter Last Name",
-        "email" : "Email" , "Enter Email" : "Enter Email",
-        "phone" : "Phone Number", 
-        "purpose" : "Property Purpose", "Choose purpose": "Choose purpose",
-        "sell_purpose" : "Sell", "rent_purpose" : "Rent", "invest_purpose" : "Invest",
-        "errors" : {
-          "firstNameRequired" : "First name is required",
-          "lastNameRequired" : "Last name is required",
-          "invalidEmail" : "Invalid email address",
-          "invalidPhone" : "Invalid phone number",
-          "choosePurpose" : "Property purpose is required"
-        },
-        "clickingTerms" : {
-          "part1" : "By clicking Submit, you agree to our",
-          "part2" : "Terms & Conditions",
-          "part3" : "and Privacy Policy"
-        },
-        "form_submit" : "Submit",
-        "form_submitting" : "Submitting..."
-  },
-
-  "Why_PSI" : {
-    "emirati_title" : "Emirati Hub",
-    "youngster_title" : "Youngsters Program",
-    "crypto_title" : "Crypto",
-    "international_title" : "PSI International",
-    "company_title" : "Company Profile",
-
-    "why_psi" : {
-      "title" : "Why PSI ?",
-      "desc" : "Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi's Real Estate Market.",
-      "btn" : "Learn more about PSI"
-    },   
-    
-    "emirati_hub" : {
-      "title" : "PSI Emirati Hub",
-      "desc" : {
-        "part1" : "Empowering UAE nationals to excel and lead in the real estate sector through",
-        "part2" : "PSI Emirati Hub."
+  "MainSliderHome": {
+    "slides": {
+      "bashayer_residences": {
+        "title": "Bashayer公寓",
+        "location": "Hudayriyat岛",
+        "description": "Bashayer公寓位于阿布扎比Hudayriyat岛，是一组精致的滨水公寓，拥有现代布局、优雅装饰和广阔的天际线景观——社区设施提升了日常生活品质。"
       },
-      "btn" : "Learn more about PSI Emirati Hub"
-    },
-
-    "youngster_program": {
-      "title": "PSI Abu Dhabi Youngsters",
-      "desc": {
-        "part1": "Unlock your potential through",
-        "part2": "PSI Abu Dhabi Youngster",
-        "part3": "Program by empowering minds, and shaping futures"
+      "bashayer_villas": {
+        "title": "Bashayer别墅",
+        "location": "Hudayriyat岛",
+        "description": "Bashayer别墅位于阿布扎比Hudayriyat岛，是一个宁静的封闭社区，每栋别墅均拥有宽敞的内部空间、优雅的装饰以及无缝的滨水景观。配备世界级设施，打造独特的卓越居住体验。"
       },
-      "btn": "Learn more about PSI Youngsters"
-    },
-
-    "crypto": {
-      "title": "Buy property with Crypto",
-      "desc": {
-        "part1": "With connections, network, knowledge and country guides, we build and design investment journeys based on",
-        "part2": "your needs, values, lifestyle and your goals."
+      "muheira_2": {
+        "title": "Muheira 2",
+        "location": "Al Reem岛",
+        "description": "Muheira由两栋精心设计的住宅塔楼组成，位于Reem岛。结合现代生活与滨水宁静，为居民提供在自然美景环绕中体验都市活力的机会。"
       },
-      "btn": "Learn more about Crypto"
-    },
-
-    "international": {
-      "title": "PSI International",
-      "desc": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
-      "btn": "Learn more about PSI International"
-    }
-
-  },
-
-  "Mortgage_Tabs": {
-    "mortgage": "Mortgage Calculator",
-    "amortization": "Amortization",
-    "refinancing": "Refinancing",
-    "rentvsbuy": "Rent vs Buy",
-    "houseafford": "House Affordability",
-    "Mortgage Tools" : "Mortgage Tools", 
-    "aed" : "AED",
-    "ViewUnits" : "View Units", 
-    "GetApproval" : "Get pre-approval today",
-    "MonthlyPayment" : "Monthly Payment",
-    "Yrs" : "yrs",
-    "mortgageTab" : {
-      "title" : "Mortgage Calculator",
-      "PropertyPrice" : "Property Price (AED)",
-      "LoanPeriod" : "Loan Period (Years)",
-      "Years" : "Years",
-      "Downpayment" : "Downpayment (AED)",
-      "InterestRate" : "Interest Rate (%)",      
-      "TotalLoanAmount" : "Total Loan Amount"
-    },
-    "amortizationTab" : {
-      "title" : "Amortization",
-      "LoanAmount" : "Loan Amount",
-      "LoanInterestRate" : "Loan Interest Rate",
-      "LoanTermYears" : "Loan Term Years",
-      "Years" : "Years",
-      "EarlyPayment" : "EARLY PAYMENT",
-      "EffectOfLargerPayment" : "Effect of making a larger payment",
-      "PaymentAmount" : "Payment Amount",
-      "MadeAfterMonth" : "Made After Month",
-      "Months" : "months",
-      "MonthlyAmortization" : "Monthly Amortization",
-      "TotalCost" : "Total Cost",
-      "ExploreProperties" : "Explore Properties"
-    },
-
-    "refinancingTab": {
-      "title": "Refinancing",
-      "MortgageInformation": "Mortgage Information",
-      "CurrentLoanBalance": "Current loan balance",
-      "CurrentMonthlyPayments": "Current monthly payments",
-      "EarlySettlementFees": "Early settlement fees",
-      "Percentage": "Percentage",
-      "CurrentLoanInterestRate": "Current loan interest rate in %",      
-      "RefinanceInformation": "Refinance Information",
-      "CurrentPropertyValue": "Current property value",
-      "CurrentEstimated": "Current estimated value",
-      "TermOfNewLoan": "Term of new loan",
-      "FeesToObtainNewLoan": "Fees to obtain new loan",
-      "NewLoanPercentage": "Percentage",
-      "NewLoanInterestRate": "Interest rate of the new loan in %",  
-      "MortgageCost": "Mortgage Cost",
-      "MonthlyPay": "Monthly Pay",
-      "PayDiff": "Pay Diff",
-      "RefinancePay": "Refinance Pay",
-      "BreakMonth": "Break Month",
-      "Month(s)" : "month(s)"
-    },
-    "rentVsBuyTab": {
-      "Title": "Rent vs Buying",
-      "Currentmonthlyrent": "Current monthly rent",
-      "Expectedloanamount": "Expected loan amount",
-      "Yearlyrentincrease": "Yearly rent increase in %",
-      "Loantermyears": "Loan term in years",
-      "Loaninterestrate": "Loan interest rate in %",
-      "Expectedpropertyprice": "Expected property price",
-      "Downpayment": "Downpayment",
-      "Downpaymentpercentage": "Downpayment %",
-      "Yearlypropertyappreciation": "Yearly property appreciation",
-      "Planyearstolive": "Plan years to live",      
-      "Totalrentamount": "Total Rent Amount",
-      "Totalbuyamount": "Total Buy Amount",
-      "Viewsaleunits": "View Sale Units",
-      "Getpreapproval": "Get Pre-Approval"
-    },
-    "houseAffordTab": {
-      "Title": "House Affordability",
-      "Grossmonthlyincome": "Gross Monthly Income",
-      "Extramonthlyincome": "Extra Monthly Income",
-      "Monthlydebtrepayment": "Monthly Debt Repayment",
-      "Downpayment": "Downpayment",
-      "Interestrate": "Interest Rate",
-      "Paymentperiod": "Payment Period",
-      "Canafford": "Can Afford",
-      "Totalafford": "Total Afford",
-      "GeApprovalToday" : "Get pre-approval today"
-    }
-  },
-
-  "ReportDownload" : {
-    "title" : "Market Insights",
-    "desc" : "Monthly Report DXB",
-    "download" : "Download Now"
-  },
-  "RealEstatePartner" : {
-    "title" : {
-      "part1" : "YOUR TRUSTED",
-      "part2" : "Real Estate",
-      "part3" : "PARTNER"
-    },
-    "aboutCounter" : {
-      "customers" : "Customers",
-      "languages" : "Languages",
-      "projects" : "Projects",
-      "locationWorldwide" : "Location Worldwide",
-      "years" : "Years in Business",
-      "branches" : "Branches",
-      "expertEmployees" : "Expert Employees"
-    }
-  },
-
-  "AwardsSectionHome" : {
-    "title" : "AWARDS-DRIVEN Excellence",
-    "desc" : "We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. Explore our journey of accolades that inspire us to reach new pinnacles of success.",
-    "awards" : {
-      "emaar" :  {
-        "title1":"EMAAR",
-        "title2":"ANNUAL BROKER",
-        "title3": "AWARDS - 2018"
-       },
-      "aldar2021" : {
-        "title1":"ALDAR",
-        "title3": "AMBASSADOR - 2021"
+      "stellar_by_elie_saab": {
+        "title": "Stellar By Elie Saab",
+        "location": "Yas岛",
+        "description": "Stellar By Elie Saab 是形式与流动性的杰作。其雕塑般的设计将柔和的线条与精致几何相融合，实现建筑与自然的无缝连接。"
       },
-      "aldar2016" : {
-        "title1":"ALDAR",
-        "title2":"TOP PERFORMING",
-        "title3": "Agency First Place - 2016"
+      "hilton_residences": {
+        "title": "Hilton公寓",
+        "location": "迪拜",
+        "description": "Hilton公寓位于朱美拉湖塔（Jumeirah Lake Towers）上空38层，通过Hilton经典的款待理念重新诠释都市奢华。每一细节都体现现代城市生活的精致。"
       },
-      "aldar2020" : {
-          "title1":"ALDAR",
-          "title2":"TOP PERFORMING",
-          "title3": "Agency First Place - 2020"
-      },
-      "aldar2022" : {
-          "title1":"ALDAR",
-          "title2":"TOP PERFORMING",
-          "title3": "Agency First Place - 2022"
-      },
-      "imkan" : {
-          "title1":"IMKAN",
-          "title2":"TOP PERFORMING",
-          "title3": "Agency First Place - 2021"
+      "loyalty_program": {
+        "title": "超越房地产，超越界限",
+        "features": [
+          "家具、园林、智能科技、旅游等专属折扣",
+          "B2B合作，销售之外增加价值",
+          "通过直接注册轻松完成客户注册",
+          "提升客户满意度、忠诚度及合作伙伴曝光",
+          "通过合作伙伴交易实现可扩展的收益潜力"
+        ]
       }
     }
   },
-  "googleReview" : {
-    "title" : "Testimonials",
-    "google" : "Google",
-    "review1" : "My experience with them was awesome! They really made my home-buying journey smooth and stress-free.",
-    "review2" : "Hello from Turkey. Lilit took very good care of us and answered all our questions and queries very clearly.",
-    "review3" : "It was a good experience, as engineer Wissam Atef provided us with excellent support in all maintenance work. Thank you, Engineer Wissam"
-  },
-  "getTheApp" : {
-    "title1" : "Get the app",
-    "title2" : "Your Journey Starts Here",
-    "desc" : {
-      "part1" : "Take control of your real estate journey with our app. Whether you're booking a viewing, tracking your property progress, or staying updated on the latest listings, everything you need is at your fingertips.",
-      "part2" : "Download the app now and start your journey today!"
+  "citiesHome": {
+    "abu_dhabi": {
+      "title": "阿布扎比",
+      "al_reem_island": "Reem岛",
+      "saadiyat_island": "萨迪亚特岛",
+      "yas_island": "亚斯岛",
+      "al_raha_beach": "阿尔拉哈海滩"
     },
-    "rightSideContent" : {
-      "title" : "Start your journey today",
-      "para" : "with just one tap."
+    "dubai": {
+      "title": "迪拜",
+      "palm_jumeirah": "棕榈朱美拉",
+      "downtown_dubai": "迪拜市中心",
+      "dubai_creek": "迪拜湾",
+      "town_square_dubai": "迪拜城镇广场"
     },
-    "appLinks" : "Available on App Store and Google Play"
+    "sharjah": {
+      "title": "沙迦",
+      "al_khan": "阿尔汗",
+      "sharjah_waterfront_city": "沙迦滨水城",
+      "aljada": "阿尔贾达"
+    }
   },
-
-  "Common_Form_Agreements" : {
-    "agreement1" : "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
-    "agreement2" : "Agree to receive multiple calls and communications via various channels regarding my enquiry",
-    "agreement3" : "Agree to receive calls and communications via various channels on various projects, products, and services"
+  "ListPropertySection": {
+    "title": "与您信赖的品牌同行",
+    "desc": "我们将在何处发布您的房产？",
+    "title2": "发布您的房产"
+  },
+  "ListPropertyForm": {
+    "firstName": "名",
+    "Enter First Name": "请输入名",
+    "lastName": "姓",
+    "Enter Last Name": "请输入姓",
+    "email": "邮箱",
+    "Enter Email": "请输入邮箱",
+    "phone": "电话号码",
+    "purpose": "房产用途",
+    "Choose purpose": "选择用途",
+    "sell_purpose": "出售",
+    "rent_purpose": "出租",
+    "invest_purpose": "投资",
+    "errors": {
+      "firstNameRequired": "名为必填项",
+      "lastNameRequired": "姓为必填项",
+      "invalidEmail": "无效的邮箱地址",
+      "invalidPhone": "无效的电话号码",
+      "choosePurpose": "房产用途为必填项"
+    },
+    "clickingTerms": {
+      "part1": "点击提交，即表示您同意我们的",
+      "part2": "条款与条件",
+      "part3": "及隐私政策"
+    },
+    "form_submit": "提交",
+    "form_submitting": "提交中..."
+  },
+  "Why_PSI": {
+    "emirati_title": "阿联酋中心",
+    "youngster_title": "青年计划",
+    "crypto_title": "加密货币",
+    "international_title": "PSI国际",
+    "company_title": "公司简介",
+    "why_psi": {
+      "title": "为何选择PSI？",
+      "desc": "我们结合远见、专业、专门团队、热情与透明度，使Property Shop Investment能够成为阿布扎比房地产市场的标准制定者和影响者。",
+      "btn": "了解更多关于PSI"
+    },
+    "emirati_hub": {
+      "title": "PSI阿联酋中心",
+      "desc": {
+        "part1": "通过",
+        "part2": "PSI阿联酋中心，赋能阿联酋国民在房地产行业中脱颖而出并成为领导者。"
+      },
+      "btn": "了解更多关于PSI阿联酋中心"
+    },
+    "youngster_program": {
+      "title": "PSI阿布扎比青年计划",
+      "desc": {
+        "part1": "通过",
+        "part2": "PSI阿布扎比青年计划",
+        "part3": "释放您的潜力，启迪思想，塑造未来。"
+      },
+      "btn": "了解更多关于PSI青年计划"
+    },
+    "crypto": {
+      "title": "用加密货币购房",
+      "desc": {
+        "part1": "借助资源、网络、知识和国家指南，我们根据",
+        "part2": "您的需求、价值观、生活方式及目标，打造投资方案。"
+      },
+      "btn": "了解更多关于加密货币购房"
+    },
+    "international": {
+      "title": "PSI国际",
+      "desc": "50年年轻，阿联酋为财富管理、迁居和投资组合提供最佳环境。",
+      "btn": "了解更多关于PSI国际"
+    }
+  },
+  "Mortgage_Tabs": {
+    "mortgage": "按揭计算器",
+    "amortization": "摊还表",
+    "refinancing": "再融资",
+    "rentvsbuy": "租赁 vs 购买",
+    "houseafford": "购房能力",
+    "Mortgage Tools": "按揭工具",
+    "aed": "迪拉姆",
+    "ViewUnits": "查看单元",
+    "GetApproval": "立即获取预审批",
+    "MonthlyPayment": "每月还款",
+    "Yrs": "年",
+    "mortgageTab": {
+      "title": "按揭计算器",
+      "PropertyPrice": "房产价格（AED）",
+      "LoanPeriod": "贷款期限（年）",
+      "Years": "年",
+      "Downpayment": "首付款（AED）",
+      "InterestRate": "利率（%）",
+      "TotalLoanAmount": "贷款总额"
+    },
+    "amortizationTab": {
+      "title": "摊还表",
+      "LoanAmount": "贷款金额",
+      "LoanInterestRate": "贷款利率",
+      "LoanTermYears": "贷款年限",
+      "Years": "年",
+      "EarlyPayment": "提前还款",
+      "EffectOfLargerPayment": "较大还款额的效果",
+      "PaymentAmount": "还款金额",
+      "MadeAfterMonth": "在月后支付",
+      "Months": "月",
+      "MonthlyAmortization": "每月摊还额",
+      "TotalCost": "总成本",
+      "ExploreProperties": "探索房产"
+    },
+    "refinancingTab": {
+      "title": "再融资",
+      "MortgageInformation": "按揭信息",
+      "CurrentLoanBalance": "当前贷款余额",
+      "CurrentMonthlyPayments": "当前月供",
+      "EarlySettlementFees": "提前结清费用",
+      "Percentage": "百分比",
+      "CurrentLoanInterestRate": "当前贷款利率（%）",
+      "RefinanceInformation": "再融资信息",
+      "CurrentPropertyValue": "当前房产价值",
+      "CurrentEstimated": "当前估值",
+      "TermOfNewLoan": "新贷款期限",
+      "FeesToObtainNewLoan": "获取新贷款的费用",
+      "NewLoanPercentage": "百分比",
+      "NewLoanInterestRate": "新贷款利率（%）",
+      "MortgageCost": "按揭成本",
+      "MonthlyPay": "每月还款",
+      "PayDiff": "还款差额",
+      "RefinancePay": "再融资还款",
+      "BreakMonth": "终止月",
+      "Month(s)": "月"
+    },
+    "rentVsBuyTab": {
+      "Title": "租赁 vs 购买",
+      "Currentmonthlyrent": "当前月租",
+      "Expectedloanamount": "预计贷款额",
+      "Yearlyrentincrease": "年租金增长率（%）",
+      "Loantermyears": "贷款年限",
+      "Loaninterestrate": "贷款利率（%）",
+      "Expectedpropertyprice": "预计房价",
+      "Downpayment": "首付款",
+      "Downpaymentpercentage": "首付比例（%）",
+      "Yearlypropertyappreciation": "年房产增值率",
+      "Planyearstolive": "计划居住年限",
+      "Totalrentamount": "租金总额",
+      "Totalbuyamount": "购房总额",
+      "Viewsaleunits": "查看待售单元",
+      "Getpreapproval": "获取预审批"
+    },
+    "houseAffordTab": {
+      "Title": "购房能力",
+      "Grossmonthlyincome": "月总收入",
+      "Extramonthlyincome": "额外月收入",
+      "Monthlydebtrepayment": "每月债务还款",
+      "Downpayment": "首付款",
+      "Interestrate": "利率",
+      "Paymentperiod": "还款期限",
+      "Canafford": "可承担",
+      "Totalafford": "总可承受额",
+      "GeApprovalToday": "立即获取预审批"
+    }
+  },
+  "ReportDownload": {
+    "title": "市场洞察",
+    "desc": "迪拜月度报告",
+    "download": "立即下载"
+  },
+  "RealEstatePartner": {
+    "title": {
+      "part1": "您值得信赖的",
+      "part2": "房地产",
+      "part3": "合作伙伴"
+    },
+    "aboutCounter": {
+      "customers": "客户",
+      "languages": "语言",
+      "projects": "项目",
+      "locationWorldwide": "全球地点",
+      "years": "经营年数",
+      "branches": "分支机构",
+      "expertEmployees": "专业员工"
+    }
+  },
+  "AwardsSectionHome": {
+    "title": "以奖项驱动的卓越",
+    "desc": "我们重申致力于重新定义房地产标准。我们对创新的投入以及对客户的始终专注，使我们在行业中获得认可。探索我们的奖项历程，激励我们不断攀登成功的新高峰。",
+    "awards": {
+      "emaar": {
+        "title1": "EMAAR",
+        "title2": "年度经纪人",
+        "title3": "奖项 - 2018"
+      },
+      "aldar2021": {
+        "title1": "ALDAR",
+        "title3": "大使 - 2021"
+      },
+      "aldar2016": {
+        "title1": "ALDAR",
+        "title2": "最佳表现",
+        "title3": "机构第一名 - 2016"
+      },
+      "aldar2020": {
+        "title1": "ALDAR",
+        "title2": "最佳表现",
+        "title3": "机构第一名 - 2020"
+      },
+      "aldar2022": {
+        "title1": "ALDAR",
+        "title2": "最佳表现",
+        "title3": "机构第一名 - 2022"
+      },
+      "imkan": {
+        "title1": "IMKAN",
+        "title2": "最佳表现",
+        "title3": "机构第一名 - 2021"
+      }
+    }
+  },
+  "googleReview": {
+    "title": "客户评价",
+    "google": "谷歌",
+    "review1": "与他们的合作体验非常棒！他们让我的购房之旅顺畅且无压力。",
+    "review2": "来自土耳其的问候。Lilit非常照顾我们，并清晰地回答了我们所有的问题与疑虑。",
+    "review3": "这是一段很好的体验，工程师Wissam Atef在所有维护工作中为我们提供了出色的支持。谢谢你，Wissam工程师。"
+  },
+  "getTheApp": {
+    "title1": "下载应用",
+    "title2": "您的旅程从这里开始",
+    "desc": {
+      "part1": "通过我们的应用掌控您的房地产旅程。无论是预约看房、跟踪房产进度，还是随时了解最新房源，您所需的一切尽在掌中。",
+      "part2": "立即下载应用，开启您的旅程吧！"
+    },
+    "rightSideContent": {
+      "title": "今天开始您的旅程",
+      "para": "只需轻轻一点。"
+    },
+    "appLinks": "可在 App Store 和 Google Play 获取"
+  },
+  "Common_Form_Agreements": {
+    "agreement1": "同意在上午09:00至晚上09:00期间，通过多种渠道接收来自PSI的来电和通信。",
+    "agreement2": "同意就我的咨询，通过多种渠道接收多次来电和通信。",
+    "agreement3": "同意通过多种渠道接收有关不同项目、产品和服务的来电和通信。"
   },
 
   "FooterAI": {
-    "footer_brand_desc": "Property Shop Investment is the leading real estate agency in Abu Dhabi, helping you find your perfect home since 2007.",
-    "footer_company": "Company",
-    "footer_psi" : "Property Shop Investment.",
-    "footer_services": "Services",
-    "footer_popular_areas": "Popular Areas",
-    "footer_get_in_touch": "Get in Touch",
-    "footer_newsletter": "Newsletter",
-    "footer_rights": "All Rights Reserved.",
-    "footer_privacy": "Privacy Policy",
-    "footer_terms": "Terms of Use",
-    "footer_sitemap": "Sitemap",
-    "footer_cookies": "Cookies Policy",
-    "footer_links_about": "About PSI",
-    "footer_links_team": "Our Team",
-    "footer_links_careers": "Careers",
-    "footer_links_awards": "Awards & Recognition",
-    "footer_links_media": "Media Center",
-    "footer_links_testi": "Testimonials",
-    "footer_links_intl": "International",
-    "footer_links_buy": "Buy a Property",
-    "footer_links_rent": "Rent a Property",
-    "footer_links_list": "List Your Property",
-    "footer_links_manage": "Property Management",
-    "footer_links_mortgage": "Mortgage Calculator",
-    "footer_links_offplan": "Off-Plan Projects",
-    "footer_links_reports": "Market Reports",
-    "loc_Abu Dhabi": "Abu Dhabi",
-    "loc_Dubai": "Dubai",
-    "loc_Sharjah": "Sharjah",
-    "loc_Al Ain": "Al Ain",
-    "loc_Ras Al Khaimah": "Ras Al Khaimah",
-    "loc_Al Reem Island": "Al Reem Island",
-    "loc_Yas Island": "Yas Island",
-    "loc_Saadiyat Island": "Saadiyat Island",
-    "loc_Al Raha Beach": "Al Raha Beach",
-    "loc_Dubai Marina": "Dubai Marina",
-    "loc_Downtown Dubai": "Downtown Dubai",
-    "loc_Dubai Creek": "Dubai Creek",
-    "loc_Palm Jumeirah": "Palm Jumeirah",
-    "loc_coming_soon": "Coming Soon",
-    "loc_updating": "We are currently updating our listings for",
-    "form_firstName": "First Name",
-    "form_lastName": "Last Name",
-    "form_email": "Email Address",
-    "form_phone": "Phone Number",
-    "form_submit": "Submit",
-    "form_schedule": "Schedule Viewing",
-    "form_property_purpose": "Property Purpose",
-    "form_choose_purpose": "Choose purpose",
-    "form_sell": "Sell",
-    "form_rent": "Rent",
-    "form_manage": "Property Management",
-    "form_describe_prop": "Please describe your property",
-    "form_describe_placeholder": "Provide details about size, location, bedrooms...",
-    "form_agreement": "By clicking Submit, you agree to our Terms & Conditions and Privacy Policy.",
-    "form_marketing_consent": "I agree to receive calls and communications via various channels from PSI.",
-    "form_register_interest": "Register Your Interest",
-    "btn_search": "Search",
-    "btn_preview": "Preview",
-    "btn_inquire": "Inquire",
+    "footer_brand_desc": "Property Shop Investment 是阿布扎比领先的房地产代理，自2007年以来帮助您找到理想的家。",
+    "footer_company": "公司",
+    "footer_psi": "Property Shop Investment.",
+    "footer_services": "服务",
+    "footer_popular_areas": "热门区域",
+    "footer_get_in_touch": "联系我们",
+    "footer_newsletter": "新闻通讯",
+    "footer_rights": "版权所有。",
+    "footer_privacy": "隐私政策",
+    "footer_terms": "使用条款",
+    "footer_sitemap": "网站地图",
+    "footer_cookies": "Cookie政策",
+    "footer_links_about": "关于PSI",
+    "footer_links_team": "我们的团队",
+    "footer_links_careers": "职业机会",
+    "footer_links_awards": "奖项与荣誉",
+    "footer_links_media": "媒体中心",
+    "footer_links_testi": "客户评价",
+    "footer_links_intl": "国际业务",
+    "footer_links_buy": "购买房产",
+    "footer_links_rent": "租赁房产",
+    "footer_links_list": "发布您的房产",
+    "footer_links_manage": "物业管理",
+    "footer_links_mortgage": "按揭计算器",
+    "footer_links_offplan": "期房项目",
+    "footer_links_reports": "市场报告",
+    "loc_Abu Dhabi": "阿布扎比",
+    "loc_Dubai": "迪拜",
+    "loc_Sharjah": "沙迦",
+    "loc_Al Ain": "艾因",
+    "loc_Ras Al Khaimah": "哈伊马角",
+    "loc_Al Reem Island": "Reem岛",
+    "loc_Yas Island": "亚斯岛",
+    "loc_Saadiyat Island": "萨迪亚特岛",
+    "loc_Al Raha Beach": "阿尔拉哈海滩",
+    "loc_Dubai Marina": "迪拜码头",
+    "loc_Downtown Dubai": "迪拜市中心",
+    "loc_Dubai Creek": "迪拜湾",
+    "loc_Palm Jumeirah": "棕榈朱美拉",
+    "loc_coming_soon": "即将推出",
+    "loc_updating": "我们正在更新以下区域的房源：",
+    "form_firstName": "名",
+    "form_lastName": "姓",
+    "form_email": "电子邮箱",
+    "form_phone": "电话号码",
+    "form_submit": "提交",
+    "form_schedule": "预约看房",
+    "form_property_purpose": "房产用途",
+    "form_choose_purpose": "选择用途",
+    "form_sell": "出售",
+    "form_rent": "出租",
+    "form_manage": "物业管理",
+    "form_describe_prop": "请描述您的房产",
+    "form_describe_placeholder": "请提供面积、位置、卧室数量等详细信息……",
+    "form_agreement": "点击提交即表示您同意我们的条款与条件及隐私政策。",
+    "form_marketing_consent": "我同意通过多种渠道接收来自PSI的来电和通讯。",
+    "form_register_interest": "登记您的意向",
+    "btn_search": "搜索",
+    "btn_preview": "预览",
+    "btn_inquire": "咨询",
     "btn_whatsapp": "WhatsApp",
-    "btn_details": "Unit Details",
-    "btn_call": "Call Now",
-    "btn_view_map": "View Map",
-    "btn_download_profile": "Download Company Profile",
-    "btn_discover_hub": "Discover PSI Emirati Hub",
-    "btn_download_report": "Download Now",
-    "btn_signup": "Sign up",
-    "btn_submit_request": "Submit Request",
-    "btn_next_step": "Next Step",
-    "btn_join": "Join",
-    "btn_load_more": "Load More Projects",
-    "btn_view_project": "View Project",
-    "btn_download_brochure": "Download Brochure",
-    "btn_gallery": "Gallery",
-    "btn_compare": "Compare",
-    "btn_list": "List",
-    "btn_overview": "Overview",
-    "btn_units": "Units",
-    "btn_floor_plans": "Floor Plans",
-    "btn_location": "Location",
-    "btn_brochure": "Brochure",
-    "btn_save": "Save",
-    "btn_saved": "Saved",
-    "btn_remove": "Remove",
-    "btn_master_plan": "Master Plan",
-    "btn_nearby": "Nearby",
-    "btn_developer": "Developer",
-    "btn_video_tour": "Video Tour",
-    "company_address" : {
-      "part1" : "Office No. 4410 & 4411",
-      "part2" : "Addax Tower Level 44",
-      "part3" : "Al Reem Island, City of Lights",
-      "part4" : "Abu Dhabi, United Arab Emirates"
+    "btn_details": "单元详情",
+    "btn_call": "立即拨打",
+    "btn_view_map": "查看地图",
+    "btn_download_profile": "下载公司简介",
+    "btn_discover_hub": "探索PSI阿联酋中心",
+    "btn_download_report": "立即下载",
+    "btn_signup": "注册",
+    "btn_submit_request": "提交请求",
+    "btn_next_step": "下一步",
+    "btn_join": "加入",
+    "btn_load_more": "加载更多项目",
+    "btn_view_project": "查看项目",
+    "btn_download_brochure": "下载宣传册",
+    "btn_gallery": "图片集",
+    "btn_compare": "对比",
+    "btn_list": "列表",
+    "btn_overview": "概览",
+    "btn_units": "单元",
+    "btn_floor_plans": "楼层平面图",
+    "btn_location": "位置",
+    "btn_brochure": "宣传册",
+    "btn_save": "收藏",
+    "btn_saved": "已收藏",
+    "btn_remove": "移除",
+    "btn_master_plan": "总体规划",
+    "btn_nearby": "附近",
+    "btn_developer": "开发商",
+    "btn_video_tour": "视频导览",
+    "company_address": {
+      "part1": "办公室编号4410和4411",
+      "part2": "阿达克斯塔44层",
+      "part3": "光明之城Reem岛",
+      "part4": "阿布扎比，阿拉伯联合酋长国"
     }
   },
 
   "LocaleSwitcher": {
-    "label": "Change language",
-    "locale": "{locale, select, ar {🇦🇪 阿拉伯语} en {🇺🇸 英语} cn {🇨🇳 中文} ru {🇷🇺 俄语} de {🇩🇪 德语} other {未知}}",
-    "buy": "Buy",
-    "rent": "Rent",
-    "communities": "Communities",
-    "about": "About Us",
-    "careers": "Careers",
-    "list": "List Your Property",
-    "international": "International",
-    "contact": "Contact Us",
-    "developers": "Developers",
-    "featured projects": "Featured Projects",
-    "more": "More",
-    "mortgage": "Mortgage Calculator",
-    "luxury": "Luxury Projects",
-    "properties": "Properties",
-    "projects": "Projects",
-    "services": "Services",
-    "company": "Company",
-    "insights": "Insights",
-    "psi emirati hub": "PSI Emirati Hub",
-    "youngsters program": "Youngsters Program",
-    "invest in uae": "Invest in UAE",
-    "villa calculator": "Villa Calculator",
-    "newsletters": "Newsletters",
-    "articles": "Articles",
-    "property management": "Property Management",
-    "login": "Login",
-    "logout": "Logout",    
-    "Featured": "Featured",
-    "Explore": "Explore",
-    "Abu Dhabi": "Abu Dhabi",
+    "label": "切换语言",
+    "locale": "{locale, select, ar {🇦🇪 阿拉伯语} en {🇺🇸 英语} cn {🇨🇳 中文} ru {🇷🇺 俄语} de {🇩🇪 荷兰语} other {未知}}",
+    "buy": "购买",
+    "rent": "租赁",
+    "communities": "社区",
+    "about": "关于我们",
+    "careers": "职业机会",
+    "list": "发布您的房产",
+    "international": "国际",
+    "contact": "联系我们",
+    "developers": "开发商",
+    "featured projects": "精选项目",
+    "more": "更多",
+    "mortgage": "按揭计算器",
+    "luxury": "奢华项目",
+    "properties": "房产",
+    "projects": "项目",
+    "services": "服务",
+    "company": "公司",
+    "insights": "洞察",
+    "psi emirati hub": "PSI阿联酋中心",
+    "youngsters program": "青年计划",
+    "invest in uae": "投资阿联酋",
+    "villa calculator": "别墅计算器",
+    "newsletters": "新闻通讯",
+    "articles": "文章",
+    "property management": "物业管理",
+    "login": "登录",
+    "logout": "登出",
+    "Featured": "精选",
+    "Explore": "探索",
+    "Abu Dhabi": "阿布扎比",
     "Sama Yas": "Sama Yas",
     "Yas Riva": "Yas Riva",
-    "Manarat Living - Saadiyat": "Manarat Living - Saadiyat",
-    "The Arthouse": "The Arthouse",
-    "Bloom Living - Almeria": "Bloom Living - Almeria",
-    "Residential": "Residential",
-    "Buy Apartments": "Buy Apartments",
-    "Buy Villas": "Buy Villas",
-    "Rent Apartments": "Rent Apartments",
-    "Rent Villas": "Rent Villas",
-    "Commercial": "Commercial",
-    "Offices for Sale": "Offices for Sale",
-    "Offices for Rent": "Offices for Rent",
-    "Retail Spaces": "Retail Spaces",
-    "Popular Areas": "Popular Areas",
-    "Al Reem Island": "Al Reem Island",
-    "Yas Island": "Yas Island",
-    "Saadiyat Island": "Saadiyat Island",
-    "Palm Jumeirah": "Palm Jumeirah",
-    "New Launches": "New Launches",
+    "Manarat Living - Saadiyat": "Manarat Living - 萨迪亚特",
+    "The Arthouse": "艺术之家",
+    "Bloom Living - Almeria": "Bloom Living - 阿尔梅里亚",
+    "Residential": "住宅",
+    "Buy Apartments": "购买公寓",
+    "Buy Villas": "购买别墅",
+    "Rent Apartments": "租赁公寓",
+    "Rent Villas": "租赁别墅",
+    "Commercial": "商业地产",
+    "Offices for Sale": "待售办公室",
+    "Offices for Rent": "待租办公室",
+    "Retail Spaces": "零售空间",
+    "Popular Areas": "热门区域",
+    "Al Reem Island": "Reem岛",
+    "Yas Island": "亚斯岛",
+    "Saadiyat Island": "萨迪亚特岛",
+    "Palm Jumeirah": "棕榈朱美拉",
+    "New Launches": "最新发布",
     "Aldar": "Aldar",
     "Emaar": "Emaar",
     "Imkan": "Imkan",
     "Meraas": "Meraas",
-    "Dubai Properties": "Dubai Properties",
+    "Dubai Properties": "迪拜地产",
     "NSHAMA": "NSHAMA",
-    "Valuation & Finance": "Valuation & Finance",
-    "Client Services": "Client Services",
-    "About PSI": "About PSI",
-    "Our Story": "Our Story",
-    "Awards": "Awards",
-    "Media": "Media"
+    "Valuation & Finance": "估值与金融",
+    "Client Services": "客户服务",
+    "About PSI": "关于PSI",
+    "Our Story": "我们的故事",
+    "Awards": "奖项",
+    "Media": "媒体"
   },
 
+  "About_Us_Page": {
+    "heroTitle": "关于我们",
+    "heroBreadcrumb": "首页 > 关于我们",
+    "aboutTag": "关于",
+    "mainHeading": "物业商投资公司（PROPERTY SHOP INVESTMENT）",
+    "paragraph1": {
+      "part1": "成立于2007年，",
+      "part2": "Property Shop Investment（PSI）",
+      "part3": "已发展成为房地产领域的卓越力量，在阿联酋及国际市场均展示了强劲的业绩。总部位于阿布扎比，并多次被公认为阿联酋领先的经纪公司。PSI的持续增长源于其对创新、卓越绩效和客户至上承诺的坚持。"
+    },
+    "paragraph2": "目前，PSI由一支由1500多名专业人士组成的多元化团队构成，涵盖50多个国籍，在全球设有17个分支机构。这种广泛的专业知识与国际影响力，促成了一个完整且整合的房地产生态系统。",
+    "paragraph3": "我们的服务范围涵盖住宅与商业投资、期房与转售交易、全面的资产管理、先进的抵押贷款解决方案以及创新的AI驱动房产科技。凭借清晰的战略愿景与果断的领导力，PSI正积极拓展版图，为机构投资者、开发商及全球企业提供统一的世界级房地产体验。",
+    "Testimonials": {
+      "Said": "赛义德·阿布·莱拉",
+      "Said_designation": "董事长",
+      "Said_text": "自2007年以来，Property Shop Investment（PSI）一直引领着阿联酋房地产的变革。迈向2024年，我们的目标是实现全球认可，推动创新并超越投资者期望。我们致力于重新定义全球房地产，与我们的愿景保持一致，在各个市场引领与激励。",
+      "Firas": "费拉斯·阿布·莱拉",
+      "Firas_designation": "首席执行官",
+      "Firas_text": "PSI与阿布扎比的增长与多元化目标保持一致，旨在巩固其作为顶级投资目的地的地位。我们的全球愿景与阿布扎比的发展战略相辅相成，承诺超越投资者期望并促进经济繁荣。",
+      "Amer": "阿梅尔·萨德",
+      "Amer_designation": "首席执行官",
+      "Amer_text": "PSI致力于在房地产领域体现迪拜的创新精神，通过吸引全球投资并促进经济增长，为其愿景贡献力量。我们将提升迪拜房地产市场，增强投资者信心并树立行业新标准。"
+    },
+    "CoreValues": {
+      "title": "我们的核心价值观",
+      "paragraph1": "我们在行业中的良好声誉源于我们始终如一地追求质量与卓越。凭借远见、专业知识、专业团队、热情与透明度的结合，Property Shop Investment已成为阿布扎比房地产市场的领先影响者。",
+      "paragraph2": "作为一家屡获殊荣的全方位房地产经纪公司，Property Shop Investment因持续超越期望而备受认可。我们追求最高绩效，连续十年荣获“阿布扎比第一房地产经纪商”称号。我们专注于为企业与私人客户提供简洁可靠的服务，确保客户的完全满意。",
+      "paragraph3": "我们所有的服务都根据每位客户的需求量身定制，我们的承诺让承诺化为现实。"
+    },
+    "CoreValues_List": {
+      "WE_GATHER": {
+        "title": "我们汇聚",
+        "description": "不仅仅是口号。我们汇聚体现了我们在文化、商业理念与运营中的一切核心。"
+      },
+      "NOVELTY": {
+        "title": "创新",
+        "description": "致力于在我们的服务和努力中保持原创性。"
+      },
+      "ACCOUNTABILITY": {
+        "title": "责任",
+        "description": "确保公平、诚信、诚实、透明、高效，并承担应有的责任。"
+      }
+    },
+    "Our_Services": {
+      "heroTitle": "我们的服务",
+      "heroDescription": "我们的声誉建立在卓越、透明和远见领导力之上。Property Shop Investment作为阿布扎比房地产行业的引领者，树立了行业标杆。",
+      "downloadProfile": "下载公司简介",
+      "SALES_title": "销售",
+      "SALES_description": "我们的销售团队是您值得信赖的向导，简化复杂的房地产市场。从谈判到法律程序，我们确保公平交易并保护您的利益，为您提供符合财务需求的专业建议。",
+      "LANDLORDS_title": "业主服务",
+      "LANDLORDS_description": "我们的销售与租赁团队在最大化物业价值的同时，始终优先考虑客户隐私。与营销团队的紧密合作，确保我们在阿联酋拥有强大的房源库。",
+      "LEASING_title": "租赁",
+      "LEASING_description": "我们的租赁团队以高度保密的方式最大化物业价值。与市场营销部门的密切合作确保我们拥有满足客户需求的大量房源。",
+      "DEVELOPMENT_MANAGEMENT_title": "开发管理",
+      "DEVELOPMENT_MANAGEMENT_description": "PSI以最佳实践与值得信赖的合作伙伴为基础，打造高质量、创新的开发项目，为客户与投资者提供持久价值，致力于重新定义质量、创意与客户导向标准。",
+      "PROPERTY_MANAGEMENT_title": "物业管理",
+      "PROPERTY_MANAGEMENT_description": "PSI设有集中化的物业管理部门，代表业主管理住宅、商业及工业物业，以维护资产价值并确保良好的投资回报。",
+      "MARKETING_title": "市场营销",
+      "MARKETING_description": "PSI的内部营销中心为客户提供量身定制的解决方案。通过多渠道策略与深度洞察，我们为开发商、投资者、卖家与房东打造无缝体验，促进品牌忠诚度与知名度。"
+    },
+    "RealEstatePartner": {
+      "title": {
+        "part1": "您值得信赖的",
+        "part2": "房地产",
+        "part3": "合作伙伴"
+      },
+      "aboutCounter": {
+        "customers": "客户",
+        "languages": "语言",
+        "projects": "项目",
+        "locationWorldwide": "全球地点",
+        "years": "经营年数",
+        "branches": "分支机构",
+        "expertEmployees": "专业员工"
+      }
+    },
+    "DISCOVER_title": "探索PSI",
+    "DISCOVER_desc": "揭示我们的愿景、创新与对您理想之家的承诺",
+    "PARTNERS_title": "合作伙伴",
+    "PARTNERS_desc": "认识那些实现您梦想的远见者：我们的房地产开发商。",
+    "STRATEGIC_title": {
+      "part1": "战略",
+      "part2": "联盟"
+    },
+    "STRATEGIC_desc": "将卓越的房地产服务带到您身边",
+    "STRATEGIC_places": {
+      "UAE": "阿拉伯联合酋长国",
+      "India": "印度",
+      "USA": "美国",
+      "Poland": "波兰",
+      "Romania": "罗马尼亚",
+      "UK": "英国"
+    }
+  },
+  "About_Locations": {
+    "title": "我们的地点",
+    "desc": "探索我们的目的地：揭开机遇之图。",
+    "AbuDhabi_title": "阿布扎比",
+    "Dubai_title": "迪拜",
+    "Sharjah_title": "沙迦"
+  },
+  "PSI_Map_Locations": {
+    "view_map": "查看地图",
+    "PSI_Head_Office": {
+      "name": "PSI总部",
+      "address": "阿布扎比·瑞姆岛",
+      "address_community": "瑞姆岛",
+      "address_city": "阿布扎比",
+      "off_address": "阿联酋阿布扎比光明之城瑞姆岛阿达克斯塔44层4410&4411号办公室"
+    },
+    "PSI_Assets": {
+      "name": "PSI资产",
+      "address": "PSI资产，阿布扎比瑞姆岛",
+      "address_community": "瑞姆岛",
+      "address_city": "阿布扎比",
+      "off_address": "阿联酋阿布扎比瑞姆岛Jazeerat Al Reem | Shams Boutik一楼"
+    },
+    "Dubai_Hills_Branch": {
+      "name": "迪拜山庄分部",
+      "address": "迪拜山庄商业园3号楼",
+      "address_community": "迪拜山庄",
+      "address_city": "迪拜",
+      "off_address": "迪拜山庄商业园3号楼104室"
+    },
+    "Mamsha_Branch": {
+      "name": "曼沙分部",
+      "address": "阿布扎比萨迪亚特岛",
+      "address_community": "萨迪亚特岛",
+      "address_city": "阿布扎比",
+      "off_address": "阿联酋阿布扎比萨迪亚特岛曼沙9号楼P3-R13单元"
+    },
+    "Waters_Edge_Branch": {
+      "name": "水岸分部",
+      "address": "阿布扎比亚斯岛",
+      "address_community": "亚斯岛",
+      "address_city": "阿布扎比",
+      "off_address": "阿联酋阿布扎比亚斯岛Al Maha街"
+    },
+    "St_Regis_Office": {
+      "name": "圣瑞吉办公室",
+      "address": "阿布扎比萨迪亚特岛",
+      "address_community": "萨迪亚特岛",
+      "address_city": "阿布扎比",
+      "off_address": "阿联酋阿布扎比萨迪亚特岛PSI圣瑞吉办公室"
+    },
+    "Palm_Jumeirah_Branch": {
+      "name": "朱美拉棕榈岛分部",
+      "address": "迪拜朱美拉棕榈岛",
+      "address_community": "朱美拉棕榈岛",
+      "address_city": "迪拜",
+      "off_address": "阿联酋迪拜朱美拉棕榈岛金色大道8号楼"
+    },
+    "Conrad_Etihad_Towers": {
+      "name": "康莱德阿提哈德塔办公室",
+      "address": "阿布扎比巴提恩区",
+      "address_community": "巴提恩区",
+      "address_city": "阿布扎比",
+      "off_address": "阿联酋阿布扎比滨海路康莱德阿提哈德塔"
+    },
+    "Benelux_Branch": {
+      "name": "贝内卢克斯分部",
+      "address": "迪拜商业湾",
+      "address_community": "商业湾",
+      "address_city": "迪拜",
+      "off_address": "迪拜商业湾Sobha Sapphire大厦403室"
+    }
+  },
   "ProjectPage": {
     "overview": "概览",
     "gallery": "相册",
@@ -441,10 +663,22 @@
   "InquiryForm": {
     "title": "登记信息",
     "fields": {
-      "firstName": { "label": "名字", "placeholder": "请输入名字" },
-      "lastName": { "label": "姓氏", "placeholder": "请输入姓氏" },
-      "email": { "label": "电子邮箱地址", "placeholder": "name@example.com" },
-      "phone": { "label": "联系电话", "placeholder": "+971 5x xxx xxxx" },
+      "firstName": {
+        "label": "名字",
+        "placeholder": "请输入名字"
+      },
+      "lastName": {
+        "label": "姓氏",
+        "placeholder": "请输入姓氏"
+      },
+      "email": {
+        "label": "电子邮箱地址",
+        "placeholder": "name@example.com"
+      },
+      "phone": {
+        "label": "联系电话",
+        "placeholder": "+971 5x xxx xxxx"
+      },
       "timeSlot": {
         "label": "首选联系时间",
         "placeholder": "请选择时间",
@@ -457,7 +691,10 @@
           "17_18": "17:00–18:00"
         }
       },
-      "invitedBy": { "label": "谁邀请了您？", "placeholder": "例如：朋友、顾问姓名" }
+      "invitedBy": {
+        "label": "谁邀请了您？",
+        "placeholder": "例如：朋友、顾问姓名"
+      }
     },
     "buttons": {
       "submit": "提交",

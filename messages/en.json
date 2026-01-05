@@ -3,6 +3,67 @@
     "sign_up_btn": "Sign Up",
     "more_btn": "Explore More"
   },
+  "MainSliderHome": {
+    "slides": {
+      "bashayer_residences": {
+        "title": "Bashayer Residences",
+        "location": "Hudayriyat Island",
+        "description": "Situated on Hudayriyat Island, Abu Dhabi, Bashayer Residences is a refined collection of waterfront apartments with modern layouts, elegant finishes, and expansive skyline views - enhanced by community amenities that elevate everyday living."
+      },
+      "bashayer_villas": {
+        "title": "Bashayer Villas",
+        "location": "Hudayriyat Island",
+        "description": "Situated on Hudayriyat Island, Abu Dhabi, Bashayer Villas is a serene gated community where every villa features spacious interiors, elegant finishes, and seamless waterfront views. With an array of world-class amenities, it stands as a distinctive retreat designed for exceptional living."
+      },
+      "muheira_2": {
+        "title": "Muheira 2",
+        "location": "Al Reem Island",
+        "description": "Muheira comprises two thoughtfully designed residential towers located on Reem Island. Offering a perfect blend of modern living and waterfront tranquility, Muheira provides residents with the opportunity to experience urban vibrancy surrounded by natural beauty."
+      },
+      "stellar_by_elie_saab": {
+        "title": "Stellar By Elie Saab",
+        "location": "Yas Island",
+        "description": "Stellar By Elie Saab stands as a masterpiece of form and fluidity. Its sculpted design blends soft lines with refined geometry, creating a seamless connection between architecture and nature."
+      },
+      "hilton_residences": {
+        "title": "Hilton Residences",
+        "location": "Dubai",
+        "description": "Rising 38 floors above Jumeirah Lake Towers, Hilton Residences Dubai JLT reimagines urban luxury through the lens of Hilton’s timeless hospitality. Every detail reflects sophistication designed for modern city living."
+      },
+      "loyalty_program": {
+        "title": "Beyond Real Estate, Beyond Limits",
+        "features": [
+          "Exclusive discounts on furniture, landscaping, smart tech, tourism, and more",
+          "B2B partnerships adding value beyond the sale",
+          "Easy client registration via direct sign-up",
+          "Boosts satisfaction, loyalty, and partner exposure",
+          "Scalable with revenue potential through partner deals"
+        ]
+      }
+    }
+  },
+  "citiesHome": {
+    "abu_dhabi": {
+      "title": "Abu Dhabi",
+      "al_reem_island": "Al Reem Island",
+      "saadiyat_island": "Saadiyat Island",
+      "yas_island": "Yas Island",
+      "al_raha_beach": "Al Raha Beach"
+    },
+    "dubai": {
+      "title": "Dubai",
+      "palm_jumeirah": "Palm Jumeirah",
+      "downtown_dubai": "Downtown Dubai",
+      "dubai_creek": "Dubai Creek",
+      "town_square_dubai": "Town Square Dubai"
+    },
+    "sharjah": {
+      "title": "Sharjah",
+      "al_khan": "Al Khan",
+      "sharjah_waterfront_city": "Sharjah Waterfront City",
+      "aljada": "Aljada"
+    }
+  },
   "ListPropertySection": {
     "title": "BE with the Brand you Trust",
     "desc": "Where will we list your property?",
@@ -312,6 +373,173 @@
     "Our Story": "Our Story",
     "Awards": "Awards",
     "Media": "Media"
+  },
+  "About_Us_Page": {
+    "heroTitle": "ABOUT US",
+    "heroBreadcrumb": "Home > About Us",
+    "aboutTag": "About",
+    "mainHeading": "PROPERTY SHOP INVESTMENT",
+    "paragraph1": {
+      "part1": "Established in 2007",
+      "part2": "Property Shop Investment (PSI)",
+      "part3": "has evolved into a preeminent force within the real estate sector, demonstrating a robust track record both within the UAE and across international markets. Headquartered in Abu Dhabi, and consistently recognized as the UAE’s leading brokerage firm, PSI’s sustained growth is underpinned by a commitment to innovation, superior performance, and an unwavering dedication to its clientele."
+    },
+    "paragraph2": "Currently, PSI comprises a diverse team of over 1,500 professionals representing more than 50 nationalities, operating through 17 branches globally. This extensive expertise and international reach facilitate the provision of a fully integrated real estate ecosystem.",
+    "paragraph3": "Our capabilities span residential and commercial investments, off-plan and resale transactions, comprehensive asset management, sophisticated mortgage solutions, and pioneering AI-powered property technologies. Guided by a clear strategic vision and decisive leadership, PSI is actively pursuing expansion to deliver a unified, world-class real estate experience for institutional investors, developers, and global enterprises.",
+    "Testimonials": {
+      "Said": "Said Abu Laila",
+      "Said_designation": "Chairman",
+      "Said_text": "Since 2007, Property Shop Investment (PSI) has led the transformation of UAE's real estate. Moving into 2024, our goal is global recognition, driving innovation and exceeding investor expectations. We're committed to redefining real estate globally, aligning with our vision to lead and inspire across markets.",
+      "Firas": "Firas Abu Laila",
+      "Firas_designation": "Chief Executive Officer",
+      "Firas_text": "PSI aligns with Abu Dhabi's growth and diversification goals, aiming to bolster its position as a top investment destination. Our global ambitions complement Abu Dhabi's vision, promising to surpass investor expectations and contribute to its economic prosperity.",
+      "Amer": "Amer Saadeh",
+      "Amer_designation": "Chief Executive Officer",
+      "Amer_text": "PSI aims to mirror Dubai's innovative spirit in real estate, contributing to its vision by attracting global investments and fostering economic growth. We're set to elevate Dubai's real estate market, enhancing investor confidence and setting new industry standards."
+    },
+    "CoreValues": {
+      "title": "Our Core Values",
+      "paragraph1": "Our strong reputation in the industry is founded on our continuous commitment to quality and excellence in all the services we provide. With a blend of vision, expertise, specialized teams, enthusiasm, and transparency, Property Shop Investment has established itself as a leading influencer in Abu Dhabi's real estate market.",
+      "paragraph2": "As an award-winning, full-service brokerage, Property Shop Investment is recognized for consistently exceeding expectations. We strive for the highest performance and have proudly held the title of 'Number One Real Estate Broker in Abu Dhabi' for ten consecutive years. Our focus on delivering straightforward and dependable services to both corporate and private clients guarantee complete customer satisfaction.",
+      "paragraph3": "All our services are customized to meet individual client needs, and our dedication transforms promises into reality."
+    },
+    "CoreValues_List": {
+      "WE_GATHER": {
+        "title": "WE GATHER",
+        "description": "Not only a slogan. We gather embodies everything we stand for in our culture, business philosophy and operations."
+      },
+      "NOVELTY": {
+        "title": "NOVELTY",
+        "description": "Devoted to originality in our services, efforts."
+      },
+      "ACCOUNTABILITY": {
+        "title": "ACCOUNTABILITY",
+        "description": "Ensuring fairness, integrity, honesty, transparency, effectiveness and commitment to responsibility."
+      }
+    },
+    "Our_Services": {
+      "heroTitle": "OUR SERVICES",
+      "heroDescription": "Our reputation rests on excellence, transparency, and visionary leadership. Property Shop Investment sets industry benchmarks as Abu Dhabi's real estate influencer.",
+      "downloadProfile": "Download Company Profile",
+      "SALES_title": "SALES",
+      "SALES_description": "Our sales team serves as your trusted guide, simplifying the complex property market. From negotiations to legalities, we ensure fair deals and protect your interests, providing tailored advice to match your financial needs.",
+      "LANDLORDS_title": "LANDLORDS",
+      "LANDLORDS_description": "Our listing teams, for sales and leasing, strategically maximize property value while prioritizing client confidentiality. Close collaboration with our marketing team ensures a robust inventory of property listings across the UAE.",
+      "LEASING_title": "LEASING",
+      "LEASING_description": "Our listing teams, for sales and leasing, maximize property value with strict confidentiality. Collaborating closely with marketing ensures a vast inventory for your property needs.",
+      "DEVELOPMENT_MANAGEMENT_title": "DEVELOPMENT MANAGEMENT",
+      "DEVELOPMENT_MANAGEMENT_description": "PSI builds on best practices and trusted partners to deliver high-quality, innovative developments that provide lasting value for clients and investors, aiming to redefine the standards in quality, creativity, and client focus.",
+      "PROPERTY_MANAGEMENT_title": "PROPERTY MANAGEMENT",
+      "PROPERTY_MANAGEMENT_description": "PSI has a centralised property management department that manages residential, commercial, and industrial properties on behalf of owners to preserve the value of their property and maintaining promising returns on investments.",
+      "MARKETING_title": "MARKETING",
+      "MARKETING_description": "PSI's in-house marketing hub offers tailored solutions for client journeys. With multi-channel strategies and deep insights, we create seamless experiences for developers, investors, sellers, and landlords, fostering brand loyalty and recognition."
+    },
+    "RealEstatePartner": {
+      "title": {
+        "part1": "YOUR TRUSTED",
+        "part2": "Real Estate",
+        "part3": "PARTNER"
+      },
+      "aboutCounter": {
+        "customers": "Customers",
+        "languages": "Languages",
+        "projects": "Projects",
+        "locationWorldwide": "Location Worldwide",
+        "years": "Years in Business",
+        "branches": "Branches",
+        "expertEmployees": "Expert Employees"
+      }
+    },
+    "DISCOVER_title": "DISCOVER PSI",
+    "DISCOVER_desc": "Unveiling Our Vision, Innovations, and Commitment to Your Dream Home",
+    "PARTNERS_title": "PARTNERS",
+    "PARTNERS_desc": "Meet the Visionaries Behind Your Dreams: Our Real Estate Developers.",
+    "STRATEGIC_title": {
+      "part1": "STRATEGIC",
+      "part2": "Alliances"
+    },
+    "STRATEGIC_desc": "Bringing Real Estate Excellence to Your Doorstep",
+    "STRATEGIC_places": {
+      "UAE": "United Arab Emirates",
+      "India": "India",
+      "USA": "USA",
+      "Poland": "Poland",
+      "Romania": "Romania",
+      "UK": "United Kingdom"
+    }
+  },
+  "About_Locations": {
+    "title": "OUR LOCATIONS",
+    "desc": "Discover Our Destinations: Unveiling the Map of Opportunities.",
+    "AbuDhabi_title": "Abu Dhabi",
+    "Dubai_title": "Dubai",
+    "Sharjah_title": "Sharjah"
+  },
+  "PSI_Map_Locations": {
+    "view_map": "View map",
+    "PSI_Head_Office": {
+      "name": "PSI Head Office",
+      "address": "Al Reem Island, Abu Dhabi",
+      "address_community": "Al Reem Island",
+      "address_city": "Abu Dhabi",
+      "off_address": "Office No. 4410 & 4411, Addax Tower Level 44, Al Reem Island, City of Lights, Abu Dhabi, United Arab Emirates"
+    },
+    "PSI_Assets": {
+      "name": "PSI Assets",
+      "address": "PSI Assets, Al Reem Island, Abu Dhabi",
+      "address_community": "Al Reem Island",
+      "address_city": "Abu Dhabi",
+      "off_address": "1st Floor, Shams Boutik | Jazeerat Al Reem, Al Reem Island | Abu Dhabi, United Arab Emirates"
+    },
+    "Dubai_Hills_Branch": {
+      "name": "Dubai Hills Branch",
+      "address": "Business Park 3, Dubai Hills Estate",
+      "address_community": "Dubai Hills Estate",
+      "address_city": "Dubai",
+      "off_address": "Office #104, Business Park 3, Dubai Hills Estate"
+    },
+    "Mamsha_Branch": {
+      "name": "Mamsha Branch",
+      "address": "Saadiyat Island, Abu Dhabi",
+      "address_community": "Saadiyat Island",
+      "address_city": "Abu Dhabi",
+      "off_address": "Mamsha Al Saadiyat, Building 9, Unit P3-R13, Abu Dhabi, United Arab Emirates"
+    },
+    "Waters_Edge_Branch": {
+      "name": "Waters Edge Branch",
+      "address": "Yas Island, Abu Dhabi",
+      "address_community": "Yas Island",
+      "address_city": "Abu Dhabi",
+      "off_address": "Al Maha St, Yas Island, Abu Dhabi, United Arab Emirates"
+    },
+    "St_Regis_Office": {
+      "name": "St. Regis Office",
+      "address": "Saadiyat Island, Abu Dhabi",
+      "address_community": "Saadiyat Island",
+      "address_city": "Abu Dhabi",
+      "off_address": "PSI St Regis, Saadiyat Island, Abu Dhabi, United Arab Emirates"
+    },
+    "Palm_Jumeirah_Branch": {
+      "name": "Palm Jumeirah Branch",
+      "address": "Palm Jumeirah, Dubai",
+      "address_community": "Palm Jumeirah",
+      "address_city": "Dubai",
+      "off_address": "Golden Mile Building 8, Palm Jumeirah, Dubai, United Arab Emirates"
+    },
+    "Conrad_Etihad_Towers": {
+      "name": "Conrad Etihad Towers",
+      "address": "Al Bateen, Abu Dhabi",
+      "address_community": "Al Bateen",
+      "address_city": "Abu Dhabi",
+      "off_address": "Conrad Abu Dhabi Etihad Towers, Corniche Rd, Abu Dhabi, United Arab Emirates"
+    },
+    "Benelux_Branch": {
+      "name": "Benelux Branch",
+      "address": "Business Bay, Dubai",
+      "address_community": "Business Bay",
+      "address_city": "Dubai",
+      "off_address": "Office 403, Sobha Sapphire, Business Bay, Dubai"
+    }
   },
   "ProjectPage": {
     "overview": "Overview",
@@ -1296,5 +1524,104 @@
       ]
     },
     "backToMortgage": "Back to Mortgage Loan"
+  },
+  "EmiratiHub": {
+    "Hero": {
+      "nav_about": "About Program",
+      "nav_awards": "Awards",
+      "nav_faqs": "FAQs",
+      "title_line1": "PSI Emirati Hub",
+      "title_line2": "Join the Leader's Territory",
+      "subtitle": "PSI’s Emirati Hub partners with Dubai Broker Program to encourage UAE nationals to enter real estate.",
+      "cta": "Join us now"
+    },
+    "Stats": {
+      "title": "PSI in Numbers",
+      "stat1": {
+        "value": "#1",
+        "label": "Brokerage in Abu Dhabi"
+      },
+      "stat2": {
+        "value": "1000+",
+        "label": "Professional Employees"
+      },
+      "stat3": {
+        "value": "10",
+        "label": "Offices Across The UAE"
+      },
+      "stat4": {
+        "value": "10",
+        "label": "Locations Worldwide"
+      },
+      "stat5": {
+        "value": "18",
+        "label": "Services & Products"
+      }
+    },
+    "WhyPSI": {
+      "super_title": "MARKET LEADERS",
+      "title": "Why PSI Emirati Hub?",
+      "description": "Established in 2007, Property Shop Investment (PSI) is the UAE's leading real estate firm, consistently recognized as the top agency by major developers. PSI continually innovates to deliver seamless, comprehensive client journeys.",
+      "cards": {
+        "card1": {
+          "step": "01",
+          "title": "Career Development",
+          "desc": "Elevate your skills with a structured career path designed for growth and success."
+        },
+        "card2": {
+          "step": "02",
+          "title": "Performance Rewards",
+          "desc": "Maximize your earnings with opportunities to profit from closing deals."
+        },
+        "card3": {
+          "step": "03",
+          "title": "Partnership Power",
+          "desc": "Work with top developers like Aldar, Emaar, Damac, Eagle Hills, Bloom, and many more."
+        }
+      }
+    },
+    "Training": {
+      "step": "04",
+      "title": "Training Program",
+      "desc": "Tailored programs for Emirati Hub team members equip them to thrive in the real estate industry, covering a full set of tested techniques, negotiation skills, and closing strategies."
+    },
+    "Awards": {
+      "title": "Awards-Driven Excellence"
+    },
+    "Form": {
+      "title": "Join us now & evolve your real estate career!",
+      "fields": {
+        "firstName": "First Name*",
+        "secondName": "Second name*",
+        "email": "Email*",
+        "phone": "+971 599999999",
+        "city": "City",
+        "profession": "Profession*",
+        "cta": "Apply Now"
+      },
+      "disclaimer": {
+        "text1": "By clicking Submit, you agree to our Terms & Conditions and Privacy Policy.",
+        "text2": "I agree to receive calls and communications via various channels from PSI regarding my enquiry.",
+        "text3": "I agree to receive calls and communications via various channels on various projects, products, and services."
+      }
+    },
+    "FAQ": {
+      "title": "FAQs",
+      "q1": "What is the Emirati Hub program?",
+      "a1": "PSI, through its Emirati Hub, has established a strategic partnership with the Dubai Real Estate Brokers Program to encourage UAE nationals to join the real estate sector. This initiative aims to increase their employment rate in the industry from 5% to 15% within the next three years.",
+      "q2": "Is holding dual employment permitted?",
+      "a2": "Yes, dual employment is permitted provided aligns with company policies and does not conflict with primary job responsibilities.",
+      "q3": "Where and How Can you join?",
+      "a3": "You’re not required to attend the office daily, but when needed, you can work from our offices in either Dubai or Abu Dhabi.",
+      "q4": "What qualifications make you eligible to join?",
+      "a4": "You are required to be a licensed broker. If you are not yet licensed, we provide a mandatory 3 days training program followed by an exam to help you obtain your license.",
+      "q5": "Are brokers allowed to make investments?",
+      "a5": "Yes, brokers at PSI can invest.",
+      "q6": "What benefits do we offer at PSI?",
+      "a6": "PSI provides extensive and effective training to ensure you are always ahead of the game. Tailored programs for PSI Emirati Hub team member from extensive training sessions, partnering up with the top developers, incorporating new technologies seemingly to our identity, harvesting endless valuable market insights provided by our business development department to countless top-notch services that elevate, simplify and support every agent to achieve their real estate goals"
+    },
+    "Footer": {
+      "copyright": "© 2025 Property Shop Investment LLC. | All Rights Reserved."
+    }
   }
 }
