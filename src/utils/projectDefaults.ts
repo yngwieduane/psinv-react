@@ -45,4 +45,3 @@ export const BRANCH_DEFAULTS: Record<Branch, Partial<ProjectMeta>> = {
     sendto: 'callcenter@psiassets.com',
   },
 };
- 

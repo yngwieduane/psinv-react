@@ -286,7 +286,6 @@
     "agreement2": "Ich stimme zu, mehrere Anrufe und Mitteilungen über verschiedene Kanäle bezüglich meiner Anfrage zu erhalten.",
     "agreement3": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle zu verschiedenen Projekten, Produkten und Dienstleistungen zu erhalten."
   },
-
   "FooterAI": {
     "footer_brand_desc": "Property Shop Investment ist die führende Immobilienagentur in Abu Dhabi und hilft Ihnen seit 2007, Ihr perfektes Zuhause zu finden.",
     "footer_company": "Unternehmen",
@@ -384,7 +383,6 @@
       "part4": "Abu Dhabi, Vereinigte Arabische Emirate"
     }
   },
-
   "LocaleSwitcher": {
     "label": "Sprache ändern",
     "locale": "{locale, select, ar {🇦🇪 Arabisch} en {🇺🇸 Englisch} cn {🇨🇳 Chinesisch} ru {🇷🇺 Russisch} de {🇩🇪 Deutsch} other {Unbekannt}}",
@@ -415,6 +413,7 @@
     "property management": "Immobilienverwaltung",
     "login": "Anmelden",
     "logout": "Abmelden",
+    "profile": "Profile",
     "Featured": "Empfohlen",
     "Explore": "Entdecken",
     "Abu Dhabi": "Abu Dhabi",

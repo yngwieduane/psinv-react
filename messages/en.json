@@ -338,6 +338,7 @@
     "property management": "Property Management",
     "login": "Login",
     "logout": "Logout",
+    "profile": "Profile",
     "Featured": "Featured",
     "Explore": "Explore",
     "Abu Dhabi": "Abu Dhabi",
@@ -1624,7 +1625,7 @@
       "copyright": "© 2025 Property Shop Investment LLC. | All Rights Reserved."
     }
   },
-"ArticlesPage": {
+  "ArticlesPage": {
     "title": "Articles",
     "searchPlaceholder": "Search articles...",
     "recentArticles": "Recent Articles",
