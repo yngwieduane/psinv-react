@@ -143,7 +143,6 @@ case "cta":
       </a>
     </div>
   );
-
     case "image":
       return (
         <div key={index} className="flex justify-center my-8">
@@ -224,6 +223,7 @@ export default async function ArticleSingle({ params }: PageProps) {
   <Image
     src={article.imageUrl}
     alt={title}
+    title={title}
     fill
     priority
     className="object-cover"

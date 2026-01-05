@@ -47,17 +47,19 @@ function RecentArticleRow({
   readMoreLabel: string;
 }) {
   const href = `/articles/${item.slug}`;
+  const imgTitle = item.title ?? "Article";
   return (
-    <Link href={href} className="group block">
+    <Link href={href} title={item.title} className="group block">
       <div className="flex flex-col md:flex-row gap-6 cursor-pointer">
         <div className="w-full md:w-48 h-32 rounded-xl overflow-hidden shrink-0 bg-gray-100">
-          <Image
-            src={item.imageUrl}
-            alt={item.title || "Article image"}
-            width={400}
-            height={300}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
+        <Image
+          src={item.imageUrl}
+          alt={imgTitle}
+          title={imgTitle}
+          width={400}
+          height={300}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        />
         </div>
 
         <div>
@@ -240,6 +242,7 @@ const recentOrFiltered = useMemo(() => {
                 <Image
                   src="/assets/images/articles/property-guide-feature.webp"
                   alt={ui("propertyGuideFeaturedAlt")}
+                  title={ui("propertyGuideFeaturedAlt")}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -257,7 +260,7 @@ const recentOrFiltered = useMemo(() => {
                     className={`text-sm text-gray-600 hover:text-primary cursor-pointer ${idx !== propertyGuideItems.length - 1 ? "border-b border-gray-50 pb-2" : ""
                       }`}
                   >
-                    <Link href={`/articles/${x.slug}`} className="block">
+                    <Link href={`/articles/${x.slug}`} title={x.title} className="block">
                       {x.title}
                     </Link>
                   </li>
@@ -274,12 +277,14 @@ const recentOrFiltered = useMemo(() => {
                 {/* Abu Dhabi */}
                 <Link
                   href="/articles/area-guide/abu-dhabi"
+                  title="Abu Dhabi Area Guide"
                   locale={undefined}
                   className="relative block h-60 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
                 >
                   <Image
                     src="/assets/images/articles/auh.jpg"
                     alt="Abu Dhabi Area Guide"
+                    title="Abu Dhabi Area Guide"
                     fill
                     className="object-cover"
                   />
@@ -292,12 +297,14 @@ const recentOrFiltered = useMemo(() => {
                 {/* Dubai */}
                 <Link
                   href="/articles/area-guide/dubai"
+                   title="Dubai Area Guide"
                   locale={undefined}
                   className="relative block h-60 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
                 >
                   <Image
                     src="/assets/images/articles/dubai.jpg"
                     alt="Dubai Area Guide"
+                    title="Dubai Area Guide"
                     fill
                     className="object-cover"
                   />
@@ -325,6 +332,7 @@ const recentOrFiltered = useMemo(() => {
                     <Image
                       src={b.imageUrl}
                       alt={b.title}
+                      title={b.title}
                       fill
                       className="object-cover"
                       style={{ objectPosition: b.imagePosition }}
@@ -336,7 +344,7 @@ const recentOrFiltered = useMemo(() => {
                   <ul className="space-y-4 text-xs text-gray-600">
                     {b.links.map((l) => (
                       <li key={l.href} className="hover:text-primary cursor-pointer">
-                        <Link href={l.href} className="hover:underline underline-offset-4">
+                        <Link href={l.href} title={l.title} className="hover:underline underline-offset-4">
                           {l.title}
                         </Link>
                       </li>

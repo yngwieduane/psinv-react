@@ -1211,6 +1211,13 @@
     "btn_nearby": "Nearby",
     "btn_developer": "Developer",
     "btn_video_tour": "Video Tour",
+    "loc_Al_Reem_Island": "Al Reem Island",
+    "loc_Yas_Island": "Yas Island",
+    "loc_Saadiyat_Island": "Saadiyat Island",
+    "loc_Al_Raha_Beach": "Al Raha Beach",
+    "loc_Palm_Jumeirah": "Palm Jumeirah",
+    "loc_Downtown_Dubai": "Downtown Dubai",
+    "loc_Dubai_Creek": "Dubai Creek",
     "company_address": {
       "part1": "Office No. 4410 & 4411",
       "part2": "Addax Tower Level 44",
