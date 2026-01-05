@@ -11,7 +11,6 @@ type Params = {
   locale: string;
 };
 
-// ✅ Next 15+: params can be async in dynamic routes
 type PageProps = {
   params: Promise<Params>;
 };
@@ -30,7 +29,6 @@ function assertBodyParts(value: unknown): ArticleBodyPart[] {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  // ✅ FIX: await params
   const { slug, locale } = await params;
 
   const article = findArticleBySlug(slug);
@@ -78,7 +76,6 @@ const renderContent = (part: ArticleBodyPart, index: number, rtl: boolean) => {
       );
 
     case "list": {
-      // Keep bullet/icon layout LTR even for Arabic pages
       const listDir: "ltr" | "rtl" = "ltr"; // always LTR layout
       const textDir: "ltr" | "rtl" = rtl ? "rtl" : "ltr";
 
@@ -110,6 +107,42 @@ const renderContent = (part: ArticleBodyPart, index: number, rtl: boolean) => {
         </ul>
       );
     }
+case "cta":
+  return (
+    <div key={index} className="my-12 flex justify-center">
+      <a
+        href={part.href}
+        className={`group inline-flex items-center justify-center w-full sm:w-auto
+        rounded-full px-7 py-3.5 text-sm font-semibold
+        bg-white text-gray-900
+        border border-[var(--color-emerald-500)]
+        shadow-sm
+        hover:bg-[var(--color-emerald-50)]
+        hover:border-[var(--color-emerald-600)]
+        hover:text-[var(--color-emerald-700)]
+        hover:shadow-md
+        active:scale-[0.995]
+        focus:outline-none
+        focus:ring-2 focus:ring-[var(--color-emerald-500)/30]
+        focus:ring-offset-2
+        transition-all duration-200
+        ${rtl ? "flex-row-reverse" : ""}`}
+      >
+        <span>{part.label}</span>
+
+        <span
+          className={`inline-flex items-center justify-center
+          ${rtl ? "mr-2" : "ml-2"}
+          text-[var(--color-emerald-600)]
+          transition-transform duration-200
+          ${rtl ? "group-hover:-translate-x-1" : "group-hover:translate-x-1"}`}
+          aria-hidden="true"
+        >
+          →
+        </span>
+      </a>
+    </div>
+  );
 
     case "image":
       return (
@@ -131,7 +164,6 @@ const renderContent = (part: ArticleBodyPart, index: number, rtl: boolean) => {
 };
 
 export default async function ArticleSingle({ params }: PageProps) {
-  // ✅ FIX: await params
   const { slug, locale } = await params;
 
   const article = findArticleBySlug(slug);
@@ -188,13 +220,18 @@ export default async function ArticleSingle({ params }: PageProps) {
           </span>
         </div>
 
-        <Image
-          src={article.imageUrl}
-          alt={title}
-          className="w-full h-[400px] object-cover rounded-xl shadow-lg mb-10"
-          width={1200}
-          height={400}
-        />
+<div className="relative w-full h-[320px] sm:h-[380px] lg:h-[480px] rounded-2xl overflow-hidden shadow-lg mb-10">
+  <Image
+    src={article.imageUrl}
+    alt={title}
+    fill
+    priority
+    className="object-cover"
+    style={{ objectPosition: "left center" }}
+  />
+  <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/10 to-transparent" />
+</div>
+
 
         <div className="article-body">
           {body.map((part, idx) => renderContent(part, idx, rtl))}

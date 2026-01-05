@@ -99,6 +99,7 @@ export default function ArticlesPage() {
   const a = useTranslations("Articles");
 
   const [query, setQuery] = useState("");
+  
 
   // ✅ Localize title/summary from translations
   const localizedNews = useMemo(() => {
@@ -110,17 +111,30 @@ export default function ArticlesPage() {
   }, [a]);
 
   // ✅ Search uses localized fields
-  const filtered = useMemo(() => {
-    if (!query) return localizedNews;
-    const q = query.toLowerCase();
+const filtered = useMemo(() => {
+  const q = query.trim().toLowerCase();
+  if (!q) return localizedNews;
 
-    return localizedNews.filter(
-      (n) =>
-        n.title.toLowerCase().includes(q) ||
-        n.summary.toLowerCase().includes(q) ||
-        (n.category ?? "").toLowerCase().includes(q)
-    );
-  }, [query, localizedNews]);
+  return localizedNews.filter((n) => {
+    const haystack = [
+      n.title,
+      n.summary,
+      n.category,
+      n.slug,
+      n.categoryKey,
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+
+    return haystack.includes(q);
+  });
+}, [query, localizedNews]);
+const recentItems = useMemo(() => {
+  return [...localizedNews]
+    .sort((a, b) => toTime(b.date) - toTime(a.date)) // newest first
+    .slice(0, 4);
+}, [localizedNews]);
 
   const CATEGORY_ORDER = ["rules_and_regulations", "laws", "technology"] as const;
   type Category = (typeof CATEGORY_ORDER)[number];
@@ -172,6 +186,12 @@ export default function ArticlesPage() {
       };
     });
   }, [ui, localizedNews]);
+const recentOrFiltered = useMemo(() => {
+  if (query.trim()) {
+    return filtered.slice(0, 4); // show search results
+  }
+  return recentItems; // default latest articles
+}, [query, filtered, recentItems]);
 
   return (
     <>
@@ -197,9 +217,13 @@ export default function ArticlesPage() {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {filtered.slice(0, 4).map((item) => (
-                <RecentArticleRow key={item.id} item={item} readMoreLabel={ui("readMore")} />
-              ))}
+{recentOrFiltered.map((item) => (
+   <RecentArticleRow
+      key={item.id}
+      item={item}
+      readMoreLabel={ui("readMore")}
+    />
+  ))}
             </div>
           </div>
 
