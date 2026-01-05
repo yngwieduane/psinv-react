@@ -9,6 +9,7 @@ export type ArticleBodyPart =
   | { type: "heading"; content: string }
   | { type: "quote"; content: string }
   | { type: "list"; items: string[] }
+  | { type: "cta"; label: string; href: string }
   | { type: "image"; src: string; alt: string; title?: string };
 
 // ======================================================
@@ -254,6 +255,27 @@ export const ARTICLES: Article[] = [
     imageUrl:
       "/assets/images/articles/unlocking-opportunities-for-retiring-expats-and-boosting-the-uae-real-estate-market.webp",
   },
+ {
+  id: 120,
+  slug: "top-property-portals-in-uae-to-buy-and-rent-real-estate",
+  date: "2026-01-05",
+  author: "Property Shop Investment Editorial Team",
+  categoryKey: "uae_real_estate_market_trends",
+  category: CATEGORY_LABELS.uae_real_estate_market_trends,
+  imageUrl:
+    "/assets/images/articles/top-property-portals-in-uae-to-buy-and-rent-real-estate.webp",
+},
+{
+  id: 121,
+  slug: "everything-you-need-to-know-about-tenancy-rights-and-laws-in-abu-dhabi",
+  date: "2026-01-05",
+  author: "Property Shop Investment Editorial Team",
+  categoryKey: "rules_and_regulations",
+  category: CATEGORY_LABELS.rules_and_regulations,
+  city: "Abu Dhabi",
+  imageUrl: "/assets/images/articles/tenancy-rights-laws-abu-dhabi.webp",
+}
+
 ];
 
 // ======================================================
