@@ -1,13 +1,15 @@
 'use client'
 
 import { useState, useEffect } from "react";
-
-import { BlogItem } from "@/app/[locale]/_components/tools/Skeleteon";
-import SearchProperty from "../../_components/SearchProperty";
-import PropertyBox from "../../_components/PropertyBox";
-import PropertyMapBox from "../../_components/PropertyMapBox";
+import { db } from "@/lib/firebase";
+import { unslugify } from "@/utils/utils";
+import { collection, getDocs, query, limit, orderBy } from "firebase/firestore";
 import SearchPropertyAI, { TabType } from "../../_components/SearchPropertyAI";
+import PropertyMapBox from "../../_components/PropertyMapBox";
+import { BlogItem } from "@/app/[locale]/_components/tools/Skeleteon";
 import PropertyListView from "../../_components/PropertyListView";
+import PropertyBox from "../../_components/PropertyBox";
+
 
 interface PropertyListProps {
   page: number;
@@ -38,22 +40,71 @@ export default function PropertyList({
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
-
+        // 1. Try API Fetch
         const response = await fetch(
-          `/api/external/allprojects/?page=${page}&propertyname=${propertyname}&city=${cityId}`
+          `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${cityId}`
         );
 
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`API Error: ${response.status}`);
         }
 
         const result = await response.json();
-        setData(result);
-        setTotalPages(Math.ceil(Number(result['totalCount']) / 24));
+
+        // Validate API result structure
+        if (result && result['result']) {
+          setData(result);
+          setTotalPages(Math.ceil(Number(result['totalCount']) / 24));
+          return; // Success, exit
+        } else {
+          throw new Error("Invalid API response");
+        }
+
+        //throw new Error("Invalid API response");
+
       } catch (error) {
-        console.error("Fetch error:", error);
+        console.warn("API Fetch failed, switching to Firestore fallback:", error);
+
+        // 2. Firestore Fallback
+        try {
+          const q = query(collection(db, "properties"));
+          const querySnapshot = await getDocs(q);
+
+          let allItems = querySnapshot.docs.map(doc => doc.data());
+          // Client-side Filtering
+          if (city) {
+            const cityName = unslugify(city).toLowerCase();
+            allItems = allItems.filter(item => (item.city || "").toLowerCase().includes(cityName));
+          }
+          // if (propertyname) {
+          //   const search = propertyname.toLowerCase();
+          //   allItems = allItems.filter(item =>
+          //     (item.PropertyName?.toLowerCase() || "").includes(search) ||
+          //     (item.Title?.toLowerCase() || "").includes(search)
+          //   );
+          // }
+          // Add other filters as needed
+
+          // Pagination logic
+          const pageSize = 24;
+          const totalCount = allItems.length;
+          const totalPgs = Math.ceil(totalCount / pageSize);
+
+          const startIndex = (page - 1) * pageSize;
+          const endIndex = startIndex + pageSize;
+          const paginatedItems = allItems.slice(startIndex, endIndex);
+
+          console.log("allItems=" + allItems);
+          setData({
+            result: paginatedItems,
+            totalCount: totalCount
+          });
+          setTotalPages(Math.max(1, totalPgs));
+        } catch (fsError) {
+          console.error("Firestore Fallback failed:", fsError);
+        }
       } finally {
         setLoading(false);
       }
@@ -63,7 +114,7 @@ export default function PropertyList({
   }, [page, propertyname, isFeaturedProjectOnWeb, cityId]);
 
   return (
-    <div className="flex grid md:grid-cols-2 grid-cols-1 ">
+    <div className="flex grid md:grid-cols-2 grid-cols-1">
       <div className="col-span-2">
         <SearchPropertyAI
           placeholder="Property Name"
@@ -72,7 +123,7 @@ export default function PropertyList({
           totalPages={totalPages}
         />
       </div>
-      <div className="order-2 md:order-3 col-span-1 md:col-span-2 mx-auto container">
+      <div className="order-2 md:order-3 col-span-1 md:col-span-2 mx-auto container ">
         {activeTab === 'map' ? (
           <PropertyMapBox data={data['result']} />
         ) : isLoading ? (
