@@ -66,20 +66,25 @@ console.log('[RegistrationHeroImage locale debug]', {
 };
   return (
     <div
-      className={`max-w-6xl mx-auto px-4 py-10 ${className}`}
+      className={`w-full mt-30 md:mt-30 pb-10 ${className}`}
       role="img"
       aria-label={`${activeSlug} hero image`}
     >
-      <Image
-        src={imageSrc}
-        alt={`Banner for ${activeSlug}`}
-        width={1200}
-        height={600}
-        className="w-full h-auto object-cover rounded-2xl shadow-md"
-        priority
-        unoptimized
-        onError={handleError}
-      />
+      <div className="mx-auto w-full px-4 sm:px-6 lg:max-w-6xl">
+        <div className="relative overflow-hidden rounded-2xl shadow-md">
+          <Image
+            src={imageSrc}
+            alt={`Banner for ${activeSlug}`}
+            width={1200}
+            height={600}
+            className="w-full h-[220px] sm:h-[320px] md:h-[520px] object-cover object-center md:object-top"
+            priority
+            unoptimized
+            onError={handleError}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
+        </div>
+      </div>
     </div>
   );
 }
