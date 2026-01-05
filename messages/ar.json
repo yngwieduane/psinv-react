@@ -338,6 +338,7 @@
     "property management": "إدارة العقارات",
     "login": "تسجيل الدخول",
     "logout": "تسجيل الخروج",
+    "profile": "الملف الشخصي",
     "Featured": "مميزة",
     "Explore": "استكشاف",
     "Abu Dhabi": "أبوظبي",
@@ -1347,7 +1348,7 @@
       "copyright": "© 2025 شركة بروبرتي شوب إنفستمنت ذ.م.م | جميع الحقوق محفوظة."
     }
   },
-   "ArticlesPage": {
+  "ArticlesPage": {
     "title": "المقالات",
     "searchPlaceholder": "ابحث في المقالات...",
     "recentArticles": "أحدث المقالات",
