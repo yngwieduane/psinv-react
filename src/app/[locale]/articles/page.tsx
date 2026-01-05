@@ -6,22 +6,26 @@ import { Search } from "lucide-react";
 
 import Breadcrumb from "../../[locale]/_components/Breadcrumb";
 import { Link } from "@/i18n/navigation";
-import { ARTICLES, NEWS } from "@/data/articles";
+import { NEWS } from "@/data/articles";
 import VideosSection from "./_components/VideosSection";
+import { useTranslations, useLocale } from "next-intl";
 
 type NewsItem = (typeof NEWS)[number];
+
 function PillSearch({
   value,
   onChange,
+  placeholder,
 }: {
   value: string;
   onChange: (v: string) => void;
+  placeholder: string;
 }) {
   return (
     <div className="max-w-3xl mx-auto relative">
       <input
         type="text"
-        placeholder="Search articles..."
+        placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className="w-full pl-12 pr-4 py-3 rounded-full border border-gray-200 bg-gray-50
@@ -35,36 +39,38 @@ function PillSearch({
   );
 }
 
-function RecentArticleRow({ item }: { item: NewsItem }) {
+function RecentArticleRow({
+  item,
+  readMoreLabel,
+}: {
+  item: NewsItem;
+  readMoreLabel: string;
+}) {
   const href = `/articles/${item.slug}`;
-
   return (
     <Link href={href} className="group block">
       <div className="flex flex-col md:flex-row gap-6 cursor-pointer">
-        {/* Image */}
         <div className="w-full md:w-48 h-32 rounded-xl overflow-hidden shrink-0 bg-gray-100">
           <Image
             src={item.imageUrl}
-            alt={item.title}
+            alt={item.title || "Article image"}
             width={400}
             height={300}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
         </div>
 
-        {/* Content */}
         <div>
           <h3 className="font-bold text-lg text-gray-800 mb-2 group-hover:text-gray-900 transition-colors line-clamp-2">
             {item.title}
           </h3>
 
-          {/* summary only on md+ like your screenshot */}
           <p className="text-sm text-gray-500 line-clamp-2 mb-2 hidden md:block">
             {item.summary}
           </p>
 
           <span className="text-xs font-bold uppercase tracking-wider text-gray-800">
-            Read More
+            {readMoreLabel}
           </span>
         </div>
       </div>
@@ -72,190 +78,250 @@ function RecentArticleRow({ item }: { item: NewsItem }) {
   );
 }
 
+const normalizeCategory = (c?: string) =>
+  (c ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ");
+
+const toTime = (d: string) => {
+  const t = Date.parse(d);
+  return Number.isNaN(t) ? 0 : t;
+};
+
 export default function ArticlesPage() {
+  const locale = useLocale();
+  const rtl = locale === "ar";
+
+  const ui = useTranslations("ArticlesPage");
+  const a = useTranslations("Articles");
+
   const [query, setQuery] = useState("");
 
+  // ✅ Localize title/summary from translations
+  const localizedNews = useMemo(() => {
+    return NEWS.map((n) => ({
+      ...n,
+      title: a(`${n.id}.title`),
+      summary: a(`${n.id}.summary`),
+    }));
+  }, [a]);
+
+  // ✅ Search uses localized fields
   const filtered = useMemo(() => {
-    if (!query) return NEWS;
+    if (!query) return localizedNews;
     const q = query.toLowerCase();
 
-    return NEWS.filter(
+    return localizedNews.filter(
       (n) =>
         n.title.toLowerCase().includes(q) ||
         n.summary.toLowerCase().includes(q) ||
-        n.category.toLowerCase().includes(q)
+        (n.category ?? "").toLowerCase().includes(q)
     );
-  }, [query]);
- const CATEGORY_ORDER = ["Rules And Regulation", "Laws", "Technology"] as const;
-type Category = (typeof CATEGORY_ORDER)[number];
+  }, [query, localizedNews]);
 
-const CATEGORY_IMAGE_CONFIG: Record<Category, { src: string; position: string }> = {
-  "Rules And Regulation": { src: "/assets/images/articles/categories/rules-regulation.webp", position: "bottom center" },
-  Laws: { src: "/assets/images/articles/categories/laws.webp", position: "center center" },
-  Technology: { src: "/assets/images/articles/categories/technology.webp", position: "center top" },
-};
-const propertyGuideItems = useMemo(() => {
-  return ARTICLES
-    .filter((a) => a.category === "Property Guide")
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 4);
-}, []);
-const categoryBlocks = useMemo(() => {
-  return CATEGORY_ORDER.map((cat) => {
-    const items = ARTICLES.filter((a) => a.category === cat);
+  const CATEGORY_ORDER = ["rules_and_regulations", "laws", "technology"] as const;
+  type Category = (typeof CATEGORY_ORDER)[number];
 
-    const cfg = CATEGORY_IMAGE_CONFIG[cat] ?? {
-      src: "/images/og/default.jpg",
+  const CATEGORY_IMAGE_CONFIG: Record<Category, { src: string; position: string }> =
+  {
+    rules_and_regulations: {
+      src: "/assets/images/articles/categories/rules-regulation.webp",
+      position: "bottom center",
+    },
+    laws: {
+      src: "/assets/images/articles/categories/laws.webp",
       position: "center center",
-    };
+    },
+    technology: {
+      src: "/assets/images/articles/categories/technology.webp",
+      position: "center top",
+    },
+  };
 
-    return {
-      title: cat,
-      imageUrl: cfg.src,
-      imagePosition: cfg.position,
-      links: items.slice(0, 4).map((a) => ({
-        title: a.title,
-        href: `/articles/${a.slug}`,
-      })),
-    };
-  });
-}, []);
+  const propertyGuideItems = useMemo(() => {
+    return localizedNews
+      .filter((x) => normalizeCategory(x.category) === normalizeCategory("Property Guide"))
+      .sort((x, y) => toTime(y.date) - toTime(x.date))
+      .slice(0, 4);
+  }, [localizedNews]);
+
+  // ✅ Category blocks
+  const categoryBlocks = useMemo(() => {
+    return CATEGORY_ORDER.map((cat) => {
+      const items = localizedNews
+        .filter((x) => normalizeCategory(x.category) === normalizeCategory(cat))
+        .sort((a, b) => toTime(b.date) - toTime(a.date));
+
+      const cfg = CATEGORY_IMAGE_CONFIG[cat] ?? {
+        src: "/images/og/default.jpg",
+        position: "center center",
+      };
+
+      return {
+        catKey: cat,
+        title: ui(`categories.${cat}`),
+        imageUrl: cfg.src,
+        imagePosition: cfg.position,
+        links: items.slice(0, 4).map((x) => ({
+          title: x.title,
+          href: `/articles/${x.slug}`,
+        })),
+      };
+    });
+  }, [ui, localizedNews]);
 
   return (
     <>
-      <Breadcrumb />
+      <div className="bg-[#f4f4f4] mt-30 mb-3 border-b border-gray-200">
+        <div className="container mx-auto px-6 lg:px-8 py-4">
+          <Breadcrumb />
+        </div>
+      </div>
 
-      <div className="min-h-screen bg-white pt-32 pb-20">
+      <div className="min-h-screen bg-white pt-32 pb-20" dir={rtl ? "rtl" : "ltr"}>
         <div className="container mx-auto px-6 md:px-12">
-          <h1 className="text-4xl font-bold text-center mb-16">Articles</h1>
+          <h1 className="text-4xl font-bold text-center mb-16">{ui("title")}</h1>
 
           {/* Search */}
           <div className="mb-20">
-            <PillSearch value={query} onChange={setQuery} />
+            <PillSearch value={query} onChange={setQuery} placeholder={ui("searchPlaceholder")} />
           </div>
 
           {/* Recent Articles */}
           <div className="mb-20">
             <h2 className="text-2xl font-bold mb-8 border-b border-gray-100 pb-4">
-              Recent Articles
+              {ui("recentArticles")}
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {filtered.slice(0, 4).map((item) => (
-              <RecentArticleRow key={item.id} item={item} />
+              {filtered.slice(0, 4).map((item) => (
+                <RecentArticleRow key={item.id} item={item} readMoreLabel={ui("readMore")} />
               ))}
             </div>
           </div>
-              {/* ======================= Property / Area Guide ======================= */}
-<section className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
 
-  {/* ---------------------- Property Guide ---------------------- */}
-  <div>
-    <h2 className="text-2xl font-serif font-bold mb-8 border-b border-gray-100 pb-4">
-      Property Guide:
-    </h2>
+          {/* ======================= Property / Area Guide ======================= */}
+          <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+            {/* Property Guide */}
+            <div>
+              <h2 className="text-2xl font-serif font-bold mb-8 border-b border-gray-100 pb-4">
+                {ui("propertyGuide")}
+              </h2>
 
-    {/* Featured article */}
-    <div className="relative h-64 rounded-2xl overflow-hidden mb-6 group cursor-pointer">
-      <Image
-        src="/assets/images/articles/property-guide-feature.webp"
-        alt="Affordable Housing in the UAE"
-        fill
-        className="object-cover group-hover:scale-105 transition-transform duration-700"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
-        <h3 className="text-white font-bold text-xl leading-snug">
-          Affordable Housing in the UAE: Market Analysis and Growth Projection
-        </h3>
-      </div>
-    </div>
-<ul className="space-y-4">
-  {propertyGuideItems.map((a, idx) => (
-    <li
-      key={a.id}
-      className={`text-sm text-gray-600 hover:text-primary cursor-pointer ${
-        idx !== propertyGuideItems.length - 1 ? "border-b border-gray-50 pb-2" : ""
-      }`}
-    >
-      <Link href={`/articles/${a.slug}`} className="block">
-        {a.title}
-      </Link>
-    </li>
-  ))}
-</ul>
-  </div>
+              {/* Featured image (static) */}
+              <div className="relative h-64 rounded-2xl overflow-hidden mb-6 group cursor-pointer">
+                <Image
+                  src="/assets/images/articles/property-guide-feature.webp"
+                  alt={ui("propertyGuideFeaturedAlt")}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                  <h3 className="text-white font-bold text-xl leading-snug">
+                    {ui("propertyGuideFeaturedTitle")}
+                  </h3>
+                </div>
+              </div>
 
-  {/* ---------------------- Area Guide ---------------------- */}
-  <div>
-    <h2 className="text-2xl font-serif font-bold mb-8 border-b border-gray-100 pb-4">
-      Area Guide
-    </h2>
+              <ul className="space-y-4">
+                {propertyGuideItems.map((x, idx) => (
+                  <li
+                    key={x.id}
+                    className={`text-sm text-gray-600 hover:text-primary cursor-pointer ${idx !== propertyGuideItems.length - 1 ? "border-b border-gray-50 pb-2" : ""
+                      }`}
+                  >
+                    <Link href={`/articles/${x.slug}`} className="block">
+                      {x.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-    <div className="space-y-6">
-      {/* Abu Dhabi */}
-      <div className="relative h-48 rounded-2xl overflow-hidden group cursor-pointer">
-        <Image
-          src="/assets/images/articles/area-abu-dhabi.webp"
-          alt="Abu Dhabi Area Guide"
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-700"
-        />
-        <span className="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded text-xs font-bold text-white">
-          Abu Dhabi
-        </span>
-      </div>
+            {/* ✅ Area Guide (2 city cards like your screenshot) */}
+            <div>
+              <h2 className="text-2xl font-serif font-bold mb-8 border-b border-gray-100 pb-4">
+                {ui("areaGuide")}
+              </h2>
+              <div className="space-y-8">
+                {/* Abu Dhabi */}
+                <Link
+                  href="/articles/area-guide/abu-dhabi"
+                  locale={undefined}
+                  className="relative block h-60 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
+                >
+                  <Image
+                    src="/assets/images/articles/auh.jpg"
+                    alt="Abu Dhabi Area Guide"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20" />
+                  <div className="absolute top-4 right-4 text-white text-sm font-semibold">
+                    Abu Dhabi
+                  </div>
+                </Link>
 
-      {/* Dubai */}
-      <div className="relative h-48 rounded-2xl overflow-hidden group cursor-pointer">
-        <Image
-          src="/assets/images/articles/area-dubai.webp"
-          alt="Dubai Area Guide"
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-700"
-        />
-        <span className="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded text-xs font-bold text-white">
-          Dubai
-        </span>
-      </div>
-    </div>
-  </div>
+                {/* Dubai */}
+                <Link
+                  href="/articles/area-guide/dubai"
+                  locale={undefined}
+                  className="relative block h-60 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
+                >
+                  <Image
+                    src="/assets/images/articles/dubai.jpg"
+                    alt="Dubai Area Guide"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20" />
+                  <div className="absolute top-4 right-4 text-white text-sm font-semibold">
+                    Dubai
+                  </div>
+                </Link>
+              </div>
 
-</section>
-{/* -------------------------------- Videos -------------------------------- */}
-<section className="mb-20">
-<VideosSection />
-</section>
+            </div>
+          </section>
 
-{/* -------------------------- Rules / Laws / Tech -------------------------- */}
-<section className="pb-24">
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-    {categoryBlocks.map((b) => (
-      <div key={b.title} className="bg-gray-50 p-6 rounded-2xl">
-<div className="relative w-full h-40 rounded-xl overflow-hidden mb-6 shadow-sm">
-  <Image
-    src={b.imageUrl}
-    alt={b.title}
-    fill
-    className="object-cover"
-    style={{ objectPosition: b.imagePosition }}
-  />
-</div>
-        <h3 className="font-serif font-bold text-xl mb-4">{b.title}</h3>
+          {/* Videos */}
+          <section className="mb-20">
+            <VideosSection />
+          </section>
 
-        <ul className="space-y-4 text-xs text-gray-600">
-          {b.links.map((l) => (
-            <li key={l.href} className="hover:text-primary cursor-pointer">
-              <Link href={l.href} className="hover:underline underline-offset-4">
-                {l.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    ))}
-  </div>
-</section>
+          {/* Categories */}
+          <section className="pb-24">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+              {categoryBlocks.map((b) => (
+                <div key={b.catKey} className="bg-gray-50 p-6 rounded-2xl">
+                  <div className="relative w-full h-40 rounded-xl overflow-hidden mb-6 shadow-sm">
+                    <Image
+                      src={b.imageUrl}
+                      alt={b.title}
+                      fill
+                      className="object-cover"
+                      style={{ objectPosition: b.imagePosition }}
+                    />
+                  </div>
 
+                  <h3 className="font-serif font-bold text-xl mb-4">{b.title}</h3>
+
+                  <ul className="space-y-4 text-xs text-gray-600">
+                    {b.links.map((l) => (
+                      <li key={l.href} className="hover:text-primary cursor-pointer">
+                        <Link href={l.href} className="hover:underline underline-offset-4">
+                          {l.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
       </div>
     </>
