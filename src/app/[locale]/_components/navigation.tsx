@@ -648,7 +648,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                     <ul className="py-2">
                                         <li>
                                             <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">
-                                                {t("Profile")}
+                                                {t("profile")}
                                             </Link>
                                         </li>
                                         <li>
