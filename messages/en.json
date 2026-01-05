@@ -1623,5 +1623,121 @@
     "Footer": {
       "copyright": "© 2025 Property Shop Investment LLC. | All Rights Reserved."
     }
+  },
+  "EmiratiHubMetaData": {
+    "metaTitle": "PSI Emirati Hub – Empowering UAE Nationals in Real Estate",
+    "metaDescription": "Discover PSI's Emirati Hub, a strategic partnership with the Dubai Real Estate Brokers Program aimed at increasing UAE national participation in the real estate sector."
+  },
+  "CryptoPage": {
+    "hero": {
+      "title": {
+        "part1": "Buy property with",
+        "part2": "CRYPTO",
+        "part3": "in the"
+      },
+      "subtitle": {
+        "part1": "New",
+        "part2": "Land Of Opportunities"
+      },
+      "description": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
+      "cta": "Learn More"
+    },
+    "stats": {
+      "stat1": "Political Stability",
+      "stat2": "Economical haven",
+      "stat3": "Cultural melting pot"
+    },
+    "attractions": {
+      "title": "Dubai city landmarks & country in the region (global power index 2024)",
+      "ain_dubai": {
+        "title": "Ain Dubai",
+        "desc": "Ain Dubai is the world's largest and tallest observation wheel, located on Bluewaters Island."
+      },
+      "burj_khalifa": {
+        "title": "Burj Khalifa",
+        "desc": "The Burj Khalifa is the tallest building in the world and a global icon. Truly a feat of engineering."
+      },
+      "palm_jumeirah": {
+        "title": "Palm Jumeirah",
+        "desc": "The tree-shaped Palm Jumeirah island is known for glitzy hotels, posh apartment towers and upmarket global restaurants."
+      },
+      "dubai_frame": {
+        "title": "Dubai Frame",
+        "desc": "The Dubai Frame is an architectural landmark in Zabeel Park, Dubai."
+      }
+    },
+    "offer": {
+      "secure": "100% Secure and safe",
+      "fast": "Fast & Convenient",
+      "tax": "0% Tax",
+      "title": "The future is here",
+      "subtitle": "Buy real estate with crypto"
+    },
+    "steps": {
+      "title": "Buy your dream home in 3 steps",
+      "step1": {
+        "title": "Choose your residence",
+        "desc": "Select the perfect property that fits your lifestyle and investment goals from our exclusive listings."
+      },
+      "step2": {
+        "title": "Reserve a unit",
+        "desc": "Secure your chosen property by paying a reservation fee. This blocks the unit for you."
+      },
+      "step3": {
+        "title": "Pay via crypto wallet",
+        "desc": "Complete your purchase securely and quickly using your preferred cryptocurrency wallet."
+      }
+    },
+    "why_invest": {
+      "title": "UAE one of the most favored attractive tax related zones"
+    },
+    "foundations": {
+      "title": "Real Estate Foundations",
+      "desc": "Dubai real estate market is one of the most regulated and transparent markets in the region.",
+      "cta": "Read More",
+      "card1": {
+        "title": "Transfer of assets",
+        "desc": "Seamless transfer of your digital assets to real estate."
+      },
+      "card2": {
+        "title": "Escrow account",
+        "desc": "Your investment is protected through government-regulated escrow accounts."
+      },
+      "card3": {
+        "title": "Title Deed",
+        "desc": "Get full ownership rights with an official Title Deed from the Dubai Land Department."
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": "Can you purchase a house using crypto?",
+      "a1": "Yes, you can purchase property in Dubai using cryptocurrency. The process is regulated and secure.",
+      "q2": "Which cryptocurrency should I use to buy?",
+      "a2": "We accept major cryptocurrencies including Bitcoin (BTC), Ethereum (ETH), and USDT.",
+      "q3": "Is the crypto system?",
+      "a3": "The system is fully compliant with UAE regulations and ensures a secure transaction process.",
+      "q4": "How to convert cryptocurrency to pay for real estate properties?",
+      "a4": "We work with licensed partners who handle the conversion of your crypto assets to fiat currency for the property purchase.",
+      "q5": "What documents do I need?",
+      "a5": "You will need your passport, proof of residence, and standard KYC documents required for real estate transactions.",
+      "q6": "Is it safe / taxable?",
+      "a6": "Yes, it is safe. There is currently 0% property tax and 0% capital gains tax for individuals in the UAE.",
+      "q7": "How can I obtain a Golden Visa?",
+      "a7": "Investing in property worth AED 2 million or more makes you eligible for the 10-year Golden Visa.",
+      "q8": "Can I buy directly from the developer?",
+      "a8": "Yes, we facilitate direct purchases from top developers in the UAE using crypto.",
+      "q9": "Can I buy a property from an individual seller?",
+      "a9": "Yes, we can also assist with secondary market transactions using crypto.",
+      "q10": "Can I get a refund if the deal doesn't go through?",
+      "a10": "Refund policies depend on the specific terms of the agreement and the stage of the transaction.",
+      "q11": "Are there any extra fees?",
+      "a11": "Standard real estate transaction fees apply (e.g., DLD fees), plus any applicable exchange fees for crypto conversion.",
+      "q12": "Who handles the transaction?",
+      "a12": "The transaction is handled by our team in coordination with licensed financial partners and the Dubai Land Department.",
+      "q13": "Can I buy remotely?",
+      "a13": "Yes, the entire process can be completed remotely using power of attorney and digital communication.",
+      "q14": "Is my identity anonymous?",
+      "a14": "While crypto offers privacy, real estate transactions in Dubai require KYC and identity verification for legal ownership."
+    }
   }
 }
