@@ -1,27 +1,47 @@
-'use client';
+"use client";
 
-import { usePathname } from 'next/navigation';
-import { Link } from '@/i18n/navigation';
+import { usePathname } from "next/navigation";
+import { Link } from "@/i18n/navigation";
 
-const Breadcrumb = () => {
+type Segment = { name: string; href?: string };
+
+type BreadcrumbProps = {
+  customSegments?: Segment[];
+};
+
+const Breadcrumb: React.FC<BreadcrumbProps> = ({ customSegments }) => {
   const pathname = usePathname();
-  const pathSegments = pathname.split('/').filter((segment) => segment);
-  pathSegments.shift();
 
-  const itemListElement = pathSegments.map((segment, index) => {
-    const url = '/' + pathSegments.slice(0, index + 1).join('/');
-    const name = segment;
-    return {
-      '@type': 'ListItem',
-      'position': index + 1,
-      'name': name,
-      'item': url
-    };
-  });
+  const autoSegments: Segment[] = (() => {
+    const parts = pathname.split("/").filter(Boolean);
+    parts.shift();
+
+    return parts.map((segment, index) => {
+      const url = "/" + parts.slice(0, index + 1).join("/");
+      return {
+        name: segment.replaceAll("-", " "),
+        href: url,
+      };
+    });
+  })();
+
+  const segments: Segment[] =
+    customSegments && customSegments.length > 0
+      ? customSegments
+      : [{ name: "Home", href: "/" }, ...autoSegments];
+  const itemListElement = segments
+    .filter((s) => s.href)
+    .map((s, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: s.name,
+      item: s.href,
+    }));
+
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    'itemListElement': itemListElement,
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement,
   };
 
   return (
@@ -30,27 +50,27 @@ const Breadcrumb = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ul className="flex items-center space-x-2 text-gray-500" >
-        <li>
-          <Link href="/" className="hover:text-blue-600" title="Home">
-            Home
-          </Link>
-        </li>
-        {pathSegments.map((segment, index) => {
-          const isLast = index === pathSegments.length - 1;
-          const href =  '/' + pathSegments.slice(0, index + 1).join('/');
+
+      <ul className="flex items-center space-x-2 text-gray-500">
+        {segments.map((seg, index) => {
+          const isLast = index === segments.length - 1;
 
           return (
-            <li key={index} className="flex items-center space-x-2">
-              <span>/</span>
-              {isLast ? (
-                <span className="text-gray-900 font-medium capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
-                  {segment.replaceAll('-', ' ')}
-                </span>
-              ) : (
-                <Link title={segment.replaceAll('-', ' ')} href={href} className="hover:text-blue-600 capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
-                  {segment.replaceAll('-', ' ')}
+            <li key={`${seg.name}-${index}`} className="flex items-center space-x-2">
+              {index !== 0 && <span>/</span>}
+
+              {seg.href && !isLast ? (
+                <Link
+                  href={seg.href}
+                  title={seg.name}
+                  className="hover:text-blue-600 capitalize sm:max-w-[120px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal"
+                >
+                  {seg.name}
                 </Link>
+              ) : (
+                <span className="text-gray-900 font-medium capitalize sm:max-w-[120px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
+                  {seg.name}
+                </span>
               )}
             </li>
           );
@@ -58,6 +78,6 @@ const Breadcrumb = () => {
       </ul>
     </nav>
   );
-}
+};
 
 export default Breadcrumb;

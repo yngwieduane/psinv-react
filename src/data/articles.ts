@@ -6,7 +6,7 @@
 
 export type ArticleBodyPart =
   | { type: "paragraph"; content: string }
-  | { type: "heading"; content: string }
+  | { type: "heading"; level?: 2 | 3 | 4; content: string }
   | { type: "quote"; content: string }
   | { type: "list"; items: string[] }
   | { type: "cta"; label: string; href: string }
@@ -46,13 +46,8 @@ export type Article = {
   title?: string;
   date: string;
   author: string;
-
-  // ✅ Stable category key for filtering & translations
   categoryKey: CategoryKey;
-
-  // Optional readable label (kept for backward compatibility)
   category?: string;
-
   imageUrl: string;
   summary?: string;
   body?: ArticleBodyPart[];

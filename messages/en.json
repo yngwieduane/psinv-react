@@ -1646,9 +1646,13 @@
     "propertyGuideFeaturedAlt": "Affordable Housing in the UAE",
     "propertyGuideFeaturedTitle": "Affordable Housing in the UAE: Market Analysis and Growth Projection",
     "categories": {
-      "rules_and_regulations": "Rules & Regulations",
+      "uae_real_estate_market_trends": "UAE Real Estate Market Trends",
+      "rules_and_regulations": "Rules and Regulations",
       "laws": "Laws",
-      "technology": "Technology"
+      "technology": "Technology",
+      "property_guide": "Property Guide",
+      "area_guide": "Area Guide",
+      "real_estate_tips_advice": "Real Estate Tips & Advice"
     }
   },
   "Articles": {
@@ -4570,428 +4574,440 @@
         }
       ]
     },
-     "120": {
+    "120": {
       "title": "Top Property Portals in the UAE to Buy and Rent Real Estate",
       "summary": "Discover the top property portals in the UAE for buying, renting, and investing in real estate, with trusted listings, market insights, and expert tools.",
-  "body": [
- {
-  "type": "paragraph",
-  "content": "The <a class=\"class-anchor\" href=\"/en/projects\" title=\"UAE Real Estate Market\">real estate market in the UAE</a> is dynamic, competitive, and full of opportunities — whether you're buying, renting, or investing. With digital transformation shaping how people explore properties, <a class=\"class-anchor\" href=\"/en/projects\" title=\"Property Projects in UAE\">property portals in the UAE</a> have become essential tools for anyone looking for real estate."
-},
-  {
-    "type": "paragraph",
-    "content": "This guide breaks down the most trusted property portals in Dubai, Abu Dhabi, and the wider UAE, highlighting what each offers, who should use them, and how to use them effectively."
-  },
-  {
-    "type": "heading",
-    "content": "Why Use Online Property Portals in the UAE?"
-  },
-  {
-    "type": "paragraph",
-    "content": "Searching for property through reliable online platforms comes with several benefits:"
-  },
-  {
-    "type": "list",
-    "items": [
-      "Access to thousands of listings in one place",
-      "Advanced search filters (location, price, type, amenities)",
-      "Verified agent and developer listings",
-      "Time-saving tools like virtual tours and floor plans",
-      "Market insights for informed decisions",
-      "24/7 availability from any location worldwide"
-    ]
-  },
-  {
-    "type": "paragraph",
-    "content": "These platforms are especially helpful for:"
-  },
-  {
-    "type": "list",
-    "items": [
-      "Expats moving to the UAE",
-      "Foreign investors looking to enter the UAE real estate market",
-      "Local buyers wanting to compare options",
-      "Renters looking for both long-term and short-term units"
-    ]
-  },
-  {
-    "type": "heading",
-    "content": "Leading Property Portals in the UAE"
-  },
-  {
-    "type": "heading",
-    "content": "Property Shop Investment (PSI)"
-  },
-  {
-    "type": "paragraph",
-    "content": "Property Shop Investment (PSI) combines a digital-first approach with personalized service, focusing on Abu Dhabi and Dubai."
-  },
-  {
-    "type": "paragraph",
-    "content": "What Sets PSI Apart:"
-  },
-  {
-    "type": "list",
-    "items": [
-    "Exclusive listings and <a class=\"class-anchor\" href=\"/en/projects\" title=\"Off-plan Deals in UAE\">off-plan deals</a> from top developers like Aldar, Modon, and Bloom",
-    "In-depth blog resources and <a class=\"class-anchor\" href=\"/en/projects\" title=\"Real Estate Investment Tips\">real estate investment tips</a>",
-    "Multilingual platform (Arabic and English)",
-    "Direct booking, viewing scheduling, and financing support"
-  ]
-  },
-  {
-    "type": "paragraph",
-    "content": "Top Features:"
-  },
-  {
-    "type": "list",
-    "items": [
-      "Virtual tours",
-      "Developer promotions",
-      "Investment-focused project pages"
-    ]
-  },
-  {
-    "type": "paragraph",
-    "content": "Best For:\nInvestors, end-users, and international buyers focused on premium and off-plan properties."
-  },
-  {
-    "type": "heading",
-    "content": "Bayut.com"
-  },
-  {
-    "type": "paragraph",
-    "content": "Bayut is among the most dominant real estate portals in the UAE."
-  },
-  {
-    "type": "paragraph",
-    "content": "Key Features:"
-  },
-  {
-    "type": "list",
-    "items": [
-      "Verified listings with detailed property data",
-      "Smart search filters and user-friendly design",
-      "Comprehensive market reports and area guides"
-    ]
-  },
-  {
-    "type": "heading",
-    "content": "Property Finder"
-  },
-  {
-    "type": "paragraph",
-    "content": "Property Finder is a leading UAE real estate portal with deep market coverage and a premium interface."
-  },
-  {
-    "type": "paragraph",
-    "content": "Key Features:"
-  },
-  {
-    "type": "list",
-    "items": [
-       "<a class=\"class-anchor\" href=\"/en/mortgage-calculator\" title=\"Mortgage Calculator UAE\">Mortgage calculator</a> and market analytics",
-      "Listings for residential and commercial properties",
-      "Area guides and lifestyle search tools"
-    ]
-  },
-  {
-    "type": "heading",
-    "content": "Developer-Owned Portals"
-  },
-  {
-    "type": "paragraph",
-    "content": "In addition to public platforms, major UAE developers have their own property portals for exclusive listings:"
-  },
-  {
-    "type": "list",
-    "items": [
-      "Aldar Properties",
-      "Emaar Properties",
-      "DAMAC Properties",
-      "Nakheel"
-    ]
-  },
-  {
-    "type": "paragraph",
-    "content": "These portals are ideal for off-plan buyers or investors looking for direct deals, payment plans, and upcoming launches."
-  },
-  {
-  "type": "image",
-  "src": "/assets/images/articles/top-property-portals-in-uae-to-buy-and-rent-real-estate-1.webp",
-  "alt": "Top property portals in the UAE",
-  "title": "UAE Property Portals"
-},
-  {
-    "type": "heading",
-    "content": "Facts to Know About UAE Property Portals"
-  },
-  {
-    "type": "list",
-    "items": [
-      "Over 80% of property searches in the UAE begin online",
-      "PSI is a developer-approved platform with a large share of off-plan projects in Abu Dhabi",
-      "Many platforms now offer virtual viewing, especially post-2020, to cater to global investors",
-      "The UAE government supports digital real estate with open data and regulation via DLD and DARI platforms"
-    ]
-  },
-  {
-    "type": "heading",
-    "content": "Tips for Using Property Portals in the UAE"
-  },
-  {
-    "type": "paragraph",
-    "content": "To get the most out of any property portal, follow these tips:"
-  },
-  {
-    "type": "list",
-    "items": [
-      "Set your budget and filters clearly before browsing",
-      "Check for verified agents and listings to avoid scams",
-      "Use multiple platforms to compare listings and prices",
-      "Look at community insights and floor plans to get the full picture",
-      "Contact the agent or developer directly for faster responses"
-    ]
-  },
-  {
-    "type": "heading",
-    "content": "How to Choose the Right Portal?"
-  },
-  {
-    "type": "paragraph",
-    "content": "Ask yourself the following:"
-  },
-  {
-    "type": "list",
-    "items": [
-      "Are you looking for ready or off-plan property?",
-      "Do you want direct listings from developers or third-party agents?",
-      "Do you prefer tools like mortgage calculators or area insights?"
-    ]
-  },
-  {
-    "type": "paragraph",
-    "content": "Finding the right property in the UAE is easier when you choose the right digital platform. Whether you’re an expat renting a studio in Dubai, a family buying a villa in Abu Dhabi, or an investor seeking off-plan projects, these top property portals provide the visibility and tools to make the process smoother."
-  },
-  {
-    "type": "list",
-    "items": [
-      "Compare listings",
-      "Verify agents",
-      "Track price trends",
-      "Contact brokers instantly",
-      "Book viewings or request call-backs online"
-    ]
-  },
-  {
-    "type": "paragraph",
-    "content": "Start your property journey now on platforms like PSI, and others — and make smarter, faster, and safer real estate decisions."
-  }
-]
+      "body": [
+        {
+          "type": "paragraph",
+          "content": "The <a class=\"class-anchor\" href=\"/en/projects\" title=\"UAE Real Estate Market\">real estate market in the UAE</a> is dynamic, competitive, and full of opportunities — whether you're buying, renting, or investing. With digital transformation shaping how people explore properties, <a class=\"class-anchor\" href=\"/en/projects\" title=\"Property Projects in UAE\">property portals in the UAE</a> have become essential tools for anyone looking for real estate."
+        },
+        {
+          "type": "paragraph",
+          "content": "This guide breaks down the most trusted property portals in Dubai, Abu Dhabi, and the wider UAE, highlighting what each offers, who should use them, and how to use them effectively."
+        },
+        {
+          "type": "heading",
+          "content": "Why Use Online Property Portals in the UAE?"
+        },
+        {
+          "type": "paragraph",
+          "content": "Searching for property through reliable online platforms comes with several benefits:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Access to thousands of listings in one place",
+            "Advanced search filters (location, price, type, amenities)",
+            "Verified agent and developer listings",
+            "Time-saving tools like virtual tours and floor plans",
+            "Market insights for informed decisions",
+            "24/7 availability from any location worldwide"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "These platforms are especially helpful for:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Expats moving to the UAE",
+            "Foreign investors looking to enter the UAE real estate market",
+            "Local buyers wanting to compare options",
+            "Renters looking for both long-term and short-term units"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "content": "Leading Property Portals in the UAE"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": "Property Shop Investment (PSI)"
+        },
+        {
+          "type": "paragraph",
+          "content": "Property Shop Investment (PSI) combines a digital-first approach with personalized service, focusing on Abu Dhabi and Dubai."
+        },
+        {
+          "type": "paragraph",
+          "content": "What Sets PSI Apart:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Exclusive listings and <a class=\"class-anchor\" href=\"/en/projects\" title=\"Off-plan Deals in UAE\">off-plan deals</a> from top developers like Aldar, Modon, and Bloom",
+            "In-depth blog resources and <a class=\"class-anchor\" href=\"/en/projects\" title=\"Real Estate Investment Tips\">real estate investment tips</a>",
+            "Multilingual platform (Arabic and English)",
+            "Direct booking, viewing scheduling, and financing support"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Top Features:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Virtual tours",
+            "Developer promotions",
+            "Investment-focused project pages"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Best For:\nInvestors, end-users, and international buyers focused on premium and off-plan properties."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": "Bayut.com"
+        },
+        {
+          "type": "paragraph",
+          "content": "Bayut is among the most dominant real estate portals in the UAE."
+        },
+        {
+          "type": "paragraph",
+          "content": "Key Features:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Verified listings with detailed property data",
+            "Smart search filters and user-friendly design",
+            "Comprehensive market reports and area guides"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": "Property Finder"
+        },
+        {
+          "type": "paragraph",
+          "content": "Property Finder is a leading UAE real estate portal with deep market coverage and a premium interface."
+        },
+        {
+          "type": "paragraph",
+          "content": "Key Features:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "<a class=\"class-anchor\" href=\"/en/mortgage-calculator\" title=\"Mortgage Calculator UAE\">Mortgage calculator</a> and market analytics",
+            "Listings for residential and commercial properties",
+            "Area guides and lifestyle search tools"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": "Developer-Owned Portals"
+        },
+        {
+          "type": "paragraph",
+          "content": "In addition to public platforms, major UAE developers have their own property portals for exclusive listings:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Aldar Properties",
+            "Emaar Properties",
+            "DAMAC Properties",
+            "Nakheel"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "These portals are ideal for off-plan buyers or investors looking for direct deals, payment plans, and upcoming launches."
+        },
+        {
+          "type": "image",
+          "src": "/assets/images/articles/top-property-portals-in-uae-to-buy-and-rent-real-estate-1.webp",
+          "alt": "Top property portals in the UAE",
+          "title": "UAE Property Portals"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "content": "Facts to Know About UAE Property Portals"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Over 80% of property searches in the UAE begin online",
+            "PSI is a developer-approved platform with a large share of off-plan projects in Abu Dhabi",
+            "Many platforms now offer virtual viewing, especially post-2020, to cater to global investors",
+            "The UAE government supports digital real estate with open data and regulation via DLD and DARI platforms"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "content": "Tips for Using Property Portals in the UAE"
+        },
+        {
+          "type": "paragraph",
+          "content": "To get the most out of any property portal, follow these tips:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Set your budget and filters clearly before browsing",
+            "Check for verified agents and listings to avoid scams",
+            "Use multiple platforms to compare listings and prices",
+            "Look at community insights and floor plans to get the full picture",
+            "Contact the agent or developer directly for faster responses"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "content": "How to Choose the Right Portal?"
+        },
+        {
+          "type": "paragraph",
+          "content": "Ask yourself the following:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Are you looking for ready or off-plan property?",
+            "Do you want direct listings from developers or third-party agents?",
+            "Do you prefer tools like mortgage calculators or area insights?"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Finding the right property in the UAE is easier when you choose the right digital platform. Whether you’re an expat renting a studio in Dubai, a family buying a villa in Abu Dhabi, or an investor seeking off-plan projects, these top property portals provide the visibility and tools to make the process smoother."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Compare listings",
+            "Verify agents",
+            "Track price trends",
+            "Contact brokers instantly",
+            "Book viewings or request call-backs online"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Start your property journey now on platforms like PSI, and others — and make smarter, faster, and safer real estate decisions."
+        }
+      ]
     },
- "121": {
-    "title": "Everything You Need to Know About Tenancy Rights & Laws in Abu Dhabi",
-    "summary": "A complete guide to Abu Dhabi tenancy laws, rent caps, Tawtheeq registration, eviction rules, disputes, and tenant rights explained clearly.",
-    "body": [
-      {
-        "type": "paragraph",
-        "content": "Whether you're planning to rent an apartment in <a class=\"class-anchor\" href=\"/en/projects/abu-dhabi/al-reem-island\" title=\"Al Reem Island Properties\">Reem Island</a> or lease a villa in Khalifa City, understanding your rights as a tenant in Abu Dhabi is essential. The capital’s rental market is booming, and with that comes a clear legal framework to protect tenants and landlords alike. At <a class=\"class-anchor\" href=\"/\" title=\"Property Shop Investment\">Property Shop Investment (PSI)</a>, we make sure our clients know exactly where they stand before signing any rental contract."
-      },
-      {
-        "type": "paragraph",
-        "content": "This blog breaks down Abu Dhabi tenancy laws, rental caps, dispute procedures, and more—in clear, simple terms."
-      },
-      {
-        "type": "heading",
-        "content": "Why Knowing Tenancy Laws Matters"
-      },
-      {
-        "type": "paragraph",
-        "content": "With hundreds of new residents moving to Abu Dhabi every month, the real estate market has become highly competitive. Whether you're renting a cozy studio or a spacious villa, knowing your legal rights saves time, stress, and money."
-      },
-      {
-      "type": "heading",
-      "content": "Key Tenancy Laws You Should Know in <a class=\"class-anchor\" href=\"/en/projects/abu-dhabi\" title=\"Abu Dhabi Real Estate\">Abu Dhabi</a>"
-      },
-      {
-        "type": "heading",
-        "content": "1. Contract Registration Is Mandatory"
-      },
-      {
-        "type": "paragraph",
-        "content": "All rental contracts must be registered with the Tawtheeq system under Abu Dhabi Municipality."
-      },
-      {
-        "type": "paragraph",
-        "content": "<strong>Tip from PSI:</strong> Never move into a unit unless the landlord provides a valid Tawtheeq certificate."
-      },
-      {
-        "type": "heading",
-        "content": "2. 5% Rent Cap Is Back"
-      },
-      {
-        "type": "paragraph",
-        "content": "Landlords can only raise the rent by a maximum of 5% per year, and only if they give at least 60 days' notice."
-      },
-      {
-        "type": "paragraph",
-        "content": "This law protects tenants from unexpected rent spikes, helping them plan long-term housing more comfortably."
-      },
-      {
-        "type": "heading",
-        "content": "3. 60 Days’ Notice for Contract Changes or Eviction"
-      },
-      {
-        "type": "paragraph",
-        "content": "Both landlords and tenants must give two months' notice before:"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Eviction",
-          "Lease non-renewal",
-          "Rent increase",
-          "Any other contract changes"
-        ]
-      },
-      {
-        "type": "paragraph",
-        "content": "<strong>Important:</strong> Landlords don't need to provide a reason for eviction once the lease ends, as long as they give the proper notice."
-      },
-      {
-        "type": "heading",
-        "content": "4. Clear Occupancy Rules"
-      },
-      {
-        "type": "paragraph",
-        "content": "Abu Dhabi has strict guidelines on how many people can live in a property:"
-      },
-      {
-        "type": "list",
-        "items": [
-          "14 sqm per adult is required (kids and housemaids excluded)",
-          "No turning living rooms or corridors into bedrooms",
-          "Only one family per residential unit",
-          "Unrelated individuals cannot share unless it's permitted"
-        ]
-      },
-      {
-        "type": "heading",
-        "content": "5. What If There’s a Dispute?"
-      },
-      {
-        "type": "paragraph",
-        "content": "Disputes between tenants and landlords are handled by the Abu Dhabi Rent Disputes Settlement Committee (RDSC). There’s a clear legal process in place, and tenants can escalate cases up to the Court of Cassation, depending on the amount involved."
-      },
-      {
-        "type": "paragraph",
-        "content": "To file a complaint, you'll need:"
-      },
-      {
-        "type": "list",
-        "items": [
-          "A registered tenancy contract (Tawtheeq)",
-          "Passport copy",
-          "Tenancy details",
-          "Proof of payment",
-          "Application form"
-        ]
-      },
-      {
-        "type": "paragraph",
-        "content": "<strong>PSI Tip:</strong> We help our clients manage such legal paperwork and guide them through disputes, so you're never alone."
-      },
-      {
-        "type": "heading",
-        "content": "Housing Fees – What Tenants Should Know"
-      },
-      {
-        "type": "paragraph",
-        "content": "Tenants are required to pay a 3% housing fee, calculated from their annual rent. This fee is paid to the Abu Dhabi Municipality, not the landlord."
-      },
-      {
-        "type": "image",
-        "src": "/assets/images/articles/abu-dhabi-city-road-skyline.webp",
-        "alt": "Abu Dhabi city skyline and road infrastructure",
-        "title": "Abu Dhabi City"
-      },
-      {
-        "type": "heading",
-        "content": "Quick Tips for Tenants in Abu Dhabi"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Register your contract via Tawtheeq",
-          "Ask for all property documents before moving in",
-          "Know your 60-day notice rights",
-          "Don’t accept illegal rent hikes over 5%",
-          "Reach out early if you face disputes"
-        ]
-      },
-      {
-        "type": "heading",
-        "content": "Why Rent or Invest in Abu Dhabi?"
-      },
-      {
-        "type": "paragraph",
-        "content": "Abu Dhabi offers a high standard of living, world-class infrastructure, and tenant-friendly laws. Whether you're a resident or investor, here’s why the capital is one of the best real estate markets in the UAE:"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Stable rental income due to consistent demand",
-          "Transparent rental laws that protect both parties",
-          "Diverse property types from luxury waterfronts to family-friendly suburbs",
-          "No property tax, and low housing fees compared to other global cities",
-          "Safe, clean, and culturally rich environment"
-        ]
-      },
-      {
-        "type": "heading",
-        "content": "How PSI Makes Renting in Abu Dhabi Easy"
-      },
-      {
-        "type": "paragraph",
-        "content": "At Property Shop Investment, we help thousands of clients every year find the right home—hassle-free."
-      },
-      {
-        "type": "paragraph",
-        "content": "We walk you through:"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Verified rental listings",
-          "Legal contract reviews",
-          "Tawtheeq registration support",
-          "Dispute guidance",
-          "Rent negotiations"
-        ]
-      },
-      {
-        "type": "paragraph",
-        "content": "Whether you're looking for an apartment in Al Raha Beach, a villa in Saadiyat Island, or want to understand your rental rights—we’re here to help."
-      },
-      {
-        "type": "heading",
-        "content": "Ready to Rent with Confidence?"
-      },
-      {
-        "type": "paragraph",
-        "content": "Don’t just sign a contract—know your rights and protect your future."
-      },
-      {
-        "type": "paragraph",
-        "content": "Browse our available properties for rent in Abu Dhabi or talk to a PSI rental expert now. Have questions? Contact our team at Property Shop Investment today. We’re happy to answer your questions and guide you toward a smart rental decision in Abu Dhabi."
-      },
-{
-  "type": "cta",
-  "label": "Explore Properties",
-  "href": "/en/projects/abu-dhabi"
-}
-
-    ]
-  }
+    "121": {
+      "title": "Everything You Need to Know About Tenancy Rights & Laws in Abu Dhabi",
+      "summary": "A complete guide to Abu Dhabi tenancy laws, rent caps, Tawtheeq registration, eviction rules, disputes, and tenant rights explained clearly.",
+      "body": [
+        {
+          "type": "paragraph",
+          "content": "Whether you're planning to rent an apartment in <a class=\"class-anchor\" href=\"/en/projects/abu-dhabi/al-reem-island\" title=\"Al Reem Island Properties\">Reem Island</a> or lease a villa in Khalifa City, understanding your rights as a tenant in Abu Dhabi is essential. The capital’s rental market is booming, and with that comes a clear legal framework to protect tenants and landlords alike. At <a class=\"class-anchor\" href=\"/\" title=\"Property Shop Investment\">Property Shop Investment (PSI)</a>, we make sure our clients know exactly where they stand before signing any rental contract."
+        },
+        {
+          "type": "paragraph",
+          "content": "This blog breaks down Abu Dhabi tenancy laws, rental caps, dispute procedures, and more—in clear, simple terms."
+        },
+        {
+          "type": "heading",
+          "content": "Why Knowing Tenancy Laws Matters"
+        },
+        {
+          "type": "paragraph",
+          "content": "With hundreds of new residents moving to Abu Dhabi every month, the real estate market has become highly competitive. Whether you're renting a cozy studio or a spacious villa, knowing your legal rights saves time, stress, and money."
+        },
+        {
+          "type": "heading",
+          "content": "Key Tenancy Laws You Should Know in <a class=\"class-anchor\" href=\"/en/projects/abu-dhabi\" title=\"Abu Dhabi Real Estate\">Abu Dhabi</a>"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": "1. Contract Registration Is Mandatory"
+        },
+        {
+          "type": "paragraph",
+          "content": "All rental contracts must be registered with the Tawtheeq system under Abu Dhabi Municipality."
+        },
+        {
+          "type": "paragraph",
+          "content": "<strong>Tip from PSI:</strong> Never move into a unit unless the landlord provides a valid Tawtheeq certificate."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": "2. 5% Rent Cap Is Back"
+        },
+        {
+          "type": "paragraph",
+          "content": "Landlords can only raise the rent by a maximum of 5% per year, and only if they give at least 60 days' notice."
+        },
+        {
+          "type": "paragraph",
+          "content": "This law protects tenants from unexpected rent spikes, helping them plan long-term housing more comfortably."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": "3. 60 Days’ Notice for Contract Changes or Eviction"
+        },
+        {
+          "type": "paragraph",
+          "content": "Both landlords and tenants must give two months' notice before:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Eviction",
+            "Lease non-renewal",
+            "Rent increase",
+            "Any other contract changes"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "<strong>Important:</strong> Landlords don't need to provide a reason for eviction once the lease ends, as long as they give the proper notice."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": "4. Clear Occupancy Rules"
+        },
+        {
+          "type": "paragraph",
+          "content": "Abu Dhabi has strict guidelines on how many people can live in a property:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "14 sqm per adult is required (kids and housemaids excluded)",
+            "No turning living rooms or corridors into bedrooms",
+            "Only one family per residential unit",
+            "Unrelated individuals cannot share unless it's permitted"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": "5. What If There’s a Dispute?"
+        },
+        {
+          "type": "paragraph",
+          "content": "Disputes between tenants and landlords are handled by the Abu Dhabi Rent Disputes Settlement Committee (RDSC). There’s a clear legal process in place, and tenants can escalate cases up to the Court of Cassation, depending on the amount involved."
+        },
+        {
+          "type": "paragraph",
+          "content": "To file a complaint, you'll need:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "A registered tenancy contract (Tawtheeq)",
+            "Passport copy",
+            "Tenancy details",
+            "Proof of payment",
+            "Application form"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "<strong>PSI Tip:</strong> We help our clients manage such legal paperwork and guide them through disputes, so you're never alone."
+        },
+        {
+          "type": "heading",
+          "content": "Housing Fees – What Tenants Should Know"
+        },
+        {
+          "type": "paragraph",
+          "content": "Tenants are required to pay a 3% housing fee, calculated from their annual rent. This fee is paid to the Abu Dhabi Municipality, not the landlord."
+        },
+        {
+          "type": "image",
+          "src": "/assets/images/articles/abu-dhabi-city-road-skyline.webp",
+          "alt": "Abu Dhabi city skyline and road infrastructure",
+          "title": "Abu Dhabi City"
+        },
+        {
+          "type": "heading",
+          "content": "Quick Tips for Tenants in Abu Dhabi"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Register your contract via Tawtheeq",
+            "Ask for all property documents before moving in",
+            "Know your 60-day notice rights",
+            "Don’t accept illegal rent hikes over 5%",
+            "Reach out early if you face disputes"
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Why Rent or Invest in Abu Dhabi?"
+        },
+        {
+          "type": "paragraph",
+          "content": "Abu Dhabi offers a high standard of living, world-class infrastructure, and tenant-friendly laws. Whether you're a resident or investor, here’s why the capital is one of the best real estate markets in the UAE:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Stable rental income due to consistent demand",
+            "Transparent rental laws that protect both parties",
+            "Diverse property types from luxury waterfronts to family-friendly suburbs",
+            "No property tax, and low housing fees compared to other global cities",
+            "Safe, clean, and culturally rich environment"
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "How PSI Makes Renting in Abu Dhabi Easy"
+        },
+        {
+          "type": "paragraph",
+          "content": "At Property Shop Investment, we help thousands of clients every year find the right home—hassle-free."
+        },
+        {
+          "type": "paragraph",
+          "content": "We walk you through:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Verified rental listings",
+            "Legal contract reviews",
+            "Tawtheeq registration support",
+            "Dispute guidance",
+            "Rent negotiations"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Whether you're looking for an apartment in Al Raha Beach, a villa in Saadiyat Island, or want to understand your rental rights—we’re here to help."
+        },
+        {
+          "type": "heading",
+          "content": "Ready to Rent with Confidence?"
+        },
+        {
+          "type": "paragraph",
+          "content": "Don’t just sign a contract—know your rights and protect your future."
+        },
+        {
+          "type": "paragraph",
+          "content": "Browse our available properties for rent in Abu Dhabi or talk to a PSI rental expert now. Have questions? Contact our team at Property Shop Investment today. We’re happy to answer your questions and guide you toward a smart rental decision in Abu Dhabi."
+        },
+        {
+          "type": "cta",
+          "label": "Explore Properties",
+          "href": "/en/projects/abu-dhabi"
+        }
+      ]
+    }
   }
 }
