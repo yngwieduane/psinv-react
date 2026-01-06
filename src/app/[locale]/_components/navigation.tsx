@@ -464,11 +464,11 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 {
                     title: t('New Launches'),
                     items: [
-                        { label: t("Sama Yas"), href: "/project/sama-yas" },
-                        { label: t("Yas Riva"), href: "/project/yas-riva" },
-                        { label: t("Manarat Living - Saadiyat"), href: "/project/manarat-living-saadiyat" },
-                        { label: t("The Arthouse"), href: "/project/the-arthouse" },
-                        { label: t("Bloom Living - Almeria"), href: "/project/bloom-living-almeria" },
+                        { label: t("Sama Yas"), href: "/project/lp/sama-yas" },
+                        { label: t("Yas Riva"), href: "/project/lp/yas-riva" },
+                        { label: t("Manarat Living - Saadiyat"), href: "/project/lp/manarat-living-saadiyat" },
+                        { label: t("The Arthouse"), href: "/project/lp/the-arthouse" },
+                        { label: t("Bloom Living - Almeria"), href: "/project/lp/bloom-living-almeria" },
                     ]
                 },
                 {

@@ -158,7 +158,7 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
 
     const sendEmail = async () => {
         try {
-            const response = await fetch("https://psinv.net/api/sendemail.php", {
+            const response = await fetch("https://registration.psinv.net/api/sendemail2.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",                
@@ -744,7 +744,7 @@ const ListForm: React.FC<ListFormProps> = ({fromModal}) => {
                     body: JSON.stringify(formDataToSend),
                 });
 
-                const mailRes = await fetch("https://psinv.net/api/sendemail.php", {
+                const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({

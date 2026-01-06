@@ -175,7 +175,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
         body: JSON.stringify(formDataToSend),
       });
 
-      const mailRes = await fetch("https://psinv.net/api/sendemail.php", {
+      const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
           method: 'POST',
           headers: { "Content-Type" : "application/json" },
           body: JSON.stringify({
