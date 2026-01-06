@@ -2,7 +2,7 @@ import { Clock, Leaf, User } from "lucide-react";
 import Breadcrumb from "../../_components/Breadcrumb";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { ARTICLES, ArticleBodyPart } from "@/data/articles";
+import { ARTICLES, ArticleBodyPart, CATEGORY_LABELS, CategoryKey } from "@/data/articles";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
@@ -44,16 +44,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 const renderContent = (part: ArticleBodyPart, index: number, rtl: boolean) => {
   switch (part.type) {
-    case "heading":
-      return (
-        <h2
-          key={index}
-          className={`text-3xl font-bold text-gray-800 mt-8 mb-4 border-b pb-2 ${rtl ? "text-right" : "text-left"
-            }`}
-          dangerouslySetInnerHTML={{ __html: part.content }}
-        />
-      );
+case "heading": {
+  const level: 2 | 3 | 4 = (part.level ?? 2) as 2 | 3 | 4;
 
+  const styles = {
+    2: "text-xl sm:text-2xl lg:text-3xl font-extrabold mt-10 mb-4 border-b pb-2",
+    3: "text-lg sm:text-xl lg:text-2xl font-bold mt-6 mb-3",
+    4: "text-base sm:text-lg font-semibold mt-4 mb-2",
+  }[level];
+
+  const Tag = (`h${level}` as "h2" | "h3" | "h4");
+
+  return (
+    <Tag
+      key={index}
+      className={`text-gray-800 ${styles} ${
+        rtl ? "text-right" : "text-left"
+      }`}
+      dangerouslySetInnerHTML={{ __html: part.content }}
+    />
+  );
+}
     case "paragraph":
       return (
         <p
@@ -107,12 +118,12 @@ const renderContent = (part: ArticleBodyPart, index: number, rtl: boolean) => {
         </ul>
       );
     }
-case "cta":
-  return (
-    <div key={index} className="my-12 flex justify-center">
-      <a
-        href={part.href}
-        className={`group inline-flex items-center justify-center w-full sm:w-auto
+    case "cta":
+      return (
+        <div key={index} className="my-12 flex justify-center">
+          <a
+            href={part.href}
+            className={`group inline-flex items-center justify-center w-full sm:w-auto
         rounded-full px-7 py-3.5 text-sm font-semibold
         bg-white text-gray-900
         border border-[var(--color-emerald-500)]
@@ -127,22 +138,22 @@ case "cta":
         focus:ring-offset-2
         transition-all duration-200
         ${rtl ? "flex-row-reverse" : ""}`}
-      >
-        <span>{part.label}</span>
+          >
+            <span>{part.label}</span>
 
-        <span
-          className={`inline-flex items-center justify-center
+            <span
+              className={`inline-flex items-center justify-center
           ${rtl ? "mr-2" : "ml-2"}
           text-[var(--color-emerald-600)]
           transition-transform duration-200
           ${rtl ? "group-hover:-translate-x-1" : "group-hover:translate-x-1"}`}
-          aria-hidden="true"
-        >
-          →
-        </span>
-      </a>
-    </div>
-  );
+              aria-hidden="true"
+            >
+              →
+            </span>
+          </a>
+        </div>
+      );
     case "image":
       return (
         <div key={index} className="flex justify-center my-8">
@@ -171,19 +182,30 @@ export default async function ArticleSingle({ params }: PageProps) {
   const rtl = isRtlLocale(locale);
 
   const t = await getTranslations({ locale, namespace: "Articles" });
-
+  const categoryKey = article.categoryKey as CategoryKey;
+  const ui = await getTranslations({ locale, namespace: "ArticlesPage" });
+const categoryLabel =
+  ui(`categories.${article.categoryKey}`) ??
+  CATEGORY_LABELS[article.categoryKey as CategoryKey];
   const title = t(`${article.id}.title`);
   const summary = t(`${article.id}.summary`);
 
   // ✅ Body from messages/en.json or messages/ar.json
   const bodyRaw = t.raw(`${article.id}.body`);
   const body = assertBodyParts(bodyRaw);
-
+  const categorySlug = categoryKey.replaceAll("_", "-");
   return (
     <>
       <div className="bg-[#f4f4f4] mt-30 mb-3 border-b border-gray-200">
         <div className="container mx-auto px-6 lg:px-8 py-4">
-          <Breadcrumb />
+          <Breadcrumb
+            customSegments={[
+              { name: "Home", href: "/" },
+              { name: "Articles", href: "/articles" },
+              { name: categoryLabel, href: `/articles/category/${article.categoryKey.replaceAll("_", "-")}` },
+              { name: title },
+            ]}
+          />
         </div>
       </div>
 
@@ -219,18 +241,18 @@ export default async function ArticleSingle({ params }: PageProps) {
           </span>
         </div>
 
-<div className="relative w-full h-[320px] sm:h-[380px] lg:h-[480px] rounded-2xl overflow-hidden shadow-lg mb-10">
-  <Image
-    src={article.imageUrl}
-    alt={title}
-    title={title}
-    fill
-    priority
-    className="object-cover"
-    style={{ objectPosition: "left center" }}
-  />
-  <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/10 to-transparent" />
-</div>
+        <div className="relative w-full h-[320px] sm:h-[380px] lg:h-[480px] rounded-2xl overflow-hidden shadow-lg mb-10">
+          <Image
+            src={article.imageUrl}
+            alt={title}
+            title={title}
+            fill
+            priority
+            className="object-cover"
+            style={{ objectPosition: "left center" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/10 to-transparent" />
+        </div>
 
 
         <div className="article-body">
