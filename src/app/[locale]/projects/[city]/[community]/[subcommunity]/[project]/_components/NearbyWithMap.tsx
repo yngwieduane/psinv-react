@@ -21,8 +21,9 @@ export type AnchorPointName = keyof typeof AdvancedMarkerAnchorPoint;
 
 import './NearbyWithMap.css';
 import { RealEstateIcon } from "../../../../../../../../../public/icons/real-estate-icon";
+import { DynamicIcon } from "lucide-react/dynamic";
 import { RealEstateIconNearby } from "../../../../../../../../../public/icons/real-estate-icon-nearbys";
-import { SquareParking, Car, Landmark, Coffee, BriefcaseMedical, UtensilsCrossed, Mails, Siren, Fuel, Hospital, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 const NearbysWithMap = ({
     latitude,
@@ -148,6 +149,15 @@ const NearbysWithMap = ({
                                     case 'hospitals':
                                         labelicon = 'hospital';
                                         break;
+                                    case 'shopping':
+                                        labelicon = 'shopping';
+                                        break;
+                                    case 'schools':
+                                        labelicon = 'school';
+                                        break;
+                                    case 'supermarkets':
+                                        labelicon = 'supermarket';
+                                        break;
 
                                     default:
                                         labelicon = 'landmark';
@@ -165,22 +175,7 @@ const NearbysWithMap = ({
                                             className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
                                             <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center text-secondary">
                                                 {/* <MapPin size={28} /> */}
-                                                {(() => {
-                                                    const iconMap: any = {
-                                                        'square-parking': SquareParking,
-                                                        'car': Car,
-                                                        'landmark': Landmark,
-                                                        'coffee': Coffee,
-                                                        'briefcase-medical': BriefcaseMedical,
-                                                        'utensils-crossed': UtensilsCrossed,
-                                                        'mails': Mails,
-                                                        'siren': Siren,
-                                                        'fuel': Fuel,
-                                                        'hospital': Hospital
-                                                    };
-                                                    const IconComponent = iconMap[labelicon] || Landmark;
-                                                    return <IconComponent size={20} />;
-                                                })()}
+                                                <DynamicIcon name={labelicon} size={20} />
                                             </div>
                                             <h4 className="font-bold text-gray-800 text-sm mb-1">{post.landmarkEnglishName}, {post.addressLine1English}</h4>
                                             <p className="text-xs text-gray-400 font-bold uppercase">{distance}<span>km</span></p>
