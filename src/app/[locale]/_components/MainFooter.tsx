@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import { DynamicIcon } from 'lucide-react/dynamic';
-import { Poppins } from "next/font/google";import Image from "next/image";
+// import { DynamicIcon } from 'lucide-react/dynamic';
+import { Poppins } from "next/font/google"; import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { SocialMedia } from "@/types/navigation";
-import { DownloadIcon, PlaneIcon, Send } from "lucide-react";
+import { DownloadIcon, PlaneIcon, Send, Facebook, Twitter, Instagram, Linkedin, Youtube, Camera } from "lucide-react";
 
 const socialMedia: SocialMedia[] = [
     {
@@ -70,17 +70,27 @@ const MainFooter = () => {
                             </p>
                             <p className="flex items-center gap-2 justify-center sm:justify-start">
                                 <span className="w-6 h-6 flex items-center justify-center border border-white rounded-full">
-                                    <Image width={200} height={200} src="/tel-icon.svg" alt="Phone Icon" title="Phone Icon"  className="w-[10px]" />
+                                    <Image width={200} height={200} src="/tel-icon.svg" alt="Phone Icon" title="Phone Icon" className="w-[10px]" />
                                 </span>
                                 <span className="font-semibold">Int'l Tel: +971 2205 2999</span>
                             </p>
                         </div>
                         <div className="flex space-x-4 mb-3 mt-5 sm:text-[14px] justify-center sm:justify-start">
-                            {socialMedia.map((item) => (
-                                <Link title={item.name} target="_blank" href={item.href} key={item.name} aria-label={item.name} className="flex items-center justify-center text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
-                                    <DynamicIcon name={item.icon} size={20} />
-                                </Link>
-                            ))}
+                            {socialMedia.map((item) => {
+                                const Icon = {
+                                    facebook: Facebook,
+                                    twitter: Twitter,
+                                    instagram: Instagram,
+                                    camera: Camera,
+                                    linkedin: Linkedin,
+                                    youtube: Youtube,
+                                }[item.icon as string] || Facebook;
+                                return (
+                                    <Link title={item.name} target="_blank" href={item.href} key={item.name} aria-label={item.name} className="flex items-center justify-center text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
+                                        <Icon size={20} />
+                                    </Link>
+                                )
+                            })}
                         </div>
                     </div>
                     <div className="sm:col-span-2 flex sm:flex-row md:grid md:grid-cols-2 gap-8 order-first md:order-0">
@@ -131,7 +141,7 @@ const MainFooter = () => {
                                 className="w-full p-2 border border-gray-400 rounded-l bg-[#111954] text-white"
                             />
                             <button className="border border-[#ABB0B2] p-2 rounded-r" aria-label="Subscribe to Newsletter">
-                                <Send size={16}  />
+                                <Send size={16} />
                             </button>
                         </div>
                         {/* Download Buttons */}
@@ -146,7 +156,7 @@ const MainFooter = () => {
                             </a>
                         </div>
 
-                        <div className="flex w-full gap-2 mt-5 justify-between">              
+                        <div className="flex w-full gap-2 mt-5 justify-between">
                             <div className="w-1/2">
                                 <a title="Appstore" href="https://apps.apple.com/us/app/psi-real-estate/id6736644035" target="_blank"><img src="/assets/images/appstore.svg" alt="App Store" title="App Store" className="w-full" /></a>
                             </div>
@@ -162,9 +172,9 @@ const MainFooter = () => {
             <div className="text-center text-[11px] sm:text-base py-4 bg-white text-[#111954] sm:bg-[#111954] sm:text-white">
                 <p>All Rights Reserved. © 2025 Property Shop Investment LLC.</p>
                 <p className="mt-1">
-                License No.: CN-1100434 | Brokerage No.: 20240000258226 |
-                <Link title="Privacy" href="/privacy" className="ml-1 cursor-pointer hover:underline">Privacy</Link> |
-                <Link title="Terms" href="/terms" className="ml-1 cursor-pointer hover:underline">Terms of Use</Link>
+                    License No.: CN-1100434 | Brokerage No.: 20240000258226 |
+                    <Link title="Privacy" href="/privacy" className="ml-1 cursor-pointer hover:underline">Privacy</Link> |
+                    <Link title="Terms" href="/terms" className="ml-1 cursor-pointer hover:underline">Terms of Use</Link>
                 </p>
             </div>
         </footer>
