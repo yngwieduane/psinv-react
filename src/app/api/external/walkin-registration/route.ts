@@ -207,7 +207,7 @@ if (branch?.toLowerCase() === 'dubai') {
     });
 
     const result = await crmResponse.json();
-const mailRes = await fetch("https://psinv.net/api/sendemail.php", {
+const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({

@@ -102,7 +102,72 @@ const inputIcon = "absolute left-3 text-[#7C86A5]";
 const inputBase =
   "w-full h-full bg-white text-[#1A1A1A] placeholder:text-[#667085] pl-10 pr-4 outline-none";
 const DEBUG = false;
+function escapeHtml(v: any) {
+  return String(v ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
+function buildEmailTableBody(input: {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  remarks: string;
+  url: string;
+}) {
+  const rows: Array<[string, string]> = [
+    ["First Name", input.firstName],
+    ["Last Name", input.lastName],
+    ["Email", input.email],
+    ["Phone Number", input.phone],
+    ["Remarks", input.remarks],
+    ["URL", input.url],
+  ];
+
+  const htmlRows = rows
+    .map(
+      ([k, v]) => `
+      <tr>
+        <td style="border:1px solid #ddd;padding:10px;font-weight:600;width:220px;">
+          ${escapeHtml(k)}
+        </td>
+        <td style="border:1px solid #ddd;padding:10px;">
+          ${escapeHtml(v)}
+        </td>
+      </tr>`
+    )
+    .join("");
+
+  return `
+  <table style="border-collapse:collapse;width:100%;max-width:900px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#111;">
+    <tr>
+      <td colspan="2" style="background:#0b2a4a;color:#fff;font-weight:bold;padding:12px;">
+        Landing Page Inquiry
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="background:#f26522;color:#fff;font-weight:bold;padding:10px;">
+        Client Info
+      </td>
+    </tr>
+    ${htmlRows}
+  </table>`;
+}
+
+function normalizeReceiver(sendto: any) {
+  const receiver = (
+    Array.isArray(sendto) ? sendto : String(sendto || "").split(",")
+  )
+    .map((e: string) => e.trim())
+    .filter(Boolean)
+    .join(",");
+
+  return receiver;
+}
 export default function InquiryForm({ crm, variant = "glass", className }: InquiryFormProps) {
   const t = useTranslations("InquiryForm");
   const locale = useLocale() as string;
@@ -259,7 +324,42 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
         alert(t("alerts.error"));
         return;
       }
+const emailTableBody = buildEmailTableBody({
+  firstName: data.firstName,
+  lastName: data.lastName,
+  email: data.email,
+  phone: data.phone,
+  remarks: crm?.remarks || crm?.utmRemarksMap?.[utmFromUrl.campaign] || "",
+  url: typeof window !== "undefined" ? window.location.href : "",
+});
+const receiver = normalizeReceiver(crm?.sendto);
 
+if (receiver) {
+  try {
+    const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        body: emailTableBody,
+        receiver,
+        subject: `Landing Page Inquiry - ${data.firstName} ${data.lastName}`,
+        filename: "",
+        filedata: "",
+      }),
+    });
+
+    const mailText = await mailRes.text();
+    console.log("[InquiryForm] sendemail2.php status", mailRes.status, mailText);
+
+    if (!mailRes.ok) {
+      console.error("Email API failed:", mailRes.status, mailText);
+    }
+  } catch (emailErr) {
+    console.error("Email failed (non-blocking):", emailErr);
+  }
+} else {
+  console.warn("Email skipped: no valid receiver");
+}
       markAsSubmitted(data.email);
       setSuccessMessage(t("alerts.success"));
       setTimeout(() => {
