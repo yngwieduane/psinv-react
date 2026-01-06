@@ -78,6 +78,8 @@ export interface UnitListing {
   areaMeasurement: string;
   reraStrNo: string | null;
   furnish_status: string;
+  mapLatitude: string;
+  mapLongitude: string;
 }
 
 export interface NearbysType {
