@@ -139,12 +139,6 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
                 {t('company_address.part4')}</span> 
               </li>
             </ul>
-
-            <h3 className="font-bold text-base uppercase tracking-wider mb-4 text-gray-900">{t('footer_newsletter')}</h3>
-            <div className="flex">
-              <input type="email" placeholder={t('form_email')} className="bg-white/5 border border-gray-400 outline-none text-white px-4 py-3 rounded-l rtl:rounded-l-none rtl:rounded-r w-full text-sm focus:bg-white/10 transition-colors" />
-              <button className="bg-secondary hover:bg-secondary-dark border border-gray-400 text-gray-800 px-6 py-3 rounded-r rtl:rounded-r-none rtl:rounded-l font-bold text-sm transition-colors">{t('btn_join')}</button>
-            </div>
           </div>
 
         </div>
