@@ -269,8 +269,18 @@ export const ARTICLES: Article[] = [
   category: CATEGORY_LABELS.rules_and_regulations,
   city: "Abu Dhabi",
   imageUrl: "/assets/images/articles/tenancy-rights-laws-abu-dhabi.webp",
+},
+{
+  id: 122,
+  slug: "best-abu-dhabi-real-estate-areas-for-highest-investment-returns",
+  date: "2026-01-06",
+  author: "Property Shop Investment Editorial Team",
+  categoryKey: "uae_real_estate_market_trends",
+  category: CATEGORY_LABELS.uae_real_estate_market_trends,
+  city: "Abu Dhabi",
+  imageUrl:
+    "/assets/images/articles/best-abu-dhabi-real-estate-areas-for-highest-investment-returns.webp",
 }
-
 ];
 
 // ======================================================

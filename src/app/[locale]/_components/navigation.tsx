@@ -464,11 +464,11 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 {
                     title: t('New Launches'),
                     items: [
-                        { label: t("Sama Yas"), href: "/project/sama-yas" },
-                        { label: t("Yas Riva"), href: "/project/yas-riva" },
-                        { label: t("Manarat Living - Saadiyat"), href: "/project/manarat-living-saadiyat" },
-                        { label: t("The Arthouse"), href: "/project/the-arthouse" },
-                        { label: t("Bloom Living - Almeria"), href: "/project/bloom-living-almeria" },
+                        { label: t("Sama Yas"), href: "/project/lp/sama-yas" },
+                        { label: t("Yas Riva"), href: "/project/lp/yas-riva" },
+                        { label: t("Manarat Living - Saadiyat"), href: "/project/lp/manarat-living-saadiyat" },
+                        { label: t("The Arthouse"), href: "/project/lp/the-arthouse" },
+                        { label: t("Bloom Living - Almeria"), href: "/project/lp/bloom-living-almeria" },
                     ]
                 },
                 {
@@ -566,12 +566,14 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
     // Determine if the current page has a dark hero section where the navbar should start transparent with white text
     const isDarkHeroPage = ['/en', '/ar', '/ru', '/du', '/cn'].includes(currentPage);
-    const isAboutUsPage = pathname.endsWith('/about-us');
+    const pages = ['/about-us', '/crypto'];
+    const isTargetPage = pages.some(page => pathname.endsWith(page));
+
     // Updated transparency: Clear at top, frosted glass on scroll
     const navbarClasses = isScrolled || hoveredMenu
         ? 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20'
         : 'bg-transparent py-6';
-    const showWhiteTheme = !isScrolled && !hoveredMenu && (isDarkHeroPage || isAboutUsPage);
+    const showWhiteTheme = !isScrolled && !hoveredMenu && (isDarkHeroPage || isTargetPage);
 
     const linkColor = showWhiteTheme ? 'text-white' : 'text-gray-800';
     const mainLogo = showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
