@@ -1,6 +1,6 @@
-import PropertyCard from "../../_components/tools/PropertyCard";
+import PropertyCardAI from "../../_components/tools/PropertyCardAI";
 
-const PropBox = (props:any) => {
+const PropBox = (props: any) => {
 
     return (
         <>
@@ -8,13 +8,13 @@ const PropBox = (props:any) => {
                 role="list"
                 className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-3 gap-4"
             >
-                {props.data.map((project:any, index:any) => (
-                <li
-                    key={index}
-                    className="text-center "
-                >
-                    <PropertyCard csswidth="w-full" data={project} />
-                </li>
+                {props.data.map((project: any, index: any) => (
+                    <li
+                        key={index}
+                        className="text-center "
+                    >
+                        <PropertyCardAI csswidth="w-full" data={project} />
+                    </li>
                 ))}
             </ul>
         </>

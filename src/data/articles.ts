@@ -6,7 +6,7 @@
 
 export type ArticleBodyPart =
   | { type: "paragraph"; content: string }
-  | { type: "heading"; content: string }
+  | { type: "heading"; level?: 2 | 3 | 4; content: string }
   | { type: "quote"; content: string }
   | { type: "list"; items: string[] }
   | { type: "cta"; label: string; href: string }
@@ -46,13 +46,8 @@ export type Article = {
   title?: string;
   date: string;
   author: string;
-
-  // ✅ Stable category key for filtering & translations
   categoryKey: CategoryKey;
-
-  // Optional readable label (kept for backward compatibility)
   category?: string;
-
   imageUrl: string;
   summary?: string;
   body?: ArticleBodyPart[];
@@ -274,8 +269,18 @@ export const ARTICLES: Article[] = [
   category: CATEGORY_LABELS.rules_and_regulations,
   city: "Abu Dhabi",
   imageUrl: "/assets/images/articles/tenancy-rights-laws-abu-dhabi.webp",
+},
+{
+  id: 122,
+  slug: "best-abu-dhabi-real-estate-areas-for-highest-investment-returns",
+  date: "2026-01-06",
+  author: "Property Shop Investment Editorial Team",
+  categoryKey: "uae_real_estate_market_trends",
+  category: CATEGORY_LABELS.uae_real_estate_market_trends,
+  city: "Abu Dhabi",
+  imageUrl:
+    "/assets/images/articles/best-abu-dhabi-real-estate-areas-for-highest-investment-returns.webp",
 }
-
 ];
 
 // ======================================================

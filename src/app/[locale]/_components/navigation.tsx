@@ -2,7 +2,7 @@
 
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { Link } from "@/i18n/navigation";
-import { DynamicIcon } from 'lucide-react/dynamic';
+
 import { Dialog, Disclosure, DialogPanel, DisclosureButton, DisclosurePanel, Popover, PopoverButton, PopoverGroup, PopoverPanel, Button, } from '@headlessui/react';
 import { Bars3Icon, ChartPieIcon, XMarkIcon, } from '@heroicons/react/24/outline';
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
@@ -369,12 +369,23 @@ type MenuItem = {
     href?: string;
     lpSlug?: string;
 };
-
-function resolveHref(item: MenuItem) {
-    if (item.href) return item.href;
-    if (item.lpSlug) return `/project/lp/${item.lpSlug}`;
-    return "#";
+function normalizeHref(href: string) {
+    return href.replace(/^\/(en|ar|ru|du|cn)(?=\/)/, "");
 }
+function resolveHref(item: MenuItem) {
+    const raw =
+        item.href ? item.href :
+            item.lpSlug ? `/project/lp/${item.lpSlug}` :
+                "#";
+
+    // don’t touch external links or "#"
+    if (raw === "#" || raw.startsWith("http") || raw.startsWith("tel:") || raw.startsWith("mailto:")) {
+        return raw;
+    }
+
+    return normalizeHref(raw);
+}
+
 
 const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     console.log(currentPage);
@@ -453,11 +464,11 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 {
                     title: t('New Launches'),
                     items: [
-                        { label: t("Sama Yas"), href: "/project/sama-yas" },
-                        { label: t("Yas Riva"), href: "/project/yas-riva" },
-                        { label: t("Manarat Living - Saadiyat"), href: "/project/manarat-living-saadiyat" },
-                        { label: t("The Arthouse"), href: "/project/the-arthouse" },
-                        { label: t("Bloom Living - Almeria"), href: "/project/bloom-living-almeria" },
+                        { label: t("Sama Yas"), href: "/project/lp/sama-yas" },
+                        { label: t("Yas Riva"), href: "/project/lp/yas-riva" },
+                        { label: t("Manarat Living - Saadiyat"), href: "/project/lp/manarat-living-saadiyat" },
+                        { label: t("The Arthouse"), href: "/project/lp/the-arthouse" },
+                        { label: t("Bloom Living - Almeria"), href: "/project/lp/bloom-living-almeria" },
                     ]
                 },
                 {
@@ -603,7 +614,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             <nav className={`fixed top-0 left-0 right-0 z-90 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
                 <div className="container mx-auto flex justify-between items-center relative">
                     {/* LOGO */}
-                    <Link className="flex items-center cursor-pointer group z-50" href="/">
+                    <Link className="flex items-center cursor-pointer group z-50" href="/" title="Property Shop Investment">
                         <span className="sr-only">Property Shop Investment</span>
                         <Image
                             alt="PSI"
@@ -635,7 +646,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     {/* Right Actions */}
                     <div className={`hidden lg:flex items-center gap-6 ${linkColor}`}>
                         <button onClick={modalHandler} className="hover:text-secondary transition-colors cursor-pointer"><Search size={20} /></button>
-                        <Link href="/favorites" className="hover:text-secondary transition-colors relative cursor-pointer">
+                        <Link href="/favorites" title="Favorites" className="hover:text-secondary transition-colors relative cursor-pointer">
                             <Heart size={20} />
                             {favorites.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}
                         </Link>
@@ -649,7 +660,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                 <div className={`absolute top-full right-0 w-48 bg-white border border-gray-100 shadow-xl rounded-xl overflow-hidden transition-all duration-200 z-50 ${userMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
                                     <ul className="py-2">
                                         <li>
-                                            <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">
+                                            <Link href="/profile" title="Profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">
                                                 {t("profile")}
                                             </Link>
                                         </li>
@@ -695,7 +706,9 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                     {/* Left: Elegant Featured Card */}
                                     <div className="w-1/4 hidden xl:block">
                                         <div className="rounded-lg h-64 overflow-hidden relative cursor-pointer group/promo">
-                                            <img src={group.image} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/promo:scale-110" alt="Promo" />
+                                            <img src={group.image}
+                                                title={`${group.label} featured image`}
+                                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/promo:scale-110" alt="Promo" />
                                             <div className="absolute inset-0 bg-black/30 group-hover/promo:bg-black/20 transition-colors"></div>
                                             <div className="absolute bottom-6 left-6 text-white">
                                                 <span className="text-[10px] font-bold uppercase tracking-widest bg-secondary px-2 py-1 rounded mb-2 inline-block">{t('Featured')}</span>
@@ -717,6 +730,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                                         <li key={i}>
                                                             <Link
                                                                 href={`${resolveHref(item as any)}`}
+                                                                title={item.label}
                                                                 className="text-gray-600 hover:text-secondary text-sm font-medium transition-colors hover:pl-1 rtl:hover:pr-1"
                                                                 onClick={() => setHoveredMenu(null)} // closes menu after click
                                                             >
@@ -747,7 +761,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 <div className="fixed inset-0 z-50 bg-gray-900/20 backdrop-blur-sm" />
                 <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white/95 backdrop-blur-xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-transform duration-500 ease-in-out">
                     <div className="flex items-center justify-between border-b border-gray-100 pb-6">
-                        <Link href="/" className="-m-1.5 p-1.5" title="PSI">
+                        <Link href="/" className="-m-1.5 p-1.5" title="Property Shop Investment">
                             <span className="sr-only">Property Shop Investment</span>
                             <Image height={200} width={200} className="h-8 w-auto" src="/PSI-Logo.svg" alt="Logo" />
                         </Link>

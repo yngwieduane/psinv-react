@@ -1,5 +1,5 @@
-import React, {FunctionComponent, useState} from 'react';
-import {AdvancedMarker} from '@vis.gl/react-google-maps';
+import React, { FunctionComponent, useState } from 'react';
+import { AdvancedMarker } from '@vis.gl/react-google-maps';
 import classNames from 'classnames';
 
 import './custom-advanced-marker.css';
@@ -16,7 +16,7 @@ export const CustomAdvancedMarker: FunctionComponent<Props> = ({
 }) => {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
-  
+
   const position = {
     lat: parseFloat(realEstateListing.latitude),
     lng: parseFloat(realEstateListing.longitude)
@@ -55,9 +55,9 @@ export const CustomAdvancedMarker: FunctionComponent<Props> = ({
         title={'AdvancedMarker with custom html content.'}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className={classNames('real-estate-marker', {clicked, hovered})}
-        // onClick={() => setClicked(!clicked)} 
-        >
+        className={classNames('real-estate-marker', { clicked, hovered })}
+      // onClick={() => setClicked(!clicked)} 
+      >
         {renderCustomPin()}
       </AdvancedMarker>
     </>

@@ -529,7 +529,7 @@ export const landingConfigs = {
 
     integration: {
       meta: {
-        sendto: "callcenter@psinv.net",
+        sendto: "wd3@psinv.net,wd6@psinv.net",
         ContactType: 3,
         CountryID: 65946,
         StateID: 91823,

@@ -10,6 +10,7 @@ import { NEWS } from "@/data/articles";
 import VideosSection from "./_components/VideosSection";
 import { useTranslations, useLocale } from "next-intl";
 
+
 type NewsItem = (typeof NEWS)[number];
 
 function PillSearch({
@@ -47,13 +48,15 @@ function RecentArticleRow({
   readMoreLabel: string;
 }) {
   const href = `/articles/${item.slug}`;
+  const imgTitle = item.title ?? "Article";
   return (
-    <Link href={href} className="group block">
+    <Link href={href} title={item.title} className="group block">
       <div className="flex flex-col md:flex-row gap-6 cursor-pointer">
         <div className="w-full md:w-48 h-32 rounded-xl overflow-hidden shrink-0 bg-gray-100">
           <Image
             src={item.imageUrl}
-            alt={item.title || "Article image"}
+            alt={imgTitle}
+            title={imgTitle}
             width={400}
             height={300}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -99,7 +102,7 @@ export default function ArticlesPage() {
   const a = useTranslations("Articles");
 
   const [query, setQuery] = useState("");
-  
+
 
   // ✅ Localize title/summary from translations
   const localizedNews = useMemo(() => {
@@ -111,30 +114,30 @@ export default function ArticlesPage() {
   }, [a]);
 
   // ✅ Search uses localized fields
-const filtered = useMemo(() => {
-  const q = query.trim().toLowerCase();
-  if (!q) return localizedNews;
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return localizedNews;
 
-  return localizedNews.filter((n) => {
-    const haystack = [
-      n.title,
-      n.summary,
-      n.category,
-      n.slug,
-      n.categoryKey,
-    ]
-      .filter(Boolean)
-      .join(" ")
-      .toLowerCase();
+    return localizedNews.filter((n) => {
+      const haystack = [
+        n.title,
+        n.summary,
+        n.category,
+        n.slug,
+        n.categoryKey,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
 
-    return haystack.includes(q);
-  });
-}, [query, localizedNews]);
-const recentItems = useMemo(() => {
-  return [...localizedNews]
-    .sort((a, b) => toTime(b.date) - toTime(a.date)) // newest first
-    .slice(0, 4);
-}, [localizedNews]);
+      return haystack.includes(q);
+    });
+  }, [query, localizedNews]);
+  const recentItems = useMemo(() => {
+    return [...localizedNews]
+      .sort((a, b) => toTime(b.date) - toTime(a.date)) // newest first
+      .slice(0, 4);
+  }, [localizedNews]);
 
   const CATEGORY_ORDER = ["rules_and_regulations", "laws", "technology"] as const;
   type Category = (typeof CATEGORY_ORDER)[number];
@@ -186,12 +189,12 @@ const recentItems = useMemo(() => {
       };
     });
   }, [ui, localizedNews]);
-const recentOrFiltered = useMemo(() => {
-  if (query.trim()) {
-    return filtered.slice(0, 4); // show search results
-  }
-  return recentItems; // default latest articles
-}, [query, filtered, recentItems]);
+  const recentOrFiltered = useMemo(() => {
+    if (query.trim()) {
+      return filtered.slice(0, 4); // show search results
+    }
+    return recentItems; // default latest articles
+  }, [query, filtered, recentItems]);
 
   return (
     <>
@@ -217,13 +220,13 @@ const recentOrFiltered = useMemo(() => {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-{recentOrFiltered.map((item) => (
-   <RecentArticleRow
-      key={item.id}
-      item={item}
-      readMoreLabel={ui("readMore")}
-    />
-  ))}
+              {recentOrFiltered.map((item) => (
+                <RecentArticleRow
+                  key={item.id}
+                  item={item}
+                  readMoreLabel={ui("readMore")}
+                />
+              ))}
             </div>
           </div>
 
@@ -240,6 +243,7 @@ const recentOrFiltered = useMemo(() => {
                 <Image
                   src="/assets/images/articles/property-guide-feature.webp"
                   alt={ui("propertyGuideFeaturedAlt")}
+                  title={ui("propertyGuideFeaturedAlt")}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -257,7 +261,7 @@ const recentOrFiltered = useMemo(() => {
                     className={`text-sm text-gray-600 hover:text-primary cursor-pointer ${idx !== propertyGuideItems.length - 1 ? "border-b border-gray-50 pb-2" : ""
                       }`}
                   >
-                    <Link href={`/articles/${x.slug}`} className="block">
+                    <Link href={`/articles/${x.slug}`} title={x.title} className="block">
                       {x.title}
                     </Link>
                   </li>
@@ -274,12 +278,14 @@ const recentOrFiltered = useMemo(() => {
                 {/* Abu Dhabi */}
                 <Link
                   href="/articles/area-guide/abu-dhabi"
+                  title="Abu Dhabi Area Guide"
                   locale={undefined}
                   className="relative block h-60 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
                 >
                   <Image
                     src="/assets/images/articles/auh.jpg"
                     alt="Abu Dhabi Area Guide"
+                    title="Abu Dhabi Area Guide"
                     fill
                     className="object-cover"
                   />
@@ -292,12 +298,14 @@ const recentOrFiltered = useMemo(() => {
                 {/* Dubai */}
                 <Link
                   href="/articles/area-guide/dubai"
+                  title="Dubai Area Guide"
                   locale={undefined}
                   className="relative block h-60 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
                 >
                   <Image
                     src="/assets/images/articles/dubai.jpg"
                     alt="Dubai Area Guide"
+                    title="Dubai Area Guide"
                     fill
                     className="object-cover"
                   />
@@ -325,6 +333,7 @@ const recentOrFiltered = useMemo(() => {
                     <Image
                       src={b.imageUrl}
                       alt={b.title}
+                      title={b.title}
                       fill
                       className="object-cover"
                       style={{ objectPosition: b.imagePosition }}
@@ -336,7 +345,7 @@ const recentOrFiltered = useMemo(() => {
                   <ul className="space-y-4 text-xs text-gray-600">
                     {b.links.map((l) => (
                       <li key={l.href} className="hover:text-primary cursor-pointer">
-                        <Link href={l.href} className="hover:underline underline-offset-4">
+                        <Link href={l.href} title={l.title} className="hover:underline underline-offset-4">
                           {l.title}
                         </Link>
                       </li>

@@ -12,8 +12,8 @@ const PropertyCardAI = (props: any) => {
     const format = useFormatter();
     let HOdate;
 
-    const propType = props.data["propertyType"] ? (<p className="text-sm">Types<br />{props.data["propertyType"]}</p>) : ("");
-    const propBed = props.data["availableBedrooms"] ? (<p className="text-sm">Beds<br />
+    const propType = props.data["propertyType"] ? (<p className="text-sm">{props.data["propertyType"]}</p>) : ("");
+    const propBed = props.data["availableBedrooms"] ? (<p className="text-sm">
         {props.data["availableBedrooms"].map((img: any) => {
             return img['noOfBedroom'] + ',';
         })}
@@ -29,8 +29,8 @@ const PropertyCardAI = (props: any) => {
     const saved = isFavorite(props.data["propertyID"]);
     const compared = isCompared(props.data["propertyID"]);
 
-    const propHO = HOdate ? (<p className="text-sm">Handover<br />{HOdate}</p>) : ("");
-    const propSize = (props.data["builtupArea_SQFT"] && props.data["builtupArea_SQFT"] !== '0') ? (<p className="text-sm">Size (BUA)<br />{props.data["builtupArea_SQFT"]}</p>) : ("");
+    const propHO = HOdate ? (<p className="text-sm">{HOdate}</p>) : ("");
+    const propSize = (props.data["builtupArea_SQFT"] && props.data["builtupArea_SQFT"] !== '0') ? (<p className="text-sm">{props.data["builtupArea_SQFT"]}</p>) : ("");
     const imgFeatured = (props.data["featuredImages"] && props.data["featuredImages"].length > 0 && props.data["featuredImages"][0]['imageURL'])
         ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0', '?width=400&height=300')
         : "/images/placeholder.jpg"; // Basic placeholder fallback
@@ -111,19 +111,20 @@ const PropertyCardAI = (props: any) => {
                             <p className="text-xs text-gray-400 mb-6 truncate font-medium">{props.data["masterDeveloper"]}</p>
                         )}
 
-                        <div className="mt-auto grid grid-cols-3 gap-4 border-t border-gray-100 pt-5 text-center">
-                            <div>
+                        <div className="mt-auto flex flex-row gap-4 border-t border-gray-100 pt-5 text-center">
+                            <div className="basis-3xs">
                                 <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider">Types</span>
                                 <span className="block text-sm font-bold text-gray-800 mt-1">{propType}</span>
                             </div>
-                            <div className="border-l border-r border-gray-100 px-1">
+                            <div className="basis-3xs">
                                 <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider">Beds</span>
                                 <span className="block text-sm font-bold text-gray-800 mt-1">{propBed}</span>
                             </div>
-                            <div>
+                            {HOdate ? (<div className="basis-3xs">
                                 <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider">Handover</span>
                                 <span className="block text-sm font-bold text-gray-800 mt-1">{propHO}</span>
-                            </div>
+                            </div>) : ("")}
+
                         </div>
                     </div>
                 </div>

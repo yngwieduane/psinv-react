@@ -1,16 +1,20 @@
+import Breadcrumb from "../_components/Breadcrumb"
 import DevelopersList from "../developer/_components/DevelopersList"
 import DevPropertyList from "../developer/_components/DevPropertyList"
 
-export default async function AllDevelopersPage()  {
-    
-    
-    return(
+export default async function AllDevelopersPage() {
+
+
+    return (
         <>
-            <div className="mx-auto container px-6 lg:px-8 mt-5">
+            <div className="mx-auto container pt-28 md:pt-40 pb-24">
+                <div>
+                    <Breadcrumb />
+                </div>
                 <h1 className="text-2xl text-center truncate">Developers</h1>
                 <div className="w-full flex my-5 justify-content-center">
                     <DevelopersList slug="" />
-                </div>                
+                </div>
                 <div className="mb-5 mt-10">
                     <DevPropertyList developer="" />
                 </div>
