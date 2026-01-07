@@ -50,6 +50,75 @@ export async function GET(request: NextRequest) {
     case 'reem hills phase 2b':
       finquery = 'Reem Hills - Phase 2B'
       break;
+    case 'al zeina beachfront villas':
+      finquery = 'Al Zeina - Beachfront Villas'
+      break;
+    case 'al zeina residential tower g':
+      finquery = 'Al Zeina - Residential Tower G'
+      break;
+    case 'bashayer residences hudayriyat island':
+      finquery = 'Bashayer Residences - Hudayriyat Island'
+      break;
+    case 'bayn waterway':
+      finquery = 'Bayn - Waterway'
+      break;
+    case 'riviera residences mered':
+      finquery = 'Riviera Residences - Mered'
+      break;
+    case 'bloom living malaga':
+      finquery = 'Bloom Living - Malaga'
+      break;
+    case 'bloom living marbella':
+      finquery = 'Bloom Living - Marbella'
+      break;
+    case 'riga waterfront latvia':
+      finquery = 'Riga Waterfront - Latvia'
+      break;
+    case 'vida residences saadiyat island':
+      finquery = 'Vida Residences - Saadiyat Island'
+      break;
+    case 'bloom living almeria':
+      finquery = 'Bloom Living - Almeria'
+      break;
+    case 'bloom living olvera':
+      finquery = 'Bloom Living - Olvera'
+      break;
+    case 'the source terraces':
+      finquery = 'The Source Terraces'
+      break;
+    case 'paramount tower hotel residences archive':
+      finquery = 'Paramount Tower Hotel & Residences - Archive'
+      break;
+    case 'al reef tower saraya':
+      finquery = 'Al Reef Tower - Saraya'
+      break;
+    case 'bloom living casares':
+      finquery = 'Bloom Living - Casares'
+      break;
+    case 'yas golf collection views tower a':
+      finquery = 'Yas Golf Collection Views - Tower A'
+      break;
+    case 'yas golf collection views tower f':
+      finquery = 'Yas Golf Collection Views - Tower F'
+      break;
+    case 'yas golf collection views tower d':
+      finquery = 'Yas Golf Collection Views - Tower D'
+      break;
+    case 'yas golf collection views tower e':
+      finquery = 'Yas Golf Collection Views - Tower E'
+      break;
+    case 'the sustainable city auh':
+      finquery = 'The Sustainable City - Auh'
+      break;
+    case 'al reeman phase 1':
+      finquery = 'Al Reeman - Phase 1'
+      break;
+    case 'al reeman 2 phase 1':
+      finquery = 'Al Reeman 2 - Phase 1'
+      break;
+    case 'al reeman 1 phase 1':
+      finquery = 'Al Reeman 1 - Phase 1'
+      break;
     default:
       finquery = query
       break;
