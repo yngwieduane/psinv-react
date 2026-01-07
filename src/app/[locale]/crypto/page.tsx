@@ -3,8 +3,8 @@ import { Metadata } from 'next';
 import CryptoPageClient from './page-client';
 
 export const metadata: Metadata = {
-    title: 'Buy Real Estate with Crypto - PSI',
-    description: 'Invest in Dubai real estate using cryptocurrency. Secure, fast, and 0% tax.',
+    title: 'Buy property with CRYPTO - PSI',
+    description: 'Buy property with CRYPTO in the new land of opportunities - such as Bitcoin, Ethereum, and Litecoin - Real estate company in Abu dhabi, UAE.',
 };
 
 export default function CryptoPage() {

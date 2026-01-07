@@ -1,0 +1,9 @@
+.faq-content a {
+    color: #999999;
+    text-underline-offset: 4px;
+    font-weight: 500;
+}
+
+.faq-content a:hover {
+    color: #fff;
+}
