@@ -611,10 +611,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             </div>
         </div> */}
             {/* Main Navigation */}
-            <nav className={`fixed top-0 left-0 right-0 z-90 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
-                <div className="container mx-auto flex justify-between items-center relative">
+            <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
+                <div className="container mx-auto flex justify-between items-center relative px-5 md:px-0">
                     {/* LOGO */}
-                    <Link className="flex items-center cursor-pointer group z-50" href="/" title="Property Shop Investment">
+                    <Link className="flex items-center cursor-pointer group" href="/" title="Property Shop Investment">
                         <span className="sr-only">Property Shop Investment</span>
                         <Image
                             alt="PSI"
@@ -763,7 +763,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     <div className="flex items-center justify-between border-b border-gray-100 pb-6">
                         <Link href="/" className="-m-1.5 p-1.5" title="Property Shop Investment">
                             <span className="sr-only">Property Shop Investment</span>
-                            <Image height={200} width={200} className="h-8 w-auto" src="/PSI-Logo.svg" alt="Logo" />
+                            <Image height={200} width={200} className="h-15 w-auto" src="/PSI-Logo.svg" alt="Logo" />
                         </Link>
                         <button
                             type="button"
@@ -771,7 +771,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             <span className="sr-only">Close menu</span>
-                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                            <XMarkIcon className="h-10 w-10" aria-hidden="true" />
                         </button>
                     </div>
 
