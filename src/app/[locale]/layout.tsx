@@ -24,7 +24,10 @@ import { locales, siteBaseUrl, defaultLocale } from "@/utils/i18n-config";
 import { TranslationProvider } from "@/context/translationContext";
 import { UserProvider } from "@/context/userContext";
 import CompareFloatingButton from "./_components/CompareFloatingButton";
+import BrightCallWidget from "@/app/[locale]/_components/BrightCallWidget";
 
+const WIDGET_KEY =
+  process.env.NEXT_PUBLIC_BRIGHT_CALL_WIDGET_KEY ?? "e5c730edd6b0222dd7c568dd2c42d972";
 // export const metadata: Metadata = {
 //   title: "⚡  Abu Dhabi Real Estate  - Property Shop Investment",
 //   description: "⚡  Abu Dhabi Real Estate  - PSI - Check out our stunning real estate projects - Property Shop Investments - Real Estate Projects - Buy or Rent",

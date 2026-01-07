@@ -164,18 +164,18 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ slug }) => {
       (hasUtm ? projectMeta?.utmRemarksMap?.[utm_campaign] : undefined) ||
       projectMeta?.remarks ||
       "";
-const extraRemarkLines = extraFields
-  .map((f) => {
-    const value = (data as any)[f.id];
-    if (!value) return '';
+    const extraRemarkLines = extraFields
+      .map((f) => {
+        const value = (data as any)[f.id];
+        if (!value) return '';
 
-    const label = f.labelKey
-      ? t(f.labelKey as any)
-      : f.label ?? f.id;
+        const label = f.labelKey
+          ? t(f.labelKey as any)
+          : f.label ?? f.id;
 
-    return `${label}: ${String(value)}</br>`;
-  })
-  .join('');
+        return `${label}: ${String(value)}</br>`;
+      })
+      .join('');
     const fullRemark = `
 Additional consent 1 : ${data.consent1 ? "YES" : "NO"}</br>
 Additional consent 2 : ${data.consent2 ? "YES" : "NO"}</br>
@@ -187,7 +187,7 @@ Client Email: ${data.email}</br>
 Client Phone: ${data.phone}</br>
 branch: ${projectMeta?.Branch || ""}</br>
 URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
-const emailTableBody = `
+    const emailTableBody = `
 <table border="1" cellpadding="6" cellspacing="0"
   style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; color: #333;">
 
@@ -222,16 +222,15 @@ const emailTableBody = `
     <td>${data.phone}</td>
   </tr>
 
-  ${
-    extraRemarkLines
-      ? `
+  ${extraRemarkLines
+        ? `
       <tr>
         <td style="font-weight:bold;">Extra Fields</td>
         <td>${extraRemarkLines.replace(/<\/br>/g, "<br>")}</td>
       </tr>
     `
-      : ""
-  }
+        : ""
+      }
 
   <tr>
     <td style="font-weight:bold;">Remarks</td>
@@ -336,69 +335,69 @@ const emailTableBody = `
       utm_source,
       utm_medium,
     };
-  try {
-    setIsSubmitting(true);
-    const res = await fetch("/api/external/registration", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formDataToSend),
-    });
+    try {
+      setIsSubmitting(true);
+      const res = await fetch("/api/external/registration", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formDataToSend),
+      });
 
-    const result = await res.json();
+      const result = await res.json();
 
-    if (res.ok) {
-      try {
-        const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            body: emailTableBody,
-            receiver: Array.isArray(projectMeta.sendto)
-              ? projectMeta.sendto.join(",")
-              : projectMeta.sendto,
-            subject: `Registration Page - ${data.firstName} ${data.lastName}`,
-            filename: "",
-            filedata: "",
-          }),
-        });
+      if (res.ok) {
+        try {
+          const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              body: emailTableBody,
+              receiver: Array.isArray(projectMeta.sendto)
+                ? projectMeta.sendto.join(",")
+                : projectMeta.sendto,
+              subject: `Registration Page - ${data.firstName} ${data.lastName}`,
+              filename: "",
+              filedata: "",
+            }),
+          });
 
-        const mailText = await mailRes.text();
-        console.log(
-          "[RegistrationForm] sendemail.php status",
-          mailRes.status,
-          mailText
+          const mailText = await mailRes.text();
+          console.log(
+            "[RegistrationForm] sendemail.php status",
+            mailRes.status,
+            mailText
+          );
+
+          if (!mailRes.ok) {
+            console.error("Email API failed:", mailRes.status, mailText);
+          }
+        } catch (emailErr) {
+          console.error("Email failed (non-blocking):", emailErr);
+        }
+
+        markAsSubmitted(data.email, slug);
+        setSuccessMessage(
+          locale === "ar"
+            ? "شكرًا لاستفسارك. سنتواصل معك قريبًا."
+            : "Thank you for your inquiry. We will contact you soon."
         );
 
-        if (!mailRes.ok) {
-          console.error("Email API failed:", mailRes.status, mailText);
-        }
-      } catch (emailErr) {
-        console.error("Email failed (non-blocking):", emailErr);
+        setTimeout(() => {
+          window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(
+            data.email
+          )}`;
+        }, 2000);
+      } else {
+        console.error(result);
+        alert("Error submitting the form.");
       }
-
-      markAsSubmitted(data.email, slug);
-      setSuccessMessage(
-        locale === "ar"
-          ? "شكرًا لاستفسارك. سنتواصل معك قريبًا."
-          : "Thank you for your inquiry. We will contact you soon."
-      );
-
-      setTimeout(() => {
-        window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(
-          data.email
-        )}`;
-      }, 2000);
-    } else {
-      console.error(result);
-      alert("Error submitting the form.");
+    } catch (e) {
+      console.error(e);
+      alert("Submission failed.");
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (e) {
-    console.error(e);
-    alert("Submission failed.");
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
 
@@ -415,6 +414,7 @@ const emailTableBody = `
         </div>
       )}
       <form
+        data-brightcall-form="registration"
         onSubmit={handleSubmit(onSubmit)}
         dir={isRTL ? 'rtl' : 'ltr'}
         className={clsx(
@@ -425,7 +425,7 @@ const emailTableBody = `
       >
         <div>
           <label className="label-required">{t('fields.firstName.label')}</label>
-          <input
+          <input id="fname"
             {...register("firstName")}
             type="text"
             className={clsx(
@@ -441,7 +441,7 @@ const emailTableBody = `
         </div>
         <div>
           <label className="label-required">{t('fields.lastName.label')}</label>
-          <input
+          <input id="lname"
             {...register('lastName')}
             type="text"
             className={clsx(
@@ -464,6 +464,8 @@ const emailTableBody = `
               <div dir="ltr" className={clsx(isRTL && "rtl-phone-fix")}>
                 <PhoneInput
                   {...field}
+                  id="phone"
+                  name="phone"
                   value={field.value ?? ''}
                   onChange={(v) => field.onChange(v ?? '')}
                   international
@@ -484,7 +486,7 @@ const emailTableBody = `
         </div>
         <div>
           <label className="label-required">{t('fields.email.label')}</label>
-          <input
+          <input id="email"
             {...register('email')}
             type="email"
             className={clsx(

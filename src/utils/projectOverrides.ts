@@ -5,10 +5,10 @@ import { makeUtm } from './registrationUtils';
 export type PerSlug = { branch: 'auh' | 'dubai' | 'assets'; override?: Partial<ProjectMeta> };
 
 export const PROJECTS: Record<string, PerSlug> = {
-    'radisson-blu-registration': {
+  'radisson-blu-registration': {
     branch: 'auh',
     override: {
-       PropertyID: 25581,
+      PropertyID: 25581,
       CommunityID: 95259,
       remarks: 'Radisson Blu',
       ...makeUtm({
@@ -20,7 +20,7 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-   'hudayriyat-island-registration': {
+  'hudayriyat-island-registration': {
     branch: 'auh',
     override: {
       remarks: 'General Campaign',
@@ -33,7 +33,7 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-    'hudayriyat-island-general-registration': {
+  'hudayriyat-island-general-registration': {
     branch: 'auh',
     override: {
       remarks: 'General Campaign',
