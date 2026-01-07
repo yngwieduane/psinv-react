@@ -298,7 +298,7 @@ const PropertyPage = (props: any) => {
 
                                         <h4 className="font-bold text-gray-800 text-xl mb-4 mt-8">Features</h4>
                                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none pl-0">
-                                            {props.data['aminities'].map((item: any, index: any) => (
+                                            {props.data['aminities'] && props.data['aminities'].map((item: any, index: any) => (
                                                 <li key={index} className="flex items-center gap-3 text-base"><CheckCircle2 className="text-secondary shrink-0" size={20} />{item.name}</li>
                                             ))}
                                         </ul>
