@@ -21,39 +21,39 @@ const AboutAwardsSlider = () => {
 
   const awards = [
     {
-        "title1": t("awards.emaar.title1"),
-        "title2": t("awards.emaar.title2"),
-        "title3": t("awards.emaar.title3"),
-        "image": "emaar-2018.webp",
+      "title1": t("awards.emaar.title1"),
+      "title2": t("awards.emaar.title2"),
+      "title3": t("awards.emaar.title3"),
+      "image": "emaar-2018.webp",
     },
     {
-        "title1": t("awards.aldar2021.title1"),
-        "title3": t("awards.aldar2021.title3"),
-        "image": "aldar-2021.webp",
+      "title1": t("awards.aldar2021.title1"),
+      "title3": t("awards.aldar2021.title3"),
+      "image": "aldar-2021.webp",
     },
     {
-        "title1": t("awards.aldar2016.title1"),
-        "title2": t("awards.aldar2016.title2"),
-        "title3": t("awards.aldar2016.title3"),
-        "image": "aldar-2016.jpg",
+      "title1": t("awards.aldar2016.title1"),
+      "title2": t("awards.aldar2016.title2"),
+      "title3": t("awards.aldar2016.title3"),
+      "image": "aldar-2016.jpg",
     },
     {
-        "title1": t("awards.aldar2020.title1"),
-        "title2": t("awards.aldar2020.title2"),
-        "title3": t("awards.aldar2020.title3"),
-        "image": "aldar-2022.jpg",
+      "title1": t("awards.aldar2020.title1"),
+      "title2": t("awards.aldar2020.title2"),
+      "title3": t("awards.aldar2020.title3"),
+      "image": "aldar-2022.jpg",
     },
     {
-        "title1": t("awards.aldar2022.title1"),
-        "title2": t("awards.aldar2022.title2"),
-        "title3": t("awards.aldar2022.title3"),
-        "image": "aldar-2022.jpg",
+      "title1": t("awards.aldar2022.title1"),
+      "title2": t("awards.aldar2022.title2"),
+      "title3": t("awards.aldar2022.title3"),
+      "image": "aldar-2022.jpg",
     },
     {
-        "title1": t("awards.imkan.title1"),
-        "title2": t("awards.imkan.title2"),
-        "title3": t("awards.imkan.title3"),
-        "image": "imkan-2021.webp",
+      "title1": t("awards.imkan.title1"),
+      "title2": t("awards.imkan.title2"),
+      "title3": t("awards.imkan.title3"),
+      "image": "imkan-2021.webp",
     }
   ];
 
@@ -106,7 +106,7 @@ const AboutAwardsSlider = () => {
                 <div className="h-60 md:h-48 flex items-center justify-center mb-6 w-full">
                   <img
                     src={`/assets/images/about-us/awards/${slide.image}`}
-                    alt={slide.title1}
+                    alt={slide.title1} title={slide.title1}
                     className="h-40 w-auto object-contain mix-blend-multiply transition-transform duration-300 transform hover:scale-110"
                   />
                 </div>

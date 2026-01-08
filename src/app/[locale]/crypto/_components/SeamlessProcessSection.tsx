@@ -1,12 +1,14 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 import { Search, Handshake, FileText, Coins, Wallet, Key, Landmark } from 'lucide-react';
 import Image from 'next/image';
 
 const SeamlessProcessSection = () => {
     const t = useTranslations('CryptoPage.seamless_process_section');
+    const locale = useLocale();
+    const isRtl = locale.toLowerCase().startsWith("ar");
 
     const steps = [
         { key: 'step1', icon: '/assets/images/crypto/pro-1.png', badge: '01' },
@@ -18,7 +20,7 @@ const SeamlessProcessSection = () => {
     ];
 
     return (
-        <section className="bg-white pb-20 pt-10 relative overflow-hidden">
+        <section className="bg-white pb-20 pt-10 relative overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>
             <div className="container mx-auto px-6 md:px-12">
                 <div className="text-center mb-16">
                     <h2 className="text-[#0A0A2E] text-3xl md:text-4xl font-bold font-serif">
@@ -30,7 +32,7 @@ const SeamlessProcessSection = () => {
                     {steps.map((step) => (
                         <div key={step.key} className="bg-[#F8F9FC] rounded-2xl p-8 pb-12 relative flex flex-col items-start min-h-[300px]">
                             {/* Icon */}
-                            <Image src={step.icon} alt="seamless-process" className='mb-5' width={60} height={60} />
+                            <Image src={step.icon} alt="seamless-process" title='seamless-process' className='mb-5' width={60} height={60} />
                             {/* Title */}
                             <h3 className="text-[#0A0A2E] text-xl font-bold mb-4">
                                 {t(`steps.${step.key}.title`)}

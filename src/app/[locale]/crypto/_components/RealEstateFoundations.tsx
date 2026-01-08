@@ -35,7 +35,7 @@ const RealEstateFoundations = ({ onOpenModal }: { onOpenModal?: () => void }) =>
                         {/* Background Image */}
                         <Image
                             src="/assets/images/crypto/sea-background.jpg"
-                            alt="Abu Dhabi Real Estate"
+                            alt="Abu Dhabi Real Estate" title="Abu Dhabi Real Estate"
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-700"
                         />

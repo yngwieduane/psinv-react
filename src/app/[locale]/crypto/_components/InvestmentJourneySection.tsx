@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,9 +8,11 @@ import { MoveRight } from 'lucide-react';
 
 const InvestmentJourneySection = ({ onOpenModal }: { onOpenModal?: () => void }) => {
     const t = useTranslations('CryptoPage.investment_journey');
+    const locale = useLocale();
+    const isRtl = locale.toLowerCase().startsWith("ar");
 
     return (
-        <section className="bg-[#090953] py-20 relative overflow-hidden">
+        <section className="bg-[#090953] py-20 relative overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>
             <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
 
                 {/* Text Content */}
@@ -19,7 +21,7 @@ const InvestmentJourneySection = ({ onOpenModal }: { onOpenModal?: () => void })
                     <div className="mb-6 md:mb-8 relative w-20 h-10 md:w-24 md:h-12">
                         <Image
                             src="/logo-psi-white.svg"
-                            alt="PSI"
+                            alt="PSI" title='PSI'
                             fill
                             className="object-contain object-left"
                         />
@@ -35,7 +37,7 @@ const InvestmentJourneySection = ({ onOpenModal }: { onOpenModal?: () => void })
 
                     <button onClick={onOpenModal} className="inline-flex items-center text-green-400 hover:text-green-300 font-medium transition-colors group cursor-pointer mb-2">
                         {t('read_more')}
-                        <MoveRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        <MoveRight className={`ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform ${isRtl ? 'rotate-180' : ''}`} />
                     </button>
                 </div>
 
@@ -44,7 +46,7 @@ const InvestmentJourneySection = ({ onOpenModal }: { onOpenModal?: () => void })
                     <div className="absolute inset-0 flex items-center justify-center">
                         <Image
                             src="/assets/images/crypto/bitcoin-image.png"
-                            alt="Investment Journey"
+                            alt="Investment Journey" title="Investment Journey"
                             fill
                             className="object-contain"
                             priority

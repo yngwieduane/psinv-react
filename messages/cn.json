@@ -1186,5 +1186,209 @@
         "phone": "无效的电话号码"
       }
     }
+  },
+  "ListYourPropertyPage": {
+    "nav": {
+      "home": "主页",
+      "about": "关于我们",
+      "providers": "服务提供者",
+      "solutions": "我们的解决方案",
+      "benefits": "优势",
+      "faqs": "常见问题"
+    },
+    "hero": {
+      "title": "让您的房产脱颖而出，与我们一起挂牌",
+      "subtitle": "通过PSI出售或出租您的房产，阿联酋排名第一的房地产中介。我们为您管理从营销到预约的一切流程。",
+      "button": "发布您的房产",
+      "watch_video": "观看视频"
+    },
+    "about": {
+      "title": "为什么选择与我们一起挂牌？",
+      "description": "我们致力于让您发布、出租或出售房产的过程尽可能简单轻松。凭借我们的专业团队，您可以避免传统房地产市场的繁琐事务，轻松获得理想结果。",
+      "points": [
+        "选择一位经验丰富的挂牌代理。",
+        "与我们讨论您的房产合适价格。",
+        "为您的房产提供免费的专业摄影与视频。",
+        "让您的房产在房地产门户网站上获得认证。"
+      ]
+    },
+    "virtual_tour": {
+      "title": "通过360°虚拟全景看房，身临其境体验您的房产",
+      "description": "像从未有过的方式体验您的家！在当今竞争激烈的市场中脱颖而出至关重要，PSI将为您的房产提供360°虚拟导览，并整合入其他营销素材中。虚拟全景展示是最引人注目的房产展示形式。虚拟技术的需求正在快速增长，几乎所有潜在客户都会在线查看是否有虚拟导览。"
+    },
+    "where_to_list": {
+      "title": "我们会在哪里发布您的房产？",
+      "description": "房主们！将您的房产与我们挂牌出售或出租。联系我们的专业顾问，为您的房产实现最佳价值。"
+    },
+    "exclusive_listing": {
+      "title": "独家房产挂牌服务",
+      "points": [
+        "更高水平的服务承诺",
+        "最大化接触合适租客/投资者",
+        "更多高质量客户线索",
+        "保证优质报价",
+        "特别营销活动助力房产销售或出租",
+        "专属代理全程为您展示房产",
+        "一年免费物业管理服务"
+      ]
+    },
+    "non_exclusive_listing": {
+      "title": "非独家房产挂牌服务",
+      "points": [
+        "可同时与多个房地产中介挂牌您的房产。",
+        "不同中介可在相同渠道推广您的房产。",
+        "获得更多潜在客户线索。",
+        "保证高质量报价。",
+        "您的房产可能会被不同中介展示给相同客户。",
+        "若您自行完成房产出售或出租，无需支付佣金。"
+      ]
+    },
+    "benefits": {
+      "title": "与我们挂牌的优势",
+      "description": "我们了解您繁忙的生活，这就是为什么我们全力让出租或出售房产的过程无压力。带看次数提升30%。",
+      "items": [
+        "13年以上房地产行业经验",
+        "覆盖阿联酋50多个区域",
+        "先进的房地产技术与流程",
+        "阿布扎比房地产市场交易量最高",
+        "阿布扎比与迪拜各区设有专业团队",
+        "一年免费物业管理服务"
+      ]
+    },
+    "footer": {
+      "copyright": "© 2025 Property Shop Investment LLC. | 版权所有。"
+    },
+    "faqs_section": {
+      "title": "常见问题",
+      "items": [
+        {
+          "question": "什么是独家销售代理服务？",
+          "answer": "该服务适用于希望让其房产脱颖而出并实现最高市场价格的高端房主。"
+        },
+        {
+          "question": "为什么我要选择独家销售协议？",
+          "answer": "信任与经验是选择独家销售协议的主要原因。如今，业主越来越意识到出售房产的复杂性，尤其是外籍业主。成功出售房产不仅需要丰富的高端房产销售经验，还需要扎实的法律和财务知识。Exotiq成立于2002年，是巴厘岛最早的房地产公司。"
+        },
+        {
+          "question": "哪些房产符合独家挂牌服务条件？",
+          "answer": "我们的所有独家房产都具有独特性，通常位于高端市场。请联系我们确认您的房产是否符合独家挂牌条件。"
+        },
+        {
+          "question": "签署独家挂牌协议可获得哪些额外服务？",
+          "answer": "我们将为您制定完整的营销活动，并将最高1%的佣金用于推广您的房产，包括专业视频、摄影及专属房产网页。"
+        }
+      ]
+    },
+    "form": {
+      "title": "发布您的房产",
+      "steps": {
+        "personal_info": "个人信息",
+        "prop_details_1": "房产详情 1",
+        "prop_details_2": "房产详情 2",
+        "prop_details_3": "房产详情 3",
+        "files": "文件上传",
+        "complete": "完成"
+      },
+      "labels": {
+        "firstName": "名字",
+        "lastName": "姓氏",
+        "phone": "电话号码",
+        "email": "电子邮箱",
+        "purpose": "房产用途",
+        "location": "位置",
+        "propType": "房产类型",
+        "property": "房产",
+        "beds": "卧室",
+        "description": "请描述您的房产",
+        "unitView": "房型景观",
+        "unitSize": "房型面积",
+        "baths": "浴室",
+        "parking": "停车位",
+        "unitNumber": "单元号",
+        "askingPrice": "期望价格",
+        "status": "房产状态",
+        "service": "服务类型",
+        "readyToView": "可预约看房",
+        "attachImages": "上传外部图片",
+        "attachSpa": "上传SPA文件",
+        "attachDeed": "上传产权证书",
+        "attachPassport": "上传护照",
+        "bestTime": "方便联系的时间",
+        "date": "日期",
+        "time": "时间",
+        "agreement1": "我同意条款与条件及隐私政策",
+        "agreement2": "同意接收电话及通信",
+        "agreement3": "接收关于不同项目的来电",
+        "footer_agreement": "点击提交即表示您同意我们的",
+        "of": "之",
+        "list_your_property": "发布您的房产"
+      },
+      "placeholders": {
+        "firstName": "名字",
+        "lastName": "姓氏",
+        "email": "电子邮箱",
+        "purpose": "用途",
+        "description": "在此填写",
+        "selectLocation": "选择位置",
+        "selectPropType": "选择房产类型",
+        "selectProperty": "选择房产",
+        "selectBeds": "选择卧室数量",
+        "selectBaths": "浴室",
+        "selectParking": "停车位",
+        "selectService": "服务类型",
+        "unitView": "房型景观",
+        "unitSize": "房型面积",
+        "unitNumber": "单元号",
+        "askingPrice": "期望价格"
+      },
+      "options": {
+        "purpose": {
+          "sale": "出售",
+          "rent": "出租",
+          "manage": "管理"
+        },
+        "propType": {
+          "villa": "别墅",
+          "apartment": "公寓",
+          "townhouse": "联排别墅"
+        },
+        "location": {
+          "abu_dhabi": "阿布扎比",
+          "dubai": "迪拜",
+          "sharjah": "沙迦",
+          "rak": "哈伊马角"
+        },
+        "status": {
+          "rented": "已出租",
+          "vacant": "空置",
+          "occupied": "已占用"
+        },
+        "service": {
+          "res_rent": "住宅出租",
+          "res_sale": "住宅出售",
+          "com_rent": "商业出租",
+          "com_sale": "商业出售"
+        },
+        "yes": "是",
+        "no": "否"
+      },
+      "buttons": {
+        "next": "下一步",
+        "previous": "上一步",
+        "submit": "提交",
+        "submitting": "正在提交..."
+      },
+      "messages": {
+        "loading_props": "正在加载房产...",
+        "thank_you": "谢谢！",
+        "success_message": "您的提交已发送，我们的代理将尽快与您联系。",
+        "already_submitted": "您已提交，请几分钟后再试。",
+        "error": "提交表单时出错。"
+      },
+      "footer_branding": {
+        "title": "与值得信赖的品牌合作",
+        "description": "信赖提供品质与可靠性的品牌，选择您信任的品牌。"
+      }
+    }
   }
 }
