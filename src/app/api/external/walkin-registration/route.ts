@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
   try {
-const body = await req.json();
+    const body = await req.json();
     const {
       countryDescription,
       cityDescription,
@@ -29,24 +29,24 @@ const body = await req.json();
       branch,
       requirementType: userReqType,
     } = body;
-console.log('📦 Form Data:', {
-  countryDescription,
-  cityDescription,
-  districtDescription,
-  communityDescription,
-  subCommunityDescription,
-  shortRemarks,
-  remarks,
-  property,
-  unitType,
-  bedroom,
-  minBudget,
-  maxBudget,
-  propertyCampaignId,
-  google_gclid,
-  selectedService,
-  userReqType,
-});
+    console.log('Form Data:', {
+      countryDescription,
+      cityDescription,
+      districtDescription,
+      communityDescription,
+      subCommunityDescription,
+      shortRemarks,
+      remarks,
+      property,
+      unitType,
+      bedroom,
+      minBudget,
+      maxBudget,
+      propertyCampaignId,
+      google_gclid,
+      selectedService,
+      userReqType,
+    });
 
     // ---------- helpers ----------
     const unitTypeIdMap: Record<string, number> = {
@@ -83,60 +83,60 @@ console.log('📦 Form Data:', {
       Landlord: { req: '91213', contact: '2', service: 'Lease' },
     };
 
-const unitTypeId = unitTypeIdMap[body.unitType] ?? 19; 
-const isAssets =
-  String(body.branch ?? '').toLowerCase() === 'assets';
+    const unitTypeId = unitTypeIdMap[body.unitType] ?? 19;
+    const isAssets =
+      String(body.branch ?? '').toLowerCase() === 'assets';
 
-const assetsClientLabel = String(
-  body.clientTypeLabel ?? body.requirementType ?? ''
-).trim();
+    const assetsClientLabel = String(
+      body.clientTypeLabel ?? body.requirementType ?? ''
+    ).trim();
 
-let requirementType: '91212' | '91213' = '91212';
-let contactType: '1' | '2' | '3' | '4' = '3';
+    let requirementType: '91212' | '91213' = '91212';
+    let contactType: '1' | '2' | '3' | '4' = '3';
 
-if (isAssets) {
-  // Map label -> CRM IDs for Assets
-  const key = assetsClientLabel as keyof typeof clientTypeMap;
-  if (key && clientTypeMap[key]) {
-    requirementType = clientTypeMap[key].req;       // '91212' | '91213'
-    contactType     = clientTypeMap[key].contact;   // '1' | '2' | '3' | '4'
-    body.selectedService = clientTypeMap[key].service; // 'Sales' | 'Lease'
-  }
-} else {
-  const reqLabel = String(body.requirementType ?? '').trim();
-
-  if (body.selectedService === 'Sales') {
-    requirementType = '91212'; // Sales
-    if (reqLabel === 'Buyer') {
-      contactType = '3';       // Buyer
-    } else if (reqLabel === 'Landlord' || reqLabel === 'Seller') {
-      contactType = '1';
+    if (isAssets) {
+      // Map label -> CRM IDs for Assets
+      const key = assetsClientLabel as keyof typeof clientTypeMap;
+      if (key && clientTypeMap[key]) {
+        requirementType = clientTypeMap[key].req;       // '91212' | '91213'
+        contactType = clientTypeMap[key].contact;   // '1' | '2' | '3' | '4'
+        body.selectedService = clientTypeMap[key].service; // 'Sales' | 'Lease'
+      }
     } else {
-      contactType = '3';
+      const reqLabel = String(body.requirementType ?? '').trim();
+
+      if (body.selectedService === 'Sales') {
+        requirementType = '91212'; // Sales
+        if (reqLabel === 'Buyer') {
+          contactType = '3';       // Buyer
+        } else if (reqLabel === 'Landlord' || reqLabel === 'Seller') {
+          contactType = '1';
+        } else {
+          contactType = '3';
+        }
+      } else if (body.selectedService === 'Lease') {
+        requirementType = '91213'; // Lease
+        if (reqLabel === 'Tenant') {
+          contactType = '4';       // Tenant
+        } else if (reqLabel === 'Landlord') {
+          contactType = '2';       // Landlord
+        } else {
+          contactType = '4';
+        }
+      }
     }
-  } else if (body.selectedService === 'Lease') {
-    requirementType = '91213'; // Lease
-    if (reqLabel === 'Tenant') {
-      contactType = '4';       // Tenant
-    } else if (reqLabel === 'Landlord') {
-      contactType = '2';       // Landlord
-    } else {
-      contactType = '4';
+
+
+    let CRM_ENDPOINT = 'https://api.portal.psi-crm.com/leads';
+    let API_KEY = '160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a';
+
+    if (branch?.toLowerCase() === 'dubai') {
+      CRM_ENDPOINT = 'https://api.portal.dubai-crm.com/leads';
+      API_KEY = 'd301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0';
+    } else if (branch?.toLowerCase() === 'assets') {
+      CRM_ENDPOINT = 'https://portal.psiassets-crm.com/api/leads/';
+      API_KEY = '9f2eb4da2719c67820ce17c519e3ced3934a6283a58900876bdf48d5b2aac75331e626f6c4ab813b';
     }
-  }
-}
-
-
-let CRM_ENDPOINT = 'https://api.portal.psi-crm.com/leads';
-let API_KEY = '160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a';
-
-if (branch?.toLowerCase() === 'dubai') {
-  CRM_ENDPOINT = 'https://api.portal.dubai-crm.com/leads';
-  API_KEY = 'd301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0';
-} else if (branch?.toLowerCase() === 'assets') {
-  CRM_ENDPOINT = 'https://portal.psiassets-crm.com/api/leads/';
-  API_KEY = '9f2eb4da2719c67820ce17c519e3ced3934a6283a58900876bdf48d5b2aac75331e626f6c4ab813b';
-}
 
 
 
@@ -187,7 +187,7 @@ if (branch?.toLowerCase() === 'dubai') {
       ReferredToID: body.ReferredToID || '3458',
       ReferredByID: body.ReferredByID || '3458',
       IsBulkUpload: '',
-      ActivityAssignedTo: body.ActivityAssignedTo  || '3458',
+      ActivityAssignedTo: body.ActivityAssignedTo || '3458',
       ActivityDate: '',
       ActivityTypeId: '167234',
       ActivitySubject: 'Walk-in Registration',
@@ -207,22 +207,22 @@ if (branch?.toLowerCase() === 'dubai') {
     });
 
     const result = await crmResponse.json();
-const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    body: emailBody,
-    receiver: Array.isArray(body.sendto) ? body.sendto.join(',') : body.sendto,
-    subject: `Walk-in Registration - ${body.firstName} ${body.lastName}`,
-    filename: "",
-    filedata: ""
-  })
-});
+    const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        body: emailBody,
+        receiver: Array.isArray(body.sendto) ? body.sendto.join(',') : body.sendto,
+        subject: `Walk-in Registration - ${body.firstName} ${body.lastName}`,
+        filename: "",
+        filedata: ""
+      })
+    });
 
-if (!mailRes.ok) {
-  const text = await mailRes.text();
-  throw new Error(`Email API failed: ${text}`);
-}
+    if (!mailRes.ok) {
+      const text = await mailRes.text();
+      throw new Error(`Email API failed: ${text}`);
+    }
     if (!crmResponse.ok) {
       return NextResponse.json({ error: 'CRM submission failed', details: result }, { status: 500 });
     }
