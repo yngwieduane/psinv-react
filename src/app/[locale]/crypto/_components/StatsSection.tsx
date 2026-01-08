@@ -22,7 +22,7 @@ const StatsSection = () => {
                             <div className='w-full h-full flex flex-col items-center text-center p-6 backdrop-blur-2xl rounded-xl' style={{ background: 'linear-gradient(179.77deg, rgba(255, 255, 255, 0.03) -29.97%, rgba(255, 255, 255, 0) 99.8%)' }}>
                                 <Image src={Icon} alt={key} title={key} width={48} height={48} />
                                 <h3 className="text-white font-medium text-lg mt-5">
-                                    {t(key)}
+                                    {t(`${key}.title`)}
                                 </h3>
                             </div>
                         </div>

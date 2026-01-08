@@ -673,425 +673,320 @@
   "CryptoPage": {
     "hero": {
       "title": {
-        "part1": "Immobilien kaufen mit",
+        "part1": "Buy property with",
         "part2": "CRYPTO",
-        "part3": "in den"
+        "part3": "in the"
       },
       "subtitle": {
-        "part1": "Neues",
-        "part2": "Land der Möglichkeiten"
+        "part1": "New",
+        "part2": "Land Of Opportunities"
       },
-      "description": "50 Jahre jung, bieten die VAE das beste Klima für Vermögensverwaltung, Umsiedlung und Anlageportfolios.",
-      "cta": "Mehr erfahren"
+      "description": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
+      "cta": "Learn More"
+    },
+    "share": {
+      "title": "Share Project",
+      "copy_link": "Copy Link",
+      "copied": "Link Copied!"
     },
     "stats": {
-      "stat1": "Politische Stabilität",
-      "stat2": "Ökonomisches Paradies",
-      "stat3": "Kultureller Schmelztiegel"
+      "stat1": {
+        "title": "Political Stability"
+      },
+      "stat2": {
+        "title": "Economical Haven"
+      },
+      "stat3": {
+        "title": "Cultural Melting Pot"
+      }
     },
     "rankings": {
-      "title": "Langfristige politische Stabilität mit weltweit offener Diplomatiepolitik.",
-      "highlightDesk": "3. friedlichstes Land der Region (Global Peace Index 2021).",
+      "title": "Long-term political stability, with worldwide open diplomatic policy.",
+      "highlightDesk": "3rd most peaceful country in the region (global peace index 2021).",
       "highlightMobile": {
-        "part1": "3. friedlichstes Land",
-        "part2": "in der Region",
-        "part3": "(Global Peace Index 2021)."
+        "part1": "3rd most peaceful country",
+        "part2": "in the region",
+        "part3": "(global peace index 2021)."
       },
       "cards": {
-        "safest": "Abu Dhabi ist die sicherste Stadt der Welt.",
-        "holiday_city": "2. Ferienstadt weltweit!",
-        "purchase_home": "3. beste Stadt weltweit, um ein Ferienhaus zu kaufen.",
-        "tolerance": "4. weltweit in Bezug auf Toleranz und Zusammenleben."
+        "safest": "Abu Dhabi is the safest city in the world.",
+        "holiday_city": "2nd holiday city in the world!",
+        "purchase_home": "3rd global best city to purchase a holiday home.",
+        "tolerance": "4th globally in tolerance and coexistence."
       }
     },
     "economical_haven": {
-      "title": "Ökonomisches Paradies",
-      "read_more": "Mehr lesen",
+      "title": "Economical Haven",
+      "read_more": "Read more",
       "slides": {
         "slide1": {
-          "text": "Die VAE erreichten 2021 AA- mit stabilem Ausblick, was das moderate konsolidierte öffentliche Schuldenniveau, die starke Netto-Asset-Position im Ausland und das hohe BIP pro Kopf widerspiegelt. Es spiegelt auch die Wahrscheinlichkeit von Unterstützung durch Abu Dhabi (AA/Stabil) im Bedarfsfall wider. Die Nettoauslandsvermögen Abu Dhabis gehören zu den höchsten unter den von Fitch bewerteten Staaten."
+          "text": "The UAE achieved AA- with a stable outlook in 2021 reflecting its moderate consolidated public debt level, strong net external asset position and high GDP per capita. It also reflects the likelihood of support from Abu Dhabi (AA/Stable) in the event of need. Abu Dhabi's sovereign net foreign assets are among the highest of Fitch-rated sovereigns."
         },
         "slide2": {
-          "text": "Die VAE gehören zu den 20 vertrauenswürdigsten Ländern und belegten im Kearney Foreign Direct Investment Confidence Index 2021 den 15. Platz, was sie zu einem bevorzugten Ziel für internationale Investoren macht."
+          "text": "The UAE has is one of the top 20 countries considered trustworthy, ranking 15th in Kearney’s 2021 Foreign Direct Investment Confidence Index making it one of the destinations of choice for international investors."
         },
         "slide3": {
-          "text": "Die VAE planen bis 2050 Investitionen von 163 Mrd. USD, um die wachsende Energienachfrage zu decken und nachhaltiges Wirtschaftswachstum zu gewährleisten. Laut Strategie soll der Energiemix wie folgt aussehen: 44 % saubere Energie, 38 % Gas, 12 % saubere Kohle und 6 % Kernenergie."
+          "text": "The UAE is scheduled to invest USD 163 billion until 2050 in order to meet growing energy demands and fulfil sustainable growth of the economy. According to the strategy, the energy mix is set to be: 44% from clean energy, 38% from gas, 12% from clean coal and 6% from nuclear energy."
         },
         "slide4": {
-          "text": "Die VAE verbieten Monopolisierung und fördern Wettbewerbsfähigkeit durch ein fortschrittliches System moderner und effektiver Gesetze, das ein sicheres Investitionsumfeld gewährleistet, in dem wirtschaftsstabilisierende Vorschriften umgesetzt werden."
+          "text": "The UAE prohibits monopolisation and fosters competitiveness through an advanced system of modern and effective laws and legislations that ensure a safe investment environment, where regulations that enhance economic stability are implemented."
         },
         "slide5": {
-          "text": "Die VAE beherbergen die größte Anzahl regionaler Hauptsitze im Nahen Osten und gelten ständig als ideales Land für kommerzielle und Investitionstätigkeiten."
+          "text": "The UAE hosts the largest number of regional headquarters in the Middle East and is constantly looked upon as an ideal country for engaging in commercial and investment activities."
         },
         "slide6": {
-          "text": "101 Abkommen von den VAE unterzeichnet, um Investitionen vor allen nicht-kommerziellen Risiken wie Verstaatlichung, Enteignung, Beschlagnahmung und Einfrieren zu schützen und zu fördern. Die Abkommen ermöglichen auch die Gründung von Investitionen, deren Lizenzierung sowie den freien Transfer von Gewinnen und anderen Erträgen in frei übertragbarer Währung und gewähren nationale Gleichbehandlung gemäß den in den VAE geltenden Gesetzen."
+          "text": "101 agreements signed by the UAE to protect and encourage investments from all non-commercial risks like nationalisation, expropriation, sequestration and freezing. The agreements also allow the establishment of investments and licensing such investments and confirm the free transfer of profits and other returns in a freely transferable currency, as well as granting national treatment in accordance with the laws enforced in the UAE, and other objectives that ensure the protection and encouragement of investments in the UAE."
         },
         "slide7": {
-          "text": "Über 135 Doppelbesteuerungsabkommen wurden mit Ländern weltweit, einschließlich Handelspartnern der VAE, unterzeichnet. Dies ermöglicht Investoren und Arbeitnehmern die Abwesenheit von Einkommens- und Unternehmenssteuern. Die VAE schließen aktiv neue Abkommen mit Ländern weltweit."
+          "text": "More than 135 double tax agreements have been signed with countries spread over the world, including the UAE trading partners. This allows investors and workers to enjoy the absence of personal income tax and corporate taxes. The UAE is actively signing new agreements with countries of the world."
         }
       }
     },
     "safe_service_process": {
-      "title": "SICHERER SERVICEPROZESS",
+      "title": "Safe Service Process",
       "cards": {
-        "card1": "Authentifizierter, sicherer und nahtloser Kaufprozess",
-        "card2": "Vielfalt an Optionen in Abu Dhabi & Dubai",
-        "card3": "Entwickler, Vermieter-Markt und Grundstücke",
-        "card4": "Besichtigen Sie die Immobilie bequem von zu Hause"
+        "card1": "Authenticated, safe and seamless purchase process",
+        "card2": "Variety of options in Abu Dhabi & Dubai",
+        "card3": "Developers, landlord market and plots",
+        "card4": "Tour the property at the comfort of your home"
       }
     },
     "projects_section": {
-      "title": "Projekte, die über Krypto zum Verkauf stehen",
+      "title": "Projects available for sale through crypto",
       "tabs": {
         "abu_dhabi": "Abu Dhabi",
         "dubai": "Dubai"
       },
       "card": {
-        "for_sale": "Zum Verkauf",
-        "units": "Einheiten",
-        "sqft": "qm",
-        "bitcoin": "Bitcoin",
-        "buy_btn": "Kaufen"
+        "for_sale": "For Sale",
+        "sqft": "sq.ft",
+        "buy_btn": "Buy"
       },
       "projects": {
         "abu_dhabi": {
           "al_jurf": {
-            "title": "Al Jurf",
-            "developer": "IMKAN",
-            "location": "Ghantoot",
-            "price": "1.900.000 AED",
-            "btc": "23,34",
             "type": "Villa",
+            "title": "Al Jurf",
+            "price": "1,900,000 AED",
+            "btc": "23.34",
+            "location": "Ghantoot",
+            "developer": "IMKAN",
             "beds": "4, 5, 7",
             "area": "2000"
           },
           "reem_hills": {
-            "title": "Reem Hills",
-            "developer": "Q Properties",
-            "location": "Al Reem Island",
-            "price": "1.200.000 AED",
-            "btc": "16,58",
             "type": "Villa",
+            "title": "Reem Hills",
+            "price": "1,200,000 AED",
+            "btc": "16.58",
+            "location": "Al Reem Island",
+            "developer": "Q Properties",
             "beds": "5, 6, 7",
-            "area": "10.487"
+            "area": "10,487"
           },
           "fairmont_marina": {
-            "title": "Fairmont Marina Residence",
-            "developer": "National Investment Corporation",
-            "location": "The Marina",
-            "price": "2.800.000 AED",
-            "btc": "34,39",
             "type": "Apartment",
+            "title": "Fairmont Marina Residence",
+            "price": "2,800,000 AED",
+            "btc": "34.39",
+            "location": "The Marina",
+            "developer": "National Investment Corporation",
             "beds": "2, 3, 4",
             "area": "1077"
           },
           "mamsha": {
-            "title": "Mamsha",
-            "developer": "Aldar Properties",
-            "location": "Saadiyat Island",
-            "price": "2.200.000 AED",
-            "btc": "27,02",
             "type": "Penthouse | Apartment",
+            "title": "Mamsha",
+            "price": "2,200,000 AED",
+            "btc": "27.02",
+            "location": "Saadiyat Island",
+            "developer": "Aldar Properties",
             "beds": "1, 2, 3, 4, 5",
             "area": "1334"
           },
           "louvre_abu_dhabi_residences": {
-            "title": "Louvre Abu Dhabi Residenzen",
-            "developer": "Aldar",
-            "location": "Saadiyat Island",
-            "price": "1.300.000 AED",
-            "btc": "15,97",
             "type": "Apartment",
+            "title": "Louvre Abu Dhabi Residences",
+            "price": "2,100,000 AED",
+            "btc": "25.76",
+            "location": "Cultural District, Saadiyat Island",
+            "developer": "Aldar Properties",
             "beds": "1, 2, 3",
-            "area": "1.076"
+            "area": "1240"
           }
         },
         "dubai": {
-          "hilton_residences": {
-            "title": "Hilton Residenzen",
-            "developer": "Hilton",
-            "location": "Jumeirah Lake Towers",
-            "price": "1.500.000 AED",
-            "btc": "18,42",
-            "type": "Apartment",
-            "beds": "1, 2, 3",
-            "area": "900"
-          },
           "dubai_creek_residences_1": {
-            "title": "Dubai Creek Residenzen",
-            "developer": "",
-            "location": "The Lagoons",
-            "price": "3.063.888 AED",
-            "btc": "42,33",
             "type": "Apartment",
-            "beds": "2",
-            "area": "1.636"
+            "title": "Dubai Creek Residences",
+            "price": "2,000,000 AED",
+            "btc": "24.52",
+            "location": "Dubai Creek Harbour",
+            "developer": "Emaar",
+            "beds": "2, 3",
+            "area": "1450"
           },
           "dania_district": {
-            "title": "Dania District",
-            "developer": "",
-            "location": "Midtown",
-            "price": "941.401 AED",
-            "btc": "13,0",
             "type": "Apartment",
-            "beds": "1",
-            "area": "956"
+            "title": "Dania District",
+            "price": "1,100,000 AED",
+            "btc": "13.49",
+            "location": "Midtown",
+            "developer": "Deyaar",
+            "beds": "1, 2",
+            "area": "980"
           },
           "park_ridge_1": {
-            "title": "Park Ridge",
-            "developer": "",
-            "location": "Mohammad Bin Rashid City",
-            "price": "2.383.888 AED",
-            "btc": "32,93",
             "type": "Apartment",
-            "beds": "3",
-            "area": "1.583"
+            "title": "Park Ridge 1",
+            "price": "1,600,000 AED",
+            "btc": "19.62",
+            "location": "Dubai Hills Estate",
+            "developer": "Emaar",
+            "beds": "2, 3",
+            "area": "1125"
           },
           "dubai_creek_residences_2": {
-            "title": "Dubai Creek Residenzen",
-            "developer": "",
-            "location": "The Lagoons",
-            "price": "5.774.888 AED",
-            "btc": "79,79",
             "type": "Apartment",
-            "beds": "4",
-            "area": "3.367"
+            "title": "Dubai Creek Residences 2",
+            "price": "2,050,000 AED",
+            "btc": "25.13",
+            "location": "Dubai Creek Harbour",
+            "developer": "Emaar",
+            "beds": "2, 3",
+            "area": "1450"
           },
           "sunrise_bay": {
-            "title": "Sunrise Bay",
-            "developer": "",
-            "location": "Dubai Harbour",
-            "price": "1.677.888 AED",
-            "btc": "23,18",
             "type": "Apartment",
-            "beds": "1",
-            "area": "733"
+            "title": "Sunrise Bay",
+            "price": "3,000,000 AED",
+            "btc": "36.78",
+            "location": "Emaar Beachfront, Dubai Harbour",
+            "developer": "Emaar",
+            "beds": "2, 3, 4",
+            "area": "1800"
           },
           "park_ridge_2": {
-            "title": "Park Ridge",
-            "developer": "",
-            "location": "Mohammad Bin Rashid City",
-            "price": "1.476.888 AED",
-            "btc": "20,40",
             "type": "Apartment",
-            "beds": "2",
-            "area": "1.003"
+            "title": "Park Ridge 2",
+            "price": "1,700,000 AED",
+            "btc": "20.84",
+            "location": "Dubai Hills Estate",
+            "developer": "Emaar",
+            "beds": "2, 3",
+            "area": "1180"
           }
         }
       }
     },
-    "attractions": {
-      "title": "Dubai Stadtwahrzeichen & Land in der Region (Global Power Index 2024)",
-      "ain_dubai": {
-        "title": "Ain Dubai",
-        "desc": "Ain Dubai ist das größte und höchste Riesenrad der Welt, gelegen auf der Bluewaters-Insel."
-      },
-      "burj_khalifa": {
-        "title": "Burj Khalifa",
-        "desc": "Der Burj Khalifa ist das höchste Gebäude der Welt und ein globales Wahrzeichen. Ein wahrhaftiges Meisterwerk der Ingenieurskunst."
-      },
-      "palm_jumeirah": {
-        "title": "Palm Jumeirah",
-        "desc": "Die baumförmige Insel Palm Jumeirah ist bekannt für glitzernde Hotels, luxuriöse Apartmenttürme und gehobene internationale Restaurants."
-      },
-      "dubai_frame": {
-        "title": "Dubai Frame",
-        "desc": "Der Dubai Frame ist ein architektonisches Wahrzeichen im Zabeel Park, Dubai."
-      }
-    },
-    "offer": {
-      "secure": "100% Sicher und geschützt",
-      "fast": "Schnell & bequem",
-      "tax": "0% Steuern",
-      "title": "Die Zukunft ist hier",
-      "subtitle": "Kaufen Sie Immobilien mit Krypto"
-    },
-    "steps": {
-      "title": "Kaufen Sie Ihr Traumhaus in 3 Schritten",
-      "step1": {
-        "title": "Wählen Sie Ihre Residenz",
-        "desc": "Wählen Sie die perfekte Immobilie, die zu Ihrem Lebensstil und Ihren Investitionszielen passt, aus unseren exklusiven Angeboten."
-      },
-      "step2": {
-        "title": "Reservieren Sie eine Einheit",
-        "desc": "Sichern Sie sich Ihre gewählte Immobilie durch Zahlung einer Reservierungsgebühr. Dadurch wird die Einheit für Sie blockiert."
-      },
-      "step3": {
-        "title": "Bezahlen Sie über Ihre Krypto-Wallet",
-        "desc": "Schließen Sie den Kauf sicher und schnell mit Ihrer bevorzugten Kryptowährungs-Wallet ab."
-      }
-    },
-    "why_invest": {
-      "title": "Die VAE sind eine der attraktivsten Steuerzonen der Welt"
-    },
-    "foundations": {
-      "title": "Grundlagen der Immobilien",
-      "desc": "Der Immobilienmarkt in Dubai gehört zu den reguliertesten und transparentesten Märkten der Region.",
-      "cta": "Mehr lesen",
-      "card1": {
-        "title": "Vermögensübertragung",
-        "desc": "Nahtlose Übertragung Ihrer digitalen Vermögenswerte in Immobilien."
-      },
-      "card2": {
-        "title": "Treuhandkonto",
-        "desc": "Ihre Investition wird durch staatlich regulierte Treuhandkonten geschützt."
-      },
-      "card3": {
-        "title": "Grundbuchurkunde",
-        "desc": "Erhalten Sie volle Eigentumsrechte mit einer offiziellen Grundbuchurkunde vom Dubai Land Department."
-      }
-    },
-    "faq": {
-      "title": "Häufig gestellte Fragen",
-      "q1": "Kann ich ein Haus in den VAE mit Krypto kaufen?",
-      "a1": "Ja, das können Sie. PSI bietet einen nahtlosen und sicheren Prozess, um Immobilien in den VAE mit Ihrer bevorzugten Kryptowährung zu kaufen. Der rechtliche Rahmen ist in den Prozess integriert.",
-      "q2": "Welche Kryptowährungen werden in den VAE akzeptiert?",
-      "a2": "Property Shop Investment (PSI) akzeptiert Bitcoin (BTC), Ethereum (ETH) und USDT.",
-      "q3": "Warum ist KYC wichtig?",
-      "a3": "Das Ziel der KYC-Richtlinien im Formular ist es, zu bestätigen, dass Kunden die sind, die sie vorgeben zu sein, und illegale Aktivitäten wie Geldwäsche und Terrorismusfinanzierung zu verhindern. Ohne KYC wären wir für solche illegalen Aktivitäten haftbar. Das KYC-Formular ermöglicht PSI auch, seine Kunden und deren Finanzaktivitäten besser zu verstehen, um sie optimal zu betreuen und Risiken verantwortungsvoll zu managen.",
-      "q4": "Erhalte ich eine Grundbuchurkunde für die Immobilie, die ich mit Kryptowährung kaufe?",
-      "a4": "Sobald der Vertrag unterzeichnet und die Kryptowährungstransaktion in PSI’s Wallet eingegangen ist, überweist PSI den Fiat-Betrag an die staatliche Behörde, um die Grundbuchurkunde auszustellen. PSI informiert Kunden über die offiziellen Dokumente, die von den VAE-Behörden für die Ausstellung der Grundbuchurkunde oder der Eigentumsübertragungsdokumente benötigt werden.",
-      "q5": "Kann PSI meine Immobilie verwalten?",
-      "a5": "Ein Vorteil des Immobilienkaufs in den VAE über PSI sind die Mehrwertdienste, die wir anbieten, da wir als Berater für Immobilieninvestitionen fungieren. PSI bietet VIP-Services wie Asset Management, Immobilienverwaltung, Kurz- und Langzeitvermietung, Unterstützung bei der Ausstellung von Golden Visa für Investoren sowie Verwaltung von Einzelhandels- und Gewerbeobjekten. Außerdem bieten wir Concierge- und Wartungsdienste, um den Wert Ihrer Immobilie zu erhalten.",
-      "q6": "Wie kann ich eine Bitcoin-Kryptowährungszahlung leisten?",
-      "a6": "PSI ermöglicht Bitcoin-Transaktionen sowie Ethereum und USDT. <ul class='list-none pl-0 ml-0 mt-2 space-y-2'><li>1. Wählen Sie Ihre Traumimmobilie (nach Community, Sehenswürdigkeiten, Entwicklern oder Typ).</li><li>2. Füllen Sie das Interessensformular aus (KYC-Informationen).</li><li>3. Erhalten Sie Ihren Vertrag.</li><li>4. Kryptowährung Ihrer Wahl über den entsprechenden Umtauschservice für den Wert der Immobilie.</li><li>5. Umwandlung der Kryptowährung in Fiat.</li><li>6. Erhalt der Grundbuchurkunde und/oder der offiziellen Eigentumsübertragungsdokumente.</li><li>7. Nutzen Sie die PSI-Dienstleistungen, um Ihre Rendite aus der Immobilieninvestition zu sichern und zu steigern.</li></ul>",
-      "q7": "Wie kann ich meine Rendite (ROI) aus Immobilien in den VAE steigern?",
-      "a7": "PSI bietet Investoren verschiedene Optionen, um die Renditen von Immobilieninvestitionen zu erhöhen, z. B. Kurz- und mittelfristige Vermietungsstrategien, bei denen Investoren von der hohen Nachfrage nach Kurz- und Mittelfristvermietungen profitieren und vom großen Touristenzulauf in den VAE profitieren können, indem sie in eine Wohnung oder Villa mit heimischem und authentischem Erlebnis investieren. Entdecken Sie alle unsere ROI-Optionen <a href=''>hier</a>.",
-      "q8": "Erhalte ich ein Goldenes Visum, wenn ich eine Immobilie in den VAE kaufe?",
-      "a8": "Wenn Sie in eine Immobilie in den VAE mit einem Bruttowert von mindestens 545.000 USD investieren, sind Sie für ein Goldenes Visum berechtigt. Dieses Immobilieninvestoren-Visum umfasst auch Visa für Ehepartner und Kinder. Der Visuminhaber kann eine Haushaltshilfe sponsern, vorbehaltlich der geltenden Vorschriften. Die Immobilieninvestition muss mindestens zwei Jahre nach Ausstellung des Visums beibehalten werden.",
-      "q9": "Wie kann ich die Immobilie aus dem Ausland besichtigen, bevor ich sie kaufe?",
-      "a9": "Die PSI-Website bietet virtuelle Touren auf <a href='/' target='_blank'>www.psinv.net</a>. Wir können eine virtuelle Tour nach Ihren Vorlieben anpassen. <a data-bs-toggle='modal' data-bs-target='#Modalform' style='cursor: pointer;'>Kontaktieren Sie uns</a> noch heute und teilen Sie uns mit, für welche Immobilie Sie sich interessieren.",
-      "q10": "Ist es sicher, eine Immobilie über Krypto zu kaufen?",
-      "a10": "Die Antwort lautet ja. Es ist sicher, eine Immobilie in den VAE über PSI zu kaufen. PSI folgt einem strikten, sicheren und nahtlosen Prozess, um Immobilien in den VAE zu erwerben. Der gesamte Prozess ist in einen rechtlichen Rahmen eingebettet, der die Interessen des Kunden schützt und den Vorschriften der Behörden in den VAE entspricht.",
-      "q11": "Kann ich ein Haus kaufen und in Dubai oder Abu Dhabi in den Ruhestand gehen?",
-      "a11": "Ja, das können Sie, und wir ermutigen jeden dazu. Beginnen Sie mit der Suche nach Ihrem Traumhaus in Abu Dhabi und Dubai in lebhaften Wohngebieten, bei bekannten globalen Sehenswürdigkeiten, Entwicklern, am Strand, in den Stadtzentren oder abseits des Trubels. Sobald Sie sich in die Immobilie verlieben, kümmern wir uns um Ihr nächstes spannendes Lebenskapitel. Der Ruhestand in den VAE ist sehr gefragt. Es ist ein steuerfreier, spannender Standort mit unglaublichen Sehenswürdigkeiten und positiver Energie. Ein sonniges Land, das eine hervorragende Lebensqualität für Rentner bietet. Das Land ist bekannt für seine tolerante, freundliche, multikulturelle Bevölkerung und die Vielzahl an Lebensstil-Erfahrungen, die unterschiedlichen Lebensweisen entspricht. <br>Die VAE sind Heimat von über 200 Nationalitäten, wobei Expats und Immigrant*innen mehr als 80 % der Bevölkerung ausmachen, wodurch das Land ein Schmelztiegel ist, in dem sich jeder willkommen fühlt, die VAE zu seinem zweiten Zuhause zu machen. Kontaktieren Sie uns noch heute, um einen allgemeinen Überblick über die für Ihren Lebensstil geeigneten Häuser und Gemeinden zu erhalten.",
-      "q12": "Wie registrieren die VAE-Behörden die Immobilie auf meinen Namen?",
-      "a12": "Wenn die Transaktion zwischen den Krypto-Wallets abgeschlossen ist, tauscht PSI die für den Kauf der Immobilie verwendete Kryptowährung in Fiat um. Der Entwickler und die Vermieter werden in lokaler Währung bezahlt.",
-      "q13": "Kann ich direkt vom Entwickler kaufen?",
-      "a13": "Ja, das können Sie, aber nur sehr wenige Entwickler akzeptieren Kryptowährung. PSI erleichtert den Kauf aller Wohn- und Geschäftseinheiten, die Sie in den VAE erwerben möchten, egal ob von Entwicklern oder Vermietern. Wenn Sie über PSI kaufen, werden wir Ihr Berater mit einer Vielzahl von VIP- und Immobilienlösungen, um sicherzustellen, dass Sie den maximalen Ertrag aus Ihrer Immobilieninvestition erzielen.",
-      "q14": "Benötige ich eine Vollmacht (POA), um ein Haus in den VAE zu kaufen?",
-      "a14": "Wenn Sie eine Immobilie von einem Vermieter und nicht von einem Entwickler kaufen, ist das POA-Dokument erforderlich. Dies ist Teil der offiziellen Unterlagen, die von den Behörden verlangt werden. Ihr Vertrag mit PSI erfüllt diese Anforderung. Kontaktieren Sie uns noch heute für eine kostenlose Beratung.",
-      "q15": "Kann ich eine Firma gründen, um das Haus auf den Namen meiner Firma einzutragen?",
-      "a15": "Als Teil seiner VIP-Dienstleistungen kann PSI Sie durch den Prozess der Gründung einer vollständigen ausländischen Eigentümergesellschaft in den VAE führen. Wir erledigen alle behördlichen Anforderungen in Ihrem Auftrag, um Ihr Unternehmen in den VAE zu eröffnen. Möchten Sie ein Unternehmen in den VAE eröffnen? <a data-bs-toggle='modal' data-bs-target='#Modalform' style='cursor: pointer;'>Kontaktieren Sie uns</a> noch heute.",
-      "q16": "Ich lebe in den VAE; kann ich mit Krypto kaufen?",
-      "a16": "Sie können eine Immobilie in den VAE mit Kryptowährung kaufen, egal, ob Sie bereits im Land sind oder Ihre Krypto in Immobilien in den VAE investieren möchten.",
-      "q17": "Wie erhält der Vermieter die Krypto?",
-      "a17": "Wenn die Transaktion zwischen den Krypto-Wallets abgeschlossen ist, tauscht PSI die beim Immobilienkauf verwendete Kryptowährung in Fiat um. PSI bezahlt den Vermieter in lokaler Währung.",
-      "q18": "Kann ich jemanden mit meinem Golden Visa sponsern?",
-      "a18": "Der Immobilieninvestor, der eine Immobilie in den VAE mit einem Bruttowert von mindestens 2 Millionen AED kauft, ist berechtigt für ein 10-jähriges Goldenes Visum für Investoren. Dieses Visum umfasst Visa für Ehepartner und Kinder. Der Visuminhaber kann eine Haushaltshilfe sponsern, vorbehaltlich der geltenden Vorschriften. Die Immobilieninvestition muss mindestens zwei Jahre nach Ausstellung des Visums beibehalten werden.",
-      "q19": "Kann ich eine Immobilie in den VAE kaufen und dann vermieten?",
-      "a19": "Die Antwort lautet ja. Es ist sicher, eine Immobilie in den VAE über PSI zu kaufen. PSI folgt einem strikten, sicheren Prozess. Kaufen-zur-Vermietung ist eine lukrative Investition in den VAE, da Vermietungen weiterhin eine beliebte Wahl für Investoren sind, die eine stabile Investition mit attraktiven Immobilienpreisen suchen. Investoren, die Buy-to-Let-Immobilien in den VAE erwerben, können mit einer Rendite (ROI) von 6–8 % für fertige Immobilien rechnen.",
-      "q20": "Kann ich meine Immobilie für Kurzaufenthalte vermieten?",
-      "a20": "Ja, das können Sie mit PSI. Teil unserer umfassenden Immobiliendienstleistungen ist es, Ihre Rendite durch Vermietung Ihrer Immobilie zu steigern. Egal, ob wir Ihre Wohnung möblieren oder unmöbliert vermieten, wir gestalten und verwalten den gesamten Zyklus der Vermietungsrahmen und Verträge, um sicherzustellen, dass Ihre Immobilie gut gepflegt ist und Sie eine gute Rendite erhalten.",
-      "q21": "Kann ich meine Immobilie langfristig vermieten?",
-      "a21": "Ja, das können Sie mit PSI. Teil unserer umfassenden Immobiliendienstleistungen ist es, Ihre Rendite durch Vermietung Ihrer Immobilie zu steigern. Egal, ob wir Ihre Wohnung möblieren oder unmöbliert vermieten, wir gestalten und verwalten den gesamten Zyklus der Vermietungsrahmen und Verträge, um sicherzustellen, dass Ihre Immobilie gut gepflegt ist und Sie eine gute Rendite erhalten.",
-      "q22": "Sollte ich Krypto oder Immobilien kaufen?",
-      "a22": "Es gibt viele Vorteile, Ihre Krypto in Immobilien in den VAE zu investieren, wie z. B.: <ul class='list-none pl-4 mt-2 space-y-2'><li>1. Ein greifbares Asset. Es hat einen inneren Wert, da Menschen immer einen Wohnort benötigen.</li><li>2. Sie können die Wertsteigerung Ihrer Immobilie jederzeit forcieren.</li><li>3. Passiver Cashflow.</li><li>4. Immobilien bergen deutlich weniger Risiko und bieten konsistentere Renditen.</li><li>5. Kontaktieren Sie uns noch heute, um die von PSI angebotenen Optionen zu erkunden, um eine stetige Einkommensquelle zu haben und zusätzlich zum Wertzuwachs verlässliches Einkommen zu generieren.</li></ul>"
-    },
     "seamless_process_section": {
-      "title": "Nahtloser Prozess",
+      "title": "Seamless Process",
       "steps": {
         "step1": {
-          "title": "Wählen Sie Ihre Investition",
-          "description": "(Suche nach Community, Sehenswürdigkeiten, Entwicklungen und Typen). Virtuelle Touren verfügbar.",
-          "sub_text": "In den VAE? Buchen Sie Ihre",
-          "highlight": "Besichtigung."
+          "title": "Choose your investment",
+          "description": "(Search by community, attractions, developments and types). Virtual Tours available.",
+          "sub_text": "In the UAE? book your",
+          "highlight": "viewing"
         },
         "step2": {
-          "title": "Lassen Sie uns vorstellen",
-          "description": "(Das KYC-Formular hilft uns, Ihre Investition & Krypto-Transaktion zu schützen)."
+          "title": "Let's get introduced",
+          "description": "(The KYC form will enable us protect your investment & crypto transaction)."
         },
         "step3": {
-          "title": "Halten Sie Ihre Optionen offen",
-          "description": "(Mit dem Interessensformular können wir sehen, wie wir Ihre Rendite (ROI) steigern können)."
+          "title": "Keep your options open",
+          "description": "(With the interest form, we will be able to know how we can increase your ROI)."
         },
         "step4": {
-          "title": "Kaufen wir das Haus",
-          "description": "Erhalten Sie OTC und andere von den Behörden benötigte Dokumente, um den Kauf aus dem Ausland zu erleichtern."
+          "title": "Let's buy the house",
+          "description": "Receive the OTC and other documents required by the authorities to facilitate the purchase from overseas."
         },
         "step5": {
-          "title": "Krypto-Wallets",
-          "description": "(Übertragen Sie die Mittel zwischen Krypto-Wallets mit Authentifizierung ...!!!)"
+          "title": "Crypto wallets",
+          "description": "(Transfer the funds between crypto wallets with authentication …!!!)"
         },
         "step6": {
-          "title": "Willkommen zu Hause",
-          "description": "(Die Grundbuchurkunde wird nach Ihren Präferenzen ausgestellt)."
+          "title": "Welcome Home",
+          "description": "(Title Deed is issued according to your preferences)."
         }
       }
     },
     "investment_journey": {
-      "text": "Mit Verbindungen, Netzwerk, Wissen und Länderführern erstellen wir Investmentreisen basierend auf",
-      "highlight": "IHREN BEDÜRFNISSEN, WERTEN, LEBENSSTIL UND ZIELEN.",
-      "read_more": "Mehr lesen"
+      "text": "With connections, network, knowledge and country guides, we build and design investment journeys based on your needs, values, lifestyle and your goals.",
+      "highlight": "Read more crypto",
+      "read_more": "Read More"
     },
     "uae_hub": {
-      "title": "einer der weltweit attraktivsten Investment-Hubs",
-      "highlight": "VAE:",
+      "highlight": "UAE:",
+      "title": "one of the world’s most attractive investment hubs",
       "stats": [
         {
           "value": "200+",
-          "text": "Nationalitäten leben in einer offenen, multikulturellen Gesellschaft."
+          "text": "Nationalities living in an open, multi-cultural society."
         },
         {
           "value": "1st",
-          "text": "Drahtlos-Breitband, Nettostrom internationaler Studierender, Einwanderungsgesetze, Cyber-Sicherheit."
+          "text": "Wireless broadband, net flow of international students, immigration laws, Cyber Security."
         },
         {
           "value": "15th",
-          "text": "Weltweit im Kearney FDI Confidence Index."
+          "text": "Globally in Kearney FDI Confidence index."
         },
         {
           "value": "1/3",
-          "text": "der Weltbevölkerung ist in 4 Stunden Flugzeit erreichbar."
+          "text": "of global population is 4 hours away flight."
         },
         {
           "value": "3rd",
-          "text": "Weltweit in Regierungseffizienz."
+          "text": "Globally in government efficiency."
         },
         {
-          "value": "5th / 12th",
-          "text": "Weltweit in Technologie. Weltweit in Zukunftsfähigkeit."
+          "value": "5th",
+          "text": "Globally in Technology."
+        },
+        {
+          "value": "12th",
+          "text": "Globally in Future Readiness."
         },
         {
           "value": "9th",
-          "text": "Weltweit in wirtschaftlicher Leistung."
+          "text": "Globally in economic performance."
         },
         {
           "value": "8th",
-          "text": "Weltweit in Geschäftseffizienz."
+          "text": "Globally in business efficiency."
         }
       ]
     },
     "market_openness": {
-      "title": "Marktöffnung",
+      "title": "Market Openness",
       "cards": {
         "zones": {
-          "title": "Investitionszonen",
-          "desc": "Ausländer können Land und Wohneinheiten erwerben.",
-          "cta": "Anfrage stellen"
+          "title": "Investments Zones",
+          "desc": "Foreign nationals can purchase land and residential units.",
+          "cta": "Make an enquiry"
         },
         "diverse": {
-          "title": "Vielfältige Investitionen",
-          "desc": "Aktiver Markt für Off-Plan, Grundstücke, Lagerhallen, Industriegebiete und Assets.",
-          "cta": "Starten Sie Ihre Investition"
+          "title": "Diverse Investments",
+          "desc": "Active market for off-plans, plots, warehouses, industrial zones and assets.",
+          "cta": "Start your investment"
         },
         "visa": {
           "title": "Golden Visa",
-          "desc": "5- & 10-Jahres-Visaprogramm mit einzigartigem sozialen Gefüge aus Ärzten, Wissenschaftlern, Erfindern, Prominenten und außergewöhnlichen Talenten aus der ganzen Welt.",
-          "cta": "Anfrage stellen"
+          "desc": "5 & 10 year visa program a unique social fabric of doctors, scientists, inventors, celebrities and exceptional talents from all over the world.",
+          "cta": "Make an enquiry"
         }
       }
     },
     "real_estate_foundations": {
-      "title": "GRUNDLAGEN DER IMMOBILIEN",
-      "subtitle": "Abu Dhabi führt weltweit in Bezug auf Investitionsstandorte unter den leistungsstärksten Städten.",
-      "returns_title": "Durchschnittliche Rendite",
-      "returns_highlight": "7% Durchschnittliche Immobilienrendite pro Jahr.",
+      "title": "REAL ESTATE FOUNDATIONS",
+      "subtitle": "AbuDhabi leads the global real estate in terms of investment locations among best performing cities worldwide.",
+      "returns_title": "Returns average",
+      "returns_highlight": "7% Average real estate returns per annum.",
       "cities": {
-        "cairo": "Kairo",
-        "moscow": "Moskau",
+        "cairo": "Cairo",
+        "moscow": "Moscow",
         "london": "London",
-        "hong_kong": "Hongkong",
+        "hong_kong": "Hong Kong",
         "new_york": "New York",
         "paris": "Paris",
         "mumbai": "Mumbai"
@@ -1099,35 +994,82 @@
       "stats": {
         "tax": {
           "value": "0%",
-          "desc": "Keine Steuern auf Einkommen und Immobilieninvestitionen."
+          "desc": "zero taxes on income and real estate investments."
         },
         "gdp": {
-          "value": "27,2%",
-          "desc": "Beitrag der Immobilien zum Nicht-Öl-BIP."
+          "value": "27.2%",
+          "desc": "Real estate contribution to non oil GDP."
         },
         "contribution": {
-          "value": "$33 Mrd.",
-          "desc": "Beitrag des Immobilienbaus zum Öl-BIP."
+          "value": "$33BN",
+          "desc": "Real estate construction contribution to oil GDP"
         }
       }
     },
     "form": {
-      "title": "Worüber möchten Sie sprechen?",
-      "firstName": "Vorname",
-      "lastName": "Nachname",
-      "email": "E-Mail-Adresse",
-      "phone": "Telefonnummer",
-      "message": "Nachricht",
-      "submit": "Anfrage absenden",
-      "submitting": "Wird gesendet...",
-      "success": "Anfrage erfolgreich gesendet!",
-      "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+      "title": "What do you want to talk about?",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "message": "Message",
+      "submit": "Submit your inquiry",
+      "submitting": "Submitting...",
+      "success": "Inquiry submitted successfully!",
+      "error": "Something went wrong. Please try again.",
       "validation": {
-        "firstName": "Vorname ist erforderlich",
-        "lastName": "Nachname ist erforderlich",
-        "email": "Ungültige E-Mail-Adresse",
-        "phone": "Ungültige Telefonnummer"
+        "firstName": "First name is required",
+        "lastName": "Last name is required",
+        "email": "Invalid email address",
+        "phone": "Invalid phone number"
       }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": "Can I buy a house in the UAE using crypto?",
+      "a1": "Yes you can. PSI offers a seamless and secured process to buy a property in the UAE with your choice of cryptocurrency. The legal framework is integrated in the process.",
+      "q2": "Which cryptocurrencies are accepted in the UAE?",
+      "a2": "Property Shop Investment (PSI) accepts Bitcoin (BTC), Ethereum (ETH), USDT currencies.",
+      "q3": "Why is KYC important?",
+      "a3": "The objective of KYC guidelines in the form, is to confirm that customers are who they claim to be and to prevent illegal activities, such as money laundry and funding terrorism. If we don’t perform KYC, then we will be liable for those kinds of illegal activities. KYC form also enables PSI to understand its customers and their financial dealings to serve them better and manage its risks prudently.",
+      "q4": "Do I get a Title Deed for the property I buy with cryptocurrency?",
+      "a4": "Once the contract is signed and the cryptocurrency transaction is received in PSI’s wallet, PSI settles the fiat to the government authority to issue the Title Deed. PSI will advise customers of the official documents required by the UAE authorities to issue the Title Deed or the Transfer of Ownership official documents.",
+      "q5": "Can PSI manage my property?",
+      "a5": "One of the advantages of buying a property in the UAE with PSI is the value-added services that we offer as we act as advisors for property investments made with us. PSI offers a range of VIP services to retain and increase the returns of property investments such as Assets Management, property management, short and long rentals, facilitating issuance of investors’ golden visas along with retail and commercial setup management. We also offer concierge and maintenance services to maintain your property’s value. Contact us today and tell us what is in your mind and we will ensure you have the highest return of your investment.",
+      "q6": "How can I make a bitcoin cryptocurrency payment?",
+      "a6": "PSI facilitates Bitcoin transactions as well as Ethereum, USDT. <ul class='list-none pl-0 ml-0 mt-2 space-y-2'><li>1. Select your dream property (by a community, attractions, developers or type).</li><li>2. Complete the interest form (KYC information).  </li><li>3. Receive your contract.</li><li>4. Cryptocurrency of your choice exchange service for the value of the property.</li><li>5. Transfer of the crypto to fiat.</li><li>6. Receive the Title Deed and/or the Transfer of Ownership official documents.</li><li>7. Explore PSI services to retain and increase your returns of your property investment.</li></ul>",
+      "q7": "How can I increase my ROI from real estate in the UAE?",
+      "a7": "PSI offers investors a variety of options to increase the returns on real estate investments such as short and medium-term leasing strategy where investors can benefit from the high demand for shortmedium-term rentals and tap into the big tourist turnover in the UAE by investing in an apartment or a villa with homey and an authentic experience. Explore all our ROI options <a href=''>here</a>.",
+      "q8": "Do I get a golden visa if I buy a property in the UAE?",
+      "a8": "By investing in a property in the UAE of a gross value of not less than USD 545,000, you are eligible for a Golden visa. This Real Estate Investor Visa includes visas for spouses and children. The visa holder can sponsor a domestic worker, subject to relevant regulations. The real estate investment must be retained for at least two years after the visa is issued..",
+      "q9": "How can I view the property from overseas before I buy it?",
+      "a9": "PSI site provides Virtual Tours on <a href='/' target='_blank'>www.psinv.net</a> We can customize a virtual tour based on your preferences. <a data-bs-toggle='modal' data-bs-target='#Modalform' style='cursor: pointer;'>Get in touch</a> with us today and tell us which property you are interested in.",
+      "q10": "Is it safe to buy a property through crypto?",
+      "a10": "The answer is yes. It is safe to buy a property in the UAE with PSI. PSI follows a rigid, secured and seamless process to buy property in the UAE. The whole process is integrated with a legal framework that protects the client’s interests and in line with the authority regulations in the UAE.",
+      "q11": "Can I buy a house and retire in Dubai or Abu Dhabi?",
+      "a11": "Yes you can and we encourage everyone to do so. Start by searching for your dream home in Abu Dhabi and Dubai by either vibrant residential communities, renowned global attractions, developers, by the beach, in the city centers, or far from the hustle. Once you fall in love with the property, we will take care of your next exciting chapter in life. Retirement in the UAE is one of the most sought after. It is a tax-free status exciting destination with incredible attractions and an upbeat energy. A sunshine-filled country, that offers an outstanding quality of life for retirees. The country is famed for its tolerant, friendly, multicultural population and array of lifestyle experiences that matches different ways of living. <br>The UAE is home for over 200 nationalities with expats and immigrant workers making up more than 80% of the population, making the country a melting pot where everyone feels welcome to make the UAE their second home. Contact us today to get a general sense of the types of homes and communities that best suits your lifestyle.",
+      "q12": "How will the UAE authorities register the property in my name?",
+      "a12": "When the transaction is completed between crypto wallets, PSI exchanges the cryptocurrency used in purchasing the property to fiat. The developer and the landlords are paid in the local currency.",
+      "q13": "Can I buy directly from the developer?",
+      "a13": "Yes you can but very limited number of developers accept cryptocurrency. PSI facilitates the purchase of all residential and commercial units you wish to buy in the UAE. Whether from developers or landlords. When you buy from PSI, we become your advisor with a variety of VIP and real estate solutions to ensure that you receive the maximum returns on your real estate investment.",
+      "q14": "Would I need a POA to buy a house in the UAE?",
+      "a14": "If you are buying a property from a landlord and not from a developer, then the POA document will be required. This is part of the official documents required by the government authorities. Your contract with PSI fulfils this requirement. Contact us today for free consultation.",
+      "q15": "Can I establish a company to register the house under my company’s name?",
+      "a15": "Part of its VIP services, PSI can guide you through the process of establishing a full foreign ownership company in the UAE. We facilitate all government requirements on your behalf to open your company in the UAE. Want to open a company in the UAE? <a data-bs-toggle='modal' data-bs-target='#Modalform' style='cursor: pointer;'>Get in touch</a> with us today.",
+      "q16": "I live in the UAE; can I buy using crypto?",
+      "a16": "You can buy a property in the UAE using cryptocurrency whether you are already in the country or looking to invest your crypto in real estate in the UAE.",
+      "q17": "How will the landlord receive the crypto?",
+      "a17": "When the transaction is completed between crypto wallets, PSI exchanges the cryptocurrency used in purchasing the property to fiat. PSI pays the landlord in the local currency.",
+      "q18": "Can I sponsor anyone with my Golden Visa?",
+      "a18": "The Real Estate Investor who buys a property in the UAE of a gross value of not less than AED 2 million will be eligible for a 10-year investor’s Golden visa. This Real Estate Investor Visa includes visas for spouses and children. The visa holder can sponsor a domestic worker, subject to relevant regulations. The real estate investment must be retained for at least two years after the visa is issued.",
+      "q19": "Can I buy a property in the UAE and then rent it out?",
+      "a19": "The answer is yes. It is safe to buy a property in the UAE with PSI. PSI follows a rigid, secured and Buying-to-let is a lucrative investment in the UAE as rentals remain the popular choices for investors looking to make a steady investment with attractive property prices. Investors looking at buy-to-let properties in the UAE can expect an ROI of 6% – 8% for ready properties.",
+      "q20": "Can I lease my property for short stays?",
+      "a20": "Yes you can with PSI. Part of our all-inclusive real estate services is to increase your return on your property investment by leasing your property. Whether you want us to furnish your apartment or rent it out unfurnished, we design and manage the full cycle of leasing frameworks and agreements to ensure that your property is well-maintained and that you are receiving a good return on your real estate investment.",
+      "q21": "Can I lease my property for long term?",
+      "a21": "Yes you can with PSI. Part of our all-inclusive real estate services is to increase your return on your property investment by leasing your property. Whether you want us to furnish your apartment or rent it out unfurnished, we design and manage the full cycle of leasing frameworks and agreements to ensure that your property is well-maintained and that you are receiving a good return on your real estate investment.",
+      "q22": "Should I buy crypto or real estate?",
+      "a22": "There are many advantages of investing your crypto in buying real estate in the UAE such as: <ul class='list-none pl-4 mt-2 space-y-2'><li>1. A tangible asset. It has intrinsic value as people will always need a place to live.</li><li>2. You can always force the appreciation of your real estate asset.</li><li>3. Passive cash flow.</li><li>4. Real estate has significantly less risk and offers more consistent returns.</li><li>5. Contact us today to explore the options PSI offers to have a steady source of income and generate a reliable income in addition to appreciation.</li></ul>"
     }
   }
 }

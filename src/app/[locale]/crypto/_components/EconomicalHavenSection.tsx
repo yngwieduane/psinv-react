@@ -104,9 +104,9 @@ const EconomicalHavenSection = () => {
                                     </div>
                                     {/* Text Content */}
                                     <div className="mb-4 flex-grow">
-                                        <p className="text-white text-base leading-relaxed mt-4 min-h-[80px] mb-4">
+                                        <span className="text-white text-base leading-relaxed mt-4 min-h-[80px] mb-4">
                                             <TextShortner text={t(`slides.${slide.key}.text`)} charLimit={110} classes={`text-lg font-lighter`} />
-                                        </p>
+                                        </span>
                                         <Button
                                             onClick={() => handleModal(slide)}
                                             className="inline-flex items-center text-[#4ADE80] text-lg font-medium hover:text-[#22c55e] transition-colors"

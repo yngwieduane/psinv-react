@@ -1,11 +1,13 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 import Image from 'next/image';
 
 const RealEstateFoundations = ({ onOpenModal }: { onOpenModal?: () => void }) => {
     const t = useTranslations('CryptoPage.real_estate_foundations');
+    const locale = useLocale();
+    const isRtl = locale.toLowerCase().startsWith("ar");
 
     const cities = [
         { name: 'cairo', val: '4.5%' },
@@ -24,7 +26,7 @@ const RealEstateFoundations = ({ onOpenModal }: { onOpenModal?: () => void }) =>
     ];
 
     return (
-        <section className="bg-[#090953] pb-20 pt-10">
+        <section className="bg-[#090953] pb-20 pt-10" dir={isRtl ? 'rtl' : 'ltr'}>
             <div className="container mx-auto px-6 md:px-12">
 
                 {/* Top Section: Hero + Returns Table */}
