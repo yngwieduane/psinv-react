@@ -11,6 +11,7 @@ import {
     ArrowRight,
     Globe
 } from 'lucide-react';
+import { PROJECTS } from "@/utils/projectOverrides";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
@@ -25,6 +26,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function Sitemap() {
     const t = await getTranslations('LocaleSwitcher');
     const tFooter = await getTranslations('FooterAI');
+    const prettyLabel = (slug: string) =>
+        slug
+            .replace(/-/g, " ")
+            .replace(/\b\w/g, (c) => c.toUpperCase());
+
+    const registrationLinks = Object.keys(PROJECTS)
+        .sort()
+        .map((slug) => ({
+            label: prettyLabel(slug),
+            href: `/project/${slug}`,
+        }));
 
     const sections = [
         {
@@ -99,6 +111,13 @@ export default async function Sitemap() {
                     ]
                 }
             ]
+        },
+        {
+            title: "Registrations",
+            icon: Map,                // you already imported Map icon
+            color: "text-rose-600",
+            bg: "bg-rose-50",
+            links: registrationLinks,
         },
         {
             title: t('services'),

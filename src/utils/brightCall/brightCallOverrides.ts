@@ -130,6 +130,21 @@ const REG_WIDGET_KEYS_BY_UTM: Record<
         "ali-wadi-yemm-newsletter-oct25": { en: "14cde702e1b626683380810fc477dff7", ar: "a37f72c1191c1698ca3f469acaa455b8" },
     },
 };
+const LP_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> = {
+    "sama-yas": {
+        en: "6b7e59add8142621e894bbd83c79d58c",
+        ar: "5a2866c627e980f0cb8b0026a9609525",
+    },
+    // add more lp slugs here
+};
+
+const LP_WIDGET_KEYS_BY_UTM: Record<
+    string,
+    Record<string, Partial<Record<Locale, string>>>
+> = {
+    // only if any LP needs utm-specific widget keys
+    // "sama-yas": { "some_utm": { en: "...", ar: "..." } }
+};
 
 /* ------------------ builder: UTM rules first, then slug rules ------------------ */
 
