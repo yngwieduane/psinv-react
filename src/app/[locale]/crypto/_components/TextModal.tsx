@@ -43,7 +43,7 @@ const TextModal = (props: any) => {
             >
               <DialogPanel className="relative transform overflow-hidden rounded-lg bg-[#090953] px-4 pb-4 pt-5 text-left text-[#fff] shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-md sm:p-4">
                 <div className="mt-2">                        
-                    <Image src={props.image} alt="Economical Haven" className="w-full h-auto" width={100} height={100} />
+                    <Image src={props.image} alt="Economical Haven" title="Economical Haven" className="w-full h-auto" width={100} height={100} />
                 </div>                
                 <p className="text-sm mt-3">{props.text}</p>
               </DialogPanel>

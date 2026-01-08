@@ -6,7 +6,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 
@@ -28,22 +27,22 @@ interface DynamicFormProps {
   formType: "propertyListing"; // Ensure it's explicitly defined
 }
 
-const DynamicForm = ({ formType }: DynamicFormProps) => { 
-    const locale = useLocale();
-    const isRTL = locale.toLowerCase().startsWith("ar");    
-    const t = useTranslations("ListPropertyForm"); 
-    const agreements_t = useTranslations("Common_Form_Agreements");
+const DynamicForm = ({ formType }: DynamicFormProps) => {
+  const locale = useLocale();
+  const isRTL = locale.toLowerCase().startsWith("ar");
+  const t = useTranslations("ListPropertyForm");
+  const agreements_t = useTranslations("Common_Form_Agreements");
 
-    const propertyListingSchema = z.object({
-      firstName: z.string().min(1, { message: t("errors.firstNameRequired") }),
-      lastName: z.string().min(1, { message: t("errors.lastNameRequired") }),
-      email: z.string().email({ message: t("errors.invalidEmail") }),
-      phone: z.string().min(7, { message: t("errors.invalidPhone") }),
-      propertyPurpose: z.string().min(1, { message: t("errors.choosePurpose") }),
-      agreement1: z.boolean().optional(),
-      agreement2: z.boolean().optional(),
-      agreement3: z.boolean().optional(),
-    });
+  const propertyListingSchema = z.object({
+    firstName: z.string().min(1, { message: t("errors.firstNameRequired") }),
+    lastName: z.string().min(1, { message: t("errors.lastNameRequired") }),
+    email: z.string().email({ message: t("errors.invalidEmail") }),
+    phone: z.string().min(7, { message: t("errors.invalidPhone") }),
+    propertyPurpose: z.string().min(1, { message: t("errors.choosePurpose") }),
+    agreement1: z.boolean().optional(),
+    agreement2: z.boolean().optional(),
+    agreement3: z.boolean().optional(),
+  });
 
   const {
     register,
@@ -144,39 +143,98 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
     };
     const apiUrl = `https://api.portal.psi-crm.com/leads?APIKEY=${process.env.NEXT_PUBLIC_API_KEY}`;
 
-  try {
-    const response = await fetch(apiUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formDataToSend),
-    });
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formDataToSend),
+      });
 
-    console.log("Response Status:", response.status);
+      const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          body: `
+            <table cellpadding="0" cellspacing="0" width="550" align="center">
+                <tbody>
+                    <tr>
+                        <td align="center" height="80" style="text-align:center;" width="550" bgcolor="#FFFFFF"></td>
+                    </tr>
+                    <tr>
+                        <td height="10" bgcolor="#02344a"></td>
+                    </tr>
+                    <tr>
+                        <td height="30" style="color:#fff; font-size:16px; background:#02344a; font-weight:bold; padding:0 10px; font-family:Arial, Helvetica, sans-serif">
+                            List Your Property Inquiry Form - ${currentUrl}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="10" bgcolor="#02344a"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table width="100%" cellspacing="3" cellpadding="5" style="border:1px solid #e8e6e6">
+                                <tbody>
+                                    <tr>
+                                        <td width="150" style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Client Name:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.firstName} ${data.lastName}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Email:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.email}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Phone:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.phone}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Purpose:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.propertyPurpose}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">URL:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${currentUrl}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          `,
+          receiver: "callcenter@psinv.net",
+          subject: "New Inquiry - Property Shop Investment - List Property",
+          filename: "",
+          filedata: ""
+        })
+      });
 
-    if (!response.ok) {
-      let errorMessage = "Error submitting the form.";
-      try {
-        const errorData = await response.json();
-        errorMessage = errorData.message || errorMessage;
-      } catch (err) {
-        console.warn("Response is not JSON format.");
+      console.log("Response Status:", response.status);
+
+      if (!response.ok) {
+        let errorMessage = "Error submitting the form.";
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (err) {
+          console.warn("Response is not JSON format.");
+        }
+        alert(`Error: ${errorMessage}`);
+        return;
       }
-      alert(`Error: ${errorMessage}`);
-      return;
-    }
 
-    console.log("Form submitted successfully.");
-    window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
-  } 
-  catch (error) {
-    console.error("Fetch Error:", error);
-    alert("Network error. Please try again.");
-  } 
-  finally {
-    setIsSubmitting(false);
-  }
-};
-      
+      console.log("Form submitted successfully.");
+      window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
+    }
+    catch (error) {
+      console.error("Fetch Error:", error);
+      alert("Network error. Please try again.");
+    }
+    finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="flex gap-4">
@@ -200,7 +258,7 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
       <Controller
         name="phone"
         control={control}
-        render={({ field }) => <PhoneInput {...field} dir={isRTL ? "rtl" : "ltr"} international defaultCountry="AE" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" aria-label="Phone Number"/>}
+        render={({ field }) => <PhoneInput {...field} dir={isRTL ? "rtl" : "ltr"} international defaultCountry="AE" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" aria-label="Phone Number" />}
       />
       {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
 

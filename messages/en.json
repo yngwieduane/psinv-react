@@ -5142,19 +5142,208 @@
       ]
     }
   },
-  "CryptoPage": {
+  "ListYourPropertyPage": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "providers": "Providers",
+      "solutions": "Our Solutions",
+      "benefits": "Benefits",
+      "faqs": "FAQs"
+    },
     "hero": {
-      "title": {
-        "part1": "Buy property with",
-        "part2": "CRYPTO",
-        "part3": "in the"
+      "title": "We make your property stand out, list with us",
+      "subtitle": "Sell or rent out your property with PSI, #1 real estate agency in the UAE. We manage everything from marketing to bookings",
+      "button": "List Your Property",
+      "watch_video": "Watch Video"
+    },
+    "about": {
+      "title": "Why To List Your Property With US?",
+      "description": "We try to make the process of listing and renting/selling your property as simple and easy as possible. With our expert team, you can avoid all the hassles of the traditional property market and get the desired results without any stress.",
+      "points": [
+        "Choose an experienced Listing agent.",
+        "Discuss the right price of your property.",
+        "Free professional photos & Videos for your property.",
+        "Get your property verified in Real Estate portals."
+      ]
+    },
+    "virtual_tour": {
+      "title": "Live in tours with 360° virtual view of your property",
+      "description": "Experience your home like never before! It is more than ever essential to stand out among the competition, PSI will provide a 360° tour of your property to be included within other marketing materials. The most remarkable presentation of a panorama is most definitely the 360° Virtual Tour. The need for Virtual Technology is growing fast. Almost everyone is now searching the web to see the availability of Virtual tours."
+    },
+    "where_to_list": {
+      "title": "Where Will We List Your Property?",
+      "description": "Property owners! List your property with us for sale or rent. Reach our specialized consultants to deliver the best value for your property."
+    },
+    "exclusive_listing": {
+      "title": "Property Exclusively Listing",
+      "points": [
+        "Higher commitment of service",
+        "Maximum exposure to the right tenant/investor",
+        "More quality leads",
+        "Guaranteed high-quality offers",
+        "Special marketing campaigns to sell or rent your property",
+        "Your property will be shown by one dedicated agent",
+        "1-year free property management"
+      ]
+    },
+    "non_exclusive_listing": {
+      "title": "Property Non-Exclusive Listing",
+      "points": [
+        "List your property with numerous real estate agents.",
+        "Marketing your property in the same channels by different real estate agents.",
+        "More leads for your property.",
+        "Guaranteed high-quality offers",
+        "Possibility of your property to be seen by same clients but with different agents.",
+        "No obligation to pay commission if you sell/ rent your property with your own efforts."
+      ]
+    },
+    "benefits": {
+      "title": "Benefits to list with Us",
+      "description": "Properties with We understand how busy you are and that’s why we do everything in our power to make the process of renting/selling your property hassle free. -In Tours generate 30% more inquiries",
+      "items": [
+        "13+ years of Experience in Real Estate",
+        "Covering 50+ Districts in The UAE",
+        "Advanced Real Estate Technology And Process",
+        "Highest Transactions in Abu Dhabi Real Estate Market",
+        "Specialized Team For each Area in Abu Dhabi & Dubai",
+        "1 Year Free Property Management"
+      ]
+    },
+    "footer": {
+      "copyright": "© 2025 Property Shop Investment LLC. | All Rights Reserved."
+    },
+    "faqs_section": {
+      "title": "FAQs",
+      "items": [
+        {
+          "question": "What are exclusive Seller's Agency Services?",
+          "answer": "This is a service available to owners of premium properties that want their listing to stand out from the crowd and realize the highest possible price on the market."
+        },
+        {
+          "question": "Why should I choose an exclusive agreement for selling my property?",
+          "answer": "Trust and experience are the main reason for choosing an exclusive agreement with Exotiq. Owners nowadays realize how complex it has become to successfully sell a property in Bali, particularly, if owned by a foreigner. It requires not only extensive knowhow in selling luxury properties, but also solid knowledge of legal and fiscal matters, something that only comes with years of experience. Founded in 2002, Exotiq is Bali’s oldest real estate agency."
+        },
+        {
+          "question": "What kind of properties qualify for the exclusive listing service?",
+          "answer": "All our exclusive properties are special and unique. They are typically priced in the higher segment of the market. Call us to find out if your property qualifies for an exclusive listing."
+        },
+        {
+          "question": "What extra service do I get under an exclusive listing agreement?",
+          "answer": "We create a comprehensive campaign and invest up to 1% of our commission in the marketing of your property. This includes the production of a video and professional photography and even a dedicated website, just for your property."
+        }
+      ]
+    },
+    "form": {
+      "title": "List Your Property",
+      "steps": {
+        "personal_info": "Personal information",
+        "prop_details_1": "Prop details 1",
+        "prop_details_2": "Prop details 2",
+        "prop_details_3": "Prop details 3",
+        "files": "Files",
+        "complete": "Complete"
       },
-      "subtitle": {
-        "part1": "New",
-        "part2": "Land Of Opportunities"
+      "labels": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "phone": "Phone Number",
+        "email": "Email Address",
+        "purpose": "Property Purpose",
+        "location": "Location",
+        "propType": "Property Type",
+        "property": "Property",
+        "beds": "Beds",
+        "description": "Please describe your property",
+        "unitView": "Unit View",
+        "unitSize": "Unit Size",
+        "baths": "Bathrooms",
+        "parking": "Parking",
+        "unitNumber": "Unit Number",
+        "askingPrice": "Asking Price",
+        "status": "Unit Status",
+        "service": "Service Type",
+        "readyToView": "Ready To View",
+        "attachImages": "Attach external image",
+        "attachSpa": "Attach SPA",
+        "attachDeed": "Attach Title Deed",
+        "attachPassport": "Attach Passport",
+        "bestTime": "The Best Time to Contact You",
+        "date": "Date",
+        "time": "Time",
+        "agreement1": "I agree to the Terms & Conditions and Privacy Policy",
+        "agreement2": "Agree to receive calls and communications",
+        "agreement3": "Receive calls about various projects",
+        "footer_agreement": "By clicking Submit, you agree to our",
+        "of": "of",
+        "list_your_property": "List Your Property"
       },
-      "description": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
-      "cta": "Learn More"
+      "placeholders": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email Address",
+        "purpose": "Purpose",
+        "description": "Write Here",
+        "selectLocation": "Select location",
+        "selectPropType": "Select property type",
+        "selectProperty": "Select a property",
+        "selectBeds": "Select number of bedrooms",
+        "selectBaths": "Bath",
+        "selectParking": "Parking",
+        "selectService": "Service Type",
+        "unitView": "Unit View",
+        "unitSize": "Unit Size",
+        "unitNumber": "Unit Number",
+        "askingPrice": "Asking Price"
+      },
+      "options": {
+        "purpose": {
+          "sale": "Sale",
+          "rent": "Rent",
+          "manage": "Manage"
+        },
+        "propType": {
+          "villa": "Villa",
+          "apartment": "Apartment",
+          "townhouse": "Townhouse"
+        },
+        "location": {
+          "abu_dhabi": "Abu Dhabi",
+          "dubai": "Dubai",
+          "sharjah": "Sharjah",
+          "rak": "RAK"
+        },
+        "status": {
+          "rented": "Rented",
+          "vacant": "Vacant",
+          "occupied": "Occupied"
+        },
+        "service": {
+          "res_rent": "Residential for Rent",
+          "res_sale": "Residential for Sale",
+          "com_rent": "Commercial for Rent",
+          "com_sale": "Commercial for Sale"
+        },
+        "yes": "Yes",
+        "no": "No"
+      },
+      "buttons": {
+        "next": "Next",
+        "previous": "Previous",
+        "submit": "Submit",
+        "submitting": "Submitting.."
+      },
+      "messages": {
+        "loading_props": "Loading properties...",
+        "thank_you": "Thank You!",
+        "success_message": "Your submission has been sent. Our agent will contact you shortly.",
+        "already_submitted": "You've already submitted. Please wait a few minutes before trying again.",
+        "error": "Error submitting the form."
+      },
+      "footer_branding": {
+        "title": "BE with the Brand you Trust",
+        "description": "Trust the brand that delivers quality, reliability, and meets your needs. Stick with the brand you trust."
+      }
     }
   }
 }

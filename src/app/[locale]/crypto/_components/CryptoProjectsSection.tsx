@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -17,7 +17,7 @@ import ShareModal from './ShareModal';
 const PROJECTS_KEYS = {
     'abu_dhabi': [
         { key: 'al_jurf', image: '/assets/images/crypto/al-jurf-villa-gardens-abu-dhabi-pool.jpg', url: 'projects/abu-dhabi/ghantoot/al-jurf-gardens/al-jurf-gardens-phase-1-1' },
-        // { key: 'reem_hills', image: '/assets/images/crypto/reem-hills-al-reem-island-abu-dhabi-images.jpg', url: 'projects/abu-dhabi/al-reem-island/reem-hills/reem-hills-phase-2a' },
+        { key: 'reem_hills', image: '/assets/images/crypto/reem-hills-al-reem-island-abu-dhabi-images.jpg', url: 'projects/abu-dhabi/al-reem-island/reem-hills/reem-hills-phase-2a' },
         { key: 'fairmont_marina', image: '/assets/images/crypto/fairmount-marina-residence-abu-dhabi.jpg', url: 'projects/abu-dhabi/the-marina/the-marina/fairmont-marina-residence' },
         { key: 'mamsha', image: '/assets/images/crypto/mamsha-saadiyat.jpg', url: 'projects/abu-dhabi/saadiyat-island/mamsha-al-saadiyat/mamsha-al-saadiyat' },
         { key: 'louvre_abu_dhabi_residences', image: '/assets/images/crypto/louvre-abudhabi-residence.jpg', url: 'projects/abu-dhabi/saadiyat-island/cultural-district/louvre-abu-dhabi-residences' }
@@ -47,6 +47,9 @@ const CURRENCIES = [
 
 const ProjectCard = ({ projectKey, city, image, url, onShare }: { projectKey: string, city: string, image: string, url: string, onShare: (url: string, title: string) => void }) => {
     const t = useTranslations('CryptoPage.projects_section');
+    const locale = useLocale();
+    const isRtl = locale.toLowerCase().startsWith("ar");
+
     const [currency, setCurrency] = useState(CURRENCIES[0]);
     const [amount, setAmount] = useState('');
 
@@ -71,7 +74,7 @@ const ProjectCard = ({ projectKey, city, image, url, onShare }: { projectKey: st
     }, [currency, priceAED, btcPrice]);
 
     return (
-        <div className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-full flex flex-col group">
+        <div className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-full flex flex-col group" dir={isRtl ? 'rtl' : 'ltr'}>
 
             {/* Image Area */}
             <div className="relative h-64 w-full bg-gray-200 overflow-hidden">
@@ -90,7 +93,7 @@ const ProjectCard = ({ projectKey, city, image, url, onShare }: { projectKey: st
                 <div className="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
                     <Image
                         src={image}
-                        alt={projectTitle}
+                        alt={projectTitle} title={projectTitle}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                         onError={(e) => {
@@ -131,7 +134,7 @@ const ProjectCard = ({ projectKey, city, image, url, onShare }: { projectKey: st
                                 <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2.5 pl-3 pr-10 text-left border border-gray-200 focus:outline-none focus:border-indigo-500 sm:text-sm shadow-sm">
                                     <span className="flex items-center truncate">
                                         <span className={`flex items-center justify-center w-5 h-5 rounded-full mr-2 text-xs ${currency.color}`}>
-                                            <Image src={currency.icon} alt={currency.name} width={20} height={20} />
+                                            <Image src={currency.icon} alt={currency.name} title={currency.name} width={20} height={20} />
                                         </span>
                                         <span className="block truncate text-[#0A0A2E] font-bold">{currency.name}</span>
                                     </span>
@@ -152,7 +155,7 @@ const ProjectCard = ({ projectKey, city, image, url, onShare }: { projectKey: st
                                             {({ selected }) => (
                                                 <>
                                                     <span className={`flex items-center justify-center w-5 h-5 rounded-full absolute left-3 top-1/2 -translate-y-1/2 text-xs ${curr.color}`}>
-                                                        <Image src={curr.icon} alt={curr.name} width={20} height={20} />
+                                                        <Image src={curr.icon} alt={curr.name} title={curr.name} width={20} height={20} />
                                                     </span>
                                                     <span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>
                                                         {curr.name}
@@ -189,7 +192,7 @@ const ProjectCard = ({ projectKey, city, image, url, onShare }: { projectKey: st
                 </div>
 
                 {/* Buy Button */}
-                <Link href={`${url}`}
+                <Link href={`${url}`} title={`See more about ${t(`projects.${city}.${projectKey}.title`)}`}
                     className="mt-auto text-center w-full bg-[#1A1A4A] hover:bg-[#23235B] text-white font-medium py-3 rounded-lg transition-colors">
                     {t('card.buy_btn')}
                 </Link>
@@ -200,6 +203,9 @@ const ProjectCard = ({ projectKey, city, image, url, onShare }: { projectKey: st
 
 const CryptoProjectsSection = () => {
     const t = useTranslations('CryptoPage.projects_section');
+    const locale = useLocale();
+    const isRtl = locale.toLowerCase().startsWith("ar");
+
     const [activeCity, setActiveCity] = useState<'abu_dhabi' | 'dubai'>('abu_dhabi');
 
     const [isShareModalOpen, setIsShareModalOpen] = useState(false);
@@ -213,7 +219,7 @@ const CryptoProjectsSection = () => {
     const activeProjectKeys = PROJECTS_KEYS[activeCity] || [];
 
     return (
-        <section className="bg-white py-20 relative overflow-hidden">
+        <section className="bg-white py-20 relative overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>
             <div className="container mx-auto px-6 md:px-12">
 
                 {/* Header and Tabs */}
@@ -248,10 +254,10 @@ const CryptoProjectsSection = () => {
                     {/* Navigation Buttons placed at top right (desktop) */}
                     <div className="flex gap-2">
                         <button className="prop-swiper-prev cursor-pointer w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-[#0A0A2E] transition-colors">
-                            <ChevronLeft className="w-4 h-4" />
+                            <ChevronLeft className={`w-4 h-4 ${isRtl ? 'rotate-180' : ''}`} />
                         </button>
                         <button className="prop-swiper-next cursor-pointer w-8 h-8 rounded-full bg-[#1A1A4A] hover:bg-[#23235B] flex items-center justify-center text-white transition-colors">
-                            <ChevronRight className="w-4 h-4" />
+                            <ChevronRight className={`w-4 h-4 ${isRtl ? 'rotate-180' : ''}`} />
                         </button>
                     </div>
                 </div>

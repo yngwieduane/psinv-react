@@ -1,14 +1,9 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import PopupForm from '../_components/PopupForm';
-import ContactFormPopUp from '../_components/tools/ContactFormPopUp';
 import { Outfit } from 'next/font/google';
 import { useLocale, useTranslations } from 'next-intl';
-interface PopupFormProps {
-    hideFeedbackButton?: boolean;
-    isReportDownload?: boolean; // <-- add this
-  }
+import BannerModals from './HomeBannerModal';
 
   const outfit = Outfit({
     subsets: ["latin"],
@@ -18,10 +13,22 @@ interface PopupFormProps {
   
 export default function ReportDownloadSection() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [setModal, setSetModal] = useState(false);
 
     const locale = useLocale();
     const isRTL = locale.toLowerCase().startsWith("ar");
     const t = useTranslations("ReportDownload");
+
+    const modalHandler = () => {
+      console.log("clicked = " + setModal);
+      setSetModal(true);
+    };
+
+  const modalUpdate = (event: any) => {
+    console.log(event);
+    setSetModal(event);
+  };
+
   return (
     <>
     <div className="report pb-10 pt-25" dir={isRTL ? "rtl" : "ltr"}> 
@@ -36,7 +43,7 @@ export default function ReportDownloadSection() {
             
             <button
               className="mt-4 relative text-md lg:text-lg overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer font-semibold"
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => modalHandler()}
             >
               {t("download")}
             </button>
@@ -54,25 +61,10 @@ export default function ReportDownloadSection() {
           </div>
         </div>
       </div>
-    </div>
-          {isModalOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
-              <div className="bg-white p-6 rounded-xl w-full max-w-lg relative overflow-y-auto max-h-[90vh]">
-                <button
-                  className="absolute top-3 right-3 text-xl font-bold text-gray-700 hover:text-black"
-                  onClick={() => setIsModalOpen(false)}
-                >
-                  &times;
-                </button>
-                <ContactFormPopUp
-  title="Monthly Report"
-  submitLabel="Download Report"
-  isReportDownload={true}
-/>
-
-              </div>
-            </div>
-          )}
-        </>
+    </div>    
+    <BannerModals modalState={setModal} onModalUpdate={modalUpdate} title="Monthly Report"
+            submitLabel="Download Report"
+            isReportDownload={true} />    
+  </>
   );
 }

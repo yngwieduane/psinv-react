@@ -1,10 +1,13 @@
 "use client";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const HeroSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
     const t = useTranslations('CryptoPage.hero');
+    const locale = useLocale();
+    const isRtl = locale.toLowerCase().startsWith("ar");
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -19,7 +22,7 @@ const HeroSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
     }, []);
 
     return (
-        <section className="relative w-full h-[600px] md:h-[800px] overflow-hidden bg-[#090953] text-white">
+        <section className="relative w-full h-[600px] md:h-[800px] overflow-hidden bg-[#090953] text-white" dir={isRtl ? "rtl" : "ltr"}>
             {/* Background Image Placeholder - to be replaced with actual image */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A2E] to-transparent z-10" />
             <div className="absolute inset-0 z-10">
@@ -35,7 +38,7 @@ const HeroSection = ({ onOpenModal }: { onOpenModal: () => void }) => {
                         src={`/assets/images/crypto/bg-header.webp`}
                         alt="Crypto Hero" title='Crypto Hero'
                         fill
-                        className="object-cover"
+                        className={`object-cover ${isRtl ? 'scale-x-[-1] transform' : ''}`}
                     />
                 )}
             </div>

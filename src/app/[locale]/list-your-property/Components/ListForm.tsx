@@ -12,53 +12,10 @@ import { faPaperclip, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'react-datepicker/dist/react-datepicker.css';
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 type FormData = z.infer<typeof FormDataSchema>
 
-const steps: { id: string, name: string, progressValue: string, progressImg: string, fields: (keyof FormData)[] }[] = [
-    {
-        id: "Step 1",
-        name: "Personal information",
-        progressValue: "0",
-        progressImg: '',
-        fields: ['fname', 'lname', 'email', 'phone']
-    },
-    {
-        id: "Step 2",
-        name: "Prop details 1",
-        progressValue: "17",
-        progressImg: "/assets/images/list-property/progress-17.svg",
-        fields: ['location']
-    },
-    {
-        id: "Step 3",
-        name: "Prop details 2",
-        progressValue: "34",
-        progressImg: "/assets/images/list-property/progress-34.svg",
-        fields: ['property']
-    },
-    {
-        id: "Step 4",
-        name: "Prop details 3",
-        progressValue: "50",
-        progressImg: "/assets/images/list-property/progress-50.svg",
-        fields: []
-    },
-    {
-        id: "Step 5",
-        name: "Files",
-        progressValue: "67",
-        progressImg: "/assets/images/list-property/progress-67.svg",
-        fields: []
-    },
-    {
-        id: "Step 6",
-        name: "Complete",
-        progressValue: "100",
-        progressImg: "/assets/images/list-property/progress-100.svg",
-        fields: []
-    }
-]
 
 interface FormValue {
     fname: string;
@@ -89,12 +46,80 @@ interface FormValue {
     cityName: string;
     propName: string;
 }
+const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: number; referredBy?: number; assignedTo?: number }> = {
+    'Dubai': {
+        email: 'callcenter@psidubai.com',
+        apiUrl: 'https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0',
+        referredTo: 4421,
+        referredBy: 4421,
+        assignedTo: 4421,
+    },
+    'Abu Dhabi': {
+        email: 'callcenter@psinv.net',
+        apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
+        referredTo: 3458,
+        referredBy: 3458,
+    },
+    'DEFAULT': {
+        email: 'callcenter@psinv.net',
+        apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
+    }
+};
+
+const getCityConfig = (cityName: string) => CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
+
 interface ListFormProps {
     fromModal?: boolean;
 }
 
 
 const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
+    const t = useTranslations("ListYourPropertyPage");
+
+    const steps: { id: string, name: string, progressValue: string, progressImg: string, fields: (keyof FormData)[] }[] = [
+        {
+            id: "Step 1",
+            name: t("form.steps.personal_info"),
+            progressValue: "0",
+            progressImg: '',
+            fields: ['fname', 'lname', 'email', 'phone']
+        },
+        {
+            id: "Step 2",
+            name: t("form.steps.prop_details_1"),
+            progressValue: "17",
+            progressImg: "/assets/images/list-property/progress-17.svg",
+            fields: ['location']
+        },
+        {
+            id: "Step 3",
+            name: t("form.steps.prop_details_2"),
+            progressValue: "34",
+            progressImg: "/assets/images/list-property/progress-34.svg",
+            fields: ['property']
+        },
+        {
+            id: "Step 4",
+            name: t("form.steps.prop_details_3"),
+            progressValue: "50",
+            progressImg: "/assets/images/list-property/progress-50.svg",
+            fields: []
+        },
+        {
+            id: "Step 5",
+            name: t("form.steps.files"),
+            progressValue: "67",
+            progressImg: "/assets/images/list-property/progress-67.svg",
+            fields: []
+        },
+        {
+            id: "Step 6",
+            name: t("form.steps.complete"),
+            progressValue: "100",
+            progressImg: "/assets/images/list-property/progress-100.svg",
+            fields: []
+        }
+    ]
 
     const pathname = usePathname();
     const locale = pathname.split("/")[1] || 'en';
@@ -114,8 +139,6 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
     const [cityName, setCityName] = useState('');
     const [propName, setPropName] = useState('');
     const [gclidField, setGclidField] = useState('');
-    const [apiUrl, setApiUrl] = useState('');
-    const [sendToMail, setSendToMail] = useState('callcenter@psinv.net');
     const [hasSentMail, setHasSentMail] = useState(false);
     const [isAlreadySubmitted, setIsAlreadySubmitted] = useState(false);
 
@@ -157,21 +180,63 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
     };
 
     const sendEmail = async () => {
+        const config = getCityConfig(formValue.cityName);
         try {
-            const response = await fetch("https://psinv.net/api/sendemail.php", {
+            const response = await fetch("https://registration.psinv.net/api/sendemail2.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     body: `
-                Name: ${formValue.fname} ${formValue.lname}<br/>
-                Email: ${formValue.email}<br/>
-                Phone: ${formValue.phone}<br/>
-                Purpose: ${formValue.purpose}<br/>
-                Message: ${formValue.description ? formValue.description : ""} <br/>
+            <table cellpadding="0" cellspacing="0" width="550" align="center">
+                <tbody>
+                    <tr>
+                        <td align="center" height="80" style="text-align:center;" width="550" bgcolor="#FFFFFF"></td>
+                    </tr>
+                    <tr>
+                        <td height="10" bgcolor="#02344a"></td>
+                    </tr>
+                    <tr>
+                        <td height="30" style="color:#fff; font-size:16px; background:#02344a; font-weight:bold; padding:0 10px; font-family:Arial, Helvetica, sans-serif">
+                            New Inquiry - List Your Property
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="10" bgcolor="#02344a"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table width="100%" cellspacing="3" cellpadding="5" style="border:1px solid #e8e6e6">
+                                <tbody>
+                                    <tr>
+                                        <td width="150" style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Name:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${formValue.fname} ${formValue.lname}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Email:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${formValue.email}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Phone:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${formValue.phone}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Purpose:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${formValue.purpose}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Message:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${formValue.description ? formValue.description : ""}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
                `,
-                    receiver: sendToMail,
+                    receiver: config.email,
                     subject: "New inquiry - List Your Property",
                     filename: "",
                     filedata: "",
@@ -386,18 +451,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
         return file !== undefined && file !== null && file !== '' && file !== 'null' && file !== 'undefined';
     };
 
-    useEffect(() => {
-        if (!formValue.cityName) return;
-
-        switch (formValue.cityName) {
-            case 'Dubai':
-                setApiUrl('https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0');
-                break;
-            default:
-                setApiUrl('https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a');
-                break;
-        }
-    }, [formValue.cityName]);
+    // Unified config management
+    const cityConfig = getCityConfig(cityName);
 
     const onSubmit = async (data: FormData) => {
         if (typeof window === 'undefined') return; //ensure code runs only in browser
@@ -642,25 +697,9 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     break;
             }
 
-            switch (cityName) {
-                case 'Abu Dhabi':
-                    ReferredToID = 3458;
-                    ReferredByID = 3458;
-                    setSendToMail('callcenter@psinv.net');
-                    break;
-                case 'Dubai':
-                    ReferredToID = 4421;
-                    ReferredByID = 4421;
-                    ActivityAssignedTo = 4421;
-                    setSendToMail('callcenter@psidubai.com');
-                    break;
-                default:
-                    ReferredToID = ReferredToID;
-                    ReferredByID = ReferredByID;
-                    ActivityAssignedTo = ActivityAssignedTo;
-                    setSendToMail('callcenter@psinv.net');
-                    break;
-            }
+            if (cityConfig.referredTo) ReferredToID = cityConfig.referredTo;
+            if (cityConfig.referredBy) ReferredByID = cityConfig.referredBy;
+            if (cityConfig.assignedTo) ActivityAssignedTo = cityConfig.assignedTo;
 
             const remarks = `
                 Additional consent 1 : ${data.agreement1 ? "Yes" : "No"} </br>
@@ -769,7 +808,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                 //     api_URL = `${apiUrl}`;
                 // }                
 
-                const response = await fetch(`${apiUrl}`, {
+                const response = await fetch(`${cityConfig.apiUrl}`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -782,44 +821,134 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         body: `
-                        List Your Property<br><br>
-                        Name: ${data.fname}  ${data.lname} </br>
-                        Email: ${data.email} </br>
-                        Phone: ${data.phone} </br>
-                        Message: ${data.description ? data.description : ""} </br>
-                        Purpose: ${data.purpose ? data.purpose : ""} </br>
-                        Property type: ${data.proptype ? data.proptype : ""} </br>
-                        Bedrooms: ${data.beds ? data.beds : ""} </br>
-                        Location: ${data.cityName} </br>
-                        Property: ${data.propName} </br>
-                        Unit view: ${data.unitview} </br>
-                        Unit size: ${data.unitsize} </br>
-                        Bathrooms: ${data.baths} </br>
-                        Parking: ${data.parking} </br>
-                        Unit number: ${data.unitnumber} </br>
-                        Asking price: ${data.askingprice} </br>
-                        Status: ${data.status} </br>
-                        Service: ${data.service} </br>
-                        Ready to view: ${data.readytoview} </br>                              
-                        
-                        ${propertyImages
-                                ? `Attach external image: ${baseURL}${uploadedFiles.propertyimages}</br>`
-                                : ''}
-                        ${propertySpa
-                                ? `Attach SPA: ${baseURL}${uploadedFiles.spa}</br>`
-                                : ''}               
-                        ${propertyDeed
-                                ? `Attach Title Deed: ${baseURL}${uploadedFiles.deed}</br>`
-                                : ''}
-                        ${passportFile
-                                ? `Passport: ${baseURL}${uploadedFiles.passport}</br>`
-                                : ''}
-                        
-                        Date to view: ${data.datetoview} </br>
-                        Time to view: ${data.timetoview} </br>
-                        URL coming from: ${currentUrl}
+            <table cellpadding="0" cellspacing="0" width="550" align="center">
+                <tbody>
+                    <tr>
+                        <td align="center" height="80" style="text-align:center;" width="550" bgcolor="#FFFFFF"></td>
+                    </tr>
+                    <tr>
+                        <td height="10" bgcolor="#02344a"></td>
+                    </tr>
+                    <tr>
+                        <td height="30" style="color:#fff; font-size:16px; background:#02344a; font-weight:bold; padding:0 10px; font-family:Arial, Helvetica, sans-serif">
+                            List Your Property - Full Inquiry
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="10" bgcolor="#02344a"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table width="100%" cellspacing="3" cellpadding="5" style="border:1px solid #e8e6e6">
+                                <tbody>
+                                    <tr>
+                                        <td width="150" style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Name:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.fname} ${data.lname}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Email:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.email}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Phone:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.phone}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Message:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.description ? data.description : ""}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Purpose:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.purpose ? data.purpose : ""}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Property type:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.proptype ? data.proptype : ""}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Bedrooms:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.beds ? data.beds : ""}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Location:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.cityName}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Property:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.propName}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Unit view:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.unitview}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Unit size:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.unitsize}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Bathrooms:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.baths}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Parking:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.parking}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Unit number:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.unitnumber}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Asking price:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.askingprice}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Status:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.status}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Service:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.service}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Ready to view:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.readytoview}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">External images:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${propertyImages ? `${baseURL}${uploadedFiles.propertyimages}` : '-'}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">SPA:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${propertySpa ? `${baseURL}${uploadedFiles.spa}` : '-'}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Title Deed:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${propertyDeed ? `${baseURL}${uploadedFiles.deed}` : '-'}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Passport:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${passportFile ? `${baseURL}${uploadedFiles.passport}` : '-'}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Date to view:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.datetoview}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Time to view:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${data.timetoview}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">URL:</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${currentUrl}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
                         `,
-                        receiver: sendToMail,
+                        receiver: cityConfig.email,
                         subject: "New inquiry - List Your Property",
                         filename: "",
                         filedata: ""
@@ -853,7 +982,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
             <div className="flex justify-between mb-5">
                 <h2 className={fromModal ?
                     'hidden text-4xl text-[#E35F27] font-bold leading-normal'
-                    : 'md:text-4xl text-2xl text-[#E35F27] font-bold leading-normal'}>List Your Property</h2>
+                    : 'md:text-4xl text-2xl text-[#E35F27] font-bold leading-normal'}>{t("form.title")}</h2>
                 {/* desktop progress bar */}
                 {currentStep !== 0 && (
                     <div className="progree-bar md:block hidden">
@@ -867,9 +996,9 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     <>
                         <div className="w-full md:flex mb-4 gap-5">
                             <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
-                                <label htmlFor="fname" className="text-sm block leading-loose">First Name <sup className="imp text-[#E35F27]">*</sup></label>
+                                <label htmlFor="fname" className="text-sm block leading-loose">{t("form.labels.firstName")} <sup className="imp text-[#E35F27]">*</sup></label>
                                 <input type="text"
-                                    {...register('fname')} onChange={onChangeField} placeholder="First Name"
+                                    {...register('fname')} onChange={onChangeField} placeholder={t("form.placeholders.firstName")}
                                     className="block w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]" />
                                 {errors.fname?.message && (
                                     <p className="text-red-500 text-sm mt-2">
@@ -878,8 +1007,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                 )}
                             </div>
                             <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
-                                <label htmlFor="lname" className="text-sm block leading-loose">Last Name <sup className="imp text-[#E35F27]">*</sup></label>
-                                <input type="text" placeholder="Last Name"
+                                <label htmlFor="lname" className="text-sm block leading-loose">{t("form.labels.lastName")} <sup className="imp text-[#E35F27]">*</sup></label>
+                                <input type="text" placeholder={t("form.placeholders.lastName")}
                                     {...register('lname')} onChange={onChangeField}
                                     className="block w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]" />
                                 {errors.lname?.message && (
@@ -891,7 +1020,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                         </div>
                         <div className="w-full md:flex gap-5">
                             <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
-                                <label htmlFor="lname" className="text-sm block leading-loose">Phone Number <sup className="imp text-[#E35F27]">*</sup></label>
+                                <label htmlFor="lname" className="text-sm block leading-loose">{t("form.labels.phone")} <sup className="imp text-[#E35F27]">*</sup></label>
                                 <Controller name="phone"
                                     control={control}
                                     render={({ field }) => (
@@ -917,8 +1046,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                 />
                             </div>
                             <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
-                                <label htmlFor="email" className="text-sm block leading-loose">Email Address <sup className="imp text-[#E35F27]">*</sup></label>
-                                <input type="email" placeholder="Email Address"
+                                <label htmlFor="email" className="text-sm block leading-loose">{t("form.labels.email")} <sup className="imp text-[#E35F27]">*</sup></label>
+                                <input type="email" placeholder={t("form.placeholders.email")}
                                     {...register('email')} onChange={onChangeField}
                                     className="block w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]" />
                                 {errors.email && <p className="text-red-500 text-sm mt-2">{errors.email.message}</p>}
@@ -926,30 +1055,30 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                         </div>
                         <div className="w-full mb-5 mt-3">
                             <div className="inputGroup">
-                                <label htmlFor="purpose" className="text-sm block leading-loose">Property Purpose</label>
+                                <label htmlFor="purpose" className="text-sm block leading-loose">{t("form.labels.purpose")}</label>
                                 <Select
                                     {...register('purpose')}
                                     onChange={onChangeField}
                                     className={`w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] ${formValue.purpose === "" ? "select-placeholder placeholder-[#A6A6A6]" : ""}`}
                                 >
-                                    <option>Purpose</option>
-                                    <option value="Sale">Sale</option>
-                                    <option value="Rent">Rent</option>
-                                    <option value="Manage">Manage</option>
+                                    <option>{t("form.placeholders.purpose")}</option>
+                                    <option value="Sale">{t("form.options.purpose.sale")}</option>
+                                    <option value="Rent">{t("form.options.purpose.rent")}</option>
+                                    <option value="Manage">{t("form.options.purpose.manage")}</option>
                                 </Select>
                             </div>
                         </div>
                         <div className="w-full">
                             <div className="inputGroup">
-                                <label htmlFor="description" className="text-sm block leading-loose">Please describe your property</label>
+                                <label htmlFor="description" className="text-sm block leading-loose">{t("form.labels.description")}</label>
                                 <textarea {...register('description')} onChange={onChangeField}
                                     className="w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6] h-[150px]"
-                                    placeholder="Write Here">
+                                    placeholder={t("form.placeholders.description")}>
 
                                 </textarea>
                             </div>
                         </div>
-                        <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={next}>Next</button>
+                        <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={next}>{t("form.buttons.next")}</button>
                     </>
                 )}
 
@@ -957,20 +1086,20 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     <>
                         <div className="w-full mb-4 flex flex-col gap-5">
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="prop-type" className="text-sm md:w-1/3 w-full leading-loose">Property Type</label>
+                                <label htmlFor="prop-type" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.propType")}</label>
                                 <Select {...register('proptype')} onChange={onChangeField}
                                     className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
-                                    <option>Select property type</option>
-                                    <option value="Villa">Villa</option>
-                                    <option value="Apartment">Apartment</option>
-                                    <option value="Townhouse">Townhouse</option>
+                                    <option>{t("form.placeholders.selectPropType")}</option>
+                                    <option value="Villa">{t("form.options.propType.villa")}</option>
+                                    <option value="Apartment">{t("form.options.propType.apartment")}</option>
+                                    <option value="Townhouse">{t("form.options.propType.townhouse")}</option>
                                 </Select>
                             </div>
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="beds" className="text-sm md:w-1/3 w-full leading-loose">Beds</label>
+                                <label htmlFor="beds" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.beds")}</label>
                                 <Select {...register('beds')} onChange={onChangeField}
                                     className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
-                                    <option>Select number of bedrooms</option>
+                                    <option>{t("form.placeholders.selectBeds")}</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -980,16 +1109,16 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                 </Select>
                             </div>
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="location" className="text-sm md:w-1/3 w-full leading-loose">Location<sup className="imp text-[#E35F27]">*</sup></label>
+                                <label htmlFor="location" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.location")} <sup className="imp text-[#E35F27]">*</sup></label>
                                 <div className="md:w-2/3 w-full">
                                     <Select
                                         {...register('location')} required onChange={onChangeLocation}
                                         className="w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] text-[#2C2D65] text-sm font-medium">
-                                        <option>Select location</option>
-                                        <option value="91823" data-value="Abu Dhabi">Abu Dhabi</option>
-                                        <option value="91578" data-value="Dubai">Dubai</option>
-                                        <option value="166131" data-value="Sharjah">Sharjah</option>
-                                        <option value="58467" data-value="Ras Al Khaimah">RAK</option>
+                                        <option>{t("form.placeholders.selectLocation")}</option>
+                                        <option value="91823" data-value="Abu Dhabi">{t("form.options.location.abu_dhabi")}</option>
+                                        <option value="91578" data-value="Dubai">{t("form.options.location.dubai")}</option>
+                                        <option value="166131" data-value="Sharjah">{t("form.options.location.sharjah")}</option>
+                                        <option value="58467" data-value="Ras Al Khaimah">{t("form.options.location.rak")}</option>
                                     </Select>
                                     {errors.location && <p className="block text-red-500 text-sm mt-3">{errors.location.message}</p>}
                                 </div>
@@ -1000,8 +1129,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </div>
 
                             <div className="flex justify-between gap-5">
-                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>Previous</button>
-                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={next}>Next</button>
+                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>{t("form.buttons.previous")}</button>
+                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={next}>{t("form.buttons.next")}</button>
                             </div>
                         </div>
                     </>
@@ -1011,10 +1140,10 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     <>
                         <div className="w-full mb-4 flex flex-col gap-5">
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="property" className="text-sm md:w-1/3 w-full leading-loose">Property <sup className="imp text-[#E35F27]">*</sup></label>
+                                <label htmlFor="property" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.property")} <sup className="imp text-[#E35F27]">*</sup></label>
                                 <div className="md:w-2/3 w-full">
                                     {loading ? (
-                                        <p>Loading properties...</p>
+                                        <p>{t("form.messages.loading_props")}</p>
                                     ) : (
                                         <Select
                                             value={formValue.property}
@@ -1022,7 +1151,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                             onChange={onChangeProperty}
                                             className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] w-full text-[#2C2D65] text-sm font-medium required"
                                         >
-                                            <option value="">Select a property</option>
+                                            <option value="">{t("form.placeholders.selectProperty")}</option>
                                             {props.map((prop: any) => (
                                                 <option key={prop.propertyID} value={prop.propertyID}>
                                                     {prop.propertyName}
@@ -1038,20 +1167,20 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
                             </div>
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="unitview" className="text-sm md:w-1/3 w-full leading-loose">Unit View</label>
-                                <input type="text" {...register('unitview')} onChange={onChangeField} placeholder="Unit View"
+                                <label htmlFor="unitview" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.unitView")}</label>
+                                <input type="text" {...register('unitview')} onChange={onChangeField} placeholder={t("form.placeholders.unitView")}
                                     className="block md:w-2/3 w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65]" />
                             </div>
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="unitsize" className="text-sm md:w-1/3 w-full leading-loose">Unit Size</label>
-                                <input type="text" {...register('unitsize')} onChange={onChangeField} placeholder="Unit Size"
+                                <label htmlFor="unitsize" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.unitSize")}</label>
+                                <input type="text" {...register('unitsize')} onChange={onChangeField} placeholder={t("form.placeholders.unitSize")}
                                     className="block md:w-2/3 w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65]" />
                             </div>
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="baths" className="text-sm md:w-1/3 w-full leading-loose">Bathrooms</label>
+                                <label htmlFor="baths" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.baths")}</label>
                                 <Select {...register('baths')} onChange={onChangeField}
                                     className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
-                                    <option>Bath</option>
+                                    <option>{t("form.placeholders.selectBaths")}</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -1060,10 +1189,10 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                 </Select>
                             </div>
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="parking" className="text-sm md:w-1/3  w-full leading-loose">Parking</label>
+                                <label htmlFor="parking" className="text-sm md:w-1/3  w-full leading-loose">{t("form.labels.parking")}</label>
                                 <Select {...register('parking')} onChange={onChangeField}
                                     className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
-                                    <option>Parking</option>
+                                    <option>{t("form.placeholders.selectParking")}</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -1072,8 +1201,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                 </Select>
                             </div>
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="unitnumber" className="text-sm md:w-1/3 w-full leading-loose">Unit Number</label>
-                                <input type="text" {...register('unitnumber')} onChange={onChangeField} placeholder="Unit Number"
+                                <label htmlFor="unitnumber" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.unitNumber")}</label>
+                                <input type="text" {...register('unitnumber')} onChange={onChangeField} placeholder={t("form.placeholders.unitNumber")}
                                     className="block md:w-2/3 w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65]" />
                             </div>
 
@@ -1083,8 +1212,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </div>
 
                             <div className="flex justify-between gap-5">
-                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>Previous</button>
-                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={next}>Next</button>
+                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>{t("form.buttons.previous")}</button>
+                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={next}>{t("form.buttons.next")}</button>
                             </div>
                         </div>
                     </>
@@ -1094,36 +1223,36 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     <>
                         <div className="w-full mb-4 flex flex-col gap-5">
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="askingprice" className="text-sm md:w-1/3 w-full leading-loose">Asking Price</label>
-                                <input type="text" {...register('askingprice')} onChange={onChangeField} placeholder="Asking Price"
+                                <label htmlFor="askingprice" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.askingPrice")}</label>
+                                <input type="text" {...register('askingprice')} onChange={onChangeField} placeholder={t("form.placeholders.askingPrice")}
                                     className="block md:w-2/3 w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65]" />
                             </div>
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="status" className="text-sm md:w-1/3 w-full leading-loose">Unit Status</label>
+                                <label htmlFor="status" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.status")}</label>
                                 <Select {...register('status')} onChange={onChangeField}
                                     className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
-                                    <option value="Rented">Rented</option>
-                                    <option value="Vacant">Vacant</option>
-                                    <option value="Owner_Occupied">Occupied</option>
+                                    <option value="Rented">{t("form.options.status.rented")}</option>
+                                    <option value="Vacant">{t("form.options.status.vacant")}</option>
+                                    <option value="Owner_Occupied">{t("form.options.status.occupied")}</option>
                                 </Select>
                             </div>
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="service" className="text-sm md:w-1/3 w-full leading-loose">Service Type</label>
+                                <label htmlFor="service" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.service")}</label>
                                 <Select {...register('service')} onChange={onChangeField}
                                     className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
-                                    <option value="">Service Type</option>
-                                    <option value="Residential_for_rent">Residential for Rent</option>
-                                    <option value="Residential_for_sale">Residential for Sale</option>
-                                    <option value="Commercial_for_rent">Commercial for Rent</option>
-                                    <option value="Commercial_for_sale">Commercial for Sale</option>
+                                    <option value="">{t("form.placeholders.service")}</option>
+                                    <option value="Residential_for_rent">{t("form.options.service.res_rent")}</option>
+                                    <option value="Residential_for_sale">{t("form.options.service.res_sale")}</option>
+                                    <option value="Commercial_for_rent">{t("form.options.service.com_rent")}</option>
+                                    <option value="Commercial_for_sale">{t("form.options.service.com_sale")}</option>
                                 </Select>
                             </div>
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="readytoview" className="text-sm md:w-1/3 w-full leading-loose">Ready To View</label>
+                                <label htmlFor="readytoview" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.readyToView")}</label>
                                 <Select {...register('readytoview')} onChange={onChangeField}
                                     className="px-5 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] md:w-2/3 w-full text-[#2C2D65] text-sm font-medium">
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
+                                    <option value="Yes">{t("form.options.yes")}</option>
+                                    <option value="No">{t("form.options.no")}</option>
                                 </Select>
                             </div>
                             {/* mobile progress bar */}
@@ -1131,8 +1260,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                 <img src={`${steps[currentStep].progressImg}`}></img>
                             </div>
                             <div className="flex justify-between gap-5">
-                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>Previous</button>
-                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={next}>Next</button>
+                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>{t("form.buttons.previous")}</button>
+                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={next}>{t("form.buttons.next")}</button>
                             </div>
                         </div>
                     </>
@@ -1142,7 +1271,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     <>
                         <div className="w-full mb-4 flex flex-col gap-5">
                             <div className="inputGroup w-full md:flex items-center">
-                                <label className="text-sm md:w-1/3 w-full leading-loose">Attach external image</label>
+                                <label className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.attachImages")}</label>
                                 <div className="relative md:w-2/3 w-full flex items-center">
                                     <input
                                         type="file"
@@ -1162,14 +1291,14 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                         {propertyImages.length > 0
                                             ? propertyImages.map((image) => image.name).join(", ")
 
-                                            : "Attach external image"}
+                                            : t("form.labels.attachImages")}
 
                                     </label>
                                 </div>
                             </div>
 
                             <div className="inputGroup w-full md:flex items-center">
-                                <label className="text-sm md:w-1/3 w-full leading-loose">Attach SPA</label>
+                                <label className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.attachSpa")}</label>
                                 <div className="relative md:w-2/3 w-full flex items-center">
                                     <input
                                         type="file"
@@ -1185,14 +1314,14 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                         className="w-full px-10 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] flex items-center justify-start"
                                         style={{ cursor: "pointer" }}
                                     >
-                                        {propertySpa ? propertySpa.name : "Attach SPA"}
+                                        {propertySpa ? propertySpa.name : t("form.labels.attachSpa")}
 
                                     </label>
                                 </div>
                             </div>
 
                             <div className="inputGroup w-full md:flex items-center">
-                                <label className="text-sm md:w-1/3 w-full leading-loose">Attach Title Deed</label>
+                                <label className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.attachDeed")}</label>
                                 <div className="relative md:w-2/3 w-full flex items-center">
                                     <input
                                         type="file"
@@ -1208,13 +1337,13 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                         className="w-full px-10 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] flex items-center justify-start"
                                         style={{ cursor: "pointer" }}
                                     >
-                                        {propertyDeed ? propertyDeed.name : "Attach Title Deed"}
+                                        {propertyDeed ? propertyDeed.name : t("form.labels.attachDeed")}
 
                                     </label>
                                 </div>
                             </div>
                             <div className="inputGroup w-full md:flex items-center">
-                                <label className="text-sm md:w-1/3 w-full leading-loose">Attach Passport</label>
+                                <label className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.attachPassport")}</label>
                                 <div className="relative md:w-2/3 w-full flex items-center">
                                     <input
                                         type="file"
@@ -1230,7 +1359,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                         className="w-full px-10 py-3 border border-[#E2E8F0] rounded-[7px] placeholder-[#2C2D65] flex items-center justify-start"
                                         style={{ cursor: "pointer" }}
                                     >
-                                        {passportFile ? passportFile.name : "Attach Passport"}
+                                        {passportFile ? passportFile.name : t("form.labels.attachPassport")}
 
                                     </label>
                                 </div>
@@ -1241,8 +1370,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </div>
 
                             <div className="flex justify-between gap-5">
-                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>Previous</button>
-                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={next}>Next</button>
+                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>{t("form.buttons.previous")}</button>
+                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={next}>{t("form.buttons.next")}</button>
                             </div>
                         </div>
                     </>
@@ -1250,10 +1379,10 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
                 {!isSubmitSuccess && currentStep === 5 && (
                     <>
-                        <p className="font-bold mb-5">The Best Time to Contact You</p>
+                        <p className="font-bold mb-5">{t("form.labels.bestTime")}</p>
                         <div className="w-full mb-4 flex flex-col gap-5">
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="datetoview" className="text-sm md:w-1/3 w-full leading-loose">Date</label>
+                                <label htmlFor="datetoview" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.date")}</label>
                                 <div className="block md:w-2/3 w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] relative ">
                                     <input type="date"
                                         {...register('datetoview')}
@@ -1264,7 +1393,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                 </div>
                             </div>
                             <div className="inputGroup w-full md:flex items-center">
-                                <label htmlFor="timetoview" className="text-sm md:w-1/3 w-full leading-loose">Time</label>
+                                <label htmlFor="timetoview" className="text-sm md:w-1/3 w-full leading-loose">{t("form.labels.time")}</label>
                                 <div className="block md:w-2/3 w-full px-5 py-3 border border-[#E2E8F0] rounded-[7px] relative ">
                                     <input type="time"
                                         {...register('timetoview')}
@@ -1287,10 +1416,10 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </div>
 
                             <div className="flex justify-between gap-5">
-                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>Previous</button>
+                                <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>{t("form.buttons.previous")}</button>
                                 <button
                                     type="submit"
-                                    className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" disabled={isSubmitting} >{isSubmitting ? "Submitting.." : "Submit"}</button>
+                                    className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" disabled={isSubmitting} >{isSubmitting ? t("form.buttons.submitting") : t("form.buttons.submit")}</button>
                             </div>
 
                         </div>
@@ -1298,7 +1427,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                         <div className="mb-3">
                             <label className="flex items-center space-x-2">
                                 <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
-                                <span className="text-sm">I agree to the Terms & Conditions and Privacy Policy</span>
+                                <span className="text-sm">{t("form.labels.agreement1")}</span>
                             </label>
                             {errors.agreement1 && <p className="text-red-500 text-sm">{errors.agreement1.message}</p>}
                         </div>
@@ -1306,13 +1435,13 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                         <div className="mb-3">
                             <label className="flex items-center space-x-2">
                                 <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
-                                <span className="text-sm">Agree to receive calls and communications</span>
+                                <span className="text-sm">{t("form.labels.agreement2")}</span>
                             </label>
                         </div>
                         <div className="mb-3">
                             <label className="flex items-center space-x-2">
                                 <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
-                                <span className="text-sm">Receive calls about various projects</span>
+                                <span className="text-sm">{t("form.labels.agreement3")}</span>
                             </label>
                         </div>
                     </>
@@ -1323,9 +1452,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                         <div className="w-full items-center">
                             <img src="/assets/images/list-property/list-thankyou.svg" alt="thank you" className="mb-5 mx-auto"></img>
                             <div className="thankyou-text text-center bg-[#e35f271a] px-15 py-10 rounded-[16px] w-full">
-                                <h2 className="text-5xl text-[#272963] font-bold mb-4">Thank You!</h2>
-                                <p className="text-[#525151] text-lg">Your submission has been sent.<br />
-                                    Our agent will contact you shortly.</p>
+                                <h2 className="text-5xl text-[#272963] font-bold mb-4">{t("messages.thank_you")}</h2>
+                                <p className="text-[#525151] text-lg">{t("messages.success_message")}</p>
                             </div>
                         </div>
                     </>
@@ -1335,7 +1463,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     <>
                         <div className="w-full">
                             <div className='bg-yellow-100 text-center text-sm p-4 text-[#78350F]' role='alert'>
-                                You've already submitted. Please wait a few minutes before trying again.
+                                {t("messages.already_submitted")}
                             </div>
                         </div>
                     </>
@@ -1343,7 +1471,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
             </form>
             {!isSubmitSuccess && (
-                <p className="text-sm text-[#8A8A8A] mt-5">By clicking Submit, you agree to our <a href="terms">Terms & Conditions</a> and <a href="privacy">Privacy Policy</a></p>
+                <p className="text-sm text-[#8A8A8A] mt-5">{t("form.labels.footer_agreement")} <a href="terms">Terms & Conditions</a> and <a href="privacy">Privacy Policy</a></p>
             )}
 
         </>

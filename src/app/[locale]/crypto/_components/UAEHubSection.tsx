@@ -33,7 +33,7 @@ const UAEHubSection = () => {
                     <div className="relative w-full aspect-square mt-8">
                         <Image
                             src="/assets/images/crypto/globe-image.png"
-                            alt="UAE Investment Hub"
+                            alt="UAE Investment Hub" title="UAE Investment Hub"
                             fill
                             className="object-contain"
                         />
@@ -44,7 +44,7 @@ const UAEHubSection = () => {
                 <div className="hidden md:block relative w-full max-w-7xl mx-auto aspect-[16/9] md:aspect-[21/9] h-[500px] md:h-[900px]">
                     <Image
                         src="/assets/images/crypto/globe-info-image.png"
-                        alt="UAE Investment Hub Stats"
+                        alt="UAE Investment Hub Stats" title='UAE Investment Hub Stats'
                         fill
                         className="object-contain"
                         priority
