@@ -1,24 +1,175 @@
+// src/utils/brightCall/brightCallOverrides.ts
 import type { BrightCallContext } from "./resolveBrightCall";
 
-export const brightCallOverrides: Array<{
-    match: (ctx: BrightCallContext) => boolean;
-    widgetKey: string;
-}> = [
-        // One Residence – EN
-        {
-            match: ({ pageType, slug, locale }) =>
-                pageType === "registration" &&
-                slug === "one-residence-registration" &&
-                locale === "en",
-            widgetKey: "306ae4d7339f5efe7242dd259068d4d8",
-        },
+type Locale = "en" | "ar" | "de";
 
-        // One Residence – AR
-        {
-            match: ({ pageType, slug, locale }) =>
-                pageType === "registration" &&
-                slug === "one-residence-registration" &&
-                locale === "ar",
-            widgetKey: "306ae4d7339f5efe7242dd259068d4d8",
-        },
-    ];
+/**
+ * 1) Slug-level widget keys
+ */
+const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> = {
+    "hilton-residences-registration": {
+        en: "0a3b4acbe31fbc0262343cef4d12c5a4",
+        ar: "a3e9dd33f8264665bf7510ed806a3db3",
+    },
+    "radisson-blu-registration": {
+        en: "2362802f6d685248fab13dac073a16c9",
+        // ar: "...."
+    },
+    "hudayriyat-island-registration": {
+        en: "dfd50233ef0abb5d275125d53a5be8a1",
+        ar: "6d2693dc8f8c3595a7c967eb32598067",
+    },
+    "hudayriyat-island-general-registration": {
+        en: "8c581e82a815e4eed2eec6751efe1d05",
+        ar: "85922d070e62a716041e52b9ff3d7b74",
+    },
+    "muheira-maysan-registration": {
+        en: "bd87bfb0dca1f3babd13d1ed174c276a",
+        ar: "ba839451863f6e56f7ba09f0592cf22d",
+    },
+    "reem-island-registration": {
+        en: "b5013d1f36ef002102c7035ba9ced1e5",
+        ar: "8822e715c7ddc989345cfc6facdb5bd8",
+    },
+    "one-residence-registration": {
+        en: "9f167fa24b1d9e9bc219042d31b73db0",
+        ar: "d0e81f6475f4763bb8870d4d2d5f79e8",
+    },
+    "yas-riva-registration": {
+        en: "6dc9fe9e4f6e6169d8c54c741c0c2788",
+        ar: "4295d3b7e7623da2b155999500e62c93",
+    },
+    "bashayer-apartments-registration": {
+        en: "ef955972d531fc53a80aa952c0f0f7ca",
+        ar: "d0616194761f12d71135e12891c069e3",
+    },
+    "taraf-masdar-city-registration": {
+        en: "696abff8ffbd05a11e8d5ed8711802ed",
+        ar: "aa2474347e63550ee4ba32dff6f4de3a",
+    },
+    "al-hayat-island-registration": {
+        en: "7ba12c6ff62fa46d39cb777767e00aa7",
+        ar: "5be3785b376cd8b203aebb4c72c07264",
+    },
+    "stellar-by-elie-Saab-registration": {
+        en: "5cba1b75493f9bb296d9929de3124153",
+        ar: "ae07a73f207f06423ea1f75a09db4bd1",
+    },
+    "the-row-saadiyat-registration": {
+        en: "998b6ed0c2c29dbd56ea3ee16a78968e",
+        ar: "57aef31282ff7065d83b730d6c9a4ca8",
+    },
+    "sodic-event-registration": {
+        en: "",
+        ar: "04ce9472515e14979530fb11b0f2b199",
+    },
+    "malaga-registration": {
+        en: "1cf47889ed8a1ecb4c94d8b37693a02c",
+        ar: "a1731550b47ee36c076d050f9514a212",
+    },
+    "wadi-yemm-registration": {
+        en: "b4020d7762595182ba587a9bb3c48225",
+        ar: "112c34fcc3c3460c15ef50bf6241bb6d",
+    },
+    "bloom-living-marbella-registration": {
+        en: "802174f1175454a4417e1a56f63d09b7",
+        ar: "b96c3509a10e5cc1ada1ba701dec34ff",
+    },
+    "juman-2-registration": {
+        en: "40b5d997f5f7a14e90f14a625b65a135",
+        ar: "aad8258b78e0e22905052117657d9fe7",
+    },
+    "united-property-expo-baku": {
+        en: "9075b4fec09993d00b655ec83bc93847",
+        ar: "d08a9f261ebd834b6cbc5e914589d628",
+    },
+    "yas-living-registration": {
+        en: "77f5f00472f7a9f70b593666006c071d",
+        ar: "ea0a575cfff0a4aa402121f5ea0b0a53",
+    },
+    "expo-real-germany": {
+        de: "8ed1ba276f0c831dbce07d0eb8eb464d",
+    },
+    "al-durrah-open-house-registration": {
+        en: "3e286ef418e1b437217778a992ff12d0",
+        ar: "196e1a4a5038383d1dabb14f06017d11",
+    },
+    "rak-general-registration": {
+        en: "8c18af70c8c5f1541ce3aefc151a38d3",
+        ar: "ecebdde6e5e5b41ec78b01eb050a99ca",
+    },
+    "ogami-registration": {
+        en: "1dd87c494454eca732689facbeac6d27",
+        ar: "804f8e2cf9b1d196d00b7d4a7d2d488a",
+    },
+    "yas-acres-registration": {
+        en: "7bc4289db33ed2d594c47d4428b468be",
+        ar: "175a0328b7720bfcdf0dba86e35afbfc",
+    },
+    // Add here
+};
+
+/**
+ * 2) Optional UTM-specific widget keys
+ * Use this ONLY when a particular utm_campaign needs a different widget.
+ *
+ * Structure: slug -> utm_campaign -> locale -> widgetKey
+ */
+const REG_WIDGET_KEYS_BY_UTM: Record<
+    string,
+    Record<string, Partial<Record<Locale, string>>>
+> = {
+    "muheira-maysan-registration": {
+        "shaza_muheira_news": { en: "76b9a46b2707f482130587f4727a2705", ar: "721d19fa98b7a245734a466563455f8e" },
+        "zaineh_muheira_news": { en: "bd87bfb0dca1f3babd13d1ed174c276a", ar: "ba839451863f6e56f7ba09f0592cf22d" },
+    },
+    "yas-riva-registration": {
+        "zaineh_yas_riva_news": { en: "23ab7dcc1609835e5b1288616f1bc9e1", ar: "cc2fc78a40a756491d169da6dd42c741" },
+    },
+    "wadi-yemm-registration": {
+        "ali-wadi-yemm-newsletter-oct25": { en: "14cde702e1b626683380810fc477dff7", ar: "a37f72c1191c1698ca3f469acaa455b8" },
+    },
+};
+
+/* ------------------ builder: UTM rules first, then slug rules ------------------ */
+
+function buildRules() {
+    const rules: Array<{ match: (ctx: BrightCallContext) => boolean; widgetKey: string }> = [];
+
+    // A) UTM-specific overrides (highest priority)
+    for (const [slug, utmMap] of Object.entries(REG_WIDGET_KEYS_BY_UTM)) {
+        for (const [utmCampaign, byLocale] of Object.entries(utmMap)) {
+            for (const [locale, widgetKey] of Object.entries(byLocale) as Array<[Locale, string]>) {
+                if (!widgetKey) continue;
+
+                rules.push({
+                    match: (ctx) =>
+                        ctx.pageType === "registration" &&
+                        ctx.slug === slug &&
+                        ctx.locale === locale &&
+                        ctx.utmCampaign === utmCampaign,
+                    widgetKey,
+                });
+            }
+        }
+    }
+
+    // B) Slug-specific overrides (fallback if no UTM override matched)
+    for (const [slug, byLocale] of Object.entries(REG_WIDGET_KEYS_BY_SLUG)) {
+        for (const [locale, widgetKey] of Object.entries(byLocale) as Array<[Locale, string]>) {
+            if (!widgetKey) continue;
+
+            rules.push({
+                match: (ctx) =>
+                    ctx.pageType === "registration" &&
+                    ctx.slug === slug &&
+                    ctx.locale === locale,
+                widgetKey,
+            });
+        }
+    }
+
+    return rules;
+}
+
+export const brightCallOverrides = buildRules();

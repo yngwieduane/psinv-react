@@ -1,10 +1,11 @@
 // src/utils/brightCall/brightCallDefaults.ts
 
 export type BrightCallPageType = "registration" | "landing";
-export type BrightCallLocale = "en" | "ar";
+export type BrightCallLocale = "en" | "ar" | "de";
 
 /**
- * Default widget key per page type + locale
+ * Defaults are only FALLBACKS.
+ * UTM-specific or slug-specific widgets should be done via overrides.
  */
 export const brightCallDefaults: Record<
     BrightCallPageType,
@@ -13,10 +14,12 @@ export const brightCallDefaults: Record<
     registration: {
         en: process.env.NEXT_PUBLIC_BRIGHTCALL_REG_EN ?? "",
         ar: process.env.NEXT_PUBLIC_BRIGHTCALL_REG_AR ?? "",
+        de: process.env.NEXT_PUBLIC_BRIGHTCALL_REG_EN ?? "",
     },
     landing: {
         en: process.env.NEXT_PUBLIC_BRIGHTCALL_LP_EN ?? "",
         ar: process.env.NEXT_PUBLIC_BRIGHTCALL_LP_AR ?? "",
+        de: process.env.NEXT_PUBLIC_BRIGHTCALL_REG_EN ?? "",
     },
 } as const;
 
