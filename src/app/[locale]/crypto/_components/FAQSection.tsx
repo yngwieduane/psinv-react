@@ -1,12 +1,14 @@
 "use client";
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 import './faq.css';
 
 const FAQSection = ({ onOpenModal }: { onOpenModal?: () => void }) => {
     const t = useTranslations('CryptoPage.faq');
+    const locale = useLocale();
+    const isRtl = locale.toLowerCase().startsWith("ar");
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     const faqs = Array.from({ length: 22 }, (_, i) => i + 1); // q1 to q22
@@ -27,7 +29,7 @@ const FAQSection = ({ onOpenModal }: { onOpenModal?: () => void }) => {
     };
 
     return (
-        <section className="py-20 bg-[#090953] text-white">
+        <section className="py-20 bg-[#090953] text-white" dir={isRtl ? 'rtl' : 'ltr'}>
             <div className="container mx-auto px-4 max-w-4xl">
                 <h2 className="text-4xl font-bold text-center mb-9 text-[#E46027]">
                     {t('title')}

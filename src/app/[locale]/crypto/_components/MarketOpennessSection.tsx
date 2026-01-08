@@ -1,10 +1,12 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 
 const MarketOpennessSection = ({ onOpenModal }: { onOpenModal?: () => void }) => {
     const t = useTranslations('CryptoPage.market_openness');
+    const locale = useLocale();
+    const isRtl = locale.toLowerCase().startsWith("ar");
 
     const cards = [
         { key: 'zones', ctaColor: 'bg-orange-600 hover:bg-orange-700' },
@@ -13,7 +15,7 @@ const MarketOpennessSection = ({ onOpenModal }: { onOpenModal?: () => void }) =>
     ];
 
     return (
-        <section className="bg-[#090953] py-20 relative overflow-hidden">
+        <section className="bg-[#090953] py-20 relative overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>
             {/* Title */}
             <div className="container mx-auto px-6 md:px-12 mb-12 text-center">
                 <h2 className="text-white text-3xl md:text-4xl font-bold font-serif">
