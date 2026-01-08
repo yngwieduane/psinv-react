@@ -5142,6 +5142,408 @@
       ]
     }
   },
+  "CryptoPage": {
+    "hero": {
+      "title": {
+        "part1": "Buy property with",
+        "part2": "CRYPTO",
+        "part3": "in the"
+      },
+      "subtitle": {
+        "part1": "New",
+        "part2": "Land Of Opportunities"
+      },
+      "description": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
+      "cta": "Learn More"
+    },
+    "share": {
+      "title": "Share Project",
+      "copy_link": "Copy Link",
+      "copied": "Link Copied!"
+    },
+    "stats": {
+      "stat1": {
+        "title": "Political Stability"
+      },
+      "stat2": {
+        "title": "Economical Haven"
+      },
+      "stat3": {
+        "title": "Cultural Melting Pot"
+      }
+    },
+    "rankings": {
+      "title": "Long-term political stability, with worldwide open diplomatic policy.",
+      "highlightDesk": "3rd most peaceful country in the region (global peace index 2021).",
+      "highlightMobile": {
+        "part1": "3rd most peaceful country",
+        "part2": "in the region",
+        "part3": "(global peace index 2021)."
+      },
+      "cards": {
+        "safest": "Abu Dhabi is the safest city in the world.",
+        "holiday_city": "2nd holiday city in the world!",
+        "purchase_home": "3rd global best city to purchase a holiday home.",
+        "tolerance": "4th globally in tolerance and coexistence."
+      }
+    },
+    "economical_haven": {
+      "title": "Economical Haven",
+      "read_more": "Read more",
+      "slides": {
+        "slide1": {
+          "text": "The UAE achieved AA- with a stable outlook in 2021 reflecting its moderate consolidated public debt level, strong net external asset position and high GDP per capita. It also reflects the likelihood of support from Abu Dhabi (AA/Stable) in the event of need. Abu Dhabi's sovereign net foreign assets are among the highest of Fitch-rated sovereigns."
+        },
+        "slide2": {
+          "text": "The UAE has is one of the top 20 countries considered trustworthy, ranking 15th in Kearney’s 2021 Foreign Direct Investment Confidence Index making it one of the destinations of choice for international investors."
+        },
+        "slide3": {
+          "text": "The UAE is scheduled to invest USD 163 billion until 2050 in order to meet growing energy demands and fulfil sustainable growth of the economy. According to the strategy, the energy mix is set to be: 44% from clean energy, 38% from gas, 12% from clean coal and 6% from nuclear energy."
+        },
+        "slide4": {
+          "text": "The UAE prohibits monopolisation and fosters competitiveness through an advanced system of modern and effective laws and legislations that ensure a safe investment environment, where regulations that enhance economic stability are implemented."
+        },
+        "slide5": {
+          "text": "The UAE hosts the largest number of regional headquarters in the Middle East and is constantly looked upon as an ideal country for engaging in commercial and investment activities."
+        },
+        "slide6": {
+          "text": "101 agreements signed by the UAE to protect and encourage investments from all non-commercial risks like nationalisation, expropriation, sequestration and freezing. The agreements also allow the establishment of investments and licensing such investments and confirm the free transfer of profits and other returns in a freely transferable currency, as well as granting national treatment in accordance with the laws enforced in the UAE, and other objectives that ensure the protection and encouragement of investments in the UAE."
+        },
+        "slide7": {
+          "text": "More than 135 double tax agreements have been signed with countries spread over the world, including the UAE trading partners. This allows investors and workers to enjoy the absence of personal income tax and corporate taxes. The UAE is actively signing new agreements with countries of the world."
+        }
+      }
+    },
+    "safe_service_process": {
+      "title": "Safe Service Process",
+      "cards": {
+        "card1": "Authenticated, safe and seamless purchase process",
+        "card2": "Variety of options in Abu Dhabi & Dubai",
+        "card3": "Developers, landlord market and plots",
+        "card4": "Tour the property at the comfort of your home"
+      }
+    },
+    "projects_section": {
+      "title": "Projects available for sale through crypto",
+      "tabs": {
+        "abu_dhabi": "Abu Dhabi",
+        "dubai": "Dubai"
+      },
+      "card": {
+        "for_sale": "For Sale",
+        "sqft": "sq.ft",
+        "buy_btn": "Buy"
+      },
+      "projects": {
+        "abu_dhabi": {
+          "al_jurf": {
+            "type": "Villa",
+            "title": "Al Jurf",
+            "price": "1,900,000 AED",
+            "btc": "23.34",
+            "location": "Ghantoot",
+            "developer": "IMKAN",
+            "beds": "4, 5, 7",
+            "area": "2000"
+          },
+          "reem_hills": {
+            "type": "Villa",
+            "title": "Reem Hills",
+            "price": "1,200,000 AED",
+            "btc": "16.58",
+            "location": "Al Reem Island",
+            "developer": "Q Properties",
+            "beds": "5, 6, 7",
+            "area": "10,487"
+          },
+          "fairmont_marina": {
+            "type": "Apartment",
+            "title": "Fairmont Marina Residence",
+            "price": "2,800,000 AED",
+            "btc": "34.39",
+            "location": "The Marina",
+            "developer": "National Investment Corporation",
+            "beds": "2, 3, 4",
+            "area": "1077"
+          },
+          "mamsha": {
+            "type": "Penthouse | Apartment",
+            "title": "Mamsha",
+            "price": "2,200,000 AED",
+            "btc": "27.02",
+            "location": "Saadiyat Island",
+            "developer": "Aldar Properties",
+            "beds": "1, 2, 3, 4, 5",
+            "area": "1334"
+          },
+          "louvre_abu_dhabi_residences": {
+            "type": "Apartment",
+            "title": "Louvre Abu Dhabi Residences",
+            "price": "2,100,000 AED",
+            "btc": "25.76",
+            "location": "Cultural District, Saadiyat Island",
+            "developer": "Aldar Properties",
+            "beds": "1, 2, 3",
+            "area": "1240"
+          }
+        },
+        "dubai": {
+          "dubai_creek_residences_1": {
+            "type": "Apartment",
+            "title": "Dubai Creek Residences",
+            "price": "2,000,000 AED",
+            "btc": "24.52",
+            "location": "Dubai Creek Harbour",
+            "developer": "Emaar",
+            "beds": "2, 3",
+            "area": "1450"
+          },
+          "dania_district": {
+            "type": "Apartment",
+            "title": "Dania District",
+            "price": "1,100,000 AED",
+            "btc": "13.49",
+            "location": "Midtown",
+            "developer": "Deyaar",
+            "beds": "1, 2",
+            "area": "980"
+          },
+          "park_ridge_1": {
+            "type": "Apartment",
+            "title": "Park Ridge 1",
+            "price": "1,600,000 AED",
+            "btc": "19.62",
+            "location": "Dubai Hills Estate",
+            "developer": "Emaar",
+            "beds": "2, 3",
+            "area": "1125"
+          },
+          "dubai_creek_residences_2": {
+            "type": "Apartment",
+            "title": "Dubai Creek Residences 2",
+            "price": "2,050,000 AED",
+            "btc": "25.13",
+            "location": "Dubai Creek Harbour",
+            "developer": "Emaar",
+            "beds": "2, 3",
+            "area": "1450"
+          },
+          "sunrise_bay": {
+            "type": "Apartment",
+            "title": "Sunrise Bay",
+            "price": "3,000,000 AED",
+            "btc": "36.78",
+            "location": "Emaar Beachfront, Dubai Harbour",
+            "developer": "Emaar",
+            "beds": "2, 3, 4",
+            "area": "1800"
+          },
+          "park_ridge_2": {
+            "type": "Apartment",
+            "title": "Park Ridge 2",
+            "price": "1,700,000 AED",
+            "btc": "20.84",
+            "location": "Dubai Hills Estate",
+            "developer": "Emaar",
+            "beds": "2, 3",
+            "area": "1180"
+          }
+        }
+      }
+    },
+    "seamless_process_section": {
+      "title": "Seamless Process",
+      "steps": {
+        "step1": {
+          "title": "Choose your investment",
+          "description": "(Search by community, attractions, developments and types). Virtual Tours available.",
+          "sub_text": "In the UAE? book your",
+          "highlight": "viewing"
+        },
+        "step2": {
+          "title": "Let's get introduced",
+          "description": "(The KYC form will enable us protect your investment & crypto transaction)."
+        },
+        "step3": {
+          "title": "Keep your options open",
+          "description": "(With the interest form, we will be able to know how we can increase your ROI)."
+        },
+        "step4": {
+          "title": "Let's buy the house",
+          "description": "Receive the OTC and other documents required by the authorities to facilitate the purchase from overseas."
+        },
+        "step5": {
+          "title": "Crypto wallets",
+          "description": "(Transfer the funds between crypto wallets with authentication …!!!)"
+        },
+        "step6": {
+          "title": "Welcome Home",
+          "description": "(Title Deed is issued according to your preferences)."
+        }
+      }
+    },
+    "investment_journey": {
+      "text": "With connections, network, knowledge and country guides, we build and design investment journeys based on your needs, values, lifestyle and your goals.",
+      "highlight": "Read more crypto",
+      "read_more": "Read More"
+    },
+    "uae_hub": {
+      "highlight": "UAE:",
+      "title": "one of the world’s most attractive investment hubs",
+      "stats": [
+        {
+          "value": "200+",
+          "text": "Nationalities living in an open, multi-cultural society."
+        },
+        {
+          "value": "1st",
+          "text": "Wireless broadband, net flow of international students, immigration laws, Cyber Security."
+        },
+        {
+          "value": "15th",
+          "text": "Globally in Kearney FDI Confidence index."
+        },
+        {
+          "value": "1/3",
+          "text": "of global population is 4 hours away flight."
+        },
+        {
+          "value": "3rd",
+          "text": "Globally in government efficiency."
+        },
+        {
+          "value": "5th",
+          "text": "Globally in Technology."
+        },
+        {
+          "value": "12th",
+          "text": "Globally in Future Readiness."
+        },
+        {
+          "value": "9th",
+          "text": "Globally in economic performance."
+        },
+        {
+          "value": "8th",
+          "text": "Globally in business efficiency."
+        }
+      ]
+    },
+    "market_openness": {
+      "title": "Market Openness",
+      "cards": {
+        "zones": {
+          "title": "Investments Zones",
+          "desc": "Foreign nationals can purchase land and residential units.",
+          "cta": "Make an enquiry"
+        },
+        "diverse": {
+          "title": "Diverse Investments",
+          "desc": "Active market for off-plans, plots, warehouses, industrial zones and assets.",
+          "cta": "Start your investment"
+        },
+        "visa": {
+          "title": "Golden Visa",
+          "desc": "5 & 10 year visa program a unique social fabric of doctors, scientists, inventors, celebrities and exceptional talents from all over the world.",
+          "cta": "Make an enquiry"
+        }
+      }
+    },
+    "real_estate_foundations": {
+      "title": "REAL ESTATE FOUNDATIONS",
+      "subtitle": "AbuDhabi leads the global real estate in terms of investment locations among best performing cities worldwide.",
+      "returns_title": "Returns average",
+      "returns_highlight": "7% Average real estate returns per annum.",
+      "cities": {
+        "cairo": "Cairo",
+        "moscow": "Moscow",
+        "london": "London",
+        "hong_kong": "Hong Kong",
+        "new_york": "New York",
+        "paris": "Paris",
+        "mumbai": "Mumbai"
+      },
+      "stats": {
+        "tax": {
+          "value": "0%",
+          "desc": "zero taxes on income and real estate investments."
+        },
+        "gdp": {
+          "value": "27.2%",
+          "desc": "Real estate contribution to non oil GDP."
+        },
+        "contribution": {
+          "value": "$33BN",
+          "desc": "Real estate construction contribution to oil GDP"
+        }
+      }
+    },
+    "form": {
+      "title": "What do you want to talk about?",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "message": "Message",
+      "submit": "Submit your inquiry",
+      "submitting": "Submitting...",
+      "success": "Inquiry submitted successfully!",
+      "error": "Something went wrong. Please try again.",
+      "validation": {
+        "firstName": "First name is required",
+        "lastName": "Last name is required",
+        "email": "Invalid email address",
+        "phone": "Invalid phone number"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": "Can I buy a house in the UAE using crypto?",
+      "a1": "Yes you can. PSI offers a seamless and secured process to buy a property in the UAE with your choice of cryptocurrency. The legal framework is integrated in the process.",
+      "q2": "Which cryptocurrencies are accepted in the UAE?",
+      "a2": "Property Shop Investment (PSI) accepts Bitcoin (BTC), Ethereum (ETH), USDT currencies.",
+      "q3": "Why is KYC important?",
+      "a3": "The objective of KYC guidelines in the form, is to confirm that customers are who they claim to be and to prevent illegal activities, such as money laundry and funding terrorism. If we don’t perform KYC, then we will be liable for those kinds of illegal activities. KYC form also enables PSI to understand its customers and their financial dealings to serve them better and manage its risks prudently.",
+      "q4": "Do I get a Title Deed for the property I buy with cryptocurrency?",
+      "a4": "Once the contract is signed and the cryptocurrency transaction is received in PSI’s wallet, PSI settles the fiat to the government authority to issue the Title Deed. PSI will advise customers of the official documents required by the UAE authorities to issue the Title Deed or the Transfer of Ownership official documents.",
+      "q5": "Can PSI manage my property?",
+      "a5": "One of the advantages of buying a property in the UAE with PSI is the value-added services that we offer as we act as advisors for property investments made with us. PSI offers a range of VIP services to retain and increase the returns of property investments such as Assets Management, property management, short and long rentals, facilitating issuance of investors’ golden visas along with retail and commercial setup management. We also offer concierge and maintenance services to maintain your property’s value. Contact us today and tell us what is in your mind and we will ensure you have the highest return of your investment.",
+      "q6": "How can I make a bitcoin cryptocurrency payment?",
+      "a6": "PSI facilitates Bitcoin transactions as well as Ethereum, USDT. <ul class='list-none pl-0 ml-0 mt-2 space-y-2'><li>1. Select your dream property (by a community, attractions, developers or type).</li><li>2. Complete the interest form (KYC information).  </li><li>3. Receive your contract.</li><li>4. Cryptocurrency of your choice exchange service for the value of the property.</li><li>5. Transfer of the crypto to fiat.</li><li>6. Receive the Title Deed and/or the Transfer of Ownership official documents.</li><li>7. Explore PSI services to retain and increase your returns of your property investment.</li></ul>",
+      "q7": "How can I increase my ROI from real estate in the UAE?",
+      "a7": "PSI offers investors a variety of options to increase the returns on real estate investments such as short and medium-term leasing strategy where investors can benefit from the high demand for shortmedium-term rentals and tap into the big tourist turnover in the UAE by investing in an apartment or a villa with homey and an authentic experience. Explore all our ROI options <a href=''>here</a>.",
+      "q8": "Do I get a golden visa if I buy a property in the UAE?",
+      "a8": "By investing in a property in the UAE of a gross value of not less than USD 545,000, you are eligible for a Golden visa. This Real Estate Investor Visa includes visas for spouses and children. The visa holder can sponsor a domestic worker, subject to relevant regulations. The real estate investment must be retained for at least two years after the visa is issued..",
+      "q9": "How can I view the property from overseas before I buy it?",
+      "a9": "PSI site provides Virtual Tours on <a href='/' target='_blank'>www.psinv.net</a> We can customize a virtual tour based on your preferences. <a data-bs-toggle='modal' data-bs-target='#Modalform' style='cursor: pointer;'>Get in touch</a> with us today and tell us which property you are interested in.",
+      "q10": "Is it safe to buy a property through crypto?",
+      "a10": "The answer is yes. It is safe to buy a property in the UAE with PSI. PSI follows a rigid, secured and seamless process to buy property in the UAE. The whole process is integrated with a legal framework that protects the client’s interests and in line with the authority regulations in the UAE.",
+      "q11": "Can I buy a house and retire in Dubai or Abu Dhabi?",
+      "a11": "Yes you can and we encourage everyone to do so. Start by searching for your dream home in Abu Dhabi and Dubai by either vibrant residential communities, renowned global attractions, developers, by the beach, in the city centers, or far from the hustle. Once you fall in love with the property, we will take care of your next exciting chapter in life. Retirement in the UAE is one of the most sought after. It is a tax-free status exciting destination with incredible attractions and an upbeat energy. A sunshine-filled country, that offers an outstanding quality of life for retirees. The country is famed for its tolerant, friendly, multicultural population and array of lifestyle experiences that matches different ways of living. <br>The UAE is home for over 200 nationalities with expats and immigrant workers making up more than 80% of the population, making the country a melting pot where everyone feels welcome to make the UAE their second home. Contact us today to get a general sense of the types of homes and communities that best suits your lifestyle.",
+      "q12": "How will the UAE authorities register the property in my name?",
+      "a12": "When the transaction is completed between crypto wallets, PSI exchanges the cryptocurrency used in purchasing the property to fiat. The developer and the landlords are paid in the local currency.",
+      "q13": "Can I buy directly from the developer?",
+      "a13": "Yes you can but very limited number of developers accept cryptocurrency. PSI facilitates the purchase of all residential and commercial units you wish to buy in the UAE. Whether from developers or landlords. When you buy from PSI, we become your advisor with a variety of VIP and real estate solutions to ensure that you receive the maximum returns on your real estate investment.",
+      "q14": "Would I need a POA to buy a house in the UAE?",
+      "a14": "If you are buying a property from a landlord and not from a developer, then the POA document will be required. This is part of the official documents required by the government authorities. Your contract with PSI fulfils this requirement. Contact us today for free consultation.",
+      "q15": "Can I establish a company to register the house under my company’s name?",
+      "a15": "Part of its VIP services, PSI can guide you through the process of establishing a full foreign ownership company in the UAE. We facilitate all government requirements on your behalf to open your company in the UAE. Want to open a company in the UAE? <a data-bs-toggle='modal' data-bs-target='#Modalform' style='cursor: pointer;'>Get in touch</a> with us today.",
+      "q16": "I live in the UAE; can I buy using crypto?",
+      "a16": "You can buy a property in the UAE using cryptocurrency whether you are already in the country or looking to invest your crypto in real estate in the UAE.",
+      "q17": "How will the landlord receive the crypto?",
+      "a17": "When the transaction is completed between crypto wallets, PSI exchanges the cryptocurrency used in purchasing the property to fiat. PSI pays the landlord in the local currency.",
+      "q18": "Can I sponsor anyone with my Golden Visa?",
+      "a18": "The Real Estate Investor who buys a property in the UAE of a gross value of not less than AED 2 million will be eligible for a 10-year investor’s Golden visa. This Real Estate Investor Visa includes visas for spouses and children. The visa holder can sponsor a domestic worker, subject to relevant regulations. The real estate investment must be retained for at least two years after the visa is issued.",
+      "q19": "Can I buy a property in the UAE and then rent it out?",
+      "a19": "The answer is yes. It is safe to buy a property in the UAE with PSI. PSI follows a rigid, secured and Buying-to-let is a lucrative investment in the UAE as rentals remain the popular choices for investors looking to make a steady investment with attractive property prices. Investors looking at buy-to-let properties in the UAE can expect an ROI of 6% – 8% for ready properties.",
+      "q20": "Can I lease my property for short stays?",
+      "a20": "Yes you can with PSI. Part of our all-inclusive real estate services is to increase your return on your property investment by leasing your property. Whether you want us to furnish your apartment or rent it out unfurnished, we design and manage the full cycle of leasing frameworks and agreements to ensure that your property is well-maintained and that you are receiving a good return on your real estate investment.",
+      "q21": "Can I lease my property for long term?",
+      "a21": "Yes you can with PSI. Part of our all-inclusive real estate services is to increase your return on your property investment by leasing your property. Whether you want us to furnish your apartment or rent it out unfurnished, we design and manage the full cycle of leasing frameworks and agreements to ensure that your property is well-maintained and that you are receiving a good return on your real estate investment.",
+      "q22": "Should I buy crypto or real estate?",
+      "a22": "There are many advantages of investing your crypto in buying real estate in the UAE such as: <ul class='list-none pl-4 mt-2 space-y-2'><li>1. A tangible asset. It has intrinsic value as people will always need a place to live.</li><li>2. You can always force the appreciation of your real estate asset.</li><li>3. Passive cash flow.</li><li>4. Real estate has significantly less risk and offers more consistent returns.</li><li>5. Contact us today to explore the options PSI offers to have a steady source of income and generate a reliable income in addition to appreciation.</li></ul>"
+    }
+  },
   "ListYourPropertyPage": {
     "nav": {
       "home": "Home",

@@ -1,15 +1,17 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 import Image from 'next/image';
 
 const UAEHubSection = () => {
     const t = useTranslations('CryptoPage.uae_hub');
+    const locale = useLocale();
+    const isRtl = locale.toLowerCase().startsWith("ar");
     const stats = t.raw('stats') as { value: string; text: string }[];
 
     return (
-        <section className="bg-[#090953] pb-20 pt-10 relative overflow-hidden">
+        <section className="bg-[#090953] pb-20 pt-10 relative overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>
             <div className="container mx-auto px-6 md:px-12 text-center">
 
                 {/* Title */}

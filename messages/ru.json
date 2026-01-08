@@ -672,10 +672,21 @@
       "description": "Объединённые Арабские Эмираты — страна с 50-летней историей успеха, предлагающая лучшие условия для управления капиталом, релокации и инвестиционных портфелей.",
       "cta": "Узнать больше"
     },
+    "share": {
+      "title": "Поделиться проектом",
+      "copy_link": "Скопировать ссылку",
+      "copied": "Ссылка скопирована!"
+    },
     "stats": {
-      "stat1": "Политическая стабильность",
-      "stat2": "Экономический оазис",
-      "stat3": "Культурный плавильный котёл"
+      "stat1": {
+        "title": "Политическая стабильность"
+      },
+      "stat2": {
+        "title": "Экономический оазис"
+      },
+      "stat3": {
+        "title": "Культурный плавильный котёл"
+      }
     },
     "rankings": {
       "title": "Долгосрочная политическая стабильность и открытая дипломатическая политика по всему миру.",
@@ -735,11 +746,125 @@
         "dubai": "Дубай"
       },
       "card": {
-        "for_sale": "Продажа",
-        "units": "Единицы",
-        "sqft": "кв.фут",
-        "bitcoin": "Биткоин",
+        "for_sale": "На продажу",
+        "sqft": "кв. футов",
         "buy_btn": "Купить"
+      },
+      "projects": {
+        "abu_dhabi": {
+          "al_jurf": {
+            "type": "Вилла",
+            "title": "Al Jurf",
+            "price": "1,900,000 AED",
+            "btc": "23.34",
+            "location": "Гантуут",
+            "developer": "IMKAN",
+            "beds": "4, 5, 7",
+            "area": "2000"
+          },
+          "reem_hills": {
+            "type": "Вилла",
+            "title": "Reem Hills",
+            "price": "1,200,000 AED",
+            "btc": "16.58",
+            "location": "Остров Аль-Рим",
+            "developer": "Q Properties",
+            "beds": "5, 6, 7",
+            "area": "10,487"
+          },
+          "fairmont_marina": {
+            "type": "Апартаменты",
+            "title": "Fairmont Marina Residence",
+            "price": "2,800,000 AED",
+            "btc": "34.39",
+            "location": "Марина",
+            "developer": "National Investment Corporation",
+            "beds": "2, 3, 4",
+            "area": "1077"
+          },
+          "mamsha": {
+            "type": "Пентхаус | Апартаменты",
+            "title": "Mamsha",
+            "price": "2,200,000 AED",
+            "btc": "27.02",
+            "location": "Остров Саадият",
+            "developer": "Aldar Properties",
+            "beds": "1, 2, 3, 4, 5",
+            "area": "1334"
+          },
+          "louvre_abu_dhabi_residences": {
+            "type": "Апартаменты",
+            "title": "Louvre Abu Dhabi Residences",
+            "price": "2,100,000 AED",
+            "btc": "25.76",
+            "location": "Культурный район, остров Саадият",
+            "developer": "Aldar Properties",
+            "beds": "1, 2, 3",
+            "area": "1240"
+          }
+        },
+        "dubai": {
+          "dubai_creek_residences_1": {
+            "type": "Апартаменты",
+            "title": "Dubai Creek Residences",
+            "price": "2,000,000 AED",
+            "btc": "24.52",
+            "location": "Dubai Creek Harbour",
+            "developer": "Emaar",
+            "beds": "2, 3",
+            "area": "1450"
+          },
+          "dania_district": {
+            "type": "Апартаменты",
+            "title": "Dania District",
+            "price": "1,100,000 AED",
+            "btc": "13.49",
+            "location": "Midtown",
+            "developer": "Deyaar",
+            "beds": "1, 2",
+            "area": "980"
+          },
+          "park_ridge_1": {
+            "type": "Апартаменты",
+            "title": "Park Ridge 1",
+            "price": "1,600,000 AED",
+            "btc": "19.62",
+            "location": "Dubai Hills Estate",
+            "developer": "Emaar",
+            "beds": "2, 3",
+            "area": "1125"
+          },
+          "dubai_creek_residences_2": {
+            "type": "Апартаменты",
+            "title": "Dubai Creek Residences 2",
+            "price": "2,050,000 AED",
+            "btc": "25.13",
+            "location": "Dubai Creek Harbour",
+            "developer": "Emaar",
+            "beds": "2, 3",
+            "area": "1450"
+          },
+          "sunrise_bay": {
+            "type": "Апартаменты",
+            "title": "Sunrise Bay",
+            "price": "3,000,000 AED",
+            "btc": "36.78",
+            "location": "Emaar Beachfront, Dubai Harbour",
+            "developer": "Emaar",
+            "beds": "2, 3, 4",
+            "area": "1800"
+          },
+          "park_ridge_2": {
+            "type": "Апартаменты",
+            "title": "Park Ridge 2",
+            "price": "1,700,000 AED",
+            "btc": "20.84",
+            "location": "Dubai Hills Estate",
+            "developer": "Emaar",
+            "beds": "2, 3",
+            "area": "1180"
+          }
+        }
       }
     },
     "attractions": {
