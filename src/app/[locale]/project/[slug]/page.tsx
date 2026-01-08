@@ -20,26 +20,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function Page({ params, searchParams }: PageProps) {
-  const { locale, slug } = await params;
+  const { slug, locale } = await params;
   const sp = (await searchParams) ?? {};
   const utmCampaign = typeof sp.utm_campaign === "string" ? sp.utm_campaign : null;
 
-  if (!slug || !PROJECTS[slug]) return notFound();
-
   const widgetKey = resolveBrightCallWidgetKey({
     pageType: "registration",
-    locale,
+    locale: (locale === "ar" ? "ar" : "en"),
     slug,
     utmCampaign,
   });
-
+  if (!slug || !PROJECTS[slug]) return notFound();
   return (
     <div>
       <RegistrationHeroImage slug={slug} locale={locale} />
       <RegistrationForm slug={slug} />
 
       {/* BrightCall widget */}
-      <BrightCallWidget widgetKey={widgetKey} formSelector='form[data-brightcall-form="registration"]' />
+      <BrightCallWidget widgetKey={widgetKey} formType="registration" />
     </div>
   );
 }
