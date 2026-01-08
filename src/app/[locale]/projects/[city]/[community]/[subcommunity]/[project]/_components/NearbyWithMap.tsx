@@ -5,16 +5,16 @@ import { useState, useEffect, Fragment, useCallback, Key } from "react";
 import classNames from 'classnames';
 
 import {
-  AdvancedMarker,
-  AdvancedMarkerAnchorPoint,
-  AdvancedMarkerProps,
-  APIProvider,
-  InfoWindow,
-  Map,
-  Pin,
-  useAdvancedMarkerRef,
-  useMap,
-  useMapsLibrary,
+    AdvancedMarker,
+    AdvancedMarkerAnchorPoint,
+    AdvancedMarkerProps,
+    APIProvider,
+    InfoWindow,
+    Map,
+    Pin,
+    useAdvancedMarkerRef,
+    useMap,
+    useMapsLibrary,
 } from '@vis.gl/react-google-maps';
 
 export type AnchorPointName = keyof typeof AdvancedMarkerAnchorPoint;
@@ -29,11 +29,11 @@ const NearbysWithMap = ({
     latitude,
     longitude,
     distance
-  }: {
+}: {
     latitude: string;
     longitude: string;
     distance: number;
-  }) => {
+}) => {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<NearbysType[]>([]);
     const [loading, setLoading] = useState(false);
@@ -43,25 +43,25 @@ const NearbysWithMap = ({
     const [chosenLandmark, setChosenLandmark] = useState<Coordinate[]>([]);
     const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAP_API as string;
     useEffect(() => {
-      const timeout = setTimeout(() => {
-        if (latitude) {
-          setLoading(true);
-          fetch(`/api/external/nearbys?latitude=${latitude}&longitude=${longitude}&distance=${distance}`)
-            .then(res => res.json())
-            .then(data => {
-              setResults(data);
-              setLoading(false);
-            })
-            .catch(() => setLoading(false));
-        } else {
-          setResults([]);
-          setLoading(false);
-        }
-      }, 300);
-  
-      return () => clearTimeout(timeout);
+        const timeout = setTimeout(() => {
+            if (latitude) {
+                setLoading(true);
+                fetch(`/api/external/nearbys?latitude=${latitude}&longitude=${longitude}&distance=${distance}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        setResults(data);
+                        setLoading(false);
+                    })
+                    .catch(() => setLoading(false));
+            } else {
+                setResults([]);
+                setLoading(false);
+            }
+        }, 300);
+
+        return () => clearTimeout(timeout);
     }, [query]);
-    const data = results.sort((a, b) => parseInt(b.longitude) - parseInt(a.longitude)).map((dataItem, index) => ({...dataItem, zIndex: index}));
+    const data = results.sort((a, b) => parseInt(b.longitude) - parseInt(a.longitude)).map((dataItem, index) => ({ ...dataItem, zIndex: index }));
 
     const mainlat = parseFloat(latitude);
     const mainlng = parseFloat(longitude);
@@ -71,23 +71,23 @@ const NearbysWithMap = ({
     };
     const renderCustomPin = () => {
         return (
-        <>
-            <div className="custom-pin">
-            <button className="close-button">
-                <span className="material-symbols-outlined"> close </span>
-            </button>
+            <>
+                <div className="custom-pin">
+                    <button className="close-button">
+                        <span className="material-symbols-outlined"> close </span>
+                    </button>
 
-            <div className="image-container">
-                <span className="icon">
-                <RealEstateIcon />
-                </span>
-            </div>
+                    <div className="image-container">
+                        <span className="icon">
+                            <RealEstateIcon />
+                        </span>
+                    </div>
 
-            {/* <RealEstateListingDetails details={realEstateListing.details} /> */}
-            </div>
+                    {/* <RealEstateListingDetails details={realEstateListing.details} /> */}
+                </div>
 
-            <div className="tip" />
-        </>
+                <div className="tip" />
+            </>
         );
     };
 
@@ -103,110 +103,119 @@ const NearbysWithMap = ({
     };
     return (
         <>
-        {loading && <p className="text-sm text-gray-500 mt-1">Loading...</p>}
-        {results.length > 0 && (
-            <>
-            <h2 className="text-3xl font-bold text-primary mb-8">
-                Nearbys
-            </h2>
-            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 content-stretch">
-                <ul role="list" className="grid grid-cols-2 md:grid-cols-2 space-y-3 space-x-3 overflow-auto h-[70vh]  py-2">
-                    {data.slice(0, 20).map((post, index) => {
-                        const pointA: Coordinate = { lat: parseFloat(latitude), lng: parseFloat(longitude) }; 
-                        const pointB: Coordinate = { lat: parseFloat(post.latitude), lng: parseFloat(post.longitude) }; 
+            {loading && <p className="text-sm text-gray-500 mt-1">Loading...</p>}
+            {results.length > 0 && (
+                <>
+                    <h2 className="text-3xl font-bold text-primary mb-8">
+                        Nearbys
+                    </h2>
+                    <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 content-stretch">
+                        <ul role="list" className="grid grid-cols-2 md:grid-cols-2 space-y-3 space-x-3 overflow-auto h-[70vh]  py-2">
+                            {data.slice(0, 20).map((post, index) => {
+                                const pointA: Coordinate = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
+                                const pointB: Coordinate = { lat: parseFloat(post.latitude), lng: parseFloat(post.longitude) };
 
-                        const distance = calculateDistance(pointA, pointB);
-                        let labelicon:any;
-                        switch (post.categoryName.toLocaleLowerCase()) {
-                            case 'parking':
-                                labelicon = 'square-parking';
-                                break;
-                            case 'car rentals':
-                                labelicon = 'car';
-                                break;
-                            case 'banks':
-                            case 'banking  / foreign exchange':
-                                labelicon = 'landmark';
-                                break;
-                            case 'coffee shops':
-                                labelicon = 'coffee';
-                                break;
-                            case 'pharmacy':
-                                labelicon = 'briefcase-medical';
-                                break;
-                            case 'restaurant':
-                                labelicon = 'utensils-crossed';
-                                break;
-                            case 'post office':
-                                labelicon = 'mails';
-                                break;
-                            case 'police station':
-                                labelicon = 'siren';
-                                break;
-                            case 'gas station':
-                                labelicon = 'fuel';
-                                break;
-                            case 'hospitals':
-                                labelicon = 'hospital';
-                                break;
-                        
-                            default:
-                                labelicon = 'landmark';
-                                break;
-                        }
+                                const distance = calculateDistance(pointA, pointB);
+                                let labelicon: any;
+                                switch (post.categoryName.toLocaleLowerCase()) {
+                                    case 'parking':
+                                        labelicon = 'square-parking';
+                                        break;
+                                    case 'car rentals':
+                                        labelicon = 'car';
+                                        break;
+                                    case 'banks':
+                                    case 'banking  / foreign exchange':
+                                        labelicon = 'landmark';
+                                        break;
+                                    case 'coffee shops':
+                                        labelicon = 'coffee';
+                                        break;
+                                    case 'pharmacy':
+                                        labelicon = 'briefcase-medical';
+                                        break;
+                                    case 'restaurant':
+                                        labelicon = 'utensils-crossed';
+                                        break;
+                                    case 'post office':
+                                        labelicon = 'mails';
+                                        break;
+                                    case 'police station':
+                                        labelicon = 'siren';
+                                        break;
+                                    case 'gas station':
+                                        labelicon = 'fuel';
+                                        break;
+                                    case 'hospitals':
+                                        labelicon = 'hospital';
+                                        break;
+                                    case 'shopping':
+                                        labelicon = 'shopping';
+                                        break;
+                                    case 'schools':
+                                        labelicon = 'school';
+                                        break;
+                                    case 'supermarkets':
+                                        labelicon = 'supermarket';
+                                        break;
 
-                        return (
-                            <li
-                            key={index}
-                            className=""
-                            >
-                                <div onClick={()=>{
-                                        handleLocationClick(pointB);
-                                    }} 
-                                    className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
-                                    <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center text-secondary">
-                                        {/* <MapPin size={28} /> */}
-                                        <DynamicIcon name={labelicon} size={20} />
-                                    </div>
-                                    <h4 className="font-bold text-gray-800 text-sm mb-1">{post.landmarkEnglishName}, {post.addressLine1English}</h4>
-                                    <p className="text-xs text-gray-400 font-bold uppercase">{distance}<span>km</span></p>
-                                </div>
-                            </li>
-                        )
-                    })}
-                </ul>
-                <div className="advanced-marker-example">
-                    <APIProvider apiKey={API_KEY} libraries={['marker']}>
-                        <Map
-                            mapId={'49ae42fed52588c3'}
-                            defaultZoom={12}
-                            defaultCenter={{lat: mainlat, lng: mainlng}}
-                            onClick={onMapClick}
-                            clickableIcons={false}
-                            style={{width: '100%', height: '70vh'}}
-                            fullscreenControl={false}>
-                            <AdvancedMarker
-                                position={position}
-                                title={'AdvancedMarker with custom html content.'}
-                                onMouseEnter={() => setHovered(true)}
-                                onMouseLeave={() => setHovered(false)}
-                                className={classNames('real-estate-marker', {clicked, hovered})}
-                                // onClick={() => setClicked(!clicked)} 
-                                >
-                                {renderCustomPin()}
-                            </AdvancedMarker>
-                            <Directions latitude={latitude} longitude={longitude} data={data} chosenLandmark={chosenLandmark}/>
-                        </Map>
-                    </APIProvider>
-                </div>
-            </div>
-            </>
-        )}
+                                    default:
+                                        labelicon = 'landmark';
+                                        break;
+                                }
+
+                                return (
+                                    <li
+                                        key={index}
+                                        className=""
+                                    >
+                                        <div onClick={() => {
+                                            handleLocationClick(pointB);
+                                        }}
+                                            className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+                                            <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center text-secondary">
+                                                {/* <MapPin size={28} /> */}
+                                                <DynamicIcon name={labelicon} size={20} />
+                                            </div>
+                                            <h4 className="font-bold text-gray-800 text-sm mb-1">{post.landmarkEnglishName}, {post.addressLine1English}</h4>
+                                            <p className="text-xs text-gray-400 font-bold uppercase">{distance}<span>km</span></p>
+                                        </div>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                        <div className="advanced-marker-example">
+                            <APIProvider apiKey={API_KEY} libraries={['marker']}>
+                                <Map
+                                    mapId={'49ae42fed52588c3'}
+                                    defaultZoom={12}
+                                    defaultCenter={{ lat: mainlat, lng: mainlng }}
+                                    onClick={onMapClick}
+                                    clickableIcons={false}
+                                    style={{ width: '100%', height: '70vh' }}
+                                    fullscreenControl={false}>
+                                    <AdvancedMarker
+                                        position={position}
+                                        title={'AdvancedMarker with custom html content.'}
+                                        onMouseEnter={() => setHovered(true)}
+                                        onMouseLeave={() => setHovered(false)}
+                                        className={classNames('real-estate-marker', { clicked, hovered })}
+                                    // onClick={() => setClicked(!clicked)} 
+                                    >
+                                        {renderCustomPin()}
+                                    </AdvancedMarker>
+                                    <Directions latitude={latitude} longitude={longitude} data={data} chosenLandmark={chosenLandmark} />
+                                </Map>
+                            </APIProvider>
+                        </div>
+                    </div>
+                </>
+            )}
         </>
     );
 };
 
-function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:any;longitude:any;chosenLandmark:any}) {
+function Directions({ data, latitude, longitude, chosenLandmark }: { data: any; latitude: any; longitude: any; chosenLandmark: any }) {
     const map = useMap();
     const maps = useMapsLibrary("maps");
     const routesLibrary = useMapsLibrary('routes');
@@ -220,7 +229,7 @@ function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:
 
     const Z_INDEX_SELECTED = data.length;
     const Z_INDEX_HOVER = data.length + 1;
-    
+
     const [hoverId, setHoverId] = useState<string | null>(null);
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const [selectedLandmark, setSelectedLandmark] = useState<NearbysType[]>([]);
@@ -233,17 +242,17 @@ function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:
     const onMouseLeave = useCallback(() => setHoverId(null), []);
     const onMarkerClick = useCallback(
         (id: string | null, marker?: google.maps.marker.AdvancedMarkerElement) => {
-        setSelectedId(id);
+            setSelectedId(id);
 
-        if (marker) {
-            setSelectedMarker(marker);
-        }
+            if (marker) {
+                setSelectedMarker(marker);
+            }
 
-        if (id !== selectedId) {
-            setInfoWindowShown(true);
-        } else {
-            setInfoWindowShown(isShown => !isShown);
-        }
+            if (id !== selectedId) {
+                setInfoWindowShown(true);
+            } else {
+                setInfoWindowShown(isShown => !isShown);
+            }
         },
         [selectedId]
     );
@@ -265,10 +274,10 @@ function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:
         if (!routesLibrary || !map) return;
         setDirectionsService(new routesLibrary.DirectionsService());
         setDirectionsRenderer(
-        new routesLibrary.DirectionsRenderer({
-            draggable: true, // Only necessary for draggable markers
-            map
-        })
+            new routesLibrary.DirectionsRenderer({
+                draggable: true, // Only necessary for draggable markers
+                map
+            })
         );
     }, [routesLibrary, map]);
 
@@ -276,9 +285,9 @@ function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:
     //chosenLandmark
 
     useEffect(() => {
-    if(chosenLandmark) {
-        handleDirectionsRequest(chosenLandmark);
-    }  
+        if (chosenLandmark) {
+            handleDirectionsRequest(chosenLandmark);
+        }
     }, [chosenLandmark]);
 
     //const directionsRenderer = new google.maps.DirectionsRenderer({map});
@@ -286,7 +295,7 @@ function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:
         console.log('Driving');
         console.log(destination);
         const directionsService = new google.maps.DirectionsService();
-        
+
         const request: google.maps.DirectionsRequest = {
             origin: position, // current/main location
             destination,
@@ -300,30 +309,30 @@ function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:
                 console.error("Directions request failed due to " + status);
             }
         })
-        .then(response => {
-            directionsRenderer?.setDirections(response);
-            setRoutes(response.routes);
-            //console.log(routes)
-        });
+            .then(response => {
+                directionsRenderer?.setDirections(response);
+                setRoutes(response.routes);
+                //console.log(routes)
+            });
 
     };
 
     const renderCustomPinNearbys = () => {
         return (
-        <>
-            <div className="custom-pin">
-                <button className="close-button">
-                    <span className="material-symbols-outlined"> close </span>
-                </button>
-                <div className="image-container">
-                    <span className="icon">
-                    <RealEstateIconNearby />
-                    </span>
+            <>
+                <div className="custom-pin">
+                    <button className="close-button">
+                        <span className="material-symbols-outlined"> close </span>
+                    </button>
+                    <div className="image-container">
+                        <span className="icon">
+                            <RealEstateIconNearby />
+                        </span>
+                    </div>
                 </div>
-            </div>
 
-            <div className="tip" />
-        </>
+                <div className="tip" />
+            </>
         );
     };
     return (
@@ -348,7 +357,7 @@ function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:
                     <div key={index} className="advanced-marker-example">
                         <AdvancedMarkerWithRef
                             onMarkerClick={(
-                            marker: google.maps.marker.AdvancedMarkerElement
+                                marker: google.maps.marker.AdvancedMarkerElement
                             ) => {
                                 //onMarkerClick(post.landmarkId, marker); //InfoWindow
                                 handleDirectionsRequest(position);
@@ -369,48 +378,48 @@ function Directions({data,latitude,longitude,chosenLandmark}:{data:any;latitude:
                 );
             })}
             {infoWindowShown && selectedMarker && (
-            <InfoWindow
-                anchor={selectedMarker}
-                pixelOffset={[0, -2]}
-                onCloseClick={handleInfowindowCloseClick}>
-                <h2 className="hidden">Marker {selectedId}</h2>
-                <h2 className="text-lg">{selectedLandmark[0]?.landmarkEnglishName}</h2>
-                <ul>
-                {routes.map((route, index) => (
-                    <li key={route.summary}>
-                        <p>From: {route.legs[0].start_address.split(',')[0]}</p>
-                        <p>To: {route.legs[0].end_address.split(',')[0]}</p>
-                        <p>Distance: {route.legs[0].distance?.text}</p>
-                        <p>Duration: {route.legs[0].duration?.text}</p>
-                    </li>
-                ))}
-                </ul>
-            </InfoWindow>
+                <InfoWindow
+                    anchor={selectedMarker}
+                    pixelOffset={[0, -2]}
+                    onCloseClick={handleInfowindowCloseClick}>
+                    <h2 className="hidden">Marker {selectedId}</h2>
+                    <h2 className="text-lg">{selectedLandmark[0]?.landmarkEnglishName}</h2>
+                    <ul>
+                        {routes.map((route, index) => (
+                            <li key={route.summary}>
+                                <p>From: {route.legs[0].start_address.split(',')[0]}</p>
+                                <p>To: {route.legs[0].end_address.split(',')[0]}</p>
+                                <p>Distance: {route.legs[0].distance?.text}</p>
+                                <p>Duration: {route.legs[0].duration?.text}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </InfoWindow>
             )}
         </>
-  );
+    );
 }
 
 export const AdvancedMarkerWithRef = (
-  props: AdvancedMarkerProps & {
-    onMarkerClick: (marker: google.maps.marker.AdvancedMarkerElement) => void;
-  }
+    props: AdvancedMarkerProps & {
+        onMarkerClick: (marker: google.maps.marker.AdvancedMarkerElement) => void;
+    }
 ) => {
-  const {children, onMarkerClick, ...advancedMarkerProps} = props;
-  const [markerRef, marker] = useAdvancedMarkerRef();
+    const { children, onMarkerClick, ...advancedMarkerProps } = props;
+    const [markerRef, marker] = useAdvancedMarkerRef();
 
-  return (
-    <AdvancedMarker
-      onClick={() => {
-        if (marker) {
-          onMarkerClick(marker);
-        }
-      }}
-      ref={markerRef}
-      {...advancedMarkerProps}>
-      {children}
-    </AdvancedMarker>
-  );
+    return (
+        <AdvancedMarker
+            onClick={() => {
+                if (marker) {
+                    onMarkerClick(marker);
+                }
+            }}
+            ref={markerRef}
+            {...advancedMarkerProps}>
+            {children}
+        </AdvancedMarker>
+    );
 };
 
 export default NearbysWithMap;

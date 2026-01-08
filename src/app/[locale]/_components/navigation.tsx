@@ -2,7 +2,7 @@
 
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { Link } from "@/i18n/navigation";
-import { DynamicIcon } from 'lucide-react/dynamic';
+
 import { Dialog, Disclosure, DialogPanel, DisclosureButton, DisclosurePanel, Popover, PopoverButton, PopoverGroup, PopoverPanel, Button, } from '@headlessui/react';
 import { Bars3Icon, ChartPieIcon, XMarkIcon, } from '@heroicons/react/24/outline';
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
@@ -370,20 +370,20 @@ type MenuItem = {
     lpSlug?: string;
 };
 function normalizeHref(href: string) {
-  return href.replace(/^\/(en|ar|ru|du|cn)(?=\/)/, "");
+    return href.replace(/^\/(en|ar|ru|du|cn)(?=\/)/, "");
 }
 function resolveHref(item: MenuItem) {
-  const raw =
-    item.href ? item.href :
-    item.lpSlug ? `/project/lp/${item.lpSlug}` :
-    "#";
+    const raw =
+        item.href ? item.href :
+            item.lpSlug ? `/project/lp/${item.lpSlug}` :
+                "#";
 
-  // don’t touch external links or "#"
-  if (raw === "#" || raw.startsWith("http") || raw.startsWith("tel:") || raw.startsWith("mailto:")) {
-    return raw;
-  }
+    // don’t touch external links or "#"
+    if (raw === "#" || raw.startsWith("http") || raw.startsWith("tel:") || raw.startsWith("mailto:")) {
+        return raw;
+    }
 
-  return normalizeHref(raw);
+    return normalizeHref(raw);
 }
 
 
@@ -566,12 +566,14 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
     // Determine if the current page has a dark hero section where the navbar should start transparent with white text
     const isDarkHeroPage = ['/en', '/ar', '/ru', '/du', '/cn'].includes(currentPage);
-    const isAboutUsPage = pathname.endsWith('/about-us');
+    const pages = ['/about-us', '/crypto'];
+    const isTargetPage = pages.some(page => pathname.endsWith(page));
+
     // Updated transparency: Clear at top, frosted glass on scroll
     const navbarClasses = isScrolled || hoveredMenu
         ? 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20'
         : 'bg-transparent py-6';
-    const showWhiteTheme = !isScrolled && !hoveredMenu && (isDarkHeroPage || isAboutUsPage);
+    const showWhiteTheme = !isScrolled && !hoveredMenu && (isDarkHeroPage || isTargetPage);
 
     const linkColor = showWhiteTheme ? 'text-white' : 'text-gray-800';
     const mainLogo = showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
@@ -609,10 +611,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             </div>
         </div> */}
             {/* Main Navigation */}
-            <nav className={`fixed top-0 left-0 right-0 z-90 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
-                <div className="container mx-auto flex justify-between items-center relative">
+            <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
+                <div className="container mx-auto flex justify-between items-center relative px-5 md:px-0">
                     {/* LOGO */}
-                    <Link className="flex items-center cursor-pointer group z-50" href="/"  title="Property Shop Investment">
+                    <Link className="flex items-center cursor-pointer group" href="/" title="Property Shop Investment">
                         <span className="sr-only">Property Shop Investment</span>
                         <Image
                             alt="PSI"
@@ -705,8 +707,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                     <div className="w-1/4 hidden xl:block">
                                         <div className="rounded-lg h-64 overflow-hidden relative cursor-pointer group/promo">
                                             <img src={group.image}
-                                            title={`${group.label} featured image`}
-                                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/promo:scale-110" alt="Promo" />
+                                                title={`${group.label} featured image`}
+                                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/promo:scale-110" alt="Promo" />
                                             <div className="absolute inset-0 bg-black/30 group-hover/promo:bg-black/20 transition-colors"></div>
                                             <div className="absolute bottom-6 left-6 text-white">
                                                 <span className="text-[10px] font-bold uppercase tracking-widest bg-secondary px-2 py-1 rounded mb-2 inline-block">{t('Featured')}</span>
@@ -761,7 +763,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     <div className="flex items-center justify-between border-b border-gray-100 pb-6">
                         <Link href="/" className="-m-1.5 p-1.5" title="Property Shop Investment">
                             <span className="sr-only">Property Shop Investment</span>
-                            <Image height={200} width={200} className="h-8 w-auto" src="/PSI-Logo.svg" alt="Logo" />
+                            <Image height={200} width={200} className="h-15 w-auto" src="/PSI-Logo.svg" alt="Logo" />
                         </Link>
                         <button
                             type="button"
@@ -769,7 +771,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             <span className="sr-only">Close menu</span>
-                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                            <XMarkIcon className="h-10 w-10" aria-hidden="true" />
                         </button>
                     </div>
 

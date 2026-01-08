@@ -1,44 +1,44 @@
 
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin, Camera } from 'lucide-react';
 import { Page } from '@/types/types';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { SocialMedia } from '@/types/navigation';
-import { DynamicIcon } from 'lucide-react/dynamic';
+// import { DynamicIcon } from 'lucide-react/dynamic';
 
 const socialMedia: SocialMedia[] = [
-    {
-        name: 'Facebook',
-        href: 'https://www.facebook.com/PropertyShopInvestment',
-        icon: 'facebook',
-    },
-    {
-        name: 'Twitter',
-        href: 'https://twitter.com/psinv',
-        icon: 'twitter',
-    },
-    {
-        name: 'Instagram',
-        href: 'https://www.instagram.com/property_shop_investment/',
-        icon: 'instagram',
-    },
-    {
-        name: 'Snapchat',
-        href: 'https://www.snapchat.com/add/property-shop',
-        icon: 'camera',
-    },
-    {
-        name: 'LinkedIn',
-        href: 'https://www.linkedin.com/company/property-shop-investment-llc',
-        icon: 'linkedin',
-    },
-    {
-        name: 'Youtube',
-        href: 'https://www.youtube.com/user/propertyshopabudhabi',
-        icon: 'youtube',
-    }
+  {
+    name: 'Facebook',
+    href: 'https://www.facebook.com/PropertyShopInvestment',
+    icon: 'facebook',
+  },
+  {
+    name: 'Twitter',
+    href: 'https://twitter.com/psinv',
+    icon: 'twitter',
+  },
+  {
+    name: 'Instagram',
+    href: 'https://www.instagram.com/property_shop_investment/',
+    icon: 'instagram',
+  },
+  {
+    name: 'Snapchat',
+    href: 'https://www.snapchat.com/add/property-shop',
+    icon: 'camera',
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/property-shop-investment-llc',
+    icon: 'linkedin',
+  },
+  {
+    name: 'Youtube',
+    href: 'https://www.youtube.com/user/propertyshopabudhabi',
+    icon: 'youtube',
+  }
 ];
 
 interface FooterProps {
@@ -52,30 +52,41 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
 
   return (
     <footer className="bg-primary-dark text-gray-800 pt-24 pb-12 border-t border-white/5" dir={isRtl ? "rtl" : "ltr"} >
-      <div className="container mx-auto px-6 md:px-12"  dir={isRtl ? "rtl" : "ltr"}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-20"  dir={isRtl ? "rtl" : "ltr"}>
-          
+      <div className="container mx-auto px-6 md:px-12" dir={isRtl ? "rtl" : "ltr"}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-20" dir={isRtl ? "rtl" : "ltr"}>
+
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="text-4xl font-serif font-bold mb-8 tracking-wider cursor-pointer">
-            <span className="sr-only">Property Shop Investment</span>
-            <Image
+              <span className="sr-only">Property Shop Investment</span>
+              <Image
                 alt="PSI"
                 title="PSI"
                 src="/PSI-Logo.svg"
                 className="h-15 w-auto"
                 width={200}
                 height={200}
-            /></Link>
+              /></Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-8 font-light">
               {t('footer_brand_desc')}
             </p>
             <div className="flex space-x-5 text-gray-400">
-                {socialMedia.map((item) => (
-                    <Link target="_blank" href={item.href} key={item.name} title={item.name} aria-label={item.name} className="hover:text-secondary transition-colors">
-                      <DynamicIcon name={item.icon} size={20} />
-                    </Link>
-                ))}
+              {socialMedia.map((item) => {
+                const Icon = {
+                  facebook: Facebook,
+                  twitter: Twitter,
+                  instagram: Instagram,
+                  camera: Camera,
+                  linkedin: Linkedin,
+                  youtube: Youtube,
+                }[item.icon as string] || Facebook; // Fallback or type assertion
+
+                return (
+                  <Link target="_blank" href={item.href} key={item.name} title={item.name} aria-label={item.name} className="hover:text-secondary transition-colors">
+                    <Icon size={20} />
+                  </Link>
+                )
+              })}
             </div>
           </div>
 
@@ -83,10 +94,10 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
           <div>
             <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_company')}</h3>
             <ul className="space-y-4 text-sm text-gray-800 font-light">
-              <li><Link href="/about-us"   title={t('footer_links_about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_about')}</Link></li>
-              <li><Link href="/careers"   title={t('footer_links_careers')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_careers')}</Link></li>
-              <li><Link href="/about-us#awards"   title={t('footer_links_awards')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_awards')}</Link></li>
-              <li><Link href="/international"   title={t('footer_links_intl')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_intl')}</Link></li>
+              <li><Link href="/about-us" title={t('footer_links_about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_about')}</Link></li>
+              <li><Link href="/careers" title={t('footer_links_careers')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_careers')}</Link></li>
+              <li><Link href="/about-us#awards" title={t('footer_links_awards')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_awards')}</Link></li>
+              <li><Link href="/international" title={t('footer_links_intl')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_intl')}</Link></li>
             </ul>
           </div>
 
@@ -134,9 +145,9 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
               <li className="flex items-start gap-4">
                 <MapPin size={18} className="text-secondary shrink-0 mt-0.5" />
                 <span>{t('company_address.part1')}<br />
-                {t('company_address.part2')}<br/>
-                {t('company_address.part3')}<br/>
-                {t('company_address.part4')}</span> 
+                  {t('company_address.part2')}<br />
+                  {t('company_address.part3')}<br />
+                  {t('company_address.part4')}</span>
               </li>
             </ul>
           </div>

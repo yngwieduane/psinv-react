@@ -6,6 +6,7 @@ import { useUser } from '@/context/userContext';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import slugify from 'react-slugify';
+import { generateSeoData } from '../../_components/functions/generateSeoData';
 
 const ComparePage: React.FC<{}> = ({ }) => {
     const { compareList, removeFromCompare } = useUser();
@@ -45,6 +46,33 @@ const ComparePage: React.FC<{}> = ({ }) => {
             label: 'Handover', key: 'handover', render: (d: any) => {
                 if (d.handoverDate) return new Date(d.handoverDate).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
                 return d.handover;
+            }
+        },
+        {
+            label: 'URL', key: 'url', render: (d: any) => {
+                if (d.code) {
+                    let maincategory;
+                    {
+                        d.sellprice !== null
+                            ? maincategory = "Sale"
+                            : maincategory = "Rent";
+                    }
+                    const propertyData = {
+                        bedrooms: d.bedrooms,
+                        propertyType: d.category,
+                        adType: maincategory,
+                        name: d.propertyname,
+                        community: d.community,
+                        emirate: d.city_name,
+                        refNo: d.refNo,
+                        code: d.code,
+                        seoStart: "",
+                    };
+                    const seoData = generateSeoData(propertyData);
+                    return `/unit/${seoData.seoUrl}`;
+                } else {
+                    return `/projects/${slugify(d.city)}/${slugify(d.community)}/${slugify(d.subCommunity || 'n-a')}/${slugify(d.propertyName)}`;
+                }
             }
         }
     ];
@@ -101,9 +129,9 @@ const ComparePage: React.FC<{}> = ({ }) => {
                                 <tr>
                                     <th className="p-4 text-left w-48 bg-gray-50 rounded-tl-xl">Feature</th>
                                     {activeItems.map((item: any) => (
-                                        <th key={item.propertyID || item.id} className="p-4 w-1/3 min-w-[250px] align-top bg-white border-b border-gray-100 relative group">
+                                        <th key={item.propertyID || item.code} className="p-4 w-1/3 min-w-[250px] align-top bg-white border-b border-gray-100 relative group">
                                             <button
-                                                onClick={() => removeFromCompare(item.propertyID || item.id)}
+                                                onClick={() => removeFromCompare(item.propertyID || item.code)}
                                                 className="absolute top-2 right-2 p-1.5 bg-gray-100 rounded-full text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors z-10 cursor-pointer"
                                                 title="Remove"
                                             >
@@ -133,7 +161,7 @@ const ComparePage: React.FC<{}> = ({ }) => {
                                             <Link
                                                 href={activeTab === 'project'
                                                     ? `/projects/${slugify(item.city)}/${slugify(item.community)}/${slugify(item.subCommunity || 'n-a')}/${slugify(item.propertyName)}`
-                                                    : `/unit/${item.slug || slugify(item.marketingTitle)}` // Adjust logic for unit linking if needed
+                                                    : `${features[features.length - 1].render(item)}` // Adjust logic for unit linking if needed
                                                 }
                                                 className="inline-block w-full py-2 bg-[#0c1356] text-white text-center rounded-lg hover:bg-primary/90 transition-colors font-medium text-sm"
                                             >
@@ -153,7 +181,7 @@ const ComparePage: React.FC<{}> = ({ }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {features.map((feature, idx) => (
+                                {features.slice(0, -1).map((feature, idx) => (
                                     <tr key={feature.key} className={idx % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
                                         <td className="p-4 font-bold text-gray-700 border-r border-gray-100">{feature.label}</td>
                                         {activeItems.map((item: any) => (

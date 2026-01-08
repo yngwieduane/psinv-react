@@ -3,7 +3,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import { Montserrat, Outfit } from "next/font/google";
 import { useEffect, useState } from "react";
-import { Facebook, Linkedin, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import AwardSlider from "../../about-us/_components/AboutAwardsSlider";
 import EmiratiHubForm from "./_components/EmiratiHubForm";
 import FAQItem from "./_components/FaqItem";
@@ -172,23 +172,23 @@ export default function PageClient() {
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-y-8 gap-x-0 md:gap-0 mt-15">
                         <div className="flex flex-col items-center col-span-2 md:col-span-1 pb-4 md:pb-0 md:py-10">
                             <span className="text-4xl md:text-4xl font-medium mb-3">{t("Stats.stat1.value")}</span>
-                            <span className="text-md text-gray-500 mt-0">{t("Stats.stat1.label")}</span>
+                            <span className="text-lg text-gray-500 mt-0">{t("Stats.stat1.label")}</span>
                         </div>
                         <div className="flex flex-col items-center border-l-0 md:border-l border-gray-300 py-4 md:py-10">
                             <span className="text-3xl md:text-4xl font-medium mb-3">{t("Stats.stat2.value")}</span>
-                            <span className="text-sm text-gray-500 mt-2">{t("Stats.stat2.label")}</span>
+                            <span className="text-lg text-gray-500 mt-2">{t("Stats.stat2.label")}</span>
                         </div>
                         <div className="flex flex-col items-center border-l border-gray-300 py-4 md:py-10">
                             <span className="text-3xl md:text-4xl font-medium mb-3">{t("Stats.stat3.value")}</span>
-                            <span className="text-sm text-gray-500 mt-2">{t("Stats.stat3.label")}</span>
+                            <span className="text-lg text-gray-500 mt-2">{t("Stats.stat3.label")}</span>
                         </div>
                         <div className="flex flex-col items-center border-l-0 md:border-l border-gray-300 py-4 md:py-10">
                             <span className="text-3xl md:text-4xl font-medium mb-3">{t("Stats.stat4.value")}</span>
-                            <span className="text-sm text-gray-500 mt-2">{t("Stats.stat4.label")}</span>
+                            <span className="text-lg text-gray-500 mt-2">{t("Stats.stat4.label")}</span>
                         </div>
                         <div className="flex flex-col items-center border-l md:border-l border-gray-300 col-span-1 py-4 md:py-10 ">
                             <span className="text-3xl md:text-4xl font-medium mb-3">{t("Stats.stat5.value")}</span>
-                            <span className="text-sm text-gray-500 mt-2">{t("Stats.stat5.label")}</span>
+                            <span className="text-lg text-gray-500 mt-2">{t("Stats.stat5.label")}</span>
                         </div>
                     </div>
                 </div>

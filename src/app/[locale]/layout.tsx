@@ -76,6 +76,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `${siteBaseUrl}/${currentLocale}`,
       languages: languageAlternates,
     },
+    openGraph: {
+      title: "⚡ Abu Dhabi Real Estate - Property Shop Investment",
+      description: "⚡ Abu Dhabi Real Estate - PSI - Check out our stunning real estate projects - Property Shop Investments - Real Estate Projects - Buy or Rent",
+      url: `${siteBaseUrl}/${currentLocale}`,
+      siteName: "Property Shop Investment",
+      locale: currentLocale,
+      type: "website",
+      images: [
+        {
+          url: '/assets/images/about-us/main-office.webp',
+          width: 1200,
+          height: 630,
+          alt: "Property Shop Investment",
+        }
+      ],
+    },
     robots: {
       index: true,
       follow: true,
@@ -121,7 +137,7 @@ export default async function LocaleLayout({
             <CompareFloatingButton />
           </NextIntlClientProvider>
         </UserProvider>
-        <GoogleTagManager gtmId="GTM-PMQ9XT65R" />
+        <GoogleTagManager gtmId="GTM-KDDP2SR" />
       </body>
     </html>
   );

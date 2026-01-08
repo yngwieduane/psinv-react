@@ -4620,12 +4620,10 @@
         },
         {
           "type": "heading",
-          "level": 2,
           "content": "Leading Property Portals in the UAE"
         },
         {
           "type": "heading",
-          "level": 3,
           "content": "Property Shop Investment (PSI)"
         },
         {
@@ -4663,7 +4661,6 @@
         },
         {
           "type": "heading",
-          "level": 3,
           "content": "Bayut.com"
         },
         {
@@ -4684,7 +4681,6 @@
         },
         {
           "type": "heading",
-          "level": 3,
           "content": "Property Finder"
         },
         {
@@ -4705,7 +4701,6 @@
         },
         {
           "type": "heading",
-          "level": 3,
           "content": "Developer-Owned Portals"
         },
         {
@@ -4733,7 +4728,6 @@
         },
         {
           "type": "heading",
-          "level": 2,
           "content": "Facts to Know About UAE Property Portals"
         },
         {
@@ -4747,7 +4741,6 @@
         },
         {
           "type": "heading",
-          "level": 2,
           "content": "Tips for Using Property Portals in the UAE"
         },
         {
@@ -4766,7 +4759,6 @@
         },
         {
           "type": "heading",
-          "level": 2,
           "content": "How to Choose the Right Portal?"
         },
         {
@@ -4827,7 +4819,6 @@
         },
         {
           "type": "heading",
-          "level": 3,
           "content": "1. Contract Registration Is Mandatory"
         },
         {
@@ -4840,7 +4831,6 @@
         },
         {
           "type": "heading",
-          "level": 3,
           "content": "2. 5% Rent Cap Is Back"
         },
         {
@@ -4853,7 +4843,6 @@
         },
         {
           "type": "heading",
-          "level": 3,
           "content": "3. 60 Days’ Notice for Contract Changes or Eviction"
         },
         {
@@ -4875,7 +4864,6 @@
         },
         {
           "type": "heading",
-          "level": 3,
           "content": "4. Clear Occupancy Rules"
         },
         {
@@ -4893,7 +4881,6 @@
         },
         {
           "type": "heading",
-          "level": 3,
           "content": "5. What If There’s a Dispute?"
         },
         {
@@ -5008,6 +4995,21 @@
           "href": "/en/projects/abu-dhabi"
         }
       ]
+    }
+  },
+  "CryptoPage": {
+    "hero": {
+      "title": {
+        "part1": "Buy property with",
+        "part2": "CRYPTO",
+        "part3": "in the"
+      },
+      "subtitle": {
+        "part1": "New",
+        "part2": "Land Of Opportunities"
+      },
+      "description": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
+      "cta": "Learn More"
     },
     "122": {
       "title": "Best Abu Dhabi Real Estate Areas for Highest Investment Returns",

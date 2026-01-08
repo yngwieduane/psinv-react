@@ -65,8 +65,7 @@ const EmiratiHubForm = (props: any) => {
         if (typeof window === 'undefined') return; //ensure code runs only in browser
 
         const APIKey = '160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a';
-        // const sendToMail = "callcenter@psinv.net";
-        const sendToMail = "wd6@psinv.net";
+        const sendToMail = "callcenter@psinv.net";
 
         const lastSubmitTime = localStorage.getItem("formSubmitTime");
         const now = Date.now();
@@ -239,20 +238,123 @@ const EmiratiHubForm = (props: any) => {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        body: `
-                        List Your Property<br><br>
-                        Name: ${data.fname}  ${data.lname} </br>
-                        Email: ${data.email} </br>
-                        Phone: ${data.phone} </br> 
-                        City: ${data.city} </br> 
-                        Profession: ${data.profession} </br>                       
-                        URL coming from: ${currentUrl}
-                        `,
+                        body: `         
+            <table cellpadding="0" cellspacing="0" width="550" align="center" class="">
+                    <tbody class="">
+                    <tr class="">
+                        <td class="">
+                            <table cellpadding="0" cellspacing="0" width="100%" align="center" class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td align="center" height="80" style="text-align:center;" width="550" bgcolor="#FFFFFF" class=""></td>
+                                </tr>
+                                <tr class="">
+                                    <td height="20" class=""> </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" width="100%" align="center" class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td colspan="3" height="10" bgcolor="#02344a" class=""></td>
+                                </tr>
+                                <tr class="">
+                                    <td width="10" style="color:#fdfdfd; font-size:16px; background:#02344a;" class=""> 
+                                    </td>
+                                    <td height="30" style="color:#fff; font-size:16px; background:#02344a; font-weight:bold; color:#FFF;font-family:Arial,  Helvetica, sans-serif" class="">
+                                        Inquiry Form - ${currentUrl}
+                                    </td>
+                                    <td width="10" style="color:#FFFFFF; font-size:16px; background:#02344a;" class=""> 
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <td colspan="3" height="10" bgcolor="#02344a" class=""></td>
+                                </tr>
+                                <tr class="">
+                                    <td height="20" class=""> </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table width="100%" cellspacing="3" cellpadding="5" align="center" style="border:1px solid #e8e6e6" class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        Client Name:
+                                    </td>
+                                    <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        ${data.fname} ${data.lname}
+                                    </td>
+                                </tr>
+
+                                <tr class="">
+                                    <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        Email:
+                                    </td>
+                                    <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        ${data.email} 
+                                    </td>
+                                </tr>
+
+                                <tr class="">
+                                  <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      Phone:
+                                  </td>
+                                  <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      ${data.phone}
+                                  </td>
+                                </tr> 
+                                
+                                ${data.profession ?
+                                `<tr class="">
+                                    <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        Client Profession:
+                                    </td>
+                                    <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        ${data.profession} 
+                                    </td>
+                                  </tr>` : ''
+                            }
+                            ${data.city ?
+                                `<tr class="">
+                                    <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        Client City:
+                                    </td>
+                                    <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        ${data.city} 
+                                    </td>
+                                  </tr>` : ''
+                            }
+
+                                <tr class="">
+                                  <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      URL coming from:
+                                  </td>
+                                  <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      ${currentUrl}
+                                  </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+          `,
                         receiver: sendToMail,
                         subject: "New Enquiry - Emirati Hub",
-                        filename: "",
-                        filedata: ""
-                    }),
+                    })
                 });
 
                 if (res.ok || mailRes.ok) {

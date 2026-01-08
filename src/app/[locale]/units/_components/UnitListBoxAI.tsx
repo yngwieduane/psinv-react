@@ -60,14 +60,16 @@ export default function UnitListBoxAI(props: any) {
                     className={`${isList ? 'w-full h-64 md:w-2/5 md:h-full' : 'w-full h-64'} relative bg-gray-200 cursor-pointer shrink-0 overflow-hidden`}
 
                 >
-                    <img
-                        src={images[0]}
-                        alt={props.seoTitle}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute top-3 left-3 bg-secondary text-white text-xs font-bold px-2 py-1 rounded shadow-sm">
-                        For {props.adType}
-                    </div>
+                    <Link href={`/unit/${props.seoUrl}`}>
+                        <img
+                            src={images[0]}
+                            alt={props.seoTitle}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute top-3 left-3 bg-secondary text-white text-xs font-bold px-2 py-1 rounded shadow-sm">
+                            For {props.adType}
+                        </div>
+                    </Link>
                 </div>
 
                 {/* Action Buttons (Absolute) */}
@@ -99,16 +101,18 @@ export default function UnitListBoxAI(props: any) {
                 <div className="flex-1 p-5 flex flex-col h-full">
                     <div className="flex-grow">
                         <div className="flex justify-between items-start mb-2">
-                            <h3
-                                className="text-xl font-bold text-gray-800 line-clamp-1 cursor-pointer hover:text-secondary transition-colors"
-                            >
-                                <PriceConvert price={price} minDecimal='0' />
-                            </h3>
+                            <Link href={`/unit/${props.seoUrl}`}>
+                                <h3
+                                    className="text-xl font-bold text-gray-800 line-clamp-1 cursor-pointer hover:text-secondary transition-colors"
+                                >
+                                    <PriceConvert price={price} minDecimal='0' />
+                                </h3>
+                            </Link>
                         </div>
 
                         {/* Forced height for Title (2 lines max) to ensure alignment */}
                         <h4
-                            className="text-sm font-medium text-gray-600 mb-2 cursor-pointer hover:text-primary transition-colors line-clamp-2 h-10 overflow-hidden leading-tight"
+                            className="text-sm font-medium text-gray-600 mb-2 hover:text-primary transition-colors line-clamp-2 h-10 overflow-hidden leading-tight"
 
                         >
                             {props.data.marketingTitle}

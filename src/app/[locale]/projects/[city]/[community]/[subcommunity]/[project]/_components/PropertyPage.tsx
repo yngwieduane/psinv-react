@@ -27,7 +27,7 @@ import UnitModelsAI from './UnitModelsAI';
 
 const PropertyPage = (props: any) => {
     const format = useFormatter();
-    const { toggleFavorite, addToCompare, isFavorite, isCompared } = useUser();
+    const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
     let HOdate, launchDate, completionDate, minprice, maxPrice, areaRangeMin, areaRangeMax;
     const [activeTab, setActiveTab] = useState('Overview');
     const [activeFloorPlan, setActiveFloorPlan] = useState(0);
@@ -221,11 +221,19 @@ const PropertyPage = (props: any) => {
                                 </div>
 
                                 <div className="flex gap-4 mt-8">
-                                    <button onClick={() => toggleFavorite({ id: props.data["propertyID"], type: 'project' })} className={`flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 backdrop-blur-md transition-colors font-bold ${saved ? 'bg-red-500 text-white border-red-500' : 'bg-white/10 text-white hover:bg-white/20'}`}>
+                                    <button onClick={() => toggleFavorite({ id: props.data["propertyID"], type: 'project' })} className={`cursor-pointer flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 backdrop-blur-md transition-colors font-bold ${saved ? 'bg-red-500 text-white border-red-500' : 'bg-white/10 text-white hover:bg-white/20'}`}>
                                         <Heart size={20} fill={saved ? "currentColor" : "none"} /> {saved ? "Saved" : "Save"}
                                     </button>
-                                    <button onClick={() => addToCompare({ id: props.data["propertyID"], type: 'project' })} className={`flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 backdrop-blur-md transition-colors font-bold ${compared ? 'bg-primary text-white border-primary' : 'bg-white/10 text-white hover:bg-white/20'}`}>
-                                        <Shuffle size={20} /> Compare
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            if (compared) {
+                                                removeFromCompare(props.data["propertyID"]);
+                                            } else {
+                                                addToCompare({ id: props.data["propertyID"], type: 'project', data: props.data });
+                                            }
+                                        }} className={`cursor-pointer flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 backdrop-blur-md transition-colors font-bold ${compared ? 'bg-[#0c1356] text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}>
+                                        <Shuffle size={20} /> {compared ? "Compared" : "Compare"}
                                     </button>
                                 </div>
                             </div>
@@ -272,7 +280,7 @@ const PropertyPage = (props: any) => {
                                         <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]} amountOfWords={100} classes="whitespace-break-spaces" />
 
                                         {/* Construction Update (New Rich Feature) */}
-                                        <div className="bg-white p-6 rounded-xl border border-gray-200 mt-8 mb-8">
+                                        <div className="bg-white p-6 rounded-xl border border-gray-200 mt-8 mb-8 hidden">
                                             <div className="flex justify-between items-center mb-4">
                                                 <h4 className="font-bold text-primary flex items-center gap-2"><Clock size={20} /> Construction Update</h4>
                                                 <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase">On Track</span>
@@ -290,7 +298,7 @@ const PropertyPage = (props: any) => {
 
                                         <h4 className="font-bold text-gray-800 text-xl mb-4 mt-8">Features</h4>
                                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none pl-0">
-                                            {props.data['aminities'].map((item: any, index: any) => (
+                                            {props.data['aminities'] && props.data['aminities'].map((item: any, index: any) => (
                                                 <li key={index} className="flex items-center gap-3 text-base"><CheckCircle2 className="text-secondary shrink-0" size={20} />{item.name}</li>
                                             ))}
                                         </ul>
@@ -306,7 +314,7 @@ const PropertyPage = (props: any) => {
                                             {props.data['masterDeveloper'] ? (<TableRow title="Master Developer" content={props.data['masterDeveloper']} />) : ("")}
                                             {props.data['minPrice'] ? (<TableRow title="Price Range (AED)" content={`${minprice} ~ ${maxPrice}`} />) : ("")}
                                             {props.data['areaRangeMin'] ? (<TableRow title="Area Range (SqFt)" content={`${areaRangeMin} ~ ${areaRangeMax}`} />) : ("")}
-                                            {props.data['numberOfApartment'] ? (<TableRow title="Number of Apartment" content={props.data['numberOfApartment']} />) : ("")}
+                                            {props.data['numberOfApartment'] && String(props.data['numberOfApartment']) !== '0' ? (<TableRow title="Number of Apartment" content={props.data['numberOfApartment']} />) : ("")}
                                             {props.data['propertyType'] ? (<TableRow title="Property Type" content={props.data['propertyType']} />) : ("")}
                                             {props.data['propertyPlan'] ? (<TableRow title="Property Plan" content={props.data['propertyPlan']} />) : ("")}
                                             {props.data['propertyUsage'] ? (<TableRow title="Property Usage" content={props.data['propertyUsage']} />) : ("")}
@@ -434,14 +442,14 @@ const PropertyPage = (props: any) => {
                                 </div>
                             </section>
                         ) : ("")}
-                        <div className="my-8 bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+                        <div className="">
                             <AvailableUnits
                                 propid={props.data["propertyID"]}
                                 category="Sale"
                                 display={4}
                             />
                         </div>
-                        <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+                        <div className="">
                             <AvailableUnits
                                 propid={props.data["propertyID"]}
                                 category="Rent"
