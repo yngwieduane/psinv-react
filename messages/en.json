@@ -4995,21 +4995,6 @@
           "href": "/en/projects/abu-dhabi"
         }
       ]
-    }
-  },
-  "CryptoPage": {
-    "hero": {
-      "title": {
-        "part1": "Buy property with",
-        "part2": "CRYPTO",
-        "part3": "in the"
-      },
-      "subtitle": {
-        "part1": "New",
-        "part2": "Land Of Opportunities"
-      },
-      "description": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
-      "cta": "Learn More"
     },
     "122": {
       "title": "Best Abu Dhabi Real Estate Areas for Highest Investment Returns",
@@ -5155,6 +5140,21 @@
           "content": "Abu Dhabi’s real estate market is a valuable opportunity for investors seeking high returns and stability. From the luxury allure of Yas and Saadiyat Islands to the affordability of Al Reef, there is something for everyone. With a strong economy, tax benefits, and significant projects ahead, now is the right time to invest. Start exploring these top locations and partner with trusted professionals to secure your share of Abu Dhabi’s thriving market."
         }
       ]
+    }
+  },
+  "CryptoPage": {
+    "hero": {
+      "title": {
+        "part1": "Buy property with",
+        "part2": "CRYPTO",
+        "part3": "in the"
+      },
+      "subtitle": {
+        "part1": "New",
+        "part2": "Land Of Opportunities"
+      },
+      "description": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
+      "cta": "Learn More"
     }
   }
 }
