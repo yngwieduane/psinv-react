@@ -137,7 +137,7 @@ export default async function LocaleLayout({
             <CompareFloatingButton />
           </NextIntlClientProvider>
         </UserProvider>
-        <GoogleTagManager gtmId="GTM-PMQ9XT65R" />
+        <GoogleTagManager gtmId="GTM-KDDP2SR" />
       </body>
     </html>
   );
