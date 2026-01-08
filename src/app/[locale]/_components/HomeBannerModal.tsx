@@ -3,7 +3,7 @@ import React, { Fragment, useState } from "react";
 import { Dialog, Description, DialogPanel, DialogTitle, Transition, TransitionChild } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
-import HomeBannerForm from "./HomeBannerForm";
+import HomeBannerForm from "./HomeBannerForm"; 
 
 const BannerModals = (props: any) => {
   const [open, setOpen] = useState(props.modalState);
@@ -55,7 +55,7 @@ const BannerModals = (props: any) => {
                           as="h3"
                           className="text-start font-semibold md:text-2xl text-xl"
                         >
-                          Register Your Interest
+                        {props.title || "Register Your Interest" }  
                         </DialogTitle>
                       </div>
                       <div className="text-end">
@@ -70,7 +70,7 @@ const BannerModals = (props: any) => {
                     </div>
 
                     <div className="mt-2">
-                      <HomeBannerForm hideFeedbackButton={true} propData={propData} />
+                      <HomeBannerForm hideFeedbackButton={true} propData={propData} isReportDownload = {props.isReportDownload} submitLabel={props.submitLabel} />
                     </div>
                   </div>
                 </div>

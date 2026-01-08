@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import React, { useState } from 'react';
@@ -14,6 +14,8 @@ import TextShortner from '../../_components/tools/TextShortner';
 
 const EconomicalHavenSection = () => {
     const t = useTranslations('CryptoPage.economical_haven');
+    const locale = useLocale();
+    const isRtl = locale.toLowerCase().startsWith("ar");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedSlide, setSelectedSlide] = useState<any>(null);
 
@@ -38,7 +40,7 @@ const EconomicalHavenSection = () => {
 
     return (
         <>
-            <section className="bg-[#090953] pb-20 relative">
+            <section className="bg-[#090953] pb-20 relative" dir={isRtl ? "rtl" : "ltr"}>
                 <div className="container mx-auto px-6 md:px-12">
                     {/* Header with Navigation Buttons */}
                     <div className="flex justify-between items-center mb-10">
@@ -48,10 +50,10 @@ const EconomicalHavenSection = () => {
                         {/* Custom Navigation Buttons */}
                         <div className="flex gap-2">
                             <button className="cursor-pointer swiper-button-prev-custom w-10 h-10 rounded-full bg-[#1A1A4A] hover:bg-[#23235B] flex items-center justify-center text-white transition-colors">
-                                <ChevronRight className="w-5 h-5 rotate-180" />
+                                <ChevronRight className={`w-5 h-5 ${!isRtl ? "rotate-180" : ""}`} />
                             </button>
                             <button className="cursor-pointer swiper-button-next-custom w-10 h-10 rounded-full bg-[#e46027] hover:bg-[#e46027] flex items-center justify-center text-white transition-colors">
-                                <ChevronRight className="w-5 h-5" />
+                                <ChevronRight className={`w-5 h-5 ${isRtl ? "rotate-180" : " "}`} />
                             </button>
                         </div>
                     </div>
@@ -82,7 +84,7 @@ const EconomicalHavenSection = () => {
                                         <div className="absolute inset-0 bg-gray-800 animate-pulse flex items-center justify-center text-gray-500">
                                             <Image
                                                 src={slide.img}
-                                                alt={t(`slides.${slide.key}.text`)}
+                                                alt={t(`slides.${slide.key}.text`)} title={t(`slides.${slide.key}.text`)}
                                                 fill
                                                 className="object-cover"
                                                 onError={(e) => {
@@ -95,7 +97,7 @@ const EconomicalHavenSection = () => {
                                         </div>
                                         <Image
                                             src={slide.img}
-                                            alt={t(`slides.${slide.key}.text`)}
+                                            alt={t(`slides.${slide.key}.text`)} title={t(`slides.${slide.key}.text`)}
                                             fill
                                             className="object-cover hover:scale-105 transition-transform duration-500"
                                         />
@@ -109,7 +111,7 @@ const EconomicalHavenSection = () => {
                                             onClick={() => handleModal(slide)}
                                             className="inline-flex items-center text-[#4ADE80] text-lg font-medium hover:text-[#22c55e] transition-colors"
                                         >
-                                            <ArrowRight className="w-4 h-4 mr-1" />
+                                            <ArrowRight className={`w-4 h-4 mr-1 ${isRtl ? "rotate-180" : ""}`} />
                                             {t('read_more')}
                                         </Button>
                                     </div>

@@ -1,10 +1,12 @@
 "use client";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import React from 'react';
 
 const RankingsSection = () => {
     const t = useTranslations('CryptoPage.rankings');
+    const locale = useLocale();
+    const isRtl = locale.toLowerCase().startsWith("ar");
 
     // Stats data mapping keys to icons
     const rankings = [
@@ -15,7 +17,7 @@ const RankingsSection = () => {
     ];
 
     return (
-        <section className="bg-[#090953] py-20 relative overflow-hidden">
+        <section className="bg-[#090953] py-20 relative overflow-hidden" dir={isRtl ? "rtl" : "ltr"}>
             <div className="container mx-auto px-6 md:px-12 text-center relative z-10">
                 {/* Main Heading */}
                 <h2 className="text-white text-base md:text-2xl font-medium mb-4 leading-relaxed">
@@ -35,7 +37,7 @@ const RankingsSection = () => {
                     <div className="absolute left-4 md:left-0 top-1/2 -translate-y-1/2 w-16 md:w-1/4 h-[60px] md:h-[100px] md:-ml-20">
                         <Image
                             src="/assets/images/crypto/arrow-left-icon.svg"
-                            alt="Arrow Left"
+                            alt="Arrow Left" title="Arrow Left"
                             fill
                             className="object-contain"
                         />
@@ -43,7 +45,7 @@ const RankingsSection = () => {
                     <div className="absolute right-4 md:right-0 top-1/2 -translate-y-1/2 w-16 md:w-1/4 h-[60px] md:h-[100px] md:-mr-20">
                         <Image
                             src="/assets/images/crypto/arrows-right.svg"
-                            alt="Arrow Right"
+                            alt="Arrow Right" title="Arrow Right"
                             fill
                             className="object-contain"
                         />
@@ -60,7 +62,7 @@ const RankingsSection = () => {
                             <div className="w-8 h-8 md:w-12 md:h-12 relative flex-shrink-0 mb-4">
                                 <Image
                                     src={icon}
-                                    alt={t(`cards.${key}`)}
+                                    alt={t(`cards.${key}`)} title={t(`cards.${key}`)}
                                     fill
                                     className="object-contain"
                                 />

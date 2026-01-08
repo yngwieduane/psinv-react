@@ -5,10 +5,25 @@ import { makeUtm } from './registrationUtils';
 export type PerSlug = { branch: 'auh' | 'dubai' | 'assets'; override?: Partial<ProjectMeta> };
 
 export const PROJECTS: Record<string, PerSlug> = {
-    'radisson-blu-registration': {
+  'hilton-residences-registration': {
     branch: 'auh',
     override: {
-       PropertyID: 25581,
+      PropertyID: 25396,
+      CommunityID: 95259,
+      remarks: 'Hilton Residences JLT',
+      ...makeUtm({
+        'irani_broker_hilton_residence_newsletter': {
+          campaign: 3166,
+          remarks:
+            'Rotation:  Hilton Residences JLT - Company (Agents Will Communicate As PSI), Campaign name:   Irani: Broker Hilton Residence Newsletter',
+        },
+      }),
+    },
+  },
+  'radisson-blu-registration': {
+    branch: 'auh',
+    override: {
+      PropertyID: 25581,
       CommunityID: 95259,
       remarks: 'Radisson Blu',
       ...makeUtm({
@@ -20,7 +35,7 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-   'hudayriyat-island-registration': {
+  'hudayriyat-island-registration': {
     branch: 'auh',
     override: {
       remarks: 'General Campaign',
@@ -33,7 +48,7 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-    'hudayriyat-island-general-registration': {
+  'hudayriyat-island-general-registration': {
     branch: 'auh',
     override: {
       remarks: 'General Campaign',

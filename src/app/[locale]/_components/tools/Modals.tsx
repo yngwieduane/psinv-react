@@ -3,8 +3,6 @@ import React, { Fragment, useState } from "react";
 import { Dialog, Description, DialogPanel, DialogTitle, Transition, TransitionChild } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
-import ContactFormPopUp from "./ContactFormPopUp";
-import DynamicForm from "../DynamicForm";
 import InquiryForm from "../InquiryForm";
 
 const Modals = (props: any) => {
@@ -68,7 +66,7 @@ const Modals = (props: any) => {
                     </div>
 
                     <div className="mt-2">
-                      <InquiryForm hideFeedbackButton={true}/>
+                      <InquiryForm hideFeedbackButton={true} />
                     </div>
                   </div>
                 </div>

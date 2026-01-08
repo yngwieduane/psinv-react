@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import React, { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { X } from 'lucide-react';
@@ -24,10 +24,11 @@ interface ShareModalProps {
 const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose, projectUrl, projectTitle }) => {
     const t = useTranslations('CryptoPage.share');
     const [copied, setCopied] = useState(false);
+    const locale = useLocale();
 
     // Determine the full URL
-    const baseUrl = "https://psinv.net/en/";
-    const fullUrl = `${baseUrl}${projectUrl}`;
+    const baseUrl = window.location.host;
+    const fullUrl = `${baseUrl}/${locale}/${projectUrl}`;
 
     const shareLinks = [
         {
