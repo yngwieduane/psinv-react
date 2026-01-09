@@ -5,6 +5,21 @@ import { makeUtm } from './registrationUtils';
 export type PerSlug = { branch: 'auh' | 'dubai' | 'assets'; override?: Partial<ProjectMeta> };
 
 export const PROJECTS: Record<string, PerSlug> = {
+  'radiant-wave-registration': {
+    branch: 'auh',
+    override: {
+      PropertyID: 25584,
+      CommunityID: 70212,
+      remarks: 'Radiant wave company',
+      ...makeUtm({
+        'ali_radiant_wave_newsletter_jan26': {
+          campaign: 3397,
+          remarks:
+            'Rotation:  Radiant wave company, Campaign name:   	Ali Radiant Wave Newsletter Jan26',
+        },
+      }),
+    },
+  },
   'hilton-residences-registration': {
     branch: 'auh',
     override: {
