@@ -21,7 +21,7 @@ export async function fetchLocationLookupIds(location: {
     types.map(async (type) => {
       const res = await fetch(`/api/external/fetchLookup?type=${type}`);
       const data = await res.json();
-     // console.log(`🔍 Lookup items for ${type}:`, data);
+      // console.log(`🔍 Lookup items for ${type}:`, data);
       const locKey = type.toLowerCase() as keyof typeof location;
       const locValue = location[locKey];
 

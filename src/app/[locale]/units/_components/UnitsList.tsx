@@ -8,7 +8,7 @@ import { useSearchParams } from "next/navigation";
 import { Skeleton } from "../../_components/tools/Skeleteon";
 import UnitListBoxAI from "./UnitListBoxAI";
 
-export default function UnitsList(props:any) {
+export default function UnitsList(props: any) {
 
     // const data = await fetch('http://localhost:3000/api/external/units/project?unitid='+unitid+'&propertyId='+propertyId+'&beds='+beds+'&category='+category)
     // const posts = await data.json() ;
@@ -24,47 +24,49 @@ export default function UnitsList(props:any) {
     const currentPage = searchParams.get('currentPage') || '';
     const minPrice = searchParams.get('minPrice') || '';
     const maxPrice = searchParams.get('maxPrice') || '';
+    const minArea = searchParams.get('minArea') || '';
+    const maxArea = searchParams.get('maxArea') || '';
 
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<UnitListing[]>([]);
     const [results1, setResults1] = useState<UnitListing[]>([]);
     const [allData, setAllData] = useState<UnitListing[]>([]);
     const [loading, setLoading] = useState(false);
-    
+
     useEffect(() => {
         const fetchData = async () => {
-        setLoading(true);
-        try {
-            const res = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`);
-            const result = await res.json();
-            setResults(result);
+            setLoading(true);
+            try {
+                const res = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`);
+                const result = await res.json();
+                setResults(result);
 
-            // const [res1, res2] = await Promise.all([
-            //     fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`),
-            //     fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`),
-            // ]);
-            // const [json1, json2] = await Promise.all([
-            //     res1.json(),
-            //     res2.json()
-            // ]);
-            // setResults(json1);
-            // setResults1(json2);
+                // const [res1, res2] = await Promise.all([
+                //     fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`),
+                //     fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`),
+                // ]);
+                // const [json1, json2] = await Promise.all([
+                //     res1.json(),
+                //     res2.json()
+                // ]);
+                // setResults(json1);
+                // setResults1(json2);
 
-            // const res = await fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`);
-            // const result = await res.json();
-            // const res1 = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`);
-            // const result1 = await res1.json();
-            // setAllData([...result, ...result1]);
+                // const res = await fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`);
+                // const result = await res.json();
+                // const res1 = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`);
+                // const result1 = await res1.json();
+                // setAllData([...result, ...result1]);
 
-        } catch (error) {
-            console.error("API fetch failed", error);
-        } finally {
-            setLoading(false);
-        }
+            } catch (error) {
+                console.error("API fetch failed", error);
+            } finally {
+                setLoading(false);
+            }
         };
 
         fetchData();
-    }, [unitid,category,propertyId,currentPage,beds,baths,propertyType,maxPrice,minPrice]);
+    }, [unitid, category, propertyId, currentPage, beds, baths, propertyType, maxPrice, minPrice, minArea, maxArea]);
 
     return (
         <>
@@ -72,33 +74,34 @@ export default function UnitsList(props:any) {
                 <Skeleton />
             ) : (
                 <>
-                {results.length > 0 && (
-                    <>
-                        {results.slice(0, 11).map((post:any,index:any) => { 
-                            let maincategory;
-                            {post.sellprice !== null
-                                ? maincategory = "Sale"
-                                : maincategory = "Rent";
-                            }
-                            const propertyData = {
-                                bedrooms: post.bedrooms,
-                                propertyType: post.category,
-                                adType: maincategory,
-                                name: post.propertyname,
-                                community: post.community,
-                                emirate: post.city_name,
-                                refNo: post.refNo,
-                                code: post.code,
-                                seoStart: "",
-                            };
-                            const seoData = generateSeoData(propertyData);
-                            return <UnitListBoxAI key={index} data={post} seoUrl={seoData.seoUrl} seoTitle={seoData.seoTitle} adType={maincategory} />
-                        })}
-                    </>
-                )}
+                    {results.length > 0 && (
+                        <>
+                            {results.slice(0, 11).map((post: any, index: any) => {
+                                let maincategory;
+                                {
+                                    post.sellprice !== null
+                                        ? maincategory = "Sale"
+                                        : maincategory = "Rent";
+                                }
+                                const propertyData = {
+                                    bedrooms: post.bedrooms,
+                                    propertyType: post.category,
+                                    adType: maincategory,
+                                    name: post.propertyname,
+                                    community: post.community,
+                                    emirate: post.city_name,
+                                    refNo: post.refNo,
+                                    code: post.code,
+                                    seoStart: "",
+                                };
+                                const seoData = generateSeoData(propertyData);
+                                return <UnitListBoxAI key={index} data={post} seoUrl={seoData.seoUrl} seoTitle={seoData.seoTitle} adType={maincategory} />
+                            })}
+                        </>
+                    )}
                 </>
             )}
-            
+
         </>
     );
 }

@@ -83,12 +83,12 @@ export default function Search({ placeholder }: { placeholder: string }) {
                         </div>
                     </div>
 
-                    <div className="grid md:hidden w-full">
+                    {/* <div className="grid md:hidden w-full">
                         <FilterUnitsDrawer
                             onChange={handleReset}
                         // onChange={handleSliderRange}
                         />
-                    </div>
+                    </div> */}
 
                     <div className="hidden md:block md:col-span-3 w-full">
                         <label htmlFor="category" className="block text-sm font-semibold text-gray-700 mb-2 ml-1">

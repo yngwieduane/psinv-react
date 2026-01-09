@@ -1,0 +1,1121 @@
+	
+Response body
+Download
+[
+  {
+    "lookupTypeId": 1,
+    "lookupTypeName": "Salutation"
+  },
+  {
+    "lookupTypeId": 2,
+    "lookupTypeName": "ContactType"
+  },
+  {
+    "lookupTypeId": 5,
+    "lookupTypeName": "ContactClass"
+  },
+  {
+    "lookupTypeId": 6,
+    "lookupTypeName": "MaritalStatus"
+  },
+  {
+    "lookupTypeId": 7,
+    "lookupTypeName": "Qualifications"
+  },
+  {
+    "lookupTypeId": 8,
+    "lookupTypeName": "Media"
+  },
+  {
+    "lookupTypeId": 9,
+    "lookupTypeName": "CompanyType"
+  },
+  {
+    "lookupTypeId": 10,
+    "lookupTypeName": "RetailCategory"
+  },
+  {
+    "lookupTypeId": 11,
+    "lookupTypeName": "Industry"
+  },
+  {
+    "lookupTypeId": 12,
+    "lookupTypeName": "NationalityCategory"
+  },
+  {
+    "lookupTypeId": 13,
+    "lookupTypeName": "ContactAddressType"
+  },
+  {
+    "lookupTypeId": 14,
+    "lookupTypeName": "ContactUploadDocumentsType"
+  },
+  {
+    "lookupTypeId": 15,
+    "lookupTypeName": "ContactBy"
+  },
+  {
+    "lookupTypeId": 16,
+    "lookupTypeName": "Country"
+  },
+  {
+    "lookupTypeId": 17,
+    "lookupTypeName": "City"
+  },
+  {
+    "lookupTypeId": 18,
+    "lookupTypeName": "District"
+  },
+  {
+    "lookupTypeId": 19,
+    "lookupTypeName": "Community"
+  },
+  {
+    "lookupTypeId": 20,
+    "lookupTypeName": "SubCommunity"
+  },
+  {
+    "lookupTypeId": 23,
+    "lookupTypeName": "PropertyType"
+  },
+  {
+    "lookupTypeId": 24,
+    "lookupTypeName": "PropertyOwnership"
+  },
+  {
+    "lookupTypeId": 25,
+    "lookupTypeName": "PropertyLicensing"
+  },
+  {
+    "lookupTypeId": 26,
+    "lookupTypeName": "Banks"
+  },
+  {
+    "lookupTypeId": 27,
+    "lookupTypeName": "Developers"
+  },
+  {
+    "lookupTypeId": 28,
+    "lookupTypeName": "UnitType"
+  },
+  {
+    "lookupTypeId": 29,
+    "lookupTypeName": "UnitOperationType"
+  },
+  {
+    "lookupTypeId": 30,
+    "lookupTypeName": "UnitSaleType"
+  },
+  {
+    "lookupTypeId": 31,
+    "lookupTypeName": "FittingAndFixtures"
+  },
+  {
+    "lookupTypeId": 32,
+    "lookupTypeName": "LeadRating"
+  },
+  {
+    "lookupTypeId": 33,
+    "lookupTypeName": "LeadStatus"
+  },
+  {
+    "lookupTypeId": 34,
+    "lookupTypeName": "LeadStage"
+  },
+  {
+    "lookupTypeId": 35,
+    "lookupTypeName": "MethodOfContact"
+  },
+  {
+    "lookupTypeId": 36,
+    "lookupTypeName": "NotificationBy"
+  },
+  {
+    "lookupTypeId": 37,
+    "lookupTypeName": "LeadOperationType"
+  },
+  {
+    "lookupTypeId": 38,
+    "lookupTypeName": "LeadType"
+  },
+  {
+    "lookupTypeId": 39,
+    "lookupTypeName": "LeadOwnerType"
+  },
+  {
+    "lookupTypeId": 41,
+    "lookupTypeName": "PhoneCommunication"
+  },
+  {
+    "lookupTypeId": 42,
+    "lookupTypeName": "EmailCommunication"
+  },
+  {
+    "lookupTypeId": 43,
+    "lookupTypeName": "SocialMediaCommunication"
+  },
+  {
+    "lookupTypeId": 44,
+    "lookupTypeName": "AddressFields"
+  },
+  {
+    "lookupTypeId": 45,
+    "lookupTypeName": "Gender"
+  },
+  {
+    "lookupTypeId": 46,
+    "lookupTypeName": "ContactPreferenceBy"
+  },
+  {
+    "lookupTypeId": 47,
+    "lookupTypeName": "Visa Type"
+  },
+  {
+    "lookupTypeId": 48,
+    "lookupTypeName": "OrganizationUserStatus"
+  },
+  {
+    "lookupTypeId": 49,
+    "lookupTypeName": "Property Plan"
+  },
+  {
+    "lookupTypeId": 50,
+    "lookupTypeName": "Property Usage"
+  },
+  {
+    "lookupTypeId": 73,
+    "lookupTypeName": "UploadItemsType"
+  },
+  {
+    "lookupTypeId": 114,
+    "lookupTypeName": "language"
+  },
+  {
+    "lookupTypeId": 141,
+    "lookupTypeName": "Property Documents"
+  },
+  {
+    "lookupTypeId": 142,
+    "lookupTypeName": "Views"
+  },
+  {
+    "lookupTypeId": 1134,
+    "lookupTypeName": "PassengerType"
+  },
+  {
+    "lookupTypeId": 1135,
+    "lookupTypeName": "WeekDay"
+  },
+  {
+    "lookupTypeId": 1139,
+    "lookupTypeName": "ContactSupportType"
+  },
+  {
+    "lookupTypeId": 1140,
+    "lookupTypeName": "ContactSupportDetails"
+  },
+  {
+    "lookupTypeId": 1143,
+    "lookupTypeName": "FeatuerType"
+  },
+  {
+    "lookupTypeId": 1144,
+    "lookupTypeName": "FeatuerDetails"
+  },
+  {
+    "lookupTypeId": 1145,
+    "lookupTypeName": "TourPolicies"
+  },
+  {
+    "lookupTypeId": 1146,
+    "lookupTypeName": "ActivityType"
+  },
+  {
+    "lookupTypeId": 1147,
+    "lookupTypeName": "Activity"
+  },
+  {
+    "lookupTypeId": 1187,
+    "lookupTypeName": "Company Contact Images"
+  },
+  {
+    "lookupTypeId": 1195,
+    "lookupTypeName": "Profile Upload"
+  },
+  {
+    "lookupTypeId": 1196,
+    "lookupTypeName": "Property Images"
+  },
+  {
+    "lookupTypeId": 1201,
+    "lookupTypeName": "ActivityCategory"
+  },
+  {
+    "lookupTypeId": 1202,
+    "lookupTypeName": "Payables"
+  },
+  {
+    "lookupTypeId": 1203,
+    "lookupTypeName": "AvailableStatusReason"
+  },
+  {
+    "lookupTypeId": 1204,
+    "lookupTypeName": "ReservationType"
+  },
+  {
+    "lookupTypeId": 1205,
+    "lookupTypeName": "LeasingType"
+  },
+  {
+    "lookupTypeId": 1206,
+    "lookupTypeName": "RentFreePeriod"
+  },
+  {
+    "lookupTypeId": 1207,
+    "lookupTypeName": "PeriodOfStay"
+  },
+  {
+    "lookupTypeId": 1208,
+    "lookupTypeName": "LeadClosedReason"
+  },
+  {
+    "lookupTypeId": 1209,
+    "lookupTypeName": "PaymentType"
+  },
+  {
+    "lookupTypeId": 1210,
+    "lookupTypeName": "PaymentMode"
+  },
+  {
+    "lookupTypeId": 1211,
+    "lookupTypeName": "ContactTypes"
+  },
+  {
+    "lookupTypeId": 1212,
+    "lookupTypeName": "ActivityRate"
+  },
+  {
+    "lookupTypeId": 1213,
+    "lookupTypeName": "Currencies"
+  },
+  {
+    "lookupTypeId": 1214,
+    "lookupTypeName": "contactClassifications"
+  },
+  {
+    "lookupTypeId": 1215,
+    "lookupTypeName": "AttachmentCategory"
+  },
+  {
+    "lookupTypeId": 1216,
+    "lookupTypeName": "AttachmentTitle"
+  },
+  {
+    "lookupTypeId": 1217,
+    "lookupTypeName": "ServicesOffered"
+  },
+  {
+    "lookupTypeId": 1218,
+    "lookupTypeName": "WorkOrderCategory"
+  },
+  {
+    "lookupTypeId": 1219,
+    "lookupTypeName": "ContractorType"
+  },
+  {
+    "lookupTypeId": 1220,
+    "lookupTypeName": "WorkOrderPriority"
+  },
+  {
+    "lookupTypeId": 1221,
+    "lookupTypeName": "Payableby"
+  },
+  {
+    "lookupTypeId": 1222,
+    "lookupTypeName": "Termsofpayment"
+  },
+  {
+    "lookupTypeId": 1223,
+    "lookupTypeName": "WorkOrderRequestedby "
+  },
+  {
+    "lookupTypeId": 1224,
+    "lookupTypeName": "CommunicationMedia"
+  },
+  {
+    "lookupTypeId": 1225,
+    "lookupTypeName": "Availabletime"
+  },
+  {
+    "lookupTypeId": 1226,
+    "lookupTypeName": "quotationTypes"
+  },
+  {
+    "lookupTypeId": 1227,
+    "lookupTypeName": "WorkOrderDriver"
+  },
+  {
+    "lookupTypeId": 1228,
+    "lookupTypeName": "CommonAreas"
+  },
+  {
+    "lookupTypeId": 1229,
+    "lookupTypeName": "OwnerType"
+  },
+  {
+    "lookupTypeId": 1230,
+    "lookupTypeName": "AssetsCategory"
+  },
+  {
+    "lookupTypeId": 1232,
+    "lookupTypeName": "ManagementType"
+  },
+  {
+    "lookupTypeId": 1233,
+    "lookupTypeName": "WorkOrderStatus"
+  },
+  {
+    "lookupTypeId": 1234,
+    "lookupTypeName": "ActivityPerformedBy"
+  },
+  {
+    "lookupTypeId": 1235,
+    "lookupTypeName": "ParkingType"
+  },
+  {
+    "lookupTypeId": 1236,
+    "lookupTypeName": "Mandate"
+  },
+  {
+    "lookupTypeId": 1237,
+    "lookupTypeName": "KitchenType"
+  },
+  {
+    "lookupTypeId": 1240,
+    "lookupTypeName": "Media"
+  },
+  {
+    "lookupTypeId": 1240,
+    "lookupTypeName": "MediaDetails"
+  },
+  {
+    "lookupTypeId": 1248,
+    "lookupTypeName": "ListingExpiryPeriod"
+  },
+  {
+    "lookupTypeId": 1252,
+    "lookupTypeName": "UnitDocuments"
+  },
+  {
+    "lookupTypeId": 1253,
+    "lookupTypeName": "CompanyUploadDocumentsType"
+  },
+  {
+    "lookupTypeId": 1256,
+    "lookupTypeName": "Template Type"
+  },
+  {
+    "lookupTypeId": 1258,
+    "lookupTypeName": "LuxuryMarketing"
+  },
+  {
+    "lookupTypeId": 1259,
+    "lookupTypeName": "FinanceMarketing"
+  },
+  {
+    "lookupTypeId": 1260,
+    "lookupTypeName": "StyleMarketing"
+  },
+  {
+    "lookupTypeId": 1261,
+    "lookupTypeName": "ViewsMarketing"
+  },
+  {
+    "lookupTypeId": 1264,
+    "lookupTypeName": "Cheque Type"
+  },
+  {
+    "lookupTypeId": 1265,
+    "lookupTypeName": "Cheque Status"
+  },
+  {
+    "lookupTypeId": 1266,
+    "lookupTypeName": "PropertyImagesCategory"
+  },
+  {
+    "lookupTypeId": 1267,
+    "lookupTypeName": "AmenitiesCategory"
+  },
+  {
+    "lookupTypeId": 1269,
+    "lookupTypeName": "FaciltiesCategory"
+  },
+  {
+    "lookupTypeId": 1271,
+    "lookupTypeName": "UnitExternalURLImages"
+  },
+  {
+    "lookupTypeId": 1272,
+    "lookupTypeName": "UnitActualImages"
+  },
+  {
+    "lookupTypeId": 1273,
+    "lookupTypeName": "GeneralImages"
+  },
+  {
+    "lookupTypeId": 1274,
+    "lookupTypeName": "FloorPlansImages"
+  },
+  {
+    "lookupTypeId": 2148,
+    "lookupTypeName": "Bedroom"
+  },
+  {
+    "lookupTypeId": 2149,
+    "lookupTypeName": "ClientRequirementType"
+  },
+  {
+    "lookupTypeId": 2150,
+    "lookupTypeName": "UnitsFacilities"
+  },
+  {
+    "lookupTypeId": 2151,
+    "lookupTypeName": "UnitsAmenties"
+  },
+  {
+    "lookupTypeId": 2152,
+    "lookupTypeName": "UnitSubType"
+  },
+  {
+    "lookupTypeId": 2153,
+    "lookupTypeName": "UniqueSellingPoints"
+  },
+  {
+    "lookupTypeId": 2154,
+    "lookupTypeName": "VicinityDistance"
+  },
+  {
+    "lookupTypeId": 2155,
+    "lookupTypeName": "EscrowBank"
+  },
+  {
+    "lookupTypeId": 2156,
+    "lookupTypeName": "BlockedReasons"
+  },
+  {
+    "lookupTypeId": 2157,
+    "lookupTypeName": "CancellationReasons"
+  },
+  {
+    "lookupTypeId": 2158,
+    "lookupTypeName": "DocumentsScop"
+  },
+  {
+    "lookupTypeId": 2160,
+    "lookupTypeName": "ContactDocumentsCategory"
+  },
+  {
+    "lookupTypeId": 2161,
+    "lookupTypeName": "PropertyDocumentsCategory"
+  },
+  {
+    "lookupTypeId": 2162,
+    "lookupTypeName": "UnitDocumentsCategory"
+  },
+  {
+    "lookupTypeId": 2163,
+    "lookupTypeName": "PortfolioDocumentsCategory"
+  },
+  {
+    "lookupTypeId": 2164,
+    "lookupTypeName": "MaintenanceContractDocumentsCategory"
+  },
+  {
+    "lookupTypeId": 2165,
+    "lookupTypeName": "WorkOrderDocumentsCategory"
+  },
+  {
+    "lookupTypeId": 2169,
+    "lookupTypeName": "bayyat test2"
+  },
+  {
+    "lookupTypeId": 3174,
+    "lookupTypeName": "Profession"
+  },
+  {
+    "lookupTypeId": 3176,
+    "lookupTypeName": "CustomerProfile"
+  },
+  {
+    "lookupTypeId": 3177,
+    "lookupTypeName": "FinancingType"
+  },
+  {
+    "lookupTypeId": 3178,
+    "lookupTypeName": "MortgageType"
+  },
+  {
+    "lookupTypeId": 3179,
+    "lookupTypeName": "SystemReportCategory"
+  },
+  {
+    "lookupTypeId": 3180,
+    "lookupTypeName": "MarketingWebLabel"
+  },
+  {
+    "lookupTypeId": 3181,
+    "lookupTypeName": "frequency"
+  },
+  {
+    "lookupTypeId": 3182,
+    "lookupTypeName": "Amount Nature"
+  },
+  {
+    "lookupTypeId": 3183,
+    "lookupTypeName": "PlanType"
+  },
+  {
+    "lookupTypeId": 3184,
+    "lookupTypeName": "ContactProfession"
+  },
+  {
+    "lookupTypeId": 3185,
+    "lookupTypeName": "PropertyVideoCategory"
+  },
+  {
+    "lookupTypeId": 3186,
+    "lookupTypeName": "UnitVideoCategory"
+  },
+  {
+    "lookupTypeId": 3187,
+    "lookupTypeName": "InquiryClosedReason"
+  },
+  {
+    "lookupTypeId": 3189,
+    "lookupTypeName": "MobileOperatingSystem"
+  },
+  {
+    "lookupTypeId": 3190,
+    "lookupTypeName": "ReleaseNoteType"
+  },
+  {
+    "lookupTypeId": 3193,
+    "lookupTypeName": "ProposalUnitDetails"
+  },
+  {
+    "lookupTypeId": 3194,
+    "lookupTypeName": "CampaignType"
+  },
+  {
+    "lookupTypeId": 3195,
+    "lookupTypeName": "LeadQualification"
+  },
+  {
+    "lookupTypeId": 3196,
+    "lookupTypeName": "Purpose"
+  },
+  {
+    "lookupTypeId": 3197,
+    "lookupTypeName": "ModeOfPayment"
+  },
+  {
+    "lookupTypeId": 3198,
+    "lookupTypeName": "Vicinities"
+  },
+  {
+    "lookupTypeId": 3199,
+    "lookupTypeName": "Facilities Services"
+  },
+  {
+    "lookupTypeId": 3200,
+    "lookupTypeName": "LandmarkCategories"
+  },
+  {
+    "lookupTypeId": 3201,
+    "lookupTypeName": "PortalName"
+  },
+  {
+    "lookupTypeId": 3202,
+    "lookupTypeName": "UnqualifiedReasons"
+  },
+  {
+    "lookupTypeId": 3203,
+    "lookupTypeName": "MediaRequirements"
+  },
+  {
+    "lookupTypeId": 3204,
+    "lookupTypeName": "ProjectCategory"
+  },
+  {
+    "lookupTypeId": 3205,
+    "lookupTypeName": "PlatformName"
+  },
+  {
+    "lookupTypeId": 3206,
+    "lookupTypeName": "TargetAudience"
+  },
+  {
+    "lookupTypeId": 3207,
+    "lookupTypeName": "CampaignReason"
+  },
+  {
+    "lookupTypeId": 3208,
+    "lookupTypeName": "CampaignUSPs"
+  },
+  {
+    "lookupTypeId": 3209,
+    "lookupTypeName": "MarketingMaterial"
+  },
+  {
+    "lookupTypeId": 3210,
+    "lookupTypeName": "LuxuryPreferences"
+  },
+  {
+    "lookupTypeId": 3211,
+    "lookupTypeName": "Course Category"
+  },
+  {
+    "lookupTypeId": 3212,
+    "lookupTypeName": "Departments"
+  },
+  {
+    "lookupTypeId": 3213,
+    "lookupTypeName": "Stations"
+  },
+  {
+    "lookupTypeId": 3214,
+    "lookupTypeName": "DeactivationReason"
+  },
+  {
+    "lookupTypeId": 3215,
+    "lookupTypeName": "TaskCategory"
+  },
+  {
+    "lookupTypeId": 3216,
+    "lookupTypeName": "OffStatusReason"
+  },
+  {
+    "lookupTypeId": 3218,
+    "lookupTypeName": "WebProjectType"
+  },
+  {
+    "lookupTypeId": 3220,
+    "lookupTypeName": "AMLRejectionReason"
+  },
+  {
+    "lookupTypeId": 3221,
+    "lookupTypeName": "AMLApprovedReason"
+  },
+  {
+    "lookupTypeId": 3222,
+    "lookupTypeName": "AMLReassignedReason"
+  },
+  {
+    "lookupTypeId": 3223,
+    "lookupTypeName": "AMLWithdrawReason"
+  },
+  {
+    "lookupTypeId": 3224,
+    "lookupTypeName": "AMLDocumentCategories"
+  },
+  {
+    "lookupTypeId": 3225,
+    "lookupTypeName": "LeasePaymentType"
+  },
+  {
+    "lookupTypeId": 3226,
+    "lookupTypeName": "UnitsFinishing"
+  },
+  {
+    "lookupTypeId": 3227,
+    "lookupTypeName": "Property Age"
+  },
+  {
+    "lookupTypeId": 3228,
+    "lookupTypeName": "Service Charge"
+  },
+  {
+    "lookupTypeId": 3229,
+    "lookupTypeName": "Retails"
+  },
+  {
+    "lookupTypeId": 3230,
+    "lookupTypeName": "VisitorsParkingAvailability"
+  },
+  {
+    "lookupTypeId": 3231,
+    "lookupTypeName": "Neighborhood"
+  },
+  {
+    "lookupTypeId": 3232,
+    "lookupTypeName": "ContactConsent"
+  },
+  {
+    "lookupTypeId": 3233,
+    "lookupTypeName": "ContactDNCR"
+  },
+  {
+    "lookupTypeId": 3235,
+    "lookupTypeName": "RiskRatingDurationValue"
+  },
+  {
+    "lookupTypeId": 3236,
+    "lookupTypeName": "CustomerType"
+  },
+  {
+    "lookupTypeId": 3237,
+    "lookupTypeName": "ResidenceStatus"
+  },
+  {
+    "lookupTypeId": 3238,
+    "lookupTypeName": "NatureOfTransaction(PaymentMethod)"
+  },
+  {
+    "lookupTypeId": 3239,
+    "lookupTypeName": "CustomerSourceOfFund/Wealth"
+  },
+  {
+    "lookupTypeId": 3240,
+    "lookupTypeName": "JurisdictionRisk(Nationality)"
+  },
+  {
+    "lookupTypeId": 3241,
+    "lookupTypeName": "ConsentReasons"
+  },
+  {
+    "lookupTypeId": 3242,
+    "lookupTypeName": "DNCRReasons"
+  },
+  {
+    "lookupTypeId": 3243,
+    "lookupTypeName": "AgreementType"
+  },
+  {
+    "lookupTypeId": 3244,
+    "lookupTypeName": "AgreementStatus"
+  },
+  {
+    "lookupTypeId": 3247,
+    "lookupTypeName": "DeveloperDocumentCategory"
+  },
+  {
+    "lookupTypeId": 3250,
+    "lookupTypeName": "Job Title"
+  },
+  {
+    "lookupTypeId": 3251,
+    "lookupTypeName": "Contact Designation"
+  },
+  {
+    "lookupTypeId": 3252,
+    "lookupTypeName": "VicinityCategory"
+  },
+  {
+    "lookupTypeId": 3253,
+    "lookupTypeName": "BranchDocumentCategory"
+  },
+  {
+    "lookupTypeId": 3254,
+    "lookupTypeName": "PSI Commission slabs"
+  },
+  {
+    "lookupTypeId": 3255,
+    "lookupTypeName": "Registration Documents"
+  },
+  {
+    "lookupTypeId": 3256,
+    "lookupTypeName": "Bulk lead Upload"
+  },
+  {
+    "lookupTypeId": 3257,
+    "lookupTypeName": "CourseOperationType"
+  },
+  {
+    "lookupTypeId": 3258,
+    "lookupTypeName": "CoursePropertyCategory"
+  },
+  {
+    "lookupTypeId": 3501,
+    "lookupTypeName": "HeightCategory"
+  },
+  {
+    "lookupTypeId": 3502,
+    "lookupTypeName": "LocationFeatures"
+  },
+  {
+    "lookupTypeId": 3503,
+    "lookupTypeName": "InteriorCondition"
+  },
+  {
+    "lookupTypeId": 3504,
+    "lookupTypeName": "Agent Evaluation"
+  },
+  {
+    "lookupTypeId": 3505,
+    "lookupTypeName": "MPI"
+  },
+  {
+    "lookupTypeId": 3506,
+    "lookupTypeName": "AgentBlockReason"
+  },
+  {
+    "lookupTypeId": 3507,
+    "lookupTypeName": "VendorAgreementStatus"
+  },
+  {
+    "lookupTypeId": 3508,
+    "lookupTypeName": "serviceAvailability"
+  },
+  {
+    "lookupTypeId": 3509,
+    "lookupTypeName": "ProjectProfileImage"
+  },
+  {
+    "lookupTypeId": 3510,
+    "lookupTypeName": "OfferStatus"
+  },
+  {
+    "lookupTypeId": 3511,
+    "lookupTypeName": "VendorCategory"
+  },
+  {
+    "lookupTypeId": 3512,
+    "lookupTypeName": "PSICommissionStatus"
+  },
+  {
+    "lookupTypeId": 3513,
+    "lookupTypeName": "TransactionStatusClientTracking"
+  },
+  {
+    "lookupTypeId": 3514,
+    "lookupTypeName": "VendorClass"
+  },
+  {
+    "lookupTypeId": 3515,
+    "lookupTypeName": "VendorServiceTags"
+  },
+  {
+    "lookupTypeId": 3516,
+    "lookupTypeName": "VendorDocumentCategory"
+  },
+  {
+    "lookupTypeId": 3517,
+    "lookupTypeName": "ServiceCategory"
+  },
+  {
+    "lookupTypeId": 3518,
+    "lookupTypeName": "ContractDuration"
+  },
+  {
+    "lookupTypeId": 3519,
+    "lookupTypeName": "PaymentTerms"
+  },
+  {
+    "lookupTypeId": 3520,
+    "lookupTypeName": "FeeType"
+  },
+  {
+    "lookupTypeId": 3521,
+    "lookupTypeName": "Vendor Media Type"
+  },
+  {
+    "lookupTypeId": 3522,
+    "lookupTypeName": "VendorMediaType"
+  },
+  {
+    "lookupTypeId": 3523,
+    "lookupTypeName": "LeadXchangeEntitySource"
+  },
+  {
+    "lookupTypeId": 3524,
+    "lookupTypeName": "SchoolType"
+  },
+  {
+    "lookupTypeId": 3525,
+    "lookupTypeName": "Curriculum"
+  },
+  {
+    "lookupTypeId": 3526,
+    "lookupTypeName": "Affiliate/Sub-Branch"
+  },
+  {
+    "lookupTypeId": 3527,
+    "lookupTypeName": "SourceOfLead"
+  },
+  {
+    "lookupTypeId": 3528,
+    "lookupTypeName": "InquiryStatus"
+  },
+  {
+    "lookupTypeId": 3530,
+    "lookupTypeName": "Bank Account"
+  },
+  {
+    "lookupTypeId": 3531,
+    "lookupTypeName": "Commission Status"
+  },
+  {
+    "lookupTypeId": 3532,
+    "lookupTypeName": "Currency"
+  },
+  {
+    "lookupTypeId": 3534,
+    "lookupTypeName": "PlotConstructionStatus"
+  },
+  {
+    "lookupTypeId": 3535,
+    "lookupTypeName": "PlotAllocationType"
+  },
+  {
+    "lookupTypeId": 3536,
+    "lookupTypeName": "PlotProjectUsage"
+  },
+  {
+    "lookupTypeId": 3537,
+    "lookupTypeName": "PlotPermittedFor"
+  },
+  {
+    "lookupTypeId": 3538,
+    "lookupTypeName": "PlotAvailabilityStatus"
+  },
+  {
+    "lookupTypeId": 3539,
+    "lookupTypeName": "PlotMortgageStatus"
+  },
+  {
+    "lookupTypeId": 3540,
+    "lookupTypeName": "OwnerRightHoldType"
+  },
+  {
+    "lookupTypeId": 3541,
+    "lookupTypeName": "PlotRecommendedPaymentPlan"
+  },
+  {
+    "lookupTypeId": 3542,
+    "lookupTypeName": "PlotAgreementStatusWithLandlord"
+  },
+  {
+    "lookupTypeId": 3543,
+    "lookupTypeName": "PlotInvestmentTeaserStatus"
+  },
+  {
+    "lookupTypeId": 3544,
+    "lookupTypeName": "PlotAttachmentTitle"
+  },
+  {
+    "lookupTypeId": 3545,
+    "lookupTypeName": "PredefinedSkillsList"
+  },
+  {
+    "lookupTypeId": 3546,
+    "lookupTypeName": "Portal Status"
+  },
+  {
+    "lookupTypeId": 3547,
+    "lookupTypeName": "Credential Status"
+  },
+  {
+    "lookupTypeId": 3548,
+    "lookupTypeName": "Agreement Type"
+  },
+  {
+    "lookupTypeId": 3549,
+    "lookupTypeName": "Renewal Terms"
+  },
+  {
+    "lookupTypeId": 3550,
+    "lookupTypeName": "Commission Type"
+  },
+  {
+    "lookupTypeId": 3551,
+    "lookupTypeName": "Rate Type"
+  },
+  {
+    "lookupTypeId": 3552,
+    "lookupTypeName": "Partnership Type"
+  },
+  {
+    "lookupTypeId": 3553,
+    "lookupTypeName": "UserDocumentCategory"
+  },
+  {
+    "lookupTypeId": 3554,
+    "lookupTypeName": "UserImageVisability"
+  },
+  {
+    "lookupTypeId": 3555,
+    "lookupTypeName": "PartnerTransactionStatus"
+  },
+  {
+    "lookupTypeId": 3556,
+    "lookupTypeName": "AgentAchievementCommissionInvoiceStatus"
+  },
+  {
+    "lookupTypeId": 3557,
+    "lookupTypeName": "AgentAchievementCommissionInvoicePaymentStatus"
+  },
+  {
+    "lookupTypeId": 3558,
+    "lookupTypeName": "AgentAchievementCommissionDealStatus"
+  },
+  {
+    "lookupTypeId": 3559,
+    "lookupTypeName": "AgentAchievementCommissionInvoiceCollectionStatus"
+  },
+  {
+    "lookupTypeId": 3560,
+    "lookupTypeName": "Municipality Cities"
+  },
+  {
+    "lookupTypeId": 3561,
+    "lookupTypeName": "Municipality Districts"
+  },
+  {
+    "lookupTypeId": 3562,
+    "lookupTypeName": "Municipality Communities"
+  },
+  {
+    "lookupTypeId": 3563,
+    "lookupTypeName": "CommunityGalleryImageTabs"
+  },
+  {
+    "lookupTypeId": 3564,
+    "lookupTypeName": "PlotDocumentCatergory"
+  },
+  {
+    "lookupTypeId": 3565,
+    "lookupTypeName": "CommunityGalleryVideoTabs"
+  },
+  {
+    "lookupTypeId": 3566,
+    "lookupTypeName": "AllianceHubMedia"
+  },
+  {
+    "lookupTypeId": 3567,
+    "lookupTypeName": "DepositAndFeesBeneficiarys"
+  },
+  {
+    "lookupTypeId": 3568,
+    "lookupTypeName": "EventType"
+  },
+  {
+    "lookupTypeId": 3569,
+    "lookupTypeName": "WeatherConditions"
+  },
+  {
+    "lookupTypeId": 3570,
+    "lookupTypeName": "WalletSource"
+  },
+  {
+    "lookupTypeId": 3571,
+    "lookupTypeName": "MarketingRating"
+  },
+  {
+    "lookupTypeId": 3572,
+    "lookupTypeName": "UploadType"
+  },
+  {
+    "lookupTypeId": 3573,
+    "lookupTypeName": "ReassignmentReason"
+  }
+]
