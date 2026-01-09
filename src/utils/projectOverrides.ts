@@ -5,6 +5,19 @@ import { makeUtm } from './registrationUtils';
 export type PerSlug = { branch: 'auh' | 'dubai' | 'assets'; override?: Partial<ProjectMeta> };
 
 export const PROJECTS: Record<string, PerSlug> = {
+  'ohana-yas-island-registration': {
+    branch: 'auh',
+    override: {
+      remarks: 'Company',
+      ...makeUtm({
+        'shaza_ohana_yas_newsletter': {
+          campaign: 3397,
+          remarks:
+            'Rotation:  Company, Campaign name:  shaza Ohana Yas Newsletter',
+        },
+      }),
+    },
+  },
   'radiant-wave-registration': {
     branch: 'auh',
     override: {
@@ -203,6 +216,11 @@ export const PROJECTS: Record<string, PerSlug> = {
       CommunityID: 97198,
       remarks: 'The Row Saadiyat',
       ...makeUtm({
+        'irani_the_row_saadiyat_island_newsletter': {
+          campaign: 3398,
+          remarks:
+            'Rotation: The Row Saadiyat - Company, Campaign name: Irani: The Row Saadiyat Island Newsletter',
+        },
         'irani_the_row_saadiyat_newsletter': {
           campaign: 3146,
           remarks:
