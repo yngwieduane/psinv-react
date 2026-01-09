@@ -3,6 +3,8 @@ import { writeFile } from "fs/promises";
 import { promises as fs } from "fs";
 import path from "path";
 
+export const maxDuration = 60; // Increase timeout to 60 seconds
+
 export async function POST(req: Request) {
     try {
         const formData = await req.formData();
@@ -35,7 +37,10 @@ export async function POST(req: Request) {
             const bytes = await file.arrayBuffer();
             const buffer = Buffer.from(bytes);
             const timestamp = Date.now();
-            const fileName = `${timestamp}-${file.name}`;
+
+            // Sanitize filename: remove spaces and special characters
+            const sanitizedName = file.name.replace(/[^a-zA-Z0-9.]/g, '_');
+            const fileName = `${timestamp}-${sanitizedName}`;
             const filePath = path.join(uploadDir, fileName);
 
             await writeFile(filePath, buffer);
@@ -44,8 +49,13 @@ export async function POST(req: Request) {
         }
         return NextResponse.json({ success: true, fileUrls });
 
-    } catch (err) {
+    } catch (err: any) {
         console.error("Upload failed", err);
-        return NextResponse.json({ success: false, error: 'Upload failed' }, { status: 500 });
+        return NextResponse.json({
+            success: false,
+            error: 'Upload failed',
+            details: err.message,
+            stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+        }, { status: 500 });
     }
 }

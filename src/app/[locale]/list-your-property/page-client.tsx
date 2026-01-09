@@ -174,10 +174,10 @@ const ListYourPropertyPageClient = () => {
                                 </svg>
                             </span>
                         </button>
-                        <a href="/">
+                        <Link href="/" title="Property Shop Investment">
                             <span className="sr-only">Property Shop Investment</span>
                             <img src="/logo-psi-white.svg" alt="logo" title="logo" width={100}></img>
-                        </a>
+                        </Link>
                     </div>
                     {/* mobile menu */}
                     <div className={`flex flex-column justify-between fixed bottom-0 left-0 min-h-[96%] h-[96%] bg-white w-96 shadow-lg transform transition-transform duration-300 rounded-r-xl ease-in-out px-[45px]
@@ -187,21 +187,21 @@ const ListYourPropertyPageClient = () => {
                                 <button onClick={toggleMobileMenu}
                                     className="top-4 left-4 text-slate-600 hover:text-red-500"
                                 >
-                                    <img src="/assets/images/list-property/menu-arrow.svg"></img>
+                                    <img src="/assets/images/list-property/menu-arrow.svg" alt="menu arrow" title="menu arrow"></img>
                                 </button>
-                                <a href="/" className="justify-self-center translate-x-20">
+                                <Link href="/" className="justify-self-center translate-x-20" title="Property Shop Investment">
                                     <span className="sr-only">Property Shop Investment</span>
                                     <img src="/PSI-Logo.svg" alt="logo" title="logo" width={100} className=""></img>
-                                </a>
+                                </Link>
                             </div>
 
                             <ul className="flex flex-col h-full gap-4 py-4 text-md font-semibold text-[#272963] leading-loose mt-5">
                                 {navItems.map((item, index) => (
-                                    <a key={index} href={item.href} onClick={() => setIsMobileMenuOpen(false)}>
+                                    <Link key={index} href={item.href} onClick={() => setIsMobileMenuOpen(false)} title={item.name}>
                                         <li key={index}>
                                             {item.name}
                                         </li>
-                                    </a>
+                                    </Link>
                                 ))}
                             </ul>
                         </div>
@@ -213,7 +213,7 @@ const ListYourPropertyPageClient = () => {
                     {/* Desktop menu */}
                     <div className="lg:flex hidden max-w-(--breakpoint-xl) mx-auto max-w-full items-center justify-between ">
                         <div>
-                            <Link href="/">
+                            <Link href="/" title="Property Shop Investment">
                                 <span className="sr-only">Property Shop Investment</span>
                                 <img src="/PSI-Logo.svg" alt="logo" title="logo" width={100}></img>
                             </Link>
@@ -223,7 +223,7 @@ const ListYourPropertyPageClient = () => {
                         <div className="flex justify-center gap-10 text-md text-[#272963]">
                             {navItems.map((item, index) => (
                                 <Link key={index}
-                                    href={item.href} className="">
+                                    href={item.href} title={item.name} className="">
                                     {item.icon ?
                                         <img src="/assets/images/list-property/home-icon.svg" alt="home" title="home"></img>
                                         :
@@ -234,7 +234,7 @@ const ListYourPropertyPageClient = () => {
                             ))}
 
                         </div>
-                        <div className="btnOuter relative bg-[#E35F27] rounded-[8px] h-[48px] w-[201px] font-semibold">
+                        <div className="btnOuter relative bg-[#E35F27] rounded-[8px] px-2 h-[50px] w-[201px] font-semibold">
                             <button className="btn btnPrimary btnAnimate text-white flex justify-between py-0 gap-2 items-center h-[48px] w-[201px]"
                                 onClick={modalHandler}>
                                 <CircleIcon />
@@ -251,20 +251,20 @@ const ListYourPropertyPageClient = () => {
                             <h3 className="md:text-2xl text-lg my-5 md:leading-normal leading-loose">{t("hero.subtitle")}</h3>
                             <div className="flex lg:justify-between justify-center md:w-[400px] sm:gap-auto gap-[10px]">
                                 <div className="btnOuter relative bg-[#E35F27] rounded-[8px] mt-5 h-[48px] sm:w-[201px] w-[180px] ">
-                                    <button className="btn btnPrimary btnAnimate text-white flex justify-between py-0 gap-2 items-center h-[48px] sm:w-[201px] w-[180px]"
+                                    <button className="btn btnPrimary btnAnimate text-white flex justify-between py-1 gap-2 px-2 items-center h-[50px] sm:w-[201px] w-[180px]"
                                         onClick={modalHandler}>
                                         <CircleIcon />
                                         {t("hero.button")}
                                     </button>
                                     <div className="banner-btn btnAnimateBorder absolute"></div>
                                 </div>
-                                <a className="btn btnSecondary flex text-center items-center justify-center border border-1-[#fff] h-[48px] w-[180px] rounded-[8px] mt-5"
+                                <Link className="btn btnSecondary flex text-center items-center justify-center border border-1-[#fff] h-[50px] w-[180px] rounded-[8px] mt-5"
                                     href="https://www.youtube.com/watch?v=fchpHRqT7mg"
                                     target="_blank"
                                     title="video">
-                                    <img src="/assets/images/list-property/play.png"></img>
+                                    <img src="/assets/images/list-property/play.png" alt="play" title="play"></img>
                                     {t("hero.watch_video")}
-                                </a>
+                                </Link>
                             </div>
                             <div className="dots-container flex gap-[10px] mt-[40px] md:justify-start justify-center">
                                 {thumbnails.map((img, index) => (
@@ -282,7 +282,7 @@ const ListYourPropertyPageClient = () => {
                                         key={index}
                                         className="thumbnail w-[317px] h-[154px] rounded-[15px] cursor-pointer"
                                         src={thumb}
-                                        alt={`Thumbnail ${index + 1}`}
+                                        alt={`Thumbnail ${index + 1}`} title={`Thumbnail ${index + 1}`}
                                         onClick={() => setSliderImg(thumb)}
                                     />
                                 ))}
@@ -303,13 +303,13 @@ const ListYourPropertyPageClient = () => {
                             {t.raw("about.points").map((point: string, index: number) => (
                                 <li key={index} className="flex gap-6">
                                     <img src="https://psinv.net/assets/img/list-your-property/images/check.svg"
-                                        alt="" className="w-6 h-6" />
+                                        alt="check" title="check" className="w-6 h-6" />
                                     {point}
                                 </li>
                             ))}
                         </ul>
                         <div className="btnOuter relative bg-[#E35F27] rounded-[8px] mt-[50px] h-[48px] w-[201px] ms-0 md:flex hidden">
-                            <button className="btn btnPrimary btnAnimate text-white flex justify-between py-0 gap-2 items-center h-[48px] w-[201px]"
+                            <button className="btn btnPrimary btnAnimate text-white flex justify-between py-0 gap-2 items-center px-2 h-[50px] w-[201px]"
                                 onClick={modalHandler}>
                                 <CircleIcon />
                                 {t("hero.button")}
@@ -323,12 +323,12 @@ const ListYourPropertyPageClient = () => {
                                 <div className="w-full md:h-full h-[335px] relative" style={{ aspectRatio: "3/4" }}
                                     onMouseEnter={() => setIsLeftHovered(true)} onMouseLeave={() => setIsLeftHovered(false)} >
                                     <img src="/assets/images/list-property/list-about-1-2.webp"
-                                        className={`w-full h-full object-cover rounded-[30px] absolute inset-0
+                                        alt="about psi" title="about psi" className={`w-full h-full object-cover rounded-[30px] absolute inset-0
                                         transition-opacity duration-500 ease-in-out
                                         ${isLeftHovering ? 'opacity-100' : 'opacity-0'} `}></img>
 
                                     <img src="/assets/images/list-property/list-about-1.webp"
-                                        className={`w-full h-full object-cover rounded-[30px] transition-opacity duration-500 ease-in-out
+                                        alt="about psi" title="about psi" className={`w-full h-full object-cover rounded-[30px] transition-opacity duration-500 ease-in-out
                                         ${isLeftHovering ? 'opacity-0' : 'opacity-100'}`}></img>
                                 </div>
                             </div>
@@ -336,24 +336,24 @@ const ListYourPropertyPageClient = () => {
                                 <div className="w-full h-[60%] relative"
                                     onMouseEnter={() => setIsTopHovered(true)} onMouseLeave={() => setIsTopHovered(false)} >
                                     <img src="/assets/images/list-property/list-about-2-2.webp"
-                                        className={`w-full h-full object-cover rounded-[30px] 
+                                        alt="about psi" title="about psi" className={`w-full h-full object-cover rounded-[30px] 
                                         absolute inset-0 transition-opacity duration-500 ease-in-out
                                         ${isTopHovering ? 'opacity-100' : 'opacity-0'}`}></img>
 
                                     <img src="/assets/images/list-property/list-about-2-desk.webp"
-                                        className={`w-full h-full object-cover rounded-[30px] 
+                                        alt="about psi" title="about psi" className={`w-full h-full object-cover rounded-[30px] 
                                         absolute inset-0 transition-opacity duration-500 ease-in-out
                                         ${isTopHovering ? 'opacity-0' : 'opacity-100'}`}></img>
                                 </div>
                                 <div className="w-full h-[40%] relative"
                                     onMouseEnter={() => setIsBottomHovered(true)} onMouseLeave={() => setIsBottomHovered(false)}>
                                     <img src="/assets/images/list-property/list-about-3-2.webp"
-                                        className={`w-full h-full object-cover rounded-[30px] 
+                                        alt="about psi" title="about psi" className={`w-full h-full object-cover rounded-[30px] 
                                         absolute inset-0 transition-opacity duration-500 ease-in-out
                                         ${isBottomHovering ? 'opacity-100' : 'opacity-0'}`}></img>
 
                                     <img src="/assets/images/list-property/list-about-3.webp"
-                                        className={`w-full h-full object-cover rounded-[30px] 
+                                        alt="about psi" title="about psi" className={`w-full h-full object-cover rounded-[30px] 
                                         absolute inset-0 transition-opacity duration-500 ease-in-out
                                         ${isBottomHovering ? 'opacity-0' : 'opacity-100'}`}></img>
                                 </div>
@@ -385,7 +385,7 @@ const ListYourPropertyPageClient = () => {
                         <h2 className="text-4xl text-[#272963] font-medium leading-normal mb-5">{t("virtual_tour.title")}</h2>
                         <p className="text-[#808080] leading-loose mb-5">{t("virtual_tour.description")}
                         </p>
-                        <div className="btnOuter relative bg-[#E35F27] rounded-[8px] mt-[50px] h-[48px] w-[201px] ms-0">
+                        <div className="btnOuter relative bg-[#E35F27] rounded-[8px] mt-[50px] py-0 px-2 h-[50px] w-[201px] ms-0">
                             <button className="btn btnPrimary btnAnimate text-white flex justify-between py-0 gap-2 items-center h-[48px] w-[201px]"
                                 onClick={modalHandler}>
                                 <CircleIcon />
@@ -406,7 +406,7 @@ const ListYourPropertyPageClient = () => {
                         </p>
                     </div>
                     <div className="md:w-3/7 justify-items-end content-end mb-5 md:block hidden">
-                        <div className="btnOuter relative bg-[#E35F27] rounded-[8px] mt-[50px] h-[48px] w-[201px] ms-0 justify-self-end">
+                        <div className="btnOuter relative bg-[#E35F27] rounded-[8px] mt-[50px] px-2 h-[50px] w-[201px] ms-0 justify-self-end">
                             <button className="btn btnPrimary btnAnimate text-white flex justify-between py-0 gap-2 items-center h-[48px] w-[201px]"
                                 onClick={modalHandler}>
                                 <CircleIcon />
@@ -420,7 +420,7 @@ const ListYourPropertyPageClient = () => {
                     <WhereToListPropertySlider slides={WhereToListItems} />
                 </div>
                 <div className="md:hidden block justify-self-center">
-                    <div className="btnOuter relative bg-[#E35F27] rounded-[8px] mt-[50px] h-[48px] w-[205px] ms-0 justify-self-end">
+                    <div className="btnOuter relative bg-[#E35F27] rounded-[8px] mt-[50px] px-2 h-[50px] w-[205px] ms-0 justify-self-end">
                         <button className="btn btnPrimary btnAnimate text-white flex justify-between py-0 gap-2 items-center h-[48px] w-[201px]"
                             onClick={modalHandler}>
                             <CircleIcon />
@@ -450,7 +450,7 @@ const ListYourPropertyPageClient = () => {
                     <div className="grid md:grid-cols-3 md:grid-rows-2 grid-cols-2 grid-rows-3 justify-content-center text-center text-[#808080] gap-x-5 gap-y-10">
                         {t.raw("benefits.items").map((benefit: string, index: number) => (
                             <div key={index} className="iconBox justify-items-center md:px-8 px-2">
-                                <img src={`/assets/images/list-property/icons/benefits-${index + 1}.svg`} alt="benefit" className="mb-4" />
+                                <img src={`/assets/images/list-property/icons/benefits-${index + 1}.svg`} alt={`benefit-${index + 1}`} title={`benefit-${index + 1}`} className="mb-4" />
                                 <p className="md:text-[16px] text-sm">{benefit}</p>
                             </div>
                         ))}
@@ -465,7 +465,7 @@ const ListYourPropertyPageClient = () => {
                     style={{ background: "linear-gradient(0deg, #f7f7f700, #f7f7f700), linear-gradient(0deg, rgba(39, 41, 99, 0.5), rgba(39, 41, 99, 0.5))" }} ></div>
                 <div className="max-w-(--breakpoint-xl) md:flex mx-auto px-4 items-center relative z-10">
                     <div className="md:w-1/2 md:block hidden gap-4 py-10">
-                        <img src="/PSI-Logo.svg" alt="logo" width={104} className="mb-5"></img>
+                        <img src="/PSI-Logo.svg" alt="logo" title="logo" width={104} className="mb-5"></img>
                         <h5 className="text-sm text-[#E35F27] font-semibold mb-3">{t("form.title")}</h5>
                         <h2 className="text-4xl text-[#272963] font-medium leading-normal mb-3">{t("form.footer_branding.title")}</h2>
                         <p className="text-[#212529]">{t("form.footer_branding.description")}</p>

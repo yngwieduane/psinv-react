@@ -14,6 +14,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { insertHubspotLead } from "@/utils/crmApiHelpers";
+import Link from "next/link";
 
 type FormData = z.infer<typeof FormDataSchema>
 
@@ -69,7 +70,12 @@ const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: 
     }
 };
 
-const getCityConfig = (cityName: string) => CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
+const getCityConfig = (cityName: string) => {
+    if (['Dubai', 'Sharjah'].includes(cityName)) {     //If Sharjah, use DUbai CRM
+        return CITY_CONFIG['Dubai'];
+    }
+    return CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
+}
 
 interface ListFormProps {
     fromModal?: boolean;
@@ -741,17 +747,17 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                 Service: ${data.service} </br>
                 Ready to view: ${data.readytoview} </br>                              
                 
-                ${propertyImages
-                    ? `Attach external image: ${baseURL}${uploadedFiles.propertyimages}</br>`
+                ${uploadedFiles.propertyimages?.length > 0
+                    ? `Attach external image: </br>${uploadedFiles.propertyimages.map((url: string) => `${baseURL}${url}`).join('</br>')}</br>`
                     : ''}
-                ${propertySpa
-                    ? `Attach SPA: ${baseURL}${uploadedFiles.spa}</br>`
+                ${uploadedFiles.spa?.length > 0
+                    ? `Attach SPA: </br>${uploadedFiles.spa.map((url: string) => `${baseURL}${url}`).join('</br>')}</br>`
                     : ''}               
-                ${propertyDeed
-                    ? `Attach Title Deed: ${baseURL}${uploadedFiles.deed}</br>`
+                ${uploadedFiles.deed?.length > 0
+                    ? `Attach Title Deed: </br>${uploadedFiles.deed.map((url: string) => `${baseURL}${url}`).join('</br>')}</br>`
                     : ''}
-                ${passportFile
-                    ? `Passport: ${baseURL}${uploadedFiles.passport}</br>`
+                ${uploadedFiles.passport?.length > 0
+                    ? `Passport: </br>${uploadedFiles.passport.map((url: string) => `${baseURL}${url}`).join('</br>')}</br>`
                     : ''}
                 
                 Date to view: ${data.datetoview} </br>
@@ -759,7 +765,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                 URL coming from: ${currentUrl}
             `;
 
-            if (cityName === "Dubai" && isAuhOnlyCampaign) {
+            if (['Dubai', 'Sharjah'].includes(cityName) && isAuhOnlyCampaign) {
                 propertyCampaignId = "";        //put campaign id empty if city is dubai and campaign in of AUH
             }
 
@@ -821,8 +827,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
             };
 
             try {
-
-                if (isHubspotMedia && cityName !== 'Dubai') {
+                if (isHubspotMedia && !['Dubai', 'Sharjah'].includes(cityName)) {
                     console.log("Inserting lead into HubSpot CRM...");
                     const hubspotResponse = await insertHubspotLead(formDataToSend);
 
@@ -1147,7 +1152,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </div>
                             {/* mobile progress bar */}
                             <div className="progree-bar md:hidden block justify-items-center">
-                                <img src={`${steps[currentStep].progressImg}`}></img>
+                                <img src={`${steps[currentStep].progressImg}`} title="progress bar"></img>
                             </div>
 
                             <div className="flex justify-between gap-5">
@@ -1230,7 +1235,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
                             {/* mobile progress bar */}
                             <div className="progree-bar md:hidden block justify-items-center">
-                                <img src={`${steps[currentStep].progressImg}`}></img>
+                                <img src={`${steps[currentStep].progressImg}`} title="progress bar"></img>
                             </div>
 
                             <div className="flex justify-between gap-5">
@@ -1279,7 +1284,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </div>
                             {/* mobile progress bar */}
                             <div className="progree-bar md:hidden block justify-items-center">
-                                <img src={`${steps[currentStep].progressImg}`}></img>
+                                <img src={`${steps[currentStep].progressImg}`} title="progress bar"></img>
                             </div>
                             <div className="flex justify-between gap-5">
                                 <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>{t("form.buttons.previous")}</button>
@@ -1388,7 +1393,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </div>
                             {/* mobile progress bar */}
                             <div className="progree-bar md:hidden block justify-items-center">
-                                <img src={`${steps[currentStep].progressImg}`}></img>
+                                <img src={`${steps[currentStep].progressImg}`} title="progress bar"></img>
                             </div>
 
                             <div className="flex justify-between gap-5">
@@ -1434,7 +1439,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
                             {/* mobile progress bar */}
                             <div className="progree-bar md:hidden block justify-items-center">
-                                <img src={`${steps[currentStep].progressImg}`}></img>
+                                <img src={`${steps[currentStep].progressImg}`} title="progress bar"></img>
                             </div>
 
                             <div className="flex justify-between gap-5">
@@ -1493,7 +1498,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
             </form>
             {!isSubmitSuccess && (
-                <p className="text-sm text-[#8A8A8A] mt-5">{t("form.labels.footer_agreement")} <a href="terms">Terms & Conditions</a> and <a href="privacy">Privacy Policy</a></p>
+                <p className="text-sm text-[#8A8A8A] mt-5">{t("form.labels.footer_agreement")} <Link href="terms" title="Terms & Conditions">Terms & Conditions</Link> and <Link href="privacy" title="Privacy Policy">Privacy Policy</Link></p>
             )}
 
         </>
