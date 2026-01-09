@@ -19,7 +19,10 @@ export function HostedBy({ validationErrors }: { validationErrors?: Record<strin
   const today = dayjs().format('YYYY-MM-DD');
 
   const config = walkinFormConfig[slug];
-  const agentList = config?.agentsByDate?.[today] || [];
+  const agentList =
+    (config?.agents?.length ? config.agents : (config?.agentsByDate?.[today] || []))
+      .slice()
+      .sort((a, b) => a.name.localeCompare(b.name));
 
   const { data, updateForm } = useWalkinForm();
   const [hover, setHover] = useState(0);
