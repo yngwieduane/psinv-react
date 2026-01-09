@@ -11,6 +11,7 @@ import { FormDataSchema2 } from "./lib/Schema2";
 import 'react-datepicker/dist/react-datepicker.css';
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { insertHubspotLead } from "@/utils/crmApiHelpers";
 
 type FormData = z.infer<typeof FormDataSchema2>
 
@@ -29,8 +30,29 @@ const steps: { id: string, name: string, progressValue: string, progressImg: str
         progressImg: "/assets/images/list-property/progress-17.svg",
         fields: ['location', 'property']
     },
-
 ]
+
+const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: number; referredBy?: number; assignedTo?: number }> = {
+    'Dubai': {
+        email: 'callcenter@psidubai.com',
+        apiUrl: 'https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0',
+        referredTo: 4421,
+        referredBy: 4421,
+        assignedTo: 4421,
+    },
+    'Abu Dhabi': {
+        email: 'callcenter@psinv.net',
+        apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
+        referredTo: 3458,
+        referredBy: 3458,
+    },
+    'DEFAULT': {
+        email: 'callcenter@psinv.net',
+        apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
+    }
+};
+
+const getCityConfig = (cityName: string) => CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
 
 interface FormValue {
     fname: string;
@@ -69,7 +91,6 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
     const [cityName, setCityName] = useState('');
     const [propName, setPropName] = useState('');
     const [gclidField, setGclidField] = useState('');
-    const [apiUrl, setApiUrl] = useState('');
     const [isAlreadySubmitted, setIsAlreadySubmitted] = useState(false);
 
     const {
@@ -190,18 +211,8 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
         setValue('propName', selectedProperty.text);
     }
 
-    useEffect(() => {
-        if (!formValue.cityName) return;
-
-        switch (formValue.cityName) {
-            case 'Dubai':
-                setApiUrl('https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0');
-                break;
-            default:
-                setApiUrl('https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a');
-                break;
-        }
-    }, [formValue.cityName]);
+    // Unified config management
+    const cityConfig = getCityConfig(cityName);
 
     const onSubmit = async (data: FormData) => {
         if (typeof window === 'undefined') return; //ensure code runs only in browser
@@ -226,7 +237,7 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
             let urlParams = new URLSearchParams(window.location.search);
             let source = urlParams.get('utm_source') || '';
-            let campaign = urlParams.get('utm_campaign') || '';
+            let campaign = urlParams.get('utm_campaign') || urlParams.get('?utm_campaign') || '';
             let gclid = urlParams.get('gclid_field') || '';
             let currentUrl = window.location.href;
 
@@ -243,26 +254,39 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
             let mediaType = "129475";
             let mediaName = "165233";
             let propertyCampaignId = "";
+            let newRemarks = "";
             let methodOfContact = "115747";
+            let isAuhOnlyCampaign = false;
 
             switch (source) {
+                case 'HubspotEmail':
+                case 'HubSpotEmail':
+                case 'hubspotemail':
+                case 'hs_email':
+                case 'Hubspot':
+                case 'hubspot':
+                    mediaType = "63906";
+                    mediaName = "63907";
+                    propertyCampaignId = "";
+                    methodOfContact = methodOfContact;
+                    break;
                 case "newsletter":
                     mediaType = "166277";
                     mediaName = "166071";
                     propertyCampaignId = "";
-                    methodOfContact = "MethodOfContactVal";
+                    methodOfContact = methodOfContact;
                     break;
                 case "sms":
                     mediaType = "129474";
                     mediaName = "165366";
-                    methodOfContact = "MethodOfContactVal";
+                    methodOfContact = methodOfContact;
                     break;
                 case "Google":
                 case "google":
                     mediaType = "165269";
                     mediaName = "128455";
                     propertyCampaignId = "";
-                    methodOfContact = "MethodOfContactVal";
+                    methodOfContact = methodOfContact;
                     break;
                 default:
                     mediaType = "129475";
@@ -271,13 +295,54 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     break;
             }
 
-            // switch (campaign) {
-            //     case '':
-            //         propertyCampaignId = "";
-
-            //     default:
-            //         propertyCampaignId = propertyCampaignId;
-            // } 
+            switch (campaign) {
+                case 'RamahnIsland_Hubspot':
+                    propertyCampaignId = "2133";
+                    newRemarks = "Rotation:Ramhan Rotation";
+                    isAuhOnlyCampaign = true;
+                    break;
+                case 'ALReemHills_Hubspot':
+                    propertyCampaignId = "2127";
+                    isAuhOnlyCampaign = true;
+                    break;
+                case 'SAADIYATLAGOONS_hubspot':
+                    propertyCampaignId = "2128";
+                    isAuhOnlyCampaign = true;
+                    break;
+                case 'SAADIYATLAGOONS_hupspot':
+                    propertyCampaignId = "2128";
+                    isAuhOnlyCampaign = true;
+                    break;
+                case 'YasRiva_Hubspot':
+                    propertyCampaignId = "2132";
+                    isAuhOnlyCampaign = true;
+                    break;
+                case 'Hudayriyat_Hubspot':
+                case 'Hudayriyat_HubSpot':
+                    propertyCampaignId = "2177";
+                    isAuhOnlyCampaign = true;
+                    break;
+                case 'DripCampaign_hubspot':
+                case 'DripCampaign':
+                    propertyCampaignId = "2134";
+                    newRemarks = "";
+                    isAuhOnlyCampaign = true;
+                    break;
+                case 'Landlord_Hubspot':
+                    propertyCampaignId = "2199";
+                    newRemarks = "rotation:landlord ";
+                    isAuhOnlyCampaign = true;
+                    break;
+                case '10.2025_jubail_island_lisitingCampaign':
+                    propertyCampaignId = "2374";
+                    newRemarks = "rotation:Jubail landlord ";
+                    isAuhOnlyCampaign = true;
+                    break;
+                default:
+                    propertyCampaignId = propertyCampaignId;
+                    isAuhOnlyCampaign = false;
+                    break;
+            }
 
             switch (data.beds) {
                 case "1":
@@ -366,25 +431,12 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     break;
             }
 
-            switch (cityName) {
-                case 'Abu Dhabi':
-                    ReferredToID = 3458;
-                    ReferredByID = 3458;
-                    sendtomail = 'callcenter@psinv.net';
-                    break;
-                case 'Dubai':
-                    ReferredToID = 4421;
-                    ReferredByID = 4421;
-                    ActivityAssignedTo = 4421;
-                    sendtomail = "callcenter@psidubai.com";
-                    break;
-                default:
-                    ReferredToID = ReferredToID;
-                    ReferredByID = ReferredByID;
-                    ActivityAssignedTo = ActivityAssignedTo;
-                    sendtomail = "callcenter@psinv.net";
-                    break;
-            }
+            if (cityConfig.referredTo) ReferredToID = cityConfig.referredTo;
+            if (cityConfig.referredBy) ReferredByID = cityConfig.referredBy;
+            if (cityConfig.assignedTo) ActivityAssignedTo = cityConfig.assignedTo;
+            sendtomail = cityConfig.email;
+
+            const isHubspotMedia = mediaName === '63907';
 
             const remarks = `
                 Additional consent 1 : ${data.agreement1 ? "Yes" : "No"} </br>
@@ -400,6 +452,10 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
                 Property: ${data.propName} </br>
                 URL coming from: ${currentUrl}
             `;
+
+            if (cityName === "Dubai" && isAuhOnlyCampaign) {
+                propertyCampaignId = "";        //put campaign id empty if city is dubai and campaign in of AUH
+            }
 
             const formDataToSend = {
                 TitleID: "129932",
@@ -451,7 +507,7 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
                 ActivityDate: "",
                 ActivityTypeId: "167234",
                 ActivitySubject: "Email Inquiry Copy",
-                ActivityRemarks: remarks,
+                ActivityRemarks: remarks + ". " + newRemarks,
                 IsForAutoRotation: "",
                 PropertyCampaignId: propertyCampaignId,
                 contactClassId: "",
@@ -459,13 +515,27 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
             };
 
             try {
-                const response = await fetch(`${apiUrl}`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(formDataToSend),
-                });
+
+                if (isHubspotMedia && cityName !== 'Dubai') {
+                    console.log("Inserting lead into HubSpot CRM...");
+                    const hubspotResponse = await insertHubspotLead(formDataToSend);
+
+                    if (!hubspotResponse.ok) {
+                        const text = await hubspotResponse.text();
+                        throw new Error(`HubSpot API error: ${hubspotResponse.status} - ${text}`);
+                    }
+
+                    const hubspotData = await hubspotResponse.json();
+                    console.log("Lead inserted into HubSpot:", hubspotData);
+                } else {
+                    await fetch(`${cityConfig.apiUrl}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(formDataToSend),
+                    });
+                }
 
                 const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
                     method: "POST",
@@ -522,22 +592,17 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </tbody>
                         </table>
                         `,
-                        receiver: sendtomail,
+                        receiver: cityConfig.email,
                         subject: "New inquiry - List Your Property",
                         filename: "",
                         filedata: ""
                     }),
                 });
 
-                if (response.ok && mailRes.ok) {
-                    setPostId("success");
-                    setIsSubmitSuccess(true);
-                    setIsAlreadySubmitted(false);
-                    //window.location.href = `/${locale}/thankyou?${encodeURIComponent(data.email)}`
-                    localStorage.setItem("formSubmitTime", Date.now().toString());
-                } else {
-                    alert("Error submitting the form.");
-                }
+                setPostId("success");
+                setIsSubmitSuccess(true);
+                setIsAlreadySubmitted(false);
+                localStorage.setItem("formSubmitTime", Date.now().toString());
 
             } catch (error) {
                 console.log(error);
@@ -747,8 +812,8 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
                         <div className="w-full items-center">
                             <img src="/assets/images/list-property/list-thankyou.svg" alt="thank you" className="mb-5 mx-auto"></img>
                             <div className="thankyou-text text-center bg-[#e35f271a] px-15 py-10 rounded-[16px] w-full">
-                                <h2 className="text-5xl text-[#272963] font-bold mb-4">{t("messages.thank_you")}</h2>
-                                <p className="text-[#525151] text-lg">{t("messages.success_message")}</p>
+                                <h2 className="text-5xl text-[#272963] font-bold mb-4">{t("form.messages.thank_you")}</h2>
+                                <p className="text-[#525151] text-lg">{t("form.messages.success_message")}</p>
                             </div>
                         </div>
                     </>
@@ -758,7 +823,7 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     <>
                         <div className="w-full">
                             <div className='bg-yellow-100 text-center text-sm p-4 text-[#78350F]' role='alert'>
-                                {t("messages.already_submitted")}
+                                {t("form.messages.already_submitted")}
                             </div>
                         </div>
                     </>

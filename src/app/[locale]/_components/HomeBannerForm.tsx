@@ -22,8 +22,8 @@ const schema = z.object({
 interface BannerFormProps {
   hideFeedbackButton?: boolean;
   propData?: Record<string, any>;
-  isReportDownload ? : boolean;
-  submitLabel ? : string;
+  isReportDownload?: boolean;
+  submitLabel?: string;
 }
 type FormData = z.infer<typeof schema>;
 
@@ -312,14 +312,14 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
         setPostId("Success");
         setIsAlreadySubmitted(false);
         if (isReportDownload) {
-          window.open("https://drive.google.com/file/d/16wOSq_MY88j_T7cqxv5i7uZ_PQt2421d/view", "_blank");
+          window.open("https://drive.google.com/file/d/1OrX7UlxvVcE9e1nPJ7ipHXAcG4H7WiKi/view?usp=sharing", "_blank");
           setTimeout(() => {
             window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
           }, 1500);
         }
         else {
           window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
-        }        
+        }
         localStorage.setItem("formSubmitTime", Date.now().toString());
       } else {
         alert("Error submitting the form.");
@@ -385,8 +385,8 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
           className="w-full border border-[#111954] p-3 mb-6 rounded-md hover:text-[#0c1445] hover:bg-white bg-[#0c1445] text-white font-semibold cursor-pointer"
           disabled={isSubmitting}
         >
-         
-          {isSubmitting ? "Submitting..." :   `${submitLabel || 'Submit' }`}
+
+          {isSubmitting ? "Submitting..." : `${submitLabel || 'Submit'}`}
         </button>
         <div className="md:flex w-full gap-5 md:space-y-0 space-y-3">
           <a title="Whatsapp" target="_blank" className="border border-1 border-[#c3c3c3] text-center py-2 rounded-md w-full md:w-1/2 flex items-center gap-2 justify-center"
