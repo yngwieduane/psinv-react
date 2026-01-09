@@ -5696,7 +5696,9 @@
         "unitView": "Unit View",
         "unitSize": "Unit Size",
         "unitNumber": "Unit Number",
-        "askingPrice": "Asking Price"
+        "askingPrice": "Asking Price",
+        "service": "Select Service Type",
+        "selectPurpose": "Select Purpose"
       },
       "options": {
         "purpose": {

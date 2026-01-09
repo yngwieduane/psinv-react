@@ -62,7 +62,7 @@ const WhyPSI = () => {
                 {t("why_psi.desc")}
               </p>
               <Link
-                href="/corporate/"
+                href="/about-us/"
                 title="Learn more about PSI"
                 className="w-full relative text-md md:text-lg px-3 overflow-hidden rounded bg-orange-700 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer"
               >

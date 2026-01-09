@@ -5251,7 +5251,9 @@
         "unitView": "إطلالة الوحدة",
         "unitSize": "حجم الوحدة",
         "unitNumber": "رقم الوحدة",
-        "askingPrice": "السعر المطلوب"
+        "askingPrice": "السعر المطلوب",
+        "service": "اختر نوع الخدمة",
+        "selectPurpose": "اختر الغرض"
       },
       "options": {
         "purpose": {

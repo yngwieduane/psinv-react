@@ -1,6 +1,6 @@
 // src/utils/brightCall/brightCallDefaults.ts
 
-export type BrightCallPageType = "registration" | "landing";
+export type BrightCallPageType = "registration" | "landing" | "listpage";
 export type BrightCallLocale = "en" | "ar" | "de";
 
 /**
@@ -17,6 +17,11 @@ export const brightCallDefaults: Record<
         de: process.env.NEXT_PUBLIC_BRIGHTCALL_REG_EN ?? "",
     },
     landing: {
+        en: process.env.NEXT_PUBLIC_BRIGHTCALL_LP_EN ?? "",
+        ar: process.env.NEXT_PUBLIC_BRIGHTCALL_LP_AR ?? "",
+        de: process.env.NEXT_PUBLIC_BRIGHTCALL_REG_EN ?? "",
+    },
+    listpage: {
         en: process.env.NEXT_PUBLIC_BRIGHTCALL_LP_EN ?? "",
         ar: process.env.NEXT_PUBLIC_BRIGHTCALL_LP_AR ?? "",
         de: process.env.NEXT_PUBLIC_BRIGHTCALL_REG_EN ?? "",
