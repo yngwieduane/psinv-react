@@ -1071,5 +1071,211 @@
       "q22": "Should I buy crypto or real estate?",
       "a22": "There are many advantages of investing your crypto in buying real estate in the UAE such as: <ul class='list-none pl-4 mt-2 space-y-2'><li>1. A tangible asset. It has intrinsic value as people will always need a place to live.</li><li>2. You can always force the appreciation of your real estate asset.</li><li>3. Passive cash flow.</li><li>4. Real estate has significantly less risk and offers more consistent returns.</li><li>5. Contact us today to explore the options PSI offers to have a steady source of income and generate a reliable income in addition to appreciation.</li></ul>"
     }
+  },
+  "ListYourPropertyPage": {
+    "nav": {
+      "home": "Startseite",
+      "about": "Über uns",
+      "providers": "Anbieter",
+      "solutions": "Unsere Lösungen",
+      "benefits": "Vorteile",
+      "faqs": "FAQs"
+    },
+    "hero": {
+      "title": "Wir lassen Ihre Immobilie hervorstechen – listen Sie sie bei uns",
+      "subtitle": "Verkaufen oder vermieten Sie Ihre Immobilie mit PSI, der #1 Immobilienagentur in den VAE. Wir kümmern uns um alles, von Marketing bis Buchungen.",
+      "button": "Immobilie listen",
+      "watch_video": "Video ansehen"
+    },
+    "about": {
+      "title": "Warum Ihre Immobilie bei uns listen?",
+      "description": "Wir versuchen, den Prozess der Auflistung und Vermietung/Verkauf Ihrer Immobilie so einfach und unkompliziert wie möglich zu gestalten. Mit unserem Expertenteam vermeiden Sie alle Mühen des traditionellen Immobilienmarkts und erzielen die gewünschten Ergebnisse stressfrei.",
+      "points": [
+        "Wählen Sie einen erfahrenen Listing-Agenten.",
+        "Besprechen Sie den richtigen Preis für Ihre Immobilie.",
+        "Kostenlose professionelle Fotos & Videos Ihrer Immobilie.",
+        "Ihre Immobilie wird auf Immobilienportalen verifiziert."
+      ]
+    },
+    "virtual_tour": {
+      "title": "Live-Touren mit 360°-virtueller Ansicht Ihrer Immobilie",
+      "description": "Erleben Sie Ihr Zuhause wie nie zuvor! Es ist wichtiger denn je, sich von der Konkurrenz abzuheben. PSI bietet Ihnen eine 360°-Tour Ihrer Immobilie, die in andere Marketingmaterialien integriert wird. Die beeindruckendste Panorama-Präsentation ist definitiv die 360°-Virtuelle Tour. Der Bedarf an virtueller Technologie wächst rasant. Fast jeder sucht jetzt online nach verfügbaren virtuellen Touren."
+    },
+    "where_to_list": {
+      "title": "Wo listen wir Ihre Immobilie?",
+      "description": "Immobilienbesitzer! Listen Sie Ihre Immobilie bei uns zum Verkauf oder zur Vermietung. Kontaktieren Sie unsere spezialisierten Berater, um den besten Wert für Ihre Immobilie zu erzielen."
+    },
+    "exclusive_listing": {
+      "title": "Exklusives Immobilienlisting",
+      "points": [
+        "Höhere Serviceverpflichtung",
+        "Maximale Sichtbarkeit bei den richtigen Mietern/Investoren",
+        "Mehr hochwertige Leads",
+        "Garantiert hochwertige Angebote",
+        "Spezielle Marketingkampagnen für Verkauf oder Vermietung",
+        "Ihre Immobilie wird von einem dedizierten Agenten gezeigt",
+        "1 Jahr kostenlose Immobilienverwaltung"
+      ]
+    },
+    "non_exclusive_listing": {
+      "title": "Nicht-exklusives Immobilienlisting",
+      "points": [
+        "Listen Sie Ihre Immobilie bei mehreren Immobilienagenten",
+        "Marketing Ihrer Immobilie auf denselben Kanälen durch verschiedene Agenten",
+        "Mehr Leads für Ihre Immobilie",
+        "Garantiert hochwertige Angebote",
+        "Ihre Immobilie kann denselben Kunden durch verschiedene Agenten angezeigt werden",
+        "Keine Verpflichtung, Provision zu zahlen, wenn Sie die Immobilie selbst verkaufen/vermieten"
+      ]
+    },
+    "benefits": {
+      "title": "Vorteile einer Listung bei uns",
+      "description": "Wir verstehen, wie beschäftigt Sie sind, deshalb tun wir alles, um den Prozess der Vermietung/Verkauf Ihrer Immobilie stressfrei zu gestalten. - Online-Touren generieren 30% mehr Anfragen.",
+      "items": [
+        "13+ Jahre Erfahrung in der Immobilienbranche",
+        "Abdeckung von 50+ Bezirken in den VAE",
+        "Fortschrittliche Immobilien-Technologie und Prozesse",
+        "Höchste Transaktionen auf dem Immobilienmarkt von Abu Dhabi",
+        "Spezialisiertes Team für jeden Bereich in Abu Dhabi & Dubai",
+        "1 Jahr kostenlose Immobilienverwaltung"
+      ]
+    },
+    "footer": {
+      "copyright": "© 2025 Property Shop Investment LLC. | Alle Rechte vorbehalten."
+    },
+    "faqs_section": {
+      "title": "FAQs",
+      "items": [
+        {
+          "question": "Was sind exklusive Verkäufer-Agentur-Dienstleistungen?",
+          "answer": "Dies ist ein Service für Eigentümer von Premium-Immobilien, die ihr Listing hervorheben und den höchstmöglichen Preis erzielen möchten."
+        },
+        {
+          "question": "Warum sollte ich ein exklusives Verkaufsabkommen wählen?",
+          "answer": "Vertrauen und Erfahrung sind die Hauptgründe für die Wahl eines exklusiven Abkommens mit Exotiq. Eigentümer erkennen heutzutage, wie komplex es geworden ist, erfolgreich eine Immobilie zu verkaufen, besonders wenn sie einem Ausländer gehört. Es erfordert nicht nur umfassendes Wissen über den Verkauf von Luxusimmobilien, sondern auch fundierte Kenntnisse in rechtlichen und steuerlichen Angelegenheiten, die nur durch jahrelange Erfahrung kommen. Gegründet 2002, ist Exotiq die älteste Immobilienagentur auf Bali."
+        },
+        {
+          "question": "Welche Immobilien qualifizieren sich für den exklusiven Listing-Service?",
+          "answer": "Alle unsere exklusiven Immobilien sind besonders und einzigartig. Sie befinden sich typischerweise im oberen Marktsegment. Rufen Sie uns an, um herauszufinden, ob Ihre Immobilie für ein exklusives Listing geeignet ist."
+        },
+        {
+          "question": "Welche zusätzlichen Leistungen erhalte ich bei einem exklusiven Listing?",
+          "answer": "Wir erstellen eine umfassende Kampagne und investieren bis zu 1% unserer Provision in das Marketing Ihrer Immobilie. Dazu gehören Video- und professionelle Fotoproduktion sowie eine eigene Website nur für Ihre Immobilie."
+        }
+      ]
+    },
+    "form": {
+      "title": "Immobilie listen",
+      "steps": {
+        "personal_info": "Persönliche Informationen",
+        "prop_details_1": "Immobiliendetails 1",
+        "prop_details_2": "Immobiliendetails 2",
+        "prop_details_3": "Immobiliendetails 3",
+        "files": "Dateien",
+        "complete": "Abgeschlossen"
+      },
+      "labels": {
+        "firstName": "Vorname",
+        "lastName": "Nachname",
+        "phone": "Telefonnummer",
+        "email": "E-Mail-Adresse",
+        "purpose": "Zweck der Immobilie",
+        "location": "Standort",
+        "propType": "Immobilientyp",
+        "property": "Immobilie",
+        "beds": "Schlafzimmer",
+        "description": "Bitte beschreiben Sie Ihre Immobilie",
+        "unitView": "Aussicht",
+        "unitSize": "Größe",
+        "baths": "Badezimmer",
+        "parking": "Parken",
+        "unitNumber": "Einheitsnummer",
+        "askingPrice": "Preisvorstellung",
+        "status": "Status",
+        "service": "Serviceart",
+        "readyToView": "Besichtigungsbereit",
+        "attachImages": "Externe Bilder anhängen",
+        "attachSpa": "SPA anhängen",
+        "attachDeed": "Titelurkunde anhängen",
+        "attachPassport": "Pass anhängen",
+        "bestTime": "Beste Zeit zur Kontaktaufnahme",
+        "date": "Datum",
+        "time": "Uhrzeit",
+        "agreement1": "Ich stimme den AGB und Datenschutzrichtlinien zu",
+        "agreement2": "Stimme dem Erhalt von Anrufen und Mitteilungen zu",
+        "agreement3": "Erhalte Anrufe zu verschiedenen Projekten",
+        "footer_agreement": "Mit Klick auf 'Senden' stimmen Sie zu",
+        "of": "von",
+        "list_your_property": "Immobilie listen"
+      },
+      "placeholders": {
+        "firstName": "Vorname",
+        "lastName": "Nachname",
+        "email": "E-Mail-Adresse",
+        "purpose": "Zweck",
+        "description": "Hier schreiben",
+        "selectLocation": "Standort auswählen",
+        "selectPropType": "Immobilientyp auswählen",
+        "selectProperty": "Immobilie auswählen",
+        "selectBeds": "Anzahl der Schlafzimmer auswählen",
+        "selectBaths": "Badezimmer",
+        "selectParking": "Parkplatz",
+        "selectService": "Serviceart auswählen",
+        "unitView": "Aussicht",
+        "unitSize": "Größe",
+        "unitNumber": "Einheitsnummer",
+        "askingPrice": "Preisvorstellung",
+        "service": "Serviceart auswählen",
+        "selectPurpose": "Zweck auswählen"
+      },
+      "options": {
+        "purpose": {
+          "sale": "Verkauf",
+          "rent": "Vermietung",
+          "manage": "Verwaltung"
+        },
+        "propType": {
+          "villa": "Villa",
+          "apartment": "Wohnung",
+          "townhouse": "Reihenhaus"
+        },
+        "location": {
+          "abu_dhabi": "Abu Dhabi",
+          "dubai": "Dubai",
+          "sharjah": "Sharjah",
+          "rak": "RAK"
+        },
+        "status": {
+          "rented": "Vermietet",
+          "vacant": "Frei",
+          "occupied": "Belegt"
+        },
+        "service": {
+          "res_rent": "Wohnung zur Miete",
+          "res_sale": "Wohnung zum Verkauf",
+          "com_rent": "Gewerbe zur Miete",
+          "com_sale": "Gewerbe zum Verkauf"
+        },
+        "yes": "Ja",
+        "no": "Nein"
+      },
+      "buttons": {
+        "next": "Weiter",
+        "previous": "Zurück",
+        "submit": "Senden",
+        "submitting": "Wird gesendet..."
+      },
+      "messages": {
+        "loading_props": "Immobilien werden geladen...",
+        "thank_you": "Vielen Dank!",
+        "success_message": "Ihre Anfrage wurde gesendet. Unser Agent wird sich in Kürze bei Ihnen melden.",
+        "already_submitted": "Sie haben bereits eine Anfrage gesendet. Bitte warten Sie ein paar Minuten, bevor Sie es erneut versuchen.",
+        "error": "Fehler beim Senden des Formulars."
+      },
+      "footer_branding": {
+        "title": "Mit der Marke, der Sie vertrauen",
+        "description": "Vertrauen Sie der Marke, die Qualität, Zuverlässigkeit liefert und Ihre Bedürfnisse erfüllt. Bleiben Sie bei der Marke, der Sie vertrauen."
+      }
+    }
   }
 }
