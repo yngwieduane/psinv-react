@@ -28,7 +28,6 @@ export const JBR_ALL_AGENTS: Agent[] = [
     { id: "7173", name: "Ailen Quindimil" },
     { id: "6991", name: "Nazer Sarkis" },
     { id: "9746", name: "Salim Mikram" },
-    { id: "9753", name: "Jasmyn Brianna John" },
     { id: "6217", name: "Lydia Ainouz" },
     { id: "9777", name: "Paula Civerchia" },
     { id: "9794", name: "Lahcene Messaoudene" },
@@ -99,7 +98,6 @@ export const JBR_ALL_AGENTS: Agent[] = [
     { id: "9753", name: "Strahinja Bogdanovic" },
     { id: "9755", name: "Mostafa Gaber Tawfik Abdelmotleb" },
     { id: "9757", name: "Yazan Ghaleb Mufadi Mousa" },
-
     { id: "6169", name: "Alexia Degas" },
     { id: "7168", name: "Scott Mason" },
     { id: "7169", name: "Santino Palmisano" },
@@ -154,16 +152,13 @@ export const JBR_ALL_AGENTS: Agent[] = [
     { id: "7084", name: "Hamdo Mohammad Samir Aldery" },
     { id: "7085", name: "Aafaf El Ammouri" },
     { id: "7086", name: "Katsiaryna Kuchkarava" },
-
     { id: "7074", name: "Alaa Mohamed Khamis Ahmed Moustafa" },
     { id: "7053", name: "Hanane Ettaziti" },
     { id: "7058", name: "Ibrahim Ziyad Halabi" },
     { id: "7059", name: "Abdulwahab Alhoumsi Altawil" },
     { id: "7060", name: "Charles William Prest James" },
     { id: "7061", name: "Nigar Muslum Qizi Ibrahim" },
-    { id: "7062", name: "Burak Han Karayaka" },
     { id: "7064", name: "Komeyl Mirarabrazi" },
-
     { id: "4674", name: "Maisara Mohamed Fathy Ibrahim" },
     { id: "6693", name: "Ahmad Mohammad Ali Bazzari" },
     { id: "6669", name: "Rawaa Hassan A. Alrahmo Aljazzar" },
