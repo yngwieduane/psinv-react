@@ -52,7 +52,7 @@ const ContactForm = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const source = urlParams.get("utm_source");
     const currentUrl = window.location.href;
-    let sendtomail = 'wd6@psinv.net';
+    let sendtomail = 'callcenter@psinv.net';
 
     let mediaType = "129475";
     let mediaName = "165233";
