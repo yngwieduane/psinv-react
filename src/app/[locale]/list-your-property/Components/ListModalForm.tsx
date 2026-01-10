@@ -35,20 +35,20 @@ const steps: { id: string, name: string, progressValue: string, progressImg: str
 
 const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: number; referredBy?: number; assignedTo?: number }> = {
     'Dubai': {
-        email: 'callcenter@psidubai.com',
+        email: 'callcenter@psidubai.com, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0',
         referredTo: 4421,
         referredBy: 4421,
         assignedTo: 4421,
     },
     'Abu Dhabi': {
-        email: 'callcenter@psinv.net',
+        email: 'callcenter@psinv.net, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
         referredTo: 3458,
         referredBy: 3458,
     },
     'DEFAULT': {
-        email: 'callcenter@psinv.net',
+        email: 'callcenter@psinv.net, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
     }
 };
@@ -532,7 +532,7 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     }
 
                     const hubspotData = await hubspotResponse.json();
-                    console.log("Lead inserted into HubSpot:", hubspotData);
+                    //console.log("Lead inserted into HubSpot:", hubspotData);
                 } else {
                     await fetch(`${cityConfig.apiUrl}`, {
                         method: "POST",
