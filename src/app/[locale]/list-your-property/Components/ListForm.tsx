@@ -15,6 +15,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { insertHubspotLead } from "@/utils/crmApiHelpers";
 import Link from "next/link";
+import { File } from "buffer";
 
 type FormData = z.infer<typeof FormDataSchema>
 
@@ -52,20 +53,20 @@ interface FormValue {
 
 const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: number; referredBy?: number; assignedTo?: number }> = {
     'Dubai': {
-        email: 'callcenter@psidubai.com',
+        email: 'callcenter@psidubai.com, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0',
         referredTo: 4421,
         referredBy: 4421,
         assignedTo: 4421,
     },
     'Abu Dhabi': {
-        email: 'callcenter@psinv.net',
+        email: 'callcenter@psinv.net, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
         referredTo: 3458,
         referredBy: 3458,
     },
     'DEFAULT': {
-        email: 'callcenter@psinv.net',
+        email: 'callcenter@psinv.net, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
     }
 };
@@ -375,24 +376,26 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
         if (!files || files.length === 0) return;
 
+        const fileList = Array.from(files) as unknown as File[];
+
         switch (name) {
             case 'propertyimages':
-                setPropertyImages(Array.from(files)); // multiple files
+                setPropertyImages(fileList); // multiple files
                 break;
             case 'propertyspa':
-                setPropertySpa(files[0]); // single file
+                setPropertySpa(fileList[0]); // single file
                 break;
             case 'propertydeed':
-                setPropertyDeed(files[0]); // single file
+                setPropertyDeed(fileList[0]); // single file
                 break;
             case 'passportfile':
-                setPassportFile(files[0]); // single file
+                setPassportFile(fileList[0]); // single file
                 break;
         }
 
         setFormValue(prev => ({
             ...prev,
-            [name]: name === 'propertyimages' ? Array.from(files) : files[0],
+            [name]: name === 'propertyimages' ? fileList : fileList[0],
         }));
     };
 
@@ -435,10 +438,10 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
     const uploadFiles = async (files: File[] | File, fieldname: string) => {
         const formData = new FormData();
         if (Array.isArray(files)) {
-            files.forEach(file => formData.append('files', file));
+            files.forEach(file => formData.append('files', file as unknown as Blob));
         }
         else {
-            formData.append('files', files);
+            formData.append('files', files as unknown as Blob);
         }
         formData.append('field', fieldname);
 
@@ -847,6 +850,37 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                         body: JSON.stringify(formDataToSend),
                     });
                 }
+
+                let passportToAttach: File | undefined;
+                let propertyDeedToAttach: File | undefined;
+                let propertySpaToAttach: File | undefined;
+                let propertyImagesToAttach: File[] | undefined;
+
+                let passportFilename = "";
+                let propertyDeedFilename = "";
+                let propertySpaFilename = "";
+                let propertyImagesFilename = "";
+
+                let passportFiledata = "";
+                let propertyDeedFiledata = "";
+                let propertySpaFiledata = "";
+                let propertyImagesFiledata = "";
+
+                if (passportFile) passportToAttach = passportFile;
+                if (propertyDeed) propertyDeedToAttach = propertyDeed;
+                if (propertySpa) propertySpaToAttach = propertySpa;
+                if (propertyImages) propertyImagesToAttach = propertyImages;
+
+                if (passportToAttach) {
+                    try {
+                        passportFiledata = await fileToBase64(passportToAttach);
+                        passportFilename = passportToAttach.name;
+                    }
+                    catch (error) {
+                        console.error("Error converting passport to Base64:", error);
+                    }
+                }
+
 
                 const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
                     method: "POST",

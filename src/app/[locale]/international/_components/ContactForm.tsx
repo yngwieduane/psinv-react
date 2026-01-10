@@ -10,6 +10,7 @@ import { useState } from "react"
 import { usePathname } from "next/navigation"
 import { Montserrat } from "next/font/google";
 import { AudreyNormal } from "@/utils/fonts";
+import { insertHubspotLead, insertPSILead } from "@/utils/crmApiHelpers"
 
 const montserratBold = Montserrat({
     subsets: ['latin'],
@@ -46,12 +47,12 @@ const ContactForm = () => {
     } = useForm<FormData>({
         resolver: zodResolver(contactSchema),
         defaultValues: {
-        agreement1 : true,
-        agreement2 : true,
-        agreement3 : true,
-    },
+            agreement1: true,
+            agreement2: true,
+            agreement3: true,
+        },
     });
-    
+
     const [formValue, setFormValue] = useState<FormValue>({
         fname: '',
         lname: '',
@@ -60,22 +61,22 @@ const ContactForm = () => {
         message: '',
     });
 
-    const onchangeField = (e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        setFormValue({ ...formValue, [e.target.name]:e.target.value });
+    const onchangeField = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setFormValue({ ...formValue, [e.target.name]: e.target.value });
     }
 
-    const onSubmit = async (data:FormData) => {        
+    const onSubmit = async (data: FormData) => {
 
-        if(typeof window === 'undefined') return ; //ensure code runs only in browser
+        if (typeof window === 'undefined') return; //ensure code runs only in browser
 
         const APIKey = '160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a';
         const sendToMail = "callcenter@psinv.net";
 
         const lastSubmitTime = localStorage.getItem("formSubmitTime");
         const now = Date.now();
-        const cooldown = 10*60*1000 //10 minutes
+        const cooldown = 10 * 60 * 1000 //10 minutes
 
-        if(lastSubmitTime && now - parseInt(lastSubmitTime) < cooldown) {
+        if (lastSubmitTime && now - parseInt(lastSubmitTime) < cooldown) {
             setIsAlreadySubmitted(true);
             return;
         }
@@ -94,7 +95,7 @@ const ContactForm = () => {
 
             setGclidField(gclid);
 
-            if(gclidField !== '') {
+            if (gclidField !== '') {
                 source = 'google_ads';
             }
             else {
@@ -142,16 +143,8 @@ const ContactForm = () => {
                     mediaName = "63475";
                     methodOfContact = "62132";
                     break;
-                }
+            }
 
-            // switch (campaign) {
-            //     case '':
-            //         propertyCampaignId = "";
-                
-            //     default:
-            //         propertyCampaignId = propertyCampaignId;
-            // }            
-            
             const remarks = `
                 Additional consent 1 : ${data.agreement1 ? "Yes" : "No"} </br>
                 Additional consent 2 : ${data.agreement2 ? "Yes" : "No"} </br>
@@ -220,220 +213,331 @@ const ContactForm = () => {
             };
 
             try {
-                let apiURL = "";
-
                 if (mediaName === "63907") {
-                    const token = "400b0c41cea6ae771d9090684ccbcd3696aab50aa47d7dcdddd3018934a337bc8ac18f7581f6664e";
-                    apiURL = `https://api.portal.psi-crm.com/integrations/hubspot/createLead?apiKey=${token}`;
+                    const hubspotResponse = await insertHubspotLead(formDataToSend);
+                    if (!hubspotResponse.ok) {
+                        const text = await hubspotResponse.text();
+                        console.error(`HubSpot API error: ${hubspotResponse.status} - ${text}`);
+                    } else {
+                        const hubspotData = await hubspotResponse.json();
+                        // console.log("HubSpot success:", hubspotData);
+                    }
                 } else {
-                    apiURL = `https://api.portal.psi-crm.com/leads?APIKEY=${APIKey}`;
+                    const psiResponse = await insertPSILead(formDataToSend);
+                    if (!psiResponse.ok) {
+                        const text = await psiResponse.text();
+                        console.error(`PSI API error: ${psiResponse.status} - ${text}`);
+                    } else {
+                        const psiData = await psiResponse.json();
+                        // console.log("PSI success:", psiData);
+                    }
                 }
-
-                const res = await fetch(apiURL, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(formDataToSend)
-                });
-
-                const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        body: `
-                        List Your Property<br><br>
-                        Name: ${data.fname}  ${data.lname} </br>
-                        Email: ${data.email} </br>
-                        Phone: ${data.phone} </br> 
-                        Message: ${data.message} </br>                      
-                        URL coming from: ${currentUrl}
-                        `,
-                        receiver: sendToMail,
-                        subject: "New Enquiry - International",
-                        filename: "",
-                        filedata: ""
-                    }),
-                });
-
-                if(res.ok || mailRes.ok) {   
-                    const files = [
-                        { path:"/assets/documents/international/PSI-Company-Profile.pdf", name: "PSI-Company-Profile.pdf" },
-                        { path:"/assets/documents/international/PSI-International-Investor-Guide.pdf", name: "PSI-International-Investor-Guide.pdf" }
-                    ];
-                    
-                    files.forEach(file => {
-                        const a = document.createElement("a");
-                        a.href= file.path;
-                        a.download = file.name;
-                        a.style.display = "none";
-                        document.body.appendChild(a);
-                        a.click();
-                        document.body.removeChild(a);
-                    });                    
-
-                    setPostId("success");
-                    setIsSubmitSuccess(true);
-                    setIsAlreadySubmitted(false);
-                    window.location.href = `/${locale}/thankyou?${encodeURIComponent(data.email)}`;
-                    localStorage.setItem("formSubmitTime", Date.now().toString());
-                } else {
-                    alert("Error submitting the form.");
-                }    
-
-            } catch(error) {
-                console.log(error);
-                setPostId("Error");
-            } finally {
-                setIsSubmitting(false);
+            } catch (crmError) {
+                console.error("CRM insertion failed:", crmError);
             }
-        }catch(error){
-            console.error("Submission failed:", error);
-        }finally{
-            setIsSubmitting(false);
-        }        
-    }
+
+            const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    body: `         
+            <table cellpadding="0" cellspacing="0" width="550" align="center" class="">
+                    <tbody class="">
+                    <tr class="">
+                        <td class="">
+                            <table cellpadding="0" cellspacing="0" width="100%" align="center" class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td align="center" height="80" style="text-align:center;" width="550" bgcolor="#FFFFFF" class=""></td>
+                                </tr>
+                                <tr class="">
+                                    <td height="20" class=""> </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" width="100%" align="center" class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td colspan="3" height="10" bgcolor="#02344a" class=""></td>
+                                </tr>
+                                <tr class="">
+                                    <td width="10" style="color:#fdfdfd; font-size:16px; background:#02344a;" class=""> 
+                                    </td>
+                                    <td height="30" style="color:#fff; font-size:16px; background:#02344a; font-weight:bold; color:#FFF;font-family:Arial,  Helvetica, sans-serif" class="">
+                                        Contact Form - International
+                                    </td>
+                                    <td width="10" style="color:#FFFFFF; font-size:16px; background:#02344a;" class=""> 
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <td colspan="3" height="10" bgcolor="#02344a" class=""></td>
+                                </tr>
+                                <tr class="">
+                                    <td height="20" class=""> </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table width="100%" cellspacing="3" cellpadding="5" align="center" style="border:1px solid #e8e6e6" class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        Client Name:
+                                    </td>
+                                    <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        ${data.fname} ${data.lname}
+                                    </td>
+                                </tr>
+
+                                <tr class="">
+                                    <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        Email:
+                                    </td>
+                                    <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        ${data.email} 
+                                    </td>
+                                </tr>
+
+                                <tr class="">
+                                  <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      Phone:
+                                  </td>
+                                  <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      ${data.phone}
+                                  </td>
+                                </tr>
+
+                                <tr class="">
+                                  <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      Message:
+                                  </td>
+                                  <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      ${data.message}
+                                  </td>
+                                </tr>
+
+                                <tr class="">
+                                  <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      URL coming from:
+                                  </td>
+                                  <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      ${currentUrl}
+                                  </td>
+                                </tr>
     
-    return(
+                                </tbody>
+                            </table>
+                            <table class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td height="10" style="line-height:9px" class=""> </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table cellpadding="0" align="center" cellspacing="0" height="30px" width="550" class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td align="center" headers="20" style="background:#02344a;color:#FFF; font-size:11px; line-height:9px; font-family:Arial,Helvetica, sans-serif;" class="">
+                                        Copyright &copy; 2025, PSI  All rights reserved.
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+          `,
+                    receiver: sendToMail,
+                    subject: "New Enquiry - International",
+                    filename: "",
+                    filedata: ""
+                }),
+            });
+
+            if (mailRes.ok) {
+                const files = [
+                    { path: "/assets/documents/international/PSI-Company-Profile.pdf", name: "PSI-Company-Profile.pdf" },
+                    { path: "/assets/documents/international/PSI-International-Investor-Guide.pdf", name: "PSI-International-Investor-Guide.pdf" }
+                ];
+
+                files.forEach(file => {
+                    const a = document.createElement("a");
+                    a.href = file.path;
+                    a.download = file.name;
+                    a.style.display = "none";
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                });
+
+                setPostId("success");
+                setIsSubmitSuccess(true);
+                setIsAlreadySubmitted(false);
+                window.location.href = `/${locale}/thankyou?${encodeURIComponent(data.email)}`;
+                localStorage.setItem("formSubmitTime", Date.now().toString());
+            } else {
+                alert("Error submitting the form.");
+            }
+
+        } catch (error) {
+            console.log(error);
+            setPostId("Error");
+        } finally {
+            setIsSubmitting(false);
+        }
+
+    }
+
+    return (
         <>
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="w-full flex flex-column md:gap-7 gap-10">
-                <div className="w-full lg:flex lg:gap-5">
-                    <div className="inputGroup lg:w-1/2 w-full lg:mb-0 mb-10">
-                        <label htmlFor="fname" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>First Name</label>
-                        <input type="text"
-                        {...register('fname')} placeholder="First Name" 
-                        className={`block w-full py-3 border-b border-[#000] placeholder-[#999] lg:mt-7 mt-4 text-lg focus-visible:outline-none`} />
-                        {errors.fname?.message && (
-                            <p className="text-red-500 text-sm mt-2">
-                                {errors.fname.message}
-                            </p>
-                        )}
-                    </div>
-                    <div className="inputGroup lg:w-1/2 w-full">
-                        <label htmlFor="lname" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>Last Name</label>
-                        <input type="text"
-                        {...register('lname')} placeholder="Last Name" 
-                        className="block w-full py-3 border-b border-[#000] placeholder-[#999] lg:mt-7 mt-4 text-lg focus-visible:outline-none" />
-                        {errors.lname?.message && (
-                            <p className="text-red-500 text-sm mt-2">
-                                {errors.lname.message}
-                            </p>
-                        )}
-                    </div>
-                </div>                
-                
-                <div className="inputGroup w-full mb-2">
-                    <label htmlFor="email" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>Email Address</label>
-                    <input type="text"
-                    {...register('email')} placeholder="Email"
-                    className="block w-full py-3 border-b border-[#000] placeholder-[#999] lg:mt-7 mt-4 text-lg focus-visible:outline-none" />
-                    {errors.email?.message && (
-                        <p className="text-red-500 text-sm mt-2">
-                            {errors.email.message}
-                        </p>
-                    )}
-                </div>
-                <div className="inputGroup  w-full mb-0">
-                    <label htmlFor="phone" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>Telephone Number</label>
-                    <Controller name="phone"
-                    control={control}                   
-                    render={({field}) => (
-                        <div>
-                            <PhoneInput                
-                                international 
-                                {...field}
-                                {...register('phone')}
-                                defaultCountry="AE"                
-                                className={`block w-full py-3 border-b border-[#000] lg:mt-7 mt-4 text-lg ${styles.phoneField}`}
-                                onChange={(value) => field.onChange(value)}
-                                />
-                            {errors.phone && <p className="text-red-500 text-sm mt-[0px]">{errors.phone.message}</p>}                                    
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="w-full flex flex-column md:gap-7 gap-10">
+                    <div className="w-full lg:flex lg:gap-5">
+                        <div className="inputGroup lg:w-1/2 w-full lg:mb-0 mb-10">
+                            <label htmlFor="fname" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>First Name</label>
+                            <input type="text"
+                                {...register('fname')} placeholder="First Name"
+                                className={`block w-full py-3 border-b border-[#000] placeholder-[#999] lg:mt-7 mt-4 text-lg focus-visible:outline-none`} />
+                            {errors.fname?.message && (
+                                <p className="text-red-500 text-sm mt-2">
+                                    {errors.fname.message}
+                                </p>
+                            )}
                         </div>
-                    )} 
-                    />                                 
-                    
-                </div>
-                <div className="inputGroup w-full mb-2">
-                    <label htmlFor="message" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>Message</label>
-                    <textarea rows={5}
-                    {...register('message')} placeholder="Message"
-                    className="block w-full py-3 border-b border-[#000] placeholder-[#999] lg:mt-7 mt-4 text-lg focus-visible:outline-none" />
-                    {errors.message?.message && (
-                        <p className="text-red-500 text-sm mt-2">
-                            {errors.message.message}
-                        </p>
+                        <div className="inputGroup lg:w-1/2 w-full">
+                            <label htmlFor="lname" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>Last Name</label>
+                            <input type="text"
+                                {...register('lname')} placeholder="Last Name"
+                                className="block w-full py-3 border-b border-[#000] placeholder-[#999] lg:mt-7 mt-4 text-lg focus-visible:outline-none" />
+                            {errors.lname?.message && (
+                                <p className="text-red-500 text-sm mt-2">
+                                    {errors.lname.message}
+                                </p>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="inputGroup w-full mb-2">
+                        <label htmlFor="email" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>Email Address</label>
+                        <input type="text"
+                            {...register('email')} placeholder="Email"
+                            className="block w-full py-3 border-b border-[#000] placeholder-[#999] lg:mt-7 mt-4 text-lg focus-visible:outline-none" />
+                        {errors.email?.message && (
+                            <p className="text-red-500 text-sm mt-2">
+                                {errors.email.message}
+                            </p>
+                        )}
+                    </div>
+                    <div className="inputGroup  w-full mb-0">
+                        <label htmlFor="phone" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>Telephone Number</label>
+                        <Controller name="phone"
+                            control={control}
+                            render={({ field }) => (
+                                <div>
+                                    <PhoneInput
+                                        international
+                                        {...field}
+                                        {...register('phone')}
+                                        defaultCountry="AE"
+                                        className={`block w-full py-3 border-b border-[#000] lg:mt-7 mt-4 text-lg ${styles.phoneField}`}
+                                        onChange={(value) => field.onChange(value)}
+                                    />
+                                    {errors.phone && <p className="text-red-500 text-sm mt-[0px]">{errors.phone.message}</p>}
+                                </div>
+                            )}
+                        />
+
+                    </div>
+                    <div className="inputGroup w-full mb-2">
+                        <label htmlFor="message" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>Message</label>
+                        <textarea rows={5}
+                            {...register('message')} placeholder="Message"
+                            className="block w-full py-3 border-b border-[#000] placeholder-[#999] lg:mt-7 mt-4 text-lg focus-visible:outline-none" />
+                        {errors.message?.message && (
+                            <p className="text-red-500 text-sm mt-2">
+                                {errors.message.message}
+                            </p>
+                        )}
+                    </div>
+                    <input type="text" className="hidden gclid_field clid_field" id="gclid_field" name="gclid_field"
+                        placeholder="gclid_field" />
+                    {isSubmitting && (
+                        'Submitting...'
                     )}
-                </div>
-                <input type="text" className="hidden gclid_field clid_field" id="gclid_field" name="gclid_field" 
-                        placeholder= "gclid_field" />
-                {isSubmitting && (
-                    'Submitting...'
-                )}
-                {(!isSubmitting && !isSubmitSuccess) ? (                    
-                    <div className='md:w-auto w-full flex justify-end mt-7'>
-                        <button type="submit" disabled={isSubmitting} className={`${AudreyNormal.className} 
+                    {(!isSubmitting && !isSubmitSuccess) ? (
+                        <div className='md:w-auto w-full flex justify-end mt-7'>
+                            <button type="submit" disabled={isSubmitting} className={`${AudreyNormal.className} 
                         relative uppercase lg:text-lg text-sm px-9 py-7 hover:text-white place-self-end
                         after:content-[''] after:absolute lg:after:w-[170px] after:w-[170px] lg:after:h-[80px] after:h-[80px]
                         after:border after:border-black md:after:inset-0 after:-right-3 after:top-0 after:rounded-[50%] 
                         after:transition after:duration-300 after:rotate-[335deg]
                         hover:after:bg-black cursor-pointer`}>
-                            <span className="relative z-10">Register</span>
-                        </button>
-                    </div>
-                ) : ""
-            }
+                                <span className="relative z-10">Register</span>
+                            </button>
+                        </div>
+                    ) : ""
+                    }
 
-                {!isSubmitting && !isSubmitSuccess ?  (
+                    {!isSubmitting && !isSubmitSuccess ? (
+                        <>
+                            <p className="text-xs font-[700]">Company Profile and International Investor Guide will be downloaded upon submitting your details</p>
+                            <div className="flex flex-column gap-0">
+                                <div className="mb-0">
+                                    <label className="flex items-center space-x-2">
+                                        <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
+                                        <span className="text-sm">I agree to the Terms & Conditions and Privacy Policy</span>
+                                    </label>
+                                    {errors.agreement1 && <p className="text-red-500 text-sm mb-0">{errors.agreement1.message}</p>}
+                                </div>
+                                <div className="mb-0">
+                                    <label className="flex items-center space-x-2">
+                                        <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
+                                        <span className="text-sm">Agree to receive calls and communications</span>
+                                    </label>
+                                </div>
+                                <div className="mb-0">
+                                    <label className="flex items-center space-x-2">
+                                        <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
+                                        <span className="text-sm">Receive calls about various projects</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </>
+                    )
+                        :
+                        ""
+                    }
+
+                </div>
+
+                {isSubmitSuccess && (
                     <>
-                        <p className="text-xs font-[700]">Company Profile and International Investor Guide will be downloaded upon submitting your details</p>
-                    <div className="flex flex-column gap-0">                    
-                        <div className="mb-0">
-                            <label className="flex items-center space-x-2">
-                            <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
-                            <span className="text-sm">I agree to the Terms & Conditions and Privacy Policy</span>
-                            </label>
-                            {errors.agreement1 && <p className="text-red-500 text-sm mb-0">{errors.agreement1.message}</p>}
-                        </div>
-                        <div className="mb-0">
-                            <label className="flex items-center space-x-2">
-                            <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
-                            <span className="text-sm">Agree to receive calls and communications</span>
-                            </label>
-                        </div>
-                        <div className="mb-0">
-                            <label className="flex items-center space-x-2">
-                            <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
-                            <span className="text-sm">Receive calls about various projects</span>
-                            </label>
-                        </div>
-                    </div>
-                    </>                    
-                )
-                :
-                ""      
-            }                
-                
-            </div>
+                        <div className='alert alert-info text-center' role='alert'>Thank You for your inquiry.<br />
+                            We will contact you soon.</div>
+                    </>
+                )}
 
-            {isSubmitSuccess && (
-                <>
-                    <div className='alert alert-info text-center' role='alert'>Thank You for your inquiry.<br />
-                    We will contact you soon.</div>
-                </>
-            )} 
-
-            {isAlreadySubmitted && (
-                <>
-                    <div className="w-full">
-                        <div className='bg-yellow-100 text-center text-sm p-4 text-[#78350F]' role='alert'>
-                            You've already submitted. Please wait a few minutes before trying again.
+                {isAlreadySubmitted && (
+                    <>
+                        <div className="w-full">
+                            <div className='bg-yellow-100 text-center text-sm p-4 text-[#78350F]' role='alert'>
+                                You've already submitted. Please wait a few minutes before trying again.
+                            </div>
                         </div>
-                    </div>
-                </>
-            )} 
-            
-        </form>
+                    </>
+                )}
+
+            </form>
         </>
     )
 }

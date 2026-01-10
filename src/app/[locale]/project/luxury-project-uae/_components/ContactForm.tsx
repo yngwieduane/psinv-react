@@ -9,6 +9,7 @@ import "react-phone-number-input/style.css";
 import { usePathname } from "next/navigation";
 import { sendGTMEvent } from '@next/third-parties/google'
 import { nationalityOptions } from "@/data/luxuryProjects";
+import { insertPSILead } from "@/utils/crmApiHelpers";
 
 const schema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
@@ -24,9 +25,9 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const ContactForm = () => {  
+const ContactForm = () => {
   const pathname = usePathname();
-  const locale = pathname.split("/")[1] || "en"; 
+  const locale = pathname.split("/")[1] || "en";
   const {
     register,
     handleSubmit,
@@ -38,6 +39,7 @@ const ContactForm = () => {
       agreement1: true,
       agreement2: true,
       agreement3: true,
+      goldenVisa: false,
     },
   });
 
@@ -50,7 +52,7 @@ const ContactForm = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const source = urlParams.get("utm_source");
     const currentUrl = window.location.href;
-    let sendtomail = 'callcenter@psinv.net';    
+    let sendtomail = 'wd6@psinv.net';
 
     let mediaType = "129475";
     let mediaName = "165233";
@@ -93,7 +95,7 @@ const ContactForm = () => {
         Client Email: ${data.email} </br>
         Client Phone: ${data.phone} </br> 
         Client Nationality: ${data.nationality} </br>
-        Interested in golden visa: ${data.goldenVisa} </br>            
+        Interested in golden visa: ${data.goldenVisa ? "Yes" : "No"} </br>            
         URL coming from: ${currentUrl}
     `;
 
@@ -154,17 +156,18 @@ const ContactForm = () => {
     };
 
     try {
-      const response = await fetch("https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formDataToSend),
-      });
+      const psiResponse = await insertPSILead(formDataToSend);
+      if (!psiResponse.ok) {
+        const text = await psiResponse.text();
+        console.error(`PSI API error: ${psiResponse.status} - ${text}`);
+      } else {
+        const psiData = await psiResponse.json();
+        // console.log("PSI success:", psiData);
+      }
 
       const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
-        method:"POST",
-        headers: {"Content-Type" : "application/json"},
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           body: `         
             <table cellpadding="0" cellspacing="0" width="550" align="center" class="">
@@ -254,7 +257,7 @@ const ContactForm = () => {
                                   </td>
                                   <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
                                   font-size:12px; font-weight:bold;" class="">
-                                      ${data.goldenVisa}
+                                      ${data.goldenVisa ? "Yes" : "No"}
                                   </td>
                                 </tr>
     
@@ -287,15 +290,15 @@ const ContactForm = () => {
           filedata: ""
         }),
       });
-      
-      if (response.ok && mailRes.ok) {
-        setPostId("Success");      
-        
+
+      if (mailRes.ok) {
+        setPostId("Success");
+
         window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
-        
-    } else {
+
+      } else {
         alert("Error submitting the form.");
-    }
+      }
     } catch (error) {
       console.error("Error:", error);
       setPostId("Error");
@@ -309,28 +312,28 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="w-full px-0 ">
         {/* Success/Error Messages */}
         {postId === "Success" && <div className="p-3 mb-3 rounded bg-green-500 text-white">Form submitted successfully!</div>}
-        {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">Submission failed. Try again.</div>}        
+        {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">Submission failed. Try again.</div>}
         <div className="mb-5 flex gap-4 justify-between">
-            <div className="inuputGroup w-1/2">
-                <label>Your First Name</label>
-                <input
-                    type="text"
-                    {...register("firstName")}
-                    placeholder="First Name"
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
-                {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
-            </div>
-            <div className="inuputGroup w-1/2">
-                <label>Your Last Name</label>
-                <input
-                    type="text"
-                    {...register("lastName")}
-                    placeholder="Last Name"
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
-                {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
-            </div>
+          <div className="inuputGroup w-1/2">
+            <label>Your First Name</label>
+            <input
+              type="text"
+              {...register("firstName")}
+              placeholder="First Name"
+              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
+          </div>
+          <div className="inuputGroup w-1/2">
+            <label>Your Last Name</label>
+            <input
+              type="text"
+              {...register("lastName")}
+              placeholder="Last Name"
+              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
+          </div>
         </div>
         <div className="mb-5">
           <div className="inuputGroup w-full">
@@ -365,14 +368,14 @@ const ContactForm = () => {
         </div>
         <div className="mb-5">
           <div className="inuputGroup w-full">
-            <label>Nationality</label>            
+            <label>Nationality</label>
             <select
-            {...register('nationality')}
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              {...register('nationality')}
+              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <option className="text-[#000]">Select Nationality</option>
-              { nationalityOptions.map((n) => (
-                <option key={n} value={n} className="text-[#000]">{ n } </option>
+              {nationalityOptions.map((n) => (
+                <option key={n} value={n} className="text-[#000]">{n} </option>
               ))}
             </select>
             {errors.nationality && <p className="text-red-500 text-sm">{errors.nationality.message}</p>}
@@ -380,7 +383,7 @@ const ContactForm = () => {
         </div>
 
         <div>
-          <input type="checkbox" {...register('goldenVisa')} name="goldenvisa" className="mr-3 border border-2 border-[#c19a5b] w-[15px] h-[15px]"></input>
+          <input type="checkbox" {...register('goldenVisa')} className="mr-3 border border-2 border-[#c19a5b] w-[15px] h-[15px]"></input>
           <label className="text-[14px]! text-[#fff]!">I'm interested in the Golden Visa</label>
         </div>
 
@@ -390,7 +393,7 @@ const ContactForm = () => {
           disabled={isSubmitting}
         >
           {isSubmitting ? "Submitting..." : "Call Me Back!"}
-        </button>        
+        </button>
         <div className="mb-3 hidden">
           <label className="flex items-center space-x-2">
             <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
@@ -410,7 +413,7 @@ const ContactForm = () => {
             <span className="text-sm">Receive calls about various projects</span>
           </label>
         </div>
-      </form>      
+      </form>
     </>
   );
 };
