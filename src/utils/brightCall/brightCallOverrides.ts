@@ -106,6 +106,14 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
         en: "7bc4289db33ed2d594c47d4428b468be",
         ar: "175a0328b7720bfcdf0dba86e35afbfc",
     },
+    "ohana-yas-island-registration": {
+        en: "5b4fd4491147e7fc831d290996609cc3",
+        ar: "2f302002ab7a51ac3941b26c76e71fb0",
+    },
+    "radiant-wave-registration": {
+        en: "f65576dfefb9092530091671f1dc6ad4",
+        ar: "928d7bc8ded69faeac9b8ee0965c163b",
+    },
     // Add here
 };
 
@@ -129,7 +137,11 @@ const REG_WIDGET_KEYS_BY_UTM: Record<
     "wadi-yemm-registration": {
         "ali-wadi-yemm-newsletter-oct25": { en: "14cde702e1b626683380810fc477dff7", ar: "a37f72c1191c1698ca3f469acaa455b8" },
     },
+    "the-row-saadiyat-registration": {
+        "irani_the_row_saadiyat_island_newsletter": { en: "46e42c0cf2c2e512a46a73db631e22a6", ar: "abea317459d6eaf3cbac1174edccac01" },
+    },
 };
+
 const LP_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> = {
     "sama-yas": {
         en: "6b7e59add8142621e894bbd83c79d58c",
