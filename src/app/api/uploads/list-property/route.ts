@@ -1,7 +1,4 @@
 import { NextResponse } from "next/server";
-import { writeFile } from "fs/promises";
-import { promises as fs } from "fs";
-import path from "path";
 
 export const maxDuration = 60; // Increase timeout to 60 seconds
 
@@ -14,6 +11,7 @@ export async function POST(req: Request) {
         if (!field) {
             return NextResponse.json({ error: 'Field is required' }, { status: 400 });
         }
+
         const folderMap = {
             propertyimages: 'propertyimages',
             spa: 'propertyspa',
@@ -21,15 +19,13 @@ export async function POST(req: Request) {
             passport: 'passport',
         };
         const folder = folderMap[field as keyof typeof folderMap] || 'other';
-        const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'list-your-property', folder);
 
-        try {
-            await fs.access(uploadDir);
-        } catch (error) {
-            await fs.mkdir(uploadDir, { recursive: true });
-        }
-
-        const fileUrls: string[] = [];
+        const fileData: Array<{
+            filename: string;
+            filedata: string;
+            contentType: string;
+            fieldName: string;
+        }> = [];
 
         for (const file of files) {
             if (!file || typeof file === 'string') continue;
@@ -41,13 +37,19 @@ export async function POST(req: Request) {
             // Sanitize filename: remove spaces and special characters
             const sanitizedName = file.name.replace(/[^a-zA-Z0-9.]/g, '_');
             const fileName = `${timestamp}-${sanitizedName}`;
-            const filePath = path.join(uploadDir, fileName);
 
-            await writeFile(filePath, buffer);
-            fileUrls.push(`/uploads/list-your-property/${folder}/${fileName}`);
+            // Convert to Base64
+            const base64Data = buffer.toString('base64');
 
+            fileData.push({
+                filename: fileName,
+                filedata: base64Data,
+                contentType: file.type,
+                fieldName: folder,
+            });
         }
-        return NextResponse.json({ success: true, fileUrls });
+
+        return NextResponse.json({ success: true, fileData });
 
     } catch (err: any) {
         console.error("Upload failed", err);
