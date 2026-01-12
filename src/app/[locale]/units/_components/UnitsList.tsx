@@ -39,9 +39,9 @@ export default function UnitsList(props: any) {
         const fetchData = async () => {
             setLoading(true);
             try {
-                // const res = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`);
-                // const result = await res.json();
-                // setResults(result);
+                const res = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`);
+                const result = await res.json();
+                setResults(result);
 
                 // const [res1, res2] = await Promise.all([
                 //     fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`),
@@ -54,22 +54,22 @@ export default function UnitsList(props: any) {
                 // setResults(json1);
                 // setResults1(json2);
 
-                const p1 = fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`)
-                    .then(res => res.ok ? res.json() : [])
-                    .catch(err => {
-                        console.error("Units API failed", err);
-                        return [];
-                    });
+                // const p1 = fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`)
+                //     .then(res => res.ok ? res.json() : [])
+                //     .catch(err => {
+                //         console.error("Units API failed", err);
+                //         return [];
+                //     });
 
-                const p2 = fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`)
-                    .then(res => res.ok ? res.json() : [])
-                    .catch(err => {
-                        console.error("UnitsAssets API failed", err);
-                        return [];
-                    });
+                // const p2 = fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`)
+                //     .then(res => res.ok ? res.json() : [])
+                //     .catch(err => {
+                //         console.error("UnitsAssets API failed", err);
+                //         return [];
+                //     });
 
-                const [data1, data2] = await Promise.all([p1, p2]);
-                setResults([...data1, ...data2]);
+                // const [data1, data2] = await Promise.all([p1, p2]);
+                // setResults([...data1, ...data2]);
 
             } catch (error) {
                 console.error("API fetch failed", error);
