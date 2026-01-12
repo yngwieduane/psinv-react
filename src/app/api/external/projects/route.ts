@@ -119,7 +119,7 @@ export async function GET(request: NextRequest) {
     case 'al reeman 1 phase 1':
       finquery = 'Al Reeman 1 - Phase 1'
       break;
-    case 'edge 2 at al mamsha':
+    case 'edge 2-at al mamsha':
       finquery = 'Edge 2 at Al Mamsha'
       break;
     default:
