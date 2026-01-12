@@ -31,8 +31,6 @@ const PropertyPage = (props: any) => {
     let HOdate, launchDate, completionDate, minprice, maxPrice, areaRangeMin, areaRangeMax;
     const [activeTab, setActiveTab] = useState('Overview');
     const [activeFloorPlan, setActiveFloorPlan] = useState(0);
-    const saved = isFavorite(props.data["propertyID"]);
-    const compared = isCompared(props.data["propertyID"]);
     const [showDrawer, setShowDrawer] = useState(false);
     const [dwDataContent, setDwDataContent] = useState('details');
     const [dwDataTitle, setDwDataTitle] = useState('details');
@@ -44,7 +42,10 @@ const PropertyPage = (props: any) => {
         setShowDrawer(true);
     }
     const t = useTranslations('ProjectPage');
+
     const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'] : ("");
+    const saved = isFavorite(props.data["propertyID"]);
+    const compared = isCompared(props.data["propertyID"]);
 
     const generalImages = props.data["generalImages"] ? props.data["generalImages"] : ("");
     const facilitiesAndAmenitiesImages = props.data["facilitiesAndAmenitiesImages"] ? props.data["facilitiesAndAmenitiesImages"] : ("");
