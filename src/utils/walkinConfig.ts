@@ -21,7 +21,7 @@ export const walkinFormConfig: Record<string, WalkinFormConfig> = {
   "2026-01-13": [
     { id: "7465", name: "Nada Ashraf Aiada Awad Abozuhry" },
     { id: "7043", name: "Omar Khaleel Subhi Basheer" },
-    { id: "6805", name: "Rabih Fahim Shaar" },
+    { id: "4576", name: "Masoud Mamoun Alneser" },
     { id: "4260", name: "Nada Yasser Abdalla Ibrahim" },
   ],
   "2026-01-14": [
@@ -45,7 +45,7 @@ export const walkinFormConfig: Record<string, WalkinFormConfig> = {
   "2026-01-17": [
     { id: "9797", name: "Mohammed H. J. Mhanna" },
     { id: "7142", name: "Firas Riyad Abu Haibeh" },
-    { id: "4576", name: "Masoud Mamoun Alneser" },
+    { id: "6805", name: "Fahim Shaar" },
     { id: "6639", name: "Yousef Ahmad Alisha" },
   ],
   "2026-01-18": [
@@ -149,5 +149,4 @@ export const walkinFormConfig: Record<string, WalkinFormConfig> = {
       ]
     }
   }
-
 };
