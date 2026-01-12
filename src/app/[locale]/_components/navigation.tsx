@@ -611,7 +611,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             </div>
         </div> */}
             {/* Main Navigation */}
-            <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
+            <nav className={`fixed top-0 left-0 right-0 z-70 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
                 <div className="container mx-auto flex justify-between items-center relative px-5 md:px-0">
                     {/* LOGO */}
                     <Link className="flex items-center cursor-pointer group" href="/" title="Property Shop Investment">
