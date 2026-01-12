@@ -51,6 +51,11 @@ const nextConfig: NextConfig = {
         destination: 'https://services.psinv.net/CorporateMarketing/',
         permanent: true,
       },
+      {
+        source: '/en/conrad-abu-dhabi',
+        destination: '/en/walk-in/conrad-abu-dhabi',
+        permanent: true,
+      },
     ]
   },
   reactStrictMode: true,
