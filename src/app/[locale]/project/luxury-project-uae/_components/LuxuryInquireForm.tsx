@@ -9,6 +9,7 @@ import "react-phone-number-input/style.css";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { sendGTMEvent } from '@next/third-parties/google'
+import { insertPSILead } from "@/utils/crmApiHelpers";
 
 interface Props {
   project?: any;
@@ -21,7 +22,7 @@ const schema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
   lastName: z.string().min(1, { message: "Last name is required" }),
   email: z.string().email({ message: "Invalid email address" }),
-  phone: z.string().min(7, { message: "Invalid phone number" }),  
+  phone: z.string().min(7, { message: "Invalid phone number" }),
   agreement1: z.boolean().refine((val) => val, { message: "You must agree to this" }),
   agreement2: z.boolean().optional(),
   agreement3: z.boolean().optional(),
@@ -29,9 +30,9 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownload } : Props) => {  
+const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownload }: Props) => {
   const pathname = usePathname();
-  const locale = pathname.split("/")[1] || "en"; 
+  const locale = pathname.split("/")[1] || "en";
   const {
     register,
     handleSubmit,
@@ -56,9 +57,9 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
     const source = urlParams.get("utm_source");
     const currentUrl = window.location.href;
     let sendtomail = 'callcenter@psinv.net';
-    const locationVal = project?.proj_location?.toLowerCase() || location?.toLowerCase() || '';  
+    const locationVal = project?.proj_location?.toLowerCase() || location?.toLowerCase() || '';
     const projectType = project?.type || 'Apartment';
-    const projectName = project?.name || ''; 
+    const projectName = project?.name || '';
     const projectId = project?.id || '';
     const bedrooms = project?.bedrooms || '';
 
@@ -99,65 +100,65 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
     }
 
     switch (projectType.toLowerCase()) {
-          case 'villa':
-          case 'villas':
-            prop_type = 20;
-            break;
-          case 'Apartment':
-              prop_type = 19;
-              break;
-          case 'Studio':
-              prop_type = 58265;
-              break;
-          case 'Townhouse':
-              prop_type = 131090;
-              break;
-          default:
-              prop_type = 19;
-              break;
-      }
+      case 'villa':
+      case 'villas':
+        prop_type = 20;
+        break;
+      case 'Apartment':
+        prop_type = 19;
+        break;
+      case 'Studio':
+        prop_type = 58265;
+        break;
+      case 'Townhouse':
+        prop_type = 131090;
+        break;
+      default:
+        prop_type = 19;
+        break;
+    }
 
-    switch(bedrooms) {
-        case '1' :
-          beds = 21935;
-          break;
-        case '2' :
-          beds = 21936;
-          break;
-        case '3' :
-          beds = 21937;
-          break;
-        case '4' :
-          beds = 21938;
-          break;
-        case '5' :
-          beds = 21939;
-          break;
-        case '6' :
-          beds = 21940;
-          break;
-        case '7' :
-          beds = 21941;
-          break;
-        case '8' :
-          beds = 21942;
-          break;
-        default :
-          beds = 21935;
-          break;
-      }
+    switch (bedrooms) {
+      case '1':
+        beds = 21935;
+        break;
+      case '2':
+        beds = 21936;
+        break;
+      case '3':
+        beds = 21937;
+        break;
+      case '4':
+        beds = 21938;
+        break;
+      case '5':
+        beds = 21939;
+        break;
+      case '6':
+        beds = 21940;
+        break;
+      case '7':
+        beds = 21941;
+        break;
+      case '8':
+        beds = 21942;
+        break;
+      default:
+        beds = 21935;
+        break;
+    }
 
-      switch (locationVal) {
-        case 'abu dhabi' :
-          locId = 91823;
-          break;
-        case 'dubai' :
-          locId = 91578;
-          break;
-        default :
-          locId = 91823;
-          break;
-      }
+    switch (locationVal) {
+      case 'abu dhabi':
+        locId = 91823;
+        break;
+      case 'dubai':
+        locId = 91578;
+        break;
+      default:
+        locId = 91823;
+        break;
+    }
 
     const remarks = `
         Additional consent 1: ${data.agreement1 ? "Yes" : "No"} </br>
@@ -166,8 +167,8 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
         Client Name: ${data.firstName} ${data.lastName} </br>
         Client Email: ${data.email} </br>
         Client Phone: ${data.phone} </br>
-        ${projectName !== '' ? `Project Name: ${projectName}` : '' } </br>
-        ${locationVal !== '' ? `Interested Project Location: ${locationVal}` : '' } </br>        
+        ${projectName !== '' ? `Project Name: ${projectName}` : ''} </br>
+        ${locationVal !== '' ? `Interested Project Location: ${locationVal}` : ''} </br>        
         URL coming from: ${currentUrl}
     `;
 
@@ -228,17 +229,18 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
     };
 
     try {
-      const response = await fetch("https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formDataToSend),
-      });
+      const psiResponse = await insertPSILead(formDataToSend);
+      if (!psiResponse.ok) {
+        const text = await psiResponse.text();
+        console.error(`PSI API error: ${psiResponse.status} - ${text}`);
+      } else {
+        const psiData = await psiResponse.json();
+        // console.log("PSI success:", psiData);
+      }
 
       const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
-        method:"POST",
-        headers: {"Content-Type" : "application/json"},
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           body: `         
             <table cellpadding="0" cellspacing="0" width="550" align="center" class="">
@@ -312,8 +314,8 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
                                   </td>
                                 </tr>                                                             
                                 
-                                ${projectName && 
-                                `<tr class="">
+                                ${projectName &&
+            `<tr class="">
                                     <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
                                     font-size:12px; font-weight:bold;" class="">
                                         Property interested:
@@ -323,10 +325,10 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
                                         ${projectName} 
                                     </td>
                                   </tr>`
-                                }
+            }
 
-                                ${bedrooms && 
-                                `<tr class="">
+                                ${bedrooms &&
+            `<tr class="">
                                     <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
                                     font-size:12px; font-weight:bold;" class="">
                                         Number of Bedrooms:
@@ -336,7 +338,7 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
                                         ${bedrooms} 
                                     </td>
                                   </tr>`
-                                }
+            }
     
                                 </tbody>
                             </table>
@@ -367,22 +369,22 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
           filedata: ""
         }),
       });
-      
-      if (response.ok && mailRes.ok) {
+
+      if (mailRes.ok) {
         setPostId("Success");
 
-        if(downloadIntent && onSuccessDownload && project.projectBrochures) {
+        if (downloadIntent && onSuccessDownload && project.projectBrochures) {
           onSuccessDownload(project.projectBrochures);
           setTimeout(() => {
             window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
           }, 1000);
         }
-        else{
+        else {
           window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
         }
-    } else {
+      } else {
         alert("Error submitting the form.");
-    }
+      }
     } catch (error) {
       console.error("Error:", error);
       setPostId("Error");
@@ -395,7 +397,7 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
       <form onSubmit={handleSubmit(onSubmit)} className="w-full bg-white py-6 px-0 rounded-lg">
         {/* Success/Error Messages */}
         {postId === "Success" && <div className="p-3 mb-3 rounded bg-green-500 text-white">Form submitted successfully!</div>}
-        {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">Submission failed. Try again.</div>}        
+        {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">Submission failed. Try again.</div>}
         <div className="mb-3">
           <label>First Name</label>
           <input
@@ -442,7 +444,7 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
             className="w-full p-3 border border-[#cecfd0] rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 mt-1"
           />
           {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
-        </div>                
+        </div>
         <button
           type="submit"
           className="w-full border border-[#E0592A] p-3 mb-6 rounded-md bg-[#E0592A] text-white cursor-pointer"
@@ -475,7 +477,7 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
             <span className="text-sm">Receive calls about various projects</span>
           </label>
         </div>
-      </form>      
+      </form>
     </>
   );
 };
