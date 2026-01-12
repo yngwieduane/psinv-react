@@ -54,11 +54,22 @@ export default function UnitsList(props: any) {
                 // setResults(json1);
                 // setResults1(json2);
 
-                const res = await fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`);
-                const result = await res.json();
-                const res1 = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`);
-                const result1 = await res1.json();
-                setResults([...result, ...result1]);
+                const p1 = fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`)
+                    .then(res => res.ok ? res.json() : [])
+                    .catch(err => {
+                        console.error("Units API failed", err);
+                        return [];
+                    });
+
+                const p2 = fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`)
+                    .then(res => res.ok ? res.json() : [])
+                    .catch(err => {
+                        console.error("UnitsAssets API failed", err);
+                        return [];
+                    });
+
+                const [data1, data2] = await Promise.all([p1, p2]);
+                setResults([...data1, ...data2]);
 
             } catch (error) {
                 console.error("API fetch failed", error);
@@ -136,8 +147,8 @@ export default function UnitsList(props: any) {
                                                 key={page}
                                                 onClick={() => handlePageChange(page)}
                                                 className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-medium transition-colors ${pageNum === page
-                                                        ? 'bg-primary text-gray-900 font-bold shadow-sm'
-                                                        : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                                                    ? 'bg-primary text-gray-900 font-bold shadow-sm'
+                                                    : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                                                     }`}
                                             >
                                                 {page}
