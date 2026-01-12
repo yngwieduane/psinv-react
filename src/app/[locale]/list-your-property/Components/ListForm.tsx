@@ -453,11 +453,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
         if (!uploadResponse.ok) {
             throw new Error(`file upload failed ${fieldname}`);
         }
-        if (uploadResponse.ok) {
-            //setIsSubmitSuccess(true);
-        }
         const uploadResult = await uploadResponse.json();
-        return uploadResult.fileUrls;
+        return uploadResult.fileData; // Returns Base64 file data array
     };
 
     const isValidFile = (file: string | undefined | null): boolean => {
@@ -484,8 +481,9 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
             let bedrooms, bathrooms, contactType, requirementType, ReferredByID,
                 ReferredToID, ActivityAssignedTo, Budget, Budget2, unitType;
 
+            // Upload files and get Base64 data
             const uploadedFiles = {
-                propertyimages: await uploadFiles(propertyImages, 'propertyimages'),
+                propertyimages: propertyImages.length > 0 ? await uploadFiles(propertyImages, 'propertyimages') : [],
                 spa: propertySpa ? await uploadFiles(propertySpa, 'spa') : [],
                 deed: propertyDeed ? await uploadFiles(propertyDeed, 'deed') : [],
                 passport: passportFile ? await uploadFiles(passportFile, 'passport') : []
@@ -727,6 +725,21 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
             if (cityConfig.referredBy) ReferredByID = cityConfig.referredBy;
             if (cityConfig.assignedTo) ActivityAssignedTo = cityConfig.assignedTo;
 
+            // Prepare file attachment info for remarks
+            const fileInfo = [];
+            if (uploadedFiles.propertyimages?.length > 0) {
+                fileInfo.push(`Property Images: ${uploadedFiles.propertyimages.length} file(s) attached`);
+            }
+            if (uploadedFiles.spa?.length > 0) {
+                fileInfo.push(`SPA: ${uploadedFiles.spa[0].filename}`);
+            }
+            if (uploadedFiles.deed?.length > 0) {
+                fileInfo.push(`Title Deed: ${uploadedFiles.deed[0].filename}`);
+            }
+            if (uploadedFiles.passport?.length > 0) {
+                fileInfo.push(`Passport: ${uploadedFiles.passport[0].filename}`);
+            }
+
             const remarks = `
                 Additional consent 1 : ${data.agreement1 ? "Yes" : "No"} </br>
                 Additional consent 2 : ${data.agreement2 ? "Yes" : "No"} </br>
@@ -748,22 +761,9 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                 Asking price: ${data.askingprice} </br>
                 Status: ${data.status} </br>
                 Service: ${data.service} </br>
-                Ready to view: ${data.readytoview} </br>                              
-                
-                ${uploadedFiles.propertyimages?.length > 0
-                    ? `Attach external image: </br>${uploadedFiles.propertyimages.map((url: string) => `${baseURL}${url}`).join('</br>')}</br>`
-                    : ''}
-                ${uploadedFiles.spa?.length > 0
-                    ? `Attach SPA: </br>${uploadedFiles.spa.map((url: string) => `${baseURL}${url}`).join('</br>')}</br>`
-                    : ''}               
-                ${uploadedFiles.deed?.length > 0
-                    ? `Attach Title Deed: </br>${uploadedFiles.deed.map((url: string) => `${baseURL}${url}`).join('</br>')}</br>`
-                    : ''}
-                ${uploadedFiles.passport?.length > 0
-                    ? `Passport: </br>${uploadedFiles.passport.map((url: string) => `${baseURL}${url}`).join('</br>')}</br>`
-                    : ''}
-                
-                Date to view: ${data.datetoview} </br>
+                Ready to view: ${data.readytoview} </br>
+                ${fileInfo.length > 0 ? `</br>Attachments: </br>${fileInfo.join('</br>')}` : ''}
+                </br>Date to view: ${data.datetoview} </br>
                 Time to view: ${data.timetoview} </br>
                 URL coming from: ${currentUrl}
             `;
@@ -851,34 +851,23 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     });
                 }
 
-                let passportToAttach: File | undefined;
-                let propertyDeedToAttach: File | undefined;
-                let propertySpaToAttach: File | undefined;
-                let propertyImagesToAttach: File[] | undefined;
+                // Prepare file attachments for email - use first file from each category
+                let emailFilename = "";
+                let emailFiledata = "";
 
-                let passportFilename = "";
-                let propertyDeedFilename = "";
-                let propertySpaFilename = "";
-                let propertyImagesFilename = "";
-
-                let passportFiledata = "";
-                let propertyDeedFiledata = "";
-                let propertySpaFiledata = "";
-                let propertyImagesFiledata = "";
-
-                if (passportFile) passportToAttach = passportFile;
-                if (propertyDeed) propertyDeedToAttach = propertyDeed;
-                if (propertySpa) propertySpaToAttach = propertySpa;
-                if (propertyImages) propertyImagesToAttach = propertyImages;
-
-                if (passportToAttach) {
-                    try {
-                        passportFiledata = await fileToBase64(passportToAttach);
-                        passportFilename = passportToAttach.name;
-                    }
-                    catch (error) {
-                        console.error("Error converting passport to Base64:", error);
-                    }
+                // Priority: passport > deed > spa > property images
+                if (uploadedFiles.passport?.length > 0) {
+                    emailFilename = uploadedFiles.passport[0].filename;
+                    emailFiledata = uploadedFiles.passport[0].filedata;
+                } else if (uploadedFiles.deed?.length > 0) {
+                    emailFilename = uploadedFiles.deed[0].filename;
+                    emailFiledata = uploadedFiles.deed[0].filedata;
+                } else if (uploadedFiles.spa?.length > 0) {
+                    emailFilename = uploadedFiles.spa[0].filename;
+                    emailFiledata = uploadedFiles.spa[0].filedata;
+                } else if (uploadedFiles.propertyimages?.length > 0) {
+                    emailFilename = uploadedFiles.propertyimages[0].filename;
+                    emailFiledata = uploadedFiles.propertyimages[0].filedata;
                 }
 
 
@@ -981,19 +970,19 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                     </tr>
                                     <tr>
                                         <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">External images:</td>
-                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${propertyImages ? `${baseURL}${uploadedFiles.propertyimages}` : '-'}</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${uploadedFiles.propertyimages?.length > 0 ? `${uploadedFiles.propertyimages.length} file(s) attached` : '-'}</td>
                                     </tr>
                                     <tr>
                                         <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">SPA:</td>
-                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${propertySpa ? `${baseURL}${uploadedFiles.spa}` : '-'}</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${uploadedFiles.spa?.length > 0 ? uploadedFiles.spa[0].filename : '-'}</td>
                                     </tr>
                                     <tr>
                                         <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Title Deed:</td>
-                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${propertyDeed ? `${baseURL}${uploadedFiles.deed}` : '-'}</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${uploadedFiles.deed?.length > 0 ? uploadedFiles.deed[0].filename : '-'}</td>
                                     </tr>
                                     <tr>
                                         <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Passport:</td>
-                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${passportFile ? `${baseURL}${uploadedFiles.passport}` : '-'}</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${uploadedFiles.passport?.length > 0 ? uploadedFiles.passport[0].filename : '-'}</td>
                                     </tr>
                                     <tr>
                                         <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Date to view:</td>
@@ -1016,8 +1005,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                         `,
                         receiver: cityConfig.email,
                         subject: "New inquiry - List Your Property",
-                        filename: "",
-                        filedata: ""
+                        filename: emailFilename,
+                        filedata: emailFiledata
                     }),
                 });
 
