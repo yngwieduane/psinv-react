@@ -98,7 +98,6 @@ export const JBR_ALL_AGENTS: Agent[] = [
     { id: "9753", name: "Strahinja Bogdanovic" },
     { id: "9755", name: "Mostafa Gaber Tawfik Abdelmotleb" },
     { id: "9757", name: "Yazan Ghaleb Mufadi Mousa" },
-    { id: "6169", name: "Alexia Degas" },
     { id: "7168", name: "Scott Mason" },
     { id: "7169", name: "Santino Palmisano" },
     { id: "7171", name: "Nikhil Arora" },
