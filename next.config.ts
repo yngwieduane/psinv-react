@@ -56,6 +56,86 @@ const nextConfig: NextConfig = {
         destination: '/en/walk-in/conrad-abu-dhabi',
         permanent: true,
       },
+      {
+        source: '/en/conrad-hotel-at-etihad-tower-abu-dhabi',
+        destination: '/en/walk-in/conrad-hotel-at-etihad-tower-abu-dhabi',
+        permanent: true,
+      },
+      {
+        source: '/en/yas-mall-stand',
+        destination: '/en/walk-in/yas-mall-stand',
+        permanent: true,
+      },
+      {
+        source: '/en/galleria-stand-deyaar',
+        destination: '/en/walk-in/galleria-stand-deyaar',
+        permanent: true,
+      },
+      {
+        source: '/en/jbr-lead-registration-dubai',
+        destination: '/en/walk-in/jbr-lead-registration-dubai',
+        permanent: true,
+      },
+      {
+        source: '/en/psi-assets-reem',
+        destination: '/en/walk-in/psi-assets-reem',
+        permanent: true,
+      },
+      {
+        source: '/en/psi-assets-yas',
+        destination: '/en/walk-in/psi-assets-yas',
+        permanent: true,
+      },
+      {
+        source: '/en/project/sama-yas',
+        destination: '/en/project/lp/sama-yas',
+        permanent: true,
+      },
+      {
+        source: '/en/project/yas-riva',
+        destination: '/en/project/lp/yas-riva',
+        permanent: true,
+      },
+      {
+        source: '/en/project/manarat-living-saadiyat',
+        destination: '/en/project/lp/manarat-living-saadiyat',
+        permanent: true,
+      },
+      {
+        source: '/en/project/the-arthouse',
+        destination: '/en/project/lp/the-arthouse',
+        permanent: true,
+      },
+      {
+        source: '/en/project/bloom-living-almeria',
+        destination: '/en/project/lp/bloom-living-almeria',
+        permanent: true,
+      },
+      {
+        source: '/ar/project/sama-yas',
+        destination: '/ar/project/lp/sama-yas',
+        permanent: true,
+      },
+      {
+        source: '/ar/project/yas-riva',
+        destination: '/ar/project/lp/yas-riva',
+        permanent: true,
+      },
+      {
+        source: '/ar/project/manarat-living-saadiyat',
+        destination: '/ar/project/lp/manarat-living-saadiyat',
+        permanent: true,
+      },
+      {
+        source: '/ar/project/the-arthouse',
+        destination: '/ar/project/lp/the-arthouse',
+        permanent: true,
+      },
+      {
+        source: '/ar/project/bloom-living-almeria',
+        destination: '/ar/project/lp/bloom-living-almeria',
+        permanent: true,
+      },
     ]
   },
   reactStrictMode: true,
