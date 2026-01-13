@@ -3,14 +3,13 @@ import { brightCallDefaults } from "@/utils/brightCall/brightCallDefaults";
 import type { BrightCallPageType, BrightCallLocale } from "@/utils/brightCall/brightCallDefaults";
 import { ListPageBrightCallValues } from "./ListPageBrightCallValues";
 
-export type BrightCallContext = {
-    pageType: BrightCallPageType;     // "registration" | "landing"
-    locale: BrightCallLocale;         // "en" | "ar"
-    slug?: string | null;
+export type ListPageBrightCallContext = {
+    pageType: BrightCallPageType;     // "registration" | "landing" | "listpage"
+    locale: BrightCallLocale; 
     utmCampaign?: string | null;
 };
 
-export function ListPageResolveBrightcallWidget(ctx: BrightCallContext): string {
+export function ListPageResolveBrightcallWidget(ctx: ListPageBrightCallContext): string {
     // 1) overrides (highest priority)
     const hit = ListPageBrightCallValues.find((o) => o.match(ctx));
     if (hit?.widgetKey) return hit.widgetKey;

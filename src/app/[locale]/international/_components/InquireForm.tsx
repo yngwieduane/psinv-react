@@ -24,7 +24,11 @@ interface props {
 
 type FormData = z.infer<typeof formSchema>
 
+import { useTranslations } from 'next-intl';
+
 const InquireForm = (props: any) => {
+    const t = useTranslations('InternationalPage.form_section');
+    const tMessages = useTranslations('InternationalPage.form_messages');
     const pathname = usePathname();
     const locale = pathname.split("/")[1] || 'en';
 
@@ -399,9 +403,9 @@ const InquireForm = (props: any) => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="w-full flex flex-column gap-4">
                     <div className="inputGroup  w-full mb-2">
-                        <label htmlFor="fname" className="hidden">First Name</label>
+                        <label htmlFor="fname" className="hidden">{t('fname')}</label>
                         <input type="text"
-                            {...register('fname')} placeholder="First Name"
+                            {...register('fname')} placeholder={t('fname')}
                             className="block w-full px-5 py-3 border border-[#fff] rounded-[7px] placeholder-[#fff]" />
                         {errors.fname?.message && (
                             <p className="text-red-500 text-sm mt-2">
@@ -410,9 +414,9 @@ const InquireForm = (props: any) => {
                         )}
                     </div>
                     <div className="inputGroup  w-full mb-2">
-                        <label htmlFor="lname" className="hidden">Last Name</label>
+                        <label htmlFor="lname" className="hidden">{t('lname')}</label>
                         <input type="text"
-                            {...register('lname')} placeholder="Last Name"
+                            {...register('lname')} placeholder={t('lname')}
                             className="block w-full px-5 py-3 border border-[#fff] rounded-[7px] placeholder-[#fff]" />
                         {errors.lname?.message && (
                             <p className="text-red-500 text-sm mt-2">
@@ -421,9 +425,9 @@ const InquireForm = (props: any) => {
                         )}
                     </div>
                     <div className="inputGroup  w-full mb-2">
-                        <label htmlFor="email" className="hidden">Email</label>
+                        <label htmlFor="email" className="hidden">{t('email')}</label>
                         <input type="text"
-                            {...register('email')} placeholder="Email"
+                            {...register('email')} placeholder={t('email')}
                             className="block w-full px-5 py-3 border border-[#fff] rounded-[7px] placeholder-[#fff]" />
                         {errors.email?.message && (
                             <p className="text-red-500 text-sm mt-2">
@@ -453,13 +457,13 @@ const InquireForm = (props: any) => {
 
                     </div>
                     <div className="inputGroup w-full mb-0">
-                        <label htmlFor="howtocontact" className="block mb-3">How would you like to be contacted? *</label>
+                        <label htmlFor="howtocontact" className="block mb-3">{t('how_to_contact')} *</label>
                         <select className={`w-full block px-5 py-3 border rounded-md mb-3 border border-[#A6A6A6] 
                                 rounded-[7px] placeholder-[#A6A6A6] ${styles.phoneField}`}
                             {...register('howtocontact')} onChange={onchangeField} >
-                            <option value="">Select an option</option>
+                            <option value="">{t('select')}</option>
                             <option value="Call">Phone Call</option>
-                            <option value="Whatsapp">Whats App</option>
+                            <option value="Whatsapp">Whatsapp</option>
                             <option value="Email">Email</option>
                         </select>
                         {errors.howtocontact && <p className="text-red-500 text-sm mt-[-5px]">{errors.howtocontact.message}</p>}
@@ -467,40 +471,39 @@ const InquireForm = (props: any) => {
                     <input type="text" className="hidden gclid_field clid_field" id="gclid_field" name="gclid_field"
                         placeholder="gclid_field" />
                     {isSubmitting && (
-                        'Submitting...'
+                        tMessages('submitting')
                     )}
                     {(!isSubmitting && !isSubmitSuccess) ? (
                         <button type="submit" className="uppercase rounded py-3 text-xl cursor-pointer
                     hover:scale-[103%] transition-all ease-in-out duration-400" disabled={isSubmitting}
                             style={{ backgroundImage: "linear-gradient(180deg, rgb(250, 167, 5) 29%, rgb(149, 116, 0) 100%)" }}>
-                            Submit
+                            {t('submit')}
                         </button>
                     ) : ""
                     }
 
                     {!isSubmitting && !isSubmitSuccess ? (
                         <>
-                            <p className={` ${!props.fromModal ? "text-center" : ""} text-xs `}>By creating an account, you agree to our <a href="terms" target="_blank"><span className="text-[#ED9C4B]">Terms of Service</span></a> and
-                                have read and understood the <a href="privacy" target="_blank"><span className="text-[#ED9C4B]">Privacy Policy</span></a></p>
-                            <p className={`${!props.fromModal ? "text-center" : ""} text-xs`}>Company Profile and International Investor Guide will be downloaded upon submitting your details</p>
+                            <p className={` ${!props.fromModal ? "text-center" : ""} text-xs `}>{t('agreement_text.part1')} <a href="terms" target="_blank"><span className="text-[#ED9C4B]">{t('agreement_text.terms')}</span></a> {t('agreement_text.part2')} <a href="privacy" target="_blank"><span className="text-[#ED9C4B]">{t('agreement_text.privacy')}</span></a></p>
+                            <p className={`${!props.fromModal ? "text-center" : ""} text-xs`}>{t('desc')}</p>
                             <div className="flex flex-column gap-0">
                                 <div className="mb-0">
                                     <label className="flex items-center space-x-2">
                                         <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
-                                        <span className="text-sm">I agree to the Terms & Conditions and Privacy Policy</span>
+                                        <span className="text-sm">{tMessages('agree_terms')}</span>
                                     </label>
                                     {errors.agreement1 && <p className="text-red-500 text-sm mb-0">{errors.agreement1.message}</p>}
                                 </div>
                                 <div className="mb-0">
                                     <label className="flex items-center space-x-2">
                                         <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
-                                        <span className="text-sm">Agree to receive calls and communications</span>
+                                        <span className="text-sm">{tMessages('agree_calls')}</span>
                                     </label>
                                 </div>
                                 <div className="mb-0">
                                     <label className="flex items-center space-x-2">
                                         <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
-                                        <span className="text-sm">Receive calls about various projects</span>
+                                        <span className="text-sm">{tMessages('agree_projects')}</span>
                                     </label>
                                 </div>
                             </div>
@@ -514,8 +517,8 @@ const InquireForm = (props: any) => {
 
                 {isSubmitSuccess && (
                     <>
-                        <div className='alert alert-info text-center' role='alert'>Thank You for your inquiry.<br />
-                            We will contact you soon.</div>
+                        <div className='alert alert-info text-center' role='alert'>{tMessages('success').split('.')[0]}.<br />
+                            {tMessages('success').split('.')[1]}.</div>
                     </>
                 )}
 
@@ -523,7 +526,7 @@ const InquireForm = (props: any) => {
                     <>
                         <div className="w-full">
                             <div className='bg-yellow-100 text-center text-sm p-4 text-[#78350F]' role='alert'>
-                                You've already submitted. Please wait a few minutes before trying again.
+                                {tMessages('already_submitted')}
                             </div>
                         </div>
                     </>

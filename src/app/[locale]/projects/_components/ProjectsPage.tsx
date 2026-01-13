@@ -24,7 +24,7 @@ export default async function ProjectsPage({
 
     return (
         <div className="bg-white min-h-screen pt-32 pb-32 md:pb-24 mx-5 mt-10 md:mt-0 md:mx-0">
-            <div>
+            <div className="">
                 <Breadcrumb />
             </div>
             <div className="mt-5">

@@ -11,7 +11,6 @@ import ListForm from "./Components/ListForm";
 import Accordion from "./Components/Accordion";
 import InquireModal from "./Components/InquireModal";
 import { useTranslations } from "next-intl";
-import { ListPageBrightCallValues } from "./Components/Brightcall/ListPageBrightCallValues";
 import BrightCallWidget from "../_components/BrightCallWidget";
 import { useSearchParams } from "next/navigation";
 import { ListPageResolveBrightcallWidget } from "./Components/Brightcall/ListPageResolveBrightcallWidget";

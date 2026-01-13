@@ -207,13 +207,13 @@ const PropertyPage = (props: any) => {
             </div>
             <div className="bg-white min-h-screen mainban">
                 {/* Hero Section */}
-                <div className="relative h-[80vh] md:h-screen">
+                <div className="relative md:min-h-[80vh] h-[80vh] md:h-[auto]  md:min-h-screen">
                     <div className="absolute inset-0">
                         <img src={imgFeatured} className="w-full h-full object-cover" alt="Hero" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/30 to-primary/10" />
+                        <div className="absolute inset-0 bg-[linear-gradient(140deg,black_0%,#00000080_10%)]" />
                     </div>
 
-                    <div className="relative h-full container mx-auto px-4 md:px-12 flex flex-col justify-end pb-12 md:pb-24 text-white">
+                    <div className="relative h-full container mx-auto px-4 md:px-12 flex flex-col justify-end pb-12 md:pb-20 md:pt-25 text-white">
                         <button className="absolute top-24 md:top-32 left-4 md:left-12 flex items-center gap-2 text-white/80 hover:text-white transition-colors bg-black/20 px-4 py-2 rounded-full backdrop-blur-md text-sm font-bold z-10">
                             <ArrowRight className="rotate-180" size={16} /> Back
                         </button>
@@ -252,7 +252,7 @@ const PropertyPage = (props: any) => {
                                 </div>
                             </div>
 
-                            <div className="bg-white p-6 rounded-2xl shadow-2xl w-full max-w-sm text-gray-800 hidden lg:block">
+                            <div className="bg-white p-6 rounded-2xl shadow-2xl w-full max-w-sm text-gray-800 hidden lg:block ">
                                 <InquiryForm hideFeedbackButton={true} />
                             </div>
                         </div>

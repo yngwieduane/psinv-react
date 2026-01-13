@@ -1041,7 +1041,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     </div>
                 )}
             </div>
-            <form data-brightcall-form="registration" onSubmit={handleSubmit(onSubmit)} className="listForm">
+            <form data-brightcall-form="listpage" onSubmit={handleSubmit(onSubmit)} className="listForm">
                 {!isSubmitSuccess && currentStep === 0 && (
                     <>
                         <div className="w-full md:flex mb-4 gap-5">

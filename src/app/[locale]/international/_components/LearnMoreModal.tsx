@@ -6,7 +6,10 @@ import { AudreyNormal } from "@/utils/fonts";
 
 import InquireForm from "./InquireForm";
 
+import { useTranslations } from 'next-intl';
+
 const LearnMoreModal = (props: any) => {
+  const t = useTranslations('InternationalPage.form_section');
   const [open, setOpen] = useState(props.modalState);
 
   const onCloseModal = (event: any) => {
@@ -45,29 +48,29 @@ const LearnMoreModal = (props: any) => {
             >
               <DialogPanel className="relative transform overflow-hidden rounded-lg bg-[#00000075] text-white px-6 pb-10 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-[500px] w-full">
                 <div className="">
-                    <div className="text-end">
-                        <button
-                          type="button"
-                          className="cursor-pointer rounded-md bg-transparent h-full text-gray font-semibold text-gray hover:text-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 width-10"
-                          onClick={onCloseModal}
-                        >
-                          <XMarkIcon className="h-full w-8 h-8 text-gray-400" />
-                        </button>
+                  <div className="text-end">
+                    <button
+                      type="button"
+                      className="cursor-pointer rounded-md bg-transparent h-full text-gray font-semibold text-gray hover:text-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 width-10"
+                      onClick={onCloseModal}
+                    >
+                      <XMarkIcon className="h-full w-8 h-8 text-gray-400" />
+                    </button>
+                  </div>
+                  <div className="">
+                    <div>
+                      <DialogTitle
+                        as="h3"
+                        className={`text-start font-bold text-lg uppercase ${AudreyNormal.className} pb-4 border-b border-white`}
+                      >
+                        {t('title')}
+                      </DialogTitle>
                     </div>
-                    <div className="">                        
-                        <div>
-                            <DialogTitle
-                            as="h3"
-                            className={`text-start font-bold text-lg uppercase ${AudreyNormal.className} pb-4 border-b border-white`}
-                            >
-                            Enquire Now
-                            </DialogTitle>
-                        </div>
 
-                        <div className="mt-5 px-5">
-                            <InquireForm fromModal={true} />
-                        </div>
+                    <div className="mt-5 px-5">
+                      <InquireForm fromModal={true} />
                     </div>
+                  </div>
                 </div>
               </DialogPanel>
             </TransitionChild>
