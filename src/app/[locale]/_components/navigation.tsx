@@ -206,7 +206,7 @@ const socialMedia: SocialMedia[] = [
 const NAV_GROUPS = [
     {
         label: 'Featured',
-        image: 'https://psinv.net/assets/img/landing-page/reem-hills-villa-reem-island/main-img-1.webp?ver=2',
+        image: '/images/landing-page/yas-riva/yas-riva-about.webp',
         columns: [
             {
                 title: 'Abu Dhabi',
@@ -411,7 +411,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     const NAV_GROUPS = [
         {
             label: t('featured projects'),
-            image: 'https://psinv.net/assets/img/landing-page/reem-hills-villa-reem-island/main-img-1.webp?ver=2',
+            image: '/images/landing-page/yas-riva/yas-riva-about.webp',
             columns: [
                 {
                     title: t('Abu Dhabi'),
@@ -565,21 +565,23 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
 
     // Determine if the current page has a dark hero section where the navbar should start transparent with white text
+
     const isDarkHeroPage = ['/en', '/ar', '/ru', '/du', '/cn'].includes(currentPage);
     const pages = ['/about-us', '/crypto'];
-    const isTargetPage = pages.some(page => pathname.endsWith(page));
+    const isTargetPage = pages.some(page => pathname.endsWith(page)) || /^\/projects\/[^/]+\/[^/]+\/[^/]+$/.test(pathname);
 
-    // Updated transparency: Clear at top, frosted glass on scroll
-    const navbarClasses = isScrolled || hoveredMenu
-        ? 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20'
-        : 'bg-transparent py-6';
-    const showWhiteTheme = !isScrolled && !hoveredMenu && (isDarkHeroPage || isTargetPage);
+    
+    const showWhiteTheme = (isDarkHeroPage || isTargetPage) && !isScrolled && !hoveredMenu;
 
-    const linkColor = showWhiteTheme ? 'text-white' : 'text-gray-800';
+    const navbarClasses = showWhiteTheme  
+        ? 'bg-transparent py-6 text-white transition-all duration-300'
+        : 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20 text-gray-900 transition-all duration-300';
+
     const mainLogo = showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
+    const linkColor = showWhiteTheme ? 'text-white' : 'text-gray-800';
 
     return (
-        <header className="bg-white">
+        <header className="bg-transparent">
             {/* Top Bar */}
             {/* <div className="grid grid-cols-3 gap-4 bg-indigo-950 hidden md:grid px-5">
             <div className="grid grid-cols-3">
@@ -759,7 +761,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 onClose={setIsMobileMenuOpen}
             >
                 <div className="fixed inset-0 z-50 bg-gray-900/20 backdrop-blur-sm" />
-                <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white/95 backdrop-blur-xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-transform duration-500 ease-in-out">
+                <DialogPanel className="fixed inset-y-0 right-0 z-99 w-full overflow-y-auto bg-white/95 backdrop-blur-xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-transform duration-500 ease-in-out">
                     <div className="flex items-center justify-between border-b border-gray-100 pb-6">
                         <Link href="/" className="-m-1.5 p-1.5" title="Property Shop Investment">
                             <span className="sr-only">Property Shop Investment</span>
