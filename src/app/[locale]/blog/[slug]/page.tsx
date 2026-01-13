@@ -41,7 +41,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     if (!post) notFound();
 
     const rtl = isRtlLocale(locale);
-    const ui = await getTranslations({ locale, namespace: "BlogPage" });
+    const t = await getTranslations({ locale, namespace: "BlogPostPage" });
+    const tBlog = await getTranslations({ locale, namespace: "BlogPage" });
 
     const title = post.title || "Untitled";
     const summary = post.summary || "";
@@ -54,7 +55,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <div className="container mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
                     <Link href="/blog" className="flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors">
                         <ChevronLeft size={16} className={rtl ? "rotate-180 ml-1" : "mr-1"} />
-                        Back to Blog
+                        {t("backToBlog")}
                     </Link>
                     {/* Mobile Breadcrumb could go here if needed */}
                 </div>
@@ -77,7 +78,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                         <div className="max-w-4xl">
                             <div className="flex items-center space-x-4 text-white/90 text-sm mb-4 font-medium tracking-wide">
                                 <span className="bg-primary px-3 py-1 rounded-full text-white uppercase text-xs font-bold tracking-wider">
-                                    {post.category || "Insight"}
+                                    {post.categoryKey ? tBlog(`categories.${post.categoryKey}`) : (post.category || t("defaultCategory"))}
                                 </span>
 
                                 {post.date && (
@@ -106,8 +107,8 @@ export default async function BlogPostPage({ params }: PageProps) {
                                 <User size={24} />
                             </div>
                             <div>
-                                <p className="text-sm font-bold text-gray-900">{post.author || "PSI Editor"}</p>
-                                <p className="text-xs text-gray-500">Real Estate Expert</p>
+                                <p className="text-sm font-bold text-gray-900">{post.author || t("defaultAuthor")}</p>
+                                <p className="text-xs text-gray-500">{t("authorRole")}</p>
                             </div>
                         </div>
                         {/* Share buttons could go here */}
@@ -131,7 +132,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                         {contentHtml ? (
                             <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
                         ) : (
-                            <div className="text-center py-20 text-gray-400">Content unavailable.</div>
+                            <div className="text-center py-20 text-gray-400">{t("contentUnavailable")}</div>
                         )}
                     </article>
 
@@ -139,13 +140,13 @@ export default async function BlogPostPage({ params }: PageProps) {
                     <div className="mt-16 pt-10 border-t border-gray-100">
                         <div className="flex flex-col md:flex-row items-center justify-between p-8 bg-gray-50 rounded-2xl">
                             <div className="mb-6 md:mb-0 text-center md:text-left">
-                                <h3 className="font-bold text-lg mb-2">Subscribe to our newsletter</h3>
-                                <p className="text-gray-500 text-sm">Get the latest market updates delivered to your inbox.</p>
+                                <h3 className="font-bold text-lg mb-2">{t("subscribeTitle")}</h3>
+                                <p className="text-gray-500 text-sm">{t("subscribeSubtitle")}</p>
                             </div>
                             <div className="flex w-full md:w-auto">
-                                <input type="email" placeholder="Your email" className="w-full md:w-64 px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:border-primary" />
+                                <input type="email" placeholder={t("emailPlaceholder")} className="w-full md:w-64 px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:border-primary" />
                                 <button className="bg-primary text-white px-6 py-3 rounded-r-lg font-bold hover:bg-primary/90 transition-colors">
-                                    Join
+                                    {t("joinButton")}
                                 </button>
                             </div>
                         </div>

@@ -186,7 +186,7 @@ export default function BlogPage() {
                     <div className="text-center mb-16">
                         <h1 className="text-4xl font-bold mb-6 font-serif">{ui("title")}</h1>
                         <p className="text-gray-500 max-w-2xl mx-auto">
-                            Discover the latest insights, news, and trends from the UAE real estate market.
+                            {ui("subtitle")}
                         </p>
                     </div>
 
@@ -216,7 +216,7 @@ export default function BlogPage() {
                                     ))
                                 ) : (
                                     <div className="text-center py-20 bg-gray-50 rounded-2xl text-gray-500">
-                                        No posts found matching your criteria.
+                                        {ui("noPostsFound")}
                                     </div>
                                 )}
                             </div>
@@ -232,11 +232,11 @@ export default function BlogPage() {
                                 className="cursor-pointer flex items-center px-6 py-3 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                             >
                                 <ChevronLeft size={20} className={rtl ? "ml-2 rotate-180" : "mr-2"} />
-                                Previous
+                                {ui("previous")}
                             </button>
 
                             <span className="text-gray-400 font-mono text-sm">
-                                Page {page}
+                                {ui("page")} {page}
                             </span>
 
                             <button
@@ -244,7 +244,8 @@ export default function BlogPage() {
                                 disabled={!hasMore || loading}
                                 className="cursor-pointer flex items-center px-6 py-3 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                             >
-                                Next
+                            >
+                                {ui("next")}
                                 <ChevronRight size={20} className={rtl ? "mr-2 rotate-180" : "ml-2"} />
                             </button>
                         </div>

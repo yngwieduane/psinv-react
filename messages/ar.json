@@ -5639,5 +5639,32 @@
     "footer": {
       "copyright": "© 2024 شركة بروبرتي شوب للاستثمار ذ.م.م | جميع الحقوق محفوظة."
     }
+  },
+  "BlogPage": {
+    "title": "مدونتنا",
+    "searchPlaceholder": "ابحث في المقالات...",
+    "recentPosts": "أحدث المقالات",
+    "readMore": "اقرأ المزيد",
+    "categories": {
+      "market_insights": "رؤى السوق",
+      "company_news": "أخبار الشركة",
+      "lifestyle": "أسلوب الحياة"
+    },
+    "subtitle": "اكتشف أحدث الرؤى والأخبار والاتجاهات من سوق العقارات في الإمارات.",
+    "noPostsFound": "لم يتم العثور على مقالات تطابق معايير البحث.",
+    "previous": "السابق",
+    "next": "التالي",
+    "page": "صفحة"
+  },
+  "BlogPostPage": {
+    "backToBlog": "العودة للمدونة",
+    "defaultCategory": "رؤية",
+    "defaultAuthor": "محرر PSI",
+    "authorRole": "خبير عقاري",
+    "contentUnavailable": "المحتوى غير متوفر.",
+    "subscribeTitle": "اشترك في نشرتنا الإخبارية",
+    "subscribeSubtitle": "احصل على أحدث تحديثات السوق في بريدك الوارد.",
+    "emailPlaceholder": "بريدك الإلكتروني",
+    "joinButton": "انضم"
   }
 }
