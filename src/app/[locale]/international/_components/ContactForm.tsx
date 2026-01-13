@@ -29,7 +29,11 @@ interface FormValue {
 type FormData = z.infer<typeof contactSchema>
 
 
+import { useTranslations } from 'next-intl';
+
 const ContactForm = () => {
+    const t = useTranslations('InternationalPage.form_section');
+    const tMessages = useTranslations('InternationalPage.form_messages');
     const pathname = usePathname();
     const locale = pathname.split("/")[1] || 'en';
 
@@ -404,9 +408,9 @@ const ContactForm = () => {
                 <div className="w-full flex flex-column md:gap-7 gap-10">
                     <div className="w-full lg:flex lg:gap-5">
                         <div className="inputGroup lg:w-1/2 w-full lg:mb-0 mb-10">
-                            <label htmlFor="fname" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>First Name</label>
+                            <label htmlFor="fname" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>{t('fname')}</label>
                             <input type="text"
-                                {...register('fname')} placeholder="First Name"
+                                {...register('fname')} placeholder={t('fname')}
                                 className={`block w-full py-3 border-b border-[#000] placeholder-[#999] lg:mt-7 mt-4 text-lg focus-visible:outline-none`} />
                             {errors.fname?.message && (
                                 <p className="text-red-500 text-sm mt-2">
@@ -415,9 +419,9 @@ const ContactForm = () => {
                             )}
                         </div>
                         <div className="inputGroup lg:w-1/2 w-full">
-                            <label htmlFor="lname" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>Last Name</label>
+                            <label htmlFor="lname" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>{t('lname')}</label>
                             <input type="text"
-                                {...register('lname')} placeholder="Last Name"
+                                {...register('lname')} placeholder={t('lname')}
                                 className="block w-full py-3 border-b border-[#000] placeholder-[#999] lg:mt-7 mt-4 text-lg focus-visible:outline-none" />
                             {errors.lname?.message && (
                                 <p className="text-red-500 text-sm mt-2">
@@ -428,9 +432,9 @@ const ContactForm = () => {
                     </div>
 
                     <div className="inputGroup w-full mb-2">
-                        <label htmlFor="email" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>Email Address</label>
+                        <label htmlFor="email" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>{t('email_address')}</label>
                         <input type="text"
-                            {...register('email')} placeholder="Email"
+                            {...register('email')} placeholder={t('email')}
                             className="block w-full py-3 border-b border-[#000] placeholder-[#999] lg:mt-7 mt-4 text-lg focus-visible:outline-none" />
                         {errors.email?.message && (
                             <p className="text-red-500 text-sm mt-2">
@@ -439,7 +443,7 @@ const ContactForm = () => {
                         )}
                     </div>
                     <div className="inputGroup  w-full mb-0">
-                        <label htmlFor="phone" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>Telephone Number</label>
+                        <label htmlFor="phone" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>{t('telephone_number')}</label>
                         <Controller name="phone"
                             control={control}
                             render={({ field }) => (
@@ -459,9 +463,9 @@ const ContactForm = () => {
 
                     </div>
                     <div className="inputGroup w-full mb-2">
-                        <label htmlFor="message" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>Message</label>
+                        <label htmlFor="message" className={`font-[900] md:text-lg text-md ${montserratBold.className}`}>{t('message')}</label>
                         <textarea rows={5}
-                            {...register('message')} placeholder="Message"
+                            {...register('message')} placeholder={t('message')}
                             className="block w-full py-3 border-b border-[#000] placeholder-[#999] lg:mt-7 mt-4 text-lg focus-visible:outline-none" />
                         {errors.message?.message && (
                             <p className="text-red-500 text-sm mt-2">
@@ -472,7 +476,7 @@ const ContactForm = () => {
                     <input type="text" className="hidden gclid_field clid_field" id="gclid_field" name="gclid_field"
                         placeholder="gclid_field" />
                     {isSubmitting && (
-                        'Submitting...'
+                        tMessages('submitting')
                     )}
                     {(!isSubmitting && !isSubmitSuccess) ? (
                         <div className='md:w-auto w-full flex justify-end mt-7'>
@@ -482,7 +486,7 @@ const ContactForm = () => {
                         after:border after:border-black md:after:inset-0 after:-right-3 after:top-0 after:rounded-[50%] 
                         after:transition after:duration-300 after:rotate-[335deg]
                         hover:after:bg-black cursor-pointer`}>
-                                <span className="relative z-10">Register</span>
+                                <span className="relative z-10">{t('register')}</span>
                             </button>
                         </div>
                     ) : ""
@@ -490,25 +494,25 @@ const ContactForm = () => {
 
                     {!isSubmitting && !isSubmitSuccess ? (
                         <>
-                            <p className="text-xs font-[700]">Company Profile and International Investor Guide will be downloaded upon submitting your details</p>
+                            <p className="text-xs font-[700]">{t('desc')}</p>
                             <div className="flex flex-column gap-0">
                                 <div className="mb-0">
                                     <label className="flex items-center space-x-2">
                                         <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
-                                        <span className="text-sm">I agree to the Terms & Conditions and Privacy Policy</span>
+                                        <span className="text-sm">{tMessages('agree_terms')}</span>
                                     </label>
                                     {errors.agreement1 && <p className="text-red-500 text-sm mb-0">{errors.agreement1.message}</p>}
                                 </div>
                                 <div className="mb-0">
                                     <label className="flex items-center space-x-2">
                                         <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
-                                        <span className="text-sm">Agree to receive calls and communications</span>
+                                        <span className="text-sm">{tMessages('agree_calls')}</span>
                                     </label>
                                 </div>
                                 <div className="mb-0">
                                     <label className="flex items-center space-x-2">
                                         <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
-                                        <span className="text-sm">Receive calls about various projects</span>
+                                        <span className="text-sm">{tMessages('agree_projects')}</span>
                                     </label>
                                 </div>
                             </div>
@@ -522,8 +526,8 @@ const ContactForm = () => {
 
                 {isSubmitSuccess && (
                     <>
-                        <div className='alert alert-info text-center' role='alert'>Thank You for your inquiry.<br />
-                            We will contact you soon.</div>
+                        <div className='alert alert-info text-center' role='alert'>{tMessages('success').split('.')[0]}.<br />
+                            {tMessages('success').split('.')[1]}.</div>
                     </>
                 )}
 
@@ -531,7 +535,7 @@ const ContactForm = () => {
                     <>
                         <div className="w-full">
                             <div className='bg-yellow-100 text-center text-sm p-4 text-[#78350F]' role='alert'>
-                                You've already submitted. Please wait a few minutes before trying again.
+                                {tMessages('already_submitted')}
                             </div>
                         </div>
                     </>

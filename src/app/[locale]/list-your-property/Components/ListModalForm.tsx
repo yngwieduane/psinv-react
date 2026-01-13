@@ -637,7 +637,7 @@ const ListModalForm: React.FC<ListFormProps> = ({ fromModal }) => {
                 )
                 }
             </div>
-            <form onSubmit={handleSubmit(onSubmit)} className="listForm">
+            <form data-brightcall-form="listpage" onSubmit={handleSubmit(onSubmit)} className="listForm">
                 {!isSubmitSuccess && currentStep === 0 && (
                     <>
                         <div className="inputGroup  w-full mb-4">
