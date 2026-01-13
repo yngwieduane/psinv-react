@@ -8,6 +8,7 @@ import "react-phone-number-input/style.css";
 import styles from '../_components/InquiryForm.module.css'
 import { useState } from "react"
 import { usePathname } from "next/navigation"
+import { insertHubspotLead, insertPSILead } from "@/utils/crmApiHelpers"
 
 interface FormValue {
     fname: string,
@@ -18,13 +19,16 @@ interface FormValue {
 }
 
 interface props {
-    fromModal : boolean,
+    fromModal: boolean,
 }
 
 type FormData = z.infer<typeof formSchema>
 
+import { useTranslations } from 'next-intl';
 
-const InquireForm = (props:any) => {
+const InquireForm = (props: any) => {
+    const t = useTranslations('InternationalPage.form_section');
+    const tMessages = useTranslations('InternationalPage.form_messages');
     const pathname = usePathname();
     const locale = pathname.split("/")[1] || 'en';
 
@@ -42,12 +46,12 @@ const InquireForm = (props:any) => {
     } = useForm<FormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-        agreement1 : true,
-        agreement2 : true,
-        agreement3 : true,
-    },
+            agreement1: true,
+            agreement2: true,
+            agreement3: true,
+        },
     });
-    
+
     const [formValue, setFormValue] = useState<FormValue>({
         fname: '',
         lname: '',
@@ -56,22 +60,22 @@ const InquireForm = (props:any) => {
         howtocontact: '',
     });
 
-    const onchangeField = (e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        setFormValue({ ...formValue, [e.target.name]:e.target.value });
+    const onchangeField = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setFormValue({ ...formValue, [e.target.name]: e.target.value });
     }
 
-    const onSubmit = async (data:FormData) => {        
+    const onSubmit = async (data: FormData) => {
 
-        if(typeof window === 'undefined') return ; //ensure code runs only in browser
+        if (typeof window === 'undefined') return; //ensure code runs only in browser
 
-        const APIKey = '160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a';
+        //const APIKey = '160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a';
         const sendToMail = "callcenter@psinv.net";
 
         const lastSubmitTime = localStorage.getItem("formSubmitTime");
         const now = Date.now();
-        const cooldown = 10*60*1000 //10 minutes
+        const cooldown = 10 * 60 * 1000 //10 minutes
 
-        if(lastSubmitTime && now - parseInt(lastSubmitTime) < cooldown) {
+        if (lastSubmitTime && now - parseInt(lastSubmitTime) < cooldown) {
             setIsAlreadySubmitted(true);
             return;
         }
@@ -90,7 +94,7 @@ const InquireForm = (props:any) => {
 
             setGclidField(gclid);
 
-            if(gclidField !== '') {
+            if (gclidField !== '') {
                 source = 'google_ads';
             }
             else {
@@ -138,16 +142,8 @@ const InquireForm = (props:any) => {
                     mediaName = "63475";
                     methodOfContact = "62132";
                     break;
-                }
+            }
 
-            // switch (campaign) {
-            //     case '':
-            //         propertyCampaignId = "";
-                
-            //     default:
-            //         propertyCampaignId = propertyCampaignId;
-            // }            
-            
             const remarks = `
                 Additional consent 1 : ${data.agreement1 ? "Yes" : "No"} </br>
                 Additional consent 2 : ${data.agreement2 ? "Yes" : "No"} </br>
@@ -216,216 +212,327 @@ const InquireForm = (props:any) => {
                 google_gclid: gclidField,
             };
 
-            try {   
-                let apiURL = "";
+            try {
                 if (mediaName === "63907") {
-                    const token = "400b0c41cea6ae771d9090684ccbcd3696aab50aa47d7dcdddd3018934a337bc8ac18f7581f6664e";
-                    apiURL = `https://api.portal.psi-crm.com/integrations/hubspot/createLead?apiKey=${token}`;
+                    const hubspotResponse = await insertHubspotLead(formDataToSend);
+                    if (!hubspotResponse.ok) {
+                        const text = await hubspotResponse.text();
+                        console.error(`HubSpot API error: ${hubspotResponse.status} - ${text}`);
+                    } else {
+                        const hubspotData = await hubspotResponse.json();
+                        // console.log("HubSpot success:", hubspotData);
+                    }
                 } else {
-                    apiURL = `https://api.portal.psi-crm.com/leads?APIKEY=${APIKey}`;
+                    const psiResponse = await insertPSILead(formDataToSend);
+                    if (!psiResponse.ok) {
+                        const text = await psiResponse.text();
+                        console.error(`PSI API error: ${psiResponse.status} - ${text}`);
+                    } else {
+                        const psiData = await psiResponse.json();
+                        // console.log("PSI success:", psiData);
+                    }
                 }
-
-                const res = await fetch(apiURL, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(formDataToSend)
-                });
-
-                const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        body: `
-                        List Your Property<br><br>
-                        Name: ${data.fname}  ${data.lname} </br>
-                        Email: ${data.email} </br>
-                        Phone: ${data.phone} </br> 
-                        Preferred Contact Method: ${data.howtocontact} </br>                       
-                        URL coming from: ${currentUrl}
-                        `,
-                        receiver: sendToMail,
-                        subject: "New Enquiry - International",
-                        filename: "",
-                        filedata: ""
-                    }),
-                });
-
-                if(res.ok || mailRes.ok) {
-                    const files = [
-                        { path:"/assets/documents/international/PSI-Company-Profile.pdf", name: "PSI-Company-Profile.pdf" },
-                        { path:"/assets/documents/international/PSI-International-Investor-Guide.pdf", name: "PSI-International-Investor-Guide.pdf" }
-                    ];
-                    
-                    files.forEach(file => {
-                        const a = document.createElement("a");
-                        a.href= file.path;
-                        a.download = file.name;
-                        a.style.display = "none";
-                        document.body.appendChild(a);
-                        a.click();
-                        document.body.removeChild(a);
-                    });
-
-                    setPostId("success");
-                    setIsSubmitSuccess(true);
-                    setIsAlreadySubmitted(false);
-                    window.location.href = `/${locale}/thankyou?${encodeURIComponent(data.email)}`;
-                    localStorage.setItem("formSubmitTime", Date.now().toString());
-                } else {
-                    alert("Error submitting the form.");
-                }    
-
-            } catch(error) {
-                console.log(error);
-                setPostId("Error");
-            } finally {
-                setIsSubmitting(false);
+            } catch (crmError) {
+                console.error("CRM insertion failed:", crmError);
             }
-        }catch(error){
-            console.error("Submission failed:", error);
-        }finally{
-            setIsSubmitting(false);
-        }        
-    }
+
+            const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    body: `         
+            <table cellpadding="0" cellspacing="0" width="550" align="center" class="">
+                    <tbody class="">
+                    <tr class="">
+                        <td class="">
+                            <table cellpadding="0" cellspacing="0" width="100%" align="center" class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td align="center" height="80" style="text-align:center;" width="550" bgcolor="#FFFFFF" class=""></td>
+                                </tr>
+                                <tr class="">
+                                    <td height="20" class=""> </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" width="100%" align="center" class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td colspan="3" height="10" bgcolor="#02344a" class=""></td>
+                                </tr>
+                                <tr class="">
+                                    <td width="10" style="color:#fdfdfd; font-size:16px; background:#02344a;" class=""> 
+                                    </td>
+                                    <td height="30" style="color:#fff; font-size:16px; background:#02344a; font-weight:bold; color:#FFF;font-family:Arial,  Helvetica, sans-serif" class="">
+                                        Inquiry Form - International
+                                    </td>
+                                    <td width="10" style="color:#FFFFFF; font-size:16px; background:#02344a;" class=""> 
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <td colspan="3" height="10" bgcolor="#02344a" class=""></td>
+                                </tr>
+                                <tr class="">
+                                    <td height="20" class=""> </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table width="100%" cellspacing="3" cellpadding="5" align="center" style="border:1px solid #e8e6e6" class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        Client Name:
+                                    </td>
+                                    <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        ${data.fname} ${data.lname}
+                                    </td>
+                                </tr>
+
+                                <tr class="">
+                                    <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        Email:
+                                    </td>
+                                    <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                    font-size:12px; font-weight:bold;" class="">
+                                        ${data.email} 
+                                    </td>
+                                </tr>
+
+                                <tr class="">
+                                  <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      Phone:
+                                  </td>
+                                  <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      ${data.phone}
+                                  </td>
+                                </tr>
+
+                                <tr class="">
+                                  <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      Preferred Contact Method:
+                                  </td>
+                                  <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      ${data.howtocontact}
+                                  </td>
+                                </tr>
+
+                                <tr class="">
+                                  <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      URL coming from:
+                                  </td>
+                                  <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
+                                  font-size:12px; font-weight:bold;" class="">
+                                      ${currentUrl}
+                                  </td>
+                                </tr>
     
-    return(
-        <>
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="w-full flex flex-column gap-4">
-                <div className="inputGroup  w-full mb-2">
-                    <label htmlFor="fname" className="hidden">First Name</label>
-                    <input type="text"
-                    {...register('fname')} placeholder="First Name"
-                    className="block w-full px-5 py-3 border border-[#fff] rounded-[7px] placeholder-[#fff]" />
-                    {errors.fname?.message && (
-                        <p className="text-red-500 text-sm mt-2">
-                            {errors.fname.message}
-                        </p>
-                    )}
-                </div>
-                <div className="inputGroup  w-full mb-2">
-                    <label htmlFor="lname" className="hidden">Last Name</label>
-                    <input type="text" 
-                    {...register('lname')} placeholder="Last Name"
-                    className="block w-full px-5 py-3 border border-[#fff] rounded-[7px] placeholder-[#fff]" />
-                    {errors.lname?.message && (
-                        <p className="text-red-500 text-sm mt-2">
-                            {errors.lname.message}
-                        </p>
-                    )}
-                </div>
-                <div className="inputGroup  w-full mb-2">
-                    <label htmlFor="email" className="hidden">Email</label>
-                    <input type="text"
-                    {...register('email')} placeholder="Email"
-                    className="block w-full px-5 py-3 border border-[#fff] rounded-[7px] placeholder-[#fff]" />
-                    {errors.email?.message && (
-                        <p className="text-red-500 text-sm mt-2">
-                            {errors.email.message}
-                        </p>
-                    )}
-                </div>
-                <div className="inputGroup  w-full mb-0">
-                    <label htmlFor="phone" className="hidden">Phone</label>
-                    <Controller name="phone"
-                    control={control}                        
-                    render={({field}) => (
-                        <div>
-                            <PhoneInput                
-                                international
-                                {...field}
-                                {...register('phone')}
-                                defaultCountry="AE"                       
-                                className={`w-full block px-5 py-3 border rounded-md border border-[#A6A6A6] 
-                                rounded-[7px] placeholder-[#A6A6A6] ${styles.phoneField}`}
-                                onChange={(value) => field.onChange(value)}
-                                />
-                            {errors.phone && <p className="text-red-500 text-sm mt-[0px]">{errors.phone.message}</p>}                                    
-                        </div>
-                    )} 
-                    />                                 
-                    
-                </div>
-                <div className="inputGroup w-full mb-0">
-                    <label htmlFor="howtocontact" className="block mb-3">How would you like to be contacted? *</label>
-                    <select className={`w-full block px-5 py-3 border rounded-md mb-3 border border-[#A6A6A6] 
-                                rounded-[7px] placeholder-[#A6A6A6] ${styles.phoneField}`}
-                                {...register('howtocontact')} onChange={onchangeField} >
-                        <option value="">Select an option</option>
-                        <option value="Call">Phone Call</option>
-                        <option value="Whatsapp">Whats App</option>
-                        <option value="Email">Email</option>
-                    </select>
-                    {errors.howtocontact && <p className="text-red-500 text-sm mt-[-5px]">{errors.howtocontact.message}</p>}
-                </div>
-                <input type="text" className="hidden gclid_field clid_field" id="gclid_field" name="gclid_field" 
-                        placeholder= "gclid_field" />
-                {isSubmitting && (
-                    'Submitting...'
-                )}
-                {(!isSubmitting && !isSubmitSuccess) ? (
-                    <button type="submit" className="uppercase rounded py-3 text-xl cursor-pointer
-                    hover:scale-[103%] transition-all ease-in-out duration-400" disabled={isSubmitting}
-                    style={{backgroundImage:"linear-gradient(180deg, rgb(250, 167, 5) 29%, rgb(149, 116, 0) 100%)"}}>
-                        Submit                    
-                    </button>
-                ) : ""
+                                </tbody>
+                            </table>
+                            <table class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td height="10" style="line-height:9px" class=""> </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table cellpadding="0" align="center" cellspacing="0" height="30px" width="550" class="">
+                                <tbody class="">
+                                <tr class="">
+                                    <td align="center" headers="20" style="background:#02344a;color:#FFF; font-size:11px; line-height:9px; font-family:Arial,Helvetica, sans-serif;" class="">
+                                        Copyright &copy; 2025, PSI  All rights reserved.
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+          `,
+                    receiver: sendToMail,
+                    subject: "New Enquiry - International",
+                    filename: "",
+                    filedata: ""
+                }),
+            });
+
+            if (mailRes.ok) {
+                const files = [
+                    { path: "/assets/documents/international/PSI-Company-Profile.pdf", name: "PSI-Company-Profile.pdf" },
+                    { path: "/assets/documents/international/PSI-International-Investor-Guide.pdf", name: "PSI-International-Investor-Guide.pdf" }
+                ];
+
+                files.forEach(file => {
+                    const a = document.createElement("a");
+                    a.href = file.path;
+                    a.download = file.name;
+                    a.style.display = "none";
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                });
+
+                setPostId("success");
+                setIsSubmitSuccess(true);
+                setIsAlreadySubmitted(false);
+                window.location.href = `/${locale}/thankyou?${encodeURIComponent(data.email)}`;
+                localStorage.setItem("formSubmitTime", Date.now().toString());
+            } else {
+                alert("Error submitting the form.");
             }
 
-                {!isSubmitting && !isSubmitSuccess ?  (
+        } catch (error) {
+            console.log(error);
+            setPostId("Error");
+        } finally {
+            setIsSubmitting(false);
+        }
+
+    }
+
+    return (
+        <>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="w-full flex flex-column gap-4">
+                    <div className="inputGroup  w-full mb-2">
+                        <label htmlFor="fname" className="hidden">{t('fname')}</label>
+                        <input type="text"
+                            {...register('fname')} placeholder={t('fname')}
+                            className="block w-full px-5 py-3 border border-[#fff] rounded-[7px] placeholder-[#fff]" />
+                        {errors.fname?.message && (
+                            <p className="text-red-500 text-sm mt-2">
+                                {errors.fname.message}
+                            </p>
+                        )}
+                    </div>
+                    <div className="inputGroup  w-full mb-2">
+                        <label htmlFor="lname" className="hidden">{t('lname')}</label>
+                        <input type="text"
+                            {...register('lname')} placeholder={t('lname')}
+                            className="block w-full px-5 py-3 border border-[#fff] rounded-[7px] placeholder-[#fff]" />
+                        {errors.lname?.message && (
+                            <p className="text-red-500 text-sm mt-2">
+                                {errors.lname.message}
+                            </p>
+                        )}
+                    </div>
+                    <div className="inputGroup  w-full mb-2">
+                        <label htmlFor="email" className="hidden">{t('email')}</label>
+                        <input type="text"
+                            {...register('email')} placeholder={t('email')}
+                            className="block w-full px-5 py-3 border border-[#fff] rounded-[7px] placeholder-[#fff]" />
+                        {errors.email?.message && (
+                            <p className="text-red-500 text-sm mt-2">
+                                {errors.email.message}
+                            </p>
+                        )}
+                    </div>
+                    <div className="inputGroup  w-full mb-0">
+                        <label htmlFor="phone" className="hidden">Phone</label>
+                        <Controller name="phone"
+                            control={control}
+                            render={({ field }) => (
+                                <div>
+                                    <PhoneInput
+                                        international
+                                        {...field}
+                                        {...register('phone')}
+                                        defaultCountry="AE"
+                                        className={`w-full block px-5 py-3 border rounded-md border border-[#A6A6A6] 
+                                rounded-[7px] placeholder-[#A6A6A6] ${styles.phoneField}`}
+                                        onChange={(value) => field.onChange(value)}
+                                    />
+                                    {errors.phone && <p className="text-red-500 text-sm mt-[0px]">{errors.phone.message}</p>}
+                                </div>
+                            )}
+                        />
+
+                    </div>
+                    <div className="inputGroup w-full mb-0">
+                        <label htmlFor="howtocontact" className="block mb-3">{t('how_to_contact')} *</label>
+                        <select className={`w-full block px-5 py-3 border rounded-md mb-3 border border-[#A6A6A6] 
+                                rounded-[7px] placeholder-[#A6A6A6] ${styles.phoneField}`}
+                            {...register('howtocontact')} onChange={onchangeField} >
+                            <option value="">{t('select')}</option>
+                            <option value="Call">Phone Call</option>
+                            <option value="Whatsapp">Whatsapp</option>
+                            <option value="Email">Email</option>
+                        </select>
+                        {errors.howtocontact && <p className="text-red-500 text-sm mt-[-5px]">{errors.howtocontact.message}</p>}
+                    </div>
+                    <input type="text" className="hidden gclid_field clid_field" id="gclid_field" name="gclid_field"
+                        placeholder="gclid_field" />
+                    {isSubmitting && (
+                        tMessages('submitting')
+                    )}
+                    {(!isSubmitting && !isSubmitSuccess) ? (
+                        <button type="submit" className="uppercase rounded py-3 text-xl cursor-pointer
+                    hover:scale-[103%] transition-all ease-in-out duration-400" disabled={isSubmitting}
+                            style={{ backgroundImage: "linear-gradient(180deg, rgb(250, 167, 5) 29%, rgb(149, 116, 0) 100%)" }}>
+                            {t('submit')}
+                        </button>
+                    ) : ""
+                    }
+
+                    {!isSubmitting && !isSubmitSuccess ? (
+                        <>
+                            <p className={` ${!props.fromModal ? "text-center" : ""} text-xs `}>{t('agreement_text.part1')} <a href="terms" target="_blank"><span className="text-[#ED9C4B]">{t('agreement_text.terms')}</span></a> {t('agreement_text.part2')} <a href="privacy" target="_blank"><span className="text-[#ED9C4B]">{t('agreement_text.privacy')}</span></a></p>
+                            <p className={`${!props.fromModal ? "text-center" : ""} text-xs`}>{t('desc')}</p>
+                            <div className="flex flex-column gap-0">
+                                <div className="mb-0">
+                                    <label className="flex items-center space-x-2">
+                                        <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
+                                        <span className="text-sm">{tMessages('agree_terms')}</span>
+                                    </label>
+                                    {errors.agreement1 && <p className="text-red-500 text-sm mb-0">{errors.agreement1.message}</p>}
+                                </div>
+                                <div className="mb-0">
+                                    <label className="flex items-center space-x-2">
+                                        <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
+                                        <span className="text-sm">{tMessages('agree_calls')}</span>
+                                    </label>
+                                </div>
+                                <div className="mb-0">
+                                    <label className="flex items-center space-x-2">
+                                        <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
+                                        <span className="text-sm">{tMessages('agree_projects')}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </>
+                    )
+                        :
+                        ""
+                    }
+
+                </div>
+
+                {isSubmitSuccess && (
                     <>
-                        <p className={` ${!props.fromModal ? "text-center" : ""} text-xs `}>By creating an account, you agree to our <a href="terms" target="_blank"><span className="text-[#ED9C4B]">Terms of Service</span></a> and
-                    have read and understood the <a href="privacy" target="_blank"><span className="text-[#ED9C4B]">Privacy Policy</span></a></p>
-                    <p className={`${!props.fromModal ? "text-center" : ""} text-xs`}>Company Profile and International Investor Guide will be downloaded upon submitting your details</p>
-                    <div className="flex flex-column gap-0">                    
-                        <div className="mb-0">
-                            <label className="flex items-center space-x-2">
-                            <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
-                            <span className="text-sm">I agree to the Terms & Conditions and Privacy Policy</span>
-                            </label>
-                            {errors.agreement1 && <p className="text-red-500 text-sm mb-0">{errors.agreement1.message}</p>}
-                        </div>
-                        <div className="mb-0">
-                            <label className="flex items-center space-x-2">
-                            <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
-                            <span className="text-sm">Agree to receive calls and communications</span>
-                            </label>
-                        </div>
-                        <div className="mb-0">
-                            <label className="flex items-center space-x-2">
-                            <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
-                            <span className="text-sm">Receive calls about various projects</span>
-                            </label>
-                        </div>
-                    </div>
-                    </>                    
-                )
-                :
-                ""      
-            }                
-                
-            </div>
+                        <div className='alert alert-info text-center' role='alert'>{tMessages('success').split('.')[0]}.<br />
+                            {tMessages('success').split('.')[1]}.</div>
+                    </>
+                )}
 
-            {isSubmitSuccess && (
-                <>
-                    <div className='alert alert-info text-center' role='alert'>Thank You for your inquiry.<br />
-                    We will contact you soon.</div>
-                </>
-            )} 
-
-            {isAlreadySubmitted && (
-                <>
-                    <div className="w-full">
-                        <div className='bg-yellow-100 text-center text-sm p-4 text-[#78350F]' role='alert'>
-                            You've already submitted. Please wait a few minutes before trying again.
+                {isAlreadySubmitted && (
+                    <>
+                        <div className="w-full">
+                            <div className='bg-yellow-100 text-center text-sm p-4 text-[#78350F]' role='alert'>
+                                {tMessages('already_submitted')}
+                            </div>
                         </div>
-                    </div>
-                </>
-            )} 
-            
-        </form>
+                    </>
+                )}
+
+            </form>
         </>
     )
 }

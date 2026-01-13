@@ -5696,7 +5696,9 @@
         "unitView": "Unit View",
         "unitSize": "Unit Size",
         "unitNumber": "Unit Number",
-        "askingPrice": "Asking Price"
+        "askingPrice": "Asking Price",
+        "service": "Select Service Type",
+        "selectPurpose": "Select Purpose"
       },
       "options": {
         "purpose": {
@@ -5746,6 +5748,412 @@
         "title": "BE with the Brand you Trust",
         "description": "Trust the brand that delivers quality, reliability, and meets your needs. Stick with the brand you trust."
       }
+    }
+  },
+  "InternationalPage": {
+    "nav": {
+      "real_estate": "Real Estate",
+      "items": {
+        "uae_market": "UAE MARKET",
+        "investment_opportunities": "INVESTMENT OPPORTUNITIES",
+        "why_invest_in_uae": "WHY INVEST IN UAE",
+        "about_us": "ABOUT US",
+        "client": "CLIENT"
+      }
+    },
+    "mobile_menu": {
+      "copyright": "© 2024 Property Shop Investment LLC | All Rights Reserved."
+    },
+    "hero": {
+      "title": "Secure Your Slice of Luxe Living",
+      "subtitle": "Exceptional Investment Opportunities Await!",
+      "whatsapp_button": "WhatsApp",
+      "stats": [
+        "Thriving tourism industry with over 10 million visitors",
+        "Golden Visa residency for property investments above AED 2 million",
+        "GDP growth exceeding 4.5%"
+      ]
+    },
+    "form_section": {
+      "title": "Enquire Now",
+      "fname": "First Name",
+      "lname": "Last Name",
+      "email": "Email",
+      "email_address": "Email Address",
+      "phone": "Phone",
+      "telephone_number": "Telephone Number",
+      "message": "Message",
+      "how_to_contact": "How would you like to be contacted?",
+      "select": "Select and option",
+      "submit": "Submit",
+      "register": "Register",
+      "desc": "Company Profile and International Investor Guide will be downloaded upon submitting your details",
+      "agreement_text": {
+        "part1": "By creating an account, you agree to our",
+        "terms": "Terms of Service",
+        "part2": "and have read and understood the",
+        "privacy": "Privacy Policy"
+      }
+    },
+    "market_section": {
+      "subtitle": "Market in 2025: Your Gateway to Growth",
+      "title": "Investing in the Thriving UAE Real Estate",
+      "growth_title": "GROWTH",
+      "market_in": "Market in",
+      "year": "2025",
+      "description": "The United Arab Emirates, a land of soaring skyscrapers, sun-kissed beaches, and boundless ambition, beckons international investors with its dynamic real estate market. In 2025, the UAE presents a compelling opportunity to capitalize on a robust economy, surging demand, and attractive returns.",
+      "learn_more_button": "Learn More"
+    },
+    "investment_section": {
+      "subtitle": "Market in 2025: Your Gateway to Growth",
+      "title": "Investment Opportunities",
+      "vertical_text": "INVESTMENT",
+      "inquire_button": "Inquire Now",
+      "locations": [
+        {
+          "title": "Skyrise",
+          "subtitle": "Dubai - By Damac",
+          "content": "Skyrise by Damac brings high-end living to new heights with its 48-story towers featuring studio, 1, 2, and 3-bedroom apartments, panoramic canal views, and access to a wide range of amenities. With prices starting at just 1.025 million AED and flexible payment plans, Skyrise by Damac is set to redefine luxury living for those who seek a modern lifestyle in one of Dubai's most prestigious areas.",
+          "image": "/assets/images/international/skyrise.webp"
+        },
+        {
+          "title": "Riverside",
+          "subtitle": "Downtown - By Damac",
+          "content": "Discover the pinnacle of urban waterfront living at DAMAC Riverside, where tranquillity and energy seamlessly intertwine. Wake up to serene river views, surrounded by lush greenery and revitalizing wellness experiences that nurture both body and soul. In this thriving community, well-being, health, and aspirations take center stage, offering a sanctuary where you can truly flourish. Embrace the vibrant lifestyle of this exceptional riverside retreat.",
+          "image": "/assets/images/international/riverside.webp"
+        },
+        {
+          "title": "Mandarin Oriental",
+          "subtitle": "Saadiyat Island, Abu Dhabi - By Aldar",
+          "content": "Mandarin Oriental Residences is poised to be a prestigious landmark in the Saadiyat Cultural District on Saadiyat Island, Abu Dhabi. Discover an exclusive collection of 1 to 4-bedroom apartments and 5-bedroom penthouses, all expertly managed by the globally renowned Mandarin Oriental.",
+          "image": "/assets/images/international/mandarin-oriental.webp"
+        },
+        {
+          "title": "Ramhan Island",
+          "subtitle": "Abu Dhabi - By Eagle Hills",
+          "content": "Choose to live luxury and serenity in our breathtaking standalone beachfront villas, 3 - 7 bedrooms, meticulously crafted in the glamorous Maldivian style. We grant you a private beach with an extraordinary haven of tranquility and bliss from bays and mangrove trees.",
+          "image": "/assets/images/international/ramhan.webp"
+        },
+        {
+          "title": "Yas Golf",
+          "subtitle": "Yas Island, Abu Dhabi - By Aldar",
+          "content": "Yas Golf collection is considered a new residential community developed by the the leading real estate development company Al dar properties. It offers studio-3 BR furnished and unfurnished apartments, with Andalusian architectural designs overlooking the Yas Links golf course and the famous mangroves in Abu Dhabi, in addition to many facilities and amenities.",
+          "image": "/assets/images/international/yas-golf.webp"
+        }
+      ]
+    },
+    "growth_section": {
+      "vertical_text": "Growth",
+      "title": "Real estate is an effective way to achieve portfolio diversity, grow wealth with that",
+      "learn_more_button": "Learn More",
+      "real_estate_title": "REAL ESTATE",
+      "benefits": [
+        {
+          "title": "100%",
+          "description": "Freehold Ownership"
+        },
+        {
+          "title": "SIMPLE TO ENTER",
+          "description": "& Exit Investment"
+        },
+        {
+          "title": "10%",
+          "description_prefix": "up to",
+          "description": "ROI Per Annum"
+        }
+      ]
+    },
+    "why_invest_section": {
+      "vertical_text": "Why Invest in UAE",
+      "title": "UAE: Where Family Dreams Flourish",
+      "learn_more_button": "Learn More",
+      "benefits": [
+        {
+          "title": "Family-Centric Activities:",
+          "description": "Enjoy fun and culture with your family in the UAE, a safe and secure country."
+        },
+        {
+          "title": "Safe environment:",
+          "description": "UAE in the second ranking worldwide for safety with Dubai and Abu Dhabi leading the city Safety ranking, with lowest crime rate.."
+        },
+        {
+          "title": "Educational Excellence:",
+          "description": "The UAE has many great schools and education options for your children's future."
+        },
+        {
+          "title": "Cultural Diversity:",
+          "description": "The UAE offers cultural diversity and learning for families"
+        }
+      ]
+    },
+    "roi_comparison_section": {
+      "vertical_text": "Why Invest in UAE",
+      "title": "ROI COMPARISON",
+      "description": "Properties in the UAE regularly offer an average ROI above 5%, which compares favorably to other major cities.",
+      "tax_label": "Tax:",
+      "slide_right": "Slide Right",
+      "dubai": {
+        "value": "5.6%",
+        "location": "Dubai",
+        "tax": "No property tax"
+      },
+      "locations": [
+        {
+          "image": "/assets/images/international/munich.webp",
+          "location": "Munich",
+          "value": "2.95%",
+          "tax": "2.71%"
+        },
+        {
+          "image": "/assets/images/international/paris.webp",
+          "location": "Paris",
+          "value": "2.79%",
+          "tax": "10%"
+        },
+        {
+          "image": "/assets/images/international/hong-kong.webp",
+          "location": "Hong Kong",
+          "value": "2.62%",
+          "tax": "15%"
+        }
+      ]
+    },
+    "why_invest_main_section": {
+      "vertical_text": "Why Invest in UAE",
+      "title": "Why Invest in UAE",
+      "categories": [
+        {
+          "title": "Sun-Kissed Yields & Tax-Free Bliss:",
+          "points": [
+            "Rental Riches: Watch your bank account tan like a beach bum with yields up to 10% - hotter than the Dubai sun!",
+            "Zero-Tax Oasis: Forget sandcastles - build tax-free wealth! The UAE's friendly tax regime lets you keep every shimmering dirham."
+          ]
+        },
+        {
+          "title": "Architectural Gems & Glittering Lifestyle:",
+          "points": [
+            "From Burj Khalifa to Beachfront Bliss: Choose your own adventure - sleek skyscrapers, family-friendly communities, or beachfront havens..",
+            "World-Class Playground: Dive into endless pools, tee off on championship courses, and shop till you drop in luxury mall."
+          ]
+        },
+        {
+          "title": "Boomtown Playground for Global Nomads:",
+          "points": [
+            "Expat Paradise: Millions flock to the UAE's vibrant life, making your property the hottest Airbnb in town.",
+            "Future-Proof Investment: Dubai's Expo 2020 legacy keeps the investment party going, with futuristic infrastructure and a booming economy."
+          ]
+        },
+        {
+          "title": "Gateway to the World, Key to Your Portfolio:",
+          "points": [
+            "Global Hub: Connect with the world's top businesses from your Dubai doorstep - your investment passport to prosperity.",
+            "Solid & Sophisticated: The UAE's stable government and cutting-edge technology ensure your real estate dreams stay grounded in reality."
+          ]
+        }
+      ]
+    },
+    "four_reasons_section": {
+      "vertical_text": "4 Reasons",
+      "title": "4 Reasons Your Money Will Blossom in UAE",
+      "learn_more_button": "Learn More",
+      "reasons": [
+        {
+          "title": "Golden Visa Bloom: Invest just €503,000 in UAE real estate",
+          "description": "Unlock a decade of living, working, and thriving. This renewable 10-year visa extends to your family, creating a legacy of opportunity.",
+          "image": "/assets/images/international/international-visa.webp"
+        },
+        {
+          "title": "Tax-Free Sanctuary: Unlike many landscapes",
+          "description": "The UAE is devoid of property and income taxes. Your investments flourish undisturbed, maximizing your returns.",
+          "image": "/assets/images/international/international-tax-free.webp"
+        },
+        {
+          "title": "Global Hub Connection: The UAE is a business nexus",
+          "description": "Invest here and connect your portfolio to the pulse of the global market. Your visa grants visa-free access, making managing your desert oasis a breeze.",
+          "image": "/assets/images/international/international-global-hub.webp"
+        },
+        {
+          "title": "Peace of Mind Haven: The UAE's stable government",
+          "description": "Secure environment ensure your financial oasis thrives. Your Golden Visa comes with no employment ties, and even in unforeseen circumstances, your family's residency remains uninterrupted.",
+          "image": "/assets/images/international/international-haven.webp"
+        }
+      ]
+    },
+    "solutions_section": {
+      "vertical_text": "Solutions",
+      "title": "The Solutions We Offer",
+      "description": "We offer a wide range of services to help you achieve your financial goals, from real estate wealth management and assets management to business opportunities and family relocation in the UAE.",
+      "services": [
+        {
+          "title": "Wealth Management",
+          "description": "We help you protect and grow your wealth through a variety of investment strategies.",
+          "image": "/assets/images/international/wealth.jpg"
+        },
+        {
+          "title": "Assets Management",
+          "description": "We help you manage your assets, including real estate, businesses, and investments.",
+          "image": "/assets/images/international/assets.jpg"
+        },
+        {
+          "title": "Business Opportunities",
+          "description": "We help you find and seize business opportunities in the UAE, providing the support to start and grow your business",
+          "image": "/assets/images/international/business.jpg"
+        },
+        {
+          "title": "Family Relocation",
+          "description": "Relocate your family to UAE hassle-free. Schools, healthcare, home, and more — we've got you covered.",
+          "image": "/assets/images/international/relocation.jpg"
+        }
+      ]
+    },
+    "awards_section": {
+      "vertical_text": "Awards",
+      "title": "PSI Has Achieved Multiple Accolades And Recognition..",
+      "get_consultation_button": "Get Free Consultation",
+      "awards": [
+        {
+          "developer": "Aldar",
+          "title": "Top Performing Agency",
+          "year": "1st Place - 2015 - 2022"
+        },
+        {
+          "developer": "Bloom",
+          "title": "Top Performing Agency",
+          "year": "2021 - 2023"
+        },
+        {
+          "developer": "Imkan",
+          "title": "Top Performing Agency",
+          "year": "2021"
+        },
+        {
+          "developer": "Arada",
+          "title": "Top Performer Agency",
+          "year": "2022"
+        },
+        {
+          "developer": "Emaar",
+          "title": "Top Performer Agency",
+          "year": "2018"
+        },
+        {
+          "developer": "RAK",
+          "title": "Top Performer Agency",
+          "year": "2023"
+        }
+      ]
+    },
+    "partners_section": {
+      "title": "We Only Partner With Top - Tier Real Estate Developers",
+      "description": "Our partners are leaders in the real estate industry, and they have a proven track record of delivering high-quality projects on time and on budget."
+    },
+    "client_review_section": {
+      "subtitle": "Let us know if you're interested!",
+      "title": "What our clients say",
+      "vertical_text": "Let's Get Started",
+      "reviews": [
+        {
+          "review": "My experience with them was awesome! They really made my home-buying journey smooth and stress-free. The team was super helpful, always there to answer my questions, and made sure I found a place that felt like home. I would definitely tell my friends and family to give a shot if they're on the hunt for a great real estate partner."
+        },
+        {
+          "review": "Hello from Turkey. Lilit took very good care of us and answered all our questions and queries very clearly. It left no question marks in our minds. We were very pleased. Thank you very much."
+        }
+      ]
+    },
+    "footer_section": {
+      "interested_subtitle": "Let us know if you're interested!",
+      "vertical_text": "Let's Get Started",
+      "main_title": "To gain further information about PSI and investing in the UAE,",
+      "sub_title": "kindly complete the provided form.",
+      "locations": {
+        "title": "Abu Dhabi",
+        "office": "PSI Head Office:",
+        "address1": "Addax Tower, Al Reem Island, Abu Dhabi",
+        "address2": "Mamsha Al Saadiyat"
+      },
+      "social_media_title": "Connect With Us On Our Social Media"
+    },
+    "form_messages": {
+      "success": "Thank You for your inquiry. We will contact you soon.",
+      "already_submitted": "You've already submitted. Please wait a few minutes before trying again.",
+      "submitting": "Submitting...",
+      "agree_terms": "I agree to the Terms & Conditions and Privacy Policy",
+      "agree_calls": "Agree to receive calls and communications",
+      "agree_projects": "Receive calls about various projects"
+    },
+    "footer": {
+      "copyright": "© 2024 Property Shop Investment LLC | All Rights Reserved."
+    }
+  },
+  "BlogPage": {
+    "title": "Our Blog",
+    "searchPlaceholder": "Search blog posts...",
+    "recentPosts": "Recent Posts",
+    "readMore": "Read More",
+    "categories": {
+      "market_insights": "Market Insights",
+      "company_news": "Company News",
+      "lifestyle": "Lifestyle"
+    },
+    "subtitle": "Discover the latest insights, news, and trends from the UAE real estate market.",
+    "noPostsFound": "No posts found matching your criteria.",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page"
+  },
+  "BlogPostPage": {
+    "backToBlog": "Back to Blog",
+    "defaultCategory": "Insight",
+    "defaultAuthor": "PSI Editor",
+    "authorRole": "Real Estate Expert",
+    "contentUnavailable": "Content unavailable.",
+    "subscribeTitle": "Subscribe to our newsletter",
+    "subscribeSubtitle": "Get the latest market updates delivered to your inbox.",
+    "emailPlaceholder": "Your email",
+    "joinButton": "Join"
+  },
+  "Blog": {
+    "201": {
+      "title": "Welcome to Our New Blog",
+      "summary": "We are excited to announce the launch of our new blog where we will share the latest news and insights.",
+      "body": [
+        {
+          "type": "paragraph",
+          "content": "Welcome to the Property Shop Investment blog! Here you will find the latest updates on the real estate market, company news, and lifestyle tips."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "content": "What to Expect"
+        },
+        {
+          "type": "paragraph",
+          "content": "We will be publishing regular market reports, investment guides, and updates on our latest projects. Stay tuned!"
+        }
+      ]
+    },
+    "202": {
+      "title": "Abu Dhabi Market Report Q1 2026",
+      "summary": "A comprehensive look at the real estate trends in Abu Dhabi for the first quarter of 2026.",
+      "body": [
+        {
+          "type": "paragraph",
+          "content": "The Abu Dhabi real estate market has shown remarkable resilience and growth in the first quarter of 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "content": "Key Highlights"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Rental yields effectively stable",
+            "Sales prices increased by 5%",
+            "New project launches in Yas Island and Saadiyat"
+          ]
+        }
+      ]
     }
   }
 }

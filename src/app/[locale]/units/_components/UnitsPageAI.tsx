@@ -7,11 +7,13 @@ import Search from "./Search";
 import UnitsSideSearch from "./UnitsSideSearch";
 import { ChevronDown, Filter, LayoutGrid, MapIcon, X } from "lucide-react";
 import UnitsMapBox from "./UnitsMapBox";
+import { Dialog, DialogPanel } from '@headlessui/react'
 
 export default function UnitsPageAI(props: any) {
     const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
     const [activeSort, setActiveSort] = useState('Featured');
     const [showFilters, setShowFilters] = useState(false);
+    const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
     const unitid = props.unitid || '';
     const category = props.category || '';
     const currentPage = Number(props.page) || 1;
@@ -29,6 +31,14 @@ export default function UnitsPageAI(props: any) {
                     <h1 className="text-xl md:text-3xl text-gray-900 font-bold">Properties for Sale in Abu Dhabi</h1>
 
                     <div className="flex items-center gap-4">
+                        {/* Mobile Filter Button */}
+                        <button
+                            onClick={() => setMobileFiltersOpen(true)}
+                            className="md:hidden bg-white border border-gray-200 rounded-lg p-2 text-gray-700 shadow-sm flex items-center justify-center hover:bg-gray-50 transition-colors"
+                        >
+                            <Filter size={18} />
+                        </button>
+
                         {/* View Toggle */}
                         <div className="bg-white border border-gray-200 rounded-lg p-1 flex shadow-sm">
                             <button
@@ -45,7 +55,7 @@ export default function UnitsPageAI(props: any) {
                             </button>
                         </div>
 
-                        <div className="hidden lg:flex items-center gap-2">
+                        <div className="hidden items-center gap-2">
                             <span className="text-xs text-gray-500 font-bold uppercase">Sort:</span>
                             <div className="relative">
                                 <button className="flex items-center gap-1 text-sm font-bold text-primary cursor-pointer">
@@ -141,6 +151,44 @@ export default function UnitsPageAI(props: any) {
                     </div>
                 </div>
             )}
-        </div>
+
+            {/* Mobile Filter Modal */}
+            <Dialog
+                open={mobileFiltersOpen}
+                as="div"
+                className="relative z-[100] focus:outline-none"
+                onClose={setMobileFiltersOpen}
+                transition
+            >
+                <div className="fixed inset-0 bg-black/25 backdrop-blur-sm transition-opacity duration-300 ease-out data-[closed]:opacity-0" />
+
+                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-4">
+                        <DialogPanel
+                            transition
+                            className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all duration-300 ease-out data-[closed]:scale-95 data-[closed]:opacity-0"
+                        >
+                            <div className="flex justify-between items-center mb-4 border-b border-gray-100 pb-4">
+                                <h3 className="text-lg font-bold text-[#353455]">Filters</h3>
+                                <button onClick={() => setMobileFiltersOpen(false)} className="p-1 rounded-full hover:bg-gray-100 transition-colors">
+                                    <X size={20} className="text-gray-500" />
+                                </button>
+                            </div>
+                            <div className="max-h-[70vh] overflow-y-auto custom-scrollbar no-sticky-impact">
+                                <UnitsSideSearch onChange={() => { }} />
+                            </div>
+                            <div className="mt-6 pt-4 border-t border-gray-100">
+                                <button
+                                    onClick={() => setMobileFiltersOpen(false)}
+                                    className="w-full py-3 bg-primary text-gray-900 rounded-xl font-bold shadow-lg shadow-primary/20 hover:shadow-xl transition-all"
+                                >
+                                    Show Results
+                                </button>
+                            </div>
+                        </DialogPanel>
+                    </div>
+                </div>
+            </Dialog>
+        </div >
     );
 }

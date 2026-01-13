@@ -12,6 +12,7 @@ import {
     Globe
 } from 'lucide-react';
 import { PROJECTS } from "@/utils/projectOverrides";
+import { walkinFormConfig } from '@/utils/walkinConfig';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
@@ -36,6 +37,12 @@ export default async function Sitemap() {
         .map((slug) => ({
             label: prettyLabel(slug),
             href: `/project/${slug}`,
+        }));
+    const walkinLinks = Object.keys(walkinFormConfig)
+        .sort()
+        .map((slug) => ({
+            label: prettyLabel(slug),
+            href: `/walk-in/${slug}`,
         }));
 
     const sections = [
@@ -118,6 +125,13 @@ export default async function Sitemap() {
             color: "text-rose-600",
             bg: "bg-rose-50",
             links: registrationLinks,
+        },
+        {
+            title: "Walk-in",
+            icon: Map,                // you already imported Map icon
+            color: "text-rose-600",
+            bg: "bg-rose-50",
+            links: walkinLinks,
         },
         {
             title: t('services'),

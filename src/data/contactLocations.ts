@@ -49,7 +49,7 @@ export const contactLocations: ContactLocation[] = [
 
     slug: "main-branch",
     phone1: "600 548 200",
-    phone2: "02 205 2999",
+    phone2: "+971564094001",
     direction: "https://goo.gl/maps/LjKdHThYp57u2fka7",
     location: "https://goo.gl/maps/LjKdHThYp57u2fka7",
     longitude: 54.4030951693129,
@@ -79,7 +79,7 @@ export const contactLocations: ContactLocation[] = [
 
     slug: "psi-assets",
     phone1: "600 548 200",
-    phone2: "02 205 2999",
+    phone2: "+971564094001",
     direction:
       "https://www.google.com/maps/dir//20+Al+Reema+St+-+Jazeerat+Al+Reem+-+Abu+Dhabi/",
     location:
@@ -170,7 +170,7 @@ export const contactLocations: ContactLocation[] = [
 
     slug: "waters-edge-branch",
     phone1: "600 548 200",
-    phone2: "02 205 2999",
+    phone2: "+971564094001",
     direction:
       "https://www.google.com/maps/dir//Al+Maha+St+-+Yas+Island+-+Abu+Dhabi/",
     location:

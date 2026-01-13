@@ -13,7 +13,7 @@ declare global {
 type Props = {
     widgetKey: string;
     /** which form attribute to bind */
-    formType: "registration" | "landing";
+    formType: "registration" | "landing" | "listpage";
 };
 
 function bindBrightCallForm(formType: Props["formType"]) {

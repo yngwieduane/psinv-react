@@ -31,8 +31,6 @@ const PropertyPage = (props: any) => {
     let HOdate, launchDate, completionDate, minprice, maxPrice, areaRangeMin, areaRangeMax;
     const [activeTab, setActiveTab] = useState('Overview');
     const [activeFloorPlan, setActiveFloorPlan] = useState(0);
-    const saved = isFavorite(props.data["propertyID"]);
-    const compared = isCompared(props.data["propertyID"]);
     const [showDrawer, setShowDrawer] = useState(false);
     const [dwDataContent, setDwDataContent] = useState('details');
     const [dwDataTitle, setDwDataTitle] = useState('details');
@@ -44,7 +42,10 @@ const PropertyPage = (props: any) => {
         setShowDrawer(true);
     }
     const t = useTranslations('ProjectPage');
+
     const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'] : ("");
+    const saved = isFavorite(props.data["propertyID"]);
+    const compared = isCompared(props.data["propertyID"]);
 
     const generalImages = props.data["generalImages"] ? props.data["generalImages"] : ("");
     const facilitiesAndAmenitiesImages = props.data["facilitiesAndAmenitiesImages"] ? props.data["facilitiesAndAmenitiesImages"] : ("");
@@ -68,6 +69,19 @@ const PropertyPage = (props: any) => {
             image: communityImages,
         }
     ];
+
+    const allGalleryData = [
+        {
+            title: "Project Gallery",
+            image: generalImagesNew
+        },
+        ...galleryData
+    ].filter(item => item.image && item.image.length > 0);
+
+    const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+    const currentGalleryImages = allGalleryData[activeGalleryIndex]?.image || [];
+    const currentTabTitle = allGalleryData[activeGalleryIndex]?.title || "Gallery";
+
     let availbeds = '';
     if (props.data['availableBedrooms']) {
         props.data['availableBedrooms'].forEach((array: any) => {
@@ -193,13 +207,13 @@ const PropertyPage = (props: any) => {
             </div>
             <div className="bg-white min-h-screen mainban">
                 {/* Hero Section */}
-                <div className="relative h-[80vh] md:h-screen">
+                <div className="relative md:min-h-[80vh] h-[80vh] md:h-[auto]  md:min-h-screen">
                     <div className="absolute inset-0">
                         <img src={imgFeatured} className="w-full h-full object-cover" alt="Hero" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/30 to-primary/10" />
+                        <div className="absolute inset-0 bg-[linear-gradient(140deg,black_0%,#00000080_10%)]" />
                     </div>
 
-                    <div className="relative h-full container mx-auto px-4 md:px-12 flex flex-col justify-end pb-12 md:pb-24 text-white">
+                    <div className="relative h-full container mx-auto px-4 md:px-12 flex flex-col justify-end pb-12 md:pb-20 md:pt-25 text-white">
                         <button className="absolute top-24 md:top-32 left-4 md:left-12 flex items-center gap-2 text-white/80 hover:text-white transition-colors bg-black/20 px-4 py-2 rounded-full backdrop-blur-md text-sm font-bold z-10">
                             <ArrowRight className="rotate-180" size={16} /> Back
                         </button>
@@ -238,7 +252,7 @@ const PropertyPage = (props: any) => {
                                 </div>
                             </div>
 
-                            <div className="bg-white p-6 rounded-2xl shadow-2xl w-full max-w-sm text-gray-800 hidden lg:block">
+                            <div className="bg-white p-6 rounded-2xl shadow-2xl w-full max-w-sm text-gray-800 hidden lg:block ">
                                 <InquiryForm hideFeedbackButton={true} />
                             </div>
                         </div>
@@ -353,19 +367,38 @@ const PropertyPage = (props: any) => {
 
                         {/* Gallery Grid */}
                         <section id="gallery" className="scroll-mt-40">
-                            <h3 className="text-3xl font-serif font-bold text-primary mb-8">Gallery</h3>
+                            <div className="flex items-center justify-between mb-8">
+                                <h3 className="text-3xl font-serif font-bold text-primary">Gallery</h3>
+                                <div className="flex gap-2 bg-gray-100 p-1 rounded-full">
+                                    {allGalleryData.map((tab, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => setActiveGalleryIndex(index)}
+                                            className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeGalleryIndex === index
+                                                ? 'bg-white text-primary shadow-sm'
+                                                : 'text-gray-500 hover:text-primary'
+                                                }`}
+                                        >
+                                            {tab.title}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-[500px]">
                                 <FancyboxWrapper>
-                                    <div className="col-span-2 row-span-2 relative group rounded-2xl overflow-hidden cursor-pointer">
-                                        <a title="Main Image" data-fancybox="gallerypopup" href={generalImagesNew[0].imageURL}>
-                                            <img src={generalImagesNew[0].imageURL} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Main" />
-                                            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-                                        </a>
-                                    </div>
-                                    {generalImagesNew.slice(1, 5).map((img: any, index: any) => {
+                                    {currentGalleryImages.length > 0 && (
+                                        <div className="col-span-2 row-span-2 relative group rounded-2xl overflow-hidden cursor-pointer">
+                                            <a title={currentTabTitle} data-fancybox="gallerypopup" href={currentGalleryImages[0].imageURL}>
+                                                <img src={currentGalleryImages[0].imageURL} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={currentTabTitle} />
+                                                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+                                            </a>
+                                        </div>
+                                    )}
+                                    {currentGalleryImages.slice(1, 5).map((img: any, index: any) => {
                                         let imagecontent = img.imageURL.replace('?width=0&height=0', '?width=600&height=400');
                                         return (
-                                            <a title="Main Image" data-fancybox="gallerypopup" href={img.imageURL} key={index} className="relative group rounded-2xl overflow-hidden cursor-pointer">
+                                            <a title={currentTabTitle} data-fancybox="gallerypopup" href={img.imageURL} key={index} className="relative group rounded-2xl overflow-hidden cursor-pointer">
                                                 <img src={imagecontent} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt={`Gallery ${index}`} />
                                             </a>
                                         )
@@ -389,61 +422,59 @@ const PropertyPage = (props: any) => {
                         </div>) : ("")}
 
                         {/* Master Plan & Location Map */}
-                        {props.data["communityMapAndMasterPlan"] !== null && props.data["locationMapImages"] !== null ? (
-                            <section id="location" className="scroll-mt-40">
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                                    {props.data["communityMapAndMasterPlan"] !== null ? (
-                                        <FancyboxWrapper>
-                                            <div>
-                                                <h3 className="text-3xl font-serif font-bold text-primary mb-8">Master Plan</h3>
-                                                <a
-                                                    type="button"
-                                                    title="Master Plan"
-                                                    //onClick={drawerHandler('gallery',images)}
-                                                    data-fancybox="masterplan"
-                                                    href={props.data["communityMapAndMasterPlan"][0]['imageURL']}
-                                                    className="cursor-pointer"
-                                                >
-                                                    <div className="bg-white p-2 rounded-2xl border border-gray-100 shadow-sm overflow-hidden h-[400px] group cursor-pointer relative">
-                                                        <img src={props.data["communityMapAndMasterPlan"][0]['imageURL']} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Master Plan" />
-                                                        <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                            <span className="bg-white/90 px-6 py-2 rounded-full font-bold text-primary flex items-center gap-2"><LayoutGrid size={18} /> View Full</span>
+                        <section id="location" className="scroll-mt-40">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                                {props.data["communityMapAndMasterPlan"] !== null ? (
+                                    <FancyboxWrapper>
+                                        <div>
+                                            <h3 className="text-3xl font-serif font-bold text-primary mb-8">Master Plan</h3>
+                                            <a
+                                                type="button"
+                                                title="Master Plan"
+                                                //onClick={drawerHandler('gallery',images)}
+                                                data-fancybox="masterplan"
+                                                href={props.data["communityMapAndMasterPlan"][0]['imageURL']}
+                                                className="cursor-pointer"
+                                            >
+                                                <div className="bg-white p-2 rounded-2xl border border-gray-100 shadow-sm overflow-hidden h-[400px] group cursor-pointer relative">
+                                                    <img src={props.data["communityMapAndMasterPlan"][0]['imageURL']} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Master Plan" />
+                                                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                        <span className="bg-white/90 px-6 py-2 rounded-full font-bold text-primary flex items-center gap-2"><LayoutGrid size={18} /> View Full</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </FancyboxWrapper>
+                                ) : ("")}
+                                {props.data["locationMapImages"] !== null ? (
+                                    <FancyboxWrapper>
+                                        <div>
+                                            <h3 className="text-3xl font-serif font-bold text-primary mb-8">Location</h3>
+                                            <a
+                                                type="button"
+                                                title="Location Plan"
+                                                //onClick={drawerHandler('gallery',images)}
+                                                data-fancybox="locationplan"
+                                                href={props.data["locationMapImages"][0]['imageURL']}
+                                                className="cursor-pointer"
+                                            >
+                                                <div className="bg-white p-2 rounded-2xl border border-gray-100 shadow-sm overflow-hidden h-[400px] relative">
+                                                    <img src={props.data["locationMapImages"][0]['imageURL']} className="w-full h-full object-cover grayscale opacity-80" alt="Map" />
+                                                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                                        <div className="bg-secondary text-white p-3 rounded-full shadow-xl border-4 border-white animate-bounce">
+                                                            <MapPin size={24} fill="currentColor" />
                                                         </div>
                                                     </div>
-                                                </a>
-                                            </div>
-                                        </FancyboxWrapper>
-                                    ) : ("")}
-                                    {props.data["locationMapImages"] !== null ? (
-                                        <FancyboxWrapper>
-                                            <div>
-                                                <h3 className="text-3xl font-serif font-bold text-primary mb-8">Location</h3>
-                                                <a
-                                                    type="button"
-                                                    title="Location Plan"
-                                                    //onClick={drawerHandler('gallery',images)}
-                                                    data-fancybox="locationplan"
-                                                    href={props.data["locationMapImages"][0]['imageURL']}
-                                                    className="cursor-pointer"
-                                                >
-                                                    <div className="bg-white p-2 rounded-2xl border border-gray-100 shadow-sm overflow-hidden h-[400px] relative">
-                                                        <img src={props.data["locationMapImages"][0]['imageURL']} className="w-full h-full object-cover grayscale opacity-80" alt="Map" />
-                                                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                                            <div className="bg-secondary text-white p-3 rounded-full shadow-xl border-4 border-white animate-bounce">
-                                                                <MapPin size={24} fill="currentColor" />
-                                                            </div>
-                                                        </div>
-                                                        <button className="absolute bottom-4 right-4 bg-white px-4 py-2 rounded-lg shadow-md font-bold text-sm text-gray-700 flex items-center gap-2">
-                                                            <ExternalLink size={16} /> Open in Google Maps
-                                                        </button>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </FancyboxWrapper>
-                                    ) : ("")}
-                                </div>
-                            </section>
-                        ) : ("")}
+                                                    <button className="hidden absolute bottom-4 right-4 bg-white px-4 py-2 rounded-lg shadow-md font-bold text-sm text-gray-700 flex items-center gap-2">
+                                                        <ExternalLink size={16} /> Open in Google Maps
+                                                    </button>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </FancyboxWrapper>
+                                ) : ("")}
+                            </div>
+                        </section>
                         <div className="">
                             <AvailableUnits
                                 propid={props.data["propertyID"]}

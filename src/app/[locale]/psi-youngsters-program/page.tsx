@@ -186,7 +186,6 @@ export default function YoungstersProgramPage() {
                 stroke="#FD661F"
               />
             </svg>
-
             <p className={`${montserrat.className} max-w-[980px] mx-auto text-[20px] text-gray-700 leading-relaxed text-center mt-10`}>
               Our mission in PSI is to nurture the future generation of innovative leaders in the UAE through a three-level program which will be an internship program during the school holidays.
             </p>

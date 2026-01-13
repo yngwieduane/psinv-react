@@ -1345,7 +1345,9 @@
         "unitView": "房型景观",
         "unitSize": "房型面积",
         "unitNumber": "单元号",
-        "askingPrice": "期望价格"
+        "askingPrice": "期望价格",
+        "service": "选择服务类型",
+        "selectPurpose": "选择用途"
       },
       "options": {
         "purpose": {

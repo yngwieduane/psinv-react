@@ -83,13 +83,51 @@ export const programData = {
         "Resilience & Self-Management – Building strong habits for long-term personal and professional success."
       ],
     },
+{
+  title: "Level 3 Details",
+  comingSoon: false,
+  days: [
     {
-      title: "Level 3 Details",
-      comingSoon: true,
-      days: [],
-      values: [],
-      skills: [],
+      day: "Day 1",
+      descriptions: [
+        "Welcome & Kick-Off: Teaming Up",
+        "Key Focus: Accountability, Responsibility, and Adaptability",
+        "Participants start with a warm welcome and program opening, an overview of the inspiring journey ahead, and icebreaker activities to build teams. Workshops and activities guide them to take ownership of their actions and begin developing leadership skills.",
+      ],
     },
+    {
+      day: "Day 2 - 5",
+      descriptions: [
+        "Space Missions: Exploring the 7 Habits",
+        "Key Focus: Growth Mindset, Motivation, Time Management, Negotiation, Communication Skills Mastery, Collaboration, Teamwork, Conflict Resolution, and Emotional Intelligence. Participants work on projects, creative challenges, and interactive workshops to practice effective leadership skills in a space-themed, team-based environment.",
+      ],
+    },
+    {
+      day: "Day 5 - 6",
+      descriptions: [
+        "Graduation: Leaders of Tomorrow Launch",
+        "Participants present their projects and reflections.",
+        "Closing ceremony with recognition and certificates of completion.",
+      ],
+    },
+  ],
+  values: [
+    "Empowering youth to discover their leadership potential.",
+    "Building accountability, teamwork, and self-confidence through real-world experiences.",
+    "Encouraging creativity, critical thinking, and continuous self-improvement.",
+    "Fostering collaboration and empathy as the foundation of effective leadership.",
+  ],
+  skills: [
+    "Accountability, Responsibility & Adaptability - Taking ownership, staying flexible, and leading by example.",
+    "Growth Mindset & Motivation - Believing in continuous improvement and striving for goals with purpose.",
+    "Time Management - Learning to prioritize and balance multiple tasks effectively.",
+    "Negotiation Skills - Finding win-win outcomes through clear communication and understanding.",
+    "Communication & Active Listening - Expressing ideas confidently and listening with empathy.",
+    "Collaboration, Teamwork & Conflict Resolution - Working together productively and handling challenges constructively.",
+    "Emotional Intelligence - Understanding and managing emotions to build stronger connections and resilient teams.",
+  ],
+}
+
   ],
 };
 export const communityItems = [

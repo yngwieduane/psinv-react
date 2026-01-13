@@ -23,14 +23,17 @@ type Props = {
   openModal: () => void;
 };
 
-const LocationsSlider:React.FC<Props> = ({ slides, openModal }) => {
+import { useTranslations } from 'next-intl';
+
+const LocationsSlider: React.FC<Props> = ({ slides, openModal }) => {
+  const t = useTranslations('InternationalPage.investment_section');
   const navigationPrevRef = useRef<HTMLDivElement | null>(null);
   const navigationNextRef = useRef<HTMLDivElement | null>(null);
 
   const navigationConfig: NavigationOptions = {
     prevEl: navigationPrevRef.current,
     nextEl: navigationNextRef.current,
-    };
+  };
 
 
   return (
@@ -54,20 +57,20 @@ const LocationsSlider:React.FC<Props> = ({ slides, openModal }) => {
         modules={[Navigation]}
         navigation={navigationConfig}
         onSwiper={(swiper) => {
-            setTimeout(() => {
-                if (
-                navigationPrevRef.current &&
-                navigationNextRef.current &&
-                swiper.params.navigation &&
-                swiper.navigation &&
-                typeof swiper.params.navigation !== 'boolean'
-                ) {
-                swiper.params.navigation.prevEl = navigationPrevRef.current;
-                swiper.params.navigation.nextEl = navigationNextRef.current;
-                swiper.navigation.init();
-                swiper.navigation.update();
-                }
-            });
+          setTimeout(() => {
+            if (
+              navigationPrevRef.current &&
+              navigationNextRef.current &&
+              swiper.params.navigation &&
+              swiper.navigation &&
+              typeof swiper.params.navigation !== 'boolean'
+            ) {
+              swiper.params.navigation.prevEl = navigationPrevRef.current;
+              swiper.params.navigation.nextEl = navigationNextRef.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }
+          });
         }}
 
         breakpoints={{
@@ -117,7 +120,7 @@ const LocationsSlider:React.FC<Props> = ({ slides, openModal }) => {
                       after:transition after:duration-300 after:rotate-[335deg]
                       hover:after:bg-[#ED9C4B]`}
                   >
-                    <span className="relative z-10">Inquire Now</span>
+                    <span className="relative z-10">{t('inquire_button')}</span>
                   </button>
                 </div>
               </div>

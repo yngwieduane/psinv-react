@@ -10,15 +10,18 @@ const montserratLight = Montserrat({
     variable: '--font-montserrat-light',
 });
 
+import { useTranslations } from 'next-intl';
+
 function Partners() {
-    return(
+    const t = useTranslations('InternationalPage.partners_section');
+
+    return (
         <>
-        <div className={`w-full md:pr-0 md:px-0 px-6 relative md:pt-0 pt-10 md:pl-10 ${montserratLight.className} md:mb-0 mb-10`}>
+            <div className={`w-full md:pr-0 md:px-0 px-6 relative md:pt-0 pt-10 md:pl-10 ${montserratLight.className} md:mb-0 mb-10`}>
                 <h2 className={`lg:text-5xl md:text-2xl text-3xl text-center uppercase ${AudreyNormal.className} mb-7 max-w-[1160px] mx-auto`}>
-                   We Only Partner With Top - Tier Real Estate Developers
+                    {t('title')}
                 </h2>
-                <p className={`md:text-3xl text-sm font-light leading-normal ${montserratLight.className} text-center max-w-[1160px] mx-auto`}>Our partners are leaders in the real estate industry, 
-                    and they have a proven track record of delivering high-quality projects on time and on budget.</p>
+                <p className={`md:text-3xl text-sm font-light leading-normal ${montserratLight.className} text-center max-w-[1160px] mx-auto`}>{t('description')}</p>
                 <div className={`flex gap-5 pt-10 w-full mx-auto md:justify-center ${styles.scrollContainer}`}>
                     <img src="/assets/images/international/logos/aldar.png" alt="aldar" className="max-w-auto md:w-[90px] w-[50px] h-fit" />
                     <img src="/assets/images/international/logos/emaar.png" alt="emaar" className="max-w-auto md:w-[90px] w-[50px] h-fit" />
@@ -28,9 +31,9 @@ function Partners() {
                     <img src="/assets/images/international/logos/nshama.png" alt="nshama" className="max-w-auto md:w-[90px] w-[50px] h-fit" />
                     <img src="/assets/images/international/logos/q-properties.jpg" alt="q-properties" className="max-w-auto md:w-[90px] w-[50px] h-fit" />
                     <img src="/assets/images/international/logos/modon.jpg" alt="modon" className="max-w-auto md:w-[90px] w-[50px] h-fit" />
-                    <img src="/assets/images/international/logos/bloom.jpg" alt="bloom"  className="max-w-auto md:w-[90px] w-[50px] h-fit" />
+                    <img src="/assets/images/international/logos/bloom.jpg" alt="bloom" className="max-w-auto md:w-[90px] w-[50px] h-fit" />
                 </div>
-            </div>         
+            </div>
         </>
     )
 }

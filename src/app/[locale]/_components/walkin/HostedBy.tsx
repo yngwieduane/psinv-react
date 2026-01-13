@@ -1,12 +1,14 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { walkinFormConfig } from '@/utils/walkinConfig';
 import { usePathname } from 'next/navigation';
 import dayjs from 'dayjs';
 import { useWalkinForm } from '@/context/WalkinFormContext';
-import { Montserrat, Open_Sans } from "next/font/google";
+import { Montserrat } from 'next/font/google';
+import SearchableSelect, { SelectOption } from './SearchableSelect';
+
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -19,18 +21,25 @@ export function HostedBy({ validationErrors }: { validationErrors?: Record<strin
   const today = dayjs().format('YYYY-MM-DD');
 
   const config = walkinFormConfig[slug];
-  const agentList = config?.agentsByDate?.[today] || [];
+
+  const agentList =
+    (config?.agents?.length ? config.agents : (config?.agentsByDate?.[today] || []))
+      .slice()
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+  const agentOptions: SelectOption[] = agentList.map((a) => ({
+    id: a.id,
+    label: a.name,
+  }));
 
   const { data, updateForm } = useWalkinForm();
   const [hover, setHover] = useState(0);
 
-  const handleAgentChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selected = agentList.find(agent => agent.id === e.target.value);
+  const handleAgentSelect = (opt?: SelectOption) => {
     updateForm({
-      hostedBy: {
-        agentId: selected?.id,
-        agentName: selected?.name,
-      },
+      hostedBy: opt
+        ? { agentId: opt.id, agentName: opt.label }
+        : { agentId: undefined, agentName: undefined },
     });
   };
 
@@ -44,35 +53,28 @@ export function HostedBy({ validationErrors }: { validationErrors?: Record<strin
 
   return (
     <div className="mt-8">
-      <h2 className={`text-[24px] font-bold text-[#E0592A] pb-2 ${montserrat.className}`}>You've been hosted by:</h2>
+      <h2 className={`text-[24px] font-bold text-[#E0592A] pb-2 ${montserrat.className}`}>
+        You've been hosted by:
+      </h2>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Agent Name Dropdown */}
+        {/* Agent Searchable Select */}
         <div>
-          <label htmlFor="selectagent" className="inline-block text-[15px] font-medium text-[#2C2D65] mb-1">Agent Name:</label>
-          <select
-            id="selectagent"
-            name="agentName"
-            value={data.hostedBy?.agentId || ''}
-            onChange={handleAgentChange}
-            className={`w-full border ${validationErrors?.['hostedBy.agentId'] ? 'border-red-500' : 'border-gray-300'
-              } rounded px-3 py-2`}
-          >
-            <option value="">-</option>
-            {agentList.map(agent => (
-              <option key={agent.id} value={agent.id}>
-                {agent.name}
-              </option>
-            ))}
-          </select>
-          {validationErrors?.['hostedBy.agentId'] && (
-            <p className="text-red-500 text-sm mt-1">
-              {validationErrors['hostedBy.agentId'][0]}
-            </p>
-          )}
+          <SearchableSelect
+            label="Agent Name:"
+            placeholder="Search agent..."
+            options={agentOptions}
+            valueId={data.hostedBy?.agentId || ''}
+            onChange={handleAgentSelect}
+            error={validationErrors?.['hostedBy.agentId']?.[0]}
+          />
         </div>
+
         {/* Star Rating */}
         <div>
-          <label className="inline-block text-[15px] font-medium text-[#2C2D65] mb-1">Rate your experience:</label>
+          <label className="inline-block text-[15px] font-medium text-[#2C2D65] mb-1">
+            Rate your experience:
+          </label>
           <div className="flex space-x-1 mt-2">
             {[...Array(5)].map((_, index) => {
               const value = index + 1;
@@ -98,6 +100,7 @@ export function HostedBy({ validationErrors }: { validationErrors?: Record<strin
           </div>
         </div>
       </div>
+
       {/* Remarks */}
       <div className="mt-6">
         <label htmlFor="remarks" className="inline-block text-[15px] font-medium text-[#2C2D65] mb-1">
@@ -108,8 +111,7 @@ export function HostedBy({ validationErrors }: { validationErrors?: Record<strin
           id="remarks"
           rows={4}
           placeholder="Add notes here"
-          className={`w-full border ${validationErrors?.remarks ? 'border-red-500' : 'border-gray-300'
-            } rounded px-3 py-2`}
+          className={`w-full border ${validationErrors?.remarks ? 'border-red-500' : 'border-gray-300'} rounded px-3 py-2`}
           value={data.remarks || ''}
           onChange={handleRemarksChange}
         />

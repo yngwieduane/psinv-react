@@ -6,7 +6,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 export default function TermsPage() {
   return (
     <>
-      <div className="max-w-5xl mx-auto px-4 py-10">
+      <div className="max-w-5xl mx-auto px-4 pb-10 pt-40">
         <h1 className="text-xl md:text-2xl text-left mb-6 text-[#00194A]">
           Terms & Conditions
         </h1>

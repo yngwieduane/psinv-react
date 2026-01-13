@@ -76,7 +76,7 @@ const PropertiesSlider = ({ slides, modal, onOpenModal, onUpdateModal }: Props) 
                   ))}
                 </ul>
                 <div className="md:ml-0 mx-auto">
-                  <div className="btnOuter relative bg-[#E35F27] rounded-[8px] mt-[50px] h-[48px] w-[205px] ms-0">
+                  <div className="btnOuter relative bg-[#E35F27] rounded-[8px] mt-[50px] px-2 h-[50px] w-[205px] ms-0">
                     <button className="btn btnPrimary btnAnimate text-white flex justify-between py-0 gap-2 items-center h-[48px] w-[201px]"
                       onClick={onOpenModal}>
                       <CircleIcon />
@@ -91,7 +91,7 @@ const PropertiesSlider = ({ slides, modal, onOpenModal, onUpdateModal }: Props) 
               <div className="md:w-1/2 relative order-first md:order-last">
                 <img
                   src={slide.image}
-                  alt={slide.title}
+                  alt={slide.title} title={slide.title}
                   className="md:absolute md:bottom-0 md:right-0 md:w-full md:h-[110%] h-[200px] mt-[-15px] mx-auto" />
               </div>
             </div>

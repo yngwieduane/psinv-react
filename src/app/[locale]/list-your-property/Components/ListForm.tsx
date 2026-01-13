@@ -5,7 +5,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { isValid, z } from "zod";
+import { boolean, isValid, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormDataSchema } from "./lib/Schema";
 import { faPaperclip, faChevronDown } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +13,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'react-datepicker/dist/react-datepicker.css';
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { insertHubspotLead } from "@/utils/crmApiHelpers";
+import Link from "next/link";
+import { File } from "buffer";
 
 type FormData = z.infer<typeof FormDataSchema>
 
@@ -46,27 +49,34 @@ interface FormValue {
     cityName: string;
     propName: string;
 }
+
+
 const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: number; referredBy?: number; assignedTo?: number }> = {
     'Dubai': {
-        email: 'callcenter@psidubai.com',
+        email: 'callcenter@psidubai.com, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0',
         referredTo: 4421,
         referredBy: 4421,
         assignedTo: 4421,
     },
     'Abu Dhabi': {
-        email: 'callcenter@psinv.net',
+        email: 'callcenter@psinv.net, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
         referredTo: 3458,
         referredBy: 3458,
     },
     'DEFAULT': {
-        email: 'callcenter@psinv.net',
+        email: 'callcenter@psinv.net, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
     }
 };
 
-const getCityConfig = (cityName: string) => CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
+const getCityConfig = (cityName: string) => {
+    if (['Dubai', 'Sharjah'].includes(cityName)) {     //If Sharjah, use DUbai CRM
+        return CITY_CONFIG['Dubai'];
+    }
+    return CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
+}
 
 interface ListFormProps {
     fromModal?: boolean;
@@ -141,6 +151,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
     const [gclidField, setGclidField] = useState('');
     const [hasSentMail, setHasSentMail] = useState(false);
     const [isAlreadySubmitted, setIsAlreadySubmitted] = useState(false);
+
 
     const {
         register,
@@ -365,24 +376,26 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
         if (!files || files.length === 0) return;
 
+        const fileList = Array.from(files) as unknown as File[];
+
         switch (name) {
             case 'propertyimages':
-                setPropertyImages(Array.from(files)); // multiple files
+                setPropertyImages(fileList); // multiple files
                 break;
             case 'propertyspa':
-                setPropertySpa(files[0]); // single file
+                setPropertySpa(fileList[0]); // single file
                 break;
             case 'propertydeed':
-                setPropertyDeed(files[0]); // single file
+                setPropertyDeed(fileList[0]); // single file
                 break;
             case 'passportfile':
-                setPassportFile(files[0]); // single file
+                setPassportFile(fileList[0]); // single file
                 break;
         }
 
         setFormValue(prev => ({
             ...prev,
-            [name]: name === 'propertyimages' ? Array.from(files) : files[0],
+            [name]: name === 'propertyimages' ? fileList : fileList[0],
         }));
     };
 
@@ -425,10 +438,10 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
     const uploadFiles = async (files: File[] | File, fieldname: string) => {
         const formData = new FormData();
         if (Array.isArray(files)) {
-            files.forEach(file => formData.append('files', file));
+            files.forEach(file => formData.append('files', file as unknown as Blob));
         }
         else {
-            formData.append('files', files);
+            formData.append('files', files as unknown as Blob);
         }
         formData.append('field', fieldname);
 
@@ -440,11 +453,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
         if (!uploadResponse.ok) {
             throw new Error(`file upload failed ${fieldname}`);
         }
-        if (uploadResponse.ok) {
-            //setIsSubmitSuccess(true);
-        }
         const uploadResult = await uploadResponse.json();
-        return uploadResult.fileUrls;
+        return uploadResult.fileData; // Returns Base64 file data array
     };
 
     const isValidFile = (file: string | undefined | null): boolean => {
@@ -471,8 +481,9 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
             let bedrooms, bathrooms, contactType, requirementType, ReferredByID,
                 ReferredToID, ActivityAssignedTo, Budget, Budget2, unitType;
 
+            // Upload files and get Base64 data
             const uploadedFiles = {
-                propertyimages: await uploadFiles(propertyImages, 'propertyimages'),
+                propertyimages: propertyImages.length > 0 ? await uploadFiles(propertyImages, 'propertyimages') : [],
                 spa: propertySpa ? await uploadFiles(propertySpa, 'spa') : [],
                 deed: propertyDeed ? await uploadFiles(propertyDeed, 'deed') : [],
                 passport: passportFile ? await uploadFiles(passportFile, 'passport') : []
@@ -489,7 +500,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
             let urlParams = new URLSearchParams(window.location.search);
             let source = urlParams.get('utm_source') || '';
-            let campaign = urlParams.get('utm_campaign') || '';
+            let campaign = urlParams.get('utm_campaign') || urlParams.get('?utm_campaign') || '';
             let gclid = urlParams.get('gclid_field') || '';
             let currentUrl = window.location.href;
 
@@ -508,6 +519,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
             let propertyCampaignId = "";
             let newRemarks = "";
             let methodOfContact = "115747";
+            let isAuhOnlyCampaign = false;
 
             switch (source) {
                 case 'HubspotEmail':
@@ -547,42 +559,51 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
             }
 
             switch (campaign) {
-
                 case 'RamahnIsland_Hubspot':
                     propertyCampaignId = "2133";
                     newRemarks = "Rotation:Ramhan Rotation";
+                    isAuhOnlyCampaign = true;
                     break;
                 case 'ALReemHills_Hubspot':
                     propertyCampaignId = "2127";
+                    isAuhOnlyCampaign = true;
                     break;
                 case 'SAADIYATLAGOONS_hubspot':
                     propertyCampaignId = "2128";
+                    isAuhOnlyCampaign = true;
                     break;
                 case 'SAADIYATLAGOONS_hupspot':
                     propertyCampaignId = "2128";
+                    isAuhOnlyCampaign = true;
                     break;
                 case 'YasRiva_Hubspot':
                     propertyCampaignId = "2132";
+                    isAuhOnlyCampaign = true;
                     break;
                 case 'Hudayriyat_Hubspot':
                 case 'Hudayriyat_HubSpot':
                     propertyCampaignId = "2177";
+                    isAuhOnlyCampaign = true;
                     break;
                 case 'DripCampaign_hubspot':
                 case 'DripCampaign':
                     propertyCampaignId = "2134";
+                    isAuhOnlyCampaign = true;
                     newRemarks = "";
                     break;
                 case 'Landlord_Hubspot':
                     propertyCampaignId = "2199";
+                    isAuhOnlyCampaign = true;
                     newRemarks = "rotation:landlord ";
                     break;
                 case '10.2025_jubail_island_lisitingCampaign':
                     propertyCampaignId = "2374";
+                    isAuhOnlyCampaign = true;
                     newRemarks = "rotation:Jubail landlord ";
                     break;
                 default:
                     propertyCampaignId = propertyCampaignId;
+                    isAuhOnlyCampaign = false;
                     break;
             }
 
@@ -697,9 +718,27 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     break;
             }
 
+
+            const isHubspotMedia = mediaName === '63907';
+
             if (cityConfig.referredTo) ReferredToID = cityConfig.referredTo;
             if (cityConfig.referredBy) ReferredByID = cityConfig.referredBy;
             if (cityConfig.assignedTo) ActivityAssignedTo = cityConfig.assignedTo;
+
+            // Prepare file attachment info for remarks
+            const fileInfo = [];
+            if (uploadedFiles.propertyimages?.length > 0) {
+                fileInfo.push(`Property Images: ${uploadedFiles.propertyimages.length} file(s) attached`);
+            }
+            if (uploadedFiles.spa?.length > 0) {
+                fileInfo.push(`SPA: ${uploadedFiles.spa[0].filename}`);
+            }
+            if (uploadedFiles.deed?.length > 0) {
+                fileInfo.push(`Title Deed: ${uploadedFiles.deed[0].filename}`);
+            }
+            if (uploadedFiles.passport?.length > 0) {
+                fileInfo.push(`Passport: ${uploadedFiles.passport[0].filename}`);
+            }
 
             const remarks = `
                 Additional consent 1 : ${data.agreement1 ? "Yes" : "No"} </br>
@@ -722,25 +761,16 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                 Asking price: ${data.askingprice} </br>
                 Status: ${data.status} </br>
                 Service: ${data.service} </br>
-                Ready to view: ${data.readytoview} </br>                              
-                
-                ${propertyImages
-                    ? `Attach external image: ${baseURL}${uploadedFiles.propertyimages}</br>`
-                    : ''}
-                ${propertySpa
-                    ? `Attach SPA: ${baseURL}${uploadedFiles.spa}</br>`
-                    : ''}               
-                ${propertyDeed
-                    ? `Attach Title Deed: ${baseURL}${uploadedFiles.deed}</br>`
-                    : ''}
-                ${passportFile
-                    ? `Passport: ${baseURL}${uploadedFiles.passport}</br>`
-                    : ''}
-                
-                Date to view: ${data.datetoview} </br>
+                Ready to view: ${data.readytoview} </br>
+                ${fileInfo.length > 0 ? `</br>Attachments: </br>${fileInfo.join('</br>')}` : ''}
+                </br>Date to view: ${data.datetoview} </br>
                 Time to view: ${data.timetoview} </br>
                 URL coming from: ${currentUrl}
             `;
+
+            if (['Dubai', 'Sharjah'].includes(cityName) && isAuhOnlyCampaign) {
+                propertyCampaignId = "";        //put campaign id empty if city is dubai and campaign in of AUH
+            }
 
             const formDataToSend = {
                 TitleID: "129932",
@@ -800,21 +830,46 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
             };
 
             try {
-                // let api_URL = "";
-                // if (mediaName === "63907") {
-                //     const token = "400b0c41cea6ae771d9090684ccbcd3696aab50aa47d7dcdddd3018934a337bc8ac18f7581f6664e";
-                //     api_URL = `https://api.portal.psi-crm.com/integrations/hubspot/createLead?apiKey=${token}`;
-                // } else {
-                //     api_URL = `${apiUrl}`;
-                // }                
+                if (isHubspotMedia && !['Dubai', 'Sharjah'].includes(cityName)) {
+                    console.log("Inserting lead into HubSpot CRM...");
+                    const hubspotResponse = await insertHubspotLead(formDataToSend);
 
-                const response = await fetch(`${cityConfig.apiUrl}`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(formDataToSend),
-                });
+                    if (!hubspotResponse.ok) {
+                        const text = await hubspotResponse.text();
+                        throw new Error(`HubSpot API error: ${hubspotResponse.status} - ${text}`);
+                    }
+
+                    const hubspotData = await hubspotResponse.json();
+                    console.log("Lead inserted into HubSpot:", hubspotData);
+                } else {
+                    await fetch(`${cityConfig.apiUrl}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(formDataToSend),
+                    });
+                }
+
+                // Prepare file attachments for email - use first file from each category
+                let emailFilename = "";
+                let emailFiledata = "";
+
+                // Priority: passport > deed > spa > property images
+                if (uploadedFiles.passport?.length > 0) {
+                    emailFilename = uploadedFiles.passport[0].filename;
+                    emailFiledata = uploadedFiles.passport[0].filedata;
+                } else if (uploadedFiles.deed?.length > 0) {
+                    emailFilename = uploadedFiles.deed[0].filename;
+                    emailFiledata = uploadedFiles.deed[0].filedata;
+                } else if (uploadedFiles.spa?.length > 0) {
+                    emailFilename = uploadedFiles.spa[0].filename;
+                    emailFiledata = uploadedFiles.spa[0].filedata;
+                } else if (uploadedFiles.propertyimages?.length > 0) {
+                    emailFilename = uploadedFiles.propertyimages[0].filename;
+                    emailFiledata = uploadedFiles.propertyimages[0].filedata;
+                }
+
 
                 const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
                     method: "POST",
@@ -915,19 +970,19 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                                     </tr>
                                     <tr>
                                         <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">External images:</td>
-                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${propertyImages ? `${baseURL}${uploadedFiles.propertyimages}` : '-'}</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${uploadedFiles.propertyimages?.length > 0 ? `${uploadedFiles.propertyimages.length} file(s) attached` : '-'}</td>
                                     </tr>
                                     <tr>
                                         <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">SPA:</td>
-                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${propertySpa ? `${baseURL}${uploadedFiles.spa}` : '-'}</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${uploadedFiles.spa?.length > 0 ? uploadedFiles.spa[0].filename : '-'}</td>
                                     </tr>
                                     <tr>
                                         <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Title Deed:</td>
-                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${propertyDeed ? `${baseURL}${uploadedFiles.deed}` : '-'}</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${uploadedFiles.deed?.length > 0 ? uploadedFiles.deed[0].filename : '-'}</td>
                                     </tr>
                                     <tr>
                                         <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Passport:</td>
-                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${passportFile ? `${baseURL}${uploadedFiles.passport}` : '-'}</td>
+                                        <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">${uploadedFiles.passport?.length > 0 ? uploadedFiles.passport[0].filename : '-'}</td>
                                     </tr>
                                     <tr>
                                         <td style="background-color:#f4f3f3; color:#8b8b8b; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold;">Date to view:</td>
@@ -950,19 +1005,14 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                         `,
                         receiver: cityConfig.email,
                         subject: "New inquiry - List Your Property",
-                        filename: "",
-                        filedata: ""
+                        filename: emailFilename,
+                        filedata: emailFiledata
                     }),
                 });
 
-                if (response.ok || mailRes.ok) {
-                    setPostId("success");
-                    setIsSubmitSuccess(true);
-                    //window.location.href = `/${locale}/thankyou?${encodeURIComponent(data.email)}`
-                    localStorage.setItem("formSubmitTime", Date.now().toString());
-                } else {
-                    alert("Error submitting the form.");
-                }
+                setPostId("success");
+                setIsSubmitSuccess(true);
+                localStorage.setItem("formSubmitTime", Date.now().toString());
             } catch (error) {
                 console.log(error);
                 setPostId("Error");
@@ -991,13 +1041,13 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     </div>
                 )}
             </div>
-            <form onSubmit={handleSubmit(onSubmit)} className="listForm">
+            <form data-brightcall-form="listpage" onSubmit={handleSubmit(onSubmit)} className="listForm">
                 {!isSubmitSuccess && currentStep === 0 && (
                     <>
                         <div className="w-full md:flex mb-4 gap-5">
                             <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
                                 <label htmlFor="fname" className="text-sm block leading-loose">{t("form.labels.firstName")} <sup className="imp text-[#E35F27]">*</sup></label>
-                                <input type="text"
+                                <input type="text" id="fname"
                                     {...register('fname')} onChange={onChangeField} placeholder={t("form.placeholders.firstName")}
                                     className="block w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]" />
                                 {errors.fname?.message && (
@@ -1008,7 +1058,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </div>
                             <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
                                 <label htmlFor="lname" className="text-sm block leading-loose">{t("form.labels.lastName")} <sup className="imp text-[#E35F27]">*</sup></label>
-                                <input type="text" placeholder={t("form.placeholders.lastName")}
+                                <input type="text" id="lname" placeholder={t("form.placeholders.lastName")}
                                     {...register('lname')} onChange={onChangeField}
                                     className="block w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]" />
                                 {errors.lname?.message && (
@@ -1020,12 +1070,12 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                         </div>
                         <div className="w-full md:flex gap-5">
                             <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
-                                <label htmlFor="lname" className="text-sm block leading-loose">{t("form.labels.phone")} <sup className="imp text-[#E35F27]">*</sup></label>
+                                <label htmlFor="phone" className="text-sm block leading-loose">{t("form.labels.phone")} <sup className="imp text-[#E35F27]">*</sup></label>
                                 <Controller name="phone"
                                     control={control}
                                     render={({ field }) => (
                                         <div>
-                                            <PhoneInput
+                                            <PhoneInput id="phone"
                                                 international
                                                 {...field}
                                                 {...register('phone')}
@@ -1047,7 +1097,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </div>
                             <div className="inputGroup md:w-1/2 md:mb-0 mb-3">
                                 <label htmlFor="email" className="text-sm block leading-loose">{t("form.labels.email")} <sup className="imp text-[#E35F27]">*</sup></label>
-                                <input type="email" placeholder={t("form.placeholders.email")}
+                                <input type="email" id="email" placeholder={t("form.placeholders.email")}
                                     {...register('email')} onChange={onChangeField}
                                     className="block w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6]" />
                                 {errors.email && <p className="text-red-500 text-sm mt-2">{errors.email.message}</p>}
@@ -1057,7 +1107,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             <div className="inputGroup">
                                 <label htmlFor="purpose" className="text-sm block leading-loose">{t("form.labels.purpose")}</label>
                                 <Select
-                                    {...register('purpose')}
+                                    {...register('purpose')} id="purpose"
                                     onChange={onChangeField}
                                     className={`w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] ${formValue.purpose === "" ? "select-placeholder placeholder-[#A6A6A6]" : ""}`}
                                 >
@@ -1071,7 +1121,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                         <div className="w-full">
                             <div className="inputGroup">
                                 <label htmlFor="description" className="text-sm block leading-loose">{t("form.labels.description")}</label>
-                                <textarea {...register('description')} onChange={onChangeField}
+                                <textarea id="description" {...register('description')} onChange={onChangeField}
                                     className="w-full px-5 py-3 border border-[#A6A6A6] rounded-[7px] placeholder-[#A6A6A6] h-[150px]"
                                     placeholder={t("form.placeholders.description")}>
 
@@ -1125,7 +1175,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </div>
                             {/* mobile progress bar */}
                             <div className="progree-bar md:hidden block justify-items-center">
-                                <img src={`${steps[currentStep].progressImg}`}></img>
+                                <img src={`${steps[currentStep].progressImg}`} title="progress bar"></img>
                             </div>
 
                             <div className="flex justify-between gap-5">
@@ -1208,7 +1258,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
                             {/* mobile progress bar */}
                             <div className="progree-bar md:hidden block justify-items-center">
-                                <img src={`${steps[currentStep].progressImg}`}></img>
+                                <img src={`${steps[currentStep].progressImg}`} title="progress bar"></img>
                             </div>
 
                             <div className="flex justify-between gap-5">
@@ -1257,7 +1307,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </div>
                             {/* mobile progress bar */}
                             <div className="progree-bar md:hidden block justify-items-center">
-                                <img src={`${steps[currentStep].progressImg}`}></img>
+                                <img src={`${steps[currentStep].progressImg}`} title="progress bar"></img>
                             </div>
                             <div className="flex justify-between gap-5">
                                 <button className="bg-orange-600 text-white px-6 py-3 rounded-[8px] w-full mt-4 cursor-pointer" onClick={prev}>{t("form.buttons.previous")}</button>
@@ -1366,7 +1416,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                             </div>
                             {/* mobile progress bar */}
                             <div className="progree-bar md:hidden block justify-items-center">
-                                <img src={`${steps[currentStep].progressImg}`}></img>
+                                <img src={`${steps[currentStep].progressImg}`} title="progress bar"></img>
                             </div>
 
                             <div className="flex justify-between gap-5">
@@ -1412,7 +1462,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
                             {/* mobile progress bar */}
                             <div className="progree-bar md:hidden block justify-items-center">
-                                <img src={`${steps[currentStep].progressImg}`}></img>
+                                <img src={`${steps[currentStep].progressImg}`} title="progress bar"></img>
                             </div>
 
                             <div className="flex justify-between gap-5">
@@ -1452,8 +1502,8 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                         <div className="w-full items-center">
                             <img src="/assets/images/list-property/list-thankyou.svg" alt="thank you" className="mb-5 mx-auto"></img>
                             <div className="thankyou-text text-center bg-[#e35f271a] px-15 py-10 rounded-[16px] w-full">
-                                <h2 className="text-5xl text-[#272963] font-bold mb-4">{t("messages.thank_you")}</h2>
-                                <p className="text-[#525151] text-lg">{t("messages.success_message")}</p>
+                                <h2 className="text-5xl text-[#272963] font-bold mb-4">{t("form.messages.thank_you")}</h2>
+                                <p className="text-[#525151] text-lg">{t("form.messages.success_message")}</p>
                             </div>
                         </div>
                     </>
@@ -1463,7 +1513,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     <>
                         <div className="w-full">
                             <div className='bg-yellow-100 text-center text-sm p-4 text-[#78350F]' role='alert'>
-                                {t("messages.already_submitted")}
+                                {t("form.messages.already_submitted")}
                             </div>
                         </div>
                     </>
@@ -1471,7 +1521,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
             </form>
             {!isSubmitSuccess && (
-                <p className="text-sm text-[#8A8A8A] mt-5">{t("form.labels.footer_agreement")} <a href="terms">Terms & Conditions</a> and <a href="privacy">Privacy Policy</a></p>
+                <p className="text-sm text-[#8A8A8A] mt-5">{t("form.labels.footer_agreement")} <Link href="terms" title="Terms & Conditions">Terms & Conditions</Link> and <Link href="privacy" title="Privacy Policy">Privacy Policy</Link></p>
             )}
 
         </>
