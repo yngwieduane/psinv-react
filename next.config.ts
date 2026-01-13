@@ -153,6 +153,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'apigateway.dubai-crm.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'blog.psinv.net',
+      },
     ],
   },
 };
