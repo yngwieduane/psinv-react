@@ -1,12 +1,72 @@
 // src/app/utils/projectOverrides.ts
-import type { ProjectMeta } from '@/types/projectMeta';
-import { makeUtm } from './registrationUtils';
+import type { ProjectMeta } from "@/types/projectMeta";
+import { makeUtm } from "./registrationUtils";
 
-export type PerSlug = { branch: 'auh' | 'dubai' | 'assets'; override?: Partial<ProjectMeta> };
+export type SeoMeta = {
+  title: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+};
 
+export type LocalizedSeo = {
+  en: SeoMeta;
+  ar?: SeoMeta;
+};
+
+export type PerSlug = {
+  branch: "auh" | "dubai" | "assets";
+  override?: Partial<ProjectMeta>;
+  seo?: SeoMeta | LocalizedSeo;
+};
 export const PROJECTS: Record<string, PerSlug> = {
+  'aldar-roadshow-registration': {
+    branch: 'auh',
+    seo: {
+      en: {
+        title: 'Aldar Roadshow 2026 | Exclusive Property Showcase in Abu Dhabi',
+        description:
+          'Register your interest for the Aldar Roadshow 2026 in Abu Dhabi. Discover Aldar’s latest real estate projects, investment opportunities, and exclusive offers during this limited-time property showcase.',
+        keywords:
+          'Aldar Roadshow 2026, Aldar properties Abu Dhabi, Aldar real estate event, Abu Dhabi property roadshow, Aldar developments, luxury real estate Abu Dhabi',
+      },
+      ar: {
+        title: 'معرض الدار العقاري 2026 | فعالية عقارية حصرية في أبوظبي',
+        description:
+          'سجّل اهتمامك بحضور معرض الدار العقاري 2026 في أبوظبي. تعرّف على أحدث مشاريع الدار العقارية وفرص الاستثمار والعروض الحصرية خلال هذه الفعالية المحدودة.',
+        keywords:
+          'معرض الدار 2026, الدار العقارية, مشاريع الدار أبوظبي, فعالية عقارية أبوظبي, استثمار عقاري أبوظبي',
+      },
+    },
+    override: {
+      remarks: 'Aldar Roadshow in 24 & 25 January - Company',
+      ...makeUtm({
+        'zaineh_aldar_roadshow_news': {
+          campaign: 3428,
+          remarks:
+            'Rotation:  Aldar Roadshow in 24 & 25 January - Company , Campaign name:Zaineh:Aldar Roadshow News',
+        },
+      }),
+    },
+  },
   'ohana-yas-island-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Ohana Yas Island | Luxury Living in Abu Dhabi",
+        description:
+          "Register your interest for Ohana Yas Island residences. Discover luxury waterfront living, premium amenities, and exclusive homes in Abu Dhabi.",
+        keywords:
+          "Ohana Yas Island, Yas Island Abu Dhabi, luxury residences Abu Dhabi, waterfront property Abu Dhabi, premium apartments Yas Island",
+      },
+      ar: {
+        title: "أوهانا جزيرة ياس | أسلوب حياة فاخر في أبوظبي",
+        description:
+          "سجّل اهتمامك بمساكن أوهانا في جزيرة ياس. اكتشف أسلوب حياة فاخر على الواجهة البحرية مع مرافق متميزة ومنازل حصرية في أبوظبي.",
+        keywords:
+          "أوهانا جزيرة ياس, جزيرة ياس أبوظبي, عقارات فاخرة أبوظبي, شقق فاخرة جزيرة ياس, عقارات على الواجهة البحرية",
+      },
+    },
     override: {
       remarks: 'Company',
       ...makeUtm({
@@ -20,6 +80,20 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'radiant-wave-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: 'Radiant Wave | Luxury Waterfront Living in Abu Dhabi',
+        description:
+          'Register your interest for Radiant Wave residences. Experience premium waterfront living in Abu Dhabi.',
+        keywords: 'Radiant Wave, Abu Dhabi property, luxury apartments, waterfront living',
+      },
+      ar: {
+        title: 'راديانت ويف | أسلوب حياة فاخر على الواجهة البحرية في أبوظبي',
+        description:
+          'سجّل اهتمامك بسكن راديانت ويف. استمتع بحياة فاخرة على الواجهة البحرية في أبوظبي.',
+        keywords: 'راديانت ويف, عقارات أبوظبي, شقق فاخرة, واجهة بحرية',
+      },
+    },
     override: {
       PropertyID: 25584,
       CommunityID: 70212,
@@ -35,6 +109,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'hilton-residences-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: 'Hilton Residences | Branded Luxury Living in Abu Dhabi',
+        description:
+          'Register your interest for Hilton Residences. Experience premium branded living with world-class amenities in Abu Dhabi.',
+        keywords:
+          'Hilton Residences, Abu Dhabi property, branded residences, luxury apartments',
+      },
+      ar: {
+        title: 'هيلتون ريزيدنسز | أسلوب حياة فاخر بعلامة عالمية في أبوظبي',
+        description:
+          'سجّل اهتمامك بسكن هيلتون ريزيدنسز واستمتع بحياة فاخرة مع خدمات وعلامة هيلتون العالمية في أبوظبي.',
+        keywords:
+          'هيلتون ريزيدنسز, عقارات أبوظبي, مساكن بعلامة فاخرة, شقق فاخرة',
+      },
+    },
     override: {
       PropertyID: 25396,
       CommunityID: 95259,
@@ -50,6 +140,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'radisson-blu-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: 'Radisson Blu Residences | Luxury Living in Abu Dhabi',
+        description:
+          'Register your interest for Radisson Blu Residences. Enjoy upscale waterfront living with premium amenities in Abu Dhabi.',
+        keywords:
+          'Radisson Blu Residences, Abu Dhabi property, branded residences, luxury apartments',
+      },
+      ar: {
+        title: 'ريزيدنسز راديسون بلو | سكن فاخر بعلامة عالمية في أبوظبي',
+        description:
+          'سجّل اهتمامك بسكن ريزيدنسز راديسون بلو واستمتع بحياة فاخرة مع خدمات وضيافة عالمية في أبوظبي.',
+        keywords:
+          'ريزيدنسز راديسون بلو, عقارات أبوظبي, مساكن بعلامة فاخرة, شقق فاخرة',
+      },
+    },
     override: {
       PropertyID: 25581,
       CommunityID: 95259,
@@ -65,6 +171,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'hudayriyat-island-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: 'Hudayriyat Island | Abu Dhabi Waterfront Living',
+        description:
+          'Register your interest for Hudayriyat Island. Discover a vibrant waterfront destination in Abu Dhabi with lifestyle-focused communities and premium amenities.',
+        keywords:
+          'Hudayriyat Island, Abu Dhabi property, waterfront community, luxury living, real estate Abu Dhabi',
+      },
+      ar: {
+        title: 'جزيرة الحديريات | وجهة سكنية على الواجهة البحرية في أبوظبي',
+        description:
+          'سجّل اهتمامك بجزيرة الحديريات واكتشف أسلوب حياة عصري على الواجهة البحرية في أبوظبي مع مرافق وخدمات مميزة.',
+        keywords:
+          'جزيرة الحديريات, عقارات أبوظبي, مجتمع على الواجهة البحرية, سكن فاخر, عقار في أبوظبي',
+      },
+    },
     override: {
       remarks: 'General Campaign',
       ...makeUtm({
@@ -78,6 +200,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'hudayriyat-island-general-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: 'Hudayriyat Island Abu Dhabi | Register Your Interest',
+        description:
+          'Register your interest for Hudayriyat Island in Abu Dhabi. Explore a dynamic island destination offering waterfront living, lifestyle communities, and premium amenities.',
+        keywords:
+          'Hudayriyat Island, Abu Dhabi real estate, island living Abu Dhabi, waterfront properties, luxury homes',
+      },
+      ar: {
+        title: 'جزيرة الحديريات أبوظبي | سجل اهتمامك الآن',
+        description:
+          'سجّل اهتمامك بجزيرة الحديريات في أبوظبي واكتشف وجهة جزيرية نابضة بالحياة تضم مجتمعات سكنية عصرية ومرافق مميزة.',
+        keywords:
+          'جزيرة الحديريات, عقارات أبوظبي, العيش في الجزر, واجهة بحرية, منازل فاخرة',
+      },
+    },
     override: {
       remarks: 'General Campaign',
       ...makeUtm({
@@ -91,6 +229,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'muheira-maysan-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: 'Muheira Maysan on Al Reem Island | Register Your Interest',
+        description:
+          'Register your interest for Muheira Maysan on Al Reem Island, Abu Dhabi. Explore contemporary residences, island lifestyle living, and convenient access to key destinations.',
+        keywords:
+          'Muheira Maysan, Al Reem Island, Abu Dhabi property, Reem Island apartments, waterfront living, new launch Abu Dhabi',
+      },
+      ar: {
+        title: 'مهيرة ميسان في جزيرة الريم | سجل اهتمامك الآن',
+        description:
+          'سجّل اهتمامك بمشروع مهيرة ميسان في جزيرة الريم، أبوظبي. اكتشف وحدات سكنية عصرية ونمط حياة جزيري مع سهولة الوصول إلى أهم الوجهات.',
+        keywords:
+          'مهيرة ميسان, جزيرة الريم, عقارات أبوظبي, شقق جزيرة الريم, العيش على الواجهة البحرية, مشروع جديد',
+      },
+    },
     override: {
       PropertyID: 24389,
       CommunityID: 95259,
@@ -112,6 +266,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'reem-island-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: 'Reem Island Properties | Register Your Interest in Abu Dhabi',
+        description:
+          'Register your interest for premium properties on Reem Island, Abu Dhabi. Discover waterfront living, modern residences, and top communities including Radiant, Radisson, One Residence, and Muheira.',
+        keywords:
+          'Reem Island, Abu Dhabi property, Reem Island apartments, waterfront living Abu Dhabi, Radiant Wave, Radisson Blu Residences, One Residence, Muheira Maysan',
+      },
+      ar: {
+        title: 'عقارات جزيرة الريم | سجّل اهتمامك في أبوظبي',
+        description:
+          'سجّل اهتمامك بالعقارات المميزة في جزيرة الريم، أبوظبي. استمتع بأسلوب حياة عصري على الواجهة البحرية مع نخبة من المشاريع السكنية.',
+        keywords:
+          'جزيرة الريم, عقارات أبوظبي, شقق جزيرة الريم, الواجهة البحرية أبوظبي, مشاريع سكنية جديدة',
+      },
+    },
     override: {
       CommunityID: 95259,
       remarks: 'General Campaign',
@@ -126,6 +296,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'one-residence-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: 'One Residence Reem Island | Luxury Waterfront Living in Abu Dhabi',
+        description:
+          'Register your interest for One Residence on Reem Island, Abu Dhabi. Discover contemporary waterfront apartments with premium amenities in one of the city’s most sought-after communities.',
+        keywords:
+          'One Residence, Reem Island, Abu Dhabi apartments, waterfront residences Abu Dhabi, luxury apartments Reem Island, One Residence Abu Dhabi',
+      },
+      ar: {
+        title: 'ون ريزيدنس جزيرة الريم | شقق فاخرة على الواجهة البحرية',
+        description:
+          'سجّل اهتمامك في ون ريزيدنس بجزيرة الريم، أبوظبي. شقق عصرية بإطلالات بحرية ومرافق مميزة في واحدة من أرقى المجتمعات السكنية.',
+        keywords:
+          'ون ريزيدنس, جزيرة الريم, شقق أبوظبي, شقق فاخرة, الواجهة البحرية أبوظبي, عقارات جزيرة الريم',
+      },
+    },
     override: {
       PropertyID: 25582,
       CommunityID: 95259,
@@ -141,6 +327,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'yas-riva-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: 'Yas Riva on Yas Island | Exclusive Waterfront Living in Abu Dhabi',
+        description:
+          'Register your interest for Yas Riva on Yas Island, Abu Dhabi. Experience premium waterfront residences, elegant design, and a vibrant island lifestyle in one of Abu Dhabi’s most prestigious destinations.',
+        keywords:
+          'Yas Riva, Yas Island Abu Dhabi, waterfront residences Yas Island, luxury living Yas Island, Yas Island properties, Abu Dhabi waterfront homes',
+      },
+      ar: {
+        title: 'ياس ريفا في جزيرة ياس | أسلوب حياة فاخر على الواجهة البحرية',
+        description:
+          'سجّل اهتمامك بمشروع ياس ريفا في جزيرة ياس، أبوظبي. استمتع بوحدات سكنية راقية على الواجهة البحرية ونمط حياة عصري في واحدة من أرقى وجهات أبوظبي.',
+        keywords:
+          'ياس ريفا, جزيرة ياس, عقارات جزيرة ياس, شقق فاخرة أبوظبي, الواجهة البحرية, مشاريع جزيرة ياس',
+      },
+    },
     override: {
       PropertyID: 25481,
       CommunityID: 165011,
