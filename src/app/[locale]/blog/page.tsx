@@ -244,7 +244,6 @@ export default function BlogPage() {
                                 disabled={!hasMore || loading}
                                 className="cursor-pointer flex items-center px-6 py-3 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                             >
-                            >
                                 {ui("next")}
                                 <ChevronRight size={20} className={rtl ? "mr-2 rotate-180" : "ml-2"} />
                             </button>
