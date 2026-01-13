@@ -3,7 +3,7 @@ import styles from './TabContent.module.css';
 
 interface Day {
   day: string;
-  title: string;
+  title?: string;
   descriptions: string[];
 }
 interface TabContentProps {
@@ -31,15 +31,14 @@ export default function TabContent({ levelData, isComingSoon }: TabContentProps)
         <div className="pt-4">
           <h3 className="text-2xl font-bold mb-6">{levelData.title}</h3>
           {levelData.days.map((day, idx) => (
-            <div className={styles.detailsInner} key={idx}>
+            <div className={`${styles.detailsInner} mb-12`} key={idx}>
               <div className={styles.circleOuter}>
                 <div className={styles.dayCircle}>{day.day}</div>
               </div>
-              
               <div className={styles.dayText}>
                 <p className="text-lg font-semibold mb-1">{day.title}</p>
                 {day.descriptions.map((desc, dIdx) => (
-                  <p key={dIdx} className="text-sm leading-relaxed">{desc}</p>
+                  <p key={dIdx} className="text-sm leading-loose">{desc}</p>
                 ))}
               </div>
             </div>

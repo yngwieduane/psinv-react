@@ -58,7 +58,7 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
 
   return (
     <Transition show={modalState} as={Fragment}>
-      <Dialog className="relative z-50" onClose={onCloseModal}>
+      <Dialog className="relative z-90" onClose={onCloseModal}>
         <TransitionChild
           as={Fragment}
           enter="ease-in-out duration-500"
