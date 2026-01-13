@@ -5749,5 +5749,60 @@
         "description": "Trust the brand that delivers quality, reliability, and meets your needs. Stick with the brand you trust."
       }
     }
+  },
+  "BlogPage": {
+    "title": "Our Blog",
+    "searchPlaceholder": "Search blog posts...",
+    "recentPosts": "Recent Posts",
+    "readMore": "Read More",
+    "categories": {
+      "market_insights": "Market Insights",
+      "company_news": "Company News",
+      "lifestyle": "Lifestyle"
+    }
+  },
+  "Blog": {
+    "201": {
+      "title": "Welcome to Our New Blog",
+      "summary": "We are excited to announce the launch of our new blog where we will share the latest news and insights.",
+      "body": [
+        {
+          "type": "paragraph",
+          "content": "Welcome to the Property Shop Investment blog! Here you will find the latest updates on the real estate market, company news, and lifestyle tips."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "content": "What to Expect"
+        },
+        {
+          "type": "paragraph",
+          "content": "We will be publishing regular market reports, investment guides, and updates on our latest projects. Stay tuned!"
+        }
+      ]
+    },
+    "202": {
+      "title": "Abu Dhabi Market Report Q1 2026",
+      "summary": "A comprehensive look at the real estate trends in Abu Dhabi for the first quarter of 2026.",
+      "body": [
+        {
+          "type": "paragraph",
+          "content": "The Abu Dhabi real estate market has shown remarkable resilience and growth in the first quarter of 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "content": "Key Highlights"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Rental yields effectively stable",
+            "Sales prices increased by 5%",
+            "New project launches in Yas Island and Saadiyat"
+          ]
+        }
+      ]
+    }
   }
 }
