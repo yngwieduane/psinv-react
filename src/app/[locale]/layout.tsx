@@ -72,6 +72,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: "⚡ Abu Dhabi Real Estate  - Property Shop Investment",
     description: "⚡ Abu Dhabi Real Estate  - PSI - Check out our stunning real estate projects - Property Shop Investments - Real Estate Projects - Buy or Rent",
+    authors: [
+      {
+        name: 'Property Shop Investment (PSI)'
+      },
+    ],
+    publisher: 'Property Shop Investment (PSI)',
+
     alternates: {
       canonical: `${siteBaseUrl}/${currentLocale}`,
       languages: languageAlternates,
