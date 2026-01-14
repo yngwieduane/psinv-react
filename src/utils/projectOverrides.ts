@@ -358,6 +358,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'bashayer-apartments-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Bashayer Apartments | Modern Living in Abu Dhabi",
+        description:
+          "Register your interest for Bashayer Apartments. Discover well-designed homes offering comfort, convenience, and excellent value in Abu Dhabi.",
+        keywords:
+          "Bashayer Apartments, Abu Dhabi apartments, modern apartments Abu Dhabi, residential property Abu Dhabi",
+      },
+      ar: {
+        title: "شقق بشاير | أسلوب حياة عصري في أبوظبي",
+        description:
+          "سجّل اهتمامك بشقق بشاير واكتشف وحدات سكنية عصرية تجمع بين الراحة والموقع المميز في أبوظبي.",
+        keywords:
+          "شقق بشاير, شقق أبوظبي, عقارات أبوظبي السكنية, شقق عصرية في أبوظبي",
+      },
+    },
     override: {
       PropertyID: 25477,
       remarks: 'Bashayer Apartments',
@@ -372,6 +388,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'taraf-masdar-city-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Taraf at Masdar City | Sustainable Living in Abu Dhabi",
+        description:
+          "Register your interest for Taraf at Masdar City. Experience modern residences designed for sustainable living in one of Abu Dhabi’s most innovative communities.",
+        keywords:
+          "Taraf Masdar City, Masdar City residences, sustainable living Abu Dhabi, eco friendly apartments Abu Dhabi",
+      },
+      ar: {
+        title: "تراف في مدينة مصدر | أسلوب حياة مستدام في أبوظبي",
+        description:
+          "سجّل اهتمامك بمشروع تراف في مدينة مصدر واستمتع بوحدات سكنية عصرية مصممة لأسلوب حياة مستدام في أبوظبي.",
+        keywords:
+          "تراف مدينة مصدر, مدينة مصدر أبوظبي, عقارات مستدامة في أبوظبي, شقق صديقة للبيئة",
+      },
+    },
     override: {
       PropertyID: 25484,
       remarks: 'Taraf Masdar city',
@@ -386,6 +418,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'al-hayat-island-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Al Hayat Island | Island Living in Ras Al Khaimah",
+        description:
+          "Register your interest for Al Hayat Island in Ras Al Khaimah. Discover waterfront living and exclusive residences in a vibrant island community.",
+        keywords:
+          "Al Hayat Island, Ras Al Khaimah property, island living RAK, waterfront residences RAK",
+      },
+      ar: {
+        title: "جزيرة الحياة | أسلوب حياة جزيري في رأس الخيمة",
+        description:
+          "سجّل اهتمامك بمشروع جزيرة الحياة في رأس الخيمة واكتشف وحدات سكنية مميزة توفر أسلوب حياة جزيري قريب من الواجهة البحرية.",
+        keywords:
+          "جزيرة الحياة, عقارات رأس الخيمة, أسلوب حياة جزيري, شقق مطلة على البحر في رأس الخيمة",
+      },
+    },
     override: {
       remarks: 'RAK Open house',
       ...makeUtm({
@@ -399,6 +447,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'stellar-by-elie-Saab-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Stellar by Elie Saab | Luxury Branded Residences in Abu Dhabi",
+        description:
+          "Register your interest for Stellar by Elie Saab. Discover exclusive branded residences offering refined luxury, iconic design, and elevated living in Abu Dhabi.",
+        keywords:
+          "Stellar by Elie Saab, Elie Saab residences Abu Dhabi, luxury branded residences, designer homes UAE",
+      },
+      ar: {
+        title: "ستيلار من إيلي صعب | مساكن فاخرة بعلامة عالمية في أبوظبي",
+        description:
+          "سجّل اهتمامك بمشروع ستيلار من إيلي صعب في أبوظبي واكتشف مساكن فاخرة تحمل توقيع علامة عالمية تجمع بين التصميم الأيقوني والرقي.",
+        keywords:
+          "ستيلار إيلي صعب, مساكن إيلي صعب أبوظبي, عقارات فاخرة بعلامة عالمية, منازل مصممة في الإمارات",
+      },
+    },
     override: {
       PropertyID: 25474,
       remarks: 'Stellar by Elie Saab',
@@ -413,6 +477,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'the-row-saadiyat-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "The Row Saadiyat | Luxury Residences on Saadiyat Island",
+        description:
+          "Register your interest for The Row Saadiyat. Explore contemporary luxury residences on Saadiyat Island, offering refined living in one of Abu Dhabi’s most prestigious destinations.",
+        keywords:
+          "The Row Saadiyat, Saadiyat Island residences, luxury property Abu Dhabi, premium homes Saadiyat",
+      },
+      ar: {
+        title: "ذا رو السعديات | مساكن فاخرة في جزيرة السعديات",
+        description:
+          "سجّل اهتمامك بمشروع ذا رو السعديات واكتشف مساكن فاخرة توفر أسلوب حياة راقٍ في واحدة من أرقى الوجهات السكنية في أبوظبي.",
+        keywords:
+          "ذا رو السعديات, عقارات جزيرة السعديات, مساكن فاخرة أبوظبي, فلل وشقق السعديات",
+      },
+    },
     override: {
       PropertyID: 25405,
       CommunityID: 97198,
@@ -433,6 +513,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'full-moon-festival-chinese-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Full Moon Festival Event | Exclusive Property Showcase",
+        description:
+          "Register your interest for the Full Moon Festival event. Join an exclusive property showcase curated for the Chinese community, featuring premium real estate opportunities.",
+        keywords:
+          "Full Moon Festival event, Mid Autumn Festival property event, Chinese property showcase Abu Dhabi, real estate event UAE",
+      },
+      ar: {
+        title: "فعالية مهرجان القمر الكامل | عرض عقاري حصري",
+        description:
+          "سجّل اهتمامك بفعالية مهرجان القمر الكامل واستمتع بعرض عقاري حصري موجّه للجالية الصينية مع فرص استثمارية مميزة.",
+        keywords:
+          "مهرجان القمر الكامل, فعالية مهرجان منتصف الخريف, عرض عقاري حصري, فعاليات عقارية في الإمارات",
+      },
+    },
     override: {
       remarks: 'Full Moon Festival – Chinese audience campaign',
       form: {
@@ -458,6 +554,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'sodic-event-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "SODIC Event Registration | Book Your Time Slot",
+        description:
+          "Register for the SODIC event and select your preferred time slot. Meet our team, explore opportunities, and get tailored guidance during your visit.",
+        keywords:
+          "SODIC event registration, book time slot, property event, real estate consultation, UAE property event",
+      },
+      ar: {
+        title: "التسجيل في فعالية SODIC | احجز موعدك",
+        description:
+          "سجّل في فعالية SODIC واختر الوقت المناسب لك. تعرّف على الفرص المتاحة واحصل على استشارة مخصصة خلال زيارتك.",
+        keywords:
+          "التسجيل في فعالية SODIC, حجز موعد, فعالية عقارية, استشارة عقارية, فعاليات العقارات في الإمارات",
+      },
+    },
     override: {
       remarks: 'SODIC event general campaign',
       form: {
@@ -489,9 +601,24 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-
   'malaga-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Malaga Residences Registration | Premium Living Opportunities",
+        description:
+          "Register your interest in Malaga residences. Discover premium living options, get project details, and connect with our property consultants.",
+        keywords:
+          "Malaga residences, Malaga property registration, premium residences, real estate registration, luxury property",
+      },
+      ar: {
+        title: "التسجيل في مشروع مالاجا السكني | فرص سكنية مميزة",
+        description:
+          "سجّل اهتمامك بمشروع مالاجا السكني. تعرّف على تفاصيل المشروع وخيارات السكن وتواصل مع مستشاري العقارات لدينا.",
+        keywords:
+          "مشروع مالاجا السكني, التسجيل في مالاجا, عقارات فاخرة, فرص سكنية, التسجيل العقاري",
+      },
+    },
     override: {
       PropertyID: 25401,
       remarks: 'Malaga company',
@@ -504,9 +631,24 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-
   'wadi-yemm-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Wadi Yemm Ras El Hekma Registration | Coastal Living Opportunities",
+        description:
+          "Register your interest in Wadi Yemm at Ras El Hekma. Explore coastal living opportunities, project details, and connect with our property experts.",
+        keywords:
+          "Wadi Yemm Ras El Hekma, Wadi Yemm registration, Ras El Hekma properties, coastal residences, premium real estate",
+      },
+      ar: {
+        title: "التسجيل في مشروع وادي يم رأس الحكمة | فرص سكنية ساحلية",
+        description:
+          "سجّل اهتمامك بمشروع وادي يم في رأس الحكمة. اطّلع على تفاصيل المشروع وفرص السكن الساحلي وتواصل مع خبراء العقارات لدينا.",
+        keywords:
+          "وادي يم رأس الحكمة, التسجيل في وادي يم, عقارات رأس الحكمة, سكن ساحلي, فرص سكنية مميزة",
+      },
+    },
     override: {
       PropertyID: 24466,
       CommunityID: 165011,
@@ -521,9 +663,24 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-
   'bloom-living-marbella-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Bloom Living Marbella Registration | Mediterranean-Style Living in Abu Dhabi",
+        description:
+          "Register your interest in Bloom Living Marbella. Discover Mediterranean-inspired homes, community living, and premium lifestyle opportunities in Abu Dhabi.",
+        keywords:
+          "Bloom Living Marbella, Bloom Living registration, Marbella Abu Dhabi, Mediterranean style homes, Abu Dhabi residential community",
+      },
+      ar: {
+        title: "التسجيل في بلوم ليفينج ماربيلا | أسلوب حياة متوسطي في أبوظبي",
+        description:
+          "سجّل اهتمامك بمشروع بلوم ليفينج ماربيلا واستكشف منازل مستوحاة من الطراز المتوسطي ضمن مجتمع سكني مميز في أبوظبي.",
+        keywords:
+          "بلوم ليفينج ماربيلا, التسجيل في بلوم ليفينج, ماربيلا أبوظبي, منازل الطراز المتوسطي, مجتمعات سكنية في أبوظبي",
+      },
+    },
     override: {
       PropertyID: 25380,
       CommunityID: 95797,
@@ -538,9 +695,24 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-
   'juman-2-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Juman 2 Al Raha Registration | Contemporary Living in Abu Dhabi",
+        description:
+          "Register your interest in Juman 2 at Al Raha. Explore modern residential living, community amenities, and property opportunities in Abu Dhabi.",
+        keywords:
+          "Juman 2 Al Raha, Juman 2 registration, Al Raha properties, Abu Dhabi residential projects, modern living",
+      },
+      ar: {
+        title: "التسجيل في مشروع جمان 2 الراحة | أسلوب حياة عصري في أبوظبي",
+        description:
+          "سجّل اهتمامك بمشروع جمان 2 في منطقة الراحة واكتشف وحدات سكنية عصرية وفرص مميزة للعيش في أبوظبي.",
+        keywords:
+          "جمان 2 الراحة, التسجيل في جمان 2, عقارات الراحة, مشاريع سكنية في أبوظبي, أسلوب حياة عصري",
+      },
+    },
     override: {
       PropertyID: 25399,
       CommunityID: 70777,
@@ -555,9 +727,24 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-
   'united-property-expo-baku': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "United Property Expo Baku Registration | Meet PSI & Explore Opportunities",
+        description:
+          "Register your interest for the United Property Expo in Baku. Connect with Property Shop Investment (PSI) and explore real estate opportunities tailored for you.",
+        keywords:
+          "United Property Expo Baku, Baku property expo, PSI Baku event, real estate expo Azerbaijan, property investment",
+      },
+      ar: {
+        title: "التسجيل في معرض يونايتد بروبرتي إكسبو باكو | تواصل مع PSI واستكشف الفرص",
+        description:
+          "سجّل اهتمامك لحضور معرض يونايتد بروبرتي إكسبو في باكو. تواصل مع شركة بروبرتي شوب للاستثمار (PSI) واستكشف فرصًا عقارية تناسب احتياجاتك.",
+        keywords:
+          "معرض يونايتد بروبرتي إكسبو باكو, معرض عقارات باكو, فعالية PSI في باكو, معرض عقاري أذربيجان, الاستثمار العقاري",
+      },
+    },
     override: {
       remarks: 'United property expo Event',
       ...makeUtm({
@@ -574,9 +761,24 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-
   'yas-living-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Yas Living Abu Dhabi | Register Your Interest",
+        description:
+          "Register your interest for Yas Living in Abu Dhabi. Discover contemporary residences in a prime community offering comfort, connectivity, and lifestyle-focused living.",
+        keywords:
+          "Yas Living Abu Dhabi, Yas Living registration, Abu Dhabi residential community, modern homes Yas Island, property investment Abu Dhabi",
+      },
+      ar: {
+        title: "ياس ليفينغ أبوظبي | سجّل اهتمامك",
+        description:
+          "سجّل اهتمامك بمشروع ياس ليفينغ في أبوظبي واكتشف منازل عصرية ضمن مجتمع متكامل يجمع بين الراحة ونمط الحياة الحديث.",
+        keywords:
+          "ياس ليفينغ أبوظبي, التسجيل في ياس ليفينغ, مجمع سكني في أبوظبي, منازل عصرية جزيرة ياس, الاستثمار العقاري في أبوظبي",
+      },
+    },
     override: {
       PropertyID: 25397,
       CommunityID: 165011,
@@ -594,6 +796,22 @@ export const PROJECTS: Record<string, PerSlug> = {
 
   'expo-real-germany': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Expo Real Germany | Property Investment Registration with PSI",
+        description:
+          "Register your interest for Expo Real Germany with Property Shop Investment (PSI). Meet our team and explore international real estate investment opportunities.",
+        keywords:
+          "Expo Real Germany, Expo Real registration, property expo Germany, PSI Expo Real, international real estate investment",
+      },
+      ar: {
+        title: "معرض إكسبو ريال ألمانيا | التسجيل للاستثمار العقاري مع PSI",
+        description:
+          "سجّل اهتمامك لحضور معرض إكسبو ريال في ألمانيا مع شركة بروبرتي شوب للاستثمار (PSI) واستكشف فرص الاستثمار العقاري الدولية.",
+        keywords:
+          "معرض إكسبو ريال ألمانيا, التسجيل في إكسبو ريال, معرض عقاري ألمانيا, الاستثمار العقاري الدولي, PSI ألمانيا",
+      },
+    },
     override: {
       remarks: 'Yas Living',
       ...makeUtm({
@@ -608,6 +826,22 @@ export const PROJECTS: Record<string, PerSlug> = {
 
   'al-durrah-open-house-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Al Durrah Open House | Register Your Interest with PSI",
+        description:
+          "Register your interest for the Al Durrah Open House with Property Shop Investment (PSI). Get event details and connect with our team.",
+        keywords:
+          "Al Durrah Open House, Al Durrah registration, PSI open house, Abu Dhabi open house, real estate open house UAE",
+      },
+      ar: {
+        title: "أوبن هاوس الدرة | سجّل اهتمامك مع PSI",
+        description:
+          "سجّل اهتمامك لحضور أوبن هاوس الدرة مع شركة بروبرتي شوب للاستثمار (PSI). احصل على تفاصيل الفعالية وتواصل مع فريقنا.",
+        keywords:
+          "أوبن هاوس الدرة, التسجيل في الدرة, أوبن هاوس أبوظبي, بروبرتي شوب للاستثمار, فعالية عقارية الإمارات",
+      },
+    },
     override: {
       PropertyID: 24463,
       remarks: 'Al Durrah',
@@ -628,9 +862,24 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-
   'rak-general-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "RAK Properties | Register Your Interest with PSI",
+        description:
+          "Register your interest for Ras Al Khaimah real estate opportunities with Property Shop Investment (PSI). Explore current and upcoming projects.",
+        keywords:
+          "RAK properties, Ras Al Khaimah real estate, RAK property registration, PSI RAK, UAE property investment",
+      },
+      ar: {
+        title: "عقارات رأس الخيمة | سجّل اهتمامك مع PSI",
+        description:
+          "سجّل اهتمامك بالفرص العقارية في رأس الخيمة مع شركة بروبرتي شوب للاستثمار (PSI)، واطّلع على المشاريع الحالية والقادمة.",
+        keywords:
+          "عقارات رأس الخيمة, التسجيل العقاري رأس الخيمة, الاستثمار العقاري الإمارات, بروبرتي شوب للاستثمار",
+      },
+    },
     override: {
       remarks: 'Company',
       ...makeUtm({
@@ -641,9 +890,24 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-
   'ogami-registration': {
     branch: 'dubai',
+    seo: {
+      en: {
+        title: "Ogami Dubai | Register Your Interest with PSI",
+        description:
+          "Register your interest for Ogami in Dubai with Property Shop Investment (PSI). Get updates on availability, pricing, and launch details.",
+        keywords:
+          "Ogami Dubai, Ogami registration, Dubai real estate, Dubai property investment, PSI Dubai, register interest Ogami",
+      },
+      ar: {
+        title: "أوغامي دبي | سجّل اهتمامك مع PSI",
+        description:
+          "سجّل اهتمامك بمشروع أوغامي في دبي مع شركة بروبرتي شوب للاستثمار (PSI). احصل على آخر التحديثات حول التوفر والأسعار وتفاصيل الإطلاق.",
+        keywords:
+          "أوغامي دبي, التسجيل أوغامي, عقارات دبي, الاستثمار العقاري دبي, بروبرتي شوب للاستثمار دبي, سجّل اهتمامك",
+      },
+    },
     override: {
       PropertyID: 24034,
       remarks: 'Company',
@@ -655,9 +919,24 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-
   'yas-acres-registration': {
     branch: 'auh',
+    seo: {
+      en: {
+        title: "Yas Acres Abu Dhabi | Register Your Interest with PSI",
+        description:
+          "Register your interest for Yas Acres in Abu Dhabi with Property Shop Investment (PSI). Explore villas at Magnolias and Dahlias and receive the latest updates.",
+        keywords:
+          "Yas Acres Abu Dhabi, Yas Acres registration, Magnolias Yas Acres, Dahlias Yas Acres, Abu Dhabi villas, PSI Yas Acres",
+      },
+      ar: {
+        title: "ياس إيكرز أبوظبي | سجّل اهتمامك مع PSI",
+        description:
+          "سجّل اهتمامك بمشروع ياس إيكرز في أبوظبي مع شركة بروبرتي شوب للاستثمار (PSI). اكتشف فلل ماغنوليا ودهاليا واحصل على أحدث العروض.",
+        keywords:
+          "ياس إيكرز أبوظبي, التسجيل في ياس إيكرز, فلل أبوظبي, ماغنوليا ياس إيكرز, دهاليا ياس إيكرز, بروبرتي شوب للاستثمار",
+      },
+    },
     override: {
       PropertyID: 14524,
       CommunityID: 165011,
@@ -675,6 +954,22 @@ export const PROJECTS: Record<string, PerSlug> = {
 
   'landlord-listing-registration': {
     branch: 'assets',
+    seo: {
+      en: {
+        title: "List Your Property with PSI | Landlord Registration Abu Dhabi",
+        description:
+          "List your property with Property Shop Investment (PSI). Register as a landlord in Abu Dhabi and let our experts manage, market, and lease your property.",
+        keywords:
+          "list property Abu Dhabi, landlord registration Abu Dhabi, property management PSI, rent out property UAE, PSI landlord services",
+      },
+      ar: {
+        title: "سجّل عقارك مع PSI | تسجيل المُلّاك في أبوظبي",
+        description:
+          "سجّل عقارك مع شركة بروبرتي شوب للاستثمار (PSI). خدمات متكاملة لإدارة وتسويق وتأجير العقارات في أبوظبي.",
+        keywords:
+          "تسجيل المُلّاك أبوظبي, تسجيل عقار, إدارة العقارات PSI, تأجير العقارات الإمارات, بروبرتي شوب للاستثمار",
+      },
+    },
     override: {
       PropertyID: 20799,
       CommunityID: 95259,
