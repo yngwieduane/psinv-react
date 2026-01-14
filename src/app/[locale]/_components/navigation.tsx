@@ -516,6 +516,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                         { label: t('Our Story'), href: "/about-us" },
                         { label: t('careers'), href: "/careers" },
                         { label: t('Awards'), href: "/about-us#awards" },
+                        { label: t('Blog'), href: "/blog" },
                     ]
                 },
                 {
@@ -570,10 +571,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     const pages = ['/about-us', '/crypto'];
     const isTargetPage = pages.some(page => pathname.endsWith(page)) || /^\/projects\/[^/]+\/[^/]+\/[^/]+$/.test(pathname);
 
-    
+
     const showWhiteTheme = (isDarkHeroPage || isTargetPage) && !isScrolled && !hoveredMenu;
 
-    const navbarClasses = showWhiteTheme  
+    const navbarClasses = showWhiteTheme
         ? 'bg-transparent py-6 text-white transition-all duration-300'
         : 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20 text-gray-900 transition-all duration-300';
 

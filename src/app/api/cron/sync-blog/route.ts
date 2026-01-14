@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getAllPosts } from '@/services/wordpress';
-import { db } from '@/lib/firebase-admin';
+import { db, admin } from '@/lib/firebase-admin';
 
 // Revalidate 0 allows this to run dynamically
 export const dynamic = 'force-dynamic';
@@ -21,16 +21,60 @@ export async function GET() {
         const batch = db.batch();
         const collectionRef = db.collection('blog_posts');
 
+        const bucketName = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+        console.log('Using storage bucket:', bucketName);
+
+        // Pass bucket name explicitly to be safe
+        const bucket = admin.storage().bucket(bucketName);
+
+        // Helper to upload image
+        const uploadImageToFirebase = async (url: string, slug: string): Promise<string | null> => {
+            if (!url || url.includes('firebaseharvest') || url.includes('firebasestorage')) return url; // Already firebase or invalid
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`Failed to fetch image: ${response.statusText}`);
+
+                const arrayBuffer = await response.arrayBuffer();
+                const buffer = Buffer.from(arrayBuffer);
+
+                // Determine extension
+                const extension = url.split('.').pop()?.split('?')[0] || 'jpg';
+                const fileName = `blog-images/${slug}.${extension}`;
+                const file = bucket.file(fileName);
+
+                await file.save(buffer, {
+                    metadata: {
+                        contentType: response.headers.get('content-type') || 'image/jpeg',
+                    },
+                    public: true, // Make it public
+                });
+
+                // Construct public URL
+                return file.publicUrl();
+            } catch (error) {
+                console.error(`Failed to upload image for ${slug}:`, error);
+                return null;
+            }
+        };
+
         let count = 0;
         for (const post of posts) {
             // Use slug as doc ID for easy lookup and dedup
             const docRef = collectionRef.doc(post.slug);
 
-            // We can save the whole post object. 
-            // Firestore doesn't like undefined values so we might need to sanitize if any optional fields are undefined
-            // but JSON.stringify/parse removal is a quick hack, or just manual mapping.
+            // Upload image if exists
+            let firebaseUrl = post.imageUrl;
+            if (post.imageUrl && !post.imageUrl.includes('placeholder')) {
+                const uploaded = await uploadImageToFirebase(post.imageUrl, post.slug);
+                if (uploaded) {
+                    firebaseUrl = uploaded;
+                }
+            }
+
             // Serialization:
             const postData = JSON.parse(JSON.stringify(post));
+            postData.imageUrl = firebaseUrl;
 
             batch.set(docRef, {
                 ...postData,

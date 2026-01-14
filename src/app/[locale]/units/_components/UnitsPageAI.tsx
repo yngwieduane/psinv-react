@@ -117,13 +117,13 @@ export default function UnitsPageAI(props: any) {
                             <div className="h-[58px] bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl p-1 flex items-center shadow-lg">
                                 <button
                                     onClick={() => setViewMode('list')}
-                                    className="h-full px-4 rounded-lg text-gray-400 hover:bg-gray-50 flex items-center justify-center transition-colors"
+                                    className="cursor-pointer h-full px-4 rounded-lg text-gray-400 hover:text-gray-800 flex items-center justify-center transition-colors"
                                 >
                                     <LayoutGrid size={20} />
                                 </button>
                                 <button
                                     onClick={() => setViewMode('map')}
-                                    className="h-full px-4 rounded-lg bg-primary text-gray-800 shadow-sm flex items-center justify-center font-bold"
+                                    className="cursor-pointer h-full px-4 rounded-lg bg-primary text-gray-800 shadow-sm flex items-center justify-center font-bold"
                                 >
                                     <MapIcon size={20} />
                                 </button>

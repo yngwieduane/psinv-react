@@ -114,6 +114,13 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
         en: "f65576dfefb9092530091671f1dc6ad4",
         ar: "928d7bc8ded69faeac9b8ee0965c163b",
     },
+    "aldar-roadshow-registration": {
+        en: "6d4c72dc8d8cadbfe8deb50825da4ed6",
+        ar: "e7c69b151686d39e2642931a11ea5154",
+    },
+    "test-reg-page": {
+        en: "3b3c2a37b7351ff5e13fd9b2fb1876f9",
+    },
     // Add here
 };
 
