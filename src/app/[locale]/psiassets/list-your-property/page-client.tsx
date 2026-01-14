@@ -11,11 +11,8 @@ import ListForm from "./Components/ListForm";
 import Accordion from "./Components/Accordion";
 import InquireModal from "./Components/InquireModal";
 import { useTranslations } from "next-intl";
-import BrightCallWidget from "../_components/BrightCallWidget";
-import { useSearchParams } from "next/navigation";
-import { ListPageResolveBrightcallWidget } from "./Components/Brightcall/ListPageResolveBrightcallWidget";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Configure Poppins font
 const poppins = Poppins({
@@ -58,15 +55,7 @@ const WhereToListItems = [
     }
 ];
 
-const ListYourPropertyPageClient = () => {
-    const sp = useSearchParams();
-    const utmCampaign = typeof sp.get("utm_campaign") === "string" ? sp.get("utm_campaign") : null;
-
-    const widgetKey = ListPageResolveBrightcallWidget({
-        pageType: "listpage",
-        locale: "en",
-        utmCampaign,
-    });
+const AssetsListPageClient = () => {   
 
     const t = useTranslations("ListYourPropertyPage");
 
@@ -496,9 +485,8 @@ const ListYourPropertyPageClient = () => {
             </footer>
 
             <InquireModal modalState={modal} onModalUpdate={modalUpdate} />
-            <BrightCallWidget widgetKey={widgetKey} formType="listpage" />
         </>
     )
 }
 
-export default ListYourPropertyPageClient
+export default AssetsListPageClient

@@ -105,13 +105,15 @@ const HomeBanner = (props: any) => {
           <SwiperSlide
             key={index}
           >
-            <div
-              className="absolute inset-0 w-full py-5 bg-cover bg-center animate-[zoomIn_20s_infinite_alternate]"
-              style={{
-                backgroundImage: `url(${slide.image})`
-              }}
-            >
-              {/* Sophisticated dark overlay for text contrast */}
+            <div className="absolute inset-0 w-full h-full overflow-hidden">
+              <Image
+                src={slide.image}
+                alt="Background image"
+                fill
+                priority = { index === 0}
+                sizes="100vw"
+                className="object-cover object-center animate-[zoomIn_20s_infinite_alternate]"
+              />
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
             </div>
 
@@ -138,11 +140,19 @@ const HomeBanner = (props: any) => {
                   </div>
                 )}
 
-                {slide.title && (
-                  <h1 className={`text-5xl md:text-8xl font-serif font-bold mb-6 leading-tight animate-[fadeIn_1.4s_ease-out] ${outfit.className}`}>
-                    {slide.title}
-                  </h1>
-                )}
+                {index === 0 ? 
+                  slide.title && (
+                    <h1 className={`text-5xl md:text-8xl font-serif font-bold mb-6 leading-tight animate-[fadeIn_1.4s_ease-out] ${outfit.className}`}>
+                      {slide.title}
+                    </h1>
+                  )
+                  :
+                  (
+                    <h2 className={`text-5xl md:text-8xl font-serif font-bold mb-6 leading-tight animate-[fadeIn_1.4s_ease-out] ${outfit.className}`}>
+                        {slide.title}
+                      </h2>
+                  )
+                }                
 
                 {slide.description && (
                   <p className="text-lg md:text-xl mb-10 text-gray-100 leading-relaxed max-w-2xl font-light animate-[fadeIn_1.6s_ease-out]">

@@ -9,6 +9,7 @@ import "react-phone-number-input/style.css";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { sendGTMEvent } from '@next/third-parties/google'
+import Link from "next/link";
 
 const schema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
@@ -409,7 +410,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
 
         <div className="my-3">
           <label className="flex items-center space-x-2">
-            <span className="text-sm">By clicking Submit, you agree to our <a href="/en/terms">Terms & Conditions</a> and <a href="/en/privacy">Privacy Policy</a></span>
+            <span className="text-sm">By clicking Submit, you agree to our <Link href="/en/terms" title="terms">Terms & Conditions</Link> and <Link href="/en/privacy" title="privacy">Privacy Policy</Link></span>
           </label>
         </div>
         <div className="mb-3">

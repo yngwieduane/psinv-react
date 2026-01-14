@@ -7,6 +7,7 @@ import { Outfit } from "next/font/google";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -103,11 +104,14 @@ const AboutAwardsSlider = () => {
           {awards.map((slide: any, index: number) => (
             <SwiperSlide key={index}>
               <div className={`w-full text-center pb-5 md:pb-3 md:mb-5 ${outfit.className} hover:shadow-xl transition-shadow duration-300 rounded-xl`}>
-                <div className="h-60 md:h-48 flex items-center justify-center mb-6 w-full">
-                  <img
+                <div className="h-60 md:h-40 flex items-center justify-center mb-6 w-full">
+                  <Image
                     src={`/assets/images/about-us/awards/${slide.image}`}
-                    alt={slide.title1} title={slide.title1}
-                    className="h-40 w-auto object-contain mix-blend-multiply transition-transform duration-300 transform hover:scale-110"
+                    alt={slide.title1 || 'Award'}
+                    title={slide.title1}
+                    width={250}      // adjust as needed
+                    height={200}     // keeps aspect ratio
+                    className="object-contain mix-blend-multiply transition-transform duration-300 hover:scale-110"
                   />
                 </div>
                 <p className="font-bold text-gray-800 mb-1 text-lg">{slide.title1}</p>

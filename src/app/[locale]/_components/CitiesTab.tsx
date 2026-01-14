@@ -53,7 +53,7 @@ const CitiesTab: React.FC<CitiesTabProps> = ({ cities }) => {
           <div key={visibleTab} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 min-h-[320px] animate-[fadeIn_0.5s_ease-out]">
             {hasProjects ? (
               currentCity.projects.map((project, index) => (
-                <a key={index} href={`/en${project.project_url}`}>
+                <Link key={index} href={`/en${project.project_url}`} title={project.title}>
                   <div
                     key={index}
                     className="group relative h-80 overflow-hidden rounded-lg cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300"
@@ -70,7 +70,7 @@ const CitiesTab: React.FC<CitiesTabProps> = ({ cities }) => {
                       <div className="h-0.5 w-0 bg-secondary mt-4 transition-all duration-500 group-hover:w-16" />
                     </div>
                   </div>
-                </a>
+                </Link>
               ))
             ) : (
               <div className="col-span-full flex flex-col items-center justify-center text-gray-400 py-10 bg-white rounded-lg border border-dashed border-gray-300">
