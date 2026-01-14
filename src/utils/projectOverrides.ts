@@ -84,7 +84,7 @@ export const PROJECTS: Record<string, PerSlug> = {
       remarks: 'Company',
       ...makeUtm({
         'shaza_ohana_yas_newsletter': {
-          campaign: 3397,
+          campaign: 3399,
           remarks:
             'Rotation:  Company, Campaign name:  shaza Ohana Yas Newsletter',
         },
