@@ -9,6 +9,7 @@ import { generateSeoData } from './functions/generateSeoData';
 import './custom-advanced-marker.css';
 import { RealEstateIcon } from '../../../../public/icons/real-estate-icon';
 import { RealEstateListing } from '@/types/types';
+import PriceConvert from './tools/PriceConvert';
 
 interface Props {
     realEstateListing: RealEstateListing;
@@ -90,7 +91,7 @@ export const UnitsMapMarker: FunctionComponent<Props> = ({
                             <MapPin size={10} /> {unit.community}
                         </p>
                         <p className="text-sm font-bold text-primary mb-3">
-                            {unit.sellprice || unit.rent || 'Price on Request'}
+                            {unit.sellprice ? <PriceConvert price={unit.sellprice} minDecimal='0' /> : unit.rent ? <PriceConvert price={unit.rent} minDecimal='0' /> : 'Price on Request'}
                         </p>
 
                         <div className="flex gap-2">
