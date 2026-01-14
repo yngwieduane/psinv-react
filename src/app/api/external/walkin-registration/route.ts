@@ -135,7 +135,7 @@ export async function POST(req: NextRequest) {
       API_KEY = 'd301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0';
     } else if (branch?.toLowerCase() === 'assets') {
       CRM_ENDPOINT = 'https://portal.psiassets-crm.com/api/leads/';
-      API_KEY = '9f2eb4da2719c67820ce17c519e3ced3934a6283a58900876bdf48d5b2aac75331e626f6c4ab813b';
+      API_KEY = '511af8807e7ff9cc0441c901aa724d5f9f66dfd21c388f385572bda768d4529b65b7c57ed3853ab0';
     }
 
 
