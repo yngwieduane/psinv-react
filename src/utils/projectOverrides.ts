@@ -20,6 +20,19 @@ export type PerSlug = {
   seo?: SeoMeta | LocalizedSeo;
 };
 export const PROJECTS: Record<string, PerSlug> = {
+  'test-reg-page': {
+    branch: 'auh',
+    override: {
+      remarks: 'Company',
+      ...makeUtm({
+        'test-reg': {
+          campaign: 2941,
+          remarks:
+            'Rotation:  Company , Campaign name:	AI test',
+        },
+      }),
+    },
+  },
   'aldar-roadshow-registration': {
     branch: 'auh',
     seo: {
