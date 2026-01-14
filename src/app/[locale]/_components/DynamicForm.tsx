@@ -276,7 +276,7 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
       </button>
 
       <p className="text-[10px] text-gray-400 mt-2">
-        {t("clickingTerms.part1")} <Link href={`${locale}/terms`} className="text-blue-600">{t("clickingTerms.part2")}</Link> {t("clickingTerms.part3")}
+        {t("clickingTerms.part1")} <Link title="terms" href={`${locale}/terms`} className="text-blue-600">{t("clickingTerms.part2")}</Link> {t("clickingTerms.part3")}
       </p>
 
       <div className="space-y-2 mt-4 text-[10px] text-gray-400">
