@@ -986,32 +986,16 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
             </table>
                         `;
 
-                if (filesToSend.length === 0) {
-                    await fetch("https://registration.psinv.net/api/sendemail2.php", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            body: emailBody,
-                            receiver: cityConfig.email,
-                            subject: "New inquiry - List Your Property",
-                            files: [],
-                        }),
-                    });
-                } else {
-                    for (let i = 0; i < filesToSend.length; i++) {
-                        const file = filesToSend[i];
-                        await fetch("https://registration.psinv.net/api/sendemail2.php", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({
-                                body: emailBody,
-                                receiver: cityConfig.email,
-                                subject: `New inquiry - List Your Property (Part ${i + 1}/${filesToSend.length})`,
-                                files: [file],
-                            }),
-                        });
-                    }
-                }
+                await fetch("https://registration.psinv.net/api/sendemail2.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        body: emailBody,
+                        receiver: cityConfig.email,
+                        subject: "New inquiry - List Your Property",
+                        files: filesToSend, // Send the entire array of files
+                    }),
+                });
 
                 setPostId("success");
                 setIsSubmitSuccess(true);
