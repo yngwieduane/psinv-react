@@ -101,6 +101,7 @@ export default function NewsletterPage() {
                     <Image
                       src={item.image}
                       alt={item.title}
+                      title={item.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
@@ -128,6 +129,7 @@ export default function NewsletterPage() {
                       <Link
                         target="_blank"
                         rel="noopener noreferrer"
+                        title={item.title}
                         href={item.link}
                         className="inline-flex items-center gap-2 mt-4 font-semibold text-psiblue hover:text-blue-700 transition-colors group/link"
                       >
