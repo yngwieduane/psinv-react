@@ -181,7 +181,7 @@ const HomeBanner = (props: any) => {
                 {slide.name !== 'loyalty' && (
                   <>
                     <div className='flex gap-4'>
-                      <button
+                      <button aria-label="sign_up"
                         onClick={() => modalHandler(slide)}
                         className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
                         {t("sign_up_btn")}
@@ -211,20 +211,20 @@ const HomeBanner = (props: any) => {
             <div className={`absolute bottom-12 ${isRTL ? "left-12" : "right-12"} flex items-center gap-6 z-20 hidden md:flex`} dir={isRTL ? "rtl" : "ltr"}>
               {isRTL && (
                 <div className="flex gap-2">
-                  <button onClick={handlePrev} className="p-3 text-white/50 hover:text-white transition-colors border border-white/20 hover:border-white rounded-full">
+                  <button aria-label="next" onClick={handlePrev} className="p-3 text-white/50 hover:text-white transition-colors border border-white/20 hover:border-white rounded-full">
                     <ChevronRight size={20} />
                   </button>
-                  <button onClick={handleNext} className="p-3 text-white/50 hover:text-white transition-colors border border-white/20 hover:border-white rounded-full">
+                  <button aria-label="prev" onClick={handleNext} className="p-3 text-white/50 hover:text-white transition-colors border border-white/20 hover:border-white rounded-full">
                     <ChevronLeft size={20} />
                   </button>
                 </div>
               )}
               {!isRTL && (
                 <div className="flex gap-2">
-                  <button onClick={handlePrev} className="p-3 text-white/50 hover:text-white transition-colors border border-white/20 hover:border-white rounded-full">
+                  <button aria-label="prev" onClick={handlePrev} className="p-3 text-white/50 hover:text-white transition-colors border border-white/20 hover:border-white rounded-full">
                     <ChevronLeft size={20} />
                   </button>
-                  <button onClick={handleNext} className="p-3 text-white/50 hover:text-white transition-colors border border-white/20 hover:border-white rounded-full">
+                  <button aria-label="next" onClick={handleNext} className="p-3 text-white/50 hover:text-white transition-colors border border-white/20 hover:border-white rounded-full">
                     <ChevronRight size={20} />
                   </button>
                 </div>
