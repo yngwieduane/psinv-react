@@ -1,0 +1,140 @@
+body { font-family: 'Poppins', sans-serif;}
+.btnOuter { 
+    position: relative; 
+    /* display: flex; */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: visible;
+    transition: transform 0.3s ease-in-out;
+     }
+
+  .btnAnimate {
+    background-color: #E35F27;
+    color: #fff;
+    box-shadow: 0px 1px 2px 0px #1018280D;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .btnAnimateBorder {
+    pointer-events: none; /* Allow mouse events to pass through */
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%) scale(1.2); /* Start slightly expanded */
+    background-color: transparent;
+    border-radius: 8px;
+    width: 215px;
+    height: 60px;
+    border: 4px solid #E35F27;
+    opacity: 0; /* Initially hidden */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transform and fade */
+    z-index: 1; /* Border should stay below the button */
+  }
+
+  .btnAnimate:hover + .btnAnimateBorder {
+    opacity: 1; /* Makes the border visible */
+    transform: translate(-50%, -50%) scale(1); /* Shrink to normal size */
+  }
+
+  .btnAnimate:not(:hover) + .btnAnimateBorder {
+    opacity: 0; /* Fades out */
+    transform: translate(-50%, -50%) scale(1.4); /* Expands beyond its original size */
+  }
+  .dots-container .dot.active {    
+    width: 25px;
+    border-radius: 15px;
+  }
+  .thumbnail-container .thumbnail { cursor: pointer;}
+  .why-to-list ul li { margin: 20px 0px; }
+  
+  .custom-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #272963;
+    opacity: 1;
+    transition: 0.3s ease, opacity 0.3s ease;
+  }
+
+.custom-pagination .swiper-pagination-bullet-active {
+  background-color: #E35F27;
+  width: 25px;
+  border-radius: 10px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator, 
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+    width: 15px;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+.animate-rotateToLeft{
+  animation: rotateToLeft 0.2s ease-in;
+}
+.animate-rotateBack{
+  animation: rotateBack 0.2s ease-in;
+}
+#providers .swiper-pagination { display: none; }
+.select-placeholder { color: gray;}
+
+@keyframes rotateToLeft {
+  0% {
+    transform: rotate(0deg);
+  }
+  25%{
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(-90deg);
+  }
+  75%{
+    transform: rotate(-135deg);
+  }
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes rotateBack {
+  0% {
+    transform: rotate(-180deg);
+  }
+  25%{
+    transform: rotate(-135deg);
+  }
+  50% {
+    transform: rotate(-90deg);
+  }
+  75%{
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media only screen and (max-width:639px) {
+  .btnAnimate, .btnSecondary { font-size: 15px; }
+  .btnAnimateBorder { width: 218px;}
+  .banner-btn.btnAnimateBorder { width: 192px;}
+}
+@media only screen and (min-width:769px) {  
+  .formBg { background-image: url('/assets/images/list-property/contact-img.webp');}
+}
+@media only screen and (max-width:768px) {  
+  .formBg { background-image: url('/assets/images/list-property/form-bg-mob.webp'); position: relative;  z-index: 0;}
+  .formBg-grad { z-index: 1;}
+}

@@ -10,6 +10,7 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { sendGTMEvent } from '@next/third-parties/google'
 import { insertPSILead } from "@/utils/crmApiHelpers";
+import Link from "next/link";
 
 interface Props {
   project?: any;
@@ -454,7 +455,7 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
         </button>
         <div className="mb-3">
           <label className="flex items-center space-x-2">
-            <span className="text-sm">By clicking Submit, you agree to our <a href="/en/terms">Terms & Conditions</a> and <a href="/en/privacy">Privacy Policy</a></span>
+            <span className="text-sm">By clicking Submit, you agree to our <Link href="/en/terms" title="terms">Terms & Conditions</Link> and <a href="/en/privacy">Privacy Policy</a></span>
           </label>
         </div>
         <div className="mb-3">

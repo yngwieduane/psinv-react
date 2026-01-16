@@ -158,7 +158,7 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
           <p>&copy; {new Date().getFullYear()} {t('footer_psi')} {t('footer_rights')}</p>
           <div className="flex space-x-8 mt-4 md:mt-0">
             <a href="/en/privacy" title={t('footer_privacy')} className="hover:text-gray-400 transition-colors">{t('footer_privacy')}</a>
-            <a href="/en/terms" title={t('footer_terms')} className="hover:text-gray-400 transition-colors">{t('footer_terms')}</a>
+            <a href="/en/terms" title="terms" className="hover:text-gray-400 transition-colors">{t('footer_terms')}</a>
             {/* <a href="/en/sitemap/" className="hover:text-gray-400 transition-colors">{t('footer_sitemap')}</a>  */}
           </div>
         </div>

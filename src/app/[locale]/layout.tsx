@@ -26,6 +26,7 @@ import { TranslationProvider } from "@/context/translationContext";
 import { UserProvider } from "@/context/userContext";
 import CompareFloatingButton from "./_components/CompareFloatingButton";
 import BrightCallWidget from "@/app/[locale]/_components/BrightCallWidget";
+import AIChatWidget from "./_components/AIChatWidget";
 
 const WIDGET_KEY =
   process.env.NEXT_PUBLIC_BRIGHT_CALL_WIDGET_KEY ?? "e5c730edd6b0222dd7c568dd2c42d972";
@@ -45,7 +46,7 @@ const WIDGET_KEY =
 //       'max-snippet': -1,
 //     },
 //   },
-//   metadataBase: new URL('https://psi.properties'),
+//   metadataBase: new URL('https://www.psinv.net'),
 // };
 
 type Props = {
@@ -122,7 +123,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         'max-snippet': -1,
       },
     },
-    metadataBase: new URL('https://psi.properties'),
+    metadataBase: new URL('https://psinv.net'),
   };
 }
 
@@ -152,6 +153,7 @@ export default async function LocaleLayout({
             <Providers><main>{children}</main></Providers>
             <ConditionalFooter />
             <CompareFloatingButton />
+            <AIChatWidget />
           </NextIntlClientProvider>
         </UserProvider>
         <GoogleTagManager gtmId="GTM-KDDP2SR" />

@@ -11,6 +11,7 @@ import { User, Mail } from "lucide-react";
 import clsx from "clsx";
 
 import type { CRMMeta } from "../LandingConfig";
+import Link from "next/link";
 export interface InquiryFormProps {
   crm: CRMMeta;
   variant?: "glass" | "solid";
@@ -473,8 +474,8 @@ const wrapper = clsx(
         {/* Fine print */}
         <p className="mt-1 text-[13px] italic text-white/90">
           {t.rich("fineprint.text", {
-            terms: (chunks) => <a href="/terms" className="underline">{chunks}</a>,
-            privacy: (chunks) => <a href="/privacy" className="underline">{chunks}</a>
+            terms: (chunks) => <Link href="/terms" title="terms" className="underline">{chunks}</Link>,
+            privacy: (chunks) => <Link href="/privacy" title="terms" className="underline">{chunks}</Link>
           })}
         </p>
 
