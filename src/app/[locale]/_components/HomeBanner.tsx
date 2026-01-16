@@ -108,7 +108,7 @@ const HomeBanner = (props: any) => {
             <div className="absolute inset-0 w-full h-full overflow-hidden">
               <Image
                 src={slide.image}
-                alt="Background image"
+                alt={slide.title} title={slide.title}
                 fill
                 priority = { index === 0}
                 sizes="100vw"
@@ -174,7 +174,7 @@ const HomeBanner = (props: any) => {
                 )}
 
                 {slide.name === 'loyalty' && (
-                  <Link title="Sign Up" href="https://loyalty-program.psinv.net/" target="_blank" className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
+                  <Link title="Sign Up" href="https://loyalty-program.psinv.net/" target="_blank" className="cursor-pointer bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
                     <span className="relative">{t("sign_up_btn")}</span>
                   </Link>
                 )}
@@ -183,7 +183,7 @@ const HomeBanner = (props: any) => {
                     <div className='flex gap-4'>
                       <button aria-label="sign_up"
                         onClick={() => modalHandler(slide)}
-                        className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
+                        className="cursor-pointer bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
                         {t("sign_up_btn")}
                       </button>
                       {slide.project_url !== '' && (

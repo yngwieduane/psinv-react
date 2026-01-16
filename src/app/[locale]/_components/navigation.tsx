@@ -688,7 +688,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <button
+                    <button aria-label='mobile menu'
                         className="lg:hidden p-2 rounded-lg"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >

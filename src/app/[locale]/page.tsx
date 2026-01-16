@@ -1,11 +1,14 @@
-import ListPropertyForm from './_components/ListPropertyForm';
-import WhyPSI from './_components/WhyPSI';
-import Calculator from './mortgage-calculator/MortgageTabs';
-import AwardSlider from '../[locale]/about-us/_components/AboutAwardsSlider';
-import AboutCounter from "../[locale]/about-us/_components/AboutCounter";
-import ReportDownloadSection from "../[locale]/_components/ReportDownloadSection";
-import GoogleReviewSection from "./_components/GoogleReviewSection";
-import GetTheAppSection from "./_components/GetTheAppSection";
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+
+const ListPropertyForm = dynamic(() => import('./_components/ListPropertyForm'));
+const WhyPSI = dynamic(() => import('./_components/WhyPSI'));
+const Calculator = dynamic(() => import('./mortgage-calculator/MortgageTabs'));
+const AwardSlider = dynamic(() => import('../[locale]/about-us/_components/AboutAwardsSlider'));
+const AboutCounter = dynamic(() => import('../[locale]/about-us/_components/AboutCounter'));
+const GoogleReviewSection = dynamic(() => import('./_components/GoogleReviewSection'));
+const GetTheAppSection = dynamic(() => import('./_components/GetTheAppSection'));
+const ReportDownloadSection = dynamic(() => import('./_components/ReportDownloadSection'));
 
 import { Organization, WithContext } from "schema-dts";
 import { Audrey, BrittanySignature } from "@/utils/fonts";
@@ -14,18 +17,6 @@ import HomeBanner from "./_components/HomeBanner";
 import CitiesTab from "./_components/CitiesTab";
 import { useLocale, useTranslations } from 'next-intl';
 
-
-// const SwiperSlider = dynamic(() => import('./_components/SwiperSliderHome'));
-// const MainNavbar = dynamic(() => import('./_components/MainNavbar'));
-// const FeaturedProjects = dynamic(() => import('./_components/FeaturedProjects'));
-// const ListPropertyForm = dynamic(() => import('./_components/ListPropertyForm'));
-// const WhyPSI = dynamic(() => import('./_components/WhyPSI'));
-// const Calculator = dynamic(() => import('./mortgage-calculator/MortgageTabs'));
-// const AwardSlider = dynamic(() => import('../[locale]/about-us/_components/AboutAwardsSlider'));
-// const AboutCounter = dynamic(() => import('../[locale]/about-us/_components/AboutCounter'));
-// const ReportDownloadSection = dynamic(() => import('../[locale]/_components/ReportDownloadSection'));
-// const GoogleReviewSection = dynamic(() => import('./_components/GoogleReviewSection'));
-// const GetTheAppSection = dynamic(() => import('./_components/GetTheAppSection'));
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -304,7 +295,12 @@ export default function HomePage() {
         <ReportDownloadSection />
       </div>
       <div className="w-full bg-secondary-color py-10 text-gray-500" dir={isRTL ? "rtl" : "ltr"}>
-        <div className="max-w-(--breakpoint-xl) mx-auto bg-center bg-cover py-10 px-5" style={{ backgroundImage: "url('/assets/images/about-us/pattern-1.png')", }}>
+        <div className="relative max-w-(--breakpoint-xl) mx-auto py-10 px-5 overflow-hidden">
+          <Image src="/assets/images/about-us/pattern-1.png"
+          alt='pattern' title='pattern' 
+          fill
+          className="object-cover object-center z-0" />
+          <div className="relative z-10">
           {/* Heading */}
           <div className="text-center mt-[50px] mb-[70px]">
             <h3 className={`text-darkblue  font-bold text-xl md:text-4xl ${Audrey.className}`}>
@@ -359,6 +355,7 @@ export default function HomePage() {
           <div className="mt-10 text-center md:hidden">
             <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="10"> 0 </span></h4>
             <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.locationWorldwide")}</p>
+          </div>
           </div>
         </div>
       </div>
