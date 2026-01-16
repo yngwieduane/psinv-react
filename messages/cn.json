@@ -6,19 +6,19 @@
   "MainSliderHome": {
     "slides": {
       "ohana_branded_residences": {
-        "title": "Ohana Branded Residences",
-        "location": "Yas Island",
-        "description": "A new branded residential community located directly on Yas Canal. The project offers waterfront apartments, townhouses, Villas, and Maisonettes, positioned near Yas Island’s key attractions and lifestyle destinations. It features premium amenities and flexible entry options, including a 5% down payment."
+        "title": "Ohana 品牌公寓",
+        "location": "亚斯岛",
+        "description": "Ohana 品牌公寓是一个全新的品牌住宅社区，位于亚斯运河沿岸。该项目提供临水公寓、联排别墅、独栋别墅和复式住宅，地理位置优越，毗邻亚斯岛的主要景点和生活区。项目配备高端设施，并提供灵活的付款方式，仅需5%首付。"
       },
       "sobha": {
         "title": "Sobha",
-        "location": "Al Bahia Abu Dhabi",
-        "description": "Sobha’s latest development in Abu Dhabi focuses on high-quality waterfront living with a strong emphasis on design, construction standards, and long-term value. The project targets both end-users and investors seeking premium residences in a prime location."
+        "location": "阿布扎比 Al Bahia",
+        "description": "Sobha 最新的阿布扎比项目专注于高品质滨水生活，注重设计、建筑标准和长期价值。该项目面向终端用户和寻求优质住宅的投资者，地理位置极佳。"
       },
       "the_row": {
         "title": "The Row",
-        "location": "Saadiyat Island",
-        "description": "Located within Saadiyat Cultural District, The Row is a contemporary residential development offering spacious 1 - 3-bedroom apartments. It presents a smart entry into one of Abu Dhabi’s most established and high-demand destinations, with attractive payment plans starting from a 5% down payment."
+        "location": "萨迪亚特岛",
+        "description": "The Row 位于萨迪亚特文化区，是一个现代住宅项目，提供宽敞的1至3卧室公寓。作为进入阿布扎比最成熟、最受欢迎地区的理想选择，项目提供灵活的付款计划，首付仅需5%。"
       },
       "bashayer_residences": {
         "title": "Bashayer公寓",
