@@ -5,6 +5,21 @@
   },
   "MainSliderHome": {
     "slides": {
+      "ohana_branded_residences": {
+        "title": "Ohana Branded Residences",
+        "location": "Yas Island",
+        "description": "A new branded residential community located directly on Yas Canal. The project offers waterfront apartments, townhouses, Villas, and Maisonettes, positioned near Yas Island’s key attractions and lifestyle destinations. It features premium amenities and flexible entry options, including a 5% down payment."
+      },
+      "sobha": {
+        "title": "Sobha",
+        "location": "Al Bahia Abu Dhabi",
+        "description": "Sobha’s latest development in Abu Dhabi focuses on high-quality waterfront living with a strong emphasis on design, construction standards, and long-term value. The project targets both end-users and investors seeking premium residences in a prime location."
+      },
+      "the_row": {
+        "title": "The Row",
+        "location": "Saadiyat Island",
+        "description": "Located within Saadiyat Cultural District, The Row is a contemporary residential development offering spacious 1 - 3-bedroom apartments. It presents a smart entry into one of Abu Dhabi’s most established and high-demand destinations, with attractive payment plans starting from a 5% down payment."
+      },
       "bashayer_residences": {
         "title": "باشاير ريزيدنسز",
         "location": "جزيرة الحديريات",
