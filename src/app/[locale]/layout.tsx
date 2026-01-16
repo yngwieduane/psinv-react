@@ -45,7 +45,7 @@ const WIDGET_KEY =
 //       'max-snippet': -1,
 //     },
 //   },
-//   metadataBase: new URL('https://psi.properties'),
+//   metadataBase: new URL('https://www.psinv.net'),
 // };
 
 type Props = {
