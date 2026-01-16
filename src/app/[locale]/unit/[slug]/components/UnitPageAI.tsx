@@ -123,7 +123,7 @@ export default function UnitPageAI(props: any) {
                                                     addToCompare({ id: post.code, type: 'units', data: post });
                                                 }
                                             }}
-                                            className={`cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold ${compared ? 'bg-[#0c1356] text-white' : 'border-gray-200 text-gray-600 hover:border-primary hover:text-primary'}`}
+                                            className={`cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold ${compared ? 'bg-[#0c1356] text-white' : 'border-gray-200 text-gray-600 hover:bg-[#0c1356] hover:text-white'}`}
                                         >
                                             <Shuffle size={20} /> {compared ? "Compared" : "Compare"}
                                         </button>
