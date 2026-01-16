@@ -21,7 +21,6 @@ import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
 import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
 import { Bath, BedDouble, CheckCircle2, Heart, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
 import { useUser } from "@/context/userContext";
-import RequestViewing from "@/app/[locale]/_components/RequestViewing";
 
 const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap'));
 const SimilarUnitsGrid = dynamic(() => import('./SimilarUnitsGrid'));
@@ -49,9 +48,9 @@ export default function UnitPageAI(props: any) {
     ];
 
     return (
-        <div className="pt-28 md:pt-40 pb-24">
+        <div className="pt-28 md:pt-24 pb-24">
             <div>
-                <BreadcrumbUnit />
+                <BreadcrumbUnit data={props.data[0]} />
             </div>
             <div >
                 {props.data.map((post: any, index: any) => {
@@ -100,7 +99,7 @@ export default function UnitPageAI(props: any) {
                                 {/* Title Section */}
                                 <div className="flex flex-col md:flex-row justify-between items-start mb-8 md:mb-10 gap-6 md:gap-8">
                                     <div className="w-full">
-                                        <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-primary mb-2 md:mb-4 leading-tight">{post.marketingTitle}</h1>
+                                        <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold text-primary mb-2 md:mb-4 leading-tight">{post.marketingTitle}</h1>
                                         <div className="flex items-center text-gray-500 text-sm md:text-base font-medium">
                                             <MapPin size={18} className="text-secondary mr-2 rtl:ml-2" />
                                             {post.community}
@@ -131,7 +130,7 @@ export default function UnitPageAI(props: any) {
                                     </div>
                                 </div>
                                 {/* Stats Row - Updated for Landscape: horizontal flex with wrap */}
-                                <div className="flex flex-wrap sm:flex-nowrap gap-4 md:gap-10 text-center bg-gray-50 px-4 md:px-8 py-4 rounded-2xl border border-gray-100 shadow-sm mb-8 md:mb-12 max-w-3xl">
+                                <div className="hidden flex-wrap sm:flex-nowrap gap-4 md:gap-10 text-center bg-gray-50 px-4 md:px-8 py-4 rounded-2xl border border-gray-100 shadow-sm mb-8 md:mb-12 max-w-3xl">
                                     <div className="flex flex-col items-center min-w-[60px] flex-1">
                                         <BedDouble size={24} className="text-gray-400 mb-2" strokeWidth={1.5} />
                                         <span className="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Beds</span>
@@ -283,13 +282,24 @@ export default function UnitPageAI(props: any) {
                                                     </div>
                                                 </div>
 
-                                                <div className="flex flex-col gap-4 mb-8">
-                                                    <button className="cursor-pointer w-full bg-secondary hover:bg-secondary-dark text-black py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-orange-500/20 flex items-center justify-center gap-3 transform hover:-translate-y-0.5">
+                                                <div className="grid grid-cols-2 gap-4 mb-8">
+                                                    <button className="cursor-pointer w-full bg-white hover:bg-[#dedede] border border-gray-300 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
                                                         <Phone size={22} /> Call
                                                     </button>
-                                                    <button className="cursor-pointer w-full bg-[#25D366] hover:bg-[#128c7e] text-white py-4 rounded-xl font-bold text-lg transition-colors flex items-center justify-center gap-3 shadow-sm">
+                                                    <button className="cursor-pointer w-full bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
                                                         <MessageCircle size={22} /> WhatsApp
                                                     </button>
+                                                    <button
+                                                        type="button"
+                                                        onClick={drawerHandler('requestview', props.data)}
+                                                        name="details"
+                                                        className="col-span-2 cursor-pointer w-full bg-white hover:bg-[#dedede] border border-gray-300 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3"
+                                                    >
+                                                        <FontAwesomeIcon icon={faCalendarCheck} /> Request a Meeting
+                                                    </button>
+                                                </div>
+
+                                                <div className="">
                                                 </div>
 
                                                 <hr className="border-gray-100 mb-8" />
@@ -298,31 +308,21 @@ export default function UnitPageAI(props: any) {
                                                 <div className="hidden md:flex">
                                                     <InquiryForm hideFeedbackButton={true} />
                                                 </div>
-                                                <div className="p-5">
-                                                    <button
-                                                        type="button"
-                                                        onClick={drawerHandler('requestview', props.data)}
-                                                        name="details"
-                                                        className="w-full rounded-lg border border-[#111954] p-4 cursor-pointer"
-                                                    >
-                                                        <FontAwesomeIcon icon={faCalendarCheck} /> Request a Meeting
-                                                    </button>
-                                                </div>
                                             </div>
                                         </Sticky>
                                     </div>
                                 </div>
                                 {/* Similar Properties Section - Grid Update for landscape */}
-                                <div className="container mx-auto px-4 md:px-12 mt-20 border-t border-gray-100 pt-16">
+                                <div className="container mx-auto mt-20 border-t border-gray-100 pt-16">
                                     {/* MAP */}
                                     {map !== null ? (
                                         <div className="">
                                             {/* <MapComponent
-                                    latitude={coordinates['1']}
-                                    longitude={coordinates['0']}
-                                    fallbackImage={props.data["featuredImages"]}
-                                    height='500px'
-                                /> */}
+                                                latitude={coordinates['1']}
+                                                longitude={coordinates['0']}
+                                                fallbackImage={props.data["featuredImages"]}
+                                                height='500px'
+                                            /> */}
                                             <NearbysWithMap
                                                 latitude={coordinates['1']}
                                                 longitude={coordinates['0']}
