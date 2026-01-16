@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, Share2, Printer, Maximize2, Tag, BedDouble, Bath, Square, MapPin, Phone, MessageCircle } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { X, Share2, Maximize2, BedDouble, Bath, Square, MapPin, Phone, MessageCircle, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
 import { UnitListing } from '@/types/types';
 import PriceConvert from '../../_components/tools/PriceConvert';
 import NumberConvert from '../../_components/tools/NumberConvert';
 import { generateSeoData } from '../../_components/functions/generateSeoData';
 import { Link } from '@/i18n/navigation';
-import Image from 'next/image';
 import InquiryForm from '../../_components/InquiryForm';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 interface PreviewModalProps {
     property: UnitListing | null;
@@ -16,13 +22,15 @@ interface PreviewModalProps {
 
 const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDetails }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const swiperRef = useRef<any>(null);
 
     if (!property) return null;
 
     const phoneNumber = process.env.NEXT_PUBLIC_CALLNUMBER;
     const wappNumber = process.env.NEXT_PUBLIC_WAPPNUMBER;
 
-    let images, price, marketingTitle, maincategory;
+    let images: string[] = [];
+    let price, marketingTitle, maincategory;
     {
         property.sellprice !== null
             ? maincategory = "Sale"
@@ -42,32 +50,17 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
     const seoData = generateSeoData(propertyData);
     if (property.imageurl !== null) {
         images = property.imageurl.split('|').slice(0, -1);
-    } else {
-        images = '';
     }
+
     {
         property.sellprice !== null
             ? price = property.sellprice
             : price = property.rent;
     }
-    if (property.marketingTitle !== null) {
-        marketingTitle = property.marketingTitle;
-    } else {
-        marketingTitle = '';
-    }
-
-    const nextImage = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    };
-
-    const prevImage = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-    };
+    marketingTitle = property.marketingTitle || '';
 
     return (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
             {/* Backdrop with blur */}
             <div
                 className="absolute inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity"
@@ -80,53 +73,90 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
                 {/* Close Button - Absolute */}
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 z-50 bg-white/90 hover:bg-white text-gray-500 hover:text-red-500 p-2 rounded-full shadow-lg transition-all transform hover:scale-110"
+                    className="cursor-pointer absolute top-4 right-4 z-50 bg-white/90 hover:bg-white text-gray-500 hover:text-red-500 p-2 rounded-full shadow-lg transition-all transform hover:scale-110"
                 >
                     <X size={20} />
                 </button>
 
                 {/* LEFT: Image Gallery (60%) */}
                 <div className="md:w-3/5 h-[40vh] md:h-full relative bg-gray-100 group">
-                    <img
-                        src={images[currentImageIndex]}
-                        alt={marketingTitle}
-                        className="w-full h-full object-cover"
-                        height={300}
-                        width={300}
-                    />
+                    <Swiper
+                        modules={[Navigation, Pagination]}
+                        pagination={{ clickable: true }}
+                        onBeforeInit={(swiper) => {
+                            swiperRef.current = swiper;
+                        }}
+                        onSlideChange={(swiper) => setCurrentImageIndex(swiper.activeIndex)}
+                        className="h-full w-full"
+                    >
+                        {images.map((img, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="relative w-full h-full">
+                                    <img
+                                        src={img}
+                                        alt={`${marketingTitle} - Image ${index + 1}`}
+                                        className="w-full h-full object-cover"
+                                    />
+                                    {/* Gradient Overlay for Text Readability */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent pointer-events-none" />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
 
-                    {/* Gradient Overlay for Text Readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent pointer-events-none" />
-
-                    {/* Carousel Controls */}
-                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <button
-                            onClick={prevImage}
-                            className="bg-white/20 hover:bg-white/90 text-white hover:text-gray-900 p-3 rounded-full backdrop-blur-md transition-all shadow-lg"
-                        >
-                            <ChevronLeft size={24} />
-                        </button>
-                        <button
-                            onClick={nextImage}
-                            className="bg-white/20 hover:bg-white/90 text-white hover:text-gray-900 p-3 rounded-full backdrop-blur-md transition-all shadow-lg"
-                        >
-                            <ChevronRight size={24} />
-                        </button>
-                    </div>
+                    {/* Custom Navigation Arrows */}
+                    <button
+                        onClick={() => swiperRef.current?.slidePrev()}
+                        className="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/90 text-white hover:text-gray-900 p-3 rounded-full backdrop-blur-md transition-all shadow-lg opacity-0 group-hover:opacity-100"
+                    >
+                        <ChevronLeft size={24} />
+                    </button>
+                    <button
+                        onClick={() => swiperRef.current?.slideNext()}
+                        className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/90 text-white hover:text-gray-900 p-3 rounded-full backdrop-blur-md transition-all shadow-lg opacity-0 group-hover:opacity-100"
+                    >
+                        <ChevronRight size={24} />
+                    </button>
 
                     {/* Image Counter & Tools */}
-                    <div className="absolute top-4 left-4 flex gap-2">
+                    <div className="absolute top-4 left-4 flex gap-2 z-10">
                         <span className="bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium border border-white/10">
                             {currentImageIndex + 1} / {images.length}
                         </span>
                     </div>
-                    <div className="absolute bottom-4 right-4 flex gap-2">
-                        <button className="bg-white/20 hover:bg-white text-white hover:text-gray-900 p-2 rounded-lg backdrop-blur-md transition-colors"><Share2 size={18} /></button>
-                        <button className="bg-white/20 hover:bg-white text-white hover:text-gray-900 p-2 rounded-lg backdrop-blur-md transition-colors"><Maximize2 size={18} /></button>
+                    <div className="absolute bottom-4 right-4 flex gap-2 z-10">
+                        <button
+                            onClick={async () => {
+                                if (navigator.share) {
+                                    try {
+                                        await navigator.share({
+                                            title: marketingTitle,
+                                            text: `Check out this property: ${marketingTitle}`,
+                                            url: `${window.location.origin}/unit/${seoData.seoUrl}`,
+                                        });
+                                    } catch (error) {
+                                        console.log('Error sharing:', error);
+                                    }
+                                } else {
+                                    // Fallback to clipboard
+                                    navigator.clipboard.writeText(`${window.location.origin}/unit/${seoData.seoUrl}`);
+                                    alert('Link copied to clipboard!');
+                                }
+                            }}
+                            className="bg-white/20 hover:bg-white text-white hover:text-gray-900 p-2 rounded-lg backdrop-blur-md transition-colors"
+                        >
+                            <Share2 size={18} />
+                        </button>
+                        <Link
+                            href={`/unit/${seoData.seoUrl}`}
+                            className="bg-white/20 hover:bg-white text-white hover:text-gray-900 p-2 rounded-lg backdrop-blur-md transition-colors block"
+                        >
+                            <Maximize2 size={18} />
+                        </Link>
                     </div>
 
                     {/* Price Tag Overlay on Mobile/Desktop Image */}
-                    <div className="absolute bottom-6 left-6 text-white">
+                    <div className="absolute bottom-6 left-6 text-white z-10 pointer-events-none">
                         <div className="flex items-center gap-2 mb-1">
                             <span className="bg-secondary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">For {maincategory}</span>
                             {property.reraStrNo && <span className="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border border-white/30">{property.reraStrNo}</span>}

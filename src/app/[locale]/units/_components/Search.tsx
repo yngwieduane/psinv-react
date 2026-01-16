@@ -1,10 +1,11 @@
 'use client';
 
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/20/solid';
 import Form from 'next/form'
 import { useLocale } from 'next-intl';
 import AutocompleteSearch from './AutocompleteSearch';
 import { useState } from 'react';
+import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 import { useDebouncedCallback } from "use-debounce";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import FilterUnitsDrawer from './FilterUnitsDrawer';
@@ -21,6 +22,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     const [beds, setBeds] = useState(searchParams.get('beds')?.toString());
     const [baths, setBaths] = useState(searchParams.get('baths')?.toString());
     const [propertyType, setPropertyType] = useState(searchParams.get('propertyType')?.toString());
+    const [category, setCategory] = useState(searchParams.get('category')?.toString());
 
     const router = useRouter();
     const pathname = usePathname();
@@ -57,6 +59,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
             setBeds('');
             setBaths('');
             setPropertyType('');
+            setCategory('');
         }
     };
 
@@ -91,26 +94,46 @@ export default function Search({ placeholder }: { placeholder: string }) {
                     </div> */}
 
                     <div className="hidden md:block md:col-span-3 w-full">
-                        <label htmlFor="category" className="block text-sm font-semibold text-gray-700 mb-2 ml-1">
-                            Category
-                        </label>
-                        <div className="relative">
-                            <select
-                                id="category"
-                                name="category"
-                                autoComplete="category"
-                                defaultValue={searchParams.get('category')?.toString()}
-                                onChange={onSubmit}
-                                className="w-full appearance-none rounded-xl bg-white/50 border border-gray-200 py-3.5 pr-10 pl-5 text-base text-gray-700 outline-none focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all duration-200 cursor-pointer shadow-sm hover:bg-white/80"
-                            >
-                                <option value="Sale">Sale</option>
-                                <option value="Rent">Rent</option>
-                            </select>
-                            <ChevronDownIcon
-                                aria-hidden="true"
-                                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 size-4 text-gray-500"
-                            />
-                        </div>
+                        <Listbox value={category} onChange={(e: any) => {
+                            let val = e;
+                            setCategory(val || null);
+                            updateQuery('category', val || null);
+                        }}>
+                            <Label className="block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">Category</Label>
+                            <div className="relative mt-2">
+                                <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white/50 border border-gray-200 py-3 pr-2 pl-4 text-left text-gray-700 outline-none focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all shadow-sm hover:bg-white/80">
+                                    <span className="col-start-1 row-start-1 truncate pr-6 font-medium">{category || 'Any'}</span>
+                                    <ChevronUpDownIcon
+                                        aria-hidden="true"
+                                        className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400 sm:size-4"
+                                    />
+                                </ListboxButton>
+
+                                <ListboxOptions
+                                    transition
+                                    className="absolute z-50 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-white/95 backdrop-blur-xl py-2 text-base shadow-[0_4px_20px_rgb(0,0,0,0.08)] ring-1 ring-black/5 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm"
+                                >
+                                    <ListboxOption
+                                        value={null}
+                                        className="group relative cursor-pointer py-2.5 pr-9 pl-4 text-gray-700 select-none data-focus:bg-[#353455]/5 data-focus:text-[#353455]"
+                                    >
+                                        <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
+                                    </ListboxOption>
+                                    {['Sale', 'Rent'].map((cat) => (
+                                        <ListboxOption
+                                            key={cat}
+                                            value={cat}
+                                            className="group relative cursor-pointer py-2.5 pr-9 pl-4 text-gray-700 select-none data-focus:bg-[#353455]/5 data-focus:text-[#353455]"
+                                        >
+                                            <span className="block truncate font-normal group-data-selected:font-semibold">{cat}</span>
+                                            <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
+                                                <CheckIcon aria-hidden="true" className="size-5" />
+                                            </span>
+                                        </ListboxOption>
+                                    ))}
+                                </ListboxOptions>
+                            </div>
+                        </Listbox>
                     </div>
 
                     <div className='hidden'>
@@ -154,6 +177,13 @@ export default function Search({ placeholder }: { placeholder: string }) {
                         id="propertyType"
                         name="propertyType"
                         defaultValue={propertyType}
+                        className="hidden"
+                    />
+                    <input
+                        placeholder={placeholder}
+                        id="category"
+                        name="category"
+                        defaultValue={category}
                         className="hidden"
                     />
                 </div>

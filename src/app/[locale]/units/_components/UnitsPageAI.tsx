@@ -8,6 +8,7 @@ import UnitsSideSearch from "./UnitsSideSearch";
 import { ChevronDown, Filter, LayoutGrid, MapIcon, X } from "lucide-react";
 import UnitsMapBox from "./UnitsMapBox";
 import { Dialog, DialogPanel } from '@headlessui/react'
+import UnitsSideSearchMapView from "./UnitsSideSearchMapView";
 
 export default function UnitsPageAI(props: any) {
     const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
@@ -91,39 +92,32 @@ export default function UnitsPageAI(props: any) {
             {/* Full Screen Map Modal */}
             {viewMode === 'map' && (
                 <div className="fixed inset-0 z-[100] bg-white flex flex-col advanced-marker-example">
-                    {/* Floating Header */}
-                    {/* Centered Search Bar */}
-                    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-full max-w-lg px-4 z-50 pointer-events-none">
-                        <div className="shadow-lg rounded-xl overflow-hidden pointer-events-auto">
-                            <div className="bg-white/90 backdrop-blur-md border border-gray-200 p-2">
-                                <Search placeholder="Search units..." />
-                            </div>
-                        </div>
-                    </div>
-
                     {/* Top Right Controls */}
                     <div className="absolute top-4 right-4 z-50 flex items-start gap-4 pointer-events-none">
-                        <div className="flex items-center gap-4 pointer-events-auto">
+                        <div className="flex items-center bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg p-1 gap-2 pointer-events-auto h-[58px]">
+
                             {/* Filters Toggle */}
                             <button
                                 onClick={() => setShowFilters(!showFilters)}
-                                className={`h-[58px] px-4 rounded-xl flex items-center gap-2 font-bold shadow-lg transition-colors ${showFilters ? 'bg-primary text-white' : 'bg-white/90 backdrop-blur-md text-gray-800 border border-gray-200 hover:bg-gray-50'}`}
+                                className={`cursor-pointer h-full px-4 rounded-lg flex items-center gap-2 font-bold transition-colors ${showFilters ? 'bg-gray-200 text-gray-700' : 'text-gray-700 hover:bg-gray-50'}`}
                             >
                                 <Filter size={20} />
                                 <span className="hidden md:inline">Filters</span>
                             </button>
 
+                            <div className="w-px h-8 bg-gray-200" />
+
                             {/* View Toggle */}
-                            <div className="h-[58px] bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl p-1 flex items-center shadow-lg">
+                            <div className="flex items-center h-full">
                                 <button
                                     onClick={() => setViewMode('list')}
-                                    className="cursor-pointer h-full px-4 rounded-lg text-gray-400 hover:text-gray-800 flex items-center justify-center transition-colors"
+                                    className="cursor-pointer h-full px-4 rounded-lg text-gray-400 hover:text-gray-800 flex items-center justify-center transition-colors hover:bg-gray-50"
                                 >
                                     <LayoutGrid size={20} />
                                 </button>
                                 <button
                                     onClick={() => setViewMode('map')}
-                                    className="cursor-pointer h-full px-4 rounded-lg bg-primary text-gray-800 shadow-sm flex items-center justify-center font-bold"
+                                    className="cursor-pointer h-[42px] px-4 rounded-lg bg-primary text-gray-800 shadow-sm flex items-center justify-center font-bold my-1 mr-1"
                                 >
                                     <MapIcon size={20} />
                                 </button>
@@ -134,12 +128,12 @@ export default function UnitsPageAI(props: any) {
                         {showFilters && (
                             <div className="absolute top-[68px] right-0 w-80 bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-xl p-4 pointer-events-auto">
                                 <div className="flex justify-between items-center mb-4">
-                                    <h3 className="font-bold text-lg">Filters</h3>
+                                    <h3 className="font-bold text-lg"></h3>
                                     <button onClick={() => setShowFilters(false)} className="text-gray-500 hover:text-gray-700">
                                         <X size={20} />
                                     </button>
                                 </div>
-                                <UnitsSideSearch onChange='' />
+                                <UnitsSideSearchMapView onChange='' />
                             </div>
                         )}
                     </div>

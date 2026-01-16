@@ -17,6 +17,7 @@ interface Props {
     onClick?: () => void;
     onClose?: () => void;
     isSelected?: boolean;
+    onPreview?: (unit: any) => void;
 }
 
 export const UnitsMapMarker: FunctionComponent<Props> = ({
@@ -24,7 +25,8 @@ export const UnitsMapMarker: FunctionComponent<Props> = ({
     unit,
     onClick,
     onClose,
-    isSelected
+    isSelected,
+    onPreview
 }) => {
     const [hovered, setHovered] = useState(false);
 
@@ -111,12 +113,12 @@ export const UnitsMapMarker: FunctionComponent<Props> = ({
                                 };
                                 const seoData = generateSeoData(propertyData);
                                 return (
-                                    <Link
-                                        href={`/unit/${seoData.seoUrl}`}
-                                        className="flex-1 block py-2 bg-black text-white text-center text-xs font-bold rounded hover:bg-primary/90 transition-colors"
+                                    <button
+                                        onClick={() => onPreview?.(unit)}
+                                        className="cursor-pointer flex-1 block py-2 bg-black text-white text-center text-xs font-bold rounded hover:bg-primary/90 transition-colors"
                                     >
                                         Preview
-                                    </Link>
+                                    </button>
                                 );
                             })()}
                         </div>
