@@ -31,7 +31,7 @@ export async function getBlogPosts(
             );
 
             return {
-                posts: filtered,
+                posts: JSON.parse(JSON.stringify(filtered)),
                 hasMore: false, // Disable paging for search results
             };
         }
@@ -54,7 +54,7 @@ export async function getBlogPosts(
         const lastDate = posts.length > 0 ? posts[posts.length - 1].date : undefined;
 
         return {
-            posts,
+            posts: JSON.parse(JSON.stringify(posts)),
             lastDate,
             hasMore,
         };
@@ -74,14 +74,16 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
         const doc = await docRef.get();
 
         if (doc.exists) {
-            return doc.data() as BlogPost;
+            const data = doc.data() as BlogPost;
+            return JSON.parse(JSON.stringify(data));
         }
 
         // Fallback: Try searching by slug field if ID mismatch (older implementation nuance)
         const q = db.collection("blog_posts").where("slug", "==", slug).limit(1);
         const snapshot = await q.get();
         if (!snapshot.empty) {
-            return snapshot.docs[0].data() as BlogPost;
+            const data = snapshot.docs[0].data() as BlogPost;
+            return JSON.parse(JSON.stringify(data));
         }
 
         return null;

@@ -2,26 +2,27 @@
 
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
+import { UnitListing } from '@/types/types';
 
-const BreadcrumbUnit = () => {
-    const pathname = usePathname();
-    const pathSegments = pathname.split('/').filter((segment) => segment);
-    pathSegments.shift();
-    const itemListElement = pathSegments.map((segment, index) => {
-      const url = '/' + pathSegments.slice(0, index + 1).join('/');
-      const name = segment;
-      return {
-        '@type': 'ListItem',
-        'position': index + 1,
-        'name': name,
-        'item': url
-      };
-    });
-    const jsonLd = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      'itemListElement': itemListElement,
+const BreadcrumbUnit = ({ data }: { data: UnitListing }) => {
+  const pathname = usePathname();
+  const pathSegments = pathname.split('/').filter((segment) => segment);
+  pathSegments.shift();
+  const itemListElement = pathSegments.map((segment, index) => {
+    const url = '/' + pathSegments.slice(0, index + 1).join('/');
+    const name = segment;
+    return {
+      '@type': 'ListItem',
+      'position': index + 1,
+      'name': name,
+      'item': url
     };
+  });
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': itemListElement,
+  };
   return (
     <nav className="bg-gray-50 py-4 border-b border-gray-100 py-2 px-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
       <script
@@ -30,19 +31,37 @@ const BreadcrumbUnit = () => {
       />
       <ul className="container mx-auto px-6 md:px-12 flex items-center space-x-2 text-gray-500">
         <li className='text-sm'>
-            <Link title="Home" href="/" className="hover:text-blue-600">
-                Home
-            </Link>
+          <Link title="Home" href="/" className="hover:text-blue-600">
+            Home
+          </Link>
         </li>
         <li className="text-sm flex items-center space-x-2">
-            <span>/</span>
-            <Link title="Units" href="/units" className="hover:text-blue-600">
-                Units
-            </Link>
+          <span>/</span>
+          <Link title="Units" href="/units" className="hover:text-blue-600">
+            Units
+          </Link>
         </li>
-        {pathSegments.slice(1,2).map((segment, index) => {
+        <li className="text-sm flex items-center space-x-2">
+          <span>/</span>
+          <Link title="Units" href={`/units/?fcity=${data?.city_pk}`} className="hover:text-blue-600">
+            {data?.city_name}
+          </Link>
+        </li>
+        <li className="text-sm flex items-center space-x-2">
+          <span>/</span>
+          <Link title="Units" href={`/units/?fcity=${data?.city_pk}&fcommunity=${data?.community_pk}`} className="hover:text-blue-600">
+            {data?.community}
+          </Link>
+        </li>
+        <li className="text-sm flex items-center space-x-2">
+          <span>/</span>
+          <Link title="Units" href={`/units/?fcity=${data?.city_pk}&fcommunity=${data?.community_pk}&fsubcommunity=${data?.sub_community_pk}`} className="hover:text-blue-600">
+            {data?.sub_community}
+          </Link>
+        </li>
+        {pathSegments.slice(1, 2).map((segment, index) => {
           const isLast = index === pathSegments.length - 1;
-          const href =  '/' + pathSegments.slice(0, index + 2).join('/');
+          const href = '/' + pathSegments.slice(0, index + 2).join('/');
 
           return (
             <li key={index} className="flex items-center space-x-2">
