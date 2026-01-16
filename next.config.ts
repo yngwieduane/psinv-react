@@ -1,10 +1,7 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from 'next-intl/plugin';
 
-const nextConfig: NextConfig = {
-  swcMinify: true,
-  optimizeFonts: true,
-  compress: true,
+const nextConfig: NextConfig = {  
   /* config options here */
   async redirects() {
     return [

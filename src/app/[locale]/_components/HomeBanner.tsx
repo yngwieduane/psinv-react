@@ -120,14 +120,19 @@ const HomeBanner = (props: any) => {
             <div className="relative container mx-auto px-6 md:px-12 h-full flex items-center">
               <div className="max-w-4xl text-white mt-20 md:mt-0">
                 {slide.developer_img && (
-                  <Image
-                    className={`${slide.name === 'loyalty' ? 'w-[200px]' : 'w-[100px] '}  h-auto  mb-5 mx-0`}
-                    width={300}
-                    height={200}
-                    src={slide.developer_img}
-                    alt="Developer"
-                    title="Developer"
-                  />
+                  <div
+                    className={`mb-5 mx-0 ${
+                      slide.name === "loyalty" ? "w-[200px]" : "w-[100px]"
+                    } relative aspect-[3/2]`}
+                  >
+                    <Image
+                      className={`object-contain`}
+                      fill
+                      src={slide.developer_img}
+                      alt="Developer"
+                      title="Developer" priority={true}
+                    />
+                  </div>
                 )}
                 {slide.location && (
                   <div className="flex items-center space-x-2 rtl:space-x-reverse text-secondary mb-6 animate-[fadeIn_1s_ease-out]">
