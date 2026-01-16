@@ -16,6 +16,7 @@ const schema = z.object({
     email: z.string().email({ message: "Invalid email address" }),
     phone: z.string().min(7, { message: "Invalid phone number" }),
     message: z.string().optional(),
+    agreement1: z.boolean().refine((val) => val, { message: "You must agree to this" }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -123,7 +124,7 @@ const AIChatWidget = () => {
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-lg leading-tight">Get in Touch</h3>
-                                    <p className="text-xs text-blue-200/80 font-medium">We usually reply within minutes</p>
+                                    <p className="text-xs text-blue-200/80 font-medium hidden">We usually reply within minutes</p>
                                 </div>
                             </div>
                             <button
@@ -230,6 +231,29 @@ const AIChatWidget = () => {
                                             </>
                                         )}
                                     </button>
+                                    {/* Consent text like screenshot */}
+                                    <div className="text-[10px] text-gray-500 space-y-2 mt-4">
+                                        <p className="italic">
+                                            By clicking Submit, you agree to our Terms &amp; Conditions and Privacy Policy
+                                        </p>
+
+                                        <label className="flex items-start gap-2 cursor-pointer">
+                                            <input
+                                                type="checkbox"
+                                                {...register("agreement1")}
+                                                className="mt-0.5 accent-[#111954]"
+                                                defaultChecked
+                                            />
+                                            <span>
+                                                Agree to receive calls and communications via various channels from PSI from
+                                                09:00 am to 09:00 pm
+                                            </span>
+                                        </label>
+
+                                        {errors.agreement1 && (
+                                            <p className="text-red-500 text-xs">{errors.agreement1.message}</p>
+                                        )}
+                                    </div>
                                 </form>
                             )}
                         </div>
@@ -248,8 +272,8 @@ const AIChatWidget = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`pointer-events-auto p-4 rounded-full shadow-2xl border-2 border-white/20 backdrop-blur-md transition-all duration-300 z-[10000] relative group ${isOpen
-                        ? 'bg-gray-800 text-white rotate-90'
-                        : 'bg-[#0c1445] text-white hover:bg-[#0c1445]/90'
+                    ? 'bg-gray-800 text-white rotate-90'
+                    : 'bg-[#0c1445] text-white hover:bg-[#0c1445]/90'
                     }`}
             >
                 {isOpen ? <X size={28} /> : <MessageCircle size={28} />}
