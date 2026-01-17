@@ -1,7 +1,9 @@
 {
   "HomePageBanner": {
     "sign_up_btn": "注册",
-    "more_btn": "探索更多"
+    "more_btn": "探索更多",
+    "register": "注册您的兴趣",
+    "submit": "提交"
   },
   "MainSliderHome": {
     "slides": {
@@ -245,7 +247,22 @@
   "ReportDownload": {
     "title": "市场洞察",
     "desc": "迪拜月度报告",
-    "download": "立即下载"
+    "download": "立即下载",
+    "form": {
+      "title": "月度报告",
+      "firstname": "名字",
+      "lastname": "姓氏",
+      "email": "电子邮箱",
+      "button": "下载报告",
+      "agreements": {
+        "1": "我同意条款与隐私政策",
+        "2": "同意接收电话和通讯",
+        "3": "接收有关各种项目的电话"
+      },
+      "Whatsapp": "Whatsapp",
+      "success": "表单提交成功！",
+      "error": "提交失败，请重试。"
+    }
   },
   "RealEstatePartner": {
     "title": {
@@ -319,6 +336,12 @@
     "appLinks": "可在 App Store 和 Google Play 获取"
   },
   "Common_Form_Agreements": {
+    "byclickingsubmit": {
+      "part1": "点击提交即表示您同意我们的",
+      "terms": "条款与条件",
+      "and": "以及",
+      "privacy": "隐私政策"
+    },
     "agreement1": "同意在上午09:00至晚上09:00期间，通过多种渠道接收来自PSI的来电和通信。",
     "agreement2": "同意就我的咨询，通过多种渠道接收多次来电和通信。",
     "agreement3": "同意通过多种渠道接收有关不同项目、产品和服务的来电和通信。"
@@ -413,6 +436,13 @@
     "btn_nearby": "附近",
     "btn_developer": "开发商",
     "btn_video_tour": "视频导览",
+    "loc_Al_Reem_Island": "阿尔里姆岛",
+    "loc_Yas_Island": "亚斯岛",
+    "loc_Saadiyat_Island": "萨迪亚特岛",
+    "loc_Al_Raha_Beach": "阿尔拉哈海滩",
+    "loc_Palm_Jumeirah": "朱美拉棕榈岛",
+    "loc_Downtown_Dubai": "迪拜市中心",
+    "loc_Dubai_Creek": "迪拜河",
     "company_address": {
       "part1": "办公室编号4410和4411",
       "part2": "阿达克斯塔44层",

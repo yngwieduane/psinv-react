@@ -108,11 +108,11 @@ const HomeBanner = (props: any) => {
             <div className="absolute inset-0 w-full h-full overflow-hidden">
               <Image
                 src={slide.image}
-                alt={slide.title} title={slide.title}
+                alt={slide.title || "Banner"} title={slide.title || "Banner"}
                 fill
-                priority = { index === 0}
+                priority={index === 0}
                 sizes="100vw"
-                className="object-cover object-center animate-[zoomIn_20s_infinite_alternate]"
+                className="object-cover object-center animate-[zoomIn_20s_infinite_alternate] will-change-transform"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
             </div>
@@ -121,9 +121,8 @@ const HomeBanner = (props: any) => {
               <div className="max-w-4xl text-white mt-20 md:mt-0">
                 {slide.developer_img && (
                   <div
-                    className={`mb-5 mx-0 ${
-                      slide.name === "loyalty" ? "w-[200px]" : "w-[100px]"
-                    } relative aspect-[3/2]`}
+                    className={`mb-5 mx-0 ${slide.name === "loyalty" ? "w-[200px]" : "w-[100px]"
+                      } relative aspect-[3/2]`}
                   >
                     <Image
                       className={`object-contain`}
@@ -145,7 +144,7 @@ const HomeBanner = (props: any) => {
                   </div>
                 )}
 
-                {index === 0 ? 
+                {index === 0 ?
                   slide.title && (
                     <h1 className={`text-5xl md:text-8xl font-serif font-bold mb-6 leading-tight animate-[fadeIn_1.4s_ease-out] ${outfit.className}`}>
                       {slide.title}
@@ -154,10 +153,10 @@ const HomeBanner = (props: any) => {
                   :
                   (
                     <h2 className={`text-5xl md:text-8xl font-serif font-bold mb-6 leading-tight animate-[fadeIn_1.4s_ease-out] ${outfit.className}`}>
-                        {slide.title}
-                      </h2>
+                      {slide.title}
+                    </h2>
                   )
-                }                
+                }
 
                 {slide.description && (
                   <p className="text-lg md:text-xl mb-10 text-gray-100 leading-relaxed max-w-2xl font-light animate-[fadeIn_1.6s_ease-out]">
@@ -245,13 +244,13 @@ const HomeBanner = (props: any) => {
         }
         @keyframes zoomIn {
             0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
+            100% { transform: scale(1.15); }
         }
       `}</style>
           </SwiperSlide>
         ))}
       </Swiper>
-      <BannerModals modalState={setModal} onModalUpdate={modalUpdate} propData={selectedSlide} />
+      <BannerModals modalState={setModal} submitLabel={t('submit')} onModalUpdate={modalUpdate} propData={selectedSlide} />
     </section>
   );
 };

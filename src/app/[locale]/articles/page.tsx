@@ -198,14 +198,12 @@ export default function ArticlesPage() {
 
   return (
     <>
-      <div className="bg-[#f4f4f4] mt-30 mb-3 border-b border-gray-200">
-        <div className="container mx-auto px-6 lg:px-8 py-4">
-          <Breadcrumb />
-        </div>
+      <div className="mx-auto container pt-32">
+        <Breadcrumb />
       </div>
 
-      <div className="min-h-screen bg-white pt-32 pb-20" dir={rtl ? "rtl" : "ltr"}>
-        <div className="container mx-auto px-6 md:px-12">
+      <div className="min-h-screen bg-white " dir={rtl ? "rtl" : "ltr"}>
+        <div className="container mx-auto">
           <h1 className="text-4xl font-bold text-center mb-16">{ui("title")}</h1>
 
           {/* Search */}

@@ -21,6 +21,7 @@ import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
 import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
 import { Bath, BedDouble, CheckCircle2, Heart, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
 import { useUser } from "@/context/userContext";
+import AccordionTabs from "@/app/[locale]/_components/tools/AccordionTabs";
 
 const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap'));
 const SimilarUnitsGrid = dynamic(() => import('./SimilarUnitsGrid'));
@@ -93,6 +94,32 @@ export default function UnitPageAI(props: any) {
                             ? coordinates = post.pro_google_coordinates.split(",")
                             : coordinates = '';
                     }
+                    const faqData = [
+                        {
+                            title: `What is the price of this property?`,
+                            content: `The price starts from AED ${price ? Number(price).toLocaleString() : 'Price on Request'}.`
+                        },
+                        {
+                            title: `Where is ${post.propertyname}, ${post.community} located?`,
+                            content: `It is located in ${post.community}, ${post.city || 'Dubai, UAE'}.`
+                        },
+                        {
+                            title: `How many bedrooms and bathrooms does it have?`,
+                            content: `This property features ${post.bedrooms} bedrooms and ${post.no_of_bathrooms} bathrooms.`
+                        },
+                        {
+                            title: `What is the built-up area?`,
+                            content: `The built-up area is ${Number(post.built_upArea).toLocaleString()} Sq.ft.`
+                        },
+                        {
+                            title: `Who is the developer of this ${post.propertyname}, ${post.community}?`,
+                            content: `The developer of this property is ${post.developerName}.`
+                        },
+                        {
+                            title: `What is the status of this property?`,
+                            content: `The status of this property is ${post.status}.`
+                        }
+                    ];
                     return (
                         <div key={index} >
                             <div className="container mx-auto px-4 md:px-12 mt-6 md:mt-10">
@@ -242,7 +269,7 @@ export default function UnitPageAI(props: any) {
                                                         {amenities.slice(0, -1).map((am: string, i: number) => (
                                                             <div key={i} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
                                                                 <CheckCircle2 className="text-secondary shrink-0" size={20} />
-                                                                <span className="text-gray-700 font-medium">{am}</span>
+                                                                <span className="text-gray-700 font-medium">{am.split('^')[1].trim()}</span>
                                                             </div>
                                                         ))}
                                                     </div>
@@ -266,6 +293,11 @@ export default function UnitPageAI(props: any) {
                                                 <div className="">
                                                     <MortgageCalculator basePrice={price} />
                                                 </div>) : ("")}
+
+                                            <div className="mt-8 md:mt-12">
+                                                <h4 className="font-bold text-gray-900 text-xl mb-6">Frequently Asked Questions</h4>
+                                                <AccordionTabs items={faqData} />
+                                            </div>
                                         </div>
 
                                     </div>

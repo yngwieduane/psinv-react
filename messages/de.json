@@ -1,7 +1,9 @@
 {
   "HomePageBanner": {
     "sign_up_btn": "Sign Up",
-    "more_btn": "Explore More"  
+    "more_btn": "Explore More",
+    "register" : "Register Your Interest",
+    "submit" : "Submit"
   },
   "MainSliderHome": {
     "slides": {
@@ -223,7 +225,22 @@
   "ReportDownload": {
     "title": "Market Insights",
     "desc": "Monthly Report DXB",
-    "download": "Download Now"
+    "download": "Download Now",
+    "form": {
+      "title" : "Monthly Report",
+      "firstname" : "First Name",
+      "lastname" : "Last Name",
+      "email" : "Email",      
+      "button": "Download Report",
+      "agreements" : {
+        "1": "I agree to the Terms & Conditions and Privacy Policy",
+        "2": "Agree to receive calls and communications",
+        "3": "Receive calls about various projects"
+      },
+      "Whatsapp" : "Whatsapp",
+      "success" : "Form submitted successfully!",
+      "error" : "Submission failed. Try again."
+    }
   },
   "RealEstatePartner": {
     "title": {
@@ -297,6 +314,12 @@
     "appLinks": "Verfügbar im App Store und bei Google Play"
   },
   "Common_Form_Agreements": {
+    "byclickingsubmit":{
+      "part1" : "By clicking Submit, you agree to our",
+      "terms" : "Terms & Conditions",
+      "and" : "and",
+      "privacy": "Privacy Policy"
+    },
     "agreement1": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle von PSI zwischen 09:00 Uhr und 21:00 Uhr zu erhalten.",
     "agreement2": "Ich stimme zu, mehrere Anrufe und Mitteilungen über verschiedene Kanäle bezüglich meiner Anfrage zu erhalten.",
     "agreement3": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle zu verschiedenen Projekten, Produkten und Dienstleistungen zu erhalten."
@@ -391,6 +414,13 @@
     "btn_nearby": "In der Nähe",
     "btn_developer": "Entwickler",
     "btn_video_tour": "Videotour",
+    "loc_Al_Reem_Island": "Al Reem Island",
+    "loc_Yas_Island": "Yas Island",
+    "loc_Saadiyat_Island": "Saadiyat Island",
+    "loc_Al_Raha_Beach": "Al Raha Beach",
+    "loc_Palm_Jumeirah": "Palm Jumeirah",
+    "loc_Downtown_Dubai": "Downtown Dubai",
+    "loc_Dubai_Creek": "Dubai Creek",
     "company_address": {
       "part1": "Büro Nr. 4410 & 4411",
       "part2": "Addax Tower, Ebene 44",
@@ -463,6 +493,7 @@
     "About PSI": "Über PSI",
     "Our Story": "Unsere Geschichte",
     "Awards": "Auszeichnungen",
+    "Blog": "Blog",
     "Media": "Medien"
   },
   "About_Us_Page": {
