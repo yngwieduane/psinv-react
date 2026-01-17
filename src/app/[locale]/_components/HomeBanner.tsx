@@ -121,9 +121,8 @@ const HomeBanner = (props: any) => {
               <div className="max-w-4xl text-white mt-20 md:mt-0">
                 {slide.developer_img && (
                   <div
-                    className={`mb-5 mx-0 ${
-                      slide.name === "loyalty" ? "w-[200px]" : "w-[100px]"
-                    } relative aspect-[3/2]`}
+                    className={`mb-5 mx-0 ${slide.name === "loyalty" ? "w-[200px]" : "w-[100px]"
+                      } relative aspect-[3/2]`}
                   >
                     <Image
                       className={`object-contain`}

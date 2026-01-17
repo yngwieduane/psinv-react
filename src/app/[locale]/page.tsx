@@ -71,44 +71,44 @@ export default function HomePage() {
     //   bannercountryid: '65946',
     //   bannerbedroom: '21935',
     // },
-    {
-      title: t_slider('slides.sobha.title'),
-      type: "Apartment",
-      developer_img: '/images/banners/sobha-development.webp',
-      developer_img_mob: '/images/banners/sobha-development.webp',
-      location: t_slider('slides.sobha.location'),
-      description: t_slider('slides.sobha.description'),
-      project_url: "",
-      image: '/images/banners/sobha.webp',
-      bannerpropertyid: '',
-      bannerunittype: '19',
-      bannersubcommunityid: '165353',
-      bannercommunityid: '166966',
-      bannerdistrictid: '102625',
-      bannercityid: '91823',
-      bannerstateid: '91823',
-      bannercountryid: '65946',
-      bannerbedroom: '21935',
-    },
-    {
-      title: t_slider('slides.the_row.title'),
-      type: "Apartment",
-      developer_img: '/images/banners/aldar-logo.svg',
-      developer_img_mob: '/images/banners/aldar-logo.svg',
-      location: t_slider('slides.the_row.location'),
-      description: t_slider('slides.the_row.description'),
-      project_url: "/project/the-row-saadiyat-registration",
-      image: '/images/banners/the-row.webp',
-      bannerpropertyid: '25405',
-      bannerunittype: '19',
-      bannersubcommunityid: '130713',
-      bannercommunityid: '97198',
-      bannerdistrictid: '102625',
-      bannercityid: '91823',
-      bannerstateid: '91823',
-      bannercountryid: '65946',
-      bannerbedroom: '21935',
-    },
+    // {
+    //   title: t_slider('slides.sobha.title'),
+    //   type: "Apartment",
+    //   developer_img: '/images/banners/sobha-development.webp',
+    //   developer_img_mob: '/images/banners/sobha-development.webp',
+    //   location: t_slider('slides.sobha.location'),
+    //   description: t_slider('slides.sobha.description'),
+    //   project_url: "",
+    //   image: '/images/banners/sobha.webp',
+    //   bannerpropertyid: '',
+    //   bannerunittype: '19',
+    //   bannersubcommunityid: '165353',
+    //   bannercommunityid: '166966',
+    //   bannerdistrictid: '102625',
+    //   bannercityid: '91823',
+    //   bannerstateid: '91823',
+    //   bannercountryid: '65946',
+    //   bannerbedroom: '21935',
+    // },
+    // {
+    //   title: t_slider('slides.the_row.title'),
+    //   type: "Apartment",
+    //   developer_img: '/images/banners/aldar-logo.svg',
+    //   developer_img_mob: '/images/banners/aldar-logo.svg',
+    //   location: t_slider('slides.the_row.location'),
+    //   description: t_slider('slides.the_row.description'),
+    //   project_url: "/project/the-row-saadiyat-registration",
+    //   image: '/images/banners/the-row.webp',
+    //   bannerpropertyid: '25405',
+    //   bannerunittype: '19',
+    //   bannersubcommunityid: '130713',
+    //   bannercommunityid: '97198',
+    //   bannerdistrictid: '102625',
+    //   bannercityid: '91823',
+    //   bannerstateid: '91823',
+    //   bannercountryid: '65946',
+    //   bannerbedroom: '21935',
+    // },
     {
       title: t_slider('slides.bashayer_residences.title'),
       type: "Apartment",
@@ -354,65 +354,65 @@ export default function HomePage() {
       <div className="w-full bg-secondary-color py-10 text-gray-500" dir={isRTL ? "rtl" : "ltr"}>
         <div className="relative max-w-(--breakpoint-xl) mx-auto py-10 px-5 overflow-hidden">
           <Image src="/assets/images/about-us/pattern-1.png"
-          alt='pattern' title='pattern' 
-          fill
-          className="object-cover object-center z-0" />
+            alt='pattern' title='pattern'
+            fill
+            className="object-cover object-center z-0" />
           <div className="relative z-10">
-          {/* Heading */}
-          <div className="text-center mt-[50px] mb-[70px]">
-            <h3 className={`text-darkblue  font-bold text-xl md:text-4xl ${Audrey.className}`}>
-              {t("title.part1")}{" "}
-              <span className={`font-brittany text-orange font-light ${BrittanySignature.className} text-[#CE641D]`}>
-                {t("title.part2")}
-              </span>{" "}
-              {t("title.part3")}
-            </h3>
-          </div>
+            {/* Heading */}
+            <div className="text-center mt-[50px] mb-[70px]">
+              <h3 className={`text-darkblue  font-bold text-xl md:text-4xl ${Audrey.className}`}>
+                {t("title.part1")}{" "}
+                <span className={`font-brittany text-orange font-light ${BrittanySignature.className} text-[#CE641D]`}>
+                  {t("title.part2")}
+                </span>{" "}
+                {t("title.part3")}
+              </h3>
+            </div>
 
-          {/* script for counter working */}
-          <AboutCounter />
+            {/* script for counter working */}
+            <AboutCounter />
 
-          {/* Counter Section */}
-          <div className="grid grid-cols-3 md:grid-cols-4 gap-6 text-center counter1">
-            <div>
-              <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="150">  0 </span>K</h4>
-              <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.customers")}</p>
+            {/* Counter Section */}
+            <div className="grid grid-cols-3 md:grid-cols-4 gap-6 text-center counter1">
+              <div>
+                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="150">  0 </span>K</h4>
+                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.customers")}</p>
+              </div>
+              <div>
+                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="15"> 0</span></h4>
+                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.languages")}</p>
+              </div>
+              <div>
+                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="120"> 0</span></h4>
+                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.projects")}</p>
+              </div>
+              <div className="hidden md:block">
+                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="10"> 0</span></h4>
+                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.locationWorldwide")}</p>
+              </div>
             </div>
-            <div>
-              <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="15"> 0</span></h4>
-              <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.languages")}</p>
+
+            {/* Second Counter Section */}
+            <div className="grid grid-cols-3 gap-6 text-center mt-10 counter2">
+              <div>
+                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="17"> 0</span></h4>
+                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.years")}</p>
+              </div>
+              <div>
+                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="12"> 0 </span></h4>
+                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.branches")}</p>
+              </div>
+              <div>
+                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="700"> 0</span></h4>
+                <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.expertEmployees")}</p>
+              </div>
             </div>
-            <div>
-              <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="120"> 0</span></h4>
-              <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.projects")}</p>
-            </div>
-            <div className="hidden md:block">
-              <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="10"> 0</span></h4>
+
+            {/* Mobile Only - Location Worldwide */}
+            <div className="mt-10 text-center md:hidden">
+              <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="10"> 0 </span></h4>
               <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.locationWorldwide")}</p>
             </div>
-          </div>
-
-          {/* Second Counter Section */}
-          <div className="grid grid-cols-3 gap-6 text-center mt-10 counter2">
-            <div>
-              <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="17"> 0</span></h4>
-              <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.years")}</p>
-            </div>
-            <div>
-              <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="12"> 0 </span></h4>
-              <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.branches")}</p>
-            </div>
-            <div>
-              <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="700"> 0</span></h4>
-              <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.expertEmployees")}</p>
-            </div>
-          </div>
-
-          {/* Mobile Only - Location Worldwide */}
-          <div className="mt-10 text-center md:hidden">
-            <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="10"> 0 </span></h4>
-            <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("aboutCounter.locationWorldwide")}</p>
-          </div>
           </div>
         </div>
       </div>
