@@ -108,7 +108,7 @@ const HomeBanner = (props: any) => {
             <div className="absolute inset-0 w-full h-full overflow-hidden">
               <Image
                 src={slide.image}
-                alt={slide.title} title={slide.title}
+                alt={slide.title || "Banner"} title={slide.title || "Banner"}
                 fill
                 priority={index === 0}
                 sizes="100vw"
@@ -250,7 +250,7 @@ const HomeBanner = (props: any) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <BannerModals modalState={setModal} onModalUpdate={modalUpdate} propData={selectedSlide} />
+      <BannerModals modalState={setModal} submitLabel={t('submit')} onModalUpdate={modalUpdate} propData={selectedSlide} />
     </section>
   );
 };

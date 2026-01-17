@@ -10,6 +10,7 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { sendGTMEvent } from '@next/third-parties/google'
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const schema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
@@ -36,6 +37,9 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
   const router = useRouter();
   const pathname = usePathname();
   const locale = pathname.split("/")[1] || "en";
+  const t = useTranslations('Common_Form_Agreements');
+  const t_r = useTranslations('ReportDownload.form');
+
   const {
     register,
     handleSubmit,
@@ -336,13 +340,13 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="w-full bg-white py-6 rounded-lg">
         {/* Success/Error Messages */}
-        {postId === "Success" && <div className="p-3 mb-3 rounded bg-green-500 text-white">Form submitted successfully!</div>}
-        {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">Submission failed. Try again.</div>}
+        {postId === "Success" && <div className="p-3 mb-3 rounded bg-green-500 text-white">{t_r('success')}</div>}
+        {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">{t_r('error')}</div>}
         <div className="mb-3">
           <input
             type="text"
             {...register("firstName")}
-            placeholder="First Name"
+            placeholder={t_r('firstname')}
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
@@ -351,7 +355,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
           <input
             type="text"
             {...register("lastName")}
-            placeholder="Last Name"
+            placeholder={t_r('lastname')}
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
@@ -360,7 +364,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
           <input
             type="email"
             {...register("email")}
-            placeholder="Email"
+            placeholder={t_r('email')}
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
@@ -398,7 +402,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
               <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18.75C14.8325 18.75 18.75 14.8325 18.75 10C18.75 5.16751 14.8325 1.25 10 1.25C5.16751 1.25 1.25 5.16751 1.25 10C1.25 11.5693 1.66312 13.0421 2.38655 14.3156L1.25 18.75L5.82179 17.6899C7.06336 18.3659 8.48682 18.75 10 18.75ZM10 17.4038C14.089 17.4038 17.4038 14.089 17.4038 10C17.4038 5.91097 14.089 2.59615 10 2.59615C5.91097 2.59615 2.59615 5.91097 2.59615 10C2.59615 11.5788 3.09031 13.0422 3.9324 14.2439L3.26923 16.7308L5.79996 16.0981C6.99335 16.9216 8.44036 17.4038 10 17.4038Z" fill="white"></path>
               <path d="M7.81251 5.93749C7.60447 5.51963 7.28533 5.55662 6.96292 5.55662C6.38673 5.55662 5.48828 6.2468 5.48828 7.53128C5.48828 8.58399 5.95216 9.73633 7.51526 11.4601C9.02378 13.1237 11.0059 13.9843 12.6514 13.955C14.2969 13.9257 14.6354 12.5097 14.6354 12.0315C14.6354 11.8196 14.5039 11.7138 14.4133 11.6851C13.8525 11.416 12.8183 10.9145 12.583 10.8203C12.3477 10.7261 12.2248 10.8535 12.1484 10.9229C11.935 11.1262 11.512 11.7255 11.3672 11.8604C11.2224 11.9952 11.0064 11.9269 10.9166 11.876C10.5859 11.7433 9.68933 11.3445 8.97467 10.6517C8.09083 9.79492 8.03896 9.50015 7.87244 9.23775C7.73922 9.02784 7.83698 8.89905 7.88576 8.84276C8.07619 8.62304 8.33913 8.2838 8.45705 8.11523C8.57496 7.94665 8.48135 7.6907 8.42518 7.53128C8.18361 6.84569 7.97895 6.27178 7.81251 5.93749Z" fill="white"></path>
               <defs><linearGradient id="paint0_linear_2027_564" x1="16.5625" y1="4.375" x2="2.5" y2="17.5" gradientUnits="userSpaceOnUse"><stop stop-color="#5BD066"></stop><stop offset="1" stop-color="#27B43E"></stop></linearGradient></defs>
-            </svg> <span className="text-[15px]">Whatsapp</span>
+            </svg> <span className="text-[15px]">{t_r('Whatsapp')}</span>
           </a>
           <a title="phone number" className="border border-1 border-[#c3c3c3] text-center py-2 rounded-md w-full md:w-1/2 flex items-center gap-2 justify-center"
             href="tel:+971600548200">
@@ -410,13 +414,13 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
 
         <div className="my-3">
           <label className="flex items-center space-x-2">
-            <span className="text-sm">By clicking Submit, you agree to our <Link href="/en/terms" title="terms">Terms & Conditions</Link> and <Link href="/en/privacy" title="privacy">Privacy Policy</Link></span>
+            <span className="text-sm">{t('byclickingsubmit.part1')} <Link href="/en/terms" title="terms">{t('byclickingsubmit.terms')}</Link> {t('byclickingsubmit.and')} <Link href="/en/privacy" title="privacy">{t('byclickingsubmit.privacy')}</Link></span>
           </label>
         </div>
         <div className="mb-3">
           <label className="flex items-center space-x-2">
             <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
-            <span className="text-sm">I agree to the Terms & Conditions and Privacy Policy</span>
+            <span className="text-sm">{t_r('agreements.1')}</span>
           </label>
           {errors.agreement1 && <p className="text-red-500 text-sm">{errors.agreement1.message}</p>}
         </div>
@@ -424,13 +428,13 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
         <div className="mb-3">
           <label className="flex items-center space-x-2">
             <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
-            <span className="text-sm">Agree to receive calls and communications</span>
+            <span className="text-sm">{t_r('agreements.2')}</span>
           </label>
         </div>
         <div className="mb-3">
           <label className="flex items-center space-x-2">
             <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
-            <span className="text-sm">Receive calls about various projects</span>
+            <span className="text-sm">{t_r('agreements.3')}</span>
           </label>
         </div>
 

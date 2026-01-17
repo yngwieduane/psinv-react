@@ -4,9 +4,11 @@ import { Dialog, Description, DialogPanel, DialogTitle, Transition, TransitionCh
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
 import HomeBannerForm from "./HomeBannerForm"; 
+import { useTranslations } from "next-intl";
 
 const BannerModals = (props: any) => {
   const [open, setOpen] = useState(props.modalState);
+  const t = useTranslations('HomePageBanner');
 
   const propData = {
     ...props.propData
@@ -55,7 +57,7 @@ const BannerModals = (props: any) => {
                           as="h3"
                           className="text-start font-semibold md:text-2xl text-xl"
                         >
-                        {props.title || "Register Your Interest" }  
+                        {props.title || t('register') || "Register Your Interest" }  
                         </DialogTitle>
                       </div>
                       <div className="text-end">

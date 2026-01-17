@@ -1,10 +1,27 @@
 {
   "HomePageBanner": {
-    "sign_up_btn": "Sign Up",
-    "more_btn": "Explore More"
+    "sign_up_btn": "Зарегистрироваться",
+    "more_btn": "Узнать больше",
+    "register": "Зарегистрировать ваш интерес",
+    "submit": "Отправить"
   },
   "MainSliderHome": {
     "slides": {
+      "ohana_branded_residences": {
+        "title": "Ohana Branded Residences",
+        "location": "Остров Яс",
+        "description": "Новый брендированный жилой комплекс, расположенный прямо на канале Яс. Проект предлагает апартаменты у воды, таунхаусы, виллы и мезонеты, находящиеся рядом с ключевыми достопримечательностями и объектами инфраструктуры острова Яс. Комплекс отличается первоклассными удобствами и гибкими условиями покупки, включая первоначальный взнос всего 5%."
+      },
+      "sobha": {
+        "title": "Sobha",
+        "location": "Аль-Бахия, Абу-Даби",
+        "description": "Последний проект компании Sobha в Абу-Даби ориентирован на высококлассную жизнь у воды с особым акцентом на дизайн, стандарты строительства и долгосрочную ценность. Проект рассчитан как на конечных пользователей, так и на инвесторов, ищущих премиальное жилье в престижной локации."
+      },
+      "the_row": {
+        "title": "The Row",
+        "location": "Остров Саадият",
+        "description": "Расположенный в Культурном районе Саадият, проект The Row представляет собой современный жилой комплекс с просторными апартаментами от 1 до 3 спален. Это отличная возможность приобрести недвижимость в одном из самых востребованных районов Абу-Даби с привлекательными планами оплаты, начиная с первоначального взноса 5%."
+      },
       "bashayer_residences": {
         "title": "Bashayer Residences",
         "location": "Остров Худайрият",
@@ -65,224 +82,242 @@
     }
   },
   "ListPropertySection": {
-    "title": "BE with the Brand you Trust",
-    "desc": "Where will we list your property?",
-    "title2": "List Your Property"
+    "title": "Будьте с брендом, которому доверяете",
+    "desc": "Где мы разместим вашу недвижимость?",
+    "title2": "Разместите свою недвижимость"
   },
   "ListPropertyForm": {
-    "firstName": "First Name",
-    "Enter First Name": "Enter First Name",
-    "lastName": "Last Name",
-    "Enter Last Name": "Enter Last Name",
-    "email": "Email",
-    "Enter Email": "Enter Email",
-    "phone": "Phone Number",
-    "purpose": "Property Purpose",
-    "Choose purpose": "Choose purpose",
-    "sell_purpose": "Sell",
-    "rent_purpose": "Rent",
-    "invest_purpose": "Invest",
+    "firstName": "Имя",
+    "Enter First Name": "Введите имя",
+    "lastName": "Фамилия",
+    "Enter Last Name": "Введите фамилию",
+    "email": "Электронная почта",
+    "Enter Email": "Введите электронную почту",
+    "phone": "Номер телефона",
+    "purpose": "Цель недвижимости",
+    "Choose purpose": "Выберите цель",
+    "sell_purpose": "Продать",
+    "rent_purpose": "Сдать в аренду",
+    "invest_purpose": "Инвестировать",
     "errors": {
-      "firstNameRequired": "First name is required",
-      "lastNameRequired": "Last name is required",
-      "invalidEmail": "Invalid email address",
-      "invalidPhone": "Invalid phone number",
-      "choosePurpose": "Property purpose is required"
+      "firstNameRequired": "Имя обязательно",
+      "lastNameRequired": "Фамилия обязательна",
+      "invalidEmail": "Неверный адрес электронной почты",
+      "invalidPhone": "Неверный номер телефона",
+      "choosePurpose": "Необходимо указать цель недвижимости"
     },
     "clickingTerms": {
-      "part1": "By clicking Submit, you agree to our",
-      "part2": "Terms & Conditions",
-      "part3": "and Privacy Policy"
+      "part1": "Нажимая «Отправить», вы соглашаетесь с нашими",
+      "part2": "Условиями использования",
+      "part3": "и Политикой конфиденциальности"
     },
-    "form_submit": "Submit",
-    "form_submitting": "Submitting..."
+    "form_submit": "Отправить",
+    "form_submitting": "Отправка..."
   },
+
   "Why_PSI": {
-    "emirati_title": "Emirati Hub",
-    "youngster_title": "Youngsters Program",
-    "crypto_title": "Crypto",
-    "international_title": "PSI International",
-    "company_title": "Company Profile",
-    "why_psi": {
-      "title": "Why PSI ?",
-      "desc": "Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi's Real Estate Market.",
-      "btn": "Learn more about PSI"
+  "emirati_title": "Эмиратский Хаб",
+  "youngster_title": "Программа для молодежи",
+  "crypto_title": "Криптовалюта",
+  "international_title": "PSI International",
+  "company_title": "Профиль компании",
+  "why_psi": {
+    "title": "Почему PSI?",
+    "desc": "Наша комбинация видения, опыта, специализированных команд, энтузиазма и прозрачности позволяет Property Shop Investment устанавливать стандарты рынка и влиять на рынок недвижимости Абу-Даби.",
+    "btn": "Узнать больше о PSI"
+  },
+  "emirati_hub": {
+    "title": "PSI Эмиратский Хаб",
+    "desc": {
+      "part1": "Помогаем гражданам ОАЭ преуспевать и лидировать в секторе недвижимости через",
+      "part2": "PSI Эмиратский Хаб."
     },
-    "emirati_hub": {
-      "title": "PSI Emirati Hub",
-      "desc": {
-        "part1": "Empowering UAE nationals to excel and lead in the real estate sector through",
-        "part2": "PSI Emirati Hub."
-      },
-      "btn": "Learn more about PSI Emirati Hub"
+    "btn": "Узнать больше о PSI Эмиратском Хабе"
+  },
+  "youngster_program": {
+    "title": "PSI Молодежная программа Абу-Даби",
+    "desc": {
+      "part1": "Раскройте свой потенциал через",
+      "part2": "PSI Молодежную программу Абу-Даби",
+      "part3": "путем развития навыков и формирования будущего"
     },
-    "youngster_program": {
-      "title": "PSI Abu Dhabi Youngsters",
-      "desc": {
-        "part1": "Unlock your potential through",
-        "part2": "PSI Abu Dhabi Youngster",
-        "part3": "Program by empowering minds, and shaping futures"
-      },
-      "btn": "Learn more about PSI Youngsters"
+    "btn": "Узнать больше о программе для молодежи PSI"
+  },
+  "crypto": {
+    "title": "Покупка недвижимости с помощью криптовалюты",
+    "desc": {
+      "part1": "С помощью связей, сети, знаний и руководств по стране мы создаем инвестиционные маршруты, основываясь на",
+      "part2": "ваших потребностях, ценностях, стиле жизни и целях."
     },
-    "crypto": {
-      "title": "Buy property with Crypto",
-      "desc": {
-        "part1": "With connections, network, knowledge and country guides, we build and design investment journeys based on",
-        "part2": "your needs, values, lifestyle and your goals."
-      },
-      "btn": "Learn more about Crypto"
-    },
-    "international": {
-      "title": "PSI International",
-      "desc": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
-      "btn": "Learn more about PSI International"
-    }
+    "btn": "Узнать больше о криптовалюте"
+  },
+  "international": {
+    "title": "PSI International",
+    "desc": "С 50-летним опытом, ОАЭ предлагает лучший климат для управления капиталом, релокации и инвестиционных портфелей.",
+    "btn": "Узнать больше о PSI International"
+  }
   },
   "Mortgage_Tabs": {
-    "mortgage": "Mortgage Calculator",
-    "amortization": "Amortization",
-    "refinancing": "Refinancing",
-    "rentvsbuy": "Rent vs Buy",
-    "houseafford": "House Affordability",
-    "Mortgage Tools": "Mortgage Tools",
+    "mortgage": "Калькулятор ипотеки",
+    "amortization": "Амортизация",
+    "refinancing": "Рефинансирование",
+    "rentvsbuy": "Аренда против покупки",
+    "houseafford": "Доступность жилья",
+    "Mortgage Tools": "Инструменты ипотеки",
     "aed": "AED",
-    "ViewUnits": "View Units",
-    "GetApproval": "Get pre-approval today",
-    "MonthlyPayment": "Monthly Payment",
-    "Yrs": "yrs",
+    "ViewUnits": "Просмотр объектов",
+    "GetApproval": "Получите предварительное одобрение",
+    "MonthlyPayment": "Ежемесячный платеж",
+    "Yrs": "лет",
     "mortgageTab": {
-      "title": "Mortgage Calculator",
-      "PropertyPrice": "Property Price (AED)",
-      "LoanPeriod": "Loan Period (Years)",
-      "Years": "Years",
-      "Downpayment": "Downpayment (AED)",
-      "InterestRate": "Interest Rate (%)",
-      "TotalLoanAmount": "Total Loan Amount"
+      "title": "Калькулятор ипотеки",
+      "PropertyPrice": "Цена недвижимости (AED)",
+      "LoanPeriod": "Срок кредита (лет)",
+      "Years": "Лет",
+      "Downpayment": "Первоначальный взнос (AED)",
+      "InterestRate": "Процентная ставка (%)",
+      "TotalLoanAmount": "Общая сумма кредита"
     },
     "amortizationTab": {
-      "title": "Amortization",
-      "LoanAmount": "Loan Amount",
-      "LoanInterestRate": "Loan Interest Rate",
-      "LoanTermYears": "Loan Term Years",
-      "Years": "Years",
-      "EarlyPayment": "EARLY PAYMENT",
-      "EffectOfLargerPayment": "Effect of making a larger payment",
-      "PaymentAmount": "Payment Amount",
-      "MadeAfterMonth": "Made After Month",
-      "Months": "months",
-      "MonthlyAmortization": "Monthly Amortization",
-      "TotalCost": "Total Cost",
-      "ExploreProperties": "Explore Properties"
+      "title": "Амортизация",
+      "LoanAmount": "Сумма кредита",
+      "LoanInterestRate": "Процентная ставка по кредиту",
+      "LoanTermYears": "Срок кредита (лет)",
+      "Years": "Лет",
+      "EarlyPayment": "Досрочная оплата",
+      "EffectOfLargerPayment": "Эффект от увеличенного платежа",
+      "PaymentAmount": "Сумма платежа",
+      "MadeAfterMonth": "Сделано после месяца",
+      "Months": "месяцев",
+      "MonthlyAmortization": "Ежемесячная амортизация",
+      "TotalCost": "Общая стоимость",
+      "ExploreProperties": "Изучить объекты"
     },
     "refinancingTab": {
-      "title": "Refinancing",
-      "MortgageInformation": "Mortgage Information",
-      "CurrentLoanBalance": "Current loan balance",
-      "CurrentMonthlyPayments": "Current monthly payments",
-      "EarlySettlementFees": "Early settlement fees",
-      "Percentage": "Percentage",
-      "CurrentLoanInterestRate": "Current loan interest rate in %",
-      "RefinanceInformation": "Refinance Information",
-      "CurrentPropertyValue": "Current property value",
-      "CurrentEstimated": "Current estimated value",
-      "TermOfNewLoan": "Term of new loan",
-      "FeesToObtainNewLoan": "Fees to obtain new loan",
-      "NewLoanPercentage": "Percentage",
-      "NewLoanInterestRate": "Interest rate of the new loan in %",
-      "MortgageCost": "Mortgage Cost",
-      "MonthlyPay": "Monthly Pay",
-      "PayDiff": "Pay Diff",
-      "RefinancePay": "Refinance Pay",
-      "BreakMonth": "Break Month",
-      "Month(s)": "month(s)"
+      "title": "Рефинансирование",
+      "MortgageInformation": "Информация по ипотеке",
+      "CurrentLoanBalance": "Текущий баланс кредита",
+      "CurrentMonthlyPayments": "Текущие ежемесячные платежи",
+      "EarlySettlementFees": "Сборы за досрочное погашение",
+      "Percentage": "Процент",
+      "CurrentLoanInterestRate": "Текущая процентная ставка по кредиту",
+      "RefinanceInformation": "Информация по рефинансированию",
+      "CurrentPropertyValue": "Текущая стоимость недвижимости",
+      "CurrentEstimated": "Текущая оценочная стоимость",
+      "TermOfNewLoan": "Срок нового кредита",
+      "FeesToObtainNewLoan": "Сборы за оформление нового кредита",
+      "NewLoanPercentage": "Процент",
+      "NewLoanInterestRate": "Процентная ставка нового кредита",
+      "MortgageCost": "Стоимость ипотеки",
+      "MonthlyPay": "Ежемесячный платеж",
+      "PayDiff": "Разница платежей",
+      "RefinancePay": "Платежи по рефинансированию",
+      "BreakMonth": "Месяц разрыва",
+      "Month(s)": "месяцев"
     },
     "rentVsBuyTab": {
-      "Title": "Rent vs Buying",
-      "Currentmonthlyrent": "Current monthly rent",
-      "Expectedloanamount": "Expected loan amount",
-      "Yearlyrentincrease": "Yearly rent increase in %",
-      "Loantermyears": "Loan term in years",
-      "Loaninterestrate": "Loan interest rate in %",
-      "Expectedpropertyprice": "Expected property price",
-      "Downpayment": "Downpayment",
-      "Downpaymentpercentage": "Downpayment %",
-      "Yearlypropertyappreciation": "Yearly property appreciation",
-      "Planyearstolive": "Plan years to live",
-      "Totalrentamount": "Total Rent Amount",
-      "Totalbuyamount": "Total Buy Amount",
-      "Viewsaleunits": "View Sale Units",
-      "Getpreapproval": "Get Pre-Approval"
+      "Title": "Аренда против покупки",
+      "Currentmonthlyrent": "Текущая месячная аренда",
+      "Expectedloanamount": "Ожидаемая сумма кредита",
+      "Yearlyrentincrease": "Годовой рост арендной платы (%)",
+      "Loantermyears": "Срок кредита (лет)",
+      "Loaninterestrate": "Процентная ставка (%)",
+      "Expectedpropertyprice": "Ожидаемая цена недвижимости",
+      "Downpayment": "Первоначальный взнос",
+      "Downpaymentpercentage": "Первоначальный взнос %",
+      "Yearlypropertyappreciation": "Годовое увеличение стоимости недвижимости",
+      "Planyearstolive": "Планируемое количество лет проживания",
+      "Totalrentamount": "Общая сумма аренды",
+      "Totalbuyamount": "Общая сумма покупки",
+      "Viewsaleunits": "Просмотр объектов на продажу",
+      "Getpreapproval": "Получить предварительное одобрение"
     },
     "houseAffordTab": {
-      "Title": "House Affordability",
-      "Grossmonthlyincome": "Gross Monthly Income",
-      "Extramonthlyincome": "Extra Monthly Income",
-      "Monthlydebtrepayment": "Monthly Debt Repayment",
-      "Downpayment": "Downpayment",
-      "Interestrate": "Interest Rate",
-      "Paymentperiod": "Payment Period",
-      "Canafford": "Can Afford",
-      "Totalafford": "Total Afford",
-      "GeApprovalToday": "Get pre-approval today"
+      "Title": "Доступность жилья",
+      "Grossmonthlyincome": "Валовой ежемесячный доход",
+      "Extramonthlyincome": "Дополнительный ежемесячный доход",
+      "Monthlydebtrepayment": "Ежемесячные выплаты по долгам",
+      "Downpayment": "Первоначальный взнос",
+      "Interestrate": "Процентная ставка",
+      "Paymentperiod": "Период выплат",
+      "Canafford": "Можете позволить себе",
+      "Totalafford": "Общая доступность",
+      "GeApprovalToday": "Получите предварительное одобрение сегодня"
     }
   },
   "ReportDownload": {
-    "title": "Market Insights",
-    "desc": "Monthly Report DXB",
-    "download": "Download Now"
+    "title": "Аналитика рынка",
+    "desc": "Ежемесячный отчет DXB",
+    "download": "Скачать сейчас",
+    "form": {
+      "title": "Ежемесячный отчет",
+      "firstname": "Имя",
+      "lastname": "Фамилия",
+      "email": "Электронная почта",
+      "button": "Скачать отчет",
+      "agreements": {
+        "1": "Я согласен с Условиями использования и Политикой конфиденциальности",
+        "2": "Согласен получать звонки и сообщения",
+        "3": "Получать звонки о различных проектах"
+      },
+      "Whatsapp": "Whatsapp",
+      "success": "Форма успешно отправлена!",
+      "error": "Не удалось отправить форму. Попробуйте снова."
+    }
   },
+
   "RealEstatePartner": {
     "title": {
-      "part1": "YOUR TRUSTED",
-      "part2": "Real Estate",
-      "part3": "PARTNER"
+      "part1": "ВАШ НАДЕЖНЫЙ",
+      "part2": "Партнер в Недвижимости",
+      "part3": ""
     },
     "aboutCounter": {
-      "customers": "Customers",
-      "languages": "Languages",
-      "projects": "Projects",
-      "locationWorldwide": "Location Worldwide",
-      "years": "Years in Business",
-      "branches": "Branches",
-      "expertEmployees": "Expert Employees"
+      "customers": "Клиенты",
+      "languages": "Языки",
+      "projects": "Проекты",
+      "locationWorldwide": "Локации по всему миру",
+      "years": "Лет на рынке",
+      "branches": "Филиалы",
+      "expertEmployees": "Опытные сотрудники"
     }
   },
   "AwardsSectionHome": {
-    "title": "AWARDS-DRIVEN Excellence",
-    "desc": "We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. Explore our journey of accolades that inspire us to reach new pinnacles of success.",
+    "title": "Премии за выдающееся качество",
+    "desc": "Мы подтверждаем нашу приверженность переосмыслению стандартов недвижимости. Наша преданность инновациям и неизменная ориентация на клиентов заслужили признание в отрасли. Ознакомьтесь с нашим путем наград, который вдохновляет нас достигать новых высот.",
     "awards": {
       "emaar": {
         "title1": "EMAAR",
-        "title2": "ANNUAL BROKER",
-        "title3": "AWARDS - 2018"
+        "title2": "ЕЖЕГОДНЫЕ БРОКЕРСКИЕ",
+        "title3": "ПРЕМИИ - 2018"
       },
       "aldar2021": {
         "title1": "ALDAR",
-        "title3": "AMBASSADOR - 2021"
+        "title3": "АМБАССАДОР - 2021"
       },
       "aldar2016": {
         "title1": "ALDAR",
-        "title2": "TOP PERFORMING",
-        "title3": "Agency First Place - 2016"
+        "title2": "ЛУЧШЕЕ АГЕНТСТВО",
+        "title3": "Первое место - 2016"
       },
       "aldar2020": {
         "title1": "ALDAR",
-        "title2": "TOP PERFORMING",
-        "title3": "Agency First Place - 2020"
+        "title2": "ЛУЧШЕЕ АГЕНТСТВО",
+        "title3": "Первое место - 2020"
       },
       "aldar2022": {
         "title1": "ALDAR",
-        "title2": "TOP PERFORMING",
-        "title3": "Agency First Place - 2022"
+        "title2": "ЛУЧШЕЕ АГЕНТСТВО",
+        "title3": "Первое место - 2022"
       },
       "imkan": {
         "title1": "IMKAN",
-        "title2": "TOP PERFORMING",
-        "title3": "Agency First Place - 2021"
+        "title2": "ЛУЧШЕЕ АГЕНТСТВО",
+        "title3": "Первое место - 2021"
       }
     }
   },
+
   "googleReview": {
     "title": "Отзывы",
     "google": "Google",
@@ -304,6 +339,12 @@
     "appLinks": "Доступно в App Store и Google Play"
   },
   "Common_Form_Agreements": {
+    "byclickingsubmit": {
+      "part1": "Нажимая «Отправить», вы соглашаетесь с нашими",
+      "terms": "Условиями использования",
+      "and": "и",
+      "privacy": "Политикой конфиденциальности"
+    },
     "agreement1": "Согласен(а) получать звонки и сообщения по различным каналам от PSI с 09:00 до 21:00",
     "agreement2": "Согласен(а) получать несколько звонков и сообщений по различным каналам, касающихся моего запроса",
     "agreement3": "Согласен(а) получать звонки и сообщения по различным каналам о различных проектах, продуктах и услугах"
@@ -398,6 +439,13 @@
     "btn_nearby": "Рядом",
     "btn_developer": "Застройщик",
     "btn_video_tour": "Видео-тур",
+    "loc_Al_Reem_Island": "Остров Аль-Рим",
+    "loc_Yas_Island": "Остров Яс",
+    "loc_Saadiyat_Island": "Остров Саадият",
+    "loc_Al_Raha_Beach": "Пляж Аль-Раха",
+    "loc_Palm_Jumeirah": "Пальма Джумейра",
+    "loc_Downtown_Dubai": "Даунтаун Дубай",
+    "loc_Dubai_Creek": "Дубай-Крик",
     "company_address": {
       "part1": "Офис №4410 и 4411",
       "part2": "Башня Addax, 44 этаж",
@@ -470,6 +518,7 @@
     "About PSI": "О компании PSI",
     "Our Story": "Наша история",
     "Awards": "Награды",
+    "Blog": "Блог",
     "Media": "Медиа"
   },
   "About_Us_Page": {
