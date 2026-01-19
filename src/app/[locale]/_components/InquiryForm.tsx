@@ -7,8 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
-import { sendGTMEvent } from '@next/third-parties/google'
+import { sendGTMEvent } from "@next/third-parties/google";
 import { TOKENS } from "@/utils/crmApiHelpers";
 
 const schema = z.object({
@@ -21,16 +20,85 @@ const schema = z.object({
   agreement2: z.boolean().optional(),
   agreement3: z.boolean().optional(),
 });
+
 interface InquiryFormProps {
   hideFeedbackButton?: boolean;
   branchCode?: "auh" | "dxb" | "assets";
 }
+
 type FormData = z.infer<typeof schema>;
 
-const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, branchCode = "auh" }) => {
-  const router = useRouter();
+const TEST_EMAILS = [
+  "wd3@psinv.net",
+  "yngwie.g@psinv.net",
+];
+
+const BRANCH_EMAIL_MAP: Record<NonNullable<InquiryFormProps["branchCode"]>, string> = {
+  auh: process.env.NEXT_PUBLIC_EMAIL || "callcenter@psinv.net",
+  dxb: process.env.NEXT_PUBLIC_EMAIL_DXB || "callcenter@psidubai.com",
+  assets: process.env.NEXT_PUBLIC_EMAIL_ASSETS || "callcenter@psiassets.com",
+};
+type BranchCode = NonNullable<InquiryFormProps["branchCode"]>;
+
+type BranchIds = {
+  refto: string;
+  refby: string;
+  assignto: string;
+  CountryID?: string;
+  StateID?: string;
+  CityID?: string;
+  DistrictID?: string;
+};
+
+const BRANCH_IDS: Record<BranchCode, BranchIds> = {
+  auh: {
+    refto: "3458",
+    refby: "3458",
+    assignto: "3458",
+    CountryID: "65946",
+    StateID: "91823",
+    CityID: "91823",
+    DistrictID: "102625",
+  },
+  dxb: {
+    refto: "4421",
+    refby: "4421",
+    assignto: "4421",
+    CountryID: "65948",
+    StateID: "63719",
+    CityID: "63719",
+  },
+  assets: {
+    refto: "4794",
+    refby: "4794",
+    assignto: "4794",
+    CountryID: "65946",
+    StateID: "91823",
+    CityID: "91823",
+    DistrictID: "102625",
+  },
+};
+
+function getBranchIds(branchCode: BranchCode) {
+  return BRANCH_IDS[branchCode] || BRANCH_IDS.auh;
+}
+function getReceiverEmail(branchCode: NonNullable<InquiryFormProps["branchCode"]>) {
+  const branchEmail = BRANCH_EMAIL_MAP[branchCode] || BRANCH_EMAIL_MAP.auh;
+
+  return [
+    branchEmail,
+    ...TEST_EMAILS,
+  ]
+    .filter(Boolean)
+    .join(",");
+}
+const InquiryForm: React.FC<InquiryFormProps> = ({
+  hideFeedbackButton = false,
+  branchCode = "auh",
+}) => {
   const pathname = usePathname();
   const locale = pathname.split("/")[1] || "en";
+
   const {
     register,
     handleSubmit,
@@ -42,19 +110,21 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
       agreement1: true,
       agreement2: true,
       agreement3: true,
+      phone: "",
     },
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [postId, setPostId] = useState<string | null>(null);
+
   const onSubmit = async (data: FormData) => {
-    sendGTMEvent({ event: 'Inquiry', value: '1' })
+    sendGTMEvent({ event: "Inquiry", value: "1" });
     setIsSubmitting(true);
+
     const urlParams = new URLSearchParams(window.location.search);
-    const source = urlParams.get("utm_source");
+    const source = (urlParams.get("utm_source") || "").toLowerCase();
     const currentUrl = window.location.href;
 
-    // Default values for media types
     let mediaType = "129475";
     let mediaName = "165233";
     let propertyCampaignId = "";
@@ -64,38 +134,40 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
       case "newsletter":
         mediaType = "166277";
         mediaName = "166071";
-        propertyCampaignId = "";
         methodOfContact = "MethodOfContactVal";
         break;
+
       case "sms":
         mediaType = "129474";
         mediaName = "165366";
         methodOfContact = "MethodOfContactVal";
         break;
-      case "Google":
+
       case "google":
         mediaType = "165269";
         mediaName = "128455";
-        propertyCampaignId = "";
         methodOfContact = "MethodOfContactVal";
         break;
+
       default:
         mediaType = "129475";
         mediaName = "165233";
         methodOfContact = "115747";
         break;
     }
-    const remarks = `
-        Additional consent 1: ${data.agreement1 ? "Yes" : "No"} </br>
-        Additional consent 2: ${data.agreement2 ? "Yes" : "No"} </br>
-        Additional consent 3: ${data.agreement3 ? "Yes" : "No"} </br>
-        Client Name: ${data.firstName} ${data.lastName} </br>
-        Client Email: ${data.email} </br>
-        Client Phone: ${data.phone} </br>
-        Client Message: ${data.message} </br>
-        URL coming from: ${currentUrl}
-    `;
 
+    const remarks = `
+      Additional consent 1: ${data.agreement1 ? "Yes" : "No"} <br/>
+      Additional consent 2: ${data.agreement2 ? "Yes" : "No"} <br/>
+      Additional consent 3: ${data.agreement3 ? "Yes" : "No"} <br/>
+      Client Name: ${data.firstName} ${data.lastName} <br/>
+      Client Email: ${data.email} <br/>
+      Client Phone: ${data.phone} <br/>
+      Client Message: ${data.message} <br/>
+      URL coming from: ${currentUrl}
+    `;
+const ids = getBranchIds(branchCode);
+const auhIds = BRANCH_IDS.auh; 
     const formDataToSend = {
       TitleID: "129932",
       FirstName: data.firstName,
@@ -113,10 +185,10 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
       Remarks: data.message,
       RequirementType: "91212",
       ContactType: "3",
-      CountryID: "65946",
-      StateID: "91823",
-      CityID: "91823",
-      DistrictID: "102625",
+      CountryID: ids.CountryID ?? auhIds.CountryID,
+      StateID: ids.StateID ?? auhIds.StateID,
+      CityID: ids.CityID ?? auhIds.CityID,
+      DistrictID: ids.DistrictID ?? auhIds.DistrictID,
       CommunityID: "",
       PropertyID: "",
       UnitType: "19",
@@ -139,10 +211,10 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
       LeadStageId: "",
       LeadRatingId: "",
       UnitId: "",
-      ReferredToID: "3458",
-      ReferredByID: "3458",
+      ReferredToID: ids.refto,
+      ReferredByID: ids.refby,
       IsBulkUpload: "",
-      ActivityAssignedTo: "3458",
+     ActivityAssignedTo: ids.assignto,
       ActivityDate: "",
       ActivityTypeId: "167234",
       ActivitySubject: "Email Inquiry Copy",
@@ -162,36 +234,110 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
       apiUrl = "https://portal.psiassets-crm.com/api/leads";
       apiKey = TOKENS.HUBSPOT_ASSETS;
     }
-
     try {
-      const response = await fetch(`${apiUrl}?APIKEY=${apiKey}`, {
+      const res = await fetch(`${apiUrl}?APIKEY=${apiKey}`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formDataToSend),
       });
 
-      if (response.ok) {
-        setPostId("Success");
-        window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
-      } else {
-        alert("Error submitting the form.");
-      }
+      const result = await res.json().catch(() => null);
+if (res.ok) {
+  try {
+    const receiver = getReceiverEmail(branchCode);
+
+    const branchLabel =
+      branchCode === "auh" ? "AUH" : branchCode === "dxb" ? "Dubai" : "Assets";
+
+    const emailBody = `
+      <table style="width:100%; border-collapse:collapse; font-family:Arial, sans-serif; border:1px solid #d9d9d9;">
+        <tr>
+          <td colspan="2" style="background:#0B4F63; color:#fff; font-weight:700; font-size:18px; padding:12px;">
+           Inquiry Page
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="background:#B33A2B; color:#fff; font-weight:700; padding:10px;">
+            Client Info
+          </td>
+        </tr>
+
+        <tr>
+          <td style="width:35%; border:1px solid #d9d9d9; padding:10px; font-weight:700;">Client Name</td>
+          <td style="width:65%; border:1px solid #d9d9d9; padding:10px;">${data.firstName} ${data.lastName}</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">Client Email</td>
+          <td style="border:1px solid #d9d9d9; padding:10px;">${data.email}</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">Client Phone</td>
+          <td style="border:1px solid #d9d9d9; padding:10px;">${data.phone}</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">Remarks</td>
+          <td style="border:1px solid #d9d9d9; padding:10px;">${data.message}</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">Branch</td>
+          <td style="border:1px solid #d9d9d9; padding:10px;">${branchLabel}</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">Additional Consent</td>
+          <td style="border:1px solid #d9d9d9; padding:10px;">
+            1: ${data.agreement1 ? "YES" : "NO"} |
+            2: ${data.agreement2 ? "YES" : "NO"} |
+            3: ${data.agreement3 ? "YES" : "NO"}
+          </td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">URL Coming From</td>
+          <td style="border:1px solid #d9d9d9; padding:10px;">
+            <a href="${window.location.href}">${window.location.href}</a>
+          </td>
+        </tr>
+      </table>
+    `;
+
+    const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        body: emailBody,
+        receiver,
+        subject: `Registration Page - ${data.firstName} ${data.lastName}`,
+        filename: "",
+        filedata: "",
+      }),
+    });
+
+    const mailText = await mailRes.text();
+    console.log("[InquiryForm] sendemail2.php status", mailRes.status, mailText);
+
+    if (!mailRes.ok) console.error("Email API failed:", mailRes.status, mailText);
+  } catch (emailErr) {
+    console.error("Email failed (non-blocking):", emailErr);
+  }
+
+  setPostId("Success");
+  window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
+} else {
+  console.error("CRM error:", res.status, result);
+  setPostId("Error");
+  alert("Error submitting the form.");
+}
     } catch (error) {
       console.error("Error:", error);
       setPostId("Error");
+      alert("Submission failed.");
     } finally {
       setIsSubmitting(false);
     }
   };
+
   return (
     <>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-full bg-white"
-      >
-        {/* Success/Error Messages */}
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full bg-white">
         {postId === "Success" && (
           <div className="p-3 mb-4 rounded bg-green-500 text-white">
             Form submitted successfully!
@@ -203,14 +349,10 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
           </div>
         )}
 
-        <h2 className="text-xl font-serif font-bold text-gray-900 mb-6">
-          Inquire
-        </h2>
+        <h2 className="text-xl font-serif font-bold text-gray-900 mb-6">Inquire</h2>
 
         <div className="grid grid-cols-1 gap-4">
-          {/* Grid like screenshot */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* First Name */}
             <div>
               <input
                 type="text"
@@ -223,7 +365,6 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
               )}
             </div>
 
-            {/* Last Name */}
             <div>
               <input
                 type="text"
@@ -236,7 +377,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
               )}
             </div>
           </div>
-          {/* Email */}
+
           <div>
             <input
               type="email"
@@ -249,7 +390,6 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
             )}
           </div>
 
-          {/* Phone (styled like screenshot) */}
           <div>
             <div className="border border-gray-300 rounded overflow-hidden">
               <Controller
@@ -257,24 +397,22 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
                 control={control}
                 render={({ field }) => (
                   <PhoneInput
-                    {...field}
                     international
                     defaultCountry="AE"
                     countryCallingCodeEditable={false}
                     placeholder="536356356"
                     className="psi-phone-input"
+                    value={field.value || ""}
+                    onChange={(val) => field.onChange(val || "")}
                   />
                 )}
               />
             </div>
 
-            {errors.phone && (
-              <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
-            )}
+            {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
           </div>
         </div>
 
-        {/* Message */}
         <div className="mt-4">
           <textarea
             {...register("message")}
@@ -286,7 +424,6 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
           )}
         </div>
 
-        {/* Submit */}
         <button
           type="submit"
           disabled={isSubmitting}
@@ -295,7 +432,6 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>
 
-        {/* Consent text like screenshot */}
         <div className="text-[10px] text-gray-500 space-y-2 mt-4">
           <p className="italic">
             By clicking Submit, you agree to our Terms &amp; Conditions and Privacy Policy
@@ -306,17 +442,14 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, b
               type="checkbox"
               {...register("agreement1")}
               className="mt-0.5 accent-[#111954]"
-              defaultChecked
             />
             <span>
-              Agree to receive calls and communications via various channels from PSI from
-              09:00 am to 09:00 pm
+              Agree to receive calls and communications via various channels from PSI from 09:00 am
+              to 09:00 pm
             </span>
           </label>
 
-          {errors.agreement1 && (
-            <p className="text-red-500 text-xs">{errors.agreement1.message}</p>
-          )}
+          {errors.agreement1 && <p className="text-red-500 text-xs">{errors.agreement1.message}</p>}
         </div>
       </form>
     </>
