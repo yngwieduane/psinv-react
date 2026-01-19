@@ -1,7 +1,9 @@
 {
   "HomePageBanner": {
     "sign_up_btn": "Sign Up",
-    "more_btn": "Explore More"
+    "more_btn": "Explore More",
+    "register" : "Register Your Interest",
+    "submit" : "Submit"
   },
   "MainSliderHome": {
     "slides": {
@@ -245,7 +247,22 @@
   "ReportDownload": {
     "title": "Market Insights",
     "desc": "Monthly Report DXB",
-    "download": "Download Now"
+    "download": "Download Now",
+    "form": {
+      "title" : "Monthly Report",
+      "firstname" : "First Name",
+      "lastname" : "Last Name",
+      "email" : "Email",      
+      "button": "Download Report",
+      "agreements" : {
+        "1": "I agree to the Terms & Conditions and Privacy Policy",
+        "2": "Agree to receive calls and communications",
+        "3": "Receive calls about various projects"
+      },
+      "Whatsapp" : "Whatsapp",
+      "success" : "Form submitted successfully!",
+      "error" : "Submission failed. Try again."
+    }
   },
   "RealEstatePartner": {
     "title": {
@@ -319,6 +336,12 @@
     "appLinks": "Available on App Store and Google Play"
   },
   "Common_Form_Agreements": {
+    "byclickingsubmit":{
+      "part1" : "By clicking Submit, you agree to our",
+      "terms" : "Terms & Conditions",
+      "and" : "and",
+      "privacy": "Privacy Policy"
+    },
     "agreement1": "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
     "agreement2": "Agree to receive multiple calls and communications via various channels regarding my enquiry",
     "agreement3": "Agree to receive calls and communications via various channels on various projects, products, and services"
