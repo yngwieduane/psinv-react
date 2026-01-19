@@ -342,7 +342,7 @@ export default function UnitPageAI(props: any) {
 
                                                 {/* Schedule Viewing Form */}
                                                 <div className="hidden md:flex">
-                                                    <InquiryForm hideFeedbackButton={true} />
+                                                    <InquiryForm hideFeedbackButton={true} branchCode='assets' />
                                                 </div>
                                             </div>
                                         </Sticky>
