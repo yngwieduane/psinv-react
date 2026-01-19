@@ -2,10 +2,16 @@
 
 export const newsletters = [
   {
+    title: 'Yas Canal Newest project FINALLY here! (Offplan)  ',
+    date: '17 January 2026  ',
+    image: '/images/newsletter/yas-canal-newsletter.webp',
+    link: 'https://marketing.psinv.net/-temporary-slug-e24f230c-5c94-4422-98c5-5edc655b9a6d?hs_preview=SENNOolO-347124551866',
+  },
+  {
     title: 'High-End Apartments In Abu Dhabi\'s Top Area ',
     date: '14 January 2026  ',
     image: '/images/newsletter/radient-newsletter.webp',
-    link: 'https://144642261.hubspotpreview-eu1.com/_hcms/preview/email/344680384708?portalId=144642261&preview_key=MLAddPXH&_preview=true&from_buffer=false&hsPreviewerApp=email&cacheBust=0',
+    link: 'https://marketing.psinv.net/-temporary-slug-1caf2326-a4bf-4a23-9f64-06f4d7dccaeb?hs_preview=MLAddPXH-344680384708',
   },
   {
     title: 'A New Launch In The Heart Of Cultural District',
@@ -23,37 +29,32 @@ export const newsletters = [
     title: 'Waterfront Villas & Premium Apartments',
     date: '19 December 2025 ',
     image: '/images/newsletter/hudayriyt-island-newsletter.webp',
-    link: 'https://144642261.hubspotpreview-eu1.com/_hcms/preview/email/326840701151?portalId=144642261&preview_key=oKUxzbmB&_preview=true&from_buffer=false&hsPreviewerApp=email&cacheBust=0',
+    link: 'https://marketing.psinv.net/-temporary-slug-daa49a0f-ae57-42ed-939e-486a99595b9b?hs_preview=oKUxzbmB-326840701151',
   },
   {
     title: 'New Launches are here! ',
     date: '16 December 2025  ',
     image: '/images/newsletter/al-reem-island-newsletter.webp',
-    link: 'https://144642261.hubspotpreview-eu1.com/_hcms/preview/email/324267936957?portalId=144642261&preview_key=gChyQrNJ&_preview=true&from_buffer=false&hsPreviewerApp=email&cacheBust=0',
+    link: 'https://marketing.psinv.net/-temporary-slug-af9113ca-c238-4ef6-8b90-0f65264b0130?hs_preview=gChyQrNJ-324267936957',
   },
   {
     title: 'Final call to secure your unit in Hudayriyat Island ',
     date: '9 December 2025  ',
     image: '/images/newsletter/bashayer-newsletter.webp',
-    link: 'https://144642261.hubspotpreview-eu1.com/_hcms/preview/email/318970840267?portalId=144642261&preview_key=nxROgVTs&_preview=true&from_buffer=false&hsPreviewerApp=email&cacheBust=0',
+    link: 'https://marketing.psinv.net/-temporary-slug-068b7fd5-c683-42c1-9016-be0a4929bee0?hs_preview=nxROgVTs-318970840267',
   },
   {
-    title: 'New Launch in Raha Beach - Bab Al Qasr Canal Residences',
-    date: '11 July 2025 ',
-    image: '/images/newsletter/newsletter-thumbnail-1.webp',
-    link: 'https://marketing.psinv.net/-temporary-slug-c0323fb3-fdce-4386-8bb0-39d3793ba450?hs_preview=sfvoTKFD-251922713807&utm_medium=email&_hsenc=p2ANqtz--LVWYhm8FXAEIVj7OVDhtVCk4RLk1y2ZyTtHTSA4B4bjwdsBRsTs6BjhusD-gxGypkHoRyOeyK4MZ46OoMCWxbD96QyA&_hsmi=2&utm_content=2&utm_source=hs_email',
+    title: 'New Waterfront Launch In Yas Island',
+    date: '24 November 2025 ',
+    image: '/images/newsletter/yas-riva-newsletter.webp',
+    link: 'https://marketing.psinv.net/-temporary-slug-80fc0631-1da0-42e1-acbe-587278842e29?hs_preview=XInwlNww-307547152588',
   },
   {
-    title: 'Abu Dhabi growth is appealing✨',
-    date: '11 July 2025 ',
-    image: '/images/newsletter/newsletter-thumbnail-2.webp',
-    link: 'https://marketing.psinv.net/abu-dhabi-growth-is-appealing?ecid=AOKeC1a_EUPGKdtwYegLKkb6JscmmukO9secXug662cshIkduIbcZpVrsYsYvqQp6yixGbk7yvcX&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-8mcIJAhhIqz49agqQrGmyy_Mx2lNX-wgmhOI_eMEXscJE3hKsXCr7msLiB6Y9vgzIKUDlMC0ZfzFGZCXyErtB9NNZp-w',
+    title: 'Powerful Session By The #1 Sales Trainer',
+    date: '21 November 2025 ',
+    image: '/images/newsletter/section-newsletter.webp',
+    link: 'https://marketing.psinv.net/powerful-session-by-the-1-sales-trainer',
   },
-  {
-    title: 'List Your Property with Peace of Mind 🌟',
-    date: '10 July 2025 ',
-    image: '/images/newsletter/newsletter-thumbnail-3.webp',
-    link: 'https://144642261.hubspotpreview-eu1.com/_hcms/preview/email/251696104668?portalId=144642261&preview_key=sBPLuprn&_preview=true&from_buffer=false&cacheBust=0&hsPreviewerApp=email',
-  },
+  
     
 ];
