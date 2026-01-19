@@ -9,36 +9,43 @@ import "react-phone-number-input/style.css";
 import { usePathname } from "next/navigation";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { TOKENS } from "@/utils/crmApiHelpers";
+import { useTranslations } from "next-intl";
+
+
+const t = useTranslations("InquiryFormProject");
 
 const schema = z.object({
-  firstName: z.string().min(1, { message: "First name is required" }),
-  lastName: z.string().min(1, { message: "Last name is required" }),
-  email: z.string().email({ message: "Invalid email address" }),
-  phone: z.string().min(7, { message: "Invalid phone number" }),
-  message: z.string().min(5, { message: "Message is required" }),
-  agreement1: z.boolean().refine((val) => val, { message: "You must agree to this" }),
+  firstName: z.string().min(1, { message: t("errors.firstName") }),
+  lastName: z.string().min(1, { message: t("errors.lastName") }),
+  email: z.string().email({ message: t("errors.email") }),
+  phone: z.string().min(7, { message: t("errors.phone") }),
+  message: z.string().min(5, { message: t("errors.message") }),
+  agreement1: z.boolean().refine((val) => val, { message: t("errors.agreement1") }),
   agreement2: z.boolean().optional(),
   agreement3: z.boolean().optional(),
 });
+
+type FormData = z.infer<typeof schema>;
 
 interface InquiryFormProps {
   hideFeedbackButton?: boolean;
   branchCode?: "auh" | "dxb" | "assets";
 }
 
-type FormData = z.infer<typeof schema>;
+interface InquiryFormProps {
+  hideFeedbackButton?: boolean;
+  branchCode?: "auh" | "dxb" | "assets";
+}
 
-const TEST_EMAILS = [
-  "wd3@psinv.net",
-  "yngwie.g@psinv.net",
-];
+type BranchCode = NonNullable<InquiryFormProps["branchCode"]>;
 
-const BRANCH_EMAIL_MAP: Record<NonNullable<InquiryFormProps["branchCode"]>, string> = {
+const TEST_EMAILS = ["wd3@psinv.net", "yngwie.g@psinv.net"];
+
+const BRANCH_EMAIL_MAP: Record<BranchCode, string> = {
   auh: process.env.NEXT_PUBLIC_EMAIL || "callcenter@psinv.net",
   dxb: process.env.NEXT_PUBLIC_EMAIL_DXB || "callcenter@psidubai.com",
   assets: process.env.NEXT_PUBLIC_EMAIL_ASSETS || "callcenter@psiassets.com",
 };
-type BranchCode = NonNullable<InquiryFormProps["branchCode"]>;
 
 type BranchIds = {
   refto: string;
@@ -82,15 +89,10 @@ const BRANCH_IDS: Record<BranchCode, BranchIds> = {
 function getBranchIds(branchCode: BranchCode) {
   return BRANCH_IDS[branchCode] || BRANCH_IDS.auh;
 }
-function getReceiverEmail(branchCode: NonNullable<InquiryFormProps["branchCode"]>) {
-  const branchEmail = BRANCH_EMAIL_MAP[branchCode] || BRANCH_EMAIL_MAP.auh;
 
-  return [
-    branchEmail,
-    ...TEST_EMAILS,
-  ]
-    .filter(Boolean)
-    .join(",");
+function getReceiverEmail(branchCode: BranchCode) {
+  const branchEmail = BRANCH_EMAIL_MAP[branchCode] || BRANCH_EMAIL_MAP.auh;
+  return [branchEmail, ...TEST_EMAILS].filter(Boolean).join(",");
 }
 const InquiryForm: React.FC<InquiryFormProps> = ({
   hideFeedbackButton = false,
