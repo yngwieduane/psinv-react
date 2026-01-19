@@ -68,8 +68,11 @@ export default function UnitsList(props: any) {
                         return [];
                     });
 
-                const [data1, data2] = await Promise.all([p1, p2]);
-                setResults([...data1, ...data2]);
+                // const [data1, data2] = await Promise.all([p1, p2]);
+                // setResults([...data1, ...data2]);
+
+                const [data2] = await Promise.all([p2]);
+                setResults([...data2]);
 
             } catch (error) {
                 console.error("API fetch failed", error);

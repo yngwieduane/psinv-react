@@ -19,9 +19,10 @@ import MortgageCalculator from "@/app/[locale]/mortgage-calculator/MortgageCalcu
 import AgentDetails from "./AgentDetails";
 import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
 import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
-import { Bath, BedDouble, CheckCircle2, Heart, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
+import { Bath, BedDouble, CheckCircle2, Heart, Link2, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
 import { useUser } from "@/context/userContext";
 import AccordionTabs from "@/app/[locale]/_components/tools/AccordionTabs";
+import { Link } from "@/i18n/navigation";
 
 const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap'));
 const SimilarUnitsGrid = dynamic(() => import('./SimilarUnitsGrid'));
@@ -47,6 +48,8 @@ export default function UnitPageAI(props: any) {
         { id: 'description', key: 'lbl.description', fallback: 'Description' },
         { id: 'unit', key: 'lbl.unit_details', fallback: 'Unit Details' }
     ];
+    const callPhone = process.env.NEXT_PUBLIC_CALLNUMBER_ASSETS as string;
+    const whatsappPhone = process.env.NEXT_PUBLIC_WAPPNUMBER_ASSETS as string;
 
     return (
         <div className="pt-28 md:pt-24 pb-24">
@@ -239,6 +242,7 @@ export default function UnitPageAI(props: any) {
                                                         { label: "Project", value: post.propertyname },
                                                         { label: "Location", value: post.community },
                                                         { label: "Type", value: post.category },
+                                                        { label: "Reference Number", value: post.refNo },
                                                         { label: "Contract", value: category },
                                                         { label: "Price", value: <PriceConvert price={price} minDecimal='0' />, isBold: true },
                                                         { label: "Area", value: <NumberConvert number={Number(post.built_upArea)} minDecimal='0' label='Sqft' />, isBold: true },
@@ -315,12 +319,12 @@ export default function UnitPageAI(props: any) {
                                                 </div>
 
                                                 <div className="grid grid-cols-2 gap-4 mb-8">
-                                                    <button className="cursor-pointer w-full bg-white hover:bg-[#dedede] border border-gray-300 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
+                                                    <Link href={`tel:${callPhone}`} className="cursor-pointer w-full bg-white hover:bg-[#dedede] border border-gray-300 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
                                                         <Phone size={22} /> Call
-                                                    </button>
-                                                    <button className="cursor-pointer w-full bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
+                                                    </Link>
+                                                    <Link href={`https://wa.me/${whatsappPhone}?text=I%20am%20Interested%20 in this reference number: ${props.refNo}`} className="cursor-pointer w-full bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
                                                         <MessageCircle size={22} /> WhatsApp
-                                                    </button>
+                                                    </Link>
                                                     <button
                                                         type="button"
                                                         onClick={drawerHandler('requestview', props.data)}
@@ -338,7 +342,7 @@ export default function UnitPageAI(props: any) {
 
                                                 {/* Schedule Viewing Form */}
                                                 <div className="hidden md:flex">
-                                                    <InquiryForm hideFeedbackButton={true} />
+                                                    <InquiryForm hideFeedbackButton={true} branchCode='assets' />
                                                 </div>
                                             </div>
                                         </Sticky>

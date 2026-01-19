@@ -78,7 +78,7 @@ export const contactLocations: ContactLocation[] = [
       "الطابق الأول، شمس بوتيك | جزيرة الريم | أبوظبي، الإمارات العربية المتحدة",
 
     slug: "psi-assets",
-    phone1: "600 548 200",
+    phone1: "600 510 510",
     phone2: "+971564094001",
     direction:
       "https://www.google.com/maps/dir//20+Al+Reema+St+-+Jazeerat+Al+Reem+-+Abu+Dhabi/",
@@ -169,7 +169,7 @@ export const contactLocations: ContactLocation[] = [
       "شارع المها، جزيرة ياس، أبوظبي، الإمارات العربية المتحدة",
 
     slug: "waters-edge-branch",
-    phone1: "600 548 200",
+    phone1: "600 510 510",
     phone2: "+971564094001",
     direction:
       "https://www.google.com/maps/dir//Al+Maha+St+-+Yas+Island+-+Abu+Dhabi/",

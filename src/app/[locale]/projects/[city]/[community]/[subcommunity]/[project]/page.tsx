@@ -18,7 +18,7 @@ export async function generateMetadata(
     const classify = (project: string) => project.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
     const projectId = classify(project);
 
-    const data = await fetch('https://psinv.net/api/external/projects?query=' + projectId)
+    const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
     //const data = await fetch('http://localhost:3000/api/external/projects?query='+projectId)
     const posts = await data.json();
     const result = posts['result'][0];
@@ -63,7 +63,7 @@ export default async function ProjectPage({
     const classify = (project: string) => project.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
     const projectId = classify(project);
 
-    const data = await fetch('https://psinv.net/api/external/projects?query=' + projectId)
+    const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
     //const data = await fetch('http://localhost:3000/api/external/projects?query='+projectId)
     const posts = await data.json()
 

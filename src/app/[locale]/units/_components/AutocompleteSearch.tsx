@@ -8,7 +8,7 @@ type Project = {
   propertyName: string;
   propertyID: string;
 };
-export default function AutocompleteSearch({ isReset }: { isReset: any }) {
+export default function AutocompleteSearch({ isReset, disableRouting = false, onSelect }: { isReset: any, disableRouting?: boolean, onSelect?: (name: string, id: string) => void }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -48,10 +48,16 @@ export default function AutocompleteSearch({ isReset }: { isReset: any }) {
     setInputValue(e.target.value);
     setQuery(e.target.value);
     setResetStatus('false');
-    updateQuery('propertyName', e.target.value);
+    if (!disableRouting) {
+      updateQuery('propertyName', e.target.value);
+    }
+    if (onSelect) {
+      onSelect(e.target.value, '');
+    }
   };
 
   const updateQuery = useDebouncedCallback((key: string, value: string | null) => {
+    if (disableRouting) return;
     const params = new URLSearchParams(searchParams.toString());
 
     if (value === null || value === '') {
@@ -67,8 +73,13 @@ export default function AutocompleteSearch({ isReset }: { isReset: any }) {
     setIDValue(id);
     setInputValue(property);
     setShowDropdown(false);
-    updateQuery('propertyId', id);
-    setPropertyId(propertyId)
+    if (!disableRouting) {
+      updateQuery('propertyId', id);
+    }
+    if (onSelect) {
+      onSelect(property, id);
+    }
+    setPropertyId(id)
   }
   // if(isReset){
   //   setResetStatus(isReset);

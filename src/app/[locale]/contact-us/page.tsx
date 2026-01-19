@@ -40,9 +40,8 @@ export default function ContactPage() {
   return (
     <div
       dir={isRTL ? "rtl" : "ltr"}
-      className={`min-h-screen bg-white pt-28 md:pt-32 pb-20 ${
-        isRTL ? "text-right" : ""
-      }`}
+      className={`min-h-screen bg-white pt-28 md:pt-32 pb-20 ${isRTL ? "text-right" : ""
+        }`}
     >
       <div className="container mx-auto px-6 md:px-12">
         <h1
@@ -65,20 +64,17 @@ export default function ContactPage() {
                 <button
                   type="button"
                   onClick={() => handleOfficeSelect(location)}
-                  className={`min-w-[200px] p-6 rounded-xl border transition-all group ${
-                    isRTL ? "text-right" : "text-left"
-                  } ${
-                    selectedLocation.id === location.id
+                  className={`cursor-pointer min-w-[200px] p-6 rounded-xl border transition-all group ${isRTL ? "text-right" : "text-left"
+                    } ${selectedLocation.id === location.id
                       ? "border-primary bg-white shadow-lg"
                       : "border-gray-100 bg-gray-50 hover:bg-white hover:shadow-md"
-                  }`}
+                    }`}
                 >
                   <h4
-                    className={`font-bold text-sm mb-1 ${
-                      selectedLocation.id === location.id
-                        ? "text-primary"
-                        : "text-gray-700"
-                    }`}
+                    className={`font-bold text-sm mb-1 ${selectedLocation.id === location.id
+                      ? "text-primary"
+                      : "text-gray-700"
+                      }`}
                   >
                     {L(location.name, location.name_ar)}
                   </h4>
@@ -148,14 +144,14 @@ export default function ContactPage() {
             {/* Right */}
             <div className="lg:w-7/12 order-1 lg:order-2">
               <div className="bg-gray-200 rounded-xl relative overflow-hidden border border-gray-300 h-[420px] md:h-[600px] lg:h-full">
-              <iframe
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                src={`https://www.google.com/maps?q=${selectedLocation.latitude},${selectedLocation.longitude}&z=15&output=embed`}
-              />
+                <iframe
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://www.google.com/maps?q=${selectedLocation.latitude},${selectedLocation.longitude}&z=15&output=embed`}
+                />
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <MapPin
                     size={48}
@@ -164,9 +160,8 @@ export default function ContactPage() {
                   />
                 </div>
                 <div
-                  className={`absolute top-4 flex bg-white rounded shadow-md text-xs font-bold text-gray-700 overflow-hidden ${
-                    isRTL ? "right-4" : "left-4"
-                  }`}
+                  className={`absolute top-4 flex bg-white rounded shadow-md text-xs font-bold text-gray-700 overflow-hidden ${isRTL ? "right-4" : "left-4"
+                    }`}
                 >
                   <button className="px-3 py-2 hover:bg-gray-100 border-r border-gray-200">
                     {t("map")}

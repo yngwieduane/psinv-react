@@ -70,7 +70,7 @@ export default async function Page({ params }: Props) {
         category = 'rent';
     }
 
-    const data = await fetch(`https://psinv-react.vercel.app/api/external/unit?unitid=${code}&category=${category}`)
+    const data = await fetch(`https://psinv-react-gilt.vercel.app/api/external/unit?unitid=${code}&category=${category}`)
     const posts = await data.json();
 
     return (

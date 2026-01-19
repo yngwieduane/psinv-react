@@ -8,14 +8,16 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { sendGTMEvent } from '@next/third-parties/google';
+import { sendGTMEvent } from '@next/third-parties/google'
+import { TOKENS } from "@/utils/crmApiHelpers";
 import { useTranslations } from "next-intl";
 
 interface InquiryFormProps {
   hideFeedbackButton?: boolean;
+  branchCode?: "auh" | "dxb" | "assets";
 }
 
-const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false }) => {
+const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false, branchCode = "auh" }) => {
   const t = useTranslations('InquiryFormProject');
   const router = useRouter();
   const pathname = usePathname();
@@ -156,8 +158,19 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
       contactClassId: "",
     };
 
+    let apiUrl = "https://api.portal.psi-crm.com/leads";
+    let apiKey = TOKENS.PSI;
+
+    if (branchCode === "dxb") {
+      apiUrl = "https://api.portal.dubai-crm.com/leads";
+      apiKey = TOKENS.DUBAI;
+    } else if (branchCode === "assets") {
+      apiUrl = "https://portal.psiassets-crm.com/api/leads";
+      apiKey = TOKENS.HUBSPOT_ASSETS;
+    }
+
     try {
-      const response = await fetch("https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a", {
+      const response = await fetch(`${apiUrl}?APIKEY=${apiKey}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

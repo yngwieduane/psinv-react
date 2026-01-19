@@ -14,6 +14,7 @@ import { Organization, WithContext } from "schema-dts";
 import { Audrey, BrittanySignature } from "@/utils/fonts";
 import { Montserrat, Outfit } from "next/font/google";
 import HomeBanner from "./_components/HomeBanner";
+import HomeSearch from "./_components/HomeSearch";
 import CitiesTab from "./_components/CitiesTab";
 import { useLocale, useTranslations } from 'next-intl';
 
@@ -331,6 +332,7 @@ export default function HomePage() {
 
       <div className={`relative ${outfit.className}`}>
         <HomeBanner slidePerView="1" slides={mainSliderData}></HomeBanner>
+        <HomeSearch />
       </div>
       <div className={`bg-gray-50`}>
         <CitiesTab
