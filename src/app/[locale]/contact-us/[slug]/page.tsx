@@ -44,7 +44,7 @@ export default function ContactPage() {
     contactLocations.find((location) => location.slug === slug) ||
     contactLocations[0];
 
-const [selectedOffice, setSelectedOffice] = useState<ContactLocation>(initialOffice);
+  const [selectedOffice, setSelectedOffice] = useState<ContactLocation>(initialOffice);
 
   useEffect(() => {
     if (selectedOffice.slug !== slug) {
@@ -74,13 +74,11 @@ const [selectedOffice, setSelectedOffice] = useState<ContactLocation>(initialOff
                 {contactLocations.map((location) => (
                   <SwiperSlide key={location.id} className="!w-auto">
                     <div
-                      className={`min-w-[200px] p-6 rounded-xl border transition-all group ${
-                        isRTL ? "text-right" : "text-left"
-                      } ${
-                        selectedOffice.id === location.id
+                      className={`cursor-pointer min-w-[200px] p-6 rounded-xl border transition-all group ${isRTL ? "text-right" : "text-left"
+                        } ${selectedOffice.id === location.id
                           ? "border-primary bg-white shadow-lg"
                           : "border-gray-100 bg-gray-50 hover:bg-white hover:shadow-md"
-                      }`}
+                        }`}
                       onClick={() => setSelectedOffice(location)}
                       role="button"
                       tabIndex={0}
@@ -162,14 +160,14 @@ const [selectedOffice, setSelectedOffice] = useState<ContactLocation>(initialOff
               {/* Right */}
               <div className="order-1 lg:order-2 lg:w-7/12">
                 <div className="rounded-xl overflow-hidden border border-gray-300 bg-gray-200 h-[420px] md:h-[600px] lg:h-full relative">
-<iframe
-  width="100%"
-  height="100%"
-  style={{ border: 0 }}
-  loading="lazy"
-  referrerPolicy="no-referrer-when-downgrade"
- src={`https://www.google.com/maps?q=${selectedOffice.latitude},${selectedOffice.longitude}&z=15&output=embed`}
-/>
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src={`https://www.google.com/maps?q=${selectedOffice.latitude},${selectedOffice.longitude}&z=15&output=embed`}
+                  />
 
 
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -182,9 +180,8 @@ const [selectedOffice, setSelectedOffice] = useState<ContactLocation>(initialOff
 
                   {/* Map Controls */}
                   <div
-                    className={`absolute top-4 flex bg-white rounded shadow-md text-xs font-bold text-gray-700 overflow-hidden ${
-                      isRTL ? "right-4" : "left-4"
-                    }`}
+                    className={`absolute top-4 flex bg-white rounded shadow-md text-xs font-bold text-gray-700 overflow-hidden ${isRTL ? "right-4" : "left-4"
+                      }`}
                   >
                     <button className="px-3 py-2 hover:bg-gray-100 border-r border-gray-200">
                       {t("map")}
