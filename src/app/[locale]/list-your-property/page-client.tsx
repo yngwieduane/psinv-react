@@ -14,6 +14,8 @@ import { useTranslations } from "next-intl";
 import BrightCallWidget from "../_components/BrightCallWidget";
 import { useSearchParams } from "next/navigation";
 import { ListPageResolveBrightcallWidget } from "./Components/Brightcall/ListPageResolveBrightcallWidget";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 // Configure Poppins font
 const poppins = Poppins({
@@ -300,9 +302,8 @@ const ListYourPropertyPageClient = () => {
                         </p>
                         <ul className="text-[#686A93] font-medium">
                             {t.raw("about.points").map((point: string, index: number) => (
-                                <li key={index} className="flex gap-6">
-                                    <img src="https://psinv.net/assets/img/list-your-property/images/check.svg"
-                                        alt="check" title="check" className="w-6 h-6" />
+                                <li key={index} className="flex gap-3 items-center">
+                                    <FontAwesomeIcon icon={faCheckCircle} color="#e35f27" className="w-6 h-6" />
                                     {point}
                                 </li>
                             ))}

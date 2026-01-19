@@ -55,7 +55,7 @@ export default function MortgageTabs() {
   return (
     <>
     <div className="max-w-[1320px] mx-auto px-4 py-8" dir = {isRtl ? "rtl" : "ltr"}>
-      <h1 className={`text-center text-2xl md:text-4xl font-bold text-gray-900 mb-8 ${outfit.className}`}>{t("Mortgage Tools")}</h1>
+      <h2 className={`text-center text-2xl md:text-4xl font-bold text-gray-900 mb-8 ${outfit.className}`}>{t("Mortgage Tools")}</h2>
       <ul className="flex flex-wrap justify-center mb-6 text-sm font-medium">
         {tabs.map((tab) => (
           <li key={tab.id} className="mr-2">

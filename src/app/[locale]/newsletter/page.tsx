@@ -15,9 +15,9 @@ export default function NewsletterPage() {
   const itemsPerPage = 9;
 
   // In a real app, you'd filter by category here if `newsletters` had a category field
-  const filteredItems = activeCategory === ALL_NEWSLETTER 
-    ? newsletters 
-    : newsletters; 
+  const filteredItems = activeCategory === ALL_NEWSLETTER
+    ? newsletters
+    : newsletters;
 
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const currentItems = filteredItems.slice(
@@ -76,11 +76,10 @@ export default function NewsletterPage() {
               <button
                 key={category}
                 onClick={() => handleCategoryClick(category)}
-                className={`px-6 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ${
-                  activeCategory === category
-                    ? 'bg-psiblue text-white shadow-md shadow-psiblue/20'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                }`}
+                className={`px-6 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ${activeCategory === category
+                  ? 'bg-psiblue text-white shadow-md shadow-psiblue/20'
+                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  }`}
               >
                 {category}
               </button>
@@ -107,7 +106,7 @@ export default function NewsletterPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  
+
                   <div className="flex flex-col flex-1 p-6">
                     <div className="flex items-center gap-3 text-sm text-gray-500 mb-3">
                       <span className="inline-flex items-center gap-1.5">
@@ -121,7 +120,7 @@ export default function NewsletterPage() {
                     <h2 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-psiblue transition-colors duration-200">
                       {item.title}
                     </h2>
-                    
+
                     {/* Spacer to push button to bottom */}
                     <div className="flex-1" />
 
@@ -131,7 +130,7 @@ export default function NewsletterPage() {
                         rel="noopener noreferrer"
                         title={item.title}
                         href={item.link}
-                        className="inline-flex items-center gap-2 mt-4 font-semibold text-psiblue hover:text-blue-700 transition-colors group/link"
+                        className="inline-flex items-center gap-2 mt-4 font-semibold text-psiblue hover:text-blue-700 transition-colors group/link hidden"
                       >
                         Read Newsletter
                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
@@ -157,20 +156,19 @@ export default function NewsletterPage() {
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
-              
+
               <div className="flex items-center gap-2">
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                   <button
                     key={page}
                     onClick={() => {
-                        setCurrentPage(page);
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      setCurrentPage(page);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className={`w-10 h-10 font-semibold rounded-xl transition-all duration-300 ${
-                      currentPage === page
-                        ? 'bg-psiblue text-white shadow-lg shadow-psiblue/20 scale-105'
-                        : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
-                    }`}
+                    className={`w-10 h-10 font-semibold rounded-xl transition-all duration-300 ${currentPage === page
+                      ? 'bg-psiblue text-white shadow-lg shadow-psiblue/20 scale-105'
+                      : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
+                      }`}
                   >
                     {page}
                   </button>
@@ -193,21 +191,21 @@ export default function NewsletterPage() {
       <section className="relative py-24 overflow-hidden">
         {/* Background definition */}
         <div className="absolute inset-0 bg-[#11174c]">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px]" />
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#11174c] via-transparent to-[#11174c]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px]" />
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#11174c] via-transparent to-[#11174c]" />
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10 text-center">
-            <div className="w-16 h-16 mx-auto bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-8 border border-white/10 shadow-xl shadow-black/10">
-                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-            </div>
+          <div className="w-16 h-16 mx-auto bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-8 border border-white/10 shadow-xl shadow-black/10">
+            <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Subscribe to our Newsletter</h2>
           <p className="text-white/70 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
             Get the latest insights, property trends, and exclusive offers delivered directly to your inbox.
           </p>
-          
+
           <HubspotNewsletterForm />
-          
+
           <p className="text-sm text-white/40 mt-6 flex items-center justify-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
             We respect your privacy. No spam, ever.

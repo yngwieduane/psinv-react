@@ -648,7 +648,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
                     {/* Right Actions */}
                     <div className={`hidden lg:flex items-center gap-6 ${linkColor}`}>
-                        <button onClick={modalHandler} className="hover:text-secondary transition-colors cursor-pointer"><Search size={20} /></button>
+                        <button onClick={modalHandler} aria-label='search' role="presentation" tabIndex={-1} 
+                        className="hover:text-secondary transition-colors cursor-pointer"><Search size={20} /></button>
                         <Link href="/favorites" title="Favorites" className="hover:text-secondary transition-colors relative cursor-pointer">
                             <Heart size={20} />
                             {favorites.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}
@@ -687,7 +688,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <button
+                    <button aria-label='mobile menu'
                         className="lg:hidden p-2 rounded-lg"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >

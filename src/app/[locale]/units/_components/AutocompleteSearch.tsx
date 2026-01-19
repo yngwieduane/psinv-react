@@ -76,7 +76,7 @@ export default function AutocompleteSearch({ isReset }: { isReset: any }) {
 
   return (
     <div className="relative">
-      <label htmlFor="email" className=" md:block text-sm/6 font-medium text-gray-900 hidden">
+      <label htmlFor="email" className=" block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">
         Property Name {isReset}
       </label>
       <div className="mt-2 grid grid-cols-1">

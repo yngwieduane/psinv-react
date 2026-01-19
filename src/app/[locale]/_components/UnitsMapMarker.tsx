@@ -9,6 +9,7 @@ import { generateSeoData } from './functions/generateSeoData';
 import './custom-advanced-marker.css';
 import { RealEstateIcon } from '../../../../public/icons/real-estate-icon';
 import { RealEstateListing } from '@/types/types';
+import PriceConvert from './tools/PriceConvert';
 
 interface Props {
     realEstateListing: RealEstateListing;
@@ -16,6 +17,7 @@ interface Props {
     onClick?: () => void;
     onClose?: () => void;
     isSelected?: boolean;
+    onPreview?: (unit: any) => void;
 }
 
 export const UnitsMapMarker: FunctionComponent<Props> = ({
@@ -23,7 +25,8 @@ export const UnitsMapMarker: FunctionComponent<Props> = ({
     unit,
     onClick,
     onClose,
-    isSelected
+    isSelected,
+    onPreview
 }) => {
     const [hovered, setHovered] = useState(false);
 
@@ -90,7 +93,7 @@ export const UnitsMapMarker: FunctionComponent<Props> = ({
                             <MapPin size={10} /> {unit.community}
                         </p>
                         <p className="text-sm font-bold text-primary mb-3">
-                            {unit.sellprice || unit.rent || 'Price on Request'}
+                            {unit.sellprice ? <PriceConvert price={unit.sellprice} minDecimal='0' /> : unit.rent ? <PriceConvert price={unit.rent} minDecimal='0' /> : 'Price on Request'}
                         </p>
 
                         <div className="flex gap-2">
@@ -110,12 +113,12 @@ export const UnitsMapMarker: FunctionComponent<Props> = ({
                                 };
                                 const seoData = generateSeoData(propertyData);
                                 return (
-                                    <Link
-                                        href={`/unit/${seoData.seoUrl}`}
-                                        className="flex-1 block py-2 bg-black text-white text-center text-xs font-bold rounded hover:bg-primary/90 transition-colors"
+                                    <button
+                                        onClick={() => onPreview?.(unit)}
+                                        className="cursor-pointer flex-1 block py-2 bg-black text-white text-center text-xs font-bold rounded hover:bg-primary/90 transition-colors"
                                     >
                                         Preview
-                                    </Link>
+                                    </button>
                                 );
                             })()}
                         </div>

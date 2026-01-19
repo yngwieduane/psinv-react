@@ -25,9 +25,8 @@ export default function DeveloperPageClient() {
 
     return (
         <>
-
-            <div className="mx-auto container pt-28 md:pt-40 pb-24">
-                <div>
+            <div className="mx-auto container pt-32">
+                <div className="">
                     <Breadcrumb />
                 </div>
                 <h1 className="text-2xl text-center truncate">Developers</h1>

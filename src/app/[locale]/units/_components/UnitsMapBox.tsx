@@ -9,6 +9,7 @@ import { useSearchParams } from "next/navigation";
 import { UnitListing } from "@/types/types";
 import PriceConvert from '../../_components/tools/PriceConvert';
 import { UnitsMapMarker } from '../../_components/UnitsMapMarker';
+import PreviewModal from './PreviewModal';
 
 interface UnitsMapBoxProps {
     // We can accept props if passed from parent, but standard practice here seems to be reading search params
@@ -22,6 +23,7 @@ const UnitsMapBox = (props: any) => {
     const [mapZoom, setMapZoom] = useState(10);
     const [data, setData] = useState<UnitListing[]>([]);
     const [loading, setLoading] = useState(false);
+    const [previewProperty, setPreviewProperty] = useState<UnitListing | null>(null);
     const itemRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
     useEffect(() => {
@@ -92,6 +94,12 @@ const UnitsMapBox = (props: any) => {
             setMapCenter({ lat, lng });
             setMapZoom(14);
         }
+    };
+
+    const handlePreview = (unit: any) => {
+        setPreviewProperty(unit);
+        // You might want to close the info window when preview is opened?
+        // setSelectedId(null); 
     };
 
     if (!apiKey) {
@@ -203,6 +211,7 @@ const UnitsMapBox = (props: any) => {
                                     onClick={() => handleSelectProperty(unit)}
                                     onClose={() => setSelectedId(null)}
                                     isSelected={isSelected}
+                                    onPreview={handlePreview}
                                 />
                             );
                         })}
@@ -211,6 +220,15 @@ const UnitsMapBox = (props: any) => {
                     </GoogleMap>
                 </APIProvider>
             </div>
+
+            {/* Preview Modal */}
+            {previewProperty && (
+                <PreviewModal
+                    property={previewProperty}
+                    onClose={() => setPreviewProperty(null)}
+                    onViewDetails={() => { }} // Not strictly needed inside modal unless modal uses it
+                />
+            )}
         </div>
     );
 };

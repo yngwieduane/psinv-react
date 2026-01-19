@@ -1,10 +1,27 @@
 {
   "HomePageBanner": {
     "sign_up_btn": "Sign Up",
-    "more_btn": "Explore More"
+    "more_btn": "Explore More",
+    "register" : "Register Your Interest",
+    "submit" : "Submit"
   },
   "MainSliderHome": {
     "slides": {
+      "ohana_branded_residences": {
+        "title": "Ohana Branded Residences",
+        "location": "Yas Island",
+        "description": "A new branded residential community located directly on Yas Canal. The project offers waterfront apartments, townhouses, Villas, and Maisonettes, positioned near Yas Island’s key attractions and lifestyle destinations. It features premium amenities and flexible entry options, including a 5% down payment."
+      },
+      "sobha": {
+        "title": "Sobha",
+        "location": "Al Bahia Abu Dhabi",
+        "description": "Sobha’s latest development in Abu Dhabi focuses on high-quality waterfront living with a strong emphasis on design, construction standards, and long-term value. The project targets both end-users and investors seeking premium residences in a prime location."
+      },
+      "the_row": {
+        "title": "The Row",
+        "location": "Saadiyat Island",
+        "description": "Located within Saadiyat Cultural District, The Row is a contemporary residential development offering spacious 1 - 3-bedroom apartments. It presents a smart entry into one of Abu Dhabi’s most established and high-demand destinations, with attractive payment plans starting from a 5% down payment."
+      },
       "bashayer_residences": {
         "title": "Bashayer Residences",
         "location": "Hudayriyat Island",
@@ -230,7 +247,22 @@
   "ReportDownload": {
     "title": "Market Insights",
     "desc": "Monthly Report DXB",
-    "download": "Download Now"
+    "download": "Download Now",
+    "form": {
+      "title" : "Monthly Report",
+      "firstname" : "First Name",
+      "lastname" : "Last Name",
+      "email" : "Email",      
+      "button": "Download Report",
+      "agreements" : {
+        "1": "I agree to the Terms & Conditions and Privacy Policy",
+        "2": "Agree to receive calls and communications",
+        "3": "Receive calls about various projects"
+      },
+      "Whatsapp" : "Whatsapp",
+      "success" : "Form submitted successfully!",
+      "error" : "Submission failed. Try again."
+    }
   },
   "RealEstatePartner": {
     "title": {
@@ -304,6 +336,12 @@
     "appLinks": "Available on App Store and Google Play"
   },
   "Common_Form_Agreements": {
+    "byclickingsubmit":{
+      "part1" : "By clicking Submit, you agree to our",
+      "terms" : "Terms & Conditions",
+      "and" : "and",
+      "privacy": "Privacy Policy"
+    },
     "agreement1": "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
     "agreement2": "Agree to receive multiple calls and communications via various channels regarding my enquiry",
     "agreement3": "Agree to receive calls and communications via various channels on various projects, products, and services"
@@ -373,6 +411,7 @@
     "About PSI": "About PSI",
     "Our Story": "Our Story",
     "Awards": "Awards",
+    "Blog": "Blog",
     "Media": "Media"
   },
   "About_Us_Page": {
