@@ -2,8 +2,8 @@
   "HomePageBanner": {
     "sign_up_btn": "Sign Up",
     "more_btn": "Explore More",
-    "register" : "Register Your Interest",
-    "submit" : "Submit"
+    "register": "Register Your Interest",
+    "submit": "Submit"
   },
   "MainSliderHome": {
     "slides": {
@@ -227,19 +227,19 @@
     "desc": "Monthly Report DXB",
     "download": "Download Now",
     "form": {
-      "title" : "Monthly Report",
-      "firstname" : "First Name",
-      "lastname" : "Last Name",
-      "email" : "Email",      
+      "title": "Monthly Report",
+      "firstname": "First Name",
+      "lastname": "Last Name",
+      "email": "Email",
       "button": "Download Report",
-      "agreements" : {
+      "agreements": {
         "1": "I agree to the Terms & Conditions and Privacy Policy",
         "2": "Agree to receive calls and communications",
         "3": "Receive calls about various projects"
       },
-      "Whatsapp" : "Whatsapp",
-      "success" : "Form submitted successfully!",
-      "error" : "Submission failed. Try again."
+      "Whatsapp": "Whatsapp",
+      "success": "Form submitted successfully!",
+      "error": "Submission failed. Try again."
     }
   },
   "RealEstatePartner": {
@@ -314,10 +314,10 @@
     "appLinks": "Verfügbar im App Store und bei Google Play"
   },
   "Common_Form_Agreements": {
-    "byclickingsubmit":{
-      "part1" : "By clicking Submit, you agree to our",
-      "terms" : "Terms & Conditions",
-      "and" : "and",
+    "byclickingsubmit": {
+      "part1": "By clicking Submit, you agree to our",
+      "terms": "Terms & Conditions",
+      "and": "and",
       "privacy": "Privacy Policy"
     },
     "agreement1": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle von PSI zwischen 09:00 Uhr und 21:00 Uhr zu erhalten.",
@@ -663,6 +663,58 @@
       "off_address": "Büro 403, Sobha Sapphire, Business Bay, Dubai"
     }
   },
+  "ProjectPage": {
+    "overview": "Überblick",
+    "gallery": "Galerie",
+    "floor_plan": "Grundriss",
+    "location": "Standort",
+    "photo_gallery": "Fotogalerie",
+    "unit_models": "Einheitenmodelle",
+    "facts": "Projektdaten",
+    "faqs": "FAQs",
+    "facilities_in": "Einrichtungen in",
+    "amenities_in": "Annehmlichkeiten in",
+    "vicinities_in": "Umgebung in",
+    "location_plan": "Lageplan",
+    "payment_plan": "Zahlungsplan",
+    "master_plan": "Gesamtplan",
+    "location_map": "Lagekarte",
+    "property_details": "Immobiliendetails",
+    "aminities_in": "Annehmlichkeiten in",
+    "back": "Zurück",
+    "status": "Status",
+    "save": "Speichern",
+    "saved": "Gespeichert",
+    "compare": "Vergleichen",
+    "compared": "Verglichen",
+    "nearby": "In der Nähe",
+    "developer": "Bauträger",
+    "construction_update": "Baufortschritt",
+    "on_track": "Nach Plan",
+    "excavation": "Aushub",
+    "structure": "Rohbau",
+    "finishing": "Innenausbau",
+    "handover": "Übergabe",
+    "features": "Merkmale",
+    "available_bedrooms": "Verfügbare Schlafzimmer",
+    "property_types": "Immobilientypen",
+    "master_developer": "Hauptbauträger",
+    "price_range": "Preisspanne (AED)",
+    "area_range": "Flächenbereich (SqFt)",
+    "number_of_apartment": "Anzahl der Wohnungen",
+    "property_type": "Immobilientyp",
+    "property_plan": "Immobilienplan",
+    "property_usage": "Nutzungsart",
+    "completion_date": "Fertigstellungsdatum",
+    "handover_date": "Übergabedatum",
+    "launch_date": "Startdatum",
+    "video_tour": "Videotour",
+    "view_full": "Vollansicht",
+    "open_in_google_maps": "In Google Maps öffnen",
+    "facilities_and_amenities": "Einrichtungen und Annehmlichkeiten",
+    "community_images": "Gemeinschaftsbilder",
+    "project_gallery": "Projektgalerie"
+  },
   "InquiryForm": {
     "title": "Lassen Sie uns wissen, ob Sie interessiert sind!",
     "fields": {
@@ -681,6 +733,9 @@
       "email": {
         "label": "E-Mail",
         "placeholder": "E-Mail-Adresse"
+      },
+      "message": {
+        "placeholder": "Hallo, ich würde gerne Kontakt mit Ihnen aufnehmen"
       }
     },
     "buttons": {
@@ -713,7 +768,9 @@
       "firstName": "Vorname ist erforderlich",
       "lastName": "Nachname ist erforderlich",
       "email": "Ungültige E-Mail-Adresse",
-      "phone": "Ungültige Telefonnummer"
+      "phone": "Ungültige Telefonnummer",
+      "message": "Nachricht ist erforderlich",
+      "agreement1": "Sie müssen dem zustimmen"
     }
   },
   "CryptoPage": {
@@ -1322,6 +1379,48 @@
         "title": "Mit der Marke, der Sie vertrauen",
         "description": "Vertrauen Sie der Marke, die Qualität, Zuverlässigkeit liefert und Ihre Bedürfnisse erfüllt. Bleiben Sie bei der Marke, der Sie vertrauen."
       }
+    }
+  },
+  "InquiryFormProject": {
+    "title": "Anfragen",
+    "fields": {
+      "firstName": {
+        "placeholder": "Vorname"
+      },
+      "lastName": {
+        "placeholder": "Nachname"
+      },
+      "email": {
+        "placeholder": "E-Mail"
+      },
+      "phone": {
+        "placeholder": "536356356"
+      },
+      "message": {
+        "placeholder": "Hallo, ich möchte Sie kontaktieren"
+      }
+    },
+    "buttons": {
+      "submit": "Senden",
+      "submitting": "Wird gesendet..."
+    },
+    "alerts": {
+      "success": "Formular erfolgreich gesendet!",
+      "error": "Senden fehlgeschlagen. Bitte erneut versuchen."
+    },
+    "fineprint": {
+      "text": "Durch Klicken auf 'Senden' stimmen Sie unseren <terms>Allgemeinen Geschäftsbedingungen</terms> und unserer <privacy>Datenschutzrichtlinie</privacy> zu."
+    },
+    "consents": {
+      "c1": "Zustimmung zum Erhalt von Anrufen und Mitteilungen über verschiedene Kanäle von PSI von 09:00 bis 21:00 Uhr"
+    },
+    "errors": {
+      "firstName": "Vorname ist erforderlich",
+      "lastName": "Nachname ist erforderlich",
+      "email": "Ungültige E-Mail-Adresse",
+      "phone": "Ungültige Telefonnummer",
+      "message": "Nachricht ist erforderlich",
+      "agreement1": "Sie müssen dem zustimmen"
     }
   }
 }
