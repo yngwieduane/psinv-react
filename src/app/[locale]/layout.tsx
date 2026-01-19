@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
@@ -56,7 +57,16 @@ type Props = {
 // ✅ Dynamic metadata generator
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = params;
-
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") ?? "";
+  // Remove duplicate slashes and ensure trailing slash for home page
+  let canonicalPath = pathname.replace(/\/+/g, '/');
+  // Add trailing slash only for root locale page
+  if (canonicalPath === '/en') {
+    canonicalPath = '/en/'; 
+  } else if (canonicalPath === '/ar') {
+    canonicalPath = '/ar/';
+  }
   // Ensure locale is valid (fallback to default)
   const currentLocale = locales.includes(locale as any) ? locale : defaultLocale;
 
@@ -81,7 +91,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     publisher: 'Property Shop Investment (PSI)',
 
     alternates: {
-      canonical: `${siteBaseUrl}/${currentLocale}`,
+      canonical: `${siteBaseUrl}${canonicalPath}`,
       languages: languageAlternates,
     },
     openGraph: {
