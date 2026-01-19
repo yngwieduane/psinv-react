@@ -114,48 +114,47 @@
     "form_submit": "Отправить",
     "form_submitting": "Отправка..."
   },
-
   "Why_PSI": {
-  "emirati_title": "Эмиратский Хаб",
-  "youngster_title": "Программа для молодежи",
-  "crypto_title": "Криптовалюта",
-  "international_title": "PSI International",
-  "company_title": "Профиль компании",
-  "why_psi": {
-    "title": "Почему PSI?",
-    "desc": "Наша комбинация видения, опыта, специализированных команд, энтузиазма и прозрачности позволяет Property Shop Investment устанавливать стандарты рынка и влиять на рынок недвижимости Абу-Даби.",
-    "btn": "Узнать больше о PSI"
-  },
-  "emirati_hub": {
-    "title": "PSI Эмиратский Хаб",
-    "desc": {
-      "part1": "Помогаем гражданам ОАЭ преуспевать и лидировать в секторе недвижимости через",
-      "part2": "PSI Эмиратский Хаб."
+    "emirati_title": "Эмиратский Хаб",
+    "youngster_title": "Программа для молодежи",
+    "crypto_title": "Криптовалюта",
+    "international_title": "PSI International",
+    "company_title": "Профиль компании",
+    "why_psi": {
+      "title": "Почему PSI?",
+      "desc": "Наша комбинация видения, опыта, специализированных команд, энтузиазма и прозрачности позволяет Property Shop Investment устанавливать стандарты рынка и влиять на рынок недвижимости Абу-Даби.",
+      "btn": "Узнать больше о PSI"
     },
-    "btn": "Узнать больше о PSI Эмиратском Хабе"
-  },
-  "youngster_program": {
-    "title": "PSI Молодежная программа Абу-Даби",
-    "desc": {
-      "part1": "Раскройте свой потенциал через",
-      "part2": "PSI Молодежную программу Абу-Даби",
-      "part3": "путем развития навыков и формирования будущего"
+    "emirati_hub": {
+      "title": "PSI Эмиратский Хаб",
+      "desc": {
+        "part1": "Помогаем гражданам ОАЭ преуспевать и лидировать в секторе недвижимости через",
+        "part2": "PSI Эмиратский Хаб."
+      },
+      "btn": "Узнать больше о PSI Эмиратском Хабе"
     },
-    "btn": "Узнать больше о программе для молодежи PSI"
-  },
-  "crypto": {
-    "title": "Покупка недвижимости с помощью криптовалюты",
-    "desc": {
-      "part1": "С помощью связей, сети, знаний и руководств по стране мы создаем инвестиционные маршруты, основываясь на",
-      "part2": "ваших потребностях, ценностях, стиле жизни и целях."
+    "youngster_program": {
+      "title": "PSI Молодежная программа Абу-Даби",
+      "desc": {
+        "part1": "Раскройте свой потенциал через",
+        "part2": "PSI Молодежную программу Абу-Даби",
+        "part3": "путем развития навыков и формирования будущего"
+      },
+      "btn": "Узнать больше о программе для молодежи PSI"
     },
-    "btn": "Узнать больше о криптовалюте"
-  },
-  "international": {
-    "title": "PSI International",
-    "desc": "С 50-летним опытом, ОАЭ предлагает лучший климат для управления капиталом, релокации и инвестиционных портфелей.",
-    "btn": "Узнать больше о PSI International"
-  }
+    "crypto": {
+      "title": "Покупка недвижимости с помощью криптовалюты",
+      "desc": {
+        "part1": "С помощью связей, сети, знаний и руководств по стране мы создаем инвестиционные маршруты, основываясь на",
+        "part2": "ваших потребностях, ценностях, стиле жизни и целях."
+      },
+      "btn": "Узнать больше о криптовалюте"
+    },
+    "international": {
+      "title": "PSI International",
+      "desc": "С 50-летним опытом, ОАЭ предлагает лучший климат для управления капиталом, релокации и инвестиционных портфелей.",
+      "btn": "Узнать больше о PSI International"
+    }
   },
   "Mortgage_Tabs": {
     "mortgage": "Калькулятор ипотеки",
@@ -265,7 +264,6 @@
       "error": "Не удалось отправить форму. Попробуйте снова."
     }
   },
-
   "RealEstatePartner": {
     "title": {
       "part1": "ВАШ НАДЕЖНЫЙ",
@@ -317,7 +315,6 @@
       }
     }
   },
-
   "googleReview": {
     "title": "Отзывы",
     "google": "Google",
@@ -689,23 +686,56 @@
     }
   },
   "ProjectPage": {
-    "overview": "Overview",
-    "gallery": "Gallery",
-    "floor_plan": "Floor Plan",
-    "location": "Location",
-    "photo_gallery": "Photo Gallery",
-    "unit_models": "Unit Models",
-    "facts": "Facts",
-    "faqs": "FAQs",
-    "facilities_in": "Facilities in",
-    "amenities_in": "Amenities in",
-    "vicinities_in": "Vicinities in",
-    "location_plan": "Location Plan",
-    "payment_plan": "Payment Plan",
-    "master_plan": "Master Plan",
-    "location_map": "Location Map",
-    "property_details": "Property Details",
-    "aminities_in": "Amenities in"
+    "overview": "Обзор",
+    "gallery": "Галерея",
+    "floor_plan": "План этажа",
+    "location": "Расположение",
+    "photo_gallery": "Фотогалерея",
+    "unit_models": "Модели объектов",
+    "facts": "Факты о проекте",
+    "faqs": "Часто задаваемые вопросы",
+    "facilities_in": "Удобства в",
+    "amenities_in": "Удобства в",
+    "vicinities_in": "Окрестности в",
+    "location_plan": "План расположения",
+    "payment_plan": "План оплаты",
+    "master_plan": "Генеральный план",
+    "location_map": "Карта расположения",
+    "property_details": "Детали объекта",
+    "aminities_in": "Удобства в",
+    "back": "Назад",
+    "status": "Статус",
+    "save": "Сохранить",
+    "saved": "Сохранено",
+    "compare": "Сравнить",
+    "compared": "В сравнении",
+    "nearby": "Рядом",
+    "developer": "Застройщик",
+    "construction_update": "Ход строительства",
+    "on_track": "По графику",
+    "excavation": "Земляные работы",
+    "structure": "Каркас",
+    "finishing": "Отделка",
+    "handover": "Передача ключей",
+    "features": "Особенности",
+    "available_bedrooms": "Доступные спальни",
+    "property_types": "Типы недвижимости",
+    "master_developer": "Главный застройщик",
+    "price_range": "Диапазон цен (AED)",
+    "area_range": "Диапазон площади (кв. футов)",
+    "number_of_apartment": "Количество квартир",
+    "property_type": "Тип недвижимости",
+    "property_plan": "План недвижимости",
+    "property_usage": "Использование недвижимости",
+    "completion_date": "Дата завершения",
+    "handover_date": "Дата сдачи",
+    "launch_date": "Дата запуска",
+    "video_tour": "Видеотур",
+    "view_full": "Посмотреть полностью",
+    "open_in_google_maps": "Открыть в Google Картах",
+    "facilities_and_amenities": "Удобства и услуги",
+    "community_images": "Изображения сообщества",
+    "project_gallery": "Галерея проекта"
   },
   "CryptoPage": {
     "hero": {
@@ -1370,6 +1400,48 @@
         "title": "С брендом, которому вы доверяете",
         "description": "Доверяйте бренду, который обеспечивает качество, надежность и удовлетворяет ваши потребности. Оставайтесь с брендом, которому доверяете."
       }
+    }
+  },
+  "InquiryFormProject": {
+    "title": "Запрос",
+    "fields": {
+      "firstName": {
+        "placeholder": "Имя"
+      },
+      "lastName": {
+        "placeholder": "Фамилия"
+      },
+      "email": {
+        "placeholder": "Эл. почта"
+      },
+      "phone": {
+        "placeholder": "536356356"
+      },
+      "message": {
+        "placeholder": "Здравствуйте, я хотел бы с вами связаться"
+      }
+    },
+    "buttons": {
+      "submit": "Отправить",
+      "submitting": "Отправка..."
+    },
+    "alerts": {
+      "success": "Форма успешно отправлена!",
+      "error": "Ошибка при отправке. Попробуйте снова."
+    },
+    "fineprint": {
+      "text": "Нажимая «Отправить», вы соглашаетесь с нашими <terms>Условиями и Положениями</terms> и <privacy>Политикой конфиденциальности</privacy>"
+    },
+    "consents": {
+      "c1": "Согласен получать звонки и сообщения через различные каналы от PSI с 09:00 до 21:00"
+    },
+    "errors": {
+      "firstName": "Имя обязательно",
+      "lastName": "Фамилия обязательна",
+      "email": "Неверный адрес электронной почты",
+      "phone": "Неверный номер телефона",
+      "message": "Сообщение обязательно",
+      "agreement1": "Вы должны согласиться с этим"
     }
   }
 }

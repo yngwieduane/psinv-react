@@ -2,8 +2,8 @@
   "HomePageBanner": {
     "sign_up_btn": "Sign Up",
     "more_btn": "Explore More",
-    "register" : "Register Your Interest",
-    "submit" : "Submit"
+    "register": "Register Your Interest",
+    "submit": "Submit"
   },
   "MainSliderHome": {
     "slides": {
@@ -249,19 +249,19 @@
     "desc": "Monthly Report DXB",
     "download": "Download Now",
     "form": {
-      "title" : "Monthly Report",
-      "firstname" : "First Name",
-      "lastname" : "Last Name",
-      "email" : "Email",      
+      "title": "Monthly Report",
+      "firstname": "First Name",
+      "lastname": "Last Name",
+      "email": "Email",
       "button": "Download Report",
-      "agreements" : {
+      "agreements": {
         "1": "I agree to the Terms & Conditions and Privacy Policy",
         "2": "Agree to receive calls and communications",
         "3": "Receive calls about various projects"
       },
-      "Whatsapp" : "Whatsapp",
-      "success" : "Form submitted successfully!",
-      "error" : "Submission failed. Try again."
+      "Whatsapp": "Whatsapp",
+      "success": "Form submitted successfully!",
+      "error": "Submission failed. Try again."
     }
   },
   "RealEstatePartner": {
@@ -336,10 +336,10 @@
     "appLinks": "Available on App Store and Google Play"
   },
   "Common_Form_Agreements": {
-    "byclickingsubmit":{
-      "part1" : "By clicking Submit, you agree to our",
-      "terms" : "Terms & Conditions",
-      "and" : "and",
+    "byclickingsubmit": {
+      "part1": "By clicking Submit, you agree to our",
+      "terms": "Terms & Conditions",
+      "and": "and",
       "privacy": "Privacy Policy"
     },
     "agreement1": "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
@@ -588,7 +588,7 @@
     "location": "Location",
     "photo_gallery": "Photo Gallery",
     "unit_models": "Unit Models",
-    "facts": "Facts",
+    "facts": "Project Facts",
     "faqs": "FAQs",
     "facilities_in": "Facilities in",
     "amenities_in": "Amenities in",
@@ -598,7 +598,40 @@
     "master_plan": "Master Plan",
     "location_map": "Location Map",
     "property_details": "Property Details",
-    "aminities_in": "Amenities in"
+    "aminities_in": "Amenities in",
+    "back": "Back",
+    "status": "Status",
+    "save": "Save",
+    "saved": "Saved",
+    "compare": "Compare",
+    "compared": "Compared",
+    "nearby": "Nearby",
+    "developer": "Developer",
+    "construction_update": "Construction Update",
+    "on_track": "On Track",
+    "excavation": "Excavation",
+    "structure": "Structure",
+    "finishing": "Finishing",
+    "handover": "Handover",
+    "features": "Features",
+    "available_bedrooms": "Available Bedrooms",
+    "property_types": "Property Types",
+    "master_developer": "Master Developer",
+    "price_range": "Price Range (AED)",
+    "area_range": "Area Range (SqFt)",
+    "number_of_apartment": "Number of Apartment",
+    "property_type": "Property Type",
+    "property_plan": "Property Plan",
+    "property_usage": "Property Usage",
+    "completion_date": "Completion Date",
+    "handover_date": "Handover Date",
+    "launch_date": "Launch Date",
+    "video_tour": "Video Tour",
+    "view_full": "View Full",
+    "open_in_google_maps": "Open in Google Maps",
+    "facilities_and_amenities": "Facilities and Amenities",
+    "community_images": "Community Images",
+    "project_gallery": "Project Gallery"
   },
   "UnitsPage": {
     "title": "Hello world!",
@@ -6193,6 +6226,48 @@
           ]
         }
       ]
+    }
+  },
+  "InquiryFormProject": {
+    "title": "Inquire",
+    "fields": {
+      "firstName": {
+        "placeholder": "First Name"
+      },
+      "lastName": {
+        "placeholder": "Last Name"
+      },
+      "email": {
+        "placeholder": "E-mail"
+      },
+      "phone": {
+        "placeholder": "536356356"
+      },
+      "message": {
+        "placeholder": "Hi, I would like to contact you"
+      }
+    },
+    "buttons": {
+      "submit": "Submit",
+      "submitting": "Submitting..."
+    },
+    "alerts": {
+      "success": "Form submitted successfully!",
+      "error": "Submission failed. Try again."
+    },
+    "fineprint": {
+      "text": "By clicking Submit, you agree to our <terms>Terms & Conditions</terms> and <privacy>Privacy Policy</privacy>"
+    },
+    "consents": {
+      "c1": "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm"
+    },
+    "errors": {
+      "firstName": "First name is required",
+      "lastName": "Last name is required",
+      "email": "Invalid email address",
+      "phone": "Invalid phone number",
+      "message": "Message is required",
+      "agreement1": "You must agree to this"
     }
   }
 }

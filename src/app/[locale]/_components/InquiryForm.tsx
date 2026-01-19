@@ -8,27 +8,32 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { sendGTMEvent } from '@next/third-parties/google'
+import { sendGTMEvent } from '@next/third-parties/google';
+import { useTranslations } from "next-intl";
 
-const schema = z.object({
-  firstName: z.string().min(1, { message: "First name is required" }),
-  lastName: z.string().min(1, { message: "Last name is required" }),
-  email: z.string().email({ message: "Invalid email address" }),
-  phone: z.string().min(7, { message: "Invalid phone number" }),
-  message: z.string().min(5, { message: "Message is required" }),
-  agreement1: z.boolean().refine((val) => val, { message: "You must agree to this" }),
-  agreement2: z.boolean().optional(),
-  agreement3: z.boolean().optional(),
-});
 interface InquiryFormProps {
   hideFeedbackButton?: boolean;
 }
-type FormData = z.infer<typeof schema>;
 
 const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false }) => {
+  const t = useTranslations('InquiryFormProject');
   const router = useRouter();
   const pathname = usePathname();
   const locale = pathname.split("/")[1] || "en";
+
+  const schema = z.object({
+    firstName: z.string().min(1, { message: t('errors.firstName') }),
+    lastName: z.string().min(1, { message: t('errors.lastName') }),
+    email: z.string().email({ message: t('errors.email') }),
+    phone: z.string().min(7, { message: t('errors.phone') }),
+    message: z.string().min(5, { message: t('errors.message') }), // Assuming key 'errors.message' exists or will be added
+    agreement1: z.boolean().refine((val) => val, { message: t('errors.agreement1') }), // Assuming key 'errors.agreement1' exists
+    agreement2: z.boolean().optional(),
+    agreement3: z.boolean().optional(),
+  });
+
+  type FormData = z.infer<typeof schema>;
+
   const {
     register,
     handleSubmit,
@@ -45,6 +50,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [postId, setPostId] = useState<string | null>(null);
+
   const onSubmit = async (data: FormData) => {
     sendGTMEvent({ event: 'Inquiry', value: '1' })
     setIsSubmitting(true);
@@ -163,7 +169,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
         setPostId("Success");
         window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
       } else {
-        alert("Error submitting the form.");
+        alert(t('alerts.error'));
       }
     } catch (error) {
       console.error("Error:", error);
@@ -172,6 +178,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
       setIsSubmitting(false);
     }
   };
+
   return (
     <>
       <form
@@ -181,17 +188,17 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
         {/* Success/Error Messages */}
         {postId === "Success" && (
           <div className="p-3 mb-4 rounded bg-green-500 text-white">
-            Form submitted successfully!
+            {t('alerts.success')}
           </div>
         )}
         {postId === "Error" && (
           <div className="p-3 mb-4 rounded bg-red-500 text-white">
-            Submission failed. Try again.
+            {t('alerts.error')}
           </div>
         )}
 
         <h2 className="text-xl font-serif font-bold text-gray-900 mb-6">
-          Inquire
+          {t('title')}
         </h2>
 
         <div className="grid grid-cols-1 gap-4">
@@ -202,7 +209,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
               <input
                 type="text"
                 {...register("firstName")}
-                placeholder="First Name"
+                placeholder={t('fields.firstName.placeholder')}
                 className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
               />
               {errors.firstName && (
@@ -215,7 +222,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
               <input
                 type="text"
                 {...register("lastName")}
-                placeholder="Last Name"
+                placeholder={t('fields.lastName.placeholder')}
                 className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
               />
               {errors.lastName && (
@@ -228,7 +235,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
             <input
               type="email"
               {...register("email")}
-              placeholder="E-mail"
+              placeholder={t('fields.email.placeholder')}
               className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
             />
             {errors.email && (
@@ -248,7 +255,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
                     international
                     defaultCountry="AE"
                     countryCallingCodeEditable={false}
-                    placeholder="536356356"
+                    placeholder={t('fields.phone.placeholder')}
                     className="psi-phone-input"
                   />
                 )}
@@ -265,7 +272,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
         <div className="mt-4">
           <textarea
             {...register("message")}
-            placeholder="Hi, I would like to contact you"
+            placeholder={t('fields.message.placeholder')}
             className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 h-40 resize-none"
           />
           {errors.message && (
@@ -279,13 +286,16 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
           disabled={isSubmitting}
           className="cursor-pointer w-full mt-6 border bg-indigo-950 border-indigo-950 text-white font-bold py-3 rounded-xl hover:bg-gray-800 hover:text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          {isSubmitting ? "Submitting..." : "Submit"}
+          {isSubmitting ? t('buttons.submitting') : t('buttons.submit')}
         </button>
 
         {/* Consent text like screenshot */}
         <div className="text-[10px] text-gray-500 space-y-2 mt-4">
           <p className="italic">
-            By clicking Submit, you agree to our Terms &amp; Conditions and Privacy Policy
+            {t.rich('fineprint.text', {
+              terms: (chunks) => <span className="underline">{chunks}</span>,
+              privacy: (chunks) => <span className="underline">{chunks}</span>
+            })}
           </p>
 
           <label className="flex items-start gap-2 cursor-pointer">
@@ -296,8 +306,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ hideFeedbackButton = false })
               defaultChecked
             />
             <span>
-              Agree to receive calls and communications via various channels from PSI from
-              09:00 am to 09:00 pm
+              {t('consents.c1')}
             </span>
           </label>
 

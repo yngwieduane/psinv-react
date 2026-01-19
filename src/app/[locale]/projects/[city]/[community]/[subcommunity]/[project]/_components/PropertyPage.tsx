@@ -23,9 +23,11 @@ import { useUser } from '@/context/userContext';
 import TableRow from './TableRow';
 import PaymentPlansAI from './PaymentPlansAI';
 import UnitModelsAI from './UnitModelsAI';
+import { useRouter } from "next/navigation";
 
 
 const PropertyPage = (props: any) => {
+    const router = useRouter();
     const format = useFormatter();
     const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
     let HOdate, launchDate, completionDate, minprice, maxPrice, areaRangeMin, areaRangeMax;
@@ -61,18 +63,18 @@ const PropertyPage = (props: any) => {
 
     const galleryData = [
         {
-            title: "Facilities and Amenities",
+            title: t('facilities_and_amenities'),
             image: facilitiesAndAmenitiesImages,
         },
         {
-            title: "Community Images",
+            title: t('community_images'),
             image: communityImages,
         }
     ];
 
     const allGalleryData = [
         {
-            title: "Project Gallery",
+            title: t('project_gallery'),
             image: generalImagesNew
         },
         ...galleryData
@@ -80,7 +82,7 @@ const PropertyPage = (props: any) => {
 
     const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
     const currentGalleryImages = allGalleryData[activeGalleryIndex]?.image || [];
-    const currentTabTitle = allGalleryData[activeGalleryIndex]?.title || "Gallery";
+    const currentTabTitle = allGalleryData[activeGalleryIndex]?.title || t('gallery');
 
     let availbeds = '';
     if (props.data['availableBedrooms']) {
@@ -210,21 +212,22 @@ const PropertyPage = (props: any) => {
                 <div className="relative md:min-h-[80vh] h-[80vh] md:h-[auto]  md:min-h-screen md:flex flex-column justify-center">
                     <div className="absolute inset-0">
                         <img src={imgFeatured} className="w-full h-full object-cover" alt="Hero" />
-                        <div className="absolute inset-0" style={{backgroundImage:"linear-gradient(79deg, #000 -16%, rgb(0 0 0 / 45%) 43%)"}} />
+                        <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(79deg, #000 -16%, rgb(0 0 0 / 45%) 43%)" }} />
                     </div>
 
                     <div className="relative h-full container mx-auto px-4 md:px-12 flex flex-col justify-end pb-12 md:pb-15 md:pt-40 text-white">
-                        <button className="absolute top-26 md:top-32 left-4 md:left-12 flex items-center gap-2 text-white/80 hover:text-white transition-colors bg-black/20 px-4 py-2 rounded-full backdrop-blur-md text-sm font-bold z-10">
-                            <ArrowRight className="rotate-180" size={16} /> Back
+                        <button onClick={() => router.back()}
+                            className="absolute top-26 md:top-32 left-4 md:left-12 cursor-pointer flex items-center gap-2 text-white/80 hover:text-white transition-colors bg-black/20 px-4 py-2 rounded-full backdrop-blur-md text-sm font-bold z-10">
+                            <ArrowRight className="rotate-180" size={16} /> {t('back')}
                         </button>
 
                         <div className="flex flex-col md:flex-row items-end justify-between gap-8 md:gap-12 pb-20 md:pb-0">
                             <div className="max-w-3xl w-full">
                                 <div className="flex flex-wrap items-center gap-3 mb-4">
-                                    <span className="bg-secondary px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider rounded">Status: {props.data["propertyPlan"]}</span>
+                                    <span className="bg-secondary px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider rounded">{t('status')}: {props.data["propertyPlan"]}</span>
                                     <span className="bg-white/20 backdrop-blur-md border border-white/30 px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider rounded">{props.data["masterDeveloper"]}</span>
                                 </div>
-                                <h1 className="text-3xl sm:text-4xl md:text-7xl font-serif font-bold mb-4 drop-shadow-lg leading-tight">{props.data["propertyName"]}</h1>
+                                <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold mb-4 drop-shadow-lg leading-tight">{props.data["propertyName"]}</h1>
                                 <div className="flex items-center gap-2 text-lg md:text-2xl text-gray-200 font-light mb-6 md:mb-8">
                                     <MapPin size={24} className="text-secondary shrink-0" />
                                     <span className="truncate">{props.data["community"]}, {props.data["city"]}</span>
@@ -236,7 +239,7 @@ const PropertyPage = (props: any) => {
 
                                 <div className="flex gap-4 mt-8">
                                     <button onClick={() => toggleFavorite({ id: props.data["propertyID"], type: 'project' })} className={`cursor-pointer flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 backdrop-blur-md transition-colors font-bold ${saved ? 'bg-red-500 text-white border-red-500' : 'bg-white/10 text-white hover:bg-white/20'}`}>
-                                        <Heart size={20} fill={saved ? "currentColor" : "none"} /> {saved ? "Saved" : "Save"}
+                                        <Heart size={20} fill={saved ? "currentColor" : "none"} /> {saved ? t('saved') : t('save')}
                                     </button>
                                     <button
                                         onClick={(e) => {
@@ -247,7 +250,7 @@ const PropertyPage = (props: any) => {
                                                 addToCompare({ id: props.data["propertyID"], type: 'project', data: props.data });
                                             }
                                         }} className={`cursor-pointer flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 backdrop-blur-md transition-colors font-bold ${compared ? 'bg-[#0c1356] text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}>
-                                        <Shuffle size={20} /> {compared ? "Compared" : "Compare"}
+                                        <Shuffle size={20} /> {compared ? t('compared') : t('compare')}
                                     </button>
                                 </div>
                             </div>
@@ -272,9 +275,18 @@ const PropertyPage = (props: any) => {
                                     return true;
                                 }).map((tab) => {
                                     //if(tab === 'Location' && props.data["communityMapAndMasterPlan"] !== null && props.data["locationMapImages"] !== null) return null;
+                                    let tabLabel = tab;
+                                    if (tab === 'Overview') tabLabel = t('overview');
+                                    else if (tab === 'Gallery') tabLabel = t('gallery');
+                                    else if (tab === 'Payment Plan') tabLabel = t('payment_plan');
+                                    else if (tab === 'Floor Plans') tabLabel = t('floor_plan');
+                                    else if (tab === 'Location') tabLabel = t('location');
+                                    else if (tab === 'Nearby') tabLabel = t('nearby');
+                                    else if (tab === 'Developer') tabLabel = t('developer');
+
                                     return (
-                                        <button key={tab} onClick={() => scrollToSection(tab)} className={`px-4 md:px-6 py-4 md:py-5 text-xs md:text-sm font-bold uppercase tracking-wider border-b-4 transition-all hover:text-secondary ${activeTab === tab ? 'border-secondary text-secondary' : 'border-transparent text-gray-500'}`}>
-                                            {tab}
+                                        <button key={tab} onClick={() => scrollToSection(tab)} className={`cursor-pointer px-4 md:px-6 py-4 md:py-5 text-xs md:text-sm font-bold uppercase tracking-wider border-b-4 transition-all hover:text-secondary ${activeTab === tab ? 'border-secondary text-secondary' : 'border-transparent text-gray-500'}`}>
+                                            {tabLabel}
                                         </button>
                                     )
                                 })}
@@ -289,28 +301,28 @@ const PropertyPage = (props: any) => {
                         <section id="overview" className="scroll-mt-40">
                             <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
                                 <div className="lg:w-7/12">
-                                    <h3 className="text-3xl font-serif font-bold text-primary mb-6 md:mb-8">Overview</h3>
+                                    <h3 className="text-3xl  font-bold text-primary mb-6 md:mb-8">{t('overview')}</h3>
                                     <div className="prose prose-lg text-gray-600 leading-relaxed max-w-none font-light">
                                         <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]} amountOfWords={100} classes="whitespace-break-spaces" />
 
                                         {/* Construction Update (New Rich Feature) */}
                                         <div className="bg-white p-6 rounded-xl border border-gray-200 mt-8 mb-8 hidden">
                                             <div className="flex justify-between items-center mb-4">
-                                                <h4 className="font-bold text-primary flex items-center gap-2"><Clock size={20} /> Construction Update</h4>
-                                                <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase">On Track</span>
+                                                <h4 className="font-bold text-primary flex items-center gap-2"><Clock size={20} /> {t('construction_update')}</h4>
+                                                <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase">{t('on_track')}</span>
                                             </div>
                                             <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2">
                                                 <div className="bg-secondary h-2.5 rounded-full" style={{ width: '85%' }}></div>
                                             </div>
                                             <div className="flex justify-between text-xs text-gray-500 font-bold">
-                                                <span>Excavation</span>
-                                                <span>Structure</span>
-                                                <span>Finishing</span>
-                                                <span>Handover</span>
+                                                <span>{t('excavation')}</span>
+                                                <span>{t('structure')}</span>
+                                                <span>{t('finishing')}</span>
+                                                <span>{t('handover')}</span>
                                             </div>
                                         </div>
 
-                                        <h4 className="font-bold text-gray-800 text-xl mb-4 mt-8">Features</h4>
+                                        <h4 className="font-bold text-gray-800 text-xl mb-4 mt-8">{t('features')}</h4>
                                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none pl-0">
                                             {props.data['aminities'] && props.data['aminities'].map((item: any, index: any) => (
                                                 <li key={index} className="flex items-center gap-3 text-base"><CheckCircle2 className="text-secondary shrink-0" size={20} />{item.name}</li>
@@ -321,21 +333,21 @@ const PropertyPage = (props: any) => {
 
                                 <div className="lg:w-5/12 w-full space-y-8">
                                     <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                                        <div className="bg-primary p-6 text-white"><h4 className="font-serif text-2xl font-bold">Project Facts</h4></div>
+                                        <div className="bg-primary p-6"><h4 className="text-2xl font-bold">{t('facts')}</h4></div>
                                         <div className="p-2">
-                                            {availbeds ? (<TableRow title="Available Bedrooms" content={availbeds} />) : ("")}
-                                            {availtype ? (<TableRow title="Property Types" content={availtype} />) : ("")}
-                                            {props.data['masterDeveloper'] ? (<TableRow title="Master Developer" content={props.data['masterDeveloper']} />) : ("")}
-                                            {props.data['minPrice'] ? (<TableRow title="Price Range (AED)" content={`${minprice} ~ ${maxPrice}`} />) : ("")}
-                                            {props.data['areaRangeMin'] ? (<TableRow title="Area Range (SqFt)" content={`${areaRangeMin} ~ ${areaRangeMax}`} />) : ("")}
-                                            {props.data['numberOfApartment'] && String(props.data['numberOfApartment']) !== '0' ? (<TableRow title="Number of Apartment" content={props.data['numberOfApartment']} />) : ("")}
-                                            {props.data['propertyType'] ? (<TableRow title="Property Type" content={props.data['propertyType']} />) : ("")}
-                                            {props.data['propertyPlan'] ? (<TableRow title="Property Plan" content={props.data['propertyPlan']} />) : ("")}
-                                            {props.data['propertyUsage'] ? (<TableRow title="Property Usage" content={props.data['propertyUsage']} />) : ("")}
-                                            {completionDate ? (<TableRow title="Completion Date" content={completionDate} />) : ("")}
-                                            {HOdate ? (<TableRow title="Handover Date" content={HOdate} />) : ("")}
-                                            {launchDate ? (<TableRow title="Launch Date" content={launchDate} />) : ("")}
-                                            {props.data['zoneType'] ? (<TableRow title="Property Types" content={props.data['zoneType']} />) : ("")}
+                                            {availbeds ? (<TableRow title={t('available_bedrooms')} content={availbeds} />) : ("")}
+                                            {availtype ? (<TableRow title={t('property_types')} content={availtype} />) : ("")}
+                                            {props.data['masterDeveloper'] ? (<TableRow title={t('master_developer')} content={props.data['masterDeveloper']} />) : ("")}
+                                            {props.data['minPrice'] ? (<TableRow title={t('price_range')} content={`${minprice} ~ ${maxPrice}`} />) : ("")}
+                                            {props.data['areaRangeMin'] ? (<TableRow title={t('area_range')} content={`${areaRangeMin} ~ ${areaRangeMax}`} />) : ("")}
+                                            {props.data['numberOfApartment'] && String(props.data['numberOfApartment']) !== '0' ? (<TableRow title={t('number_of_apartment')} content={props.data['numberOfApartment']} />) : ("")}
+                                            {props.data['propertyType'] ? (<TableRow title={t('property_type')} content={props.data['propertyType']} />) : ("")}
+                                            {props.data['propertyPlan'] ? (<TableRow title={t('property_plan')} content={props.data['propertyPlan']} />) : ("")}
+                                            {props.data['propertyUsage'] ? (<TableRow title={t('property_usage')} content={props.data['propertyUsage']} />) : ("")}
+                                            {completionDate ? (<TableRow title={t('completion_date')} content={completionDate} />) : ("")}
+                                            {HOdate ? (<TableRow title={t('handover_date')} content={HOdate} />) : ("")}
+                                            {launchDate ? (<TableRow title={t('launch_date')} content={launchDate} />) : ("")}
+                                            {props.data['zoneType'] ? (<TableRow title={t('property_types')} content={props.data['zoneType']} />) : ("")}
                                         </div>
                                     </div>
 
@@ -356,7 +368,7 @@ const PropertyPage = (props: any) => {
                                                             <CirclePlay size={32} className="text-white" fill="currentColor" />
                                                         </div>
                                                     </div>
-                                                    <div className="absolute bottom-4 left-4 text-white font-bold">Video Tour</div>
+                                                    <div className="absolute bottom-4 left-4 text-white font-bold">{t('video_tour')}</div>
                                                 </div>
                                             </a>
                                         </FancyboxWrapper>
@@ -368,7 +380,7 @@ const PropertyPage = (props: any) => {
                         {/* Gallery Grid */}
                         <section id="gallery" className="scroll-mt-40">
                             <div className="flex items-center justify-between mb-8">
-                                <h3 className="text-3xl font-serif font-bold text-primary">Gallery</h3>
+                                <h3 className="text-3xl  font-bold text-primary">{t('gallery')}</h3>
                                 <div className="flex gap-2 bg-gray-100 p-1 rounded-full">
                                     {allGalleryData.map((tab, index) => (
                                         <button
@@ -427,7 +439,7 @@ const PropertyPage = (props: any) => {
                                 {props.data["communityMapAndMasterPlan"] !== null ? (
                                     <FancyboxWrapper>
                                         <div>
-                                            <h3 className="text-3xl font-serif font-bold text-primary mb-8">Master Plan</h3>
+                                            <h3 className="text-3xl font-bold text-primary mb-8">{t('master_plan')}</h3>
                                             <a
                                                 type="button"
                                                 title="Master Plan"
@@ -439,7 +451,7 @@ const PropertyPage = (props: any) => {
                                                 <div className="bg-white p-2 rounded-2xl border border-gray-100 shadow-sm overflow-hidden h-[400px] group cursor-pointer relative">
                                                     <img src={props.data["communityMapAndMasterPlan"][0]['imageURL']} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Master Plan" />
                                                     <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                        <span className="bg-white/90 px-6 py-2 rounded-full font-bold text-primary flex items-center gap-2"><LayoutGrid size={18} /> View Full</span>
+                                                        <span className="bg-white/90 px-6 py-2 rounded-full font-bold text-primary flex items-center gap-2"><LayoutGrid size={18} /> {t('view_full')}</span>
                                                     </div>
                                                 </div>
                                             </a>
@@ -449,7 +461,7 @@ const PropertyPage = (props: any) => {
                                 {props.data["locationMapImages"] !== null ? (
                                     <FancyboxWrapper>
                                         <div>
-                                            <h3 className="text-3xl font-serif font-bold text-primary mb-8">Location</h3>
+                                            <h3 className="text-3xl font-bold text-primary mb-8">{t('location')}</h3>
                                             <a
                                                 type="button"
                                                 title="Location Plan"
@@ -466,7 +478,7 @@ const PropertyPage = (props: any) => {
                                                         </div>
                                                     </div>
                                                     <button className="hidden absolute bottom-4 right-4 bg-white px-4 py-2 rounded-lg shadow-md font-bold text-sm text-gray-700 flex items-center gap-2">
-                                                        <ExternalLink size={16} /> Open in Google Maps
+                                                        <ExternalLink size={16} /> {t('open_in_google_maps')}
                                                     </button>
                                                 </div>
                                             </a>

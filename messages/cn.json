@@ -686,22 +686,55 @@
   },
   "ProjectPage": {
     "overview": "概览",
-    "gallery": "相册",
-    "floor_plan": "户型图",
+    "gallery": "画廊",
+    "floor_plan": "平面图",
     "location": "位置",
     "photo_gallery": "图片库",
-    "unit_models": "户型",
-    "facts": "要点",
+    "unit_models": "单位模型",
+    "facts": "项目概况",
     "faqs": "常见问题",
-    "facilities_in": "配套设施",
-    "amenities_in": "配套",
-    "vicinities_in": "周边",
-    "location_plan": "区位图",
+    "facilities_in": "设施位于",
+    "amenities_in": "配套设施位于",
+    "vicinities_in": "周边位于",
+    "location_plan": "位置图",
     "payment_plan": "付款计划",
     "master_plan": "总平面图",
     "location_map": "位置地图",
-    "property_details": "物业详情",
-    "aminities_in": "配套"
+    "property_details": "房产详情",
+    "aminities_in": "配套设施位于",
+    "back": "返回",
+    "status": "状态",
+    "save": "收藏",
+    "saved": "已收藏",
+    "compare": "比较",
+    "compared": "已加入比较",
+    "nearby": "附近",
+    "developer": "开发商",
+    "construction_update": "施工进度",
+    "on_track": "按计划进行",
+    "excavation": "挖掘",
+    "structure": "结构",
+    "finishing": "装修",
+    "handover": "交付",
+    "features": "特色",
+    "available_bedrooms": "可选卧室数",
+    "property_types": "房产类型",
+    "master_developer": "主要开发商",
+    "price_range": "价格范围 (AED)",
+    "area_range": "面积范围 (平方英尺)",
+    "number_of_apartment": "公寓数量",
+    "property_type": "房产类型",
+    "property_plan": "房产规划",
+    "property_usage": "房产用途",
+    "completion_date": "完工日期",
+    "handover_date": "交付日期",
+    "launch_date": "开盘日期",
+    "video_tour": "视频游览",
+    "view_full": "查看完整",
+    "open_in_google_maps": "在 Google 地图中打开",
+    "facilities_and_amenities": "设施与配套",
+    "community_images": "社区图片",
+    "project_gallery": "项目画廊"
   },
   "InquiryForm": {
     "title": "登记信息",
@@ -714,13 +747,13 @@
         "label": "姓氏",
         "placeholder": "请输入姓氏"
       },
-      "email": {
-        "label": "电子邮箱地址",
-        "placeholder": "name@example.com"
-      },
       "phone": {
         "label": "联系电话",
         "placeholder": "+971 5x xxx xxxx"
+      },
+      "email": {
+        "label": "电子邮箱地址",
+        "placeholder": "name@example.com"
       },
       "timeSlot": {
         "label": "首选联系时间",
@@ -769,7 +802,9 @@
       "firstName": "名字为必填项",
       "lastName": "姓氏为必填项",
       "email": "邮箱格式不正确",
-      "phone": "电话号码不正确"
+      "phone": "电话号码不正确",
+      "message": "留言是必须的",
+      "agreement1": "您必须同意这一点"
     }
   },
   "CryptoPage": {
@@ -1442,6 +1477,48 @@
         "title": "与值得信赖的品牌合作",
         "description": "信赖提供品质与可靠性的品牌，选择您信任的品牌。"
       }
+    }
+  },
+  "InquiryFormProject": {
+    "title": "咨询",
+    "fields": {
+      "firstName": {
+        "placeholder": "名字"
+      },
+      "lastName": {
+        "placeholder": "姓氏"
+      },
+      "email": {
+        "placeholder": "电子邮箱"
+      },
+      "phone": {
+        "placeholder": "536356356"
+      },
+      "message": {
+        "placeholder": "您好，我想联系您"
+      }
+    },
+    "buttons": {
+      "submit": "提交",
+      "submitting": "提交中..."
+    },
+    "alerts": {
+      "success": "表单提交成功！",
+      "error": "提交失败，请重试。"
+    },
+    "fineprint": {
+      "text": "点击提交，即表示您同意我们的 <terms>条款与条件</terms> 以及 <privacy>隐私政策</privacy>"
+    },
+    "consents": {
+      "c1": "同意在09:00至21:00期间，通过各种渠道接收PSI的电话和信息"
+    },
+    "errors": {
+      "firstName": "名字为必填项",
+      "lastName": "姓氏为必填项",
+      "email": "无效的电子邮箱地址",
+      "phone": "无效的电话号码",
+      "message": "消息为必填项",
+      "agreement1": "您必须同意此条款"
     }
   }
 }
