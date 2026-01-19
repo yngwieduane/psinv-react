@@ -57,7 +57,7 @@ type Props = {
 // ✅ Dynamic metadata generator
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = params;
-  const headersList = headers();
+  const headersList = await headers();
   const pathname = headersList.get("x-pathname") ?? "";
   // Remove duplicate slashes and ensure trailing slash for home page
   let canonicalPath = pathname.replace(/\/+/g, '/');

@@ -8,7 +8,7 @@ export default function middleware(request: NextRequest) {
   // Run next-intl middleware first
   const response = intlMiddleware(request);
 
-  // Add pathname for metadata usage
+  // Add pathname for metadata usage (mainly for canonical)
   response.headers.set('x-pathname', request.nextUrl.pathname);
 
   return response;
