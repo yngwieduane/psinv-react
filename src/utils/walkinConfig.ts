@@ -6,7 +6,7 @@ export const walkinFormConfig: Record<string, WalkinFormConfig> = {
     title: "Conrad Hotel at Etihad Tower, Abu Dhabi",
     developerLogoUrl: "/images/walkin-form/etihad-logo.png",
     referredbyid: 3458,
-    sendto: ["wd3@psinv.net", "yngwie.g@psinv.net", "callcenter@psinv.net"],
+    sendto: ["callcenter@psinv.net"],
     branch: "AUH",
     showClientProfession: true,
     showContactInformation: true,
@@ -71,7 +71,7 @@ export const walkinFormConfig: Record<string, WalkinFormConfig> = {
   "yas-mall-stand": {
     title: "Yas Mall Walk-In Stand",
     // developerLogoUrl: "/logos/emaar.png",
-    sendto: ["wd3@psinv.net", "callcenter@psidubai.com"],
+    sendto: ["callcenter@psidubai.com"],
     referredbyid: 3458,
     showClientProfession: true,
     branch: "AUH",
@@ -87,7 +87,7 @@ export const walkinFormConfig: Record<string, WalkinFormConfig> = {
   "galleria-stand-deyaar": {
     title: "Galleria Stand Deyaar",
     developerLogoUrl: "/images/walkin-form/deyaar-logo.svg",
-    sendto: ["wd3@psinv.net", "callcenter@psinv.net"],
+    sendto: ["callcenter@psinv.net"],
     referredbyid: 3458,
     showClientProfession: true,
     branch: "AUH",
@@ -103,7 +103,7 @@ export const walkinFormConfig: Record<string, WalkinFormConfig> = {
   "jbr-lead-registration-dubai": {
     title: "JBR Lead Registration",
     // developerLogoUrl: "/logos/emaar.png",
-    sendto: ["wd3@psinv.net", "callcenter@psidubai.com"],
+    sendto: ["callcenter@psidubai.com"],
     showClientProfession: true,
     referredbyid: 4421,
     branch: "dubai",
@@ -114,7 +114,7 @@ export const walkinFormConfig: Record<string, WalkinFormConfig> = {
   "psi-assets-reem": {
     title: "PSI Assets - Reem Branch",
     logo: "/images/walkin-form/psi-assets-logo.png",
-    sendto: ["wd3@psinv.net", "callcenter@psiassets.com"],
+    sendto: ["callcenter@psiassets.com"],
     showClientProfession: true,
     branch: "assets",
     showContactInformation: true,
@@ -133,7 +133,7 @@ export const walkinFormConfig: Record<string, WalkinFormConfig> = {
   "psi-assets-yas": {
     title: "PSI Assets - Yas Branch",
     logo: "/images/walkin-form/psi-assets-logo.png",
-    sendto: ["wd3@psinv.net", "callcenter@psiassets.com"],
+    sendto: ["callcenter@psiassets.com"],
     showClientProfession: false,
     branch: "assets",
     showContactInformation: true,

@@ -20,8 +20,7 @@ interface InquiryFormProps {
 }
 type BranchCode = NonNullable<InquiryFormProps["branchCode"]>;
 
-const TEST_EMAILS = ["wd3@psinv.net", "yngwie.g@psinv.net"];
-
+const TEST_EMAILS: readonly string[] = [];
 const BRANCH_EMAIL_MAP: Record<BranchCode, string> = {
   auh: process.env.NEXT_PUBLIC_EMAIL || "callcenter@psinv.net",
   dxb: process.env.NEXT_PUBLIC_EMAIL_DXB || "callcenter@psidubai.com",
