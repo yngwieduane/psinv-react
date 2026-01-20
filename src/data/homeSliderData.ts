@@ -40,7 +40,7 @@ export const homeSliderData = [
     developer_img: "/images/banners/aldar-logo.svg",
     developer_img_mob: "/images/banners/aldar-logo.svg",
     project_url: "/project/the-row-saadiyat-registration",
-    image: "/images/banners/the-row-saadiyat.webp",
+    image: "/images/banners/the-row-saadiyat-banner-new.webp",
     bannerpropertyid: "25405",
     bannerunittype: "19",
     bannersubcommunityid: "130713",

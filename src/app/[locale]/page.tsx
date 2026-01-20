@@ -5,10 +5,11 @@ import { Organization, WithContext } from "schema-dts";
 import { Audrey, BrittanySignature } from "@/utils/fonts";
 import { Montserrat, Outfit } from "next/font/google";
 import HomeBanner from "./_components/HomeBanner";
-import CitiesTab from "./_components/CitiesTab";
+// import CitiesTab from "./_components/CitiesTab";
 import { useLocale, useTranslations } from 'next-intl';
 
-import HomeCalculatorClientWrapper from './_components/HomeCalculatorClientWrapper';
+import { CitiesClientWrapper } from './_components/HomeClientWrapperElements';
+import { HomeCalculatorClientWrapper } from './_components/HomeClientWrapperElements';
 import { Suspense } from 'react';
 import { homeSliderData } from '@/data/homeSliderData';
 
@@ -80,7 +81,7 @@ export default function HomePage() {
         {
           title: t_cities('abu_dhabi.al_reem_island'),
           type: "APT | VI | TH | PH",
-          image: '/images/projects/al-reem-island.webp',
+          image: '/images/projects/al-reem-island-image.webp',
           project_url: '/projects/abu-dhabi/al-reem-island',
         },
         {
@@ -98,7 +99,7 @@ export default function HomePage() {
         {
           title: t_cities('abu_dhabi.al_raha_beach'),
           type: "APT | VI | TH | PH",
-          image: '/images/projects/al-raha-beach.webp',
+          image: '/images/projects/al-raha-beach-image.webp',
           project_url: '/projects/abu-dhabi/al-raha-beach',
         },
       ],
@@ -184,7 +185,8 @@ export default function HomePage() {
       </section>
       
       <section className="bg-gray-50">
-        <CitiesTab  cities={citiesData}  />
+        {/* <CitiesTab  cities={citiesData}  /> */}
+        <CitiesClientWrapper cities={citiesData}  />
       </section>
 
       <div className="my-10 bg-white min-h-[400px]">
