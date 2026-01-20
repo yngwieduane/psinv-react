@@ -45,59 +45,38 @@ const HomeBanner = (props: any) => {
 
   // Detect screen size
   const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const checkScreen = () => setIsMobile(window.innerWidth < 768);
     checkScreen();
-    window.addEventListener("resize", checkScreen);
+    window.addEventListener("resize", checkScreen, { passive: true });
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
-
-  const paginationConfig = isMobile
-    ? ''
-    : {
-      type: "fraction" as const,
-      el: ".swiper-pagination",
-      renderFraction: (currentClass: string, totalClass: string): string => {
-        return `<span class="${currentClass}"></span> / <span class="${totalClass}"></span>`;
-      },
-      clickable: false,
-    };
 
   const [setModal, setSetModal] = useState(false);
   const [selectedSlide, setSelectedSlide] = useState<any>(null);
 
   const modalHandler = (slide: any) => {
-    console.log("clicked = " + setModal);
+    //console.log("clicked = " + setModal);
     setSetModal(true);
     setSelectedSlide(slide);
   };
 
   const modalUpdate = (event: any) => {
-    console.log(event);
     setSetModal(event);
   };
 
   return (
     <section className="relative h-auto w-full overflow-hidden" dir={isRTL ? 'rtl' : "ltr"}>
-      {/* Background Image - Ultra Luxury Modern Mansion */}
       <Swiper
         ref={swiperElRef2}
         navigation={false}
         modules={[Pagination]}
         pagination={{ clickable: true }}
-        spaceBetween={50}
+        spaceBetween={0}
         slidesPerView={1}
         onSlideChange={(swiper) => setCurrentSlide(swiper.activeIndex + 1)}
         onSwiper={(swiper: any) => (swiperElRef2.current = swiper)}
-        breakpoints={{
-          768: {
-            pagination: true,
-          }
-          ,
-          1200: {
-            pagination: false,
-          },
-        }}
         loop={false}
         className="home-banner-swiper md:h-210 h-230"
       >
@@ -111,8 +90,10 @@ const HomeBanner = (props: any) => {
                 alt={slide.title || "Banner"} title={slide.title || "Banner"}
                 fill
                 priority={index === 0}
+                loading={index === 0 ? "eager" : "lazy"}
+                {...(index === 0 && { fetchPriority: "high" })}
                 sizes="100vw"
-                className="object-cover object-center animate-[zoomIn_20s_infinite_alternate] will-change-transform"
+                className={`object-cover object-center ${index === 0 ? 'animate-none' : 'animate-[zoomIn_20s_infinite_alternate]'} will-change-transform`}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
             </div>
@@ -129,7 +110,8 @@ const HomeBanner = (props: any) => {
                       fill
                       src={slide.developer_img}
                       alt="Developer"
-                      title="Developer" priority={true}
+                      title="Developer" priority={index === 0}
+                      sizes="(max-width: 768px) 100px, 200px"
                     />
                   </div>
                 )}

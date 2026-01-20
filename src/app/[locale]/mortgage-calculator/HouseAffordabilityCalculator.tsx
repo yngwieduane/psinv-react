@@ -156,7 +156,7 @@ export default function HouseAffordabilityCalculator({
                 const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
                 window.location.href = url;
               }}
-              className="bg-[#0c1356] text-white rounded-full px-6 py-2 hover:bg-blue-900 transition">
+              className="bg-[#0c1356] text-white rounded-full px-6 py-2 mb-2 hover:bg-blue-900 transition">
               {t("ViewUnits")}
             </button>
 
