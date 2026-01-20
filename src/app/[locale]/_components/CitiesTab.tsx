@@ -5,6 +5,7 @@ import CitiesTabHeader from "./CitiesTabHeader";
 import { Outfit } from "next/font/google";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -57,10 +58,14 @@ const CitiesTab: React.FC<CitiesTabProps> = ({ cities }) => {
                   <div
                     key={index}
                     className="group relative h-80 overflow-hidden rounded-lg cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300"
-                  >
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                      style={{ backgroundImage: `url(${project.image})` }}
+                  >                    
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={index < 2}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity" />
 

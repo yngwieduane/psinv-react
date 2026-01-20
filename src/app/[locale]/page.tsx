@@ -1,33 +1,33 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
+import { Organization, WithContext } from "schema-dts";
+import { Audrey, BrittanySignature } from "@/utils/fonts";
+import { Montserrat, Outfit } from "next/font/google";
+import HomeBanner from "./_components/HomeBanner";
+import CitiesTab from "./_components/CitiesTab";
+import { useLocale, useTranslations } from 'next-intl';
+
+import HomeCalculatorClientWrapper from './_components/HomeCalculatorClientWrapper';
+import { Suspense } from 'react';
+import { homeSliderData } from '@/data/homeSliderData';
+
+const HomeSearch = dynamic(() => import('./_components/HomeSearch'));
 const ListPropertyForm = dynamic(() => import('./_components/ListPropertyForm'));
 const WhyPSI = dynamic(() => import('./_components/WhyPSI'));
-const Calculator = dynamic(() => import('./mortgage-calculator/MortgageTabs'));
-const AwardSlider = dynamic(() => import('../[locale]/about-us/_components/AboutAwardsSlider'));
+ 
+const AwardSlider = dynamic(
+  () => import('../[locale]/about-us/_components/AboutAwardsSlider'),
+  { loading: () => <></> } // lightweight placeholder, no SSR
+);
+
 const AboutCounter = dynamic(() => import('../[locale]/about-us/_components/AboutCounter'));
 const GoogleReviewSection = dynamic(() => import('./_components/GoogleReviewSection'));
 const GetTheAppSection = dynamic(() => import('./_components/GetTheAppSection'));
 const ReportDownloadSection = dynamic(() => import('./_components/ReportDownloadSection'));
 
-import { Organization, WithContext } from "schema-dts";
-import { Audrey, BrittanySignature } from "@/utils/fonts";
-import { Montserrat, Outfit } from "next/font/google";
-import HomeBanner from "./_components/HomeBanner";
-import HomeSearch from "./_components/HomeSearch";
-import CitiesTab from "./_components/CitiesTab";
-import { useLocale, useTranslations } from 'next-intl';
-
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const outfit = Outfit({
-  subsets: ['latin'],
-  display: 'swap',
-})
+const montserrat = Montserrat({  subsets: ['latin'],  display: 'swap',});
+const outfit = Outfit({  subsets: ['latin'],  display: 'swap',})
 
 export default function HomePage() {
 
@@ -43,7 +43,7 @@ export default function HomePage() {
     "name": "Property Shop Investment",
     "url": "https://psinv.net",
     "sameAs": ["https://www.facebook.com/PropertyShopInvestment", "https://twitter.com/psinv", "https://www.facebook.com/PropertyShopInvestment", "https://www.instagram.com/property_shop_investment/", "https://www.linkedin.com/company/property-shop-investment-llc", "https://www.youtube.com/user/propertyshopabudhabi"]
-  }
+  }  
 
   const locale = useLocale();
   const isRTL = locale.toLowerCase().startsWith("ar");
@@ -52,175 +52,23 @@ export default function HomePage() {
   const t_slider = useTranslations('MainSliderHome');
   const t_cities = useTranslations('citiesHome');
 
-  const mainSliderData = [
-    // {
-    //   title: t_slider('slides.ohana_branded_residences.title'),
-    //   type: "Apartment",
-    //   developer_img: '/images/banners/ohana-developer.webp',
-    //   developer_img_mob: '/images/banners/ohana-developer.webp',
-    //   location: t_slider('slides.ohana_branded_residences.location'),
-    //   description: t_slider('slides.ohana_branded_residences.description'),
-    //   project_url: "",
-    //   image: '/images/banners/ohana-project.webp',
-    //   bannerpropertyid: '',
-    //   bannerunittype: '19',
-    //   bannersubcommunityid: '73087',
-    //   bannercommunityid: '165011',
-    //   bannerdistrictid: '102625',
-    //   bannercityid: '91823',
-    //   bannerstateid: '91823',
-    //   bannercountryid: '65946',
-    //   bannerbedroom: '21935',
-    // },
-    // {
-    //   title: t_slider('slides.sobha.title'),
-    //   type: "Apartment",
-    //   developer_img: '/images/banners/sobha-development.webp',
-    //   developer_img_mob: '/images/banners/sobha-development.webp',
-    //   location: t_slider('slides.sobha.location'),
-    //   description: t_slider('slides.sobha.description'),
-    //   project_url: "",
-    //   image: '/images/banners/sobha-project.webp',
-    //   bannerpropertyid: '',
-    //   bannerunittype: '19',
-    //   bannersubcommunityid: '165353',
-    //   bannercommunityid: '166966',
-    //   bannerdistrictid: '102625',
-    //   bannercityid: '91823',
-    //   bannerstateid: '91823',
-    //   bannercountryid: '65946',
-    //   bannerbedroom: '21935',
-    // },
-    {
-      title: t_slider('slides.the_row.title'),
-      type: "Apartment",
-      developer_img: '/images/banners/aldar-logo.svg',
-      developer_img_mob: '/images/banners/aldar-logo.svg',
-      location: t_slider('slides.the_row.location'),
-      description: t_slider('slides.the_row.description'),
-      project_url: "/project/the-row-saadiyat-registration",
-      image: '/images/banners/the-row-saadiyat.webp',
-      bannerpropertyid: '25405',
-      bannerunittype: '19',
-      bannersubcommunityid: '130713',
-      bannercommunityid: '97198',
-      bannerdistrictid: '102625',
-      bannercityid: '91823',
-      bannerstateid: '91823',
-      bannercountryid: '65946',
-      bannerbedroom: '21935',
-    },
-    {
-      title: t_slider('slides.bashayer_residences.title'),
-      type: "Apartment",
-      developer_img: '/images/banners/modon-white.webp',
-      developer_img_mob: '/images/banners/modon-white.webp',
-      location: t_slider('slides.bashayer_residences.location'),
-      description: t_slider('slides.bashayer_residences.description'),
-      project_url: "",
-      image: '/images/banners/bashayer-residences-banner.webp',
-      bannerpropertyid: '25477',
-      bannerunittype: '19',
-      bannersubcommunityid: '',
-      bannercommunityid: '62080',
-      bannerdistrictid: '102625',
-      bannercityid: '91823',
-      bannerstateid: '91823',
-      bannercountryid: '65946',
-      bannerbedroom: '21935',
-    },
-    {
-      title: t_slider('slides.bashayer_villas.title'),
-      type: "Villa",
-      developer_img: '/images/banners/modon-white.webp',
-      developer_img_mob: '/images/banners/modon-white.webp',
-      location: t_slider('slides.bashayer_villas.location'),
-      description: t_slider('slides.bashayer_villas.description'),
-      project_url: "/projects/abu-dhabi/hudayriyat-island/hudayriyat-island/bashayer-villas",
-      image: '/images/banners/bashayer-villas-banner.webp',
-      bannerpropertyid: '25351',
-      bannerunittype: '20',
-      bannersubcommunityid: '',
-      bannercommunityid: '62080',
-      bannerdistrictid: '102625',
-      bannercityid: '91823',
-      bannerstateid: '91823',
-      bannercountryid: '65946',
-      bannerbedroom: '21935',
-    },
-    {
-      title: t_slider('slides.muheira_2.title'),
-      type: "Apartment",
-      developer_img: '/images/banners/modon-white.webp',
-      developer_img_mob: '/images/banners/modon-white.webp',
-      location: t_slider('slides.muheira_2.location'),
-      description: t_slider('slides.muheira_2.description'),
-      project_url: "/projects/abu-dhabi/al-reem-island/maysan/muheira",
-      image: '/images/banners/muheira-banner.webp',
-      bannerpropertyid: '',
-      bannerunittype: '19',
-      bannersubcommunityid: '',
-      bannercommunityid: '',
-      bannerdistrictid: '102625',
-      bannercityid: '91823',
-      bannerstateid: '91823',
-      bannercountryid: '65946',
-      bannerbedroom: '21935',
-    },
-    {
-      title: t_slider('slides.stellar_by_elie_saab.title'),
-      type: "Villa",
-      developer_img: '/images/banners/emirates-developments-white-logo.svg',
-      developer_img_mob: '/images/banners/emirates-developments-white-logo.svg',
-      location: t_slider('slides.stellar_by_elie_saab.location'),
-      description: t_slider('slides.stellar_by_elie_saab.description'),
-      project_url: "/projects/abu-dhabi/yas-island/yas-bay/stellar-by-elie-saab",
-      image: '/images/banners/stellar-banner.webp',
-      bannerpropertyid: '',
-      bannerunittype: '20',
-      bannersubcommunityid: '',
-      bannercommunityid: '',
-      bannerdistrictid: '102625',
-      bannercityid: '91823',
-      bannerstateid: '91823',
-      bannercountryid: '65946',
-      bannerbedroom: '21937',
-    },
-    {
-      title: t_slider('slides.hilton_residences.title'),
-      type: "Apartment",
-      developer_img: '/images/banners/emirates-developments-white-logo.svg',
-      developer_img_mob: '/images/banners/emirates-developments-white-logo.svg',
-      location: t_slider('slides.hilton_residences.location'),
-      description: t_slider('slides.hilton_residences.description'),
-      project_url: "/project/hilton-residences-registration",
-      image: '/images/banners/hilton-banner.webp',
-      bannerpropertyid: '25396',
-      bannerunittype: '19',
-      bannersubcommunityid: '',
-      bannercommunityid: '',
-      bannerdistrictid: '102625',
-      bannercityid: '91823',
-      bannerstateid: '91823',
-      bannercountryid: '65946',
-      bannerbedroom: '21935',
-    },
-    {
-      name: "loyalty",
-      loyaltyTitle: t_slider('slides.loyalty_program.title'),
-      features: [
-        t_slider('slides.loyalty_program.features.0'),
-        t_slider('slides.loyalty_program.features.1'),
-        t_slider('slides.loyalty_program.features.2'),
-        t_slider('slides.loyalty_program.features.3'),
-        t_slider('slides.loyalty_program.features.4'),
-      ],
-      img2: '/images/banners/Loyalty-gif.gif',
-      developer_img: '/images/banners/loyalty-logo-new.webp',
-      developer_img_mob: '/images/banners/loyalty-logo-3-mob.png',
-      image: '/images/banners/loyalty-program-background-new.webp',
+  const mainSliderData = homeSliderData.map((item) => {
+    if(item.name === "loyalty") {
+      return {
+        ...item,
+        loyaltyTitle : t_slider(`slides.${item.key}.title`),
+        features: Array.from({ length: 5}, (_,i) => 
+        t_slider(`slides.${item.key}.features.${i}`)
+        ),
+      };
     }
-  ];
+    return{
+      ...item,
+      title: t_slider(`slides.${item.key}.title`),
+      location: t_slider(`slides.${item.key}.location`),
+      description: t_slider(`slides.${item.key}.description`),
+    };
+  });
 
   const citiesData = [
     {
@@ -329,25 +177,24 @@ export default function HomePage() {
           __html: JSON.stringify(organizationSchema1).replace(/</g, '\\u003c'),
         }}
       />
-
-      <div className={`relative ${outfit.className}`}>
-        <HomeBanner slidePerView="1" slides={mainSliderData}></HomeBanner>
+      
+      <section className={`relative min-h-[600px] ${outfit.className}`}> 
+        <HomeBanner slidePerView="1" slides={mainSliderData} />
         <HomeSearch />
-      </div>
-      <div className={`bg-gray-50`}>
-        <CitiesTab
-          cities={citiesData}
-        />
-      </div>
+      </section>
+      
+      <section className="bg-gray-50">
+        <CitiesTab  cities={citiesData}  />
+      </section>
 
-      <div className="my-10 bg-white">
+      <div className="my-10 bg-white min-h-[400px]">
         <ListPropertyForm />
       </div>
       <div className="my-10 bg-gray-50 ">
         <WhyPSI />
       </div>
       <div className="container mx-auto my-10">
-        <Calculator />
+        <HomeCalculatorClientWrapper />
       </div>
 
       <div className="bg-gray-50 px-4">
@@ -427,7 +274,9 @@ export default function HomePage() {
         </div>
         <div className="w-full">
           <div className="container mx-auto px-4 md:px-8 relative mx-auto">
-            <AwardSlider />
+            <Suspense fallback={<div className="min-h-[200px] bg-gray-100 animate-pulse" />}>
+              <AwardSlider />
+            </Suspense>
           </div>
         </div>
       </div>
