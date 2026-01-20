@@ -420,9 +420,29 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                         { label: t("Yas Riva"), lpSlug: "yas-riva" },
                         { label: t("Manarat Living - Saadiyat"), lpSlug: "manarat-living-saadiyat" },
                         { label: t("The Arthouse"), lpSlug: "the-arthouse" },
-                        { label: t("Bloom Living - Almeria"), lpSlug: "bloom-living-almeria" },
+                        { label: t("Muheira"),  href: "/projects/abu-dhabi/al-reem-island/maysan/muheira" },
                     ]
-                }
+                },
+                {
+                    title: t('Dubai'),
+                    items: [
+                        { label: t('Elegance Tower'), href: '/projects/dubai/downtown-dubai/downtown-dubai/elegance-tower' },
+                        { label: t('Address Residences The Bay'), href: '/projects/dubai/jumeirah-beach-residence/emaar-beachfront/address-residences-the-bay' },
+                        { label: t('Rawda Apartments'), href: '/projects/dubai/town-square-dubai/town-square-dubai/rawda-apartments' },
+                        { label: t('DE Collective'), href: '/projects/dubai/dubai-hills-estate/dubai-hill-estate/de-collective' },
+                        { label: t('Expo Golf Villas'), href: '/projects/dubai/emaar-south/emaar-south/expo-golf-villas' },
+                    ]
+                },
+                {
+                    title: t('Sharjah'),
+                    items: [
+                        { label: t('Sharjah Waterfront City'), href: '/projects/sharjah/sharjah-waterfront-city/n-a/sharjah-waterfront-city' },
+                        { label: t('Deem at Hayyan'), href: '/projects/sharjah/al-bedea-suburb/al-bedea-suburb/deem-at-hayyan' },
+                        { label: t('Olfah'), href: '/projects/sharjah/muwaileh-commercial/muwaileh-commercial/olfah-3' },
+                        { label: t('Hayyan'), href: '/projects/sharjah/ain-al-fayda/barashi/hayyan' },
+                        { label: t('Hamsa 2'), href: '/projects/sharjah/muwaileh-commercial/muwaileh-commercial/hamsa-2' },
+                    ]
+                },
             ]
         },
         {
@@ -432,27 +452,28 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 {
                     title: t('Residential'),
                     items: [
-                        { label: t('Buy Apartments'), href: '/units?category=Sale' },
-                        { label: t('Buy Villas'), href: '/units?category=Sale' },
-                        { label: t('Rent Apartments'), href: '/units?category=Rent' },
-                        { label: t('Rent Villas'), href: '/units?category=Rent' },
+                        { label: t('Buy Apartments'), href: '/units?category=Sale&propertyType=411' },
+                        { label: t('Buy Villas'), href: '/units?category=Sale&propertyType=413' },
+                        { label: t('Rent Apartments'), href: '/units?category=Rent&propertyType=411' },
+                        { label: t('Rent Villas'), href: '/units?category=Rent&propertyType=413' },
                     ]
                 },
                 {
                     title: t('Commercial'),
                     items: [
-                        { label: t('Offices for Sale'), href: '/units' },
-                        { label: t('Offices for Rent'), href: '/units' },
-                        { label: t('Retail Spaces'), href: '/units' },
+                        { label: t('Offices for Sale'), href: '/units?category=Sale&propertyType=417' },
+                        { label: t('Offices for Rent'), href: '/units?category=Rent&propertyType=417' },
+                        { label: t('Commercial plot'), href: 'units?category=Sale&propertyType=420' },
+                        { label: t('View All'), href: '/units?category=Sale' },
                     ]
                 },
                 {
-                    title: t('Popular Areas'),
+                    title: t('Bedrooms'),
                     items: [
-                        { label: t('Al Reem Island'), href: '/projects/abu-dhabi/al-reem-island' },
-                        { label: t('Yas Island'), href: '/projects/abu-dhabi/yas-island' },
-                        { label: t('Saadiyat Island'), href: '/projects/abu-dhabi/saadiyat-island' },
-                        { label: t('Palm Jumeirah'), href: '/projects/dubai/the-palm-jumeirah' },
+                        { label: t('1 Bedroom'), href: '/units?category=Sale&beds=1' },
+                        { label: t('2 Bedrooms'), href: '/units?category=Sale&beds=2' },
+                        { label: t('3 Bedrooms'), href: '/units?category=Sale&beds=3' },
+                        { label: t('View All'), href: '/units?category=Sale' },
                     ]
                 }
             ]
@@ -462,13 +483,25 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             image: '/images/landing-page/manarat-living-saadiyat/manarat-living.webp',
             columns: [
                 {
-                    title: t('New Launches'),
+                    title: t('Abu Dhabi'),
                     items: [
-                        { label: t("Sama Yas"), href: "/project/lp/sama-yas" },
-                        { label: t("Yas Riva"), href: "/project/lp/yas-riva" },
-                        { label: t("Manarat Living - Saadiyat"), href: "/project/lp/manarat-living-saadiyat" },
-                        { label: t("The Arthouse"), href: "/project/lp/the-arthouse" },
-                        { label: t("Bloom Living - Almeria"), href: "/project/lp/bloom-living-almeria" },
+                        { label: t("Al Reem Island"), href: "/projects/abu-dhabi/al-reem-island" },
+                        { label: t("Saadiyat Island"), href: "/projects/abu-dhabi/saadiyat-island" },
+                        { label: t("Yas island"), href: "/projects/abu-dhabi/yas-island" },
+                        { label: t("Al Raha Beach"), href: "/projects/abu-dhabi/al-raha-beach" },
+                        { label: t("Al Raha Gardens"), href: "/projects/abu-dhabi/al-raha-gardens" },
+                        { label: t("View All"), href: "/projects/abu-dhabi" },
+                    ]
+                },
+                {
+                    title: t('Dubai'),
+                    items: [
+                        { label: t("Palm Jumeirah"), href: "/projects/dubai/the-palm-jumeirah" },
+                        { label: t("Downtown Dubai"), href: "/projects/dubai/downtown-dubai" },
+                        { label: t("Dubai Creek"), href: "/projects/dubai/dubai-creek" },
+                        { label: t("Town Square Dubai"), href: "/projects/dubai/town-square-dubai" },
+                        { label: t("Dubai Hills Estate"), href: "/projects/dubai/dubai-hills-estate" },
+                        { label: t("View All"), href: "/projects/dubai" },
                     ]
                 },
                 {
@@ -492,7 +525,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     title: t('Valuation & Finance'),
                     items: [
                         { label: t('mortgage'), href: "/mortgage-calculator" },
-                        // { label: t('Mortgage Loan'), page: '/mortgage/' },                    
+                        { label: t('Amortization'), page: '/mortgage-calculator#amortization' }, 
+                        { label: t('Refinancing'), page: '/mortgage-calculator#refinancing' },  
+                        { label: t('Rent vs Buying'), page: '/mortgage-calculator#rentvsbuy' },  
+                        { label: t('House Affordability'), page: '/mortgage-calculator#houseafford' },  
                     ]
                 },
                 {
