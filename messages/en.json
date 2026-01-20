@@ -5,6 +5,26 @@
     "register": "Register Your Interest",
     "submit": "Submit"
   },
+  "Agents": {
+    "metaTitle": "Our Agents - Property Shop Investment",
+    "metaDescription": "Meet our team of expert real estate agents ready to help you find your dream home.",
+    "title": "Meet Our Agents",
+    "subtitle": "Expert guidance for your real estate journey",
+    "searchPlaceholder": "Search by name, language...",
+    "allBranches": "All Branches",
+    "filterBranch": "Filter by Branch",
+    "noAgentsFound": "No agents found matching your criteria",
+    "role": "Role",
+    "languages": "Languages",
+    "experience": "Experience",
+    "activeListings": "Active Listings",
+    "contact": {
+      "call": "Call",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
+    },
+    "viewProfile": "View Profile"
+  },
   "MainSliderHome": {
     "slides": {
       "ohana_branded_residences": {

@@ -1,10 +1,8 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import dynamic from 'next/dynamic';
 
-const MainFooterAI = dynamic(() => import('./MainFooterAI'));
-const MainFooter = dynamic(() => import('./MainFooter'));
+import MainFooterAI from './MainFooterAI';
 
 export default function ConditionalFooter() {
   const pathname = usePathname();
