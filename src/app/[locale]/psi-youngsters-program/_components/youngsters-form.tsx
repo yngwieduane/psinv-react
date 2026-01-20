@@ -117,7 +117,7 @@ const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php",
       <p><strong>Address:</strong> ${data.address}</p>
       <p><strong>Form Submitted From:</strong> ${currentUrl}</p>
     `,
-    receiver: "wd3@psinv.net, yngwie.g@psinv.net",
+    receiver: "callcenter@psinv.net",
     subject: `New Youngster Submission - ${data.firstName} ${data.lastName}`,
     filename: "",
     filedata: "",
