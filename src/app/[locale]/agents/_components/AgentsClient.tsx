@@ -30,15 +30,6 @@ const AgentsClient = () => {
         fetchAgents();
     }, []);
 
-    const filteredAgents = useMemo(() => {
-        return agents.filter(agent => {
-            const matchesSearch = agent.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                agent.languages?.some((lang: string) => lang.toLowerCase().includes(searchQuery.toLowerCase()));
-            const matchesBranch = selectedBranch === 'all' || agent.location === selectedBranch;
-            return matchesSearch && matchesBranch;
-        });
-    }, [searchQuery, selectedBranch, agents]);
-
     return (
         <div className="space-y-12 animate-in fade-in duration-700">
             {/* Header Section */}
@@ -82,7 +73,7 @@ const AgentsClient = () => {
             </div>
 
             {/* Agents Grid */}
-            {agents.length > 0 ? (
+            {agents ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                     {agents.map((agent) => (
                         <div
