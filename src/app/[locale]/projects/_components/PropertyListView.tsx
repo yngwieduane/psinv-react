@@ -84,7 +84,7 @@ const PropertyListItem = (props: any) => {
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                         <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-sm backdrop-blur-sm">
-                            {props.data["status"] === 'Ready' ? "Ready" : "Off-Plan"}
+                            {props.data["propertyPlan"]}
                         </div>
                     </Link>
                 </div>

@@ -18,10 +18,13 @@ const PropertyCardAI = (props: any) => {
             return img['noOfBedroom'] + ',';
         })}
     </p>) : ("");
-    if (props.data["handoverDate"]) {
-        HOdate = new Date(props.data["handoverDate"]);
-        HOdate = format.dateTime(HOdate, { year: 'numeric', month: 'short' });
+    let isReady = props.data["status"] === 'Ready';
+    if (props.data["completionDate"]) {
+        const dateObj = new Date(props.data["completionDate"]);
+        if (dateObj <= new Date()) isReady = true;
+        HOdate = format.dateTime(dateObj, { year: 'numeric', month: 'short' });
     } else {
+        isReady = true;
         HOdate = false;
     }
 
@@ -100,7 +103,7 @@ const PropertyCardAI = (props: any) => {
                     <div className="relative h-64 bg-gray-200 overflow-hidden">
                         <img src={imgFeatured} alt={props.data['propertyName']} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                         <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-sm backdrop-blur-sm">
-                            {props.data["status"] === 'Ready' ? "Ready" : "Off-Plan"}
+                            {props.data["propertyPlan"]}
                         </div>
                     </div>
                     {/* Content */}

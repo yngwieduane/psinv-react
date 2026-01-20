@@ -81,6 +81,9 @@ const PropertyMapBox = ({ data }: PropertyMapBoxProps) => {
                                         <p className="text-xs text-gray-500 flex items-center gap-1 truncate">
                                             <MapPin size={12} /> {property.community}
                                         </p>
+                                        <p className="text-xs font-bold py-1 mt-2">
+                                            {property.propertyPlan}
+                                        </p>
                                     </div>
 
                                     <div className="flex items-end justify-between mt-2">
@@ -166,6 +169,9 @@ const PropertyMapBox = ({ data }: PropertyMapBoxProps) => {
                                                 fill
                                                 className="object-cover"
                                             />
+                                            <p className="absolute top-3 left-3 bg-black/70 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-sm backdrop-blur-sm">
+                                                {selectedProperty.propertyPlan}
+                                            </p>
                                         </div>
                                         <h3 className="text-sm font-bold text-gray-900 mb-1">{selectedProperty.propertyName}</h3>
                                         <p className="text-xs text-gray-500 flex items-center gap-1 mb-3">
