@@ -64,8 +64,8 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
                 title="PSI"
                 src="/PSI-Logo.svg"
                 className="h-15 w-auto"
-                width={200}
-                height={200}
+                width={60}
+                height={60}
               /></Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-8 font-light">
               {t('footer_brand_desc')}

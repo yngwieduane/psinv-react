@@ -24,9 +24,15 @@ import ConditionalFooter from "./_components/ConditionalFooter";
 import { locales, siteBaseUrl, defaultLocale } from "@/utils/i18n-config";
 import { TranslationProvider } from "@/context/translationContext";
 import { UserProvider } from "@/context/userContext";
-import CompareFloatingButton from "./_components/CompareFloatingButton";
-import BrightCallWidget from "@/app/[locale]/_components/BrightCallWidget";
-import AIChatWidget from "./_components/AIChatWidget";
+import dynamic from "next/dynamic";
+const BrightCallWidget = dynamic(() => import("@/app/[locale]/_components/BrightCallWidget"));
+import AIChatWidgetClient from './_components/AIChatWidgetClient';
+import CompareFloatingButtonClient from "./_components/CompareFloatingButtonClient";
+import Script from "next/script";
+
+// import CompareFloatingButton from "./_components/CompareFloatingButton";
+// import BrightCallWidget from "@/app/[locale]/_components/BrightCallWidget";
+// import AIChatWidget from "./_components/AIChatWidget";
 
 const WIDGET_KEY =
   process.env.NEXT_PUBLIC_BRIGHT_CALL_WIDGET_KEY ?? "e5c730edd6b0222dd7c568dd2c42d972";
@@ -152,11 +158,22 @@ export default async function LocaleLayout({
             <ConditionalNavigation />
             <Providers><main>{children}</main></Providers>
             <ConditionalFooter />
-            <CompareFloatingButton />
-            <AIChatWidget />
+            <CompareFloatingButtonClient />
+            <AIChatWidgetClient />
           </NextIntlClientProvider>
         </UserProvider>
-        <GoogleTagManager gtmId="GTM-KDDP2SR" />
+        {/* <GoogleTagManager gtmId="GTM-KDDP2SR" /> */}
+        
+        {/* GTM loaded only after interactive */}
+        <Script id="gtm-script" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-KDDP2SR');
+          `}
+        </Script>
       </body>
     </html>
   );
