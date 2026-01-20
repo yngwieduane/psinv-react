@@ -202,7 +202,7 @@ export default function HomePage() {
       </div>
       <div className="w-full bg-secondary-color py-10 text-gray-500" dir={isRTL ? "rtl" : "ltr"}>
         <div className="relative max-w-(--breakpoint-xl) mx-auto py-10 px-5 overflow-hidden">
-          <Image src="/assets/images/about-us/pattern-1.png"
+          <Image src="/assets/images/about-us/pattern-1.svg"
             alt='pattern' title='pattern'
             fill
             className="object-cover object-center z-0" />

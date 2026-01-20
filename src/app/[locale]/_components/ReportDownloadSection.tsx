@@ -52,10 +52,13 @@ export default function ReportDownloadSection() {
           {/* Right Column - Image */}
           <div className="relative w-[220px] h-[160px] md:w-[500px] md:h-[321px] lg:w-[750px] lg:h-[521px] mt-1 md:mt-[-65px] mb-6 md:mb-[-20px] lg:mt-[-35px]">
             <Image
-              src="/images/april-report.png"
+              src="/images/april-report-image.webp"
               alt="Monthly Report DXB"
               title="Monthly Report DXB"
-              fill
+              width={666}
+              height={454}
+              loading="lazy"
+              quality={85}
               className="object-contain rounded-md"
             />
           </div>
