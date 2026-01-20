@@ -62,11 +62,12 @@ const CitiesTab: React.FC<CitiesTabProps> = ({ cities }) => {
                     <Image
                       src={project.image}
                       alt={project.title}
-                      width={286}
-                      height={400}
-                      className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
-                      quality={90}
+                      width={384}  
+                      height={430} 
+                      sizes="(max-width: 600px) 100vw, 384px"
+                      quality={85}  
                       priority={index < 2}
+                      className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity" />
 
