@@ -6,7 +6,7 @@ const CitiesTabHeader = (props: any) => {
   return (
     <>
       <section id="communities" className="">
-        <div className="flex flex-wrap gap-6 mb-12 border-b border-gray-200 pb-4">
+        <div className={`flex flex-wrap gap-6 mb-12 border-b border-gray-200 pb-4 ${props.centered ? 'justify-center' : ''}`}>
           {props.data.map((tab: any, index: any) => (
             <button
               key={index}

@@ -45,14 +45,15 @@ interface City {
 
 interface CitiesClientWrapperProps {
   cities: City[];
+  centered?: boolean;
 }
 
-export const CitiesClientWrapper: React.FC<CitiesClientWrapperProps> = ({cities}) => {
-    return(
-        <>
-        <div className='container mx-auto my-10'>
-            <Cities cities={cities} />
-        </div>
-        </>
-    )
+export const CitiesClientWrapper: React.FC<CitiesClientWrapperProps> = ({ cities, centered }) => {
+  return (
+    <>
+      <div className='container mx-auto my-10'>
+        <Cities cities={cities} centered={centered} />
+      </div>
+    </>
+  )
 }

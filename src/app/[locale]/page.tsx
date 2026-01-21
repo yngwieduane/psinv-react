@@ -12,11 +12,12 @@ import { CitiesClientWrapper } from './_components/HomeClientWrapperElements';
 import { HomeCalculatorClientWrapper } from './_components/HomeClientWrapperElements';
 import { Suspense } from 'react';
 import { homeSliderData } from '@/data/homeSliderData';
+import { getCitiesData } from '@/utils/citiesDataHelper';
 
 const HomeSearch = dynamic(() => import('./_components/HomeSearch'));
 const ListPropertyForm = dynamic(() => import('./_components/ListPropertyForm'));
 const WhyPSI = dynamic(() => import('./_components/WhyPSI'));
- 
+
 const AwardSlider = dynamic(
   () => import('../[locale]/about-us/_components/AboutAwardsSlider'),
   { loading: () => <></> } // lightweight placeholder, no SSR
@@ -27,8 +28,8 @@ const GoogleReviewSection = dynamic(() => import('./_components/GoogleReviewSect
 const GetTheAppSection = dynamic(() => import('./_components/GetTheAppSection'));
 const ReportDownloadSection = dynamic(() => import('./_components/ReportDownloadSection'));
 
-const montserrat = Montserrat({  subsets: ['latin'],  display: 'swap',});
-const outfit = Outfit({  subsets: ['latin'],  display: 'swap',})
+const montserrat = Montserrat({ subsets: ['latin'], display: 'swap', });
+const outfit = Outfit({ subsets: ['latin'], display: 'swap', })
 
 export default function HomePage() {
 
@@ -44,7 +45,7 @@ export default function HomePage() {
     "name": "Property Shop Investment",
     "url": "https://psinv.net",
     "sameAs": ["https://www.facebook.com/PropertyShopInvestment", "https://twitter.com/psinv", "https://www.facebook.com/PropertyShopInvestment", "https://www.instagram.com/property_shop_investment/", "https://www.linkedin.com/company/property-shop-investment-llc", "https://www.youtube.com/user/propertyshopabudhabi"]
-  }  
+  }
 
   const locale = useLocale();
   const isRTL = locale.toLowerCase().startsWith("ar");
@@ -54,16 +55,16 @@ export default function HomePage() {
   const t_cities = useTranslations('citiesHome');
 
   const mainSliderData = homeSliderData.map((item) => {
-    if(item.name === "loyalty") {
+    if (item.name === "loyalty") {
       return {
         ...item,
-        loyaltyTitle : t_slider(`slides.${item.key}.title`),
-        features: Array.from({ length: 5}, (_,i) => 
-        t_slider(`slides.${item.key}.features.${i}`)
+        loyaltyTitle: t_slider(`slides.${item.key}.title`),
+        features: Array.from({ length: 5 }, (_, i) =>
+          t_slider(`slides.${item.key}.features.${i}`)
         ),
       };
     }
-    return{
+    return {
       ...item,
       title: t_slider(`slides.${item.key}.title`),
       location: t_slider(`slides.${item.key}.location`),
@@ -71,98 +72,7 @@ export default function HomePage() {
     };
   });
 
-  const citiesData = [
-    {
-      title: t_cities('abu_dhabi.title'),
-      id: "26792",
-      content: "#",
-      image: '/images/gallery-1-new.webp',
-      projects: [
-        {
-          title: t_cities('abu_dhabi.al_reem_island'),
-          type: "APT | VI | TH | PH",
-          image: '/images/projects/al-reem-island-image.webp',
-          project_url: '/projects/abu-dhabi/al-reem-island',
-        },
-        {
-          title: t_cities('abu_dhabi.saadiyat_island'),
-          type: "APT | VI | TH | PH",
-          image: '/images/projects/saadiyat-island.webp',
-          project_url: '/projects/abu-dhabi/saadiyat-island',
-        },
-        {
-          title: t_cities('abu_dhabi.yas_island'),
-          type: "APT | VI | TH | PH",
-          image: '/images/projects/yas-island.webp',
-          project_url: '/projects/abu-dhabi/yas-island',
-        },
-        {
-          title: t_cities('abu_dhabi.al_raha_beach'),
-          type: "APT | VI | TH | PH",
-          image: '/images/projects/al-raha-beach-image.webp',
-          project_url: '/projects/abu-dhabi/al-raha-beach',
-        },
-      ],
-    },
-    {
-      title: t_cities('dubai.title'),
-      id: "26786",
-      content: "#",
-      image: '/images/gallery-2-new.webp',
-      projects: [
-        {
-          title: t_cities('dubai.palm_jumeirah'),
-          type: "APT | VI | TH | PH",
-          image: '/images/projects/palm-jumeriah.webp',
-          project_url: '/projects/dubai/the-palm-jumeirah',
-        },
-        {
-          title: t_cities('dubai.downtown_dubai'),
-          type: "APT | VI | TH | PH",
-          image: '/images/projects/dubai-downtown.webp',
-          project_url: '/projects/dubai/downtown-dubai',
-        },
-        {
-          title: t_cities('dubai.dubai_creek'),
-          type: "APT | VI | TH | PH",
-          image: '/images/projects/dubai-creek.webp',
-          project_url: '/projects/dubai/dubai-creek',
-        },
-        {
-          title: t_cities('dubai.town_square_dubai'),
-          type: "APT | VI | TH | PH",
-          image: '/images/projects/townsquare-dubai.webp',
-          project_url: '/projects/dubai/town-square-dubai',
-        },
-      ],
-    },
-    {
-      title: t_cities('sharjah.title'),
-      id: "26953",
-      content: "#",
-      image: '/images/gallery-3-new.webp',
-      projects: [
-        {
-          title: t_cities('sharjah.al_khan'),
-          type: "APT | VI | TH | PH",
-          image: '/images/projects/al-khan.webp',
-          project_url: '/projects/sharjah/al-khan',
-        },
-        {
-          title: t_cities('sharjah.sharjah_waterfront_city'),
-          type: "APT | VI | TH | PH",
-          image: '/images/projects/sharjah-waterfront.webp',
-          project_url: '/projects/sharjah/sharjah-waterfront-city',
-        },
-        {
-          title: t_cities('sharjah.aljada'),
-          type: "APT | VI | TH | PH",
-          image: '/images/projects/aljada.webp',
-          project_url: '/projects/sharjah/aljada',
-        },
-      ],
-    },
-  ];
+  const citiesData = getCitiesData(t_cities);
 
   return (
     <div>
@@ -178,15 +88,15 @@ export default function HomePage() {
           __html: JSON.stringify(organizationSchema1).replace(/</g, '\\u003c'),
         }}
       />
-      
-      <section className={`relative min-h-[600px] ${outfit.className}`}> 
+
+      <section className={`relative min-h-[600px] ${outfit.className}`}>
         <HomeBanner slidePerView="1" slides={mainSliderData} />
         <HomeSearch />
       </section>
-      
+
       <section className="bg-gray-50">
         {/* <CitiesTab  cities={citiesData}  /> */}
-        <CitiesClientWrapper cities={citiesData}  />
+        <CitiesClientWrapper cities={citiesData} />
       </section>
 
       <div className="my-10 bg-white min-h-[400px]">

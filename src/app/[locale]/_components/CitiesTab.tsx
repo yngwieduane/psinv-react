@@ -32,9 +32,10 @@ interface City {
 
 interface CitiesTabProps {
   cities: City[];
+  centered?: boolean;
 }
 
-const CitiesTab: React.FC<CitiesTabProps> = ({ cities }) => {
+const CitiesTab: React.FC<CitiesTabProps> = ({ cities, centered }) => {
   const locale = useLocale();
   const isRtl = locale.toLowerCase().startsWith("ar");
 
@@ -49,6 +50,7 @@ const CitiesTab: React.FC<CitiesTabProps> = ({ cities }) => {
             data={cities}
             visibleTab={visibleTab}
             setVisibleTab={setVisibleTab}
+            centered={centered}
           />
 
           <div key={visibleTab} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 min-h-[320px] animate-[fadeIn_0.5s_ease-out]">
@@ -58,14 +60,14 @@ const CitiesTab: React.FC<CitiesTabProps> = ({ cities }) => {
                   <div
                     key={index}
                     className="group relative h-80 overflow-hidden rounded-lg cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300"
-                  >                    
+                  >
                     <Image
                       src={project.image}
                       alt={project.title}
-                      width={384}  
-                      height={430} 
+                      width={384}
+                      height={430}
                       sizes="(max-width: 600px) 100vw, 384px"
-                      quality={85}  
+                      quality={85}
                       priority={index < 2}
                       className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                     />
