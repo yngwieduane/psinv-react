@@ -34,7 +34,16 @@ export default function GetTheAppSection() {
 
           {/* Image */}
           {/* Mobile background image */}
-          <div className="relative w-full md:w-1/2 mx-auto h-[500px] bg-[url('/images/app-screens-mob.png')] bg-cover bg-top bg-no-repeat lg:hidden order-1" />
+          <div className="relative w-full md:w-1/2 mx-auto h-[500px] lg:hidden order-1">
+            <Image
+              src="/images/app-screens-mob.png"
+              alt="Mobile App Screens"
+              title="Mobile App Screens"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
 
           {/* Desktop image */}
           <div className={`hidden lg:flex relative w-full lg:w-[75%] justify-center items-center my-6 z-0 order-1 lg:order-0 ${isRtl ? "scale-x-[-1]" : ""}`} dir={isRtl ? "rtl" : "ltr"}>

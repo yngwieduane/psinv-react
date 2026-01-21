@@ -71,21 +71,21 @@ const WhyPSI = () => {
             </div>
 
             {/* Image Section */}
-            <div className="flex-1 rounded-xl p-4 md:p-6"
-              style={{
-                backgroundImage: "url('/images/bg-cover.webp')",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}
-            >
+            <div className="flex-1 rounded-xl p-4 md:p-6 relative min-h-[300px] overflow-hidden">
+              <Image
+                src="/images/bg-cover.webp"
+                alt="Background"
+                fill
+                className="object-cover absolute inset-0 -z-10"
+              />
               <Image
                 src="/images/corporate_cover.webp"
                 alt="corporate cover"
                 title="corporate cover"
-                className="w-full rounded-xl"
+                className="w-full rounded-xl relative z-10"
                 width={600}
                 height={300}
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>
@@ -112,21 +112,21 @@ const WhyPSI = () => {
             </div>
 
             {/* Image Section */}
-            <div className="flex-1 rounded-xl p-4 md:p-6"
-              style={{
-                backgroundImage: "url('/images/bg-cover.webp')",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}
-            >
+            <div className="flex-1 rounded-xl p-4 md:p-6 relative min-h-[300px] overflow-hidden">
+              <Image
+                src="/images/bg-cover.webp"
+                alt="Background"
+                fill
+                className="object-cover absolute inset-0 -z-10"
+              />
               <Image
                 src="/images/national-hub-home.webp"
                 alt="national hub"
                 title="national hub"
-                className="w-full rounded-xl"
+                className="w-full rounded-xl relative z-10"
                 width={600}
                 height={300}
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>
@@ -153,21 +153,21 @@ const WhyPSI = () => {
             </div>
 
             {/* Image Section */}
-            <div className="flex-1 rounded-xl p-4 md:p-6"
-              style={{
-                backgroundImage: "url('/images/bg-cover.webp')",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}
-            >
+            <div className="flex-1 rounded-xl p-4 md:p-6 relative min-h-[300px] overflow-hidden">
+              <Image
+                src="/images/bg-cover.webp"
+                alt="Background"
+                fill
+                className="object-cover absolute inset-0 -z-10"
+              />
               <Image
                 src="/images/youngster_cover2.webp"
                 alt="youngster"
                 title="youngster"
-                className="w-full rounded-xl"
+                className="w-full rounded-xl relative z-10"
                 width={600}
                 height={300}
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>
@@ -196,21 +196,21 @@ const WhyPSI = () => {
             </div>
 
             {/* Image Section */}
-            <div className="flex-1 rounded-xl p-4 md:p-6"
-              style={{
-                backgroundImage: "url('/images/bg-cover.webp')",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}
-            >
+            <div className="flex-1 rounded-xl p-4 md:p-6 relative min-h-[300px] overflow-hidden">
+              <Image
+                src="/images/bg-cover.webp"
+                alt="Background"
+                fill
+                className="object-cover absolute inset-0 -z-10"
+              />
               <Image
                 src="/images/crypto_cover-new.webp"
                 alt="Crypto"
                 title="Crypto"
-                className="w-full rounded-xl"
+                className="w-full rounded-xl relative z-10"
                 width={600}
                 height={300}
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>
@@ -236,21 +236,21 @@ const WhyPSI = () => {
             </div>
 
             {/* Image Section */}
-            <div className="flex-1 rounded-xl p-4 md:p-6"
-              style={{
-                backgroundImage: "url('/images/bg-cover.webp')",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}
-            >
+            <div className="flex-1 rounded-xl p-4 md:p-6 relative min-h-[300px] overflow-hidden">
+              <Image
+                src="/images/bg-cover.webp"
+                alt="Background"
+                fill
+                className="object-cover absolute inset-0 -z-10"
+              />
               <Image
                 src="/images/international_cover.webp"
                 alt="international cover"
                 title="international cover"
-                className="w-full rounded-xl"
+                className="w-full rounded-xl relative z-10"
                 width={600}
                 height={300}
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>

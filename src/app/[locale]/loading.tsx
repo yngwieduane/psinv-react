@@ -9,7 +9,6 @@ export default function Loading(props: any) {
                 className="h-auto w-[200px]"
                 width={200}
                 height={200}
-                unoptimized
             />
         </div>
     );
