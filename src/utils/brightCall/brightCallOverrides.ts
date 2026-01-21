@@ -124,6 +124,9 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
     "lp-listing": {
         en: "796da99655275939aebd8c8d19604345",
     },
+    "psi-rental-units": {
+        en: "0e3127ecb5024746ef9ace5679b452c8",
+    },
     // Add here
 };
 
