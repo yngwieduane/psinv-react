@@ -30,31 +30,6 @@ import AIChatWidgetClient from './_components/AIChatWidgetClient';
 import CompareFloatingButtonClient from "./_components/CompareFloatingButtonClient";
 import Script from "next/script";
 
-// import CompareFloatingButton from "./_components/CompareFloatingButton";
-// import BrightCallWidget from "@/app/[locale]/_components/BrightCallWidget";
-// import AIChatWidget from "./_components/AIChatWidget";
-
-const WIDGET_KEY =
-  process.env.NEXT_PUBLIC_BRIGHT_CALL_WIDGET_KEY ?? "e5c730edd6b0222dd7c568dd2c42d972";
-// export const metadata: Metadata = {
-//   title: "⚡  Abu Dhabi Real Estate  - Property Shop Investment",
-//   description: "⚡  Abu Dhabi Real Estate  - PSI - Check out our stunning real estate projects - Property Shop Investments - Real Estate Projects - Buy or Rent",
-//   robots: {
-//     index: true,
-//     follow: true,
-//     nocache: false,
-//     googleBot: {
-//       index: true,
-//       follow: true,
-//       noimageindex: false,
-//       'max-video-preview': -1,
-//       'max-image-preview': 'large',
-//       'max-snippet': -1,
-//     },
-//   },
-//   metadataBase: new URL('https://www.psinv.net'),
-// };
-
 type Props = {
   children: React.ReactNode;
   params: { locale: string };
@@ -69,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   let canonicalPath = pathname.replace(/\/+/g, '/');
   // Add trailing slash only for root locale page
   if (canonicalPath === '/en') {
-    canonicalPath = '/en/'; 
+    canonicalPath = '/en/';
   } else if (canonicalPath === '/ar') {
     canonicalPath = '/ar/';
   }
@@ -163,7 +138,7 @@ export default async function LocaleLayout({
           </NextIntlClientProvider>
         </UserProvider>
         {/* <GoogleTagManager gtmId="GTM-KDDP2SR" /> */}
-        
+
         {/* GTM loaded only after interactive */}
         <Script id="gtm-script" strategy="afterInteractive">
           {`

@@ -78,7 +78,7 @@ const HomeBanner = (props: any) => {
         onSlideChange={(swiper) => setCurrentSlide(swiper.activeIndex + 1)}
         onSwiper={(swiper: any) => (swiperElRef2.current = swiper)}
         loop={false}
-        className="home-banner-swiper md:h-210 h-230"
+        className="home-banner-swiper h-[920px] md:h-[840px]"
       >
         {props.slides.map((slide: any, index: number) => (
           <SwiperSlide
