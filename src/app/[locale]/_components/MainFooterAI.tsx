@@ -51,7 +51,7 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
   const t = useTranslations('FooterAI');
 
   return (
-    <footer className="bg-primary-dark text-gray-800 pt-24 pb-12 border-t border-white/5" dir={isRtl ? "rtl" : "ltr"} >
+    <footer className="bg-[#0c1356] text-white pt-24 pb-12 border-t border-white/5" dir={isRtl ? "rtl" : "ltr"} >
       <div className="container mx-auto px-6 md:px-12" dir={isRtl ? "rtl" : "ltr"}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-20" dir={isRtl ? "rtl" : "ltr"}>
 
@@ -62,7 +62,7 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
               <Image
                 alt="PSI"
                 title="PSI"
-                src="/PSI-Logo.svg"
+                src="/logo-psi-white.svg"
                 className="h-15 w-auto"
                 width={60}
                 height={60}
@@ -92,8 +92,8 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Company */}
           <div>
-            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_company')}</h3>
-            <ul className="space-y-4 text-sm text-gray-800 font-light">
+            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-white border-b border-white/10 pb-3 inline-block">{t('footer_company')}</h3>
+            <ul className="space-y-4 text-sm text-white font-light">
               <li><Link href="/about-us" title={t('footer_links_about')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_about')}</Link></li>
               <li><Link href="/careers" title={t('footer_links_careers')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_careers')}</Link></li>
               <li><Link href="/about-us#awards" title={t('footer_links_awards')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_awards')}</Link></li>
@@ -103,8 +103,8 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Services */}
           <div>
-            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_services')}</h3>
-            <ul className="space-y-4 text-sm text-gray-800 font-light">
+            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-white border-b border-white/10 pb-3 inline-block">{t('footer_services')}</h3>
+            <ul className="space-y-4 text-sm text-white font-light">
               <li><a href="/en/units?category=Sale" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_buy')}</a></li>
               <li><a href="/en/units?category=Rent" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_rent')}</a></li>
               <li><a href="/en/list-your-property" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_list')}</a></li>
@@ -114,8 +114,8 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Popular Areas */}
           <div>
-            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_popular_areas')}</h3>
-            <ul className="space-y-4 text-sm text-gray-800 font-light">
+            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-white border-b border-white/10 pb-3 inline-block">{t('footer_popular_areas')}</h3>
+            <ul className="space-y-4 text-sm text-white font-light">
               <li><a href="/en/projects/abu-dhabi/al-reem-island" title={t('loc_Al_Reem_Island')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Al Reem Island')}</a></li>
               <li><a href="/en/projects/abu-dhabi/yas-island" title={t('loc_Yas_Island')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Yas Island')}</a></li>
               <li><a href="/en/projects/abu-dhabi/saadiyat-island" title={t('loc_Saadiyat_Island')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('loc_Saadiyat Island')}</a></li>
@@ -128,8 +128,8 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Contact & Newsletter */}
           <div>
-            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-gray-900 border-b border-white/10 pb-3 inline-block">{t('footer_get_in_touch')}</h3>
-            <ul className="space-y-5 text-sm text-gray-800 mb-10 font-light">
+            <h3 className="font-bold text-base uppercase tracking-wider mb-8 text-white border-b border-white/10 pb-3 inline-block">{t('footer_get_in_touch')}</h3>
+            <ul className="space-y-5 text-sm text-white mb-10 font-light">
               <li className="flex items-start gap-4">
                 <Phone size={18} className="text-secondary shrink-0 mt-0.5" />
                 <a href='tel:600548200' title="Call Property Shop Investment at 600 548 200">
@@ -154,7 +154,7 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
 
         </div>
 
-        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-800 font-light">
+        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-xs text-white font-light">
           <p>&copy; {new Date().getFullYear()} {t('footer_psi')} {t('footer_rights')}</p>
           <div className="flex space-x-8 mt-4 md:mt-0">
             <a href="/en/privacy" title={t('footer_privacy')} className="hover:text-gray-400 transition-colors">{t('footer_privacy')}</a>
