@@ -146,6 +146,11 @@ const nextConfig: NextConfig = {
         destination: '/en/project/lp-listing',
         permanent: true,
       },
+            {
+        source: '/en/psi-rental-units',
+        destination: '/en/project/psi-rental-units',
+        permanent: true,
+      },
     ]
   },
   reactStrictMode: true,
