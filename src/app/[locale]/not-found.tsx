@@ -3,44 +3,65 @@
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { getCitiesData } from '@/utils/citiesDataHelper';
-import { CitiesClientWrapper } from './_components/HomeClientWrapperElements';
+// import { CitiesClientWrapper } from './_components/HomeClientWrapperElements';
+import { Outfit } from "next/font/google";
+import CityProjectsGrid from './_components/CityProjectsGrid';
+
+const outfit = Outfit({
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "600", "700"],
+    display: "swap",
+});
 
 export default function NotFound() {
-    const t = useTranslations('Agents'); // Using Agents namespace if suitable, or common if exists. Usually 404 messages are in common or error namespace.
-    // Checking en.json content from memory (step 75), there isn't a dedicated 404 namespace but "Page Not Found" is generic.
-    // I will use some hardcoded text or try to find a relevant key if I check en.json again. 
-    // Wait, I saw 404.tsx in Step 194. It had hardcoded text. I will use similar hardcoded text or add translations if needed.
-    // To match the homepage structure, I need t_cities for the data helper.
+    const t = useTranslations('Agents');
 
     const t_cities = useTranslations('citiesHome');
     const citiesData = getCitiesData(t_cities);
 
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col items-center py-20 mt-20">
-            <div className="text-center space-y-6 max-w-2xl px-4">
-                <h1 className="text-9xl font-bold text-[#0c1356]/10">404</h1>
-                <h2 className="text-3xl font-bold text-[#0c1356]">Page Not Found</h2>
-                <p className="text-gray-500 text-lg">
-                    The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
-                </p>
-                <div className="pt-4">
+        <div className="min-h-screen bg-gray-50 flex flex-col">
+            {/* Hero Section */}
+            <div className="relative h-[60vh] flex items-center justify-center">
+                <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: 'url("/assets/images/about-us/psi-office.webp")' }}
+                >
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
+                </div>
+                <div className="relative z-10 text-center text-white px-4">
+                    <h1 className={`text-7xl font-bold mb-4 opacity-20 ${outfit.className}`}>404</h1>
+                    <h2 className={`text-2xl font-bold mb-6 ${outfit.className}`}>Page Not Found</h2>
                     <Link
                         href="/"
-                        className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#0c1356] hover:bg-[#CE641D] transition-colors duration-300"
+                        className="inline-flex items-center justify-center px-8 py-3 border border-white/30 hover:border-white text-base font-medium rounded-full text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
                     >
                         Go Back Home
                     </Link>
                 </div>
             </div>
 
-            <div className="w-full mt-20">
-                <div className="text-center mb-10">
-                    <h3 className="text-2xl font-bold text-gray-900">Explore Our Properties</h3>
-                    <p className="text-gray-500 mt-2">Check out our latest projects in key locations</p>
-                </div>
-                <div className="bg-gray-50 py-10">
-                    <CitiesClientWrapper cities={citiesData} centered={true} />
-                </div>
+            {/* City Sections */}
+            <div className="w-full pb-20 mt-10 space-y-20">
+                {/* Abu Dhabi Section */}
+                {citiesData.find(c => c.id === "26792") && (
+                    <div className="container mx-auto px-4 md:px-8">
+                        <h3 className={`text-2xl text-center text-gray-900 mb-10 ${outfit.className}`}>
+                            {citiesData.find(c => c.id === "26792")?.title}
+                        </h3>
+                        <CityProjectsGrid projects={citiesData.find(c => c.id === "26792")?.projects || []} />
+                    </div>
+                )}
+
+                {/* Dubai Section */}
+                {citiesData.find(c => c.id === "26786") && (
+                    <div className="container mx-auto px-4 md:px-8">
+                        <h3 className={`text-2xl text-center text-gray-900 mb-10 ${outfit.className}`}>
+                            {citiesData.find(c => c.id === "26786")?.title}
+                        </h3>
+                        <CityProjectsGrid projects={citiesData.find(c => c.id === "26786")?.projects || []} />
+                    </div>
+                )}
             </div>
         </div>
     );
