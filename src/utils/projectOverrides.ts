@@ -20,6 +20,146 @@ export type PerSlug = {
   seo?: SeoMeta | LocalizedSeo;
 };
 export const PROJECTS: Record<string, PerSlug> = {
+      'saadiyat-lagoons': {
+    branch: 'auh',
+    override: {
+    PropertyID: 23310,
+    CommunityID: 97198,
+    SubCommunityID: 130713,
+    UnitType: 20,
+      remarks: 'Saadiyat Lagoons - Last Phase- PSI AUH saadiayt lagoons last phase',
+      ...makeUtm({
+        'SaadiyatLagoons_Hubspot': {
+          campaign: 2128,
+          remarks:
+            'Campaign name:	SaadiyatLagoons_Hubspot',
+        },
+        'zaineh-thawabi-campaign': {
+          campaign: 1634,
+          remarks:
+            'Campaign name:	Zaineh:Lagoons news',
+        },
+      }),
+    },
+  },
+    'reem-hills-villa-reem-island': {
+    branch: 'auh',
+    override: {
+    PropertyID: 22864,
+    CommunityID: 95259,
+    UnitType: 20,
+      remarks: 'Reem Hills',
+      ...makeUtm({
+      'Ramhan_Hubspot': {
+        campaign: 2133,
+        remarks:
+            'Rotation:  ramhan rotation , Campaign name:	Ramhan_Hubspot',
+        },  
+      'Reem-Hills-website-home-page-banner': {
+        campaign: 2143,
+        remarks: 'campaign name: Reem Hills - website-home page banner',
+      },
+      'ReemHills_Newsletter_HubSpot': {
+        campaign: 2126,
+        remarks: 'campaign name: ReemHills_Newsletter_HubSpot',
+      },
+      'Newsletter%20Campaign_ReemHills_100': {
+        campaign: 2126,
+        remarks: 'campaign name: ReemHills_Newsletter_HubSpot',
+      },
+      'ALReemHills_Hubspot': {
+        campaign: 2127,
+        remarks: 'campaign name: AlReemHills_Hubspot',
+      },
+      'zaineh-thawabi-campaign': {
+        campaign: 2100,
+        remarks:
+          'Rotation: Reem Hills - Company Campaign 28Sep, campaign name: Zaineh: Reem Hills News',
+      },
+      'zaineh-thawabi-new-campaign': {
+        campaign: 2102,
+        remarks:
+          'Rotation: Reem Hills - Company Campaign 28Sep, campaign name: Zaineh: Reem Hills News - 2',
+      },
+      'ReemHills-Retarget-hubspot-21oct': {
+        campaign: 2170,
+        remarks:
+          'Rotation: jamal team, campaign name: ReemHills - Retarget - hubspot - 21oct',
+      },
+      }),
+    },
+  },
+  'real-estate-tour': {
+    branch: 'auh',
+    override: {
+      UnitType: 20,
+      remarks: 'ramhan rotation',
+      ...makeUtm({
+        'YasRiva_HubSpot': {
+          campaign: 2132,
+          remarks:
+            'Campaign name:	YasRiva_Hubspot',
+        },
+        'Raha_Hubspot_Newsletter': {
+          campaign: 2737,
+          remarks:
+            'Campaign name: Raha_Hubspot',
+        },
+      '11.2015_rental_Campaign': {
+        campaign: 2380,
+        remarks: 'campaign name: 11.2015_rental_Campaign, rotation: rental',
+      },
+      'DripCampaign_HubSpot_V2': {
+        campaign: 2134,
+        remarks: 'campaign name:Drip_Campaign_HubSpot',
+      },
+      'ALReemHills_Hubspot': {
+        campaign: 2127,
+        remarks: 'Campaign name: AlReemHills_Hubspot',
+      },
+      'SAADIYATLAGOONS_hubspot': {
+        campaign: 2128,
+        remarks: 'Campaign name: SaadiyatLagoons_Hubspot',
+      },
+      'RamhanIsland_Hubspot': {
+        campaign: 2133,
+        remarks: 'Rotation:Ramhan rotation, Campaign name: RamhanIsland_Hubspot',
+      },
+      'Hudayriyat_HubSpot': {
+        campaign: 2177,
+        remarks: 'Campaign name: Hudayriyat_HubSpot',
+      },
+      'zaineh-thawabi-campaign': {
+        campaign: 1475,
+        remarks: 'Ajwan Event Registration, Campaign name: Zaineh:Ajwan Invitation News',
+      },
+      'NUR_RAK_GEN_HUBSPOT': {
+        campaign: 2944,
+        remarks: 'RAK General , Campaign name: NUR_RAK_GEN_HUBSPOTs',
+      },
+      }),
+    },
+  },
+    'ramhan-island': {
+    branch: 'auh',
+    override: {
+    PropertyID: 20786,
+    UnitType: 20,
+      remarks: 'ramhan Island rotation - Ramhan Island',
+      ...makeUtm({
+        'Ramhan_Hubspot': {
+          campaign: 2133,
+          remarks:
+            'Rotation:  ramhan rotation , Campaign name:	Ramhan_Hubspot',
+        },
+        'RamhanIsland_Hubspot': {
+          campaign: 2133,
+          remarks:
+            'Rotation:  ramhan rotation , Campaign name:	Ramhan_Hubspot',
+        },
+      }),
+    },
+  },
   'test-reg-page': {
     branch: 'auh',
     override: {

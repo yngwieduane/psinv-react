@@ -147,6 +147,20 @@ const REG_WIDGET_KEYS_BY_UTM: Record<
     "the-row-saadiyat-registration": {
         "irani_the_row_saadiyat_island_newsletter": { en: "46e42c0cf2c2e512a46a73db631e22a6", ar: "abea317459d6eaf3cbac1174edccac01" },
     },
+    "real-estate-tour": {
+    "11.2015_rental_Campaign": { en: "ed79ff21331448d40612ff6a353d2aa2", ar: "ed79ff21331448d40612ff6a353d2aa2" },
+    "ALReemHills_Hubspot": { en: "910b00ce56663bd619de61c6bab5d88c", ar: "910b00ce56663bd619de61c6bab5d88c" },
+    "SaadiyatLagoons_Hubspot": { en: "09e5a347f6f2d696ba743b6e3de4ea82", ar: "09e5a347f6f2d696ba743b6e3de4ea82" },
+    "YasRiva_Hubspot": { en: "408010eec3747815237d10cd7efd26be", ar: "408010eec3747815237d10cd7efd26be" },
+    "RamhanIsland_Hubspot": { en: "d3522237adb993fb54089cccc2d29812", ar: "d3522237adb993fb54089cccc2d29812" },
+    "Hudayriyat_HubSpot": { en: "d8b6e0264d3e86b065335cadb9a17198", ar: "d8b6e0264d3e86b065335cadb9a17198" },
+    "Luxury_Projects_Campaign": { en: "78aa896d87cd37e55740dad30f30d4f0", ar: "78aa896d87cd37e55740dad30f30d4f0" },
+    },
+    "ramhan-island": {
+    "Ramhan_Hubspot": { en: "d3522237adb993fb54089cccc2d29812", ar: "d3522237adb993fb54089cccc2d29812" },
+    "RamhanIsland_Hubspot": { en: "d3522237adb993fb54089cccc2d29812", ar: "d3522237adb993fb54089cccc2d29812" },
+    },
+
 };
 
 const LP_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> = {
