@@ -755,12 +755,16 @@ export default function Page() {
                 <div className="w-full">
                     <Image
                         src="/images/walkin-form/conrad-main-image1.png"
+                        title="Conrad Abu Dhabi Etihad Towers Walk-in Registration"
                         alt="Conrad Abu Dhabi Etihad Towers"
                         width={2000}
                         height={600}
                         priority
                         className="w-full h-auto"
                     />
+                    <h1 className="sr-only">
+  Conrad Abu Dhabi Etihad Towers Walk-in Registration
+</h1>
                 </div>
                 <div className="mt-6">
                     <Stepper step={step} />
@@ -799,7 +803,7 @@ export default function Page() {
                                             </select>
                                         </div>
                                         <div>
-                                            <div className="text-lg font-bold text-[#f97316]">Client Information</div>
+                                            <h2 className="text-lg font-bold text-[#f97316]">Client Information</h2>
 
                                             <div className="mt-3">
                                                 <div className="text-sm text-[#f97316]">Name</div>
@@ -897,7 +901,7 @@ export default function Page() {
                             {/* STEP 2 */}
                             {step === 2 && (
                                 <>
-                                    <div className="text-xl font-bold text-[#f97316]">Contacts</div>
+                                    <h2 className="text-xl font-bold text-[#f97316]">Contacts</h2>
 
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
                                         {/* Mobile 1 */}
@@ -1017,7 +1021,7 @@ export default function Page() {
                             {/* STEP 3 */}
                             {step === 3 && (
                                 <>
-                                    <div className="text-center text-xl font-bold text-[#f97316]">Interested In</div>
+                                    <h2 className="text-center text-xl font-bold text-[#f97316]">Interested In</h2>
                                     <div id="services" className="grid grid-cols-2 md:grid-cols-5 gap-2">
                                         {SERVICES.map((s) => {
                                             const active = form.service === s.key;
