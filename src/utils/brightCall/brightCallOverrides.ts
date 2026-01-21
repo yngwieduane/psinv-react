@@ -121,6 +121,9 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
     "test-reg-page": {
         en: "3b3c2a37b7351ff5e13fd9b2fb1876f9",
     },
+    "lp-listing": {
+        en: "796da99655275939aebd8c8d19604345",
+    },
     // Add here
 };
 

@@ -20,8 +20,123 @@ export type PerSlug = {
   seo?: SeoMeta | LocalizedSeo;
 };
 export const PROJECTS: Record<string, PerSlug> = {
-      'saadiyat-lagoons': {
+    'lp-listing': {
     branch: 'auh',
+    seo: {
+  en: {
+    title: 'PSI Property Listings | Buy, Sell, or Rent Real Estate in the UAE',
+    description:
+      'Explore PSI’s comprehensive property listings. Discover apartments, villas, and commercial properties available for sale or rent across the UAE’s most sought-after locations.',
+    keywords:
+      'PSI property listings, buy property UAE, rent property UAE, UAE real estate listings, apartments for sale UAE, villas for rent UAE, commercial properties UAE, PSI real estate',
+  },
+  ar: {
+    title: 'قوائم عقارات PSI | شراء وبيع وتأجير العقارات في الإمارات',
+    description:
+      'استكشف قوائم العقارات الشاملة من PSI. اعثر على شقق وفلل وعقارات تجارية للبيع أو الإيجار في أهم وأفضل المواقع داخل دولة الإمارات.',
+    keywords:
+      'قوائم عقارات PSI، شراء عقار في الإمارات، تأجير عقار في الإمارات، عقارات الإمارات، شقق للبيع في الإمارات، فلل للإيجار في الإمارات، عقارات تجارية في الإمارات، PSI للعقارات',
+  },
+},
+    override: {
+      UnitType: 20,
+      remarks: 'Listing Page',
+      ...makeUtm({
+        'ready_nur_hubspot': {
+          campaign: 2374,
+          remarks:
+            'Rotation: Hot deals AUH , Campaign name: Ready_Nur_Hubspot',
+        },
+        '2025_March_HotDeals': {
+          campaign: 2374,
+          remarks:
+            'Campaign name:2025_March_HotDeals',
+        },
+      }),
+    },
+  },
+  'jubail-island': {
+    branch: 'auh',
+    seo: {
+  en: {
+    title: 'Jubail Island – Exclusive Living in the UAE',
+    description:
+      'Discover luxury living at Jubail Island, a serene island destination on the edge of the UAE’s vibrant capital. Explore exclusive homes surrounded by nature, privacy, and waterfront beauty.',
+    keywords:
+      'Jubail Island, luxury living UAE, waterfront villas Abu Dhabi, island living Abu Dhabi, exclusive residential community UAE, premium villas Abu Dhabi',
+  },
+  ar: {
+    title: 'جزيرة الجبيل – أسلوب حياة حصري في الإمارات',
+    description:
+      'اكتشف أسلوب الحياة الفاخر في جزيرة الجبيل، وجهة سكنية هادئة على أطراف العاصمة الإماراتية النابضة بالحياة. استمتع بمنازل حصرية وسط الطبيعة والخصوصية وإطلالات الواجهة البحرية.',
+    keywords:
+      'جزيرة الجبيل، حياة فاخرة في الإمارات، فلل مطلة على البحر أبوظبي، السكن في الجزر أبوظبي، مجتمع سكني حصري، فلل فاخرة في أبوظبي',
+  },
+},
+    override: {
+    PropertyID: 20422,
+    DistrictID: 165218,
+    CommunityID: 165219,
+    SubCommunityID: 165220,
+    UnitType: 20,
+      remarks: 'Jubail landlord listing rotation,Jubail island project',
+      ...makeUtm({
+        '10.2025_jubail_island_lisitingCampaign': {
+          campaign: 2374,
+          remarks:
+            'Rotation: Jubail landlord listing rotation, Jubail island, Campaign name:	 10.2025_jubail_island_lisitingCampaign',
+        },
+      }),
+    },
+  },
+  'property-evalution': {
+    branch: 'auh',
+    seo: {
+  en: {
+    title: 'Jubail Island Property Evaluation | Accurate Valuation by PSI',
+    description:
+      'Get a professional property evaluation for your Jubail Island home. PSI provides accurate market-based property valuations to help you sell, invest, or plan with confidence in Abu Dhabi.',
+    keywords:
+      'Jubail Island property valuation, property evaluation Abu Dhabi, Jubail Island real estate value, property appraisal UAE, PSI property evaluation, Abu Dhabi property assessment',
+  },
+  ar: {
+    title: 'تقييم عقارات جزيرة الجبيل | تقييم دقيق من PSI',
+    description:
+      'احصل على تقييم احترافي لعقارك في جزيرة الجبيل. تقدم PSI تقييماً دقيقاً يعتمد على السوق لمساعدتك في البيع أو الاستثمار أو التخطيط بثقة في أبوظبي.',
+    keywords:
+      'تقييم عقارات جزيرة الجبيل, تقييم العقارات أبوظبي, قيمة العقار في جزيرة الجبيل, تقييم الممتلكات في الإمارات, تقييم عقاري PSI, تقييم السوق العقاري',
+  },
+},
+    override: {
+      UnitType: 20,
+      remarks: 'Company',
+      ...makeUtm({
+        '10.2025_jubail_island_lisitingCampaign': {
+          campaign: 2374,
+          remarks:
+            'Rotation:  General property campaign , Campaign name:	 10.2025_jubail_island_lisitingCampaign',
+        },
+      }),
+    },
+  },
+   'saadiyat-lagoons': {
+    branch: 'auh',
+    seo: {
+  en: {
+    title: 'Saadiyat Lagoons – Last Phase | Exclusive Registration by PSI Abu Dhabi',
+    description:
+      'Register now for the last phase of Saadiyat Lagoons. Explore premium villas surrounded by nature on Saadiyat Island with Property Shop Investment (PSI), Abu Dhabi.',
+    keywords:
+      'Saadiyat Lagoons last phase, Saadiyat Lagoons registration, Saadiyat Island villas, Aldar Saadiyat Lagoons, luxury villas Abu Dhabi, PSI Abu Dhabi projects',
+  },
+  ar: {
+    title: 'سعديات لاجونز – المرحلة الأخيرة | تسجيل حصري من PSI أبوظبي',
+    description:
+      'سجّل الآن في المرحلة الأخيرة من مشروع سعديات لاجونز. اكتشف فلل فاخرة وسط الطبيعة في جزيرة السعديات مع شركة بروبرتي شوب للاستثمار (PSI) أبوظبي.',
+    keywords:
+      'سعديات لاجونز المرحلة الأخيرة, تسجيل سعديات لاجونز, فلل جزيرة السعديات, سعديات لاجونز من الدار, فلل فاخرة أبوظبي, مشاريع PSI أبوظبي',
+  },
+},
     override: {
     PropertyID: 23310,
     CommunityID: 97198,
@@ -44,6 +159,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
     'reem-hills-villa-reem-island': {
     branch: 'auh',
+    seo: {
+  en: {
+    title: 'Reem Hills Villas | Luxury Living on Reem Island – PSI Abu Dhabi',
+    description:
+      'Discover Reem Hills Villas on Reem Island, Abu Dhabi. Explore spacious 3–7 bedroom villas in a premium gated community featuring green parks, jogging tracks, retail promenades, and world-class amenities with Property Shop Investment (PSI).',
+    keywords:
+      'Reem Hills Villas, Reem Island villas Abu Dhabi, luxury villas Reem Island, Reem Hills community, Abu Dhabi gated community, PSI Reem Hills',
+  },
+  ar: {
+    title: 'فلل ريم هيلز | أسلوب حياة فاخر في جزيرة الريم – PSI أبوظبي',
+    description:
+      'اكتشف فلل ريم هيلز في جزيرة الريم بأبوظبي. فلل فاخرة من 3 إلى 7 غرف نوم ضمن مجتمع مسوّر راقٍ يضم مساحات خضراء، مسارات للمشي والجري، مرافق تجارية وخدمات متكاملة مع بروبرتي شوب للاستثمار (PSI).',
+    keywords:
+      'فلل ريم هيلز, فلل جزيرة الريم أبوظبي, فلل فاخرة في جزيرة الريم, مجتمع ريم هيلز, مشاريع أبوظبي السكنية, PSI أبوظبي',
+  },
+},
     override: {
     PropertyID: 22864,
     CommunityID: 95259,
@@ -91,6 +222,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
   'real-estate-tour': {
     branch: 'auh',
+    seo: {
+  en: {
+    title: 'Real Estate Tour UAE | Explore Exclusive Properties with PSI',
+    description:
+      'Join PSI’s Real Estate Tour and explore premium residential communities across Abu Dhabi and the UAE. Discover villas, townhouses, and apartments from top developers with expert guidance.',
+    keywords:
+      'real estate tour UAE, property tour Abu Dhabi, PSI real estate projects, luxury properties UAE, property showcase Abu Dhabi, real estate investment UAE',
+  },
+  ar: {
+    title: 'جولة عقارية في الإمارات | استكشف مشاريع مميزة مع PSI',
+    description:
+      'انضم إلى جولة PSI العقارية واكتشف نخبة من المشاريع السكنية المميزة في أبوظبي والإمارات. فلل وشقق ومنازل تاون هاوس من أفضل المطورين مع استشارات عقارية متخصصة.',
+    keywords:
+      'جولة عقارية الإمارات, جولة عقارية أبوظبي, مشاريع PSI العقارية, عقارات فاخرة في الإمارات, استثمار عقاري أبوظبي, معارض عقارية',
+  },
+},
     override: {
       UnitType: 20,
       remarks: 'ramhan rotation',
@@ -142,6 +289,22 @@ export const PROJECTS: Record<string, PerSlug> = {
   },
     'ramhan-island': {
     branch: 'auh',
+    seo: {
+  en: {
+    title: 'Ramhan Island Beachfront Villas | Eagle Hills Luxury Living Abu Dhabi',
+    description:
+      'Experience refined island living at Ramhan Island by Eagle Hills. Discover exclusive standalone beachfront villas with 3 to 7 bedrooms, blending luxury, serenity, and modern design in Abu Dhabi.',
+    keywords:
+      'Ramhan Island villas, Eagle Hills Ramhan Island, beachfront villas Abu Dhabi, luxury island living UAE, standalone villas Abu Dhabi, Ramhan Island Eagle Hills',
+  },
+  ar: {
+    title: 'فلل جزيرة رمحان الشاطئية | أسلوب حياة فاخر من إيجل هيلز أبوظبي',
+    description:
+      'استمتع بأسلوب حياة فاخر وهادئ في جزيرة رمحان من إيجل هيلز. اكتشف فلل مستقلة مطلة على الشاطئ من 3 إلى 7 غرف نوم تجمع بين الفخامة والتصميم العصري في أبوظبي.',
+    keywords:
+      'فلل جزيرة رمحان, إيجل هيلز جزيرة رمحان, فلل شاطئية أبوظبي, فلل فاخرة مستقلة, أسلوب حياة جزري فاخر, عقارات أبوظبي الفاخرة',
+  },
+},
     override: {
     PropertyID: 20786,
     UnitType: 20,
