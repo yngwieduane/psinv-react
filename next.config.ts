@@ -141,6 +141,11 @@ const nextConfig: NextConfig = {
         destination: '/en/project/ramhan-island',
         permanent: true,
       },
+      {
+        source: '/en/lp-listing',
+        destination: '/en/project/lp-listing',
+        permanent: true,
+      },
     ]
   },
   reactStrictMode: true,
