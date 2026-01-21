@@ -136,6 +136,11 @@ const nextConfig: NextConfig = {
         destination: '/ar/project/lp/bloom-living-almeria',
         permanent: true,
       },
+       {
+        source: '/en/ramhan-island',
+        destination: '/en/project/ramhan-island',
+        permanent: true,
+      },
     ]
   },
   reactStrictMode: true,
