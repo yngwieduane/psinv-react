@@ -127,6 +127,10 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
     "psi-rental-units": {
         en: "0e3127ecb5024746ef9ace5679b452c8",
     },
+    "hilton-residences-raha-beach-registration": {
+        en: "44e36fad15f399da9f3906e5a04efe93",
+        ar: "5b3f2203912e9a320f2a838940788a02",
+    },
     // Add here
 };
 
