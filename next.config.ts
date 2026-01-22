@@ -151,6 +151,11 @@ const nextConfig: NextConfig = {
         destination: '/en/project/psi-rental-units',
         permanent: true,
       },
+                  {
+        source: '/en/share-address',
+        destination: '/en/project/share-address',
+        permanent: true,
+      },
     ]
   },
   reactStrictMode: true,
