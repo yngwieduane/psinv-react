@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
   const raw = JSON.stringify({ "propertyName": query });
 
   const response = await fetch(
-    "https://integration.psiassets-crm.com/ExternalApis/GetAllProperties?pageIndex=1&pageSize=100",
+    "https://integration.psiassets-crm.com/ExternalApis/GetAllProperties?pageIndex=1&pageSize=10",
     {
       method: "POST",
       headers: {

@@ -8,6 +8,7 @@ import Form from 'next/form';
 import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions, Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/20/solid';
 import AutocompleteSearch from '../units/_components/AutocompleteSearch';
+import AutocompleteSearchWithOther from '../units/_components/AutocompleteSearchWithOther';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 100000000;
@@ -92,7 +93,7 @@ export default function HomeSearch() {
 
                         {/* Autocomplete */}
                         <div className="w-full">
-                            <AutocompleteSearch
+                            <AutocompleteSearchWithOther
                                 isReset={false}
                                 disableRouting={true}
                                 onSelect={(name, id) => {
