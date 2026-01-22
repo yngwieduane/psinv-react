@@ -20,6 +20,7 @@ export default function HomeSearch() {
 
     // Filter States
     const [propertyId, setPropertyId] = useState('');
+    const [communityId, setCommunityId] = useState('');
     const [propertyName, setPropertyName] = useState('');
 
     const [propertyType, setPropertyType] = useState<string | null>(null);
@@ -48,6 +49,8 @@ export default function HomeSearch() {
         const params = new URLSearchParams();
 
         if (propertyId) params.set('propertyId', propertyId);
+        if (communityId) params.set('communityId', communityId);
+        if (propertyName) params.set('propertyName', propertyName);
         if (propertyName) params.set('propertyName', propertyName);
         if (propertyType) params.set('propertyType', propertyType);
         if (beds) params.set('beds', beds.toString());
@@ -96,9 +99,15 @@ export default function HomeSearch() {
                             <AutocompleteSearchWithOther
                                 isReset={false}
                                 disableRouting={true}
-                                onSelect={(name, id) => {
+                                onSelect={(name, id, type) => {
                                     setPropertyName(name);
-                                    setPropertyId(id);
+                                    if (type === 'Community') {
+                                        setCommunityId(id);
+                                        setPropertyId('');
+                                    } else {
+                                        setPropertyId(id);
+                                        setCommunityId('');
+                                    }
                                 }}
                             />
                         </div>

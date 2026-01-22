@@ -20,7 +20,7 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
     const [loading, setLoading] = useState(false);
     const [allCommunities, setAllCommunities] = useState<SearchResult[]>([]);
 
-    const [inputValue, setInputValue] = useState(searchParams.get('propertyName')?.toString());
+    const [inputValue, setInputValue] = useState(searchParams.get('propertyName')?.toString() || '');
     const [iDValue, setIDValue] = useState(0);
     const [showDropdown, setShowDropdown] = useState(false);
     const [resetStatus, setResetStatus] = useState(isReset);
@@ -117,7 +117,13 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
         setInputValue(item.name);
         setShowDropdown(false);
         if (!disableRouting) {
-            updateQuery('propertyId', item.id);
+            if (item.type === 'Community') {
+                updateQuery('communityId', item.id);
+                updateQuery('propertyId', null); // Clear propertyId
+            } else {
+                updateQuery('propertyId', item.id);
+                updateQuery('communityId', null); // Clear communityId
+            }
         }
         if (onSelect) {
             onSelect(item.name, item.id, item.type);
@@ -127,6 +133,15 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
     // if(isReset){
     //   setResetStatus(isReset);
     // }
+
+    const handleInputClick = () => {
+        if (!query || query.trim() === '') {
+            if (allCommunities.length > 0) {
+                setResults(allCommunities.slice(0, 10));
+                setShowDropdown(true);
+            }
+        }
+    };
 
     return (
         <div className="relative">
@@ -139,8 +154,9 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
                     id="propertyName"
                     name="propertyName"
                     placeholder="Search by project or community..."
-                    //value={inputValue}
+                    value={inputValue}
                     onChange={handleInputChange}
+                    onClick={handleInputClick}
                     autoComplete="off"
                     className="col-start-1 row-start-1 block w-full rounded-xl bg-white/50 border border-gray-200 py-3.5 pr-10 pl-11 text-base text-gray-800 outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all duration-200 shadow-sm hover:bg-white/80"
                 />

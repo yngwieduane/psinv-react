@@ -10,6 +10,7 @@ export async function GET(request: NextRequest) {
   const maxPrice = searchParams.get('maxPrice') || null;
   const minArea = searchParams.get('minArea') || null;
   const maxArea = searchParams.get('maxArea') || null;
+  const communityId = searchParams.get('communityId') || null;
   let apiurl = 'https://integration.psiassets-crm.com/ExternalApis/GetSaleListing';
   console.log('Fetching units data...' + propertyId);
   let raw;
@@ -21,7 +22,8 @@ export async function GET(request: NextRequest) {
     "endPriceRange": maxPrice,
     "floorAreaMin": minArea,
     "floorAreaMax": maxArea,
-    "category": propertyType
+    "category": propertyType,
+    "communityId": communityId
   });
   if (category && category == 'Rent') {
     apiurl = 'https://integration.psiassets-crm.com/ExternalApis/GetRentListing';

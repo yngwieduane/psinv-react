@@ -20,6 +20,7 @@ export default function UnitsList(props: any) {
     const unitid = searchParams.get('unitid') || '';
     const category = searchParams.get('category') || '';
     const propertyId = searchParams.get('propertyId') || '';
+    const communityId = searchParams.get('communityId') || '';
     const beds = searchParams.get('beds') || '';
     const baths = searchParams.get('baths') || '';
     const propertyType = searchParams.get('propertyType') || '';
@@ -54,14 +55,14 @@ export default function UnitsList(props: any) {
                 // setResults(json1);
                 // setResults1(json2);
 
-                const p1 = fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`)
+                const p1 = fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}`)
                     .then(res => res.ok ? res.json() : [])
                     .catch(err => {
                         console.error("Units API failed", err);
                         return [];
                     });
 
-                const p2 = fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`)
+                const p2 = fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}`)
                     .then(res => res.ok ? res.json() : [])
                     .catch(err => {
                         console.error("UnitsAssets API failed", err);
