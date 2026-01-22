@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { SocialMedia } from '@/types/navigation';
+import { usePathname } from 'next/navigation';
 // import { DynamicIcon } from 'lucide-react/dynamic';
 
 const socialMedia: SocialMedia[] = [
@@ -48,7 +49,46 @@ interface FooterProps {
 const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
   const locale = useLocale();
   const isRtl = locale.toLowerCase().startsWith("ar");
-  const t = useTranslations('FooterAI');
+  const t = useTranslations('FooterAI');  
+  const pathname = usePathname();
+
+  const abuDhabiData = {
+    phone1: '600 548 200', 
+    phone2: '+971 2205 2999',
+    address: {
+      part1: t('company_address.part1'),
+      part2: t('company_address.part2'),
+      part3: t('company_address.part3'),
+      part4: t('company_address.part4')
+    }
+  };
+
+  const dubaiData = { 
+    phone1: '04 508 8000', 
+    phone2: '04 508 8001',
+    address: {
+      part1: t('company_address_dubai.part1'),
+      part2: t('company_address_dubai.part2'),
+      part3: t('company_address_dubai.part3'),
+      part4: ''        
+    }
+  };
+  
+  
+  const normalizedPath = pathname.replace(/^\/(en|ar)/, "");
+  let selectedData;
+
+  switch (normalizedPath) {
+    case "/dubai" : 
+      selectedData = dubaiData;
+      break;
+
+    default:
+      selectedData = abuDhabiData;
+      break; 
+  }
+
+  const { phone1, phone2, address } = selectedData;
 
   return (
     <footer className="bg-[#0c1356] text-white pt-24 pb-12 border-t border-white/5" dir={isRtl ? "rtl" : "ltr"} >
@@ -132,22 +172,22 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-5 text-sm text-white mb-10 font-light">
               <li className="flex items-start gap-4">
                 <Phone size={18} className="text-secondary shrink-0 mt-0.5" />
-                <a href='tel:600548200' title="Call Property Shop Investment at 600 548 200">
-                  <span className="hover:text-gray-400 cursor-pointer transition-colors font-medium" dir="ltr">600 548 200</span>
+                <a href={`tel:${phone1.replace(/\s+/g, '')}`} title={`Call Property Shop Investment at ${phone1}`}>
+                  <span className="hover:text-gray-400 cursor-pointer transition-colors font-medium" dir="ltr">{phone1}</span>
                 </a>
               </li>
               <li className="flex items-start gap-4">
                 <Phone size={18} className="text-secondary shrink-0 mt-0.5" />
-                <a href='tel:+97122052999' title="Call Property Shop Investment at +971 2205 2999">
-                  <span className="hover:text-gray-400 cursor-pointer transition-colors font-medium" dir="ltr">+971 2205 2999</span>
+                <a href={`tel:${phone2.replace(/\s+/g, '')}`} title={`Call Property Shop Investment at ${phone2}`}>
+                  <span className="hover:text-gray-400 cursor-pointer transition-colors font-medium" dir="ltr">{phone2}</span>
                 </a>
               </li>
               <li className="flex items-start gap-4">
                 <MapPin size={18} className="text-secondary shrink-0 mt-0.5" />
-                <span>{t('company_address.part1')}<br />
-                  {t('company_address.part2')}<br />
-                  {t('company_address.part3')}<br />
-                  {t('company_address.part4')}</span>
+                <span>{address.part1}<br />
+                  {address.part2}<br />
+                  {address.part3}<br />
+                  {address.part4 ?? ''}</span>
               </li>
             </ul>
           </div>

@@ -11,7 +11,11 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const ListPropertyForm: React.FC = () => {
+type CityProps = {
+  city? : string;  //optional
+}
+
+const ListPropertyForm: React.FC<CityProps> = ({ city }) => {
   const locale = useLocale();
   const isRTL = locale.toLowerCase().startsWith("ar");
   const t = useTranslations("ListPropertySection");
@@ -51,7 +55,7 @@ const ListPropertyForm: React.FC = () => {
           {/* Right Form */}
           <div className="lg:w-1/2 p-8 md:p-12 bg-white">
             <h3 className={`text-2xl font-serif font-bold mb-6 text-gray-800 ${outfit.className}`}>{t("title2")}</h3>
-            <DynamicForm formType="propertyListing" />
+            <DynamicForm formType="propertyListing" city={city} />
           </div>
         </div>
       </div>
