@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Outfit } from 'next/font/google';
 import { useLocale, useTranslations } from 'next-intl';
-import BannerModals from './HomeBannerModal';
+import BannerModals from '../../_components/HomeBannerModal';
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -11,7 +11,7 @@ const outfit = Outfit({
   display: "swap",
 });
 
-export default function ReportDownloadSection(props: any) {
+export default function ReportDownloadDubai(props: any) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [setModal, setSetModal] = useState(false);
 
@@ -68,7 +68,7 @@ export default function ReportDownloadSection(props: any) {
       </div>
       <BannerModals modalState={setModal} onModalUpdate={modalUpdate} title={t('form.title')}
         submitLabel={t('form.title')}
-        isReportDownload={true} />
+        isReportDownload={true} city="Dubai" />
     </>
   );
 }

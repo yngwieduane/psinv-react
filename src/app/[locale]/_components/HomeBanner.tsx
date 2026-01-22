@@ -173,7 +173,12 @@ const HomeBanner = (props: any) => {
                         {t("sign_up_btn")}
                       </button>
                       {slide.project_url !== '' && (
-                        <Link dir={isRTL ? "rtl" : "ltr"} title="Explore More" href={`${locale}${slide.project_url}`} className="flex items-center bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
+                        <Link dir={isRTL ? "rtl" : "ltr"} title="Explore More" 
+                        href={
+                            slide.project_url.startsWith(`/${locale}/`)
+                              ? slide.project_url
+                              : `/${locale}${slide.project_url}`
+                          }  className="flex items-center bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
                           <span>{t("more_btn")}</span>
                           <div className="ml-1 transition group-hover:translate-x-1">
                             {isRTL && (
@@ -232,7 +237,7 @@ const HomeBanner = (props: any) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <BannerModals modalState={setModal} submitLabel={t('submit')} onModalUpdate={modalUpdate} propData={selectedSlide} />
+      <BannerModals  modalState={setModal} submitLabel={t('submit')} onModalUpdate={modalUpdate} propData={selectedSlide} city={props.city} />
     </section>
   );
 };

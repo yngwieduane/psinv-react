@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,6 +8,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
+import { config } from "process";
 
 // Define Schema (Only `propertyListing` Now)
 const propertyListingSchema = z.object({
@@ -25,9 +26,42 @@ type PropertyListingFormData = z.infer<typeof propertyListingSchema>;
 
 interface DynamicFormProps {
   formType: "propertyListing"; // Ensure it's explicitly defined
+  city? : string;
 }
 
-const DynamicForm = ({ formType }: DynamicFormProps) => {
+const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: number; referredBy?: number; assignedTo?: number; cityVal: number }> = {
+    'Dubai': {
+        email: 'callcenter@psidubai.com, yngwie.g@psinv.net',
+        apiUrl: 'https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0',
+        referredTo: 4421,
+        referredBy: 4421,
+        assignedTo: 4421,
+        cityVal: 91578,
+    },
+    'Abu Dhabi': {
+        email: 'callcenter@psinv.net, yngwie.g@psinv.net',
+        apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
+        referredTo: 3458,
+        referredBy: 3458,
+        cityVal : 91823,
+    },
+    'DEFAULT': {
+        email: 'callcenter@psinv.net, yngwie.g@psinv.net',
+        apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
+        referredTo: 3458,
+        referredBy: 3458,
+        cityVal : 91823,
+    }
+};
+
+const getCityConfig = (cityName: string) => {
+    if (['Dubai'].includes(cityName)) { 
+        return CITY_CONFIG['Dubai'];
+    }
+    return CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
+}
+
+const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
   const locale = useLocale();
   const isRTL = locale.toLowerCase().startsWith("ar");
   const t = useTranslations("ListPropertyForm");
@@ -60,6 +94,8 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const cityConfig = getCityConfig(city ?? 'Abu Dhabi');
+
   const onSubmit = async (data: PropertyListingFormData) => {
     setIsSubmitting(true);
     const urlParams = new URLSearchParams(window.location.search);
@@ -74,6 +110,10 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
     };
 
     const { mediaType, mediaName, methodOfContact } = mediaMappings[source.toLowerCase()] || mediaMappings.default;
+
+    const ReferredToID = cityConfig.referredTo ?? '3458';
+    const ReferredByID = cityConfig.referredBy ?? '3458';
+    const ActivityAssignedTo = cityConfig.assignedTo ?? '3458';
 
     const remarks = `
       Additional consent 1: ${data.agreement1 ? "Yes" : "No"} </br>
@@ -104,9 +144,9 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
       RequirementType: "91212",
       ContactType: "3",
       CountryID: "65946",
-      StateID: "91823",
-      CityID: "91823",
-      DistrictID: "102625",
+      StateID: cityConfig.cityVal,
+      CityID: cityConfig.cityVal,
+      DistrictID: "",
       CommunityID: "",
       PropertyID: "",
       UnitType: "19",
@@ -129,10 +169,10 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
       LeadStageId: "",
       LeadRatingId: "",
       UnitId: "",
-      ReferredToID: "3458",
-      ReferredByID: "3458",
+      ReferredToID: ReferredToID,
+      ReferredByID: ReferredByID,
       IsBulkUpload: "",
-      ActivityAssignedTo: "3458",
+      ActivityAssignedTo: ActivityAssignedTo,
       ActivityDate: "",
       ActivityTypeId: "167234",
       ActivitySubject: "Email Inquiry Copy",
@@ -141,14 +181,14 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
       PropertyCampaignId: propertyCampaignId,
       contactClassId: "",
     };
-    const apiUrl = `https://api.portal.psi-crm.com/leads?APIKEY=${process.env.NEXT_PUBLIC_API_KEY}`;
+    const apiUrl = cityConfig.apiUrl;
 
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formDataToSend),
-      });
+      });      
 
       const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
         method: 'POST',
@@ -202,7 +242,7 @@ const DynamicForm = ({ formType }: DynamicFormProps) => {
                 </tbody>
             </table>
           `,
-          receiver: "callcenter@psinv.net",
+          receiver: cityConfig.email,
           subject: "New Inquiry - Property Shop Investment - List Property",
           filename: "",
           filedata: ""

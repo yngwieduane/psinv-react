@@ -15,7 +15,7 @@ const outfit = Outfit({
   display: "swap",
 });
 
-export default function MortgageTabs() {
+export default function MortgageTabs(props: any) {
   const locale = useLocale();
   const isRtl = locale.toLowerCase().startsWith("ar");
   const t = useTranslations("Mortgage_Tabs");
@@ -81,7 +81,7 @@ export default function MortgageTabs() {
         {activeTab === 'houseafford' && <HouseAffordabilityCalculator modal={modal} onOpenModal = {modalHandler} onModalUpdate= {modalUpdate} />}
       </div>
     </div>
-    <BannerModals modalState={modal} onOpenModal={modalHandler} onModalUpdate={modalUpdate} propData="" />    
+    <BannerModals modalState={modal} onOpenModal={modalHandler} onModalUpdate={modalUpdate} propData="" city={props.city} />    
     </>
   );
 }

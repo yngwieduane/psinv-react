@@ -9,13 +9,17 @@ const CalculatorLoader = () => (
   <div className="h-64 animate-pulse bg-gray-200 rounded"></div>
 );
 
+type cityProps = {
+  city? : string;
+}
+
 const Calculator = dynamic(() => import('../mortgage-calculator/MortgageTabs'), { ssr: false, loading: CalculatorLoader });
 
-export const HomeCalculatorClientWrapper: React.FC = () => {
+export const HomeCalculatorClientWrapper: React.FC<cityProps> = ({city: city}) => {
   return (
     <>
       <div className="container mx-auto my-10">
-        <Calculator />
+        <Calculator city={city} />
       </div>
     </>
   );
@@ -51,7 +55,7 @@ interface CitiesClientWrapperProps {
 export const CitiesClientWrapper: React.FC<CitiesClientWrapperProps> = ({ cities, centered }) => {
   return (
     <>
-      <div className='container mx-auto my-10'>
+      <div className='container mx-auto'>
         <Cities cities={cities} centered={centered} />
       </div>
     </>

@@ -26,12 +26,46 @@ interface BannerFormProps {
   propData?: Record<string, any>;
   isReportDownload?: boolean;
   submitLabel?: string;
+  city? : string;
+  modalTitle? : string;
 }
 type FormData = z.infer<typeof schema>;
 
+const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: number; referredBy?: number; assignedTo?: number; report?: string; }> = {
+    'Dubai': {
+        email: 'wd6@psinv.net',
+        apiUrl: 'https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0',
+        referredTo: 4421,
+        referredBy: 4421,
+        assignedTo: 4421,
+        report : 'https://drive.google.com/file/d/1-uHPMoSoG1Da-TSHvYfDDuEqf6_T6SS2/view?usp=sharing',
+    },
+    'Abu Dhabi': {
+        email: 'wd6@psinv.net',
+        apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
+        referredTo: 3458,
+        referredBy: 3458,
+        report : 'https://drive.google.com/file/d/1OrX7UlxvVcE9e1nPJ7ipHXAcG4H7WiKi/view?usp=sharing',
+    },
+    'DEFAULT': {
+        email: 'callcenter@psinv.net, wd6@psinv.net',
+        apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
+        referredTo: 3458,
+        referredBy: 3458,
+        report : 'https://drive.google.com/file/d/1OrX7UlxvVcE9e1nPJ7ipHXAcG4H7WiKi/view?usp=sharing',
+    }
+};
+
+const getCityConfig = (cityName: string) => {
+    if (['Dubai'].includes(cityName)) { 
+        return CITY_CONFIG['Dubai'];
+    }
+    return CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
+}
+
 const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
   hideFeedbackButton = false, isReportDownload, submitLabel,
-  propData,
+  propData, city, modalTitle
 } = {}) => {
   //console.log("Banner Form prop ID:", propData?.bannerpropertyid);
   const router = useRouter();
@@ -57,6 +91,9 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
   const [isAlreadySubmitted, setIsAlreadySubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [postId, setPostId] = useState<string | null>(null);
+
+  const cityConfig = getCityConfig(city ?? 'Abu Dhabi');
+
   const onSubmit = async (data: FormData) => {
 
     const lastSubmitTime = localStorage.getItem('formSubmitTime');
@@ -105,6 +142,11 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
         methodOfContact = "115747";
         break;
     }
+
+    const ReferredToID = cityConfig.referredTo ?? '3458';
+    const ReferredByID = cityConfig.referredBy ?? '3458';
+    const ActivityAssignedTo = cityConfig.assignedTo ?? '3458';
+    
     const remarks = `
         Additional consent 1: ${data.agreement1 ? "Yes" : "No"} </br>
         Additional consent 2: ${data.agreement2 ? "Yes" : "No"} </br>
@@ -160,10 +202,10 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
       LeadStageId: "",
       LeadRatingId: "",
       UnitId: "",
-      ReferredToID: "3458",
-      ReferredByID: "3458",
+      ReferredToID: ReferredToID,
+      ReferredByID: ReferredByID,
       IsBulkUpload: "",
-      ActivityAssignedTo: "3458",
+      ActivityAssignedTo: ActivityAssignedTo,
       ActivityDate: "",
       ActivityTypeId: "167234",
       ActivitySubject: "Email Inquiry Copy",
@@ -174,7 +216,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
     };
 
     try {
-      const response = await fetch("https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a", {
+      const response = await fetch(cityConfig.apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -210,7 +252,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
                                     <td width="10" style="color:#fdfdfd; font-size:16px; background:#02344a;" class=""> 
                                     </td>
                                     <td height="30" style="color:#fff; font-size:16px; background:#02344a; font-weight:bold; color:#FFF;font-family:Arial,  Helvetica, sans-serif" class="">
-                                        Inquiry Form - ${currentUrl}
+                                        Inquiry Form - ${currentUrl} ${modalTitle ? ` - ${modalTitle}` : ''}
                                     </td>
                                     <td width="10" style="color:#FFFFFF; font-size:16px; background:#02344a;" class=""> 
                                     </td>
@@ -258,8 +300,8 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
                                   </td>
                                 </tr>                                                             
                                 
-                                ${propData?.title &&
-            `<tr class="">
+                                ${propData?.title ?
+                                  `<tr class="">
                                     <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
                                     font-size:12px; font-weight:bold;" class="">
                                         Interested Project::
@@ -269,7 +311,9 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
                                         ${propData?.title} 
                                     </td>
                                   </tr>`
-            }
+                                  :
+                                  ''
+                                }
 
                                 <tr class="">
                                   <td style="background-color:#f4f3f3;  color:#8b8b8b; font-family:Arial, Helvetica, sans-serif;
@@ -306,7 +350,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
                     </tbody>
                 </table>
           `,
-          receiver: "callcenter@psinv.net",
+          receiver: cityConfig.email,
           subject: "New Enquiry - Property Shop Investment",
           filename: "",
           filedata: ""
@@ -317,7 +361,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
         setPostId("Success");
         setIsAlreadySubmitted(false);
         if (isReportDownload) {
-          window.open("https://drive.google.com/file/d/1OrX7UlxvVcE9e1nPJ7ipHXAcG4H7WiKi/view?usp=sharing", "_blank");
+          window.open(cityConfig.report, "_blank");
           setTimeout(() => {
             window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
           }, 1500);

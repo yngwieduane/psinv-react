@@ -145,3 +145,41 @@ export const homeSliderData = [
     image: "/images/banners/loyalty-program-background-new.webp",
   },
 ];
+
+export const dubaiSliderData = [
+  {
+    key: "serenity_mansions",
+    type: "Villa",
+    developer_img: "/images/banners/majid-al-futtaim-vector-logo-white.svg?ver=1",
+    developer_img_mob: "/images/banners/majid-al-futtaim-vector-logo-black.svg?ver=1",
+    project_url: "/projects/dubai/tilal-al-ghaf/tilal-al-ghaf/serenity-mansions",
+    image: "/images/banners/serenity-banner.webp",
+    bannerpropertyid: "",
+    bannerunittype: "",
+    bannersubcommunityid: "",
+    bannercommunityid: "",
+    bannerdistrictid: "",
+    bannercityid: "",
+    bannerstateid: "",
+    bannercountryid: "",
+    bannerbedroom: "",
+  },
+  {
+    key: "samana_skyros",
+    type: "Apartments",
+    developer_img: "/images/banners/Samana Developer-White.svg?ver=1",
+    developer_img_mob: "/images/banners/Samana Developer-Black.svg?ver=1",
+    project_url: "/projects/dubai/dubailand/arjan/samana-skyros",
+    image: "/images/banners/samana-skyros.webp",
+    bannerpropertyid: "",
+    bannerunittype: "",
+    bannersubcommunityid: "",
+    bannercommunityid: "",
+    bannerdistrictid: "",
+    bannercityid: "",
+    bannerstateid: "",
+    bannercountryid: "",
+    bannerbedroom: "",
+  },
+
+]

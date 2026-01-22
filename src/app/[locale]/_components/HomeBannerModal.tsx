@@ -72,7 +72,7 @@ const BannerModals = (props: any) => {
                     </div>
 
                     <div className="mt-2">
-                      <HomeBannerForm hideFeedbackButton={true} propData={propData} isReportDownload = {props.isReportDownload} submitLabel={props.submitLabel} />
+                      <HomeBannerForm modalTitle={props.title || ''} hideFeedbackButton={true} propData={propData} isReportDownload = {props.isReportDownload} submitLabel={props.submitLabel} city={props.city} />
                     </div>
                   </div>
                 </div>

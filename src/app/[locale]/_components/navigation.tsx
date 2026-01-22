@@ -210,6 +210,7 @@ const NAV_GROUPS = [
         columns: [
             {
                 title: 'Abu Dhabi',
+                url : '/',
                 items: [
                     { label: "Sama Yas", lpSlug: "sama-yas" },
                     { label: "Yas Riva", lpSlug: "yas-riva" },
@@ -368,7 +369,14 @@ type MenuItem = {
     label: string;
     href?: string;
     lpSlug?: string;
+    link?: string;
 };
+type Column = {
+  title: string;
+  link?: string;
+  items: MenuItem[];
+};
+
 function normalizeHref(href: string) {
     return href.replace(/^\/(en|ar|ru|du|cn)(?=\/)/, "");
 }
@@ -415,6 +423,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             columns: [
                 {
                     title: t('Abu Dhabi'),
+                    link: "/",
                     items: [
                         { label: t("Sama Yas"), lpSlug: "sama-yas" },
                         { label: t("Yas Riva"), lpSlug: "yas-riva" },
@@ -425,6 +434,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 },
                 {
                     title: t('Dubai'),
+                    link: "/dubai",
                     items: [
                         { label: t('Elegance Tower'), href: '/projects/dubai/downtown-dubai/downtown-dubai/elegance-tower' },
                         { label: t('Address Residences The Bay'), href: '/projects/dubai/jumeirah-beach-residence/emaar-beachfront/address-residences-the-bay' },
@@ -434,7 +444,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     ]
                 },
                 {
-                    title: t('Sharjah'),
+                    title: t('Sharjah'),  
+                    link: "/",                
                     items: [
                         { label: t('Sharjah Waterfront City'), href: '/projects/sharjah/sharjah-waterfront-city/n-a/sharjah-waterfront-city' },
                         { label: t('Deem at Hayyan'), href: '/projects/sharjah/al-bedea-suburb/al-bedea-suburb/deem-at-hayyan' },
@@ -764,7 +775,14 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                     <div className="flex-1 grid grid-cols-3 gap-8">
                                         {group.columns.map((col, idx) => (
                                             <div key={idx}>
+                                                {"link" in col && col.link ? (
+                                                <Link href={col.link}>
+                                                    <h4 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>
+                                                </Link>
+                                                ) : (
                                                 <h4 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>
+                                                )}
+
                                                 <ul className="space-y-3">
                                                     {col.items.map((item, i) => (
                                                         <li key={i}>
