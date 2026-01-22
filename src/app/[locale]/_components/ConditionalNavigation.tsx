@@ -1,9 +1,11 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import Navigation from './navigation';
+import dynamic from 'next/dynamic';
 
-export type Page = '/en' | '/ar' | '/ru' | '/du' | '/cn';
+const Navigation = dynamic(() => import('./navigation'), { ssr: false, loading: () => null });
+
+export type Page = '/en' | '/ar' | '/ru' | '/du' | '/zh';
 
 export default function ConditionalNavigation() {
   const pathname = usePathname();

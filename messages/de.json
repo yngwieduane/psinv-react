@@ -446,7 +446,7 @@
   },
   "LocaleSwitcher": {
     "label": "Sprache ändern",
-    "locale": "{locale, select, ar {🇦🇪 Arabisch} en {🇺🇸 Englisch} cn {🇨🇳 Chinesisch} ru {🇷🇺 Russisch} de {🇩🇪 Deutsch} other {Unbekannt}}",
+    "locale": "{locale, select, ar {🇦🇪 Arabisch} en {🇺🇸 Englisch} zh {🇨🇳 Chinesisch} ru {🇷🇺 Russisch} de {🇩🇪 Deutsch} other {Unbekannt}}",
     "buy": "Kaufen",
     "rent": "Mieten",
     "communities": "Gemeinschaften",

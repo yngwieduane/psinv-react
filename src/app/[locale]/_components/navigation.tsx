@@ -21,7 +21,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 
 
-export type Page = '/en' | '/ar' | '/ru' | '/du' | '/cn';
+export type Page = '/en' | '/ar' | '/ru' | '/du' | '/zh';
 
 const company = [
     { name: 'Abu Dhabi', href: '#' },
@@ -429,7 +429,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                         { label: t("Yas Riva"), lpSlug: "yas-riva" },
                         { label: t("Manarat Living - Saadiyat"), lpSlug: "manarat-living-saadiyat" },
                         { label: t("The Arthouse"), lpSlug: "the-arthouse" },
-                        { label: t("Muheira"),  href: "/projects/abu-dhabi/al-reem-island/maysan/muheira" },
+                        { label: t("Muheira"), href: "/projects/abu-dhabi/al-reem-island/maysan/muheira" },
                     ]
                 },
                 {
@@ -536,10 +536,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     title: t('Valuation & Finance'),
                     items: [
                         { label: t('mortgage'), href: "/mortgage-calculator" },
-                        { label: t('Amortization'), page: '/mortgage-calculator#amortization' }, 
-                        { label: t('Refinancing'), page: '/mortgage-calculator#refinancing' },  
-                        { label: t('Rent vs Buying'), page: '/mortgage-calculator#rentvsbuy' },  
-                        { label: t('House Affordability'), page: '/mortgage-calculator#houseafford' },  
+                        { label: t('Amortization'), page: '/mortgage-calculator#amortization' },
+                        { label: t('Refinancing'), page: '/mortgage-calculator#refinancing' },
+                        { label: t('Rent vs Buying'), page: '/mortgage-calculator#rentvsbuy' },
+                        { label: t('House Affordability'), page: '/mortgage-calculator#houseafford' },
                     ]
                 },
                 {
@@ -695,8 +695,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
                     {/* Right Actions */}
                     <div className={`hidden lg:flex items-center gap-6 ${linkColor}`}>
-                        <button onClick={modalHandler} aria-label='search' role="presentation" tabIndex={-1} 
-                        className="hover:text-secondary transition-colors cursor-pointer"><Search size={20} /></button>
+                        <button onClick={modalHandler} aria-label='search' role="presentation" tabIndex={-1}
+                            className="hover:text-secondary transition-colors cursor-pointer"><Search size={20} /></button>
                         <Link href="/favorites" title="Favorites" className="hover:text-secondary transition-colors relative cursor-pointer">
                             <Heart size={20} />
                             {favorites.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}

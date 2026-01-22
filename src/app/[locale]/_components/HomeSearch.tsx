@@ -8,6 +8,7 @@ import Form from 'next/form';
 import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions, Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/20/solid';
 import AutocompleteSearch from '../units/_components/AutocompleteSearch';
+import AutocompleteSearchWithOther from '../units/_components/AutocompleteSearchWithOther';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 100000000;
@@ -19,6 +20,7 @@ export default function HomeSearch() {
 
     // Filter States
     const [propertyId, setPropertyId] = useState('');
+    const [communityId, setCommunityId] = useState('');
     const [propertyName, setPropertyName] = useState('');
 
     const [propertyType, setPropertyType] = useState<string | null>(null);
@@ -47,6 +49,8 @@ export default function HomeSearch() {
         const params = new URLSearchParams();
 
         if (propertyId) params.set('propertyId', propertyId);
+        if (communityId) params.set('communityId', communityId);
+        if (propertyName) params.set('propertyName', propertyName);
         if (propertyName) params.set('propertyName', propertyName);
         if (propertyType) params.set('propertyType', propertyType);
         if (beds) params.set('beds', beds.toString());
@@ -92,12 +96,18 @@ export default function HomeSearch() {
 
                         {/* Autocomplete */}
                         <div className="w-full">
-                            <AutocompleteSearch
+                            <AutocompleteSearchWithOther
                                 isReset={false}
                                 disableRouting={true}
-                                onSelect={(name, id) => {
+                                onSelect={(name, id, type) => {
                                     setPropertyName(name);
-                                    setPropertyId(id);
+                                    if (type === 'Community') {
+                                        setCommunityId(id);
+                                        setPropertyId('');
+                                    } else {
+                                        setPropertyId(id);
+                                        setCommunityId('');
+                                    }
                                 }}
                             />
                         </div>

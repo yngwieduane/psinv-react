@@ -8,7 +8,7 @@ type Project = {
   propertyName: string;
   propertyID: string;
 };
-export default function AutocompleteSearch({ isReset, disableRouting = false, onSelect }: { isReset: any, disableRouting?: boolean, onSelect?: (name: string, id: string) => void }) {
+export default function AutocompleteSearch({ isReset, disableRouting = false, onSelect, showLabel = true }: { isReset: any, disableRouting?: boolean, onSelect?: (name: string, id: string) => void, showLabel?: boolean }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -87,9 +87,11 @@ export default function AutocompleteSearch({ isReset, disableRouting = false, on
 
   return (
     <div className="relative">
-      <label htmlFor="email" className=" block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">
-        Property Name {isReset}
-      </label>
+      {showLabel && (
+        <label htmlFor="email" className=" block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">
+          Property Name {isReset}
+        </label>
+      )}
       <div className="mt-2 grid grid-cols-1">
         <input
           type="text"

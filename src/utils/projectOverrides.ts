@@ -20,6 +20,112 @@ export type PerSlug = {
   seo?: SeoMeta | LocalizedSeo;
 };
 export const PROJECTS: Record<string, PerSlug> = {
+    'hilton-residences-raha-beach-registration': {
+    branch: 'auh',
+      seo: {
+    en: {
+      title: 'Hilton Residences Al Raha Beach | Luxury Waterfront Living in Abu Dhabi',
+      description:
+        'Register your interest for Hilton Residences at Al Raha Beach. Discover premium waterfront apartments with world-class amenities and iconic Hilton living in Abu Dhabi.',
+      keywords:
+        'Hilton Residences Al Raha Beach, Al Raha Beach apartments, luxury waterfront residences Abu Dhabi, Hilton branded residences UAE',
+    },
+    ar: {
+      title: 'هيلتون ريزيدنسز شاطئ الراحة | أسلوب حياة فاخر على الواجهة البحرية في أبوظبي',
+      description:
+        'سجّل اهتمامك في هيلتون ريزيدنسز شاطئ الراحة. استمتع بشقق فاخرة على الواجهة البحرية مع خدمات عالمية وأسلوب حياة يحمل علامة هيلتون في أبوظبي.',
+      keywords:
+        'هيلتون ريزيدنسز شاطئ الراحة، شقق شاطئ الراحة، عقارات فاخرة في أبوظبي، مساكن هيلتون الفاخرة',
+    },
+  },
+    override: {
+      PropertyID: 25586,
+      remarks: 'Al raha beach (Hilton Residences) - company campaign',
+      ...makeUtm({
+        'zaineh_ibinu_hilton_raha_news': {
+          campaign: 3451,
+          remarks:
+            'Rotation:  Al raha beach (Hilton Residences) - company campaign, Campaign name: Ibinu:Hilton raha News',
+        },
+      }),
+    },
+  },
+  'share-address': {
+  branch: 'auh',
+  seo: {
+    en: {
+      title: 'Share Address | Register Your Interest – PSI',
+      description: 'Select a property and submit your details. Our team will contact you shortly.',
+      keywords: 'PSI registration, select property, UAE real estate, PSI Abu Dhabi',
+    },
+    ar: {
+      title: 'شارك العنوان | سجّل اهتمامك – PSI',
+      description: 'اختر العقار وأرسل بياناتك. سيتواصل معك فريقنا قريبًا.',
+      keywords: 'تسجيل PSI، اختيار العقار، عقارات الإمارات، PSI أبوظبي',
+    },
+  },
+  override: {
+    UnitType: 20,
+    remarks: 'Share Address Registration',
+    form: {
+      extraFields: [
+        {
+          id: 'propertyId',
+          type: 'select',
+          label: 'Select Property',
+          required: true,
+          options: [{ value: '', label: 'Loading...' }],
+        },
+      ],
+    },
+  },
+},
+  'the-market-insight': {
+    branch: 'auh',
+  seo: {
+    en: {
+      title: 'Dubai Real Estate Market Insights | Monthly Property Report by PSI',
+      description:
+        'Explore PSI’s Dubai Market Insights Monthly Report. Get the latest data on property prices, trends, demand, and investment opportunities across Dubai’s real estate market.',
+      keywords:
+        'Dubai real estate market insights, Dubai property market report, monthly real estate report Dubai, Dubai property trends, real estate investment Dubai, PSI market insights',
+    },
+    ar: {
+      title: 'رؤى سوق العقارات في دبي | التقرير العقاري الشهري من PSI',
+      description:
+        'اطّلع على تقرير PSI الشهري لرؤى سوق العقارات في دبي. تعرّف على أحدث اتجاهات الأسعار والطلب وفرص الاستثمار في سوق دبي العقاري.',
+      keywords:
+        'رؤى سوق العقارات دبي, تقرير سوق العقارات دبي, التقرير العقاري الشهري دبي, اتجاهات العقارات في دبي, الاستثمار العقاري دبي, رؤى PSI العقارية',
+    },
+  },
+    override: {
+      UnitType: 20,
+      remarks: 'Market Insights Monthly Report Dubai - General campaign',
+      ...makeUtm({
+        'DripCampaign': {
+          campaign: 2134,
+          remarks:
+            'Rotation:  Market Insights Monthly Report Dubai - General campaign',
+        },
+        'DripCampaign_hubspot': {
+          campaign: 2134,
+          remarks:
+            'Rotation: Drip Campaign – HubSpot (General)',
+        },
+        'DripCampaign_HubSpot_V2': {
+          campaign: 2134,
+          remarks:
+            'Rotation: Drip Campaign – HubSpot V2',
+        },
+        'AppWaitlist_Hubspot': {
+          campaign: 2134,
+          remarks:
+            'Rotation: App Waitlist – HubSpot campaign',
+        },
+
+      }),
+    },
+  },
   'hudayriyat-island': {
     branch: 'auh',
     seo: {

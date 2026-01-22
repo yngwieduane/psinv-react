@@ -32,12 +32,12 @@ import Script from "next/script";
 
 type Props = {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 // ✅ Dynamic metadata generator
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = params;
+  const { locale } = await params;
   const headersList = await headers();
   const pathname = headersList.get("x-pathname") ?? "";
   // Remove duplicate slashes and ensure trailing slash for home page
@@ -54,8 +54,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Build alternates dynamically
   const languageAlternates: Record<string, string> = {};
 
+  const hreflangMap: Record<string, string> = {
+    en: 'en',
+    ar: 'ar',
+    ru: 'ru',
+    zh: 'zh-CN',
+    de: 'de',
+  };
+
   locales.forEach((lang) => {
-    languageAlternates[lang] = `${siteBaseUrl}/${lang}`;
+    const hreflang = hreflangMap[lang] || lang;
+    languageAlternates[hreflang] = `${siteBaseUrl}/${lang}`;
   });
 
   // Add x-default

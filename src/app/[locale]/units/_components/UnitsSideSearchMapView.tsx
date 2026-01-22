@@ -6,13 +6,11 @@ import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions, Popover, 
 import { ChevronUpDownIcon } from '@heroicons/react/16/solid'
 import { CheckIcon } from '@heroicons/react/20/solid'
 import Sticky from 'react-sticky-el';
-import { ChevronDownIcon, RotateCcw } from 'lucide-react';
+import { RotateCcw, Bed, Bath, Hash, DollarSign, Ruler, Building2, ChevronDown } from 'lucide-react';
 import AutocompleteSearch from './AutocompleteSearch';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 100000000;
-
-
 
 export default function UnitsSideSearchMapView({ onChange }: { onChange: any }) {
     const router = useRouter();
@@ -36,10 +34,7 @@ export default function UnitsSideSearchMapView({ onChange }: { onChange: any }) 
             .then((res) => res.json())
             .then((data) => {
                 if (Array.isArray(data)) {
-                    console.log('Fetched property types:', data);
-                    // Store entire object or at least id and name
                     const types = data.map((item: any) => ({ lookupId: item.lookupId, lookupName: item.lookupName }));
-                    // simple sort by name
                     types.sort((a, b) => a.lookupName.localeCompare(b.lookupName));
                     setPropertyTypesList(types);
                 }
@@ -59,7 +54,7 @@ export default function UnitsSideSearchMapView({ onChange }: { onChange: any }) 
         setBeds(searchParams.get('beds') ? Number(searchParams.get('beds')) : null);
         setBaths(searchParams.get('baths') ? Number(searchParams.get('baths')) : null);
         setPropertyType(searchParams.get('propertyType') || null);
-        setCategory(searchParams.get('category') || null);
+        setCategory(searchParams.get('category') || 'Sale'); // Default to Sale if empty? Or null. Let's stick to null or 'Sale'
     }, [searchParams]);
 
     const updateQuery = (key: string, value: string | null) => {
@@ -70,18 +65,8 @@ export default function UnitsSideSearchMapView({ onChange }: { onChange: any }) 
         } else {
             params.set(key, value);
         }
-        console.log(key + " = " + value);
         router.push(`${pathname}?${params.toString()}`);
     };
-
-    const onSubmit = (e: any) => {
-        setTimeout(() => {
-            console.log('Action completed');
-            console.log(e.target.value);
-            updateQuery('category', e.target.value)
-        }, 2000);
-    };
-
 
     const handleReset = () => {
         const params = new URLSearchParams(searchParams.toString());
@@ -102,124 +87,123 @@ export default function UnitsSideSearchMapView({ onChange }: { onChange: any }) 
         setBaths(null);
         setPropertyType(null);
         setCategory(null);
-        console.log("reset");
-        onChange('true')
+        setReset(!reset); // Toggle reset trigger
+        if (onChange) onChange('true');
     };
 
-    // Helper to find name by ID
     const getSelectedPropertyTypeName = (id: string | null) => {
-        if (!id) return 'Any';
+        if (!id) return 'Any Property Type';
         const found = propertyTypesList.find((item) => String(item.lookupId) === String(id));
-        return found ? found.lookupName : id;
+        return found ? found.lookupName : 'Any Property Type';
+    };
+
+    const toggleCategory = (val: string) => {
+        setCategory(val);
+        updateQuery('category', val);
     };
 
     return (
-        <div className="w-full block">
+        <div className="w-full block font-sans">
             <Sticky stickyClassName="" boundaryElement=".mainsidebar" hideOnBoundaryHit={false}>
-                <div className="p-6 grid grid-cols-1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl space-y-8 transition-all duration-300">
-                    <div className='w-full'>
-                        <div className="flex justify-between items-center border-b border-gray-100 pb-4">
-                            <p className="font-bold text-xl text-[#353455]">Filters</p>
-                            <button onClick={handleReset} className="text-gray-400 text-sm hover:text-secondary flex items-center gap-1 transition-colors">
-                                <RotateCcw size={14} /> Reset
-                            </button>
-                        </div>
-                    </div>
-                    <div>
-                        <AutocompleteSearch isReset={reset} />
-                    </div>
-                    <div>
-                        <div className="hidden md:block md:col-span-3 w-full">
-                            <Listbox value={category} onChange={(e: any) => {
-                                let val = e;
-                                setCategory(val || null);
-                                updateQuery('category', val || null);
-                            }}>
-                                <Label className="block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">Category</Label>
-                                <div className="relative mt-2">
-                                    <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white/50 border border-gray-200 py-3 pr-2 pl-4 text-left text-gray-700 outline-none focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all shadow-sm hover:bg-white/80">
-                                        <span className="col-start-1 row-start-1 truncate pr-6 font-medium">{category || 'Any'}</span>
-                                        <ChevronUpDownIcon
-                                            aria-hidden="true"
-                                            className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                                        />
-                                    </ListboxButton>
+                <div className="p-5 flex flex-col gap-6 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl border border-gray-100">
 
-                                    <ListboxOptions
-                                        transition
-                                        className="absolute z-50 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-white/95 backdrop-blur-xl py-2 text-base shadow-[0_4px_20px_rgb(0,0,0,0.08)] ring-1 ring-black/5 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm"
-                                    >
-                                        <ListboxOption
-                                            value={null}
-                                            className="group relative cursor-pointer py-2.5 pr-9 pl-4 text-gray-700 select-none data-focus:bg-[#353455]/5 data-focus:text-[#353455]"
-                                        >
-                                            <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
-                                        </ListboxOption>
-                                        {['Sale', 'Rent'].map((cat) => (
-                                            <ListboxOption
-                                                key={cat}
-                                                value={cat}
-                                                className="group relative cursor-pointer py-2.5 pr-9 pl-4 text-gray-700 select-none data-focus:bg-[#353455]/5 data-focus:text-[#353455]"
-                                            >
-                                                <span className="block truncate font-normal group-data-selected:font-semibold">{cat}</span>
-                                                <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
-                                                    <CheckIcon aria-hidden="true" className="size-5" />
-                                                </span>
-                                            </ListboxOption>
-                                        ))}
-                                    </ListboxOptions>
-                                </div>
-                            </Listbox>
+                    {/* Header */}
+                    <div className="flex justify-between items-center pb-2 border-b border-gray-100">
+                        <h3 className="font-bold text-lg text-[#353455]">Filters</h3>
+                        <button
+                            onClick={handleReset}
+                            className="text-gray-400 text-xs font-semibold uppercase tracking-wider hover:text-[#353455] flex items-center gap-1.5 transition-colors py-1 px-2 rounded-lg hover:bg-gray-50"
+                        >
+                            <RotateCcw size={12} /> Reset
+                        </button>
+                    </div>
+
+                    {/* Autocomplete Input */}
+                    <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 pl-1">Location / Project</label>
+                        <AutocompleteSearch showLabel={false} isReset={reset} />
+                    </div>
+
+                    {/* Category Toggle */}
+                    <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 pl-1">I want to</label>
+                        <div className="grid grid-cols-2 bg-gray-100 p-1 rounded-xl">
+                            {['Sale', 'Rent'].map((cat) => (
+                                <button
+                                    key={cat}
+                                    onClick={() => toggleCategory(cat)}
+                                    className={`py-2 text-sm font-bold rounded-lg transition-all duration-200 ${(category === cat || (!category && cat === 'Sale'))
+                                        ? 'bg-white text-[#353455] shadow-sm'
+                                        : 'text-gray-500 hover:text-gray-700'
+                                        }`}
+                                >
+                                    Buy
+                                    {/* Rename 'Sale' to 'Buy' for UI if desired, but code uses 'Sale' */}
+                                    {cat === 'Sale' ? 'Buy' : 'Rent'}
+                                </button>
+                            ))}
                         </div>
                     </div>
-                    {/* Price Filter */}
-                    <div>
+
+                    {/* Property Type */}
+                    <div className="relative z-20">
+                        <Listbox value={propertyType} onChange={(val) => { setPropertyType(val); updateQuery('propertyType', val); }}>
+                            <Label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 pl-1">Property Type</Label>
+                            <div className="relative">
+                                <ListboxButton className="w-full text-left bg-white border border-gray-200 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center justify-between text-sm font-medium text-gray-700 transition-colors">
+                                    <span className="flex items-center gap-2 truncate">
+                                        <Building2 size={16} className="text-gray-400" />
+                                        {getSelectedPropertyTypeName(propertyType)}
+                                    </span>
+                                    <ChevronDown size={16} className="text-gray-400" />
+                                </ListboxButton>
+                                <ListboxOptions className="absolute z-50 w-full mt-1 bg-white border border-gray-100 rounded-xl shadow-xl max-h-60 overflow-auto focus:outline-none py-1 text-sm">
+                                    <ListboxOption value={null} className="cursor-pointer px-4 py-2.5 hover:bg-gray-50 text-gray-700">Any</ListboxOption>
+                                    {propertyTypesList.map((type) => (
+                                        <ListboxOption key={type.lookupId} value={type.lookupId} className="cursor-pointer px-4 py-2.5 hover:bg-gray-50 text-gray-700 flex justify-between items-center">
+                                            {({ selected }) => (
+                                                <>
+                                                    <span className={selected ? 'font-bold text-[#353455]' : ''}>{type.lookupName}</span>
+                                                    {selected && <CheckIcon className="w-4 h-4 text-[#353455]" />}
+                                                </>
+                                            )}
+                                        </ListboxOption>
+                                    ))}
+                                </ListboxOptions>
+                            </div>
+                        </Listbox>
+                    </div>
+
+                    {/* Price Range */}
+                    <div className="relative z-10">
                         <Popover className="relative">
-                            <p className="block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">Price Range</p>
-                            <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white/50 border border-gray-200 py-3 pr-2 pl-4 text-left text-gray-700 outline-none focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all shadow-sm hover:bg-white/80">
-                                <span className="col-start-1 row-start-1 truncate pr-6 font-medium">
+                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 pl-1">Price Range</label>
+                            <PopoverButton className="w-full text-left bg-white border border-gray-200 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center justify-between text-sm font-medium text-gray-700 transition-colors">
+                                <span className="flex items-center gap-2 truncate">
+                                    <DollarSign size={16} className="text-gray-400" />
                                     {priceRange[0] === minPriceDefault && priceRange[1] === maxPriceDefault
-                                        ? 'Any'
-                                        : `${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()} AED`}
+                                        ? 'Any Price'
+                                        : `${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()}`}
                                 </span>
-                                <ChevronUpDownIcon
-                                    aria-hidden="true"
-                                    className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                                />
+                                <ChevronDown size={16} className="text-gray-400" />
                             </PopoverButton>
-                            <PopoverPanel
-                                transition
-                                className="absolute z-50 mt-2 w-full overflow-hidden rounded-xl bg-white/95 backdrop-blur-xl p-4 text-base shadow-[0_4px_20px_rgb(0,0,0,0.08)] ring-1 ring-black/5 focus:outline-hidden data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in sm:text-sm"
-                            >
-                                <div className="flex flex-col gap-4">
+                            <PopoverPanel className="absolute z-50 w-full mt-2 bg-white border border-gray-100 rounded-xl shadow-xl p-4">
+                                <div className="space-y-4">
                                     <div>
-                                        <label htmlFor="minPrice" className="block text-xs font-medium text-gray-500 mb-1">
-                                            Minimum Price
-                                        </label>
+                                        <label className="text-xs text-gray-500 font-medium mb-1 block">Min Price (AED)</label>
                                         <input
                                             type="number"
-                                            id="minPrice"
-                                            className="w-full rounded-lg border-gray-200 bg-white/50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
-                                            placeholder="Min Price"
+                                            className="w-full rounded-lg border-gray-200 bg-gray-50 text-sm py-2 px-3 focus:ring-1 focus:ring-[#353455] focus:border-[#353455]"
                                             value={priceRange[0]}
-                                            onChange={(e) => {
-                                                const val = Number(e.target.value);
-                                                if (val <= priceRange[1]) {
-                                                    setPriceRange([val, priceRange[1]]);
-                                                }
-                                            }}
+                                            onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
                                             onBlur={() => updateQuery('minPrice', String(priceRange[0]))}
                                         />
                                     </div>
                                     <div>
-                                        <label htmlFor="maxPrice" className="block text-xs font-medium text-gray-500 mb-1">
-                                            Maximum Price
-                                        </label>
+                                        <label className="text-xs text-gray-500 font-medium mb-1 block">Max Price (AED)</label>
                                         <input
                                             type="number"
-                                            id="maxPrice"
-                                            className="w-full rounded-lg border-gray-200 bg-white/50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
-                                            placeholder="Max Price"
+                                            className="w-full rounded-lg border-gray-200 bg-gray-50 text-sm py-2 px-3 focus:ring-1 focus:ring-[#353455] focus:border-[#353455]"
                                             value={priceRange[1]}
                                             onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
                                             onBlur={() => updateQuery('maxPrice', String(priceRange[1]))}
@@ -229,54 +213,84 @@ export default function UnitsSideSearchMapView({ onChange }: { onChange: any }) 
                             </PopoverPanel>
                         </Popover>
                     </div>
-                    {/* Floor Area Filter */}
+
+                    {/* Beds & Baths */}
+                    <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 pl-1">Bedrooms</label>
+                        <div className="flex gap-2">
+                            {[1, 2, 3, 4, 5].map((num) => (
+                                <button
+                                    key={num}
+                                    onClick={() => {
+                                        const newVal = beds === num ? null : num;
+                                        setBeds(newVal);
+                                        updateQuery('beds', newVal ? String(newVal) : null);
+                                    }}
+                                    className={`flex-1 aspect-square rounded-xl text-sm font-bold flex items-center justify-center transition-all ${beds === num
+                                        ? 'bg-[#353455] text-white shadow-md scale-105'
+                                        : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50'
+                                        }`}
+                                >
+                                    {num}{num === 5 ? '+' : ''}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Baths - Added this section */}
+                    <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 pl-1">Bathrooms</label>
+                        <div className="flex gap-2">
+                            {[1, 2, 3, 4, 5].map((num) => (
+                                <button
+                                    key={num}
+                                    onClick={() => {
+                                        const newVal = baths === num ? null : num;
+                                        setBaths(newVal);
+                                        updateQuery('baths', newVal ? String(newVal) : null);
+                                    }}
+                                    className={`flex-1 aspect-square rounded-xl text-sm font-bold flex items-center justify-center transition-all ${baths === num
+                                        ? 'bg-[#353455] text-white shadow-md scale-105'
+                                        : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50'
+                                        }`}
+                                >
+                                    {num}{num === 5 ? '+' : ''}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+
+                    {/* Area Range */}
                     <div>
                         <Popover className="relative">
-                            <p className="block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">Floor Area (sqft)</p>
-                            <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white/50 border border-gray-200 py-3 pr-2 pl-4 text-left text-gray-700 outline-none focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all shadow-sm hover:bg-white/80">
-                                <span className="col-start-1 row-start-1 truncate pr-6 font-medium">
+                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 pl-1">Size (Sq.Ft)</label>
+                            <PopoverButton className="w-full text-left bg-white border border-gray-200 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center justify-between text-sm font-medium text-gray-700 transition-colors">
+                                <span className="flex items-center gap-2 truncate">
+                                    <Ruler size={16} className="text-gray-400" />
                                     {areaRange[0] === 0 && areaRange[1] === 50000
-                                        ? 'Any'
-                                        : `${areaRange[0].toLocaleString()} - ${areaRange[1].toLocaleString()} sqft`}
+                                        ? 'Any Size'
+                                        : `${areaRange[0]} - ${areaRange[1]}`}
                                 </span>
-                                <ChevronUpDownIcon
-                                    aria-hidden="true"
-                                    className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                                />
+                                <ChevronDown size={16} className="text-gray-400" />
                             </PopoverButton>
-                            <PopoverPanel
-                                transition
-                                className="absolute z-50 mt-2 w-full overflow-hidden rounded-xl bg-white/95 backdrop-blur-xl p-4 text-base shadow-[0_4px_20px_rgb(0,0,0,0.08)] ring-1 ring-black/5 focus:outline-hidden data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in sm:text-sm"
-                            >
-                                <div className="flex flex-col gap-4">
+                            <PopoverPanel className="absolute z-50 bottom-full mb-2 w-full bg-white border border-gray-100 rounded-xl shadow-xl p-4">
+                                <div className="space-y-4">
                                     <div>
-                                        <label htmlFor="minArea" className="block text-xs font-medium text-gray-500 mb-1">
-                                            Min Size
-                                        </label>
+                                        <label className="text-xs text-gray-500 font-medium mb-1 block">Min Sq.Ft</label>
                                         <input
                                             type="number"
-                                            id="minArea"
-                                            className="w-full rounded-lg border-gray-200 bg-white/50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
-                                            placeholder="Min Size"
+                                            className="w-full rounded-lg border-gray-200 bg-gray-50 text-sm py-2 px-3 focus:ring-1 focus:ring-[#353455] focus:border-[#353455]"
                                             value={areaRange[0]}
-                                            onChange={(e) => {
-                                                const val = Number(e.target.value);
-                                                if (val <= areaRange[1]) {
-                                                    setAreaRange([val, areaRange[1]]);
-                                                }
-                                            }}
+                                            onChange={(e) => setAreaRange([Number(e.target.value), areaRange[1]])}
                                             onBlur={() => updateQuery('minArea', String(areaRange[0]))}
                                         />
                                     </div>
                                     <div>
-                                        <label htmlFor="maxArea" className="block text-xs font-medium text-gray-500 mb-1">
-                                            Max Size
-                                        </label>
+                                        <label className="text-xs text-gray-500 font-medium mb-1 block">Max Sq.Ft</label>
                                         <input
                                             type="number"
-                                            id="maxArea"
-                                            className="w-full rounded-lg border-gray-200 bg-white/50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
-                                            placeholder="Max Size"
+                                            className="w-full rounded-lg border-gray-200 bg-gray-50 text-sm py-2 px-3 focus:ring-1 focus:ring-[#353455] focus:border-[#353455]"
                                             value={areaRange[1]}
                                             onChange={(e) => setAreaRange([areaRange[0], Number(e.target.value)])}
                                             onBlur={() => updateQuery('maxArea', String(areaRange[1]))}
@@ -286,92 +300,7 @@ export default function UnitsSideSearchMapView({ onChange }: { onChange: any }) 
                             </PopoverPanel>
                         </Popover>
                     </div>
-                    {/* Beds Filter */}
-                    <div>
-                        <Listbox value={beds} onChange={(e: any) => {
-                            let val = e;
-                            setBeds(val ? Number(val) : null);
-                            updateQuery('beds', val ? val : null);
-                        }}>
-                            <Label className="block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">Bedrooms</Label>
-                            <div className="relative mt-2">
-                                <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white/50 border border-gray-200 py-3 pr-2 pl-4 text-left text-gray-700 outline-none focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all shadow-sm hover:bg-white/80">
-                                    <span className="col-start-1 row-start-1 truncate pr-6 font-medium">{beds || 'Any'}</span>
-                                    <ChevronUpDownIcon
-                                        aria-hidden="true"
-                                        className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                                    />
-                                </ListboxButton>
 
-                                <ListboxOptions
-                                    transition
-                                    className="absolute z-50 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-white/95 backdrop-blur-xl py-2 text-base shadow-[0_4px_20px_rgb(0,0,0,0.08)] ring-1 ring-black/5 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm"
-                                >
-                                    <ListboxOption
-                                        value={null}
-                                        className="group relative cursor-pointer py-2.5 pr-9 pl-4 text-gray-700 select-none data-focus:bg-[#353455]/5 data-focus:text-[#353455]"
-                                    >
-                                        <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
-                                    </ListboxOption>
-                                    {[1, 2, 3, 4, 5].map((person: any) => (
-                                        <ListboxOption
-                                            key={person}
-                                            value={person}
-                                            className="group relative cursor-pointer py-2.5 pr-9 pl-4 text-gray-700 select-none data-focus:bg-[#353455]/5 data-focus:text-[#353455]"
-                                        >
-                                            <span className="block truncate font-normal group-data-selected:font-semibold">{person}</span>
-                                            <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
-                                                <CheckIcon aria-hidden="true" className="size-5" />
-                                            </span>
-                                        </ListboxOption>
-                                    ))}
-                                </ListboxOptions>
-                            </div>
-                        </Listbox>
-                    </div>
-
-                    {/* Property Type */}
-                    <div>
-                        <Listbox value={propertyType} onChange={(e: any) => {
-                            let val = e;
-                            setPropertyType(val || null);
-                            updateQuery('propertyType', val || null);
-                        }}>
-                            <Label className="block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">Property Type</Label>
-                            <div className="relative mt-2">
-                                <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white/50 border border-gray-200 py-3 pr-2 pl-4 text-left text-gray-700 outline-none focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all shadow-sm hover:bg-white/80">
-                                    <span className="col-start-1 row-start-1 truncate pr-6 font-medium">{getSelectedPropertyTypeName(propertyType)}</span>
-                                    <ChevronUpDownIcon
-                                        aria-hidden="true"
-                                        className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                                    />
-                                </ListboxButton>
-                                <ListboxOptions
-                                    transition
-                                    className="absolute z-50 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-white/95 backdrop-blur-xl py-2 text-base shadow-[0_4px_20px_rgb(0,0,0,0.08)] ring-1 ring-black/5 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm"
-                                >
-                                    <ListboxOption
-                                        value={null}
-                                        className="group relative cursor-pointer py-2.5 pr-9 pl-4 text-gray-700 select-none data-focus:bg-[#353455]/5 data-focus:text-[#353455]"
-                                    >
-                                        <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
-                                    </ListboxOption>
-                                    {propertyTypesList.map((person: any) => (
-                                        <ListboxOption
-                                            key={person.lookupId}
-                                            value={person.lookupId}
-                                            className="group relative cursor-pointer py-2.5 pr-9 pl-4 text-gray-700 select-none data-focus:bg-[#353455]/5 data-focus:text-[#353455]"
-                                        >
-                                            <span className="block truncate font-normal group-data-selected:font-semibold">{person.lookupName}</span>
-                                            <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
-                                                <CheckIcon aria-hidden="true" className="size-5" />
-                                            </span>
-                                        </ListboxOption>
-                                    ))}
-                                </ListboxOptions>
-                            </div>
-                        </Listbox>
-                    </div>
                 </div>
             </Sticky>
         </div>

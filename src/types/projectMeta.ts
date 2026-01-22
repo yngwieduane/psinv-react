@@ -2,7 +2,14 @@
 
 export type Branch = 'auh' | 'dubai' | 'assets';
 
-export type FieldType = 'text' | 'select' | 'checkbox' | 'number' | 'email' | 'phone';
+export type FieldType =
+  | 'text'
+  | 'select'
+  | 'checkbox'
+  | 'number'
+  | 'email'
+  | 'phone'
+  | 'property';
 
 export interface FieldOption {
   value: string | number;
@@ -24,6 +31,12 @@ export interface FieldConfig {
   pattern?: RegExp | string;
   showIfUtm?: string[];
   payloadKey?: string;
+  propertyConfig?: {
+    limit?: number;            
+    dubaiCityId?: number;
+    onlyFeatured?: boolean;
+    developerName?: string;
+  };
 }
 
 export interface ProjectMeta {

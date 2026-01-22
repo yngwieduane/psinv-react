@@ -1,125 +1,163 @@
+// components/UnitModelsAI.tsx
 'use client'
 import React, { useState } from "react";
-import {useTranslations} from 'next-intl';
-import MainNavbarHeader from "@/app/[locale]/_components/MainNavbarHeader";
+import { useFormatter, useTranslations } from 'next-intl';
+import MainNavbarHeaderAI from "@/app/[locale]/_components/MainNavbarHeaderAI";
 import MainNavbarContentEmpty from "@/app/[locale]/_components/MainNavbarContentEmpty";
 import GalleryImages from "@/app/[locale]/_components/tools/GalleryImages";
 import FancyboxWrapper from "@/app/[locale]/_components/tools/FancyboxWrapper";
 import Image from "next/image";
-import MainNavbarHeaderAI from "@/app/[locale]/_components/MainNavbarHeaderAI";
+import { Bath, Car, Maximize, Home, Shirt, User } from "lucide-react";
 
-const UnitModelsAI = (props:any) => {
+const UnitModelsAI = (props: any) => {
     const t = useTranslations('ProjectPage');
-
+    const format = useFormatter();
     const [visibleTab1, setVisibleTab1] = useState(0);
-    //props.data[visibleTab1].options
 
-    const unitType =[...new Set(props.data[visibleTab1].options.map((item: any) => item.unitType))]; 
-    const bathrooms = [...new Set(props.data[visibleTab1].options.map((item: any) => item.bathrooms))]; 
-    const laundryRoomNo = [...new Set(props.data[visibleTab1].options.map((item: any) => item.laundryRoomNo))]; 
-    const maidsRoomNo = [...new Set(props.data[visibleTab1].options.map((item: any) => item.maidsRoomNo))]; 
-    const parkingNo = [...new Set(props.data[visibleTab1].options.map((item: any) => item.parkingNo))]; 
+    const currentOptions = props.data?.[visibleTab1]?.options || [];
 
-    //const unitType1 = props.data[visibleTab1].options.map((item: any) => item.unitType); 
+    // Helper specific logic to hide/show fields globally for the current tab
+    // If ANY item in the list has a value for a field, we show it (to be consistent), 
+    // or we can show/hide per card. The original table logic hid the COLUMN if all values were 0 or empty.
+    // Let's stick to the original logic: check if the set of values for the whole tab has anything meaningful.
+    const uniqueBathrooms = [...new Set(currentOptions.map((item: any) => item.bathrooms))];
+    const showBathrooms = !(uniqueBathrooms.length <= 1 && uniqueBathrooms[0] == '0');
+
+    const uniqueLaundry = [...new Set(currentOptions.map((item: any) => item.laundryRoomNo))];
+    const showLaundry = !(uniqueLaundry.length <= 1 && uniqueLaundry[0] == '0');
+
+    const uniqueMaids = [...new Set(currentOptions.map((item: any) => item.maidsRoomNo))];
+    const showMaids = !(uniqueMaids.length <= 1 && uniqueMaids[0] == '0');
+
+    const uniqueParking = [...new Set(currentOptions.map((item: any) => item.parkingNo))];
+    const showParking = !(uniqueParking.length <= 1 && uniqueParking[0] == '0');
 
     return (
-        <>
-        <div className="container mx-auto">
-                <h2 className="text-3xl font-bold text-primary mb-8">
-                    {t("unit_models")}
-                </h2>
-                <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
-                    <MainNavbarHeaderAI
-                        data={props.data}
-                        visibleTab={visibleTab1}
-                        setVisibleTab={setVisibleTab1}
-                    />
+        <div className="container mx-auto py-12">
+            <h2 className="text-3xl font-bold text-[#111954] mb-8 relative inline-block">
+                {t("unit_models")}
+                <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-[#111954]/20 rounded-full"></span>
+            </h2>
+
+            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50">
+                <MainNavbarHeaderAI
+                    data={props.data}
+                    visibleTab={visibleTab1}
+                    setVisibleTab={setVisibleTab1}
+                />
+
+                <div className="mt-8">
                     <MainNavbarContentEmpty data={props.data} visibleTab={visibleTab1} >
-                        {props.data[visibleTab1].options.length !== 0
-                            ? <GalleryImages
+                        {currentOptions.length !== 0 ? (
+                            <GalleryImages
                                 options={{
-                                    Carousel: {
-                                        infinite: false,
-                                    },
+                                    Carousel: { infinite: false },
                                 }}
                             >
                                 <FancyboxWrapper>
-                                <table className="min-w-full ">
-                                    <thead className="bg-gray-50">
-                                        <tr>
-                                            <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm text-[#111954] sm:pl-6">
-                                                Floor Plan
-                                            </th>
-                                            <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
-                                                Model Name
-                                            </th>
-                                            <th scope="col" className="px-3 py-3.5 text-left text-sm text-[#111954]">
-                                                Sizes
-                                            </th>
-                                            <th scope="col" className={`px-3 py-3.5 text-left text-sm text-[#111954] ${bathrooms.length <= 1 && bathrooms[0] == '0' ? "hidden" : ""}`}>
-                                                Bathrooms
-                                            </th>
-                                            <th scope="col" className={`px-3 py-3.5 text-left text-sm text-[#111954] ${laundryRoomNo.length <= 1 && laundryRoomNo[0] == '0' ? "hidden" : ""}`}>
-                                                Laundry Room
-                                            </th>
-                                            <th scope="col" className={`px-3 py-3.5 text-left text-sm text-[#111954] ${maidsRoomNo.length <= 1 && maidsRoomNo[0] == '0' ? "hidden" : ""}`}>
-                                                Maids Room
-                                            </th>
-                                            <th scope="col" className={`px-3 py-3.5 text-left text-sm text-[#111954] ${parkingNo.length <= 1 && parkingNo[0] == '0' ? "hidden" : ""}`}>
-                                                Parking
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-gray-200 bg-white">
-                                        {props.data[visibleTab1].options.map((page:any, index:any) => {
-                                            return (
-                                                <tr key={index}>
-                                                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                        {page.floorPlanlImage !== ''
-                                                            ? (
-                                                            <a
-                                                                title={`floorplan ${page.modelName}`}
-                                                                type="floorplan"
-                                                                //onClick={drawerHandler('gallery',images)}
-                                                                data-fancybox="floorplan"
-                                                                href={page.floorPlanlImage}
-                                                                className=" cursor-pointer block"
-                                                            >
-                                                            <div className="relative">
-                                                                <Image
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                        {currentOptions.map((page: any, index: any) => (
+                                            <div
+                                                key={index}
+                                                className="group bg-white rounded-2xl border border-gray-100 hover:border-[#111954]/20 transition-all duration-300 hover:shadow-lg overflow-hidden flex flex-col"
+                                            >
+                                                {/* Image Section */}
+                                                <div className="relative aspect-[4/3] bg-gray-50 p-4 flex items-center justify-center overflow-hidden">
+                                                    {page.floorPlanlImage ? (
+                                                        <a
+                                                            title={`floorplan ${page.modelName}`}
+                                                            data-fancybox="floorplan"
+                                                            href={page.floorPlanlImage}
+                                                            className="block w-full h-full relative cursor-zoom-in"
+                                                        >
+                                                            <Image
                                                                 layout="fill"
-                                                                className="object-center object-cover pointer-events-none"
-                                                                src={page.floorPlanlImage.replace('?width=0&height=0','?width=200&height=200')}
+                                                                className="object-contain transition-transform duration-500 group-hover:scale-105"
+                                                                src={page.floorPlanlImage.replace('?width=0&height=0', '?width=600&height=600')}
                                                                 alt={page.modelName}
                                                                 title={page.modelName}
-                                                                />
-                                                                <div className="relative z-1 w-full h-20"/>
+                                                            />
+                                                            <div className="absolute inset-0 bg-[#111954]/0 group-hover:bg-[#111954]/5 transition-colors duration-300" />
+                                                        </a>
+                                                    ) : (
+                                                        <div className="flex flex-col items-center justify-center text-gray-400">
+                                                            <Home size={40} strokeWidth={1.5} />
+                                                            <span className="text-xs mt-2">No Floorplan Image</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+
+                                                {/* Content Section */}
+                                                <div className="p-5 flex flex-col flex-grow">
+                                                    <div className="flex justify-between items-start mb-4">
+                                                        <div>
+                                                            <h3 className="text-lg font-bold text-[#111954] line-clamp-1" title={page.modelName}>
+                                                                {page.modelName}
+                                                            </h3>
+                                                            {page.unitType && page.unitType !== '0' && (
+                                                                <p className="text-sm text-gray-500 mt-1">{page.unitType}</p>
+                                                            )}
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="mt-auto space-y-3">
+                                                        {/* Specs Grid */}
+                                                        <div className="grid grid-cols-2 gap-y-3 gap-x-2 text-sm text-gray-600">
+                                                            {/* Area */}
+                                                            <div className="flex items-center gap-2" title="Total Area">
+                                                                <Maximize size={16} className="text-[#111954]/60" />
+                                                                <span className="font-medium">{format.number(page.area)}<sup>sqft</sup></span>
                                                             </div>
-                                                            </a>
-                                                        ) : (
-                                                            <div className="w-full h-20 bg-gray-300"></div>
-                                                        )}
-                                                    </td>
-                                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{page.modelName}</td>
-                                                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{page.area}</td>
-                                                    <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${bathrooms.length <= 1 && bathrooms[0] == '0' ? "hidden" : ""}`}>{(page.bathrooms && page.bathrooms !== '0') ? page.bathrooms : "-"}</td>
-                                                    <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${laundryRoomNo.length <= 1 && laundryRoomNo[0] == '0' ? "hidden" : ""}`}>{(page.laundryRoomNo && page.laundryRoomNo !== '0') ? page.laundryRoomNo : "-"}</td>
-                                                    <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${maidsRoomNo.length <= 1 && maidsRoomNo[0] == '0' ? "hidden" : ""}`}>{(page.maidsRoomNo && page.maidsRoomNo !== '0') ? page.maidsRoomNo : "-"}</td>
-                                                    <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${parkingNo.length <= 1 && parkingNo[0] == '0' ? "hidden" : ""}`}>{(page.parkingNo && page.parkingNo !== '0') ? page.parkingNo : "-"}</td>
-                                                </tr>
-                                            );
-                                        })}
-                                    </tbody>
-                                </table>
+
+                                                            {/* Bathrooms */}
+                                                            {showBathrooms && (page.bathrooms && page.bathrooms !== '0') && (
+                                                                <div className="flex items-center gap-2" title="Bathrooms">
+                                                                    <Bath size={16} className="text-[#111954]/60" />
+                                                                    <span>{page.bathrooms} Baths</span>
+                                                                </div>
+                                                            )}
+
+                                                            {/* Parkings */}
+                                                            {showParking && (page.parkingNo && page.parkingNo !== '0') && (
+                                                                <div className="flex items-center gap-2" title="Parking Spaces">
+                                                                    <Car size={16} className="text-[#111954]/60" />
+                                                                    <span>{page.parkingNo} Parking</span>
+                                                                </div>
+                                                            )}
+
+                                                            {/* Maids Room */}
+                                                            {showMaids && (page.maidsRoomNo && page.maidsRoomNo !== '0') && (
+                                                                <div className="flex items-center gap-2" title="Maids Room">
+                                                                    <User size={16} className="text-[#111954]/60" />
+                                                                    <span>Maids Room</span>
+                                                                </div>
+                                                            )}
+
+                                                            {/* Laundry Room */}
+                                                            {showLaundry && (page.laundryRoomNo && page.laundryRoomNo !== '0') && (
+                                                                <div className="flex items-center gap-2" title="Laundry Room">
+                                                                    <Shirt size={16} className="text-[#111954]/60" />
+                                                                    <span>Laundry</span>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </FancyboxWrapper>
                             </GalleryImages>
-                            : "null"
-                        }
+                        ) : (
+                            <div className="py-12 text-center text-gray-400">
+                                <Home size={48} className="mx-auto mb-4 opacity-20" />
+                                <p>No unit models available for this category.</p>
+                            </div>
+                        )}
                     </MainNavbarContentEmpty>
                 </div>
-                
             </div>
-        </>
+        </div>
     );
 }
 
