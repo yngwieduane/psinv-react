@@ -42,14 +42,14 @@ const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: 
         assignedTo: "4421",
     },
     'Abu Dhabi': {
-        email: 'callcenter@psiassets.com, wd6@psinv.net',
+        email: 'callcenter@psiassets.com, yngwie.g@psinv.net',
         apiUrl: 'https://portal.psiassets-crm.com/api/leads/?APIKEY=511af8807e7ff9cc0441c901aa724d5f9f66dfd21c388f385572bda768d4529b65b7c57ed3853ab0',
         referredTo: "4794",
         referredBy: "4794",
         assignedTo: "4794",
     },
     'DEFAULT': {
-        email: 'callcenter@psiassets.com, wd6@psinv.net',
+        email: 'callcenter@psiassets.com, yngwie.g@psinv.net',
         apiUrl: 'https://portal.psiassets-crm.com/api/leads/?APIKEY=511af8807e7ff9cc0441c901aa724d5f9f66dfd21c388f385572bda768d4529b65b7c57ed3853ab0',
     }
 };

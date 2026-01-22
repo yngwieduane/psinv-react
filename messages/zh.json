@@ -56,7 +56,18 @@
           "提升客户满意度、忠诚度及合作伙伴曝光",
           "通过合作伙伴交易实现可扩展的收益潜力"
         ]
+      },
+      "serenity_mansions": {
+        "title": "静谧豪宅",
+        "location": "Tilal Al Ghaf",
+        "description": "位于 Tilal Al Ghaf 的静谧豪宅提供迪拜独家五居室豪华住宅，将现代优雅与自然融为一体，提供度假式生活体验及世界级设施。"
+      },
+      "samana_skyros": {
+        "title": "萨玛纳·斯凯罗斯",
+        "location": "Arjan",
+        "description": "迪拜的萨玛纳·斯凯罗斯提供豪华17层住宅，配备私人泳池、先进健身设施和优越地理位置，是优雅生活与投资机会的巅峰之选。"
       }
+
     }
   },
   "citiesHome": {
@@ -246,7 +257,8 @@
   },
   "ReportDownload": {
     "title": "市场洞察",
-    "desc": "迪拜月度报告",
+    "desc": "阿布扎比月度报告",
+    "desc_dubai": "迪拜月度报告",
     "download": "立即下载",
     "form": {
       "title": "月度报告",
@@ -448,7 +460,13 @@
       "part2": "阿达克斯塔44层",
       "part3": "光明之城Reem岛",
       "part4": "阿布扎比，阿拉伯联合酋长国"
+    },
+    "company_address_dubai": {
+      "part1": "办公室 #104",
+      "part2": "商务园区 3",
+      "part3": "迪拜山庄"
     }
+
   },
   "LocaleSwitcher": {
     "label": "切换语言",
