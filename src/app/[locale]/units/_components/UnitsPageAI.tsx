@@ -127,9 +127,8 @@ export default function UnitsPageAI(props: any) {
                         {/* Collapsible Filters Panel (Floating under controls) */}
                         {showFilters && (
                             <div className="absolute top-[68px] right-0 w-80 bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-xl p-4 pointer-events-auto">
-                                <div className="flex justify-between items-center mb-4">
-                                    <h3 className="font-bold text-lg"></h3>
-                                    <button onClick={() => setShowFilters(false)} className="text-gray-500 hover:text-gray-700">
+                                <div className="absolute top-2 right-2 z-10">
+                                    <button onClick={() => setShowFilters(false)} className="cursor-pointer text-gray-500 hover:text-gray-700">
                                         <X size={20} />
                                     </button>
                                 </div>
