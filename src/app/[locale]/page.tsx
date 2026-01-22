@@ -91,7 +91,7 @@ export default function HomePage() {
 
       <section className={`relative min-h-[600px] ${outfit.className}`}>
         <HomeBanner slidePerView="1" slides={mainSliderData} />
-        <HomeSearch />
+        {/* <HomeSearch /> */}
       </section>
 
       <section className="bg-gray-50">
