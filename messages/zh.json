@@ -452,7 +452,7 @@
   },
   "LocaleSwitcher": {
     "label": "切换语言",
-    "locale": "{locale, select, ar {🇦🇪 阿拉伯语} en {🇺🇸 英语} cn {🇨🇳 中文} ru {🇷🇺 俄语} de {🇩🇪 荷兰语} other {未知}}",
+    "locale": "{locale, select, ar {🇦🇪 阿拉伯语} en {🇺🇸 英语} zh {🇨🇳 中文} ru {🇷🇺 俄语} de {🇩🇪 荷兰语} other {未知}}",
     "buy": "购买",
     "rent": "租赁",
     "communities": "社区",
