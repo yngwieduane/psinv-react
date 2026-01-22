@@ -56,6 +56,16 @@
           "Steigert Zufriedenheit, Loyalität und Partnerpräsenz",
           "Skalierbar mit Umsatzpotenzial durch Partnerangebote"
         ]
+      },
+      "serenity_mansions": {
+        "title": "Serenity Mansions",
+        "location": "Tilal Al Ghaf",
+        "description": "Serenity Mansions at Tilal Al Ghaf offers exclusive 5-bedroom luxury homes in Dubai, blending modern elegance with nature, and providing resort-style living with world-class amenities."
+      },
+      "samana_skyros": {
+        "title": "Samana Skyros",
+        "location": "Arjan",
+        "description": "Samana Skyros in Dubai offers luxurious 17-storey living with private pools, state-of-the-art fitness, and prime location. A pinnacle of elegance and investment opportunity."
       }
     }
   },
@@ -224,7 +234,8 @@
   },
   "ReportDownload": {
     "title": "Market Insights",
-    "desc": "Monthly Report DXB",
+    "desc": "Monthly Report Abu Dhabi",
+    "desc_dubai": "Monthly Report DXB",
     "download": "Download Now",
     "form": {
       "title": "Monthly Report",
@@ -426,6 +437,11 @@
       "part2": "Addax Tower, Ebene 44",
       "part3": "Al Reem Island, City of Lights",
       "part4": "Abu Dhabi, Vereinigte Arabische Emirate"
+    },
+    "company_address_dubai": {
+      "part1": "Office #104",
+      "part2": "Business Park 3",
+      "part3": "Dubai Hills Estate"
     }
   },
   "LocaleSwitcher": {

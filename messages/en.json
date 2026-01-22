@@ -276,7 +276,8 @@
   },
   "ReportDownload": {
     "title": "Market Insights",
-    "desc": "Monthly Report DXB",
+    "desc": "Monthly Report Abu Dhabi",
+    "desc_dubai": "Monthly Report DXB",
     "download": "Download Now",
     "form": {
       "title": "Monthly Report",

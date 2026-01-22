@@ -39,7 +39,7 @@ export default function ReportDownloadDubai(props: any) {
             {/* Left Column - Text and Button */}
             <div className="w-full md:w-2/3 lg:w-1/2 text-center md:text-left px-4 md:px-12 mb-6 md:mb-0">
               <p className={`text-gray-500 uppercase tracking-widest text-sm mb-2 ${outfit.className}`}>{t("title")}</p>
-              <p className="text-2xl md:text-3xl font-bold text-gray-900 lg:mb-8 mb-4">{t("desc")}</p>
+              <p className="text-2xl md:text-3xl font-bold text-gray-900 lg:mb-8 mb-4">{t("desc_dubai")}</p>
 
               <button
                 className="mt-4 relative text-md lg:text-lg overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer font-semibold"

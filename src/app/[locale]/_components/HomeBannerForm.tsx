@@ -33,7 +33,7 @@ type FormData = z.infer<typeof schema>;
 
 const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: number; referredBy?: number; assignedTo?: number; report?: string; }> = {
     'Dubai': {
-        email: 'wd6@psinv.net',
+        email: 'callcenter@psidubai.com, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0',
         referredTo: 4421,
         referredBy: 4421,
@@ -41,14 +41,14 @@ const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: 
         report : 'https://drive.google.com/file/d/1-uHPMoSoG1Da-TSHvYfDDuEqf6_T6SS2/view?usp=sharing',
     },
     'Abu Dhabi': {
-        email: 'wd6@psinv.net',
+        email: 'callcenter@psinv.net, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
         referredTo: 3458,
         referredBy: 3458,
         report : 'https://drive.google.com/file/d/1OrX7UlxvVcE9e1nPJ7ipHXAcG4H7WiKi/view?usp=sharing',
     },
     'DEFAULT': {
-        email: 'callcenter@psinv.net, wd6@psinv.net',
+        email: 'callcenter@psinv.net, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
         referredTo: 3458,
         referredBy: 3458,
