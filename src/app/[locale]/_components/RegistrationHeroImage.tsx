@@ -74,22 +74,23 @@ export default function RegistrationHeroImage({
       role="img"
       aria-label={`${activeSlug} hero image`}
     >
-      <div className="mx-auto w-full px-4 sm:px-6 lg:max-w-6xl">
-        <div className="relative overflow-hidden rounded-2xl shadow-md">
-          <Image
-            src={imageSrc}
-            alt={`Banner for ${activeSlug}`}
-            title={`Banner for ${activeSlug}`}
-            width={1200}
-            height={600}
-            className="w-full h-[220px] sm:h-[320px] md:h-[610px] object-cover object-center md:object-top"
-            priority
-            unoptimized
-            onError={handleError}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
-        </div>
-      </div>
+<div className="mx-auto w-full px-4 sm:px-6 lg:max-w-6xl">
+<div className="relative overflow-hidden rounded-2xl shadow-md bg-black
+                h-[160px] sm:h-[320px] md:h-[610px]">
+  <Image
+    src={imageSrc}
+    alt={imageAlt}
+    title={imageTitle}
+    fill
+    className="object-cover object-center sm:object-cover sm:object-right md:object-top"
+    priority
+    unoptimized
+    onError={handleError}
+    sizes="(min-width: 1024px) 1152px, (min-width: 640px) 100vw, 100vw"
+  />
+  <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
+</div>
+</div>
     </div>
   );
 }

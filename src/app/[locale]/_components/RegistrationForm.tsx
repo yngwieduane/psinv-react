@@ -28,6 +28,15 @@ const languageMap: Record<string, string> = {
   en: "115915", ar: "115911", ru: "115925", sr: "115926", fr: "115916", cn: "115913",
   de: "115917", es: "115928", zh: "115913", it: "115921", tr: "115930", nl: "115914",
 };
+type Property = {
+  propertyID: string;
+  propertyName: string;
+  country: string;
+  city: string;
+  district: string;
+  community: string;
+  subCommunity: string;
+};
 
 const normalizeForLangId = (l: string | undefined) => {
   const s = (l ?? '').toLowerCase();
@@ -54,6 +63,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ slug }) => {
   const isRTL = locale.toLowerCase().startsWith('ar');
   const langIdLocale = normalizeForLangId(locale);
   const projectMeta = useMemo(() => getProjectMeta(slug), [slug]);
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [propertiesLoading, setPropertiesLoading] = useState(false);
   const baseSchema = useMemo(() => z.object({
     firstName: z.string().min(1, { message: t('errors.firstName') }),
     lastName: z.string().min(1, { message: t('errors.lastName') }),
@@ -63,7 +74,6 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ slug }) => {
     consent2: z.boolean().optional(),
     consent3: z.boolean().optional(),
   }), [t]);
-
   const searchParams = useSearchParams();
   useEffect(() => {
     const keys = ["utm_source", "utm_medium", "utm_campaign"] as const;
@@ -112,6 +122,44 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ slug }) => {
     }
     return baseSchema.extend(extraShape);
   }, [baseSchema, extraFields]);
+  useEffect(() => {
+  const needsPropertySelect = extraFields.some((f) => f.id === "propertyId");
+  if (!needsPropertySelect) return;
+
+  const fetchProps = async () => {
+    try {
+      setPropertiesLoading(true);
+
+      let apiUrl = "/api/external/allproperties?page=1&limit=2000";
+      // optional branch condition (same logic like your other component)
+      if ((projectMeta?.Branch || "").toLowerCase() === "dubai") {
+        apiUrl += "&cityId=26786";
+      }
+
+      const res = await fetch(apiUrl);
+      const json = await res.json();
+
+      setProperties(json?.result || []);
+    } catch (e) {
+      console.error("Failed to fetch properties", e);
+      setProperties([]);
+    } finally {
+      setPropertiesLoading(false);
+    }
+  };
+
+  fetchProps();
+}, [extraFields, projectMeta?.Branch]);
+  const propertyOptions = useMemo(() => {
+  return [
+    { value: "", label: propertiesLoading ? "Loading properties..." : "Select a property" },
+    ...properties.map((p) => ({
+      value: p.propertyID,
+      label: p.propertyName,
+    })),
+  ];
+}, [properties, propertiesLoading]);
+
   type FormData = z.infer<typeof schema>;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -164,24 +212,31 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ slug }) => {
       (hasUtm ? projectMeta?.utmRemarksMap?.[utm_campaign] : undefined) ||
       projectMeta?.remarks ||
       "";
-    const extraRemarkLines = extraFields
-      .map((f) => {
-        const value = (data as any)[f.id];
-        if (!value) return '';
+      const selectedPropertyId = String((data as any).propertyId ?? "");
+const selectedPropertyName =
+  properties.find((p) => p.propertyID === selectedPropertyId)?.propertyName ||
+  (selectedPropertyId ? selectedPropertyId : "");
 
-        const label = f.labelKey
-          ? t(f.labelKey as any)
-          : f.label ?? f.id;
+const effectiveRemarkWithProperty = selectedPropertyName
+  ? `Client Interested Property: ${selectedPropertyName} | ${effectiveRemark}`
+  : effectiveRemark;
+const extraRemarkLines = extraFields
+  .map((f) => {
+    const value = (data as any)[f.id];
+    if (value == null || value === "") return "";
 
-        return `${label}: ${String(value)}</br>`;
-      })
-      .join('');
+   if (f.id === "propertyId") return "";
+
+    const label = f.labelKey ? t(f.labelKey as any) : f.label ?? f.id;
+    return `${label}: ${String(value)}</br>`;
+  })
+  .join("");
     const fullRemark = `
 Additional consent 1 : ${data.consent1 ? "YES" : "NO"}</br>
 Additional consent 2 : ${data.consent2 ? "YES" : "NO"}</br>
 Additional consent 3 : ${data.consent3 ? "YES" : "NO"}</br>
 ${extraRemarkLines ? `Extra Fields:</br>${extraRemarkLines}` : ''}
-Remarks: ${effectiveRemark}</br>
+Remarks: ${effectiveRemarkWithProperty}</br>
 Client Name: ${data.firstName} ${data.lastName}</br>
 Client Email: ${data.email}</br>
 Client Phone: ${data.phone}</br>
@@ -234,7 +289,7 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
 
   <tr>
     <td style="font-weight:bold;">Remarks</td>
-    <td>${effectiveRemark}</td>
+    <td>${effectiveRemarkWithProperty}</td>
   </tr>
 
   <tr>
@@ -289,7 +344,7 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
       NationalityID: "65946",
       LanguageID: languageMap[langIdLocale] || languageMap.en,
       CompanyID: "",
-      Remarks: effectiveRemark,
+      Remarks: effectiveRemarkWithProperty,
       RequirementType: projectMeta.RequirementType || 91212,
       ContactType: projectMeta.ContactType,
       CountryID: projectMeta.CountryID || 65946,
@@ -505,29 +560,37 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
           const placeholder = f.placeholderKey ? t(f.placeholderKey as any) : undefined;
           const fieldErr = (errors as any)?.[f.id];
           const msg = errMsg(fieldErr);
-          if (f.type === 'select') {
-            return (
-              <div key={f.id}>
-                <label>{label}</label>
-                <select
-                  {...register(f.id as any)}
-                  className="w-full px-3 py-2 border rounded-[7px] bg-white"
-                  style={{ color: '#111' }}
-                >
-                  {f.options?.map((opt) => (
-                    <option
-                      key={String(opt.value)}
-                      value={opt.value}
-                      style={{ color: '#111', backgroundColor: '#fff' }}
-                    >
-                      {opt.labelKey ? t(opt.labelKey as any) : opt.label ?? String(opt.value)}
-                    </option>
-                  ))}
-                </select>
-                {msg && <p className="text-red-600 text-sm mt-1">{msg}</p>}
-              </div>
-            );
-          }
+         if (f.type === "select") {
+  const optionsToRender =
+    f.id === "propertyId"
+      ? propertyOptions
+      : (f.options || []).map((opt) => ({
+          value: opt.value,
+          label: opt.labelKey ? t(opt.labelKey as any) : opt.label ?? String(opt.value),
+        }));
+
+  return (
+    <div key={f.id}>
+      <label className={f.required ? "label-required" : ""}>{label}</label>
+      <select
+        {...register(f.id as any)}
+        className="w-full px-3 py-2 border border-[#cecfd0] rounded-[7px]"
+        disabled={f.id === "propertyId" && propertiesLoading}
+      >
+        {optionsToRender.map((opt) => (
+          <option
+            key={String(opt.value)}
+            value={opt.value}
+            style={{ color: "#111", backgroundColor: "#fff" }}
+          >
+            {opt.label}
+          </option>
+        ))}
+      </select>
+      {msg && <p className="text-red-600 text-sm mt-1">{msg}</p>}
+    </div>
+  );
+}
           return (
             <div key={f.id}>
               <label>{label}</label>
