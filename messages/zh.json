@@ -66,7 +66,13 @@
         "title": "萨玛纳·斯凯罗斯",
         "location": "Arjan",
         "description": "迪拜的萨玛纳·斯凯罗斯提供豪华17层住宅，配备私人泳池、先进健身设施和优越地理位置，是优雅生活与投资机会的巅峰之选。"
+      },
+      "al_mamsha_souks": {
+          "title": "Al Mamsha Souks",
+          "location": "Al Mamsha",
+          "description": "Al Mamsha 是沙迦的一个地标性综合开发项目，将现代生活、零售和休闲融合在一个高端环境中，完全可步行到达。"
       }
+
 
     }
   },

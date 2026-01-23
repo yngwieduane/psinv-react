@@ -26,10 +26,10 @@ interface CitiesTabProps {
   centered?: boolean;
 }
 
-const CitiesTabDubai: React.FC<CitiesTabProps> = ({ cities, centered }) => {
+const CitiesTabSharjah: React.FC<CitiesTabProps> = ({ cities, centered }) => {
   const locale = useLocale();
   const isRtl = locale.toLowerCase().startsWith("ar");
-  const t = useTranslations('citiesHome.dubai');
+  const t = useTranslations('citiesHome.sharjah');
 
   const [visibleTab, setVisibleTab] = useState(0);
   const currentCity = cities[visibleTab];
@@ -47,4 +47,4 @@ const CitiesTabDubai: React.FC<CitiesTabProps> = ({ cities, centered }) => {
 }
 
 
-export default CitiesTabDubai;
+export default CitiesTabSharjah;
