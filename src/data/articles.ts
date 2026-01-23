@@ -250,37 +250,37 @@ export const ARTICLES: Article[] = [
     imageUrl:
       "/assets/images/articles/unlocking-opportunities-for-retiring-expats-and-boosting-the-uae-real-estate-market.webp",
   },
- {
-  id: 120,
-  slug: "top-property-portals-in-uae-to-buy-and-rent-real-estate",
-  date: "2026-01-05",
-  author: "Property Shop Investment Editorial Team",
-  categoryKey: "uae_real_estate_market_trends",
-  category: CATEGORY_LABELS.uae_real_estate_market_trends,
-  imageUrl:
-    "/assets/images/articles/top-property-portals-in-uae-to-buy-and-rent-real-estate.webp",
-},
-{
-  id: 121,
-  slug: "everything-you-need-to-know-about-tenancy-rights-and-laws-in-abu-dhabi",
-  date: "2026-01-05",
-  author: "Property Shop Investment Editorial Team",
-  categoryKey: "rules_and_regulations",
-  category: CATEGORY_LABELS.rules_and_regulations,
-  city: "Abu Dhabi",
-  imageUrl: "/assets/images/articles/tenancy-rights-laws-abu-dhabi.webp",
-},
-{
-  id: 122,
-  slug: "best-abu-dhabi-real-estate-areas-for-highest-investment-returns",
-  date: "2026-01-06",
-  author: "Property Shop Investment Editorial Team",
-  categoryKey: "uae_real_estate_market_trends",
-  category: CATEGORY_LABELS.uae_real_estate_market_trends,
-  city: "Abu Dhabi",
-  imageUrl:
-    "/assets/images/articles/best-abu-dhabi-real-estate-areas-for-highest-investment-returns.webp",
-}
+  {
+    id: 120,
+    slug: "top-property-portals-in-uae-to-buy-and-rent-real-estate",
+    date: "2026-01-05",
+    author: "Property Shop Investment Editorial Team",
+    categoryKey: "uae_real_estate_market_trends",
+    category: CATEGORY_LABELS.uae_real_estate_market_trends,
+    imageUrl:
+      "/assets/images/articles/top-property-portals-in-uae-to-buy-and-rent-real-estate.webp",
+  },
+  {
+    id: 121,
+    slug: "everything-you-need-to-know-about-tenancy-rights-and-laws-in-abu-dhabi",
+    date: "2026-01-05",
+    author: "Property Shop Investment Editorial Team",
+    categoryKey: "rules_and_regulations",
+    category: CATEGORY_LABELS.rules_and_regulations,
+    city: "Abu Dhabi",
+    imageUrl: "/assets/images/articles/tenancy-rights-laws-abu-dhabi.webp",
+  },
+  {
+    id: 122,
+    slug: "best-abu-dhabi-real-estate-areas-for-highest-investment-returns",
+    date: "2026-01-06",
+    author: "Property Shop Investment Editorial Team",
+    categoryKey: "uae_real_estate_market_trends",
+    category: CATEGORY_LABELS.uae_real_estate_market_trends,
+    city: "Abu Dhabi",
+    imageUrl:
+      "/assets/images/articles/best-abu-dhabi-real-estate-areas-for-highest-investment-returns.webp",
+  }
 ];
 
 // ======================================================

@@ -8,17 +8,19 @@ import { Link } from "@/i18n/navigation";
 
 // Types
 import { ArticleBodyPart } from "@/data/articles";
+import { useLocale } from "next-intl";
 type FirestoreArticle = {
+    translations: any;
     id: string | number;
     slug: string;
     title: string;
     summary: string;
     body: ArticleBodyPart[];
-    date: string;
+    createdAt: string;
     author: string;
     categoryKey: string;
     category?: string;
-    imageUrl: string;
+    image: string;
     city?: string;
 }
 
@@ -54,35 +56,44 @@ function RecentArticleRow({
 }: {
     item: FirestoreArticle;
 }) {
-    const href = `/articles-2/${item.slug}`;
+    // Generate URL based on user request
+    let categorySegment = item.category ? item.category.toLowerCase().replace(/\s+/g, '-') : 'general';
+
+    // Normalize area guide check
+    if (categorySegment.toLowerCase().replace(/\s+/g, '-') === 'area-guides' || categorySegment.toLowerCase().replace(/\s+/g, '-') === 'area-guide') {
+        if (item.city) {
+            const citySlug = item.city.toLowerCase().replace(/\s+/g, '-');
+            categorySegment = `${categorySegment}/${citySlug}`;
+        }
+    }
+
+    const href = `/articles/${categorySegment}/${item.slug}`;
+    const locale = useLocale();
     return (
         <Link href={href} title={item.title} className="group block h-full">
             <div className="flex flex-col md:flex-row gap-6 cursor-pointer h-full bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 p-4 border border-gray-50">
-                <div className="w-full md:w-48 h-32 rounded-xl overflow-hidden shrink-0 bg-gray-100 relative">
+                <div className="md:w-48 h-32 rounded-xl overflow-hidden shrink-0 bg-gray-100 relative">
                     <Image
-                        src={item.imageUrl}
+                        src={item.image}
                         alt={item.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                 </div>
 
-                <div className="flex flex-col justify-between flex-1">
+                <div className="grid grid-cols-1 flex-col justify-between flex-1">
                     <div>
                         <div className="flex items-center gap-2 text-xs text-secondary font-bold uppercase tracking-wider mb-2">
-                            <span>{item.category || item.categoryKey}</span>
+                            <span>{item.category}</span>
                         </div>
-                        <h3 className="font-bold text-lg text-gray-800 mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                            {item.title}
+                        <h3 className="font-bold text-lg text-gray-800 mb-2 group-hover:text-primary transition-colors line-clamp-2 truncate text-ellipsis">
+                            {item.translations[locale].title}
                         </h3>
-                        <p className="text-sm text-gray-500 line-clamp-2 mb-3">
-                            {item.summary}
-                        </p>
                     </div>
 
                     <div className="flex items-center gap-4 text-xs text-gray-400 mt-auto">
-                        <span className="flex items-center gap-1"><Clock size={12} /> {item.date}</span>
-                        <span className="flex items-center gap-1"><User size={12} /> {item.author}</span>
+                        <span className="flex items-center gap-1"><Clock size={12} /> {item.createdAt}</span>
+                        <span className="flex items-center gap-1"><User size={12} /> PSI Author</span>
                     </div>
                 </div>
             </div>
@@ -120,7 +131,7 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
                     <Breadcrumb
                         customSegments={[
                             { name: "Home", href: "/" },
-                            { name: "Articles 2", href: "/articles-2" },
+                            { name: "Articles 2", href: "/articles" },
                         ]}
                     />
                 </div>
