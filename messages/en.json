@@ -86,6 +86,11 @@
         "title": "Samana Skyros",
         "location": "Arjan",
         "description": "Samana Skyros in Dubai offers luxurious 17-storey living with private pools, state-of-the-art fitness, and prime location. A pinnacle of elegance and investment opportunity."
+      },
+      "al_mamsha_souks": {
+        "title": "Al Mamsha Souks",
+        "location": "Al Mamsha",
+        "description": "Al Mamsha is a landmark mixed-use development in Sharjah that brings together modern living, retail and leisure in an upscale environment completely accessible on foot."
       }
     }
   },

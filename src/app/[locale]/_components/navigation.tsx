@@ -445,7 +445,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 },
                 {
                     title: t('Sharjah'),  
-                    link: "/",                
+                    link: "/sharjah",                
                     items: [
                         { label: t('Sharjah Waterfront City'), href: '/projects/sharjah/sharjah-waterfront-city/n-a/sharjah-waterfront-city' },
                         { label: t('Deem at Hayyan'), href: '/projects/sharjah/al-bedea-suburb/al-bedea-suburb/deem-at-hayyan' },
@@ -495,6 +495,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             columns: [
                 {
                     title: t('Abu Dhabi'),
+                    link: "/",
                     items: [
                         { label: t("Al Reem Island"), href: "/projects/abu-dhabi/al-reem-island" },
                         { label: t("Saadiyat Island"), href: "/projects/abu-dhabi/saadiyat-island" },
@@ -506,6 +507,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 },
                 {
                     title: t('Dubai'),
+                    link: "/dubai",
                     items: [
                         { label: t("Palm Jumeirah"), href: "/projects/dubai/the-palm-jumeirah" },
                         { label: t("Downtown Dubai"), href: "/projects/dubai/downtown-dubai" },

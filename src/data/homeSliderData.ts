@@ -182,4 +182,25 @@ export const dubaiSliderData = [
     bannerbedroom: "",
   },
 
-]
+];
+
+export const sharjahSliderData = [
+  {
+    key: "al_mamsha_souks",
+    type: "Apartments",
+    developer_img: "/images/banners/developers/alef-group-logo.svg",
+    developer_img_mob: "/images/banners/developers/alef-group-logo.svg",
+    project_url: "/projects/sharjah/al-mamsha/al-mamsha/al-mamsha-souks",
+    image: "/images/banners/al-mamsha-souks.webp",
+    bannerpropertyid: "",
+    bannerunittype: "",
+    bannersubcommunityid: "",
+    bannercommunityid: "",
+    bannerdistrictid: "",
+    bannercityid: "",
+    bannerstateid: "",
+    bannercountryid: "",
+    bannerbedroom: "",
+  }, 
+
+];

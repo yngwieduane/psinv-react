@@ -7,40 +7,7 @@ import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { SocialMedia } from '@/types/navigation';
 import { usePathname } from 'next/navigation';
-// import { DynamicIcon } from 'lucide-react/dynamic';
-
-const socialMedia: SocialMedia[] = [
-  {
-    name: 'Facebook',
-    href: 'https://www.facebook.com/PropertyShopInvestment',
-    icon: 'facebook',
-  },
-  {
-    name: 'Twitter',
-    href: 'https://twitter.com/psinv',
-    icon: 'twitter',
-  },
-  {
-    name: 'Instagram',
-    href: 'https://www.instagram.com/property_shop_investment/',
-    icon: 'instagram',
-  },
-  {
-    name: 'Snapchat',
-    href: 'https://www.snapchat.com/add/property-shop',
-    icon: 'camera',
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/property-shop-investment-llc',
-    icon: 'linkedin',
-  },
-  {
-    name: 'Youtube',
-    href: 'https://www.youtube.com/user/propertyshopabudhabi',
-    icon: 'youtube',
-  }
-];
+import { socialLinks, socialLinksDubai } from '@/data/socialLinks';
 
 interface FooterProps {
   onNavigate: (page: Page) => void;
@@ -77,18 +44,27 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
   
   const normalizedPath = pathname.replace(/^\/(en|ar)/, "");
   let selectedData;
+  let selectedSocialLinks;
 
   switch (normalizedPath) {
     case "/dubai" : 
       selectedData = dubaiData;
+      selectedSocialLinks = socialLinksDubai;
       break;
 
     default:
       selectedData = abuDhabiData;
+      selectedSocialLinks = socialLinks;
       break; 
   }
 
   const { phone1, phone2, address } = selectedData;
+
+  const socialMedia: SocialMedia[] = selectedSocialLinks.map((item) => ({
+    name: item.name,
+    href: item.link,
+    icon: item.icon
+  }));
 
   return (
     <footer className="bg-[#0c1356] text-white pt-24 pb-12 border-t border-white/5" dir={isRtl ? "rtl" : "ltr"} >

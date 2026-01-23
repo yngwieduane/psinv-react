@@ -58,16 +58,44 @@
         ]
       },
       "serenity_mansions": {
-        "title": "Serenity Mansions",
-        "location": "Tilal Al Ghaf",
-        "description": "Serenity Mansions at Tilal Al Ghaf offers exclusive 5-bedroom luxury homes in Dubai, blending modern elegance with nature, and providing resort-style living with world-class amenities."
+          "title": "Serenity Mansions",
+          "location": "Tilal Al Ghaf",
+          "description": "Die Serenity Mansions in Tilal Al Ghaf bieten exklusive Luxuswohnungen mit 5 Schlafzimmern in Dubai, die moderne Eleganz mit Natur verbinden und ein Resort-ähnliches Leben mit erstklassigen Annehmlichkeiten ermöglichen."
       },
       "samana_skyros": {
-        "title": "Samana Skyros",
-        "location": "Arjan",
-        "description": "Samana Skyros in Dubai offers luxurious 17-storey living with private pools, state-of-the-art fitness, and prime location. A pinnacle of elegance and investment opportunity."
+          "title": "Samana Skyros",
+          "location": "Arjan",
+          "description": "Samana Skyros in Dubai bietet luxuriöses Wohnen auf 17 Stockwerken mit privaten Pools, modernster Fitnessausstattung und einer erstklassigen Lage. Ein Höhepunkt an Eleganz und Investitionsmöglichkeit."
+      },
+      "al_mamsha_souks": {
+          "title": "Al Mamsha Souks",
+          "location": "Al Mamsha",
+          "description": "Al Mamsha ist eine markante Mixed-Use-Entwicklung in Sharjah, die modernes Wohnen, Einzelhandel und Freizeit in einer gehobenen Umgebung vereint, die vollständig zu Fuß zugänglich ist."
       }
+
     }
+  },
+  "citiesHome": {
+      "abu_dhabi": {
+        "title": "Abu Dhabi",
+        "al_reem_island": "Al Reem Island",
+        "saadiyat_island": "Saadiyat Island",
+        "yas_island": "Yas Island",
+        "al_raha_beach": "Al Raha Beach"
+      },
+      "dubai": {
+        "title": "Dubai",
+        "palm_jumeirah": "Palm Jumeirah",
+        "downtown_dubai": "Downtown Dubai",
+        "dubai_creek": "Dubai Creek",
+        "town_square_dubai": "Town Square Dubai"
+      },
+      "sharjah": {
+        "title": "Sharjah",
+        "al_khan": "Al Khan",
+        "sharjah_waterfront_city": "Sharjah Waterfront City",
+        "aljada": "Aljada"
+      }
   },
   "ListPropertySection": {
     "title": "BE with the Brand you Trust",
