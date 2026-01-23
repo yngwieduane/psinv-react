@@ -20,6 +20,37 @@ export type PerSlug = {
   seo?: SeoMeta | LocalizedSeo;
 };
 export const PROJECTS: Record<string, PerSlug> = {
+      'rotana-registration': {
+    branch: 'auh',
+seo: {
+  en: {
+    title: 'Rotana Residences Reem Island | Branded Waterfront Living in Abu Dhabi',
+    description:
+      'Register your interest for Rotana Residences on Reem Island. Explore premium waterfront homes with modern amenities and a vibrant lifestyle in one of Abu Dhabi’s most sought-after communities.',
+    keywords:
+      'Rotana Residences Reem Island, Reem Island Abu Dhabi, branded residences Abu Dhabi, waterfront apartments Abu Dhabi, luxury living Reem Island, Abu Dhabi real estate',
+  },
+  ar: {
+    title: 'روتانا ريزيدنسز جزيرة الريم | أسلوب حياة فاخر على الواجهة البحرية في أبوظبي',
+    description:
+      'سجّل اهتمامك في روتانا ريزيدنسز بجزيرة الريم. اكتشف وحدات سكنية مميزة على الواجهة البحرية مع مرافق عصرية ونمط حياة نابض في واحدة من أبرز مناطق أبوظبي.',
+    keywords:
+      'روتانا ريزيدنسز جزيرة الريم، جزيرة الريم أبوظبي، مساكن بعلامة روتانا، شقق على الواجهة البحرية أبوظبي، سكن فاخر جزيرة الريم، عقارات أبوظبي',
+  },
+},
+    override: {
+      PropertyID: 25588,
+      CommunityID: 95259,
+      remarks: 'Rotana Residences - company campaign',
+      ...makeUtm({
+        'ali_rotana_reem_island_newsletter_jan2026': {
+          campaign: 3456,
+          remarks:
+            'Rotation:  Rotana Residences - company campaign, Campaign name: 	Ali Rotana Reem Island Newsletter Jan2026',
+        },
+      }),
+    },
+  },
     'hilton-residences-raha-beach-registration': {
     branch: 'auh',
       seo: {
@@ -45,7 +76,7 @@ export const PROJECTS: Record<string, PerSlug> = {
         'zaineh_ibinu_hilton_raha_news': {
           campaign: 3451,
           remarks:
-            'Rotation:  Al raha beach (Hilton Residences) - company campaign, Campaign name: Ibinu:Hilton raha News',
+            'Rotation:  Al raha beach (Hilton Residences) - company campaign, Campaign name: Ibinu:Hilton raha Newsletter',
         },
       }),
     },
@@ -348,6 +379,11 @@ export const PROJECTS: Record<string, PerSlug> = {
       UnitType: 20,
       remarks: 'Reem Hills',
       ...makeUtm({
+        'AlReemNur': {
+          campaign: 2374,
+          remarks:
+            'Campaign name:	10.2025_jubail_island_lisitingCampaign',
+        },
         'Ramhan_Hubspot': {
           campaign: 2133,
           remarks:
@@ -409,6 +445,16 @@ export const PROJECTS: Record<string, PerSlug> = {
       UnitType: 20,
       remarks: 'ramhan rotation',
       ...makeUtm({
+        'Luxury_Projects_Campaign': {
+          campaign: 2178,
+          remarks:
+            'Campaign name:	Luxury_Projects_HubSpot',
+        },
+        'AlReemHillsNur': {
+          campaign: 2374,
+          remarks:
+            'Campaign name:		10.2025_jubail_island_lisitingCampaign',
+        },
         'YasRiva_HubSpot': {
           campaign: 2132,
           remarks:

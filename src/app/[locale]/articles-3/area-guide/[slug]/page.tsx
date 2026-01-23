@@ -15,7 +15,7 @@ type Params = {
 };
 
 type Props = {
-  params: Promise<Params>; // ✅ must be Promise in your setup
+  params: Promise<Params>;
 };
 
 const CITY_BY_SLUG: Record<string, string> = {
