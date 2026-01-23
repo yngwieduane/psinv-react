@@ -25,4 +25,16 @@ export const CONRAD_AGENTS_BY_DATE: AgentsByDate = {
         { id: "6345", name: "Diana Bashirova" },
         { id: "7262", name: "Omar Nazih Hamdache" },
     ],
+    "2026-01-24": [
+        { id: "9837", name: "Menna Fouad Abdelkhalek Elsayed Ali" },
+        //{ id: "", name: "Sara Hussein Ibrahem Ibrahem Elmakhzangy" },
+        { id: "9809", name: "Sana Khalfallah" },
+        { id: "7005", name: "Yousef Ahmad Daoud" },
+    ],
+    "2026-01-25": [
+        { id: "7166", name: "Ali Nabil Ali Abdelrahman Shatta" },
+        { id: "7277", name: "Youmna Ashraf Mohamed Ali Metwally" },
+        { id: "7253", name: "Maya Ramos Da Silva" },
+        { id: "7225", name: "Miguel Angel Aguilar Leon" },
+    ],
 };
