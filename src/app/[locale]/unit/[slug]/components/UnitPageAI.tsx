@@ -366,7 +366,7 @@ export default function UnitPageAI(props: any) {
                                             />
                                         </div>) : ("")}
 
-                                    <h2 className="text-3xl font-bold text-primary mb-8 mt-10">Similar Properties</h2>
+                                    <h2 className="text-3xl font-bold text-primary mb-8 mt-10">Similar Units</h2>
                                     <SimilarUnitsGrid
                                         propid={post.property_Pk}
                                         category={category}

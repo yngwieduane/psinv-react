@@ -103,7 +103,7 @@ const UnitModelsAI = (props: any) => {
                                                             <h3 className="text-lg font-bold text-[#111954] line-clamp-1" title={page.modelName}>
                                                                 {page.modelName}
                                                             </h3>
-                                                            {page.unitType && page.unitType !== '0' && (
+                                                            {page.unitType && page.unitType !== 'UnitType' && (
                                                                 <p className="text-sm text-gray-500 mt-1">{page.unitType}</p>
                                                             )}
                                                         </div>
@@ -113,10 +113,12 @@ const UnitModelsAI = (props: any) => {
                                                         {/* Specs Grid */}
                                                         <div className="grid grid-cols-2 gap-y-3 gap-x-2 text-sm text-gray-600">
                                                             {/* Area */}
-                                                            <div className="flex items-center gap-2" title="Total Area">
-                                                                <Maximize size={16} className="text-[#111954]/60" />
-                                                                <span className="font-medium">{format.number(page.area)}<sup>sqft</sup></span>
-                                                            </div>
+                                                            {page.area && page.area != 0 ? (
+                                                                <div className="flex items-center gap-2" title="Total Area">
+                                                                    <Maximize size={16} className="text-[#111954]/60" />
+                                                                    <span className="font-medium">{format.number(page.area)}<sup>sqft</sup></span>
+                                                                </div>
+                                                            ) : null}
 
                                                             {/* Bathrooms */}
                                                             {showBathrooms && (page.bathrooms && page.bathrooms !== '0') && (
