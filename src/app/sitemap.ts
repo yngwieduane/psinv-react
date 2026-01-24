@@ -1,19 +1,19 @@
 import { MetadataRoute } from 'next';
 import { db } from "@/lib/firebase-admin";
 
-export const revalidate = 86400; // Revalidate daily
+export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://psinv.net';
     const locales = ['en', 'ar', 'ru', 'zh', 'de'];
 
-    // Static Pages
     const staticPages = [
         '',
         '/about-us',
         '/contact-us',
         '/projects',
         '/articles',
+        '/blog',
         '/careers',
         '/list-your-property',
         '/mortgage-calculator',
@@ -23,13 +23,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/crypto',
     ];
 
-    // Helper sanitizers from generateSeoData (re-implementing clean versions)
     const sanitizeSlug = (str: string) => str.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 
-    // Fetch Projects from API (using recursive fetch or large page size)
+    // Fetch Projects
     async function getProjects() {
         try {
-            // Fetching 500 projects should cover most active ones. Adjust page size if needed.
             const res = await fetch("https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex=1&pageSize=500", {
                 method: "POST",
                 headers: {
@@ -48,9 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }
     }
 
-    // Fetch Units (Sale + Rent)
-    // Fetching a reasonable limit. Full database dump might be too large for a single request.
-    // We'll limit to top 1000 each for now to avoid timeouts, or use pagination if available.
+    // Fetch Units
     async function getUnits() {
         const fetchType = async (type: 'Sale' | 'Rent') => {
             const url = type === 'Sale'
@@ -58,8 +54,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 : 'https://integration.psi-crm.com/ExternalApis/GetRentListing';
 
             try {
-                // Check API pagination support or limit? Usually returns all or top N.
-                // Sending empty body
                 const res = await fetch(url, {
                     method: "POST",
                     headers: {
@@ -80,11 +74,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return [...(Array.isArray(sales) ? sales : []), ...(Array.isArray(rents) ? rents : [])];
     }
 
-    // Fetch Articles from Firebase
+    // Fetch Articles
     async function getArticles() {
         try {
             const articlesRef = db.collection('articles');
-            const snapshot = await articlesRef.get(); // Getting all articles
+            const snapshot = await articlesRef.get();
             if (snapshot.empty) return [];
 
             return snapshot.docs.map(doc => {
@@ -101,11 +95,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }
     }
 
-    // --- Execution ---
-    const [projects, units, articles] = await Promise.all([
+    // Fetch Blogs
+    async function getBlogs() {
+        try {
+            const blogsRef = db.collection('blog_posts');
+            const snapshot = await blogsRef.get();
+            if (snapshot.empty) return [];
+
+            return snapshot.docs.map(doc => {
+                const d = doc.data();
+                return {
+                    slug: d.slug,
+                    date: d.date ? (d.date.toDate ? d.date.toDate().toISOString() : new Date().toISOString()) : new Date().toISOString()
+                }
+            });
+        } catch (e) {
+            console.error("Sitemap Blogs Fetch Error", e);
+            return [];
+        }
+    }
+
+    const [projects, units, articles, blogs] = await Promise.all([
         getProjects(),
         getUnits(),
-        getArticles()
+        getArticles(),
+        getBlogs()
     ]);
 
     const sitemapEntries: MetadataRoute.Sitemap = [];
@@ -124,10 +138,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 }, {})
             }
         });
-        // Optionally add entries for other locales explicitly if Next.js sitemap doesn't handle alternates automatically for distinct URLs
-        // Typically declaring alternates property is enough for Google.
-        // But creating a sitemap entry for EACH URL is standard practice unless relying purely on hreflang.
-        // Let's create an entry for each locale variant to be safe and explicit.
         locales.filter(l => l !== 'en').forEach(locale => {
             sitemapEntries.push({
                 url: `${baseUrl}/${locale}${route}`,
@@ -146,7 +156,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const sub = sanitizeSlug(p.sub_community || "subcommunity");
         const proj = sanitizeSlug(p.propertyName);
 
-        // /projects/[city]/[community]/[subcommunity]/[project]
         const path = `/projects/${city}/${comm}/${sub}/${proj}`;
 
         locales.forEach(locale => {
@@ -161,17 +170,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // 3. Units
     units.forEach((u: any) => {
-        // Re-create SEO URL logic locally
-        const adType = (u.isRent || u.rent) ? 'Rent' : 'Sale'; // Heuristic if isRent tag missing
+        const adType = (u.isRent || u.rent) ? 'Rent' : 'Sale';
         const propType = u.category || "";
         const name = u.propertyname || "";
         const community = u.community || "";
         const code = u.code || "";
 
-        // Bedrooms
         let beds = String(u.bedrooms || "").toLowerCase();
         if (!isNaN(Number(beds)) && Number(beds) > 0) { }
-        else if (beds !== 'studio') { beds = ''; } // fallback empty if not numeric/studio
+        else if (beds !== 'studio') { beds = ''; }
 
         const stem = beds
             ? (beds === 'studio' ? `studio ${propType}` : `${beds} bedroom ${propType}`)
@@ -183,7 +190,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         locales.forEach(locale => {
             sitemapEntries.push({
                 url: `${baseUrl}/${locale}${path}`,
-                lastModified: new Date(u.last_updated || new Date()), // Use update date if available
+                lastModified: new Date(u.last_updated || new Date()),
                 changeFrequency: 'daily',
                 priority: 0.7
             });
@@ -192,16 +199,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // 4. Articles
     articles.forEach((a: any) => {
-        // Logic from RecentArticleRow for category structure
         let catSeg = a.category.toLowerCase().replace(/\s+/g, '-');
-        // Simple area guide check
-        // Ideally we check if item.city exists but skipping for simplicity or need to fetch full article data
-
         const path = `/articles/${catSeg}/${a.slug}`;
         locales.forEach(locale => {
             sitemapEntries.push({
                 url: `${baseUrl}/${locale}${path}`,
                 lastModified: new Date(a.date),
+                changeFrequency: 'weekly',
+                priority: 0.6
+            });
+        });
+    });
+
+    // 5. Blogs
+    blogs.forEach((b: any) => {
+        const path = `/blog/${b.slug}`;
+        locales.forEach(locale => {
+            sitemapEntries.push({
+                url: `${baseUrl}/${locale}${path}`,
+                lastModified: new Date(b.date),
                 changeFrequency: 'weekly',
                 priority: 0.6
             });
