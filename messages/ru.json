@@ -71,7 +71,18 @@
         "title": "Al Mamsha Souks",
         "location": "Al Mamsha",
         "description": "Al Mamsha — это знаковый комплекс смешанного назначения в Шардже, объединяющий современное жильё, торговлю и развлечения в престижной среде, полностью доступной пешком."
+      },
+      "solera": {
+        "title": "Solera",
+        "location": "Мина Аль Араб",
+        "description": "Добро пожаловать в Solera Residence — эксклюзивное жилое сообщество, предлагающее роскошные апартаменты с 1 спальней. Расположенный в живописной Мина Аль Араб, этот проект от RAK Properties на этапе строительства обещает образ жизни с утонченностью и комфортом, окружённый потрясающей природной красотой."
+      },
+      "nikki_beach_residences": {
+        "title": "Nikki Beach Residences",
+        "location": "Остров Аль-Марджан",
+        "description": "Nikki Beach Residences — роскошный прибрежный комплекс на острове Аль-Марджан, Рас-эль-Хайма, предлагающий апартаменты от 1 до 5 спален, сочетая знаковый курортный стиль Nikki Beach с индивидуальным дизайном, мирового уровня удобствами и эксклюзивным доступом к оживлённой прибрежной жизни."
       }
+
     }
   },
   "citiesHome": {
@@ -94,7 +105,13 @@
       "al_khan": "Аль-Кхан",
       "sharjah_waterfront_city": "Sharjah Waterfront City",
       "aljada": "Альджада"
+    },
+    "rak": {
+      "title": "Рас-эль-Хайма",
+      "mina_al_arab": "Мина Аль Араб",
+      "al-marjan-island": "Остров Аль-Марджан"
     }
+
   },
   "ListPropertySection": {
     "title": "Будьте с брендом, которому доверяете",
@@ -567,7 +584,11 @@
     "Amortization": "Амортизация",
     "Refinancing": "Рефинансирование",
     "Rent vs Buying": "Аренда или покупка",
-    "House Affordability": "Доступность жилья"
+    "House Affordability": "Доступность жилья",
+    "Ras Al Khaima": "Рас-эль-Хайма",
+    "Solera": "Solera",
+    "Nikki-Beach-Residences": "Nikki Beach Residences"
+
   },
   "About_Us_Page": {
     "heroTitle": "О НАС",

@@ -71,9 +71,17 @@
           "title": "Al Mamsha Souks",
           "location": "Al Mamsha",
           "description": "Al Mamsha 是沙迦的一个地标性综合开发项目，将现代生活、零售和休闲融合在一个高端环境中，完全可步行到达。"
+      },
+      "solera": {
+        "title": "索莱拉",
+        "location": "阿拉伯港",
+        "description": "欢迎来到索莱拉公寓，这是一个独家住宅社区，提供豪华的一居室公寓。该项目位于风景如画的阿拉伯港，由RAK Properties开发，是一个承诺为您带来精致舒适生活方式，同时环绕自然美景的期房项目。"
+      },
+      "nikki_beach_residences": {
+        "title": "尼基海滩公寓",
+        "location": "马尔詹岛",
+        "description": "尼基海滩公寓——位于拉斯海玛马尔詹岛的豪华海滨住宅区，提供1至5居室住宅，将尼基海滩标志性的度假式生活方式与定制设计、世界级设施及专属海岸生活体验完美融合。"
       }
-
-
     }
   },
   "citiesHome": {
@@ -96,7 +104,13 @@
       "al_khan": "阿尔汗",
       "sharjah_waterfront_city": "沙迦滨水城",
       "aljada": "阿尔贾达"
+    },
+    "rak": {
+      "title": "拉斯海玛",
+      "mina_al_arab": "阿拉伯港",
+      "al-marjan-island": "马尔詹岛"
     }
+
   },
   "ListPropertySection": {
     "title": "与您信赖的品牌同行",
@@ -569,7 +583,11 @@
     "Amortization": "摊销",
     "Refinancing": "再融资",
     "Rent vs Buying": "租房 vs 买房",
-    "House Affordability": "住房负担能力"
+    "House Affordability": "住房负担能力",
+    "Ras Al Khaima": "拉斯海玛",
+    "Solera": "索莱拉",
+    "Nikki-Beach-Residences": "尼基海滩公寓"
+
   },
   "About_Us_Page": {
     "heroTitle": "关于我们",
