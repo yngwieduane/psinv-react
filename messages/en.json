@@ -91,6 +91,16 @@
         "title": "Al Mamsha Souks",
         "location": "Al Mamsha",
         "description": "Al Mamsha is a landmark mixed-use development in Sharjah that brings together modern living, retail and leisure in an upscale environment completely accessible on foot."
+      },
+      "solera": {
+        "title": "Solera",
+        "location": "Mina Al Arab",
+        "description": "Welcome to Solera Residence, an exclusive residential community offering luxurious 1-bedroom apartments. Situated in the picturesque Mina Al Arab, this off-plan project by RAK Properties promises a lifestyle of sophistication and comfort, wrapped in stunning natural beauty."
+      },
+      "nikki_beach_residences": {
+        "title": "Nikki Beach Residences",
+        "location": "Al Marjan Island",
+        "description": "Nikki Beach Residences — a luxurious beachfront development on Al Marjan Island, Ras Al Khaimah, offering 1 to 5-bedroom residences that blend Nikki Beach’s iconic resort-style living with bespoke design, world-class amenities, and exclusive access to a vibrant coastal lifestyle."
       }
     }
   },
@@ -114,6 +124,11 @@
       "al_khan": "Al Khan",
       "sharjah_waterfront_city": "Sharjah Waterfront City",
       "aljada": "Aljada"
+    },
+    "rak": {
+      "title": "Ras Al Khaima",
+      "mina_al_arab": "Mina Al Arab",
+      "al-marjan-island": "Al Marjan Island"
     }
   },
   "ListPropertySection": {
@@ -478,7 +493,10 @@
     "Amortization": "Amortization",
     "Refinancing": "Refinancing",
     "Rent vs Buying": "Rent vs Buying",
-    "House Affordability": "House Affordability"
+    "House Affordability": "House Affordability",
+    "Ras Al Khaima" : "Ras Al Khaima",
+    "Solera" : "Solera",
+    "Nikki-Beach-Residences" : "Nikki Beach Residences"
   },
   "About_Us_Page": {
     "heroTitle": "ABOUT US",

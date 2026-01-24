@@ -44,10 +44,10 @@ const ListPropertyForm: React.FC<CityProps> = ({ city }) => {
               <p className={`text-gray-200 mb-6 font-light ${outfit.className}`}>{t("desc")}</p>
               
               <div className="flex gap-6 items-center opacity-90 flex-wrap">
-                <div className="font-bold text-xl text-white">PSI</div>
-                <div className="font-bold text-xl text-white">bayut</div>
-                <div className="font-bold text-xl text-white">dubizzle</div>
-                <div className="font-bold text-xl text-white">Property Finder</div>
+                <img src="/assets/images/list-property/logos/psi-logo.png" alt="PSI" className="h-10" />
+                <img src="/assets/images/list-property/logos/bayut-logo.png" alt="Bayut" className="h-10" />
+                <img src="/assets/images/list-property/logos/dubizzle.png" alt="Dubizzle" className="h-10" />
+                <img src="/assets/images/list-property/logos/property-finder.png" alt="Property Finder" className="h-10" />
               </div>
             </div>
           </div>
