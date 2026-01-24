@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import { Search, Clock, User } from "lucide-react";
+import { Search, Clock, User, ChevronLeft, ChevronRight } from "lucide-react";
 import Breadcrumb from "../../_components/Breadcrumb";
 import { Link } from "@/i18n/navigation";
 
@@ -103,6 +103,8 @@ function RecentArticleRow({
 
 export default function Articles2ClientPage({ initialArticles }: { initialArticles: FirestoreArticle[] }) {
     const [query, setQuery] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+    const ITEMS_PER_PAGE = 6;
 
     const filtered = useMemo(() => {
         const q = query.trim().toLowerCase();
@@ -124,16 +126,32 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
         });
     }, [query, initialArticles]);
 
+    // Reset page when query changes
+    useMemo(() => {
+        setCurrentPage(1);
+    }, [query]);
+
+    // Pagination Logic
+    const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+    const visibleArticles = filtered.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
+
+    // Area Guide Articles
+    const areaGuides = useMemo(() => {
+        return initialArticles.filter(item => {
+            const cat = (item.category || "").toLowerCase();
+            const key = (item.categoryKey || "").toLowerCase();
+            return cat.includes("area guide") || key.includes("area_guide");
+        }).slice(0, 3); // Show top 3 area guides
+    }, [initialArticles]);
+
     return (
         <>
             <div className="bg-[#f4f4f4] mt-24 mb-3 border-b border-gray-200">
                 <div className="container mx-auto px-6 lg:px-8 py-4">
-                    <Breadcrumb
-                        customSegments={[
-                            { name: "Home", href: "/" },
-                            { name: "Articles 2", href: "/articles" },
-                        ]}
-                    />
+                    <Breadcrumb />
                 </div>
             </div>
 
@@ -152,8 +170,8 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
                     </div>
 
                     {/* Articles Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {filtered.map((item) => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                        {visibleArticles.map((item) => (
                             <RecentArticleRow
                                 key={item.id}
                                 item={item}
@@ -167,8 +185,69 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
                         </div>
                     )}
 
+                    {/* Pagination */}
+                    {totalPages > 1 && (
+                        <div className="flex justify-center items-center gap-4 mt-8 pb-12 border-b border-gray-100">
+                            <button
+                                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                                disabled={currentPage === 1}
+                                className="p-2 rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            >
+                                <ChevronLeft size={24} className="text-gray-600" />
+                            </button>
+
+                            <div className="flex items-center gap-2">
+                                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                                    <button
+                                        key={page}
+                                        onClick={() => setCurrentPage(page)}
+                                        className={`w-10 h-10 rounded-full flex items-center justify-center transition-all
+                                            ${currentPage === page
+                                                ? "bg-gray-900 text-white font-medium"
+                                                : "hover:bg-gray-100 text-gray-600"
+                                            }`}
+                                    >
+                                        {page}
+                                    </button>
+                                ))}
+                            </div>
+
+                            <button
+                                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                                disabled={currentPage === totalPages}
+                                className="p-2 rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            >
+                                <ChevronRight size={24} className="text-gray-600" />
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Area Guides Section */}
+                    {areaGuides.length > 0 && (
+                        <div className="pt-16 pb-8">
+                            <div className="flex items-center justify-between mb-8">
+                                <h2 className="text-3xl font-bold text-gray-900">Area Guides</h2>
+                                <Link
+                                    href="/articles/category/area_guides"
+                                    className="text-primary font-medium hover:underline flex items-center gap-2"
+                                >
+                                    View All <ChevronRight size={16} />
+                                </Link>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {areaGuides.map((item) => (
+                                    <RecentArticleRow
+                                        key={item.id}
+                                        item={item}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
                 </div>
             </div>
         </>
     );
 }
+

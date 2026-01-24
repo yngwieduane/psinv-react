@@ -1,13 +1,13 @@
 // components/UnitModelsAI.tsx
 'use client'
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useFormatter, useTranslations } from 'next-intl';
 import MainNavbarHeaderAI from "@/app/[locale]/_components/MainNavbarHeaderAI";
 import MainNavbarContentEmpty from "@/app/[locale]/_components/MainNavbarContentEmpty";
 import GalleryImages from "@/app/[locale]/_components/tools/GalleryImages";
 import FancyboxWrapper from "@/app/[locale]/_components/tools/FancyboxWrapper";
 import Image from "next/image";
-import { Bath, Car, Maximize, Home, Shirt, User } from "lucide-react";
+import { Bath, Car, Maximize, Home, Shirt, User, ChevronDown, ChevronUp } from "lucide-react";
 
 const UnitModelsAI = (props: any) => {
     const t = useTranslations('ProjectPage');
@@ -15,6 +15,15 @@ const UnitModelsAI = (props: any) => {
     const [visibleTab1, setVisibleTab1] = useState(0);
 
     const currentOptions = props.data?.[visibleTab1]?.options || [];
+
+    const [showAll, setShowAll] = useState(false);
+
+    // Reset to collapsed view when switching categories
+    useEffect(() => {
+        setShowAll(false);
+    }, [visibleTab1]);
+
+    const displayedOptions = showAll ? currentOptions : currentOptions.slice(0, 8);
 
     // Helper specific logic to hide/show fields globally for the current tab
     // If ANY item in the list has a value for a field, we show it (to be consistent), 
@@ -56,7 +65,7 @@ const UnitModelsAI = (props: any) => {
                             >
                                 <FancyboxWrapper>
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                                        {currentOptions.map((page: any, index: any) => (
+                                        {displayedOptions.map((page: any, index: any) => (
                                             <div
                                                 key={index}
                                                 className="group bg-white rounded-2xl border border-gray-100 hover:border-[#111954]/20 transition-all duration-300 hover:shadow-lg overflow-hidden flex flex-col"
@@ -147,6 +156,27 @@ const UnitModelsAI = (props: any) => {
                                         ))}
                                     </div>
                                 </FancyboxWrapper>
+
+                                {currentOptions.length > 8 && (
+                                    <div className="mt-8 flex justify-center">
+                                        <button
+                                            onClick={() => setShowAll(!showAll)}
+                                            className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white border border-[#111954]/10 rounded-full text-[#111954] font-medium hover:bg-[#111954]/5 transition-colors duration-300"
+                                        >
+                                            {showAll ? (
+                                                <>
+                                                    Show Less
+                                                    <ChevronUp size={18} />
+                                                </>
+                                            ) : (
+                                                <>
+                                                    View All ({currentOptions.length})
+                                                    <ChevronDown size={18} />
+                                                </>
+                                            )}
+                                        </button>
+                                    </div>
+                                )}
                             </GalleryImages>
                         ) : (
                             <div className="py-12 text-center text-gray-400">
