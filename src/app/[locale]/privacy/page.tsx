@@ -1,6 +1,10 @@
 import Link from "next/link";
 import SocialMediaTabs from "../_components/SocialMediaTabs";
 import FooterBannerCarousel from "../_components/FooterBannerCarousel";
+export const metadata = {
+    title: "Privacy Policy | PSI Real Estate UAE",
+    description:"Read PSI Real Estate’s Privacy Policy to understand how we collect, use, and protect your personal information when using our website and services in the UAE.",
+  };
 
 export default function PrivacyPolicyPage() {
     return (

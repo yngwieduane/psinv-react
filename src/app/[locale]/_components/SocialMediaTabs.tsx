@@ -57,7 +57,7 @@ useEffect(() => {
         strategy="lazyOnload"
       />
 
-      <h1 className="text-3xl font-bold mb-6">Social Media</h1>
+      <h2 className="text-3xl font-bold mb-6">Social Media</h2>
 
       <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
         <Tab.List className="flex justify-center items-center gap-6 mb-6">
