@@ -306,8 +306,8 @@ export default function UnitPageAI(props: any) {
                                             </div>
                                         </div>
 
-                                        <div className="mt-8 hidden">
-                                            {/* <AgentDetails agent={post.agent} /> */}
+                                        <div className="mt-8 ">
+                                            <AgentDetails agent={post.agent} />
                                         </div>
 
                                     </div>
