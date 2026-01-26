@@ -131,6 +131,10 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
         en: "44e36fad15f399da9f3906e5a04efe93",
         ar: "5b3f2203912e9a320f2a838940788a02",
     },
+    "rotana-registration": {
+        en: "502024cf05f882ac39db024fed593842",
+        ar: "fc6d426ab09c9c5a820c1e63be4ea5b4",
+    },
     // Add here
 };
 
@@ -178,7 +182,7 @@ const LP_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> = 
         en: "6b7e59add8142621e894bbd83c79d58c",
         ar: "5a2866c627e980f0cb8b0026a9609525",
     },
-    // add more lp slugs here
+    // add more lp slugs
 };
 
 const LP_WIDGET_KEYS_BY_UTM: Record<
@@ -194,7 +198,7 @@ const LP_WIDGET_KEYS_BY_UTM: Record<
 function buildRules() {
     const rules: Array<{ match: (ctx: BrightCallContext) => boolean; widgetKey: string }> = [];
 
-    // A) UTM-specific overrides (highest priority)
+    // A) UTM-specific overrides
     for (const [slug, utmMap] of Object.entries(REG_WIDGET_KEYS_BY_UTM)) {
         for (const [utmCampaign, byLocale] of Object.entries(utmMap)) {
             for (const [locale, widgetKey] of Object.entries(byLocale) as Array<[Locale, string]>) {
@@ -212,7 +216,7 @@ function buildRules() {
         }
     }
 
-    // B) Slug-specific overrides (fallback if no UTM override matched)
+    // B) Slug-specific overrides
     for (const [slug, byLocale] of Object.entries(REG_WIDGET_KEYS_BY_SLUG)) {
         for (const [locale, widgetKey] of Object.entries(byLocale) as Array<[Locale, string]>) {
             if (!widgetKey) continue;

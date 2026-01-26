@@ -10,12 +10,12 @@ const CalculatorLoader = () => (
 );
 
 type cityProps = {
-  city? : string;
+  city?: string;
 }
 
 const Calculator = dynamic(() => import('../mortgage-calculator/MortgageTabs'), { ssr: false, loading: CalculatorLoader });
 
-export const HomeCalculatorClientWrapper: React.FC<cityProps> = ({city: city}) => {
+export const HomeCalculatorClientWrapper: React.FC<cityProps> = ({ city: city }) => {
   return (
     <>
       <div className="container mx-auto my-10">

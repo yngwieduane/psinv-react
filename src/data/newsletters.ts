@@ -2,6 +2,12 @@
 
 export const newsletters = [
   {
+    title: 'Aldar Roadshow - Saadiyat Island   ',
+    date: '19 January 2026   ',
+    image: '/images/newsletter/aldar-newsletter.webp',
+    link: 'https://marketing.psinv.net/-temporary-slug-0bed4199-6da8-419f-a0ba-74b8144e0024?hs_preview=rprRqSsT-348094138587',
+  },
+  {
     title: 'Yas Canal Newest project FINALLY here! (Offplan)  ',
     date: '17 January 2026  ',
     image: '/images/newsletter/yas-canal-newsletter.webp',

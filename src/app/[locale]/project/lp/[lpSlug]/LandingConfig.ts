@@ -369,12 +369,19 @@ export const landingConfigs = {
 
           utmCampaignMap: {
             RamhanIsland_Hubspot: 2133,
+            YasRiva_Hubspot: 2132,
           },
           utmRemarksMap: {
             RamhanIsland_Hubspot: "Rotation: Company, Campaign name: RamhanIsland_Hubspot",
+            YasRiva_Hubspot: "Campaign name: YasRiva_HubSpot",
           },
           utmMetaMap: {
             RamhanIsland_Hubspot: {
+              media_Type: 63906,
+              media_Name: 63907,
+              MethodOfContactVal: 115747,
+            },
+             YasRiva_Hubspot: {
               media_Type: 63906,
               media_Name: 63907,
               MethodOfContactVal: 115747,

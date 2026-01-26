@@ -6,6 +6,7 @@ import { ArticleBodyPart, CATEGORY_LABELS, CategoryKey } from "@/data/articles";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/firebase-admin";
+import ArticleGallery from "./_components/ArticleGallery";
 
 type Params = {
     slug: string[];
@@ -29,6 +30,8 @@ type FirestoreArticle = {
     category?: string;
     image: string;
     city?: string;
+    youtubeUrl?: string;
+    gallery?: string[];
 }
 
 async function getArticleFromFirestore(slug: string | string[]): Promise<FirestoreArticle | null> {
@@ -60,7 +63,6 @@ async function getArticleFromFirestore(slug: string | string[]): Promise<Firesto
             ...data,
             id: doc.id,
             createdAt,
-            // Ensure other fields are safe
             translations: data.translations || {},
             slug: data.slug || '',
             title: data.title || '',
@@ -68,7 +70,9 @@ async function getArticleFromFirestore(slug: string | string[]): Promise<Firesto
             body: data.body || [],
             author: data.author || '',
             categoryKey: data.categoryKey || '',
-            image: data.image || data.imageUrl || '', // Handle image field variation
+            image: data.image || data.imageUrl || '',
+            youtubeUrl: data.youtubeUrl || '',
+            gallery: data.gallery || [],
         } as FirestoreArticle;
     } catch (error) {
         console.error("Error fetching article from Firestore:", error);
@@ -108,7 +112,40 @@ export default async function BlogSingle({ params }: PageProps) {
         : (ui(`categories.${article.categoryKey}`) ?? CATEGORY_LABELS[article.categoryKey as CategoryKey]);
 
     const title = article.translations[locale].title;
-    const body = article.translations[locale].content.replace(/&nbsp;/g, ' ');
+    const bodyRaw = article.translations[locale].content.replace(/&nbsp;/g, ' ');
+
+    const splitContent = (html: string) => {
+        const h2Regex = /<h2/g;
+        const matches = Array.from(html.matchAll(h2Regex));
+
+        if (matches.length < 2) {
+            return [html];
+        }
+
+        const midIndex = Math.ceil(matches.length / 2);
+
+        const splitIndex = matches[Math.floor(matches.length / 2)].index!;
+
+        return [
+            html.slice(0, splitIndex),
+            html.slice(splitIndex)
+        ];
+    };
+
+    const firstSplit = splitContent(bodyRaw);
+    let finalParts = [firstSplit[0]];
+
+    if (firstSplit[1]) {
+        const secondSplit = splitContent(firstSplit[1]);
+        finalParts.push(...secondSplit);
+    }
+
+    const getYouTubeId = (url: string) => {
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[2].length === 11) ? match[2] : null;
+    };
+    const youtubeId = article.youtubeUrl ? getYouTubeId(article.youtubeUrl) : null;
 
     return (
         <>
@@ -167,11 +204,38 @@ export default async function BlogSingle({ params }: PageProps) {
 
 
                 <div className="article-body">
-                    <div dangerouslySetInnerHTML={{ __html: body }} />
+
+                    <div dangerouslySetInnerHTML={{ __html: finalParts[0] }} />
+
+                    {article.gallery && article.gallery.length > 0 && (
+                        <ArticleGallery images={article.gallery} rtl={rtl} />
+                    )}
+
+                    {finalParts[1] && (
+                        <div dangerouslySetInnerHTML={{ __html: finalParts[1] }} />
+                    )}
+
+                    {youtubeId && (
+                        <div className="my-10 w-full aspect-video rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-black">
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                src={`https://www.youtube.com/embed/${youtubeId}`}
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                                className="w-full h-full"
+                            ></iframe>
+                        </div>
+                    )}
+
+                    {finalParts[2] && (
+                        <div dangerouslySetInnerHTML={{ __html: finalParts[2] }} />
+                    )}
                 </div>
 
                 <div
-                    className={`mt-12 pt-6 border-t border-gray-200 flex items-start bg-gray-50 p-6 rounded-xl ${rtl ? "flex-row-reverse gap-4" : "space-x-4"
+                    className={`hidden mt-12 pt-6 border-t border-gray-200 flex items-start bg-gray-50 p-6 rounded-xl ${rtl ? "flex-row-reverse gap-4" : "space-x-4"
                         }`}
                 >
                     <div className="w-16 h-16 rounded-full overflow-hidden bg-emerald-100 flex items-center justify-center text-emerald-600 flex-shrink-0">

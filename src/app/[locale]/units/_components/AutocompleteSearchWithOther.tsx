@@ -1,6 +1,6 @@
 // components/AutocompleteSearchWithOther.js
 'use client'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
@@ -25,6 +25,19 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
     const [showDropdown, setShowDropdown] = useState(false);
     const [resetStatus, setResetStatus] = useState(isReset);
     const [propertyId, setPropertyId] = useState(searchParams.get('propertyId')?.toString());
+    const wrapperRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+                setShowDropdown(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [wrapperRef]);
 
     // Fetch communities on mount
     useEffect(() => {
@@ -144,7 +157,7 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
     };
 
     return (
-        <div className="relative">
+        <div className="relative" ref={wrapperRef}>
             <label htmlFor="email" className=" block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">
                 Property Name {isReset}
             </label>
