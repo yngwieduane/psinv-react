@@ -3,6 +3,10 @@ import SocialMediaTabs from "../_components/SocialMediaTabs";
 import FooterBannerCarousel from "../_components/FooterBannerCarousel";
 import FeedbackForm from "../_components/FeedbackForm";
 import { Mail, MapPin, Phone } from "lucide-react";
+export const metadata = {
+  title: "Terms & Conditions | PSI Real Estate UAE",
+  description: "Review PSI Real Estate’s Terms & Conditions outlining website usage, services, responsibilities, and legal information for users in the UAE."
+};
 export default function TermsPage() {
   return (
     <>
