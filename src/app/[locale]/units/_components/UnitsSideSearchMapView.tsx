@@ -137,7 +137,6 @@ export default function UnitsSideSearchMapView({ onChange }: { onChange: any }) 
                                         : 'text-gray-500 hover:text-gray-700'
                                         }`}
                                 >
-                                    Buy
                                     {/* Rename 'Sale' to 'Buy' for UI if desired, but code uses 'Sale' */}
                                     {cat === 'Sale' ? 'Buy' : 'Rent'}
                                 </button>
@@ -215,49 +214,65 @@ export default function UnitsSideSearchMapView({ onChange }: { onChange: any }) 
                     </div>
 
                     {/* Beds & Baths */}
-                    <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 pl-1">Bedrooms</label>
-                        <div className="flex gap-2">
-                            {[1, 2, 3, 4, 5].map((num) => (
-                                <button
-                                    key={num}
-                                    onClick={() => {
-                                        const newVal = beds === num ? null : num;
-                                        setBeds(newVal);
-                                        updateQuery('beds', newVal ? String(newVal) : null);
-                                    }}
-                                    className={`flex-1 aspect-square rounded-xl text-sm font-bold flex items-center justify-center transition-all ${beds === num
-                                        ? 'bg-[#353455] text-white shadow-md scale-105'
-                                        : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50'
-                                        }`}
-                                >
-                                    {num}{num === 5 ? '+' : ''}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Baths - Added this section */}
-                    <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 pl-1">Bathrooms</label>
-                        <div className="flex gap-2">
-                            {[1, 2, 3, 4, 5].map((num) => (
-                                <button
-                                    key={num}
-                                    onClick={() => {
-                                        const newVal = baths === num ? null : num;
-                                        setBaths(newVal);
-                                        updateQuery('baths', newVal ? String(newVal) : null);
-                                    }}
-                                    className={`flex-1 aspect-square rounded-xl text-sm font-bold flex items-center justify-center transition-all ${baths === num
-                                        ? 'bg-[#353455] text-white shadow-md scale-105'
-                                        : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50'
-                                        }`}
-                                >
-                                    {num}{num === 5 ? '+' : ''}
-                                </button>
-                            ))}
-                        </div>
+                    <div className="relative z-10">
+                        <Popover className="relative">
+                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 pl-1">Beds & Baths</label>
+                            <PopoverButton className="w-full text-left bg-white border border-gray-200 hover:border-gray-300 rounded-xl px-4 py-3 flex items-center justify-between text-sm font-medium text-gray-700 transition-colors">
+                                <span className="flex items-center gap-2 truncate">
+                                    <Bed size={16} className="text-gray-400" />
+                                    {beds ? `${beds} Beds` : (baths ? '' : 'Beds & Baths')}
+                                    {beds && baths ? ' & ' : ''}
+                                    {baths ? `${baths} Baths` : ''}
+                                </span>
+                                <ChevronDown size={16} className="text-gray-400" />
+                            </PopoverButton>
+                            <PopoverPanel className="absolute z-50 w-full mt-2 bg-white border border-gray-100 rounded-xl shadow-xl p-4">
+                                <div className="space-y-4">
+                                    <div>
+                                        <label className="text-xs text-gray-500 font-medium mb-1 block">Bedrooms</label>
+                                        <div className="flex gap-2">
+                                            {[1, 2, 3, 4, 5].map((num) => (
+                                                <button
+                                                    key={num}
+                                                    onClick={() => {
+                                                        const newVal = beds === num ? null : num;
+                                                        setBeds(newVal);
+                                                        updateQuery('beds', newVal ? String(newVal) : null);
+                                                    }}
+                                                    className={`flex-1 aspect-square rounded-lg text-sm font-bold flex items-center justify-center transition-all ${beds === num
+                                                        ? 'bg-[#353455] text-white shadow-md'
+                                                        : 'bg-gray-50 border border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-100'
+                                                        }`}
+                                                >
+                                                    {num}{num === 5 ? '+' : ''}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="text-xs text-gray-500 font-medium mb-1 block">Bathrooms</label>
+                                        <div className="flex gap-2">
+                                            {[1, 2, 3, 4, 5].map((num) => (
+                                                <button
+                                                    key={num}
+                                                    onClick={() => {
+                                                        const newVal = baths === num ? null : num;
+                                                        setBaths(newVal);
+                                                        updateQuery('baths', newVal ? String(newVal) : null);
+                                                    }}
+                                                    className={`flex-1 aspect-square rounded-lg text-sm font-bold flex items-center justify-center transition-all ${baths === num
+                                                        ? 'bg-[#353455] text-white shadow-md'
+                                                        : 'bg-gray-50 border border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-100'
+                                                        }`}
+                                                >
+                                                    {num}{num === 5 ? '+' : ''}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </PopoverPanel>
+                        </Popover>
                     </div>
 
 

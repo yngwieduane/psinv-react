@@ -216,6 +216,7 @@ export interface Agent {
   description: string;
   activeListings: number;
   location: string;
+  branch?: string;
 }
 
 export interface Property {
