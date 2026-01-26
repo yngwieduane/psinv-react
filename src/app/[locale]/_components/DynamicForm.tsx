@@ -316,7 +316,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
       </button>
 
       <p className="text-[10px] text-gray-700 mt-2">
-        {t("clickingTerms.part1")} <Link title="terms" href={`${locale}/terms`} className="text-[#585858]">{t("clickingTerms.part2")}</Link> {t("clickingTerms.part3")}
+        {t("clickingTerms.part1")} <Link title="terms" href={`${locale}/terms`} className="text-gray-900 underline hover:text-gray-700">{t("clickingTerms.part2")}</Link> {t("clickingTerms.part3")}
       </p>
 
       <div className="space-y-2 mt-4 text-[10px] text-gray-700">

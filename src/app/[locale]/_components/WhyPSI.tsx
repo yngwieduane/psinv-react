@@ -29,7 +29,7 @@ const WhyPSI = () => {
     { label: t("company_title"), key: "company" },
   ];
 
-  const [activeTab, setActiveTab] = useState("company");
+  const [activeTab, setActiveTab] = useState("emirati");
 
   return (
     <div className={`container mx-auto py-16 px-4 ${outfit.className}`} dir={isRtl ? "rtl" : "ltr"}>
