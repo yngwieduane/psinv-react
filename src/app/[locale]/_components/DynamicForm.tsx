@@ -26,39 +26,39 @@ type PropertyListingFormData = z.infer<typeof propertyListingSchema>;
 
 interface DynamicFormProps {
   formType: "propertyListing"; // Ensure it's explicitly defined
-  city? : string;
+  city?: string;
 }
 
 const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: number; referredBy?: number; assignedTo?: number; cityVal: number }> = {
-    'Dubai': {
-        email: 'callcenter@psidubai.com, yngwie.g@psinv.net',
-        apiUrl: 'https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0',
-        referredTo: 4421,
-        referredBy: 4421,
-        assignedTo: 4421,
-        cityVal: 91578,
-    },
-    'Abu Dhabi': {
-        email: 'callcenter@psinv.net, yngwie.g@psinv.net',
-        apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
-        referredTo: 3458,
-        referredBy: 3458,
-        cityVal : 91823,
-    },
-    'DEFAULT': {
-        email: 'callcenter@psinv.net, yngwie.g@psinv.net',
-        apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
-        referredTo: 3458,
-        referredBy: 3458,
-        cityVal : 91823,
-    }
+  'Dubai': {
+    email: 'callcenter@psidubai.com, yngwie.g@psinv.net',
+    apiUrl: 'https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0',
+    referredTo: 4421,
+    referredBy: 4421,
+    assignedTo: 4421,
+    cityVal: 91578,
+  },
+  'Abu Dhabi': {
+    email: 'callcenter@psinv.net, yngwie.g@psinv.net',
+    apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
+    referredTo: 3458,
+    referredBy: 3458,
+    cityVal: 91823,
+  },
+  'DEFAULT': {
+    email: 'callcenter@psinv.net, yngwie.g@psinv.net',
+    apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
+    referredTo: 3458,
+    referredBy: 3458,
+    cityVal: 91823,
+  }
 };
 
 const getCityConfig = (cityName: string) => {
-    if (['Dubai'].includes(cityName)) { 
-        return CITY_CONFIG['Dubai'];
-    }
-    return CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
+  if (['Dubai'].includes(cityName)) {
+    return CITY_CONFIG['Dubai'];
+  }
+  return CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
 }
 
 const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
@@ -188,7 +188,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formDataToSend),
-      });      
+      });
 
       const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
         method: 'POST',
@@ -279,22 +279,22 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="flex gap-4">
         <div className="w-1/2">
-          <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t("firstName")}</label>
+          <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">{t("firstName")}</label>
           <input {...register("firstName")} placeholder={t("Enter First Name")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
           {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
         </div>
         <div className="w-1/2">
-          <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t("lastName")}</label>
+          <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">{t("lastName")}</label>
           <input {...register("lastName")} placeholder={t("Enter Last Name")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
           {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
         </div>
       </div>
 
-      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t("email")}</label>
+      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">{t("email")}</label>
       <input {...register("email")} placeholder={t("Enter Email")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
       {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
-      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t("phone")}</label>
+      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">{t("phone")}</label>
       <Controller
         name="phone"
         control={control}
@@ -302,7 +302,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
       />
       {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
 
-      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">{t("purpose")} *</label>
+      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">{t("purpose")} *</label>
       <select {...register("propertyPurpose")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" aria-label="Property Purpose">
         <option value="">{t("Choose purpose")}</option>
         <option value="sell">{t("sell_purpose")}</option>
@@ -315,11 +315,11 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
         {isSubmitting ? t("form_submitting") : t("form_submit")}
       </button>
 
-      <p className="text-[10px] text-gray-400 mt-2">
+      <p className="text-[10px] text-gray-700 mt-2">
         {t("clickingTerms.part1")} <Link title="terms" href={`${locale}/terms`} className="text-[#585858]">{t("clickingTerms.part2")}</Link> {t("clickingTerms.part3")}
       </p>
 
-      <div className="space-y-2 mt-4 text-[10px] text-gray-400">
+      <div className="space-y-2 mt-4 text-[10px] text-gray-700">
         <label className="flex items-start gap-2">
           <input type="checkbox" {...register("agreement1")} className="mt-0.5 accent-secondary w-4 h-4 border-gray-300 rounded defaultChecked" />
           <span>{agreements_t("agreement1")}</span>
