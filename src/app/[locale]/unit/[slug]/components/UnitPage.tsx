@@ -213,7 +213,6 @@ export default function UnitPage(props: any) {
                                             </div>) : ("")}
                                     </div>
                                     <div className="mainsidebar">
-                                        <AgentDetails data={post.agent_Pk} />
                                         <Sticky stickyClassName="" boundaryElement=".mainsidebar" hideOnBoundaryHit={false}>
                                             <div className="hidden md:flex">
                                                 <InquiryForm hideFeedbackButton={true} />
