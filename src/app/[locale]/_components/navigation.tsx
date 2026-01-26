@@ -527,6 +527,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 },
                 {
                     title: t('developers'),
+                    link: "/developers",
                     items: [
                         { label: t('Aldar'), href: "/developer/aldar-properties-pjsc" },
                         { label: t('Emaar'), href: "/developer/emaar" },
@@ -569,6 +570,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             columns: [
                 {
                     title: t('About PSI'),
+                    link: "/about-us",
                     items: [
                         { label: t('Our Story'), href: "/about-us" },
                         { label: t('careers'), href: "/careers" },
