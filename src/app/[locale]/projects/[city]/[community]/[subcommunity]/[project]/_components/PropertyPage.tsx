@@ -190,7 +190,7 @@ const PropertyPage = (props: any) => {
     };
 
 
-    const tabs = ['Overview', 'Gallery', 'Payment Plan', 'Floor Plans', 'Location', 'Nearby', 'Developer'];
+    const tabs = ['Overview', 'Gallery', 'Payment Plan', 'Floor Plans', 'Location', 'Nearby'];
 
     const scrollToSection = (id: string) => {
         setActiveTab(id);
@@ -427,7 +427,7 @@ const PropertyPage = (props: any) => {
                         </section>
 
                         {/* Floor Plans */}
-                        {unitModels.length !== 0 ? (<div>
+                        {unitModels.length !== 0 ? (<div id="floor-plans">
                             <UnitModelsAI
                                 data={fpGroup}
                             />
@@ -502,7 +502,7 @@ const PropertyPage = (props: any) => {
                             />
                         </div>
 
-                        <div className="">
+                        <div className="" id="nearby">
                             <NearbysWithMap
                                 latitude={props.data["mapLatitude"]}
                                 longitude={props.data["mapLongitude"]}

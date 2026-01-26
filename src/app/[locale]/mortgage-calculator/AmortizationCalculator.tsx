@@ -11,8 +11,8 @@ Chart.register(ArcElement, Tooltip);
 type Props = {
   amount: number;
   modal: boolean;
-  onOpenModal : () => void;
-  onModalUpdate : (value: boolean) => void;  
+  onOpenModal: () => void;
+  onModalUpdate: (value: boolean) => void;
 }
 
 export default function AmortizationCalculator({
@@ -27,43 +27,43 @@ export default function AmortizationCalculator({
   const chartInstance = useRef<Chart | null>(null);
 
 
-useEffect(() => {
-  if (!chartRef.current) return;
-  const ctx = chartRef.current.getContext('2d');
-  if (!ctx) return;
+  useEffect(() => {
+    if (!chartRef.current) return;
+    const ctx = chartRef.current.getContext('2d');
+    if (!ctx) return;
 
-  chartInstance.current = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Payment'],
-      datasets: [
-        {
-          data: [100, 0],
-          backgroundColor: ['#f0b647'],
-          borderWidth: 0,
+    chartInstance.current = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Payment'],
+        datasets: [
+          {
+            data: [100, 0],
+            backgroundColor: ['#f0b647'],
+            borderWidth: 0,
+          },
+        ],
+      },
+      options: {
+        cutout: '80%',
+        plugins: {
+          tooltip: { enabled: false },
+          legend: { display: false },
         },
-      ],
-    },
-    options: {
-      cutout: '80%',
-      plugins: {
-        tooltip: { enabled: false },
-        legend: { display: false },
+        animation: {
+          animateRotate: true,
+          duration: 1000,
+          easing: 'easeOutCubic',
+        },
+        responsive: true,
+        maintainAspectRatio: false,
       },
-      animation: {
-        animateRotate: true,
-        duration: 1000,
-        easing: 'easeOutCubic',
-      },
-      responsive: true,
-      maintainAspectRatio: false,
-    },
-  });
+    });
 
-  return () => {
-    chartInstance.current?.destroy();
-  };
-}, []);
+    return () => {
+      chartInstance.current?.destroy();
+    };
+  }, []);
 
   const [loanAmount, setLoanAmount] = useState(1000000);
   const [interestRate, setInterestRate] = useState(4.5);
@@ -100,132 +100,132 @@ useEffect(() => {
 
           {/* Loan Amount */}
           <div className="mb-6">
-  <label className="block text-gray-600 mb-2">{t("amortizationTab.LoanAmount")}</label>
-  <div className="flex items-center gap-4">
-    {/* Input Group */}
-    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 shrink-0 w-[260px]">
-      <input
-        type="number"
-        value={loanAmount}
-        onChange={(e) => setLoanAmount(+e.target.value)}
-        className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
-      />
-      <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
-    </div>
+            <label className="block text-gray-600 mb-2">{t("amortizationTab.LoanAmount")}</label>
+            <div className="flex items-center gap-4">
+              {/* Input Group */}
+              <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 shrink-0 w-[260px]">
+                <input
+                  type="number"
+                  value={loanAmount}
+                  onChange={(e) => setLoanAmount(+e.target.value)}
+                  className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
+                />
+                <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
+              </div>
 
-    {/* Slider */}
-    <div className="flex-1">
-      <Slider
-        min={100000}
-        max={50000000}
-        step={10000}
-        value={loanAmount}
-        onChange={(value) => setLoanAmount(Array.isArray(value) ? value[0] : value)}
-        handleStyle={{
-          backgroundColor: '#1953a2',
-          borderColor: '#1953a2',
-          width: 20,
-          height: 20,
-          marginTop: -8,
-        }}
-        trackStyle={{
-          backgroundColor: '#1953a2',
-          height: 4,
-        }}
-        railStyle={{
-          backgroundColor: '#e5e7eb',
-          height: 4,
-        }}
-      />
-    </div>
-  </div>
-</div>
-<div className="mb-6">
-  <label className="block text-gray-600 mb-2">{t("amortizationTab.LoanInterestRate")}</label>
-  
-  <div className="flex items-center gap-4">
-    {/* Input Box */}
-    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
-      <input
-        type="number"
-        step="0.01"
-        value={interestRate}
-        onChange={(e) => setInterestRate(+e.target.value)}
-        className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
-      />
-      <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">%</span>
-    </div>
+              {/* Slider */}
+              <div className="flex-1">
+                <Slider
+                  min={100000}
+                  max={50000000}
+                  step={10000}
+                  value={loanAmount}
+                  onChange={(value) => setLoanAmount(Array.isArray(value) ? value[0] : value)}
+                  handleStyle={{
+                    backgroundColor: '#1953a2',
+                    borderColor: '#1953a2',
+                    width: 20,
+                    height: 20,
+                    marginTop: -8,
+                  }}
+                  trackStyle={{
+                    backgroundColor: '#1953a2',
+                    height: 4,
+                  }}
+                  railStyle={{
+                    backgroundColor: '#e5e7eb',
+                    height: 4,
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="mb-6">
+            <label className="block text-gray-600 mb-2">{t("amortizationTab.LoanInterestRate")}</label>
 
-    {/* Slider */}
-    <div className="flex-1">
-      <Slider
-        min={1}
-        max={15}
-        step={0.1}
-        value={interestRate}
-        onChange={(value) => setInterestRate(Array.isArray(value) ? value[0] : value)}
-        handleStyle={{
-          backgroundColor: '#1953a2',
-          borderColor: '#1953a2',
-          width: 20,
-          height: 20,
-          marginTop: -8,
-        }}
-        trackStyle={{
-          backgroundColor: '#1953a2',
-          height: 4,
-        }}
-        railStyle={{
-          backgroundColor: '#e5e7eb',
-          height: 4,
-        }}
-      />
-    </div>
-  </div>
-</div>
+            <div className="flex items-center gap-4">
+              {/* Input Box */}
+              <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
+                <input
+                  type="number"
+                  step="0.01"
+                  value={interestRate}
+                  onChange={(e) => setInterestRate(+e.target.value)}
+                  className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
+                />
+                <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">%</span>
+              </div>
+
+              {/* Slider */}
+              <div className="flex-1">
+                <Slider
+                  min={1}
+                  max={15}
+                  step={0.1}
+                  value={interestRate}
+                  onChange={(value) => setInterestRate(Array.isArray(value) ? value[0] : value)}
+                  handleStyle={{
+                    backgroundColor: '#1953a2',
+                    borderColor: '#1953a2',
+                    width: 20,
+                    height: 20,
+                    marginTop: -8,
+                  }}
+                  trackStyle={{
+                    backgroundColor: '#1953a2',
+                    height: 4,
+                  }}
+                  railStyle={{
+                    backgroundColor: '#e5e7eb',
+                    height: 4,
+                  }}
+                />
+              </div>
+            </div>
+          </div>
 
 
-<div className="mb-6">
-  <label className="block text-gray-600 mb-2">{t("amortizationTab.LoanTermYears")}</label>
+          <div className="mb-6">
+            <label className="block text-gray-600 mb-2">{t("amortizationTab.LoanTermYears")}</label>
 
-  <div className="flex items-center gap-4">
-    {/* Input Box */}
-    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
-      <input
-        type="number"
-        value={loanTerm}
-        onChange={(e) => setLoanTerm(+e.target.value)}
-        className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
-      />
-      <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("amortizationTab.Years")}</span>
-    </div>
+            <div className="flex items-center gap-4">
+              {/* Input Box */}
+              <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
+                <input
+                  type="number"
+                  value={loanTerm}
+                  onChange={(e) => setLoanTerm(+e.target.value)}
+                  className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
+                />
+                <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("amortizationTab.Years")}</span>
+              </div>
 
-    {/* Slider */}
-    <div className="flex-1">
-      <Slider
-        min={1}
-        max={30}
-        value={loanTerm}
-        onChange={(value) => setLoanTerm(Array.isArray(value) ? value[0] : value)}
-        handleStyle={{
-          backgroundColor: '#1953a2',
-          borderColor: '#1953a2',
-          width: 20,
-          height: 20,
-          marginTop: -8,
-        }}
-        trackStyle={{
-          backgroundColor: '#1953a2',
-          height: 4,
-        }}
-        railStyle={{
-          backgroundColor: '#e5e7eb',
-          height: 4,
-        }}
-      />
-    </div>
-  </div>
-</div>
+              {/* Slider */}
+              <div className="flex-1">
+                <Slider
+                  min={1}
+                  max={30}
+                  value={loanTerm}
+                  onChange={(value) => setLoanTerm(Array.isArray(value) ? value[0] : value)}
+                  handleStyle={{
+                    backgroundColor: '#1953a2',
+                    borderColor: '#1953a2',
+                    width: 20,
+                    height: 20,
+                    marginTop: -8,
+                  }}
+                  trackStyle={{
+                    backgroundColor: '#1953a2',
+                    height: 4,
+                  }}
+                  railStyle={{
+                    backgroundColor: '#e5e7eb',
+                    height: 4,
+                  }}
+                />
+              </div>
+            </div>
+          </div>
 
 
           {/* Early Payment Section */}
@@ -234,94 +234,94 @@ useEffect(() => {
             <p className="text-gray-400 mb-4 text-sm">{t("amortizationTab.EffectOfLargerPayment")}</p>
 
             <div className="mb-6">
-  <label className="block text-gray-600 mb-2">{t("amortizationTab.PaymentAmount")}</label>
+              <label className="block text-gray-600 mb-2">{t("amortizationTab.PaymentAmount")}</label>
 
-  <div className="flex items-center gap-4">
-    {/* Input Group */}
-    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
-      <input
-        type="number"
-        value={earlyPayment}
-        onChange={(e) => setEarlyPayment(+e.target.value)}
-        className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
-      />
-      <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
-    </div>
+              <div className="flex items-center gap-4">
+                {/* Input Group */}
+                <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
+                  <input
+                    type="number"
+                    value={earlyPayment}
+                    onChange={(e) => setEarlyPayment(+e.target.value)}
+                    className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
+                  />
+                  <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
+                </div>
 
-    {/* Slider */}
-    <div className="flex-1">
-      <Slider
-        min={0}
-        max={loanAmount}
-        step={10000}
-        value={earlyPayment}
-        onChange={(value) => setEarlyPayment(Array.isArray(value) ? value[0] : value)}
-        handleStyle={{
-          backgroundColor: '#1953a2',
-          borderColor: '#1953a2',
-          width: 20,
-          height: 20,
-          marginTop: -8,
-        }}
-        trackStyle={{
-          backgroundColor: '#1953a2',
-          height: 4,
-        }}
-        railStyle={{
-          backgroundColor: '#e5e7eb',
-          height: 4,
-        }}
-      />
-    </div>
-  </div>
-</div>
+                {/* Slider */}
+                <div className="flex-1">
+                  <Slider
+                    min={0}
+                    max={loanAmount}
+                    step={10000}
+                    value={earlyPayment}
+                    onChange={(value) => setEarlyPayment(Array.isArray(value) ? value[0] : value)}
+                    handleStyle={{
+                      backgroundColor: '#1953a2',
+                      borderColor: '#1953a2',
+                      width: 20,
+                      height: 20,
+                      marginTop: -8,
+                    }}
+                    trackStyle={{
+                      backgroundColor: '#1953a2',
+                      height: 4,
+                    }}
+                    railStyle={{
+                      backgroundColor: '#e5e7eb',
+                      height: 4,
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
 
 
-<div className="mb-6">
-  <label className="block text-gray-600 mb-2">{t("amortizationTab.MadeAfterMonth")}</label>
+            <div className="mb-6">
+              <label className="block text-gray-600 mb-2">{t("amortizationTab.MadeAfterMonth")}</label>
 
-  <div className="flex items-center gap-4">
-    {/* Input Group */}
-    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
-      <input
-        type="number"
-        value={madeAfterMonth}
-        onChange={(e) => setMadeAfterMonth(+e.target.value)}
-        className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
-      />
-      <span className="px-4 text-gray-500 bg-white">{t("amortizationTab.Months")}</span>
-    </div>
+              <div className="flex items-center gap-4">
+                {/* Input Group */}
+                <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
+                  <input
+                    type="number"
+                    value={madeAfterMonth}
+                    onChange={(e) => setMadeAfterMonth(+e.target.value)}
+                    className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
+                  />
+                  <span className="px-4 text-gray-500 bg-white">{t("amortizationTab.Months")}</span>
+                </div>
 
-    {/* Slider */}
-    <div className="flex-1">
-    <Slider
-  min={0}
-  max={totalPayments}
-  value={madeAfterMonth}
-  onChange={(value) => setMadeAfterMonth(Array.isArray(value) ? value[0] : value)}
-  handleStyle={{
-    backgroundColor: '#1953a2',
-    borderColor: '#1953a2',
-    width: 20,
-    height: 20,
-    marginTop: -8,
-  }}
-  trackStyle={{
-    backgroundColor: '#1953a2',
-    height: 4,
-  }}
-  railStyle={{
-    backgroundColor: '#e5e7eb',
-    height: 4,
-  }}
-/>
-    </div>
-  </div>
-</div>
+                {/* Slider */}
+                <div className="flex-1">
+                  <Slider
+                    min={0}
+                    max={totalPayments}
+                    value={madeAfterMonth}
+                    onChange={(value) => setMadeAfterMonth(Array.isArray(value) ? value[0] : value)}
+                    handleStyle={{
+                      backgroundColor: '#1953a2',
+                      borderColor: '#1953a2',
+                      width: 20,
+                      height: 20,
+                      marginTop: -8,
+                    }}
+                    trackStyle={{
+                      backgroundColor: '#1953a2',
+                      height: 4,
+                    }}
+                    railStyle={{
+                      backgroundColor: '#e5e7eb',
+                      height: 4,
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-     {/* Right Side Results */}
-     <div className="flex flex-col justify-center items-center bg-[#0c1356] text-white rounded-2xl p-6">
+        {/* Right Side Results */}
+        <div className="flex flex-col justify-center items-center bg-[#0c1356] text-white rounded-2xl p-6">
           {/* Monthly Payment Canvas */}
           <div className="relative w-[160px] h-[160px] md:w-[180px] md:h-[180px] mx-auto">
             <canvas ref={chartRef} className="w-full h-full" />
@@ -346,16 +346,16 @@ useEffect(() => {
             {/* Buttons */}
             <p className="font-semibold mb-3">{t("amortizationTab.ExploreProperties")}</p>
             <button
-                onClick={() => {
-                  const minPrice = loanAmount;
-                  const maxPrice = loanAmount + 200000;
-                  const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
-                  window.location.href = url;
-                }}
-                className="bg-[#0c1356] text-white rounded-full px-6 py-2 hover:bg-blue-900 transition"
-              >
-                {t("ViewUnits")}
-              </button>
+              onClick={() => {
+                const minPrice = loanAmount;
+                const maxPrice = loanAmount + 200000;
+                const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
+                window.location.href = url;
+              }}
+              className="bg-[#0c1356] text-white rounded-full px-6 py-2 hover:bg-blue-900 transition"
+            >
+              {t("ViewUnits")}
+            </button>
             <br />
             <button onClick={onOpenModal} className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block mt-4 hover:bg-blue-800 transition">{t("GetApproval")}</button>
           </div>
