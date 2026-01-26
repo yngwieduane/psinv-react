@@ -3,7 +3,7 @@
 import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/20/solid';
 import Form from 'next/form'
 import { useLocale } from 'next-intl';
-import AutocompleteSearch from './AutocompleteSearch';
+import AutocompleteSearchWithOther from './AutocompleteSearchWithOther';
 import { useState } from 'react';
 import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 import { useDebouncedCallback } from "use-debounce";
@@ -68,7 +68,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
             <div className="w-full mx-auto backdrop-blur-xl bg-white/70 border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl p-6 md:p-8 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
                 <div className="flex flex-col md:grid md:grid-cols-12 gap-6 items-end">
                     <div className="w-full md:col-span-9 relative z-90">
-                        <AutocompleteSearch isReset={reset} />
+                        <AutocompleteSearchWithOther isReset={reset} />
                     </div>
 
                     <div className='hidden'>
