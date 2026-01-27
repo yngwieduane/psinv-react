@@ -24,6 +24,7 @@ import TableRow from './TableRow';
 import PaymentPlansAI from './PaymentPlansAI';
 import UnitModelsAI from './UnitModelsAI';
 import { useRouter } from "next/navigation";
+import PhotoGallery from './PhotoGallery';
 
 
 const PropertyPage = (props: any) => {
@@ -379,44 +380,7 @@ const PropertyPage = (props: any) => {
 
                         {/* Gallery Grid */}
                         <section id="gallery" className="scroll-mt-40">
-                            <div className="flex items-center justify-between mb-8">
-                                <h3 className="text-3xl  font-bold text-primary">{t('gallery')}</h3>
-                                <div className="flex gap-2 bg-gray-100 p-1 rounded-full">
-                                    {allGalleryData.map((tab, index) => (
-                                        <button
-                                            key={index}
-                                            onClick={() => setActiveGalleryIndex(index)}
-                                            className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeGalleryIndex === index
-                                                ? 'bg-white text-primary shadow-sm'
-                                                : 'text-gray-500 hover:text-primary'
-                                                }`}
-                                        >
-                                            {tab.title}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-[500px]">
-                                <FancyboxWrapper>
-                                    {currentGalleryImages.length > 0 && (
-                                        <div className="col-span-2 row-span-2 relative group rounded-2xl overflow-hidden cursor-pointer">
-                                            <a title={currentTabTitle} data-fancybox="gallerypopup" href={currentGalleryImages[0].imageURL}>
-                                                <img src={currentGalleryImages[0].imageURL} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={currentTabTitle} />
-                                                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-                                            </a>
-                                        </div>
-                                    )}
-                                    {currentGalleryImages.slice(1, 5).map((img: any, index: any) => {
-                                        let imagecontent = img.imageURL.replace('?width=0&height=0', '?width=600&height=400');
-                                        return (
-                                            <a title={currentTabTitle} data-fancybox="gallerypopup" href={img.imageURL} key={index} className="relative group rounded-2xl overflow-hidden cursor-pointer">
-                                                <img src={imagecontent} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt={`Gallery ${index}`} />
-                                            </a>
-                                        )
-                                    })}
-                                </FancyboxWrapper>
-                            </div>
+                            <PhotoGallery data={props.data} limit={5} />
                         </section>
 
                         {/* Payment Plan (New Rich Feature) */}
