@@ -11,7 +11,7 @@ type SearchResult = {
     type: 'Project' | 'Community';
 };
 
-export default function AutocompleteSearchWithOther({ isReset, disableRouting = false, onSelect }: { isReset: any, disableRouting?: boolean, onSelect?: (name: string, id: string, type: string) => void }) {
+export default function AutocompleteSearchWithOther({ isReset, disableRouting = false, onSelect, showTitle = true }: { isReset: any, disableRouting?: boolean, onSelect?: (name: string, id: string, type: string) => void, showTitle?: boolean }) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -158,9 +158,11 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
 
     return (
         <div className="relative" ref={wrapperRef}>
-            <label htmlFor="email" className=" block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">
-                Property Name {isReset}
-            </label>
+            {showTitle && (
+                <label htmlFor="propertyName" className="block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">
+                    Property Name {isReset}
+                </label>
+            )}
             <div className="mt-2 grid grid-cols-1">
                 <input
                     type="text"
