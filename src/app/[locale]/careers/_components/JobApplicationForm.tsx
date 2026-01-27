@@ -7,31 +7,35 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
-const schema = z.object({
-  firstName: z.string().min(1, { message: "First name is required" }),
-  lastName: z.string().min(1, { message: "Last name is required" }),
-  email: z.string().email({ message: "Invalid email address" }),
-  phone: z.string().min(7, { message: "Invalid phone number" }),
-  nationality: z.string().min(1, "Nationality is required"),
-  hearAbout: z.string().min(1, "This field is required"),
-  resume: z.any().optional(),
-  jobid: z.string().min(1, "Job ID is required"),
-  agreement1: z
-    .boolean()
-    .refine((val) => val, { message: "You must agree to this" }),
-  agreement2: z.boolean().optional(),
-  agreement3: z.boolean().optional(),
-});
-
-type FormData = z.infer<typeof schema>;
 interface JobApplicationFormProps {
   jobId: string | number;
 }
-const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
+
+export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
   const router = useRouter();
   const pathname = usePathname();
   const locale = pathname.split("/")[1] || "en";
+  const t = useTranslations("Job_Application");
+
+  const schema = z.object({
+    firstName: z.string().min(1, { message: t("validation.firstNameRequired") }),
+    lastName: z.string().min(1, { message: t("validation.lastNameRequired") }),
+    email: z.string().email({ message: t("validation.invalidEmail") }),
+    phone: z.string().min(7, { message: t("validation.invalidPhone") }),
+    nationality: z.string().min(1, t("validation.nationalityRequired")),
+    hearAbout: z.string().min(1, t("validation.required")),
+    resume: z.any().optional(),
+    jobid: z.string().min(1, t("validation.jobIdRequired")),
+    agreement1: z
+      .boolean()
+      .refine((val) => val, { message: t("validation.agreeRequired") }),
+    agreement2: z.boolean().optional(),
+    agreement3: z.boolean().optional(),
+  });
+
+  type FormData = z.infer<typeof schema>;
 
   const {
     register,
@@ -83,6 +87,7 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
   const onSubmit = async (data: any) => {
     setStatusMessage(null);
     setStatusType(null);
+    setIsSubmitting(true);
 
     try {
       const formData = new FormData();
@@ -105,22 +110,24 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
       const result = await res.json();
 
       if (res.ok && !result.error) {
-        setStatusMessage("Application submitted successfully!");
+        setStatusMessage(t("success"));
         setStatusType("success");
       } else {
-        setStatusMessage("Submission failed. Please try again later.");
+        setStatusMessage(t("submissionFailed"));
         setStatusType("error");
       }
     } catch (err) {
-      setStatusMessage("An error occurred. Please try again.");
+      setStatusMessage(t("error"));
       setStatusType("error");
       console.error("Form submission error:", err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return (
     <div className="rounded-[16px] border-2 border-[#E35F27] bg-[rgba(227,95,39,0.03)] p-10">
       <h2 className="text-center text-3xl font-bold text-[#111954] mb-8">
-        APPLY <span className="text-[#E35F27]">NOW</span>
+        {t("title")} <span className="text-[#E35F27]">{t("subtitle")}</span>
       </h2>
       {statusMessage && (
         <div
@@ -136,11 +143,11 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
       >
         <div>
           <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
-            First Name <span className="text-red-500">*</span>
+            {t("firstName")} <span className="text-red-500">*</span>
           </label>
           <input
             {...register("firstName")}
-            placeholder="First name"
+            placeholder={t("firstNamePlaceholder")}
             className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
           />
           {errors.firstName && (
@@ -151,11 +158,11 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
         </div>
         <div>
           <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
-            Last Name <span className="text-red-500">*</span>
+            {t("lastName")} <span className="text-red-500">*</span>
           </label>
           <input
             {...register("lastName")}
-            placeholder="Family name"
+            placeholder={t("lastNamePlaceholder")}
             className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
           />
           {errors.lastName && (
@@ -166,7 +173,7 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
         </div>
         <div>
           <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
-            Phone number <span className="text-red-500">*</span>
+            {t("phone")} <span className="text-red-500">*</span>
           </label>
           <Controller
             name="phone"
@@ -186,7 +193,7 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
         </div>
         <div>
           <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
-            Nationality <span className="text-red-500">*</span>
+            {t("nationality")} <span className="text-red-500">*</span>
           </label>
           <select
             {...register("nationality")}
@@ -195,7 +202,7 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
             required
           >
             <option value="" disabled>
-              Select your nationality
+              {t("selectNationality")}
             </option>
             {nationalities.map((n) => (
               <option key={n.id} value={n.id}>
@@ -211,11 +218,11 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
         </div>
         <div>
           <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
-            Email <span className="text-red-500">*</span>
+            {t("email")} <span className="text-red-500">*</span>
           </label>
           <input
             {...register("email")}
-            placeholder="Email address"
+            placeholder={t("emailPlaceholder")}
             className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
           />
           {errors.email && (
@@ -224,7 +231,7 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
         </div>
         <div>
           <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
-            How did you hear about us? <span className="text-red-500">*</span>
+            {t("hearAbout")} <span className="text-red-500">*</span>
           </label>
           <select
             {...register("hearAbout")}
@@ -232,13 +239,13 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
             defaultValue=""
           >
             <option value="" disabled>
-              How did you hear about us?
+              {t("hearAbout")}
             </option>
-            <option value="Referral">Referral</option>
-            <option value="Linkedin">Linkedin</option>
-            <option value="Social media">Social media</option>
-            <option value="Direct Email">Direct Email</option>
-            <option value="Career Fair">Career Fair</option>
+            <option value="Referral">{t("sources.Referral")}</option>
+            <option value="Linkedin">{t("sources.Linkedin")}</option>
+            <option value="Social media">{t("sources.SocialMedia")}</option>
+            <option value="Direct Email">{t("sources.DirectEmail")}</option>
+            <option value="Career Fair">{t("sources.CareerFair")}</option>
           </select>
           {errors.hearAbout && (
             <p className="text-red-500 text-sm mt-1">
@@ -251,7 +258,7 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
             htmlFor="resume"
             className="block text-sm font-medium text-[#111954] mb-1"
           >
-            Upload Resume <span className="text-red-500">*</span>
+            {t("uploadResume")} <span className="text-red-500">*</span>
           </label>
 
           <div className="relative flex items-center gap-4">
@@ -294,7 +301,7 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
                 className={`truncate text-center ${resumeFileName ? "text-black" : "text-[#cecece]"
                   }`}
               >
-                {resumeFileName || "Upload your file here"}
+                {resumeFileName || t("uploadFileHere")}
               </span>
             </label>
           </div>
@@ -310,12 +317,10 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
             className="w-full bg-[#111954] hover:bg-[#E35F27] text-white font-semibold py-3 rounded transition-colors duration-300"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Submitting..." : "Submit"}
+            {isSubmitting ? t("submitting") : t("submit")}
           </button>
         </div>
       </form>
     </div>
   );
-};
-
-export default JobApplicationForm;
+}

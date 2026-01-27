@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel } from "swiper/modules";
 import "swiper/css";
+import { useTranslations } from "next-intl";
 
 interface Job {
   id: number;
@@ -21,6 +22,7 @@ export default function JobList({ jobs: initialJobs }: JobListProps) {
   const [loading, setLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const t = useTranslations("Job_List");
 
   useEffect(() => {
     fetch("/api/external/getjobs", {
@@ -36,7 +38,7 @@ export default function JobList({ jobs: initialJobs }: JobListProps) {
 
   if (loading) {
     return (
-      <div className="text-center py-20 text-gray-400">Loading jobs...</div>
+      <div className="text-center py-20 text-gray-400">{t("loading")}</div>
     );
   }
 

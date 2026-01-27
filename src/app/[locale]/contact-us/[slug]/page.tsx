@@ -96,7 +96,7 @@ export default function ContactPage() {
                 ))}
               </Swiper>
             </div>
-            <div className="mt-8 flex flex-col lg:flex-row gap-12 items-stretch">
+            <div className="my-8 flex flex-col lg:flex-row gap-12 items-stretch">
               {/* Left */}
               <div className="order-2 lg:order-1 lg:w-5/12 space-y-6">
                 <div className="bg-white rounded-xl">
