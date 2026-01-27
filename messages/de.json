@@ -58,58 +58,58 @@
         ]
       },
       "serenity_mansions": {
-          "title": "Serenity Mansions",
-          "location": "Tilal Al Ghaf",
-          "description": "Die Serenity Mansions in Tilal Al Ghaf bieten exklusive Luxuswohnungen mit 5 Schlafzimmern in Dubai, die moderne Eleganz mit Natur verbinden und ein Resort-ähnliches Leben mit erstklassigen Annehmlichkeiten ermöglichen."
+        "title": "Serenity Mansions",
+        "location": "Tilal Al Ghaf",
+        "description": "Die Serenity Mansions in Tilal Al Ghaf bieten exklusive Luxuswohnungen mit 5 Schlafzimmern in Dubai, die moderne Eleganz mit Natur verbinden und ein Resort-ähnliches Leben mit erstklassigen Annehmlichkeiten ermöglichen."
       },
       "samana_skyros": {
-          "title": "Samana Skyros",
-          "location": "Arjan",
-          "description": "Samana Skyros in Dubai bietet luxuriöses Wohnen auf 17 Stockwerken mit privaten Pools, modernster Fitnessausstattung und einer erstklassigen Lage. Ein Höhepunkt an Eleganz und Investitionsmöglichkeit."
+        "title": "Samana Skyros",
+        "location": "Arjan",
+        "description": "Samana Skyros in Dubai bietet luxuriöses Wohnen auf 17 Stockwerken mit privaten Pools, modernster Fitnessausstattung und einer erstklassigen Lage. Ein Höhepunkt an Eleganz und Investitionsmöglichkeit."
       },
       "al_mamsha_souks": {
-          "title": "Al Mamsha Souks",
-          "location": "Al Mamsha",
-          "description": "Al Mamsha ist eine markante Mixed-Use-Entwicklung in Sharjah, die modernes Wohnen, Einzelhandel und Freizeit in einer gehobenen Umgebung vereint, die vollständig zu Fuß zugänglich ist."
+        "title": "Al Mamsha Souks",
+        "location": "Al Mamsha",
+        "description": "Al Mamsha ist eine markante Mixed-Use-Entwicklung in Sharjah, die modernes Wohnen, Einzelhandel und Freizeit in einer gehobenen Umgebung vereint, die vollständig zu Fuß zugänglich ist."
       },
       "solera": {
-          "title": "Solera",
-          "location": "Mina Al Arab",
-          "description": "Willkommen bei Solera Residence, einer exklusiven Wohnanlage, die luxuriöse Apartments mit 1 Schlafzimmer bietet. Gelegen im malerischen Mina Al Arab, verspricht dieses Off-Plan-Projekt von RAK Properties einen Lebensstil voller Eleganz und Komfort, eingebettet in atemberaubende Natur."
+        "title": "Solera",
+        "location": "Mina Al Arab",
+        "description": "Willkommen bei Solera Residence, einer exklusiven Wohnanlage, die luxuriöse Apartments mit 1 Schlafzimmer bietet. Gelegen im malerischen Mina Al Arab, verspricht dieses Off-Plan-Projekt von RAK Properties einen Lebensstil voller Eleganz und Komfort, eingebettet in atemberaubende Natur."
       },
       "nikki_beach_residences": {
-          "title": "Nikki Beach Residences",
-          "location": "Al Marjan Island",
-          "description": "Die Nikki Beach Residences sind eine luxuriöse Strandentwicklung auf Al Marjan Island, Ras Al Khaimah, und bieten Apartments von 1 bis 5 Schlafzimmern, die das ikonische Nikki Beach Resort-Leben mit maßgeschneidertem Design, erstklassigen Annehmlichkeiten und exklusivem Zugang zu einem lebendigen Küsten-Lifestyle verbinden."
+        "title": "Nikki Beach Residences",
+        "location": "Al Marjan Island",
+        "description": "Die Nikki Beach Residences sind eine luxuriöse Strandentwicklung auf Al Marjan Island, Ras Al Khaimah, und bieten Apartments von 1 bis 5 Schlafzimmern, die das ikonische Nikki Beach Resort-Leben mit maßgeschneidertem Design, erstklassigen Annehmlichkeiten und exklusivem Zugang zu einem lebendigen Küsten-Lifestyle verbinden."
       }
     }
   },
   "citiesHome": {
-      "abu_dhabi": {
-        "title": "Abu Dhabi",
-        "al_reem_island": "Al Reem Island",
-        "saadiyat_island": "Saadiyat Island",
-        "yas_island": "Yas Island",
-        "al_raha_beach": "Al Raha Beach"
-      },
-      "dubai": {
-        "title": "Dubai",
-        "palm_jumeirah": "Palm Jumeirah",
-        "downtown_dubai": "Downtown Dubai",
-        "dubai_creek": "Dubai Creek",
-        "town_square_dubai": "Town Square Dubai"
-      },
-      "sharjah": {
-        "title": "Sharjah",
-        "al_khan": "Al Khan",
-        "sharjah_waterfront_city": "Sharjah Waterfront City",
-        "aljada": "Aljada"
-      },
-      "rak": {
-        "title": "Ras Al Khaima",
-        "mina_al_arab": "Mina Al Arab",
-        "al-marjan-island": "Al Marjan Island"
-      }
+    "abu_dhabi": {
+      "title": "Abu Dhabi",
+      "al_reem_island": "Al Reem Island",
+      "saadiyat_island": "Saadiyat Island",
+      "yas_island": "Yas Island",
+      "al_raha_beach": "Al Raha Beach"
+    },
+    "dubai": {
+      "title": "Dubai",
+      "palm_jumeirah": "Palm Jumeirah",
+      "downtown_dubai": "Downtown Dubai",
+      "dubai_creek": "Dubai Creek",
+      "town_square_dubai": "Town Square Dubai"
+    },
+    "sharjah": {
+      "title": "Sharjah",
+      "al_khan": "Al Khan",
+      "sharjah_waterfront_city": "Sharjah Waterfront City",
+      "aljada": "Aljada"
+    },
+    "rak": {
+      "title": "Ras Al Khaima",
+      "mina_al_arab": "Mina Al Arab",
+      "al-marjan-island": "Al Marjan Island"
+    }
   },
   "ListPropertySection": {
     "title": "BE with the Brand you Trust",
@@ -583,10 +583,9 @@
     "Refinancing": "Herfinanciering",
     "Rent vs Buying": "Huren vs kopen",
     "House Affordability": "House Affordability",
-    "Ras Al Khaima" : "Ras Al Khaima",
-    "Solera" : "Solera",
-    "Nikki-Beach-Residences" : "Nikki Beach Residences"
-
+    "Ras Al Khaima": "Ras Al Khaima",
+    "Solera": "Solera",
+    "Nikki-Beach-Residences": "Nikki Beach Residences"
   },
   "About_Us_Page": {
     "heroTitle": "ÜBER UNS",
@@ -1514,5 +1513,100 @@
       "message": "Nachricht ist erforderlich",
       "agreement1": "Sie müssen dem zustimmen"
     }
+  },
+  "Careers_Page": {
+    "heroTitle": "KARRIERE",
+    "heroBreadcrumb": "Startseite > Karriere",
+    "unlockSection": {
+      "title": "Entfalten Sie Ihr berufliches",
+      "highlight": "Wachstum",
+      "description": "Angetrieben von einer Leidenschaft für Exzellenz glauben wir an die Förderung von Talenten und die berufliche Weiterentwicklung. Wir bieten kontinuierliche Schulungsprogramme, aufschlussreiche Workshops und exklusives Branchenwissen, um sicherzustellen, dass unsere Teammitglieder in ihren Rollen glänzen."
+    },
+    "trustedSection": {
+      "title": "IHR VERTRAUENSWÜRDIGER",
+      "highlight": "Immobilien",
+      "subtitle": "PARTNER"
+    },
+    "counters": {
+      "billion_population": "Milliarden bediente Bevölkerung",
+      "years_expertise": "Jahre lokale & globale Expertise",
+      "nationalities": "Nationalitäten",
+      "expert_employees": "Fachkundige Mitarbeiter",
+      "local_global_branches": "Lokale & Globale Niederlassungen",
+      "number_one_brokerage": "Jahre Nummer 1 Maklerunternehmen",
+      "location_worldwide": "Standorte weltweit"
+    }
+  },
+  "Career_Journey": {
+    "title": "Eine lohnende Karriere",
+    "subtitle": "Reise",
+    "description": "Seien Sie Teil einer lohnenden Karrierereise bei Property Shop Investment, wo Sie sich beruflich weiterentwickeln, zu einer florierenden Branche beitragen und in einem der am schnellsten wachsenden Länder der Welt (VAE) einen bleibenden Eindruck hinterlassen können.",
+    "steps": {
+      "1": {
+        "title": "Kundenorientierter Ansatz",
+        "description": "PSI ist bekannt für sein Engagement für eine kundenorientierte Denkweise. Als Teil unseres Teams entwickeln Sie außergewöhnliche Fähigkeiten im Kundenservice und bauen dauerhafte Beziehungen zu wertvollen Kunden auf."
+      },
+      "2": {
+        "title": "Integration innovativer Technologien",
+        "description": "Wir nutzen Spitzentechnologie, um Prozesse zu rationalisieren und die Effizienz zu steigern."
+      },
+      "3": {
+        "title": "Marktführerschaft und Reputation",
+        "description": "Wir sind als führendes Unternehmen in der Immobilienbranche der VAE mit einer nachgewiesenen Erfolgsbilanz anerkannt."
+      },
+      "4": {
+        "title": "Engagement für unternehmerische Sozialverantwortung",
+        "description": "Wir unterstützen aktiv soziale Anliegen und Nachhaltigkeitsprogramme, um der Gemeinschaft etwas zurückzugeben."
+      },
+      "5": {
+        "title": "Anreize und Belohnungen",
+        "description": "Wir glauben daran, außergewöhnliche Leistungen mit greifbaren Vorteilen anzuerkennen und zu belohnen."
+      },
+      "6": {
+        "title": "Teamzusammenarbeit und Unterstützung",
+        "description": "Wir fördern ein kollaboratives Umfeld, in dem der Beitrag jedes Einzelnen geschätzt wird."
+      }
+    }
+  },
+  "Job_Application": {
+    "title": "BEWERBEN",
+    "subtitle": "JETZT",
+    "firstName": "Vorname",
+    "firstNamePlaceholder": "Vorname",
+    "lastName": "Nachname",
+    "lastNamePlaceholder": "Nachname",
+    "phone": "Telefonnummer",
+    "nationality": "Nationalität",
+    "selectNationality": "Wählen Sie Ihre Nationalität",
+    "email": "E-Mail",
+    "emailPlaceholder": "E-Mail-Adresse",
+    "hearAbout": "Wie haben Sie von uns erfahren?",
+    "uploadResume": "Lebenslauf hochladen",
+    "uploadFileHere": "Laden Sie Ihre Datei hier hoch",
+    "submit": "Senden",
+    "submitting": "Wird gesendet...",
+    "success": "Bewerbung erfolgreich gesendet!",
+    "submissionFailed": "Senden fehlgeschlagen. Bitte versuchen Sie es später erneut.",
+    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "validation": {
+      "firstNameRequired": "Vorname ist erforderlich",
+      "lastNameRequired": "Nachname ist erforderlich",
+      "invalidEmail": "Ungültige E-Mail-Adresse",
+      "invalidPhone": "Ungültige Telefonnummer",
+      "nationalityRequired": "Nationalität ist erforderlich",
+      "required": "Dieses Feld ist erforderlich",
+      "jobIdRequired": "Job-ID ist erforderlich",
+      "agreeRequired": "Sie müssen dem zustimmen"
+    },
+    "sources": {
+      "Referral": "Empfehlung",
+      "Linkedin": "Linkedin",
+      "SocialMedia": "Soziale Medien",
+      "DirectEmail": "Direkte E-Mail",
+      "CareerFair": "Karrieremesse"
+    }
+  },
+  "Job_List": {
+    "loading": "Lade Jobs..."
   }
 }

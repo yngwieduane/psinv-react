@@ -149,8 +149,8 @@ export default async function BlogSingle({ params }: PageProps) {
 
     return (
         <>
-            <div className="bg-[#f4f4f4] mt-30 mb-3 border-b border-gray-200">
-                <div className="container mx-auto px-6 lg:px-8 py-4">
+            <div className="pt-28 md:pt-24 border-b border-gray-100">
+                <div className="container mx-auto px-4 md:px-12 py-4">
                     <Breadcrumb
                         customSegments={[
                             { name: "Home", href: "/" },
@@ -163,7 +163,7 @@ export default async function BlogSingle({ params }: PageProps) {
             </div>
 
             <div
-                className="mx-auto container px-6 lg:px-8 pt-5"
+                className="mx-auto container px-4 md:px-12 pt-5"
                 dir={rtl ? "rtl" : "ltr"}
             >
                 <p className="text-sm font-semibold uppercase text-emerald-600 mb-2 tracking-widest mt-5">
