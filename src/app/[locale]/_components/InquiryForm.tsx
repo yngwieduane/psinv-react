@@ -340,15 +340,15 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full bg-white">
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full bg-white p-5">
         {postId === "Success" && (
           <div className="p-3 mb-4 rounded bg-green-500 text-white">
-             {t('alerts.success')}
+            {t('alerts.success')}
           </div>
         )}
         {postId === "Error" && (
           <div className="p-3 mb-4 rounded bg-red-500 text-white">
-           {t('alerts.error')}
+            {t('alerts.error')}
           </div>
         )}
 
@@ -385,7 +385,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
             <input
               type="email"
               {...register("email")}
-               placeholder={t('fields.email.placeholder')}
+              placeholder={t('fields.email.placeholder')}
               className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
             />
             {errors.email && (
@@ -400,7 +400,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
                 control={control}
                 render={({ field }) => (
                   <PhoneInput
-                   {...field}
+                    {...field}
                     international
                     defaultCountry="AE"
                     countryCallingCodeEditable={false}
@@ -433,14 +433,14 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="cursor-pointer w-full mt-6 border bg-indigo-950 border-indigo-950 text-white font-bold py-3 rounded-xl hover:bg-gray-800 hover:text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          className="cursor-pointer w-full mt-6 font-bold py-3 rounded-xl border bg-indigo-950 border-indigo-950 text-white hover:bg-indigo-900 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {isSubmitting ? t('buttons.submitting') : t('buttons.submit')}
         </button>
 
         <div className="text-[10px] text-gray-500 space-y-2 mt-4">
           <p className="italic">
-                  {t.rich('fineprint.text', {
+            {t.rich('fineprint.text', {
               terms: (chunks) => <span className="underline">{chunks}</span>,
               privacy: (chunks) => <span className="underline">{chunks}</span>
             })}
@@ -454,12 +454,12 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
               defaultChecked
             />
             <span>
-               {t('consents.c1')}
+              {t('consents.c1')}
 
             </span>
           </label>
 
-             {errors.agreement1 && (
+          {errors.agreement1 && (
             <p className="text-red-500 text-xs">{errors.agreement1.message}</p>
           )}
         </div>

@@ -140,7 +140,7 @@ export default function UnitPageAI(props: any) {
                                         {/* Quick Actions */}
                                         <button
                                             onClick={() => toggleFavorite({ id: post.code, type: 'units', data: post })}
-                                            className={`cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold ${saved ? 'border-red-500 text-red-500 bg-red-50' : 'border-gray-200 text-gray-600 hover:border-red-500 hover:text-red-500'}`}
+                                            className={`cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold ${saved ? 'border-red-500 text-red-500 bg-red-50' : 'border-gray-200 text-gray-600 hover:bg-red-50 hover:border-red-500 hover:text-red-500'}`}
                                         >
                                             <Heart size={20} fill={saved ? "currentColor" : "none"} /> {saved ? "Saved" : "Save"}
                                         </button>
@@ -313,8 +313,8 @@ export default function UnitPageAI(props: any) {
                                     </div>
 
                                     {/* Right Sidebar (Sticky Desktop) */}
-                                    <div className="lg:w-1/3 space-y-10 lg:sticky lg:top-32 h-fit ">
-                                        <Sticky stickyClassName="" boundaryElement=".mainsidebar" hideOnBoundaryHit={false}>
+                                    <div className="lg:w-1/3 space-y-10 lg:sticky h-fit ">
+                                        <Sticky stickyClassName="mt-24" boundaryElement=".mainsidebar" hideOnBoundaryHit={false}>
                                             {/* Price Card */}
                                             <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-[0_10px_50px_rgba(0,0,0,0.08)]">
                                                 <div className="flex justify-between items-end mb-8">
@@ -325,30 +325,28 @@ export default function UnitPageAI(props: any) {
                                                 </div>
 
                                                 <div className="grid grid-cols-2 gap-4 mb-8">
-                                                    <Link href={`tel:${callPhone}`} className="cursor-pointer w-full bg-white hover:bg-[#dedede] border border-gray-300 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
+                                                    <Link href={`tel:${callPhone}`} className="cursor-pointer w-full border bg-indigo-950 border-indigo-950 text-white hover:bg-indigo-900 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
                                                         <Phone size={22} /> Call
                                                     </Link>
-                                                    <Link href={`https://wa.me/${whatsappPhone}?text=I%20am%20Interested%20 in this reference number: ${props.refNo}`} className="cursor-pointer w-full bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
+                                                    <button
+                                                        type="button"
+                                                        onClick={drawerHandler('inquire', props.data)}
+                                                        name="inquire"
+                                                        className="cursor-pointer w-full border bg-indigo-950 border-indigo-950 text-white hover:bg-indigo-900 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3"
+                                                    >
+                                                        Inquire
+                                                    </button>
+                                                    <Link href={`https://wa.me/${whatsappPhone}?text=I%20am%20Interested%20 in this reference number: ${props.refNo}`} className="col-span-2 cursor-pointer w-full bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
                                                         <MessageCircle size={22} /> WhatsApp
                                                     </Link>
                                                     <button
                                                         type="button"
                                                         onClick={drawerHandler('requestview', props.data)}
                                                         name="details"
-                                                        className="col-span-2 cursor-pointer w-full bg-white hover:bg-[#dedede] border border-gray-300 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3"
+                                                        className="col-span-2 cursor-pointer w-full border bg-indigo-950 border-indigo-950 text-white hover:bg-indigo-900 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3"
                                                     >
                                                         <FontAwesomeIcon icon={faCalendarCheck} /> Request a Meeting
                                                     </button>
-                                                </div>
-
-                                                <div className="">
-                                                </div>
-
-                                                <hr className="border-gray-100 mb-8" />
-
-                                                {/* Schedule Viewing Form */}
-                                                <div className="hidden md:flex">
-                                                    <InquiryForm hideFeedbackButton={true} branchCode='assets' />
                                                 </div>
                                             </div>
                                         </Sticky>
