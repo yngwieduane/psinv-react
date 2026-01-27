@@ -488,7 +488,7 @@ const EmiratiHubForm = (props: any) => {
                     {!isSubmitting && !isSubmitSuccess ? (
                         <>
                             <div className="text-xs text-gray-500 mt-2">
-                                By clicking Submit, you agree to our <a href="/terms" target="_blank" className="text-[#CE641D] hover:underline">Terms & Conditions</a> and <a href="/privacy" target="_blank" className="text-[#CE641D] hover:underline">Privacy Policy</a>
+                                By clicking Submit, you agree to our <a href="/en/terms" target="_blank" className="text-[#CE641D] hover:underline">Terms & Conditions</a> and <a href="/en/privacy" target="_blank" className="text-[#CE641D] hover:underline">Privacy Policy</a>
                             </div>
                             <div className="flex flex-col gap-2 mt-2">
                                 <div>
