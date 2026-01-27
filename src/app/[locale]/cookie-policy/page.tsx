@@ -2,6 +2,10 @@ import { Poppins } from "next/font/google";
 import Link from "next/link";
 import SocialMediaTabs from "../_components/SocialMediaTabs";
 import FooterBannerCarousel from "../_components/FooterBannerCarousel";
+export const metadata = {
+    title: "Cookie Policy | PSI Real Estate UAE",
+description: "Read PSI Real Estate’s Cookie Policy to learn how cookies and tracking technologies are used on our website, what information is collected, and how you can manage your preferences in line with GDPR and ePrivacy standards."
+ };
 
 const poppins = Poppins({
     weight: ["400", "500", "600", "700"],
