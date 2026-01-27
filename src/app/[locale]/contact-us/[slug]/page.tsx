@@ -16,6 +16,7 @@ import { Poppins } from "next/font/google";
 import { Outfit } from "next/font/google";
 import { MapPin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import Breadcrumb from "../../_components/Breadcrumb";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -57,9 +58,10 @@ export default function ContactPage() {
   return (
     <>
       <div dir={isRTL ? "rtl" : "ltr"} className={isRTL ? "text-right" : ""}>
-        <div className="mx-auto px-6 md:px-12 pt-30">
+        <div className="mx-auto pt-30">
           <div id="contact-container" className="container mx-auto px-6 md:px-12">
-            <h1 className="text-3xl md:text-4xl font-outfit font-bold text-[#111954] mb-8 md:mb-12">
+            <Breadcrumb />
+            <h1 className="text-3xl md:text-4xl font-outfit font-bold text-[#111954] mb-8 md:mb-12 mt-5">
               {t("title")}
             </h1>
             <div className="w-full">
