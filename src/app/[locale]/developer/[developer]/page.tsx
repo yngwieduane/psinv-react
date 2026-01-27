@@ -5,11 +5,16 @@ import DevPropertyList from "../_components/DevPropertyList";
 import Breadcrumb from "../../_components/Breadcrumb";
 
 type Props = {
-  params: { developer: string };
+  params: Promise<{
+    locale: string;
+    developer: string;
+  }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const dev = developers.find(d => d.url === params.developer);
+  const { developer } = await params;
+
+  const dev = developers.find((d) => d.url === developer);
 
   return {
     title: `⚡ ${dev?.metaTitle || "Property Developers in UAE"} - Property Shop Investment`,
@@ -32,9 +37,10 @@ const developerMap: Record<string, string> = {
   "dubai-properties---idama": "Dubai Properties - IDAMA",
 };
 
-export default function DeveloperPage({ params }: Props) {
-  const developerSlug = params.developer;
-  const developerName = developerMap[developerSlug];
+export default async function DeveloperPage({ params }: Props) {
+  const { developer } = await params;
+
+  const developerName = developerMap[developer];
 
   return (
     <div className="mx-auto container pt-32">
@@ -44,8 +50,8 @@ export default function DeveloperPage({ params }: Props) {
         {developerName || "Developers"}
       </h1>
 
-      <div className="w-full flex my-5 justify-content-center">
-        <DevelopersList slug={developerSlug} />
+      <div className="w-full flex my-5 justify-center">
+        <DevelopersList slug={developer} />
       </div>
 
       <div className="mb-5 mt-10">

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import PageClient from "./page-client";
 
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 // ✅ Hardcoded translations inside the page
@@ -19,9 +19,11 @@ const metadataByLocale: Record<string, Metadata> = {
   },
 };
 
-// ✅ Generate metadata dynamically based on locale
+// ✅ Generate metadata dynamically based on locale (Next 15 compatible)
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return metadataByLocale[params.locale] || metadataByLocale.en;
+  const { locale } = await params;
+
+  return metadataByLocale[locale] || metadataByLocale.en;
 }
 
 export default function Page() {
