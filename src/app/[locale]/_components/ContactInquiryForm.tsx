@@ -9,16 +9,23 @@ import "react-phone-number-input/style.css";
 import { useRouter } from "next/navigation";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { useLocale, useTranslations } from "next-intl";
+import { resolveUtmCampaignFromSearch } from "@/utils/utmCampaignMap";
 
 interface ContactInquiryFormProps {
   hideFeedbackButton?: boolean;
 }
 
 const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackButton = false }) => {
-  const router = useRouter();
+  const router = useRouter(); // not used now but fine to keep
   const locale = useLocale();
   const isRTL = locale.toLowerCase().startsWith("ar");
   const t = useTranslations("ContactInquiryForm");
+
+  // Resolve UTM once (client only)
+  const utmResolved = useMemo(() => {
+    if (typeof window === "undefined") return null;
+    return resolveUtmCampaignFromSearch(window.location.search);
+  }, []);
 
   const schema = useMemo(
     () =>
@@ -37,7 +44,12 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
 
   type FormData = z.infer<typeof schema>;
 
-  const { register, handleSubmit, formState: { errors }, control } = useForm<FormData>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: { agreement1: true, agreement2: true, agreement3: true },
   });
@@ -48,42 +60,47 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
   const onSubmit = async (data: FormData) => {
     sendGTMEvent({ event: "Inquiry", value: "1" });
     setIsSubmitting(true);
-const urlParams = new URLSearchParams(window.location.search);
-    const source = urlParams.get("utm_source");
-    const currentUrl = window.location.href;
 
-    // Default values for media types
-    let mediaType = "129475";
-    let mediaName = "165233";
-    let propertyCampaignId = "";
-    let methodOfContact = "115747";
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const currentUrl = window.location.href;
 
-    switch (source) {
+      const campaignId = utmResolved?.campaignId || "";
+      const campaignRemarks = utmResolved?.campaignRemarks || "";
+      const utm = utmResolved?.utm;
+      const source = (utm?.utm_source || urlParams.get("utm_source") || "").toLowerCase();
+
+      let mediaType = "129475";
+      let mediaName = "165233";
+      let methodOfContact = "115747";
+      const propertyCampaignId = campaignId;
+      switch (source) {
+      case "hubspotemail":
+      case "hs_email":
+      case "hubspot":
+        mediaType = "63906";
+        mediaName = "63907";
+        break;
       case "newsletter":
         mediaType = "166277";
         mediaName = "166071";
-        propertyCampaignId = "";
-        methodOfContact = "MethodOfContactVal";
         break;
-      case "sms":
-        mediaType = "129474";
-        mediaName = "165366";
-        methodOfContact = "MethodOfContactVal";
-        break;
-      case "Google":
-      case "google":
-        mediaType = "165269";
-        mediaName = "128455";
-        propertyCampaignId = "";
-        methodOfContact = "MethodOfContactVal";
-        break;
-      default:
-        mediaType = "129475";
-        mediaName = "165233";
-        methodOfContact = "115747";
-        break;
-    }
-    const remarks = `
+        case "sms":
+          mediaType = "129474";
+          mediaName = "165366";
+          break;
+        case "google":
+          mediaType = "165269";
+          mediaName = "128455";
+          break;
+        default:
+          mediaType = "129475";
+          mediaName = "165233";
+          methodOfContact = "115747";
+          break;
+      }
+
+      const remarks = `
         Additional consent 1: ${data.agreement1 ? "Yes" : "No"} </br>
         Additional consent 2: ${data.agreement2 ? "Yes" : "No"} </br>
         Additional consent 3: ${data.agreement3 ? "Yes" : "No"} </br>
@@ -91,87 +108,162 @@ const urlParams = new URLSearchParams(window.location.search);
         Client Email: ${data.email} </br>
         Client Phone: ${data.phone} </br>
         Client Message: ${data.message} </br>
+        Campaign Remarks: ${campaignRemarks || "-"} </br>
         URL coming from: ${currentUrl}
-    `;
+      `;
 
-    const formDataToSend = {
-      TitleID: "129932",
-      FirstName: data.firstName,
-      FamilyName: data.lastName,
-      MobileCountryCode: "",
-      MobileAreaCode: "",
-      MobilePhone: data.phone,
-      TelephoneCountryCode: "",
-      TelephoneAreaCode: "",
-      Telephone: "",
-      Email: data.email,
-      NationalityID: "65946",
-      LanguageID: "115915",
-      CompanyID: "",
-      Remarks: data.message,
-      RequirementType: "91212",
-      ContactType: "3",
-      CountryID: "65946",
-      StateID: "91823",
-      CityID: "91823",
-      DistrictID: "102625",
-      CommunityID: "",
-      PropertyID: "",
-      UnitType: "19",
-      MethodOfContact: methodOfContact,
-      MediaType: mediaType,
-      MediaName: mediaName,
-      DeactivateNotification: "",
-      Bedroom: "21935",
-      Bathroom: "21935",
-      Budget: "100000",
-      Budget2: "1000000",
-      AreaFrom: "",
-      AreaTo: "",
-      RequirementCountryID: "65946",
-      ExistingClient: "",
-      CompaignSource: "",
-      CompaignMedium: "",
-      Company: "",
-      NumberOfEmployee: "",
-      LeadStageId: "",
-      LeadRatingId: "",
-      UnitId: "",
-      ReferredToID: "3458",
-      ReferredByID: "3458",
-      IsBulkUpload: "",
-      ActivityAssignedTo: "3458",
-      ActivityDate: "",
-      ActivityTypeId: "167234",
-      ActivitySubject: "Email Inquiry Copy",
-      ActivityRemarks: remarks,
-      IsForAutoRotation: "",
-      PropertyCampaignId: propertyCampaignId,
-      contactClassId: "",
-    };
+      const formDataToSend = {
+        TitleID: "129932",
+        FirstName: data.firstName,
+        FamilyName: data.lastName,
+        MobileCountryCode: "",
+        MobileAreaCode: "",
+        MobilePhone: data.phone,
+        TelephoneCountryCode: "",
+        TelephoneAreaCode: "",
+        Telephone: "",
+        Email: data.email,
+        NationalityID: "65946",
+        LanguageID: "115915",
+        CompanyID: "",
+        Remarks: data.message,
+        RequirementType: "91212",
+        ContactType: "3",
+        CountryID: "65946",
+        StateID: "91823",
+        CityID: "91823",
+        DistrictID: "102625",
+        CommunityID: "",
+        PropertyID: "",
+        UnitType: "19",
+        MethodOfContact: methodOfContact,
+        MediaType: mediaType,
+        MediaName: mediaName,
+        DeactivateNotification: "",
+        Bedroom: "21935",
+        Bathroom: "21935",
+        Budget: "100000",
+        Budget2: "1000000",
+        AreaFrom: "",
+        AreaTo: "",
+        RequirementCountryID: "65946",
+        ExistingClient: "",
+        CompaignSource: "",
+        CompaignMedium: "",
+        Company: "",
+        NumberOfEmployee: "",
+        LeadStageId: "",
+        LeadRatingId: "",
+        UnitId: "",
+        ReferredToID: "3458",
+        ReferredByID: "3458",
+        IsBulkUpload: "",
+        ActivityAssignedTo: "3458",
+        ActivityDate: "",
+        ActivityTypeId: "167234",
+        ActivitySubject: "Email Inquiry Copy",
+        ActivityRemarks: remarks,
+        IsForAutoRotation: "",
+        PropertyCampaignId: propertyCampaignId || "",
+        contactClassId: "",
+      };
 
-    try {
-      const response = await fetch("https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formDataToSend),
-      });
-      
-      if (response.ok) {
-        setPostId("Success");
-        window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
-    } else {
+      // 1) Send lead to CRM
+      const response = await fetch(
+        "https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formDataToSend),
+        }
+      );
+
+      if (!response.ok) {
+        console.error("CRM lead create failed:", response.status, await response.text().catch(() => ""));
+        setPostId("Error");
         alert("Error submitting the form.");
-    }
+        return;
+      }
+      const emailBody = `
+        <table style="width:100%; border-collapse:collapse; font-family:Arial, sans-serif; border:1px solid #d9d9d9;">
+          <tr>
+            <td colspan="2" style="background:#0B4F63; color:#fff; font-weight:700; font-size:18px; padding:12px;">
+              Contact Us - Inquiry
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="background:#B33A2B; color:#fff; font-weight:700; padding:10px;">
+              Client Info
+            </td>
+          </tr>
+
+          <tr>
+            <td style="width:35%; border:1px solid #d9d9d9; padding:10px; font-weight:700;">Client Name</td>
+            <td style="width:65%; border:1px solid #d9d9d9; padding:10px;">${data.firstName} ${data.lastName}</td>
+          </tr>
+
+          <tr>
+            <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">Client Email</td>
+            <td style="border:1px solid #d9d9d9; padding:10px;">${data.email}</td>
+          </tr>
+
+          <tr>
+            <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">Client Phone</td>
+            <td style="border:1px solid #d9d9d9; padding:10px;">${data.phone}</td>
+          </tr>
+
+          <tr>
+            <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">Remarks</td>
+            <td style="border:1px solid #d9d9d9; padding:10px;">${data.message}</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">Campaign Remarks</td>
+            <td style="border:1px solid #d9d9d9; padding:10px;">${campaignRemarks || "-"}</td>
+          </tr>
+
+          <tr>
+            <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">URL Coming From</td>
+            <td style="border:1px solid #d9d9d9; padding:10px;">
+              <a href="${currentUrl}">${currentUrl}</a>
+            </td>
+          </tr>
+        </table>
+      `;
+      try {
+        const receiver = ["wd3@psinv.net", process.env.NEXT_PUBLIC_EMAIL || "callcenter@psinv.net"]
+          .filter(Boolean)
+          .join(",");
+
+        const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            body: emailBody,
+            receiver,
+            subject: `Contact Us - Inquiry - ${data.firstName} ${data.lastName}`,
+            filename: "",
+            filedata: "",
+          }),
+        });
+
+        const mailText = await mailRes.text();
+        console.log("[ContactInquiryForm] sendemail2.php", mailRes.status, mailText);
+        if (!mailRes.ok) console.error("Email API failed:", mailRes.status, mailText);
+      } catch (emailErr) {
+        console.error("Email failed (non-blocking):", emailErr);
+      }
+      setPostId("Success");
+      window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
     } catch (error) {
       console.error("Error:", error);
       setPostId("Error");
+      alert("Submission failed.");
     } finally {
       setIsSubmitting(false);
     }
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} dir={isRTL ? "rtl" : "ltr"} className="w-full bg-white">
       {postId === "Success" && (
@@ -187,7 +279,9 @@ const urlParams = new URLSearchParams(window.location.search);
             type="text"
             {...register("firstName")}
             placeholder={t("placeholders.firstName")}
-            className={`w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 ${isRTL ? "text-right" : ""}`}
+            className={`w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 ${
+              isRTL ? "text-right" : ""
+            }`}
           />
           {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>}
         </div>
@@ -197,7 +291,9 @@ const urlParams = new URLSearchParams(window.location.search);
             type="text"
             {...register("lastName")}
             placeholder={t("placeholders.lastName")}
-            className={`w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 ${isRTL ? "text-right" : ""}`}
+            className={`w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 ${
+              isRTL ? "text-right" : ""
+            }`}
           />
           {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName.message}</p>}
         </div>
@@ -207,13 +303,15 @@ const urlParams = new URLSearchParams(window.location.search);
             type="email"
             {...register("email")}
             placeholder={t("placeholders.email")}
-            className={`w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 ${isRTL ? "text-right" : ""}`}
+            className={`w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 ${
+              isRTL ? "text-right" : ""
+            }`}
           />
           {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
         </div>
 
         <div>
-          <div className="border border-gray-300 rounded overflow-hidden" >
+          <div className="border border-gray-300 rounded overflow-hidden">
             <Controller
               name="phone"
               control={control}
@@ -239,7 +337,9 @@ const urlParams = new URLSearchParams(window.location.search);
         <textarea
           {...register("message")}
           placeholder={t("placeholders.message")}
-          className={`w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 h-40 resize-none ${isRTL ? "text-right" : ""}`}
+          className={`w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 h-40 resize-none ${
+            isRTL ? "text-right" : ""
+          }`}
         />
         {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}
       </div>
