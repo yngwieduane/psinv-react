@@ -627,7 +627,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     // Determine if the current page has a dark hero section where the navbar should start transparent with white text
 
     const isDarkHeroPage = ['/en', '/ar', '/ru', '/du', '/cn'].includes(currentPage);
-    const pages = ['/about-us', '/crypto'];
+    const pages = ['/about-us', '/crypto', '/careers'];
     const isTargetPage = pages.some(page => pathname.endsWith(page)) || /^\/projects\/[^/]+\/[^/]+\/[^/]+$/.test(pathname);
 
 

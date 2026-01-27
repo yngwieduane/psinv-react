@@ -105,36 +105,36 @@ export default function CareerJourney() {
           fill
           className="object-contain"
         />
- <div className="hidden md:block">
-        {hoverSteps.map((step) => (
-          <div
-            key={step.id}
-            className="absolute"
-            style={{ top: step.top, left: step.left }}
-            onMouseEnter={() => setHovered(step.id)}
-            onMouseLeave={() => setHovered(null)}
-          >
-            {hovered === step.id && (
-              <div
-                className="absolute z-20 w-[450px] h-[450px] rounded-full border-4 border-[#E35F27] bg-white transition-all duration-500 p-8 flex flex-col justify-center shadow-[0px_10px_30px_rgba(0,0,0,0.12)]"
-                style={{
-                  top: '-250px',
-                  left: '-200px',
-                  backgroundImage: "url('/images/career/careers2.svg')",
-                  backgroundPosition: step.bgPos,
-                  backgroundSize: step.size,
-                }}
-              >
-                <div className="flex items-start gap-2 mb-2 text-[#E35F27] text-lg">
+        <div className="hidden md:block">
+          {hoverSteps.map((step) => (
+            <div
+              key={step.id}
+              className="absolute"
+              style={{ top: step.top, left: step.left }}
+              onMouseEnter={() => setHovered(step.id)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              {hovered === step.id && (
+                <div
+                  className="absolute z-20 w-[450px] h-[450px] rounded-full border-4 border-[#E35F27] bg-white transition-all duration-500 p-8 flex flex-col justify-center shadow-[0px_10px_30px_rgba(0,0,0,0.12)]"
+                  style={{
+                    top: '-250px',
+                    left: '-200px',
+                    backgroundImage: "url('/images/career/careers2.svg')",
+                    backgroundPosition: step.bgPos,
+                    backgroundSize: step.size,
+                  }}
+                >
+                  <div className="flex items-start gap-2 mb-2 text-[#E35F27] text-lg">
+                  </div>
                 </div>
+              )}
+              <div className="relative z-10 w-[69px] h-[69px] bg-white border-2 border-orange-500 rounded-full flex items-center justify-center text-xl font-bold text-[#2C2D65] shadow-md cursor-pointer">
+                {String(step.id).padStart(2, '0')}
               </div>
-            )}
-            <div className="relative z-10 w-[69px] h-[69px] bg-white border-2 border-orange-500 rounded-full flex items-center justify-center text-xl font-bold text-[#2C2D65] shadow-md cursor-pointer">
-              {String(step.id).padStart(2, '0')}
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
     </div>
   );

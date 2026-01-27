@@ -68,9 +68,9 @@
         "description": "迪拜的萨玛纳·斯凯罗斯提供豪华17层住宅，配备私人泳池、先进健身设施和优越地理位置，是优雅生活与投资机会的巅峰之选。"
       },
       "al_mamsha_souks": {
-          "title": "Al Mamsha Souks",
-          "location": "Al Mamsha",
-          "description": "Al Mamsha 是沙迦的一个地标性综合开发项目，将现代生活、零售和休闲融合在一个高端环境中，完全可步行到达。"
+        "title": "Al Mamsha Souks",
+        "location": "Al Mamsha",
+        "description": "Al Mamsha 是沙迦的一个地标性综合开发项目，将现代生活、零售和休闲融合在一个高端环境中，完全可步行到达。"
       },
       "solera": {
         "title": "索莱拉",
@@ -110,7 +110,6 @@
       "mina_al_arab": "阿拉伯港",
       "al-marjan-island": "马尔詹岛"
     }
-
   },
   "ListPropertySection": {
     "title": "与您信赖的品牌同行",
@@ -486,7 +485,6 @@
       "part2": "商务园区 3",
       "part3": "迪拜山庄"
     }
-
   },
   "LocaleSwitcher": {
     "label": "切换语言",
@@ -587,7 +585,6 @@
     "Ras Al Khaima": "拉斯海玛",
     "Solera": "索莱拉",
     "Nikki-Beach-Residences": "尼基海滩公寓"
-
   },
   "About_Us_Page": {
     "heroTitle": "关于我们",
@@ -1592,5 +1589,100 @@
       "message": "消息为必填项",
       "agreement1": "您必须同意此条款"
     }
+  },
+  "Careers_Page": {
+    "heroTitle": "招贤纳士",
+    "heroBreadcrumb": "首页 > 招贤纳士",
+    "unlockSection": {
+      "title": "开启您的职业",
+      "highlight": "成长",
+      "description": "出于对卓越的热情，我们坚信培育人才和促进职业发展的重要性。我们提供持续的培训计划、深刻的研讨会和独家行业知识，以确保我们的团队成员在各自的岗位上表现出色。"
+    },
+    "trustedSection": {
+      "title": "您值得信赖的",
+      "highlight": "房地产",
+      "subtitle": "合作伙伴"
+    },
+    "counters": {
+      "billion_population": "服务数十亿人口",
+      "years_expertise": "多年的本地和全球经验",
+      "nationalities": "国籍",
+      "expert_employees": "专家员工",
+      "local_global_branches": "本地和全球分行",
+      "number_one_brokerage": "多年蝉联第一经纪公司",
+      "location_worldwide": "全球各地"
+    }
+  },
+  "Career_Journey": {
+    "title": "回报丰厚的职业",
+    "subtitle": "旅程",
+    "description": "加入Property Shop Investment，开启回报丰厚的职业旅程，在这里您可以在职业上得到成长，为繁荣的行业做出贡献，并在世界上最繁荣的国家之一（阿联酋）产生持久的影响。",
+    "steps": {
+      "1": {
+        "title": "以客户为中心的方法",
+        "description": "PSI以致力于采用以客户为中心的思维方式而闻名。作为我们团队的一员，您将培养卓越的客户服务技能，并与重要客户建立持久的关系。"
+      },
+      "2": {
+        "title": "创新技术整合",
+        "description": "我们利用尖端技术简化流程并提高效率。"
+      },
+      "3": {
+        "title": "市场领导地位和声誉",
+        "description": "我们被公认为阿联酋房地产行业的领导者，拥有良好的业绩记录。"
+      },
+      "4": {
+        "title": "致力于企业社会责任",
+        "description": "我们积极支持社会事业和可持续发展项目，回馈社区。"
+      },
+      "5": {
+        "title": "激励与奖励",
+        "description": "我们相信通过切实的利益来认可和奖励卓越的表现。"
+      },
+      "6": {
+        "title": "团队协作与支持",
+        "description": "我们营造一个协作的环境，每个人的意见都受到重视。"
+      }
+    }
+  },
+  "Job_Application": {
+    "title": "申请",
+    "subtitle": "现在",
+    "firstName": "名字",
+    "firstNamePlaceholder": "名字",
+    "lastName": "姓氏",
+    "lastNamePlaceholder": "姓氏",
+    "phone": "电话号码",
+    "nationality": "国籍",
+    "selectNationality": "选择您的国籍",
+    "email": "电子邮件",
+    "emailPlaceholder": "电子邮件地址",
+    "hearAbout": "您是如何听说我们的？",
+    "uploadResume": "上传简历",
+    "uploadFileHere": "在此上传您的文件",
+    "submit": "提交",
+    "submitting": "正在提交...",
+    "success": "申请提交成功！",
+    "submissionFailed": "提交失败。请稍后再试。",
+    "error": "发生错误。请重试。",
+    "validation": {
+      "firstNameRequired": "名字为必填项",
+      "lastNameRequired": "姓氏为必填项",
+      "invalidEmail": "无效的电子邮件地址",
+      "invalidPhone": "无效的电话号码",
+      "nationalityRequired": "国籍为必填项",
+      "required": "此字段为必填项",
+      "jobIdRequired": "职位ID为必填项",
+      "agreeRequired": "您必须同意此条款"
+    },
+    "sources": {
+      "Referral": "推荐",
+      "Linkedin": "领英",
+      "SocialMedia": "社交媒体",
+      "DirectEmail": "直接电子邮件",
+      "CareerFair": "招聘会"
+    }
+  },
+  "Job_List": {
+    "loading": "正在加载职位..."
   }
 }

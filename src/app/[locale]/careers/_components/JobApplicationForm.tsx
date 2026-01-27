@@ -124,9 +124,8 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
       </h2>
       {statusMessage && (
         <div
-          className={`mb-4 text-center text-sm font-semibold ${
-            statusType === "success" ? "text-green-600" : "text-red-600"
-          }`}
+          className={`mb-4 text-center text-sm font-semibold ${statusType === "success" ? "text-green-600" : "text-red-600"
+            }`}
         >
           {statusMessage}
         </div>
@@ -292,9 +291,8 @@ const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobId }) => {
                 />
               </svg>
               <span
-                className={`truncate text-center ${
-                  resumeFileName ? "text-black" : "text-[#cecece]"
-                }`}
+                className={`truncate text-center ${resumeFileName ? "text-black" : "text-[#cecece]"
+                  }`}
               >
                 {resumeFileName || "Upload your file here"}
               </span>

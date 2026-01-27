@@ -494,9 +494,9 @@
     "Refinancing": "Refinancing",
     "Rent vs Buying": "Rent vs Buying",
     "House Affordability": "House Affordability",
-    "Ras Al Khaima" : "Ras Al Khaima",
-    "Solera" : "Solera",
-    "Nikki-Beach-Residences" : "Nikki Beach Residences"
+    "Ras Al Khaima": "Ras Al Khaima",
+    "Solera": "Solera",
+    "Nikki-Beach-Residences": "Nikki Beach Residences"
   },
   "About_Us_Page": {
     "heroTitle": "ABOUT US",
@@ -6358,5 +6358,100 @@
       "message": "Message is required",
       "agreement1": "You must agree to this"
     }
+  },
+  "Careers_Page": {
+    "heroTitle": "CAREERS",
+    "heroBreadcrumb": "Home > Careers",
+    "unlockSection": {
+      "title": "Unlock Your Professional",
+      "highlight": "Growth",
+      "description": "Driven by a passion for excellence, we believe in nurturing talent and fostering career development. We offer continuous training programs, insightful workshops, and exclusive industry knowledge to ensure our team members excel in their roles."
+    },
+    "trustedSection": {
+      "title": "YOUR TRUSTED",
+      "highlight": "Real Estate",
+      "subtitle": "PARTNER"
+    },
+    "counters": {
+      "billion_population": "Billion serving population",
+      "years_expertise": "Years of local & global expertise",
+      "nationalities": "Nationalities",
+      "expert_employees": "Expert Employees",
+      "local_global_branches": "Local & Globally Branches",
+      "number_one_brokerage": "Years Number 1 Brokerage Company",
+      "location_worldwide": "Location Worldwide"
+    }
+  },
+  "Career_Journey": {
+    "title": "A Rewarding Career",
+    "subtitle": "Journey",
+    "description": "Be part of a rewarding career journey with Property Shop Investment, where you can grow professionally, contribute to a thriving industry, and make a lasting impact in one of the top flourishing countries in the world (UAE).",
+    "steps": {
+      "1": {
+        "title": "Client-Centric approach",
+        "description": "PSI is renowned for its commitment to adopting a client-centric mindset. By being a part of our team, you will develop exceptional customer service skills and build lasting relationships with valuable clients."
+      },
+      "2": {
+        "title": "Innovative technology integration",
+        "description": "We leverage cutting-edge technology to streamline processes and enhance efficiency."
+      },
+      "3": {
+        "title": "Market leadership and reputation",
+        "description": "We’re recognized as a leader in the UAE real estate industry with a proven track record."
+      },
+      "4": {
+        "title": "Commitment to corporate social responsibility",
+        "description": "We actively support social causes and sustainability programs to give back to the community."
+      },
+      "5": {
+        "title": "Incentives and rewards",
+        "description": "We believe in recognizing and rewarding exceptional performance with tangible benefits."
+      },
+      "6": {
+        "title": "Team collaboration and support",
+        "description": "We foster a collaborative environment where everyone’s input is valued."
+      }
+    }
+  },
+  "Job_Application": {
+    "title": "APPLY",
+    "subtitle": "NOW",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "First name",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Family name",
+    "phone": "Phone number",
+    "nationality": "Nationality",
+    "selectNationality": "Select your nationality",
+    "email": "Email",
+    "emailPlaceholder": "Email address",
+    "hearAbout": "How did you hear about us?",
+    "uploadResume": "Upload Resume",
+    "uploadFileHere": "Upload your file here",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "success": "Application submitted successfully!",
+    "submissionFailed": "Submission failed. Please try again later.",
+    "error": "An error occurred. Please try again.",
+    "validation": {
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "invalidEmail": "Invalid email address",
+      "invalidPhone": "Invalid phone number",
+      "nationalityRequired": "Nationality is required",
+      "required": "This field is required",
+      "jobIdRequired": "Job ID is required",
+      "agreeRequired": "You must agree to this"
+    },
+    "sources": {
+      "Referral": "Referral",
+      "Linkedin": "Linkedin",
+      "SocialMedia": "Social media",
+      "DirectEmail": "Direct Email",
+      "CareerFair": "Career Fair"
+    }
+  },
+  "Job_List": {
+    "loading": "Loading jobs..."
   }
 }
