@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { siteBaseUrl } from '@/utils/i18n-config';
-import PhotoGallery from '../_components/PhotoGallery';
+import PaymentPlansAI from '../_components/PaymentPlansAI';
 import Breadcrumb from '@/app/[locale]/_components/Breadcrumb';
 
 type Props = {
@@ -19,8 +19,12 @@ export async function generateMetadata(
     const posts = await data.json();
     const result = posts['result'][0];
 
-    const metatitle = result['propertyName'] + " Photo Gallery - " + result['community'];
-    const metadesc = "Explore the photo gallery of " + result['propertyName'] + " in " + result['community'] + ", " + result['city'] + ". View facilities, amenities, and community images.";
+    // Fallback if result or propertyName is missing to avoid build errors if data is incomplete
+    const propertyName = result?.['propertyName'] || projectId;
+    const communityName = result?.['community'] || community;
+
+    const metatitle = propertyName + " Payment Plan - " + communityName;
+    const metadesc = "View the payment plan for " + propertyName + " in " + communityName + ", " + result?.['city'] + ". Check installment details and downpayment information.";
 
     return {
         title: metatitle,
@@ -28,8 +32,8 @@ export async function generateMetadata(
         openGraph: {
             title: metatitle,
             description: metadesc,
-            url: `${siteBaseUrl}/${locale}/projects/${city}/${community}/${subcommunity}/${project}/photo-gallery`,
-            images: result['featuredImages'] && result['featuredImages'][0] ? [{ url: result['featuredImages'][0]['imageURL'] }] : undefined,
+            url: `${siteBaseUrl}/${locale}/projects/${city}/${community}/${subcommunity}/${project}/payment-plan`,
+            images: result && result['featuredImages'] && result['featuredImages'][0] ? [{ url: result['featuredImages'][0]['imageURL'] }] : undefined,
         }
     }
 }
@@ -46,6 +50,7 @@ export default async function Page({
 
     const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
     const posts = await data.json()
+    const result = posts['result'][0];
 
     return (
         <div className="pb-10">
@@ -54,7 +59,11 @@ export default async function Page({
                     <Breadcrumb />
                 </div>
             </div>
-            <PhotoGallery data={posts['result'][0]} />
+            <div className="container mx-auto px-4 md:px-12 py-8">
+                {result && result.propertyID && (
+                    <PaymentPlansAI propid={result.propertyID} />
+                )}
+            </div>
         </div>
     );
 }

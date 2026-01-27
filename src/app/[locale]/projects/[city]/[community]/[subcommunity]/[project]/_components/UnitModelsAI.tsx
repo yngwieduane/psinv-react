@@ -45,7 +45,6 @@ const UnitModelsAI = (props: any) => {
         <div className="container mx-auto py-12">
             <h2 className="text-3xl font-bold text-[#111954] mb-8 relative inline-block">
                 {t("unit_models")}
-                <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-[#111954]/20 rounded-full"></span>
             </h2>
 
             <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50">
