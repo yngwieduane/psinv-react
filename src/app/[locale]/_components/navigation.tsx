@@ -527,6 +527,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 },
                 {
                     title: t('developers'),
+                    link: "/developers",
                     items: [
                         { label: t('Aldar'), href: "/developer/aldar-properties-pjsc" },
                         { label: t('Emaar'), href: "/developer/emaar" },
@@ -569,6 +570,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             columns: [
                 {
                     title: t('About PSI'),
+                    link: "/about-us",
                     items: [
                         { label: t('Our Story'), href: "/about-us" },
                         { label: t('careers'), href: "/careers" },
@@ -625,7 +627,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     // Determine if the current page has a dark hero section where the navbar should start transparent with white text
 
     const isDarkHeroPage = ['/en', '/ar', '/ru', '/du', '/cn'].includes(currentPage);
-    const pages = ['/about-us', '/crypto'];
+    const pages = ['/about-us', '/crypto', '/careers'];
     const isTargetPage = pages.some(page => pathname.endsWith(page)) || /^\/projects\/[^/]+\/[^/]+\/[^/]+$/.test(pathname);
 
 

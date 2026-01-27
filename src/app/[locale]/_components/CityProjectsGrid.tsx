@@ -37,7 +37,7 @@ const CityProjectsGrid: React.FC<CityProjectsGridProps> = ({ projects }) => {
                         >
                             <Image
                                 src={project.image}
-                                alt={project.title}
+                                alt={project.title} title={project.title}
                                 width={384}
                                 height={430}
                                 sizes="(max-width: 600px) 100vw, 384px"
