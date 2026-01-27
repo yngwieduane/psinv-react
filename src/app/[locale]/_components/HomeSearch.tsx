@@ -45,14 +45,12 @@ export default function HomeSearch() {
             .then((data) => {
                 if (Array.isArray(data)) {
                     const RESIDENTIAL_TYPES = [
-                        "Apartment", "Villa", "Townhouse", "Studio", "Terraced Apartment",
-                        "Twin House", "Residential Building", "Residential Floor", "Penthouse"
+                        "Apartment", "Villa", "Townhouse", "Studio",
+                        "Twin House", "Penthouse"
                     ];
 
                     const COMMERCIAL_TYPES = [
-                        "Office", "Warehouse", "Retail", "Shop", "Showroom", "Plot",
-                        "Pharmacy", "Commercial Building", "Commercial Floor", "Commercial Plot",
-                        "Commercial Villa", "Clinic"
+                        "Office", "Warehouse", "Retail", "Shop", "Plot",
                     ];
 
                     const residential: any[] = [];
