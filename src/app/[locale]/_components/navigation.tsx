@@ -210,7 +210,7 @@ const NAV_GROUPS = [
         columns: [
             {
                 title: 'Abu Dhabi',
-                url : '/',
+                url: '/',
                 items: [
                     { label: "Sama Yas", lpSlug: "sama-yas" },
                     { label: "Yas Riva", lpSlug: "yas-riva" },
@@ -372,9 +372,9 @@ type MenuItem = {
     link?: string;
 };
 type Column = {
-  title: string;
-  link?: string;
-  items: MenuItem[];
+    title: string;
+    link?: string;
+    items: MenuItem[];
 };
 
 function normalizeHref(href: string) {
@@ -444,8 +444,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     ]
                 },
                 {
-                    title: t('Sharjah'),  
-                    link: "/sharjah",                
+                    title: t('Sharjah'),
+                    link: "/sharjah",
                     items: [
                         { label: t('Sharjah Waterfront City'), href: '/projects/sharjah/sharjah-waterfront-city/n-a/sharjah-waterfront-city' },
                         { label: t('Deem at Hayyan'), href: '/projects/sharjah/al-bedea-suburb/al-bedea-suburb/deem-at-hayyan' },
@@ -455,8 +455,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     ]
                 },
                 {
-                    title: t('Ras Al Khaima'),  
-                    link: "/rak",                
+                    title: t('Ras Al Khaima'),
+                    link: "/rak",
                     items: [
                         { label: t('Solera'), href: '/projects/ras-al-khaimah/mina-al-arab/mina-al-arab/solera' },
                         { label: t('Nikki-Beach-Residences'), href: '/projects/ras-al-khaimah/al-marjan-island/n-a/nikki-beach-residences' },
@@ -626,7 +626,13 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
     // Determine if the current page has a dark hero section where the navbar should start transparent with white text
 
-    const isDarkHeroPage = ['/en', '/ar', '/ru', '/du', '/cn'].includes(currentPage);
+    const darkHeroBasePaths = ['/en', '/ar', '/ru', '/du', '/cn'];
+
+    // Add dynamic job pages pattern
+    const isDarkHeroPage =
+        darkHeroBasePaths.includes(pathname) ||
+        /^\/[a-z]{2}\/careers\/jobs\/[^/]+$/.test(pathname); // Matches /en/careers/jobs/:slug
+
     const pages = ['/about-us', '/crypto', '/careers'];
     const isTargetPage = pages.some(page => pathname.endsWith(page)) || /^\/projects\/[^/]+\/[^/]+\/[^/]+$/.test(pathname);
 
@@ -788,14 +794,14 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                         {group.columns.map((col, idx) => (
                                             <div key={idx}>
                                                 {"link" in col && col.link ? (
-                                                <Link href={col.link}>
-                                                    <h4 className="font-bold text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2
+                                                    <Link href={col.link}>
+                                                        <h4 className="font-bold text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2
                                                     relative text-gray-700 transition-all duration-300
    bg-gradient-to-r from-[#0c1356] to-[#0c1356] bg-[length:0%_2px] bg-left-bottom bg-no-repeat
    hover:bg-[length:100%_2px] hover:text-[#0c1356]">{col.title}</h4>
-                                                </Link>
+                                                    </Link>
                                                 ) : (
-                                                <h4 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>
+                                                    <h4 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>
                                                 )}
 
                                                 <ul className="space-y-3">

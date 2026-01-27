@@ -33,8 +33,8 @@ export default function JobDetailsPage() {
     typeof params?.slug === "string"
       ? params.slug
       : Array.isArray(params?.slug)
-      ? params.slug[0]
-      : "";
+        ? params.slug[0]
+        : "";
   const locale = typeof params?.locale === "string" ? params.locale : "";
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -58,34 +58,32 @@ export default function JobDetailsPage() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-useEffect(() => {
-  const fetchJob = async () => {
-    const id = slug?.split("-").pop();
-    if (!id) return;
+  useEffect(() => {
+    const fetchJob = async () => {
+      const id = slug?.split("-").pop();
+      if (!id) return;
 
-    try {
-      const baseURL = "https://www.psinv.net";
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/api/external/jobdetail`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id }),
+        });
 
-      const res = await fetch(`${baseURL}/api/external/jobdetail`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id }),
-      });
+        if (!res.ok) throw new Error("Failed to fetch job detail");
 
-      if (!res.ok) throw new Error("Failed to fetch job detail");
+        const data = await res.json();
+        setJob(data?.result?.[0] ?? null);
+      } catch (err) {
+        console.error("Error fetching job details:", err);
+        setJob(null);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-      const data = await res.json();
-      setJob(data?.result?.[0] ?? null);
-    } catch (err) {
-      console.error("Error fetching job details:", err);
-      setJob(null);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchJob();
-}, [slug]);
+    fetchJob();
+  }, [slug]);
 
   useEffect(() => {
     if (!job || !Array.isArray(job.job_skills)) return;
@@ -174,29 +172,29 @@ useEffect(() => {
   if (!job) return notFound();
   return (
     <div className="w-full mb-5">
-      {/* Header Section */}
-      <section
-        className="relative bg-cover bg-center flex flex-col justify-center items-center text-white text-center h-[310px]"
-        style={{ backgroundImage: "url('/images/job-single-bg.webp')" }}
-      >
-        <div className="absolute inset-0 bg-[#00000066] z-10" />
-        <div className="relative z-20">
-               <p className="text-lg mt-4 space-x-2">
-        <Link href="/" className="hover:text-orange-300 transition">
-          Home
-        </Link>
-        <span>&gt;</span>
-        <Link
-          href={`/${locale}/careers`}
-          className="hover:text-orange-300 transition"
+      {/* Hero Section */}
+      <div className="relative h-[60vh] flex items-center justify-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/job-single-bg.webp')" }}
         >
-          Careers
-        </Link>
-        <span>&gt;</span>
-        <span>{job.name}</span>
-      </p>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
         </div>
-      </section>
+        <div className="relative z-10 text-center text-white mt-16 px-4">
+          <Link href="/" className="hover:text-orange-300 transition">
+            Home
+          </Link>
+          <span>&gt;</span>
+          <Link
+            href={`/${locale}/careers`}
+            className="hover:text-orange-300 transition"
+          >
+            Careers
+          </Link>
+          <span>&gt;</span>
+          <span>{job.name}</span>
+        </div>
+      </div>
 
       {/* Application Intro */}
       <section className="max-w-[1320px] mx-auto mb-10 px-4 md:px-10 py-10">
