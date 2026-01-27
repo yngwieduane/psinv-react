@@ -44,9 +44,9 @@ export default function UnitPageAI(props: any) {
     const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
 
     const TABS = [
-        { id: 'details', key: 'lbl.property_details', fallback: 'Property Details' },
-        { id: 'description', key: 'lbl.description', fallback: 'Description' },
-        { id: 'unit', key: 'lbl.unit_details', fallback: 'Unit Details' }
+        { id: 'details', key: 'lbl.property_details', fallback: 'Property Details' }
+        // { id: 'description', key: 'lbl.description', fallback: 'Description' },
+        // { id: 'unit', key: 'lbl.unit_details', fallback: 'Unit Details' }
     ];
     const callPhone = process.env.NEXT_PUBLIC_CALLNUMBER_ASSETS as string;
     const whatsappPhone = process.env.NEXT_PUBLIC_WAPPNUMBER_ASSETS as string;
@@ -262,7 +262,9 @@ export default function UnitPageAI(props: any) {
                                         <div className="mb-10 md:mb-14">
                                             <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">Description</h3>
                                             <div className="bg-white text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line font-light mb-10">
-                                                {post.property_overview}
+
+
+                                                <div dangerouslySetInnerHTML={{ __html: post.property_overview }} />
                                             </div>
 
                                             {/* Rich Amenities Grid */}
@@ -302,6 +304,10 @@ export default function UnitPageAI(props: any) {
                                                 <h4 className="font-bold text-gray-900 text-xl mb-6">Frequently Asked Questions</h4>
                                                 <AccordionTabs items={faqData} />
                                             </div>
+                                        </div>
+
+                                        <div className="mt-8 ">
+                                            <AgentDetails agent={post.agent} />
                                         </div>
 
                                     </div>

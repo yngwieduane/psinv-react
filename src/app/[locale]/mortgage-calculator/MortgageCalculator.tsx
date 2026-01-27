@@ -9,13 +9,13 @@ import { useLocale, useTranslations } from 'next-intl';
 Chart.register(ArcElement, Tooltip, DoughnutController);
 
 type Props = {
-  modal? : boolean;
-  onOpenModal? : () => void;
-  onModalUpdate? : (value: boolean) => void;
+  modal?: boolean;
+  onOpenModal?: () => void;
+  onModalUpdate?: (value: boolean) => void;
   basePrice?: number;
 }
 
-const MortgageCalculator = ({modal, onOpenModal, onModalUpdate, basePrice} : Props) => {
+const MortgageCalculator = ({ modal, onOpenModal, onModalUpdate, basePrice }: Props) => {
 
   const locale = useLocale();
   const isRtl = locale.toLowerCase().startsWith("ar");
@@ -89,13 +89,13 @@ const MortgageCalculator = ({modal, onOpenModal, onModalUpdate, basePrice} : Pro
     return () => chart.destroy();
   }, [downPayment, loanAmount]);
 
- 
+
 
   return (
-    <>
+    <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-white shadow-lg rounded-xl p-6">
-          <h2 className="text-lg font-semibold mb-4 text-center">{t("mortgageTab.title")}</h2>
+        <div className="bg-white p-6 rounded-2xl shadow-md">
+          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">{t("mortgageTab.title")}</h2>
           <div className="space-y-6">
             <div>
               <label className="block text-sm font-medium mb-1">{t("mortgageTab.PropertyPrice")}</label>
@@ -228,8 +228,8 @@ const MortgageCalculator = ({modal, onOpenModal, onModalUpdate, basePrice} : Pro
           </div>
         </div>
       </div>
-       
-    </>
+
+    </div>
   );
 }
 

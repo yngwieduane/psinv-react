@@ -33,9 +33,9 @@ export async function GET(request: NextRequest) {
                 whatsapp: item.businessWhatsAppNumber || item.whatsApp || item.mobile || "",
                 email: item.email || "",
                 brn: item.brokerLicenseRegistrationNumber || "",
-                experience: "", // Not provided in sample
+                experience: "",
                 description: item.aboutMe || "",
-                activeListings: 0, // Not provided in sample
+                activeListings: 0,
                 location: item.branchName || 'Abu Dhabi'
             };
         };
