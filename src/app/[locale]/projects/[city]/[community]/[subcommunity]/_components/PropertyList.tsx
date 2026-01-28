@@ -135,7 +135,7 @@ export default function PropertyList({
                     totalPages={totalPages}
                 />
             </div>
-            <div className="order-2 md:order-3 col-span-1 md:col-span-2 mx-auto container ">
+            <div className="col-span-1 md:col-span-2 mx-auto container ">
                 {activeTab === 'map' ? (
                     <PropertyMapBox data={data['result']} />
                 ) : isLoading ? (
@@ -155,6 +155,14 @@ export default function PropertyList({
                 ) : (
                     <></>
                 )}
+            </div>
+            <div className="col-span-2 mt-10">
+                <SearchPropertyAI
+                    placeholder="Property Name"
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    totalPages={totalPages}
+                />
             </div>
         </div>
     );

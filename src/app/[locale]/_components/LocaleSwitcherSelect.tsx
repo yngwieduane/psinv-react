@@ -2,20 +2,22 @@
 
 import clsx from 'clsx';
 import { useParams } from 'next/navigation';
-import { ChangeEvent, ReactNode, useTransition } from 'react';
+import { useTransition } from 'react';
 import { Locale } from '@/i18n/routing';
 import { usePathname, useRouter } from '@/i18n/navigation';
-import { ChevronDownIcon } from 'lucide-react';
+import { Globe } from 'lucide-react';
+import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
 
 type Props = {
-  children: ReactNode;
+  items: { value: string; label: string }[]; // Changed to accept items array
   defaultValue: string;
   label: string;
   css: string;
 };
 
 export default function LocaleSwitcherSelect({
-  children,
+  items,
   defaultValue,
   label,
   css
@@ -25,8 +27,7 @@ export default function LocaleSwitcherSelect({
   const pathname = usePathname();
   const params = useParams();
 
-  function onSelectChange(event: ChangeEvent<HTMLSelectElement>) {
-    const nextLocale = event.target.value as Locale;
+  function onSelectChange(nextLocale: Locale) {
     startTransition(() => {
       router.replace(
         // @ts-expect-error -- TypeScript will validate that only known `params`
@@ -38,36 +39,59 @@ export default function LocaleSwitcherSelect({
     });
   }
 
-  return (
-    <div
-      className={clsx(
-        'relative text-gray-400',
-        isPending && 'transition-opacity disabled:opacity-30'
-      )}
-    >
-      <label className="sr-only">{label}</label>
-      <div className="mt-2 grid grid-cols-1">
-        <select
-          className={`locale-select col-start-1 row-start-1 w-full appearance-none rounded-md py-1.5 pr-8 pl-3 text-base ${css}  outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6`}
-          defaultValue={defaultValue}
-          disabled={isPending}
-          onChange={onSelectChange}
-          aria-label="Language Switcher"
-        >
-          {children}
-        </select>
-        <ChevronDownIcon
-          aria-hidden="true"
-          className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
-        />
-      </div>
+  const getFlag = (locale: string) => {
+    switch (locale) {
+      case 'en': return '🇬🇧';
+      case 'ar': return '🇦🇪';
+      case 'ru': return '🇷🇺';
+      case 'de': return '🇩🇪';
+      case 'zh': return '🇨🇳';
+      default: return '🌐';
+    }
+  };
 
-      <style jsx global>{`
-  .locale-select option {
-    color: black !important;
-    background-color: white !important;
-  }
-`}</style>
+  return (
+    <div className={clsx('relative', isPending && 'transition-opacity disabled:opacity-30')}>
+      <Popover className="relative">
+        {({ open }) => (
+          <>
+            <PopoverButton
+              className={`cursor-pointer flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 border border-gray-100 hover:bg-gray-200 transition-colors outline-none ${css}`}
+              aria-label={label}
+            >
+              <span className="text-xl leading-none">{getFlag(defaultValue)}</span>
+            </PopoverButton>
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-200"
+              enterFrom="opacity-0 translate-y-1"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition ease-in duration-150"
+              leaveFrom="opacity-100 translate-y-0"
+              leaveTo="opacity-0 translate-y-1"
+            >
+              <PopoverPanel className="absolute right-0 z-50 mt-2 w-40 origin-top-right rounded-xl bg-white p-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
+                <div className="flex flex-col py-1">
+                  {items.map((item) => (
+                    <button
+                      key={item.value}
+                      onClick={() => onSelectChange(item.value as Locale)}
+                      disabled={isPending}
+                      className={clsx(
+                        'text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-secondary transition-colors flex items-center gap-3',
+                        defaultValue === item.value && 'bg-gray-50 font-bold text-secondary'
+                      )}
+                    >
+
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              </PopoverPanel>
+            </Transition>
+          </>
+        )}
+      </Popover>
     </div>
   );
 }
