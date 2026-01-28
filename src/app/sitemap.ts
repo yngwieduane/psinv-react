@@ -158,12 +158,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
         const path = `/projects/${city}/${comm}/${sub}/${proj}`;
 
+        // Main Project Page
         locales.forEach(locale => {
             sitemapEntries.push({
                 url: `${baseUrl}/${locale}${path}`,
                 lastModified: new Date(),
                 changeFrequency: 'daily',
                 priority: 0.9
+            });
+        });
+
+        // Project Sub-pages
+        const subPages = ['payment-plan', 'photo-gallery', 'faqs', 'floor-plan'];
+        subPages.forEach(subPage => {
+            locales.forEach(locale => {
+                sitemapEntries.push({
+                    url: `${baseUrl}/${locale}${path}/${subPage}`,
+                    lastModified: new Date(),
+                    changeFrequency: 'weekly',
+                    priority: 0.8
+                });
             });
         });
     });
