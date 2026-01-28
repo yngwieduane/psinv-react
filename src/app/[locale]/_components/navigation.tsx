@@ -559,7 +559,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                         { label: t('list'), href: '/list-your-property/' },
                         { label: t('international'), href: '/international' },
                         { label: t('youngsters program'), href: '/psi-youngsters-program' },
-                        { label: t('luxury'), href: '/project/luxury-project-uae/' }
+                        { label: t('luxury'), href: '/project/luxury-project-uae/' },
+                        { label: t('emirati-hub'), href: '/project/emirati-hub' }
                     ]
                 }
             ]
@@ -794,7 +795,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                         {group.columns.map((col, idx) => (
                                             <div key={idx}>
                                                 {"link" in col && col.link ? (
-                                                    <Link href={col.link}>
+                                                    <Link href={col.link} title={col.title}>
                                                         <h4 className="font-bold text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2
                                                     relative text-gray-700 transition-all duration-300
    bg-gradient-to-r from-[#0c1356] to-[#0c1356] bg-[length:0%_2px] bg-left-bottom bg-no-repeat
