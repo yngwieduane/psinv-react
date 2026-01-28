@@ -33,10 +33,12 @@ export default function ContactPage() {
     contactLocations[0]
   );
 
-  const handleOfficeSelect = (location: ContactLocation) => {
-    setSelectedLocation(location);
-    router.push(`/${locale}/contact-us/${location.slug}`, { scroll: false });
-  };
+const handleOfficeSelect = (location: ContactLocation) => {
+  setSelectedLocation(location);
+
+  const qs = typeof window !== "undefined" ? window.location.search : "";
+  router.push(`/${locale}/contact-us/${location.slug}${qs}`, { scroll: false });
+};
 
   return (
     <>

@@ -48,12 +48,11 @@ export default function ContactPage() {
   const [selectedOffice, setSelectedOffice] = useState<ContactLocation>(initialOffice);
 
   useEffect(() => {
-    if (selectedOffice.slug !== slug) {
-      router.push(`/${locale}/contact-us/${selectedOffice.slug}`, {
-        scroll: false,
-      });
-    }
-  }, [selectedOffice, slug, router, locale]);
+  const qs = typeof window !== "undefined" ? window.location.search : "";
+  if (selectedOffice.slug !== slug) {
+    router.push(`/${locale}/contact-us/${selectedOffice.slug}${qs}`, { scroll: false });
+  }
+}, [selectedOffice, slug, router, locale]);
 
   return (
     <>
@@ -81,7 +80,11 @@ export default function ContactPage() {
                           ? "border-primary bg-white shadow-lg"
                           : "border-gray-100 bg-gray-50 hover:bg-white hover:shadow-md"
                         }`}
-                      onClick={() => setSelectedOffice(location)}
+                      onClick={() => {
+  setSelectedOffice(location);
+  const qs = typeof window !== "undefined" ? window.location.search : "";
+  router.push(`/${locale}/contact-us/${location.slug}${qs}`, { scroll: false });
+}}
                       role="button"
                       tabIndex={0}
                     >

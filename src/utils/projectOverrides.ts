@@ -780,6 +780,11 @@ seo: {
       SubCommunityID: 83452,
       remarks: 'Muheira Maysan',
       ...makeUtm({
+         'metwally_muheira_newsletter_jan_2026': {
+          campaign: 3465,
+          remarks:
+            'Rotation: Muheira Residences - company campaign , Campaign name: Metwally: Muheira - Newsletter - Jan 2026',
+        },
         'shaza_muheira_news': {
           campaign: 3338,
           remarks:

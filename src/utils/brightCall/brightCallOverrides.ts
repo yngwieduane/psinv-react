@@ -151,6 +151,7 @@ const REG_WIDGET_KEYS_BY_UTM: Record<
     "muheira-maysan-registration": {
         "shaza_muheira_news": { en: "76b9a46b2707f482130587f4727a2705", ar: "721d19fa98b7a245734a466563455f8e" },
         "zaineh_muheira_news": { en: "bd87bfb0dca1f3babd13d1ed174c276a", ar: "ba839451863f6e56f7ba09f0592cf22d" },
+         "metwally_muheira_newsletter_jan_2026": { en: "862c96e4e2c147c88b83742f42811312", ar: "80d269a6134877b0f5207afe7b014510" },
     },
     "yas-riva-registration": {
         "zaineh_yas_riva_news": { en: "23ab7dcc1609835e5b1288616f1bc9e1", ar: "cc2fc78a40a756491d169da6dd42c741" },

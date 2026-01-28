@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faWhatsapp, } from '@fortawesome/free-brands-svg-icons';
 import LanguageSwitcher from './languageSwitcher';
+import BranchSwitcher from './BranchSwitcher';
 import Image from 'next/image';
 import ProjectSearch from './projectSearch';
 import { faMagnifyingGlass, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
@@ -751,6 +752,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                             </button>
                         )}
                         <LanguageSwitcher css={linkColor} />
+                        <BranchSwitcher css={linkColor} />
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -831,7 +833,6 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             </nav>
 
             {/* Mobile Menu */}
-            {/* Mobile Menu */}
             <Dialog
                 as="div"
                 className="lg:hidden"
@@ -910,6 +911,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
                                 <div className="-mx-3 px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2">
                                     <LanguageSwitcher css={linkColor} />
+                                    <BranchSwitcher css={linkColor} />
                                 </div>
 
                                 {user ? (

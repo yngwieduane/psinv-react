@@ -45,8 +45,9 @@ export default async function BlogPostPage({ params }: PageProps) {
     const tBlog = await getTranslations({ locale, namespace: "BlogPage" });
 
     const title = post.title || "Untitled";
+
     const summary = post.summary || "";
-    const contentHtml = post.contentHtml;
+    const contentHtml = (post.contentHtml || "").replace(/&nbsp;/g, ' ');
 
     return (
         <>
@@ -123,12 +124,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     )}
 
                     {/* Main Content */}
-                    <article className="prose prose-lg prose-emerald max-w-none text-gray-700 leading-relaxed font-sans
-                prose-headings:font-serif prose-headings:font-bold prose-headings:text-gray-900 
-                prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                prose-img:rounded-2xl prose-img:shadow-md prose-img:w-full prose-img:my-8
-                prose-blockquote:border-l-primary prose-blockquote:bg-gray-50 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:rounded-r-lg
-             ">
+                    <article className="article-body">
                         {contentHtml ? (
                             <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
                         ) : (

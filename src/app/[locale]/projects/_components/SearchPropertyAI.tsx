@@ -75,7 +75,7 @@ export default function SearchPropertyAI({
             </div>
 
             {/* Mobile Sticky Action Bar */}
-            <div className="fixed top-[85px] left-0 right-0 z-40 bg-white border-b border-gray-200 shadow-sm p-3 flex gap-3 lg:hidden">
+            <div className="fixed top-[85px] left-0 right-0 z-40 bg-white border-b border-gray-200 shadow-sm p-3 grid grid-cols-3 gap-3 lg:hidden">
                 <button
                     onClick={() => setIsSortOpen(true)}
                     className="flex-1 border border-gray-300 rounded-lg py-2.5 flex items-center justify-center gap-2 font-bold text-sm text-gray-700 active:bg-gray-50"
@@ -97,6 +97,9 @@ export default function SearchPropertyAI({
                 >
                     <SlidersHorizontal size={16} /> Filters
                 </button>
+                <div className="col-span-3 justify-self-center">
+                    <Pagination totalPages={totalPages} />
+                </div>
             </div>
 
             {/* Sort Bottom Sheet (Mobile) */}

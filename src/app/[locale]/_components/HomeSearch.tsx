@@ -6,7 +6,7 @@ import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import Form from 'next/form';
 import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions, Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
-import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/20/solid';
+import { ChevronUpDownIcon, CheckIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/20/solid';
 import AutocompleteSearch from '../units/_components/AutocompleteSearch';
 import AutocompleteSearchWithOther from '../units/_components/AutocompleteSearchWithOther';
 
@@ -32,18 +32,75 @@ export default function HomeSearch() {
     const [beds, setBeds] = useState<number | null>(null);
     const [baths, setBaths] = useState<number | null>(null);
 
+    const [sector, setSector] = useState<'Residential' | 'Commercial' | null>(null);
+    const [fullGroupedData, setFullGroupedData] = useState<any[]>([]);
+
+    // Flattened list for lookup by ID (to show name in button)
+    const [allPropertyTypes, setAllPropertyTypes] = useState<any[]>([]);
+    const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+
     useEffect(() => {
         fetch('/api/external/fetchLookup?type=UnitType')
             .then((res) => res.json())
             .then((data) => {
                 if (Array.isArray(data)) {
-                    const types = data.map((item: any) => ({ lookupId: item.lookupId, lookupName: item.lookupName }));
-                    types.sort((a, b) => a.lookupName.localeCompare(b.lookupName));
-                    setPropertyTypesList(types);
+                    const RESIDENTIAL_TYPES = [
+                        "Apartment", "Villa", "Townhouse", "Studio",
+                        "Twin House", "Penthouse"
+                    ];
+
+                    const COMMERCIAL_TYPES = [
+                        "Office", "Warehouse", "Retail", "Shop", "Plot",
+                    ];
+
+                    const residential: any[] = [];
+                    const commercial: any[] = [];
+
+                    // Keep track of all for easy name lookup
+                    const allTypes = data.map((item: any) => ({ lookupId: item.lookupId, lookupName: item.lookupName }));
+                    setAllPropertyTypes(allTypes);
+
+                    data.forEach((item: any) => {
+                        const name = item.lookupName;
+                        const simplifiedName = { lookupId: item.lookupId, lookupName: name };
+
+                        if (RESIDENTIAL_TYPES.includes(name)) {
+                            residential.push(simplifiedName);
+                        } else if (COMMERCIAL_TYPES.includes(name)) {
+                            commercial.push(simplifiedName);
+                        }
+                    });
+
+                    // Sort within groups
+                    residential.sort((a, b) => RESIDENTIAL_TYPES.indexOf(a.lookupName) - RESIDENTIAL_TYPES.indexOf(b.lookupName));
+                    commercial.sort((a, b) => COMMERCIAL_TYPES.indexOf(a.lookupName) - COMMERCIAL_TYPES.indexOf(b.lookupName));
+
+                    const grouped = [
+                        { groupName: "Residential", items: residential },
+                        { groupName: "Commercial", items: commercial }
+                    ];
+
+                    setFullGroupedData(grouped);
+                    setPropertyTypesList(grouped);
                 }
             })
             .catch((err) => console.error('Error fetching property types:', err));
     }, []);
+
+    // Effect to filter property types when sector changes
+    useEffect(() => {
+        if (!fullGroupedData.length) return;
+
+        if (sector === 'Residential') {
+            setPropertyTypesList([fullGroupedData.find(g => g.groupName === 'Residential')]);
+        } else if (sector === 'Commercial') {
+            setPropertyTypesList([fullGroupedData.find(g => g.groupName === 'Commercial')]);
+        } else {
+            setPropertyTypesList(fullGroupedData);
+        }
+    }, [sector, fullGroupedData]);
+
+
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
@@ -53,6 +110,7 @@ export default function HomeSearch() {
         if (communityId) params.set('communityId', communityId);
         if (propertyName) params.set('propertyName', propertyName);
         if (propertyName) params.set('propertyName', propertyName);
+        if (sector) params.set('sector', sector);
         if (propertyType) params.set('propertyType', propertyType);
         if (category) params.set('category', category);
         if (beds) params.set('beds', beds.toString());
@@ -67,7 +125,7 @@ export default function HomeSearch() {
 
     const getSelectedPropertyTypeName = (id: string | null) => {
         if (!id) return 'Property Types';
-        const found = propertyTypesList.find((item) => String(item.lookupId) === String(id));
+        const found = allPropertyTypes.find((item) => String(item.lookupId) === String(id));
         return found ? found.lookupName : 'Property Types';
     };
 
@@ -96,42 +154,82 @@ export default function HomeSearch() {
                 <div className="p-6 md:p-8">
                     <form onSubmit={handleSearch} className="flex flex-col gap-4">
 
-                        {/* Autocomplete */}
-                        <div className="w-full">
-                            <AutocompleteSearchWithOther
-                                isReset={false}
-                                disableRouting={true}
-                                onSelect={(name, id, type) => {
-                                    setPropertyName(name);
-                                    if (type === 'Community') {
-                                        setCommunityId(id);
-                                        setPropertyId('');
-                                    } else {
-                                        setPropertyId(id);
-                                        setCommunityId('');
-                                    }
-                                }}
-                            />
+                        {/* Top Row: Search + Category */}
+                        <div className="flex flex-col md:flex-row gap-4">
+                            {/* Autocomplete */}
+                            <div className="flex-1 flex gap-2">
+                                <div className="w-full">
+                                    <AutocompleteSearchWithOther
+                                        isReset={false}
+                                        disableRouting={true}
+                                        showTitle={false}
+                                        onSelect={(name, id, type) => {
+                                            setPropertyName(name);
+                                            if (type === 'Community') {
+                                                setCommunityId(id);
+                                                setPropertyId('');
+                                            } else {
+                                                setPropertyId(id);
+                                                setCommunityId('');
+                                            }
+                                        }}
+                                    />
+                                </div>
+                                {/* Mobile Filter Toggle */}
+                                <button
+                                    type="button"
+                                    onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+                                    className="md:hidden p-3.5 bg-gray-100 rounded-xl text-gray-700 hover:bg-gray-200 self-end mb-[2px]"
+                                    aria-label="Toggle Filters"
+                                >
+                                    <AdjustmentsHorizontalIcon className="size-6" />
+                                </button>
+                            </div>
+
+                            {/* Category (Function of Rent/Sale) */}
+                            <div className={`w-full md:w-36 mt-2 ${isFiltersOpen ? '' : 'hidden md:block'}`}>
+                                <Listbox value={category} onChange={setCategory}>
+                                    <div className="relative">
+                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                            <span className="col-start-1 row-start-1 truncate">{category || 'Contract'}</span>
+                                            <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
+                                        </ListboxButton>
+                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
+                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                                <span className="block truncate font-normal group-data-selected:font-semibold">Contract</span>
+                                            </ListboxOption>
+                                            {['Sale', 'Rent'].map((cat) => (
+                                                <ListboxOption key={cat} value={cat} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                                    <span className="block truncate font-normal group-data-selected:font-semibold">{cat}</span>
+                                                    <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
+                                                        <CheckIcon aria-hidden="true" className="size-5" />
+                                                    </span>
+                                                </ListboxOption>
+                                            ))}
+                                        </ListboxOptions>
+                                    </div>
+                                </Listbox>
+                            </div>
                         </div>
 
                         {/* Filters Row */}
-                        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
+                        <div className={`gap-4 items-end ${isFiltersOpen ? 'grid grid-cols-1 md:grid-cols-4' : 'hidden md:grid grid-cols-1 md:grid-cols-4'}`}>
 
-                            {/* Category */}
+                            {/* Sector (Residential/Commercial) */}
                             <div className="w-full">
-                                <Listbox value={category} onChange={setCategory}>
+                                <Listbox value={sector} onChange={setSector}>
                                     <div className="relative">
-                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-10 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
-                                            <span className="col-start-1 row-start-1 truncate">{category || 'Category'}</span>
+                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                            <span className="col-start-1 row-start-1 truncate">{sector || 'Category'}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
                                         <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                             <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
                                                 <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
                                             </ListboxOption>
-                                            {['Sale', 'Rent'].map((cat) => (
-                                                <ListboxOption key={cat} value={cat} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
-                                                    <span className="block truncate font-normal group-data-selected:font-semibold">{cat}</span>
+                                            {['Residential', 'Commercial'].map((s) => (
+                                                <ListboxOption key={s} value={s} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                                    <span className="block truncate font-normal group-data-selected:font-semibold">{s}</span>
                                                     <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
                                                         <CheckIcon aria-hidden="true" className="size-5" />
                                                     </span>
@@ -146,7 +244,7 @@ export default function HomeSearch() {
                             <div className="w-full">
                                 <Listbox value={propertyType} onChange={setPropertyType}>
                                     <div className="relative">
-                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-10 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                             <span className="col-start-1 row-start-1 truncate">{getSelectedPropertyTypeName(propertyType)}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
@@ -154,13 +252,22 @@ export default function HomeSearch() {
                                             <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
                                                 <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
                                             </ListboxOption>
-                                            {propertyTypesList.map((option) => (
-                                                <ListboxOption key={option.lookupId} value={option.lookupId} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
-                                                    <span className="block truncate font-normal group-data-selected:font-semibold">{option.lookupName}</span>
-                                                    <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
-                                                        <CheckIcon aria-hidden="true" className="size-5" />
-                                                    </span>
-                                                </ListboxOption>
+
+                                            {/* Groups */}
+                                            {propertyTypesList.map((group: any) => (
+                                                <div key={group.groupName}>
+                                                    <div className="px-3 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50/50">
+                                                        {group.groupName}
+                                                    </div>
+                                                    {group.items.map((option: any) => (
+                                                        <ListboxOption key={option.lookupId} value={option.lookupId} className="group relative cursor-pointer py-2 pl-6 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                                            <span className="block truncate font-normal group-data-selected:font-semibold">{option.lookupName}</span>
+                                                            <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
+                                                                <CheckIcon aria-hidden="true" className="size-5" />
+                                                            </span>
+                                                        </ListboxOption>
+                                                    ))}
+                                                </div>
                                             ))}
                                         </ListboxOptions>
                                     </div>
@@ -171,7 +278,7 @@ export default function HomeSearch() {
                             {/* Beds and Baths (Popover) */}
                             <div className="w-full">
                                 <Popover className="relative">
-                                    <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-10 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                    <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                         <span className="col-start-1 row-start-1 truncate">
                                             {beds ? `${beds} Beds` : (baths ? '' : 'Beds and Baths')}
                                             {beds && baths ? ' & ' : ''}
@@ -220,7 +327,7 @@ export default function HomeSearch() {
                             {/* Price Range (Popover) */}
                             <div className="w-full">
                                 <Popover className="relative">
-                                    <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-10 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                    <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                         <span className="col-start-1 row-start-1 truncate">
                                             {priceRange[0] === minPriceDefault && priceRange[1] === maxPriceDefault
                                                 ? 'Price Range'
@@ -259,16 +366,16 @@ export default function HomeSearch() {
                                     </PopoverPanel>
                                 </Popover>
                             </div>
+                        </div>
 
-                            {/* Search Button */}
-                            <div className="w-full">
-                                <button
-                                    type="submit"
-                                    className="w-full rounded-xl bg-[#005a9c] hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
-                                >
-                                    Search
-                                </button>
-                            </div>
+                        {/* Search Button */}
+                        <div className="w-full">
+                            <button
+                                type="submit"
+                                className="w-full rounded-xl bg-[#005a9c] hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
+                            >
+                                Search
+                            </button>
                         </div>
                     </form>
                 </div>
