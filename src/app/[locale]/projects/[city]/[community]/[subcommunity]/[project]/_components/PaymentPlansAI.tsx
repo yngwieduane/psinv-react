@@ -6,9 +6,11 @@ import DrawerDetails from "@/app/[locale]/unit/[slug]/components/DrawerDetails";
 import { FileText } from "lucide-react";
 
 const PaymentPlansAI = ({
-    propid
+    propid,
+    propname
 }: {
     propid: number;
+    propname: string;
 }) => {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<PaymentPlansResponse | null>(null);
@@ -43,7 +45,8 @@ const PaymentPlansAI = ({
         <>
             {loading > 0 && (
                 <>
-                    <h3 className="text-3xl font-serif font-bold text-primary mb-8">Payment Plan</h3>
+                    <h3 className="text-3xl font-serif font-bold text-primary mb-2">Payment Plan</h3>
+                    <h2 className="text-xl text-gray-500 mb-8">{propname}</h2>
                     <div
                         role="list"
                         className="grid grid-cols-1 gap-3"

@@ -387,6 +387,7 @@ const PropertyPage = (props: any) => {
                         <section id="payment-plan" className="scroll-mt-40">
                             <PaymentPlansAI
                                 propid={props.data["propertyID"]}
+                                propname={props.data["propertyName"]}
                             />
                         </section>
 
@@ -394,6 +395,7 @@ const PropertyPage = (props: any) => {
                         {unitModels.length !== 0 ? (<div id="floor-plans">
                             <UnitModelsAI
                                 data={fpGroup}
+                                propname={props.data["propertyName"]}
                             />
                         </div>) : ("")}
 
@@ -471,11 +473,12 @@ const PropertyPage = (props: any) => {
                                 latitude={props.data["mapLatitude"]}
                                 longitude={props.data["mapLongitude"]}
                                 distance={10}
+                                propname={props.data["propertyName"]}
                             />
                         </div>
 
                         <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
-                            <Faqs data={props.data} />
+                            <Faqs data={props.data} propname={props.data["propertyName"]} />
                         </div>
 
                     </div>

@@ -45,10 +45,10 @@ const PhotoGallery = ({ data, limit }: { data: any, limit?: number }) => {
         <div>
 
 
-            <div className="container mx-auto px-4 md:px-12 pt-8">
+            <div className="container mx-auto pt-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
                     <div>
-                        <h1 className="text-3xl md:text-4xl font-bold text-primary mb-2">{t('gallery')}</h1>
+                        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">{t('gallery')}</h2>
                         <h2 className="text-xl text-gray-500">{data["propertyName"]}</h2>
                     </div>
 

@@ -28,11 +28,13 @@ import { MapPin } from "lucide-react";
 const NearbysWithMap = ({
     latitude,
     longitude,
-    distance
+    distance,
+    propname
 }: {
     latitude: string;
     longitude: string;
     distance: number;
+    propname: string;
 }) => {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<NearbysType[]>([]);
@@ -106,9 +108,10 @@ const NearbysWithMap = ({
             {loading && <p className="text-sm text-gray-500 mt-1">Loading...</p>}
             {results.length > 0 && (
                 <>
-                    <h2 className="text-3xl font-bold text-primary mb-8">
+                    <h2 className="text-3xl font-bold text-primary mb-2">
                         Nearbys
                     </h2>
+                    <h2 className="text-xl text-gray-500 mb-8">{propname}</h2>
                     <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 content-stretch">
                         <ul role="list" className="grid grid-cols-2 md:grid-cols-2 space-y-3 space-x-3 overflow-auto h-[70vh]  py-2">
                             {data.slice(0, 20).map((post, index) => {
