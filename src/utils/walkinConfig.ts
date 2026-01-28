@@ -94,5 +94,5 @@ export const walkinFormConfig: Record<string, WalkinFormConfig> = {
         { id: "4794", name: "PSI Asset" }
       ]
     }
-  }
+  },
 };

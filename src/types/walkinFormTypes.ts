@@ -14,5 +14,7 @@ export type WalkinFormConfig = {
   showContactInformation?: boolean;
   showHostedBy?: boolean;
   agentsByDate?: Record<string, Agent[]>;
+  customPage?: boolean;
+  customHref?: string; 
   agents?: Agent[];
 };
