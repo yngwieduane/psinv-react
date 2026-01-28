@@ -94,7 +94,7 @@ export default async function Page({
             </div>
             <div className="">
                 {result && fpGroup.length > 0 && (
-                    <UnitModelsAI data={fpGroup} />
+                    <UnitModelsAI data={fpGroup} propname={result.propertyName} />
                 )}
             </div>
         </div>

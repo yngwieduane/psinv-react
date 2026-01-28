@@ -61,7 +61,7 @@ export default async function Page({
             </div>
             <div className="container mx-auto px-4 md:px-12 py-8">
                 {result && result.propertyID && (
-                    <PaymentPlansAI propid={result.propertyID} />
+                    <PaymentPlansAI propid={result.propertyID} propname={result.propertyName} />
                 )}
             </div>
         </div>

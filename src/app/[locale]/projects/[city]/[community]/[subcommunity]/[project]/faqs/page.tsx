@@ -62,7 +62,7 @@ export default async function Page({
             <div className="container mx-auto px-4 md:px-12 py-8">
                 {result && (
                     <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
-                        <Faqs data={result} />
+                        <Faqs data={result} propname={result.propertyName} />
                     </div>
                 )}
             </div>
