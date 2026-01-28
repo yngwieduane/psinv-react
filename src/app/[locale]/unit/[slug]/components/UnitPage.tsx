@@ -245,6 +245,7 @@ export default function UnitPage(props: any) {
                                                 latitude={coordinates['1']}
                                                 longitude={coordinates['0']}
                                                 distance={10}
+                                                propname={post.propertyname}
                                             />
                                         </div>) : ("")}
                                     {/* Similar Properties */}
