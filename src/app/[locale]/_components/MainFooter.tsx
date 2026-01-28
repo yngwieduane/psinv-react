@@ -175,6 +175,7 @@ const MainFooter = () => {
                     License No.: CN-1100434 | Brokerage No.: 20240000258226 |
                     <Link title="Privacy" href="/privacy" className="ml-1 cursor-pointer hover:underline">Privacy</Link> |
                     <Link title="Terms" href="/terms" className="ml-1 cursor-pointer hover:underline">Terms of Use</Link>
+                    <Link title="Terms" href="/cookie-policy" className="ml-1 cursor-pointer hover:underline">Cookies</Link>
                 </p>
             </div>
         </footer>
