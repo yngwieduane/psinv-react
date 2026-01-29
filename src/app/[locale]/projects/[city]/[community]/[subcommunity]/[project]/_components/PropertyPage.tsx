@@ -379,6 +379,7 @@ const PropertyPage = (props: any) => {
                                 </a>
                             </FancyboxWrapper>
                         ) : ("")}
+
                         {/* Gallery Grid */}
                         <section id="gallery" className="scroll-mt-40">
                             <PhotoGallery data={props.data} limit={5} viewAllLink={`${pathname}/photo-gallery`} />
