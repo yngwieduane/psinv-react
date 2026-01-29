@@ -6,7 +6,6 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions, Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import { ChevronUpDownIcon, CheckIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/20/solid';
 import AutocompleteSearchWithOther from './AutocompleteSearchWithOther';
-import { RotateCcw } from 'lucide-react';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 100000000;
@@ -168,20 +167,10 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                     <AdjustmentsHorizontalIcon className="size-6" />
                                 </button>
                             </div>
-
-                            {/* Desktop Search Button */}
-                            <div className="hidden md:block w-40">
-                                <button
-                                    type="submit"
-                                    className="w-full h-full rounded-xl bg-[#005a9c] hover:bg-[#004880] text-white font-bold transition-all shadow-md active:scale-95 text-lg"
-                                >
-                                    Search
-                                </button>
-                            </div>
                         </div>
 
                         {/* Filters Row */}
-                        <div className={`gap-4 items-end mt-4 ${isFiltersOpen ? 'grid grid-cols-1' : 'hidden'}`}>
+                        <div className={`gap-4 items-end ${isFiltersOpen ? 'grid grid-cols-1 md:grid-cols-6' : 'hidden md:grid grid-cols-1 md:grid-cols-6'}`}>
 
                             {/* Category (Function of Rent/Sale) - Moved into Grid */}
                             <div className="w-full">
@@ -359,6 +348,16 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                     </PopoverPanel>
                                 </Popover>
                             </div>
+
+                            {/* Desktop Search Button */}
+                            <div className="w-full hidden md:block">
+                                <button
+                                    type="submit"
+                                    className="w-full rounded-xl bg-[#005a9c] hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
+                                >
+                                    Search
+                                </button>
+                            </div>
                         </div>
 
                         {/* Mobile Search Button */}
@@ -384,9 +383,9 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                 setPriceRange([minPriceDefault, maxPriceDefault]);
                                 router.push(`/${locale}/units`);
                             }}
-                            className="absolute top-1 right-0 text-right text-gray-600 text-sm font-medium hover:text-gray-800 transition-colors mt-2 px-10"
+                            className="absolute top-0 right-5 text-right text-gray-600 text-sm font-medium hover:text-gray-800 transition-colors mt-2 px-5 "
                         >
-                            <RotateCcw size={14} className="inline" /> Reset
+                            Reset
                         </button>
                     </form>
                 </div>
