@@ -1,3 +1,4 @@
+'use client'
 import AccordionTabs from "@/app/[locale]/_components/tools/AccordionTabs";
 import { useTranslations } from 'next-intl';
 import { ArrowRight } from "lucide-react";
