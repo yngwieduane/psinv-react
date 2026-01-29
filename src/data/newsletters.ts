@@ -2,6 +2,12 @@
 
 export const newsletters = [
   {
+    title: 'Experience Luxury Living at Al Raha Beach ',
+    date: '23 January 2026 ',
+    image: '/images/newsletter/hilton-newsltter.webp',
+    link: 'https://marketing.psinv.net/-temporary-slug-9175d608-9ba0-4f16-8de8-168a2de4741a?hs_preview=bfNTKDMN-351232865518',
+  },
+  {
     title: 'Aldar Roadshow - Saadiyat Island   ',
     date: '19 January 2026   ',
     image: '/images/newsletter/aldar-newsletter.webp',
