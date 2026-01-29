@@ -123,8 +123,39 @@ export default function UnitPageAI(props: any) {
                             content: `The status of this property is ${post.status}.`
                         }
                     ];
+
+                    const jsonLd = {
+                        '@context': 'https://schema.org',
+                        '@type': 'Product',
+                        name: post.marketingTitle || post.propertyname,
+                        image: images.length > 0 ? images : [],
+                        description: post.property_overview ? post.property_overview.replace(/<[^>]*>?/gm, "").slice(0, 160) : "",
+                        sku: post.refNo,
+                        mpn: post.code,
+                        brand: {
+                            '@type': 'Brand',
+                            name: post.developerName || "PSI Assets"
+                        },
+                        offers: {
+                            '@type': 'Offer',
+                            url: typeof window !== 'undefined' ? window.location.href : '',
+                            priceCurrency: 'AED',
+                            price: price,
+                            itemCondition: 'https://schema.org/NewCondition',
+                            availability: post.status === 'Available' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+                            seller: {
+                                '@type': 'Organization',
+                                name: 'Property Shop Investment'
+                            }
+                        }
+                    };
+
                     return (
                         <div key={index} >
+                            <script
+                                type="application/ld+json"
+                                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                            />
                             <div className="container mx-auto px-4 md:px-12 mt-6 md:mt-10">
                                 {/* Title Section */}
                                 <div className="flex flex-col md:flex-row justify-between items-start mb-8 md:mb-10 gap-6 md:gap-8">
