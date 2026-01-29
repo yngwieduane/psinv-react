@@ -5,6 +5,7 @@ import UnitsList from "./UnitsList";
 import UnitsSidebar from "./UnitsSidebar";
 import Search from "./Search";
 import UnitsSideSearch from "./UnitsSideSearch";
+import SidebarListProperty from "./SidebarListProperty";
 import { ChevronDown, Filter, LayoutGrid, MapIcon, X } from "lucide-react";
 import UnitsMapBox from "./UnitsMapBox";
 import { Dialog, DialogPanel } from '@headlessui/react'
@@ -67,7 +68,7 @@ export default function UnitsPageAI(props: any) {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-4 gap-4 mainuppper relative">
+                <div className="grid grid-cols-4 gap-4 ">
                     {viewMode === 'list' && (
                         <>
                             <div className="col-span-4 relative z-50">
@@ -78,11 +79,8 @@ export default function UnitsPageAI(props: any) {
                                     <UnitsList unitid={unitid} category={category} propertyId={propertyId} beds={beds} currentPage={currentPage} />
                                 </div>
                             </div>
-                            <div className="hidden md:flex mt-16 space-y-10 lg:mt-2 lg:space-y-5 mainsidebar">
-                                <div className="grid grid-cols-1">
-                                    <UnitsSideSearch onChange='' />
-                                    <button className="w-100 "></button>
-                                </div>
+                            <div className="hidden md:block">
+                                <SidebarListProperty />
                             </div>
                         </>
                     )}
