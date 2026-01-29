@@ -1,0 +1,38 @@
+.hubspot-feedback-form input,
+.hubspot-feedback-form textarea {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+    height: 40px;
+    padding: 9px 10px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #33475b;
+    background-color: #f5f8fa;
+    border: 1px solid #959494;
+}
+.hubspot-feedback-form .hs-form-checkbox input { 
+    width: auto;
+    height: auto;
+}
+.hs-form-field { margin-bottom: 20px;}
+
+.hubspot-feedback-form input[type="submit"] {
+  background-color: #2D2C41;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  width: auto; margin-top: 20px;
+}
+.hs_submit .actions {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+label.hs-form-checkbox-display {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+}
