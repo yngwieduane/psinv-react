@@ -23,12 +23,13 @@ import { useUser } from '@/context/userContext';
 import TableRow from './TableRow';
 import PaymentPlansAI from './PaymentPlansAI';
 import UnitModelsAI from './UnitModelsAI';
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import PhotoGallery from './PhotoGallery';
 
 
 const PropertyPage = (props: any) => {
     const router = useRouter();
+    const pathname = usePathname();
     const format = useFormatter();
     const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
     let HOdate, launchDate, completionDate, minprice, maxPrice, areaRangeMin, areaRangeMax;
@@ -351,36 +352,36 @@ const PropertyPage = (props: any) => {
                                             {props.data['zoneType'] ? (<TableRow title={t('property_types')} content={props.data['zoneType']} />) : ("")}
                                         </div>
                                     </div>
-
-                                    {/* Video Tour Placeholder */}
-                                    {video !== '' ? (
-                                        <FancyboxWrapper>
-                                            <a
-                                                title="Video"
-                                                type="button"
-                                                data-fancybox="video"
-                                                href={video}
-                                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
-                                            >
-                                                <div className="bg-black rounded-2xl overflow-hidden shadow-lg relative h-64 group cursor-pointer">
-                                                    <img src={imgFeatured} className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" />
-                                                    <div className="absolute inset-0 flex items-center justify-center">
-                                                        <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white pl-1 transition-transform group-hover:scale-110">
-                                                            <CirclePlay size={32} className="text-white" fill="currentColor" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="absolute bottom-4 left-4 text-white font-bold">{t('video_tour')}</div>
-                                                </div>
-                                            </a>
-                                        </FancyboxWrapper>
-                                    ) : ("")}
                                 </div>
                             </div>
                         </section>
 
+
+                        {/* Video Tour Placeholder */}
+                        {video !== '' ? (
+                            <FancyboxWrapper>
+                                <a
+                                    title="Video"
+                                    type="button"
+                                    data-fancybox="video"
+                                    href={video}
+                                    className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
+                                >
+                                    <div className="bg-black rounded-2xl overflow-hidden shadow-lg relative h-64 group cursor-pointer">
+                                        <img src={imgFeatured} className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" />
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white pl-1 transition-transform group-hover:scale-110">
+                                                <CirclePlay size={32} className="text-white" fill="currentColor" />
+                                            </div>
+                                        </div>
+                                        <div className="absolute bottom-4 left-4 text-white font-bold">{t('video_tour')}</div>
+                                    </div>
+                                </a>
+                            </FancyboxWrapper>
+                        ) : ("")}
                         {/* Gallery Grid */}
                         <section id="gallery" className="scroll-mt-40">
-                            <PhotoGallery data={props.data} limit={5} />
+                            <PhotoGallery data={props.data} limit={5} viewAllLink={`${pathname}/photo-gallery`} />
                         </section>
 
                         {/* Payment Plan (New Rich Feature) */}
@@ -396,6 +397,7 @@ const PropertyPage = (props: any) => {
                             <UnitModelsAI
                                 data={fpGroup}
                                 propname={props.data["propertyName"]}
+                                viewAllLink={`${pathname}/floor-plan`}
                             />
                         </div>) : ("")}
 
@@ -478,7 +480,7 @@ const PropertyPage = (props: any) => {
                         </div>
 
                         <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
-                            <Faqs data={props.data} propname={props.data["propertyName"]} />
+                            <Faqs data={props.data} propname={props.data["propertyName"]} viewAllLink={`${pathname}/faqs`} />
                         </div>
 
                     </div>
