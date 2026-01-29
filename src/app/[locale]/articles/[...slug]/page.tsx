@@ -147,8 +147,29 @@ export default async function BlogSingle({ params }: PageProps) {
     };
     const youtubeId = article.youtubeUrl ? getYouTubeId(article.youtubeUrl) : null;
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: title,
+        image: article.image ? [article.image] : [],
+        datePublished: article.createdAt ? new Date(article.createdAt).toISOString() : new Date().toISOString(),
+        dateModified: article.createdAt ? new Date(article.createdAt).toISOString() : new Date().toISOString(),
+        author: [{
+            '@type': 'Person',
+            name: article.author || "Property Shop Investment LLC",
+            url: "https://psinv.net"
+        }],
+        description: article.translations[locale].summary,
+        articleBody: bodyRaw.replace(/<[^>]*>?/gm, "")
+    };
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+
             <div className="pt-28 md:pt-24 border-b border-gray-100">
                 <div className="container mx-auto px-4 md:px-12 py-4">
                     <Breadcrumb
