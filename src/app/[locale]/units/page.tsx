@@ -1,6 +1,6 @@
 import UnitsPage from "./_components/UnitsPage";
 import UnitsPageAI from "./_components/UnitsPageAI";
-
+import type { Metadata } from "next";
 
 type Props = {
   searchParams?: Promise<{
