@@ -156,6 +156,7 @@ const nextConfig: NextConfig = {
         destination: '/en/project/share-address',
         permanent: true,
       },
+      
     ]
   },
   reactStrictMode: true,

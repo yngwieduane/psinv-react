@@ -20,6 +20,7 @@ export default function ConditionalNavigation() {
       '/emirati-hub',
       '/conrad-abu-dhabi',
       '/jbr-lead-registration-dubai',
+      '/share-your-feedback',
     ].some((path) => pathname.includes(path));
 
   if (isNoNavPage) return null;
