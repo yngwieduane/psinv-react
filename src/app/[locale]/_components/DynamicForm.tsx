@@ -9,6 +9,7 @@ import "react-phone-number-input/style.css";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { config } from "process";
+import { insertHubspotLead } from "@/utils/crmApiHelpers";
 
 // Define Schema (Only `propertyListing` Now)
 const propertyListingSchema = z.object({
@@ -17,9 +18,6 @@ const propertyListingSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
   phone: z.string().min(7, { message: "Invalid phone number" }),
   propertyPurpose: z.string().min(1, { message: "Property purpose is required" }),
-  agreement1: z.boolean().optional(),
-  agreement2: z.boolean().optional(),
-  agreement3: z.boolean().optional(),
 });
 
 type PropertyListingFormData = z.infer<typeof propertyListingSchema>;
@@ -58,24 +56,20 @@ const getCityConfig = (cityName: string) => {
   if (['Dubai'].includes(cityName)) {
     return CITY_CONFIG['Dubai'];
   }
-  return CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
+  return CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT']; 
 }
 
 const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
   const locale = useLocale();
   const isRTL = locale.toLowerCase().startsWith("ar");
   const t = useTranslations("ListPropertyForm");
-  const agreements_t = useTranslations("Common_Form_Agreements");
 
   const propertyListingSchema = z.object({
     firstName: z.string().min(1, { message: t("errors.firstNameRequired") }),
     lastName: z.string().min(1, { message: t("errors.lastNameRequired") }),
     email: z.string().email({ message: t("errors.invalidEmail") }),
     phone: z.string().min(7, { message: t("errors.invalidPhone") }),
-    propertyPurpose: z.string().min(1, { message: t("errors.choosePurpose") }),
-    agreement1: z.boolean().optional(),
-    agreement2: z.boolean().optional(),
-    agreement3: z.boolean().optional(),
+    propertyPurpose: z.string().min(1, { message: t("errors.choosePurpose") }),    
   });
 
   const {
@@ -86,9 +80,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
   } = useForm<PropertyListingFormData>({
     resolver: zodResolver(propertyListingSchema),
     defaultValues: {
-      agreement1: true,
-      agreement2: true,
-      agreement3: true
+      
     }
   });
 
@@ -100,6 +92,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
     setIsSubmitting(true);
     const urlParams = new URLSearchParams(window.location.search);
     const source = urlParams.get("utm_source") || "default";
+    let campaign = urlParams.get('utm_campaign') || urlParams.get('?utm_campaign') || '';
     const currentUrl = window.location.href;
     let propertyCampaignId = "";
     const mediaMappings: Record<string, { mediaType: string; mediaName: string; methodOfContact: string }> = {
@@ -109,16 +102,62 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
       default: { mediaType: "129475", mediaName: "165233", methodOfContact: "115747" },
     };
 
-    const { mediaType, mediaName, methodOfContact } = mediaMappings[source.toLowerCase()] || mediaMappings.default;
+    let { mediaType, mediaName, methodOfContact } = mediaMappings[source.toLowerCase()] || mediaMappings.default;
 
     const ReferredToID = cityConfig.referredTo ?? '3458';
     const ReferredByID = cityConfig.referredBy ?? '3458';
     const ActivityAssignedTo = cityConfig.assignedTo ?? '3458';
 
-    const remarks = `
-      Additional consent 1: ${data.agreement1 ? "Yes" : "No"} </br>
-      Additional consent 2: ${data.agreement2 ? "Yes" : "No"} </br>
-      Additional consent 3: ${data.agreement3 ? "Yes" : "No"} </br>
+    switch (source) {
+      case 'HubspotEmail':
+      case 'HubSpotEmail':
+      case 'hubspotemail':
+      case 'hubspotEmail':
+      case 'hs_email':
+      case 'Hubspot':
+      case 'hubspot':
+          mediaType = "63906";
+          mediaName = "63907";
+          propertyCampaignId = "";
+          methodOfContact = methodOfContact;
+          break;
+      case "newsletter":
+          mediaType = "166277";
+          mediaName = "166071";
+          propertyCampaignId = "";
+          methodOfContact = methodOfContact;
+          break;
+      case "sms":
+          mediaType = "129474";
+          mediaName = "165366";
+          methodOfContact = methodOfContact;
+          break;
+      case "Google":
+      case "google":
+          mediaType = "165269";
+          mediaName = "128455";
+          propertyCampaignId = "";
+          methodOfContact = methodOfContact;
+          break;
+      default:
+          mediaType = "129475";
+          mediaName = "165233";
+          methodOfContact = "115747";
+          break;
+  }
+
+  switch (campaign) {
+    case 'Luxury_projects_Campaign':
+        propertyCampaignId = "2178";
+        break; 
+    default:
+        propertyCampaignId = propertyCampaignId;
+        break;
+  }
+
+  const isHubspotMedia = mediaName === '63907';
+
+    const remarks = `      
       Client Name: ${data.firstName} ${data.lastName} </br>
       Client Email: ${data.email} </br>
       Client Phone: ${data.phone} </br>
@@ -184,11 +223,22 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
     const apiUrl = cityConfig.apiUrl;
 
     try {
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formDataToSend),
-      });
+      if (isHubspotMedia) {
+        const hubspotResponse = await insertHubspotLead(formDataToSend);
+        
+        if (!hubspotResponse.ok) {
+            const text = await hubspotResponse.text();
+            throw new Error(`HubSpot API error: ${hubspotResponse.status} - ${text}`);
+        }
+
+      }
+      else{
+        await fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formDataToSend),
+        });
+      }
 
       const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
         method: 'POST',
@@ -248,13 +298,12 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
           filedata: ""
         })
       });
+      
 
-      console.log("Response Status:", response.status);
-
-      if (!response.ok) {
+      if (!mailRes.ok) {
         let errorMessage = "Error submitting the form.";
         try {
-          const errorData = await response.json();
+          const errorData = await mailRes.json();
           errorMessage = errorData.message || errorMessage;
         } catch (err) {
           console.warn("Response is not JSON format.");
@@ -318,21 +367,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
       <p className="text-[10px] text-gray-700 mt-2">
         {t("clickingTerms.part1")} <Link title="terms" href={`${locale}/terms`} className="text-gray-900 underline hover:text-gray-700">{t("clickingTerms.part2")}</Link> {t("clickingTerms.part3")}
       </p>
-
-      <div className="space-y-2 mt-4 text-[10px] text-gray-700">
-        <label className="flex items-start gap-2">
-          <input type="checkbox" {...register("agreement1")} className="mt-0.5 accent-secondary w-4 h-4 border-gray-300 rounded defaultChecked" />
-          <span>{agreements_t("agreement1")}</span>
-        </label>
-        <label className="flex items-start gap-2">
-          <input type="checkbox" {...register("agreement2")} className="mt-0.5 accent-secondary w-4 h-4 border-gray-300 rounded defaultChecked" />
-          <span>{agreements_t("agreement2")}</span>
-        </label>
-        <label className="flex items-start gap-2">
-          <input type="checkbox" {...register("agreement3")} className="mt-0.5 accent-secondary w-4 h-4 border-gray-300 rounded defaultChecked" />
-          <span>{agreements_t("agreement3")}</span>
-        </label>
-      </div>
+      
     </form>
   );
 };
