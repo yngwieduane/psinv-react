@@ -108,7 +108,7 @@ const NearbysWithMap = ({
             {loading && <p className="text-sm text-gray-500 mt-1">Loading...</p>}
             {results.length > 0 && (
                 <>
-                    <h2 className="text-3xl font-bold text-primary mb-2">
+                    <h2 className="text-3xl font-bold text-[#111954] relative inline-block">
                         Nearbys
                     </h2>
                     <h2 className="text-xl text-gray-500 mb-8">{propname}</h2>

@@ -7,11 +7,10 @@ import { ChevronUpDownIcon } from '@heroicons/react/16/solid'
 import { CheckIcon } from '@heroicons/react/20/solid'
 import Sticky from 'react-sticky-el';
 import { RotateCcw } from 'lucide-react';
+import MultiRangeSlider from './MultiRangeSlider';
 
 const minPriceDefault = 1000;
-const maxPriceDefault = 100000000;
-
-
+const maxPriceDefault = 40000000;
 
 export default function UnitsSideSearch({ onChange }: { onChange: any }) {
   const router = useRouter();
@@ -24,7 +23,8 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
   ]);
   const [beds, setBeds] = useState<number | null>(null);
   const [baths, setBaths] = useState<number | null>(null);
-  const [propertyType, setPropertyType] = useState<string | null>(null);
+  // Changed to array for multi-select
+  const [selectedPropertyTypes, setSelectedPropertyTypes] = useState<string[]>([]);
   const [propertyTypesList, setPropertyTypesList] = useState<any[]>([]);
   const [areaRange, setAreaRange] = useState<[number, number]>([0, 50000]);
 
@@ -34,11 +34,40 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
       .then((data) => {
         if (Array.isArray(data)) {
           console.log('Fetched property types:', data);
-          // Store entire object or at least id and name
-          const types = data.map((item: any) => ({ lookupId: item.lookupId, lookupName: item.lookupName }));
-          // simple sort by name
-          types.sort((a, b) => a.lookupName.localeCompare(b.lookupName));
-          setPropertyTypesList(types);
+
+          const RESIDENTIAL_TYPES = [
+            "Apartment", "Villa", "Townhouse", "Studio",
+            "Twin House", "Penthouse"
+          ];
+
+          const COMMERCIAL_TYPES = [
+            "Office", "Warehouse", "Retail", "Shop", "Plot",
+          ];
+
+          const residential: any[] = [];
+          const commercial: any[] = [];
+
+          data.forEach((item: any) => {
+            const name = item.lookupName;
+            const simplifiedName = { lookupId: item.lookupId, lookupName: name };
+
+            if (RESIDENTIAL_TYPES.includes(name)) {
+              residential.push(simplifiedName);
+            } else if (COMMERCIAL_TYPES.includes(name)) {
+              commercial.push(simplifiedName);
+            }
+          });
+
+          // Sort within groups
+          residential.sort((a, b) => RESIDENTIAL_TYPES.indexOf(a.lookupName) - RESIDENTIAL_TYPES.indexOf(b.lookupName));
+          commercial.sort((a, b) => COMMERCIAL_TYPES.indexOf(a.lookupName) - COMMERCIAL_TYPES.indexOf(b.lookupName));
+
+          const grouped = [
+            { groupName: "Residential", items: residential },
+            { groupName: "Commercial", items: commercial }
+          ];
+
+          setPropertyTypesList(grouped);
         }
       })
       .catch((err) => console.error('Error fetching property types:', err));
@@ -55,7 +84,14 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
 
     setBeds(searchParams.get('beds') ? Number(searchParams.get('beds')) : null);
     setBaths(searchParams.get('baths') ? Number(searchParams.get('baths')) : null);
-    setPropertyType(searchParams.get('propertyType') || null);
+
+    // Parse propertyType from URL (comma separated)
+    const typeParam = searchParams.get('propertyType');
+    if (typeParam) {
+      setSelectedPropertyTypes(typeParam.split(','));
+    } else {
+      setSelectedPropertyTypes([]);
+    }
   }, [searchParams]);
 
   const updateQuery = (key: string, value: string | null) => {
@@ -68,6 +104,15 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
     }
     console.log(key + " = " + value);
     router.push(`${pathname}?${params.toString()}`);
+  };
+
+  const updatePropertyTypes = (newTypes: string[]) => {
+    setSelectedPropertyTypes(newTypes);
+    if (newTypes.length === 0) {
+      updateQuery('propertyType', null);
+    } else {
+      updateQuery('propertyType', newTypes.join(','));
+    }
   };
 
   const handleReset = () => {
@@ -87,232 +132,220 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
     setAreaRange([0, 50000]);
     setBeds(null);
     setBaths(null);
-    setPropertyType(null);
+    setSelectedPropertyTypes([]);
     console.log("reset");
     onChange('true')
   };
 
-  // Helper to find name by ID
-  const getSelectedPropertyTypeName = (id: string | null) => {
-    if (!id) return 'Any';
-    const found = propertyTypesList.find((item) => String(item.lookupId) === String(id));
-    return found ? found.lookupName : id;
+  const togglePropertyType = (id: string) => {
+    const current = new Set(selectedPropertyTypes);
+    if (current.has(id)) {
+      current.delete(id);
+    } else {
+      current.add(id);
+    }
+    updatePropertyTypes(Array.from(current));
   };
+
 
   return (
     <div className="w-full block">
-      <Sticky stickyClassName="" boundaryElement=".mainsidebar" hideOnBoundaryHit={false}>
-        <div className="p-6 grid grid-cols-1 backdrop-blur-xl bg-white/70 border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl space-y-8 transition-all duration-300">
-          <div className='w-full'>
-            <div className="flex justify-between items-center border-b border-gray-100 pb-4">
-              <p className="font-bold text-xl text-[#353455]">Filters</p>
-              <button onClick={handleReset} className="text-gray-400 text-sm hover:text-secondary flex items-center gap-1 transition-colors">
-                <RotateCcw size={14} /> Reset
-              </button>
-            </div>
-          </div>
-          {/* Price Filter */}
-          <div>
-            <Popover className="relative">
-              <p className="block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">Price Range</p>
-              <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white/50 border border-gray-200 py-3 pr-2 pl-4 text-left text-gray-700 outline-none focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all shadow-sm hover:bg-white/80">
-                <span className="col-start-1 row-start-1 truncate pr-6 font-medium">
-                  {priceRange[0] === minPriceDefault && priceRange[1] === maxPriceDefault
-                    ? 'Any'
-                    : `${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()} AED`}
-                </span>
-                <ChevronUpDownIcon
-                  aria-hidden="true"
-                  className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                />
-              </PopoverButton>
-              <PopoverPanel
-                transition
-                className="absolute z-50 mt-2 w-full overflow-hidden rounded-xl bg-white/95 backdrop-blur-xl p-4 text-base shadow-[0_4px_20px_rgb(0,0,0,0.08)] ring-1 ring-black/5 focus:outline-hidden data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in sm:text-sm"
-              >
-                <div className="flex flex-col gap-4">
-                  <div>
-                    <label htmlFor="minPrice" className="block text-xs font-medium text-gray-500 mb-1">
-                      Minimum Price
-                    </label>
-                    <input
-                      type="number"
-                      id="minPrice"
-                      className="w-full rounded-lg border-gray-200 bg-white/50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
-                      placeholder="Min Price"
-                      value={priceRange[0]}
-                      onChange={(e) => {
-                        const val = Number(e.target.value);
-                        if (val <= priceRange[1]) {
-                          setPriceRange([val, priceRange[1]]);
-                        }
-                      }}
-                      onBlur={() => updateQuery('minPrice', String(priceRange[0]))}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="maxPrice" className="block text-xs font-medium text-gray-500 mb-1">
-                      Maximum Price
-                    </label>
-                    <input
-                      type="number"
-                      id="maxPrice"
-                      className="w-full rounded-lg border-gray-200 bg-white/50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
-                      placeholder="Max Price"
-                      value={priceRange[1]}
-                      onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
-                      onBlur={() => updateQuery('maxPrice', String(priceRange[1]))}
-                    />
-                  </div>
-                </div>
-              </PopoverPanel>
-            </Popover>
-          </div>
-          {/* Floor Area Filter */}
-          <div>
-            <Popover className="relative">
-              <p className="block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">Floor Area (sqft)</p>
-              <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white/50 border border-gray-200 py-3 pr-2 pl-4 text-left text-gray-700 outline-none focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all shadow-sm hover:bg-white/80">
-                <span className="col-start-1 row-start-1 truncate pr-6 font-medium">
-                  {areaRange[0] === 0 && areaRange[1] === 50000
-                    ? 'Any'
-                    : `${areaRange[0].toLocaleString()} - ${areaRange[1].toLocaleString()} sqft`}
-                </span>
-                <ChevronUpDownIcon
-                  aria-hidden="true"
-                  className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                />
-              </PopoverButton>
-              <PopoverPanel
-                transition
-                className="absolute z-50 mt-2 w-full overflow-hidden rounded-xl bg-white/95 backdrop-blur-xl p-4 text-base shadow-[0_4px_20px_rgb(0,0,0,0.08)] ring-1 ring-black/5 focus:outline-hidden data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in sm:text-sm"
-              >
-                <div className="flex flex-col gap-4">
-                  <div>
-                    <label htmlFor="minArea" className="block text-xs font-medium text-gray-500 mb-1">
-                      Min Size
-                    </label>
-                    <input
-                      type="number"
-                      id="minArea"
-                      className="w-full rounded-lg border-gray-200 bg-white/50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
-                      placeholder="Min Size"
-                      value={areaRange[0]}
-                      onChange={(e) => {
-                        const val = Number(e.target.value);
-                        if (val <= areaRange[1]) {
-                          setAreaRange([val, areaRange[1]]);
-                        }
-                      }}
-                      onBlur={() => updateQuery('minArea', String(areaRange[0]))}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="maxArea" className="block text-xs font-medium text-gray-500 mb-1">
-                      Max Size
-                    </label>
-                    <input
-                      type="number"
-                      id="maxArea"
-                      className="w-full rounded-lg border-gray-200 bg-white/50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
-                      placeholder="Max Size"
-                      value={areaRange[1]}
-                      onChange={(e) => setAreaRange([areaRange[0], Number(e.target.value)])}
-                      onBlur={() => updateQuery('maxArea', String(areaRange[1]))}
-                    />
-                  </div>
-                </div>
-              </PopoverPanel>
-            </Popover>
-          </div>
-          {/* Beds Filter */}
-          <div>
-            <Listbox value={beds} onChange={(e: any) => {
-              let val = e;
-              setBeds(val ? Number(val) : null);
-              updateQuery('beds', val ? val : null);
-            }}>
-              <Label className="block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">Bedrooms</Label>
-              <div className="relative mt-2">
-                <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white/50 border border-gray-200 py-3 pr-2 pl-4 text-left text-gray-700 outline-none focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all shadow-sm hover:bg-white/80">
-                  <span className="col-start-1 row-start-1 truncate pr-6 font-medium">{beds || 'Any'}</span>
-                  <ChevronUpDownIcon
-                    aria-hidden="true"
-                    className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                  />
-                </ListboxButton>
-
-                <ListboxOptions
-                  transition
-                  className="absolute z-50 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-white/95 backdrop-blur-xl py-2 text-base shadow-[0_4px_20px_rgb(0,0,0,0.08)] ring-1 ring-black/5 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm"
-                >
-                  <ListboxOption
-                    value={null}
-                    className="group relative cursor-pointer py-2.5 pr-9 pl-4 text-gray-700 select-none data-focus:bg-[#353455]/5 data-focus:text-[#353455]"
-                  >
-                    <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
-                  </ListboxOption>
-                  {[1, 2, 3, 4, 5].map((person: any) => (
-                    <ListboxOption
-                      key={person}
-                      value={person}
-                      className="group relative cursor-pointer py-2.5 pr-9 pl-4 text-gray-700 select-none data-focus:bg-[#353455]/5 data-focus:text-[#353455]"
-                    >
-                      <span className="block truncate font-normal group-data-selected:font-semibold">{person}</span>
-                      <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
-                        <CheckIcon aria-hidden="true" className="size-5" />
-                      </span>
-                    </ListboxOption>
-                  ))}
-                </ListboxOptions>
-              </div>
-            </Listbox>
-          </div>
-
-          {/* Property Type */}
-          <div>
-            <Listbox value={propertyType} onChange={(e: any) => {
-              let val = e;
-              setPropertyType(val || null);
-              updateQuery('propertyType', val || null);
-            }}>
-              <Label className="block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">Property Type</Label>
-              <div className="relative mt-2">
-                <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white/50 border border-gray-200 py-3 pr-2 pl-4 text-left text-gray-700 outline-none focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all shadow-sm hover:bg-white/80">
-                  <span className="col-start-1 row-start-1 truncate pr-6 font-medium">{getSelectedPropertyTypeName(propertyType)}</span>
-                  <ChevronUpDownIcon
-                    aria-hidden="true"
-                    className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                  />
-                </ListboxButton>
-                <ListboxOptions
-                  transition
-                  className="absolute z-50 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-white/95 backdrop-blur-xl py-2 text-base shadow-[0_4px_20px_rgb(0,0,0,0.08)] ring-1 ring-black/5 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm"
-                >
-                  <ListboxOption
-                    value={null}
-                    className="group relative cursor-pointer py-2.5 pr-9 pl-4 text-gray-700 select-none data-focus:bg-[#353455]/5 data-focus:text-[#353455]"
-                  >
-                    <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
-                  </ListboxOption>
-                  {propertyTypesList.map((person: any) => (
-                    <ListboxOption
-                      key={person.lookupId}
-                      value={person.lookupId}
-                      className="group relative cursor-pointer py-2.5 pr-9 pl-4 text-gray-700 select-none data-focus:bg-[#353455]/5 data-focus:text-[#353455]"
-                    >
-                      <span className="block truncate font-normal group-data-selected:font-semibold">{person.lookupName}</span>
-                      <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
-                        <CheckIcon aria-hidden="true" className="size-5" />
-                      </span>
-                    </ListboxOption>
-                  ))}
-                </ListboxOptions>
-              </div>
-            </Listbox>
+      <div className="p-6 grid grid-cols-1 backdrop-blur-xl bg-white/70 border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl space-y-8 transition-all duration-300">
+        <div className='w-full'>
+          <div className="flex justify-between items-center border-b border-gray-100 pb-4">
+            <p className="font-bold text-xl text-[#353455]">Filters</p>
+            <button onClick={handleReset} className="text-gray-400 text-sm hover:text-secondary flex items-center gap-1 transition-colors">
+              <RotateCcw size={14} /> Reset
+            </button>
           </div>
         </div>
-      </Sticky>
+        {/* Beds Filter */}
+        <div className="space-y-4">
+          <label className="block text-sm font-bold uppercase tracking-wider text-gray-500">Bedrooms</label>
+          <div className="space-y-2">
+
+            {/* Any Option */}
+            <label className="flex items-center gap-3 cursor-pointer group">
+              <div className={`
+                  w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200
+                  ${beds === null ? 'border-[#353455]' : 'border-gray-300 group-hover:border-[#353455]'}
+               `}>
+                {beds === null && <div className="w-2.5 h-2.5 rounded-full bg-[#353455]" />}
+              </div>
+              <input
+                type="radio"
+                name="beds"
+                className="hidden"
+                checked={beds === null}
+                onChange={() => {
+                  setBeds(null);
+                  updateQuery('beds', null);
+                }}
+              />
+              <span className={`text-sm transition-colors ${beds === null ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455]'}`}>
+                Any
+              </span>
+            </label>
+
+            {[1, 2, 3, 4, 5].map((bedCount) => (
+              <label key={bedCount} className="flex items-center gap-3 cursor-pointer group">
+                <div className={`
+                        w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200
+                        ${beds === bedCount ? 'border-[#353455]' : 'border-gray-300 group-hover:border-[#353455]'}
+                    `}>
+                  {beds === bedCount && <div className="w-2.5 h-2.5 rounded-full bg-[#353455]" />}
+                </div>
+                <input
+                  type="radio"
+                  name="beds"
+                  className="hidden"
+                  checked={beds === bedCount}
+                  onChange={() => {
+                    setBeds(bedCount);
+                    updateQuery('beds', String(bedCount));
+                  }}
+                />
+                <span className={`text-sm transition-colors ${beds === bedCount ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455]'}`}>
+                  {bedCount} {bedCount === 1 ? 'Bedroom' : 'Bedrooms'}
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div className="border-t border-gray-100" />
+
+        {/* Property Type Groups (Radio Buttons) */}
+        <div className="space-y-4">
+          <label className="block text-sm font-bold uppercase tracking-wider text-gray-500">Property Types</label>
+
+          {/* Any Option */}
+          <label className="flex items-center gap-3 cursor-pointer group">
+            <div className={`
+              w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200
+              ${selectedPropertyTypes.length === 0 ? 'border-[#353455]' : 'border-gray-300 group-hover:border-[#353455]'}
+            `}>
+              {selectedPropertyTypes.length === 0 && <div className="w-2.5 h-2.5 rounded-full bg-[#353455]" />}
+            </div>
+            <input
+              type="radio"
+              name="propertyType"
+              className="hidden"
+              checked={selectedPropertyTypes.length === 0}
+              onChange={() => {
+                setSelectedPropertyTypes([]);
+                updateQuery('propertyType', null);
+              }}
+            />
+            <span className={`text-sm transition-colors ${selectedPropertyTypes.length === 0 ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455]'}`}>
+              Any
+            </span>
+          </label>
+
+          {propertyTypesList.map((group) => (
+            <div key={group.groupName} className="space-y-3">
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{group.groupName}</p>
+              <div className="space-y-2">
+                {group.items.map((type: any) => {
+                  const isSelected = selectedPropertyTypes.includes(String(type.lookupId));
+                  return (
+                    <label key={type.lookupId} className="flex items-center gap-3 cursor-pointer group">
+                      <div className={`
+                        w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200
+                        ${isSelected ? 'border-[#353455]' : 'border-gray-300 group-hover:border-[#353455]'}
+                      `}>
+                        {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#353455]" />}
+                      </div>
+                      <input
+                        type="radio"
+                        name="propertyType"
+                        className="hidden"
+                        checked={isSelected}
+                        onChange={() => {
+                          const newType = String(type.lookupId);
+                          setSelectedPropertyTypes([newType]);
+                          updateQuery('propertyType', newType);
+                        }}
+                      />
+                      <span className={`text-sm transition-colors ${isSelected ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455]'}`}>
+                        {type.lookupName}
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="border-t border-gray-100" />
+
+        {/* Price Filter */}
+        <div>
+          <div className="flex justify-between items-center mb-6">
+            <p className="block text-sm font-bold uppercase tracking-wider text-gray-500">Price</p>
+            <button
+              onClick={() => {
+                setPriceRange([minPriceDefault, maxPriceDefault]);
+                updateQuery('minPrice', null);
+                updateQuery('maxPrice', null);
+              }}
+              className="text-sm font-medium text-[#005a9c] hover:underline"
+            >
+              Reset
+            </button>
+          </div>
+          <MultiRangeSlider
+            min={minPriceDefault}
+            max={maxPriceDefault}
+            minVal={priceRange[0]}
+            maxVal={priceRange[1]}
+            onChange={({ min, max }: { min: number; max: number }) => setPriceRange([min, max])}
+            onAfterChange={({ min, max }: { min: number; max: number }) => {
+              const params = new URLSearchParams(searchParams.toString());
+              params.set('minPrice', String(min));
+              params.set('maxPrice', String(max));
+              router.push(`${pathname}?${params.toString()}`);
+            }}
+          />
+        </div>
+
+        <div className="border-t border-gray-100" />
+
+        {/* Floor Area Filter */}
+        <div>
+          {/* Floor Area Filter */}
+          <div>
+            <div className="flex justify-between items-center mb-6">
+              <p className="block text-sm font-bold uppercase tracking-wider text-gray-500">Floor Area (sqft)</p>
+              <button
+                onClick={() => {
+                  setAreaRange([0, 50000]);
+                  updateQuery('minArea', null);
+                  updateQuery('maxArea', null);
+                }}
+                className="text-sm font-medium text-[#005a9c] hover:underline"
+              >
+                Reset
+              </button>
+            </div>
+            <MultiRangeSlider
+              min={0}
+              max={50000}
+              minVal={areaRange[0]}
+              maxVal={areaRange[1]}
+              onChange={({ min, max }: { min: number; max: number }) => setAreaRange([min, max])}
+              onAfterChange={({ min, max }: { min: number; max: number }) => {
+                const params = new URLSearchParams(searchParams.toString());
+                params.set('minArea', String(min));
+                params.set('maxArea', String(max));
+                router.push(`${pathname}?${params.toString()}`);
+              }}
+            />
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }

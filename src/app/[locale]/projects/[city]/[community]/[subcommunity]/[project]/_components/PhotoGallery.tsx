@@ -6,7 +6,7 @@ import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import { ArrowRight } from 'lucide-react';
 import { useRouter } from "next/navigation";
 
-const PhotoGallery = ({ data, limit }: { data: any, limit?: number }) => {
+const PhotoGallery = ({ data, limit, viewAllLink }: { data: any, limit?: number, viewAllLink?: string }) => {
     const t = useTranslations('ProjectPage');
     const router = useRouter();
 
@@ -48,7 +48,15 @@ const PhotoGallery = ({ data, limit }: { data: any, limit?: number }) => {
             <div className="container mx-auto pt-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
                     <div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">{t('gallery')}</h2>
+                        <div className="flex items-center gap-4 mb-2">
+                            {viewAllLink ? (
+                                <button onClick={() => router.push(viewAllLink)} className="flex items-center gap-1 text-sm font-bold text-secondary hover:text-primary transition-colors">
+                                    <h2 className="text-3xl font-bold text-[#111954] relative inline-block">{t('gallery')}</h2>
+                                </button>
+                            ) : (
+                                <h2 className="text-3xl font-bold text-[#111954] relative inline-block">{t('gallery')}</h2>
+                            )}
+                        </div>
                         <h2 className="text-xl text-gray-500">{data["propertyName"]}</h2>
                     </div>
 

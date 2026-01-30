@@ -74,13 +74,13 @@ export default function UnitsPageAI(props: any) {
                             <div className="col-span-4 relative z-50">
                                 <Search placeholder="Search by Reference ID" />
                             </div>
+                            <div className="hidden md:block">
+                                <UnitsSideSearch onChange='' />
+                            </div>
                             <div className="col-span-4 md:col-span-3">
                                 <div className="mt-0 space-y-5 lg:mt-2 lg:space-y-5">
                                     <UnitsList unitid={unitid} category={category} propertyId={propertyId} beds={beds} currentPage={currentPage} />
                                 </div>
-                            </div>
-                            <div className="hidden md:block">
-                                <SidebarListProperty />
                             </div>
                         </>
                     )}
@@ -143,43 +143,6 @@ export default function UnitsPageAI(props: any) {
                 </div>
             )}
 
-            {/* Mobile Filter Modal */}
-            <Dialog
-                open={mobileFiltersOpen}
-                as="div"
-                className="relative z-[100] focus:outline-none"
-                onClose={setMobileFiltersOpen}
-                transition
-            >
-                <div className="fixed inset-0 bg-black/25 backdrop-blur-sm transition-opacity duration-300 ease-out data-[closed]:opacity-0" />
-
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel
-                            transition
-                            className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all duration-300 ease-out data-[closed]:scale-95 data-[closed]:opacity-0"
-                        >
-                            <div className="flex justify-between items-center mb-4 border-b border-gray-100 pb-4">
-                                <h3 className="text-lg font-bold text-[#353455]">Filters</h3>
-                                <button onClick={() => setMobileFiltersOpen(false)} className="p-1 rounded-full hover:bg-gray-100 transition-colors">
-                                    <X size={20} className="text-gray-500" />
-                                </button>
-                            </div>
-                            <div className="max-h-[70vh] overflow-y-auto custom-scrollbar no-sticky-impact">
-                                <UnitsSideSearch onChange={() => { }} />
-                            </div>
-                            <div className="mt-6 pt-4 border-t border-gray-100">
-                                <button
-                                    onClick={() => setMobileFiltersOpen(false)}
-                                    className="w-full py-3 bg-primary text-gray-900 rounded-xl font-bold shadow-lg shadow-primary/20 hover:shadow-xl transition-all"
-                                >
-                                    Show Results
-                                </button>
-                            </div>
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
         </div >
     );
 }

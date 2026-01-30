@@ -163,7 +163,7 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
                     Property Name {isReset}
                 </label>
             )}
-            <div className="mt-2 grid grid-cols-1">
+            <div className=" grid grid-cols-1">
                 <input
                     type="text"
                     id="propertyName"

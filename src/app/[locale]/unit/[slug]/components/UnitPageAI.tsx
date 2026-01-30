@@ -19,7 +19,7 @@ import MortgageCalculator from "@/app/[locale]/mortgage-calculator/MortgageCalcu
 import AgentDetails from "./AgentDetails";
 import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
 import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
-import { Bath, BedDouble, CheckCircle2, Heart, Link2, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
+import { Bath, BedDouble, CheckCircle2, Heart, Link2, Mail, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
 import { useUser } from "@/context/userContext";
 import AccordionTabs from "@/app/[locale]/_components/tools/AccordionTabs";
 import { Link } from "@/i18n/navigation";
@@ -123,8 +123,39 @@ export default function UnitPageAI(props: any) {
                             content: `The status of this property is ${post.status}.`
                         }
                     ];
+
+                    const jsonLd = {
+                        '@context': 'https://schema.org',
+                        '@type': 'Product',
+                        name: post.marketingTitle || post.propertyname,
+                        image: images.length > 0 ? images : [],
+                        description: post.property_overview ? post.property_overview.replace(/<[^>]*>?/gm, "").slice(0, 160) : "",
+                        sku: post.refNo,
+                        mpn: post.code,
+                        brand: {
+                            '@type': 'Brand',
+                            name: post.developerName || "PSI Assets"
+                        },
+                        offers: {
+                            '@type': 'Offer',
+                            url: typeof window !== 'undefined' ? window.location.href : '',
+                            priceCurrency: 'AED',
+                            price: price,
+                            itemCondition: 'https://schema.org/NewCondition',
+                            availability: post.status === 'Available' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+                            seller: {
+                                '@type': 'Organization',
+                                name: 'Property Shop Investment'
+                            }
+                        }
+                    };
+
                     return (
                         <div key={index} >
+                            <script
+                                type="application/ld+json"
+                                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                            />
                             <div className="container mx-auto px-4 md:px-12 mt-6 md:mt-10">
                                 {/* Title Section */}
                                 <div className="flex flex-col md:flex-row justify-between items-start mb-8 md:mb-10 gap-6 md:gap-8">
@@ -325,16 +356,16 @@ export default function UnitPageAI(props: any) {
                                                 </div>
 
                                                 <div className="grid grid-cols-2 gap-4 mb-8">
-                                                    <Link href={`tel:${callPhone}`} className="cursor-pointer w-full border bg-indigo-950 border-indigo-950 text-white hover:bg-indigo-900 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
+                                                    <Link href={`tel:${callPhone}`} className="cursor-pointer w-full border bg-gray-200 border-gray-200 text-black hover:bg-gray-300 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
                                                         <Phone size={22} /> Call
                                                     </Link>
                                                     <button
                                                         type="button"
                                                         onClick={drawerHandler('inquire', props.data)}
                                                         name="inquire"
-                                                        className="cursor-pointer w-full border bg-indigo-950 border-indigo-950 text-white hover:bg-indigo-900 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3"
+                                                        className="cursor-pointer w-full border bg-gray-200 border-gray-200 text-black hover:bg-gray-300 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3"
                                                     >
-                                                        Inquire
+                                                        <Mail size={22} /> Inquire
                                                     </button>
                                                     <Link href={`https://wa.me/${whatsappPhone}?text=I%20am%20Interested%20 in this reference number: ${props.refNo}`} className="col-span-2 cursor-pointer w-full bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
                                                         <MessageCircle size={22} /> WhatsApp

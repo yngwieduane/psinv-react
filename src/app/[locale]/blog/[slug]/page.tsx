@@ -49,8 +49,29 @@ export default async function BlogPostPage({ params }: PageProps) {
     const summary = post.summary || "";
     const contentHtml = (post.contentHtml || "").replace(/&nbsp;/g, ' ');
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: title,
+        image: post.imageUrl ? [post.imageUrl] : [],
+        datePublished: post.date,
+        dateModified: post.date, // Assuming modified date is same as published for now if not available
+        author: [{
+            '@type': 'Person',
+            name: post.author || "Property Shop Investment LLC",
+            url: "https://psinv.net"
+        }],
+        description: summary,
+        articleBody: contentHtml.replace(/<[^>]*>?/gm, "") // Simple strip tags
+    };
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+
             {/* Navigation Bar / Breadcrumb Area */}
             <div className="bg-white border-b border-gray-100 sticky top-0 z-10 backdrop-blur-md bg-white/90">
                 <div className="container mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">

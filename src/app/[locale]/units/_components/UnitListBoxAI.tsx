@@ -54,7 +54,7 @@ export default function UnitListBoxAI(props: any) {
     const isList = 'list';
     return (
         <>
-            <div className={`bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden flex ${isList ? 'flex-col md:flex-row h-auto md:h-64' : 'flex-col h-full'} hover:shadow-md transition-shadow relative group`}>
+            <div className={`bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden flex ${isList ? 'flex-col md:flex-row h-auto md:h-64' : 'flex-col h-full'} hover:shadow-md transition-shadow relative group`}>
                 {/* Image Section */}
                 <div
                     className={`${isList ? 'w-full h-64 md:w-2/5 md:h-full' : 'w-full h-64'} relative bg-gray-200 cursor-pointer shrink-0 overflow-hidden`}

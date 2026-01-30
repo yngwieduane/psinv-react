@@ -696,7 +696,8 @@
     "open_in_google_maps": "فتح في خرائط جوجل",
     "facilities_and_amenities": "المرافق ووسائل الراحة",
     "community_images": "صور المجمّع",
-    "project_gallery": "مكتبة صور المشروع"
+    "project_gallery": "مكتبة صور المشروع",
+    "download_brochure": "تحميل الكتيب"
   },
   "Navbar": {
     "home": "الرئيسية",

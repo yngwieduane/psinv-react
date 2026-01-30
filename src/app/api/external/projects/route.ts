@@ -78,7 +78,7 @@ export async function GET(request: NextRequest) {
       finquery = 'Vida Residences - Saadiyat Island'
       break;
     case 'bloom living almeria':
-      finquery = 'Bloom Living - Almeria'
+      finquery = 'Bloom Living  - Almeria'
       break;
     case 'bloom living olvera':
       finquery = 'Bloom Living - Olvera'
