@@ -134,9 +134,82 @@ export default async function LocaleLayout({
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://psinv.net/#organization",
+        "name": "Property Shop Investment",
+        "alternateName": "PSI",
+        "url": "https://psinv.net",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://psinv.net/PSI-Logo.svg",
+          "width": 60,
+          "height": 60
+        },
+        "sameAs": [
+          "https://www.facebook.com/PropertyShopInvestment",
+          "https://twitter.com/psinv",
+          "https://www.instagram.com/property_shop_investment/",
+          "https://www.linkedin.com/company/property-shop-investment-llc",
+          "https://www.youtube.com/user/propertyshopabudhabi",
+          "https://www.snapchat.com/add/property-shop"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+971-600-548-200",
+          "contactType": "customer service",
+          "areaServed": "AE",
+          "availableLanguage": ["en", "ar"]
+        }
+      },
+      {
+        "@type": "RealEstateAgent",
+        "@id": "https://psinv.net/#head-office",
+        "parentOrganization": { "@id": "https://psinv.net/#organization" },
+        "name": "Property Shop Investment - Head Office",
+        "image": "https://psinv.net/images/psi-headoffice.webp",
+        "url": "https://psinv.net",
+        "telephone": "+971-600-548-200",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Office No. 4410 & 4411, Addax Tower Level 44, Al Reem Island",
+          "addressLocality": "Abu Dhabi",
+          "addressRegion": "Abu Dhabi",
+          "addressCountry": "AE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 24.499508550193866,
+          "longitude": 54.4030951693129
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        "priceRange": "$$$"
+      }
+    ]
+  };
+
   return (
     <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <UserProvider>
           <NextIntlClientProvider messages={messages}>
             <ConditionalNavigation />
