@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { X, Share2, Maximize2, BedDouble, Bath, Square, MapPin, Phone, MessageCircle, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, Share2, Maximize2, BedDouble, Bath, Square, MapPin, Phone, MessageCircle, Tag, ChevronLeft, ChevronRight, LinkIcon } from 'lucide-react';
 import { UnitListing } from '@/types/types';
 import PriceConvert from '../../_components/tools/PriceConvert';
 import NumberConvert from '../../_components/tools/NumberConvert';
@@ -80,6 +80,51 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
 
                 {/* LEFT: Image Gallery (60%) */}
                 <div className="md:w-3/5 h-[40vh] md:h-full relative bg-gray-100 group">
+                    <div className="absolute top-4 left-4 z-20 max-w-[calc(100%-2rem)] md:max-w-xs bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/20 transition-all hover:bg-white/95">
+                        {/* Title & Location */}
+                        <div className="mb-4">
+                            <h3 className="text-lg font-bold text-gray-800 leading-tight mb-1">
+                                {marketingTitle}
+                            </h3>
+                            <div className="flex items-center text-gray-500 text-xs">
+                                <MapPin size={14} className="text-secondary mr-1 rtl:ml-1" />
+                                {property.community}
+                            </div>
+                        </div>
+
+                        {/* Key Specs */}
+                        <div className="grid grid-cols-2 space-y-3">
+                            <div className="flex items-center gap-3">
+                                <div className="bg-gray-100 p-1.5 rounded-lg text-secondary"><BedDouble size={16} strokeWidth={1.5} /></div>
+                                <div>
+                                    <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5">Bedrooms</span>
+                                    <span className="block text-gray-800 font-bold text-sm leading-none">{property.bedrooms}</span>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="bg-gray-100 p-1.5 rounded-lg text-secondary"><Bath size={16} strokeWidth={1.5} /></div>
+                                <div>
+                                    <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5">Bathrooms</span>
+                                    <span className="block text-gray-800 font-bold text-sm leading-none">{property.no_of_bathrooms}</span>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="bg-gray-100 p-1.5 rounded-lg text-secondary"><Square size={16} strokeWidth={1.5} /></div>
+                                <div>
+                                    <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5">Area</span>
+                                    <span className="block text-gray-800 font-bold text-sm leading-none"><NumberConvert number={Number(property.built_upArea)} minDecimal='0' label='Sqft' /></span>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="bg-gray-100 p-1.5 rounded-lg text-secondary"><Tag size={16} strokeWidth={1.5} /></div>
+                                <div>
+                                    <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5">Type</span>
+                                    <span className="block text-gray-800 font-bold text-sm leading-none">{property.category}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <Swiper
                         modules={[Navigation, Pagination]}
                         pagination={{ clickable: true }}
@@ -119,7 +164,7 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
                     </button>
 
                     {/* Image Counter & Tools */}
-                    <div className="absolute top-4 left-4 flex gap-2 z-10">
+                    <div className="absolute top-4 right-4 flex gap-2 z-20">
                         <span className="bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium border border-white/10">
                             {currentImageIndex + 1} / {images.length}
                         </span>
@@ -151,7 +196,7 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
                             href={`/unit/${seoData.seoUrl}`}
                             className="bg-white/20 hover:bg-white text-white hover:text-gray-900 p-2 rounded-lg backdrop-blur-md transition-colors block"
                         >
-                            <Maximize2 size={18} />
+                            <LinkIcon size={18} />
                         </Link>
                     </div>
 
@@ -173,60 +218,8 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
                     {/* Scrollable Content */}
                     <div className="flex-1 overflow-y-auto p-6 md:p-8">
 
-                        {/* Title & Location */}
-                        <div className="mb-6">
-                            <h3 className="text-xl font-bold text-gray-800 leading-tight mb-2">
-                                {marketingTitle}
-                            </h3>
-                            <div className="flex items-center text-gray-500 text-sm">
-                                <MapPin size={16} className="text-secondary mr-1 rtl:ml-1" />
-                                {property.community}
-                            </div>
-                        </div>
-
-                        {/* Key Specs */}
-                        <div className="grid grid-cols-2 gap-4 mb-8">
-                            <div className="bg-gray-50 p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                                <div className="bg-white p-2 rounded-lg shadow-sm text-secondary"><BedDouble size={20} strokeWidth={1.5} /></div>
-                                <div>
-                                    <span className="block text-xs text-gray-400 font-medium uppercase">Bedrooms</span>
-                                    <span className="block text-gray-800 font-bold">{property.bedrooms}</span>
-                                </div>
-                            </div>
-                            <div className="bg-gray-50 p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                                <div className="bg-white p-2 rounded-lg shadow-sm text-secondary"><Bath size={20} strokeWidth={1.5} /></div>
-                                <div>
-                                    <span className="block text-xs text-gray-400 font-medium uppercase">Bathrooms</span>
-                                    <span className="block text-gray-800 font-bold">{property.no_of_bathrooms}</span>
-                                </div>
-                            </div>
-                            <div className="bg-gray-50 p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                                <div className="bg-white p-2 rounded-lg shadow-sm text-secondary"><Square size={20} strokeWidth={1.5} /></div>
-                                <div>
-                                    <span className="block text-xs text-gray-400 font-medium uppercase">Area</span>
-                                    <span className="block text-gray-800 font-bold"><NumberConvert number={Number(property.built_upArea)} minDecimal='0' label='Sqft' /></span>
-                                </div>
-                            </div>
-                            <div className="bg-gray-50 p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                                <div className="bg-white p-2 rounded-lg shadow-sm text-secondary"><Tag size={20} strokeWidth={1.5} /></div>
-                                <div>
-                                    <span className="block text-xs text-gray-400 font-medium uppercase">Type</span>
-                                    <span className="block text-gray-800 font-bold">{property.category}</span>
-                                </div>
-                            </div>
-                        </div>
-
                         {/* Quick Register Form */}
                         <InquiryForm hideFeedbackButton={true} />
-
-                        <div className="mt-6 flex flex-col gap-3">
-                            <Link
-                                href={`/unit/${seoData.seoUrl}`}
-                                className="cursor-pointer text-center mt-6 border bg-indigo-950 border-indigo-950 text-white font-bold py-3 rounded-xl hover:bg-gray-800 hover:text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-                            >
-                                Details
-                            </Link>
-                        </div>
                     </div>
 
                     {/* Bottom Sticky Action Bar (Mobile/Desktop) */}

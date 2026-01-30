@@ -2,15 +2,14 @@
 
 import clsx from 'clsx';
 import { useParams } from 'next/navigation';
-import { useTransition } from 'react';
+import { useTransition, Fragment } from 'react';
 import { Locale } from '@/i18n/routing';
 import { usePathname, useRouter } from '@/i18n/navigation';
-import { Globe } from 'lucide-react';
 import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 type Props = {
-  items: { value: string; label: string }[]; // Changed to accept items array
+  items: { value: string; label: string }[];
   defaultValue: string;
   label: string;
   css: string;
@@ -53,13 +52,20 @@ export default function LocaleSwitcherSelect({
   return (
     <div className={clsx('relative', isPending && 'transition-opacity disabled:opacity-30')}>
       <Popover className="relative">
-        {({ open }) => (
+        {({ open, close }) => (
           <>
             <PopoverButton
-              className={`cursor-pointer flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 border border-gray-100 hover:bg-gray-200 transition-colors outline-none ${css}`}
+              className={clsx(
+                `cursor-pointer flex items-center gap-1 text-xs font-bold uppercase hover:text-secondary transition-colors outline-none py-2`,
+                css
+              )}
               aria-label={label}
             >
-              <span className="text-xl leading-none">{getFlag(defaultValue)}</span>
+              <div className="flex items-center gap-1">
+                <span className="text-lg leading-none">{getFlag(defaultValue)}</span>
+                <span>{defaultValue}</span>
+              </div>
+              <ChevronDown size={14} className={`transform transition-transform ${open ? 'rotate-180' : ''}`} />
             </PopoverButton>
             <Transition
               as={Fragment}
@@ -75,14 +81,17 @@ export default function LocaleSwitcherSelect({
                   {items.map((item) => (
                     <button
                       key={item.value}
-                      onClick={() => onSelectChange(item.value as Locale)}
+                      onClick={() => {
+                        onSelectChange(item.value as Locale);
+                        close();
+                      }}
                       disabled={isPending}
                       className={clsx(
                         'text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-secondary transition-colors flex items-center gap-3',
                         defaultValue === item.value && 'bg-gray-50 font-bold text-secondary'
                       )}
                     >
-
+                      <span className="text-lg leading-none hidden">{getFlag(item.value)}</span>
                       {item.label}
                     </button>
                   ))}

@@ -9,6 +9,7 @@ import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions, Popover, 
 import { ChevronUpDownIcon, CheckIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/20/solid';
 import AutocompleteSearch from '../units/_components/AutocompleteSearch';
 import AutocompleteSearchWithOther from '../units/_components/AutocompleteSearchWithOther';
+import { useCurrency } from '@/context/currencyContext';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 100000000;
@@ -16,6 +17,7 @@ const maxPriceDefault = 100000000;
 export default function HomeSearch() {
     const locale = useLocale();
     const router = useRouter();
+    const { currency } = useCurrency();
     const [activeTab, setActiveTab] = useState<'units' | 'properties'>('units');
 
     // Filter States
@@ -187,7 +189,7 @@ export default function HomeSearch() {
                             </div>
 
                             {/* Category (Function of Rent/Sale) */}
-                            <div className={`w-full md:w-36 mt-2 ${isFiltersOpen ? '' : 'hidden md:block'}`}>
+                            <div className={`w-full md:w-36 ${isFiltersOpen ? '' : 'hidden md:block'}`}>
                                 <Listbox value={category} onChange={setCategory}>
                                     <div className="relative">
                                         <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
@@ -331,7 +333,7 @@ export default function HomeSearch() {
                                         <span className="col-start-1 row-start-1 truncate">
                                             {priceRange[0] === minPriceDefault && priceRange[1] === maxPriceDefault
                                                 ? 'Price Range'
-                                                : `${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()} AED`}
+                                                : `${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()} ${currency}`}
                                         </span>
                                         <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                     </PopoverButton>
@@ -372,7 +374,7 @@ export default function HomeSearch() {
                         <div className="w-full">
                             <button
                                 type="submit"
-                                className="w-full rounded-xl bg-[#005a9c] hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
+                                className="w-full rounded-xl bg-primary hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
                             >
                                 Search
                             </button>

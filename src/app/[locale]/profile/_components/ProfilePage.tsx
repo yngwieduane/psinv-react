@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect } from 'react';
 import { useUser } from '@/context/userContext';
-import { useRouter } from '@/i18n/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
 import { Heart, Shuffle, LogOut, User as UserIcon } from 'lucide-react';
 import Image from 'next/image';
 
@@ -58,27 +58,31 @@ const ProfilePage = () => {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-                            <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow">
-                                <div className="p-4 bg-red-50 text-red-500 rounded-full">
-                                    <Heart size={24} />
+                            <Link href="/favorites">
+                                <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow">
+                                    <div className="p-4 bg-red-50 text-red-500 rounded-full">
+                                        <Heart size={24} />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500 font-medium">Favorites</p>
+                                        <p className="text-3xl font-bold text-gray-900">{favorites.length}</p>
+                                        <p className="text-xs text-gray-400 mt-1">Saved Properties</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p className="text-sm text-gray-500 font-medium">Favorites</p>
-                                    <p className="text-3xl font-bold text-gray-900">{favorites.length}</p>
-                                    <p className="text-xs text-gray-400 mt-1">Saved Properties</p>
-                                </div>
-                            </div>
+                            </Link>
 
-                            <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow">
-                                <div className="p-4 bg-primary/10 text-primary rounded-full">
-                                    <Shuffle size={24} />
+                            <Link href="/compare">
+                                <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow">
+                                    <div className="p-4 bg-primary/10 text-primary rounded-full">
+                                        <Shuffle size={24} />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500 font-medium">Compare List</p>
+                                        <p className="text-3xl font-bold text-gray-900">{compareList.length}</p>
+                                        <p className="text-xs text-gray-400 mt-1">Items to Compare</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p className="text-sm text-gray-500 font-medium">Compare List</p>
-                                    <p className="text-3xl font-bold text-gray-900">{compareList.length}</p>
-                                    <p className="text-xs text-gray-400 mt-1">Items to Compare</p>
-                                </div>
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 </div>

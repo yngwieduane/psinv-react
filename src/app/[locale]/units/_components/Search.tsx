@@ -7,6 +7,7 @@ import { Listbox, ListboxButton, ListboxOption, ListboxOptions, Popover, Popover
 import { ChevronUpDownIcon, CheckIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/20/solid';
 import AutocompleteSearchWithOther from './AutocompleteSearchWithOther';
 import { RotateCcw } from 'lucide-react';
+import { useCurrency } from '@/context/currencyContext';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 100000000;
@@ -14,6 +15,7 @@ const maxPriceDefault = 100000000;
 export default function Search({ placeholder }: { placeholder?: string }) {
     const locale = useLocale();
     const router = useRouter();
+    const { currency } = useCurrency();
     const searchParams = useSearchParams();
 
     // Filter States - Initialized from URL params
@@ -173,7 +175,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                             <div className="hidden md:block w-40">
                                 <button
                                     type="submit"
-                                    className="w-full h-full rounded-xl bg-[#005a9c] hover:bg-[#004880] text-white font-bold transition-all shadow-md active:scale-95 text-lg"
+                                    className="w-full h-full rounded-xl bg-primary hover:bg-[#004880] text-white font-bold transition-all shadow-md active:scale-95 text-lg"
                                 >
                                     Search
                                 </button>
@@ -324,7 +326,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                         <span className="col-start-1 row-start-1 truncate">
                                             {priceRange[0] === minPriceDefault && priceRange[1] === maxPriceDefault
                                                 ? 'Price Range'
-                                                : `${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()} AED`}
+                                                : `${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()} ${currency}`}
                                         </span>
                                         <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                     </PopoverButton>
@@ -365,7 +367,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                         <div className="w-full md:hidden">
                             <button
                                 type="submit"
-                                className="w-full rounded-xl bg-[#005a9c] hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
+                                className="w-full rounded-xl bg-primary hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
                             >
                                 Search
                             </button>

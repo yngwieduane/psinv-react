@@ -13,6 +13,7 @@ import LanguageSwitcher from './languageSwitcher';
 import BranchSwitcher from './BranchSwitcher';
 import Image from 'next/image';
 import ProjectSearch from './projectSearch';
+import GlobalTopBar from './GlobalTopBar';
 import { faMagnifyingGlass, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { Buy, CallToAction, CallToAction2, CommunitiesAbuDhabi, CommunitiesDubai, More, Rent, SocialMedia } from '@/types/navigation';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle, } from "@/components/ui/navigation-menu"
@@ -20,6 +21,7 @@ import { ArrowRight, ChevronDown, Globe, Heart, Menu, Search, UserIcon, X } from
 import { useUser } from '@/context/userContext';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
+import CurrencySelector from './CurrencySelector';
 
 
 export type Page = '/en' | '/ar' | '/ru' | '/du' | '/zh';
@@ -650,187 +652,162 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
     return (
         <header className="bg-transparent">
-            {/* Top Bar */}
-            {/* <div className="grid grid-cols-3 gap-4 bg-indigo-950 hidden md:grid px-5">
-            <div className="grid grid-cols-3">
-                {callsToAction2.map((item) => (
-                    <Link href={item.href} key={item.name} title={item.name} className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
-                    {item.name !== '600 538 200' ? (
-                        <FontAwesomeIcon
-                            className="h-5 w-5 flex-none text-gray-400"
-                            icon={item.icon as IconDefinition}
-                        />
-                    ) : (
-                        React.createElement(item.icon as React.ElementType, {
-                            className: 'h-5 w-5 flex-none text-gray-400',
-                            'aria-hidden': 'true',
-                        })
-                    )}
-                    {item.name}
-                    </Link>
-                ))}
-            </div>
-            <div></div>
-            <div className="flex gap-5 justify-end">
-                {socialMedia.map((item) => (
-                    <Link target="_blank" href={item.href} key={item.name} title={item.name} aria-label={item.name} className="flex items-center justify-center text-sm font-semibold leading-6 text-white hover:bg-indigo-900">
-                    <DynamicIcon name={item.icon} size={20} />
-                    </Link>
-                ))}
-                <LanguageSwitcher />
-            </div>
-        </div> */}
-            {/* Main Navigation */}
-            <nav className={`fixed top-0 left-0 right-0 z-70 transition-all duration-500 ease-in-out ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
-                <div className="container mx-auto flex justify-between items-center relative px-5 md:px-0">
-                    {/* LOGO */}
-                    <Link className="flex items-center cursor-pointer group" href="/" title="Property Shop Investment">
-                        <span className="sr-only">Property Shop Investment</span>
-                        <Image
-                            alt="PSI"
-                            title="PSI"
-                            src={mainLogo}
-                            className="h-15 w-auto"
-                            width={200}
-                            height={200}
-                        />
-                    </Link>
-
-                    {/* Desktop Links */}
-                    <div className="hidden lg:flex items-center space-x-10 rtl:space-x-reverse h-full">
-                        {NAV_GROUPS.map((group) => (
-                            <div
-                                key={group.label}
-                                className="h-full flex items-center py-2"
-                                onMouseEnter={() => setHoveredMenu(group.label)}
-                            >
-                                <button className={`text-sm font-bold tracking-widest uppercase hover:text-secondary transition-colors flex items-center gap-1 ${linkColor}`}
-                                >
-                                    {group.label.toLowerCase()}
-                                    <ChevronDown size={10} className={`transform transition-transform duration-300 ${hoveredMenu === group.label ? 'rotate-180' : ''}`} />
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Right Actions */}
-                    <div className={`hidden lg:flex items-center gap-6 ${linkColor}`}>
-                        <button onClick={modalHandler} aria-label='search' role="presentation" tabIndex={-1}
-                            className="hover:text-secondary transition-colors cursor-pointer"><Search size={20} /></button>
-                        <Link href="/favorites" title="Favorites" className="hover:text-secondary transition-colors relative cursor-pointer">
-                            <Heart size={20} />
-                            {favorites.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}
-                        </Link>
-                        <div className="h-4 w-px bg-current opacity-30"></div>
-                        {user ? (
-                            <div className="relative" onMouseEnter={() => setUserMenuOpen(true)} onMouseLeave={() => setUserMenuOpen(false)}>
-                                <button className="text-xs font-bold uppercase hover:text-secondary flex items-center gap-2 py-2">
-                                    <UserIcon size={16} /> {user.displayName || 'User'}
-                                </button>
-                                {/* User Dropdown */}
-                                <div className={`absolute top-full right-0 w-48 bg-white border border-gray-100 shadow-xl rounded-xl overflow-hidden transition-all duration-200 z-50 ${userMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
-                                    <ul className="py-2">
-                                        <li>
-                                            <Link href="/profile" title="Profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">
-                                                {t("profile")}
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <button
-                                                onClick={() => { logout(); setUserMenuOpen(false); }}
-                                                className="block w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-50 transition-colors"
-                                            >
-                                                {t("logout")}
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        ) : (
-                            <button onClick={login} className="text-xs font-bold uppercase hover:text-secondary flex items-center gap-2">
-                                <UserIcon size={16} /> {t("login")}
-                            </button>
-                        )}
-                        <LanguageSwitcher css={linkColor} />
-                        <BranchSwitcher css={linkColor} />
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <button aria-label='mobile menu'
-                        className="lg:hidden p-2 rounded-lg"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    >
-                        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                    </button>
+            {/* Top Bar Wrapper */}
+            <div className="fixed top-0 left-0 right-0 z-70 flex flex-col transition-all duration-500 ease-in-out">
+                <div className={`relative z-50 transition-all duration-300 ease-in-out hidden lg:block ${isScrolled ? 'max-h-0 opacity-0 overflow-hidden' : 'max-h-[50px] opacity-100 overflow-visible'}`}>
+                    <GlobalTopBar />
                 </div>
 
-                {/* SLEEK MEGA MENU (Transparent Glass) - Desktop Only */}
-                <div
-                    className={`absolute top-full left-0 w-full bg-white backdrop-blur-2xl border-t border-white/20 shadow-xl transition-all duration-300 ease-out overflow-hidden hidden lg:block ${hoveredMenu ? 'max-h-[500px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}
-                    onMouseEnter={() => setHoveredMenu(hoveredMenu)}
-                    onMouseLeave={() => setHoveredMenu(null)}
-                >
-                    <div className="container mx-auto px-12 py-8">
-                        {NAV_GROUPS.map((group) => (
-                            <div key={group.label} className={`${hoveredMenu === group.label ? 'block' : 'hidden'} animate-[fadeIn_0.3s_ease-out]`}>
-                                <div className="flex gap-12">
+                {/* Main Navigation */}
+                <nav className={`relative w-full ${navbarClasses}`} onMouseLeave={() => setHoveredMenu(null)}>
+                    <div className="container mx-auto flex justify-between items-center relative px-5 md:px-0">
+                        {/* LOGO */}
+                        <Link className="flex items-center cursor-pointer group" href="/" title="Property Shop Investment">
+                            <span className="sr-only">Property Shop Investment</span>
+                            <Image
+                                alt="PSI"
+                                title="PSI"
+                                src={mainLogo}
+                                className="h-15 w-auto"
+                                width={200}
+                                height={200}
+                            />
+                        </Link>
 
-                                    {/* Left: Elegant Featured Card */}
-                                    <div className="w-1/4 hidden xl:block">
-                                        <div className="rounded-lg h-64 overflow-hidden relative cursor-pointer group/promo">
-                                            <img src={group.image}
-                                                title={`${group.label} featured image`}
-                                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/promo:scale-110" alt="Promo" />
-                                            <div className="absolute inset-0 bg-black/30 group-hover/promo:bg-black/20 transition-colors"></div>
-                                            <div className="absolute bottom-6 left-6 text-white">
-                                                <span className="text-[10px] font-bold uppercase tracking-widest bg-secondary px-2 py-1 rounded mb-2 inline-block">{t('Featured')}</span>
-                                                <h4 className="font-serif font-bold text-2xl">{group.label}</h4>
-                                                <div className="flex items-center gap-2 text-xs font-bold uppercase mt-2 opacity-0 group-hover/promo:opacity-100 transition-opacity transform translate-y-2 group-hover/promo:translate-y-0">
-                                                    {t('Explore')} <ArrowRight size={12} />
+                        {/* Desktop Links */}
+                        <div className="hidden lg:flex items-center space-x-10 rtl:space-x-reverse h-full">
+                            {NAV_GROUPS.map((group) => (
+                                <div
+                                    key={group.label}
+                                    className="h-full flex items-center py-2"
+                                    onMouseEnter={() => setHoveredMenu(group.label)}
+                                >
+                                    <button className={`text-sm font-bold tracking-widest uppercase hover:text-secondary transition-colors flex items-center gap-1 ${linkColor}`}
+                                    >
+                                        {group.label.toLowerCase()}
+                                        <ChevronDown size={10} className={`transform transition-transform duration-300 ${hoveredMenu === group.label ? 'rotate-180' : ''}`} />
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Right Actions */}
+                        <div className={`hidden lg:flex items-center gap-6 ${linkColor}`}>
+                            <button onClick={modalHandler} aria-label='search' role="presentation" tabIndex={-1}
+                                className="hover:text-secondary transition-colors cursor-pointer"><Search size={20} /></button>
+                            <Link href="/favorites" title="Favorites" className="hover:text-secondary transition-colors relative cursor-pointer">
+                                <Heart size={20} />
+                                {favorites.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}
+                            </Link>
+                            <div className="h-4 w-px bg-current opacity-30"></div>
+                            {user ? (
+                                <div className="relative" onMouseEnter={() => setUserMenuOpen(true)} onMouseLeave={() => setUserMenuOpen(false)}>
+                                    <button className="text-xs font-bold uppercase hover:text-secondary flex items-center gap-2 py-2">
+                                        <UserIcon size={16} /> {user.displayName || 'User'}
+                                    </button>
+                                    {/* User Dropdown */}
+                                    <div className={`absolute top-full right-0 w-48 bg-white border border-gray-100 shadow-xl rounded-xl overflow-hidden transition-all duration-200 z-50 ${userMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
+                                        <ul className="py-2">
+                                            <li>
+                                                <Link href="/profile" title="Profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">
+                                                    {t("profile")}
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    onClick={() => { logout(); setUserMenuOpen(false); }}
+                                                    className="block w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-50 transition-colors"
+                                                >
+                                                    {t("logout")}
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            ) : (
+                                <button onClick={login} className="text-xs font-bold uppercase hover:text-secondary flex items-center gap-2">
+                                    <UserIcon size={16} /> {t("login")}
+                                </button>
+                            )}
+                        </div>
+
+                        {/* Mobile Menu Button */}
+                        <button aria-label='mobile menu'
+                            className="lg:hidden p-2 rounded-lg"
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        >
+                            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                        </button>
+                    </div>
+
+                    {/* SLEEK MEGA MENU (Transparent Glass) - Desktop Only */}
+                    <div
+                        className={`absolute top-full left-0 w-full bg-white backdrop-blur-2xl border-t border-white/20 shadow-xl transition-all duration-300 ease-out overflow-hidden hidden lg:block ${hoveredMenu ? 'max-h-[500px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}
+                        onMouseEnter={() => setHoveredMenu(hoveredMenu)}
+                        onMouseLeave={() => setHoveredMenu(null)}
+                    >
+                        <div className="container mx-auto px-12 py-8">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className={`${hoveredMenu === group.label ? 'block' : 'hidden'} animate-[fadeIn_0.3s_ease-out]`}>
+                                    <div className="flex gap-12">
+
+                                        {/* Left: Elegant Featured Card */}
+                                        <div className="w-1/4 hidden xl:block">
+                                            <div className="rounded-lg h-64 overflow-hidden relative cursor-pointer group/promo">
+                                                <img src={group.image}
+                                                    title={`${group.label} featured image`}
+                                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/promo:scale-110" alt="Promo" />
+                                                <div className="absolute inset-0 bg-black/30 group-hover/promo:bg-black/20 transition-colors"></div>
+                                                <div className="absolute bottom-6 left-6 text-white">
+                                                    <span className="text-[10px] font-bold uppercase tracking-widest bg-secondary px-2 py-1 rounded mb-2 inline-block">{t('Featured')}</span>
+                                                    <h4 className="font-serif font-bold text-2xl">{group.label}</h4>
+                                                    <div className="flex items-center gap-2 text-xs font-bold uppercase mt-2 opacity-0 group-hover/promo:opacity-100 transition-opacity transform translate-y-2 group-hover/promo:translate-y-0">
+                                                        {t('Explore')} <ArrowRight size={12} />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    {/* Right: Clean Link Columns */}
-                                    <div className="flex-1 grid grid-cols-3 gap-8">
-                                        {group.columns.map((col, idx) => (
-                                            <div key={idx}>
-                                                {"link" in col && col.link ? (
-                                                    <Link href={col.link} title={col.title}>
-                                                        <h4 className="font-bold text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2
+                                        {/* Right: Clean Link Columns */}
+                                        <div className="flex-1 grid grid-cols-3 gap-8">
+                                            {group.columns.map((col, idx) => (
+                                                <div key={idx}>
+                                                    {"link" in col && col.link ? (
+                                                        <Link href={col.link} title={col.title}>
+                                                            <h4 className="font-bold text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2
                                                     relative text-gray-700 transition-all duration-300
    bg-gradient-to-r from-[#0c1356] to-[#0c1356] bg-[length:0%_2px] bg-left-bottom bg-no-repeat
    hover:bg-[length:100%_2px] hover:text-[#0c1356]">{col.title}</h4>
-                                                    </Link>
-                                                ) : (
-                                                    <h4 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>
-                                                )}
+                                                        </Link>
+                                                    ) : (
+                                                        <h4 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>
+                                                    )}
 
-                                                <ul className="space-y-3">
-                                                    {col.items.map((item, i) => (
-                                                        <li key={i}>
-                                                            <Link
-                                                                href={`${resolveHref(item as any)}`}
-                                                                title={item.label}
-                                                                className="text-gray-600 hover:text-secondary text-sm font-medium transition-colors hover:pl-1 rtl:hover:pr-1"
-                                                                onClick={() => setHoveredMenu(null)} // closes menu after click
-                                                            >
-                                                                {item.label}
-                                                            </Link>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        ))}
+                                                    <ul className="space-y-3">
+                                                        {col.items.map((item, i) => (
+                                                            <li key={i}>
+                                                                <Link
+                                                                    href={`${resolveHref(item as any)}`}
+                                                                    title={item.label}
+                                                                    className="text-gray-600 hover:text-secondary text-sm font-medium transition-colors hover:pl-1 rtl:hover:pr-1"
+                                                                    onClick={() => setHoveredMenu(null)} // closes menu after click
+                                                                >
+                                                                    {item.label}
+                                                                </Link>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </div>
 
-            </nav>
+                </nav>
+            </div>
 
             {/* Mobile Menu */}
             <Dialog
@@ -909,9 +886,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                     <Search size={18} /> Search Projects
                                 </button>
 
-                                <div className="-mx-3 px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2">
-                                    <LanguageSwitcher css={linkColor} />
-                                    <BranchSwitcher css={linkColor} />
+                                <div className="-mx-3 px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-4">
+                                    <CurrencySelector css="text-gray-900" />
+                                    <LanguageSwitcher css="text-gray-900" />
+                                    <BranchSwitcher css="text-gray-900" />
                                 </div>
 
                                 {user ? (

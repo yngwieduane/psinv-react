@@ -45,13 +45,13 @@ export default function UnitsPageAI(props: any) {
                         <div className="bg-white border border-gray-200 rounded-lg p-1 flex shadow-sm">
                             <button
                                 onClick={() => setViewMode('list')}
-                                className={`p-2 rounded cursor-pointer ${viewMode === 'list' ? 'bg-primary text-gray-800 shadow-sm' : 'text-gray-400 hover:bg-gray-50'}`}
+                                className={`p-2 rounded cursor-pointer ${viewMode === 'list' ? 'bg-primary text-white shadow-sm' : 'text-gray-400 hover:bg-gray-50'}`}
                             >
                                 <LayoutGrid size={18} />
                             </button>
                             <button
                                 onClick={() => setViewMode('map')}
-                                className={`p-2 rounded cursor-pointer ${viewMode === 'map' ? 'bg-primary text-gray-800 shadow-sm' : 'text-gray-400 hover:bg-gray-50'}`}
+                                className={`p-2 rounded cursor-pointer ${viewMode === 'map' ? 'bg-primary text-white shadow-sm' : 'text-gray-400 hover:bg-gray-50'}`}
                             >
                                 <MapIcon size={18} />
                             </button>
@@ -115,7 +115,7 @@ export default function UnitsPageAI(props: any) {
                                 </button>
                                 <button
                                     onClick={() => setViewMode('map')}
-                                    className="cursor-pointer h-[42px] px-4 rounded-lg bg-primary text-gray-800 shadow-sm flex items-center justify-center font-bold my-1 mr-1"
+                                    className="cursor-pointer h-[42px] px-4 rounded-lg bg-primary text-white shadow-sm flex items-center justify-center font-bold my-1 mr-1"
                                 >
                                     <MapIcon size={20} />
                                 </button>

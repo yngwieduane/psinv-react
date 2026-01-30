@@ -1,10 +1,10 @@
 'use client';
 
 import { usePathname, useRouter } from '@/i18n/navigation';
-import { useTranslations } from 'next-intl';
-import { ChangeEvent, useTransition, useEffect, useState } from 'react';
-import { ChevronDownIcon } from 'lucide-react';
+import { ChangeEvent, useTransition, useEffect, useState, Fragment } from 'react';
+import { ChevronDown } from 'lucide-react';
 import clsx from 'clsx';
+import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
 
 export default function BranchSwitcher({ css }: { css: string }) {
     const router = useRouter();
@@ -32,47 +32,65 @@ export default function BranchSwitcher({ css }: { css: string }) {
         { name: 'Ras Al Khaimah', value: '/rak' },
     ];
 
-    function onSelectChange(event: ChangeEvent<HTMLSelectElement>) {
-        const nextBranch = event.target.value;
-        setSelectedBranch(nextBranch);
+    function onSelectChange(value: string) {
+        setSelectedBranch(value);
         startTransition(() => {
-            router.push(nextBranch);
+            router.push(value);
         });
     }
 
+    const getBranchName = (value: string) => {
+        const branch = branches.find(b => b.value === value);
+        return branch ? branch.name : 'Abu Dhabi';
+    }
+
     return (
-        <div
-            className={clsx(
-                'relative',
-                isPending && 'transition-opacity disabled:opacity-30'
-            )}
-        >
-            <label className="sr-only">Select Branch</label>
-            <div className="mt-2 grid grid-cols-1 border border-gray-200 rounded-md">
-                <select
-                    className={`branch-select col-start-1 row-start-1 w-full appearance-none rounded-md py-1.5 pr-2 pl-3 text-base ${css} outline-none focus:ring-0 bg-transparent sm:text-sm/6 cursor-pointer font-bold `}
-                    value={selectedBranch}
-                    disabled={isPending}
-                    onChange={onSelectChange}
-                    aria-label="Branch Switcher"
-                >
-                    {branches.map((branch) => (
-                        <option key={branch.value} value={branch.value}>
-                            {branch.name}
-                        </option>
-                    ))}
-                </select>
-                <ChevronDownIcon
-                    aria-hidden="true"
-                    className={`pointer-events-none col-start-1 row-start-1 mr-2 size-4 self-center justify-self-end ${css}`}
-                />
-            </div>
-            <style jsx global>{`
-        .branch-select option {
-            color: black !important;
-            background-color: white !important;
-        }
-        `}</style>
+        <div className={clsx('relative', isPending && 'transition-opacity disabled:opacity-30')}>
+            <Popover className="relative">
+                {({ open, close }) => (
+                    <>
+                        <PopoverButton
+                            className={clsx(
+                                `cursor-pointer flex items-center gap-1 text-xs font-bold uppercase hover:text-secondary transition-colors outline-none py-2`,
+                                css
+                            )}
+                        >
+                            <span>{getBranchName(selectedBranch)}</span>
+                            <ChevronDown size={14} className={`transform transition-transform ${open ? 'rotate-180' : ''}`} />
+                        </PopoverButton>
+                        <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-200"
+                            enterFrom="opacity-0 translate-y-1"
+                            enterTo="opacity-100 translate-y-0"
+                            leave="transition ease-in duration-150"
+                            leaveFrom="opacity-100 translate-y-0"
+                            leaveTo="opacity-0 translate-y-1"
+                        >
+                            <PopoverPanel className="absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-xl bg-white p-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
+                                <div className="flex flex-col py-1">
+                                    {branches.map((branch) => (
+                                        <button
+                                            key={branch.value}
+                                            onClick={() => {
+                                                onSelectChange(branch.value);
+                                                close();
+                                            }}
+                                            disabled={isPending}
+                                            className={clsx(
+                                                'text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-secondary transition-colors flex items-center gap-3',
+                                                selectedBranch === branch.value && 'bg-gray-50 font-bold text-secondary'
+                                            )}
+                                        >
+                                            {branch.name}
+                                        </button>
+                                    ))}
+                                </div>
+                            </PopoverPanel>
+                        </Transition>
+                    </>
+                )}
+            </Popover>
         </div>
     );
 }

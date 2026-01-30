@@ -86,6 +86,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 return {
                     slug: d.slug,
                     category: d.category || 'general',
+                    categoryKey: d.categoryKey || '',
+                    city: d.city || '',
                     date: d.date ? (d.date.toDate ? d.date.toDate().toISOString() : new Date().toISOString()) : new Date().toISOString()
                 }
             });
@@ -212,8 +214,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
 
     // 4. Articles
+    const uniqueCategories = new Set<string>();
+    const uniqueAreaGuideCities = new Set<string>();
+
     articles.forEach((a: any) => {
         let catSeg = a.category.toLowerCase().replace(/\s+/g, '-');
+
+        // Check for area guide
+        const isAreaGuide = catSeg === 'area-guide' || catSeg === 'area-guides' || a.categoryKey === 'area_guide';
+
+        if (isAreaGuide) {
+            catSeg = 'area-guide';
+            if (a.city) {
+                const citySlug = a.city.toLowerCase().replace(/\s+/g, '-');
+                catSeg = `${catSeg}/${citySlug}`;
+                uniqueAreaGuideCities.add(citySlug);
+            }
+        }
+
+        // Collect Categories
+        if (a.categoryKey) {
+            uniqueCategories.add(a.categoryKey.replace(/_/g, '-'));
+        }
+
         const path = `/articles/${catSeg}/${a.slug}`;
         locales.forEach(locale => {
             sitemapEntries.push({
@@ -221,6 +244,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 lastModified: new Date(a.date),
                 changeFrequency: 'weekly',
                 priority: 0.6
+            });
+        });
+    });
+
+    // 4.1 Article Categories
+    uniqueCategories.forEach(catSlug => {
+        const path = `/articles/category/${catSlug}`;
+        locales.forEach(locale => {
+            sitemapEntries.push({
+                url: `${baseUrl}/${locale}${path}`,
+                lastModified: new Date(),
+                changeFrequency: 'weekly',
+                priority: 0.7
+            });
+        });
+    });
+
+    // 4.2 Area Guide Cities
+    uniqueAreaGuideCities.forEach(citySlug => {
+        const path = `/articles/area-guide/${citySlug}`;
+        locales.forEach(locale => {
+            sitemapEntries.push({
+                url: `${baseUrl}/${locale}${path}`,
+                lastModified: new Date(),
+                changeFrequency: 'weekly',
+                priority: 0.7
             });
         });
     });

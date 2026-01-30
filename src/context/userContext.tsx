@@ -1,7 +1,7 @@
 'use client'
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, sendPasswordResetEmail } from "firebase/auth";
 import { SavedItem, User } from '@/types/types';
 import { db, auth } from '@/lib/firebase';
 
@@ -9,11 +9,20 @@ interface UserContextType {
   user: User | null;
   favorites: SavedItem[];
   compareList: SavedItem[];
-  login: () => Promise<void>;
+  login: () => void; // Now opens the modal
   logout: () => void;
+  signInWithGoogle: () => Promise<void>;
+  signInWithEmail: (email: string, pass: string) => Promise<void>;
+  signUpWithEmail: (email: string, pass: string, fName: string, lName: string) => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
+  isAuthModalOpen: boolean;
+  openAuthModal: () => void;
+  closeAuthModal: () => void;
   toggleFavorite: (item: SavedItem) => void;
   addToCompare: (item: SavedItem) => void;
   removeFromCompare: (id: string) => void;
+  clearFavorites: () => void;
+  clearCompareList: () => void;
   isFavorite: (id: string) => boolean;
   isCompared: (id: string) => boolean;
   loading: boolean;
@@ -31,6 +40,10 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [favorites, setFavorites] = useState<SavedItem[]>([]);
   const [compareList, setCompareList] = useState<SavedItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
+  const openAuthModal = () => setIsAuthModalOpen(true);
+  const closeAuthModal = () => setIsAuthModalOpen(false);
 
   // Load from local storage on mount
   // Load from local storage on mount
@@ -134,21 +147,70 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     localStorage.setItem('psi_compare', JSON.stringify(compareList));
   }, [compareList]);
 
-  const login = async () => {
+  const signInWithGoogle = async () => {
     setLoading(true);
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      // The onAuthStateChanged hook will handle state updates and firestore syncing
       console.log("User signed in successfully");
     } catch (error) {
       console.error("Firebase Login Error:", error);
       alert("Failed to sign in. Please try again.");
     } finally {
-      // loading state is also handled in onAuthStateChanged, 
-      // but we turn it off here in case of error where auth state doesn't change
       setLoading(false);
     }
+  };
+
+  const signInWithEmail = async (email: string, pass: string) => {
+    setLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+    } catch (error) {
+      console.error("Email Login Error:", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const signUpWithEmail = async (email: string, pass: string, fName: string, lName: string) => {
+    setLoading(true);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+      await updateProfile(userCredential.user, {
+        displayName: `${fName} ${lName}`
+      });
+      // Initiate firestore sync immediately with new name
+      const userData: User = {
+        id: userCredential.user.uid,
+        name: `${fName} ${lName}`,
+        email: email,
+        avatar: '',
+        displayName: `${fName} ${lName}`
+      };
+      setUser(userData); // Optimistic update
+    } catch (error) {
+      console.error("Sign Up Error:", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const resetPassword = async (email: string) => {
+    setLoading(true);
+    try {
+      await sendPasswordResetEmail(auth, email);
+    } catch (error) {
+      console.error("Reset Password Error:", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const login = () => {
+    openAuthModal();
   };
 
   const logout = () => {
@@ -188,6 +250,17 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       console.log("Favorites synced successfully to Firestore");
     } catch (e) {
       console.error("Error syncing favorites to Firestore", e);
+    }
+  };
+
+  const clearFavorites = async () => {
+    if (!confirm("Are you sure you want to clear your favorites?")) return;
+    setFavorites([]);
+    if (user) {
+      try {
+        const userRef = doc(db, "users", user.id);
+        await setDoc(userRef, { favorites: [] }, { merge: true });
+      } catch (e) { console.error("Error clearing favorites", e); }
     }
   };
 
@@ -239,6 +312,17 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
+  const clearCompareList = async () => {
+    if (!confirm("Are you sure you want to clear your compare list?")) return;
+    setCompareList([]);
+    if (user) {
+      try {
+        const userRef = doc(db, "users", user.id);
+        await setDoc(userRef, { compareList: [] }, { merge: true });
+      } catch (e) { console.error("Error clearing compare list", e); }
+    }
+  };
+
   const isFavorite = (id: string) => !!favorites.find(i => i.id === id);
   const isCompared = (id: string) => !!compareList.find(i => i.id === id);
 
@@ -248,10 +332,19 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       favorites,
       compareList,
       login,
+      signInWithGoogle,
+      signInWithEmail,
+      signUpWithEmail,
+      resetPassword,
+      isAuthModalOpen,
+      openAuthModal,
+      closeAuthModal,
       logout,
       toggleFavorite,
       addToCompare,
       removeFromCompare,
+      clearFavorites,
+      clearCompareList,
       isFavorite,
       isCompared,
       loading

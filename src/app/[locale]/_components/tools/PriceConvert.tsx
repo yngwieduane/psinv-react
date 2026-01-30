@@ -1,22 +1,20 @@
-import { useFormatter } from "next-intl";
+import { useCurrency } from "@/context/currencyContext";
 
 const PriceConvert = ({
-    price,
-    minDecimal,
-  }: {
-    price: number;
-    minDecimal: any;
-  }) => {
+  price,
+  minDecimal,
+}: {
+  price: number;
+  minDecimal: any;
+}) => {
 
-    const format = useFormatter();
+  const { convertPrice } = useCurrency();
 
-
-
-    return (
-        <>
-        {format.number(price, {style: 'currency', currency: 'AED', minimumFractionDigits: minDecimal })}
-        </>
-    );
+  return (
+    <>
+      {convertPrice(price).formatted}
+    </>
+  );
 }
 
 export default PriceConvert;

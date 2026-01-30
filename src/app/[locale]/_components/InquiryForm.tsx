@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { TOKENS } from "@/utils/crmApiHelpers";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 
 
@@ -441,8 +442,8 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
         <div className="text-[10px] text-gray-500 space-y-2 mt-4">
           <p className="italic">
             {t.rich('fineprint.text', {
-              terms: (chunks) => <span className="underline">{chunks}</span>,
-              privacy: (chunks) => <span className="underline">{chunks}</span>
+              terms: (chunks) => <Link href="/terms" className="underline">{chunks}</Link>,
+              privacy: (chunks) => <Link href="/privacy" className="underline">{chunks}</Link>
             })}
           </p>
 

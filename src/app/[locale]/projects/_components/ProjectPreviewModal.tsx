@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, Share2, Maximize2, Tag, BedDouble, Bath, Square, MapPin, Phone, MessageCircle, Calendar } from 'lucide-react';
-import { Link } from '@/i18n/navigation';
+import { X, ChevronLeft, ChevronRight, Share2, Maximize2, Tag, BedDouble, Bath, Square, MapPin, Phone, MessageCircle, Calendar, Link2, LinkIcon } from 'lucide-react';
+import { Link, useRouter } from '@/i18n/navigation';
 import { useFormatter } from 'next-intl';
 import slugify from 'react-slugify';
 import InquiryForm from '../../_components/InquiryForm';
+import { useCurrency } from '@/context/currencyContext';
 
 interface ProjectPreviewModalProps {
     project: any;
@@ -13,6 +14,8 @@ interface ProjectPreviewModalProps {
 const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onClose }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const format = useFormatter();
+    const router = useRouter();
+    const { convertPrice } = useCurrency();
 
     if (!project) return null;
 
@@ -49,8 +52,31 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
             setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
     };
 
+    const handleShare = async (e: React.MouseEvent) => {
+        e.stopPropagation();
+        if (typeof window !== 'undefined' && navigator.share) {
+            try {
+                await navigator.share({
+                    title: marketingTitle,
+                    text: `Check out ${marketingTitle} by Property Shop Investment`,
+                    url: window.location.origin + url,
+                });
+            } catch (error) {
+                console.log('Error sharing:', error);
+            }
+        } else {
+            // Fallback
+            console.log("Web Share API not supported");
+        }
+    };
+
+    const handleMaximize = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        router.push(url);
+    };
+
     return (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
             {/* Backdrop with blur */}
             <div
                 className="absolute inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity"
@@ -70,6 +96,49 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
 
                 {/* LEFT: Image Gallery (60%) */}
                 <div className="md:w-3/5 h-[40vh] md:h-full relative bg-gray-100 group">
+                    <div className="absolute top-4 left-4 z-20 max-w-[calc(100%-2rem)] md:max-w-xs bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/20 transition-all hover:bg-white/95">
+                        {/* Title & Location */}
+                        <div className="mb-4">
+                            <h3 className="text-lg font-bold text-gray-800 leading-tight mb-1">
+                                {marketingTitle}
+                            </h3>
+                            <div className="flex items-center text-gray-500 text-xs">
+                                <MapPin size={14} className="text-secondary mr-1 rtl:ml-1" />
+                                {community}, {city}
+                            </div>
+                        </div>
+
+                        {/* Key Specs */}
+                        <div className="space-y-3">
+                            {project.availableBedrooms && project.availableBedrooms.length > 0 && (
+                                <div className="flex items-center gap-3">
+                                    <div className="bg-gray-100 p-1.5 rounded-lg text-secondary"><BedDouble size={16} strokeWidth={1.5} /></div>
+                                    <div>
+                                        <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5">Bedrooms</span>
+                                        <span className="block text-gray-800 font-bold text-sm leading-none">
+                                            {project.availableBedrooms.map((b: any) => b.noOfBedroom).join(', ')}
+                                        </span>
+                                    </div>
+                                </div>
+                            )}
+                            <div className="flex items-center gap-3">
+                                <div className="bg-gray-100 p-1.5 rounded-lg text-secondary"><Tag size={16} strokeWidth={1.5} /></div>
+                                <div>
+                                    <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5">Type</span>
+                                    <span className="block text-gray-800 font-bold text-sm leading-none">{project.propertyType || 'Project'}</span>
+                                </div>
+                            </div>
+                            {HOdate && (
+                                <div className="flex items-center gap-3">
+                                    <div className="bg-gray-100 p-1.5 rounded-lg text-secondary"><Calendar size={16} strokeWidth={1.5} /></div>
+                                    <div>
+                                        <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5">Handover</span>
+                                        <span className="block text-gray-800 font-bold text-sm leading-none">{HOdate}</span>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
                     {images.length > 0 ? (
                         <img
                             src={images[currentImageIndex]}
@@ -103,7 +172,7 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
 
                     {/* Image Counter & Tools */}
                     {images.length > 0 && (
-                        <div className="absolute top-4 left-4 flex gap-2">
+                        <div className="absolute top-4 right-4 flex gap-2 z-20">
                             <span className="bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium border border-white/10">
                                 {currentImageIndex + 1} / {images.length}
                             </span>
@@ -111,8 +180,8 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                     )}
 
                     <div className="absolute bottom-4 right-4 flex gap-2">
-                        <button className="bg-white/20 hover:bg-white text-white hover:text-gray-900 p-2 rounded-lg backdrop-blur-md transition-colors"><Share2 size={18} /></button>
-                        <button className="bg-white/20 hover:bg-white text-white hover:text-gray-900 p-2 rounded-lg backdrop-blur-md transition-colors"><Maximize2 size={18} /></button>
+                        <button onClick={handleShare} className="bg-white/20 hover:bg-white text-white hover:text-gray-900 p-2 rounded-lg backdrop-blur-md transition-colors"><Share2 size={18} /></button>
+                        <button onClick={handleMaximize} className="bg-white/20 hover:bg-white text-white hover:text-gray-900 p-2 rounded-lg backdrop-blur-md transition-colors"><LinkIcon size={18} /></button>
                     </div>
 
                     {/* Price Tag Overlay */}
@@ -120,9 +189,11 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                         <div className="flex items-center gap-2 mb-1">
                             <span className="bg-secondary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">{project.status}</span>
                         </div>
-                        <h2 className="text-3xl font-bold font-serif shadow-black drop-shadow-md">
-                            {currency} {Number(price).toLocaleString()}
-                        </h2>
+                        {price && Number(price) > 0 && (
+                            <h2 className="text-3xl font-bold font-serif shadow-black drop-shadow-md">
+                                {convertPrice(Number(price)).formatted}
+                            </h2>
+                        )}
                     </div>
                 </div>
 
@@ -132,59 +203,9 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                     {/* Scrollable Content */}
                     <div className="flex-1 overflow-y-auto p-6 md:p-8">
 
-                        {/* Title & Location */}
-                        <div className="mb-6">
-                            <h3 className="text-xl font-bold text-gray-800 leading-tight mb-2">
-                                {marketingTitle}
-                            </h3>
-                            <div className="flex items-center text-gray-500 text-sm">
-                                <MapPin size={16} className="text-secondary mr-1 rtl:ml-1" />
-                                {community}, {city}
-                            </div>
-                        </div>
-
-                        {/* Key Specs */}
-                        <div className="grid grid-cols-2 gap-4 mb-8">
-                            {project.availableBedrooms && project.availableBedrooms.length > 0 && (
-                                <div className="bg-gray-50 p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                                    <div className="bg-white p-2 rounded-lg shadow-sm text-secondary"><BedDouble size={20} strokeWidth={1.5} /></div>
-                                    <div>
-                                        <span className="block text-xs text-gray-400 font-medium uppercase">Bedrooms</span>
-                                        <span className="block text-gray-800 font-bold">
-                                            {project.availableBedrooms.map((b: any) => b.noOfBedroom).join(', ')}
-                                        </span>
-                                    </div>
-                                </div>
-                            )}
-                            <div className="bg-gray-50 p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                                <div className="bg-white p-2 rounded-lg shadow-sm text-secondary"><Tag size={20} strokeWidth={1.5} /></div>
-                                <div>
-                                    <span className="block text-xs text-gray-400 font-medium uppercase">Type</span>
-                                    <span className="block text-gray-800 font-bold">{project.propertyType || 'Project'}</span>
-                                </div>
-                            </div>
-                            {HOdate && (
-                                <div className="bg-gray-50 p-3 rounded-xl border border-gray-100 flex items-center gap-3">
-                                    <div className="bg-white p-2 rounded-lg shadow-sm text-secondary"><Calendar size={20} strokeWidth={1.5} /></div>
-                                    <div>
-                                        <span className="block text-xs text-gray-400 font-medium uppercase">Handover</span>
-                                        <span className="block text-gray-800 font-bold">{HOdate}</span>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-
                         {/* Quick Register Form */}
                         <InquiryForm hideFeedbackButton={true} />
 
-                        <div className="mt-6 flex flex-col gap-3">
-                            <Link
-                                href={url}
-                                className="w-full py-3 border-2 border-gray-200 text-center  text-gray-600 font-bold rounded-xl hover:bg-gray-800 hover:text-white transition-colors"
-                            >
-                                View Full Details
-                            </Link>
-                        </div>
                     </div>
 
                     {/* Bottom Sticky Action Bar */}

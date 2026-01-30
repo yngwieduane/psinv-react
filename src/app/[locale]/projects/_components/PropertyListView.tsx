@@ -8,6 +8,7 @@ import { useUser } from '@/context/userContext';
 import { Heart, MapPin, Shuffle, Share2, BedDouble, Bath, Square, Calendar, Eye } from 'lucide-react';
 import Image from 'next/image';
 import ProjectPreviewModal from './ProjectPreviewModal';
+import { useCurrency } from '@/context/currencyContext';
 
 const PropertyListView = ({ data }: { data: any[] }) => {
     return (
@@ -21,6 +22,7 @@ const PropertyListView = ({ data }: { data: any[] }) => {
 
 const PropertyListItem = (props: any) => {
     const format = useFormatter();
+    const { convertPrice } = useCurrency();
     const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
     const [showPreview, setShowPreview] = useState(false);
 
@@ -41,10 +43,10 @@ const PropertyListItem = (props: any) => {
         : "/images/placeholder.jpg"; // Basic placeholder fallback
     let minprice, maxPrice;
     if (props.data["minPrice"] !== null && parseInt(props.data["minPrice"]) > 1) {
-        minprice = format.number(props.data["minPrice"]);
+        minprice = convertPrice(Number(props.data["minPrice"])).formatted;
     } else { minprice = "" }
     if (props.data["maxPrice"] !== null && parseInt(props.data["maxPrice"]) > 1) {
-        maxPrice = format.number(props.data["maxPrice"]);
+        maxPrice = convertPrice(Number(props.data["maxPrice"])).formatted;
     } else { maxPrice = "" }
 
     const handleShare = async (e: React.MouseEvent) => {
@@ -188,7 +190,7 @@ const PropertyListItem = (props: any) => {
                             {props.data["priceFrom"] !== 0 ? (
                                 <>
                                     <span className="text-xs text-gray-400 font-normal uppercase mr-1">From</span>
-                                    {props.data["currency"] || 'AED'} {minprice} ~ {maxPrice}
+                                    {minprice} ~ {maxPrice}
                                 </>
                             ) : (
                                 <span className="text-gray-500 text-sm">Ask for Price</span>
@@ -201,13 +203,13 @@ const PropertyListItem = (props: any) => {
                                     e.preventDefault();
                                     setShowPreview(true);
                                 }}
-                                className="text-sm font-bold border border-gray-300 text-gray-700 px-5 py-2.5 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-2"
+                                className="text-sm font-bold border border-gray-300 text-gray-700 px-5 py-2.5 rounded-lg hover:bg-gray-200 transition-colors flex items-center gap-2"
                             >
                                 <Eye size={16} /> Preview
                             </button>
                             <Link
                                 href={url}
-                                className="text-sm font-bold bg-gray-900 text-white px-5 py-2.5 rounded-lg hover:bg-gray-800 transition-colors"
+                                className="text-sm font-bold bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-primary/70 transition-colors"
                             >
                                 View Details
                             </Link>

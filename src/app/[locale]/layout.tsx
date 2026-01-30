@@ -13,10 +13,12 @@ import ConditionalFooter from "./_components/ConditionalFooter";
 import { locales, siteBaseUrl, defaultLocale } from "@/utils/i18n-config";
 import { TranslationProvider } from "@/context/translationContext";
 import { UserProvider } from "@/context/userContext";
+import { CurrencyProvider } from "@/context/currencyContext";
 import dynamic from "next/dynamic";
 const BrightCallWidget = dynamic(() => import("@/app/[locale]/_components/BrightCallWidget"));
 import AIChatWidgetClient from './_components/AIChatWidgetClient';
 import CompareFloatingButtonClient from "./_components/CompareFloatingButtonClient";
+import AuthModal from "./_components/AuthModal";
 import Script from "next/script";
 
 type Props = {
@@ -200,13 +202,16 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <UserProvider>
-          <NextIntlClientProvider messages={messages}>
-            <ConditionalNavigation />
-            <Providers><main>{children}</main></Providers>
-            <ConditionalFooter />
-            <CompareFloatingButtonClient />
-            <AIChatWidgetClient />
-          </NextIntlClientProvider>
+          <AuthModal />
+          <CurrencyProvider>
+            <NextIntlClientProvider messages={messages}>
+              <ConditionalNavigation />
+              <Providers><main>{children}</main></Providers>
+              <ConditionalFooter />
+              <CompareFloatingButtonClient />
+              <AIChatWidgetClient />
+            </NextIntlClientProvider>
+          </CurrencyProvider>
         </UserProvider>
         {/* <GoogleTagManager gtmId="GTM-KDDP2SR" /> */}
 
