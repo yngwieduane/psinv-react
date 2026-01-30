@@ -50,19 +50,19 @@ export default function SearchPropertyAI({
                     <div className="flex gap-3">
                         <button
                             onClick={() => setActiveTab('gallery')}
-                            className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer ${activeTab === 'gallery' ? 'bg-primary border border-gray-400' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'}`}
+                            className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer ${activeTab === 'gallery' ? 'bg-primary border border-gray-400 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'}`}
                         >
                             <LayoutGrid size={16} /> Gallery
                         </button>
                         <button
                             onClick={() => setActiveTab('map')}
-                            className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer ${activeTab === 'map' ? 'bg-primary border border-gray-400' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'}`}
+                            className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer ${activeTab === 'map' ? 'bg-primary border border-gray-400 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'}`}
                         >
                             <MapIcon size={16} /> View Map
                         </button>
                         <button
                             onClick={() => setActiveTab('list')}
-                            className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer ${activeTab === 'list' ? 'bg-primary border border-gray-400' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'}`}
+                            className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer ${activeTab === 'list' ? 'bg-primary border border-gray-400 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'}`}
                         >
                             <List size={16} /> List
                         </button>

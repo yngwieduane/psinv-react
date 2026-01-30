@@ -201,13 +201,13 @@ const PropertyListItem = (props: any) => {
                                     e.preventDefault();
                                     setShowPreview(true);
                                 }}
-                                className="text-sm font-bold border border-gray-300 text-gray-700 px-5 py-2.5 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-2"
+                                className="text-sm font-bold border border-gray-300 text-gray-700 px-5 py-2.5 rounded-lg hover:bg-gray-200 transition-colors flex items-center gap-2"
                             >
                                 <Eye size={16} /> Preview
                             </button>
                             <Link
                                 href={url}
-                                className="text-sm font-bold bg-gray-900 text-white px-5 py-2.5 rounded-lg hover:bg-gray-800 transition-colors"
+                                className="text-sm font-bold bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-primary/70 transition-colors"
                             >
                                 View Details
                             </Link>

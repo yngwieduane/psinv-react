@@ -173,7 +173,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                             <div className="hidden md:block w-40">
                                 <button
                                     type="submit"
-                                    className="w-full h-full rounded-xl bg-[#005a9c] hover:bg-[#004880] text-white font-bold transition-all shadow-md active:scale-95 text-lg"
+                                    className="w-full h-full rounded-xl bg-primary hover:bg-[#004880] text-white font-bold transition-all shadow-md active:scale-95 text-lg"
                                 >
                                     Search
                                 </button>
@@ -365,7 +365,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                         <div className="w-full md:hidden">
                             <button
                                 type="submit"
-                                className="w-full rounded-xl bg-[#005a9c] hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
+                                className="w-full rounded-xl bg-primary hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
                             >
                                 Search
                             </button>

@@ -134,9 +134,9 @@ const PropertyMapBox = ({ data }: PropertyMapBoxProps) => {
                                     onClick={() => handleSelectProperty(property)}
                                 >
                                     <Pin
-                                        background={isSelected ? '#EC5E2A' : '#FBBC04'} // Secondary color for selected
-                                        glyphColor={isSelected ? '#FFF' : '#000'}
-                                        borderColor={'#000'}
+                                        background={isSelected ? '#EC5E2A' : '#111954'} // Secondary color for selected
+                                        glyphColor={isSelected ? '#FFF' : '#FFF'}
+                                        borderColor={'#FFF'}
                                         scale={isSelected ? 1.2 : 1.0}
                                     />
                                 </AdvancedMarker>
@@ -179,7 +179,7 @@ const PropertyMapBox = ({ data }: PropertyMapBoxProps) => {
                                         </p>
                                         <Link
                                             href={url}
-                                            className="block w-full py-2 bg-black text-white text-center text-xs font-bold rounded hover:bg-primary/90 transition-colors cursor-pointer"
+                                            className="block w-full py-2 bg-primary text-white text-center text-xs font-bold rounded hover:bg-primary/90 transition-colors cursor-pointer"
                                         >
                                             View Project
                                         </Link>

@@ -187,7 +187,7 @@ export default function HomeSearch() {
                             </div>
 
                             {/* Category (Function of Rent/Sale) */}
-                            <div className={`w-full md:w-36 mt-2 ${isFiltersOpen ? '' : 'hidden md:block'}`}>
+                            <div className={`w-full md:w-36 ${isFiltersOpen ? '' : 'hidden md:block'}`}>
                                 <Listbox value={category} onChange={setCategory}>
                                     <div className="relative">
                                         <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
@@ -372,7 +372,7 @@ export default function HomeSearch() {
                         <div className="w-full">
                             <button
                                 type="submit"
-                                className="w-full rounded-xl bg-[#005a9c] hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
+                                className="w-full rounded-xl bg-primary hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
                             >
                                 Search
                             </button>
