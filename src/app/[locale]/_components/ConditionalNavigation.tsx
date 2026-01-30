@@ -21,6 +21,7 @@ export default function ConditionalNavigation() {
       '/conrad-abu-dhabi',
       '/jbr-lead-registration-dubai',
       '/share-your-feedback',
+      '/mobile-app-waitlist',
     ].some((path) => pathname.includes(path));
 
   if (isNoNavPage) return null;
