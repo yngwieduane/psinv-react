@@ -67,7 +67,7 @@ export default function ReportDownloadSection(props: any) {
         </div>
       </div>
       <BannerModals modalState={setModal} onModalUpdate={modalUpdate} title={t('form.title')}
-        submitLabel={t('form.title')}
+        submitLabel={t('form.button')}
         isReportDownload={true} />
     </>
   );

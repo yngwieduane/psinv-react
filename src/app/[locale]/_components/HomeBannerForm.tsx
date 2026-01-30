@@ -11,15 +11,13 @@ import { useRouter } from "next/navigation";
 import { sendGTMEvent } from '@next/third-parties/google'
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { insertHubspotLead } from "@/utils/crmApiHelpers";
 
 const schema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
   lastName: z.string().min(1, { message: "Last name is required" }),
   email: z.string().email({ message: "Invalid email address" }),
-  phone: z.string().min(7, { message: "Invalid phone number" }),
-  agreement1: z.boolean().refine((val) => val, { message: "You must agree to this" }),
-  agreement2: z.boolean().optional(),
-  agreement3: z.boolean().optional(),
+  phone: z.string().min(7, { message: "Invalid phone number" }),  
 });
 interface BannerFormProps {
   hideFeedbackButton?: boolean;
@@ -80,12 +78,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
     formState: { errors },
     control,
   } = useForm<FormData>({
-    resolver: zodResolver(schema),
-    defaultValues: {
-      agreement1: true,
-      agreement2: true,
-      agreement3: true,
-    },
+    resolver: zodResolver(schema),    
   });
 
   const [isAlreadySubmitted, setIsAlreadySubmitted] = useState(false);
@@ -109,48 +102,69 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
     setIsSubmitting(true);
     const urlParams = new URLSearchParams(window.location.search);
     const source = urlParams.get("utm_source");
+    let campaign = urlParams.get('utm_campaign') || urlParams.get('?utm_campaign') || '';
     const currentUrl = window.location.href;
 
     // Default values for media types
     let mediaType = "129475";
     let mediaName = "165233";
     let propertyCampaignId = "";
-    let methodOfContact = "115747";
+    let methodOfContact = "115747";    
 
     switch (source) {
+      case 'HubspotEmail':
+      case 'HubSpotEmail':
+      case 'hubspotemail':
+      case 'hubspotEmail':
+      case 'hs_email':
+      case 'Hubspot':
+      case 'hubspot':
+          mediaType = "63906";
+          mediaName = "63907";
+          propertyCampaignId = "";
+          methodOfContact = methodOfContact;
+          break;
       case "newsletter":
-        mediaType = "166277";
-        mediaName = "166071";
-        propertyCampaignId = "";
-        methodOfContact = "MethodOfContactVal";
-        break;
+          mediaType = "166277";
+          mediaName = "166071";
+          propertyCampaignId = "";
+          methodOfContact = methodOfContact;
+          break;
       case "sms":
-        mediaType = "129474";
-        mediaName = "165366";
-        methodOfContact = "MethodOfContactVal";
-        break;
+          mediaType = "129474";
+          mediaName = "165366";
+          methodOfContact = methodOfContact;
+          break;
       case "Google":
       case "google":
-        mediaType = "165269";
-        mediaName = "128455";
-        propertyCampaignId = "";
-        methodOfContact = "MethodOfContactVal";
-        break;
+          mediaType = "165269";
+          mediaName = "128455";
+          propertyCampaignId = "";
+          methodOfContact = methodOfContact;
+          break;
       default:
-        mediaType = "129475";
-        mediaName = "165233";
-        methodOfContact = "115747";
+          mediaType = "129475";
+          mediaName = "165233";
+          methodOfContact = "115747";
+          break;
+  }
+
+  switch (campaign) {
+    case 'Luxury_projects_Campaign':
+        propertyCampaignId = "2178";
+        break; 
+    default:
+        propertyCampaignId = propertyCampaignId;
         break;
-    }
+  }
+
+  const isHubspotMedia = mediaName === '63907';
 
     const ReferredToID = cityConfig.referredTo ?? '3458';
     const ReferredByID = cityConfig.referredBy ?? '3458';
     const ActivityAssignedTo = cityConfig.assignedTo ?? '3458';
     
     const remarks = `
-        Additional consent 1: ${data.agreement1 ? "Yes" : "No"} </br>
-        Additional consent 2: ${data.agreement2 ? "Yes" : "No"} </br>
-        Additional consent 3: ${data.agreement3 ? "Yes" : "No"} </br>
         Client Name: ${data.firstName} ${data.lastName} </br>
         Client Email: ${data.email} </br>
         Client Phone: ${data.phone} </br>
@@ -159,7 +173,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
     `;
 
     const formDataToSend = {
-      TitleID: "129932",
+      TitleID: "129932", 
       FirstName: data.firstName,
       FamilyName: data.lastName,
       MobileCountryCode: "",
@@ -216,13 +230,24 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
     };
 
     try {
-      const response = await fetch(cityConfig.apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formDataToSend),
-      });
+      if (isHubspotMedia) {
+        const hubspotResponse = await insertHubspotLead(formDataToSend);
+        
+        if (!hubspotResponse.ok) {
+            const text = await hubspotResponse.text();
+            throw new Error(`HubSpot API error: ${hubspotResponse.status} - ${text}`);
+        }
+
+      }
+      else{
+        await fetch(cityConfig.apiUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formDataToSend),
+        });
+      }
 
       const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
         method: 'POST',
@@ -357,7 +382,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
         })
       });
 
-      if (response.ok || mailRes.ok) {
+      if ( mailRes.ok) {
         setPostId("Success");
         setIsAlreadySubmitted(false);
         if (isReportDownload) {
@@ -459,26 +484,6 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
         <div className="my-3">
           <label className="flex items-center space-x-2">
             <span className="text-sm">{t('byclickingsubmit.part1')} <Link href="/en/terms" title="terms">{t('byclickingsubmit.terms')}</Link> {t('byclickingsubmit.and')} <Link href="/en/privacy" title="privacy">{t('byclickingsubmit.privacy')}</Link></span>
-          </label>
-        </div>
-        <div className="mb-3">
-          <label className="flex items-center space-x-2">
-            <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
-            <span className="text-sm">{t_r('agreements.1')}</span>
-          </label>
-          {errors.agreement1 && <p className="text-red-500 text-sm">{errors.agreement1.message}</p>}
-        </div>
-
-        <div className="mb-3">
-          <label className="flex items-center space-x-2">
-            <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
-            <span className="text-sm">{t_r('agreements.2')}</span>
-          </label>
-        </div>
-        <div className="mb-3">
-          <label className="flex items-center space-x-2">
-            <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
-            <span className="text-sm">{t_r('agreements.3')}</span>
           </label>
         </div>
 

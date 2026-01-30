@@ -831,7 +831,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
 
             try {
                 if (isHubspotMedia && !['Dubai', 'Sharjah'].includes(cityName)) {
-                    console.log("Inserting lead into HubSpot CRM...");
+                    //console.log("Inserting lead into HubSpot CRM...");
                     const hubspotResponse = await insertHubspotLead(formDataToSend);
 
                     if (!hubspotResponse.ok) {
@@ -840,7 +840,7 @@ const ListForm: React.FC<ListFormProps> = ({ fromModal }) => {
                     }
 
                     const hubspotData = await hubspotResponse.json();
-                    console.log("Lead inserted into HubSpot:", hubspotData);
+                    //console.log("Lead inserted into HubSpot:", hubspotData);
                 } else {
                     await fetch(`${cityConfig.apiUrl}`, {
                         method: "POST",
