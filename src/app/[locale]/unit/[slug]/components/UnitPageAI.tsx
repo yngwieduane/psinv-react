@@ -23,6 +23,7 @@ import { Bath, BedDouble, CheckCircle2, Heart, Link2, Mail, MapPin, MessageCircl
 import { useUser } from "@/context/userContext";
 import AccordionTabs from "@/app/[locale]/_components/tools/AccordionTabs";
 import { Link } from "@/i18n/navigation";
+import { useCurrency } from "@/context/currencyContext";
 
 const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap'));
 const SimilarUnitsGrid = dynamic(() => import('./SimilarUnitsGrid'));
@@ -42,6 +43,7 @@ export default function UnitPageAI(props: any) {
 
     const format = useFormatter();
     const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
+    const { convertPrice, currency } = useCurrency();
 
     const TABS = [
         { id: 'details', key: 'lbl.property_details', fallback: 'Property Details' }
@@ -100,7 +102,7 @@ export default function UnitPageAI(props: any) {
                     const faqData = [
                         {
                             title: `What is the price of this property?`,
-                            content: `The price starts from AED ${price ? Number(price).toLocaleString() : 'Price on Request'}.`
+                            content: `The price starts from ${price ? convertPrice(Number(price)).formatted : 'Price on Request'}.`
                         },
                         {
                             title: `Where is ${post.propertyname}, ${post.community} located?`,

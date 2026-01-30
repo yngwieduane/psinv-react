@@ -9,6 +9,7 @@ import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions, Popover, 
 import { ChevronUpDownIcon, CheckIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/20/solid';
 import AutocompleteSearch from '../units/_components/AutocompleteSearch';
 import AutocompleteSearchWithOther from '../units/_components/AutocompleteSearchWithOther';
+import { useCurrency } from '@/context/currencyContext';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 100000000;
@@ -16,6 +17,7 @@ const maxPriceDefault = 100000000;
 export default function HomeSearch() {
     const locale = useLocale();
     const router = useRouter();
+    const { currency } = useCurrency();
     const [activeTab, setActiveTab] = useState<'units' | 'properties'>('units');
 
     // Filter States
@@ -331,7 +333,7 @@ export default function HomeSearch() {
                                         <span className="col-start-1 row-start-1 truncate">
                                             {priceRange[0] === minPriceDefault && priceRange[1] === maxPriceDefault
                                                 ? 'Price Range'
-                                                : `${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()} AED`}
+                                                : `${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()} ${currency}`}
                                         </span>
                                         <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                     </PopoverButton>

@@ -8,10 +8,12 @@ import { Link } from '@/i18n/navigation';
 import slugify from 'react-slugify';
 import { generateSeoData } from '../../_components/functions/generateSeoData';
 
+import { useCurrency } from '@/context/currencyContext';
+
 const ComparePage: React.FC<{}> = ({ }) => {
     const { compareList, removeFromCompare, clearCompareList } = useUser();
+    const { convertPrice, currency } = useCurrency();
     const [activeTab, setActiveTab] = useState<'project' | 'units'>('units');
-
     // Filter and enrich items
     const projectItems = compareList
         .filter(item => item.type === 'project')
@@ -39,8 +41,10 @@ const ComparePage: React.FC<{}> = ({ }) => {
             }
         },
         {
-            label: 'Price (AED)', key: 'price', render: (d: any) =>
-                d.priceFrom ? d.priceFrom.toLocaleString() : (d.sellprice ? Number(d.sellprice).toLocaleString() : (d.rent ? Number(d.rent).toLocaleString() : 'TBD'))
+            label: `Price (${currency})`, key: 'price', render: (d: any) => {
+                const val = d.priceFrom || d.sellprice || d.rent;
+                return val ? convertPrice(Number(val)).formatted : 'TBD';
+            }
         },
         {
             label: 'Handover', key: 'handover', render: (d: any) => {

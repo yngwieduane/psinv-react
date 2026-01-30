@@ -4,6 +4,7 @@ import { Link, useRouter } from '@/i18n/navigation';
 import { useFormatter } from 'next-intl';
 import slugify from 'react-slugify';
 import InquiryForm from '../../_components/InquiryForm';
+import { useCurrency } from '@/context/currencyContext';
 
 interface ProjectPreviewModalProps {
     project: any;
@@ -14,6 +15,7 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const format = useFormatter();
     const router = useRouter();
+    const { convertPrice } = useCurrency();
 
     if (!project) return null;
 
@@ -189,7 +191,7 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                         </div>
                         {price && Number(price) > 0 && (
                             <h2 className="text-3xl font-bold font-serif shadow-black drop-shadow-md">
-                                {currency} {Number(price).toLocaleString()}
+                                {convertPrice(Number(price)).formatted}
                             </h2>
                         )}
                     </div>

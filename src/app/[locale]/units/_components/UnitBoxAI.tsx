@@ -4,6 +4,7 @@ import { useState } from "react";
 import Modals from "../../_components/tools/Modals";
 import { Heart, MapPin, Shuffle } from "lucide-react";
 import { useUser } from "@/context/userContext";
+import { useCurrency } from "@/context/currencyContext";
 import { useFormatter } from "next-intl";
 
 export default function UnitBoxAI(props: any) {
@@ -36,6 +37,7 @@ export default function UnitBoxAI(props: any) {
 
     const format = useFormatter();
     const { toggleFavorite, addToCompare, isFavorite, isCompared } = useUser();
+    const { convertPrice } = useCurrency();
     const saved = isFavorite(props.data["propertyID"]);
     const compared = isCompared(props.data["propertyID"]);
     let HOdate;
@@ -87,7 +89,7 @@ export default function UnitBoxAI(props: any) {
                                 <div className="bg-white/95 backdrop-blur-sm p-3 rounded-xl shadow-lg border border-white/20">
                                     <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-0.5">Price</p>
                                     <p className="text-xl font-bold text-[#111954]">
-                                        AED {format.number(price)}
+                                        {convertPrice(price).formatted}
                                     </p>
                                 </div>
                             </div>

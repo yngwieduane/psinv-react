@@ -20,6 +20,7 @@ import PaymentPlans from './PaymentPlans';
 import CardGroupImage from './CardGroupImage';
 import { ArrowRight, BedDouble, CalendarCheck, CheckCircle2, CirclePlay, Clock, ExternalLink, FileText, Heart, LandPlot, LayoutGrid, MapPin, MapPinCheck, MapPinIcon, MapPinned, PlayCircle, PlayIcon, Shuffle, Square, Video } from 'lucide-react';
 import { useUser } from '@/context/userContext';
+import { useCurrency } from '@/context/currencyContext';
 import TableRow from './TableRow';
 import PaymentPlansAI from './PaymentPlansAI';
 import UnitModelsAI from './UnitModelsAI';
@@ -32,6 +33,7 @@ const PropertyPage = (props: any) => {
     const pathname = usePathname();
     const format = useFormatter();
     const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
+    const { convertPrice } = useCurrency();
     let HOdate, launchDate, completionDate, minprice, maxPrice, areaRangeMin, areaRangeMax;
     const [activeTab, setActiveTab] = useState('Overview');
     const [activeFloorPlan, setActiveFloorPlan] = useState(0);
@@ -155,10 +157,10 @@ const PropertyPage = (props: any) => {
     }
 
     if (props.data["minPrice"] !== null && parseInt(props.data["minPrice"]) > 1) {
-        minprice = format.number(props.data["minPrice"]);
+        minprice = convertPrice(props.data["minPrice"]).formatted;
     } else { minprice = "" }
     if (props.data["maxPrice"] !== null && parseInt(props.data["maxPrice"]) > 1) {
-        maxPrice = format.number(props.data["maxPrice"]);
+        maxPrice = convertPrice(props.data["maxPrice"]).formatted;
     } else { maxPrice = "" }
     if (props.data["areaRangeMin"] !== null && parseInt(props.data["areaRangeMin"]) > 1) {
         areaRangeMin = format.number(props.data["areaRangeMin"]);
