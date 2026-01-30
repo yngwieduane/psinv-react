@@ -14,6 +14,8 @@ interface UserContextType {
   toggleFavorite: (item: SavedItem) => void;
   addToCompare: (item: SavedItem) => void;
   removeFromCompare: (id: string) => void;
+  clearFavorites: () => void;
+  clearCompareList: () => void;
   isFavorite: (id: string) => boolean;
   isCompared: (id: string) => boolean;
   loading: boolean;
@@ -191,6 +193,17 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
+  const clearFavorites = async () => {
+    if (!confirm("Are you sure you want to clear your favorites?")) return;
+    setFavorites([]);
+    if (user) {
+      try {
+        const userRef = doc(db, "users", user.id);
+        await setDoc(userRef, { favorites: [] }, { merge: true });
+      } catch (e) { console.error("Error clearing favorites", e); }
+    }
+  };
+
   const addToCompare = async (item: SavedItem) => {
     if (compareList.find(i => i.id === item.id)) return;
 
@@ -239,6 +252,17 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
+  const clearCompareList = async () => {
+    if (!confirm("Are you sure you want to clear your compare list?")) return;
+    setCompareList([]);
+    if (user) {
+      try {
+        const userRef = doc(db, "users", user.id);
+        await setDoc(userRef, { compareList: [] }, { merge: true });
+      } catch (e) { console.error("Error clearing compare list", e); }
+    }
+  };
+
   const isFavorite = (id: string) => !!favorites.find(i => i.id === id);
   const isCompared = (id: string) => !!compareList.find(i => i.id === id);
 
@@ -252,6 +276,8 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       toggleFavorite,
       addToCompare,
       removeFromCompare,
+      clearFavorites,
+      clearCompareList,
       isFavorite,
       isCompared,
       loading

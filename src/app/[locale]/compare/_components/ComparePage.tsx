@@ -9,7 +9,7 @@ import slugify from 'react-slugify';
 import { generateSeoData } from '../../_components/functions/generateSeoData';
 
 const ComparePage: React.FC<{}> = ({ }) => {
-    const { compareList, removeFromCompare } = useUser();
+    const { compareList, removeFromCompare, clearCompareList } = useUser();
     const [activeTab, setActiveTab] = useState<'project' | 'units'>('units');
 
     // Filter and enrich items
@@ -95,26 +95,38 @@ const ComparePage: React.FC<{}> = ({ }) => {
                 <div className="flex flex-col md:flex-row justify-between items-end md:items-center mb-12 gap-6">
                     <h1 className="text-4xl font-serif font-bold text-primary">Compare Properties</h1>
 
-                    {/* Tabs */}
-                    <div className="flex bg-gray-100 p-1 rounded-xl">
-                        <button
-                            onClick={() => setActiveTab('units')}
-                            className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all ${activeTab === 'units'
-                                ? 'bg-white text-[#353455] shadow-sm'
-                                : 'text-gray-500 hover:text-gray-700'
-                                }`}
-                        >
-                            Units ({unitItems.length})
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('project')}
-                            className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all ${activeTab === 'project'
-                                ? 'bg-white text-[#353455] shadow-sm'
-                                : 'text-gray-500 hover:text-gray-700'
-                                }`}
-                        >
-                            Projects ({projectItems.length})
-                        </button>
+                    <div className="flex items-center gap-4">
+                        {/* Clear All */}
+                        {compareList.length > 0 && (
+                            <button
+                                onClick={clearCompareList}
+                                className="text-gray-400 hover:text-red-500 transition-colors flex items-center gap-2 text-sm font-medium"
+                            >
+                                <X size={16} /> Clear All
+                            </button>
+                        )}
+
+                        {/* Tabs */}
+                        <div className="flex bg-gray-100 p-1 rounded-xl">
+                            <button
+                                onClick={() => setActiveTab('units')}
+                                className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all ${activeTab === 'units'
+                                    ? 'bg-white text-[#353455] shadow-sm'
+                                    : 'text-gray-500 hover:text-gray-700'
+                                    }`}
+                            >
+                                Units ({unitItems.length})
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('project')}
+                                className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all ${activeTab === 'project'
+                                    ? 'bg-white text-[#353455] shadow-sm'
+                                    : 'text-gray-500 hover:text-gray-700'
+                                    }`}
+                            >
+                                Projects ({projectItems.length})
+                            </button>
+                        </div>
                     </div>
                 </div>
 

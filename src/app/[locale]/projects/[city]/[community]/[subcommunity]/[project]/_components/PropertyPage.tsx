@@ -191,6 +191,18 @@ const PropertyPage = (props: any) => {
         }
     };
 
+    let videoJsonLd = null;
+    if (video) {
+        videoJsonLd = {
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": `Video Tour of ${props.data["propertyName"]}`,
+            "description": `Walkthrough video of ${props.data["propertyName"]} in ${props.data["community"]}`,
+            "thumbnailUrl": imgFeatured,
+            "uploadDate": new Date().toISOString(), // Fallback as we might not have upload date
+            "contentUrl": video
+        };
+    }
 
     const tabs = ['Overview', 'Gallery', 'Payment Plan', 'Floor Plans', 'Location', 'Nearby'];
 
@@ -205,6 +217,12 @@ const PropertyPage = (props: any) => {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
+            {videoJsonLd && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
+                />
+            )}
 
             <div id={props.data["propertyID"]} className="hidden">
                 <Breadcrumb />

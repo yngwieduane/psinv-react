@@ -7,7 +7,7 @@ import UnitListBoxAI from '../../units/_components/UnitListBoxAI';
 import { useUser } from '@/context/userContext';
 
 const FavoritesPage: React.FC<{}> = ({ }) => {
-    const { favorites, toggleFavorite } = useUser();
+    const { favorites, toggleFavorite, clearFavorites } = useUser();
     const [activeTab, setActiveTab] = useState<'project' | 'units'>('project');
 
     const projectItems = favorites
@@ -49,28 +49,39 @@ const FavoritesPage: React.FC<{}> = ({ }) => {
                 <div className="flex flex-col md:flex-row justify-between items-end md:items-center mb-12 gap-6">
                     <h1 className="text-4xl font-serif font-bold text-primary">Favorites ({favorites.length})</h1>
 
-                    {/* Tabs */}
-                    <div className="flex bg-gray-100 p-1 rounded-xl">
-                        <button
-                            onClick={() => setActiveTab('project')}
-                            className={`cursor-pointer px-6 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${activeTab === 'project'
-                                ? 'bg-white text-[#353455] shadow-sm'
-                                : 'text-gray-500 hover:text-gray-700'
-                                }`}
-                        >
-                            <LayoutGrid size={16} />
-                            Projects ({projectItems.length})
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('units')}
-                            className={`cursor-pointer px-6 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${activeTab === 'units'
-                                ? 'bg-white text-[#353455] shadow-sm'
-                                : 'text-gray-500 hover:text-gray-700'
-                                }`}
-                        >
-                            <List size={16} />
-                            Units ({unitItems.length})
-                        </button>
+                    <div className="flex items-center gap-4">
+                        {favorites.length > 0 && (
+                            <button
+                                onClick={clearFavorites}
+                                className="text-gray-400 hover:text-red-500 transition-colors flex items-center gap-2 text-sm font-medium"
+                            >
+                                <Trash2 size={16} /> Clear All
+                            </button>
+                        )}
+
+                        {/* Tabs */}
+                        <div className="flex bg-gray-100 p-1 rounded-xl">
+                            <button
+                                onClick={() => setActiveTab('project')}
+                                className={`cursor-pointer px-6 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${activeTab === 'project'
+                                    ? 'bg-white text-[#353455] shadow-sm'
+                                    : 'text-gray-500 hover:text-gray-700'
+                                    }`}
+                            >
+                                <LayoutGrid size={16} />
+                                Projects ({projectItems.length})
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('units')}
+                                className={`cursor-pointer px-6 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${activeTab === 'units'
+                                    ? 'bg-white text-[#353455] shadow-sm'
+                                    : 'text-gray-500 hover:text-gray-700'
+                                    }`}
+                            >
+                                <List size={16} />
+                                Units ({unitItems.length})
+                            </button>
+                        </div>
                     </div>
                 </div>
 
