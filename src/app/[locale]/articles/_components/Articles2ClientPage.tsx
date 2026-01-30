@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Search, Clock, User, ChevronLeft, ChevronRight } from "lucide-react";
 import Breadcrumb from "../../_components/Breadcrumb";
 import { Link } from "@/i18n/navigation";
+import slugify from 'react-slugify';
 
 // Types
 import { ArticleBodyPart } from "@/data/articles";
@@ -138,13 +139,30 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
         currentPage * ITEMS_PER_PAGE
     );
 
-    // Area Guide Articles
-    const areaGuides = useMemo(() => {
-        return initialArticles.filter(item => {
+    // Removed import from here
+
+    // ... (existing imports)
+
+    // ...
+
+    // Area Guide Cities
+    const areaGuideCities = useMemo(() => {
+        const cities: Record<string, { name: string, image: string, count: number }> = {};
+
+        initialArticles.forEach(item => {
             const cat = (item.category || "").toLowerCase();
             const key = (item.categoryKey || "").toLowerCase();
-            return cat.includes("area guide") || key.includes("area_guide");
-        }).slice(0, 3); // Show top 3 area guides
+            const isAreaGuide = cat.includes("area guide") || key.includes("area_guide");
+
+            if (isAreaGuide && item.city) {
+                if (!cities[item.city]) {
+                    cities[item.city] = { name: item.city, image: item.image, count: 0 };
+                }
+                cities[item.city].count++;
+            }
+        });
+
+        return Object.values(cities).sort((a, b) => a.name.localeCompare(b.name));
     }, [initialArticles]);
 
     return (
@@ -223,23 +241,38 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
                     )}
 
                     {/* Area Guides Section */}
-                    {areaGuides.length > 0 && (
+                    {areaGuideCities.length > 0 && (
                         <div className="pt-16 pb-8">
                             <div className="flex items-center justify-between mb-8">
                                 <h2 className="text-3xl font-bold text-gray-900">Area Guides</h2>
                                 <Link
-                                    href="/articles/category/area_guides"
+                                    href="/articles/area-guide"
                                     className="text-primary font-medium hover:underline flex items-center gap-2"
                                 >
                                     View All <ChevronRight size={16} />
                                 </Link>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                {areaGuides.map((item) => (
-                                    <RecentArticleRow
-                                        key={item.id}
-                                        item={item}
-                                    />
+                                {areaGuideCities.map((city) => (
+                                    <Link
+                                        key={city.name}
+                                        href={`/articles/area-guide/${slugify(city.name)}`}
+                                        className="group relative h-64 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all block"
+                                    >
+                                        <Image
+                                            src={city.image}
+                                            alt={city.name}
+                                            fill
+                                            className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                        />
+                                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors" />
+                                        <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                                            <h3 className="text-3xl font-bold mb-2">{city.name}</h3>
+                                            <span className="text-sm font-medium bg-white/20 backdrop-blur-md px-4 py-1 rounded-full">
+                                                {city.count} Guides
+                                            </span>
+                                        </div>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
