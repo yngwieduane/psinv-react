@@ -327,15 +327,29 @@ const PropertyPage = (props: any) => {
                                         <h4 className="font-bold text-gray-800 text-xl mb-4 mt-8">{t('features')}</h4>
                                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none pl-0">
                                             {props.data['aminities'] && props.data['aminities'].map((item: any, index: any) => (
-                                                <li key={index} className="flex items-center gap-3 text-base"><CheckCircle2 className="text-secondary shrink-0" size={20} />{item.name}</li>
+                                                <li key={index} className="flex items-center gap-3 text-base"><CheckCircle2 className="text-primary shrink-0" size={20} />{item.name}</li>
                                             ))}
                                         </ul>
                                     </div>
+
+                                    {props.data["projectBrochures"] && props.data["projectBrochures"].length > 0 && props.data["projectBrochures"][0]['imageURL'] && (
+                                        <div className="mt-6">
+                                            <a
+                                                href={props.data["projectBrochures"][0]['imageURL']}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center gap-2 bg-[#111954] text-white px-6 py-3 rounded-lg font-bold hover:bg-secondary transition-colors"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-file-down"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><path d="M12 18v-6" /><path d="m9 15 3 3 3-3" /></svg>
+                                                {t('download_brochure')}
+                                            </a>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="lg:w-5/12 w-full space-y-8">
                                     <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                                        <div className="bg-primary p-6"><h4 className="text-2xl font-bold">{t('facts')}</h4></div>
+                                        <div className="bg-primary p-6 text-white"><h4 className="text-2xl font-bold">{t('facts')}</h4></div>
                                         <div className="p-2">
                                             {availbeds ? (<TableRow title={t('available_bedrooms')} content={availbeds} />) : ("")}
                                             {availtype ? (<TableRow title={t('property_types')} content={availtype} />) : ("")}
@@ -352,33 +366,33 @@ const PropertyPage = (props: any) => {
                                             {props.data['zoneType'] ? (<TableRow title={t('property_types')} content={props.data['zoneType']} />) : ("")}
                                         </div>
                                     </div>
+                                    {/* Video Tour Placeholder */}
+                                    {video !== '' ? (
+                                        <FancyboxWrapper>
+                                            <a
+                                                title="Video"
+                                                type="button"
+                                                data-fancybox="video"
+                                                href={video}
+                                                className="relative inline-flex w-full flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
+                                            >
+                                                <div className="bg-black rounded-2xl overflow-hidden shadow-lg relative h-64 group cursor-pointer">
+                                                    <img src={imgFeatured} className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" />
+                                                    <div className="absolute inset-0 flex items-center justify-center">
+                                                        <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white pl-1 transition-transform group-hover:scale-110">
+                                                            <PlayIcon size={32} className="text-white" fill="currentColor" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="absolute bottom-4 left-4 text-white font-bold">{t('video_tour')}</div>
+                                                </div>
+                                            </a>
+                                        </FancyboxWrapper>
+                                    ) : ("")}
                                 </div>
                             </div>
                         </section>
 
 
-                        {/* Video Tour Placeholder */}
-                        {video !== '' ? (
-                            <FancyboxWrapper>
-                                <a
-                                    title="Video"
-                                    type="button"
-                                    data-fancybox="video"
-                                    href={video}
-                                    className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
-                                >
-                                    <div className="bg-black rounded-2xl overflow-hidden shadow-lg relative h-64 group cursor-pointer">
-                                        <img src={imgFeatured} className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" />
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white pl-1 transition-transform group-hover:scale-110">
-                                                <CirclePlay size={32} className="text-white" fill="currentColor" />
-                                            </div>
-                                        </div>
-                                        <div className="absolute bottom-4 left-4 text-white font-bold">{t('video_tour')}</div>
-                                    </div>
-                                </a>
-                            </FancyboxWrapper>
-                        ) : ("")}
 
                         {/* Gallery Grid */}
                         <section id="gallery" className="scroll-mt-40">
@@ -404,11 +418,12 @@ const PropertyPage = (props: any) => {
 
                         {/* Master Plan & Location Map */}
                         <section id="location" className="scroll-mt-40">
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                            <div className="grid grid-cols-1 gap-10">
                                 {props.data["communityMapAndMasterPlan"] !== null ? (
                                     <FancyboxWrapper>
                                         <div>
-                                            <h3 className="text-3xl font-bold text-primary mb-8">{t('master_plan')}</h3>
+                                            <h3 className="text-3xl font-bold text-primary">{t('master_plan')}</h3>
+                                            <h2 className="text-xl text-gray-500 mb-8">{props.data["propertyName"]}</h2>
                                             <a
                                                 type="button"
                                                 title="Master Plan"
@@ -430,7 +445,8 @@ const PropertyPage = (props: any) => {
                                 {props.data["locationMapImages"] !== null ? (
                                     <FancyboxWrapper>
                                         <div>
-                                            <h3 className="text-3xl font-bold text-primary mb-8">{t('location')}</h3>
+                                            <h3 className="text-3xl font-bold text-primary">{t('location')}</h3>
+                                            <h2 className="text-xl text-gray-500 mb-8">{props.data["propertyName"]}</h2>
                                             <a
                                                 type="button"
                                                 title="Location Plan"

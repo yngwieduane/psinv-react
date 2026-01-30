@@ -16,11 +16,11 @@ interface FooterProps {
 const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
   const locale = useLocale();
   const isRtl = locale.toLowerCase().startsWith("ar");
-  const t = useTranslations('FooterAI');  
+  const t = useTranslations('FooterAI');
   const pathname = usePathname();
 
   const abuDhabiData = {
-    phone1: '600 548 200', 
+    phone1: '600 548 200',
     phone2: '+971 2205 2999',
     address: {
       part1: t('company_address.part1'),
@@ -30,24 +30,24 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
     }
   };
 
-  const dubaiData = { 
-    phone1: '04 508 8000', 
+  const dubaiData = {
+    phone1: '04 508 8000',
     phone2: '04 508 8001',
     address: {
       part1: t('company_address_dubai.part1'),
       part2: t('company_address_dubai.part2'),
       part3: t('company_address_dubai.part3'),
-      part4: ''        
+      part4: ''
     }
   };
-  
-  
+
+
   const normalizedPath = pathname.replace(/^\/(en|ar)/, "");
   let selectedData;
   let selectedSocialLinks;
 
   switch (normalizedPath) {
-    case "/dubai" : 
+    case "/dubai":
       selectedData = dubaiData;
       selectedSocialLinks = socialLinksDubai;
       break;
@@ -55,7 +55,7 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
     default:
       selectedData = abuDhabiData;
       selectedSocialLinks = socialLinks;
-      break; 
+      break;
   }
 
   const { phone1, phone2, address } = selectedData;
@@ -67,7 +67,7 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
   }));
 
   return (
-    <footer className="bg-[#0c1356] text-white pt-24 pb-12 border-t border-white/5" dir={isRtl ? "rtl" : "ltr"} >
+    <footer className="bg-primary text-white pt-24 pb-12 border-t border-white/5" dir={isRtl ? "rtl" : "ltr"} >
       <div className="container mx-auto px-6 md:px-12" dir={isRtl ? "rtl" : "ltr"}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-20" dir={isRtl ? "rtl" : "ltr"}>
 

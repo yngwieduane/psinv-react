@@ -498,9 +498,9 @@
     "Solera": "Solera",
     "Nikki-Beach-Residences": "Nikki Beach Residences",
     "emirati-hub": "Emirati Hub",
-    "Luxury Projects" :"Luxury Projects",
-    "Projects" : "Projects",
-    "Property Valuation":"Property Valuation"
+    "Luxury Projects": "Luxury Projects",
+    "Projects": "Projects",
+    "Property Valuation": "Property Valuation"
   },
   "About_Us_Page": {
     "heroTitle": "ABOUT US",
@@ -719,7 +719,8 @@
     "open_in_google_maps": "Open in Google Maps",
     "facilities_and_amenities": "Facilities and Amenities",
     "community_images": "Community Images",
-    "project_gallery": "Project Gallery"
+    "project_gallery": "Project Gallery",
+    "download_brochure": "Download Brochure"
   },
   "UnitsPage": {
     "title": "Hello world!",
