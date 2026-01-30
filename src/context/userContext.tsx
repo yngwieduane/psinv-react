@@ -1,7 +1,7 @@
 'use client'
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, sendPasswordResetEmail } from "firebase/auth";
 import { SavedItem, User } from '@/types/types';
 import { db, auth } from '@/lib/firebase';
 
@@ -9,8 +9,15 @@ interface UserContextType {
   user: User | null;
   favorites: SavedItem[];
   compareList: SavedItem[];
-  login: () => Promise<void>;
+  login: () => void; // Now opens the modal
   logout: () => void;
+  signInWithGoogle: () => Promise<void>;
+  signInWithEmail: (email: string, pass: string) => Promise<void>;
+  signUpWithEmail: (email: string, pass: string, fName: string, lName: string) => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
+  isAuthModalOpen: boolean;
+  openAuthModal: () => void;
+  closeAuthModal: () => void;
   toggleFavorite: (item: SavedItem) => void;
   addToCompare: (item: SavedItem) => void;
   removeFromCompare: (id: string) => void;
@@ -33,6 +40,10 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [favorites, setFavorites] = useState<SavedItem[]>([]);
   const [compareList, setCompareList] = useState<SavedItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
+  const openAuthModal = () => setIsAuthModalOpen(true);
+  const closeAuthModal = () => setIsAuthModalOpen(false);
 
   // Load from local storage on mount
   // Load from local storage on mount
@@ -136,21 +147,70 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     localStorage.setItem('psi_compare', JSON.stringify(compareList));
   }, [compareList]);
 
-  const login = async () => {
+  const signInWithGoogle = async () => {
     setLoading(true);
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      // The onAuthStateChanged hook will handle state updates and firestore syncing
       console.log("User signed in successfully");
     } catch (error) {
       console.error("Firebase Login Error:", error);
       alert("Failed to sign in. Please try again.");
     } finally {
-      // loading state is also handled in onAuthStateChanged, 
-      // but we turn it off here in case of error where auth state doesn't change
       setLoading(false);
     }
+  };
+
+  const signInWithEmail = async (email: string, pass: string) => {
+    setLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+    } catch (error) {
+      console.error("Email Login Error:", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const signUpWithEmail = async (email: string, pass: string, fName: string, lName: string) => {
+    setLoading(true);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+      await updateProfile(userCredential.user, {
+        displayName: `${fName} ${lName}`
+      });
+      // Initiate firestore sync immediately with new name
+      const userData: User = {
+        id: userCredential.user.uid,
+        name: `${fName} ${lName}`,
+        email: email,
+        avatar: '',
+        displayName: `${fName} ${lName}`
+      };
+      setUser(userData); // Optimistic update
+    } catch (error) {
+      console.error("Sign Up Error:", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const resetPassword = async (email: string) => {
+    setLoading(true);
+    try {
+      await sendPasswordResetEmail(auth, email);
+    } catch (error) {
+      console.error("Reset Password Error:", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const login = () => {
+    openAuthModal();
   };
 
   const logout = () => {
@@ -272,6 +332,13 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       favorites,
       compareList,
       login,
+      signInWithGoogle,
+      signInWithEmail,
+      signUpWithEmail,
+      resetPassword,
+      isAuthModalOpen,
+      openAuthModal,
+      closeAuthModal,
       logout,
       toggleFavorite,
       addToCompare,

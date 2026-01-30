@@ -18,6 +18,7 @@ import dynamic from "next/dynamic";
 const BrightCallWidget = dynamic(() => import("@/app/[locale]/_components/BrightCallWidget"));
 import AIChatWidgetClient from './_components/AIChatWidgetClient';
 import CompareFloatingButtonClient from "./_components/CompareFloatingButtonClient";
+import AuthModal from "./_components/AuthModal";
 import Script from "next/script";
 
 type Props = {
@@ -201,6 +202,7 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <UserProvider>
+          <AuthModal />
           <CurrencyProvider>
             <NextIntlClientProvider messages={messages}>
               <ConditionalNavigation />
