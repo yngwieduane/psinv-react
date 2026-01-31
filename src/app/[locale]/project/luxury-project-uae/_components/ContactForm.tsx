@@ -9,7 +9,7 @@ import "react-phone-number-input/style.css";
 import { usePathname } from "next/navigation";
 import { sendGTMEvent } from '@next/third-parties/google'
 import { nationalityOptions } from "@/data/luxuryProjects";
-import { insertPSILead } from "@/utils/crmApiHelpers";
+import { insertHubspotLead, insertPSILead } from "@/utils/crmApiHelpers";
 
 const schema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
@@ -51,6 +51,7 @@ const ContactForm = () => {
     setIsSubmitting(true);
     const urlParams = new URLSearchParams(window.location.search);
     const source = urlParams.get("utm_source");
+    let campaign = urlParams.get("utm_campaign") || urlParams.get("?utm_campaign") || "";
     const currentUrl = window.location.href;
     let sendtomail = 'callcenter@psinv.net';
 
@@ -63,23 +64,35 @@ const ContactForm = () => {
     let locId = 91823;
 
     switch (source) {
+      case 'HubspotEmail':
+      case 'HubSpotEmail':
+      case 'hubspotemail':
+      case 'hubspotEmail':
+      case 'hs_email':
+      case 'Hubspot':
+      case 'hubspot':
+        mediaType = "63906";
+        mediaName = "63907";
+        propertyCampaignId = "";
+        methodOfContact = methodOfContact;
+        break;
       case "newsletter":
         mediaType = "166277";
         mediaName = "166071";
         propertyCampaignId = "";
-        methodOfContact = "MethodOfContactVal";
+        methodOfContact = methodOfContact;
         break;
       case "sms":
         mediaType = "129474";
         mediaName = "165366";
-        methodOfContact = "MethodOfContactVal";
+        methodOfContact = methodOfContact;
         break;
       case "Google":
       case "google":
         mediaType = "165269";
         mediaName = "128455";
         propertyCampaignId = "";
-        methodOfContact = "MethodOfContactVal";
+        methodOfContact = methodOfContact;
         break;
       default:
         mediaType = "129475";
@@ -87,6 +100,18 @@ const ContactForm = () => {
         methodOfContact = "115747";
         break;
     }
+
+    switch (campaign) {
+      case 'Luxury_Projects_Campaign':
+        propertyCampaignId = "2178";
+        break;
+      default:
+        propertyCampaignId = propertyCampaignId;
+        break;
+    }
+
+    const isHubspotMedia = mediaName === "63907";
+
     const remarks = `
         Additional consent 1: ${data.agreement1 ? "Yes" : "No"} </br>
         Additional consent 2: ${data.agreement2 ? "Yes" : "No"} </br>
@@ -156,13 +181,22 @@ const ContactForm = () => {
     };
 
     try {
-      const psiResponse = await insertPSILead(formDataToSend);
-      if (!psiResponse.ok) {
-        const text = await psiResponse.text();
-        console.error(`PSI API error: ${psiResponse.status} - ${text}`);
-      } else {
-        const psiData = await psiResponse.json();
-        // console.log("PSI success:", psiData);
+      if (isHubspotMedia) {
+        const hubspotResponse = await insertHubspotLead(formDataToSend);
+        if (!hubspotResponse.ok) {
+          const text = await hubspotResponse.text();
+          throw new Error(`HubSpot API error: ${hubspotResponse.status} - ${text}`);
+        }
+      }
+      else {
+        const psiResponse = await insertPSILead(formDataToSend);
+        if (!psiResponse.ok) {
+          const text = await psiResponse.text();
+          console.error(`PSI API error: ${psiResponse.status} - ${text}`);
+        } else {
+          const psiData = await psiResponse.json();
+          // console.log("PSI success:", psiData);
+        }
       }
 
       const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {

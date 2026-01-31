@@ -44,13 +44,26 @@ export async function GET(request: NextRequest) {
   );
 
 
-  if (!response) {
-    const error = new Error("An error occurred while fetching projects");
-    throw error;
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error(`Upstream API error: ${response.status} - ${errorText}`);
+    return new Response(JSON.stringify({ error: "Failed to fetch units from upstream" }), {
+      status: response.status,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
-  const projects = await response.json();
-
+  const text = await response.text();
+  let projects = [];
+  try {
+    projects = text ? JSON.parse(text) : [];
+  } catch (e) {
+    console.error("Failed to parse upstream response as JSON", e);
+    return new Response(JSON.stringify({ error: "Invalid response from upstream" }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 
 
   return new Response(JSON.stringify(projects), {

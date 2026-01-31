@@ -147,8 +147,8 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
   }
 
   switch (campaign) {
-    case 'Luxury_projects_Campaign':
-        propertyCampaignId = "2178";
+    case 'Luxury_Projects_Campaign':
+        propertyCampaignId = "2178"; 
         break; 
     default:
         propertyCampaignId = propertyCampaignId;
