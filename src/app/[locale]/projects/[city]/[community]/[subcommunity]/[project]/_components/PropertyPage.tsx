@@ -26,6 +26,7 @@ import PaymentPlansAI from './PaymentPlansAI';
 import UnitModelsAI from './UnitModelsAI';
 import { useRouter, usePathname } from "next/navigation";
 import PhotoGallery from './PhotoGallery';
+import BrochureModal from './BrochureModal';
 
 
 const PropertyPage = (props: any) => {
@@ -40,6 +41,7 @@ const PropertyPage = (props: any) => {
     const [showDrawer, setShowDrawer] = useState(false);
     const [dwDataContent, setDwDataContent] = useState('details');
     const [dwDataTitle, setDwDataTitle] = useState('details');
+    const [isBrochureModalOpen, setBrochureModalOpen] = useState(false);
     const drawerHandler = (content: string, valuesarray: any) => (e: any) => {
         console.log(showDrawer);
         console.log(content);
@@ -353,16 +355,14 @@ const PropertyPage = (props: any) => {
                                     </div>
 
                                     {props.data["projectBrochures"] && props.data["projectBrochures"].length > 0 && props.data["projectBrochures"][0]['imageURL'] && (
-                                        <div className="mt-6">
-                                            <a
-                                                href={props.data["projectBrochures"][0]['imageURL']}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 bg-[#111954] text-white px-6 py-3 rounded-lg font-bold hover:bg-secondary transition-colors"
+                                        <div className="mt-10">
+                                            <button
+                                                onClick={() => setBrochureModalOpen(true)}
+                                                className="inline-flex items-center gap-2 w-full justify-center bg-primary text-xl text-white px-6 py-3 rounded-lg font-bold hover:bg-secondary transition-colors cursor-pointer"
                                             >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-file-down"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><path d="M12 18v-6" /><path d="m9 15 3 3 3-3" /></svg>
                                                 {t('download_brochure')}
-                                            </a>
+                                            </button>
                                         </div>
                                     )}
                                 </div>
@@ -417,14 +417,6 @@ const PropertyPage = (props: any) => {
                         {/* Gallery Grid */}
                         <section id="gallery" className="scroll-mt-40">
                             <PhotoGallery data={props.data} limit={5} viewAllLink={`${pathname}/photo-gallery`} />
-                        </section>
-
-                        {/* Payment Plan (New Rich Feature) */}
-                        <section id="payment-plan" className="scroll-mt-40">
-                            <PaymentPlansAI
-                                propid={props.data["propertyID"]}
-                                propname={props.data["propertyName"]}
-                            />
                         </section>
 
                         {/* Floor Plans */}
@@ -516,6 +508,14 @@ const PropertyPage = (props: any) => {
                             />
                         </div>
 
+                        {/* Payment Plan (New Rich Feature) */}
+                        <section id="payment-plan" className="scroll-mt-40">
+                            <PaymentPlansAI
+                                propid={props.data["propertyID"]}
+                                propname={props.data["propertyName"]}
+                            />
+                        </section>
+
                         <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
                             <Faqs data={props.data} propname={props.data["propertyName"]} viewAllLink={`${pathname}/faqs`} />
                         </div>
@@ -524,6 +524,16 @@ const PropertyPage = (props: any) => {
                 </div>
             </div>
             <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} />
+
+            {props.data["projectBrochures"] && props.data["projectBrochures"].length > 0 && (
+                <BrochureModal
+                    isOpen={isBrochureModalOpen}
+                    closeModal={() => setBrochureModalOpen(false)}
+                    brochureUrl={props.data["projectBrochures"][0]['imageURL']}
+                    propertyName={props.data["propertyName"]}
+                    image={imgFeatured}
+                />
+            )}
         </>
     );
 }

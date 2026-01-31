@@ -18,6 +18,7 @@ import { Link } from "@/i18n/navigation";
 interface InquiryFormProps {
   hideFeedbackButton?: boolean;
   branchCode?: "auh" | "dxb" | "assets";
+  onSuccess?: () => void;
 }
 type BranchCode = NonNullable<InquiryFormProps["branchCode"]>;
 
@@ -85,6 +86,7 @@ const escapeHtml = (s: string) =>
 const InquiryForm: React.FC<InquiryFormProps> = ({
   hideFeedbackButton = false,
   branchCode = "auh",
+  onSuccess,
 }) => {
   const pathname = usePathname();
   const locale = pathname.split("/")[1] || "en";
@@ -324,7 +326,11 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
         }
 
         setPostId("Success");
-        window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
+        if (onSuccess) {
+          onSuccess();
+        } else {
+          window.location.href = `/${locale}/thankyou?email=${encodeURIComponent(data.email)}`;
+        }
       } else {
         console.error("CRM error:", res.status, result);
         setPostId("Error");
