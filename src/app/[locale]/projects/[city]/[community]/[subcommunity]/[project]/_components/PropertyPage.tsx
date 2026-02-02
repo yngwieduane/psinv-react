@@ -231,7 +231,7 @@ const PropertyPage = (props: any) => {
             <div id={props.data["propertyID"]} className="hidden">
                 <Breadcrumb />
             </div>
-            <div className="bg-white min-h-screen mainban">
+            <div className="bg-white min-h-screen mainban pt-10">
                 {/* Hero Section */}
                 <div className="relative md:min-h-[80vh] h-[80vh] md:h-[auto]  md:min-h-screen md:flex flex-column justify-center">
                     <div className="absolute inset-0">

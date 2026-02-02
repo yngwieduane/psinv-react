@@ -6,6 +6,7 @@ import Image from 'next/image';
 import HubspotNewsletterForm from '../_components/HubspotNewsletterForm';
 import { ChevronLeft, ChevronRight, ArrowRight, BookOpen } from 'lucide-react';
 import Link from 'next/link';
+import Breadcrumb from '../_components/Breadcrumb';
 
 const ALL_NEWSLETTER = 'All Newsletter';
 
@@ -46,6 +47,12 @@ export default function NewsletterPage() {
 
   return (
     <div className="min-h-screen bg-gray-50/50">
+      <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white">
+        <div className="container mx-auto px-4 md:px-12 py-4">
+          <Breadcrumb
+          />
+        </div>
+      </div>
       {/* Hero Section */}
       <section className="relative bg-white pt-24 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.4] mask-image:linear-gradient(to_bottom,black,transparent)" />
