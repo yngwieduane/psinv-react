@@ -172,11 +172,14 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
 
         <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-xs text-white font-light">
           <p>&copy; {new Date().getFullYear()} {t('footer_psi')} {t('footer_rights')}</p>
+          <div className="text-center text-xs bg-[#111954] text-white">
+            <p>License No.:CN-1100434 | Brokerage No.:202100982107</p>
+          </div>
           <div className="flex space-x-8 mt-4 md:mt-0">
-            <a href="/en/privacy" title={t('footer_privacy')} className="hover:text-gray-400 transition-colors">{t('footer_privacy')}</a>
-            <a href="/en/terms" title="terms" className="hover:text-gray-400 transition-colors">{t('footer_terms')}</a>
-            <Link title="Cookies" href="/cookie-policy" className="ml-1 cursor-pointer hover:underline">{t('cookies')}</Link>
-            {/* <a href="/en/sitemap/" className="hover:text-gray-400 transition-colors">{t('footer_sitemap')}</a>  */}
+            <Link href="/privacy" title={t('footer_privacy')} className="hover:text-gray-400 transition-colors">{t('footer_privacy')}</Link>
+            <Link href="/terms" title="terms" className="hover:text-gray-400 transition-colors">{t('footer_terms')}</Link>
+            <Link href="/cookie-policy" title="Cookies" className="ml-1 cursor-pointer hover:underline">{t('cookies')}</Link>
+            <Link href="/sitemap/" title="sitemap" className="hover:text-gray-400 transition-colors">{t('footer_sitemap')}</Link>
           </div>
         </div>
       </div>

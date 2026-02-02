@@ -54,7 +54,7 @@ export default function UnitPageAI(props: any) {
     const whatsappPhone = process.env.NEXT_PUBLIC_WAPPNUMBER_ASSETS as string;
 
     return (
-        <div className="pt-28 md:pt-24 pb-24">
+        <div className="pt-28 md:pt-36 pb-24">
             <div>
                 <BreadcrumbUnit data={props.data[0]} />
             </div>

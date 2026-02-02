@@ -43,19 +43,26 @@ export default async function DeveloperPage({ params }: Props) {
   const developerName = developerMap[developer];
 
   return (
-    <div className="mx-auto container pt-32">
-      <Breadcrumb />
+    <div className="">
 
-      <h1 className="text-2xl text-center truncate">
-        {developerName || "Developers"}
-      </h1>
-
-      <div className="w-full flex my-5 justify-center">
-        <DevelopersList slug={developer} />
+      <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white">
+        <div className="container mx-auto px-4 md:px-12 py-4">
+          <Breadcrumb
+          />
+        </div>
       </div>
+      <div className="container mx-auto px-4 md:px-12 py-4">
+        <h1 className="text-2xl text-center truncate mt-10">
+          {developerName || "Developers"}
+        </h1>
 
-      <div className="mb-5 mt-10">
-        <DevPropertyList developer={developerName} />
+        <div className="w-full flex my-5 justify-center">
+          <DevelopersList slug={developer} />
+        </div>
+
+        <div className="mb-5 mt-10">
+          <DevPropertyList developer={developerName} />
+        </div>
       </div>
     </div>
   );

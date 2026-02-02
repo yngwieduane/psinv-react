@@ -70,7 +70,7 @@ const ShareYourFeedBackPageClient = () => {
       {/* Right side image */}
       <div className="md:w-1/2 relative h-[400px] md:h-auto">
         <Image
-          src="/images/mobile-app-waitlist-registration-2.png"
+          src="/images/mobile-app-waitlist-registration-2.webp"
           alt="feedback registration"
           title="feedback registration"
           fill

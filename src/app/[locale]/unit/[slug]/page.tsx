@@ -25,7 +25,7 @@ export async function generateMetadata(
         category = 'rent';
     }
     // fetch data
-    const posts = await fetch(`https://psinv-react.vercel.app/api/external/unit?unitid=${code}&category=${category}`).then((res) => res.json())
+    const posts = await fetch(`https://psinv-react-gilt.vercel.app/api/external/unit?unitid=${code}&category=${category}`).then((res) => res.json())
 
     // if (!posts[0]) {
     //     redirect('/en/units')

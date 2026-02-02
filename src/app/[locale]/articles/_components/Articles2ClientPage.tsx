@@ -167,7 +167,7 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
 
     return (
         <>
-            <div className="pt-28 md:pt-24 border-b border-gray-100">
+            <div className="pt-28 md:pt-36 border-b border-gray-100">
                 <div className="container mx-auto px-4 md:px-12 py-4">
                     <Breadcrumb />
                 </div>
