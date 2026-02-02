@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
   const unitid = searchParams.get('unitid') || '';
   const category = searchParams.get('category') || '';
   //let apiurl = 'https://integration.psi-crm.com/ExternalApis/GetSaleListing';
-  let apiurl = 'https://integration.psiassets-crm.com/ExternalApis/GetSaleListing';
+  let apiurl = 'https://integration.psi-crm.com/ExternalApis/GetSaleListing';
   console.log('Fetching units data...' + unitid);
   let raw;
   if (unitid) {
@@ -16,9 +16,9 @@ export async function GET(request: NextRequest) {
     raw = JSON.stringify({});
   }
   if (category && category == 'rent') {
-    apiurl = 'https://integration.psiassets-crm.com/ExternalApis/GetRentListing';
+    apiurl = 'https://integration.psi-crm.com/ExternalApis/GetRentListing';
   } else {
-    apiurl = 'https://integration.psiassets-crm.com/ExternalApis/GetSaleListing';
+    apiurl = 'https://integration.psi-crm.com/ExternalApis/GetSaleListing';
   }
   const response = await fetch(
     apiurl,

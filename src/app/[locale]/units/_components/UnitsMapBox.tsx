@@ -46,9 +46,24 @@ const UnitsMapBox = (props: any) => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const res = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`);
-                const result = await res.json();
-                setData(result);
+                const p1 = fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`)
+                    .then(res => res.ok ? res.json() : [])
+                    .then(data => data.map((item: any) => ({ ...item, source: 'main' })))
+                    .catch(err => {
+                        console.error("Units API failed", err);
+                        return [];
+                    });
+
+                const p2 = fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`)
+                    .then(res => res.ok ? res.json() : [])
+                    .then(data => data.map((item: any) => ({ ...item, source: 'assets' })))
+                    .catch(err => {
+                        console.error("UnitsAssets API failed", err);
+                        return [];
+                    });
+
+                const [data1, data2] = await Promise.all([p1, p2]);
+                setData([...data1, ...data2]);
             } catch (error) {
                 console.error("API fetch failed", error);
             } finally {

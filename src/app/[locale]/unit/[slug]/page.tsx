@@ -25,7 +25,29 @@ export async function generateMetadata(
         category = 'rent';
     }
     // fetch data
-    const posts = await fetch(`https://psinv-react-gilt.vercel.app/api/external/unit?unitid=${code}&category=${category}`).then((res) => res.json())
+    let posts = [];
+    try {
+        const data = await fetch(`https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`);
+        posts = await data.json();
+    } catch (e) {
+        console.error("Failed to fetch unit for metadata", e);
+    }
+
+    if (!posts || posts.length === 0 || !posts[0]) {
+        try {
+            const data = await fetch(`https://www.psinv.net/api/external/unitAssets?unitid=${code}&category=${category}`);
+            posts = await data.json();
+        } catch (e) {
+            console.error("Failed to fetch unitAssets for metadata", e);
+        }
+    }
+
+    // Handle case where no data is found even after fallback
+    if (!posts || posts.length === 0 || !posts[0]) {
+        return {
+            title: 'Unit Not Found',
+        }
+    }
 
     // if (!posts[0]) {
     //     redirect('/en/units')
@@ -70,8 +92,37 @@ export default async function Page({ params }: Props) {
         category = 'rent';
     }
 
-    const data = await fetch(`https://psinv-react-gilt.vercel.app/api/external/unit?unitid=${code}&category=${category}`)
-    const posts = await data.json();
+    let posts = [];
+    let source = '';
+    try {
+        const data = await fetch(`https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`);
+        posts = await data.json();
+        if (posts && posts.length > 0 && posts[0]) {
+            source = 'auh';
+        }
+    } catch (e) {
+        console.error("Failed to fetch unit", e);
+    }
+
+    if (!posts || posts.length === 0 || !posts[0]) {
+        try {
+            const data = await fetch(`https://www.psinv.net/api/external/unitAssets?unitid=${code}&category=${category}`);
+            posts = await data.json();
+            if (posts && posts.length > 0 && posts[0]) {
+                source = 'assets';
+            }
+        } catch (e) {
+            console.error("Failed to fetch unitAssets", e);
+        }
+    }
+
+    if (posts && posts.length > 0) {
+        posts = posts.map((post: any) => ({ ...post, source }));
+    }
+
+    if (!posts || posts.length === 0 || !posts[0]) {
+        return <></>;
+    }
 
     return (
         <>

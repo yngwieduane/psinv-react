@@ -55,7 +55,7 @@ export default function DrawerDetails(props: any) {
       content = <TablePaymentPlans data={details} />
       break;
     case 'inquire':
-      content = <InquiryForm hideFeedbackButton={true} branchCode='assets' />
+      content = <InquiryForm hideFeedbackButton={true} branchCode={props.branchCode} />
       title = "Inquire Now";
       break;
 

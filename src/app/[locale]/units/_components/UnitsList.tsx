@@ -57,6 +57,7 @@ export default function UnitsList(props: any) {
 
                 const p1 = fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}`)
                     .then(res => res.ok ? res.json() : [])
+                    .then(data => data.map((item: any) => ({ ...item, source: 'main' })))
                     .catch(err => {
                         console.error("Units API failed", err);
                         return [];
@@ -64,16 +65,17 @@ export default function UnitsList(props: any) {
 
                 const p2 = fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}`)
                     .then(res => res.ok ? res.json() : [])
+                    .then(data => data.map((item: any) => ({ ...item, source: 'assets' })))
                     .catch(err => {
                         console.error("UnitsAssets API failed", err);
                         return [];
                     });
 
-                // const [data1, data2] = await Promise.all([p1, p2]);
-                // setResults([...data1, ...data2]);
+                const [data1, data2] = await Promise.all([p1, p2]);
+                setResults([...data1, ...data2]);
 
-                const [data2] = await Promise.all([p2]);
-                setResults([...data2]);
+                // const [data2] = await Promise.all([p2]);
+                // setResults([...data2]);
 
             } catch (error) {
                 console.error("API fetch failed", error);

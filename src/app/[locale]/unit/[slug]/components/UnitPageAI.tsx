@@ -50,8 +50,11 @@ export default function UnitPageAI(props: any) {
         // { id: 'description', key: 'lbl.description', fallback: 'Description' },
         // { id: 'unit', key: 'lbl.unit_details', fallback: 'Unit Details' }
     ];
-    const callPhone = process.env.NEXT_PUBLIC_CALLNUMBER_ASSETS as string;
-    const whatsappPhone = process.env.NEXT_PUBLIC_WAPPNUMBER_ASSETS as string;
+
+    const isAssets = props.data[0]?.source === 'assets';
+    const branchCode = isAssets ? 'assets' : 'auh';
+    const callPhone = isAssets ? process.env.NEXT_PUBLIC_CALLNUMBER_ASSETS as string : process.env.NEXT_PUBLIC_CALLNUMBER as string;
+    const whatsappPhone = isAssets ? process.env.NEXT_PUBLIC_WAPPNUMBER_ASSETS as string : process.env.NEXT_PUBLIC_WAPPNUMBER as string;
 
     return (
         <div className="pt-28 md:pt-36 pb-24">
@@ -412,7 +415,7 @@ export default function UnitPageAI(props: any) {
                                     />
                                 </div>
                             </div>
-                            <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} />
+                            <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} branchCode={branchCode} />
                         </div>
                     )
                 })}
