@@ -146,17 +146,26 @@ const nextConfig: NextConfig = {
         destination: '/en/project/lp-listing',
         permanent: true,
       },
-            {
+      {
         source: '/en/psi-rental-units',
         destination: '/en/project/psi-rental-units',
         permanent: true,
       },
-                  {
+      {
         source: '/en/share-address',
         destination: '/en/project/share-address',
         permanent: true,
       },
-      
+      {
+        source: '/en/projects/abu-dhabi/hudayriyat-island/nawayef/nawayef-park-views',
+        destination: '/en',
+        permanent: true,
+      },
+      {
+        source: '/en/projects/abu-dhabi/ramhan-island/ramhan-island/ramhan-island',
+        destination: '/en',
+        permanent: true,
+      },
     ]
   },
   reactStrictMode: true,
