@@ -49,7 +49,7 @@ export default function UnitBoxAI(props: any) {
 
     return (
         <>
-            <div className='group relative h-full'>
+            <div className='group relative h-full '>
                 {/* Action Buttons */}
                 <div className="absolute top-3 right-3 flex flex-col gap-2 z-10 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <button
