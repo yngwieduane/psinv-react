@@ -4,7 +4,7 @@ import { db } from "@/lib/firebase-admin";
 export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = 'https://psinv.net';
+    const baseUrl = 'https://www.psinv.net';
     const locales = ['en', 'ar', 'ru', 'zh', 'de'];
 
     const staticPages = [

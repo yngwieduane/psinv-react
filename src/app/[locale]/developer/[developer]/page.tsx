@@ -12,17 +12,18 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { developer } = await params;
-
-  const dev = developers.find((d) => d.url === developer);
-
-  return {
-    title: `⚡ ${dev?.metaTitle || "Property Developers in UAE"} - Property Shop Investment`,
-    description:
-      dev?.metaDescription ||
-      "Browse real estate developers and projects across UAE with PSI.",
-  };
-}
+    const { developer } = await params;
+  
+    const dev = developers.find((d) => d.url === developer);
+  
+    return {
+      title: `⚡ ${dev?.metaTitle || "Property Developers in UAE"} - PSI`,
+      description:
+        dev?.metaDescription ||
+        "Browse real estate developers and projects across UAE with PSI.",
+    };
+  }
+  
 
 const developerMap: Record<string, string> = {
   "aldar-properties-pjsc": "Aldar Properties PJSC",

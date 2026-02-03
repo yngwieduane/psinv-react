@@ -36,10 +36,29 @@ const DevPropertyList = ({ developer }: DevPropertyListProps) => {
 
     if (!projects) {
         return (
-            developer !== "" ?
-                <p className="text-center text-gray-500">Loading properties of {developer}...</p>
-                :
-                <p className="text-center text-gray-500">Loading properties...</p>
+            <>
+           
+            <div className="mb-6 text-center">
+                <h2 className="text-2xl text-center truncate mt-10">
+                    {developer} Properties & Projects
+                </h2>
+
+                <p className="mt-2 text-gray-600 max-w-3xl mx-auto">
+                    Explore the latest real estate projects by {developer}, featuring premium residences,
+                    modern amenities, and prime locations across the UAE. Discover apartments, villas,
+                    and off-plan developments designed for luxury living and smart investment.
+                </p>
+                </div>
+               
+                {
+
+                    developer !== "" ?
+                        <p className="text-center text-gray-500">Loading properties of {developer}...</p>
+                        :
+                        <p className="text-center text-gray-500">Loading properties...</p>
+            
+                }
+                </>
         )
     }
 

@@ -203,7 +203,7 @@ const PropertyPage = (props: any) => {
             "name": `Video Tour of ${props.data["propertyName"]}`,
             "description": `Walkthrough video of ${props.data["propertyName"]} in ${props.data["community"]}`,
             "thumbnailUrl": [imgFeatured],
-            // "uploadDate": new Date().toISOString(), // Fallback as we might not have upload date
+            "uploadDate": new Date().toISOString(), // Fallback as we might not have upload date
             "contentUrl": video
         };
     }
