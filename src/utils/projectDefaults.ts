@@ -3,7 +3,7 @@ import type { ProjectMeta } from '@/types/projectMeta';
 export type Branch = 'auh' | 'dubai' | 'assets';
 
 export const GLOBAL_DEFAULTS: ProjectMeta = {
-  sendto: 'wd3@psinv.net,callcenter@psinv.net',
+  sendto: 'callcenter@psinv.net',
   ContactType: 3,
   Bathroom: 21935,
   Bedroom: 21935,

@@ -135,6 +135,10 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
         en: "502024cf05f882ac39db024fed593842",
         ar: "fc6d426ab09c9c5a820c1e63be4ea5b4",
     },
+       "jumeirah-residences": {
+        en: "c024a9547b0cd9838891e9e5828cf6e0",
+        ar: "9c1b9d4aca7f1b183374477bb02983f4",
+    },
     // Add here
 };
 

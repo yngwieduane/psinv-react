@@ -7,7 +7,7 @@ export const walkinFormConfig: Record<string, WalkinFormConfig> = {
     title: "Conrad Hotel at Etihad Tower, Abu Dhabi",
     developerLogoUrl: "/images/walkin-form/etihad-logo.png",
     referredbyid: 3458,
-    sendto: ["wd3@psinv.net", "yngwie.g@psinv.net", "callcenter@psinv.net"],
+    sendto: ["callcenter@psinv.net"],
     branch: "AUH",
     showClientProfession: true,
     showContactInformation: true,
