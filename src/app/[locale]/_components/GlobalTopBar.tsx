@@ -3,6 +3,11 @@ import React from 'react';
 import LanguageSwitcher from './languageSwitcher';
 import BranchSwitcher from './BranchSwitcher';
 import CurrencySelector from './CurrencySelector';
+import HeaderSocial from './HeaderSocial';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+
+//const ts = useTranslations('LocaleSwitcher');
 
 const GlobalTopBar = () => {
     return (
@@ -12,8 +17,12 @@ const GlobalTopBar = () => {
                     <CurrencySelector css="text-white hover:text-gray-200" />
                     <div className="h-3 w-px bg-white/20"></div>
                     <LanguageSwitcher css="text-white hover:text-gray-200" />
+                    <Link href='/en/contact-us'><span>Branches</span></Link>
                 </div>
-                <BranchSwitcher css="text-white hover:text-gray-200" />
+                <div className='flex justify-between items-center gap-10'>
+                    <HeaderSocial color = "white" />
+                    <BranchSwitcher css="text-white hover:text-gray-200" /> 
+                </div>
             </div>
         </div>
     );

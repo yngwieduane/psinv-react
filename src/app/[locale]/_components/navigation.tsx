@@ -22,6 +22,7 @@ import { useUser } from '@/context/userContext';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import CurrencySelector from './CurrencySelector';
+import HeaderSocial from './HeaderSocial';
 
 
 export type Page = '/en' | '/ar' | '/ru' | '/du' | '/zh';
@@ -890,7 +891,9 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                     <CurrencySelector css="text-gray-900" />
                                     <LanguageSwitcher css="text-gray-900" />
                                     <BranchSwitcher css="text-gray-900" />
+                                    <Link href='/en/contact-us'><span className='font-semibold text-xs text-gray-900 uppercase text-left px-4 hover:bg-gray-50 hover:text-secondary'>Branches</span></Link>
                                 </div>
+                                <HeaderSocial color="dark" />
 
                                 {user ? (
                                     <button
@@ -913,7 +916,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                         <UserIcon size={18} /> Log in
                                     </button>
                                 )}
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                 </DialogPanel>
