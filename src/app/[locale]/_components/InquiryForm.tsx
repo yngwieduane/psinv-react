@@ -98,9 +98,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
     email: z.string().email({ message: t('errors.email') }),
     phone: z.string().min(7, { message: t('errors.phone') }),
     message: z.string().min(5, { message: t('errors.message') }), // Assuming key 'errors.message' exists or will be added
-    agreement1: z.boolean().refine((val) => val, { message: t('errors.agreement1') }), // Assuming key 'errors.agreement1' exists
-    agreement2: z.boolean().optional(),
-    agreement3: z.boolean().optional(),
+    
   });
 
   type FormData = z.infer<typeof schema>;
@@ -113,9 +111,6 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
   } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
-      agreement1: true,
-      agreement2: true,
-      agreement3: true,
       phone: "",
     },
   });
@@ -162,10 +157,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
         break;
     }
 
-    const remarks = `
-      Additional consent 1: ${data.agreement1 ? "Yes" : "No"} <br/>
-      Additional consent 2: ${data.agreement2 ? "Yes" : "No"} <br/>
-      Additional consent 3: ${data.agreement3 ? "Yes" : "No"} <br/>
+    const remarks = `      
       Client Name: ${data.firstName} ${data.lastName} <br/>
       Client Email: ${data.email} <br/>
       Client Phone: ${data.phone} <br/>
@@ -288,14 +280,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
           <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">Branch</td>
           <td style="border:1px solid #d9d9d9; padding:10px;">${branchLabel}</td>
         </tr>
-        <tr>
-          <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">Additional Consent</td>
-          <td style="border:1px solid #d9d9d9; padding:10px;">
-            1: ${data.agreement1 ? "YES" : "NO"} |
-            2: ${data.agreement2 ? "YES" : "NO"} |
-            3: ${data.agreement3 ? "YES" : "NO"}
-          </td>
-        </tr>
+        
         <tr>
           <td style="border:1px solid #d9d9d9; padding:10px; font-weight:700;">URL Coming From</td>
           <td style="border:1px solid #d9d9d9; padding:10px;">
@@ -451,24 +436,8 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
               terms: (chunks) => <Link href="/terms" className="underline">{chunks}</Link>,
               privacy: (chunks) => <Link href="/privacy" className="underline">{chunks}</Link>
             })}
-          </p>
-
-          <label className="flex items-start gap-2 cursor-pointer">
-            <input
-              type="checkbox"
-              {...register("agreement1")}
-              className="mt-0.5 accent-[#111954]"
-              defaultChecked
-            />
-            <span>
-              {t('consents.c1')}
-
-            </span>
-          </label>
-
-          {errors.agreement1 && (
-            <p className="text-red-500 text-xs">{errors.agreement1.message}</p>
-          )}
+          </p> 
+          
         </div>
       </form>
     </>

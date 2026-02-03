@@ -69,10 +69,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ slug }) => {
     firstName: z.string().min(1, { message: t('errors.firstName') }),
     lastName: z.string().min(1, { message: t('errors.lastName') }),
     email: z.string().email({ message: t('errors.email') }),
-    phone: z.string().min(7, { message: t('errors.phone') }),
-    consent1: z.boolean().optional(),
-    consent2: z.boolean().optional(),
-    consent3: z.boolean().optional(),
+    phone: z.string().min(7, { message: t('errors.phone') })
+    
   }), [t]);
   const searchParams = useSearchParams();
   useEffect(() => {
@@ -168,10 +166,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ slug }) => {
       firstName: '',
       lastName: '',
       email: '',
-      phone: '',
-      consent1: true,
-      consent2: true,
-      consent3: true,
+      phone: '',      
     }),
     []
   );
@@ -232,9 +227,6 @@ const extraRemarkLines = extraFields
   })
   .join("");
     const fullRemark = `
-Additional consent 1 : ${data.consent1 ? "YES" : "NO"}</br>
-Additional consent 2 : ${data.consent2 ? "YES" : "NO"}</br>
-Additional consent 3 : ${data.consent3 ? "YES" : "NO"}</br>
 ${extraRemarkLines ? `Extra Fields:</br>${extraRemarkLines}` : ''}
 Remarks: ${effectiveRemarkWithProperty}</br>
 Client Name: ${data.firstName} ${data.lastName}</br>
@@ -296,21 +288,7 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
     <td style="font-weight:bold;">Branch</td>
     <td>${projectMeta?.Branch || ""}</td>
   </tr>
-
-  <tr>
-    <td style="width: 30%; font-weight:bold;">Additional consent 1</td>
-    <td>${data.consent1 ? "YES" : "NO"}</td>
-  </tr>
-
-  <tr>
-    <td style="font-weight:bold;">Additional consent 2</td>
-    <td>${data.consent2 ? "YES" : "NO"}</td>
-  </tr>
-
-  <tr>
-    <td style="font-weight:bold;">Additional consent 3</td>
-    <td>${data.consent3 ? "YES" : "NO"}</td>
-  </tr>
+  
 
   <tr>
     <td style="font-weight:bold;">URL coming from</td>
@@ -603,21 +581,7 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
               {msg && <p className="text-red-600 text-sm mt-1">{msg}</p>}
             </div>
           );
-        })}
-        <div className="col-span-full space-y-2 mt-4 text-sm">
-          <label className="block">
-            <input type="checkbox" defaultChecked className="mr-2" {...register('consent1')} />
-            {t('consents.c1')}
-          </label>
-          <label className="block">
-            <input type="checkbox" defaultChecked className="mr-2" {...register('consent2')} />
-            {t('consents.c2')}
-          </label>
-          <label className="block">
-            <input type="checkbox" defaultChecked className="mr-2" {...register('consent3')} />
-            {t('consents.c3')}
-          </label>
-        </div>
+        })}        
         <div className="col-span-full text-xs text-gray-500 mt-4">
           <p className="italic">
             {t.rich('fineprint.text', {
