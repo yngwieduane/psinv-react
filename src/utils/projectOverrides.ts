@@ -20,6 +20,36 @@ export type PerSlug = {
   seo?: SeoMeta | LocalizedSeo;
 };
 export const PROJECTS: Record<string, PerSlug> = {
+   'jumeirah-residences': {
+    branch: 'auh',
+    seo: {
+    en: {
+      title: 'Jumeirah Residences Al Maryah Island | Luxury Branded Living in Abu Dhabi',
+      description:
+        'Register your interest for Jumeirah Residences at Al Maryah Island. Discover ultra-luxury branded residences with world-class amenities and iconic Jumeirah living in Abu Dhabi.',
+      keywords:
+        'Jumeirah Residences Al Maryah Island, luxury branded residences Abu Dhabi, Al Maryah Island apartments, Jumeirah branded residences UAE',
+    },
+    ar: {
+      title: 'جميرا ريزيدنسز جزيرة المارية | أسلوب حياة فاخر بعلامة جميرا في أبوظبي',
+      description:
+        'سجّل اهتمامك في جميرا ريزيدنسز جزيرة المارية. استكشف مساكن فاخرة بعلامة جميرا مع مرافق عالمية وأسلوب حياة راقٍ في أبوظبي.',
+      keywords:
+        'جميرا ريزيدنسز جزيرة المارية، مساكن فاخرة في أبوظبي، شقق جزيرة المارية، مساكن جميرا الفاخرة',
+    },
+  },
+    override: {
+      PropertyID: 25590,
+      remarks: 'Jumeirah Residences - company campaign',
+      ...makeUtm({
+        'ali_jumeirah_residence_newsletter_feb26': {
+          campaign: 3484,
+          remarks:
+            'Rotation:  Jumeirah Residences - company campaign, Campaign name: Ali Jumeirah Residence Newsletter Feb26',
+        },
+      }),
+    },
+  },
       'rotana-registration': {
     branch: 'auh',
 seo: {
@@ -81,7 +111,7 @@ seo: {
       }),
     },
   },
-  'share-address': {
+  'share-your-feedback': {
   branch: 'auh',
   seo: {
     en: {
@@ -98,6 +128,23 @@ seo: {
   override: {
     UnitType: 20,
     remarks: 'Share Address Registration',
+          ...makeUtm({
+        'DripCampaign': {
+          campaign: 2134,
+          remarks:
+            'Rotation:  Market Insights Monthly Report Dubai - General campaign',
+        },
+        'DripCampaign_hubspot': {
+          campaign: 2134,
+          remarks:
+            'Rotation: Drip Campaign – HubSpot (General)',
+        },
+        'DripCampaign_HubSpot_V2': {
+          campaign: 2134,
+          remarks:
+            'Rotation: Drip Campaign – HubSpot V2',
+        },
+      }),
     form: {
       extraFields: [
         {
