@@ -5,19 +5,14 @@ import DevPropertyList from "../_components/DevPropertyList";
 import Breadcrumb from "../../_components/Breadcrumb";
 
 type Props = {
-  params: Promise<{
-    locale: string;
-    developer: string;
-  }>;
+  params: { developer: string };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { developer } = await params;
-
-  const dev = developers.find((d) => d.url === developer);
+  const dev = developers.find(d => d.url === params.developer);
 
   return {
-    title: `⚡ ${dev?.metaTitle || "Property Developers in UAE"} - Property Shop Investment`,
+    title: `⚡ ${dev?.metaTitle || "Property Developers in UAE"} - PSI`,
     description:
       dev?.metaDescription ||
       "Browse real estate developers and projects across UAE with PSI.",
@@ -37,32 +32,24 @@ const developerMap: Record<string, string> = {
   "dubai-properties---idama": "Dubai Properties - IDAMA",
 };
 
-export default async function DeveloperPage({ params }: Props) {
-  const { developer } = await params;
-
-  const developerName = developerMap[developer];
+export default function DeveloperPage({ params }: Props) {
+  const developerSlug = params.developer;
+  const developerName = developerMap[developerSlug];
 
   return (
-    <div className="">
+    <div className="mx-auto container pt-32">
+      <Breadcrumb />
 
-      <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white">
-        <div className="container mx-auto px-4 md:px-12 py-4">
-          <Breadcrumb
-          />
-        </div>
+      <h1 className="text-2xl text-center truncate">
+        {developerName || "Developers"}
+      </h1>
+
+      <div className="w-full flex my-5 justify-content-center">
+        <DevelopersList slug={developerSlug} />
       </div>
-      <div className="container mx-auto px-4 md:px-12 py-4">
-        <h1 className="text-2xl text-center truncate mt-10">
-          {developerName || "Developers"}
-        </h1>
 
-        <div className="w-full flex my-5 justify-center">
-          <DevelopersList slug={developer} />
-        </div>
-
-        <div className="mb-5 mt-10">
-          <DevPropertyList developer={developerName} />
-        </div>
+      <div className="mb-5 mt-10">
+        <DevPropertyList developer={developerName} />
       </div>
     </div>
   );
