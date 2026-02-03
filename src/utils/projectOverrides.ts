@@ -111,7 +111,7 @@ seo: {
       }),
     },
   },
-  'share-your-feedback': {
+  'share-address': {
   branch: 'auh',
   seo: {
     en: {
