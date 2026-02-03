@@ -128,6 +128,9 @@ export async function GET(request: NextRequest) {
     case 'st regis hotel saadiyat':
       finquery = 'St Regis Hotel - Saadiyat'
       break;
+    case 'jumeirah residence al maryah island':
+      finquery = 'Jumeirah Residence - Al Maryah Island'
+      break;
     default:
       finquery = query
       break;
