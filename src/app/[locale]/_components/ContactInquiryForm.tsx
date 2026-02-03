@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { useLocale, useTranslations } from "next-intl";
 import { resolveUtmCampaignFromSearch } from "@/utils/utmCampaignMap";
+import { insertHubspotLead } from "@/utils/crmApiHelpers";
 
 interface ContactInquiryFormProps {
   hideFeedbackButton?: boolean;
@@ -69,15 +70,20 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
       const campaignRemarks = utmResolved?.campaignRemarks || "";
       const utm = utmResolved?.utm;
       const source = (utm?.utm_source || urlParams.get("utm_source") || "").toLowerCase();
+      let campaign = urlParams.get('utm_campaign') || urlParams.get('?utm_campaign') || '';
 
       let mediaType = "129475";
       let mediaName = "165233";
       let methodOfContact = "115747";
-      const propertyCampaignId = campaignId;
+      let propertyCampaignId = campaignId;
       switch (source) {
-      case "hubspotemail":
-      case "hs_email":
-      case "hubspot":
+      case 'HubspotEmail':
+      case 'HubSpotEmail':
+      case 'hubspotemail':
+      case 'hubspotEmail':
+      case 'hs_email':
+      case 'Hubspot':
+      case 'hubspot':
         mediaType = "63906";
         mediaName = "63907";
         break;
@@ -99,6 +105,20 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
           methodOfContact = "115747";
           break;
       }
+
+      switch (campaign) {
+        case 'DripCampaign_hubspot':
+            propertyCampaignId = "2134"; 
+            break;
+        case 'DripCampaign':
+            propertyCampaignId = "2134"; 
+            break; 
+        default:
+            propertyCampaignId = propertyCampaignId;
+            break;
+      }
+
+      const isHubspotMedia = mediaName === '63907';
 
       const remarks = `
         Additional consent 1: ${data.agreement1 ? "Yes" : "No"} </br>
@@ -168,15 +188,27 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
         contactClassId: "",
       };
 
-      // 1) Send lead to CRM
-      const response = await fetch(
-        "https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formDataToSend),
+      let response;
+
+      if (isHubspotMedia) {
+        const hubspotResponse = await insertHubspotLead(formDataToSend);
+        
+        if (!hubspotResponse.ok) {
+            const text = await hubspotResponse.text();
+            throw new Error(`HubSpot API error: ${hubspotResponse.status} - ${text}`);
         }
-      );
+        response = hubspotResponse;
+      }
+      else {
+       response = await fetch(
+          "https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formDataToSend),
+          }
+        );
+      }
 
       if (!response.ok) {
         console.error("CRM lead create failed:", response.status, await response.text().catch(() => ""));
@@ -354,11 +386,6 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
 
       <div className="text-[10px] text-gray-500 space-y-2 mt-4">
         <p className="italic">{t("fineprint.agreementText")}</p>
-
-        <label className="flex items-start gap-2 cursor-pointer">
-          <input type="checkbox" {...register("agreement1")} className="mt-0.5 accent-[#111954]" defaultChecked />
-          <span>{t("consents.c1")}</span>
-        </label>
 
         {errors.agreement1 && <p className="text-red-500 text-xs">{errors.agreement1.message}</p>}
       </div>
