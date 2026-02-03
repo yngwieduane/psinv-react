@@ -254,7 +254,6 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
     };
 
     try {
-
       if (isHubspotMedia) {
         const hubspotResponse = await insertHubspotLead(formDataToSend);
 
