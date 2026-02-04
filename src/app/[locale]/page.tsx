@@ -20,7 +20,7 @@ const WhyPSI = dynamic(() => import('./_components/WhyPSI'));
 
 const AwardSlider = dynamic(
   () => import('../[locale]/about-us/_components/AboutAwardsSlider'),
-  { loading: () => <></> } // lightweight placeholder, no SSR
+  { loading: () => <></> }
 );
 
 const AboutCounter = dynamic(() => import('../[locale]/about-us/_components/AboutCounter'));

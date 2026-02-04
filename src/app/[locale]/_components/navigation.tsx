@@ -23,6 +23,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import CurrencySelector from './CurrencySelector';
 import HeaderSocial from './HeaderSocial';
+import ContactBranchSwitcherHeader from './ContactBranchSwitcherHeader';
 
 
 export type Page = '/en' | '/ar' | '/ru' | '/du' | '/zh';
@@ -890,8 +891,9 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                 <div className="-mx-3 px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-4">
                                     <CurrencySelector css="text-gray-900" />
                                     <LanguageSwitcher css="text-gray-900" />
+                                    <ContactBranchSwitcherHeader css="text-gray-900" />
                                     <BranchSwitcher css="text-gray-900" />
-                                    <Link href='/en/contact-us'><span className='font-semibold text-xs text-gray-900 uppercase text-left px-4 hover:bg-gray-50 hover:text-secondary'>Branches</span></Link>
+                                    {/* <Link href='/en/contact-us'><span className='font-semibold text-xs text-gray-900 uppercase text-left px-4 hover:bg-gray-50 hover:text-secondary'>Branches</span></Link> */}
                                 </div>
                                 <HeaderSocial color="dark" />
 
