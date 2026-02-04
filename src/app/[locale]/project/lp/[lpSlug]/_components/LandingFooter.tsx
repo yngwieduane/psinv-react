@@ -5,6 +5,7 @@ import clsx from "clsx";
 import InquiryForm from "./InquiryForm";
 import { useTranslations } from "next-intl";
 import type { CRMMeta } from "../LandingConfig";
+import { Facebook, Instagram, Linkedin, Youtube, Twitter, Camera } from "lucide-react";
 
 type SocialKey =
   | "facebook"
@@ -32,47 +33,15 @@ type Props = {
 };
 
 const icons = {
-  facebook: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M13 10h3l-.5 3H13v9h-3v-9H8v-3h2V8a4 4 0 014-4h2v3h-2a1 1 0 00-1 1v2z" />
-    </svg>
-  ),
-  instagram: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 3.5A5.5 5.5 0 1112 18.5 5.5 5.5 0 0112 7.5zM18.75 6.75a1 1 0 110 2 1 1 0 010-2z" />
-    </svg>
-  ),
-  x: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20 4l-6.5 7.5L20 20h-3l-5-6-5 6H4l6.5-8L4 4h3l4.5 5.5L16 4h4z" />
-    </svg>
-  ),
-  linkedin: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M4.98 3.5C4.98 4.88 3.9 6 2.5 6S0 4.88 0 3.5 1.08 1 2.48 1s2.5 1.12 2.5 2.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1.1 2.1-2.2 4.3-2.2 4.6 0 5.5 3 5.5 6.9V24h-5v-7.2c0-1.7 0-3.9-2.4-3.9s-2.8 1.8-2.8 3.8V24h-5V8z" />
-    </svg>
-  ),
-  youtube: (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c2.1.6 9.4.6 9.4.6s7.3 0 9.4-.6a3 3 0 002.1-2.1A31.3 31.3 0 0024 12a31.3 31.3 0 00-.5-5.8zM9.8 15.5v-7L16 12l-6.2 3.5z" />
-    </svg>
-  ),
-  tiktok: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M17.5 6.5a6 6 0 01-3-2.9v12.1a4.7 4.7 0 11-4-4.6v2.7a2 2 0 102-2V2h2a6 6 0 003 3V6.5z" />
-    </svg>
-  ),
-  whatsapp: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20 3.5A10.5 10.5 0 006.8 21.2L3 22l.8-3.7A10.5 10.5 0 1020 3.5zm-8 3A7.5 7.5 0 006.1 18l-.4.2.3-1.4a6.1 6.1 0 01-.2-1.6A7.5 7.5 0 1112 6.5zm4.2 8.6c-.2.6-1 1-1.6.8a9.9 9.9 0 01-4.7-2.9 9.3 9.3 0 01-2-3.1c-.2-.6.2-1.4.8-1.6l1.1-.5c.4-.2.8 0 1 .4l.8 1.5c.2.4.1.9-.2 1.2l-.4.4a6.9 6.9 0 003 3l.4-.4c.3-.3.8-.4 1.2-.2l1.5.8c.3.2.5.6.3 1.1l-.5 1.1z" />
-    </svg>
-  ),
-  snapchat: (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 2c3 0 5 2.2 5 5.5 0 2.2.7 3.3 1.6 4.5.7.9-.1 1.3-1 .9-.8-.3-1.1 0-1 1.1.1 1.4 1.7 2 2.7 2.3.5.1.7.5.5.9-.5 1-2.2 1.1-3.3 1.3-.8.1-1.3.4-1.3.8s.6.7 1.4.8c.5.1.9.2 1.1.5.3.4 0 .8-.4.9-2.7.7-5.5.7-8.2 0-.4-.1-.7-.6-.4-.9.2-.3.6-.4 1.1-.5.8-.1 1.4-.4 1.4-.8s-.5-.7-1.3-.8c-1.1-.2-2.8-.3-3.3-1.3-.2-.4 0-.8.5-.9 1-.2 2.6-.9 2.7-2.3.1-1-.2-1.4-1-1.1-.8.4-1.7 0-1-.9C7.3 11.8 8 10.7 8 7.5 8 4.2 10 2 12 2z" />
-    </svg>
-  ),
-} satisfies Record<SocialKey, ReactNode>;
+  facebook: Facebook,
+  instagram: Instagram,
+  x: Twitter,
+  linkedin: Linkedin,
+  youtube: Youtube,
+  snapchat: Camera,
+  whatsapp: null,
+  tiktok: null,
+} as const;
 
 const telHref = (t?: string) => (t ? `tel:${t.replace(/\s+/g, "")}` : undefined);
 
@@ -152,20 +121,25 @@ export default function LandingFooter({
               )}
             </div>
             {socials.length > 0 && (
-              <div className="mt-8 flex items-center gap-5">
-                {socials.map((s, i) => (
-                  <a
-                    key={`${s.type}-${i}`}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/90 hover:text-white transition"
-                    aria-label={s.label ?? s.type}
-                    title={s.label ?? s.type}
-                  >
-                    {icons[s.type]}
-                  </a>
-                ))}
+              <div className="mt-8 flex items-center gap-6">
+                {socials.map((s, i) => {
+                  const Icon = icons[s.type];
+                  if (!Icon) return null;
+
+                  return (
+                    <a
+                      key={`${s.type}-${i}`}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/70 hover:text-white transition-colors"
+                      aria-label={s.label ?? s.type}
+                      title={s.label ?? s.type}
+                    >
+                      <Icon className="h-[18px] w-[18px]" strokeWidth={1.6} />
+                    </a>
+                  );
+                })}
               </div>
             )}
           </div>
