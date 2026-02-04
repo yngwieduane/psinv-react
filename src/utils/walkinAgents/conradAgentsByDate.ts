@@ -40,4 +40,44 @@ export const CONRAD_AGENTS_BY_DATE: AgentsByDate = {
         { id: "6403", name: "Mohammad Hazim Abdel Latif Maslamani" },
         { id: "6986", name: "Bashar Nazmi Hussein Alswalhi" },
     ],
+    "2026-02-06": [
+        { id: "6592", name: "Arnay Baiboranova" },
+        { id: "6773", name: "Nisma Aref Alahmadeh" },
+        { id: "7276", name: "Nurhayat Aksoy" },
+        { id: "7192", name: "Fahid Hassan" },
+        { id: "6309", name: "Mohammed Mufid Khalil Qundah" },
+        { id: "6385", name: "Yazan Saleh Ibrahim Ghawanmeh" },
+    ],
+	"2026-02-07": [
+        { id: "9926", name: "Lynne Abdul Hadi" },
+        { id: "9913", name: "Salima Moukhlis" },
+        { id: "6987", name: "Shadi Basem Shrafedin Abofakher" },
+        { id: "7042", name: "Fawzi Zaki Fawzi (Shaikh Mahmoud)" },
+        { id: "7284", name: "Uzair Sameer Sameer Javed Aziz" },
+        { id: "9812", name: "Lais Chalithodi Basheer Mohammed  Chalithodika" },
+    ],
+	"2026-02-08": [
+		  { id: "6152", name: "Bojana Popovic" },
+		  { id: "7225", name: "Miguel Angel Aguilar Leon" },
+		  { id: "9846", name: "Lakshay Dua" },
+		  { id: "9812", name: "Lais Chalithodi Basheer Mohammed Chalithodika" },
+		  { id: "7189", name: "Majnun Mavlonazarov" },
+		  { id: "4260", name: "Nada Yasser Abdalla Ibrahim" }
+    ],
+    "2026-02-09": [
+		  { id: "9860", name: "Taissir Ltaief" },
+		  { id: "9919", name: "Ahmad Hamza Hussein Harb" },
+		  { id: "7108", name: "Alida Pilica" },
+		  { id: "7198", name: "Maida Pilica" },
+		  { id: "7215", name: "Malek Maher Saeed Othman" },
+		  { id: "4280", name: "Mohammad Alshaikh Hasan" }
+    ],
+    "2026-02-10": [
+		  { id: "7276", name: "Nurhayat Aksoy" },
+		  { id: "9757", name: "Mohammad Rizik Saleh Bani Hani" },
+		  { id: "9837", name: "Menna Fouad Abdelkhalek Elsayed Ali" },
+		  { id: "6171", name: "Shaima Sherif Mohamed Ibrahim Aly" },
+		  { id: "7005", name: "Yousef Ahmad Daoud" },
+		  { id: "9812", name: "Lais Chalithodi Basheer Mohammed Chalithodika" }
+	],
 };
