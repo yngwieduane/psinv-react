@@ -12,6 +12,11 @@ import { sendGTMEvent } from '@next/third-parties/google'
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { insertHubspotLead } from "@/utils/crmApiHelpers";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faUserAlt } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
+import { EmailIcon, UserIcon } from "./FormIcons";
+import { Send } from "lucide-react";
 
 const schema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
@@ -411,56 +416,77 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
         {/* Success/Error Messages */}
         {postId === "Success" && <div className="p-3 mb-3 rounded bg-green-500 text-white">{t_r('success')}</div>}
         {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">{t_r('error')}</div>}
-        <div className="mb-3">
-          <input
-            type="text"
-            {...register("firstName")}
-            placeholder={t_r('firstname')}
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
+        <div className="mb-4 flex justify-between gap-3">
+          <div>
+            <div className="relative space-y-1">
+              <UserIcon /> 
+              <input
+                type="text"
+                {...register("firstName")}
+                placeholder={t_r('firstname')}
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+              />
+            </div>
+            {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
+          </div>
+          <div>
+            <div className="relative space-y-1">       
+              <input
+                type="text"
+                {...register("lastName")}
+                placeholder={t_r('lastname')}
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+              />
+            </div>
+            {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
+          </div>
         </div>
-        <div className="mb-3">
-          <input
-            type="text"
-            {...register("lastName")}
-            placeholder={t_r('lastname')}
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
-        </div>
-        <div className="mb-3">
-          <input
-            type="email"
-            {...register("email")}
-            placeholder={t_r('email')}
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
+        <div className="mb-4">
+          <div className="relative space-y-1">
+            <EmailIcon />            
+            <input
+              type="email"
+              {...register("email")}
+              placeholder={t_r('email')}
+              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+            />
+          </div>
           {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <Controller
             name="phone"
             control={control}
             render={({ field }) => (
               <PhoneInput
-                {...field}
-                international
-                defaultCountry="AE"
-                placeholder="+971-555555555"
-                className="w-full p-3 border rounded-md mb-3"
+                  {...field}
+                  international
+                  defaultCountry="AE"
+                  placeholder="Phone Number"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
+                  numberInputProps={{
+                      className: "w-full bg-transparent focus:outline-none text-sm placeholder:text-gray-400"
+                  }}
               />
+              
             )}
           />
           {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
         </div>
+        
         <button
-          type="submit"
-          className="w-full border border-[#111954] p-3 mb-6 rounded-md hover:text-[#0c1445] hover:bg-white bg-[#0c1445] text-white font-semibold cursor-pointer"
-          disabled={isSubmitting}
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full mb-5 bg-[#0c1445] hover:bg-[#0c1445]/90 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
         >
-
-          {isSubmitting ? "Submitting..." : `${submitLabel || 'Submit'}`}
+            {isSubmitting ? (
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            ) : (
+                <>
+                    Submit
+                    <Send size={16} className="group-hover:translate-x-1 transition-transform" />
+                </>
+            )}
         </button>
         <div className="md:flex w-full gap-5 md:space-y-0 space-y-3">
           <a title="Whatsapp" target="_blank" className="border border-1 border-[#c3c3c3] text-center py-2 rounded-md w-full md:w-1/2 flex items-center gap-2 justify-center"
@@ -483,7 +509,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
 
         <div className="my-3">
           <label className="flex items-center space-x-2">
-            <span className="text-sm">{t('byclickingsubmit.part1')} <Link href="/en/terms" title="terms">{t('byclickingsubmit.terms')}</Link> {t('byclickingsubmit.and')} <Link href="/en/privacy" title="privacy">{t('byclickingsubmit.privacy')}</Link></span>
+            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t('byclickingsubmit.part1')} <Link href="/en/terms" title="terms">{t('byclickingsubmit.terms')}</Link> {t('byclickingsubmit.and')} <Link href="/en/privacy" title="privacy">{t('byclickingsubmit.privacy')}</Link></span>
           </label>
         </div>
 

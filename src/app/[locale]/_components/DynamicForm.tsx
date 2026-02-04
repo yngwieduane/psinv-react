@@ -10,6 +10,8 @@ import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { config } from "process";
 import { insertHubspotLead } from "@/utils/crmApiHelpers";
+import { UserIcon, EmailIcon } from "./FormIcons";
+import { Send } from "lucide-react";
 
 // Define Schema (Only `propertyListing` Now)
 const propertyListingSchema = z.object({
@@ -56,7 +58,7 @@ const getCityConfig = (cityName: string) => {
   if (['Dubai'].includes(cityName)) {
     return CITY_CONFIG['Dubai'];
   }
-  return CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT']; 
+  return CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
 }
 
 const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
@@ -69,7 +71,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
     lastName: z.string().min(1, { message: t("errors.lastNameRequired") }),
     email: z.string().email({ message: t("errors.invalidEmail") }),
     phone: z.string().min(7, { message: t("errors.invalidPhone") }),
-    propertyPurpose: z.string().min(1, { message: t("errors.choosePurpose") }),    
+    propertyPurpose: z.string().min(1, { message: t("errors.choosePurpose") }),
   });
 
   const {
@@ -80,7 +82,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
   } = useForm<PropertyListingFormData>({
     resolver: zodResolver(propertyListingSchema),
     defaultValues: {
-      
+
     }
   });
 
@@ -116,46 +118,46 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
       case 'hs_email':
       case 'Hubspot':
       case 'hubspot':
-          mediaType = "63906";
-          mediaName = "63907";
-          propertyCampaignId = "";
-          methodOfContact = methodOfContact;
-          break;
+        mediaType = "63906";
+        mediaName = "63907";
+        propertyCampaignId = "";
+        methodOfContact = methodOfContact;
+        break;
       case "newsletter":
-          mediaType = "166277";
-          mediaName = "166071";
-          propertyCampaignId = "";
-          methodOfContact = methodOfContact;
-          break;
+        mediaType = "166277";
+        mediaName = "166071";
+        propertyCampaignId = "";
+        methodOfContact = methodOfContact;
+        break;
       case "sms":
-          mediaType = "129474";
-          mediaName = "165366";
-          methodOfContact = methodOfContact;
-          break;
+        mediaType = "129474";
+        mediaName = "165366";
+        methodOfContact = methodOfContact;
+        break;
       case "Google":
       case "google":
-          mediaType = "165269";
-          mediaName = "128455";
-          propertyCampaignId = "";
-          methodOfContact = methodOfContact;
-          break;
+        mediaType = "165269";
+        mediaName = "128455";
+        propertyCampaignId = "";
+        methodOfContact = methodOfContact;
+        break;
       default:
-          mediaType = "129475";
-          mediaName = "165233";
-          methodOfContact = "115747";
-          break;
-  }
+        mediaType = "129475";
+        mediaName = "165233";
+        methodOfContact = "115747";
+        break;
+    }
 
-  switch (campaign) {
-    case 'Luxury_Projects_Campaign':
-        propertyCampaignId = "2178"; 
-        break; 
-    default:
+    switch (campaign) {
+      case 'Luxury_Projects_Campaign':
+        propertyCampaignId = "2178";
+        break;
+      default:
         propertyCampaignId = propertyCampaignId;
         break;
-  }
+    }
 
-  const isHubspotMedia = mediaName === '63907';
+    const isHubspotMedia = mediaName === '63907';
 
     const remarks = `      
       Client Name: ${data.firstName} ${data.lastName} </br>
@@ -225,14 +227,14 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
     try {
       if (isHubspotMedia) {
         const hubspotResponse = await insertHubspotLead(formDataToSend);
-        
+
         if (!hubspotResponse.ok) {
-            const text = await hubspotResponse.text();
-            throw new Error(`HubSpot API error: ${hubspotResponse.status} - ${text}`);
+          const text = await hubspotResponse.text();
+          throw new Error(`HubSpot API error: ${hubspotResponse.status} - ${text}`);
         }
 
       }
-      else{
+      else {
         await fetch(apiUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -298,7 +300,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
           filedata: ""
         })
       });
-      
+
 
       if (!mailRes.ok) {
         let errorMessage = "Error submitting the form.";
@@ -328,46 +330,88 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="flex gap-4">
         <div className="w-1/2">
-          <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">{t("firstName")}</label>
-          <input {...register("firstName")} placeholder={t("Enter First Name")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
+          <div className="relative space-y-1">
+            <UserIcon />
+            <input
+              {...register("firstName")}
+              placeholder={t("firstName")}
+              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+            />
+          </div>
           {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
         </div>
         <div className="w-1/2">
-          <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">{t("lastName")}</label>
-          <input {...register("lastName")} placeholder={t("Enter Last Name")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
+          <div className="relative space-y-1">
+            <input
+              {...register("lastName")}
+              placeholder={t("lastName")}
+              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+            />
+          </div>
           {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
         </div>
       </div>
 
-      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">{t("email")}</label>
-      <input {...register("email")} placeholder={t("Enter Email")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" />
+      <div className="relative space-y-1">
+        <EmailIcon />
+        <input
+          {...register("email")}
+          placeholder={t("email")}
+          className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+        />
+      </div>
       {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
-      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">{t("phone")}</label>
       <Controller
         name="phone"
         control={control}
-        render={({ field }) => <PhoneInput {...field} dir={isRTL ? "rtl" : "ltr"} international defaultCountry="AE" className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" aria-label="Phone Number" />}
+        render={({ field }) => (
+          <PhoneInput
+            {...field}
+            dir={isRTL ? "rtl" : "ltr"}
+            international
+            defaultCountry="AE"
+            className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
+            aria-label="Phone Number"
+            numberInputProps={{
+              className: "w-full bg-transparent focus:outline-none text-sm placeholder:text-gray-400"
+            }}
+          />
+        )}
       />
       {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
 
-      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">{t("purpose")} *</label>
-      <select {...register("propertyPurpose")} className="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-3.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white focus:ring-0 transition-all" aria-label="Property Purpose">
-        <option value="">{t("Choose purpose")}</option>
+      <select
+        {...register("propertyPurpose")}
+        className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] transition-all"
+        aria-label="Property Purpose"
+      >
+        <option value="">{t("purpose")}</option>
         <option value="sell">{t("sell_purpose")}</option>
         <option value="rent">{t("rent_purpose")}</option>
         <option value="invest">{t("invest_purpose")}</option>
       </select>
       {errors.propertyPurpose && <p className="text-red-500 text-sm">{errors.propertyPurpose.message}</p>}
 
-      <button type="submit" className="w-full relative text-md overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer" disabled={isSubmitting}>
-        {isSubmitting ? t("form_submitting") : t("form_submit")}
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full mb-5 bg-[#0c1445] hover:bg-[#0c1445]/90 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+      >
+        {isSubmitting ? (
+          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+        ) : (
+          <>
+            {t("form_submit")}
+            <Send size={16} className="group-hover:translate-x-1 transition-transform" />
+          </>
+        )}
       </button>
 
-      <p className="text-[10px] text-gray-700 mt-2">
+      <p className="text-[10px] text-gray-500 space-y-2 mt-4 italic">
         {t("clickingTerms.part1")} <Link title="terms" href={`${locale}/terms`} className="text-gray-900 underline hover:text-gray-700">{t("clickingTerms.part2")}</Link> {t("clickingTerms.part3")}
       </p>
-      
+
     </form>
   );
 };
