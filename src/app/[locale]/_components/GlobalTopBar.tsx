@@ -6,6 +6,7 @@ import CurrencySelector from './CurrencySelector';
 import HeaderSocial from './HeaderSocial';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import ContactBranchSwitcherHeader from './ContactBranchSwitcherHeader';
 
 //const ts = useTranslations('LocaleSwitcher');
 
@@ -17,7 +18,7 @@ const GlobalTopBar = () => {
                     <CurrencySelector css="text-white hover:text-gray-200" />
                     <div className="h-3 w-px bg-white/20"></div>
                     <LanguageSwitcher css="text-white hover:text-gray-200" />
-                    <Link href='/en/contact-us'><span>Branches</span></Link>
+                    <ContactBranchSwitcherHeader css="text-white hover:text-gray-200" />
                 </div>
                 <div className='flex justify-between items-center gap-10'>
                     <HeaderSocial color = "white" />
