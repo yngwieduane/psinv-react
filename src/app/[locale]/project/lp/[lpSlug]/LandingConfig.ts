@@ -104,11 +104,11 @@ export const landingConfigs = {
   "sama-yas": {
     title: "Sama Yas",
     description: "Experience the epitome of luxurious living on Yas Island.",
-    ogImage: "/images/og/sama-yas.jpg",
+    ogImage: "/images/og/sama-yas.webp",
     meta: {
       title: "Sama Yas | PSI",
       description: "Experience the epitome of luxurious living on Yas Island.",
-      ogImage: "/images/og/sama-yas.jpg",
+      ogImage: "/images/og/sama-yas.webp",
     },
     sections: ["hero", "usp", "about", "gallery", "amenities", "floor-plan", "location", "footer"],
     data: {
