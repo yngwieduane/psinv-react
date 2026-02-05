@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
-import { UnitListing } from '@/types/types';
+import { UnitListing } from '@/types/types'; 
 
 const BreadcrumbUnit = ({ data }: { data: UnitListing }) => {
   const pathname = usePathname();
@@ -24,7 +24,7 @@ const BreadcrumbUnit = ({ data }: { data: UnitListing }) => {
     'itemListElement': itemListElement,
   };
   return (
-    <nav className="bg-white py-4 py-2 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <nav className="bg-white py-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

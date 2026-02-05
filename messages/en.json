@@ -6468,5 +6468,8 @@
   },
   "Job_List": {
     "loading": "Loading jobs..."
+  },
+  "Units" : {
+    "ResgisterTitle" : "Register Interest"
   }
 }

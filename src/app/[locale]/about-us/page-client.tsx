@@ -192,7 +192,7 @@ const AboutPageClient = () => {
                             <div className="lg:w-7/12 space-y-6">
                                 {coreValues.map((val, idx) => (
                                     <div key={idx} className={`flex gap-8 items-center bg-white p-8 rounded-lg shadow-sm  border-primary hover:border-secondary transition-colors duration-300 group ${isRTL ? 'border-r-4' : 'border-l-4'}`}>
-                                        <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center font-bold text-2xl flex-shrink-0 font-serif group-hover:bg-secondary text-[#000] transition-colors duration-300 shadow-lg">
+                                        <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center font-bold text-2xl flex-shrink-0 font-serif group-hover:bg-secondary text-[#fff] transition-colors duration-300 shadow-lg">
                                             {idx + 1}
                                         </div>
                                         <div>

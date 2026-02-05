@@ -45,18 +45,18 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customSegments }) => {
   };
 
   return (
-    <nav className="container mx-auto text-gray-600 text-sm sm:text-xs md:text-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <nav className="bg-white py-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ul className="flex items-center space-x-2 text-gray-500">
+      <ul className="container mx-auto flex items-center space-x-2 text-gray-500">
         {segments.map((seg, index) => {
           const isLast = index === segments.length - 1;
 
           return (
-            <li key={`${seg.name}-${index}`} className="flex items-center space-x-2">
+            <li key={`${seg.name}-${index}`} className="text-sm flex items-center space-x-2">
               {index !== 0 && <span>/</span>}
 
               {seg.href && !isLast ? (

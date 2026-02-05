@@ -157,7 +157,7 @@ export default function UnitListBoxAI(props: any) {
                     </div>
                 </div>
             </div>
-            <Modals modalState={setModal} onModalUpdate={modalUpdate} />
+            <Modals modalState={setModal} onModalUpdate={modalUpdate} title="Inquire" />
             <PreviewModal
                 property={previewProperty}
                 onClose={() => setPreviewProperty(null)}
