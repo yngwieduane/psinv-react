@@ -59,8 +59,10 @@ export default function ContactPage() {
       <div dir={isRTL ? "rtl" : "ltr"} className={isRTL ? "text-right" : ""}>
         <div className="mx-auto pt-30">
           <div id="contact-container" className="container mx-auto px-6 md:px-12">
-            <Breadcrumb />
-            <h1 className="text-3xl md:text-4xl font-outfit font-bold text-[#111954] mb-8 md:mb-12 mt-5">
+            <div className="pt-8 md:pt-8 pb-15">
+                <Breadcrumb />
+            </div>
+            <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold text-primary mb-2 md:mb-4 leading-tight">
               {t("title")}
             </h1>
             <div className="w-full">
