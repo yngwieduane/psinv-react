@@ -9,9 +9,10 @@ export type Page = '/en' | '/ar' | '/ru' | '/du' | '/zh';
 
 export default function ConditionalNavigation() {
   const pathname = usePathname();
-
+const normalize = (p: string) => p.replace(/\/+$/, '');
+const current = normalize(pathname);
   const isNoNavPage =
-    pathname.includes('/walk-in/') || // ✅ ALL walk-in pages
+    pathname.includes('/walk-in/') || // ALL walk-in pages
     [
       '/list-your-property',
       '/psi-youngsters-program',
@@ -22,7 +23,10 @@ export default function ConditionalNavigation() {
       '/jbr-lead-registration-dubai',
       '/share-your-feedback',
       '/mobile-app-waitlist',
-    ].some((path) => pathname.includes(path));
+    ].some((p) => {
+    const target = normalize(p);
+    return current === target || current.startsWith(`${target}/`);
+  });
 
   if (isNoNavPage) return null;
 
