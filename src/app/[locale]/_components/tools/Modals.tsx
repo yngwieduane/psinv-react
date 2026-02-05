@@ -4,9 +4,11 @@ import { Dialog, Description, DialogPanel, DialogTitle, Transition, TransitionCh
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
 import InquiryForm from "../InquiryForm";
+import { useTranslations } from "next-intl";
 
 const Modals = (props: any) => {
   const [open, setOpen] = useState(props.modalState);
+  const t = useTranslations('Units');
 
   const onCloseModal = (event: any) => {
     props.onModalUpdate(false);
@@ -32,7 +34,7 @@ const Modals = (props: any) => {
         </TransitionChild>
 
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0" onClick={onCloseModal}>
+          <div className="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0" onClick={onCloseModal}>
             <TransitionChild
               as={Fragment}
               enter="ease-out duration-300"
@@ -42,16 +44,16 @@ const Modals = (props: any) => {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <DialogPanel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+              <DialogPanel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-md sm:p-6">
                 <div>
                   <div className="">
                     <div className="grid grid-cols-3 gap-4 content-center">
-                      <div className="col-span-2">
+                      <div className="col-span-2">                        
                         <DialogTitle
                           as="h3"
-                          className="text-start font-semibold text-2xl "
-                        >
-                          Register Interest
+                          className="text-start font-semibold md:text-2xl text-xl"
+                          >
+                          {props.title || t('ResgisterTitle') || "Register Interest" }  
                         </DialogTitle>
                       </div>
                       <div className="text-end">

@@ -79,7 +79,7 @@ export default function DrawerDetails(props: any) {
                 transition
                 className="pointer-events-auto w-screen max-w-2xl transform transition duration-500 ease-in-out data-closed:translate-x-full sm:duration-700"
               >
-                <div className="flex h-full flex-col overflow-y-scroll bg-white py-0 shadow-xl">
+                <div className="flex h-full flex-col overflow-y-scroll bg-white py-0 shadow-xl pl-7 pr-11 pt-5 pb-3">
                   <div className="px-4 sm:px-6 absolute z-10 top-10 end-0">
                     <div className="flex items-start justify-end">
                       <DialogTitle className="text-base font-semibold text-gray-900 capitalize hidden">{title}</DialogTitle>

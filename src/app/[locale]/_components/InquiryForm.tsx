@@ -12,6 +12,8 @@ import { sendGTMEvent } from "@next/third-parties/google";
 import { TOKENS } from "@/utils/crmApiHelpers";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { UserIcon } from "./FormIcons";
+import { Send } from "lucide-react";
 
 
 
@@ -91,6 +93,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
   const pathname = usePathname();
   const locale = pathname.split("/")[1] || "en";
   const t = useTranslations('InquiryFormProject');
+  const t_agreement = useTranslations('Common_Form_Agreements');
   const router = useRouter();
   const schema = z.object({
     firstName: z.string().min(1, { message: t('errors.firstName') }),
@@ -332,7 +335,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full bg-white p-5">
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full bg-white mt-4">
         {postId === "Success" && (
           <div className="p-3 mb-4 rounded bg-green-500 text-white">
             {t('alerts.success')}
@@ -344,28 +347,29 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
           </div>
         )}
 
-        <h2 className="text-xl font-serif font-bold text-gray-900 mb-6">{t('title')}</h2>
+        {/* <h2 className="text-xl font-serif font-bold text-gray-900 mb-6">{t('title')}</h2> */}
 
         <div className="grid grid-cols-1 gap-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
+            <div className="relative space-y-1">
+              <UserIcon />
               <input
                 type="text"
                 {...register("firstName")}
                 placeholder={t('fields.firstName.placeholder')}
-                className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
               />
               {errors.firstName && (
                 <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>
               )}
             </div>
 
-            <div>
+            <div className="relative space-y-1">
               <input
                 type="text"
                 {...register("lastName")}
                 placeholder={t('fields.lastName.placeholder')}
-                className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
               />
               {errors.lastName && (
                 <p className="text-red-500 text-xs mt-1">{errors.lastName.message}</p>
@@ -373,20 +377,19 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
             </div>
           </div>
 
-          <div>
+          <div className="relative space-y-1">
             <input
               type="email"
               {...register("email")}
               placeholder={t('fields.email.placeholder')}
-              className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0"
+              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
             />
             {errors.email && (
               <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
             )}
           </div>
 
-          <div>
-            <div className="border border-gray-300 rounded overflow-hidden">
+          <div className="relative space-y-1">
               <Controller
                 name="phone"
                 control={control}
@@ -397,13 +400,15 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
                     defaultCountry="AE"
                     countryCallingCodeEditable={false}
                     placeholder={t('fields.phone.placeholder')}
-                    className="psi-phone-input"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
+                    numberInputProps={{
+                        className: "w-full bg-transparent focus:outline-none text-sm placeholder:text-gray-400"
+                    }}                    
                     value={field.value || ""}
                     onChange={(val) => field.onChange(val || "")}
                   />
                 )}
               />
-            </div>
 
             {errors.phone && (
               <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
@@ -411,33 +416,35 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
           </div>
         </div>
 
-        <div className="mt-4">
+        <div className="my-4">
           <textarea
             {...register("message")}
             placeholder={t('fields.message.placeholder')}
-            className="w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 h-40 resize-none"
+            className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] h-40 resize-none"
           />
           {errors.message && (
             <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
           )}
-        </div>
-
+        </div>        
         <button
           type="submit"
           disabled={isSubmitting}
-          className="cursor-pointer w-full mt-6 font-bold py-3 rounded-xl border bg-indigo-950 border-indigo-950 text-white hover:bg-indigo-900 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          className="w-full mb-5 bg-[#0c1445] hover:bg-[#0c1445]/90 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          {isSubmitting ? t('buttons.submitting') : t('buttons.submit')}
-        </button>
+          {isSubmitting ? (
+              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+          ) : (
+              <>
+                  Submit
+                  <Send size={16} className="group-hover:translate-x-1 transition-transform" />
+              </>
+          )}
+        </button>     
 
-        <div className="text-[10px] text-gray-500 space-y-2 mt-4">
-          <p className="italic">
-            {t.rich('fineprint.text', {
-              terms: (chunks) => <Link href="/terms" className="underline">{chunks}</Link>,
-              privacy: (chunks) => <Link href="/privacy" className="underline">{chunks}</Link>
-            })}
-          </p> 
-          
+        <div className="my-3">
+          <label className="flex items-center space-x-2">
+            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t_agreement('byclickingsubmit.part1')} <Link href="/terms" title="terms" className="underline">{t_agreement('byclickingsubmit.terms')}</Link> {t_agreement('byclickingsubmit.and')} <Link href="/privacy" title="privacy" className="underline">{t_agreement('byclickingsubmit.privacy')}</Link></span>
+          </label>
         </div>
       </form>
     </>

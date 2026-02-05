@@ -9,6 +9,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 const schema = z.object({
     firstName: z.string().min(1, { message: "First name is required" }),
@@ -27,6 +29,7 @@ const AIChatWidget = () => {
     const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
     const pathname = usePathname();
     const locale = pathname.split("/")[1] || "en";
+    const t = useTranslations('Common_Form_Agreements');
 
     const {
         register,
@@ -232,27 +235,10 @@ const AIChatWidget = () => {
                                         )}
                                     </button>
                                     {/* Consent text like screenshot */}
-                                    <div className="text-[10px] text-gray-500 space-y-2 mt-4">
-                                        <p className="italic">
-                                            By clicking Submit, you agree to our Terms &amp; Conditions and Privacy Policy
-                                        </p>
-
-                                        <label className="flex items-start gap-2 cursor-pointer">
-                                            <input
-                                                type="checkbox"
-                                                {...register("agreement1")}
-                                                className="mt-0.5 accent-[#111954]"
-                                                defaultChecked
-                                            />
-                                            <span>
-                                                Agree to receive calls and communications via various channels from PSI from
-                                                09:00 am to 09:00 pm
-                                            </span>
-                                        </label>
-
-                                        {errors.agreement1 && (
-                                            <p className="text-red-500 text-xs">{errors.agreement1.message}</p>
-                                        )}
+                                    <div>
+                                        <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t('byclickingsubmit.part1')} 
+                                            <Link href="/terms" title="terms" className="underline">{t('byclickingsubmit.terms')}</Link> {t('byclickingsubmit.and')} <Link href="/privacy" title="privacy" className="underline">{t('byclickingsubmit.privacy')}</Link>
+                                        </span>
                                     </div>
                                 </form>
                             )}
