@@ -1247,9 +1247,9 @@
       "submit": "Submit",
       "submitting": "Submitting..."
     },
-    "fineprint": {
-      "text": "By clicking Submit, you agree to our <terms>Terms & Conditions</terms> and <privacy>Privacy Policy</privacy>."
-    },
+"fineprint": {
+  "agreementText": "By submitting this form, you agree to our <terms>terms</terms> and <privacy>privacy policy</privacy>."
+},
     "consents": {
       "c1": "Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm",
       "c2": "Agree to receive multiple calls and communications via various channels regarding my enquiry",
