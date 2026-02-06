@@ -476,18 +476,18 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 {
                     title: t('Residential'),
                     items: [
-                        { label: t('Buy Apartments'), href: '/units?category=Sale&propertyType=411' },
-                        { label: t('Buy Villas'), href: '/units?category=Sale&propertyType=413' },
-                        { label: t('Rent Apartments'), href: '/units?category=Rent&propertyType=411' },
-                        { label: t('Rent Villas'), href: '/units?category=Rent&propertyType=413' },
+                        { label: t('Buy Apartments'), href: '/units?category=Sale&propertyType=Apartment' },
+                        { label: t('Buy Villas'), href: '/units?category=Sale&propertyType=Villa' },
+                        { label: t('Rent Apartments'), href: '/units?category=Rent&propertyType=Apartment' },
+                        { label: t('Rent Villas'), href: '/units?category=Rent&propertyType=Villa' },
                     ]
                 },
                 {
                     title: t('Commercial'),
                     items: [
-                        { label: t('Offices for Sale'), href: '/units?category=Sale&propertyType=417' },
-                        { label: t('Offices for Rent'), href: '/units?category=Rent&propertyType=417' },
-                        { label: t('Commercial plot'), href: 'units?category=Sale&propertyType=420' },
+                        { label: t('Offices for Sale'), href: '/units?category=Sale&propertyType=Office' },
+                        { label: t('Offices for Rent'), href: '/units?category=Rent&propertyType=Office' },
+                        { label: t('Commercial plot'), href: 'units?category=Sale&propertyType=Commercial Plot' },
                         { label: t('View All'), href: '/units?category=Sale' },
                     ]
                 },
@@ -918,7 +918,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                         <UserIcon size={18} /> Log in
                                     </button>
                                 )}
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </DialogPanel>
