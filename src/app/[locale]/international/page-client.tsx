@@ -43,11 +43,6 @@ interface props {
     iconHeight: string,
 }
 
-// Navigation items will be generated from translations inside the component
-
-// Location data will be loaded from translations inside the component
-
-
 export default function InternationalPageClient() {
     const t = useTranslations('InternationalPage');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

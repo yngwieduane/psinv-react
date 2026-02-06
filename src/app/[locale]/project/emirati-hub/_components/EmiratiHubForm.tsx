@@ -489,21 +489,7 @@ const EmiratiHubForm = (props: any) => {
                         <>
                             <div className="text-xs text-gray-500 mt-2">
                                 By clicking Submit, you agree to our <a href="/en/terms" target="_blank" className="text-[#CE641D] hover:underline">Terms & Conditions</a> and <a href="/en/privacy" target="_blank" className="text-[#CE641D] hover:underline">Privacy Policy</a>
-                            </div>
-                            <div className="flex flex-col gap-2 mt-2">
-                                <div>
-                                    <label className="flex items-start space-x-2 cursor-pointer">
-                                        <input type="checkbox" {...register("agreement2")} className="rounded text-[#CE641D] focus:ring-[#CE641D] mt-1" defaultChecked />
-                                        <span className="text-xs text-gray-600">Agree to receive calls and communications via various channels from PSI from 09:00 am to 09:00 pm</span>
-                                    </label>
-                                </div>
-                                <div>
-                                    <label className="flex items-start space-x-2 cursor-pointer">
-                                        <input type="checkbox" {...register("agreement3")} className="rounded text-[#CE641D] focus:ring-[#CE641D] mt-1" defaultChecked />
-                                        <span className="text-xs text-gray-600">Agree to receive calls and communications via various channels on various projects, products and services</span>
-                                    </label>
-                                </div>
-                            </div>
+                            </div>                            
                         </>
                     ) : ""}
                 </div>

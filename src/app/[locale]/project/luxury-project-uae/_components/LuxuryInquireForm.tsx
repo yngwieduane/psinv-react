@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 import { sendGTMEvent } from '@next/third-parties/google'
 import { insertHubspotLead, insertPSILead } from "@/utils/crmApiHelpers";
 import Link from "next/link";
+import { EmailIcon, UserIcon } from "@/app/[locale]/_components/FormIcons";
+import { Send } from "lucide-react";
 
 interface Props {
   project?: any;
@@ -434,25 +436,33 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
         {/* Success/Error Messages */}
         {postId === "Success" && <div className="p-3 mb-3 rounded bg-green-500 text-white">Form submitted successfully!</div>}
         {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">Submission failed. Try again.</div>}
-        <div className="mb-3">
-          <label>First Name</label>
-          <input
-            type="text"
-            {...register("firstName")}
-            placeholder="First Name"
-            className="w-full p-3 border border-[#cecfd0] rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 mt-1"
-          />
-          {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
-        </div>
-        <div className="mb-3">
-          <label>Last Name</label>
-          <input
-            type="text"
-            {...register("lastName")}
-            placeholder="Last Name"
-            className="w-full p-3 border border-[#cecfd0] rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 mt-1"
-          />
-          {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
+        <div className="mb-4 flex justify-between gap-3">          
+          <div>
+            <label>First Name</label>
+            <div className="relative space-y-1 mt-2">
+              <UserIcon />  
+              <input
+                type="text"
+                {...register("firstName")}
+                placeholder="First Name"
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+              />
+              {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
+            </div>
+          </div>
+          <div>
+            <label>Last Name</label>
+            <div className="relative space-y-1 mt-2">
+              <UserIcon />  
+              <input
+                type="text"
+                {...register("lastName")}
+                placeholder="Last Name"
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+              />
+              {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
+            </div>
+          </div>
         </div>
         <div className="mb-3">
           <label>Phone</label>
@@ -465,32 +475,47 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
                 international
                 defaultCountry="AE"
                 placeholder="+971-555555555"
-                className="w-full p-3 border border-[#cecfd0] rounded-md mb-3 mt-1"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
+                numberInputProps={{
+                    className: "w-full bg-transparent focus:outline-none text-sm placeholder:text-gray-400"
+                }}
               />
             )}
           />
           {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
         </div>
-        <div className="mb-3">
-          <label>Email</label>
-          <input
-            type="email"
-            {...register("email")}
-            placeholder="Email"
-            className="w-full p-3 border border-[#cecfd0] rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 mt-1"
-          />
-          {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
-        </div>
+        <div>
+            <label>Email</label>
+            <div className="relative space-y-1 my-2">
+              <EmailIcon />
+              <input
+                type="email"
+                {...register("email")}
+                placeholder="Email"
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+              />
+              {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+            </div>
+          </div>       
+
         <button
-          type="submit"
-          className="w-full border border-[#E0592A] p-3 mb-6 rounded-md bg-[#E0592A] text-white cursor-pointer"
-          disabled={isSubmitting}
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full mb-5 bg-[#E0592A] hover:bg-[#E0592A]/90 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          {isSubmitting ? "Submitting..." : "Submit"}
+            {isSubmitting ? (
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            ) : (
+                <>
+                    Submit
+                    <Send size={16} className="group-hover:translate-x-1 transition-transform" />
+                </>
+            )}
         </button>
+
         <div className="mb-3">
           <label className="flex items-center space-x-2">
-            <span className="text-sm">By clicking Submit, you agree to our <Link href="/en/terms" title="terms">Terms & Conditions</Link> and <a href="/en/privacy">Privacy Policy</a></span>
+            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">By clicking Submit, you agree to our <Link href="/en/terms" title="terms">Terms & Conditions</Link> and <a href="/en/privacy">Privacy Policy</a></span>
           </label>
         </div>
       </form>
