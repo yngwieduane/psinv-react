@@ -97,7 +97,7 @@ const DragCloseDrawer = ({ open, setOpen, children }: { open: any; setOpen: any,
             }}
           >
             <div className="absolute left-0 right-0 top-0 z-10 flex justify-center bg-white p-4">
-              <button
+              <button aria-label="button"
                 onPointerDown={(e) => {
                   controls.start(e);
                 }}
