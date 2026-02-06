@@ -30,8 +30,8 @@ export default async function ProjectsPage({
     const communityname = unslugify(community);
     return (
         <div className="bg-white min-h-screen pb-0 mx-5 md:mx-0">
-            <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white">
-                <div className="container mx-auto py-4">
+            <div className="pt-28 md:pt-36 bg-white mt-[100px] lg:mt-0">
+                <div className="container mx-auto">
                     <Breadcrumb
                     />
                 </div>

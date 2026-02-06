@@ -65,6 +65,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
   const locale = useLocale();
   const isRTL = locale.toLowerCase().startsWith("ar");
   const t = useTranslations("ListPropertyForm");
+  const t_agreement = useTranslations('Common_Form_Agreements');
 
   const propertyListingSchema = z.object({
     firstName: z.string().min(1, { message: t("errors.firstNameRequired") }),
@@ -408,9 +409,11 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
         )}
       </button>
 
-      <p className="text-[10px] text-gray-500 space-y-2 mt-4 italic">
-        {t("clickingTerms.part1")} <Link title="terms" href={`${locale}/terms`} className="text-gray-900 underline hover:text-gray-700">{t("clickingTerms.part2")}</Link> {t("clickingTerms.part3")}
-      </p>
+      <div className="my-3">
+          <label className="flex items-center space-x-2">
+            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t_agreement('byclickingsubmit.part1')} <Link href="/terms" title="terms" className="underline">{t_agreement('byclickingsubmit.terms')}</Link> {t_agreement('byclickingsubmit.and')} <Link href="/privacy" title="privacy" className="underline">{t_agreement('byclickingsubmit.privacy')}</Link></span>
+          </label>
+        </div>
 
     </form>
   );

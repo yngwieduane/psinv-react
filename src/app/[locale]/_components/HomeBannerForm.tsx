@@ -506,10 +506,9 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
             </svg> <span className="text-[15px]">600 548 200</span>
           </a>
         </div>
-
         <div className="my-3">
           <label className="flex items-center space-x-2">
-            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t('byclickingsubmit.part1')} <Link href="/en/terms" title="terms">{t('byclickingsubmit.terms')}</Link> {t('byclickingsubmit.and')} <Link href="/en/privacy" title="privacy">{t('byclickingsubmit.privacy')}</Link></span>
+            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t('byclickingsubmit.part1')} <Link href="/terms" title="terms" className="underline">{t('byclickingsubmit.terms')}</Link> {t('byclickingsubmit.and')} <Link href="/privacy" title="privacy" className="underline">{t('byclickingsubmit.privacy')}</Link></span>
           </label>
         </div>
 

@@ -11,6 +11,8 @@ import { sendGTMEvent } from "@next/third-parties/google";
 import { useLocale, useTranslations } from "next-intl";
 import { resolveUtmCampaignFromSearch } from "@/utils/utmCampaignMap";
 import { insertHubspotLead } from "@/utils/crmApiHelpers";
+import { MessageCircle, X, Sparkles, Minimize2, Phone, Mail, User, Send } from 'lucide-react';
+import Link from "next/link";
 
 interface ContactInquiryFormProps {
   hideFeedbackButton?: boolean;
@@ -21,6 +23,7 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
   const locale = useLocale();
   const isRTL = locale.toLowerCase().startsWith("ar");
   const t = useTranslations("ContactInquiryForm");
+  const t1 = useTranslations('Common_Form_Agreements');
 
   // Resolve UTM once (client only)
   const utmResolved = useMemo(() => {
@@ -311,7 +314,7 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
             type="text"
             {...register("firstName")}
             placeholder={t("placeholders.firstName")}
-            className={`w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 ${
+            className={`w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] ${
               isRTL ? "text-right" : ""
             }`}
           />
@@ -323,7 +326,7 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
             type="text"
             {...register("lastName")}
             placeholder={t("placeholders.lastName")}
-            className={`w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 ${
+            className={`w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] ${
               isRTL ? "text-right" : ""
             }`}
           />
@@ -335,7 +338,7 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
             type="email"
             {...register("email")}
             placeholder={t("placeholders.email")}
-            className={`w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 ${
+            className={`w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] ${
               isRTL ? "text-right" : ""
             }`}
           />
@@ -343,7 +346,7 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
         </div>
 
         <div>
-          <div className="border border-gray-300 rounded overflow-hidden">
+          <div className="mb-3">
             <Controller
               name="phone"
               control={control}
@@ -355,7 +358,7 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
                     defaultCountry="AE"
                     countryCallingCodeEditable={false}
                     placeholder={t("placeholders.phone")}
-                    className="psi-phone-input"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445] PhoneInput"
                   />
                 </div>
               )}
@@ -365,27 +368,38 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
         </div>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-4 mb-4">
         <textarea
           {...register("message")}
           placeholder={t("placeholders.message")}
-          className={`w-full border border-gray-300 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 h-40 resize-none ${
+          className={`w-full border bg-gray-50 border border-gray-100 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 h-40 resize-none ${
             isRTL ? "text-right" : ""
           }`}
         />
         {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}
       </div>
 
-      <button
+       <button
         type="submit"
-        disabled={isSubmitting}
-        className="w-full mt-6 border border-gray-400 text-gray-700 font-bold py-3 rounded hover:bg-gray-800 hover:text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-      >
-        {isSubmitting ? t("buttons.submitting") : t("buttons.submit")}
-      </button>
+          disabled={isSubmitting}
+          className="w-full bg-[#0c1445] hover:bg-[#0c1445]/90 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+          {isSubmitting ? (
+          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+          ) : (
+          <>
+           Send Message
+          <Send size={16} className="group-hover:translate-x-1 transition-transform" />
+          </>
+           )}
+        </button>
 
       <div className="text-[10px] text-gray-500 space-y-2 mt-4">
-        <p className="italic">{t("fineprint.agreementText")}</p>
+      <div className="my-3">
+          <label className="flex items-center space-x-2">
+            <span className="text-sm">{t1('byclickingsubmit.part1')} <Link href="/en/terms" title="terms">{t1('byclickingsubmit.terms')}</Link> {t1('byclickingsubmit.and')} <Link href="/en/privacy" title="privacy">{t1('byclickingsubmit.privacy')}</Link></span>
+          </label>
+        </div>
 
         {errors.agreement1 && <p className="text-red-500 text-xs">{errors.agreement1.message}</p>}
       </div>
