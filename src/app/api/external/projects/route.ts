@@ -132,7 +132,7 @@ export async function GET(request: NextRequest) {
       finquery = 'Jumeirah Residence - Al Maryah Island'
       break;
     case 'the views saraya towers':
-      finquery = 'The Views – Saraya Towers'
+      finquery = 'The Views - Saraya Towers'
       break;
     default:
       finquery = query
