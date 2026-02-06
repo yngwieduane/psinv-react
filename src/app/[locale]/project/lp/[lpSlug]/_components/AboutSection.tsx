@@ -1,7 +1,8 @@
 "use client";
 
 import clsx from "clsx";
-
+import LiteYouTube from "./LiteYouTube";
+import Image from "next/image";
 export interface AboutProps {
   heading?: string;
   subheading?: string;
@@ -28,16 +29,16 @@ export default function AboutSection({
 
           {/* Left: Text Card */}
           <div className="lg:w-1/2 w-full bg-[#F6F9FC] p-8 md:p-12 rounded-lg">
-            {subheading && (
-              <h5 className="text-[#00043A] uppercase tracking-widest text-sm mb-4 font-medium">
+          {subheading && (
+              <p className="text-[#00043A] uppercase tracking-widest text-sm mb-4 font-medium">
                 {subheading}
-              </h5>
+              </p>
             )}
 
             {heading && (
-              <h4 className="text-3xl font-bold text-[#00043A] mb-8">
+              <h2 className="text-3xl font-bold text-[#00043A] mb-8">
                 {heading}
-              </h4>
+              </h2>
             )}
 
             {description && (
@@ -46,31 +47,25 @@ export default function AboutSection({
               </p>
             )}
           </div>
-
-          {/* Right: Video OR Image */}
           <div className="lg:w-1/2 w-full">
             <div className="aspect-video w-full rounded-lg overflow-hidden shadow-xl bg-gray-100">
-              {videoId ? (
-                <iframe
-                  className="h-full w-full"
-                  src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
-                  title={heading || "Project video"}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                img && (
-                  <img
+            {videoId ? (
+              <LiteYouTube videoId={videoId} title={heading || "Project video"} />
+            ) : (
+              img && (
+                <div className="relative h-full w-full">
+                  <Image
                     src={img}
                     alt={heading || "About project"}
-                    className="h-full w-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                )
-              )}
+                </div>
+              )
+            )}
             </div>
           </div>
-
         </div>
       </div>
     </section>

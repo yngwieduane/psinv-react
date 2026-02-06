@@ -171,6 +171,7 @@ function normalizeReceiver(sendto: any) {
 }
 export default function InquiryForm({ crm, variant = "glass", className }: InquiryFormProps) {
   const t = useTranslations("InquiryForm");
+  const t1 = useTranslations('Common_Form_Agreements');
   const locale = useLocale() as string;
   const schema = z.object({
     firstName: z.string().min(1, { message: t("errors.firstName") }),
@@ -378,7 +379,7 @@ if (receiver) {
 const wrapper = clsx(
   "w-full max-w-md rounded-lg p-6 md:p-8 shadow-2xl",
   variant === "glass"
-    ? "bg-white/10 backdrop-blur-md border border-white/20 text-white"
+    ? "bg-black/30 backdrop-blur-md border border-white/15 text-white"
     : "bg-[#2B2F66] text-white",
   className
 );
@@ -466,21 +467,20 @@ const wrapper = clsx(
         <button
           type="submit"
           disabled={isSubmitting}
-          className="mt-1 w-full rounded-md bg-[#F26522] px-4 py-3 font-semibold text-white shadow-md hover:bg-[#e35d1f] disabled:opacity-60"
+          className="mt-1 w-full rounded-md bg-[#C94710] px-4 py-3 font-semibold text-white shadow-md hover:bg-[#B63E0B] disabled:opacity-60"
         >
           {isSubmitting ? t("buttons.submitting") : t("buttons.submit")}
         </button>
 
         {/* Fine print */}
         <p className="mt-1 text-[13px] italic text-white/90">
-          {t.rich("fineprint.text", {
-            terms: (chunks) => <Link href="/terms" title="terms" className="underline">{chunks}</Link>,
-            privacy: (chunks) => <Link href="/privacy" title="terms" className="underline">{chunks}</Link>
-          })}
+          <label className="flex items-center space-x-2">
+            <span className="text-sm">{t1('byclickingsubmit.part1')} <Link href="/en/terms" title="terms">{t1('byclickingsubmit.terms')}</Link> {t1('byclickingsubmit.and')} <Link href="/en/privacy" title="privacy">{t1('byclickingsubmit.privacy')}</Link></span>
+          </label>
         </p>
 
         {/* Consents */}
-        <div className="space-y-2 pt-2 text-[13px]">
+        {/* <div className="space-y-2 pt-2 text-[13px]">
           <label className="flex items-start gap-2">
             <input type="checkbox" {...register("consent1")} className="mt-1" defaultChecked />
             <span className="text-white/95">{t("consents.c1")}</span>
@@ -493,7 +493,7 @@ const wrapper = clsx(
             <input type="checkbox" {...register("consent3")} className="mt-1" defaultChecked />
             <span className="text-white/95">{t("consents.c3")}</span>
           </label>
-        </div>
+        </div> */}
       </form>
 
       {/* PhoneInput cosmetics */}
