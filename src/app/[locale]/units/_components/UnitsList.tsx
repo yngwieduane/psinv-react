@@ -12,9 +12,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function UnitsList(props: any) {
 
-    // const data = await fetch('http://localhost:3000/api/external/units/project?unitid='+unitid+'&propertyId='+propertyId+'&beds='+beds+'&category='+category)
-    // const posts = await data.json() ;
-
     const router = useRouter();
     const searchParams = useSearchParams();
     const unitid = searchParams.get('unitid') || '';
@@ -40,20 +37,6 @@ export default function UnitsList(props: any) {
         const fetchData = async () => {
             setLoading(true);
             try {
-                // const res = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`);
-                // const result = await res.json();
-                // setResults(result);
-
-                // const [res1, res2] = await Promise.all([
-                //     fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`),
-                //     fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`),
-                // ]);
-                // const [json1, json2] = await Promise.all([
-                //     res1.json(),
-                //     res2.json()
-                // ]);
-                // setResults(json1);
-                // setResults1(json2);
 
                 const p1 = fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}`)
                     .then(res => res.ok ? res.json() : [])
@@ -72,10 +55,41 @@ export default function UnitsList(props: any) {
                     });
 
                 const [data1, data2] = await Promise.all([p1, p2]);
-                setResults([...data1, ...data2]);
+                const allResults = [...data1, ...data2];
+                setResults(allResults);
 
-                // const [data2] = await Promise.all([p2]);
-                // setResults([...data2]);
+                if (props.onDataLoaded) {
+                    let locationName = "Abu Dhabi";
+                    let listingType = "Sale";
+
+                    // Determine Category
+                    if (category) {
+                        listingType = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+                    } else if (allResults.length > 0) {
+                        // Infer from first item if not in params
+                        listingType = allResults[0].sellprice ? "Sale" : "Rent";
+                    }
+
+                    // Determine Location
+                    // Priority: Property Name -> Community -> City -> Default
+                    if (allResults.length > 0) {
+                        const firstItem = allResults[0];
+                        if (propertyId && (firstItem.propertyname || firstItem.project)) {
+                            locationName = firstItem.propertyname || firstItem.project;
+                        } else if (communityId && firstItem.community) {
+                            locationName = firstItem.community;
+                        } else if (firstItem.city_name) {
+                            locationName = firstItem.city_name;
+                            if (locationName === 'Abu Dhabi Gate City') locationName = 'Abu Dhabi';
+                        }
+                    }
+
+                    props.onDataLoaded({
+                        count: allResults.length,
+                        location: locationName,
+                        category: listingType
+                    });
+                }
 
             } catch (error) {
                 console.error("API fetch failed", error);
