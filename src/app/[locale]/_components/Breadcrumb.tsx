@@ -17,7 +17,9 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customSegments }) => {
     parts.shift();
 
     return parts.map((segment, index) => {
-      const url = "/" + parts.slice(0, index + 1).join("/");
+      const fixedSegment = segment === "developer" ? "developers" : segment;
+
+const url = "/" + [...parts.slice(0, index), fixedSegment].join("/");
       return {
         name: segment.replaceAll("-", " "),
         href: url,

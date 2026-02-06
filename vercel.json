@@ -7,6 +7,10 @@
         {
             "path": "/api/cron/sync-blog",
             "schedule": "0 1 * * *"
+        },
+        {
+            "path": "/api/cron/sync-units",
+            "schedule": "0 2,14 * * *"
         }
     ]
 }

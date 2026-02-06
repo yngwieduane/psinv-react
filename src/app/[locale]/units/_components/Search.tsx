@@ -170,23 +170,8 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                     <AdjustmentsHorizontalIcon className="size-6" />
                                 </button>
                             </div>
-
-                            {/* Desktop Search Button */}
-                            <div className="hidden md:block w-40">
-                                <button
-                                    type="submit"
-                                    className="w-full h-full rounded-xl bg-primary hover:bg-[#004880] text-white font-bold transition-all shadow-md active:scale-95 text-lg"
-                                >
-                                    Search
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* Filters Row */}
-                        <div className={`gap-4 items-end mt-4 ${isFiltersOpen ? 'grid grid-cols-1' : 'hidden'}`}>
-
                             {/* Category (Function of Rent/Sale) - Moved into Grid */}
-                            <div className="w-full">
+                            <div className="w-40">
                                 <Listbox value={category} onChange={setCategory}>
                                     <div className="relative">
                                         <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
@@ -209,6 +194,20 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                     </div>
                                 </Listbox>
                             </div>
+
+                            {/* Desktop Search Button */}
+                            <div className="hidden md:block w-40">
+                                <button
+                                    type="submit"
+                                    className="w-full h-full rounded-xl bg-primary hover:bg-[#004880] text-white font-bold transition-all shadow-md active:scale-95 text-lg"
+                                >
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Filters Row */}
+                        <div className={`gap-4 items-end mt-4 ${isFiltersOpen ? 'grid grid-cols-1' : 'hidden'}`}>
 
                             {/* Sector (Residential/Commercial) */}
                             <div className="w-full">

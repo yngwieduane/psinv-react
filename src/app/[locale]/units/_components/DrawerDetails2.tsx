@@ -43,7 +43,7 @@ export default function DrawerDetails2(props:any) {
                                 <div className="flex items-start justify-end">
                                     <DialogTitle className="text-base font-semibold text-gray-900 capitalize hidden">{title}</DialogTitle>
                                     <div className="ml-3 flex h-7 items-center">
-                                        <button
+                                        <button aria-label="Close"
                                             type="button"
                                             onClick={onCloseModal}
                                             className="relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"

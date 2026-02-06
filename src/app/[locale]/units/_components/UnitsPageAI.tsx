@@ -16,6 +16,10 @@ export default function UnitsPageAI(props: any) {
     const [activeSort, setActiveSort] = useState('Featured');
     const [showFilters, setShowFilters] = useState(false);
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+    // Changing state from simple number to object for dynamic title
+    const [titleData, setTitleData] = useState({ count: 0, location: 'UAE', category: 'Sale' });
+
     const unitid = props.unitid || '';
     const category = props.category || '';
     const currentPage = Number(props.page) || 1;
@@ -30,7 +34,9 @@ export default function UnitsPageAI(props: any) {
             <div className="mx-auto container mx-auto px-4 md:px-12 mt-8 pb-20">
                 {/* Header */}
                 <div className="flex justify-between items-end mb-6">
-                    <h1 className="text-xl md:text-3xl text-gray-900 font-bold">Properties for Sale in Abu Dhabi</h1>
+                    <h1 className="text-xl md:text-3xl text-gray-900 font-bold">
+                        {titleData.count > 0 ? `${titleData.count} ` : ''}Properties for {titleData.category} in {titleData.location}
+                    </h1>
 
                     <div className="flex items-center gap-4">
                         {/* Mobile Filter Button */}
@@ -79,7 +85,14 @@ export default function UnitsPageAI(props: any) {
                             </div>
                             <div className="col-span-4 md:col-span-3">
                                 <div className="mt-0 space-y-5 lg:mt-2 lg:space-y-5">
-                                    <UnitsList unitid={unitid} category={category} propertyId={propertyId} beds={beds} currentPage={currentPage} />
+                                    <UnitsList
+                                        unitid={unitid}
+                                        category={category}
+                                        propertyId={propertyId}
+                                        beds={beds}
+                                        currentPage={currentPage}
+                                        onDataLoaded={setTitleData}
+                                    />
                                 </div>
                             </div>
                         </>

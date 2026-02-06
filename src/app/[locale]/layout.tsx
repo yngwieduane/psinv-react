@@ -216,7 +216,7 @@ export default async function LocaleLayout({
         {/* <GoogleTagManager gtmId="GTM-KDDP2SR" /> */}
 
         {/* GTM loaded only after interactive */}
-        <Script id="gtm-script" strategy="afterInteractive">
+        <Script id="gtm-script" strategy="lazyOnload">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -225,6 +225,7 @@ export default async function LocaleLayout({
             })(window,document,'script','dataLayer','GTM-KDDP2SR');
           `}
         </Script>
+
       </body>
     </html>
   );

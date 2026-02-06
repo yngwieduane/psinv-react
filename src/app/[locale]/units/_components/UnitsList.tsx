@@ -12,9 +12,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function UnitsList(props: any) {
 
-    // const data = await fetch('http://localhost:3000/api/external/units/project?unitid='+unitid+'&propertyId='+propertyId+'&beds='+beds+'&category='+category)
-    // const posts = await data.json() ;
-
     const router = useRouter();
     const searchParams = useSearchParams();
     const unitid = searchParams.get('unitid') || '';
@@ -30,52 +27,73 @@ export default function UnitsList(props: any) {
     const minArea = searchParams.get('minArea') || '';
     const maxArea = searchParams.get('maxArea') || '';
 
-    const [query, setQuery] = useState("");
     const [results, setResults] = useState<UnitListing[]>([]);
-    const [results1, setResults1] = useState<UnitListing[]>([]);
-    const [allData, setAllData] = useState<UnitListing[]>([]);
     const [loading, setLoading] = useState(false);
+    const [totalCount, setTotalCount] = useState(0);
+
+    const ITEMS_PER_PAGE = 10;
+    // Current page logic: prefer 'currentPage' param, default to 1
+    const pageNum = Number(currentPage) || 1;
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                // const res = await fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}`);
-                // const result = await res.json();
-                // setResults(result);
+                // Fetch from our internal Firestore-backed API with Pagination
+                const url = `/api/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}&unitid=${unitid}&page=${pageNum}&limit=${ITEMS_PER_PAGE}`;
 
-                // const [res1, res2] = await Promise.all([
-                //     fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`),
-                //     fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`),
-                // ]);
-                // const [json1, json2] = await Promise.all([
-                //     res1.json(),
-                //     res2.json()
-                // ]);
-                // setResults(json1);
-                // setResults1(json2);
+                const res = await fetch(url);
+                let data = { units: [], total: 0 };
 
-                const p1 = fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}`)
-                    .then(res => res.ok ? res.json() : [])
-                    .then(data => data.map((item: any) => ({ ...item, source: 'main' })))
-                    .catch(err => {
-                        console.error("Units API failed", err);
-                        return [];
+                if (res.ok) {
+                    data = await res.json();
+                } else {
+                    console.error("Units API failed", res.status);
+                }
+
+                // If response is the old array format (fallback), handle it
+                const units = Array.isArray(data) ? data : (data.units || []);
+                const total = Array.isArray(data) ? data.length : (data.total || 0);
+
+                setResults(units);
+                setTotalCount(total);
+
+                if (props.onDataLoaded) {
+                    let locationName = "UAE";
+                    let listingType = "Sale";
+
+                    // Determine Category
+                    if (category) {
+                        listingType = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+                    } else if (units.length > 0) {
+                        const sample = units[0];
+                        if (sample._sourceCategory) {
+                            listingType = sample._sourceCategory;
+                        } else {
+                            listingType = sample.sellprice ? "Sale" : "Rent";
+                        }
+                    }
+
+                    // Determine Location
+                    // Priority: Property Name -> Community -> City -> Default
+                    if (units.length > 0) {
+                        const firstItem = units[0];
+                        if (propertyId && (firstItem.propertyname || firstItem.project)) {
+                            locationName = firstItem.propertyname || firstItem.project;
+                        } else if (communityId && firstItem.community) {
+                            locationName = firstItem.community;
+                        } else if (firstItem.city_name) {
+                            locationName = firstItem.city_name;
+                            if (locationName === 'Abu Dhabi Gate City') locationName = 'Abu Dhabi';
+                        }
+                    }
+
+                    props.onDataLoaded({
+                        count: total, // Pass TOTAL count, not just current page length
+                        location: locationName,
+                        category: listingType
                     });
-
-                const p2 = fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}`)
-                    .then(res => res.ok ? res.json() : [])
-                    .then(data => data.map((item: any) => ({ ...item, source: 'assets' })))
-                    .catch(err => {
-                        console.error("UnitsAssets API failed", err);
-                        return [];
-                    });
-
-                const [data1, data2] = await Promise.all([p1, p2]);
-                setResults([...data1, ...data2]);
-
-                // const [data2] = await Promise.all([p2]);
-                // setResults([...data2]);
+                }
 
             } catch (error) {
                 console.error("API fetch failed", error);
@@ -85,14 +103,9 @@ export default function UnitsList(props: any) {
         };
 
         fetchData();
-    }, [unitid, category, propertyId, beds, baths, propertyType, maxPrice, minPrice, minArea, maxArea]);
+    }, [unitid, category, propertyId, beds, baths, propertyType, maxPrice, minPrice, minArea, maxArea, pageNum]);
 
-    const ITEMS_PER_PAGE = 10;
-    const pageNum = Number(searchParams.get('currentPage')) || 1;
-    const totalPages = Math.ceil(results.length / ITEMS_PER_PAGE);
-
-    const startIdx = (pageNum - 1) * ITEMS_PER_PAGE;
-    const currentResults = results.slice(startIdx, startIdx + ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
 
     const handlePageChange = (newPage: number) => {
         const params = new URLSearchParams(searchParams.toString());
@@ -108,13 +121,16 @@ export default function UnitsList(props: any) {
                 <>
                     {results.length > 0 && (
                         <>
-                            {currentResults.map((post: any, index: any) => {
+                            {results.map((post: any, index: any) => {
                                 let maincategory;
                                 {
                                     post.sellprice !== null
                                         ? maincategory = "Sale"
                                         : maincategory = "Rent";
                                 }
+                                // If source category is available, use it
+                                if (post._sourceCategory) maincategory = post._sourceCategory;
+
                                 const propertyData = {
                                     bedrooms: post.bedrooms,
                                     propertyType: post.category,
