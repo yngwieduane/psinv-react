@@ -85,7 +85,21 @@ export async function GET(request: NextRequest) {
             });
         }
 
-        return NextResponse.json(units);
+        // Pagination
+        const page = parseInt(searchParams.get('page') || '1');
+        const limit = parseInt(searchParams.get('limit') || '10');
+        const startIndex = (page - 1) * limit;
+        const endIndex = startIndex + limit;
+
+        const total = units.length;
+        const paginatedUnits = units.slice(startIndex, endIndex);
+
+        return NextResponse.json({
+            units: paginatedUnits,
+            total,
+            page,
+            totalPages: Math.ceil(total / limit)
+        });
 
     } catch (error) {
         console.error("Error fetching units from Firestore:", error);

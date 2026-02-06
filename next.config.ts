@@ -136,7 +136,7 @@ const nextConfig: NextConfig = {
         destination: '/ar/project/lp/bloom-living-almeria',
         permanent: true,
       },
-       {
+      {
         source: '/en/ramhan-island',
         destination: '/en/project/ramhan-island',
         permanent: true,
@@ -173,6 +173,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'apigateway.psi-crm.com',
+      },
+      {
+        protocol: 'http',
         hostname: 'apigateway.psi-crm.com',
       },
       {

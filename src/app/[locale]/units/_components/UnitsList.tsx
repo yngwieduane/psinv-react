@@ -29,23 +29,34 @@ export default function UnitsList(props: any) {
 
     const [results, setResults] = useState<UnitListing[]>([]);
     const [loading, setLoading] = useState(false);
+    const [totalCount, setTotalCount] = useState(0);
+
+    const ITEMS_PER_PAGE = 10;
+    // Current page logic: prefer 'currentPage' param, default to 1
+    const pageNum = Number(currentPage) || 1;
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                // Fetch from our internal Firestore-backed API
-                const url = `/api/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}&unitid=${unitid}`;
+                // Fetch from our internal Firestore-backed API with Pagination
+                const url = `/api/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}&unitid=${unitid}&page=${pageNum}&limit=${ITEMS_PER_PAGE}`;
 
                 const res = await fetch(url);
-                let data = [];
+                let data = { units: [], total: 0 };
+
                 if (res.ok) {
                     data = await res.json();
                 } else {
                     console.error("Units API failed", res.status);
                 }
 
-                setResults(data);
+                // If response is the old array format (fallback), handle it
+                const units = Array.isArray(data) ? data : (data.units || []);
+                const total = Array.isArray(data) ? data.length : (data.total || 0);
+
+                setResults(units);
+                setTotalCount(total);
 
                 if (props.onDataLoaded) {
                     let locationName = "UAE";
@@ -54,12 +65,8 @@ export default function UnitsList(props: any) {
                     // Determine Category
                     if (category) {
                         listingType = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
-                    } else if (data.length > 0) {
-                        // Infer from first item if not in params
-                        // Default to Rent if check explicitly fails, or Sale?
-                        const sample = data[0];
-                        // If it has a sell price that is non-zero/null, it's likely Sale.
-                        // But wait, the API filter probably enforced it if category param was passed.
+                    } else if (units.length > 0) {
+                        const sample = units[0];
                         if (sample._sourceCategory) {
                             listingType = sample._sourceCategory;
                         } else {
@@ -69,8 +76,8 @@ export default function UnitsList(props: any) {
 
                     // Determine Location
                     // Priority: Property Name -> Community -> City -> Default
-                    if (data.length > 0) {
-                        const firstItem = data[0];
+                    if (units.length > 0) {
+                        const firstItem = units[0];
                         if (propertyId && (firstItem.propertyname || firstItem.project)) {
                             locationName = firstItem.propertyname || firstItem.project;
                         } else if (communityId && firstItem.community) {
@@ -82,7 +89,7 @@ export default function UnitsList(props: any) {
                     }
 
                     props.onDataLoaded({
-                        count: data.length,
+                        count: total, // Pass TOTAL count, not just current page length
                         location: locationName,
                         category: listingType
                     });
@@ -96,14 +103,9 @@ export default function UnitsList(props: any) {
         };
 
         fetchData();
-    }, [unitid, category, propertyId, beds, baths, propertyType, maxPrice, minPrice, minArea, maxArea]);
+    }, [unitid, category, propertyId, beds, baths, propertyType, maxPrice, minPrice, minArea, maxArea, pageNum]);
 
-    const ITEMS_PER_PAGE = 10;
-    const pageNum = Number(searchParams.get('currentPage')) || 1;
-    const totalPages = Math.ceil(results.length / ITEMS_PER_PAGE);
-
-    const startIdx = (pageNum - 1) * ITEMS_PER_PAGE;
-    const currentResults = results.slice(startIdx, startIdx + ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
 
     const handlePageChange = (newPage: number) => {
         const params = new URLSearchParams(searchParams.toString());
@@ -119,7 +121,7 @@ export default function UnitsList(props: any) {
                 <>
                     {results.length > 0 && (
                         <>
-                            {currentResults.map((post: any, index: any) => {
+                            {results.map((post: any, index: any) => {
                                 let maincategory;
                                 {
                                     post.sellprice !== null
