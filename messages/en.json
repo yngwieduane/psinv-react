@@ -6470,6 +6470,7 @@
     "loading": "Loading jobs..."
   },
   "Units" : {
-    "ResgisterTitle" : "Register Interest"
+    "ResgisterTitle" : "Register Interest",
+    "inquire": "Inquire"
   }
 }

@@ -5962,5 +5962,10 @@
   },
   "Job_List": {
     "loading": "جارٍ تحميل الوظائف..."
+  },
+  "Units": {
+    "ResgisterTitle": "سجّل اهتمامك",
+    "inquire": "استفسر"
   }
+
 }

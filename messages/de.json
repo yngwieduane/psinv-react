@@ -1620,5 +1620,10 @@
   },
   "Job_List": {
     "loading": "Lade Jobs..."
+  },
+  "Units": {
+    "ResgisterTitle": "Interesse anmelden",
+    "inquire": "Anfragen"
   }
+
 }

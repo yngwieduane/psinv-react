@@ -13,6 +13,7 @@ import { Heart, MapPin, Shuffle } from "lucide-react";
 import PreviewModal from "./PreviewModal";
 import { UnitListing } from "@/types/types";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function UnitListBoxAI(props: any) {
     let images, price;
@@ -26,6 +27,8 @@ export default function UnitListBoxAI(props: any) {
             ? price = props.data.sellprice
             : price = props.data.rent;
     }
+
+    const t = useTranslations('Units');
 
     const [selectedProperty, setSelectedProperty] = useState<UnitListing | null>(null);
     const [previewProperty, setPreviewProperty] = useState<UnitListing | null>(null);
@@ -160,7 +163,7 @@ export default function UnitListBoxAI(props: any) {
                     </div>
                 </div>
             </div>
-            <Modals modalState={setModal} onModalUpdate={modalUpdate} title="Inquire" />
+            <Modals modalState={setModal} onModalUpdate={modalUpdate} title={t('inquire')} />
             <PreviewModal
                 property={previewProperty}
                 onClose={() => setPreviewProperty(null)}

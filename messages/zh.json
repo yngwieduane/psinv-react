@@ -1696,5 +1696,10 @@
   },
   "Job_List": {
     "loading": "正在加载职位..."
+  },
+  "Units": {
+    "ResgisterTitle": "登记意向",
+    "inquire": "咨询"
   }
+
 }
