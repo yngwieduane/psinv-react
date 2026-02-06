@@ -214,12 +214,12 @@ const collect = (n: number): UspItem | null => {
         crm={crmMeta}
         variant={heroVariant}
         triggerText={ctaText ?? "Download Brochure"}
-        triggerClassName="inline-block rounded bg-orange-600 px-5 py-3 text-white hover:bg-orange-700"
+        triggerClassName="inline-block rounded bg-orange-700 px-5 py-3 text-white hover:bg-orange-800"
       />
     ) : (
       <a
         href="#"
-        className="inline-block rounded bg-orange-600 px-5 py-3 text-white hover:bg-orange-700"
+        className="inline-block rounded bg-orange-700 px-5 py-3 text-white hover:bg-orange-800"
       >
         {ctaText ?? "Download Brochure"}
       </a>
@@ -277,8 +277,9 @@ const collect = (n: number): UspItem | null => {
       {cfg.sections.includes("location") && mapEmbedUrl && (
         <LocationMap
           mapEmbedUrl={mapEmbedUrl}
-          titleNs={`LandingPages.${lpSlug}.floorPlans`}
-          titleKey="title"
+          titleNs={`LandingPages.${lpSlug}.ProjectPage`}
+          titleKey="location"
+          
         />
       )}
       {cfg.sections.includes("footer") && (

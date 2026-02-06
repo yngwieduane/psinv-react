@@ -44,7 +44,7 @@ export default function AmenitiesSection({
             {cta && ctaHref && (
               <a
                 href={ctaHref}
-                className="inline-flex items-center mt-6 rounded-md bg-[#F26522] px-6 py-3 font-semibold text-white hover:bg-[#e05a1c] transition-colors"
+                className="inline-flex items-center mt-6 rounded-md bg-[#B63E0B] px-6 py-3 font-semibold text-white hover:bg-[#8F2F08] transition-colors"
               >
                 {cta}
                 <svg className="ml-2" width="17" height="8" viewBox="0 0 17 8" fill="none">
