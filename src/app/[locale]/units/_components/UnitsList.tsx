@@ -27,53 +27,50 @@ export default function UnitsList(props: any) {
     const minArea = searchParams.get('minArea') || '';
     const maxArea = searchParams.get('maxArea') || '';
 
-    const [query, setQuery] = useState("");
     const [results, setResults] = useState<UnitListing[]>([]);
-    const [results1, setResults1] = useState<UnitListing[]>([]);
-    const [allData, setAllData] = useState<UnitListing[]>([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
+                // Fetch from our internal Firestore-backed API
+                const url = `/api/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}&unitid=${unitid}`;
 
-                const p1 = fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}`)
-                    .then(res => res.ok ? res.json() : [])
-                    .then(data => data.map((item: any) => ({ ...item, source: 'main' })))
-                    .catch(err => {
-                        console.error("Units API failed", err);
-                        return [];
-                    });
+                const res = await fetch(url);
+                let data = [];
+                if (res.ok) {
+                    data = await res.json();
+                } else {
+                    console.error("Units API failed", res.status);
+                }
 
-                const p2 = fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}`)
-                    .then(res => res.ok ? res.json() : [])
-                    .then(data => data.map((item: any) => ({ ...item, source: 'assets' })))
-                    .catch(err => {
-                        console.error("UnitsAssets API failed", err);
-                        return [];
-                    });
-
-                const [data1, data2] = await Promise.all([p1, p2]);
-                const allResults = [...data1, ...data2];
-                setResults(allResults);
+                setResults(data);
 
                 if (props.onDataLoaded) {
-                    let locationName = "Abu Dhabi";
+                    let locationName = "UAE";
                     let listingType = "Sale";
 
                     // Determine Category
                     if (category) {
                         listingType = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
-                    } else if (allResults.length > 0) {
+                    } else if (data.length > 0) {
                         // Infer from first item if not in params
-                        listingType = allResults[0].sellprice ? "Sale" : "Rent";
+                        // Default to Rent if check explicitly fails, or Sale?
+                        const sample = data[0];
+                        // If it has a sell price that is non-zero/null, it's likely Sale.
+                        // But wait, the API filter probably enforced it if category param was passed.
+                        if (sample._sourceCategory) {
+                            listingType = sample._sourceCategory;
+                        } else {
+                            listingType = sample.sellprice ? "Sale" : "Rent";
+                        }
                     }
 
                     // Determine Location
                     // Priority: Property Name -> Community -> City -> Default
-                    if (allResults.length > 0) {
-                        const firstItem = allResults[0];
+                    if (data.length > 0) {
+                        const firstItem = data[0];
                         if (propertyId && (firstItem.propertyname || firstItem.project)) {
                             locationName = firstItem.propertyname || firstItem.project;
                         } else if (communityId && firstItem.community) {
@@ -85,7 +82,7 @@ export default function UnitsList(props: any) {
                     }
 
                     props.onDataLoaded({
-                        count: allResults.length,
+                        count: data.length,
                         location: locationName,
                         category: listingType
                     });
@@ -129,6 +126,9 @@ export default function UnitsList(props: any) {
                                         ? maincategory = "Sale"
                                         : maincategory = "Rent";
                                 }
+                                // If source category is available, use it
+                                if (post._sourceCategory) maincategory = post._sourceCategory;
+
                                 const propertyData = {
                                     bedrooms: post.bedrooms,
                                     propertyType: post.category,
