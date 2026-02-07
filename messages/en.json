@@ -399,7 +399,7 @@
   },
   "LocaleSwitcher": {
     "label": "Change language",
-    "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} zh {🇨🇳 Chinese} ru {🇷🇺 Russian} de {🇩🇪 Germany} other {Unknown}}",
+    "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} zh {🇨🇳 Chinese} ru {🇷🇺 Russian} de {🇩🇪 German} other {Unknown}}",
     "buy": "Buy",
     "rent": "Rent",
     "communities": "Communities",

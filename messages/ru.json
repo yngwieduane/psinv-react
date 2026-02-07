@@ -489,7 +489,7 @@
   },
   "LocaleSwitcher": {
     "label": "Сменить язык",
-    "locale": "{locale, select, ar {🇦🇪 Арабский} en {🇺🇸 Английский} zh {🇨🇳 Китайский} ru {🇷🇺 Русский} de {🇩🇪 Голландский} other {Неизвестный}}",
+    "locale": "{locale, select, ar {🇦🇪 Арабский} en {🇺🇸 Английский} zh {🇨🇳 Китайский} ru {🇷🇺 Русский} de {🇩🇪 Немецкий} other {Неизвестный}}",
     "buy": "Купить",
     "rent": "Аренда",
     "communities": "Сообщества",
@@ -597,7 +597,6 @@
     "Palm Jumeirah Branch": "Филиал Palm Jumeirah",
     "Conrad Etihad Towers": "Conrad Etihad Towers",
     "Benelux Branch": "Филиал Benelux"
-
   },
   "About_Us_Page": {
     "heroTitle": "О НАС",
@@ -1624,5 +1623,4 @@
     "ResgisterTitle": "Оставить заявку",
     "inquire": "Запросить"
   }
-
 }
