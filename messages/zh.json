@@ -599,6 +599,10 @@
   },
   "About_Us_Page": {
     "heroTitle": "关于我们",
+    "metadata": {
+      "title": "关于我们 - Property Shop Investment",
+      "description": "Property Shop Investment 是由房地产专家实现的愿景。一家总部位于阿布扎比的值得信赖的阿联酋房地产公司。"
+    },
     "heroBreadcrumb": "首页 > 关于我们",
     "aboutTag": "关于",
     "mainHeading": "物业商投资公司（PROPERTY SHOP INVESTMENT）",

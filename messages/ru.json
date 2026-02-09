@@ -600,6 +600,10 @@
   },
   "About_Us_Page": {
     "heroTitle": "О НАС",
+    "metadata": {
+      "title": "О нас - Property Shop Investment",
+      "description": "Property Shop Investment — это видение, воплощенное в жизнь экспертами по недвижимости. Надежная компания по недвижимости в ОАЭ со штаб-квартирой в Абу-Даби."
+    },
     "heroBreadcrumb": "Главная > О нас",
     "aboutTag": "О компании",
     "mainHeading": "PROPERTY SHOP INVESTMENT",

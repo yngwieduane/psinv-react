@@ -513,6 +513,10 @@
   },
   "About_Us_Page": {
     "heroTitle": "ABOUT US",
+    "metadata": {
+      "title": "About Us - Property Shop Investment",
+      "description": "Property Shop Investment is a vision brought to life by real estate experts. A trusted UAE real estate company headquartered in Abu Dhabi."
+    },
     "heroBreadcrumb": "Home > About Us",
     "aboutTag": "About",
     "mainHeading": "PROPERTY SHOP INVESTMENT",

@@ -6,13 +6,13 @@ import UnitPageAI from "./components/UnitPageAI";
 
 
 type Props = {
-    params: Promise<{ slug: string }>
+    params: Promise<{ slug: string, locale: string }>
 }
 export async function generateMetadata(
     { params }: Props,
 ): Promise<Metadata> {
     // read route params
-    const { slug } = await params
+    const { slug, locale } = await params
 
     const slugString = Array.isArray(slug) ? slug[0] : slug || "";
     const lastString = slugString.split("-").pop() ?? "";
@@ -68,9 +68,9 @@ export async function generateMetadata(
     const seoData = generateSeoData(propertyData);
 
     return {
-        title: seoData.seoTitle,
-        description: seoData.seoDescription,
-        keywords: seoData.seoKeyword,
+        title: seoData.seoTitle + ' | ' + locale,
+        description: seoData.seoDescription + ' | ' + locale,
+        keywords: seoData.seoKeyword + ' | ' + locale,
     }
 }
 
