@@ -5,7 +5,8 @@ import slugify from "react-slugify";
 import { useFormatter } from 'next-intl';
 import Image from 'next/image';
 import { useUser } from '@/context/userContext';
-import { Heart, MapPin, Shuffle, Share2 } from 'lucide-react';
+import { Heart, MapPin, Shuffle, Share2, BedSingle, BedSingleIcon, LucideBedSingle, BedDouble, HandCoins, HandCoinsIcon, House, HouseIcon, Building, Key, HandHelping } from 'lucide-react';
+import { FaHandHolding, FaHandHoldingUsd, FaHandPaper } from 'react-icons/fa';
 
 const PropertyCardAI = (props: any) => {
 
@@ -115,16 +116,16 @@ const PropertyCardAI = (props: any) => {
                         )}
 
                         <div className="mt-auto flex flex-row gap-4 border-t border-gray-100 pt-5 text-center">
-                            <div className="basis-3xs">
-                                <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider">Types</span>
+                            <div className="basis-3xs flex flex-column justify-bottom items-center">
+                                <span className="block text-[8px] text-gray-400 uppercase font-bold tracking-wider"><House /></span>
                                 <span className="block text-sm font-bold text-gray-800 mt-1">{propType}</span>
                             </div>
-                            <div className="basis-3xs">
-                                <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider">Beds</span>
+                            <div className="basis-3xs flex flex-column justify-bottom items-center">
+                                <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider text-center"><BedDouble /></span>
                                 <span className="block text-sm font-bold text-gray-800 mt-1">{propBed}</span>
                             </div>
-                            {HOdate ? (<div className="basis-3xs">
-                                <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider">Handover</span>
+                            {HOdate ? (<div className="basis-3xs flex flex-column justify-bottom items-center">
+                                <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider"><HandHelping /></span>
                                 <span className="block text-sm font-bold text-gray-800 mt-1">{propHO}</span>
                             </div>) : ("")}
 

@@ -247,7 +247,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
               <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{group.groupName}</p>
               <div className="space-y-2">
                 {group.items.map((type: any) => {
-                  const isSelected = selectedPropertyTypes.includes(String(type.lookupId));
+                  const isSelected = selectedPropertyTypes.includes(String(type.lookupName));
                   return (
                     <label key={type.lookupId} className="flex items-center gap-3 cursor-pointer group">
                       <div className={`
@@ -262,7 +262,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                         className="hidden"
                         checked={isSelected}
                         onChange={() => {
-                          const newType = String(type.lookupId);
+                          const newType = String(type.lookupName);
                           setSelectedPropertyTypes([newType]);
                           updateQuery('propertyType', newType);
                         }}

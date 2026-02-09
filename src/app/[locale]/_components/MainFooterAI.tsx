@@ -114,6 +114,7 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
               <li><Link href="/careers" title={t('footer_links_careers')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_careers')}</Link></li>
               <li><Link href="/about-us#awards" title={t('footer_links_awards')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all text-left rtl:text-right">{t('footer_links_awards')}</Link></li>
               <li><Link href="/international" title={t('footer_links_intl')} className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">{t('footer_links_intl')}</Link></li>
+              <li><Link target="_blank" href="https://www.psi-consultants.de" title="PSI Germany" className="hover:text-gray-400 hover:pl-2 rtl:hover:pr-2 transition-all">PSI Germany</Link></li>
             </ul>
           </div>
 

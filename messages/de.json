@@ -1,9 +1,9 @@
 {
   "HomePageBanner": {
-    "sign_up_btn": "Sign Up",
-    "more_btn": "Explore More",
-    "register": "Register Your Interest",
-    "submit": "Submit"
+    "sign_up_btn": "Anmelden",
+    "more_btn": "Mehr entdecken",
+    "register": "Interesse anmelden",
+    "submit": "Absenden"
   },
   "MainSliderHome": {
     "slides": {
@@ -597,7 +597,6 @@
     "Palm Jumeirah Branch": "Zweigstelle Palm Jumeirah",
     "Conrad Etihad Towers": "Conrad Etihad Towers",
     "Benelux Branch": "Zweigstelle Benelux"
-
   },
   "About_Us_Page": {
     "heroTitle": "ÜBER UNS",
@@ -1620,5 +1619,9 @@
   },
   "Job_List": {
     "loading": "Lade Jobs..."
+  },
+  "Units": {
+    "ResgisterTitle": "Interesse anmelden",
+    "inquire": "Anfragen"
   }
 }

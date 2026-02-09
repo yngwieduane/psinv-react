@@ -44,12 +44,7 @@ const InquireForm = (props: any) => {
         control, trigger,
         formState: { errors }
     } = useForm<FormData>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            agreement1: true,
-            agreement2: true,
-            agreement3: true,
-        },
+        resolver: zodResolver(formSchema),        
     });
 
     const [formValue, setFormValue] = useState<FormValue>({
@@ -144,10 +139,7 @@ const InquireForm = (props: any) => {
                     break;
             }
 
-            const remarks = `
-                Additional consent 1 : ${data.agreement1 ? "Yes" : "No"} </br>
-                Additional consent 2 : ${data.agreement2 ? "Yes" : "No"} </br>
-                Additional consent 3 : ${data.agreement3 ? "Yes" : "No"} </br>
+            const remarks = `                
                 Client name: ${data.fname}  ${data.lname} </br>
                 Client email: ${data.email} </br>
                 Client phone: ${data.phone} </br>
@@ -485,28 +477,7 @@ const InquireForm = (props: any) => {
                     {!isSubmitting && !isSubmitSuccess ? (
                         <>
                             <p className={` ${!props.fromModal ? "text-center" : ""} text-xs `}>{t('agreement_text.part1')} <a href="terms" target="_blank"><span className="text-[#ED9C4B]">{t('agreement_text.terms')}</span></a> {t('agreement_text.part2')} <a href="privacy" target="_blank"><span className="text-[#ED9C4B]">{t('agreement_text.privacy')}</span></a></p>
-                            <p className={`${!props.fromModal ? "text-center" : ""} text-xs`}>{t('desc')}</p>
-                            <div className="flex flex-column gap-0">
-                                <div className="mb-0">
-                                    <label className="flex items-center space-x-2">
-                                        <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
-                                        <span className="text-sm">{tMessages('agree_terms')}</span>
-                                    </label>
-                                    {errors.agreement1 && <p className="text-red-500 text-sm mb-0">{errors.agreement1.message}</p>}
-                                </div>
-                                <div className="mb-0">
-                                    <label className="flex items-center space-x-2">
-                                        <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
-                                        <span className="text-sm">{tMessages('agree_calls')}</span>
-                                    </label>
-                                </div>
-                                <div className="mb-0">
-                                    <label className="flex items-center space-x-2">
-                                        <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
-                                        <span className="text-sm">{tMessages('agree_projects')}</span>
-                                    </label>
-                                </div>
-                            </div>
+                            <p className={`${!props.fromModal ? "text-center" : ""} text-xs`}>{t('desc')}</p>                            
                         </>
                     )
                         :

@@ -12,6 +12,8 @@ import { useUser } from "@/context/userContext";
 import { Heart, MapPin, Shuffle } from "lucide-react";
 import PreviewModal from "./PreviewModal";
 import { UnitListing } from "@/types/types";
+import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function UnitListBoxAI(props: any) {
     let images, price;
@@ -25,6 +27,8 @@ export default function UnitListBoxAI(props: any) {
             ? price = props.data.sellprice
             : price = props.data.rent;
     }
+
+    const t = useTranslations('Units');
 
     const [selectedProperty, setSelectedProperty] = useState<UnitListing | null>(null);
     const [previewProperty, setPreviewProperty] = useState<UnitListing | null>(null);
@@ -61,10 +65,12 @@ export default function UnitListBoxAI(props: any) {
 
                 >
                     <Link href={`/unit/${props.seoUrl}`}>
-                        <img
-                            src={images[0]}
+                        <Image
+                            src={images[0].split('?')[0]}
                             alt={props.seoTitle}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            width={300}
+                            height={200}
                         />
                         <div className="absolute top-3 left-3 bg-secondary text-white text-xs font-bold px-2 py-1 rounded shadow-sm">
                             For {props.adType}
@@ -157,7 +163,7 @@ export default function UnitListBoxAI(props: any) {
                     </div>
                 </div>
             </div>
-            <Modals modalState={setModal} onModalUpdate={modalUpdate} title="Inquire" />
+            <Modals modalState={setModal} onModalUpdate={modalUpdate} title={t('inquire')} />
             <PreviewModal
                 property={previewProperty}
                 onClose={() => setPreviewProperty(null)}

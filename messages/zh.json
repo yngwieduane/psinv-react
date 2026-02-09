@@ -489,7 +489,7 @@
   },
   "LocaleSwitcher": {
     "label": "切换语言",
-    "locale": "{locale, select, ar {🇦🇪 阿拉伯语} en {🇺🇸 英语} zh {🇨🇳 中文} ru {🇷🇺 俄语} de {🇩🇪 荷兰语} other {未知}}",
+    "locale": "{locale, select, ar {🇦🇪 阿拉伯语} en {🇺🇸 英语} zh {🇨🇳 中文} ru {🇷🇺 俄语} de {🇩🇪 德语} other {未知}}",
     "buy": "购买",
     "rent": "租赁",
     "communities": "社区",
@@ -596,7 +596,6 @@
     "Palm Jumeirah Branch": "朱美拉棕榈岛分部",
     "Conrad Etihad Towers": "康莱德阿提哈德大厦",
     "Benelux Branch": "比荷卢分部"
-
   },
   "About_Us_Page": {
     "heroTitle": "关于我们",
@@ -1696,5 +1695,9 @@
   },
   "Job_List": {
     "loading": "正在加载职位..."
+  },
+  "Units": {
+    "ResgisterTitle": "登记意向",
+    "inquire": "咨询"
   }
 }
