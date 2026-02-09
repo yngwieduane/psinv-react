@@ -1564,6 +1564,36 @@ seo: {
       }),
     },
   },
+  'ohana-roadshow-registration': {
+    branch: 'auh',
+    seo: {
+      en: {
+        title: "Ohana Yas Island | Luxury Living in Abu Dhabi",
+        description:
+          "Register your interest for Ohana Yas Island residences. Discover luxury waterfront living, premium amenities, and exclusive homes in Abu Dhabi.",
+        keywords:
+          "Ohana Yas Island, Yas Island Abu Dhabi, luxury residences Abu Dhabi, waterfront property Abu Dhabi, premium apartments Yas Island",
+      },
+      ar: {
+        title: "أوهانا جزيرة ياس | أسلوب حياة فاخر في أبوظبي",
+        description:
+          "سجّل اهتمامك بمساكن أوهانا في جزيرة ياس. اكتشف أسلوب حياة فاخر على الواجهة البحرية مع مرافق متميزة ومنازل حصرية في أبوظبي.",
+        keywords:
+          "أوهانا جزيرة ياس, جزيرة ياس أبوظبي, عقارات فاخرة أبوظبي, شقق فاخرة جزيرة ياس, عقارات على الواجهة البحرية",
+      },
+    },
+    override: {
+      PropertyID: 25585,
+      remarks: 'Company',
+      ...makeUtm({
+        'zaineh_ohana_roadshow_news': {
+          campaign: 3501,
+          remarks:
+            'Rotation:  Ohana Development Roadshow - 14 & 15 February - Company',
+        },
+      }),
+    },
+  },
 } satisfies Record<string, PerSlug>;
 
 console.log('[projectOverrides] loaded slugs:', Object.keys(PROJECTS));
