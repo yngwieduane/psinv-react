@@ -26,8 +26,6 @@ export default function GoogleReviewSection() {
         <h3 className={`text-center text-3xl font-serif mb-12 ${outfit.className}`}>
           {t("title")}
         </h3>
-
-        {/* Mobile: horizontal scroll | Tablet/Desktop: same grid as before */}
         <div
           className={[
             "flex gap-8 overflow-x-auto pb-2",
@@ -41,11 +39,8 @@ export default function GoogleReviewSection() {
             <div
               key={review.id}
               className={[
-                // Keep your exact card design:
                 "bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow",
-                // Mobile slider sizing:
                 "shrink-0 w-[85%] snap-start",
-                // On sm+ revert sizing (no slider behavior):
                 "sm:w-auto sm:shrink",
               ].join(" ")}
             >
