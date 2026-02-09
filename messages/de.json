@@ -8,79 +8,79 @@
   "MainSliderHome": {
     "slides": {
       "ohana_branded_residences": {
-        "title": "Ohana Branded Residences",
+        "title": "Ohana Markenresidenzen",
         "location": "Yas Island",
-        "description": "A new branded residential community located directly on Yas Canal. The project offers waterfront apartments, townhouses, Villas, and Maisonettes, positioned near Yas Island’s key attractions and lifestyle destinations. It features premium amenities and flexible entry options, including a 5% down payment."
+        "description": "Eine neue, markengebundene Wohnanlage direkt am Yas-Kanal. Das Projekt bietet Apartments am Wasser, Stadthäuser, Villen und Maisonetten in unmittelbarer Nähe zu den wichtigsten Attraktionen und Lifestyle-Zielen von Yas Island. Es verfügt über hochwertige Annehmlichkeiten und flexible Einstiegsmöglichkeiten, einschließlich einer Anzahlung von 5%."
       },
       "sobha": {
         "title": "Sobha",
         "location": "Al Bahia Abu Dhabi",
-        "description": "Sobha’s latest development in Abu Dhabi focuses on high-quality waterfront living with a strong emphasis on design, construction standards, and long-term value. The project targets both end-users and investors seeking premium residences in a prime location."
+        "description": "Sobhas neueste Entwicklung in Abu Dhabi konzentriert sich auf hochwertiges Wohnen am Wasser mit starkem Fokus auf Design, Bauqualität und langfristigem Wert. Das Projekt richtet sich sowohl an Endnutzer als auch an Investoren, die Premium-Immobilien in Toplage suchen."
       },
       "the_row": {
         "title": "The Row",
         "location": "Saadiyat Island",
-        "description": "Located within Saadiyat Cultural District, The Row is a contemporary residential development offering spacious 1 - 3-bedroom apartments. It presents a smart entry into one of Abu Dhabi’s most established and high-demand destinations, with attractive payment plans starting from a 5% down payment."
+        "description": "Im Saadiyat Cultural District gelegen, bietet The Row moderne 1- bis 3-Schlafzimmer-Apartments mit großzügigem Schnitt. Es ist ein attraktiver Einstieg in eines der etabliertesten und gefragtesten Wohngebiete Abu Dhabis mit interessanten Zahlungsplänen ab einer Anzahlung von 5%."
       },
       "bashayer_residences": {
-        "title": "Bashayer Residences",
+        "title": "Bashayer Residenzen",
         "location": "Hudayriyat Island",
-        "description": "Auf der Insel Hudayriyat in Abu Dhabi gelegen, ist Bashayer Residences eine raffinierte Sammlung von Apartments am Wasser mit modernen Grundrissen, eleganter Ausstattung und weitem Blick auf die Skyline – ergänzt durch Gemeinschaftseinrichtungen, die den Alltag bereichern."
+        "description": "Auf Hudayriyat Island in Abu Dhabi gelegen, bieten die Bashayer Residenzen eine exklusive Auswahl an Apartments am Wasser mit modernen Grundrissen, eleganten Oberflächen und weitem Blick auf die Skyline – ergänzt durch Gemeinschaftseinrichtungen, die das tägliche Leben bereichern."
       },
       "bashayer_villas": {
-        "title": "Bashayer Villas",
+        "title": "Bashayer Villen",
         "location": "Hudayriyat Island",
-        "description": "Auf der Insel Hudayriyat in Abu Dhabi gelegen, ist Bashayer Villas eine ruhige, geschlossene Wohnanlage, in der jede Villa über geräumige Innenräume, elegante Ausstattung und nahtlose Ausblicke auf das Wasser verfügt. Mit einer Reihe von erstklassigen Annehmlichkeiten ist es ein unverwechselbarer Rückzugsort für außergewöhnliches Wohnen."
+        "description": "Auf Hudayriyat Island in Abu Dhabi gelegen, ist Bashayer Villas eine ruhige, geschlossene Gemeinschaft, in der jede Villa großzügige Innenräume, elegante Oberflächen und einen nahtlosen Blick auf das Wasser bietet. Mit zahlreichen Weltklasse-Annehmlichkeiten ist sie ein einzigartiger Rückzugsort für außergewöhnliches Wohnen."
       },
       "muheira_2": {
         "title": "Muheira 2",
         "location": "Al Reem Island",
-        "description": "Muheira besteht aus zwei durchdacht gestalteten Wohntürmen auf Reem Island. Muheira bietet eine perfekte Mischung aus modernem Leben und Ruhe am Wasser und bietet den Bewohnern die Möglichkeit, urbane Lebendigkeit inmitten natürlicher Schönheit zu erleben."
+        "description": "Muheira besteht aus zwei sorgfältig gestalteten Wohntürmen auf Reem Island. Es bietet eine perfekte Kombination aus modernem Stadtleben und ruhiger Wasserlage und ermöglicht den Bewohnern, urbane Lebendigkeit inmitten natürlicher Schönheit zu erleben."
       },
       "stellar_by_elie_saab": {
-        "title": "Stellar By Elie Saab",
+        "title": "Stellar von Elie Saab",
         "location": "Yas Island",
-        "description": "Stellar By Elie Saab ist ein Meisterwerk aus Form und Fluidität. Sein skulpturales Design verbindet weiche Linien mit raffinierter Geometrie und schafft eine nahtlose Verbindung zwischen Architektur und Natur."
+        "description": "Stellar by Elie Saab ist ein Meisterwerk aus Form und Leichtigkeit. Das skulpturale Design verbindet sanfte Linien mit feiner Geometrie und schafft eine nahtlose Verbindung zwischen Architektur und Natur."
       },
       "hilton_residences": {
-        "title": "Hilton Residences",
+        "title": "Hilton Residenzen",
         "location": "Dubai",
-        "description": "Hilton Residences Dubai JLT erhebt sich 38 Stockwerke über die Jumeirah Lake Towers und interpretiert urbanen Luxus durch die Linse der zeitlosen Gastfreundschaft von Hilton neu. Jedes Detail spiegelt Raffinesse wider, die für modernes städtisches Leben entworfen wurde."
+        "description": "Mit 38 Etagen über den Jumeirah Lake Towers definiert Hilton Residences Dubai JLT urbanen Luxus neu – durch die Linse der zeitlosen Gastfreundschaft von Hilton. Jedes Detail verkörpert Raffinesse und modernen Stadtkomfort."
       },
       "loyalty_program": {
         "title": "Jenseits von Immobilien, jenseits von Grenzen",
         "features": [
-          "Exklusive Rabatte auf Möbel, Landschaftsgestaltung, Smart Tech, Tourismus und mehr",
-          "B2B-Partnerschaften, die über den Verkauf hinaus Wert schaffen",
+          "Exklusive Rabatte auf Möbel, Landschaftsgestaltung, Smart-Tech, Tourismus und mehr",
+          "B2B-Partnerschaften, die über den Verkauf hinaus Mehrwert schaffen",
           "Einfache Kundenregistrierung über direkte Anmeldung",
-          "Steigert Zufriedenheit, Loyalität und Partnerpräsenz",
-          "Skalierbar mit Umsatzpotenzial durch Partnerangebote"
+          "Steigert Zufriedenheit, Loyalität und Markenpräsenz von Partnern",
+          "Skalierbar mit Umsatzpotenzial durch Partnergeschäfte"
         ]
       },
       "serenity_mansions": {
         "title": "Serenity Mansions",
         "location": "Tilal Al Ghaf",
-        "description": "Die Serenity Mansions in Tilal Al Ghaf bieten exklusive Luxuswohnungen mit 5 Schlafzimmern in Dubai, die moderne Eleganz mit Natur verbinden und ein Resort-ähnliches Leben mit erstklassigen Annehmlichkeiten ermöglichen."
+        "description": "Serenity Mansions in Tilal Al Ghaf bietet exklusive Luxusvillen mit fünf Schlafzimmern in Dubai. Sie verbinden moderne Eleganz mit der Natur und bieten ein Resort-ähnliches Wohnerlebnis mit erstklassigen Annehmlichkeiten."
       },
       "samana_skyros": {
         "title": "Samana Skyros",
         "location": "Arjan",
-        "description": "Samana Skyros in Dubai bietet luxuriöses Wohnen auf 17 Stockwerken mit privaten Pools, modernster Fitnessausstattung und einer erstklassigen Lage. Ein Höhepunkt an Eleganz und Investitionsmöglichkeit."
+        "description": "Samana Skyros in Dubai bietet luxuriöses Wohnen auf 17 Etagen mit privaten Pools, modernsten Fitnessbereichen und erstklassiger Lage – ein Inbegriff von Eleganz und Investitionschance."
       },
       "al_mamsha_souks": {
         "title": "Al Mamsha Souks",
         "location": "Al Mamsha",
-        "description": "Al Mamsha ist eine markante Mixed-Use-Entwicklung in Sharjah, die modernes Wohnen, Einzelhandel und Freizeit in einer gehobenen Umgebung vereint, die vollständig zu Fuß zugänglich ist."
+        "description": "Al Mamsha ist ein bedeutendes gemischt genutztes Projekt in Sharjah, das modernes Wohnen, Einzelhandel und Freizeit in einem gehobenen, fußgängerfreundlichen Umfeld vereint."
       },
       "solera": {
         "title": "Solera",
         "location": "Mina Al Arab",
-        "description": "Willkommen bei Solera Residence, einer exklusiven Wohnanlage, die luxuriöse Apartments mit 1 Schlafzimmer bietet. Gelegen im malerischen Mina Al Arab, verspricht dieses Off-Plan-Projekt von RAK Properties einen Lebensstil voller Eleganz und Komfort, eingebettet in atemberaubende Natur."
+        "description": "Willkommen in der Solera Residence – einer exklusiven Wohnanlage mit luxuriösen 1-Schlafzimmer-Apartments. Gelegen im malerischen Mina Al Arab, verspricht dieses Off-Plan-Projekt von RAK Properties einen Lebensstil voller Eleganz, Komfort und natürlicher Schönheit."
       },
       "nikki_beach_residences": {
-        "title": "Nikki Beach Residences",
+        "title": "Nikki Beach Residenzen",
         "location": "Al Marjan Island",
-        "description": "Die Nikki Beach Residences sind eine luxuriöse Strandentwicklung auf Al Marjan Island, Ras Al Khaimah, und bieten Apartments von 1 bis 5 Schlafzimmern, die das ikonische Nikki Beach Resort-Leben mit maßgeschneidertem Design, erstklassigen Annehmlichkeiten und exklusivem Zugang zu einem lebendigen Küsten-Lifestyle verbinden."
+        "description": "Nikki Beach Residences – eine luxuriöse Strandentwicklung auf Al Marjan Island, Ras Al Khaimah, mit 1- bis 5-Schlafzimmer-Residenzen, die Nikki Beachs ikonisches Resortleben mit maßgeschneidertem Design, Weltklasse-Ausstattung und exklusivem Zugang zu einem lebendigen Küstenlebensstil vereinen."
       }
     }
   },
@@ -106,262 +106,262 @@
       "aljada": "Aljada"
     },
     "rak": {
-      "title": "Ras Al Khaima",
+      "title": "Ras Al Khaimah",
       "mina_al_arab": "Mina Al Arab",
       "al-marjan-island": "Al Marjan Island"
     }
   },
   "ListPropertySection": {
-    "title": "BE with the Brand you Trust",
-    "desc": "Where will we list your property?",
-    "title2": "List Your Property"
+    "title": "SEI bei der Marke, der du vertraust",
+    "desc": "Wo werden wir Ihre Immobilie listen?",
+    "title2": "Listen Sie Ihre Immobilie"
   },
   "ListPropertyForm": {
-    "firstName": "First Name",
-    "Enter First Name": "Enter First Name",
-    "lastName": "Last Name",
-    "Enter Last Name": "Enter Last Name",
-    "email": "Email",
-    "Enter Email": "Enter Email",
-    "phone": "Phone Number",
-    "purpose": "Property Purpose",
-    "Choose purpose": "Choose purpose",
-    "sell_purpose": "Sell",
-    "rent_purpose": "Rent",
-    "invest_purpose": "Invest",
+    "firstName": "Vorname",
+    "Enter First Name": "Vorname eingeben",
+    "lastName": "Nachname",
+    "Enter Last Name": "Nachname eingeben",
+    "email": "E-Mail",
+    "Enter Email": "E-Mail eingeben",
+    "phone": "Telefonnummer",
+    "purpose": "Immobilienzweck",
+    "Choose purpose": "Zweck auswählen",
+    "sell_purpose": "Verkaufen",
+    "rent_purpose": "Vermieten",
+    "invest_purpose": "Investieren",
     "errors": {
-      "firstNameRequired": "First name is required",
-      "lastNameRequired": "Last name is required",
-      "invalidEmail": "Invalid email address",
-      "invalidPhone": "Invalid phone number",
-      "choosePurpose": "Property purpose is required"
+      "firstNameRequired": "Vorname ist erforderlich",
+      "lastNameRequired": "Nachname ist erforderlich",
+      "invalidEmail": "Ungültige E-Mail-Adresse",
+      "invalidPhone": "Ungültige Telefonnummer",
+      "choosePurpose": "Immobilienzweck ist erforderlich"
     },
     "clickingTerms": {
-      "part1": "By clicking Submit, you agree to our",
-      "part2": "Terms & Conditions",
-      "part3": "and Privacy Policy"
+      "part1": "Durch Klicken auf 'Absenden' stimmen Sie unseren",
+      "part2": "Allgemeinen Geschäftsbedingungen",
+      "part3": "und der Datenschutzrichtlinie zu"
     },
-    "form_submit": "Submit",
-    "form_submitting": "Submitting..."
+    "form_submit": "Absenden",
+    "form_submitting": "Wird gesendet..."
   },
   "Why_PSI": {
     "emirati_title": "Emirati Hub",
-    "youngster_title": "Youngsters Program",
-    "crypto_title": "Crypto",
+    "youngster_title": "Youngsters Programm",
+    "crypto_title": "Krypto",
     "international_title": "PSI International",
-    "company_title": "Company Profile",
+    "company_title": "Unternehmensprofil",
     "why_psi": {
-      "title": "Why PSI ?",
-      "desc": "Our combination of vision, expertise, specialised teams, enthusiasm and transparency entitles Property Shop Invesment to set the market standard as an influencer of Abu Dhabi's Real Estate Market.",
-      "btn": "Learn more about PSI"
+      "title": "Warum PSI?",
+      "desc": "Unsere Kombination aus Vision, Fachwissen, spezialisierten Teams, Begeisterung und Transparenz befähigt Property Shop Investment, den Marktstandard zu setzen und den Immobilienmarkt von Abu Dhabi zu prägen.",
+      "btn": "Mehr über PSI erfahren"
     },
     "emirati_hub": {
       "title": "PSI Emirati Hub",
       "desc": {
-        "part1": "Empowering UAE nationals to excel and lead in the real estate sector through",
+        "part1": "Stärkung der VAE-Bürger, um im Immobiliensektor erfolgreich zu sein und Führungsrollen zu übernehmen – durch",
         "part2": "PSI Emirati Hub."
       },
-      "btn": "Learn more about PSI Emirati Hub"
+      "btn": "Mehr über PSI Emirati Hub erfahren"
     },
     "youngster_program": {
       "title": "PSI Abu Dhabi Youngsters",
       "desc": {
-        "part1": "Unlock your potential through",
+        "part1": "Entfalte dein Potenzial durch das",
         "part2": "PSI Abu Dhabi Youngster",
-        "part3": "Program by empowering minds, and shaping futures"
+        "part3": "Programm – Köpfe stärken, Zukunft gestalten"
       },
-      "btn": "Learn more about PSI Youngsters"
+      "btn": "Mehr über PSI Youngsters erfahren"
     },
     "crypto": {
-      "title": "Buy property with Crypto",
+      "title": "Immobilien mit Krypto kaufen",
       "desc": {
-        "part1": "With connections, network, knowledge and country guides, we build and design investment journeys based on",
-        "part2": "your needs, values, lifestyle and your goals."
+        "part1": "Mit Verbindungen, Netzwerk, Wissen und Länderführern gestalten wir Investitionsreisen basierend auf",
+        "part2": "Ihren Bedürfnissen, Werten, Ihrem Lebensstil und Ihren Zielen."
       },
-      "btn": "Learn more about Crypto"
+      "btn": "Mehr über Krypto erfahren"
     },
     "international": {
       "title": "PSI International",
-      "desc": "50 years young, the UAE offers the best climate for wealth management, relocation and investments portfolios.",
-      "btn": "Learn more about PSI International"
+      "desc": "Mit 50 Jahren Geschichte bietet die VAE das beste Umfeld für Vermögensverwaltung, Umsiedlung und Investitionsportfolios.",
+      "btn": "Mehr über PSI International erfahren"
     }
   },
   "Mortgage_Tabs": {
-    "mortgage": "Mortgage Calculator",
-    "amortization": "Amortization",
-    "refinancing": "Refinancing",
-    "rentvsbuy": "Rent vs Buy",
-    "houseafford": "House Affordability",
-    "Mortgage Tools": "Mortgage Tools",
+    "mortgage": "Hypothekenrechner",
+    "amortization": "Amortisation",
+    "refinancing": "Refinanzierung",
+    "rentvsbuy": "Mieten vs Kaufen",
+    "houseafford": "Hausbudget",
+    "Mortgage Tools": "Hypotheken-Tools",
     "aed": "AED",
-    "ViewUnits": "View Units",
-    "GetApproval": "Get pre-approval today",
-    "MonthlyPayment": "Monthly Payment",
-    "Yrs": "yrs",
+    "ViewUnits": "Einheiten ansehen",
+    "GetApproval": "Heute Vorabgenehmigung erhalten",
+    "MonthlyPayment": "Monatliche Zahlung",
+    "Yrs": "Jahre",
     "mortgageTab": {
-      "title": "Mortgage Calculator",
-      "PropertyPrice": "Property Price (AED)",
-      "LoanPeriod": "Loan Period (Years)",
-      "Years": "Years",
-      "Downpayment": "Downpayment (AED)",
-      "InterestRate": "Interest Rate (%)",
-      "TotalLoanAmount": "Total Loan Amount"
+      "title": "Hypothekenrechner",
+      "PropertyPrice": "Immobilienpreis (AED)",
+      "LoanPeriod": "Darlehenslaufzeit (Jahre)",
+      "Years": "Jahre",
+      "Downpayment": "Anzahlung (AED)",
+      "InterestRate": "Zinssatz (%)",
+      "TotalLoanAmount": "Gesamtdarlehensbetrag"
     },
     "amortizationTab": {
-      "title": "Amortization",
-      "LoanAmount": "Loan Amount",
-      "LoanInterestRate": "Loan Interest Rate",
-      "LoanTermYears": "Loan Term Years",
-      "Years": "Years",
-      "EarlyPayment": "EARLY PAYMENT",
-      "EffectOfLargerPayment": "Effect of making a larger payment",
-      "PaymentAmount": "Payment Amount",
-      "MadeAfterMonth": "Made After Month",
-      "Months": "months",
-      "MonthlyAmortization": "Monthly Amortization",
-      "TotalCost": "Total Cost",
-      "ExploreProperties": "Explore Properties"
+      "title": "Amortisation",
+      "LoanAmount": "Darlehensbetrag",
+      "LoanInterestRate": "Darlehenszinssatz",
+      "LoanTermYears": "Darlehenslaufzeit (Jahre)",
+      "Years": "Jahre",
+      "EarlyPayment": "FRÜHZEITIGE ZAHLUNG",
+      "EffectOfLargerPayment": "Auswirkung einer höheren Zahlung",
+      "PaymentAmount": "Zahlungsbetrag",
+      "MadeAfterMonth": "Nach Monat getätigt",
+      "Months": "Monate",
+      "MonthlyAmortization": "Monatliche Amortisation",
+      "TotalCost": "Gesamtkosten",
+      "ExploreProperties": "Immobilien entdecken"
     },
     "refinancingTab": {
-      "title": "Refinancing",
-      "MortgageInformation": "Mortgage Information",
-      "CurrentLoanBalance": "Current loan balance",
-      "CurrentMonthlyPayments": "Current monthly payments",
-      "EarlySettlementFees": "Early settlement fees",
-      "Percentage": "Percentage",
-      "CurrentLoanInterestRate": "Current loan interest rate in %",
-      "RefinanceInformation": "Refinance Information",
-      "CurrentPropertyValue": "Current property value",
-      "CurrentEstimated": "Current estimated value",
-      "TermOfNewLoan": "Term of new loan",
-      "FeesToObtainNewLoan": "Fees to obtain new loan",
-      "NewLoanPercentage": "Percentage",
-      "NewLoanInterestRate": "Interest rate of the new loan in %",
-      "MortgageCost": "Mortgage Cost",
-      "MonthlyPay": "Monthly Pay",
-      "PayDiff": "Pay Diff",
-      "RefinancePay": "Refinance Pay",
-      "BreakMonth": "Break Month",
-      "Month(s)": "month(s)"
+      "title": "Refinanzierung",
+      "MortgageInformation": "Hypothekeninformationen",
+      "CurrentLoanBalance": "Aktueller Darlehenssaldo",
+      "CurrentMonthlyPayments": "Aktuelle monatliche Zahlungen",
+      "EarlySettlementFees": "Frühzahlungsgebühren",
+      "Percentage": "Prozentsatz",
+      "CurrentLoanInterestRate": "Aktueller Darlehenszinssatz (%)",
+      "RefinanceInformation": "Refinanzierungsinformationen",
+      "CurrentPropertyValue": "Aktueller Immobilienwert",
+      "CurrentEstimated": "Aktuell geschätzter Wert",
+      "TermOfNewLoan": "Laufzeit des neuen Darlehens",
+      "FeesToObtainNewLoan": "Gebühren für neues Darlehen",
+      "NewLoanPercentage": "Prozentsatz",
+      "NewLoanInterestRate": "Zinssatz des neuen Darlehens (%)",
+      "MortgageCost": "Hypothekenkosten",
+      "MonthlyPay": "Monatliche Zahlung",
+      "PayDiff": "Zahlungsdifferenz",
+      "RefinancePay": "Refinanzierungszahlung",
+      "BreakMonth": "Unterbrechungsmonat",
+      "Month(s)": "Monat(e)"
     },
     "rentVsBuyTab": {
-      "Title": "Rent vs Buying",
-      "Currentmonthlyrent": "Current monthly rent",
-      "Expectedloanamount": "Expected loan amount",
-      "Yearlyrentincrease": "Yearly rent increase in %",
-      "Loantermyears": "Loan term in years",
-      "Loaninterestrate": "Loan interest rate in %",
-      "Expectedpropertyprice": "Expected property price",
-      "Downpayment": "Downpayment",
-      "Downpaymentpercentage": "Downpayment %",
-      "Yearlypropertyappreciation": "Yearly property appreciation",
-      "Planyearstolive": "Plan years to live",
-      "Totalrentamount": "Total Rent Amount",
-      "Totalbuyamount": "Total Buy Amount",
-      "Viewsaleunits": "View Sale Units",
-      "Getpreapproval": "Get Pre-Approval"
+      "Title": "Mieten vs Kaufen",
+      "Currentmonthlyrent": "Aktuelle Monatsmiete",
+      "Expectedloanamount": "Erwarteter Darlehensbetrag",
+      "Yearlyrentincrease": "Jährliche Mieterhöhung (%)",
+      "Loantermyears": "Darlehenslaufzeit (Jahre)",
+      "Loaninterestrate": "Darlehenszinssatz (%)",
+      "Expectedpropertyprice": "Erwarteter Immobilienpreis",
+      "Downpayment": "Anzahlung",
+      "Downpaymentpercentage": "Anzahlung %",
+      "Yearlypropertyappreciation": "Jährliche Immobilienwertsteigerung",
+      "Planyearstolive": "Geplante Jahre zum Wohnen",
+      "Totalrentamount": "Gesamte Mietkosten",
+      "Totalbuyamount": "Gesamtkaufpreis",
+      "Viewsaleunits": "Verkaufseinheiten ansehen",
+      "Getpreapproval": "Vorabgenehmigung erhalten"
     },
     "houseAffordTab": {
-      "Title": "House Affordability",
-      "Grossmonthlyincome": "Gross Monthly Income",
-      "Extramonthlyincome": "Extra Monthly Income",
-      "Monthlydebtrepayment": "Monthly Debt Repayment",
-      "Downpayment": "Downpayment",
-      "Interestrate": "Interest Rate",
-      "Paymentperiod": "Payment Period",
-      "Canafford": "Can Afford",
-      "Totalafford": "Total Afford",
-      "GeApprovalToday": "Get pre-approval today"
+      "Title": "Hausbudget",
+      "Grossmonthlyincome": "Bruttomonatseinkommen",
+      "Extramonthlyincome": "Zusätzliches Monatseinkommen",
+      "Monthlydebtrepayment": "Monatliche Schuldenrückzahlung",
+      "Downpayment": "Anzahlung",
+      "Interestrate": "Zinssatz",
+      "Paymentperiod": "Zahlungsdauer",
+      "Canafford": "Leistbar",
+      "Totalafford": "Gesamtkaufkraft",
+      "GeApprovalToday": "Heute Vorabgenehmigung erhalten"
     }
   },
   "ReportDownload": {
-    "title": "Market Insights",
-    "desc": "Monthly Report Abu Dhabi",
-    "desc_dubai": "Monthly Report DXB",
-    "download": "Download Now",
+    "title": "Markteinblicke",
+    "desc": "Monatsbericht Abu Dhabi",
+    "desc_dubai": "Monatsbericht Dubai",
+    "download": "Jetzt herunterladen",
     "form": {
-      "title": "Monthly Report",
-      "firstname": "First Name",
-      "lastname": "Last Name",
-      "email": "Email",
-      "button": "Download Report",
+      "title": "Monatsbericht",
+      "firstname": "Vorname",
+      "lastname": "Nachname",
+      "email": "E-Mail",
+      "button": "Bericht herunterladen",
       "agreements": {
-        "1": "I agree to the Terms & Conditions and Privacy Policy",
-        "2": "Agree to receive calls and communications",
-        "3": "Receive calls about various projects"
+        "1": "Ich stimme den Allgemeinen Geschäftsbedingungen und der Datenschutzrichtlinie zu",
+        "2": "Ich stimme dem Erhalt von Anrufen und Nachrichten zu",
+        "3": "Erhalte Anrufe zu verschiedenen Projekten"
       },
       "Whatsapp": "Whatsapp",
-      "success": "Form submitted successfully!",
-      "error": "Submission failed. Try again."
+      "success": "Formular erfolgreich übermittelt!",
+      "error": "Übermittlung fehlgeschlagen. Bitte erneut versuchen."
     }
   },
   "RealEstatePartner": {
     "title": {
-      "part1": "YOUR TRUSTED",
-      "part2": "Real Estate",
+      "part1": "IHR VERTRAUENS",
+      "part2": "Immobilien-",
       "part3": "PARTNER"
     },
     "aboutCounter": {
-      "customers": "Customers",
-      "languages": "Languages",
-      "projects": "Projects",
-      "locationWorldwide": "Location Worldwide",
-      "years": "Years in Business",
-      "branches": "Branches",
-      "expertEmployees": "Expert Employees"
+      "customers": "Kunden",
+      "languages": "Sprachen",
+      "projects": "Projekte",
+      "locationWorldwide": "Standorte weltweit",
+      "years": "Jahre im Geschäft",
+      "branches": "Filialen",
+      "expertEmployees": "Fachkräfte"
     }
   },
   "AwardsSectionHome": {
-    "title": "AWARDS-DRIVEN Excellence",
-    "desc": "We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. Explore our journey of accolades that inspire us to reach new pinnacles of success.",
+    "title": "AUSZEICHNUNGSGETRIEBENE Exzellenz",
+    "desc": "Wir bekräftigen unser Engagement, die Standards im Immobiliensektor neu zu definieren. Unser Einsatz für Innovation und unser unerschütterlicher Fokus auf unsere Kunden haben uns Anerkennung in der Branche eingebracht. Entdecken Sie unsere Reise durch Auszeichnungen, die uns dazu inspirieren, neue Spitzenleistungen zu erreichen.",
     "awards": {
       "emaar": {
         "title1": "EMAAR",
-        "title2": "ANNUAL BROKER",
+        "title2": "JÄHRLICHER MAKLER",
         "title3": "AWARDS - 2018"
       },
       "aldar2021": {
         "title1": "ALDAR",
-        "title3": "AMBASSADOR - 2021"
+        "title3": "BOTSCHAFTER - 2021"
       },
       "aldar2016": {
         "title1": "ALDAR",
-        "title2": "TOP PERFORMING",
-        "title3": "Agency First Place - 2016"
+        "title2": "TOP-LEISTUNG",
+        "title3": "Erste Agenturplatzierung - 2016"
       },
       "aldar2020": {
         "title1": "ALDAR",
-        "title2": "TOP PERFORMING",
-        "title3": "Agency First Place - 2020"
+        "title2": "TOP-LEISTUNG",
+        "title3": "Erste Agenturplatzierung - 2020"
       },
       "aldar2022": {
         "title1": "ALDAR",
-        "title2": "TOP PERFORMING",
-        "title3": "Agency First Place - 2022"
+        "title2": "TOP-LEISTUNG",
+        "title3": "Erste Agenturplatzierung - 2022"
       },
       "imkan": {
         "title1": "IMKAN",
-        "title2": "TOP PERFORMING",
-        "title3": "Agency First Place - 2021"
+        "title2": "TOP-LEISTUNG",
+        "title3": "Erste Agenturplatzierung - 2021"
       }
     }
   },
   "googleReview": {
-    "title": "Referenzen",
+    "title": "Kundenbewertungen",
     "google": "Google",
     "review1": "Meine Erfahrung mit ihnen war großartig! Sie haben meinen Hauskauf reibungslos und stressfrei gestaltet.",
-    "review2": "Hallo aus der Türkei. Lilit hat sich sehr gut um uns gekümmert und all unsere Fragen und Anliegen sehr klar beantwortet.",
-    "review3": "Es war eine gute Erfahrung, da Ingenieur Wissam Atef uns bei allen Wartungsarbeiten hervorragend unterstützt hat. Vielen Dank, Ingenieur Wissam."
+    "review2": "Hallo aus der Türkei. Lilit hat sich sehr gut um uns gekümmert und alle unsere Fragen klar beantwortet.",
+    "review3": "Es war eine gute Erfahrung, da Ingenieur Wissam Atef uns bei allen Wartungsarbeiten exzellent unterstützt hat. Danke, Ingenieur Wissam."
   },
   "getTheApp": {
-    "title1": "App herunterladen",
+    "title1": "Laden Sie die App herunter",
     "title2": "Ihre Reise beginnt hier",
     "desc": {
-      "part1": "Übernehmen Sie die Kontrolle über Ihre Immobilienreise mit unserer App. Egal, ob Sie eine Besichtigung buchen, den Fortschritt Ihrer Immobilie verfolgen oder über die neuesten Angebote informiert bleiben – alles, was Sie brauchen, ist nur einen Fingertipp entfernt.",
-      "part2": "Laden Sie die App jetzt herunter und beginnen Sie noch heute Ihre Reise!"
+      "part1": "Übernehmen Sie die Kontrolle über Ihre Immobilienreise mit unserer App. Egal, ob Sie eine Besichtigung buchen, den Fortschritt Ihrer Immobilie verfolgen oder die neuesten Angebote im Blick behalten – alles, was Sie brauchen, ist griffbereit.",
+      "part2": "Laden Sie die App jetzt herunter und starten Sie noch heute Ihre Reise!"
     },
     "rightSideContent": {
-      "title": "Starten Sie noch heute Ihre Reise",
+      "title": "Starten Sie Ihre Reise noch heute",
       "para": "mit nur einem Fingertipp."
     },
     "appLinks": "Verfügbar im App Store und bei Google Play"
