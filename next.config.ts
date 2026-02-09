@@ -202,7 +202,15 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'apigateway.psiassets-crm.com',
+      },
+      {
+        protocol: 'http',
+        hostname: 'apigateway.psiassets-crm.com',
+      },
     ],
   },
 };
