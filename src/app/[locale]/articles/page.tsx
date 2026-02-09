@@ -16,6 +16,22 @@ async function getArticles() {
 
         const docs = snapshot.docs.map(doc => {
             const data = doc.data();
+
+            // Calculate sortDate for proper ordering
+            let sortDate = 0;
+            if (data.createdAt && typeof data.createdAt.toDate === 'function') {
+                sortDate = data.createdAt.toDate().getTime();
+            } else if (data.createdAt) {
+                // Try parsing if string/number
+                const ts = new Date(data.createdAt).getTime();
+                if (!isNaN(ts)) sortDate = ts;
+            } else if (data.date && typeof data.date.toDate === 'function') {
+                sortDate = data.date.toDate().getTime();
+            } else if (data.date) {
+                const ts = new Date(data.date).getTime();
+                if (!isNaN(ts)) sortDate = ts;
+            }
+
             const date = data.date && typeof data.date.toDate === 'function'
                 ? data.date.toDate().toISOString().split('T')[0]
                 : data.date || '';
@@ -36,6 +52,7 @@ async function getArticles() {
                 id: doc.id,
                 date: date,
                 createdAt: createdAt,
+                sortDate: sortDate,
                 title: data.title || '',
                 summary: data.summary || '',
                 imageUrl: data.image || data.imageUrl || '',
@@ -50,9 +67,8 @@ async function getArticles() {
         const plainDocs = JSON.parse(JSON.stringify(docs));
 
         return plainDocs.sort((a: any, b: any) => {
-            const dateA = new Date(a.date).getTime();
-            const dateB = new Date(b.date).getTime();
-            return dateB - dateA;
+            // Sort by sortDate descending
+            return (b.sortDate || 0) - (a.sortDate || 0);
         });
 
     } catch (error) {
