@@ -139,7 +139,10 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
         en: "c024a9547b0cd9838891e9e5828cf6e0",
         ar: "9c1b9d4aca7f1b183374477bb02983f4",
     },
-    // Add here
+    "ohana-roadshow-registration": {
+        en: "d0f51e1ad999a6c07038ca641ef06171",
+        ar: "7be46c141d116cfd62dcf1bc9233e1fc",
+    },
 };
 
 /**
