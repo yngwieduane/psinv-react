@@ -3,14 +3,17 @@ import Articles2ClientPage from "./_components/Articles2ClientPage";
 
 async function getArticles() {
     try {
-        console.log("Attempting to fetch 'articles' collection...");
+        //console.log("Attempting to fetch 'articles' collection...");
         const articlesRef = db.collection('articles');
-        const snapshot = await articlesRef.get();
+        const snapshot = await db
+            .collection("articles")
+            .get();
+
 
         console.log(`Fetch complete. Documents found: ${snapshot.size}`);
 
         if (snapshot.empty) {
-            console.log("Collection is empty or permission denied (check logs).");
+            //console.log("Collection is empty or permission denied (check logs).");
             return [];
         }
 
@@ -57,7 +60,6 @@ async function getArticles() {
                 summary: data.summary || '',
                 imageUrl: data.image || data.imageUrl || '',
                 image: data.image || data.imageUrl || '',
-                body: data.body || [],
                 author: data.author || '',
                 categoryKey: data.categoryKey || '',
                 translations: data.translations || {},
