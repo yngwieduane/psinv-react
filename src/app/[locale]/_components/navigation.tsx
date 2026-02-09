@@ -539,7 +539,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                         { label: t('Imkan'), href: '/developer/imkan-properties-llc' },
                         { label: t('Meraas'), href: '/developer/meraas' },
                         { label: t('Dubai Properties'), href: '/developer/dubai-properties---idama' },
-                        { label: t('NSHAMA'), href: '/developer/nshama' },
+                        { label: t("View All"), href: "/developers" },
                     ]
                 }
             ]

@@ -11,7 +11,7 @@ const PropBox = (props: any) => {
                 {props.data.map((project: any, index: any) => (
                     <li
                         key={index}
-                        className="text-center "
+                        className=" "
                     >
                         <PropertyCardAI csswidth="w-full" data={project} />
                     </li>
