@@ -1626,5 +1626,66 @@
   "Units": {
     "ResgisterTitle": "Оставить заявку",
     "inquire": "Запросить"
+  },
+  "UnitProperties": {
+    "tabs": {
+      "details": "Детали объекта",
+      "description": "Описание",
+      "unit_details": "Детали юнита"
+    },
+    "buttons": {
+      "save": "Сохранить",
+      "saved": "Сохранено",
+      "compare": "Сравнить",
+      "compared": "В сравнении",
+      "call": "Позвонить",
+      "inquire": "Запросить",
+      "whatsapp": "WhatsApp",
+      "request_meeting": "Запросить встречу"
+    },
+    "labels": {
+      "beds": "Спальни",
+      "baths": "Ванные",
+      "area": "Площадь",
+      "sqft": "кв. футов",
+      "project": "Проект",
+      "location": "Местоположение",
+      "type": "Тип",
+      "reference_no": "Номер ссылки",
+      "contract": "Контракт",
+      "price": "Цена",
+      "total_price": "Общая цена"
+    },
+    "sections": {
+      "details": "Детали",
+      "description": "Описание",
+      "amenities": "Удобства",
+      "payment_plans": "Планы оплаты",
+      "faq": "Часто задаваемые вопросы",
+      "similar_units": "Похожие объекты"
+    },
+    "faq": {
+      "questions": {
+        "price": "Какова цена этого объекта?",
+        "location": "Где находится {property}, {community}?",
+        "bedrooms": "Сколько спален и ванных комнат?",
+        "area": "Какова площадь застройки?",
+        "developer": "Кто застройщик {property}, {community}?",
+        "status": "Каков статус этого объекта?"
+      },
+      "answers": {
+        "price_start": "Цена начинается от {price}.",
+        "price_request": "Цена по запросу",
+        "location": "Он находится в {community}, {city}.",
+        "bedrooms": "В этом объекте {beds} спален и {baths} ванных комнат.",
+        "area": "Площадь застройки составляет {area} кв. футов.",
+        "developer": "Застройщиком этого объекта является {developer}.",
+        "status": "Статус этого объекта: {status}."
+      }
+    }
+  },
+  "Breadcrumbs": {
+    "home": "Главная",
+    "units": "Объекты"
   }
 }

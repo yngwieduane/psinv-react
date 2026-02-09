@@ -2,9 +2,11 @@
 
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
-import { UnitListing } from '@/types/types'; 
+import { UnitListing } from '@/types/types';
+import { useTranslations } from 'next-intl';
 
 const BreadcrumbUnit = ({ data }: { data: UnitListing }) => {
+  const t = useTranslations('Breadcrumbs');
   const pathname = usePathname();
   const pathSegments = pathname.split('/').filter((segment) => segment);
   pathSegments.shift();
@@ -31,31 +33,31 @@ const BreadcrumbUnit = ({ data }: { data: UnitListing }) => {
       />
       <ul className="container mx-auto px-6 md:px-12 flex items-center space-x-2 text-gray-500">
         <li className='text-sm'>
-          <Link title="Home" href="/" className="hover:text-blue-600">
-            Home
+          <Link title={t('home')} href="/" className="hover:text-blue-600">
+            {t('home')}
           </Link>
         </li>
         <li className="text-sm flex items-center space-x-2">
           <span>/</span>
-          <Link title="Units" href="/units" className="hover:text-blue-600">
-            Units
+          <Link title={t('units')} href="/units" className="hover:text-blue-600">
+            {t('units')}
           </Link>
         </li>
         <li className="text-sm flex items-center space-x-2">
           <span>/</span>
-          <Link title="Units" href={`/units/?fcity=${data?.city_pk}`} className="hover:text-blue-600">
+          <Link title={t('units')} href={`/units/?fcity=${data?.city_pk}`} className="hover:text-blue-600">
             {data?.city_name}
           </Link>
         </li>
         <li className="text-sm flex items-center space-x-2">
           <span>/</span>
-          <Link title="Units" href={`/units/?fcity=${data?.city_pk}&fcommunity=${data?.community_pk}`} className="hover:text-blue-600">
+          <Link title={t('units')} href={`/units/?fcity=${data?.city_pk}&fcommunity=${data?.community_pk}`} className="hover:text-blue-600">
             {data?.community}
           </Link>
         </li>
         <li className="text-sm flex items-center space-x-2">
           <span>/</span>
-          <Link title="Units" href={`/units/?fcity=${data?.city_pk}&fcommunity=${data?.community_pk}&fsubcommunity=${data?.sub_community_pk}`} className="hover:text-blue-600">
+          <Link title={t('units')} href={`/units/?fcity=${data?.city_pk}&fcommunity=${data?.community_pk}&fsubcommunity=${data?.sub_community_pk}`} className="hover:text-blue-600">
             {data?.sub_community}
           </Link>
         </li>

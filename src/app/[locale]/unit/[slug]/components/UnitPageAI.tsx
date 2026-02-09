@@ -6,7 +6,7 @@ import StripeContent from "./StripeContent";
 import { useState } from "react";
 import DrawerDetails from "./DrawerDetails";
 import { ReadMore } from "@/app/[locale]/_components/ReadMore";
-import { useFormatter } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import PriceConvert from "@/app/[locale]/_components/tools/PriceConvert";
 import NumberConvert from "@/app/[locale]/_components/tools/NumberConvert";
 import InquiryForm from "@/app/[locale]/_components/InquiryForm";
@@ -41,14 +41,15 @@ export default function UnitPageAI(props: any) {
         setShowDrawer(true);
     }
 
+    const t = useTranslations('UnitProperties');
     const format = useFormatter();
     const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
     const { convertPrice, currency } = useCurrency();
 
     const TABS = [
-        { id: 'details', key: 'lbl.property_details', fallback: 'Property Details' }
-        // { id: 'description', key: 'lbl.description', fallback: 'Description' },
-        // { id: 'unit', key: 'lbl.unit_details', fallback: 'Unit Details' }
+        { id: 'details', key: 'lbl.property_details', fallback: t('tabs.details') }
+        // { id: 'description', key: 'lbl.description', fallback: t('tabs.description') },
+        // { id: 'unit', key: 'lbl.unit_details', fallback: t('tabs.unit_details') }
     ];
 
     const isAssets = props.data[0]?.source === 'assets';
@@ -104,28 +105,28 @@ export default function UnitPageAI(props: any) {
                     }
                     const faqData = [
                         {
-                            title: `What is the price of this property?`,
-                            content: `The price starts from ${price ? convertPrice(Number(price)).formatted : 'Price on Request'}.`
+                            title: t('faq.questions.price'),
+                            content: t('faq.answers.price_start', { price: price ? convertPrice(Number(price)).formatted : t('faq.answers.price_request') })
                         },
                         {
-                            title: `Where is ${post.propertyname}, ${post.community} located?`,
-                            content: `It is located in ${post.community}, ${post.city || 'Dubai, UAE'}.`
+                            title: t('faq.questions.location', { property: post.propertyname, community: post.community }),
+                            content: t('faq.answers.location', { community: post.community, city: post.city || 'Dubai, UAE' })
                         },
                         {
-                            title: `How many bedrooms and bathrooms does it have?`,
-                            content: `This property features ${post.bedrooms} bedrooms and ${post.no_of_bathrooms} bathrooms.`
+                            title: t('faq.questions.bedrooms'),
+                            content: t('faq.answers.bedrooms', { beds: post.bedrooms, baths: post.no_of_bathrooms })
                         },
                         {
-                            title: `What is the built-up area?`,
-                            content: `The built-up area is ${Number(post.built_upArea).toLocaleString()} Sq.ft.`
+                            title: t('faq.questions.area'),
+                            content: t('faq.answers.area', { area: Number(post.built_upArea).toLocaleString() })
                         },
                         {
-                            title: `Who is the developer of this ${post.propertyname}, ${post.community}?`,
-                            content: `The developer of this property is ${post.developerName}.`
+                            title: t('faq.questions.developer', { property: post.propertyname, community: post.community }),
+                            content: t('faq.answers.developer', { developer: post.developerName })
                         },
                         {
-                            title: `What is the status of this property?`,
-                            content: `The status of this property is ${post.status}.`
+                            title: t('faq.questions.status'),
+                            content: t('faq.answers.status', { status: post.status })
                         }
                     ];
 
@@ -178,7 +179,7 @@ export default function UnitPageAI(props: any) {
                                             onClick={() => toggleFavorite({ id: post.code, type: 'units', data: post })}
                                             className={`cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold ${saved ? 'border-red-500 text-red-500 bg-red-50' : 'border-gray-200 text-gray-600 hover:bg-red-50 hover:border-red-500 hover:text-red-500'}`}
                                         >
-                                            <Heart size={20} fill={saved ? "currentColor" : "none"} /> {saved ? "Saved" : "Save"}
+                                            <Heart size={20} fill={saved ? "currentColor" : "none"} /> {saved ? t('buttons.saved') : t('buttons.save')}
                                         </button>
                                         <button
                                             onClick={(e) => {
@@ -191,7 +192,7 @@ export default function UnitPageAI(props: any) {
                                             }}
                                             className={`cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold ${compared ? 'bg-[#0c1356] text-white' : 'border-gray-200 text-gray-600 hover:bg-[#0c1356] hover:text-white'}`}
                                         >
-                                            <Shuffle size={20} /> {compared ? "Compared" : "Compare"}
+                                            <Shuffle size={20} /> {compared ? t('buttons.compared') : t('buttons.compare')}
                                         </button>
                                     </div>
                                 </div>
@@ -199,20 +200,20 @@ export default function UnitPageAI(props: any) {
                                 <div className="hidden flex-wrap sm:flex-nowrap gap-4 md:gap-10 text-center bg-gray-50 px-4 md:px-8 py-4 rounded-2xl border border-gray-100 shadow-sm mb-8 md:mb-12 max-w-3xl">
                                     <div className="flex flex-col items-center min-w-[60px] flex-1">
                                         <BedDouble size={24} className="text-gray-400 mb-2" strokeWidth={1.5} />
-                                        <span className="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Beds</span>
+                                        <span className="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">{t('labels.beds')}</span>
                                         <span className="text-lg md:text-xl font-bold text-gray-800">{post.bedrooms}</span>
                                     </div>
                                     <div className="hidden sm:block w-px bg-gray-200 h-10 self-center"></div>
                                     <div className="flex flex-col items-center min-w-[60px] flex-1">
                                         <Bath size={24} className="text-gray-400 mb-2" strokeWidth={1.5} />
-                                        <span className="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Baths</span>
+                                        <span className="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">{t('labels.baths')}</span>
                                         <span className="text-lg md:text-xl font-bold text-gray-800">{post.no_of_bathrooms}</span>
                                     </div>
                                     <div className="hidden sm:block w-px bg-gray-200 h-10 self-center"></div>
                                     <div className="flex flex-col items-center min-w-[60px] flex-1">
                                         <Square size={24} className="text-gray-400 mb-2" strokeWidth={1.5} />
-                                        <span className="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Area</span>
-                                        <span className="text-lg md:text-xl font-bold text-gray-800"><NumberConvert number={Number(post.built_upArea)} minDecimal='0' label='Sqft' /></span>
+                                        <span className="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">{t('labels.area')}</span>
+                                        <span className="text-lg md:text-xl font-bold text-gray-800"><NumberConvert number={Number(post.built_upArea)} minDecimal='0' label={t('labels.sqft')} /></span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 relative mainsidebar">
@@ -271,19 +272,19 @@ export default function UnitPageAI(props: any) {
 
                                         {/* Property Overview */}
                                         <div className="mb-10 md:mb-14 animate-[fadeIn_0.5s_ease-out]">
-                                            <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">Details</h3>
+                                            <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">{t('sections.details')}</h3>
                                             <div className="bg-gray-50 rounded-3xl p-6 md:p-10 border border-gray-100">
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 md:gap-y-8">
                                                     {[
-                                                        { label: "Project", value: post.propertyname },
-                                                        { label: "Location", value: post.community },
-                                                        { label: "Type", value: post.category },
-                                                        { label: "Reference Number", value: post.refNo },
-                                                        { label: "Contract", value: category },
-                                                        { label: "Price", value: <PriceConvert price={price} minDecimal='0' />, isBold: true },
-                                                        { label: "Area", value: <NumberConvert number={Number(post.built_upArea)} minDecimal='0' label='Sqft' />, isBold: true },
-                                                        { label: "Beds", value: post.bedrooms, isBold: true },
-                                                        { label: "Baths", value: post.no_of_bathrooms, isBold: true },
+                                                        { label: t('labels.project'), value: post.propertyname },
+                                                        { label: t('labels.location'), value: post.community },
+                                                        { label: t('labels.type'), value: post.category },
+                                                        { label: t('labels.reference_no'), value: post.refNo },
+                                                        { label: t('labels.contract'), value: category },
+                                                        { label: t('labels.price'), value: <PriceConvert price={price} minDecimal='0' />, isBold: true },
+                                                        { label: t('labels.area'), value: <NumberConvert number={Number(post.built_upArea)} minDecimal='0' label={t('labels.sqft')} />, isBold: true },
+                                                        { label: t('labels.beds'), value: post.bedrooms, isBold: true },
+                                                        { label: t('labels.baths'), value: post.no_of_bathrooms, isBold: true },
                                                     ].map((item, idx) => (
                                                         <div key={idx} className="flex justify-between items-center border-b border-gray-200 pb-4 last:border-0 md:last:border-b">
                                                             <span className="text-gray-500 text-sm font-bold uppercase tracking-wide">{item.label}</span>
@@ -296,7 +297,7 @@ export default function UnitPageAI(props: any) {
 
                                         {/* Description & Amenities */}
                                         <div className="mb-10 md:mb-14">
-                                            <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">Description</h3>
+                                            <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">{t('sections.description')}</h3>
                                             <div className="bg-white text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line font-light mb-10">
 
 
@@ -306,7 +307,7 @@ export default function UnitPageAI(props: any) {
                                             {/* Rich Amenities Grid */}
                                             {amenities ? (
                                                 <>
-                                                    <h4 className="font-bold text-gray-900 text-xl mb-6">Ameneties</h4>
+                                                    <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.amenities')}</h4>
                                                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
                                                         {amenities.slice(0, -1).map((am: string, i: number) => (
                                                             <div key={i} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
@@ -321,7 +322,7 @@ export default function UnitPageAI(props: any) {
                                             {/* Payment Plans Grid */}
                                             {amenities ? (
                                                 <>
-                                                    <h4 className="font-bold text-gray-900 text-xl mb-6">Payment Plans</h4>
+                                                    <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.payment_plans')}</h4>
                                                     <div className=" mb-10">
                                                         <PaymentPlans
                                                             propid={post.property_Pk}
@@ -337,7 +338,7 @@ export default function UnitPageAI(props: any) {
                                                 </div>) : ("")}
 
                                             <div className="mt-8 md:mt-12">
-                                                <h4 className="font-bold text-gray-900 text-xl mb-6">Frequently Asked Questions</h4>
+                                                <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.faq')}</h4>
                                                 <AccordionTabs items={faqData} />
                                             </div>
                                         </div>
@@ -355,14 +356,14 @@ export default function UnitPageAI(props: any) {
                                             <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-[0_10px_50px_rgba(0,0,0,0.08)]">
                                                 <div className="flex justify-between items-end mb-8">
                                                     <div>
-                                                        <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-2">Total Price</span>
+                                                        <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-2">{t('labels.total_price')}</span>
                                                         <span className="text-3xl md:text-4xl font-bold text-primary"><PriceConvert price={price} minDecimal='0' /></span>
                                                     </div>
                                                 </div>
 
                                                 <div className="grid grid-cols-2 gap-4 mb-8">
                                                     <Link href={`tel:${callPhone}`} className="cursor-pointer w-full border bg-gray-200 border-gray-200 text-black hover:bg-gray-300 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
-                                                        <Phone size={22} /> Call
+                                                        <Phone size={22} /> {t('buttons.call')}
                                                     </Link>
                                                     <button
                                                         type="button"
@@ -370,10 +371,10 @@ export default function UnitPageAI(props: any) {
                                                         name="inquire"
                                                         className="cursor-pointer w-full border bg-gray-200 border-gray-200 text-black hover:bg-gray-300 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3"
                                                     >
-                                                        <Mail size={22} /> Inquire
+                                                        <Mail size={22} /> {t('buttons.inquire')}
                                                     </button>
                                                     <Link href={`https://wa.me/${whatsappPhone}?text=I%20am%20Interested%20 in this reference number: ${props.refNo}`} className="col-span-2 cursor-pointer w-full bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
-                                                        <MessageCircle size={22} /> WhatsApp
+                                                        <MessageCircle size={22} /> {t('buttons.whatsapp')}
                                                     </Link>
                                                     <button
                                                         type="button"
@@ -381,7 +382,7 @@ export default function UnitPageAI(props: any) {
                                                         name="details"
                                                         className="col-span-2 cursor-pointer w-full border bg-indigo-950 border-indigo-950 text-white hover:bg-indigo-900 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3"
                                                     >
-                                                        <FontAwesomeIcon icon={faCalendarCheck} /> Request a Meeting
+                                                        <FontAwesomeIcon icon={faCalendarCheck} /> {t('buttons.request_meeting')}
                                                     </button>
                                                 </div>
                                             </div>
@@ -407,7 +408,7 @@ export default function UnitPageAI(props: any) {
                                             />
                                         </div>) : ("")}
 
-                                    <h2 className="text-3xl font-bold text-primary mb-8 mt-10">Similar Units</h2>
+                                    <h2 className="text-3xl font-bold text-primary mb-8 mt-10">{t('sections.similar_units')}</h2>
                                     <SimilarUnitsGrid
                                         propid={post.property_Pk}
                                         category={category}

@@ -6476,5 +6476,66 @@
   "Units": {
     "ResgisterTitle": "Register Interest",
     "inquire": "Inquire"
+  },
+  "UnitProperties": {
+    "tabs": {
+      "details": "Property Details",
+      "description": "Description",
+      "unit_details": "Unit Details"
+    },
+    "buttons": {
+      "save": "Save",
+      "saved": "Saved",
+      "compare": "Compare",
+      "compared": "Compared",
+      "call": "Call",
+      "inquire": "Inquire",
+      "whatsapp": "WhatsApp",
+      "request_meeting": "Request a Meeting"
+    },
+    "labels": {
+      "beds": "Beds",
+      "baths": "Baths",
+      "area": "Area",
+      "sqft": "Sqft",
+      "project": "Project",
+      "location": "Location",
+      "type": "Type",
+      "reference_no": "Reference Number",
+      "contract": "Contract",
+      "price": "Price",
+      "total_price": "Total Price"
+    },
+    "sections": {
+      "details": "Details",
+      "description": "Description",
+      "amenities": "Amenities",
+      "payment_plans": "Payment Plans",
+      "faq": "Frequently Asked Questions",
+      "similar_units": "Similar Units"
+    },
+    "faq": {
+      "questions": {
+        "price": "What is the price of this property?",
+        "location": "Where is {property}, {community} located?",
+        "bedrooms": "How many bedrooms and bathrooms does it have?",
+        "area": "What is the built-up area?",
+        "developer": "Who is the developer of this {property}, {community}?",
+        "status": "What is the status of this property?"
+      },
+      "answers": {
+        "price_start": "The price starts from {price}.",
+        "price_request": "Price on Request",
+        "location": "It is located in {community}, {city}.",
+        "bedrooms": "This property features {beds} bedrooms and {baths} bathrooms.",
+        "area": "The built-up area is {area} Sq.ft.",
+        "developer": "The developer of this property is {developer}.",
+        "status": "The status of this property is {status}."
+      }
+    }
+  },
+  "Breadcrumbs": {
+    "home": "Home",
+    "units": "Units"
   }
 }

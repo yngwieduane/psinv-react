@@ -5969,5 +5969,66 @@
   "Units": {
     "ResgisterTitle": "سجّل اهتمامك",
     "inquire": "استفسر"
+  },
+  "UnitProperties": {
+    "tabs": {
+      "details": "تفاصيل العقار",
+      "description": "الوصف",
+      "unit_details": "تفاصيل الوحدة"
+    },
+    "buttons": {
+      "save": "حفظ",
+      "saved": "محفوظ",
+      "compare": "مقارنة",
+      "compared": "تمت المقارنة",
+      "call": "اتصال",
+      "inquire": "استفسار",
+      "whatsapp": "واتساب",
+      "request_meeting": "طلب اجتماع"
+    },
+    "labels": {
+      "beds": "غرف نوم",
+      "baths": "حمامات",
+      "area": "المساحة",
+      "sqft": "قدم مربع",
+      "project": "المشروع",
+      "location": "الموقع",
+      "type": "النوع",
+      "reference_no": "رقم المرجع",
+      "contract": "العقد",
+      "price": "السعر",
+      "total_price": "السعر الإجمالي"
+    },
+    "sections": {
+      "details": "التفاصيل",
+      "description": "الوصف",
+      "amenities": "المرافق",
+      "payment_plans": "خطط الدفع",
+      "faq": "الأسئلة الشائعة",
+      "similar_units": "وحدات مشابهة"
+    },
+    "faq": {
+      "questions": {
+        "price": "ما هو سعر هذا العقار؟",
+        "location": "أين يقع {property}، {community}؟",
+        "bedrooms": "كم عدد غرف النوم والحمامات؟",
+        "area": "ما هي مساحة البناء؟",
+        "developer": "من هو مطور {property}، {community}؟",
+        "status": "ما هو وضع هذا العقار؟"
+      },
+      "answers": {
+        "price_start": "يبدأ السعر من {price}.",
+        "price_request": "السعر عند الطلب",
+        "location": "يقع في {community}، {city}.",
+        "bedrooms": "يتميز هذا العقار بـ {beds} غرف نوم و {baths} حمامات.",
+        "area": "مساحة البناء هي {area} قدم مربع.",
+        "developer": "مطور هذا العقار هو {developer}.",
+        "status": "وضع هذا العقار هو {status}."
+      }
+    }
+  },
+  "Breadcrumbs": {
+    "home": "الرئيسية",
+    "units": "الوحدات"
   }
 }

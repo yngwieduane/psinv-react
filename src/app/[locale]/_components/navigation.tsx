@@ -776,10 +776,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                                 <div key={idx}>
                                                     {"link" in col && col.link ? (
                                                         <Link href={col.link} title={col.title}>
-                                                            <h4 className="font-bold text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2
-                                                    relative text-gray-700 transition-all duration-300
-   bg-gradient-to-r from-[#0c1356] to-[#0c1356] bg-[length:0%_2px] bg-left-bottom bg-no-repeat
-   hover:bg-[length:100%_2px] hover:text-[#0c1356]">{col.title}</h4>
+                                                            <h4 className="font-bold text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2 relative text-gray-700 transition-all duration-300 bg-gradient-to-r from-[#0c1356] to-[#0c1356] bg-[length:0%_2px] bg-left-bottom bg-no-repeat hover:bg-[length:100%_2px] hover:text-[#0c1356]">{col.title}</h4>
                                                         </Link>
                                                     ) : (
                                                         <h4 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>

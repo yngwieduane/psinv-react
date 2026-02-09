@@ -1627,5 +1627,66 @@
   "Units": {
     "ResgisterTitle": "Interesse anmelden",
     "inquire": "Anfragen"
+  },
+  "UnitProperties": {
+    "tabs": {
+      "details": "Immobiliendetails",
+      "description": "Beschreibung",
+      "unit_details": "Einheitsdetails"
+    },
+    "buttons": {
+      "save": "Speichern",
+      "saved": "Gespeichert",
+      "compare": "Vergleichen",
+      "compared": "Verglichen",
+      "call": "Anrufen",
+      "inquire": "Anfragen",
+      "whatsapp": "WhatsApp",
+      "request_meeting": "Treffen anfordern"
+    },
+    "labels": {
+      "beds": "Schlafzimmer",
+      "baths": "Bäder",
+      "area": "Fläche",
+      "sqft": "Quadratfuß",
+      "project": "Projekt",
+      "location": "Standort",
+      "type": "Typ",
+      "reference_no": "Referenznummer",
+      "contract": "Vertrag",
+      "price": "Preis",
+      "total_price": "Gesamtpreis"
+    },
+    "sections": {
+      "details": "Details",
+      "description": "Beschreibung",
+      "amenities": "Ausstattung",
+      "payment_plans": "Zahlungspläne",
+      "faq": "Häufig gestellte Fragen",
+      "similar_units": "Ähnliche Einheiten"
+    },
+    "faq": {
+      "questions": {
+        "price": "Wie hoch ist der Preis dieser Immobilie?",
+        "location": "Wo befindet sich {property}, {community}?",
+        "bedrooms": "Wie viele Schlafzimmer und Bäder hat es?",
+        "area": "Wie groß ist die bebaute Fläche?",
+        "developer": "Wer ist der Entwickler von {property}, {community}?",
+        "status": "Wie ist der Status dieser Immobilie?"
+      },
+      "answers": {
+        "price_start": "Der Preis beginnt ab {price}.",
+        "price_request": "Preis auf Anfrage",
+        "location": "Es befindet sich in {community}, {city}.",
+        "bedrooms": "Diese Immobilie verfügt über {beds} Schlafzimmer und {baths} Bäder.",
+        "area": "Die bebaute Fläche beträgt {area} Quadratfuß.",
+        "developer": "Der Entwickler dieser Immobilie ist {developer}.",
+        "status": "Der Status dieser Immobilie ist {status}."
+      }
+    }
+  },
+  "Breadcrumbs": {
+    "home": "Startseite",
+    "units": "Einheiten"
   }
 }

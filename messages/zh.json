@@ -1703,5 +1703,66 @@
   "Units": {
     "ResgisterTitle": "登记意向",
     "inquire": "咨询"
+  },
+  "UnitProperties": {
+    "tabs": {
+      "details": "房产详情",
+      "description": "描述",
+      "unit_details": "单位详情"
+    },
+    "buttons": {
+      "save": "保存",
+      "saved": "已保存",
+      "compare": "比较",
+      "compared": "已比较",
+      "call": "致电",
+      "inquire": "咨询",
+      "whatsapp": "WhatsApp",
+      "request_meeting": "预约看房"
+    },
+    "labels": {
+      "beds": "卧室",
+      "baths": "浴室",
+      "area": "面积",
+      "sqft": "平方英尺",
+      "project": "项目",
+      "location": "位置",
+      "type": "类型",
+      "reference_no": "参考编号",
+      "contract": "合同",
+      "price": "价格",
+      "total_price": "总价"
+    },
+    "sections": {
+      "details": "详情",
+      "description": "描述",
+      "amenities": "设施",
+      "payment_plans": "付款计划",
+      "faq": "常见问题",
+      "similar_units": "类似单位"
+    },
+    "faq": {
+      "questions": {
+        "price": "这处房产的价格是多少？",
+        "location": "{property}，{community}位于哪里？",
+        "bedrooms": "这里有多少间卧室和浴室？",
+        "area": "建筑面积是多少？",
+        "developer": "{property}，{community}的开发商是谁？",
+        "status": "这处房产的状况如何？"
+      },
+      "answers": {
+        "price_start": "价格从{price}起。",
+        "price_request": "价格面议",
+        "location": "位于{community}，{city}。",
+        "bedrooms": "该房产设有{beds}间卧室和{baths}间浴室。",
+        "area": "建筑面积为{area}平方英尺。",
+        "developer": "该房产的开发商是{developer}。",
+        "status": "该房产的状况为{status}。"
+      }
+    }
+  },
+  "Breadcrumbs": {
+    "home": "首页",
+    "units": "房源"
   }
 }
