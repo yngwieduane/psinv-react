@@ -488,9 +488,9 @@ const ListYourPropertyPageClient = () => {
             </div>
             <div className="spacer h-[50]"></div>
 
-            <footer className="absolute w-full">
+            <footer className="w-full">
                 {/* Copyright Section */}
-                <div className="text-center text-[119px] sm:text-base py-4 bg-white text-[#111954] sm:bg-[#111954] sm:text-white">
+                <div className="text-center text-[14px] sm:text-base py-4 bg-white text-[#111954] sm:bg-[#111954] sm:text-white">
                     <p>{t("footer.copyright")}</p>
                 </div>
             </footer>
