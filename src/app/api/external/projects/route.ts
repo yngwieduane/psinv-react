@@ -134,6 +134,9 @@ export async function GET(request: NextRequest) {
     case 'the views saraya towers':
       finquery = 'The Views - Saraya Towers'
       break;
+    case 'mercedes benz places by binghatti':
+      finquery = 'Mercedes-Benz Places by Binghatti'
+      break;
     default:
       finquery = query
       break;
