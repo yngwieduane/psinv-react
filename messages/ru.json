@@ -1641,7 +1641,11 @@
       "call": "Позвонить",
       "inquire": "Запросить",
       "whatsapp": "WhatsApp",
-      "request_meeting": "Запросить встречу"
+      "request_meeting": "Запросить встречу",
+      "view_more": "Показать больше",
+      "view_less": "Показать меньше",
+      "read_more": "Читать далее",
+      "read_less": "Свернуть"
     },
     "labels": {
       "beds": "Спальни",

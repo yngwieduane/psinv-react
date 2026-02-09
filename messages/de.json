@@ -1642,7 +1642,11 @@
       "call": "Anrufen",
       "inquire": "Anfragen",
       "whatsapp": "WhatsApp",
-      "request_meeting": "Treffen anfordern"
+      "request_meeting": "Treffen anfordern",
+      "view_more": "Mehr anzeigen",
+      "view_less": "Weniger anzeigen",
+      "read_more": "Weiterlesen",
+      "read_less": "Weniger anzeigen"
     },
     "labels": {
       "beds": "Schlafzimmer",

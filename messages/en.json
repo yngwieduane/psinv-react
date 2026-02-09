@@ -6491,7 +6491,11 @@
       "call": "Call",
       "inquire": "Inquire",
       "whatsapp": "WhatsApp",
-      "request_meeting": "Request a Meeting"
+      "request_meeting": "Request a Meeting",
+      "view_more": "View More",
+      "view_less": "View Less",
+      "read_more": "Read More",
+      "read_less": "Read Less"
     },
     "labels": {
       "beds": "Beds",

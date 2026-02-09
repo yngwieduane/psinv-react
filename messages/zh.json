@@ -1718,7 +1718,11 @@
       "call": "致电",
       "inquire": "咨询",
       "whatsapp": "WhatsApp",
-      "request_meeting": "预约看房"
+      "request_meeting": "预约看房",
+      "view_more": "查看更多",
+      "view_less": "收起",
+      "read_more": "阅读更多",
+      "read_less": "收起"
     },
     "labels": {
       "beds": "卧室",

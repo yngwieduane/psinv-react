@@ -19,7 +19,7 @@ import MortgageCalculator from "@/app/[locale]/mortgage-calculator/MortgageCalcu
 import AgentDetails from "./AgentDetails";
 import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
 import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
-import { Bath, BedDouble, CheckCircle2, Heart, Link2, Mail, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
+import { Bath, BedDouble, CheckCircle2, ChevronDown, ChevronUp, Heart, Link2, Mail, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
 import { useUser } from "@/context/userContext";
 import AccordionTabs from "@/app/[locale]/_components/tools/AccordionTabs";
 import { Link } from "@/i18n/navigation";
@@ -33,6 +33,8 @@ export default function UnitPageAI(props: any) {
     const [dwDataContent, setDwDataContent] = useState('details');
     const [dwDataTitle, setDwDataTitle] = useState('details');
     const [activeTab, setActiveTab] = useState<'details' | 'description' | 'unit'>('details');
+    const [showAllAmenities, setShowAllAmenities] = useState(false);
+    const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
     const drawerHandler = (content: string, valuesarray: any) => (e: any) => {
         console.log(showDrawer);
         console.log(content);
@@ -298,24 +300,65 @@ export default function UnitPageAI(props: any) {
                                         {/* Description & Amenities */}
                                         <div className="mb-10 md:mb-14">
                                             <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">{t('sections.description')}</h3>
-                                            <div className="bg-white text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line font-light mb-10">
-
-
+                                            <div className={`bg-white text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line font-light mb-10 transition-all duration-300 ease-in-out relative ${!isDescriptionExpanded ? 'max-h-[500px] overflow-hidden' : ''}`}>
                                                 <div dangerouslySetInnerHTML={{ __html: post.property_overview }} />
+                                                {!isDescriptionExpanded && (
+                                                    <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                                                )}
+                                            </div>
+
+                                            <div className="flex justify-center mb-14">
+                                                <button
+                                                    onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+                                                    className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white border border-[#111954]/10 rounded-full text-[#111954] font-medium hover:bg-[#111954]/5 transition-colors duration-300"
+                                                >
+                                                    {isDescriptionExpanded ? (
+                                                        <>
+                                                            {t('buttons.read_less')}
+                                                            <ChevronUp size={18} />
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            {t('buttons.read_more')}
+                                                            <ChevronDown size={18} />
+                                                        </>
+                                                    )}
+                                                </button>
                                             </div>
 
                                             {/* Rich Amenities Grid */}
                                             {amenities ? (
                                                 <>
                                                     <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.amenities')}</h4>
-                                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
-                                                        {amenities.slice(0, -1).map((am: string, i: number) => (
+                                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                                                        {(showAllAmenities ? amenities.slice(0, -1) : amenities.slice(0, -1).slice(0, 20)).map((am: string, i: number) => (
                                                             <div key={i} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
                                                                 <CheckCircle2 className="text-secondary shrink-0" size={20} />
                                                                 <span className="text-gray-700 font-medium">{am.split('^')[1].trim()}</span>
                                                             </div>
                                                         ))}
                                                     </div>
+                                                    {amenities.slice(0, -1).length > 20 && (
+                                                        <div className="mt-8 flex justify-center">
+                                                            <button
+                                                                onClick={() => setShowAllAmenities(!showAllAmenities)}
+                                                                className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white border border-[#111954]/10 rounded-full text-[#111954] font-medium hover:bg-[#111954]/5 transition-colors duration-300"
+                                                            >
+                                                                {showAllAmenities ? (
+                                                                    <>
+                                                                        {t('buttons.view_less')}
+                                                                        <ChevronUp size={18} />
+                                                                    </>
+                                                                ) : (
+                                                                    <>
+                                                                        {t('buttons.view_more')} ({amenities.length})
+                                                                        <ChevronDown size={18} />
+                                                                    </>
+                                                                )}
+                                                            </button>
+                                                        </div>
+                                                    )}
+
                                                 </>
                                             ) : ("")}
 

@@ -5984,7 +5984,11 @@
       "call": "اتصال",
       "inquire": "استفسار",
       "whatsapp": "واتساب",
-      "request_meeting": "طلب اجتماع"
+      "request_meeting": "طلب اجتماع",
+      "view_more": "عرض المزيد",
+      "view_less": "عرض أقل",
+      "read_more": "اقرأ المزيد",
+      "read_less": "اقرأ أقل"
     },
     "labels": {
       "beds": "غرف نوم",
