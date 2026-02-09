@@ -10,7 +10,7 @@ export function generateSeoData(pData:any) {
       // If it's a numeric bedroom count
       seoUrl = sanitizeTitle(`${pData.bedrooms} bedroom ${pData.propertyType} for ${pData.adType} ${pData.name} ${pData.community} ${pData.code}`);
       seoTitle = `${pData.seoStart} ${pData.propertyType} ${pData.bedrooms} bedrooms ${pData.name} ${pData.community} ${pData.refNo}`;
-      seoDescription = `${pData.seoStart} ${pData.propertyType} ${pData.bedrooms} bedrooms ${pData.name} ${pData.community} ${pData.emirate} (pictures - images - floor plan - location map - prices) ${pData.refNo}`;
+      seoDescription = `${pData.seoStart} ${pData.bedrooms} bedrooms ${pData.propertyType} in ${pData.name} ${pData.community} ${pData.emirate} |pictures - images - floor plan - location map - prices| ${pData.refNo}`;
       seoKeyword = `${pData.seoStart} ${pData.propertyType} ${pData.bedrooms} bedrooms ${pData.name} ${pData.community} ${pData.emirate} (pictures - images - floor plan - location map - prices) ${pData.refNo}`;
     } else if (pData.bedrooms === "studio") {
       // If it's a studio

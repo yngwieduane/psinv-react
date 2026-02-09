@@ -4,6 +4,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import { redirect } from 'next/navigation'
 import UnitPageAI from "./components/UnitPageAI";
 
+
 type Props = {
     params: Promise<{ slug: string }>
 }
@@ -56,7 +57,7 @@ export async function generateMetadata(
     const propertyData = {
         bedrooms: posts[0].bedrooms,
         propertyType: posts[0].category,
-        adType: posts[0].category,
+        adType: category,
         name: posts[0].propertyname,
         community: posts[0].community,
         emirate: posts[0].city_name,
@@ -68,6 +69,8 @@ export async function generateMetadata(
 
     return {
         title: seoData.seoTitle,
+        description: seoData.seoDescription,
+        keywords: seoData.seoKeyword,
     }
 }
 
