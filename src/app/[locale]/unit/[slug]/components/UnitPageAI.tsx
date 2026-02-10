@@ -71,8 +71,8 @@ export default function UnitPageAI(props: any) {
                     const compared = isCompared(post.code);
                     {
                         post.imageurl !== null
-                            ? images = post.imageurl.split('|')
-                            : images = '';
+                            ? images = post.imageurl.split('|').map((img: string) => img.replace(/^http:\/\//i, 'https://'))
+                            : images = [];
                     }
                     {
                         post.sellprice !== null
