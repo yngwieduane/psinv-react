@@ -487,6 +487,25 @@
       "part3": "迪拜山庄"
     }
   },
+  "Compare_page": {
+    "heroTitle": "对比",
+    "metadata": {
+      "title": "对比阿联酋房产 | PSI",
+      "description": "按价格、位置、面积和特色对比阿联酋房产，帮助您通过 PSI 找到合适的房产。"
+    },
+    "heroBreadcrumb": "首页 > 对比",
+    "unlockSection": {
+      "title": "对比房产",
+      "description": "对比列表为空。请添加房产以进行并排对比。"
+    }
+  }, 
+  "favorites_page": {
+    "heroTitle": "收藏",
+    "metadata": {
+      "title": "您在阿联酋的收藏房产 | PSI",
+      "description": "查看并管理您在阿联酋收藏的房产。快速访问已保存的房产并进行对比，找到理想的住宅或投资房产，与 PSI 一起实现轻松选择。"
+    }
+  },   
   "LocaleSwitcher": {
     "label": "切换语言",
     "locale": "{locale, select, ar {🇦🇪 阿拉伯语} en {🇺🇸 英语} zh {🇨🇳 中文} ru {🇷🇺 俄语} de {🇩🇪 德语} other {未知}}",
