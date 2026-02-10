@@ -25,7 +25,11 @@ export async function GET(request: NextRequest) {
         }
 
         if (propertyId) {
-            query = query.where('propertyId', '==', propertyId);
+            query = query.where('property_Pk', '==', propertyId);
+        }
+
+        if (communityId) {
+            query = query.where('community_pk', '==', communityId);
         }
 
         const snapshot = await query.get();
@@ -38,11 +42,6 @@ export async function GET(request: NextRequest) {
                 String(u.id) === unitid ||
                 String(u.code) === unitid
             );
-        }
-
-        // Filter by Community
-        if (communityId) {
-            units = units.filter((u: any) => String(u.communityId) === communityId);
         }
 
         // Filter by Beds (Exact or >=?) usually exact for listings
