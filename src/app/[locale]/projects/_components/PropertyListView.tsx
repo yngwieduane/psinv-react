@@ -37,10 +37,15 @@ const PropertyListItem = (props: any) => {
         HOdate = new Date(props.data["handoverDate"]);
         HOdate = format.dateTime(HOdate, { year: 'numeric', month: 'short' });
     }
-
-    const imgFeatured = (props.data["featuredImages"] && props.data["featuredImages"].length > 0 && props.data["featuredImages"][0]['imageURL'])
-        ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0', '?width=400&height=300')
-        : "/images/placeholder.jpg"; // Basic placeholder fallback
+    const PLACEHOLDER = "/images/placeholder.jpg";
+    const rawUrl = props.data?.featuredImages?.[0]?.imageURL;
+    const imgFeatured =
+        typeof rawUrl === "string" &&
+            rawUrl.trim() !== "" &&
+            rawUrl !== "null" &&
+            rawUrl !== "undefined"
+            ? rawUrl.replace("?width=0&height=0", "?width=400&height=300")
+            : PLACEHOLDER;
     let minprice, maxPrice;
     if (props.data["minPrice"] !== null && parseInt(props.data["minPrice"]) > 1) {
         minprice = convertPrice(Number(props.data["minPrice"])).formatted;
@@ -82,8 +87,14 @@ const PropertyListItem = (props: any) => {
                     <Link href={url} className="block w-full h-full">
                         <img
                             src={imgFeatured}
-                            alt={props.data['propertyName']}
+                            alt={props.data["propertyName"]}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            onError={(e) => {
+                                const el = e.currentTarget;
+                                if (!el.src.includes(PLACEHOLDER)) {
+                                    el.src = PLACEHOLDER;
+                                }
+                            }}
                         />
                         <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-sm backdrop-blur-sm">
                             {props.data["propertyPlan"]}
