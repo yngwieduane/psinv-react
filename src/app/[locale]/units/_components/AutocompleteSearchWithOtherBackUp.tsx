@@ -7,8 +7,6 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 type SearchResult = {
     name: string;
-    city: string;
-    community: string;
     id: string;
     type: 'Project' | 'Community';
 };
@@ -20,7 +18,7 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<SearchResult[]>([]);
     const [loading, setLoading] = useState(false);
-    // const [allCommunities, setAllCommunities] = useState<SearchResult[]>([]);
+    const [allCommunities, setAllCommunities] = useState<SearchResult[]>([]);
 
     const [inputValue, setInputValue] = useState(searchParams.get('propertyName')?.toString() || '');
     const [iDValue, setIDValue] = useState(0);
@@ -41,23 +39,56 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
         };
     }, [wrapperRef]);
 
+    // Fetch communities on mount
+    useEffect(() => {
+        fetch('/api/external/fetchLookup?type=Community')
+            .then(res => res.json())
+            .then(data => {
+                if (Array.isArray(data)) {
+                    const mapped = data.map((item: any) => ({
+                        name: item.lookupName,
+                        id: item.lookupId,
+                        type: 'Community' as const
+                    }));
+                    setAllCommunities(mapped);
+                }
+            })
+            .catch(err => console.error("Error fetching communities:", err));
+    }, []);
+
     useEffect(() => {
         const timeout = setTimeout(() => {
             if (query.trim() !== "") {
                 setShowDropdown(true);
                 setLoading(true);
 
-                fetch(`/api/units/autocomplete?query=${query}`)
+                // Fetch projects
+                const fetchProjects = fetch(`/api/external/searchfull?query=${query}`)
                     .then(res => res.json())
                     .then(data => {
-                        setResults(data.results || []);
-                        setLoading(false);
+                        return (data.result || []).map((item: any) => ({
+                            name: item.propertyName,
+                            id: item.propertyID,
+                            type: 'Project' as const
+                        }));
                     })
-                    .catch(err => {
-                        console.error("Error fetching units:", err);
-                        setResults([]);
-                        setLoading(false);
-                    });
+                    .catch(() => []);
+
+                // Filter communities client-side
+                const filteredCommunities = allCommunities.filter(c =>
+                    c.name.toLowerCase().includes(query.toLowerCase())
+                );
+
+                Promise.all([fetchProjects]).then(([projects]) => {
+                    // Combine results: Communities first? Or Projects?
+                    // Let's mix them or put exact matches first?
+                    // For now, let's put exact matches first or just projects then communities.
+                    // User said "add the search as well by community".
+
+                    const combined = [...projects, ...filteredCommunities];
+                    setResults(combined);
+                    setLoading(false);
+                });
 
             } else {
                 setResults([]);
@@ -67,7 +98,7 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
             }
         }, 300);
         return () => clearTimeout(timeout);
-    }, [query]);
+    }, [query, allCommunities]);
 
     const handleInputChange = (e: any) => {
         setInputValue(e.target.value);
@@ -116,17 +147,12 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
     //   setResetStatus(isReset);
     // }
 
-    const defaultSuggestions: SearchResult[] = [
-        { name: "Al Reem Island", id: "95259", type: "Community", city: "Abu Dhabi", community: "" },
-        { name: "Saadiyat Island", id: "97198", type: "Community", city: "Abu Dhabi", community: "" },
-        { name: "Al Raha Beach", id: "95124", type: "Community", city: "Abu Dhabi", community: "" },
-        { name: "Yas Island", id: "165011", type: "Community", city: "Abu Dhabi", community: "" },
-    ];
-
     const handleInputClick = () => {
         if (!query || query.trim() === '') {
-            setResults(defaultSuggestions);
-            setShowDropdown(true);
+            if (allCommunities.length > 0) {
+                setResults(allCommunities.slice(0, 10));
+                setShowDropdown(true);
+            }
         }
     };
 
@@ -170,7 +196,7 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
                             <div className="flex justify-between items-center">
                                 <div>
                                     <strong className="block text-[#353455] text-sm font-semibold">{item.name}</strong>
-                                    <span className="text-xs text-gray-500 mt-0.5 block">{item.city ? item.city : item.community}</span>
+                                    <span className="text-xs text-gray-500 mt-0.5 block">{item.id}</span>
                                 </div>
                                 <span className={`text-[10px] px-2 py-0.5 rounded-full ${item.type === 'Project' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}`}>
                                     {item.type}

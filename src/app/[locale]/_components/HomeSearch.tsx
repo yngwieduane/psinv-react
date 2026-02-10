@@ -132,7 +132,7 @@ export default function HomeSearch() {
     };
 
     return (
-        <div className="relative z-30 -mt-10 mb-10 container mx-auto px-4 " id='search-section'>
+        <div className="relative z-30 -mt-20 mb-10 container mx-auto px-4 " id='search-section'>
             <div className="bg-white rounded-3xl shadow-xl max-w-5xl mx-auto">
                 {/* Tabs */}
                 <div className="flex border-b border-gray-100">
@@ -215,7 +215,7 @@ export default function HomeSearch() {
                         </div>
 
                         {/* Filters Row */}
-                        <div className={`gap-4 items-end ${isFiltersOpen ? 'grid grid-cols-1 md:grid-cols-4' : 'hidden md:grid grid-cols-1 md:grid-cols-4'}`}>
+                        <div className={`gap-4 items-end ${isFiltersOpen ? 'grid grid-cols-1 md:grid-cols-5' : 'hidden md:grid grid-cols-1 md:grid-cols-5'}`}>
 
                             {/* Sector (Residential/Commercial) */}
                             <div className="w-full">
@@ -368,17 +368,17 @@ export default function HomeSearch() {
                                     </PopoverPanel>
                                 </Popover>
                             </div>
+                            {/* Search Button */}
+                            <div className="w-full">
+                                <button
+                                    type="submit"
+                                    className="w-full rounded-xl bg-primary hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
+                                >
+                                    Search
+                                </button>
+                            </div>
                         </div>
 
-                        {/* Search Button */}
-                        <div className="w-full">
-                            <button
-                                type="submit"
-                                className="w-full rounded-xl bg-primary hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
-                            >
-                                Search
-                            </button>
-                        </div>
                     </form>
                 </div>
             </div>
