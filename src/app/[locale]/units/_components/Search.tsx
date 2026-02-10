@@ -136,7 +136,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                 {/* Removed Tabs */}
 
                 {/* Search Form */}
-                <div className="p-6 md:p-8">
+                <div className="p-6 md:px-8 pt-12">
                     <form onSubmit={handleSearch} className="flex flex-col gap-4">
 
                         {/* Top Row: Search + Category */}
