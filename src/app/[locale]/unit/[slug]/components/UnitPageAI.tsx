@@ -24,6 +24,7 @@ import { useUser } from "@/context/userContext";
 import AccordionTabs from "@/app/[locale]/_components/tools/AccordionTabs";
 import { Link } from "@/i18n/navigation";
 import { useCurrency } from "@/context/currencyContext";
+import ListPopUpWidget from "@/app/[locale]/_components/ListPopUpWidget";
 
 const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap'));
 const SimilarUnitsGrid = dynamic(() => import('./SimilarUnitsGrid'));
@@ -396,39 +397,41 @@ export default function UnitPageAI(props: any) {
                                     <div className="lg:w-1/3 space-y-10 lg:sticky h-fit ">
                                         <Sticky stickyClassName="mt-24" boundaryElement=".mainsidebar" hideOnBoundaryHit={false}>
                                             {/* Price Card */}
-                                            <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-[0_10px_50px_rgba(0,0,0,0.08)]">
-                                                <div className="flex justify-between items-end mb-8">
+                                            <div className="bg-white border border-gray-100 rounded-3xl p-4 md:px-6 md:pt-6 md:pb-1 xl:pt-8 md:pb-1 shadow-[0_10px_50px_rgba(0,0,0,0.08)] mb-5">
+                                                <div className="flex justify-between items-end mb-8 md:mb-4 xl:mb-8">
                                                     <div>
                                                         <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-2">{t('labels.total_price')}</span>
-                                                        <span className="text-3xl md:text-4xl font-bold text-primary"><PriceConvert price={price} minDecimal='0' /></span>
+                                                        <span className="text-3xl md:text-3xl xl:text-4xl font-bold text-primary"><PriceConvert price={price} minDecimal='0' /></span>
                                                     </div>
                                                 </div>
 
                                                 <div className="grid grid-cols-2 gap-4 mb-8">
-                                                    <Link href={`tel:${callPhone}`} className="cursor-pointer w-full border bg-gray-200 border-gray-200 text-black hover:bg-gray-300 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
+                                                    <Link href={`tel:${callPhone}`} className="cursor-pointer w-full border bg-gray-200 border-gray-200 text-black hover:bg-gray-300 py-3 md:py-2 xl:py-3 rounded-xl text-md md:text-sm xl:text-lg font-bold  flex items-center justify-center gap-3">
                                                         <Phone size={22} /> {t('buttons.call')}
                                                     </Link>
                                                     <button
                                                         type="button"
                                                         onClick={drawerHandler('inquire', props.data)}
                                                         name="inquire"
-                                                        className="cursor-pointer w-full border bg-gray-200 border-gray-200 text-black hover:bg-gray-300 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3"
+                                                        className="cursor-pointer w-full border bg-gray-200 border-gray-200 text-black hover:bg-gray-300 py-3 md:py-2 xl:py-3 rounded-xl text-md md:text-sm xl:text-lg font-bold flex items-center justify-center gap-3"
                                                     >
                                                         <Mail size={22} /> {t('buttons.inquire')}
                                                     </button>
-                                                    <Link href={`https://wa.me/${whatsappPhone}?text=I%20am%20Interested%20 in this reference number: ${props.refNo}`} className="col-span-2 cursor-pointer w-full bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
+                                                    <Link href={`https://wa.me/${whatsappPhone}?text=I%20am%20Interested%20 in this reference number: ${props.refNo}`} className="col-span-2 cursor-pointer w-full bg-[#25D366] hover:bg-[#128c7e] text-white py-3 md:py-2 xl:py-3 rounded-xl text-md md:text-sm xl:text-lg font-bold flex items-center justify-center gap-3">
                                                         <MessageCircle size={22} /> {t('buttons.whatsapp')}
                                                     </Link>
                                                     <button
                                                         type="button"
                                                         onClick={drawerHandler('requestview', props.data)}
                                                         name="details"
-                                                        className="col-span-2 cursor-pointer w-full border bg-indigo-950 border-indigo-950 text-white hover:bg-indigo-900 py-3 rounded-xl font-bold text-lg flex items-center justify-center gap-3"
+                                                        className="col-span-2 cursor-pointer w-full border bg-indigo-950 border-indigo-950 text-white hover:bg-indigo-900 py-3 md:py-2 xl:py-3 rounded-xl text-md md:text-sm xl:text-lg font-bold flex items-center justify-center gap-3"
                                                     >
                                                         <FontAwesomeIcon icon={faCalendarCheck} /> {t('buttons.request_meeting')}
                                                     </button>
                                                 </div>
                                             </div>
+                                            
+                                            <ListPopUpWidget />
                                         </Sticky>
                                     </div>
                                 </div>
