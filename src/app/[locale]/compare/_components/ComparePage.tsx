@@ -86,8 +86,8 @@ const ComparePage: React.FC<{}> = ({ }) => {
             <div className="min-h-screen pt-40 pb-20 container mx-auto px-6 text-center">
                 <div className="bg-gray-50 rounded-3xl p-20 flex flex-col items-center">
                     <Shuffle size={64} className="text-gray-300 mb-6" />
-                    <h2 className="text-3xl font-serif font-bold text-gray-800 mb-2">Compare Properties</h2>
-                    <p className="text-gray-500 text-lg">Your comparison list is empty. Add properties to compare them side-by-side.</p>
+                    <h1 className="text-3xl font-serif font-bold text-gray-800 mb-2">Compare Properties</h1>
+                    <h2 className="text-gray-500 text-lg">Your comparison list is empty. Add properties to compare them side-by-side.</h2>
                 </div>
             </div>
         );

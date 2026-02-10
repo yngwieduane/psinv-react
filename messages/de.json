@@ -487,6 +487,25 @@
       "part3": "Dubai Hills Estate"
     }
   },
+  "Compare_page": {
+    "heroTitle": "Vergelijken",
+    "metadata": {
+      "title": "Vergelijk Vastgoed in de VAE | PSI",
+      "description": "Vergelijk vastgoed in de VAE op prijs, locatie, grootte en kenmerken om de juiste woning te vinden met PSI."
+    },
+    "heroBreadcrumb": "Home > Vergelijken",
+    "unlockSection": {
+      "title": "Vergelijk Vastgoed",
+      "description": "Je vergelijkingslijst is leeg. Voeg woningen toe om ze naast elkaar te vergelijken."
+    }
+  },
+  "favorites_page": {
+    "heroTitle": "Favorieten",
+    "metadata": {
+      "title": "Uw favoriete woningen in de VAE | PSI",
+      "description": "Bekijk en beheer uw favoriete vastgoed in de VAE. Toegang tot opgeslagen woningen en vergelijk ze snel om uw ideale huis of investering te vinden met PSI."
+    }
+  },  
   "LocaleSwitcher": {
     "label": "Sprache ändern",
     "locale": "{locale, select, ar {🇦🇪 Arabisch} en {🇺🇸 Englisch} zh {🇨🇳 Chinesisch} ru {🇷🇺 Russisch} de {🇩🇪 Deutsch} other {Unbekannt}}",
