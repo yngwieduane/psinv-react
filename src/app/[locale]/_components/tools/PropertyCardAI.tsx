@@ -32,12 +32,20 @@ const PropertyCardAI = (props: any) => {
     const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
     const saved = isFavorite(props.data["propertyID"]);
     const compared = isCompared(props.data["propertyID"]);
-
+    
     const propHO = HOdate ? (<p className="text-sm">{HOdate}</p>) : ("");
     const propSize = (props.data["builtupArea_SQFT"] && props.data["builtupArea_SQFT"] !== '0') ? (<p className="text-sm">{props.data["builtupArea_SQFT"]}</p>) : ("");
-    const imgFeatured = (props.data["featuredImages"] && props.data["featuredImages"].length > 0 && props.data["featuredImages"][0]['imageURL'])
-        ? props.data["featuredImages"][0]['imageURL'].replace('?width=0&height=0', '?width=400&height=300')
-        : "/images/placeholder.jpg"; // Basic placeholder fallback
+    const PLACEHOLDER = "/images/placeholder.jpg";
+
+    const rawUrl = props.data?.featuredImages?.[0]?.imageURL;
+
+    const imgFeatured =
+    typeof rawUrl === "string" &&
+    rawUrl.trim() !== "" &&
+    rawUrl !== "null" &&
+    rawUrl !== "undefined"
+        ? rawUrl.replace("?width=0&height=0", "?width=400&height=300")
+        : PLACEHOLDER;
     const subCommunity = props.data["subCommunity"] ? props.data["subCommunity"] : "n-a";
 
     const url = '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['community']) + "/" + slugify(subCommunity) + "/" + slugify(props.data['propertyName']);
@@ -102,8 +110,18 @@ const PropertyCardAI = (props: any) => {
                 <div className={` bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col h-full transform hover:-translate-y-1 relative`}>
                     {/* Image Box */}
                     <div className="relative h-64 bg-gray-200 overflow-hidden">
-                        <img src={imgFeatured} alt={props.data['propertyName']} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                        <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-sm backdrop-blur-sm">
+                    <img
+                        src={imgFeatured}
+                        alt={props.data["propertyName"]}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        onError={(e) => {
+                        const el = e.currentTarget;
+                        if (!el.src.includes(PLACEHOLDER)) {
+                            el.src = PLACEHOLDER;
+                        }
+                        }}
+                    />
+                    <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-sm backdrop-blur-sm">
                             {props.data["propertyPlan"]}
                         </div>
                     </div>
