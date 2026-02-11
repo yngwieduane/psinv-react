@@ -29,7 +29,7 @@ interface DynamicFormProps {
   city?: string;
 }
 
-const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: number; referredBy?: number; assignedTo?: number; cityVal: number }> = {
+const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: number; referredBy?: number; assignedTo?: number; cityVal: number; placeholder_property: string; }> = {
   'Dubai': {
     email: 'callcenter@psidubai.com, yngwie.g@psinv.net',
     apiUrl: 'https://api.portal.dubai-crm.com/leads?APIKEY=d301dba69732065cd006f90c6056b279fe05d9671beb6d29f2d9deb0206888c38239a3257ccdf4d0',
@@ -37,6 +37,7 @@ const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: 
     referredBy: 4421,
     assignedTo: 4421,
     cityVal: 91578,
+    placeholder_property: '301813',
   },
   'Abu Dhabi': {
     email: 'callcenter@psinv.net, yngwie.g@psinv.net',
@@ -44,6 +45,7 @@ const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: 
     referredTo: 3458,
     referredBy: 3458,
     cityVal: 91823,
+    placeholder_property: '20392',
   },
   'DEFAULT': {
     email: 'callcenter@psinv.net, yngwie.g@psinv.net',
@@ -51,13 +53,14 @@ const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: 
     referredTo: 3458,
     referredBy: 3458,
     cityVal: 91823,
+    placeholder_property: '',
   }
 };
 
 const getCityConfig = (cityName: string) => {
-  if (['Dubai'].includes(cityName)) {
-    return CITY_CONFIG['Dubai'];
-  }
+  if (['Dubai', 'Sharjah'].includes(cityName)) {     //If Sharjah, use DUbai CRM
+        return CITY_CONFIG['Dubai'];
+    }
   return CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
 }
 
@@ -107,9 +110,10 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
 
     let { mediaType, mediaName, methodOfContact } = mediaMappings[source.toLowerCase()] || mediaMappings.default;
 
-    const ReferredToID = cityConfig.referredTo ?? '3458';
-    const ReferredByID = cityConfig.referredBy ?? '3458';
-    const ActivityAssignedTo = cityConfig.assignedTo ?? '3458';
+    let ReferredToID = cityConfig.referredTo ?? '3458';
+    let ReferredByID = cityConfig.referredBy ?? '3458';
+    let ActivityAssignedTo = cityConfig.referredBy ?? '3458';
+    let contactType, requirementType, Budget, Budget2, propertyId;
 
     switch (source) {
       case 'HubspotEmail':
@@ -158,6 +162,40 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
         break;
     }
 
+    switch(data.propertyPurpose) {
+      case 'sell' :
+        contactType = "1";
+			  requirementType = "91212";			  
+			  Budget="427";
+			  Budget2="1335";
+        propertyId = cityConfig.placeholder_property;
+        break;
+
+      case 'rent' : 
+        contactType = "4";
+			  requirementType = "91213";			  
+			  Budget="234";
+			  Budget2="1661";
+        propertyId = cityConfig.placeholder_property;
+        break;
+
+      case 'manage' : 
+        contactType = "1";
+			  requirementType = "91212";			  
+			  Budget="427";
+			  Budget2="1335";
+        propertyId = cityConfig.placeholder_property;
+        break;
+
+      default:
+        contactType = "1";
+			  requirementType = "91212";			  
+			  Budget="427";
+			  Budget2="1335";
+        propertyId = cityConfig.placeholder_property;
+        break;
+    }
+
     const isHubspotMedia = mediaName === '63907';
 
     const remarks = `      
@@ -183,14 +221,14 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
       LanguageID: "115915",
       CompanyID: "",
       Remarks: remarks,
-      RequirementType: "91212",
-      ContactType: "3",
+      RequirementType: requirementType,
+      ContactType: contactType,
       CountryID: "65946",
       StateID: cityConfig.cityVal,
       CityID: cityConfig.cityVal,
       DistrictID: "",
       CommunityID: "",
-      PropertyID: "",
+      PropertyID: propertyId,
       UnitType: "19",
       MethodOfContact: methodOfContact,
       MediaType: mediaType,
@@ -198,8 +236,8 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
       DeactivateNotification: "",
       Bedroom: "21935",
       Bathroom: "21935",
-      Budget: "100000",
-      Budget2: "1000000",
+      Budget: Budget,
+      Budget2: Budget2,
       AreaFrom: "",
       AreaTo: "",
       RequirementCountryID: "65946",
@@ -390,7 +428,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
         <option value="">{t("purpose")}</option>
         <option value="sell">{t("sell_purpose")}</option>
         <option value="rent">{t("rent_purpose")}</option>
-        <option value="invest">{t("invest_purpose")}</option>
+        <option value="manage">{t("manage_purpose")}</option>
       </select>
       {errors.propertyPurpose && <p className="text-red-500 text-sm">{errors.propertyPurpose.message}</p>}
 

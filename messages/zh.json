@@ -129,6 +129,7 @@
     "sell_purpose": "出售",
     "rent_purpose": "出租",
     "invest_purpose": "投资",
+    "manage_purpose": "管理",
     "errors": {
       "firstNameRequired": "名为必填项",
       "lastNameRequired": "姓为必填项",
