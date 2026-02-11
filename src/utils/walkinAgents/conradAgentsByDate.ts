@@ -80,4 +80,43 @@ export const CONRAD_AGENTS_BY_DATE: AgentsByDate = {
 		  { id: "7005", name: "Yousef Ahmad Daoud" },
 		  { id: "9812", name: "Lais Chalithodi Basheer Mohammed Chalithodika" }
 	],
+    "2026-02-11": [
+        { id: "6345", name: "Diana Bashirova" },
+        { id: "7189", name: "Majnun Mavlonazarov" },
+        { id: "9862", name: "Aleksandra Vojinovic" },
+        { id: "7447", name: "Almekdad Hussam Baddour" },
+        { id: "9856", name: "Tarek AbouHuwaij" },
+        { id: "7253", name: "Maya Ramos Da Silva" }
+    ],
+    "2026-02-12": [
+        { id: "", name: "Omar Khaleel Subhi Basheer" },
+        { id: "", name: "Farida Elsherihy Mohamed Ahmed Elsherihy" },
+        { id: "", name: "Suhaib Osama Mahmoud Abu Abbas" },
+        { id: "", name: "Nasir Ra'ed Talal Mushatti" },
+        { id: "", name: "Yousef Ahmad Alisha" },
+        { id: "", name: "Abdalla Awad Reyad Kaldas" }
+    ],
+    "2026-02-13": [
+        { id: "", name: "Uzair Sameer Sameer Javed Aziz" },
+        { id: "", name: "Lais Chalithodi Basheer Mohammed Chalithodika" },
+        { id: "", name: "Tarek AbouHuwaij" },
+        { id: "", name: "Anastasiya Aksatskaya" },
+        { id: "", name: "Yaser Nezar Badrah" },
+        { id: "", name: "Petronella Awad" }
+    ],
+    "2026-02-14": [
+        { id: "", name: "Shahnaz Mohamad Sharif Khalaf" },
+        { id: "", name: "Mohammed Mufid Khalil Qundah" },
+        { id: "", name: "Ali Nabil Ali Abdelrahman Shatta" },
+        { id: "", name: "Fahid Hassan" },
+        { id: "", name: "Mohammad Anas Yousef" },
+        { id: "", name: "Omar Nazih Hamdache" }
+    ],
+    "2026-02-15": [
+        { id: "", name: "Bojana Popovic" },
+        { id: "", name: "Firas Riyad Abu Haibeh" },
+        { id: "", name: "Feliphe de Freitas Santos" },
+        { id: "", name: "Wenjuan Zan" },
+        { id: "", name: "Shaima Sherif Mohamed Ibrahim Aly" }
+    ]
 };
