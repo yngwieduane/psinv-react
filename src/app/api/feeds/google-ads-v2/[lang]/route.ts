@@ -5,9 +5,9 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { lang: string } }
+    { params }: { params: Promise<{ lang: string }> }
 ) {
-    const lang = params.lang;
+    const { lang } = await params;
 
     // Validate language
     if (!locales.includes(lang as any)) {
