@@ -149,6 +149,7 @@
     "sell_purpose": "Sell",
     "rent_purpose": "Rent",
     "invest_purpose": "Invest",
+    "manage_purpose": "Manage",
     "errors": {
       "firstNameRequired": "First name is required",
       "lastNameRequired": "Last name is required",

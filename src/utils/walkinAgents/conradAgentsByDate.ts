@@ -89,34 +89,75 @@ export const CONRAD_AGENTS_BY_DATE: AgentsByDate = {
         { id: "7253", name: "Maya Ramos Da Silva" }
     ],
     "2026-02-12": [
-        { id: "", name: "Omar Khaleel Subhi Basheer" },
-        { id: "", name: "Farida Elsherihy Mohamed Ahmed Elsherihy" },
-        { id: "", name: "Suhaib Osama Mahmoud Abu Abbas" },
-        { id: "", name: "Nasir Ra'ed Talal Mushatti" },
-        { id: "", name: "Yousef Ahmad Alisha" },
-        { id: "", name: "Abdalla Awad Reyad Kaldas" }
+        { id: "7043", name: "Omar Khaleel Subhi Basheer" },
+        { id: "7466", name: "Farida Elsherihy Mohamed Ahmed Elsherihy" },
+        { id: "4572", name: "Suhaib Osama Mahmoud Abu Abbas" },
+        { id: "7348", name: "Nasir Ra'ed Talal Mushatti" },
+        { id: "7005", name: "Yousef Ahmad Alisha" },
+        { id: "6269", name: "Abdalla Awad Reyad Kaldas" }
     ],
     "2026-02-13": [
-        { id: "", name: "Uzair Sameer Sameer Javed Aziz" },
-        { id: "", name: "Lais Chalithodi Basheer Mohammed Chalithodika" },
-        { id: "", name: "Tarek AbouHuwaij" },
-        { id: "", name: "Anastasiya Aksatskaya" },
-        { id: "", name: "Yaser Nezar Badrah" },
-        { id: "", name: "Petronella Awad" }
+        { id: "7284", name: "Uzair Sameer Sameer Javed Aziz" },
+        { id: "9812", name: "Lais Chalithodi Basheer Mohammed Chalithodika" },
+        { id: "9856", name: "Tarek AbouHuwaij" },
+        { id: "7254", name: "Anastasiya Aksatskaya" },
+        { id: "7141", name: "Yaser Nezar Badrah" },
+        { id: "7211", name: "Petronella Awad" }
     ],
     "2026-02-14": [
-        { id: "", name: "Shahnaz Mohamad Sharif Khalaf" },
-        { id: "", name: "Mohammed Mufid Khalil Qundah" },
-        { id: "", name: "Ali Nabil Ali Abdelrahman Shatta" },
-        { id: "", name: "Fahid Hassan" },
-        { id: "", name: "Mohammad Anas Yousef" },
-        { id: "", name: "Omar Nazih Hamdache" }
+        { id: "6807", name: "Shahnaz Mohamad Sharif Khalaf" },
+        { id: "6309", name: "Mohammed Mufid Khalil Qundah" },
+        { id: "7166", name: "Ali Nabil Ali Abdelrahman Shatta" },
+        { id: "7192", name: "Fahid Hassan" },
+        { id: "7278", name: "Mohammad Anas Yousef" },
+        { id: "7262", name: "Omar Nazih Hamdache" }
     ],
     "2026-02-15": [
-        { id: "", name: "Bojana Popovic" },
-        { id: "", name: "Firas Riyad Abu Haibeh" },
-        { id: "", name: "Feliphe de Freitas Santos" },
-        { id: "", name: "Wenjuan Zan" },
-        { id: "", name: "Shaima Sherif Mohamed Ibrahim Aly" }
+        { id: "6152", name: "Bojana Popovic" },
+        { id: "7142", name: "Firas Riyad Abu Haibeh" },
+        { id: "7193", name: "Feliphe de Freitas Santos" },
+        { id: "7431", name: "Wenjuan Zan" },
+        { id: "6171", name: "Shaima Sherif Mohamed Ibrahim Aly" }
+    ],
+    "2026-02-16": [
+        { id: "6330", name: "Tala Moustapha Darwich" },
+        { id: "7238", name: "Tavleen Kaur Sumit Uppal" },
+        { id: "7084", name: "Odai Ashraf Moh'd Zaid" },
+        { id: "4280", name: "Mohammad Alshaikh Hasan" },
+        { id: "4199", name: "Zainab Watad" },
+        { id: "6385", name: "Yazan Saleh Ibrahim Ghawanmeh" }
+    ],
+    "2026-02-17": [
+        { id: "6791", name: "Aymen Sioud" },
+        { id: "6403", name: "Mohammad Hazim Abdel Latif Maslamani" },
+        { id: "7254", name: "Anastasiya Aksatskaya" },
+        { id: "9797", name: "Mohammed H. J. Mhanna" },
+        { id: "7166", name: "Ali Nabil Ali Abdelrahman Shatta" },
+        { id: "7356", name: "Malek Saleh Ali Salo" }
+    ],
+    "2026-02-18": [
+        { id: "4576", name: "Masud Al Nasr" },
+        { id: "7438", name: "Bidur Giri" },
+        { id: "6826", name: "Ameer Arsheed" },
+        { id: "7371", name: "Mohamad Hilmi Mohamad Al-Shami" },
+        { id: "6653", name: "Mahmoud Mahmoud Abdelkader Mekawy" },
+        { id: "6403", name: "Mohammad Hazim Abdel Latif Maslamani" }
+    ],
+    "2026-02-19": [
+        { id: "6505", name: "Raheem Mohammad Kamel AlKarazoon" },
+        { id: "7190", name: "Amal Abdrabalrasool M Sulais" },
+        { id: "6986", name: "Bashar Nazmi Hussein Alswalhi" },
+        { id: "6791", name: "Aymen Sioud" },
+        { id: "4587", name: "Mahmoud Hassan Heliwa" },
+        { id: "6513", name: "Modar AbdulMuhsen Ali" }
+    ],
+    "2026-02-20": [
+        { id: "7005", name: "Yousef Ahmad Daoud" },
+        { id: "9812", name: "Lais Chalithodi Basheer Mohammed Chalithodika" },
+        { id: "7108", name: "Alida Pilica" },
+        { id: "7198", name: "Maida Pilica" },
+        { id: "7084", name: "Odai Ashraf Moh'd Zaid" },
+        { id: "7043", name: "Omar Khaleel Subhi Basheer" }
     ]
+    
 };

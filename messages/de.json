@@ -129,6 +129,7 @@
     "sell_purpose": "Verkaufen",
     "rent_purpose": "Vermieten",
     "invest_purpose": "Investieren",
+    "manage_purpose": "Verwalten",
     "errors": {
       "firstNameRequired": "Vorname ist erforderlich",
       "lastNameRequired": "Nachname ist erforderlich",

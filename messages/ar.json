@@ -129,6 +129,7 @@
     "sell_purpose": "بيع",
     "rent_purpose": "إيجار",
     "invest_purpose": "استثمار",
+    "manage_purpose": "إدارة",
     "errors": {
       "firstNameRequired": "الاسم الأول مطلوب",
       "lastNameRequired": "اسم العائلة مطلوب",

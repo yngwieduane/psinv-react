@@ -129,6 +129,7 @@
     "sell_purpose": "Продать",
     "rent_purpose": "Сдать в аренду",
     "invest_purpose": "Инвестировать",
+    "manage_purpose": "Управлять",
     "errors": {
       "firstNameRequired": "Имя обязательно",
       "lastNameRequired": "Фамилия обязательна",
