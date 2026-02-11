@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from '@/i18n/navigation';
 import slugify from 'react-slugify';
 import { useFormatter } from 'next-intl';
 import { useUser } from '@/context/userContext';
-import { Heart, MapPin, Shuffle, Share2, BedDouble, Bath, Square, Calendar, Eye } from 'lucide-react';
+import { Heart, MapPin, Shuffle, Share2, BedDouble, Bath, Square, Calendar, Eye, Home } from 'lucide-react';
 import Image from 'next/image';
 import ProjectPreviewModal from './ProjectPreviewModal';
 import { useCurrency } from '@/context/currencyContext';
@@ -25,6 +25,25 @@ const PropertyListItem = (props: any) => {
     const { convertPrice } = useCurrency();
     const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
     const [showPreview, setShowPreview] = useState(false);
+    const [imgError, setImgError] = useState(false);
+
+
+    useEffect(() => {
+        setImgError(false);
+    }, [props.data]);
+
+    const rawUrl = props.data?.featuredImages?.[0]?.imageURL;
+    const isValidUrl = rawUrl &&
+        typeof rawUrl === "string" &&
+        rawUrl.trim() !== "" &&
+        rawUrl !== "null" &&
+        rawUrl !== "undefined";
+
+    const imgFeatured = isValidUrl
+        ? rawUrl.replace("?width=0&height=0", "?width=400&height=300")
+        : "";
+
+    const hasImage = !imgError && isValidUrl;
 
     // Data processing
     const saved = isFavorite(props.data["propertyID"]);
@@ -37,15 +56,7 @@ const PropertyListItem = (props: any) => {
         HOdate = new Date(props.data["handoverDate"]);
         HOdate = format.dateTime(HOdate, { year: 'numeric', month: 'short' });
     }
-    const PLACEHOLDER = "/images/placeholder.jpg";
-    const rawUrl = props.data?.featuredImages?.[0]?.imageURL;
-    const imgFeatured =
-        typeof rawUrl === "string" &&
-            rawUrl.trim() !== "" &&
-            rawUrl !== "null" &&
-            rawUrl !== "undefined"
-            ? rawUrl.replace("?width=0&height=0", "?width=400&height=300")
-            : PLACEHOLDER;
+
     let minprice, maxPrice;
     if (props.data["minPrice"] !== null && parseInt(props.data["minPrice"]) > 1) {
         minprice = convertPrice(Number(props.data["minPrice"])).formatted;
@@ -85,17 +96,21 @@ const PropertyListItem = (props: any) => {
                 {/* Image Section - Left Side */}
                 <div className="relative w-full md:w-80 h-64 md:h-full flex-shrink-0">
                     <Link href={url} className="block w-full h-full">
-                        <img
-                            src={imgFeatured}
-                            alt={props.data["propertyName"]}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                            onError={(e) => {
-                                const el = e.currentTarget;
-                                if (!el.src.includes(PLACEHOLDER)) {
-                                    el.src = PLACEHOLDER;
-                                }
-                            }}
-                        />
+                        {hasImage ? (
+                            <Image
+                                src={imgFeatured}
+                                alt={props.data["propertyName"]}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                width={300}
+                                height={200}
+                                onError={() => setImgError(true)}
+                            />
+                        ) : (
+                            <div className="flex flex-col items-center justify-center text-gray-400 h-full w-full bg-gray-50">
+                                <Home size={40} strokeWidth={1.5} />
+                                <span className="text-xs mt-2">No Available Image</span>
+                            </div>
+                        )}
                         <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-sm backdrop-blur-sm">
                             {props.data["propertyPlan"]}
                         </div>
