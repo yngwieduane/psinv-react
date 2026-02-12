@@ -497,7 +497,8 @@
     "heroBreadcrumb": "首页 > 对比",
     "unlockSection": {
       "title": "对比房产",
-      "description": "对比列表为空。请添加房产以进行并排对比。"
+      "description": "对比列表为空。请添加房产以进行并排对比。",
+      "clear-all": "清除全部"
     }
   },
   "favorites_page": {

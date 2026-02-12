@@ -339,7 +339,7 @@ function PropertyPage(props: any) {
                                 <div className="lg:w-7/12">
                                     <h3 className="text-3xl  font-bold text-primary mb-6 md:mb-8">{t('overview')}</h3>
                                     <div className="prose prose-lg text-gray-600 leading-relaxed max-w-none font-light">
-                                        <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]} amountOfWords={100} classes="whitespace-break-spaces" />
+                                        <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]?.replace(/&nbsp;|\u00A0/g, " ").replace(/&rsquo;/g, "'")} amountOfWords={100} classes="whitespace-break-spaces" />
 
                                         {/* Construction Update (New Rich Feature) */}
                                         <div className="bg-white p-6 rounded-xl border border-gray-200 mt-8 mb-8 hidden">
