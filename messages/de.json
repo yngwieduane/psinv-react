@@ -496,7 +496,8 @@
     "heroBreadcrumb": "Home > Vergelijken",
     "unlockSection": {
       "title": "Vergelijk Vastgoed",
-      "description": "Je vergelijkingslijst is leeg. Voeg woningen toe om ze naast elkaar te vergelijken."
+      "description": "Je vergelijkingslijst is leeg. Voeg woningen toe om ze naast elkaar te vergelijken.",
+      "clear-all": "Alles wissen"
     }
   },
   "favorites_page": {
