@@ -166,6 +166,11 @@ const nextConfig: NextConfig = {
         destination: '/en',
         permanent: true,
       },
+      {
+        source: '/en/developer/emaar-properties',
+        destination: '/en/developer/emaar',
+        permanent: true,
+      },
     ]
   },
   reactStrictMode: true,
