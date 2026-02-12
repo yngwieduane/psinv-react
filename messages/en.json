@@ -398,7 +398,7 @@
     "agreement2": "Agree to receive multiple calls and communications via various channels regarding my enquiry",
     "agreement3": "Agree to receive calls and communications via various channels on various projects, products, and services"
   },
-  "Compare_page":{
+  "Compare_page": {
     "heroTitle": "COMPARE",
     "metadata": {
       "title": "Compare Properties in UAE | PSI",
@@ -408,14 +408,15 @@
     "unlockSection": {
       "title": "Compare Properties",
       "description": "Your comparison list is empty. Add properties to compare them side-by-side."
-    } },
-    "favorites_page":{
-      "heroTitle": "Favorites",
-      "metadata": {
-        "title": "Your Favorite Properties in UAE | PSI",
-        "description": "View and manage your favorite real estate properties in the UAE. Quickly access saved properties and compare them to find your ideal home or investment with PSI."
-      }
-       },
+    }
+  },
+  "favorites_page": {
+    "heroTitle": "Favorites",
+    "metadata": {
+      "title": "Your Favorite Properties in UAE | PSI",
+      "description": "View and manage your favorite real estate properties in the UAE. Quickly access saved properties and compare them to find your ideal home or investment with PSI."
+    }
+  },
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} zh {🇨🇳 Chinese} ru {🇷🇺 Russian} de {🇩🇪 German} other {Unknown}}",
@@ -702,7 +703,7 @@
     }
   },
   "ProjectPage": {
-    "nearbys":"Nearby",
+    "nearbys": "Nearby",
     "overview": "Overview",
     "gallery": "Gallery",
     "floor_plan": "Floor Plan",
@@ -6499,8 +6500,9 @@
   },
   "UnitProperties": {
     "tabs": {
-      "details": "Property Details",
+      "details": "Unit Details",
       "description": "Description",
+      "overview": "Property Overview",
       "unit_details": "Unit Details"
     },
     "buttons": {
@@ -6536,7 +6538,9 @@
       "amenities": "Amenities",
       "payment_plans": "Payment Plans",
       "faq": "Frequently Asked Questions",
-      "similar_units": "Similar Units"
+      "similar_units": "Similar Units",
+      "property_overview": "Property Overview",
+      "unit_overview": "Unit Overview"
     },
     "faq": {
       "questions": {
@@ -6562,4 +6566,4 @@
     "home": "Home",
     "units": "Units"
   }
-} 
+}

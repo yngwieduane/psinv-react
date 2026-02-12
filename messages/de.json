@@ -506,7 +506,7 @@
       "title": "Uw favoriete woningen in de VAE | PSI",
       "description": "Bekijk en beheer uw favoriete vastgoed in de VAE. Toegang tot opgeslagen woningen en vergelijk ze snel om uw ideale huis of investering te vinden met PSI."
     }
-  },  
+  },
   "LocaleSwitcher": {
     "label": "Sprache ändern",
     "locale": "{locale, select, ar {🇦🇪 Arabisch} en {🇺🇸 Englisch} zh {🇨🇳 Chinesisch} ru {🇷🇺 Russisch} de {🇩🇪 Deutsch} other {Unbekannt}}",
@@ -1650,8 +1650,9 @@
   },
   "UnitProperties": {
     "tabs": {
-      "details": "Immobiliendetails",
+      "details": "Einheitsdetails",
       "description": "Beschreibung",
+      "overview": "Immobilienübersicht",
       "unit_details": "Einheitsdetails"
     },
     "buttons": {
@@ -1687,7 +1688,9 @@
       "amenities": "Ausstattung",
       "payment_plans": "Zahlungspläne",
       "faq": "Häufig gestellte Fragen",
-      "similar_units": "Ähnliche Einheiten"
+      "similar_units": "Ähnliche Einheiten",
+      "property_overview": "Immobilienübersicht",
+      "unit_overview": "Einheitenübersicht"
     },
     "faq": {
       "questions": {

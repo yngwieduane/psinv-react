@@ -33,9 +33,10 @@ export default function UnitPageAI(props: any) {
     const [showDrawer, setShowDrawer] = useState(false);
     const [dwDataContent, setDwDataContent] = useState('details');
     const [dwDataTitle, setDwDataTitle] = useState('details');
-    const [activeTab, setActiveTab] = useState<'details' | 'description' | 'unit'>('details');
+    const [activeTab, setActiveTab] = useState<string>('details');
     const [showAllAmenities, setShowAllAmenities] = useState(false);
     const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+    const [isRemarksExpanded, setIsRemarksExpanded] = useState(false);
     const drawerHandler = (content: string, valuesarray: any) => (e: any) => {
         console.log(showDrawer);
         console.log(content);
@@ -50,9 +51,8 @@ export default function UnitPageAI(props: any) {
     const { convertPrice, currency } = useCurrency();
 
     const TABS = [
-        { id: 'details', key: 'lbl.property_details', fallback: t('tabs.details') }
-        // { id: 'description', key: 'lbl.description', fallback: t('tabs.description') },
-        // { id: 'unit', key: 'lbl.unit_details', fallback: t('tabs.unit_details') }
+        { id: 'details', key: 'lbl.property_details', fallback: t('tabs.details') },
+        { id: 'overview', key: 'lbl.property_overview', fallback: t('tabs.overview') }
     ];
 
     const isAssets = props.data[0]?.source === 'assets';
@@ -274,117 +274,148 @@ export default function UnitPageAI(props: any) {
                                         </div>
 
                                         {/* Property Overview */}
-                                        <div className="mb-10 md:mb-14 animate-[fadeIn_0.5s_ease-out]">
-                                            <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">{t('sections.details')}</h3>
-                                            <div className="bg-gray-50 rounded-3xl p-6 md:p-10 border border-gray-100">
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 md:gap-y-8">
-                                                    {[
-                                                        { label: t('labels.project'), value: post.propertyname },
-                                                        { label: t('labels.location'), value: post.community },
-                                                        { label: t('labels.type'), value: post.category },
-                                                        { label: t('labels.reference_no'), value: post.refNo },
-                                                        { label: t('labels.contract'), value: category },
-                                                        { label: t('labels.price'), value: <PriceConvert price={price} minDecimal='0' />, isBold: true },
-                                                        { label: t('labels.area'), value: <NumberConvert number={Number(post.built_upArea)} minDecimal='0' label={t('labels.sqft')} />, isBold: true },
-                                                        { label: t('labels.beds'), value: post.bedrooms, isBold: true },
-                                                        { label: t('labels.baths'), value: post.no_of_bathrooms, isBold: true },
-                                                    ].map((item, idx) => (
-                                                        <div key={idx} className="flex justify-between items-center border-b border-gray-200 pb-4 last:border-0 md:last:border-b">
-                                                            <span className="text-gray-500 text-sm font-bold uppercase tracking-wide">{item.label}</span>
-                                                            <span className={`${item.isBold ? 'text-gray-900 font-bold' : 'text-primary font-semibold'} text-base`}>{item.value}</span>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Description & Amenities */}
-                                        <div className="mb-10 md:mb-14">
-                                            <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">{t('sections.description')}</h3>
-                                            <div className={`bg-white text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line font-light mb-10 transition-all duration-300 ease-in-out relative ${!isDescriptionExpanded ? 'max-h-[500px] overflow-hidden' : ''}`}>
-                                                <div dangerouslySetInnerHTML={{ __html: post.property_overview }} />
-                                                {!isDescriptionExpanded && (
-                                                    <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
-                                                )}
-                                            </div>
-
-                                            <div className="flex justify-center mb-14">
-                                                <button
-                                                    onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
-                                                    className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white border border-[#111954]/10 rounded-full text-[#111954] font-medium hover:bg-[#111954]/5 transition-colors duration-300"
-                                                >
-                                                    {isDescriptionExpanded ? (
-                                                        <>
-                                                            {t('buttons.read_less')}
-                                                            <ChevronUp size={18} />
-                                                        </>
-                                                    ) : (
-                                                        <>
-                                                            {t('buttons.read_more')}
-                                                            <ChevronDown size={18} />
-                                                        </>
-                                                    )}
-                                                </button>
-                                            </div>
-
-                                            {/* Rich Amenities Grid */}
-                                            {amenities ? (
-                                                <>
-                                                    <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.amenities')}</h4>
-                                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                                                        {(showAllAmenities ? amenities.slice(0, -1) : amenities.slice(0, -1).slice(0, 20)).map((am: string, i: number) => (
-                                                            <div key={i} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
-                                                                <CheckCircle2 className="text-secondary shrink-0" size={20} />
-                                                                <span className="text-gray-700 font-medium">{am.split('^')[1].trim()}</span>
+                                        {activeTab === 'details' && (
+                                            <div className="mb-10 md:mb-14 animate-[fadeIn_0.5s_ease-out]">
+                                                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">{t('sections.details')}</h3>
+                                                <div className="bg-gray-50 rounded-3xl p-6 md:p-10 border border-gray-100">
+                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 md:gap-y-8">
+                                                        {[
+                                                            { label: t('labels.project'), value: post.propertyname },
+                                                            { label: t('labels.location'), value: post.community },
+                                                            { label: t('labels.type'), value: post.category },
+                                                            { label: t('labels.reference_no'), value: post.refNo },
+                                                            { label: t('labels.contract'), value: category },
+                                                            { label: t('labels.price'), value: <PriceConvert price={price} minDecimal='0' />, isBold: true },
+                                                            { label: t('labels.area'), value: <NumberConvert number={Number(post.built_upArea)} minDecimal='0' label={t('labels.sqft')} />, isBold: true },
+                                                            { label: t('labels.beds'), value: post.bedrooms, isBold: true },
+                                                            { label: t('labels.baths'), value: post.no_of_bathrooms, isBold: true },
+                                                        ].map((item, idx) => (
+                                                            <div key={idx} className="flex justify-between items-center border-b border-gray-200 pb-4 last:border-0 md:last:border-b">
+                                                                <span className="text-gray-500 text-sm font-bold uppercase tracking-wide">{item.label}</span>
+                                                                <span className={`${item.isBold ? 'text-gray-900 font-bold' : 'text-primary font-semibold'} text-base`}>{item.value}</span>
                                                             </div>
                                                         ))}
                                                     </div>
-                                                    {amenities.slice(0, -1).length > 20 && (
-                                                        <div className="mt-8 flex justify-center">
-                                                            <button
-                                                                onClick={() => setShowAllAmenities(!showAllAmenities)}
-                                                                className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white border border-[#111954]/10 rounded-full text-[#111954] font-medium hover:bg-[#111954]/5 transition-colors duration-300"
-                                                            >
-                                                                {showAllAmenities ? (
-                                                                    <>
-                                                                        {t('buttons.view_less')}
-                                                                        <ChevronUp size={18} />
-                                                                    </>
-                                                                ) : (
-                                                                    <>
-                                                                        {t('buttons.view_more')} ({amenities.length})
-                                                                        <ChevronDown size={18} />
-                                                                    </>
-                                                                )}
-                                                            </button>
-                                                        </div>
-                                                    )}
-
-                                                </>
-                                            ) : ("")}
-
-                                            {/* Payment Plans Grid */}
-                                            {amenities ? (
-                                                <>
-                                                    <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.payment_plans')}</h4>
-                                                    <div className=" mb-10">
-                                                        <PaymentPlans
-                                                            propid={post.property_Pk}
-                                                        />
+                                                </div>
+                                                <div className="mt-10">
+                                                    <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">{t('sections.unit_overview')}</h3>
+                                                    <div className={`bg-white text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line font-light mb-10 transition-all duration-300 ease-in-out relative ${!isRemarksExpanded ? 'max-h-[500px] overflow-hidden' : ''}`}>
+                                                        <div dangerouslySetInnerHTML={{ __html: post.remarks }} />
+                                                        {!isRemarksExpanded && (
+                                                            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                                                        )}
                                                     </div>
-                                                </>
-                                            ) : ("")}
-
-                                            {/* Mortgage Calculator Grid */}
-                                            {category == "Sale" ? (
-                                                <div className="">
-                                                    <MortgageCalculator basePrice={price} />
-                                                </div>) : ("")}
-
-                                            <div className="mt-8 md:mt-12">
-                                                <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.faq')}</h4>
-                                                <AccordionTabs items={faqData} />
+                                                    <div className="flex justify-center mb-14">
+                                                        <button
+                                                            onClick={() => setIsRemarksExpanded(!isRemarksExpanded)}
+                                                            className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white border border-[#111954]/10 rounded-full text-[#111954] font-medium hover:bg-[#111954]/5 transition-colors duration-300"
+                                                        >
+                                                            {isRemarksExpanded ? (
+                                                                <>
+                                                                    {t('buttons.read_less')}
+                                                                    <ChevronUp size={18} />
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    {t('buttons.read_more')}
+                                                                    <ChevronDown size={18} />
+                                                                </>
+                                                            )}
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
+                                        )}
+
+                                        {/* Description & Amenities */}
+                                        {activeTab === 'overview' && (
+                                            <div className="mb-10 md:mb-14 animate-[fadeIn_0.5s_ease-out]">
+                                                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">{t('sections.property_overview')}</h3>
+                                                <div className={`bg-white text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line font-light mb-10 transition-all duration-300 ease-in-out relative ${!isDescriptionExpanded ? 'max-h-[500px] overflow-hidden' : ''}`}>
+                                                    <div dangerouslySetInnerHTML={{ __html: post.property_overview }} />
+                                                    {!isDescriptionExpanded && (
+                                                        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                                                    )}
+                                                </div>
+
+                                                <div className="flex justify-center mb-14">
+                                                    <button
+                                                        onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+                                                        className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white border border-[#111954]/10 rounded-full text-[#111954] font-medium hover:bg-[#111954]/5 transition-colors duration-300"
+                                                    >
+                                                        {isDescriptionExpanded ? (
+                                                            <>
+                                                                {t('buttons.read_less')}
+                                                                <ChevronUp size={18} />
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                {t('buttons.read_more')}
+                                                                <ChevronDown size={18} />
+                                                            </>
+                                                        )}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {/* Rich Amenities Grid */}
+                                        {amenities ? (
+                                            <>
+                                                <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.amenities')}</h4>
+                                                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                                                    {(showAllAmenities ? amenities.slice(0, -1) : amenities.slice(0, -1).slice(0, 20)).map((am: string, i: number) => (
+                                                        <div key={i} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                                                            <CheckCircle2 className="text-secondary shrink-0" size={20} />
+                                                            <span className="text-gray-700 font-medium">{am.split('^')[1].trim()}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                                {amenities.slice(0, -1).length > 20 && (
+                                                    <div className="mt-8 flex justify-center">
+                                                        <button
+                                                            onClick={() => setShowAllAmenities(!showAllAmenities)}
+                                                            className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white border border-[#111954]/10 rounded-full text-[#111954] font-medium hover:bg-[#111954]/5 transition-colors duration-300"
+                                                        >
+                                                            {showAllAmenities ? (
+                                                                <>
+                                                                    {t('buttons.view_less')}
+                                                                    <ChevronUp size={18} />
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    {t('buttons.view_more')} ({amenities.length})
+                                                                    <ChevronDown size={18} />
+                                                                </>
+                                                            )}
+                                                        </button>
+                                                    </div>
+                                                )}
+
+                                            </>
+                                        ) : ("")}
+
+                                        {/* Payment Plans Grid */}
+                                        {amenities ? (
+                                            <>
+                                                <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.payment_plans')}</h4>
+                                                <div className=" mb-10">
+                                                    <PaymentPlans
+                                                        propid={post.property_Pk}
+                                                    />
+                                                </div>
+                                            </>
+                                        ) : ("")}
+
+                                        {/* Mortgage Calculator Grid */}
+                                        {category == "Sale" ? (
+                                            <div className="">
+                                                <MortgageCalculator basePrice={price} />
+                                            </div>) : ("")}
+
+                                        <div className="mt-8 md:mt-12">
+                                            <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.faq')}</h4>
+                                            <AccordionTabs items={faqData} />
                                         </div>
 
                                         <div className="mt-8 hidden">
@@ -430,7 +461,7 @@ export default function UnitPageAI(props: any) {
                                                     </button>
                                                 </div>
                                             </div>
-                                            
+
                                             <ListPopUpWidget />
                                         </Sticky>
                                     </div>
