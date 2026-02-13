@@ -497,7 +497,8 @@
     "heroBreadcrumb": "首页 > 对比",
     "unlockSection": {
       "title": "对比房产",
-      "description": "对比列表为空。请添加房产以进行并排对比。"
+      "description": "对比列表为空。请添加房产以进行并排对比。",
+      "clear-all": "清除全部"
     }
   },
   "favorites_page": {
@@ -1726,8 +1727,9 @@
   },
   "UnitProperties": {
     "tabs": {
-      "details": "房产详情",
+      "details": "单位详情",
       "description": "描述",
+      "overview": "房产概览",
       "unit_details": "单位详情"
     },
     "buttons": {
@@ -1763,7 +1765,9 @@
       "amenities": "设施",
       "payment_plans": "付款计划",
       "faq": "常见问题",
-      "similar_units": "类似单位"
+      "similar_units": "类似单位",
+      "property_overview": "房产概览",
+      "unit_overview": "单位概览"
     },
     "faq": {
       "questions": {

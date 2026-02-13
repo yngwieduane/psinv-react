@@ -402,7 +402,8 @@
     "heroTitle": "COMPARE",
     "metadata": {
       "title": "Compare Properties in UAE | PSI",
-      "description": "Compare real estate properties in the UAE by price, location, size, and features. Find the right property for your needs with PSI."
+      "description": "Compare real estate properties in the UAE by price, location, size, and features. Find the right property for your needs with PSI.",
+      "clear-all":"Clear All"
     },
     "heroBreadcrumb": "Home > Compare",
     "unlockSection": {
@@ -6500,8 +6501,9 @@
   },
   "UnitProperties": {
     "tabs": {
-      "details": "Property Details",
+      "details": "Unit Details",
       "description": "Description",
+      "overview": "Property Overview",
       "unit_details": "Unit Details"
     },
     "buttons": {
@@ -6537,7 +6539,9 @@
       "amenities": "Amenities",
       "payment_plans": "Payment Plans",
       "faq": "Frequently Asked Questions",
-      "similar_units": "Similar Units"
+      "similar_units": "Similar Units",
+      "property_overview": "Property Overview",
+      "unit_overview": "Unit Overview"
     },
     "faq": {
       "questions": {

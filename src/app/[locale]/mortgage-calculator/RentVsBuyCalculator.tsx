@@ -27,8 +27,8 @@ Chart.register(
 
 type Props = {
   modal: boolean;
-  onOpenModal : () => void;
-  onModalUpdate : (value: boolean) => void;  
+  onOpenModal: () => void;
+  onModalUpdate: (value: boolean) => void;
 }
 
 
@@ -101,8 +101,8 @@ export default function RentVsBuyCalculator({
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Form Panel */}
-        <div className="bg-white p-6 rounded-2xl shadow-md">
-          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">{t("rentVsBuyTab.Title")}</h2>
+        <div className="bg-white p-6 rounded-2xl shadow-md dark:bg-neutral-800">
+          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356] dark:text-white">{t("rentVsBuyTab.Title")}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <InputSlider label={t("rentVsBuyTab.Currentmonthlyrent")} value={monthlyRent} setValue={setMonthlyRent} suffix={t("aed")} min={0} max={50000} />
@@ -141,16 +141,16 @@ export default function RentVsBuyCalculator({
               </div>
             </div>
             <button
-  onClick={() => {
-    const minPrice = Math.floor(propertyPrice);
-    const maxPrice = Math.ceil(propertyPrice + 200000); // buffer range
-    const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
-    window.location.href = url;
-  }}
-  className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition mb-2"
->
-  {t("rentVsBuyTab.Viewsaleunits")}
-</button>
+              onClick={() => {
+                const minPrice = Math.floor(propertyPrice);
+                const maxPrice = Math.ceil(propertyPrice + 200000); // buffer range
+                const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
+                window.location.href = url;
+              }}
+              className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition mb-2"
+            >
+              {t("rentVsBuyTab.Viewsaleunits")}
+            </button>
 
             <br />
             <button onClick={onOpenModal} className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition">{t("GetApproval")}</button>
@@ -172,15 +172,15 @@ function InputSlider({ label, value, setValue, suffix, min, max, step = 1 }: {
 }) {
   return (
     <div className="mb-6">
-      <label className="block text-gray-600 mb-2 text-sm">{label}</label>
-      <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white w-full mb-2">
+      <label className="block text-gray-600 mb-2 text-sm dark:text-white">{label}</label>
+      <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white w-full mb-2 dark:bg-neutral-800">
         <input
           type="number"
           value={value}
           onChange={(e) => setValue(+e.target.value)}
-          className="w-full px-4 py-2 bg-white border-none focus:outline-none text-right"
+          className="w-full px-4 py-2 bg-white border-none focus:outline-none text-right dark:bg-neutral-800"
         />
-        <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{suffix}</span>
+        <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap dark:text-white dark:bg-neutral-800">{suffix}</span>
       </div>
       <Slider
         min={min}

@@ -165,7 +165,7 @@ export default function AutocompleteSearchWithOther({
                     onChange={handleInputChange}
                     onClick={handleInputClick}
                     autoComplete="off"
-                    className="col-start-1 row-start-1 block w-full rounded-xl bg-white/50 border border-gray-200 py-3.5 pr-10 pl-11 text-base text-gray-800 outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all duration-200 shadow-sm hover:bg-white/80"
+                    className="col-start-1 row-start-1 block w-full rounded-xl bg-white/50 dark:bg-gray-800 dark:text-white border border-gray-200 dark:border-gray-700 py-3.5 pr-10 pl-11 text-base text-gray-800 outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all duration-200 shadow-sm hover:bg-white/80"
                 />
                 <MagnifyingGlassIcon
                     aria-hidden="true"

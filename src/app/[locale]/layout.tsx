@@ -20,6 +20,7 @@ import AIChatWidgetClient from './_components/AIChatWidgetClient';
 import CompareFloatingButtonClient from "./_components/CompareFloatingButtonClient";
 import AuthModal from "./_components/AuthModal";
 import Script from "next/script";
+import { ThemeProvider } from "@/components/theme-provider";
 
 type Props = {
   children: React.ReactNode;
@@ -195,7 +196,7 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body className="antialiased" style={{ fontFamily: "Helvetica, Arial, sans-serif" }}>
         <script
           type="application/ld+json"
@@ -205,11 +206,13 @@ export default async function LocaleLayout({
           <AuthModal />
           <CurrencyProvider>
             <NextIntlClientProvider messages={messages}>
-              <ConditionalNavigation />
-              <Providers><main>{children}</main></Providers>
-              <ConditionalFooter />
-              <CompareFloatingButtonClient />
-              <AIChatWidgetClient />
+              <ThemeProvider attribute="class" defaultTheme="system" enableSystem={false}>
+                <ConditionalNavigation />
+                <Providers><main>{children}</main></Providers>
+                <ConditionalFooter />
+                <CompareFloatingButtonClient />
+                <AIChatWidgetClient />
+              </ThemeProvider>
             </NextIntlClientProvider>
           </CurrencyProvider>
         </UserProvider>

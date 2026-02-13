@@ -95,22 +95,22 @@ export default function AmortizationCalculator({
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side Form */}
-        <div className="bg-white p-6 rounded-2xl shadow-md">
-          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">{t("amortizationTab.title")}</h2>
+        <div className="bg-white p-6 rounded-2xl shadow-md dark:bg-neutral-800">
+          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356] dark:text-white">{t("amortizationTab.title")}</h2>
 
           {/* Loan Amount */}
           <div className="mb-6">
-            <label className="block text-gray-600 mb-2">{t("amortizationTab.LoanAmount")}</label>
+            <label className="block text-gray-600 mb-2 dark:text-white">{t("amortizationTab.LoanAmount")}</label>
             <div className="flex items-center gap-4">
               {/* Input Group */}
-              <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 shrink-0 w-[260px]">
+              <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 shrink-0 w-[260px] dark:bg-neutral-800">
                 <input
                   type="number"
                   value={loanAmount}
                   onChange={(e) => setLoanAmount(+e.target.value)}
                   className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
                 />
-                <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
+                <span className="bg-white dark:bg-neutral-700 px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
               </div>
 
               {/* Slider */}
@@ -141,19 +141,19 @@ export default function AmortizationCalculator({
             </div>
           </div>
           <div className="mb-6">
-            <label className="block text-gray-600 mb-2">{t("amortizationTab.LoanInterestRate")}</label>
+            <label className="block text-gray-600 mb-2 dark:text-white">{t("amortizationTab.LoanInterestRate")}</label>
 
             <div className="flex items-center gap-4">
               {/* Input Box */}
-              <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0">
+              <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-[260px] shrink-0 dark:bg-neutral-800">
                 <input
                   type="number"
                   step="0.01"
                   value={interestRate}
                   onChange={(e) => setInterestRate(+e.target.value)}
-                  className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
+                  className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right dark:text-white dark:bg-neutral-800"
                 />
-                <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">%</span>
+                <span className="bg-white dark:bg-neutral-700 px-4 py-2 border-l border-gray-300 whitespace-nowrap dark:text-white">%</span>
               </div>
 
               {/* Slider */}
@@ -186,7 +186,7 @@ export default function AmortizationCalculator({
 
 
           <div className="mb-6">
-            <label className="block text-gray-600 mb-2">{t("amortizationTab.LoanTermYears")}</label>
+            <label className="block text-gray-600 mb-2 dark:text-white">{t("amortizationTab.LoanTermYears")}</label>
 
             <div className="flex items-center gap-4">
               {/* Input Box */}
@@ -195,9 +195,9 @@ export default function AmortizationCalculator({
                   type="number"
                   value={loanTerm}
                   onChange={(e) => setLoanTerm(+e.target.value)}
-                  className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
+                  className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right dark:text-white dark:bg-neutral-800"
                 />
-                <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("amortizationTab.Years")}</span>
+                <span className="bg-white dark:bg-neutral-700 px-4 py-2 border-l border-gray-300 whitespace-nowrap dark:text-white">{t("amortizationTab.Years")}</span>
               </div>
 
               {/* Slider */}
@@ -230,11 +230,11 @@ export default function AmortizationCalculator({
 
           {/* Early Payment Section */}
           <div className="mt-10">
-            <p className="text-black font-bold mb-2">{t("amortizationTab.EarlyPayment")}</p>
-            <p className="text-gray-400 mb-4 text-sm">{t("amortizationTab.EffectOfLargerPayment")}</p>
+            <p className="text-black dark:text-white font-bold mb-2">{t("amortizationTab.EarlyPayment")}</p>
+            <p className="text-gray-400 dark:text-neutral-400 mb-4 text-sm">{t("amortizationTab.EffectOfLargerPayment")}</p>
 
             <div className="mb-6">
-              <label className="block text-gray-600 mb-2">{t("amortizationTab.PaymentAmount")}</label>
+              <label className="block text-gray-600 dark:text-white mb-2">{t("amortizationTab.PaymentAmount")}</label>
 
               <div className="flex items-center gap-4">
                 {/* Input Group */}
@@ -245,7 +245,7 @@ export default function AmortizationCalculator({
                     onChange={(e) => setEarlyPayment(+e.target.value)}
                     className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
                   />
-                  <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
+                  <span className="bg-white dark:bg-neutral-700 px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
                 </div>
 
                 {/* Slider */}
@@ -278,7 +278,7 @@ export default function AmortizationCalculator({
 
 
             <div className="mb-6">
-              <label className="block text-gray-600 mb-2">{t("amortizationTab.MadeAfterMonth")}</label>
+              <label className="block text-gray-600 mb-2 dark:text-white">{t("amortizationTab.MadeAfterMonth")}</label>
 
               <div className="flex items-center gap-4">
                 {/* Input Group */}
@@ -289,7 +289,7 @@ export default function AmortizationCalculator({
                     onChange={(e) => setMadeAfterMonth(+e.target.value)}
                     className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
                   />
-                  <span className="px-4 text-gray-500 bg-white">{t("amortizationTab.Months")}</span>
+                  <span className="bg-white dark:bg-neutral-700 px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("amortizationTab.Months")}</span>
                 </div>
 
                 {/* Slider */}

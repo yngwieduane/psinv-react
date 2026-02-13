@@ -9,9 +9,9 @@ import { useTranslations } from 'next-intl';
 Chart.register(ArcElement, Tooltip);
 
 type Props = {
-  modal : boolean;
-  onOpenModal : () => void;
-  onModalUpdate : (value: boolean) => void;
+  modal: boolean;
+  onOpenModal: () => void;
+  onModalUpdate: (value: boolean) => void;
 }
 
 export default function RefinancingCalculator({
@@ -37,10 +37,10 @@ export default function RefinancingCalculator({
   const newLoanAmount = currentPropertyValue - currentEstimated + feesToObtainNewLoan;
   const mortgageCost = currentLoanBalance + earlySettlementFees;
 
-  const refinanceMonthlyPayment = newLoanAmount * (newLoanInterestRate / 100 / 12) / 
+  const refinanceMonthlyPayment = newLoanAmount * (newLoanInterestRate / 100 / 12) /
     (1 - Math.pow(1 + (newLoanInterestRate / 100 / 12), -(termOfNewLoan * 12)));
 
-  const oldMonthlyPayment = currentMonthlyPayments > 0 ? currentMonthlyPayments : 
+  const oldMonthlyPayment = currentMonthlyPayments > 0 ? currentMonthlyPayments :
     (currentLoanBalance * (currentLoanInterestRate / 100 / 12)) /
     (1 - Math.pow(1 + (currentLoanInterestRate / 100 / 12), -(termOfNewLoan * 12)));
 
@@ -54,13 +54,13 @@ export default function RefinancingCalculator({
     if (!chartRef.current) return;
     const ctx = chartRef.current.getContext('2d');
     if (!ctx) return;
-  
+
     if (chartInstance.current) {
       chartInstance.current.data.datasets[0].data = [100, 0];
       chartInstance.current.update();
       return;
     }
-  
+
     chartInstance.current = new Chart(ctx, {
       type: 'doughnut',
       data: {
@@ -88,16 +88,16 @@ export default function RefinancingCalculator({
         maintainAspectRatio: false,
       },
     });
-  }, [refinanceMonthlyPayment]); 
+  }, [refinanceMonthlyPayment]);
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Form */}
-        <div className="bg-white p-6 rounded-2xl shadow-md">
-          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">{t("refinancingTab.title")}</h2>
+        <div className="bg-white p-6 rounded-2xl shadow-md dark:bg-neutral-800">
+          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356] dark:text-white">{t("refinancingTab.title")}</h2>
 
           {/* Mortgage Information */}
-          <p className="text-lg font-semibold mb-4">{t("refinancingTab.MortgageInformation")}</p>
+          <p className="text-lg font-semibold mb-4 dark:text-white">{t("refinancingTab.MortgageInformation")}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <InputSlider label={t("refinancingTab.CurrentLoanBalance")} value={currentLoanBalance} setValue={setCurrentLoanBalance} suffix={t("aed")} min={0} max={10000000} />
             <InputSlider label={t("refinancingTab.CurrentMonthlyPayments")} value={currentMonthlyPayments} setValue={setCurrentMonthlyPayments} suffix={t("aed")} min={0} max={1000000} />
@@ -107,7 +107,7 @@ export default function RefinancingCalculator({
           </div>
 
           {/* Refinance Information */}
-          <p className="text-lg font-semibold mt-8 mb-4">{t("refinancingTab.RefinanceInformation")}</p>
+          <p className="text-lg font-semibold mt-8 mb-4 dark:text-white">{t("refinancingTab.RefinanceInformation")}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <InputSlider label={t("refinancingTab.CurrentPropertyValue")} value={currentPropertyValue} setValue={setCurrentPropertyValue} suffix={t("aed")} min={0} max={10000000} />
             <InputSlider label={t("refinancingTab.CurrentEstimated")} value={currentEstimated} setValue={setCurrentEstimated} suffix={t("aed")} min={0} max={10000000} />
@@ -153,16 +153,16 @@ export default function RefinancingCalculator({
             <p className="text-sm">{t("refinancingTab.BreakMonth")}</p>
             <p className="text-2xl font-bold mb-4">{isFinite(breakMonth) ? breakMonth : 0} {t("refinancingTab.Month(s)")}</p>
             <button
-  onClick={() => {
-    const minPrice = Math.floor(newLoanAmount);
-    const maxPrice = Math.ceil(newLoanAmount + 200000);
-    const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
-    window.location.href = url;
-  }}
-  className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition mb-2"
->
-  {t("ViewUnits")}
-</button>
+              onClick={() => {
+                const minPrice = Math.floor(newLoanAmount);
+                const maxPrice = Math.ceil(newLoanAmount + 200000);
+                const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
+                window.location.href = url;
+              }}
+              className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition mb-2"
+            >
+              {t("ViewUnits")}
+            </button>
 
             <br />
             <button onClick={onOpenModal} className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition">{t("GetApproval")}</button>
@@ -184,7 +184,7 @@ function InputSlider({ label, value, setValue, suffix, min, max, step = 1 }: {
 }) {
   return (
     <div className="mb-6">
-      <label className="block text-gray-600 mb-2 text-sm">{label}</label>
+      <label className="block text-gray-600 mb-2 dark:text-white text-sm">{label}</label>
       <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white-100 w-full mb-2">
         <input
           type="number"
@@ -192,7 +192,7 @@ function InputSlider({ label, value, setValue, suffix, min, max, step = 1 }: {
           onChange={(e) => setValue(+e.target.value)}
           className="w-full px-4 py-2 bg-white-100 border-none focus:outline-none text-right"
         />
-        <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{suffix}</span>
+        <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap dark:text-white dark:bg-neutral-800">{suffix}</span>
       </div>
       <Slider
         min={min}

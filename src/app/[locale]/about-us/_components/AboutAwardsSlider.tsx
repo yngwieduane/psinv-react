@@ -114,9 +114,9 @@ const AboutAwardsSlider = () => {
                     className="object-contain mix-blend-multiply transition-transform duration-300 hover:scale-110"
                   />
                 </div>
-                <p className="font-bold text-gray-800 mb-1 text-lg">{slide.title1}</p>
-                <p className="font-bold text-gray-800 mb-1 text-lg">{slide.title2}</p>
-                <p className="text-xs text-gray-500 uppercase">{slide.title3}</p>
+                <p className="font-bold text-gray-800 mb-1 text-lg dark:text-white">{slide.title1}</p>
+                <p className="font-bold text-gray-800 mb-1 text-lg dark:text-white">{slide.title2}</p>
+                <p className="text-xs text-gray-500 uppercase dark:text-white">{slide.title3}</p>
               </div>
             </SwiperSlide>
           ))}

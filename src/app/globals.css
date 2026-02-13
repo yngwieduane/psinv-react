@@ -1,8 +1,16 @@
 @import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+  }
+
+  .dark {
+    --background: #171717;
+    --foreground: #ffffff;
+  }
 }
 
 @theme {
@@ -17,12 +25,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: #171717;
-  }
+.dark {
+  --background: #171717;
+  --foreground: #ffffff;
 }
 
 body {

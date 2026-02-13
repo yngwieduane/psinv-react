@@ -387,7 +387,8 @@
     "heroBreadcrumb": "الرئيسية > مقارنة",
     "unlockSection": {
       "title": "قارن العقارات",
-      "description": "قائمة المقارنة فارغة. أضف عقارات لمقارنتها جنبًا إلى جنب."
+      "description": "قائمة المقارنة فارغة. أضف عقارات لمقارنتها جنبًا إلى جنب.",
+      "clear-all": "مسح الكل"
     }
   },
   "favorites_page": {
@@ -5993,8 +5994,9 @@
   },
   "UnitProperties": {
     "tabs": {
-      "details": "تفاصيل العقار",
+      "details": "تفاصيل الوحدة",
       "description": "الوصف",
+      "overview": "نظرة عامة على العقار",
       "unit_details": "تفاصيل الوحدة"
     },
     "buttons": {
@@ -6030,7 +6032,9 @@
       "amenities": "المرافق",
       "payment_plans": "خطط الدفع",
       "faq": "الأسئلة الشائعة",
-      "similar_units": "وحدات مشابهة"
+      "similar_units": "وحدات مشابهة",
+      "property_overview": "نظرة عامة على العقار",
+      "unit_overview": "نظرة عامة على الوحدة"
     },
     "faq": {
       "questions": {

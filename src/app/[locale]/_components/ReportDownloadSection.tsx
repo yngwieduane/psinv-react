@@ -33,13 +33,12 @@ export default function ReportDownloadSection(props: any) {
     <>
       <div className="report pb-10 pt-25" dir={isRTL ? "rtl" : "ltr"}>
         <div className="container mx-auto px-4 md:px-8">
-          <div className="flex flex-col-reverse md:flex-row items-center lg:h-[340px]
-        bg-white rounded-3xl p-8 md:p-0 shadow-lg flex ">
+          <div className="flex flex-col-reverse md:flex-row items-center lg:h-[340px] bg-white rounded-3xl p-8 md:p-0 shadow-lg flex dark:bg-neutral-800">
 
             {/* Left Column - Text and Button */}
-            <div className="w-full md:w-2/3 lg:w-1/2 text-center md:text-left px-4 md:px-12 mb-6 md:mb-0">
+            <div className="w-full md:w-2/3 lg:w-1/2 text-center md:text-left px-4 md:px-12 mb-6 md:mb-0 dark:text-white">
               <p className={`text-gray-500 uppercase tracking-widest text-sm mb-2 ${outfit.className}`}>{t("title")}</p>
-              <p className="text-2xl md:text-3xl font-bold text-gray-900 lg:mb-8 mb-4">{t("desc")}</p>
+              <p className="text-2xl md:text-3xl font-bold text-gray-900 lg:mb-8 mb-4 dark:text-white">{t("desc")}</p>
 
               <button
                 className="mt-4 relative text-md lg:text-lg overflow-hidden rounded bg-orange-700 px-5 py-2.5 text-white transition-all duration-300 hover:bg-orange-800 hover:ring-2 hover:ring-orange-800 hover:ring-offset-2 cursor-pointer font-semibold"

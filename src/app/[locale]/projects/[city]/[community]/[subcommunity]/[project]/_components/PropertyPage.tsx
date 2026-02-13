@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFormatter, useTranslations } from 'next-intl';
 import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import UnitModels from "./UnitModels";
@@ -27,15 +27,27 @@ import UnitModelsAI from './UnitModelsAI';
 import { useRouter, usePathname } from "next/navigation";
 import PhotoGallery from './PhotoGallery';
 import BrochureModal from './BrochureModal';
+import slugify from 'react-slugify';
+import { Link } from '@/i18n/navigation';
 
 
-const PropertyPage = (props: any) => {
+function PropertyPage(props: any) {
     const router = useRouter();
     const pathname = usePathname();
     const format = useFormatter();
-    const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
+    const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared, addToRecentlyViewed } = useUser();
     const { convertPrice } = useCurrency();
     let HOdate, launchDate, completionDate, minprice, maxPrice, areaRangeMin, areaRangeMax;
+
+    useEffect(() => {
+        if (props.data) {
+            addToRecentlyViewed({
+                id: props.data["propertyID"],
+                type: 'project',
+                data: props.data
+            });
+        }
+    }, [props.data]);
     const [activeTab, setActiveTab] = useState('Overview');
     const [activeFloorPlan, setActiveFloorPlan] = useState(0);
     const [showDrawer, setShowDrawer] = useState(false);
@@ -48,7 +60,7 @@ const PropertyPage = (props: any) => {
         setDwDataContent(valuesarray);
         setDwDataTitle(content);
         setShowDrawer(true);
-    }
+    };
     const t = useTranslations('ProjectPage');
 
     const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'] : ("");
@@ -94,7 +106,7 @@ const PropertyPage = (props: any) => {
     if (props.data['availableBedrooms']) {
         props.data['availableBedrooms'].forEach((array: any) => {
             availbeds += array.noOfBedroom;
-            availbeds += ','
+            availbeds += ',';
         });
         availbeds = availbeds.slice(0, availbeds.length - 1);
     }
@@ -102,7 +114,7 @@ const PropertyPage = (props: any) => {
     if (props.data['propertyUnitTypes']) {
         props.data['propertyUnitTypes'].forEach((array: any) => {
             availtype += array.unitType;
-            availtype += ','
+            availtype += ',';
         });
         availtype = availtype.slice(0, availtype.length - 1);
     }
@@ -160,17 +172,24 @@ const PropertyPage = (props: any) => {
 
     if (props.data["minPrice"] !== null && parseInt(props.data["minPrice"]) > 1) {
         minprice = convertPrice(props.data["minPrice"]).formatted;
-    } else { minprice = "" }
+    } else { minprice = ""; }
     if (props.data["maxPrice"] !== null && parseInt(props.data["maxPrice"]) > 1) {
         maxPrice = convertPrice(props.data["maxPrice"]).formatted;
-    } else { maxPrice = "" }
+    } else { maxPrice = ""; }
     if (props.data["areaRangeMin"] !== null && parseInt(props.data["areaRangeMin"]) > 1) {
         areaRangeMin = format.number(props.data["areaRangeMin"]);
-    } else { areaRangeMin = "" }
+    } else { areaRangeMin = ""; }
     if (props.data["areaRangeMax"] !== null && parseInt(props.data["areaRangeMax"]) > 1) {
         areaRangeMax = format.number(props.data["areaRangeMax"]);
-    } else { areaRangeMax = "" }
-
+    } else { areaRangeMax = ""; }
+    {
+        props.data['masterDeveloper'] ? (
+            <TableRow
+                title={t('master_developer')}
+                content={props.data['masterDeveloper']}
+            />
+        ) : ("")
+    }
     const jsonLd = {
         "@context": "https://schema.org/",
         "@type": "Product",
@@ -203,13 +222,23 @@ const PropertyPage = (props: any) => {
             "name": `Video Tour of ${props.data["propertyName"]}`,
             "description": `Walkthrough video of ${props.data["propertyName"]} in ${props.data["community"]}`,
             "thumbnailUrl": [imgFeatured],
-            "uploadDate": new Date().toISOString(), // Fallback as we might not have upload date
+            "uploadDate": new Date().toISOString(),
             "contentUrl": video
         };
     }
 
     const tabs = ['Overview', 'Gallery', 'Payment Plan', 'Floor Plans', 'Location', 'Nearby'];
-
+    //Check if the area is there or not and display accordingly
+    const min = Number(String(areaRangeMin).replace(/,/g, ""));
+    const max = Number(String(areaRangeMax).replace(/,/g, ""));
+    let areaText = "";
+        if (min > 0 && max > 0) {
+        areaText = `${min} ~ ${max} Sqft`;
+        } else if (min > 0) {
+        areaText = `From ${min} Sqft`;
+        } else if (max > 0) {
+        areaText = `Up to ${max} Sqft`;
+        }
     const scrollToSection = (id: string) => {
         setActiveTab(id);
         const element = document.getElementById(id.toLowerCase().replace(' ', '-'));
@@ -219,13 +248,11 @@ const PropertyPage = (props: any) => {
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-            />
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             {videoJsonLd && (
                 <script
                     type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
-                />
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }} />
             )}
 
             <div id={props.data["propertyID"]} className="hidden">
@@ -249,7 +276,10 @@ const PropertyPage = (props: any) => {
                             <div className="max-w-3xl w-full">
                                 <div className="flex flex-wrap items-center gap-3 mb-4">
                                     <span className="bg-secondary px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider rounded">{t('status')}: {props.data["propertyPlan"]}</span>
-                                    <span className="bg-white/20 backdrop-blur-md border border-white/30 px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider rounded">{props.data["masterDeveloper"]}</span>
+                                    {props.data["masterDeveloper"] && (
+                                        <Link href={`/developer/${slugify(props.data["masterDeveloper"])}`} className="bg-white/20 backdrop-blur-md border border-white/30 px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider rounded">{props.data["masterDeveloper"]}
+                                            </Link>
+                                    )}
                                 </div>
                                 <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold mb-4 drop-shadow-lg leading-tight">{props.data["propertyName"]}</h1>
                                 <div className="flex items-center gap-2 text-lg md:text-2xl text-gray-200 font-light mb-6 md:mb-8">
@@ -258,7 +288,11 @@ const PropertyPage = (props: any) => {
                                 </div>
                                 <div className="flex flex-wrap gap-4 md:gap-6 text-sm md:text-base font-medium text-gray-300">
                                     <span className="flex items-center gap-2"><BedDouble size={20} /> {availbeds}</span>
-                                    <span className="flex items-center gap-2"><Square size={20} />{areaRangeMin} ~ {areaRangeMax} Sqft</span>
+                                    {areaText && (
+                                        <span className="flex items-center gap-2"> <Square size={20} />
+                                            {areaText}
+                                        </span>
+                                     )}
                                 </div>
 
                                 <div className="flex gap-4 mt-8">
@@ -300,19 +334,26 @@ const PropertyPage = (props: any) => {
                                 }).map((tab) => {
                                     //if(tab === 'Location' && props.data["communityMapAndMasterPlan"] !== null && props.data["locationMapImages"] !== null) return null;
                                     let tabLabel = tab;
-                                    if (tab === 'Overview') tabLabel = t('overview');
-                                    else if (tab === 'Gallery') tabLabel = t('gallery');
-                                    else if (tab === 'Payment Plan') tabLabel = t('payment_plan');
-                                    else if (tab === 'Floor Plans') tabLabel = t('floor_plan');
-                                    else if (tab === 'Location') tabLabel = t('location');
-                                    else if (tab === 'Nearby') tabLabel = t('nearby');
-                                    else if (tab === 'Developer') tabLabel = t('developer');
+                                    if (tab === 'Overview')
+                                        tabLabel = t('overview');
+                                    else if (tab === 'Gallery')
+                                        tabLabel = t('gallery');
+                                    else if (tab === 'Payment Plan')
+                                        tabLabel = t('payment_plan');
+                                    else if (tab === 'Floor Plans')
+                                        tabLabel = t('floor_plan');
+                                    else if (tab === 'Location')
+                                        tabLabel = t('location');
+                                    else if (tab === 'Nearby')
+                                        tabLabel = t('nearby');
+                                    else if (tab === 'Developer')
+                                        tabLabel = t('developer');
 
                                     return (
                                         <button key={tab} onClick={() => scrollToSection(tab)} className={`cursor-pointer px-4 md:px-6 py-4 md:py-5 text-xs md:text-sm font-bold uppercase tracking-wider border-b-4 transition-all hover:text-secondary ${activeTab === tab ? 'border-secondary text-secondary' : 'border-transparent text-gray-500'}`}>
                                             {tabLabel}
                                         </button>
-                                    )
+                                    );
                                 })}
                             </div>
                         </div>
@@ -327,7 +368,7 @@ const PropertyPage = (props: any) => {
                                 <div className="lg:w-7/12">
                                     <h3 className="text-3xl  font-bold text-primary mb-6 md:mb-8">{t('overview')}</h3>
                                     <div className="prose prose-lg text-gray-600 leading-relaxed max-w-none font-light">
-                                        <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]} amountOfWords={100} classes="whitespace-break-spaces" />
+                                        <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]?.replace(/&nbsp;|\u00A0/g, " ").replace(/&rsquo;/g, "'").replace(/<\/?p>/g, "")} amountOfWords={100} classes="whitespace-break-spaces" />
 
                                         {/* Construction Update (New Rich Feature) */}
                                         <div className="bg-white p-6 rounded-xl border border-gray-200 mt-8 mb-8 hidden">
@@ -373,7 +414,7 @@ const PropertyPage = (props: any) => {
                                         <div className="p-2">
                                             {availbeds ? (<TableRow title={t('available_bedrooms')} content={availbeds} />) : ("")}
                                             {availtype ? (<TableRow title={t('property_types')} content={availtype} />) : ("")}
-                                            {props.data['masterDeveloper'] ? (<TableRow title={t('master_developer')} content={props.data['masterDeveloper']} />) : ("")}
+                                            {props.data['masterDeveloper'] && <TableRow title={t('master_developer')} content={<Link href={`/developer/${slugify(props.data['masterDeveloper'])}`} className="text-primary hover:underline font-medium">{props.data['masterDeveloper']}</Link>} />}
                                             {props.data['minPrice'] ? (<TableRow title={t('price_range')} content={`${minprice} ~ ${maxPrice}`} />) : ("")}
                                             {props.data['areaRangeMin'] ? (<TableRow title={t('area_range')} content={`${areaRangeMin} ~ ${areaRangeMax}`} />) : ("")}
                                             {props.data['numberOfApartment'] && String(props.data['numberOfApartment']) !== '0' ? (<TableRow title={t('number_of_apartment')} content={props.data['numberOfApartment']} />) : ("")}
@@ -424,8 +465,7 @@ const PropertyPage = (props: any) => {
                             <UnitModelsAI
                                 data={fpGroup}
                                 propname={props.data["propertyName"]}
-                                viewAllLink={`${pathname}/floor-plan`}
-                            />
+                                viewAllLink={`${pathname}/floor-plan`} />
                         </div>) : ("")}
 
                         {/* Master Plan & Location Map */}
@@ -488,15 +528,13 @@ const PropertyPage = (props: any) => {
                             <AvailableUnits
                                 propid={props.data["propertyID"]}
                                 category="Sale"
-                                display={4}
-                            />
+                                display={4} />
                         </div>
                         <div className="">
                             <AvailableUnits
                                 propid={props.data["propertyID"]}
                                 category="Rent"
-                                display={4}
-                            />
+                                display={4} />
                         </div>
 
                         <div className="" id="nearby">
@@ -504,16 +542,14 @@ const PropertyPage = (props: any) => {
                                 latitude={props.data["mapLatitude"]}
                                 longitude={props.data["mapLongitude"]}
                                 distance={10}
-                                propname={props.data["propertyName"]}
-                            />
+                                propname={props.data["propertyName"]} />
                         </div>
 
                         {/* Payment Plan (New Rich Feature) */}
                         <section id="payment-plan" className="scroll-mt-40">
                             <PaymentPlansAI
                                 propid={props.data["propertyID"]}
-                                propname={props.data["propertyName"]}
-                            />
+                                propname={props.data["propertyName"]} />
                         </section>
 
                         <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
@@ -531,8 +567,7 @@ const PropertyPage = (props: any) => {
                     closeModal={() => setBrochureModalOpen(false)}
                     brochureUrl={props.data["projectBrochures"][0]['imageURL']}
                     propertyName={props.data["propertyName"]}
-                    image={imgFeatured}
-                />
+                    image={imgFeatured} />
             )}
         </>
     );

@@ -6,11 +6,13 @@ import { useUser } from '@/context/userContext';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import slugify from 'react-slugify';
+import { useLocale, useTranslations } from "next-intl";
 import { generateSeoData } from '../../_components/functions/generateSeoData';
 
 import { useCurrency } from '@/context/currencyContext';
 
 const ComparePage: React.FC<{}> = ({ }) => {
+    const t = useTranslations("Compare_page");
     const { compareList, removeFromCompare, clearCompareList } = useUser();
     const { convertPrice, currency } = useCurrency();
     const [activeTab, setActiveTab] = useState<'project' | 'units'>('units');
@@ -86,8 +88,8 @@ const ComparePage: React.FC<{}> = ({ }) => {
             <div className="min-h-screen pt-40 pb-20 container mx-auto px-6 text-center">
                 <div className="bg-gray-50 rounded-3xl p-20 flex flex-col items-center">
                     <Shuffle size={64} className="text-gray-300 mb-6" />
-                    <h1 className="text-3xl font-serif font-bold text-gray-800 mb-2">Compare Properties</h1>
-                    <h2 className="text-gray-500 text-lg">Your comparison list is empty. Add properties to compare them side-by-side.</h2>
+                    <h1 className="text-3xl font-serif font-bold text-gray-800 mb-2">{ t('unlockSection.title') }</h1>
+                    <h2 className="text-gray-500 text-lg">{ t('unlockSection.description') }</h2>
                 </div>
             </div>
         );
@@ -97,7 +99,7 @@ const ComparePage: React.FC<{}> = ({ }) => {
         <div className="min-h-screen pt-40 pb-20 bg-white">
             <div className="container mx-auto px-6 md:px-12">
                 <div className="flex flex-col md:flex-row justify-between items-end md:items-center mb-12 gap-6">
-                    <h1 className="text-4xl font-serif font-bold text-primary">Compare Properties</h1>
+                    <h1 className="text-4xl font-serif font-bold text-primary">{ t('unlockSection.title') }</h1>
 
                     <div className="flex items-center gap-4">
                         {/* Clear All */}
@@ -106,7 +108,7 @@ const ComparePage: React.FC<{}> = ({ }) => {
                                 onClick={clearCompareList}
                                 className="text-gray-400 hover:text-red-500 transition-colors flex items-center gap-2 text-sm font-medium"
                             >
-                                <X size={16} /> Clear All
+                                <X size={16} /> { t('unlockSection.clear-all') }
                             </button>
                         )}
 

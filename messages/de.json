@@ -497,7 +497,8 @@
     "heroBreadcrumb": "Home > Vergelijken",
     "unlockSection": {
       "title": "Vergelijk Vastgoed",
-      "description": "Je vergelijkingslijst is leeg. Voeg woningen toe om ze naast elkaar te vergelijken."
+      "description": "Je vergelijkingslijst is leeg. Voeg woningen toe om ze naast elkaar te vergelijken.",
+      "clear-all": "Alles wissen"
     }
   },
   "favorites_page": {
@@ -1650,8 +1651,9 @@
   },
   "UnitProperties": {
     "tabs": {
-      "details": "Immobiliendetails",
+      "details": "Einheitsdetails",
       "description": "Beschreibung",
+      "overview": "Immobilienübersicht",
       "unit_details": "Einheitsdetails"
     },
     "buttons": {
@@ -1687,7 +1689,9 @@
       "amenities": "Ausstattung",
       "payment_plans": "Zahlungspläne",
       "faq": "Häufig gestellte Fragen",
-      "similar_units": "Ähnliche Einheiten"
+      "similar_units": "Ähnliche Einheiten",
+      "property_overview": "Immobilienübersicht",
+      "unit_overview": "Einheitenübersicht"
     },
     "faq": {
       "questions": {

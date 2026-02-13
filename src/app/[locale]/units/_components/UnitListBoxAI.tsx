@@ -7,25 +7,34 @@ import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-
 import NumberConvert from "../../_components/tools/NumberConvert";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import Modals from "../../_components/tools/Modals";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUser } from "@/context/userContext";
-import { Heart, MapPin, Shuffle } from "lucide-react";
+import { Heart, Home, MapPin, Shuffle } from "lucide-react";
 import PreviewModal from "./PreviewModal";
 import { UnitListing } from "@/types/types";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export default function UnitListBoxAI(props: any) {
-    let images, price;
-    {
-        props.data.imageurl !== null
-            ? images = props.data.imageurl.split('|').slice(0, -1)
-            : images = '';
+    const [imgError, setImgError] = useState(false);
+
+    let images: string[] = [];
+    if (props.data.imageurl) {
+        images = props.data.imageurl.split('|').slice(0, -1);
     }
-    {
-        props.data.sellprice !== null
-            ? price = props.data.sellprice
-            : price = props.data.rent;
+
+    // Reset error state if data changes
+    useEffect(() => {
+        setImgError(false);
+    }, [props.data]);
+
+    const hasImage = !imgError && images.length > 0;
+
+    let price;
+    if (props.data.sellprice !== null) {
+        price = props.data.sellprice;
+    } else {
+        price = props.data.rent;
     }
 
     const t = useTranslations('Units');
@@ -65,13 +74,21 @@ export default function UnitListBoxAI(props: any) {
 
                 >
                     <Link href={`/unit/${props.seoUrl}`}>
-                        <Image
-                            src={images[0].split('?')[0]}
-                            alt={props.seoTitle}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            width={300}
-                            height={200}
-                        />
+                        {hasImage ? (
+                            <Image
+                                src={images[0].split('?')[0]}
+                                alt={props.seoTitle}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                width={300}
+                                height={200}
+                                onError={() => setImgError(true)}
+                            />
+                        ) : (
+                            <div className="flex flex-col items-center justify-center text-gray-400 h-full w-full bg-gray-50">
+                                <Home size={40} strokeWidth={1.5} />
+                                <span className="text-xs mt-2">No Available Image</span>
+                            </div>
+                        )}
                         <div className="absolute top-3 left-3 bg-secondary text-white text-xs font-bold px-2 py-1 rounded shadow-sm">
                             For {props.adType}
                         </div>

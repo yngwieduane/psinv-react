@@ -24,6 +24,7 @@ import { usePathname } from 'next/navigation';
 import CurrencySelector from './CurrencySelector';
 import HeaderSocial from './HeaderSocial';
 import ContactBranchSwitcherHeader from './ContactBranchSwitcherHeader';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 
 export type Page = '/en' | '/ar' | '/ru' | '/du' | '/zh';
@@ -701,6 +702,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                 <Heart size={20} />
                                 {favorites.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}
                             </Link>
+                            {/* <div className="h-4 w-px bg-current opacity-30"></div>
+                            <ThemeToggle /> */}
                             <div className="h-4 w-px bg-current opacity-30"></div>
                             {user ? (
                                 <div className="relative" onMouseEnter={() => setUserMenuOpen(true)} onMouseLeave={() => setUserMenuOpen(false)}>

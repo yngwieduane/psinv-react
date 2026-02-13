@@ -25,6 +25,8 @@ interface UserContextType {
   clearCompareList: () => void;
   isFavorite: (id: string) => boolean;
   isCompared: (id: string) => boolean;
+  recentlyViewed: SavedItem[];
+  addToRecentlyViewed: (item: SavedItem) => void;
   loading: boolean;
 }
 
@@ -39,6 +41,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [user, setUser] = useState<User | null>(null);
   const [favorites, setFavorites] = useState<SavedItem[]>([]);
   const [compareList, setCompareList] = useState<SavedItem[]>([]);
+  const [recentlyViewed, setRecentlyViewed] = useState<SavedItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
@@ -50,9 +53,11 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   useEffect(() => {
     const storedFavs = localStorage.getItem('psi_favorites');
     const storedCompare = localStorage.getItem('psi_compare');
+    const storedRecentlyViewed = localStorage.getItem('psi_recently_viewed');
 
     if (storedFavs) setFavorites(JSON.parse(storedFavs));
     if (storedCompare) setCompareList(JSON.parse(storedCompare));
+    if (storedRecentlyViewed) setRecentlyViewed(JSON.parse(storedRecentlyViewed));
 
     // Listen for auth state changes
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -90,6 +95,10 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             if (data.compareList) {
               setCompareList(data.compareList);
               console.log("Compare list restored from Firestore:", data.compareList.length);
+            }
+            if (data.recentlyViewed) {
+              setRecentlyViewed(data.recentlyViewed);
+              console.log("Recently Viewed restored from Firestore:", data.recentlyViewed.length);
             }
           } else {
             console.log("No user document found in Firestore");
@@ -146,6 +155,10 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   useEffect(() => {
     localStorage.setItem('psi_compare', JSON.stringify(compareList));
   }, [compareList]);
+
+  useEffect(() => {
+    localStorage.setItem('psi_recently_viewed', JSON.stringify(recentlyViewed));
+  }, [recentlyViewed]);
 
   const signInWithGoogle = async () => {
     setLoading(true);
@@ -323,6 +336,37 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
+  const addToRecentlyViewed = async (item: SavedItem) => {
+    let newList = [...recentlyViewed];
+
+    // Remove if already exists to move to top
+    const existingIndex = newList.findIndex(i => i.id === item.id);
+    if (existingIndex > -1) {
+      newList.splice(existingIndex, 1);
+    }
+
+    // Add to front
+    newList.unshift(item);
+
+    // Limit to 10
+    if (newList.length > 10) {
+      newList = newList.slice(0, 10);
+    }
+
+    setRecentlyViewed(newList);
+
+    // Sync to Firestore if user is logged in
+    if (user) {
+      try {
+        const safeList = sanitizeData(newList);
+        const userRef = doc(db, "users", user.id);
+        await setDoc(userRef, { recentlyViewed: safeList }, { merge: true });
+      } catch (e) {
+        console.error("Error syncing recently viewed to Firestore", e);
+      }
+    }
+  };
+
   const isFavorite = (id: string) => !!favorites.find(i => i.id === id);
   const isCompared = (id: string) => !!compareList.find(i => i.id === id);
 
@@ -347,6 +391,8 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       clearCompareList,
       isFavorite,
       isCompared,
+      recentlyViewed,
+      addToRecentlyViewed,
       loading
     }}>
       {children}
