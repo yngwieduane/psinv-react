@@ -228,7 +228,17 @@ function PropertyPage(props: any) {
     }
 
     const tabs = ['Overview', 'Gallery', 'Payment Plan', 'Floor Plans', 'Location', 'Nearby'];
-
+    //Check if the area is there or not and display accordingly
+    const min = Number(String(areaRangeMin).replace(/,/g, ""));
+    const max = Number(String(areaRangeMax).replace(/,/g, ""));
+    let areaText = "";
+        if (min > 0 && max > 0) {
+        areaText = `${min} ~ ${max} Sqft`;
+        } else if (min > 0) {
+        areaText = `From ${min} Sqft`;
+        } else if (max > 0) {
+        areaText = `Up to ${max} Sqft`;
+        }
     const scrollToSection = (id: string) => {
         setActiveTab(id);
         const element = document.getElementById(id.toLowerCase().replace(' ', '-'));
@@ -266,7 +276,10 @@ function PropertyPage(props: any) {
                             <div className="max-w-3xl w-full">
                                 <div className="flex flex-wrap items-center gap-3 mb-4">
                                     <span className="bg-secondary px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider rounded">{t('status')}: {props.data["propertyPlan"]}</span>
-                                    <span className="bg-white/20 backdrop-blur-md border border-white/30 px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider rounded">{props.data["masterDeveloper"]}</span>
+                                    {props.data["masterDeveloper"] && (
+                                        <Link href={`/developer/${slugify(props.data["masterDeveloper"])}`} className="bg-white/20 backdrop-blur-md border border-white/30 px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider rounded">{props.data["masterDeveloper"]}
+                                            </Link>
+                                    )}
                                 </div>
                                 <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold mb-4 drop-shadow-lg leading-tight">{props.data["propertyName"]}</h1>
                                 <div className="flex items-center gap-2 text-lg md:text-2xl text-gray-200 font-light mb-6 md:mb-8">
@@ -275,7 +288,11 @@ function PropertyPage(props: any) {
                                 </div>
                                 <div className="flex flex-wrap gap-4 md:gap-6 text-sm md:text-base font-medium text-gray-300">
                                     <span className="flex items-center gap-2"><BedDouble size={20} /> {availbeds}</span>
-                                    <span className="flex items-center gap-2"><Square size={20} />{areaRangeMin} ~{areaRangeMax} Sqft</span>
+                                    {areaText && (
+                                        <span className="flex items-center gap-2"> <Square size={20} />
+                                            {areaText}
+                                        </span>
+                                     )}
                                 </div>
 
                                 <div className="flex gap-4 mt-8">
@@ -351,7 +368,7 @@ function PropertyPage(props: any) {
                                 <div className="lg:w-7/12">
                                     <h3 className="text-3xl  font-bold text-primary mb-6 md:mb-8">{t('overview')}</h3>
                                     <div className="prose prose-lg text-gray-600 leading-relaxed max-w-none font-light">
-                                        <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]?.replace(/&nbsp;|\u00A0/g, " ").replace(/&rsquo;/g, "'")} amountOfWords={100} classes="whitespace-break-spaces" />
+                                        <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]?.replace(/&nbsp;|\u00A0/g, " ").replace(/&rsquo;/g, "'").replace(/<\/?p>/g, "")} amountOfWords={100} classes="whitespace-break-spaces" />
 
                                         {/* Construction Update (New Rich Feature) */}
                                         <div className="bg-white p-6 rounded-xl border border-gray-200 mt-8 mb-8 hidden">
