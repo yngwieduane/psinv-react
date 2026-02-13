@@ -415,8 +415,9 @@ function PropertyPage(props: any) {
                                             {availbeds ? (<TableRow title={t('available_bedrooms')} content={availbeds} />) : ("")}
                                             {availtype ? (<TableRow title={t('property_types')} content={availtype} />) : ("")}
                                             {props.data['masterDeveloper'] && <TableRow title={t('master_developer')} content={<Link href={`/developer/${slugify(props.data['masterDeveloper'])}`} className="text-primary hover:underline font-medium">{props.data['masterDeveloper']}</Link>} />}
-                                            {props.data['minPrice'] ? (<TableRow title={t('price_range')} content={`${minprice} ~ ${maxPrice}`} />) : ("")}
-                                            {props.data['areaRangeMin'] ? (<TableRow title={t('area_range')} content={`${areaRangeMin} ~ ${areaRangeMax}`} />) : ("")}
+                                            {(Number(props.data['minPrice']) > 0 || Number(props.data['maxPrice']) > 0) &&  <TableRow  title={t('price_range')}  content={ Number(props.data['minPrice']) > 0 && Number(props.data['maxPrice']) > 0    ? `${minprice} ~ ${maxPrice}`    : Number(props.data['minPrice']) > 0   ? `From ${minprice}`  : `Up to ${maxPrice}`  }  /> }
+                                            {/* add condition to show sqft and if none exist it will not show the row  */}
+                                            {(areaRangeMin || areaRangeMax) && (<TableRow title={t('area_range')} content={areaRangeMin && areaRangeMax ? `${areaRangeMin} ~ ${areaRangeMax} Sqft` : areaRangeMin ? `From ${areaRangeMin} Sqft` : areaRangeMax ? `Up to ${areaRangeMax} Sqft` : '' } /> )}
                                             {props.data['numberOfApartment'] && String(props.data['numberOfApartment']) !== '0' ? (<TableRow title={t('number_of_apartment')} content={props.data['numberOfApartment']} />) : ("")}
                                             {props.data['propertyType'] ? (<TableRow title={t('property_type')} content={props.data['propertyType']} />) : ("")}
                                             {props.data['propertyPlan'] ? (<TableRow title={t('property_plan')} content={props.data['propertyPlan']} />) : ("")}

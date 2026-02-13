@@ -553,10 +553,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     title: t('Valuation & Finance'),
                     items: [
                         { label: t('mortgage'), href: "/mortgage-calculator" },
-                        { label: t('Amortization'), page: '/mortgage-calculator#amortization' },
-                        { label: t('Refinancing'), page: '/mortgage-calculator#refinancing' },
-                        { label: t('Rent vs Buying'), page: '/mortgage-calculator#rentvsbuy' },
-                        { label: t('House Affordability'), page: '/mortgage-calculator#houseafford' },
+                        { label: t('Amortization'), href: '/mortgage-calculator#amortization' },
+                        { label: t('Refinancing'), href: '/mortgage-calculator#refinancing' },
+                        { label: t('Rent vs Buying'), href: '/mortgage-calculator#rentvsbuy' },
+                        { label: t('House Affordability'), href: '/mortgage-calculator#houseafford' },
                     ]
                 },
                 {
