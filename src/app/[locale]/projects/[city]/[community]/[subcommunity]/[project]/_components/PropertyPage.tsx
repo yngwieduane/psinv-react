@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFormatter, useTranslations } from 'next-intl';
 import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import UnitModels from "./UnitModels";
@@ -35,9 +35,19 @@ function PropertyPage(props: any) {
     const router = useRouter();
     const pathname = usePathname();
     const format = useFormatter();
-    const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
+    const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared, addToRecentlyViewed } = useUser();
     const { convertPrice } = useCurrency();
     let HOdate, launchDate, completionDate, minprice, maxPrice, areaRangeMin, areaRangeMax;
+
+    useEffect(() => {
+        if (props.data) {
+            addToRecentlyViewed({
+                id: props.data["propertyID"],
+                type: 'project',
+                data: props.data
+            });
+        }
+    }, [props.data]);
     const [activeTab, setActiveTab] = useState('Overview');
     const [activeFloorPlan, setActiveFloorPlan] = useState(0);
     const [showDrawer, setShowDrawer] = useState(false);
@@ -172,12 +182,14 @@ function PropertyPage(props: any) {
     if (props.data["areaRangeMax"] !== null && parseInt(props.data["areaRangeMax"]) > 1) {
         areaRangeMax = format.number(props.data["areaRangeMax"]);
     } else { areaRangeMax = ""; }
-    {props.data['masterDeveloper'] ? (
-        <TableRow
-          title={t('master_developer')}
-          content={props.data['masterDeveloper']}
-        />
-      ) : ("")}
+    {
+        props.data['masterDeveloper'] ? (
+            <TableRow
+                title={t('master_developer')}
+                content={props.data['masterDeveloper']}
+            />
+        ) : ("")
+    }
     const jsonLd = {
         "@context": "https://schema.org/",
         "@type": "Product",
@@ -278,7 +290,7 @@ function PropertyPage(props: any) {
                                             } else {
                                                 addToCompare({ id: props.data["propertyID"], type: 'project', data: props.data });
                                             }
-                                        } } className={`cursor-pointer flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 backdrop-blur-md transition-colors font-bold ${compared ? 'bg-[#0c1356] text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}>
+                                        }} className={`cursor-pointer flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 backdrop-blur-md transition-colors font-bold ${compared ? 'bg-[#0c1356] text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}>
                                         <Shuffle size={20} /> {compared ? t('compared') : t('compare')}
                                     </button>
                                 </div>

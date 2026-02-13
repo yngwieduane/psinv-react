@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import SwiperMaterial from "@/app/[locale]/_components/SwiperMaterial";
 import StripeContent from "./StripeContent";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DrawerDetails from "./DrawerDetails";
 import { ReadMore } from "@/app/[locale]/_components/ReadMore";
 import { useFormatter, useTranslations } from "next-intl";
@@ -47,8 +47,18 @@ export default function UnitPageAI(props: any) {
 
     const t = useTranslations('UnitProperties');
     const format = useFormatter();
-    const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
+    const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared, addToRecentlyViewed } = useUser();
     const { convertPrice, currency } = useCurrency();
+
+    useEffect(() => {
+        if (props.data && props.data.length > 0) {
+            addToRecentlyViewed({
+                id: props.data[0].code,
+                type: 'units',
+                data: props.data[0]
+            });
+        }
+    }, []);
 
     const TABS = [
         { id: 'details', key: 'lbl.property_details', fallback: t('tabs.details') },
