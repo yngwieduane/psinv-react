@@ -8,11 +8,13 @@ import { ChevronUpDownIcon, CheckIcon, AdjustmentsHorizontalIcon } from '@heroic
 import AutocompleteSearchWithOther from './AutocompleteSearchWithOther';
 import { RotateCcw } from 'lucide-react';
 import { useCurrency } from '@/context/currencyContext';
+import { useTranslations } from 'next-intl';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 100000000;
 
 export default function Search({ placeholder }: { placeholder?: string }) {
+    const t = useTranslations('UnitsPage');
     const locale = useLocale();
     const router = useRouter();
     const { currency } = useCurrency();
@@ -125,9 +127,9 @@ export default function Search({ placeholder }: { placeholder?: string }) {
     };
 
     const getSelectedPropertyTypeName = (id: string | null) => {
-        if (!id) return 'Property Types';
+        if (!id) return t('property_types');
         const found = allPropertyTypes.find((item) => String(item.lookupId) === String(id));
-        return found ? found.lookupName : 'Property Types';
+        return found ? found.lookupName : t('property_types');
     };
 
     return (
@@ -175,16 +177,16 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                 <Listbox value={category} onChange={setCategory}>
                                     <div className="relative">
                                         <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
-                                            <span className="col-start-1 row-start-1 truncate">{category || 'Contract'}</span>
+                                            <span className="col-start-1 row-start-1 truncate">{category ? t(category.toLowerCase()) : t('contract')}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
                                         <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                             <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
-                                                <span className="block truncate font-normal group-data-selected:font-semibold">Contract</span>
+                                                <span className="block truncate font-normal group-data-selected:font-semibold">{t('contract')}</span>
                                             </ListboxOption>
                                             {['Sale', 'Rent'].map((cat) => (
                                                 <ListboxOption key={cat} value={cat} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
-                                                    <span className="block truncate font-normal group-data-selected:font-semibold">{cat}</span>
+                                                    <span className="block truncate font-normal group-data-selected:font-semibold">{t(cat.toLowerCase())}</span>
                                                     <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
                                                         <CheckIcon aria-hidden="true" className="size-5" />
                                                     </span>
@@ -201,7 +203,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                     type="submit"
                                     className="w-full h-full rounded-xl bg-primary hover:bg-[#004880] text-white font-bold transition-all shadow-md active:scale-95 text-lg"
                                 >
-                                    Search
+                                    {t('search')}
                                 </button>
                             </div>
                         </div>
@@ -214,16 +216,16 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                 <Listbox value={sector} onChange={setSector}>
                                     <div className="relative">
                                         <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
-                                            <span className="col-start-1 row-start-1 truncate">{sector || 'Category'}</span>
+                                            <span className="col-start-1 row-start-1 truncate">{sector ? t(sector.toLowerCase()) : t('category_label')}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
                                         <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                             <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
-                                                <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
+                                                <span className="block truncate font-normal group-data-selected:font-semibold">{t('any')}</span>
                                             </ListboxOption>
                                             {['Residential', 'Commercial'].map((s) => (
                                                 <ListboxOption key={s} value={s} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
-                                                    <span className="block truncate font-normal group-data-selected:font-semibold">{s}</span>
+                                                    <span className="block truncate font-normal group-data-selected:font-semibold">{t(s.toLowerCase())}</span>
                                                     <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
                                                         <CheckIcon aria-hidden="true" className="size-5" />
                                                     </span>
@@ -244,14 +246,14 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                         </ListboxButton>
                                         <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                             <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
-                                                <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
+                                                <span className="block truncate font-normal group-data-selected:font-semibold">{t('any')}</span>
                                             </ListboxOption>
 
                                             {/* Groups */}
                                             {propertyTypesList.map((group: any) => (
                                                 <div key={group.groupName}>
                                                     <div className="px-3 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50/50">
-                                                        {group.groupName}
+                                                        {t(group.groupName.toLowerCase())}
                                                     </div>
                                                     {group.items.map((option: any) => (
                                                         <ListboxOption key={option.lookupId} value={option.lookupId} className="group relative cursor-pointer py-2 pl-6 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
@@ -274,16 +276,16 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                 <Popover className="relative">
                                     <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                         <span className="col-start-1 row-start-1 truncate">
-                                            {beds ? `${beds} Beds` : (baths ? '' : 'Beds and Baths')}
+                                            {beds ? `${beds} ${t('beds')}` : (baths ? '' : t('beds_and_baths'))}
                                             {beds && baths ? ' & ' : ''}
-                                            {baths ? `${baths} Baths` : ''}
+                                            {baths ? `${baths} ${t('baths')}` : ''}
                                         </span>
                                         <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                     </PopoverButton>
                                     <PopoverPanel transition className="absolute z-50 mt-2 w-64 overflow-hidden rounded-xl bg-white p-4 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                         <div className="flex flex-col gap-4">
                                             <div>
-                                                <label className="block text-xs font-medium text-gray-500 mb-1">Bedrooms</label>
+                                                <label className="block text-xs font-medium text-gray-500 mb-1">{t('bedrooms')}</label>
                                                 <div className="flex flex-wrap gap-2">
                                                     {[1, 2, 3, 4, 5].map(b => (
                                                         <button
@@ -298,7 +300,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                                 </div>
                                             </div>
                                             <div>
-                                                <label className="block text-xs font-medium text-gray-500 mb-1">Bathrooms</label>
+                                                <label className="block text-xs font-medium text-gray-500 mb-1">{t('bathrooms')}</label>
                                                 <div className="flex flex-wrap gap-2">
                                                     {[1, 2, 3, 4, 5].map(b => (
                                                         <button
@@ -324,7 +326,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                     <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                         <span className="col-start-1 row-start-1 truncate">
                                             {priceRange[0] === minPriceDefault && priceRange[1] === maxPriceDefault
-                                                ? 'Price Range'
+                                                ? t('price_range')
                                                 : `${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()} ${currency}`}
                                         </span>
                                         <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
@@ -332,12 +334,12 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                     <PopoverPanel transition className="absolute z-50 mt-2 w-full min-w-[300px] overflow-hidden rounded-xl bg-white p-4 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                         <div className="flex flex-col gap-4">
                                             <div>
-                                                <label htmlFor="minPrice" className="block text-xs font-medium text-gray-500 mb-1">Minimum Price</label>
+                                                <label htmlFor="minPrice" className="block text-xs font-medium text-gray-500 mb-1">{t('min_price')}</label>
                                                 <input
                                                     type="number"
                                                     id="minPrice"
                                                     className="w-full rounded-lg border-gray-200 bg-gray-50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
-                                                    placeholder="Min Price"
+                                                    placeholder={t('min_price_placeholder')}
                                                     value={priceRange[0]}
                                                     onChange={(e) => {
                                                         const val = Number(e.target.value);
@@ -346,12 +348,12 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                                 />
                                             </div>
                                             <div>
-                                                <label htmlFor="maxPrice" className="block text-xs font-medium text-gray-500 mb-1">Maximum Price</label>
+                                                <label htmlFor="maxPrice" className="block text-xs font-medium text-gray-500 mb-1">{t('max_price')}</label>
                                                 <input
                                                     type="number"
                                                     id="maxPrice"
                                                     className="w-full rounded-lg border-gray-200 bg-gray-50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
-                                                    placeholder="Max Price"
+                                                    placeholder={t('max_price_placeholder')}
                                                     value={priceRange[1]}
                                                     onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
                                                 />
@@ -387,7 +389,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                             }}
                             className="absolute top-1 right-0 text-right text-gray-600 text-sm font-medium hover:text-gray-800 transition-colors mt-2 px-10"
                         >
-                            <RotateCcw size={14} className="inline" /> Reset
+                            <RotateCcw size={14} className="inline" /> {t('reset')}
                         </button>
                     </form>
                 </div>

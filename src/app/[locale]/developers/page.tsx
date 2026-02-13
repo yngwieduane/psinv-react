@@ -11,14 +11,10 @@ export default async function AllDevelopersPage() {
 
     return (
         <>
-            <div className="">
-
-                <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white">
-                    <div className="container mx-auto px-4 md:px-12 py-4">
-                        <Breadcrumb
-                        />
-                    </div>
-                </div>
+            <div className="pt-28 md:pt-36">
+                <div className="container mx-auto px-6 md:px-12 flex items-center space-x-2 text-gray-500">
+                    <Breadcrumb  />
+                </div>                
                 <div className="mx-auto container pt-10">
                     <h1 className="text-2xl text-center truncate">Developers</h1>
                     <div className="w-full flex my-5 justify-content-center">
