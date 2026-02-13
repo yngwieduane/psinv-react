@@ -12,18 +12,18 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { developer } = await params;
-  
-    const dev = developers.find((d) => d.url === developer);
-  
-    return {
-      title: `⚡ ${dev?.metaTitle || "Property Developers in UAE"} - PSI`,
-      description:
-        dev?.metaDescription ||
-        "Browse real estate developers and projects across UAE with PSI.",
-    };
-  }
-  
+  const { developer } = await params;
+
+  const dev = developers.find((d) => d.url === developer);
+
+  return {
+    title: `⚡ ${dev?.metaTitle || "Property Developers in UAE"} - PSI`,
+    description:
+      dev?.metaDescription ||
+      "Browse real estate developers and projects across UAE with PSI.",
+  };
+}
+
 
 const developerMap: Record<string, string> = {
   "aldar-properties-pjsc": "Aldar Properties PJSC",
@@ -44,11 +44,15 @@ export default async function DeveloperPage({ params }: Props) {
   const developerName = developerMap[developer];
 
   return (
-    <div className="pt-28 md:pt-36">
-      <div className="container mx-auto px-6 md:px-12 flex items-center space-x-2 text-gray-500">
-          <Breadcrumb  />
+    <div className="">
+      
+      <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white">
+        <div className="container mx-auto px-4 md:px-12">
+          <Breadcrumb
+          />
+        </div>
       </div>
-      <div className="container mx-auto px-4 md:px-12 py-4">
+      <div className="container mx-auto px-4 md:px-12">
         <h1 className="text-2xl text-center truncate mt-10">
           {developerName || "Developers"}
         </h1>
