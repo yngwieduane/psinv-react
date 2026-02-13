@@ -60,7 +60,7 @@ const ProfilePage = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
                             <Link href="/favorites">
                                 <div className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex items-center gap-4 hover:shadow-md transition-all">
-                                    <div className="p-4 bg-red-50 text-red-500 rounded-full">
+                                    <div className="p-4 bg-red-50 text-red-500 rounded-full dark:bg-white/10">
                                         <Heart size={24} />
                                     </div>
                                     <div>
@@ -73,7 +73,7 @@ const ProfilePage = () => {
 
                             <Link href="/compare">
                                 <div className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex items-center gap-4 hover:shadow-md transition-all">
-                                    <div className="p-4 bg-primary/10 text-primary rounded-full">
+                                    <div className="p-4 bg-primary/10 text-primary dark:text-white dark:bg-white/10 rounded-full">
                                         <Shuffle size={24} />
                                     </div>
                                     <div>

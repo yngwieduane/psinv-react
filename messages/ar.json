@@ -6036,6 +6036,39 @@
       "property_overview": "نظرة عامة على العقار",
       "unit_overview": "نظرة عامة على الوحدة"
     },
+    "values": {
+      "sale": "للبيع",
+      "rent": "للإيجار",
+      "apartment": "شقة",
+      "townhouse": "تاون هاوس",
+      "villa": "فيلا"
+    },
+    "amenities_values": {
+      "laundry_service": "خدمة غسيل الملابس",
+      "public_transport": "مواصلات عامة",
+      "marina_berths": "مراسي لليخوت",
+      "visitor_parking": "مواقف للزوار",
+      "nursery": "حضانة",
+      "shopping_centre": "مركز تسوق",
+      "coffee_shop": "مقهى",
+      "banks": "بنوك",
+      "prayer_area": "مصلى",
+      "convenience_store": "متجر بقالة",
+      "24_hour_maintenance": "صيانة على مدار 24 ساعة",
+      "beach_access": "إمكانية الوصول إلى الشاطئ",
+      "restaurants": "مطاعم",
+      "fitness_club": "نادي لياقة",
+      "24_hour_security": "أمن على مدار 24 ساعة",
+      "parking": "مواقف سيارات",
+      "retail_services": "خدمات تجزئة",
+      "landscaped_gardens": "حدائق منسقة",
+      "childrens_swimming_pool": "مسبح للأطفال",
+      "swimming_pool": "مسبح",
+      "childrens_play_area_outside": "منطقة لعب للأطفال في الهواء الطلق",
+      "community_centers": "مراكز مجتمعية",
+      "basketball_court": "ملعب كرة سلة",
+      "mosque": "مسجد"
+    },
     "faq": {
       "questions": {
         "price": "ما هو سعر هذا العقار؟",
@@ -6100,6 +6133,16 @@
     "Search": "بحث",
     "Project": "مشروع",
     "Community": "مجمع"
+  },
+  "ListPopUpWidget": {
+    "modal": {
+      "title": "أدرج عقارك"
+    },
+    "card": {
+      "title": "هل أنت مستعد للبيع أو الإيجار؟",
+      "description": "تعاون مع وكلائنا المعتمدين للحصول على أفضل قيمة سوقية بسرعة وأمان.",
+      "cta": "ابدأ الآن"
+    }
   },
   "UnitsPageAI": {
     "propertiesTitle": "{count} عقارات لـ {category} في {location}",

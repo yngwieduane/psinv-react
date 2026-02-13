@@ -553,10 +553,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     title: t('Valuation & Finance'),
                     items: [
                         { label: t('mortgage'), href: "/mortgage-calculator" },
-                        { label: t('Amortization'), page: '/mortgage-calculator#amortization' },
-                        { label: t('Refinancing'), page: '/mortgage-calculator#refinancing' },
-                        { label: t('Rent vs Buying'), page: '/mortgage-calculator#rentvsbuy' },
-                        { label: t('House Affordability'), page: '/mortgage-calculator#houseafford' },
+                        { label: t('Amortization'), href: '/mortgage-calculator#amortization' },
+                        { label: t('Refinancing'), href: '/mortgage-calculator#refinancing' },
+                        { label: t('Rent vs Buying'), href: '/mortgage-calculator#rentvsbuy' },
+                        { label: t('House Affordability'), href: '/mortgage-calculator#houseafford' },
                     ]
                 },
                 {
@@ -648,10 +648,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
     const navbarClasses = showWhiteTheme
         ? 'bg-transparent py-6 text-white transition-all duration-300'
-        : 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20 text-gray-900 transition-all duration-300';
+        : 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20 text-gray-900 transition-all duration-300 dark:bg-gray-900 dark:text-white';
 
     const mainLogo = showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
-    const linkColor = showWhiteTheme ? 'text-white' : 'text-gray-800';
+    const linkColor = showWhiteTheme ? 'text-white' : 'text-gray-800 dark:text-white';
 
     return (
         <header className="bg-transparent">
@@ -702,8 +702,6 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                 <Heart size={20} />
                                 {favorites.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}
                             </Link>
-                            {/* <div className="h-4 w-px bg-current opacity-30"></div>
-                            <ThemeToggle /> */}
                             <div className="h-4 w-px bg-current opacity-30"></div>
                             {user ? (
                                 <div className="relative" onMouseEnter={() => setUserMenuOpen(true)} onMouseLeave={() => setUserMenuOpen(false)}>
@@ -747,7 +745,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
                     {/* SLEEK MEGA MENU (Transparent Glass) - Desktop Only */}
                     <div
-                        className={`absolute top-full left-0 w-full bg-white backdrop-blur-2xl border-t border-white/20 shadow-xl transition-all duration-300 ease-out overflow-hidden hidden lg:block ${hoveredMenu ? 'max-h-[500px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}
+                        className={`absolute top-full left-0 w-full bg-white dark:bg-gray-900 backdrop-blur-2xl border-t border-white/20 shadow-xl transition-all duration-300 ease-out overflow-hidden hidden lg:block ${hoveredMenu ? 'max-h-[500px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}
                         onMouseEnter={() => setHoveredMenu(hoveredMenu)}
                         onMouseLeave={() => setHoveredMenu(null)}
                     >
@@ -779,10 +777,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                                 <div key={idx}>
                                                     {"link" in col && col.link ? (
                                                         <Link href={col.link} title={col.title}>
-                                                            <h4 className="font-bold text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2 relative text-gray-700 transition-all duration-300 bg-gradient-to-r from-[#0c1356] to-[#0c1356] bg-[length:0%_2px] bg-left-bottom bg-no-repeat hover:bg-[length:100%_2px] hover:text-[#0c1356]">{col.title}</h4>
+                                                            <h4 className="dark:text-white font-bold text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2 relative text-gray-700 transition-all duration-300 bg-gradient-to-r from-[#0c1356] to-[#0c1356] bg-[length:0%_2px] bg-left-bottom bg-no-repeat hover:bg-[length:100%_2px] hover:text-[#0c1356]">{col.title}</h4>
                                                         </Link>
                                                     ) : (
-                                                        <h4 className="font-bold text-gray-900 text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>
+                                                        <h4 className="dark:text-white font-bold text-sm uppercase tracking-widest mb-4 border-b border-gray-400/20 pb-2">{col.title}</h4>
                                                     )}
 
                                                     <ul className="space-y-3">
@@ -791,7 +789,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                                                 <Link
                                                                     href={`${resolveHref(item as any)}`}
                                                                     title={item.label}
-                                                                    className="text-gray-600 hover:text-secondary text-sm font-medium transition-colors hover:pl-1 rtl:hover:pr-1"
+                                                                    className="dark:text-white text-gray-600 hover:text-secondary text-sm font-medium transition-colors hover:pl-1 rtl:hover:pr-1"
                                                                     onClick={() => setHoveredMenu(null)} // closes menu after click
                                                                 >
                                                                     {item.label}
@@ -819,7 +817,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 onClose={setIsMobileMenuOpen}
             >
                 <div className="fixed inset-0 z-50 bg-gray-900/20 backdrop-blur-sm" />
-                <DialogPanel className="fixed inset-y-0 right-0 z-99 w-full overflow-y-auto bg-white/95 backdrop-blur-xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-transform duration-500 ease-in-out">
+                <DialogPanel className="fixed inset-y-0 right-0 z-99 w-full overflow-y-auto bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-transform duration-500 ease-in-out">
                     <div className="flex items-center justify-between border-b border-gray-100 pb-6">
                         <Link href="/" className="-m-1.5 p-1.5" title="Property Shop Investment">
                             <span className="sr-only">Property Shop Investment</span>
@@ -843,7 +841,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                     <Disclosure as="div" className="-mx-3" key={group.label}>
                                         {({ open }) => (
                                             <>
-                                                <DisclosureButton className="flex w-full items-center justify-between rounded-lg py-3 pl-3 pr-3.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50 transition-colors">
+                                                <DisclosureButton className="flex w-full items-center justify-between rounded-lg py-3 pl-3 pr-3.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white transition-colors">
                                                     {t(group.label.toLowerCase())}
                                                     <ChevronDownIcon
                                                         className={classNames(
@@ -862,7 +860,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                                                     key={i}
                                                                     href={resolveHref(item as any)}
                                                                     onClick={() => setIsMobileMenuOpen(false)}
-                                                                    className="block rounded-lg py-2 pl-3 pr-3 text-sm font-semibold leading-7 text-gray-600 hover:text-[#111954] hover:bg-gray-50 transition-all"
+                                                                    className="block rounded-lg py-2 pl-3 pr-3 text-sm font-semibold leading-7 text-gray-600 dark:text-gray-400 hover:text-[#111954] dark:hover:text-white hover:bg-gray-50 transition-all"
                                                                 >
                                                                     {item.label}
                                                                 </Link>
@@ -883,19 +881,21 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                         setIsMobileMenuOpen(false);
                                         modalHandler();
                                     }}
-                                    className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2"
+                                    className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 flex items-center gap-2"
                                 >
                                     <Search size={18} /> Search Projects
                                 </button>
 
-                                <div className="-mx-3 px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-4">
-                                    <CurrencySelector css="text-gray-900" />
-                                    <LanguageSwitcher css="text-gray-900" />
-                                    <ContactBranchSwitcherHeader css="text-gray-900" />
-                                    <BranchSwitcher css="text-gray-900" />
+                                <div className="-mx-3 px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 flex items-center gap-4">
+                                    <CurrencySelector css="text-gray-900 dark:text-white" />
+                                    <LanguageSwitcher css="text-gray-900 dark:text-white" />
+                                    <ContactBranchSwitcherHeader css="text-gray-900 dark:text-white" />
+                                    <BranchSwitcher css="text-gray-900 dark:text-white" />
                                     {/* <Link href='/en/contact-us'><span className='font-semibold text-xs text-gray-900 uppercase text-left px-4 hover:bg-gray-50 hover:text-secondary'>Branches</span></Link> */}
                                 </div>
-                                <HeaderSocial color="dark" />
+                                {/* <div className="">
+                                    <ThemeToggle />
+                                </div> */}
 
                                 {user ? (
                                     <button
@@ -903,7 +903,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                             logout();
                                             setIsMobileMenuOpen(false);
                                         }}
-                                        className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2"
+                                        className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2 dark:text-white"
                                     >
                                         Log out
                                     </button>
@@ -913,11 +913,13 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                             if (login) login();
                                             setIsMobileMenuOpen(false);
                                         }}
-                                        className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2"
+                                        className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 flex items-center gap-2 dark:text-white"
                                     >
                                         <UserIcon size={18} /> Log in
                                     </button>
                                 )}
+
+                                <HeaderSocial color="dark" />
                             </div>
                         </div>
                     </div>

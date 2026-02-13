@@ -6566,6 +6566,39 @@
       "property_overview": "Property Overview",
       "unit_overview": "Unit Overview"
     },
+    "values": {
+      "sale": "Sale",
+      "rent": "Rent",
+      "apartment": "Apartment",
+      "townhouse": "Townhouse",
+      "villa": "Villa"
+    },
+    "amenities_values": {
+      "laundry_service": "Laundry Service",
+      "public_transport": "Public transport",
+      "marina_berths": "Marina berths",
+      "visitor_parking": "Visitor parking",
+      "nursery": "Nursery",
+      "shopping_centre": "Shopping centre",
+      "coffee_shop": "Coffee Shop",
+      "banks": "Banks",
+      "prayer_area": "Prayer Area",
+      "convenience_store": "Convenience store",
+      "24_hour_maintenance": "24 hour maintenance",
+      "beach_access": "Beach Access",
+      "restaurants": "Restaurants",
+      "fitness_club": "Fitness club",
+      "24_hour_security": "24 hour security",
+      "parking": "Parking",
+      "retail_services": "Retail Services",
+      "landscaped_gardens": "Landscaped gardens",
+      "childrens_swimming_pool": "Children's Swimming Pool",
+      "swimming_pool": "Swimming pool",
+      "childrens_play_area_outside": "Children's play area outside",
+      "community_centers": "Community centers",
+      "basketball_court": "Basketball court",
+      "mosque": "Mosque"
+    },
     "faq": {
       "questions": {
         "price": "What is the price of this property?",
@@ -6630,6 +6663,16 @@
     "Search": "Search",
     "Project": "Project",
     "Community": "Community"
+  },
+  "ListPopUpWidget": {
+    "modal": {
+      "title": "List Your Property"
+    },
+    "card": {
+      "title": "Ready to Sell or Rent?",
+      "description": "Partner with our verified agents to get the best market value — fast and secure.",
+      "cta": "Get Started"
+    }
   },
   "UnitsPageAI": {
     "propertiesTitle": "{count} Properties for {category} in {location}",
