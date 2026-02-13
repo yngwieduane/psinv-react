@@ -1715,5 +1715,46 @@
   "Breadcrumbs": {
     "home": "Главная",
     "units": "Объекты"
+  },
+  "HomeSearch": {
+    "Units": "Объекты",
+    "Properties": "Недвижимость",
+    "Coming Soon": "Скоро",
+    "SearchPlaceHolder": "Поиск по проекту или сообществу...",
+    "Searching": "Поиск...",
+    "Contract": "Контракт",
+    "Sale": "Продажа",
+    "Rent": "Аренда",
+    "Category": "Категория",
+    "Any": "Любой",
+    "Residential": "Жилая",
+    "Commercial": "Коммерческая",
+    "Property Types": "Типы недвижимости",
+    "RESIDENTIAL_TYPES": {
+      "Apartment": "Квартира",
+      "Villa": "Вилла",
+      "Townhouse": "Таунхаус",
+      "Studio": "Студия",
+      "Twin House": "Твинхаус",
+      "Penthouse": "Пентхаус"
+    },
+    "COMMERCIAL_TYPES": {
+      "Office": "Офис",
+      "Warehouse": "Склад",
+      "Retail": "Ритейл",
+      "Shop": "Магазин",
+      "Plot": "Участок"
+    },
+    "Beds and Baths": "Спальни и ванные",
+    "Beds": "Спальни",
+    "Baths": "Ванные",
+    "Bedrooms": "Спальни",
+    "Bathrooms": "Ванные комнаты",
+    "Price Range": "Ценовой диапазон",
+    "Minimum Price": "Мин. цена",
+    "Maximum Price": "Макс. цена",
+    "Search": "Поиск",
+    "Project": "Проект",
+    "Community": "Сообщество"
   }
 }

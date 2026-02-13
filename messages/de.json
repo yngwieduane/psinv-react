@@ -369,10 +369,10 @@
   },
   "Common_Form_Agreements": {
     "byclickingsubmit": {
-      "part1": "By clicking Submit, you agree to our",
-      "terms": "Terms & Conditions",
-      "and": "and",
-      "privacy": "Privacy Policy"
+      "part1": "Durch Klicken auf „Senden“ stimmen Sie unseren",
+      "terms": "Allgemeinen Geschäftsbedingungen",
+      "and": "und",
+      "privacy": "Datenschutzbestimmungen"
     },
     "agreement1": "Ich stimme zu, Anrufe und Mitteilungen über verschiedene Kanäle von PSI zwischen 09:00 Uhr und 21:00 Uhr zu erhalten.",
     "agreement2": "Ich stimme zu, mehrere Anrufe und Mitteilungen über verschiedene Kanäle bezüglich meiner Anfrage zu erhalten.",
@@ -1716,5 +1716,46 @@
   "Breadcrumbs": {
     "home": "Startseite",
     "units": "Einheiten"
+  },
+  "HomeSearch": {
+    "Units": "Einheiten",
+    "Properties": "Immobilien",
+    "Coming Soon": "Demnächst",
+    "SearchPlaceHolder": "Suche nach Projekt oder Gemeinde...",
+    "Searching": "Suchen...",
+    "Contract": "Vertrag",
+    "Sale": "Verkauf",
+    "Rent": "Miete",
+    "Category": "Kategorie",
+    "Any": "Alle",
+    "Residential": "Wohnen",
+    "Commercial": "Gewerbe",
+    "Property Types": "Immobilientypen",
+    "RESIDENTIAL_TYPES": {
+      "Apartment": "Wohnung",
+      "Villa": "Villa",
+      "Townhouse": "Reihenhaus",
+      "Studio": "Studio",
+      "Twin House": "Doppelhaus",
+      "Penthouse": "Penthouse"
+    },
+    "COMMERCIAL_TYPES": {
+      "Office": "Büro",
+      "Warehouse": "Lagerhaus",
+      "Retail": "Einzelhandel",
+      "Shop": "Geschäft",
+      "Plot": "Grundstück"
+    },
+    "Beds and Baths": "Betten und Bäder",
+    "Beds": "Betten",
+    "Baths": "Bäder",
+    "Bedrooms": "Schlafzimmer",
+    "Bathrooms": "Badezimmer",
+    "Price Range": "Preisspanne",
+    "Minimum Price": "Mindestpreis",
+    "Maximum Price": "Höchstpreis",
+    "Search": "Suchen",
+    "Project": "Projekt",
+    "Community": "Gemeinde"
   }
 }

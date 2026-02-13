@@ -6566,5 +6566,46 @@
   "Breadcrumbs": {
     "home": "Home",
     "units": "Units"
+  },
+  "HomeSearch": {
+    "Units": "Units",
+    "Properties": "Properties",
+    "Coming Soon": "Coming Soon",
+    "SearchPlaceHolder": "Search by project or community...",
+    "Searching": "Searching...",
+    "Contract": "Contract",
+    "Sale": "Sale",
+    "Rent": "Rent",
+    "Category": "Category",
+    "Any": "Any",
+    "Residential": "Residential",
+    "Commercial": "Commercial",
+    "Property Types": "Property Types",
+    "RESIDENTIAL_TYPES": {
+      "Apartment": "Apartment",
+      "Villa": "Villa",
+      "Townhouse": "Townhouse",
+      "Studio": "Studio",
+      "Twin House": "Twin House",
+      "Penthouse": "Penthouse"
+    },
+    "COMMERCIAL_TYPES": {
+      "Office": "Office",
+      "Warehouse": "Warehouse",
+      "Retail": "Retail",
+      "Shop": "Shop",
+      "Plot": "Plot"
+    },
+    "Beds and Baths": "Beds and Baths",
+    "Beds": "Beds",
+    "Baths": "Baths",
+    "Bedrooms": "Bedrooms",
+    "Bathrooms": "Bathrooms",
+    "Price Range": "Price Range",
+    "Minimum Price": "Minimum Price",
+    "Maximum Price": "Maximum Price",
+    "Search": "Search",
+    "Project": "Project",
+    "Community": "Community"
   }
 }

@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import Form from 'next/form';
 import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions, Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
@@ -19,6 +19,9 @@ export default function HomeSearch() {
     const router = useRouter();
     const { currency } = useCurrency();
     const [activeTab, setActiveTab] = useState<'units' | 'properties'>('units');
+    const t = useTranslations('HomeSearch');
+    const t_res = useTranslations('HomeSearch.RESIDENTIAL_TYPES');
+    const t_com = useTranslations('HomeSearch.COMMERCIAL_TYPES');
 
     // Filter States
     const [propertyId, setPropertyId] = useState('');
@@ -64,12 +67,20 @@ export default function HomeSearch() {
 
                     data.forEach((item: any) => {
                         const name = item.lookupName;
-                        const simplifiedName = { lookupId: item.lookupId, lookupName: name };
+                        let translatedName = name;
 
                         if (RESIDENTIAL_TYPES.includes(name)) {
-                            residential.push(simplifiedName);
+                            // Try to get translation from HomeSearch.RESIDENTIAL_TYPES
+                            try {
+                                translatedName = t_res(name);
+                            } catch (e) { }
+                            residential.push({ lookupId: item.lookupId, lookupName: translatedName, originalName: name });
                         } else if (COMMERCIAL_TYPES.includes(name)) {
-                            commercial.push(simplifiedName);
+                            // Try to get translation from HomeSearch.COMMERCIAL_TYPES
+                            try {
+                                translatedName = t_com(name);
+                            } catch (e) { }
+                            commercial.push({ lookupId: item.lookupId, lookupName: translatedName, originalName: name });
                         }
                     });
 
@@ -78,8 +89,8 @@ export default function HomeSearch() {
                     commercial.sort((a, b) => COMMERCIAL_TYPES.indexOf(a.lookupName) - COMMERCIAL_TYPES.indexOf(b.lookupName));
 
                     const grouped = [
-                        { groupName: "Residential", items: residential },
-                        { groupName: "Commercial", items: commercial }
+                        { id: 'Residential', groupName: t('Residential'), items: residential },
+                        { id: 'Commercial', groupName: t('Commercial'), items: commercial }
                     ];
 
                     setFullGroupedData(grouped);
@@ -94,9 +105,9 @@ export default function HomeSearch() {
         if (!fullGroupedData.length) return;
 
         if (sector === 'Residential') {
-            setPropertyTypesList([fullGroupedData.find(g => g.groupName === 'Residential')]);
+            setPropertyTypesList([fullGroupedData.find(g => g.id === 'Residential')]);
         } else if (sector === 'Commercial') {
-            setPropertyTypesList([fullGroupedData.find(g => g.groupName === 'Commercial')]);
+            setPropertyTypesList([fullGroupedData.find(g => g.id === 'Commercial')]);
         } else {
             setPropertyTypesList(fullGroupedData);
         }
@@ -126,9 +137,25 @@ export default function HomeSearch() {
     };
 
     const getSelectedPropertyTypeName = (id: string | null) => {
-        if (!id) return 'Property Types';
+        if (!id) return t('Property Types');
         const found = allPropertyTypes.find((item) => String(item.lookupId) === String(id));
-        return found ? found.lookupName : 'Property Types';
+        if (!found) return t('Property Types');
+
+        // Try to translate from residential or commercial groups
+        const name = found.lookupName;
+        // Check RESIDENTIAL_TYPES
+        try {
+            const resTranslation = t_res(name);
+            if (resTranslation && resTranslation !== name && !resTranslation.includes('HomeSearch')) return resTranslation;
+        } catch (e) { }
+
+        // Check COMMERCIAL_TYPES
+        try {
+            const comTranslation = t_com(name);
+            if (comTranslation && comTranslation !== name && !comTranslation.includes('HomeSearch')) return comTranslation;
+        } catch (e) { }
+
+        return name;
     };
 
     return (
@@ -140,15 +167,15 @@ export default function HomeSearch() {
                         onClick={() => setActiveTab('units')}
                         className={`cursor-pointer flex-1 py-4 text-center font-medium transition-colors relative ${activeTab === 'units' ? 'text-[#353455] dark:text-white font-bold' : 'text-gray-500 hover:text-gray-700'}`}
                     >
-                        Units
+                        {t('Units')}
                         {activeTab === 'units' && <div className="absolute bottom-0 left-0 w-full h-1 dark:bg-white bg-[#353455]"></div>}
                     </button>
                     <button
                         disabled
                         className={`flex-1 py-4 text-center font-medium transition-colors relative text-gray-400 cursor-not-allowed flex items-center justify-center gap-2`}
                     >
-                        Properties
-                        <span className="bg-gray-100 text-gray-500 text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider font-bold">Coming Soon</span>
+                        {t('Properties')}
+                        <span className="bg-gray-100 text-gray-500 text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider font-bold">{t('Coming Soon')}</span>
                     </button>
                 </div>
 
@@ -165,6 +192,10 @@ export default function HomeSearch() {
                                         isReset={false}
                                         disableRouting={true}
                                         showTitle={false}
+                                        placeholder={t('SearchPlaceHolder')}
+                                        searchingLabel={t('Searching')}
+                                        projectLabel={t('Project')}
+                                        communityLabel={t('Community')}
                                         onSelect={(name, id, type) => {
                                             setPropertyName(name);
                                             if (type === 'Community') {
@@ -193,16 +224,16 @@ export default function HomeSearch() {
                                 <Listbox value={category} onChange={setCategory}>
                                     <div className="relative">
                                         <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 dark:text-white border border-gray-200 dark:border-gray-700 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
-                                            <span className="col-start-1 row-start-1 truncate">{category || 'Contract'}</span>
+                                            <span className="col-start-1 row-start-1 truncate">{category ? t(category) : t('Contract')}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
                                         <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white dark:bg-gray-800 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                             <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none dark:text-white data-focus:bg-gray-100 dark:data-focus:bg-gray-700">
-                                                <span className="block truncate font-normal group-data-selected:font-semibold">Contract</span>
+                                                <span className="block truncate font-normal group-data-selected:font-semibold">{t('Contract')}</span>
                                             </ListboxOption>
                                             {['Sale', 'Rent'].map((cat) => (
                                                 <ListboxOption key={cat} value={cat} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none dark:text-white data-focus:bg-gray-100 dark:data-focus:bg-gray-700">
-                                                    <span className="block truncate font-normal group-data-selected:font-semibold">{cat}</span>
+                                                    <span className="block truncate font-normal group-data-selected:font-semibold">{t(cat)}</span>
                                                     <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
                                                         <CheckIcon aria-hidden="true" className="size-5" />
                                                     </span>
@@ -222,16 +253,16 @@ export default function HomeSearch() {
                                 <Listbox value={sector} onChange={setSector}>
                                     <div className="relative">
                                         <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 dark:text-white border border-gray-200 dark:border-gray-700 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
-                                            <span className="col-start-1 row-start-1 truncate">{sector || 'Category'}</span>
+                                            <span className="col-start-1 row-start-1 truncate">{sector ? t(sector) : t('Category')}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
                                         <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white dark:bg-gray-800 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                             <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none dark:text-white data-focus:bg-gray-100 dark:data-focus:bg-gray-700">
-                                                <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
+                                                <span className="block truncate font-normal group-data-selected:font-semibold">{t('Any')}</span>
                                             </ListboxOption>
                                             {['Residential', 'Commercial'].map((s) => (
                                                 <ListboxOption key={s} value={s} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none dark:text-white data-focus:bg-gray-100 dark:data-focus:bg-gray-700">
-                                                    <span className="block truncate font-normal group-data-selected:font-semibold">{s}</span>
+                                                    <span className="block truncate font-normal group-data-selected:font-semibold">{t(s)}</span>
                                                     <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
                                                         <CheckIcon aria-hidden="true" className="size-5" />
                                                     </span>
@@ -252,7 +283,7 @@ export default function HomeSearch() {
                                         </ListboxButton>
                                         <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white dark:bg-gray-800 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                             <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none dark:text-white data-focus:bg-gray-100 dark:data-focus:bg-gray-700">
-                                                <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
+                                                <span className="block truncate font-normal group-data-selected:font-semibold">{t('Any')}</span>
                                             </ListboxOption>
 
                                             {/* Groups */}
@@ -282,16 +313,16 @@ export default function HomeSearch() {
                                 <Popover className="relative">
                                     <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                         <span className="col-start-1 row-start-1 truncate">
-                                            {beds ? `${beds} Beds` : (baths ? '' : 'Beds and Baths')}
+                                            {beds ? `${beds} ${t('Beds')}` : (baths ? '' : t('Beds and Baths'))}
                                             {beds && baths ? ' & ' : ''}
-                                            {baths ? `${baths} Baths` : ''}
+                                            {baths ? `${baths} ${t('Baths')}` : ''}
                                         </span>
                                         <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                     </PopoverButton>
                                     <PopoverPanel transition className="absolute z-50 mt-2 w-64 overflow-hidden rounded-xl bg-white dark:bg-gray-800 p-4 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                         <div className="flex flex-col gap-4">
                                             <div>
-                                                <label className="block text-xs font-medium text-gray-500 mb-1">Bedrooms</label>
+                                                <label className="block text-xs font-medium text-gray-500 mb-1">{t('Bedrooms')}</label>
                                                 <div className="flex flex-wrap gap-2">
                                                     {[1, 2, 3, 4, 5].map(b => (
                                                         <button
@@ -306,7 +337,7 @@ export default function HomeSearch() {
                                                 </div>
                                             </div>
                                             <div>
-                                                <label className="block text-xs font-medium text-gray-500 mb-1">Bathrooms</label>
+                                                <label className="block text-xs font-medium text-gray-500 mb-1">{t('Bathrooms')}</label>
                                                 <div className="flex flex-wrap gap-2">
                                                     {[1, 2, 3, 4, 5].map(b => (
                                                         <button
@@ -332,7 +363,7 @@ export default function HomeSearch() {
                                     <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                         <span className="col-start-1 row-start-1 truncate">
                                             {priceRange[0] === minPriceDefault && priceRange[1] === maxPriceDefault
-                                                ? 'Price Range'
+                                                ? t('Price Range')
                                                 : `${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()} ${currency}`}
                                         </span>
                                         <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
@@ -340,12 +371,12 @@ export default function HomeSearch() {
                                     <PopoverPanel transition className="absolute z-50 mt-2 w-full min-w-[300px] overflow-hidden rounded-xl bg-white dark:bg-gray-800 p-4 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                         <div className="flex flex-col gap-4">
                                             <div>
-                                                <label htmlFor="minPrice" className="block text-xs font-medium text-gray-500 mb-1">Minimum Price</label>
+                                                <label htmlFor="minPrice" className="block text-xs font-medium text-gray-500 mb-1">{t('Minimum Price')}</label>
                                                 <input
                                                     type="number"
                                                     id="minPrice"
                                                     className="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-700 dark:text-white bg-gray-50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
-                                                    placeholder="Min Price"
+                                                    placeholder={t('Minimum Price')}
                                                     value={priceRange[0]}
                                                     onChange={(e) => {
                                                         const val = Number(e.target.value);
@@ -354,12 +385,12 @@ export default function HomeSearch() {
                                                 />
                                             </div>
                                             <div>
-                                                <label htmlFor="maxPrice" className="block text-xs font-medium text-gray-500 mb-1">Maximum Price</label>
+                                                <label htmlFor="maxPrice" className="block text-xs font-medium text-gray-500 mb-1">{t('Maximum Price')}</label>
                                                 <input
                                                     type="number"
                                                     id="maxPrice"
                                                     className="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-700 dark:text-white bg-gray-50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
-                                                    placeholder="Max Price"
+                                                    placeholder={t('Maximum Price')}
                                                     value={priceRange[1]}
                                                     onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
                                                 />
@@ -374,7 +405,7 @@ export default function HomeSearch() {
                                     type="submit"
                                     className="w-full rounded-xl bg-primary hover:bg-[#004880] text-white py-3.5 font-bold transition-all shadow-md active:scale-95 text-lg"
                                 >
-                                    Search
+                                    {t('Search')}
                                 </button>
                             </div>
                         </div>

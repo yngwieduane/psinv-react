@@ -483,7 +483,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
             ) : (
                 <>
-                    Submit
+                    {submitLabel}
                     <Send size={16} className="group-hover:translate-x-1 transition-transform" />
                 </>
             )}
@@ -508,7 +508,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
         </div>
         <div className="my-3">
           <label className="flex items-center space-x-2">
-            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t('byclickingsubmit.part1')} <Link href="/terms" title="terms" className="underline">{t('byclickingsubmit.terms')}</Link> {t('byclickingsubmit.and')} <Link href="/privacy" title="privacy" className="underline">{t('byclickingsubmit.privacy')}</Link></span>
+            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t('byclickingsubmit.part1')} <Link href="/en/terms" title="terms" className="underline">{t('byclickingsubmit.terms')}</Link> {t('byclickingsubmit.and')} <Link href="/en/privacy" title="privacy" className="underline">{t('byclickingsubmit.privacy')}</Link></span>
           </label>
         </div>
 

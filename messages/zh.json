@@ -1792,5 +1792,46 @@
   "Breadcrumbs": {
     "home": "首页",
     "units": "房源"
+  },
+  "HomeSearch": {
+    "Units": "单元",
+    "Properties": "房产",
+    "Coming Soon": "即将推出",
+    "SearchPlaceHolder": "按项目或社区搜索...",
+    "Searching": "正在搜索...",
+    "Contract": "合同",
+    "Sale": "出售",
+    "Rent": "出租",
+    "Category": "类别",
+    "Any": "任何",
+    "Residential": "住宅",
+    "Commercial": "商业",
+    "Property Types": "房产类型",
+    "RESIDENTIAL_TYPES": {
+      "Apartment": "公寓",
+      "Villa": "别墅",
+      "Townhouse": "联排别墅",
+      "Studio": "单身公寓",
+      "Twin House": "双拼别墅",
+      "Penthouse": "阁楼"
+    },
+    "COMMERCIAL_TYPES": {
+      "Office": "办公室",
+      "Warehouse": "仓库",
+      "Retail": "零售",
+      "Shop": "店铺",
+      "Plot": "地块"
+    },
+    "Beds and Baths": "卧室和浴室",
+    "Beds": "卧室",
+    "Baths": "浴室",
+    "Bedrooms": "卧室",
+    "Bathrooms": "浴室",
+    "Price Range": "价格范围",
+    "Minimum Price": "最低价格",
+    "Maximum Price": "最高价格",
+    "Search": "搜索",
+    "Project": "项目",
+    "Community": "社区"
   }
 }
