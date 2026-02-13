@@ -398,7 +398,7 @@
     "agreement2": "Agree to receive multiple calls and communications via various channels regarding my enquiry",
     "agreement3": "Agree to receive calls and communications via various channels on various projects, products, and services"
   },
-  "Compare_page":{
+  "Compare_page": {
     "heroTitle": "COMPARE",
     "metadata": {
       "title": "Compare Properties in UAE | PSI",
@@ -408,14 +408,15 @@
     "unlockSection": {
       "title": "Compare Properties",
       "description": "Your comparison list is empty. Add properties to compare them side-by-side."
-    } },
-    "favorites_page":{
-      "heroTitle": "Favorites",
-      "metadata": {
-        "title": "Your Favorite Properties in UAE | PSI",
-        "description": "View and manage your favorite real estate properties in the UAE. Quickly access saved properties and compare them to find your ideal home or investment with PSI."
-      }
-       },
+    }
+  },
+  "favorites_page": {
+    "heroTitle": "Favorites",
+    "metadata": {
+      "title": "Your Favorite Properties in UAE | PSI",
+      "description": "View and manage your favorite real estate properties in the UAE. Quickly access saved properties and compare them to find your ideal home or investment with PSI."
+    }
+  },
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} zh {🇨🇳 Chinese} ru {🇷🇺 Russian} de {🇩🇪 German} other {Unknown}}",
@@ -702,7 +703,7 @@
     }
   },
   "ProjectPage": {
-    "nearbys":"Nearby",
+    "nearbys": "Nearby",
     "overview": "Overview",
     "gallery": "Gallery",
     "floor_plan": "Floor Plan",
@@ -6561,5 +6562,46 @@
   "Breadcrumbs": {
     "home": "Home",
     "units": "Units"
+  },
+  "HomeSearch": {
+    "Units": "Units",
+    "Properties": "Properties",
+    "Coming Soon": "Coming Soon",
+    "SearchPlaceHolder": "Search by project or community...",
+    "Searching": "Searching...",
+    "Contract": "Contract",
+    "Sale": "Sale",
+    "Rent": "Rent",
+    "Category": "Category",
+    "Any": "Any",
+    "Residential": "Residential",
+    "Commercial": "Commercial",
+    "Property Types": "Property Types",
+    "RESIDENTIAL_TYPES": {
+      "Apartment": "Apartment",
+      "Villa": "Villa",
+      "Townhouse": "Townhouse",
+      "Studio": "Studio",
+      "Twin House": "Twin House",
+      "Penthouse": "Penthouse"
+    },
+    "COMMERCIAL_TYPES": {
+      "Office": "Office",
+      "Warehouse": "Warehouse",
+      "Retail": "Retail",
+      "Shop": "Shop",
+      "Plot": "Plot"
+    },
+    "Beds and Baths": "Beds and Baths",
+    "Beds": "Beds",
+    "Baths": "Baths",
+    "Bedrooms": "Bedrooms",
+    "Bathrooms": "Bathrooms",
+    "Price Range": "Price Range",
+    "Minimum Price": "Minimum Price",
+    "Maximum Price": "Maximum Price",
+    "Search": "Search",
+    "Project": "Project",
+    "Community": "Community"
   }
-} 
+}

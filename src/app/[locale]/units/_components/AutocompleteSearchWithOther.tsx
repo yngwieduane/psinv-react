@@ -13,7 +13,25 @@ type SearchResult = {
     type: 'Project' | 'Community';
 };
 
-export default function AutocompleteSearchWithOther({ isReset, disableRouting = false, onSelect, showTitle = true }: { isReset: any, disableRouting?: boolean, onSelect?: (name: string, id: string, type: string) => void, showTitle?: boolean }) {
+export default function AutocompleteSearchWithOther({
+    isReset,
+    disableRouting = false,
+    onSelect,
+    showTitle = true,
+    placeholder = "Search by project or community...",
+    searchingLabel = "Searching...",
+    projectLabel = "Project",
+    communityLabel = "Community"
+}: {
+    isReset: any,
+    disableRouting?: boolean,
+    onSelect?: (name: string, id: string, type: string) => void,
+    showTitle?: boolean,
+    placeholder?: string,
+    searchingLabel?: string,
+    projectLabel?: string,
+    communityLabel?: string
+}) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -142,7 +160,7 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
                     type="text"
                     id="propertyName"
                     name="propertyName"
-                    placeholder="Search by project or community..."
+                    placeholder={placeholder}
                     value={inputValue}
                     onChange={handleInputChange}
                     onClick={handleInputClick}
@@ -156,7 +174,7 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
             </div>
             {loading && (
                 <div className="absolute left-0 right-0 mt-2 p-4 rounded-xl backdrop-blur-xl bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.08)]">
-                    <p className="text-gray-500 text-sm">Searching...</p>
+                    <p className="text-gray-500 text-sm">{searchingLabel}</p>
                 </div>
             )}
             {showDropdown && results.length > 0 && (
@@ -173,7 +191,7 @@ export default function AutocompleteSearchWithOther({ isReset, disableRouting = 
                                     <span className="text-xs text-gray-500 mt-0.5 block">{item.city ? item.city : item.community}</span>
                                 </div>
                                 <span className={`text-[10px] px-2 py-0.5 rounded-full ${item.type === 'Project' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}`}>
-                                    {item.type}
+                                    {item.type === 'Project' ? projectLabel : communityLabel}
                                 </span>
                             </div>
                         </li>

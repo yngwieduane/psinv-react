@@ -449,7 +449,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
 
       <div className="my-3">
           <label className="flex items-center space-x-2">
-            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t_agreement('byclickingsubmit.part1')} <Link href="/terms" title="terms" className="underline">{t_agreement('byclickingsubmit.terms')}</Link> {t_agreement('byclickingsubmit.and')} <Link href="/privacy" title="privacy" className="underline">{t_agreement('byclickingsubmit.privacy')}</Link></span>
+            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t_agreement('byclickingsubmit.part1')} <Link href="/en/terms" title="terms" className="underline">{t_agreement('byclickingsubmit.terms')}</Link> {t_agreement('byclickingsubmit.and')} <Link href="/en/privacy" title="privacy" className="underline">{t_agreement('byclickingsubmit.privacy')}</Link></span>
           </label>
         </div>
 
