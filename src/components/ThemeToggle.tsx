@@ -3,19 +3,59 @@
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
+import { motion, AnimatePresence } from "framer-motion"
 
 export function ThemeToggle() {
-    const { setTheme, theme } = useTheme()
+    const { setTheme, resolvedTheme } = useTheme()
+    const [mounted, setMounted] = React.useState(false)
+
+    React.useEffect(() => {
+        setMounted(true)
+    }, [])
+
+    if (!mounted) {
+        return <div className="w-14 h-8 rounded-full bg-gray-200 dark:bg-gray-700" />
+    }
+
+    const isDark = resolvedTheme === "dark"
 
     return (
         <button
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            className="rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            onClick={() => setTheme(isDark ? "light" : "dark")}
+            className={`relative inline-flex h-8 w-14 items-center rounded-full p-1 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#111954] border border-white/10 ${isDark ? "bg-gray-900" : "bg-gray-500"
+                }`}
             aria-label="Toggle theme"
         >
-            <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-yellow-500" />
-            <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-blue-500 top-2" />
             <span className="sr-only">Toggle theme</span>
+            <motion.div
+                className="flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-lg"
+                layout
+                transition={{
+                    type: "spring",
+                    stiffness: 700,
+                    damping: 30
+                }}
+                initial={false}
+                animate={{
+                    x: isDark ? 24 : 0
+                }}
+            >
+                <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                        key={isDark ? "dark" : "light"}
+                        initial={{ scale: 0.5, opacity: 0, rotate: -180 }}
+                        animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                        exit={{ scale: 0.5, opacity: 0, rotate: 180 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        {isDark ? (
+                            <Moon className="h-4 w-4 text-[#111954]" />
+                        ) : (
+                            <Sun className="h-4 w-4 text-orange-500" />
+                        )}
+                    </motion.div>
+                </AnimatePresence>
+            </motion.div>
         </button>
     )
 }

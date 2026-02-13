@@ -2,11 +2,11 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { faWhatsapp, faTwitter, faInstagram, faSnapchat, faYoutube, faFacebookSquare, faLinkedin, faXTwitter} from "@fortawesome/free-brands-svg-icons";
+import { faWhatsapp, faTwitter, faInstagram, faSnapchat, faYoutube, faFacebookSquare, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { SocialMedia } from "@/types/navigation";
 
 const socialMedia: SocialMedia[] = [
-    
+
     {
         name: 'Facebook',
         href: 'https://www.facebook.com/PropertyShopInvestment',
@@ -32,13 +32,13 @@ const socialMedia: SocialMedia[] = [
         href: 'https://www.linkedin.com/company/property-shop-investment-llc',
         icon: faLinkedin,
     },
-    
+
     {
         name: 'Youtube',
         href: 'https://www.youtube.com/user/propertyshopabudhabi',
         icon: faYoutube,
-    }    
-    
+    }
+
 ];
 
 interface HeaderSocialProps {
@@ -48,8 +48,8 @@ const HeaderSocial = ({ color = "dark" }: HeaderSocialProps) => {
     return (
         <div className="flex space-x-4 sm:text-[14px] justify-center sm:justify-start">
             {socialMedia.map((item) => (
-                <Link title={item.name} target="_blank" href={item.href} key={item.name} aria-label={item.name} 
-                className={`${color === 'dark' ? 'text-black' : 'text-white'}  flex items-center justify-center text-sm font-semibold leading-6 hover:bg-indigo-900`}>
+                <Link title={item.name} target="_blank" href={item.href} key={item.name} aria-label={item.name}
+                    className={`${color === 'dark' ? 'text-black' : 'text-white'} dark:text-white flex items-center justify-center text-sm font-semibold leading-6 hover:bg-indigo-900`}>
                     <FontAwesomeIcon icon={item.icon} width={18} />
                 </Link>
             ))}
