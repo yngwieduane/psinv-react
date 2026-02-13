@@ -11,15 +11,15 @@ Chart.register(ArcElement, Tooltip);
 
 type Props = {
   modal: boolean;
-  onOpenModal : () => void;
-  onModalUpdate : (value: boolean) => void;  
+  onOpenModal: () => void;
+  onModalUpdate: (value: boolean) => void;
 }
 
 export default function HouseAffordabilityCalculator({
-  modal, 
-  onOpenModal, 
+  modal,
+  onOpenModal,
   onModalUpdate
-  } : Props )  {
+}: Props) {
   const t = useTranslations("Mortgage_Tabs");
 
   const [grossIncome, setGrossIncome] = useState(5000);
@@ -89,85 +89,85 @@ export default function HouseAffordabilityCalculator({
 
   return (
     <>
-    <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-white p-6 rounded-2xl shadow-md">
-          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">{t("houseAffordTab.Title")}</h2>
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white p-6 rounded-2xl shadow-md dark:bg-neutral-800">
+            <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356] dark:text-white">{t("houseAffordTab.Title")}</h2>
 
-          <div className="grid grid-cols-1 gap-4">
-            <InputSlider label={t("houseAffordTab.Grossmonthlyincome")} value={grossIncome} setValue={setGrossIncome} suffix={t("aed")} min={0} max={100000} />
-            <InputSlider label={t("houseAffordTab.Extramonthlyincome")} value={extraIncome} setValue={setExtraIncome} suffix={t("aed")} min={0} max={100000} />
-            <InputSlider label={t("houseAffordTab.Monthlydebtrepayment")} value={debtRepayment} setValue={setDebtRepayment} suffix={t("aed")} min={0} max={100000} />
+            <div className="grid grid-cols-1 gap-4">
+              <InputSlider label={t("houseAffordTab.Grossmonthlyincome")} value={grossIncome} setValue={setGrossIncome} suffix={t("aed")} min={0} max={100000} />
+              <InputSlider label={t("houseAffordTab.Extramonthlyincome")} value={extraIncome} setValue={setExtraIncome} suffix={t("aed")} min={0} max={100000} />
+              <InputSlider label={t("houseAffordTab.Monthlydebtrepayment")} value={debtRepayment} setValue={setDebtRepayment} suffix={t("aed")} min={0} max={100000} />
 
-            <div className="mb-6 w-full">
-              <label className="block text-gray-600 mb-2 text-sm">{t("houseAffordTab.Downpayment")}</label>
-              <div className="flex items-center gap-5">
-              <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white mb-2">
-                <input
-                  type="number"
-                  value={downPayment}
-                  onChange={(e) => setDownPayment(+e.target.value)}
-                  className="w-full px-4 py-2 bg-white border-none focus:outline-none text-right"
-                />
-                <input
-                  type="number"
-                  value={downPaymentPct}
-                  onChange={(e) => setDownPaymentPct(+e.target.value)}
-                  className="w-20 px-4 py-2 bg-white border-l border-gray-300 focus:outline-none text-right"
-                />
-                <span className="px-4 py-2 border-l border-gray-300">%</span>
+              <div className="mb-6 w-full">
+                <label className="block text-gray-600 mb-2 text-sm">{t("houseAffordTab.Downpayment")}</label>
+                <div className="flex items-center gap-5">
+                  <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white mb-2 dark:bg-neutral-800">
+                    <input
+                      type="number"
+                      value={downPayment}
+                      onChange={(e) => setDownPayment(+e.target.value)}
+                      className="w-full px-4 py-2 bg-white border-none focus:outline-none text-right dark:text-white dark:bg-neutral-800"
+                    />
+                    <input
+                      type="number"
+                      value={downPaymentPct}
+                      onChange={(e) => setDownPaymentPct(+e.target.value)}
+                      className="w-20 px-4 py-2 bg-white border-l border-gray-300 focus:outline-none text-right dark:text-white dark:bg-neutral-800"
+                    />
+                    <span className="px-4 py-2 border-l border-gray-300">%</span>
+                  </div>
+                  <Slider
+                    min={0}
+                    max={1000000}
+                    value={downPayment}
+                    onChange={(val) => setDownPayment(Array.isArray(val) ? val[0] : val)}
+                    handleStyle={{ backgroundColor: '#1953a2', borderColor: '#1953a2', width: 20, height: 20, marginTop: -8 }}
+                    trackStyle={{ backgroundColor: '#1953a2', height: 4 }}
+                    railStyle={{ backgroundColor: '#e5e7eb', height: 4 }}
+                  />
+                </div>
               </div>
-              <Slider
-                min={0}
-                max={1000000}
-                value={downPayment}
-                onChange={(val) => setDownPayment(Array.isArray(val) ? val[0] : val)}
-                handleStyle={{ backgroundColor: '#1953a2', borderColor: '#1953a2', width: 20, height: 20, marginTop: -8 }}
-                trackStyle={{ backgroundColor: '#1953a2', height: 4 }}
-                railStyle={{ backgroundColor: '#e5e7eb', height: 4 }}
-              />
-              </div>
-            </div>
 
-            <div className="flex flex-col md:flex-row gap-4">
-              <InputSlider label={t("houseAffordTab.Interestrate")} value={interestRate} setValue={setInterestRate} suffix="%" min={0} max={10} step={0.1} />
-              <InputSlider label={t("houseAffordTab.Paymentperiod")} value={loanTermYears} setValue={setLoanTermYears} suffix={t("Yrs")} min={1} max={30} />
+              <div className="flex flex-col md:flex-row gap-4">
+                <InputSlider label={t("houseAffordTab.Interestrate")} value={interestRate} setValue={setInterestRate} suffix="%" min={0} max={10} step={0.1} />
+                <InputSlider label={t("houseAffordTab.Paymentperiod")} value={loanTermYears} setValue={setLoanTermYears} suffix={t("Yrs")} min={1} max={30} />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="flex flex-col justify-center items-center bg-[#0c1356] text-white rounded-2xl p-6">
-          <div className="relative w-[160px] h-[160px] md:w-[180px] md:h-[180px] mx-auto mb-6">
-            <canvas ref={chartRef} className="w-full h-full" />
-            <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
-              <span className="text-2xl font-bold">{Math.round(totalAfford).toLocaleString()}</span>
-              <span className="text-sm">{t("aed")}</span>
+          <div className="flex flex-col justify-center items-center bg-[#0c1356] text-white rounded-2xl p-6">
+            <div className="relative w-[160px] h-[160px] md:w-[180px] md:h-[180px] mx-auto mb-6">
+              <canvas ref={chartRef} className="w-full h-full" />
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
+                <span className="text-2xl font-bold">{Math.round(totalAfford).toLocaleString()}</span>
+                <span className="text-sm">{t("aed")}</span>
+              </div>
             </div>
-          </div>
-          <p className="text-xl font-semibold mt-2 mb-6">{t("houseAffordTab.Canafford")}</p>
+            <p className="text-xl font-semibold mt-2 mb-6">{t("houseAffordTab.Canafford")}</p>
 
-          <div className="bg-yellow-400 rounded-2xl w-full text-[#0c1356] p-8 text-center">
-            <p className="text-sm">{t("houseAffordTab.Totalafford")}</p>
-            <p className="text-2xl font-bold mb-4">{Math.round(totalAfford).toLocaleString()} {t("aed")}</p>
-            <button
-              onClick={() => {
-                const minPrice = Math.floor(totalAfford);
-                const maxPrice = Math.ceil(totalAfford + 200000);
-                const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
-                window.location.href = url;
-              }}
-              className="bg-[#0c1356] text-white rounded-full px-6 py-2 mb-2 hover:bg-blue-900 transition">
-              {t("ViewUnits")}
-            </button>
+            <div className="bg-yellow-400 rounded-2xl w-full text-[#0c1356] p-8 text-center">
+              <p className="text-sm">{t("houseAffordTab.Totalafford")}</p>
+              <p className="text-2xl font-bold mb-4">{Math.round(totalAfford).toLocaleString()} {t("aed")}</p>
+              <button
+                onClick={() => {
+                  const minPrice = Math.floor(totalAfford);
+                  const maxPrice = Math.ceil(totalAfford + 200000);
+                  const url = `${window.location.origin}/en/units?category=Buy&filter-price-from=${minPrice}&filter-price-to=${maxPrice}`;
+                  window.location.href = url;
+                }}
+                className="bg-[#0c1356] text-white rounded-full px-6 py-2 mb-2 hover:bg-blue-900 transition">
+                {t("ViewUnits")}
+              </button>
 
-            <br />
-            <button onClick={onOpenModal} className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition">{t("houseAffordTab.GeApprovalToday")}</button>
+              <br />
+              <button onClick={onOpenModal} className="bg-[#0c1356] text-white px-6 py-2 rounded-full inline-block hover:bg-blue-800 transition">{t("houseAffordTab.GeApprovalToday")}</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    
+
     </>
   );
 }
@@ -185,33 +185,33 @@ interface InputSliderProps {
 function InputSlider({ label, value, setValue, suffix, min, max, step = 1 }: InputSliderProps) {
   return (
     <div className="mb-6 w-full">
-      <label className="block text-gray-600 mb-2 text-sm">{label}</label>
+      <label className="block text-gray-600 mb-2 text-sm dark:text-white">{label}</label>
       <div className="flex items-center gap-5">
-        <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white grow">
+        <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white grow dark:bg-neutral-800">
           <input
             type="number"
             value={value}
             onChange={(e) => setValue(+e.target.value)}
-            className="w-full px-4 py-2 bg-white border-none focus:outline-none text-right"
+            className="w-full px-4 py-2 bg-white border-none focus:outline-none text-right dark:text-white dark:bg-neutral-800"
           />
-          <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{suffix}</span>
+          <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap dark:text-white dark:bg-neutral-800">{suffix}</span>
         </div>
         <Slider
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(val) => setValue(Array.isArray(val) ? val[0] : val)}
-        handleStyle={{
-          backgroundColor: '#1953a2',
-          borderColor: '#1953a2',
-          width: 20,
-          height: 20,
-          marginTop: -8,
-        }}
-        trackStyle={{ backgroundColor: '#1953a2', height: 4 }}
-        railStyle={{ backgroundColor: '#e5e7eb', height: 4 }}
-      />
+          min={min}
+          max={max}
+          step={step}
+          value={value}
+          onChange={(val) => setValue(Array.isArray(val) ? val[0] : val)}
+          handleStyle={{
+            backgroundColor: '#1953a2',
+            borderColor: '#1953a2',
+            width: 20,
+            height: 20,
+            marginTop: -8,
+          }}
+          trackStyle={{ backgroundColor: '#1953a2', height: 4 }}
+          railStyle={{ backgroundColor: '#e5e7eb', height: 4 }}
+        />
       </div>
     </div>
 

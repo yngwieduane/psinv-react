@@ -59,8 +59,8 @@ const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: 
 
 const getCityConfig = (cityName: string) => {
   if (['Dubai', 'Sharjah'].includes(cityName)) {     //If Sharjah, use DUbai CRM
-        return CITY_CONFIG['Dubai'];
-    }
+    return CITY_CONFIG['Dubai'];
+  }
   return CITY_CONFIG[cityName] || CITY_CONFIG['DEFAULT'];
 }
 
@@ -162,36 +162,36 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
         break;
     }
 
-    switch(data.propertyPurpose) {
-      case 'sell' :
+    switch (data.propertyPurpose) {
+      case 'sell':
         contactType = "1";
-			  requirementType = "91212";			  
-			  Budget="427";
-			  Budget2="1335";
+        requirementType = "91212";
+        Budget = "427";
+        Budget2 = "1335";
         propertyId = cityConfig.placeholder_property;
         break;
 
-      case 'rent' : 
+      case 'rent':
         contactType = "4";
-			  requirementType = "91213";			  
-			  Budget="234";
-			  Budget2="1661";
+        requirementType = "91213";
+        Budget = "234";
+        Budget2 = "1661";
         propertyId = cityConfig.placeholder_property;
         break;
 
-      case 'manage' : 
+      case 'manage':
         contactType = "1";
-			  requirementType = "91212";			  
-			  Budget="427";
-			  Budget2="1335";
+        requirementType = "91212";
+        Budget = "427";
+        Budget2 = "1335";
         propertyId = cityConfig.placeholder_property;
         break;
 
       default:
         contactType = "1";
-			  requirementType = "91212";			  
-			  Budget="427";
-			  Budget2="1335";
+        requirementType = "91212";
+        Budget = "427";
+        Budget2 = "1335";
         propertyId = cityConfig.placeholder_property;
         break;
     }
@@ -374,7 +374,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
             <input
               {...register("firstName")}
               placeholder={t("firstName")}
-              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:focus:ring-white/10 dark:focus:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white"
             />
           </div>
           {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
@@ -384,7 +384,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
             <input
               {...register("lastName")}
               placeholder={t("lastName")}
-              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:focus:ring-white/10 dark:focus:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white"
             />
           </div>
           {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
@@ -396,7 +396,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
         <input
           {...register("email")}
           placeholder={t("email")}
-          className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+          className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:focus:ring-white/10 dark:focus:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white"
         />
       </div>
       {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
@@ -410,7 +410,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
             dir={isRTL ? "rtl" : "ltr"}
             international
             defaultCountry="AE"
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
+            className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445] dark:focus-within:ring-white/10 dark:focus-within:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white"
             aria-label="Phone Number"
             numberInputProps={{
               className: "w-full bg-transparent focus:outline-none text-sm placeholder:text-gray-400"
@@ -422,7 +422,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
 
       <select
         {...register("propertyPurpose")}
-        className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] transition-all"
+        className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:focus:ring-white/10 dark:focus:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white transition-all"
         aria-label="Property Purpose"
       >
         <option value="">{t("purpose")}</option>
@@ -448,10 +448,10 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
       </button>
 
       <div className="my-3">
-          <label className="flex items-center space-x-2">
-            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t_agreement('byclickingsubmit.part1')} <Link href="/terms" title="terms" className="underline">{t_agreement('byclickingsubmit.terms')}</Link> {t_agreement('byclickingsubmit.and')} <Link href="/privacy" title="privacy" className="underline">{t_agreement('byclickingsubmit.privacy')}</Link></span>
-          </label>
-        </div>
+        <label className="flex items-center space-x-2">
+          <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t_agreement('byclickingsubmit.part1')} <Link href="/terms" title="terms" className="underline">{t_agreement('byclickingsubmit.terms')}</Link> {t_agreement('byclickingsubmit.and')} <Link href="/privacy" title="privacy" className="underline">{t_agreement('byclickingsubmit.privacy')}</Link></span>
+        </label>
+      </div>
 
     </form>
   );

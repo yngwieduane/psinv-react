@@ -94,8 +94,8 @@ const MortgageCalculator = ({ modal, onOpenModal, onModalUpdate, basePrice }: Pr
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-white p-6 rounded-2xl shadow-md">
-          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356]">{t("mortgageTab.title")}</h2>
+        <div className="bg-white p-6 rounded-2xl shadow-md dark:bg-neutral-800">
+          <h2 className="text-2xl font-bold text-center mb-8 text-[#0c1356] dark:text-white">{t("mortgageTab.title")}</h2>
           <div className="space-y-6">
             <div>
               <label className="block text-sm font-medium mb-1">{t("mortgageTab.PropertyPrice")}</label>
@@ -108,7 +108,7 @@ const MortgageCalculator = ({ modal, onOpenModal, onModalUpdate, basePrice }: Pr
                     className="w-full px-4 py-2 rounded-none focus:outline-none"
                     aria-label="Property Price"
                   />
-                  <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
+                  <span className="bg-white dark:bg-neutral-700 px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("aed")}</span>
                 </div>
                 <Slider
                   ariaLabelForHandle="Property Price"
@@ -132,7 +132,7 @@ const MortgageCalculator = ({ modal, onOpenModal, onModalUpdate, basePrice }: Pr
                     className="w-full px-4 py-2 rounded-none focus:outline-none"
                     aria-label="Loan Period"
                   />
-                  <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("mortgageTab.Years")}</span>
+                  <span className="bg-white dark:bg-neutral-700 px-4 py-2 border-l border-gray-300 whitespace-nowrap">{t("mortgageTab.Years")}</span>
                 </div>
                 <Slider
                   ariaLabelForHandle="Loan Period"
@@ -155,7 +155,7 @@ const MortgageCalculator = ({ modal, onOpenModal, onModalUpdate, basePrice }: Pr
                     className="w-full px-4 py-2 rounded-none focus:outline-none"
                     aria-label="Downpayment"
                   />
-                  <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">{((downPayment / propertyPrice) * 100).toFixed(0)}%</span>
+                  <span className="bg-white dark:bg-neutral-700 px-4 py-2 border-l border-gray-300 whitespace-nowrap">{((downPayment / propertyPrice) * 100).toFixed(0)}%</span>
                 </div>
                 <Slider
                   ariaLabelForHandle="Downpayment"
@@ -180,7 +180,7 @@ const MortgageCalculator = ({ modal, onOpenModal, onModalUpdate, basePrice }: Pr
                     className="w-full px-4 py-2 rounded-none focus:outline-none"
                     aria-label="Interest Rate"
                   />
-                  <span className="bg-white px-4 py-2 border-l border-gray-300 whitespace-nowrap">%</span>
+                  <span className="bg-white dark:bg-neutral-700 px-4 py-2 border-l border-gray-300 whitespace-nowrap">%</span>
                 </div>
                 <Slider
                   ariaLabelForHandle="Interest Rate"

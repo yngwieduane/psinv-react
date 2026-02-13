@@ -41,8 +41,8 @@ const WhyPSI = () => {
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
               className={`pb-4 font-bold mr-6 whitespace-nowrap text-center cursor-pointer ${activeTab === tab.key
-                ? "text-primary border-b-2 border-secondary font-bold"
-                : "text-gray-500 hover:text-gray-800 font-light"
+                ? "text-primary border-b-2 border-secondary font-bold dark:text-white dark:border-secondary"
+                : "text-gray-500 hover:text-gray-800 font-light dark:text-gray-400 dark:hover:text-gray-300"
                 }`}
             >
               {tab.label}
@@ -52,13 +52,13 @@ const WhyPSI = () => {
 
         {/* Tab Content */}
         {activeTab === "company" && (
-          <div className="flex flex-col md:flex-row items-center gap-10 py-10 bg-gray-50">
+          <div className="flex flex-col md:flex-row items-center gap-10 py-10 bg-gray-50 dark:bg-neutral-900">
             {/* Text Section */}
             <div className="flex-1">
-              <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
+              <h2 className={`text-3xl font-serif font-bold text-gray-900 dark:text-white mb-4 ${outfit.className}`}>
                 {t("why_psi.title")}
               </h2>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed dark:text-gray-400">
                 {t("why_psi.desc")}
               </p>
               <Link
@@ -95,12 +95,12 @@ const WhyPSI = () => {
           <div className="flex flex-col md:flex-row items-center gap-10 py-10 md:py-0">
             {/* Text Section */}
             <div className="flex-1">
-              <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
+              <h2 className={`text-3xl font-serif font-bold text-gray-900 dark:text-white mb-4 ${outfit.className}`}>
                 {t("emirati_hub.title")}
               </h2>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed dark:text-gray-400">
                 {t("emirati_hub.desc.part1")}
-                <span className="font-bold text-secondary"> {t("emirati_hub.desc.part2")}</span>
+                <span className="font-bold text-secondary dark:text-secondary"> {t("emirati_hub.desc.part2")}</span>
               </p>
               <Link
                 href="/project/emirati-hub/"
@@ -136,10 +136,10 @@ const WhyPSI = () => {
           <div className="flex flex-col md:flex-row items-center gap-10 py-10 md:py-0">
             {/* Text Section */}
             <div className="flex-1">
-              <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
+              <h2 className={`text-3xl font-serif font-bold text-gray-900 dark:text-white mb-4 ${outfit.className}`}>
                 {t("youngster_program.title")}
               </h2>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed dark:text-gray-400">
                 {t("youngster_program.desc.part1")}
                 <span className="font-bold text-secondary"> {t("youngster_program.desc.part2")}</span> {t("youngster_program.desc.part3")}
               </p>
@@ -177,10 +177,10 @@ const WhyPSI = () => {
           <div className="flex flex-col md:flex-row items-center gap-10 py-10 md:py-0">
             {/* Text Section */}
             <div className="flex-1">
-              <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
+              <h2 className={`text-3xl font-serif font-bold text-gray-900 dark:text-white mb-4 ${outfit.className}`}>
                 {t("crypto.title")}
               </h2>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed dark:text-gray-400">
                 {t("crypto.desc.part1")}
               </p>
               <p className={`text-[18px] font-semibold sm:text-[24px] leading-[1.77] mb-4 text-[#E46027] font-normal tracking-[-0.5px] uppercase ${poppins.className}`}>
@@ -220,10 +220,10 @@ const WhyPSI = () => {
           <div className="flex flex-col md:flex-row items-center gap-10 py-10 md:py-0">
             {/* Text Section */}
             <div className="flex-1">
-              <h2 className={`text-3xl font-serif font-bold text-gray-900 mb-4 ${outfit.className}`}>
+              <h2 className={`text-3xl font-serif font-bold text-gray-900 dark:text-white mb-4 ${outfit.className}`}>
                 {t("international.title")}
               </h2>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed dark:text-gray-400">
                 {t("international.desc")}
               </p>
               <Link

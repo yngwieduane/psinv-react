@@ -192,7 +192,7 @@ export default function HomeSearch() {
                             <div className={`w-full md:w-36 ${isFiltersOpen ? '' : 'hidden md:block'}`}>
                                 <Listbox value={category} onChange={setCategory}>
                                     <div className="relative">
-                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 dark:text-white border border-gray-200 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 dark:text-white border border-gray-200 dark:border-gray-700 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                             <span className="col-start-1 row-start-1 truncate">{category || 'Contract'}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
@@ -221,7 +221,7 @@ export default function HomeSearch() {
                             <div className="w-full">
                                 <Listbox value={sector} onChange={setSector}>
                                     <div className="relative">
-                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 dark:text-white border border-gray-200 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 dark:text-white border border-gray-200 dark:border-gray-700 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                             <span className="col-start-1 row-start-1 truncate">{sector || 'Category'}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>

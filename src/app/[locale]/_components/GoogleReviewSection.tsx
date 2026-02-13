@@ -21,8 +21,8 @@ export default function GoogleReviewSection() {
   ];
 
   return (
-    <div className="py-20 bg-gray-50" dir={isRtl ? "rtl" : "ltr"}>
-      <div className="container mx-auto px-4 md:px-8">
+    <div className="py-20 bg-gray-50 dark:bg-neutral-900" dir={isRtl ? "rtl" : "ltr"}>
+      <div className="container mx-auto px-4 md:px-8 ">
         <h3 className={`text-center text-3xl font-serif mb-12 ${outfit.className}`}>
           {t("title")}
         </h3>
@@ -39,7 +39,7 @@ export default function GoogleReviewSection() {
             <div
               key={review.id}
               className={[
-                "bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow",
+                "bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow dark:bg-neutral-800",
                 "shrink-0 w-[85%] snap-start",
                 "sm:w-auto sm:shrink",
               ].join(" ")}
@@ -60,7 +60,7 @@ export default function GoogleReviewSection() {
 
               <div className="text-yellow-400 text-xl mb-5">★★★★★</div>
 
-              <p className="text-gray-600 text-sm leading-relaxed italic">
+              <p className="text-gray-600 text-sm leading-relaxed italic dark:text-white">
                 "{review.text}"
               </p>
             </div>
