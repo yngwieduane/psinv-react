@@ -171,7 +171,7 @@ export default async function BlogSingle({ params }: PageProps) {
             />
 
             <div className="pt-28 md:pt-36 border-b border-gray-100">
-                <div className="container mx-auto px-4 md:px-12 py-4">
+                <div className="container mx-auto px-4 md:px-12">
                     <Breadcrumb
                     />
                 </div>

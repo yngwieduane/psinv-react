@@ -175,11 +175,15 @@ export default function BlogPage() {
 
     return (
         <>
-            <div className="mx-auto container pt-32">
-                <Breadcrumb />
+
+            <div className="pt-28 md:pt-36 border-b border-gray-100">
+                <div className="container mx-auto px-4 md:px-12">
+                    <Breadcrumb
+                    />
+                </div>
             </div>
 
-            <div className="min-h-screen bg-white " dir={rtl ? "rtl" : "ltr"}>
+            <div className="min-h-screen bg-white mt-10" dir={rtl ? "rtl" : "ltr"}>
                 <div className="container mx-auto px-6 md:px-12 max-w-5xl">
                     <div className="text-center mb-16">
                         <h1 className="text-4xl font-bold mb-6 font-serif">{ui("title")}</h1>

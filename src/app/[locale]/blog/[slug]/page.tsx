@@ -73,7 +73,14 @@ export default async function BlogPostPage({ params }: PageProps) {
             />
 
             {/* Navigation Bar / Breadcrumb Area */}
-            <div className="bg-white border-b border-gray-100 sticky top-0 z-10 backdrop-blur-md bg-white/90">
+            <div className="pt-28 md:pt-36 border-b border-gray-100">
+                <div className="container mx-auto px-4 md:px-12">
+                    <Breadcrumb
+                    />
+                </div>
+            </div>
+
+            <div className="bg-white border-b border-gray-100 sticky top-0 z-10 backdrop-blur-md bg-white/90 hidden">
                 <div className="container mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
                     <Link href="/blog" className="flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors">
                         <ChevronLeft size={16} className={rtl ? "rotate-180 ml-1" : "mr-1"} />
