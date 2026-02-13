@@ -14,8 +14,9 @@ const ListPopUpWidget = () => {
     const [isPopUpOpen, setIsPopUpOpen] = useState(false);
     const [open, setOpen] = useState(isPopUpOpen);
     const pathname = usePathname();
-    const locale = pathname.split("/")[1] || "en";
-    const t = useTranslations('Common_Form_Agreements');    
+    const locale = pathname.split("/")[1] || "en";    
+    const t = useTranslations('ListPopUpWidget');
+
 
     const onCloseModal = (event: any) => {
         setIsPopUpOpen(false);
@@ -57,7 +58,7 @@ const ListPopUpWidget = () => {
                                   as="h3"
                                   className="text-start font-semibold md:text-2xl text-xl"
                                 >
-                                List Your Property
+                                {t("modal.title")}  
                                 </DialogTitle>
                               </div>
                               <div className="text-end">
@@ -85,9 +86,10 @@ const ListPopUpWidget = () => {
        
 
         <div className="bg-[#111954] text-[#fff] p-6 rounded-3xl">
-            <h3 className='text-[#fff] text-xl md:text-[15px] xl:text-xl uppercase mb-3'>Ready to Sell or Rent?</h3>
-            <p className='mb-6 text-md md:text-[13px] text-[#a2a7ca] xl:text-[16px]'>Partner with our verified agents to get the best market value — fast and secure.</p>
-            <Button onClick={() => setIsPopUpOpen(true)} className="bg-white text-[#111954] text-xl md:text-[15px] xl:text-xl px-5 py-3 md:py-2 xl:py-3 rounded flex w-full tect-center justify-content-center gap-2 items-center">Get Started <ChevronRight /></Button>
+            <h3 className='text-[#fff] text-xl md:text-[15px] xl:text-xl uppercase mb-3'>{t("card.title")}</h3>
+            <p className='mb-6 text-md md:text-[13px] text-[#a2a7ca] xl:text-[16px]'>{t("card.description")}</p>
+            <Button onClick={() => setIsPopUpOpen(true)} className="bg-white text-[#111954] text-xl md:text-[15px] xl:text-xl px-5 py-3 md:py-2 xl:py-3 rounded flex w-full tect-center justify-content-center gap-2 items-center">{t("card.cta")}
+<ChevronRight /></Button>
         </div>
         
             

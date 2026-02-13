@@ -69,7 +69,19 @@ export default function UnitPageAI(props: any) {
     const branchCode = isAssets ? 'assets' : 'auh';
     const callPhone = isAssets ? process.env.NEXT_PUBLIC_CALLNUMBER_ASSETS as string : process.env.NEXT_PUBLIC_CALLNUMBER as string;
     const whatsappPhone = isAssets ? process.env.NEXT_PUBLIC_WAPPNUMBER_ASSETS as string : process.env.NEXT_PUBLIC_WAPPNUMBER as string;
-
+    const amenityKey = (s: string) =>
+        s
+            .toLowerCase()
+            .replace(/&/g, "and")
+            .replace(/'/g, "")
+            .replace(/\b24\s*hour\b/g, "24_hour")
+            .replace(/[^a-z0-9]+/g, "_")
+            .replace(/^_+|_+$/g, "");
+    const getAmenityLabel = (am: string) => {
+        const rawLabel = (am.split("^")[1] || "").trim() || am;
+        const key = `amenities_values.${amenityKey(rawLabel)}`;
+        return t.has(key) ? t(key) : rawLabel;
+    };
     return (
         <div className="pt-28 md:pt-36 pb-24">
             <div>
@@ -168,6 +180,12 @@ export default function UnitPageAI(props: any) {
                             }
                         }
                     };
+                    const contractLabel = category === "Sale" ? t("values.sale") : t("values.rent");
+                    const typeLabel =
+                        (post.category || "").toLowerCase() === "apartment" ? t("values.apartment") :
+                            (post.category || "").toLowerCase() === "townhouse" ? t("values.townhouse") :
+                                (post.category || "").toLowerCase() === "villa" ? t("values.villa") :
+                                    post.category;
 
                     return (
                         <div key={index} >
@@ -289,22 +307,23 @@ export default function UnitPageAI(props: any) {
                                                 <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">{t('sections.details')}</h3>
                                                 <div className="bg-gray-50 rounded-3xl p-6 md:p-10 border border-gray-100">
                                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 md:gap-y-8">
-                                                        {[
-                                                            { label: t('labels.project'), value: post.propertyname },
-                                                            { label: t('labels.location'), value: post.community },
-                                                            { label: t('labels.type'), value: post.category },
-                                                            { label: t('labels.reference_no'), value: post.refNo },
-                                                            { label: t('labels.contract'), value: category },
-                                                            { label: t('labels.price'), value: <PriceConvert price={price} minDecimal='0' />, isBold: true },
-                                                            { label: t('labels.area'), value: <NumberConvert number={Number(post.built_upArea)} minDecimal='0' label={t('labels.sqft')} />, isBold: true },
-                                                            { label: t('labels.beds'), value: post.bedrooms, isBold: true },
-                                                            { label: t('labels.baths'), value: post.no_of_bathrooms, isBold: true },
-                                                        ].map((item, idx) => (
-                                                            <div key={idx} className="flex justify-between items-center border-b border-gray-200 pb-4 last:border-0 md:last:border-b">
-                                                                <span className="text-gray-500 text-sm font-bold uppercase tracking-wide">{item.label}</span>
-                                                                <span className={`${item.isBold ? 'text-gray-900 font-bold' : 'text-primary font-semibold'} text-base`}>{item.value}</span>
-                                                            </div>
-                                                        ))}
+                                                        {
+                                                            [
+                                                                { label: t('labels.project'), value: post.propertyname },
+                                                                { label: t('labels.location'), value: post.community },
+                                                                { label: t("labels.type"), value: typeLabel },
+                                                                { label: t('labels.reference_no'), value: post.refNo },
+                                                                { label: t("labels.contract"), value: contractLabel },
+                                                                { label: t('labels.price'), value: <PriceConvert price={price} minDecimal='0' />, isBold: true },
+                                                                { label: t('labels.area'), value: <NumberConvert number={Number(post.built_upArea)} minDecimal='0' label={t('labels.sqft')} />, isBold: true },
+                                                                { label: t('labels.beds'), value: post.bedrooms, isBold: true },
+                                                                { label: t('labels.baths'), value: post.no_of_bathrooms, isBold: true },
+                                                            ].map((item, idx) => (
+                                                                <div key={idx} className="flex justify-between items-center border-b border-gray-200 pb-4 last:border-0 md:last:border-b">
+                                                                    <span className="text-gray-500 text-sm font-bold uppercase tracking-wide">{item.label}</span>
+                                                                    <span className={`${item.isBold ? 'text-gray-900 font-bold' : 'text-primary font-semibold'} text-base`}>{item.value}</span>
+                                                                </div>
+                                                            ))}
                                                     </div>
                                                 </div>
                                                 <div className="mt-10">
@@ -377,7 +396,7 @@ export default function UnitPageAI(props: any) {
                                                     {(showAllAmenities ? amenities.slice(0, -1) : amenities.slice(0, -1).slice(0, 20)).map((am: string, i: number) => (
                                                         <div key={i} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
                                                             <CheckCircle2 className="text-secondary shrink-0" size={20} />
-                                                            <span className="text-gray-700 font-medium">{am.split('^')[1].trim()}</span>
+                                                            <span className="text-gray-700 font-medium">{getAmenityLabel(am)}</span>
                                                         </div>
                                                     ))}
                                                 </div>
