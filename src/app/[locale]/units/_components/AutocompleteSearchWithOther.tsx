@@ -1,5 +1,5 @@
-// components/AutocompleteSearchWithOther.js
-'use client'
+
+import { useTranslations } from "next-intl";
 import { useState, useEffect, useRef } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -18,10 +18,10 @@ export default function AutocompleteSearchWithOther({
     disableRouting = false,
     onSelect,
     showTitle = true,
-    placeholder = "Search by project or community...",
-    searchingLabel = "Searching...",
-    projectLabel = "Project",
-    communityLabel = "Community"
+    placeholder,
+    searchingLabel,
+    projectLabel,
+    communityLabel
 }: {
     isReset: any,
     disableRouting?: boolean,
@@ -32,6 +32,7 @@ export default function AutocompleteSearchWithOther({
     projectLabel?: string,
     communityLabel?: string
 }) {
+    const t = useTranslations("UnitsPage");
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -46,6 +47,12 @@ export default function AutocompleteSearchWithOther({
     const [resetStatus, setResetStatus] = useState(isReset);
     const [propertyId, setPropertyId] = useState(searchParams.get('propertyId')?.toString());
     const wrapperRef = useRef<HTMLDivElement>(null);
+
+    // Default translations
+    const displayPlaceholder = placeholder || t("search_placeholder");
+    const displaySearchingLabel = searchingLabel || t("searching");
+    const displayProjectLabel = projectLabel || t("project");
+    const displayCommunityLabel = communityLabel || t("community");
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -152,7 +159,7 @@ export default function AutocompleteSearchWithOther({
         <div className="relative" ref={wrapperRef}>
             {showTitle && (
                 <label htmlFor="propertyName" className="block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">
-                    Property Name {isReset}
+                    {t("property_name")} {isReset}
                 </label>
             )}
             <div className=" grid grid-cols-1">
@@ -160,7 +167,7 @@ export default function AutocompleteSearchWithOther({
                     type="text"
                     id="propertyName"
                     name="propertyName"
-                    placeholder={placeholder}
+                    placeholder={displayPlaceholder}
                     value={inputValue}
                     onChange={handleInputChange}
                     onClick={handleInputClick}
@@ -174,7 +181,7 @@ export default function AutocompleteSearchWithOther({
             </div>
             {loading && (
                 <div className="absolute left-0 right-0 mt-2 p-4 rounded-xl backdrop-blur-xl bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.08)]">
-                    <p className="text-gray-500 text-sm">{searchingLabel}</p>
+                    <p className="text-gray-500 text-sm">{displaySearchingLabel}</p>
                 </div>
             )}
             {showDropdown && results.length > 0 && (
@@ -191,7 +198,7 @@ export default function AutocompleteSearchWithOther({
                                     <span className="text-xs text-gray-500 mt-0.5 block">{item.city ? item.city : item.community}</span>
                                 </div>
                                 <span className={`text-[10px] px-2 py-0.5 rounded-full ${item.type === 'Project' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}`}>
-                                    {item.type === 'Project' ? projectLabel : communityLabel}
+                                    {item.type === 'Project' ? displayProjectLabel : displayCommunityLabel}
                                 </span>
                             </div>
                         </li>

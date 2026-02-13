@@ -10,8 +10,10 @@ import { ChevronDown, Filter, LayoutGrid, MapIcon, X } from "lucide-react";
 import UnitsMapBox from "./UnitsMapBox";
 import { Dialog, DialogPanel } from '@headlessui/react'
 import UnitsSideSearchMapView from "./UnitsSideSearchMapView";
+import { useTranslations } from "next-intl";
 
 export default function UnitsPageAI(props: any) {
+    const t = useTranslations('UnitsPageAI');
     const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
     const [activeSort, setActiveSort] = useState('Featured');
     const [showFilters, setShowFilters] = useState(false);
@@ -35,7 +37,10 @@ export default function UnitsPageAI(props: any) {
                 {/* Header */}
                 <div className="flex justify-between items-end mb-6">
                     <h1 className="text-xl md:text-3xl text-gray-900 font-bold">
-                        {titleData.count > 0 ? `${titleData.count} ` : ''}Properties for {titleData.category} in {titleData.location}
+                        {titleData.count > 0
+                            ? t('propertiesTitle', { count: titleData.count, category: t(titleData.category.toLowerCase()), location: titleData.location === 'UAE' ? t('uae') : titleData.location })
+                            : t('propertiesTitleNoCount', { category: t(titleData.category.toLowerCase()), location: titleData.location === 'UAE' ? t('uae') : titleData.location })
+                        }
                     </h1>
 
                     <div className="flex items-center gap-4">
@@ -64,10 +69,10 @@ export default function UnitsPageAI(props: any) {
                         </div>
 
                         <div className="hidden items-center gap-2">
-                            <span className="text-xs text-gray-500 font-bold uppercase">Sort:</span>
+                            <span className="text-xs text-gray-500 font-bold uppercase">{t('sort')}</span>
                             <div className="relative">
                                 <button className="flex items-center gap-1 text-sm font-bold text-primary cursor-pointer">
-                                    {activeSort} <ChevronDown size={14} />
+                                    {t(activeSort.toLowerCase())} <ChevronDown size={14} />
                                 </button>
                             </div>
                         </div>
@@ -78,7 +83,7 @@ export default function UnitsPageAI(props: any) {
                     {viewMode === 'list' && (
                         <>
                             <div className="col-span-4 relative z-50">
-                                <Search placeholder="Search by Reference ID" />
+                                <Search placeholder={t('searchByReference')} />
                             </div>
                             <div className="hidden md:block">
                                 <UnitsSideSearch onChange='' />
@@ -113,7 +118,7 @@ export default function UnitsPageAI(props: any) {
                                 className={`cursor-pointer h-full px-4 rounded-lg flex items-center gap-2 font-bold transition-colors ${showFilters ? 'bg-gray-200 text-gray-700' : 'text-gray-700 hover:bg-gray-50'}`}
                             >
                                 <Filter size={20} />
-                                <span className="hidden md:inline">Filters</span>
+                                <span className="hidden md:inline">{t('filters')}</span>
                             </button>
 
                             <div className="w-px h-8 bg-gray-200" />

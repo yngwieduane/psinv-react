@@ -6143,5 +6143,45 @@
       "description": "تعاون مع وكلائنا المعتمدين للحصول على أفضل قيمة سوقية بسرعة وأمان.",
       "cta": "ابدأ الآن"
     }
+  },
+  "UnitsPageAI": {
+    "propertiesTitle": "{count} عقارات لـ {category} في {location}",
+    "propertiesTitleNoCount": "عقارات لـ {category} في {location}",
+    "searchByReference": "البحث بواسطة الرقم المرجعي",
+    "filters": "تصفية",
+    "sort": "ترتيب:",
+    "featured": "مميز",
+    "sale": "بيع",
+    "rent": "إيجار",
+    "Sale": "بيع",
+    "Rent": "إيجار",
+    "uae": "الإمارات"
+  },
+  "UnitsPage": {
+    "property_name": "اسم العقار",
+    "search_placeholder": "ابحث حسب المشروع أو المجمع...",
+    "searching": "جاري البحث...",
+    "project": "مشروع",
+    "community": "مجمع",
+    "property_types": "أنواع العقارات",
+    "contract": "عقد",
+    "search": "بحث",
+    "category_label": "فئة",
+    "any": "أي",
+    "residential": "سكني",
+    "commercial": "تجاري",
+    "beds": "غرف",
+    "baths": "حمامات",
+    "beds_and_baths": "غرف النوم والحمامات",
+    "bedrooms": "غرف النوم",
+    "bathrooms": "حمامات",
+    "price_range": "نطاق السعر",
+    "min_price": "السعر الأدنى",
+    "max_price": "السعر الأقصى",
+    "min_price_placeholder": "أقل سعر",
+    "max_price_placeholder": "أعلى سعر",
+    "reset": "إعادة ضبط",
+    "sale": "بيع",
+    "rent": "إيجار"
   }
 }

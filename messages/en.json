@@ -758,8 +758,31 @@
     "download_brochure": "Download Brochure"
   },
   "UnitsPage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "property_name": "Property Name",
+    "search_placeholder": "Search by project or community...",
+    "searching": "Searching...",
+    "project": "Project",
+    "community": "Community",
+    "property_types": "Property Types",
+    "contract": "Contract",
+    "search": "Search",
+    "category_label": "Category",
+    "any": "Any",
+    "residential": "Residential",
+    "commercial": "Commercial",
+    "beds": "Beds",
+    "baths": "Baths",
+    "beds_and_baths": "Beds and Baths",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "price_range": "Price Range",
+    "min_price": "Minimum Price",
+    "max_price": "Maximum Price",
+    "min_price_placeholder": "Min Price",
+    "max_price_placeholder": "Max Price",
+    "reset": "Reset",
+    "sale": "Sale",
+    "rent": "Rent"
   },
   "Navbar": {
     "home": "Home",
@@ -1858,12 +1881,6 @@
     }
   },
   "Articles": {
-    "videos": "Videos",
-    "videoTitles": {
-      "video1": "UAE Real Estate Investment",
-      "video2": "Invest in UAE Real Estate",
-      "video3": "Why Abu Dhabi?"
-    },
     "101": {
       "title": "Green Tech & Sustainability: UAE’s Next-Gen Real Estate Developments for Smart Buyers",
       "summary": "The UAE is quickly becoming a global leader in green, sustainable, and tech-driven real estate, with developments designed to save energy, reduce environmental impact, and improve the quality of life for residents and investors.",
@@ -1999,7 +2016,7 @@
         },
         {
           "type": "paragraph",
-          "content": "Here\u2019s a closer look at the best <a class=\"class-anchor\" href=\"/en/projects/\" title=\"real estate\">real estate</a> companies in the UAE, and why Property Shop Investment (PSI) is leading the way."
+          "content": "Here’s a closer look at the best <a class=\"class-anchor\" href=\"/en/projects/\" title=\"real estate\">real estate</a> companies in the UAE, and why Property Shop Investment (PSI) is leading the way."
         },
         {
           "type": "heading",
@@ -2035,11 +2052,11 @@
         },
         {
           "type": "heading",
-          "content": "1. <a class=\"class-anchor\" href=\"/\" title=\"Property Shop Investment\">Property Shop Investment (PSI)</a> – Abu Dhabi\u2019s Leading Real Estate Company"
+          "content": "1. <a class=\"class-anchor\" href=\"/\" title=\"Property Shop Investment\">Property Shop Investment (PSI)</a> – Abu Dhabi’s Leading Real Estate Company"
         },
         {
           "type": "paragraph",
-          "content": "Founded in <a class=\"class-anchor\" href=\"/en/projects/abu-dhabi\" title=\"Abu Dhabi\">Abu Dhabi</a>, Property Shop Investment has grown into one of the UAE\u2019s most trusted real estate firms. PSI is known for its customer-first approach, wide property portfolio, and expert market insights."
+          "content": "Founded in <a class=\"class-anchor\" href=\"/en/projects/abu-dhabi\" title=\"Abu Dhabi\">Abu Dhabi</a>, Property Shop Investment has grown into one of the UAE’s most trusted real estate firms. PSI is known for its customer-first approach, wide property portfolio, and expert market insights."
         },
         {
           "type": "paragraph",
@@ -2057,7 +2074,7 @@
         },
         {
           "type": "paragraph",
-          "content": "Why choose PSI? PSI focuses on matching clients with properties that fit both their needs and budget, while maximizing investment returns. Whether you\u2019re buying your first home or expanding your portfolio, PSI provides full support from property search to handover."
+          "content": "Why choose PSI? PSI focuses on matching clients with properties that fit both their needs and budget, while maximizing investment returns. Whether you’re buying your first home or expanding your portfolio, PSI provides full support from property search to handover."
         },
         {
           "type": "heading",
@@ -2073,7 +2090,7 @@
         },
         {
           "type": "paragraph",
-          "content": "Abu Dhabi\u2019s biggest developer, responsible for major communities such as Yas Island, Saadiyat Island, and Al Raha Beach. Aldar is a PSI partner, meaning clients get first access to some of the most sought-after developments."
+          "content": "Abu Dhabi’s biggest developer, responsible for major communities such as Yas Island, Saadiyat Island, and Al Raha Beach. Aldar is a PSI partner, meaning clients get first access to some of the most sought-after developments."
         },
         {
           "type": "heading",
@@ -2097,7 +2114,7 @@
         },
         {
           "type": "paragraph",
-          "content": "The UAE offers one of the most attractive property markets globally. Here\u2019s why:"
+          "content": "The UAE offers one of the most attractive property markets globally. Here’s why:"
         },
         {
           "type": "list",
@@ -2115,7 +2132,7 @@
         },
         {
           "type": "paragraph",
-          "content": "With its proven track record, wide property selection, and investor support, Property Shop Investment remains one of the top choices for anyone looking to buy, sell, or rent in the UAE. Whether you\u2019re seeking a family home or a high-ROI investment, PSI can help you find the right property at the right time."
+          "content": "With its proven track record, wide property selection, and investor support, Property Shop Investment remains one of the top choices for anyone looking to buy, sell, or rent in the UAE. Whether you’re seeking a family home or a high-ROI investment, PSI can help you find the right property at the right time."
         }
       ]
     },
@@ -5342,6 +5359,12 @@
           "content": "Abu Dhabi’s real estate market is a valuable opportunity for investors seeking high returns and stability. From the luxury allure of Yas and Saadiyat Islands to the affordability of Al Reef, there is something for everyone. With a strong economy, tax benefits, and significant projects ahead, now is the right time to invest. Start exploring these top locations and partner with trusted professionals to secure your share of Abu Dhabi’s thriving market."
         }
       ]
+    },
+    "videos": "Videos",
+    "videoTitles": {
+      "video1": "UAE Real Estate Investment",
+      "video2": "Invest in UAE Real Estate",
+      "video3": "Why Abu Dhabi?"
     }
   },
   "CryptoPage": {
@@ -6650,5 +6673,18 @@
       "description": "Partner with our verified agents to get the best market value — fast and secure.",
       "cta": "Get Started"
     }
+  },
+  "UnitsPageAI": {
+    "propertiesTitle": "{count} Properties for {category} in {location}",
+    "propertiesTitleNoCount": "Properties for {category} in {location}",
+    "searchByReference": "Search by Reference ID",
+    "filters": "Filters",
+    "sort": "Sort:",
+    "featured": "Featured",
+    "sale": "Sale",
+    "rent": "Rent",
+    "Sale": "Sale",
+    "Rent": "Rent",
+    "uae": "UAE"
   }
 }
