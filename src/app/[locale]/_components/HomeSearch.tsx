@@ -133,15 +133,15 @@ export default function HomeSearch() {
 
     return (
         <div className="relative z-30 -mt-20 mb-10 container mx-auto px-4 " id='search-section'>
-            <div className="bg-white rounded-3xl shadow-xl max-w-5xl mx-auto">
+            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl max-w-5xl mx-auto">
                 {/* Tabs */}
-                <div className="flex border-b border-gray-100">
+                <div className="flex border-b border-gray-100 ">
                     <button
                         onClick={() => setActiveTab('units')}
-                        className={`cursor-pointer flex-1 py-4 text-center font-medium transition-colors relative ${activeTab === 'units' ? 'text-[#353455] font-bold' : 'text-gray-500 hover:text-gray-700'}`}
+                        className={`cursor-pointer flex-1 py-4 text-center font-medium transition-colors relative ${activeTab === 'units' ? 'text-[#353455] dark:text-white font-bold' : 'text-gray-500 hover:text-gray-700'}`}
                     >
                         Units
-                        {activeTab === 'units' && <div className="absolute bottom-0 left-0 w-full h-1 bg-[#353455]"></div>}
+                        {activeTab === 'units' && <div className="absolute bottom-0 left-0 w-full h-1 dark:bg-white bg-[#353455]"></div>}
                     </button>
                     <button
                         disabled
@@ -192,16 +192,16 @@ export default function HomeSearch() {
                             <div className={`w-full md:w-36 ${isFiltersOpen ? '' : 'hidden md:block'}`}>
                                 <Listbox value={category} onChange={setCategory}>
                                     <div className="relative">
-                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 dark:text-white border border-gray-200 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                             <span className="col-start-1 row-start-1 truncate">{category || 'Contract'}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
-                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
-                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white dark:bg-gray-800 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
+                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none dark:text-white data-focus:bg-gray-100 dark:data-focus:bg-gray-700">
                                                 <span className="block truncate font-normal group-data-selected:font-semibold">Contract</span>
                                             </ListboxOption>
                                             {['Sale', 'Rent'].map((cat) => (
-                                                <ListboxOption key={cat} value={cat} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                                <ListboxOption key={cat} value={cat} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none dark:text-white data-focus:bg-gray-100 dark:data-focus:bg-gray-700">
                                                     <span className="block truncate font-normal group-data-selected:font-semibold">{cat}</span>
                                                     <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
                                                         <CheckIcon aria-hidden="true" className="size-5" />
@@ -221,16 +221,16 @@ export default function HomeSearch() {
                             <div className="w-full">
                                 <Listbox value={sector} onChange={setSector}>
                                     <div className="relative">
-                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 dark:text-white border border-gray-200 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                             <span className="col-start-1 row-start-1 truncate">{sector || 'Category'}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
-                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
-                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white dark:bg-gray-800 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
+                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none dark:text-white data-focus:bg-gray-100 dark:data-focus:bg-gray-700">
                                                 <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
                                             </ListboxOption>
                                             {['Residential', 'Commercial'].map((s) => (
-                                                <ListboxOption key={s} value={s} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                                <ListboxOption key={s} value={s} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none dark:text-white data-focus:bg-gray-100 dark:data-focus:bg-gray-700">
                                                     <span className="block truncate font-normal group-data-selected:font-semibold">{s}</span>
                                                     <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
                                                         <CheckIcon aria-hidden="true" className="size-5" />
@@ -246,23 +246,23 @@ export default function HomeSearch() {
                             <div className="w-full">
                                 <Listbox value={propertyType} onChange={setPropertyType}>
                                     <div className="relative">
-                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                             <span className="col-start-1 row-start-1 truncate">{getSelectedPropertyTypeName(propertyType)}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
-                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
-                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white dark:bg-gray-800 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
+                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none dark:text-white data-focus:bg-gray-100 dark:data-focus:bg-gray-700">
                                                 <span className="block truncate font-normal group-data-selected:font-semibold">Any</span>
                                             </ListboxOption>
 
                                             {/* Groups */}
                                             {propertyTypesList.map((group: any) => (
                                                 <div key={group.groupName}>
-                                                    <div className="px-3 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50/50">
+                                                    <div className="px-3 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50/50 dark:bg-gray-700">
                                                         {group.groupName}
                                                     </div>
                                                     {group.items.map((option: any) => (
-                                                        <ListboxOption key={option.lookupId} value={option.lookupId} className="group relative cursor-pointer py-2 pl-6 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                                        <ListboxOption key={option.lookupId} value={option.lookupId} className="group relative cursor-pointer py-2 pl-6 pr-9 text-gray-900 select-none dark:text-white data-focus:bg-gray-100 dark:data-focus:bg-gray-700">
                                                             <span className="block truncate font-normal group-data-selected:font-semibold">{option.lookupName}</span>
                                                             <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
                                                                 <CheckIcon aria-hidden="true" className="size-5" />
@@ -280,7 +280,7 @@ export default function HomeSearch() {
                             {/* Beds and Baths (Popover) */}
                             <div className="w-full">
                                 <Popover className="relative">
-                                    <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                    <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                         <span className="col-start-1 row-start-1 truncate">
                                             {beds ? `${beds} Beds` : (baths ? '' : 'Beds and Baths')}
                                             {beds && baths ? ' & ' : ''}
@@ -288,7 +288,7 @@ export default function HomeSearch() {
                                         </span>
                                         <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                     </PopoverButton>
-                                    <PopoverPanel transition className="absolute z-50 mt-2 w-64 overflow-hidden rounded-xl bg-white p-4 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
+                                    <PopoverPanel transition className="absolute z-50 mt-2 w-64 overflow-hidden rounded-xl bg-white dark:bg-gray-800 p-4 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                         <div className="flex flex-col gap-4">
                                             <div>
                                                 <label className="block text-xs font-medium text-gray-500 mb-1">Bedrooms</label>
@@ -297,7 +297,7 @@ export default function HomeSearch() {
                                                         <button
                                                             key={b}
                                                             onClick={() => setBeds(beds === b ? null : b)}
-                                                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${beds === b ? 'bg-[#353455] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                                                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${beds === b ? 'bg-[#353455] text-white' : 'bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-500 dark:text-white text-gray-700 hover:bg-gray-200'}`}
                                                             type="button"
                                                         >
                                                             {b}
@@ -312,7 +312,7 @@ export default function HomeSearch() {
                                                         <button
                                                             key={b}
                                                             onClick={() => setBaths(baths === b ? null : b)}
-                                                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${baths === b ? 'bg-[#353455] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                                                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${baths === b ? 'bg-[#353455] text-white' : 'bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-500 dark:text-white text-gray-700 hover:bg-gray-200'}`}
                                                             type="button"
                                                         >
                                                             {b}
@@ -329,7 +329,7 @@ export default function HomeSearch() {
                             {/* Price Range (Popover) */}
                             <div className="w-full">
                                 <Popover className="relative">
-                                    <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                    <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 dark:hover:bg-gray-700 py-3.5 pl-4 pr-4 text-left text-gray-700 dark:text-white outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
                                         <span className="col-start-1 row-start-1 truncate">
                                             {priceRange[0] === minPriceDefault && priceRange[1] === maxPriceDefault
                                                 ? 'Price Range'
@@ -337,14 +337,14 @@ export default function HomeSearch() {
                                         </span>
                                         <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                     </PopoverButton>
-                                    <PopoverPanel transition className="absolute z-50 mt-2 w-full min-w-[300px] overflow-hidden rounded-xl bg-white p-4 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
+                                    <PopoverPanel transition className="absolute z-50 mt-2 w-full min-w-[300px] overflow-hidden rounded-xl bg-white dark:bg-gray-800 p-4 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
                                         <div className="flex flex-col gap-4">
                                             <div>
                                                 <label htmlFor="minPrice" className="block text-xs font-medium text-gray-500 mb-1">Minimum Price</label>
                                                 <input
                                                     type="number"
                                                     id="minPrice"
-                                                    className="w-full rounded-lg border-gray-200 bg-gray-50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
+                                                    className="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-700 dark:text-white bg-gray-50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
                                                     placeholder="Min Price"
                                                     value={priceRange[0]}
                                                     onChange={(e) => {
@@ -358,7 +358,7 @@ export default function HomeSearch() {
                                                 <input
                                                     type="number"
                                                     id="maxPrice"
-                                                    className="w-full rounded-lg border-gray-200 bg-gray-50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
+                                                    className="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-700 dark:text-white bg-gray-50 p-2 text-sm placeholder:text-gray-400 focus:border-[#353455] focus:ring-[#353455]/20"
                                                     placeholder="Max Price"
                                                     value={priceRange[1]}
                                                     onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
