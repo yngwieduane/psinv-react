@@ -101,7 +101,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
     email: z.string().email({ message: t('errors.email') }),
     phone: z.string().min(7, { message: t('errors.phone') }),
     message: z.string().min(5, { message: t('errors.message') }), // Assuming key 'errors.message' exists or will be added
-    
+
   });
 
   type FormData = z.infer<typeof schema>;
@@ -335,7 +335,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full bg-white mt-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full bg-white mt-4 dark:bg-gray-800">
         {postId === "Success" && (
           <div className="p-3 mb-4 rounded bg-green-500 text-white">
             {t('alerts.success')}
@@ -357,7 +357,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
                 type="text"
                 {...register("firstName")}
                 placeholder={t('fields.firstName.placeholder')}
-                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400"
               />
               {errors.firstName && (
                 <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>
@@ -369,7 +369,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
                 type="text"
                 {...register("lastName")}
                 placeholder={t('fields.lastName.placeholder')}
-                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400"
               />
               {errors.lastName && (
                 <p className="text-red-500 text-xs mt-1">{errors.lastName.message}</p>
@@ -382,7 +382,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
               type="email"
               {...register("email")}
               placeholder={t('fields.email.placeholder')}
-              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400"
             />
             {errors.email && (
               <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
@@ -390,25 +390,25 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
           </div>
 
           <div className="relative space-y-1">
-              <Controller
-                name="phone"
-                control={control}
-                render={({ field }) => (
-                  <PhoneInput
-                    {...field}
-                    international
-                    defaultCountry="AE"
-                    countryCallingCodeEditable={false}
-                    placeholder={t('fields.phone.placeholder')}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
-                    numberInputProps={{
-                        className: "w-full bg-transparent focus:outline-none text-sm placeholder:text-gray-400"
-                    }}                    
-                    value={field.value || ""}
-                    onChange={(val) => field.onChange(val || "")}
-                  />
-                )}
-              />
+            <Controller
+              name="phone"
+              control={control}
+              render={({ field }) => (
+                <PhoneInput
+                  {...field}
+                  international
+                  defaultCountry="AE"
+                  countryCallingCodeEditable={false}
+                  placeholder={t('fields.phone.placeholder')}
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445] dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400"
+                  numberInputProps={{
+                    className: "w-full bg-transparent focus:outline-none text-sm placeholder:text-gray-400"
+                  }}
+                  value={field.value || ""}
+                  onChange={(val) => field.onChange(val || "")}
+                />
+              )}
+            />
 
             {errors.phone && (
               <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
@@ -420,26 +420,26 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
           <textarea
             {...register("message")}
             placeholder={t('fields.message.placeholder')}
-            className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] h-40 resize-none"
+            className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] h-40 resize-none dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400"
           />
           {errors.message && (
             <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
           )}
-        </div>        
+        </div>
         <button
           type="submit"
           disabled={isSubmitting}
           className="w-full mb-5 bg-[#0c1445] hover:bg-[#0c1445]/90 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
         >
           {isSubmitting ? (
-              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
           ) : (
-              <>
-                  Submit
-                  <Send size={16} className="group-hover:translate-x-1 transition-transform" />
-              </>
+            <>
+              Submit
+              <Send size={16} className="group-hover:translate-x-1 transition-transform" />
+            </>
           )}
-        </button>     
+        </button>
 
         <div className="my-3">
           <label className="flex items-center space-x-2">

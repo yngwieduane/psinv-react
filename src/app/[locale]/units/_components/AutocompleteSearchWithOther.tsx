@@ -172,7 +172,7 @@ export default function AutocompleteSearchWithOther({
                     onChange={handleInputChange}
                     onClick={handleInputClick}
                     autoComplete="off"
-                    className="col-start-1 row-start-1 block w-full rounded-xl bg-white/50 dark:bg-gray-800 dark:text-white border border-gray-200 dark:border-gray-700 py-3.5 pr-10 pl-11 text-base text-gray-800 outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all duration-200 shadow-sm hover:bg-white/80"
+                    className="col-start-1 row-start-1 block w-full rounded-xl bg-white/50 dark:bg-gray-800 dark:text-white border border-gray-200 dark:border-gray-700 py-3.5 pr-10 pl-11 text-base text-gray-800 outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all duration-200 shadow-sm hover:bg-white/80 dark:hover:bg-gray-900"
                 />
                 <MagnifyingGlassIcon
                     aria-hidden="true"
@@ -185,17 +185,17 @@ export default function AutocompleteSearchWithOther({
                 </div>
             )}
             {showDropdown && results.length > 0 && (
-                <ul className="absolute left-0 right-0 mt-2 z-10 max-h-60 overflow-auto rounded-xl backdrop-blur-xl bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.08)] py-2">
+                <ul className="absolute left-0 right-0 mt-2 z-30 max-h-60 overflow-auto rounded-xl backdrop-blur-xl bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.08)] py-2 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
                     {results.map((item, index) => (
                         <li
                             key={index}
                             onClick={handleOptionClick(item)}
-                            className="px-4 py-3 hover:bg-[#353455]/5 cursor-pointer transition-colors duration-200 border-b border-gray-100 last:border-0"
+                            className="px-4 py-3 hover:bg-[#353455]/5 cursor-pointer transition-colors duration-200 border-b border-gray-100 last:border-0 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                             <div className="flex justify-between items-center">
                                 <div>
-                                    <strong className="block text-[#353455] text-sm font-semibold">{item.name}</strong>
-                                    <span className="text-xs text-gray-500 mt-0.5 block">{item.city ? item.city : item.community}</span>
+                                    <strong className="block text-[#353455] text-sm font-semibold dark:text-white dark:hover:text-white">{item.name}</strong>
+                                    <span className="text-xs text-gray-500 mt-0.5 block dark:text-white dark:hover:text-white">{item.city ? item.city : item.community}</span>
                                 </div>
                                 <span className={`text-[10px] px-2 py-0.5 rounded-full ${item.type === 'Project' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}`}>
                                     {item.type === 'Project' ? displayProjectLabel : displayCommunityLabel}

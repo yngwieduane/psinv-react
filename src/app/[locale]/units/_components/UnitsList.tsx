@@ -151,7 +151,7 @@ export default function UnitsList(props: any) {
                                     <button
                                         onClick={() => handlePageChange(pageNum - 1)}
                                         disabled={pageNum <= 1}
-                                        className="p-2 rounded-lg border border-gray-200 bg-white hover:bg-primary hover:text-white disabled:opacity-50 disabled:cursor-not-allowed text-gray-700 transition-colors"
+                                        className="p-2 rounded-lg border border-gray-200 bg-white hover:bg-primary hover:text-white disabled:opacity-50 disabled:cursor-not-allowed text-gray-700 transition-colors dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700"
                                     >
                                         <ChevronLeft size={20} />
                                     </button>
@@ -170,7 +170,7 @@ export default function UnitsList(props: any) {
                                                 onClick={() => handlePageChange(page)}
                                                 className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-medium transition-colors ${pageNum === page
                                                     ? 'bg-primary text-white font-bold shadow-sm'
-                                                    : 'bg-white border border-gray-200 text-gray-600 hover:bg-primary hover:text-white'
+                                                    : 'bg-white border border-gray-200 text-gray-600 hover:bg-primary hover:text-white dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700'
                                                     }`}
                                             >
                                                 {page}
@@ -181,7 +181,7 @@ export default function UnitsList(props: any) {
                                     <button
                                         onClick={() => handlePageChange(pageNum + 1)}
                                         disabled={pageNum >= totalPages}
-                                        className="p-2 rounded-lg border border-gray-200 bg-white hover:bg-primary hover:text-white disabled:opacity-50 disabled:cursor-not-allowed text-gray-700 transition-colors"
+                                        className="p-2 rounded-lg border border-gray-200 bg-white hover:bg-primary hover:text-white disabled:opacity-50 disabled:cursor-not-allowed text-gray-700 transition-colors dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700"
                                     >
                                         <ChevronRight size={20} />
                                     </button>
