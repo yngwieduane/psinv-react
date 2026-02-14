@@ -476,6 +476,7 @@
     "loc_Downtown_Dubai": "迪拜市中心",
     "loc_Dubai_Creek": "迪拜河",
     "cookies": "曲奇",
+    "footer_links_germany": "PSI 德国",
     "company_address": {
       "part1": "办公室编号4410和4411",
       "part2": "阿达克斯塔44层",
@@ -827,7 +828,28 @@
     "rent": "出租",
     "Sale": "出售",
     "Rent": "出租",
-    "uae": "阿联酋"
+    "uae": "阿联酋",
+    "reset": "重置",
+    "bedrooms": "卧室数量",
+    "any": "不限",
+    "bedroom": "卧室",
+    "types": "房产类型",
+    "price": "价格",
+    "Floor Area": "建筑面积（平方英尺）",
+    "Residential": "住宅",
+    "Commercial": "商业",
+    "Apartment": "公寓",
+    "Villa": "别墅",
+    "Townhouse": "联排别墅",
+    "Studio": "单间公寓",
+    "Twin House": "双拼别墅",
+    "Penthouse": "顶层公寓",
+    "Office": "办公室",
+    "Warehouse": "仓库",
+    "Retail": "零售",
+    "Shop": "商铺",
+    "Plot": "地块"
+
   },
   "ProjectPage": {
     "overview": "概览",

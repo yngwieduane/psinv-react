@@ -476,6 +476,7 @@
     "loc_Downtown_Dubai": "Downtown Dubai",
     "loc_Dubai_Creek": "Dubai Creek",
     "cookies": "Cookies",
+    "footer_links_germany": "PSI Deutschland",
     "company_address": {
       "part1": "Büro Nr. 4410 & 4411",
       "part2": "Addax Tower, Ebene 44",
@@ -826,7 +827,28 @@
     "featured": "Hervorgehoben",
     "sale": "Kauf",
     "rent": "Miete",
-    "uae": "VAE"
+    "uae": "VAE",
+    "reset": "Zurücksetzen",
+    "bedrooms": "Schlafzimmer",
+    "any": "Beliebig",
+    "bedroom": "Schlafzimmer",
+    "types": "Immobilienarten",
+    "price": "Preis",
+    "Floor Area": "Wohnfläche (sqft)",
+    "Residential": "Wohnimmobilie",
+    "Commercial": "Gewerbeimmobilie",
+    "Apartment": "Wohnung",
+    "Villa": "Villa",
+    "Townhouse": "Reihenhaus",
+    "Studio": "Studio",
+    "Twin House": "Doppelhaus",
+    "Penthouse": "Penthouse",
+    "Office": "Büro",
+    "Warehouse": "Lagerhalle",
+    "Retail": "Einzelhandel",
+    "Shop": "Geschäft",
+    "Plot": "Grundstück"
+
   },
   "ProjectPage": {
     "overview": "Überblick",

@@ -476,6 +476,7 @@
     "loc_Downtown_Dubai": "Даунтаун Дубай",
     "loc_Dubai_Creek": "Дубай-Крик",
     "cookies": "Файлы cookie",
+    "footer_links_germany": "PSI Германия",
     "company_address": {
       "part1": "Офис №4410 и 4411",
       "part2": "Башня Addax, 44 этаж",
@@ -826,7 +827,28 @@
     "featured": "Рекомендуемые",
     "sale": "Продажа",
     "rent": "Аренда",
-    "uae": "ОАЭ"
+    "uae": "ОАЭ",
+    "reset": "Сбросить",
+    "bedrooms": "Спальни",
+    "any": "Любое",
+    "bedroom": "Спальня",
+    "types": "Типы недвижимости",
+    "price": "Цена",
+    "Floor Area": "Площадь (кв. футы)",
+    "Residential": "Жилая",
+    "Commercial": "Коммерческая",
+    "Apartment": "Квартира",
+    "Villa": "Вилла",
+    "Townhouse": "Таунхаус",
+    "Studio": "Студия",
+    "Twin House": "Дуплекс",
+    "Penthouse": "Пентхаус",
+    "Office": "Офис",
+    "Warehouse": "Склад",
+    "Retail": "Розничная торговля",
+    "Shop": "Магазин",
+    "Plot": "Участок"
+
   },
   "ProjectPage": {
     "overview": "Обзор",
