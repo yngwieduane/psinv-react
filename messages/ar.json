@@ -1389,6 +1389,7 @@
     "loc_Downtown_Dubai": "وسط مدينة دبي",
     "loc_Dubai_Creek": "خور دبي",
     "cookies": "ملفات تعريف الارتباط",
+    "footer_links_germany": "شركة PSI ألمانيا",
     "company_address": {
       "part1": "المكتب رقم 4410 و 4411",
       "part2": "برج أداكس، الطابق 44",
@@ -6155,7 +6156,28 @@
     "rent": "إيجار",
     "Sale": "بيع",
     "Rent": "إيجار",
-    "uae": "الإمارات"
+    "uae": "الإمارات",
+    "reset": "إعادة تعيين",
+    "bedrooms": "غرف النوم",
+    "any": "أي",
+    "bedroom": "غرفة نوم",
+    "types": "أنواع العقارات",
+    "price": "السعر",
+    "Floor Area": "المساحة (قدم²)",
+    "Residential": "سكني",
+    "Commercial": "تجاري",
+    "Apartment": "شقة",
+    "Villa": "فيلا",
+    "Townhouse": "منزل تاون هاوس",
+    "Studio": "ستوديو",
+    "Twin House": "منزل توأم",
+    "Penthouse": "بنتهاوس",
+    "Office": "مكتب",
+    "Warehouse": "مستودع",
+    "Retail": "تجزئة",
+    "Shop": "متجر",
+    "Plot": "قطعة أرض"
+
   },
   "UnitsPage": {
     "property_name": "اسم العقار",

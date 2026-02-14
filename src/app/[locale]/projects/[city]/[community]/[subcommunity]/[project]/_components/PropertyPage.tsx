@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useFormatter, useTranslations } from 'next-intl';
 import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import UnitModels from "./UnitModels";
@@ -54,6 +54,8 @@ function PropertyPage(props: any) {
     const [dwDataContent, setDwDataContent] = useState('details');
     const [dwDataTitle, setDwDataTitle] = useState('details');
     const [isBrochureModalOpen, setBrochureModalOpen] = useState(false);
+    const tabsContainerRef = useRef<HTMLDivElement>(null);
+    const tabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
     const drawerHandler = (content: string, valuesarray: any) => (e: any) => {
         console.log(showDrawer);
         console.log(content);
@@ -232,17 +234,26 @@ function PropertyPage(props: any) {
     const min = Number(String(areaRangeMin).replace(/,/g, ""));
     const max = Number(String(areaRangeMax).replace(/,/g, ""));
     let areaText = "";
-        if (min > 0 && max > 0) {
+    if (min > 0 && max > 0) {
         areaText = `${min} ~ ${max} Sqft`;
-        } else if (min > 0) {
+    } else if (min > 0) {
         areaText = `From ${min} Sqft`;
-        } else if (max > 0) {
+    } else if (max > 0) {
         areaText = `Up to ${max} Sqft`;
-        }
+    }
     const scrollToSection = (id: string) => {
         setActiveTab(id);
         const element = document.getElementById(id.toLowerCase().replace(' ', '-'));
         element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Horizontal scroll for tabs
+        if (tabRefs.current[id]) {
+            tabRefs.current[id]?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+        }
     };
     return (
         <>
@@ -278,7 +289,7 @@ function PropertyPage(props: any) {
                                     <span className="bg-secondary px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider rounded">{t('status')}: {props.data["propertyPlan"]}</span>
                                     {props.data["masterDeveloper"] && (
                                         <Link href={`/developer/${slugify(props.data["masterDeveloper"])}`} className="bg-white/20 backdrop-blur-md border border-white/30 px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider rounded">{props.data["masterDeveloper"]}
-                                            </Link>
+                                        </Link>
                                     )}
                                 </div>
                                 <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold mb-4 drop-shadow-lg leading-tight">{props.data["propertyName"]}</h1>
@@ -292,7 +303,7 @@ function PropertyPage(props: any) {
                                         <span className="flex items-center gap-2"> <Square size={20} />
                                             {areaText}
                                         </span>
-                                     )}
+                                    )}
                                 </div>
 
                                 <div className="flex gap-4 mt-8">
@@ -322,7 +333,7 @@ function PropertyPage(props: any) {
 
                 {/* Sticky Sub-nav */}
                 <Sticky stickyClassName="mt-22 z-50" boundaryElement=".mainuppper" hideOnBoundaryHit={false}>
-                    <div className="bg-white/90 backdrop-blur-md border-b border-gray-200 z-30 shadow-sm overflow-x-auto no-scrollbar transition-all duration-300">
+                    <div ref={tabsContainerRef} className="bg-white/90 backdrop-blur-md border-b border-gray-200 z-30 shadow-sm overflow-x-auto transition-all duration-300">
                         <div className="container mx-auto px-4 md:px-12 flex justify-between items-center min-w-max">
                             <h2 className="text-xl font-bold text-primary mr-8 hidden lg:block">{props.data["propertyName"]}</h2>
                             <div className="flex space-x-2 rtl:space-x-reverse">
@@ -350,7 +361,12 @@ function PropertyPage(props: any) {
                                         tabLabel = t('developer');
 
                                     return (
-                                        <button key={tab} onClick={() => scrollToSection(tab)} className={`cursor-pointer px-4 md:px-6 py-4 md:py-5 text-xs md:text-sm font-bold uppercase tracking-wider border-b-4 transition-all hover:text-secondary ${activeTab === tab ? 'border-secondary text-secondary' : 'border-transparent text-gray-500'}`}>
+                                        <button
+                                            key={tab}
+                                            ref={(el) => { tabRefs.current[tab] = el; }}
+                                            onClick={() => scrollToSection(tab)}
+                                            className={`cursor-pointer px-4 md:px-6 py-4 md:py-5 text-xs md:text-sm font-bold uppercase tracking-wider border-b-4 transition-all hover:text-secondary ${activeTab === tab ? 'border-secondary text-secondary' : 'border-transparent text-gray-500'}`}
+                                        >
                                             {tabLabel}
                                         </button>
                                     );
@@ -415,9 +431,9 @@ function PropertyPage(props: any) {
                                             {availbeds ? (<TableRow title={t('available_bedrooms')} content={availbeds} />) : ("")}
                                             {availtype ? (<TableRow title={t('property_types')} content={availtype} />) : ("")}
                                             {props.data['masterDeveloper'] && <TableRow title={t('master_developer')} content={<Link href={`/developer/${slugify(props.data['masterDeveloper'])}`} className="text-primary hover:underline font-medium">{props.data['masterDeveloper']}</Link>} />}
-                                            {(Number(props.data['minPrice']) > 0 || Number(props.data['maxPrice']) > 0) &&  <TableRow  title={t('price_range')}  content={ Number(props.data['minPrice']) > 0 && Number(props.data['maxPrice']) > 0    ? `${minprice} ~ ${maxPrice}`    : Number(props.data['minPrice']) > 0   ? `From ${minprice}`  : `Up to ${maxPrice}`  }  /> }
+                                            {(Number(props.data['minPrice']) > 0 || Number(props.data['maxPrice']) > 0) && <TableRow title={t('price_range')} content={Number(props.data['minPrice']) > 0 && Number(props.data['maxPrice']) > 0 ? `${minprice} ~ ${maxPrice}` : Number(props.data['minPrice']) > 0 ? `From ${minprice}` : `Up to ${maxPrice}`} />}
                                             {/* add condition to show sqft and if none exist it will not show the row  */}
-                                            {(areaRangeMin || areaRangeMax) && (<TableRow title={t('area_range')} content={areaRangeMin && areaRangeMax ? `${areaRangeMin} ~ ${areaRangeMax} Sqft` : areaRangeMin ? `From ${areaRangeMin} Sqft` : areaRangeMax ? `Up to ${areaRangeMax} Sqft` : '' } /> )}
+                                            {(areaRangeMin || areaRangeMax) && (<TableRow title={t('area_range')} content={areaRangeMin && areaRangeMax ? `${areaRangeMin} ~ ${areaRangeMax} Sqft` : areaRangeMin ? `From ${areaRangeMin} Sqft` : areaRangeMax ? `Up to ${areaRangeMax} Sqft` : ''} />)}
                                             {props.data['numberOfApartment'] && String(props.data['numberOfApartment']) !== '0' ? (<TableRow title={t('number_of_apartment')} content={props.data['numberOfApartment']} />) : ("")}
                                             {props.data['propertyType'] ? (<TableRow title={t('property_type')} content={props.data['propertyType']} />) : ("")}
                                             {props.data['propertyPlan'] ? (<TableRow title={t('property_plan')} content={props.data['propertyPlan']} />) : ("")}

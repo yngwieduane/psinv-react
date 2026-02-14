@@ -8,11 +8,13 @@ import { CheckIcon } from '@heroicons/react/20/solid'
 import Sticky from 'react-sticky-el';
 import { RotateCcw } from 'lucide-react';
 import MultiRangeSlider from './MultiRangeSlider';
+import { useTranslations } from 'next-intl';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 40000000;
 
 export default function UnitsSideSearch({ onChange }: { onChange: any }) {
+  const t = useTranslations('UnitsPageAI');
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -63,8 +65,8 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
           commercial.sort((a, b) => COMMERCIAL_TYPES.indexOf(a.lookupName) - COMMERCIAL_TYPES.indexOf(b.lookupName));
 
           const grouped = [
-            { groupName: "Residential", items: residential },
-            { groupName: "Commercial", items: commercial }
+            { groupName: t('Residential'), items: residential },
+            { groupName: t('Commercial'), items: commercial }
           ];
 
           setPropertyTypesList(grouped);
@@ -153,15 +155,15 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
       <div className="p-6 grid grid-cols-1 backdrop-blur-xl bg-white/70 border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl space-y-8 transition-all duration-300">
         <div className='w-full'>
           <div className="flex justify-between items-center border-b border-gray-100 pb-4">
-            <p className="font-bold text-xl text-[#353455]">Filters</p>
+            <p className="font-bold text-xl text-[#353455]">{t('filters')}</p>
             <button onClick={handleReset} className="text-gray-400 text-sm hover:text-secondary flex items-center gap-1 transition-colors">
-              <RotateCcw size={14} /> Reset
+              <RotateCcw size={14} /> {t('reset')}
             </button>
           </div>
         </div>
         {/* Beds Filter */}
         <div className="space-y-4">
-          <label className="block text-sm font-bold uppercase tracking-wider text-gray-500">Bedrooms</label>
+          <label className="block text-sm font-bold uppercase tracking-wider text-gray-500">{t('bedrooms')}</label>
           <div className="space-y-2">
 
             {/* Any Option */}
@@ -183,7 +185,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                 }}
               />
               <span className={`text-sm transition-colors ${beds === null ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455]'}`}>
-                Any
+                {t('any')}
               </span>
             </label>
 
@@ -206,7 +208,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                   }}
                 />
                 <span className={`text-sm transition-colors ${beds === bedCount ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455]'}`}>
-                  {bedCount} {bedCount === 1 ? 'Bedroom' : 'Bedrooms'}
+                  {bedCount} {bedCount === 1 ? `${t('bedroom')}` : `${t('bedrooms')}`}
                 </span>
               </label>
             ))}
@@ -217,7 +219,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
 
         {/* Property Type Groups (Radio Buttons) */}
         <div className="space-y-4">
-          <label className="block text-sm font-bold uppercase tracking-wider text-gray-500">Property Types</label>
+          <label className="block text-sm font-bold uppercase tracking-wider text-gray-500">{t('types')}</label>
 
           {/* Any Option */}
           <label className="flex items-center gap-3 cursor-pointer group">
@@ -238,7 +240,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
               }}
             />
             <span className={`text-sm transition-colors ${selectedPropertyTypes.length === 0 ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455]'}`}>
-              Any
+              {t('any')}
             </span>
           </label>
 
@@ -268,7 +270,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                         }}
                       />
                       <span className={`text-sm transition-colors ${isSelected ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455]'}`}>
-                        {type.lookupName}
+                        {t(type.lookupName)}
                       </span>
                     </label>
                   );
@@ -283,7 +285,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
         {/* Price Filter */}
         <div>
           <div className="flex justify-between items-center mb-6">
-            <p className="block text-sm font-bold uppercase tracking-wider text-gray-500">Price</p>
+            <p className="block text-sm font-bold uppercase tracking-wider text-gray-500">{t('price')}</p>
             <button
               onClick={() => {
                 setPriceRange([minPriceDefault, maxPriceDefault]);
@@ -292,7 +294,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
               }}
               className="text-sm font-medium text-[#005a9c] hover:underline"
             >
-              Reset
+              {t('reset')}
             </button>
           </div>
           <MultiRangeSlider
@@ -317,7 +319,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
           {/* Floor Area Filter */}
           <div>
             <div className="flex justify-between items-center mb-6">
-              <p className="block text-sm font-bold uppercase tracking-wider text-gray-500">Floor Area (sqft)</p>
+              <p className="block text-sm font-bold uppercase tracking-wider text-gray-500">{t('Floor Area')}</p>
               <button
                 onClick={() => {
                   setAreaRange([0, 50000]);
@@ -326,7 +328,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                 }}
                 className="text-sm font-medium text-[#005a9c] hover:underline"
               >
-                Reset
+                {t('reset')}
               </button>
             </div>
             <MultiRangeSlider
