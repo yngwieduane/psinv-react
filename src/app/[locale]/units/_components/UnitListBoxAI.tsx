@@ -38,6 +38,7 @@ export default function UnitListBoxAI(props: any) {
     }
 
     const t = useTranslations('Units');
+    const t_u = useTranslations('UnitsPageAI');
 
     const [selectedProperty, setSelectedProperty] = useState<UnitListing | null>(null);
     const [previewProperty, setPreviewProperty] = useState<UnitListing | null>(null);
@@ -90,7 +91,7 @@ export default function UnitListBoxAI(props: any) {
                             </div>
                         )}
                         <div className="absolute top-3 left-3 bg-secondary dark:bg-gray-700 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">
-                            For {props.adType}
+                            {t_u(`For ${props.adType}`)}
                         </div>
                     </Link>
                 </div>
@@ -143,19 +144,28 @@ export default function UnitListBoxAI(props: any) {
 
                         <div className="flex items-center text-gray-500 text-xs mb-4 dark:text-white">
                             <MapPin size={14} className="mr-1 shrink-0" />
-                            <span className="truncate w-full">{props.data.community}</span>
+                            <span className="truncate w-full">
+                                {t_u.has(`Communities.${props.data.community}`)
+                                    ? t_u(`Communities.${props.data.community}`)
+                                    : props.data.community
+                                }
+                            </span>
                         </div>
 
                         <div className="flex items-center gap-4 text-sm text-gray-600 mb-4 flex-wrap dark:text-white">
                             {props.data.category !== 'Office' && props.data.category !== 'Land' && (
                                 <>
                                     <span className="flex items-center gap-1 font-bold whitespace-nowrap">
-                                        {props.data.category}
+                                        {t_u.has(`Category.${props.data.category}`)
+                                            ? t_u(`Category.${props.data.category}`)
+                                            : props.data.category
+                                        }
+                                        
                                     </span>
                                     <span className="w-1 h-1 bg-gray-300 rounded-full" />
-                                    <span className="whitespace-nowrap">{props.data.bedrooms} Beds</span>
+                                    <span className="whitespace-nowrap">{props.data.bedrooms} {t_u('Beds')}</span>
                                     <span className="w-1 h-1 bg-gray-300 rounded-full" />
-                                    <span className="whitespace-nowrap">{props.data.no_of_bathrooms} Baths</span>
+                                    <span className="whitespace-nowrap">{props.data.no_of_bathrooms} {t_u('Baths')}</span>
                                     <span className="w-1 h-1 bg-gray-300 rounded-full" />
                                 </>
                             )}
@@ -169,13 +179,13 @@ export default function UnitListBoxAI(props: any) {
                             onClick={() => setPreviewProperty(props.data)}
                             className="cursor-pointer flex-1 border border-gray-300 text-gray-600 py-2 rounded text-sm font-medium hover:bg-gray-50 transition-colors dark:text-white dark:border-gray-700 dark:hover:bg-gray-700"
                         >
-                            Preview
+                            {t_u('Preview')}
                         </button>
                         <button onClick={modalHandler} className="cursor-pointer flex-1 border border-gray-300 text-gray-600 py-2 rounded text-sm font-medium hover:bg-gray-50 transition-colors dark:text-white dark:border-gray-700 dark:hover:bg-gray-700">
-                            Inquire
+                            {t_u('Inquire')}
                         </button>
                         <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${props.seoUrl}`} className="cursor-pointer flex-1 bg-[#25D366] text-white py-2 rounded text-sm font-medium hover:bg-[#128c7e] transition-colors flex items-center justify-center gap-1">
-                            WhatsApp
+                            {t_u('WhatsApp')}
                         </Link>
                     </div>
                 </div>

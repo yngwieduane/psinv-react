@@ -848,8 +848,38 @@
     "Warehouse": "仓库",
     "Retail": "零售",
     "Shop": "商铺",
-    "Plot": "地块"
-
+    "Plot": "地块",
+    "NoImage": "暂无图片",
+    "For Sale": "出售",
+    "For Rent": "出租",
+    "Beds": "卧室",
+    "Baths": "浴室",
+    "Preview": "预览",
+    "Inquire": "咨询",
+    "WhatsApp": "WhatsApp",
+    "Communities": {
+      "Al Raha Beach": "阿尔拉哈海滩",
+      "Al Reem Island": "阿尔里姆岛",
+      "Al Reef": "阿尔里夫",
+      "Hamdan Street": "哈姆丹街",
+      "Golf Gardens": "高尔夫花园",
+      "Yas Island": "亚斯岛",
+      "Jubail Island": "朱拜尔岛",
+      "Saadiyat Island": "萨迪亚特岛",
+      "Al Ghadeer": "阿尔加迪尔",
+      "Khalifa City A": "哈利法城 A 区",
+      "Abu Dhabi Gate": "阿布扎比门",
+      "Electra": "伊莱克特拉",
+      "Corniche Abu Dhabi": "阿布扎比滨海大道",
+      "Danet Abu Dhabi": "达奈特阿布扎比",
+      "Al Manhal": "阿尔曼哈尔",
+      "The Marina": "滨海码头"
+    },
+    "Category": {
+      "Apartment": "公寓",
+      "Villa": "别墅",
+      "Townhouse": "联排别墅"
+    }
   },
   "ProjectPage": {
     "overview": "概览",

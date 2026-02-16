@@ -114,7 +114,7 @@ export default function AutocompleteSearch({ isReset, disableRouting = false, on
         </div>
       )}
       {showDropdown && results.length > 0 && (
-        <ul className="absolute left-0 right-0 mt-2 z-30 max-h-60 overflow-auto rounded-xl backdrop-blur-xl bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.08)] py-2">
+        <ul className="absolute left-0 right-0 mt-2 z-99 max-h-60 overflow-auto rounded-xl backdrop-blur-xl bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.08)] py-2">
           {results.map((item, index) => (
             <li
               key={index}

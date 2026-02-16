@@ -847,7 +847,38 @@
     "Warehouse": "Склад",
     "Retail": "Розничная торговля",
     "Shop": "Магазин",
-    "Plot": "Участок"
+    "Plot": "Участок",
+    "NoImage": "Изображение недоступно",
+    "For Sale": "Продается",
+    "For Rent": "Сдается",
+    "Beds": "Кровати",
+    "Baths": "Ванные",
+    "Preview": "Просмотр",
+    "Inquire": "Запросить",
+    "WhatsApp": "WhatsApp",
+    "Communities": {
+      "Al Raha Beach": "Al Raha Beach",
+      "Al Reem Island": "Al Reem Island",
+      "Al Reef": "Al Reef",
+      "Hamdan Street": "Hamdan Street",
+      "Golf Gardens": "Golf Gardens",
+      "Yas Island": "Yas Island",
+      "Jubail Island": "Jubail Island",
+      "Saadiyat Island": "Saadiyat Island",
+      "Al Ghadeer": "Al Ghadeer",
+      "Khalifa City A": "Khalifa City A",
+      "Abu Dhabi Gate": "Abu Dhabi Gate",
+      "Electra": "Electra",
+      "Corniche Abu Dhabi": "Corniche Abu Dhabi",
+      "Danet Abu Dhabi": "Danet Abu Dhabi",
+      "Al Manhal": "Al Manhal",
+      "The Marina": "The Marina"
+    },
+    "Category": {
+      "Apartment": "Квартира",
+      "Villa": "Вилла",
+      "Townhouse": "Таунхаус"
+    }
 
   },
   "ProjectPage": {

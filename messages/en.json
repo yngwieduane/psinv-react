@@ -6706,7 +6706,38 @@
     "Warehouse" : "Warehouse",
     "Retail" : "Retail",
     "Shop" : "Shop",
-    "Plot" : "Plot"    
+    "Plot" : "Plot",
+    "NoImage" : "No Available Image",
+    "For Sale" : "For Sale",
+    "For Rent" : "For Rent",
+    "Beds" : "Beds",
+    "Baths" : "Baths",
+    "Preview" : "Preview",
+    "Inquire" : "Inquire",
+    "WhatsApp" : "WhatsApp",
+    "Communities" : {
+      "Al Raha Beach" : "Al Raha Beach",
+      "Al Reem Island" : "Al Reem Island",
+      "Al Reef" : "Al Reef",
+      "Hamdan Street" : "Hamdan Street",
+      "Golf Gardens" : "Golf Gardens",
+      "Yas Island" : "Yas Island",
+      "Jubail Island" : "Jubail Island",
+      "Saadiyat Island" : "Saadiyat Island",
+      "Al Ghadeer" : "Al Ghadeer",
+      "Khalifa City A" : "Khalifa City A",
+      "Abu Dhabi Gate" : "Abu Dhabi Gate",
+      "Electra" : "Electra",
+      "Corniche Abu Dhabi" : "Corniche Abu Dhabi",
+      "Danet Abu Dhabi" : "Danet Abu Dhabi",
+      "Al Manhal" : "Al Manhal",
+      "The Marina" : "The Marina"
+    },
+    "Category" : {
+      "Apartment" : "Apartment",
+      "Villa" : "Villa",
+      "Townhouse" : "Townhouse"
+    }
     
   }
 }
