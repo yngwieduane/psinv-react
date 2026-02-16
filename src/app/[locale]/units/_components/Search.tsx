@@ -134,7 +134,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
 
     return (
         <div className="relative z-30 container mx-auto" id='search-section'>
-            <div className="bg-white rounded-3xl shadow-xl w-full mx-auto">
+            <div className="bg-white rounded-3xl shadow-xl w-full mx-auto dark:bg-gray-800">
                 {/* Removed Tabs */}
 
                 {/* Search Form */}
@@ -166,28 +166,28 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                 <button
                                     type="button"
                                     onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-                                    className="md:hidden p-3.5 bg-gray-100 rounded-xl text-gray-700 hover:bg-gray-200 self-end mb-[2px]"
+                                    className="md:hidden p-3.5 bg-gray-100 rounded-xl text-gray-700 hover:bg-gray-200 self-end mb-[2px] dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white"
                                     aria-label="Toggle Filters"
                                 >
                                     <AdjustmentsHorizontalIcon className="size-6" />
                                 </button>
                             </div>
                             {/* Category (Function of Rent/Sale) - Moved into Grid */}
-                            <div className="w-40">
+                            <div className="md:w-40 w-full">
                                 <Listbox value={category} onChange={setCategory}>
                                     <div className="relative">
-                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 ">
                                             <span className="col-start-1 row-start-1 truncate">{category ? t(category.toLowerCase()) : t('contract')}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
-                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
-                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white dark:bg-gray-800 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
+                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100 dark:text-white dark:data-focus:bg-gray-700">
                                                 <span className="block truncate font-normal group-data-selected:font-semibold">{t('contract')}</span>
                                             </ListboxOption>
                                             {['Sale', 'Rent'].map((cat) => (
-                                                <ListboxOption key={cat} value={cat} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                                <ListboxOption key={cat} value={cat} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100 dark:data-focus:bg-gray-700 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 ">
                                                     <span className="block truncate font-normal group-data-selected:font-semibold">{t(cat.toLowerCase())}</span>
-                                                    <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
+                                                    <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden dark:text-white">
                                                         <CheckIcon aria-hidden="true" className="size-5" />
                                                     </span>
                                                 </ListboxOption>
@@ -215,16 +215,16 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                             <div className="w-full">
                                 <Listbox value={sector} onChange={setSector}>
                                     <div className="relative">
-                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50 dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400">
                                             <span className="col-start-1 row-start-1 truncate">{sector ? t(sector.toLowerCase()) : t('category_label')}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
-                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
-                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400">
+                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100 dark:text-white dark:data-focus:bg-gray-700">
                                                 <span className="block truncate font-normal group-data-selected:font-semibold">{t('any')}</span>
                                             </ListboxOption>
                                             {['Residential', 'Commercial'].map((s) => (
-                                                <ListboxOption key={s} value={s} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                                <ListboxOption key={s} value={s} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100 dark:text-white dark:data-focus:bg-gray-700">
                                                     <span className="block truncate font-normal group-data-selected:font-semibold">{t(s.toLowerCase())}</span>
                                                     <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
                                                         <CheckIcon aria-hidden="true" className="size-5" />
@@ -240,23 +240,23 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                             <div className="w-full">
                                 <Listbox value={propertyType} onChange={setPropertyType}>
                                     <div className="relative">
-                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                        <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50 dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400">
                                             <span className="col-start-1 row-start-1 truncate">{getSelectedPropertyTypeName(propertyType)}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
-                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
-                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                        <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400">
+                                            <ListboxOption value={null} className="group relative cursor-pointer py-2 pl-3 pr-9 text-gray-900 select-none data-focus:bg-gray-100 dark:text-white dark:data-focus:bg-gray-700">
                                                 <span className="block truncate font-normal group-data-selected:font-semibold">{t('any')}</span>
                                             </ListboxOption>
 
                                             {/* Groups */}
                                             {propertyTypesList.map((group: any) => (
                                                 <div key={group.groupName}>
-                                                    <div className="px-3 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50/50">
+                                                    <div className="px-3 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50/50 dark:text-white dark:bg-gray-800">
                                                         {t(group.groupName.toLowerCase())}
                                                     </div>
                                                     {group.items.map((option: any) => (
-                                                        <ListboxOption key={option.lookupId} value={option.lookupId} className="group relative cursor-pointer py-2 pl-6 pr-9 text-gray-900 select-none data-focus:bg-gray-100">
+                                                        <ListboxOption key={option.lookupId} value={option.lookupId} className="group relative cursor-pointer py-2 pl-6 pr-9 text-gray-900 select-none data-focus:bg-gray-100 dark:text-white dark:data-focus:bg-gray-700">
                                                             <span className="block truncate font-normal group-data-selected:font-semibold">{option.lookupName}</span>
                                                             <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
                                                                 <CheckIcon aria-hidden="true" className="size-5" />
@@ -274,7 +274,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                             {/* Beds and Baths (Popover) */}
                             <div className="w-full">
                                 <Popover className="relative">
-                                    <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50">
+                                    <PopoverButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50 dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400">
                                         <span className="col-start-1 row-start-1 truncate">
                                             {beds ? `${beds} ${t('beds')}` : (baths ? '' : t('beds_and_baths'))}
                                             {beds && baths ? ' & ' : ''}
@@ -282,16 +282,16 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                         </span>
                                         <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                     </PopoverButton>
-                                    <PopoverPanel transition className="absolute z-50 mt-2 w-64 overflow-hidden rounded-xl bg-white p-4 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm">
+                                    <PopoverPanel transition className="absolute z-50 mt-2 w-64 overflow-hidden rounded-xl bg-white p-4 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm dark:text-white dark:bg-gray-800 dark:border dark:border-gray-700 dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400">
                                         <div className="flex flex-col gap-4">
                                             <div>
-                                                <label className="block text-xs font-medium text-gray-500 mb-1">{t('bedrooms')}</label>
+                                                <label className="block text-xs font-medium text-gray-500 mb-1 dark:text-white">{t('bedrooms')}</label>
                                                 <div className="flex flex-wrap gap-2">
                                                     {[1, 2, 3, 4, 5].map(b => (
                                                         <button
                                                             key={b}
                                                             onClick={() => setBeds(beds === b ? null : b)}
-                                                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${beds === b ? 'bg-[#353455] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                                                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors dark:text-white${beds === b ? 'bg-[#353455] text-white dark:bg-gray-900' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600'}`}
                                                             type="button"
                                                         >
                                                             {b}
@@ -300,13 +300,13 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                                 </div>
                                             </div>
                                             <div>
-                                                <label className="block text-xs font-medium text-gray-500 mb-1">{t('bathrooms')}</label>
+                                                <label className="block text-xs font-medium text-gray-500 mb-1 dark:text-white">{t('bathrooms')}</label>
                                                 <div className="flex flex-wrap gap-2">
                                                     {[1, 2, 3, 4, 5].map(b => (
                                                         <button
                                                             key={b}
                                                             onClick={() => setBaths(baths === b ? null : b)}
-                                                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${baths === b ? 'bg-[#353455] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                                                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors dark:text-white ${baths === b ? 'bg-[#353455] text-white dark:bg-gray-900' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600'}`}
                                                             type="button"
                                                         >
                                                             {b}
@@ -387,7 +387,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                 setPriceRange([minPriceDefault, maxPriceDefault]);
                                 router.push(`/${locale}/units`);
                             }}
-                            className="absolute top-1 right-0 text-right text-gray-600 text-sm font-medium hover:text-gray-800 transition-colors mt-2 px-10"
+                            className="absolute top-1 right-0 text-right text-gray-600 text-sm font-medium hover:text-gray-800 transition-colors mt-2 px-10 dark:text-white dark:hover:text-gray-200"
                         >
                             <RotateCcw size={14} className="inline" /> {t('reset')}
                         </button>

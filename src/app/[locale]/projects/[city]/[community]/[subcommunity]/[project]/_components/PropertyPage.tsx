@@ -269,7 +269,7 @@ function PropertyPage(props: any) {
             <div id={props.data["propertyID"]} className="hidden">
                 <Breadcrumb />
             </div>
-            <div className="bg-white min-h-screen mainban pt-10">
+            <div className="bg-white min-h-screen mainban pt-10 dark:bg-neutral-900">
                 {/* Hero Section */}
                 <div className="relative md:min-h-[80vh] h-[80vh] md:h-[auto]  md:min-h-screen md:flex flex-column justify-center">
                     <div className="absolute inset-0">
@@ -324,7 +324,7 @@ function PropertyPage(props: any) {
                                 </div>
                             </div>
 
-                            <div className="bg-white p-6 rounded-2xl shadow-2xl w-full max-w-sm text-gray-800 hidden lg:block ">
+                            <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-2xl w-full max-w-sm text-gray-800 hidden lg:block ">
                                 <InquiryForm hideFeedbackButton={true} />
                             </div>
                         </div>
@@ -333,9 +333,9 @@ function PropertyPage(props: any) {
 
                 {/* Sticky Sub-nav */}
                 <Sticky stickyClassName="mt-22 z-50" boundaryElement=".mainuppper" hideOnBoundaryHit={false}>
-                    <div ref={tabsContainerRef} className="bg-white/90 backdrop-blur-md border-b border-gray-200 z-30 shadow-sm overflow-x-auto transition-all duration-300">
+                    <div ref={tabsContainerRef} className="bg-white/90 backdrop-blur-md border-b border-gray-200 z-30 shadow-sm overflow-x-auto transition-all duration-300 dark:bg-gray-800 dark:border-gray-800">
                         <div className="container mx-auto px-4 md:px-12 flex justify-between items-center min-w-max">
-                            <h2 className="text-xl font-bold text-primary mr-8 hidden lg:block">{props.data["propertyName"]}</h2>
+                            <h2 className="text-xl font-bold text-primary mr-8 hidden lg:block dark:text-white">{props.data["propertyName"]}</h2>
                             <div className="flex space-x-2 rtl:space-x-reverse">
                                 {tabs.filter(function (cat) {
                                     if (cat === "Location" && props.data["communityMapAndMasterPlan"] == null && props.data["locationMapImages"] == null) {
@@ -376,15 +376,15 @@ function PropertyPage(props: any) {
                     </div>
                 </Sticky>
 
-                <div className="bg-gray-50 pb-32">
+                <div className="bg-gray-50 dark:bg-neutral-900 pb-32">
                     <div className="container mx-auto px-4 md:px-12 space-y-20 md:space-y-24 pt-12 md:pt-20">
                         {/* Overview / Facts */}
                         <section id="overview" className="scroll-mt-40">
                             <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
                                 <div className="lg:w-7/12">
-                                    <h3 className="text-3xl  font-bold text-primary mb-6 md:mb-8">{t('overview')}</h3>
+                                    <h3 className="text-3xl font-bold text-primary mb-6 md:mb-8 dark:text-white">{t('overview')}</h3>
                                     <div className="prose prose-lg text-gray-600 leading-relaxed max-w-none font-light">
-                                        <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]?.replace(/&nbsp;|\u00A0/g, " ").replace(/&rsquo;/g, "'").replace(/<\/?p>/g, "")} amountOfWords={100} classes="whitespace-break-spaces" />
+                                        <ReadMore id="read-more-text" text={props.data["enPropertyOverView"]?.replace(/&nbsp;|\u00A0/g, " ").replace(/&rsquo;/g, "'").replace(/<\/?p>/g, "")} amountOfWords={100} classes="whitespace-break-spaces dark:text-white" />
 
                                         {/* Construction Update (New Rich Feature) */}
                                         <div className="bg-white p-6 rounded-xl border border-gray-200 mt-8 mb-8 hidden">
@@ -403,10 +403,10 @@ function PropertyPage(props: any) {
                                             </div>
                                         </div>
 
-                                        <h4 className="font-bold text-gray-800 text-xl mb-4 mt-8">{t('features')}</h4>
+                                        <h4 className="font-bold text-gray-800 text-xl mb-4 mt-8 dark:text-white">{t('features')}</h4>
                                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none pl-0">
                                             {props.data['aminities'] && props.data['aminities'].map((item: any, index: any) => (
-                                                <li key={index} className="flex items-center gap-3 text-base"><CheckCircle2 className="text-primary shrink-0" size={20} />{item.name}</li>
+                                                <li key={index} className="flex items-center gap-3 text-base dark:text-white"><CheckCircle2 className="text-primary shrink-0 dark:text-white" size={20} />{item.name}</li>
                                             ))}
                                         </ul>
                                     </div>
@@ -425,14 +425,13 @@ function PropertyPage(props: any) {
                                 </div>
 
                                 <div className="lg:w-5/12 w-full space-y-8">
-                                    <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                                    <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden dark:bg-gray-800 dark:border-gray-700">
                                         <div className="bg-primary p-6 text-white"><h4 className="text-2xl font-bold">{t('facts')}</h4></div>
                                         <div className="p-2">
                                             {availbeds ? (<TableRow title={t('available_bedrooms')} content={availbeds} />) : ("")}
                                             {availtype ? (<TableRow title={t('property_types')} content={availtype} />) : ("")}
-                                            {props.data['masterDeveloper'] && <TableRow title={t('master_developer')} content={<Link href={`/developer/${slugify(props.data['masterDeveloper'])}`} className="text-primary hover:underline font-medium">{props.data['masterDeveloper']}</Link>} />}
+                                            {props.data['masterDeveloper'] && <TableRow title={t('master_developer')} content={<Link href={`/developer/${slugify(props.data['masterDeveloper'])}`} className="text-primary hover:underline font-medium dark:text-white">{props.data['masterDeveloper']}</Link>} />}
                                             {(Number(props.data['minPrice']) > 0 || Number(props.data['maxPrice']) > 0) && <TableRow title={t('price_range')} content={Number(props.data['minPrice']) > 0 && Number(props.data['maxPrice']) > 0 ? `${minprice} ~ ${maxPrice}` : Number(props.data['minPrice']) > 0 ? `From ${minprice}` : `Up to ${maxPrice}`} />}
-                                            {/* add condition to show sqft and if none exist it will not show the row  */}
                                             {(areaRangeMin || areaRangeMax) && (<TableRow title={t('area_range')} content={areaRangeMin && areaRangeMax ? `${areaRangeMin} ~ ${areaRangeMax} Sqft` : areaRangeMin ? `From ${areaRangeMin} Sqft` : areaRangeMax ? `Up to ${areaRangeMax} Sqft` : ''} />)}
                                             {props.data['numberOfApartment'] && String(props.data['numberOfApartment']) !== '0' ? (<TableRow title={t('number_of_apartment')} content={props.data['numberOfApartment']} />) : ("")}
                                             {props.data['propertyType'] ? (<TableRow title={t('property_type')} content={props.data['propertyType']} />) : ("")}
@@ -452,7 +451,7 @@ function PropertyPage(props: any) {
                                                 type="button"
                                                 data-fancybox="video"
                                                 href={video}
-                                                className="relative inline-flex w-full flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer"
+                                                className="relative inline-flex w-full flex-1 items-center justify-center gap-x-3 rounded-lg border border-transparent py-4 bg-gray-100 hover:bg-gray-200 hover:text-[#111954] cursor-pointer dark:bg-gray-800 dark:border-gray-700"
                                             >
                                                 <div className="bg-black rounded-2xl overflow-hidden shadow-lg relative h-64 group cursor-pointer">
                                                     <img src={imgFeatured} className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" />
@@ -491,7 +490,7 @@ function PropertyPage(props: any) {
                                 {props.data["communityMapAndMasterPlan"] !== null ? (
                                     <FancyboxWrapper>
                                         <div>
-                                            <h3 className="text-3xl font-bold text-primary">{t('master_plan')}</h3>
+                                            <h3 className="text-3xl font-bold text-primary dark:text-white">{t('master_plan')}</h3>
                                             <h2 className="text-xl text-gray-500 mb-8">{props.data["propertyName"]}</h2>
                                             <a
                                                 type="button"
@@ -514,7 +513,7 @@ function PropertyPage(props: any) {
                                 {props.data["locationMapImages"] !== null ? (
                                     <FancyboxWrapper>
                                         <div>
-                                            <h3 className="text-3xl font-bold text-primary">{t('location')}</h3>
+                                            <h3 className="text-3xl font-bold text-primary dark:text-white">{t('location')}</h3>
                                             <h2 className="text-xl text-gray-500 mb-8">{props.data["propertyName"]}</h2>
                                             <a
                                                 type="button"
@@ -569,7 +568,7 @@ function PropertyPage(props: any) {
                                 propname={props.data["propertyName"]} />
                         </section>
 
-                        <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+                        <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
                             <Faqs data={props.data} propname={props.data["propertyName"]} viewAllLink={`${pathname}/faqs`} />
                         </div>
 

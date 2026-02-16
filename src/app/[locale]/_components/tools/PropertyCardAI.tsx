@@ -82,7 +82,7 @@ const PropertyCardAI = (props: any) => {
         }
     };
     return (
-        <div className='group relative'>
+        <div className='group relative '>
 
             {/* Action Buttons */}
             <div className="absolute top-3 right-3 flex flex-col gap-2 z-10 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -114,7 +114,7 @@ const PropertyCardAI = (props: any) => {
                 </button>
             </div>
             <Link title={props.data["propertyName"]} href={url} className="h-full">
-                <div className={` bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col h-full transform hover:-translate-y-1 relative`}>
+                <div className={`dark:bg-gray-800 dark:border-gray-700 bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col h-full transform hover:-translate-y-1 relative`}>
                     {/* Image Box */}
                     <div className="relative h-64 bg-gray-200 overflow-hidden">
                         {hasImage ? (
@@ -125,7 +125,7 @@ const PropertyCardAI = (props: any) => {
                                 onError={() => setImgError(true)}
                             />
                         ) : (
-                            <div className="flex flex-col items-center justify-center text-gray-400 h-full w-full bg-gray-50">
+                            <div className="flex flex-col items-center justify-center text-gray-400 h-full w-full bg-gray-50 dark:bg-gray-700">
                                 <House size={40} strokeWidth={1.5} />
                                 <span className="text-xs mt-2">No Available Image</span>
                             </div>
@@ -136,24 +136,24 @@ const PropertyCardAI = (props: any) => {
                     </div>
                     {/* Content */}
                     <div className="p-6 flex flex-col flex-1">
-                        <h3 className="font-bold text-gray-900 text-lg uppercase mb-2 line-clamp-1 group-hover:text-secondary transition-colors">{props.data["propertyName"]}</h3>
-                        <p className="text-sm text-gray-500 mb-2 flex items-center gap-1"><MapPin size={14} /> {props.data["community"]}</p>
+                        <h3 className="dark:text-white font-bold text-gray-900 text-lg uppercase mb-2 line-clamp-1 group-hover:text-secondary transition-colors">{props.data["propertyName"]}</h3>
+                        <p className="dark:text-white text-sm text-gray-500 mb-2 flex items-center gap-1"><MapPin size={14} /> {props.data["community"]}</p>
                         {props.data["masterDeveloper"] && (
-                            <p className="text-xs text-gray-400 mb-6 truncate font-medium">{props.data["masterDeveloper"]}</p>
+                            <p className="dark:text-white text-xs text-gray-400 mb-6 truncate font-medium">{props.data["masterDeveloper"]}</p>
                         )}
 
                         <div className="mt-auto flex flex-row gap-4 border-t border-gray-100 pt-5 text-center">
                             <div className="basis-3xs flex flex-column justify-bottom items-center">
-                                <span className="block text-[8px] text-gray-400 uppercase font-bold tracking-wider"><House /></span>
-                                <span className="block text-sm font-bold text-gray-800 mt-1">{propType}</span>
+                                <span className="block text-[8px] dark:text-white text-gray-400 uppercase font-bold tracking-wider"><House /></span>
+                                <span className="block text-sm font-bold dark:text-white text-gray-800 mt-1">{propType}</span>
                             </div>
                             <div className="basis-3xs flex flex-column justify-bottom items-center">
-                                <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider text-center"><BedDouble /></span>
-                                <span className="block text-sm font-bold text-gray-800 mt-1">{propBed}</span>
+                                <span className="block text-[10px] dark:text-white text-gray-400 uppercase font-bold tracking-wider text-center"><BedDouble /></span>
+                                <span className="block text-sm font-bold dark:text-white text-gray-800 mt-1">{propBed}</span>
                             </div>
                             {HOdate ? (<div className="basis-3xs flex flex-column justify-bottom items-center">
-                                <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider"><HandHelping /></span>
-                                <span className="block text-sm font-bold text-gray-800 mt-1">{propHO}</span>
+                                <span className="block text-[10px] dark:text-white text-gray-400 uppercase font-bold tracking-wider"><HandHelping /></span>
+                                <span className="block text-sm font-bold dark:text-white text-gray-800 mt-1">{propHO}</span>
                             </div>) : ("")}
 
                         </div>

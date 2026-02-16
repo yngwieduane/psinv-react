@@ -48,15 +48,15 @@ const UnitModelsAI = (props: any) => {
             <div className="flex items-center gap-4 mb-2">
                 {props.viewAllLink ? (
                     <button onClick={() => router.push(props.viewAllLink)} className="flex items-center gap-1 text-sm font-bold text-secondary hover:text-primary transition-colors">
-                        <h2 className="text-3xl font-bold text-[#111954] relative inline-block">{t("floor_plan")}</h2>
+                        <h2 className="text-3xl font-bold text-primary relative inline-block dark:text-white">{t("floor_plan")}</h2>
                     </button>
                 ) : (
-                    <h2 className="text-3xl font-bold text-[#111954] relative inline-block">{t("faqs")}</h2>
+                    <h2 className="text-3xl font-bold text-primary relative inline-block dark:text-white">{t("floor_plan")}</h2>
                 )}
             </div>
             <h2 className="text-xl text-gray-500 mb-8">{props.propname}</h2>
 
-            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50">
+            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
                 <MainNavbarHeaderAI
                     data={props.data}
                     visibleTab={visibleTab1}
@@ -76,10 +76,10 @@ const UnitModelsAI = (props: any) => {
                                         {displayedOptions.map((page: any, index: any) => (
                                             <div
                                                 key={index}
-                                                className="group bg-white rounded-2xl border border-gray-100 hover:border-[#111954]/20 transition-all duration-300 hover:shadow-lg overflow-hidden flex flex-col"
+                                                className="group bg-white rounded-2xl border border-gray-100 hover:border-primary/20 transition-all duration-300 hover:shadow-lg overflow-hidden flex flex-col dark:bg-gray-700 dark:border-gray-600 dark:shadow-gray-600/50"
                                             >
                                                 {/* Image Section */}
-                                                <div className="relative aspect-[4/3] bg-gray-50 p-4 flex items-center justify-center overflow-hidden">
+                                                <div className="relative aspect-[4/3] bg-gray-50 p-4 flex items-center justify-center overflow-hidden dark:bg-gray-600 dark:border-gray-600 dark:shadow-gray-600/50">
                                                     {page.floorPlanlImage ? (
                                                         <a
                                                             title={`floorplan ${page.modelName}`}
@@ -94,10 +94,10 @@ const UnitModelsAI = (props: any) => {
                                                                 alt={page.modelName}
                                                                 title={page.modelName}
                                                             />
-                                                            <div className="absolute inset-0 bg-[#111954]/0 group-hover:bg-[#111954]/5 transition-colors duration-300" />
+                                                            <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-300" />
                                                         </a>
                                                     ) : (
-                                                        <div className="flex flex-col items-center justify-center text-gray-400">
+                                                        <div className="flex flex-col items-center justify-center text-gray-400 dark:bg-gray-700">
                                                             <Home size={40} strokeWidth={1.5} />
                                                             <span className="text-xs mt-2">No Floorplan Image</span>
                                                         </div>
@@ -108,22 +108,22 @@ const UnitModelsAI = (props: any) => {
                                                 <div className="p-5 flex flex-col flex-grow">
                                                     <div className="flex justify-between items-start mb-4">
                                                         <div>
-                                                            <h3 className="text-lg font-bold text-[#111954] line-clamp-1" title={page.modelName}>
+                                                            <h3 className="text-lg font-bold text-primary line-clamp-1 dark:text-white" title={page.modelName}>
                                                                 {page.modelName}
                                                             </h3>
                                                             {page.unitType && page.unitType !== 'UnitType' && (
-                                                                <p className="text-sm text-gray-500 mt-1">{page.unitType}</p>
+                                                                <p className="text-sm text-gray-500 mt-1 dark:text-gray-400">{page.unitType}</p>
                                                             )}
                                                         </div>
                                                     </div>
 
                                                     <div className="mt-auto space-y-3">
                                                         {/* Specs Grid */}
-                                                        <div className="grid grid-cols-2 gap-y-3 gap-x-2 text-sm text-gray-600">
+                                                        <div className="grid grid-cols-2 gap-y-3 gap-x-2 text-sm text-gray-600 dark:text-white">
                                                             {/* Area */}
                                                             {page.area && page.area != 0 ? (
                                                                 <div className="flex items-center gap-2" title="Total Area">
-                                                                    <Maximize size={16} className="text-[#111954]/60" />
+                                                                    <Maximize size={16} className="text-primary/60 dark:text-white/60" />
                                                                     <span className="font-medium">{format.number(page.area)}<sup>sqft</sup></span>
                                                                 </div>
                                                             ) : null}
@@ -131,7 +131,7 @@ const UnitModelsAI = (props: any) => {
                                                             {/* Bathrooms */}
                                                             {showBathrooms && (page.bathrooms && page.bathrooms !== '0') && (
                                                                 <div className="flex items-center gap-2" title="Bathrooms">
-                                                                    <Bath size={16} className="text-[#111954]/60" />
+                                                                    <Bath size={16} className="text-primary/60 dark:text-white/60" />
                                                                     <span>{page.bathrooms} Baths</span>
                                                                 </div>
                                                             )}
@@ -139,7 +139,7 @@ const UnitModelsAI = (props: any) => {
                                                             {/* Parkings */}
                                                             {showParking && (page.parkingNo && page.parkingNo !== '0') && (
                                                                 <div className="flex items-center gap-2" title="Parking Spaces">
-                                                                    <Car size={16} className="text-[#111954]/60" />
+                                                                    <Car size={16} className="text-primary/60 dark:text-white/60" />
                                                                     <span>{page.parkingNo} Parking</span>
                                                                 </div>
                                                             )}
@@ -147,7 +147,7 @@ const UnitModelsAI = (props: any) => {
                                                             {/* Maids Room */}
                                                             {showMaids && (page.maidsRoomNo && page.maidsRoomNo !== '0') && (
                                                                 <div className="flex items-center gap-2" title="Maids Room">
-                                                                    <User size={16} className="text-[#111954]/60" />
+                                                                    <User size={16} className="text-primary/60 dark:text-white/60" />
                                                                     <span>Maids Room</span>
                                                                 </div>
                                                             )}
@@ -155,7 +155,7 @@ const UnitModelsAI = (props: any) => {
                                                             {/* Laundry Room */}
                                                             {showLaundry && (page.laundryRoomNo && page.laundryRoomNo !== '0') && (
                                                                 <div className="flex items-center gap-2" title="Laundry Room">
-                                                                    <Shirt size={16} className="text-[#111954]/60" />
+                                                                    <Shirt size={16} className="text-primary/60 dark:text-white/60" />
                                                                     <span>Laundry</span>
                                                                 </div>
                                                             )}
@@ -171,7 +171,7 @@ const UnitModelsAI = (props: any) => {
                                     <div className="mt-8 flex justify-center">
                                         <button
                                             onClick={() => setShowAll(!showAll)}
-                                            className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white border border-[#111954]/10 rounded-full text-[#111954] font-medium hover:bg-[#111954]/5 transition-colors duration-300"
+                                            className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white border border-primary/10 rounded-full text-primary font-medium hover:bg-primary/5 transition-colors duration-300"
                                         >
                                             {showAll ? (
                                                 <>

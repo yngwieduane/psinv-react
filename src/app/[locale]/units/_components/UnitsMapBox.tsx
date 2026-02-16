@@ -124,7 +124,7 @@ const UnitsMapBox = (props: any) => {
     return (
         <div className="w-full h-full relative overflow-hidden bg-white">
             {/* Floating Property List */}
-            <div className="absolute top-4 left-4 w-96 max-h-[calc(100%-32px)] overflow-y-auto z-10 bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg flex flex-col transition-all duration-300">
+            <div className="absolute top-4 left-4 w-96 max-h-[calc(100%-32px)] overflow-y-auto z-10 bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg flex flex-col transition-all duration-300 dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white">
                 <div className="p-4 space-y-3">
                     {loading && <div className="text-center p-4">Loading units...</div>}
                     {!loading && data && data.slice(0, 11).map((unit: any, index: number) => {
@@ -148,9 +148,9 @@ const UnitsMapBox = (props: any) => {
                                     else itemRefs.current.delete(id);
                                 }}
                                 onClick={() => handleSelectProperty(unit)}
-                                className={`flex gap-3 p-3 rounded-lg cursor-pointer transition-all duration-200 border ${isSelected
-                                    ? 'bg-white border-secondary shadow-md ring-1 ring-secondary'
-                                    : 'bg-white border-gray-200 hover:border-gray-300 hover:shadow-sm'
+                                className={`flex gap-3 p-3 rounded-lg cursor-pointer transition-all duration-200 border  dark:border dark:border-gray-700 dark:text-white ${isSelected
+                                    ? 'bg-white border-secondary shadow-md ring-1 ring-secondary dark:bg-gray-900'
+                                    : 'bg-white border-gray-200 hover:border-gray-300 hover:shadow-sm dark:bg-gray-800'
                                     }`}
                             >
                                 <div className="relative w-24 h-24 flex-shrink-0 rounded-md overflow-hidden bg-gray-200">
@@ -162,22 +162,22 @@ const UnitsMapBox = (props: any) => {
                                 </div>
                                 <div className="flex flex-col justify-between flex-1 min-w-0">
                                     <div>
-                                        <h4 className={`font-bold text-sm line-clamp-2 mb-1 ${isSelected ? 'text-secondary' : 'text-gray-800'}`}>
+                                        <h4 className={`font-bold text-sm line-clamp-2 mb-1 dark:text-white dark:hover:text-white ${isSelected ? 'text-secondary' : 'text-gray-800'}`}>
                                             {unit.propertyname}
                                         </h4>
-                                        <p className="text-xs text-gray-500 flex items-center gap-1 truncate">
+                                        <p className="text-xs text-gray-500 flex items-center gap-1 truncate dark:text-white dark:hover:text-white">
                                             <MapPin size={12} /> {unit.community}
                                         </p>
                                     </div>
 
                                     <div className="flex items-end justify-between mt-2">
                                         {unit.bedrooms && (
-                                            <div className="text-xs text-gray-500 flex items-center gap-1">
+                                            <div className="text-xs text-gray-500 flex items-center gap-1 dark:text-white dark:hover:text-white">
                                                 <BedDouble size={14} />
                                                 <span>{unit.bedrooms}</span>
                                             </div>
                                         )}
-                                        <div className="text-xs font-bold text-primary">
+                                        <div className="text-xs font-bold text-primary dark:text-white dark:hover:text-white">
                                             {unit.sellprice ? <PriceConvert price={unit.sellprice} minDecimal='0' /> : unit.rent ? <PriceConvert price={unit.rent} minDecimal='0' /> : 'Price on Request'}
                                         </div>
                                     </div>

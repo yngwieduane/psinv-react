@@ -29,14 +29,14 @@ export default function UnitsPageAI(props: any) {
     const beds = props.beds || '';
 
     return (
-        <div className="bg-gray-50 min-h-screen pt-32">
+        <div className="bg-gray-50 min-h-screen pt-32 dark:bg-neutral-900">
             <div className="hidden">
                 <Breadcrumb />
             </div>
             <div className="mx-auto container mx-auto px-4 md:px-12 mt-8 pb-20">
                 {/* Header */}
                 <div className="flex justify-between items-end mb-6">
-                    <h1 className="text-xl md:text-3xl text-gray-900 font-bold">
+                    <h1 className="text-xl md:text-3xl text-gray-900 font-bold dark:text-white">
                         {titleData.count > 0
                             ? t('propertiesTitle', { count: titleData.count, category: t(titleData.category.toLowerCase()), location: titleData.location === 'UAE' ? t('uae') : titleData.location })
                             : t('propertiesTitleNoCount', { category: t(titleData.category.toLowerCase()), location: titleData.location === 'UAE' ? t('uae') : titleData.location })
@@ -47,13 +47,13 @@ export default function UnitsPageAI(props: any) {
                         {/* Mobile Filter Button */}
                         <button
                             onClick={() => setMobileFiltersOpen(true)}
-                            className="md:hidden bg-white border border-gray-200 rounded-lg p-2 text-gray-700 shadow-sm flex items-center justify-center hover:bg-gray-50 transition-colors"
+                            className="hidden bg-white border border-gray-200 rounded-lg p-2 text-gray-700 shadow-sm flex items-center justify-center hover:bg-gray-50 transition-colors dark:bg-neutral-800"
                         >
                             <Filter size={18} />
                         </button>
 
                         {/* View Toggle */}
-                        <div className="bg-white border border-gray-200 rounded-lg p-1 flex shadow-sm">
+                        <div className="bg-white dark:bg-neutral-800 border border-gray-200 rounded-lg p-1 flex shadow-sm dark:border-gray-700">
                             <button
                                 onClick={() => setViewMode('list')}
                                 className={`p-2 rounded cursor-pointer ${viewMode === 'list' ? 'bg-primary text-white shadow-sm' : 'text-gray-400 hover:bg-gray-50'}`}
@@ -110,12 +110,12 @@ export default function UnitsPageAI(props: any) {
                 <div className="fixed inset-0 z-[100] bg-white flex flex-col advanced-marker-example">
                     {/* Top Right Controls */}
                     <div className="absolute top-4 right-4 z-50 flex items-start gap-4 pointer-events-none">
-                        <div className="flex items-center bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg p-1 gap-2 pointer-events-auto h-[58px]">
+                        <div className="flex items-center bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg p-1 gap-2 pointer-events-auto h-[58px] dark:bg-gray-800 dark:border-gray-700">
 
                             {/* Filters Toggle */}
                             <button
                                 onClick={() => setShowFilters(!showFilters)}
-                                className={`cursor-pointer h-full px-4 rounded-lg flex items-center gap-2 font-bold transition-colors ${showFilters ? 'bg-gray-200 text-gray-700' : 'text-gray-700 hover:bg-gray-50'}`}
+                                className={`cursor-pointer h-full px-4 rounded-lg flex items-center gap-2 font-bold transition-colors dark:text-white ${showFilters ? 'bg-gray-200 text-gray-700 dark:bg-gray-700' : 'text-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700'}`}
                             >
                                 <Filter size={20} />
                                 <span className="hidden md:inline">{t('filters')}</span>
@@ -127,7 +127,7 @@ export default function UnitsPageAI(props: any) {
                             <div className="flex items-center h-full">
                                 <button
                                     onClick={() => setViewMode('list')}
-                                    className="cursor-pointer h-full px-4 rounded-lg text-gray-400 hover:text-gray-800 flex items-center justify-center transition-colors hover:bg-gray-50"
+                                    className="cursor-pointer h-full px-4 rounded-lg text-gray-400 hover:text-gray-800 flex items-center justify-center transition-colors hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:text-white"
                                 >
                                     <LayoutGrid size={20} />
                                 </button>
@@ -142,9 +142,9 @@ export default function UnitsPageAI(props: any) {
 
                         {/* Collapsible Filters Panel (Floating under controls) */}
                         {showFilters && (
-                            <div className="absolute top-[68px] right-0 w-80 bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-xl p-4 pointer-events-auto">
+                            <div className="absolute top-[68px] right-0 w-80 bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-xl p-4 pointer-events-auto dark:bg-gray-800 dark:border-gray-700">
                                 <div className="absolute top-2 right-2 z-10">
-                                    <button onClick={() => setShowFilters(false)} className="cursor-pointer text-gray-500 hover:text-gray-700">
+                                    <button onClick={() => setShowFilters(false)} className="cursor-pointer text-gray-500 hover:text-gray-700 dark:text-white">
                                         <X size={20} />
                                     </button>
                                 </div>

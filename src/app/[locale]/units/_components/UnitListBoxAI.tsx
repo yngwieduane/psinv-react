@@ -68,10 +68,10 @@ export default function UnitListBoxAI(props: any) {
     const isList = 'list';
     return (
         <>
-            <div className={`bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden flex ${isList ? 'flex-col md:flex-row h-auto md:h-64' : 'flex-col h-full'} hover:shadow-md transition-shadow relative group`}>
+            <div className={`bg-white dark:bg-gray-800 dark:border-gray-700 rounded-3xl shadow-sm border border-gray-100 overflow-hidden flex ${isList ? 'flex-col md:flex-row h-auto md:h-64' : 'flex-col h-full'} hover:shadow-md transition-shadow relative group`}>
                 {/* Image Section */}
                 <div
-                    className={`${isList ? 'w-full h-64 md:w-2/5 md:h-full' : 'w-full h-64'} relative bg-gray-200 cursor-pointer shrink-0 overflow-hidden`}
+                    className={`${isList ? 'w-full h-64 md:w-2/5 md:h-full' : 'w-full h-64'} relative bg-gray-200 dark:bg-gray-700 cursor-pointer shrink-0 overflow-hidden`}
 
                 >
                     <Link href={`/unit/${props.seoUrl}`}>
@@ -85,12 +85,12 @@ export default function UnitListBoxAI(props: any) {
                                 onError={() => setImgError(true)}
                             />
                         ) : (
-                            <div className="flex flex-col items-center justify-center text-gray-400 h-full w-full bg-gray-50">
+                            <div className="flex flex-col items-center justify-center text-gray-400 h-full w-full bg-gray-50 dark:bg-gray-700">
                                 <Home size={40} strokeWidth={1.5} />
-                                <span className="text-xs mt-2">{t_u('NoImage')}</span> 
+                                <span className="text-xs mt-2 dark:text-white">No Available Image</span>
                             </div>
                         )}
-                        <div className="absolute top-3 left-3 bg-secondary text-white text-xs font-bold px-2 py-1 rounded shadow-sm">
+                        <div className="absolute top-3 left-3 bg-secondary dark:bg-gray-700 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">
                             {t_u(`For ${props.adType}`)}
                         </div>
                     </Link>
@@ -127,7 +127,7 @@ export default function UnitListBoxAI(props: any) {
                         <div className="flex justify-between items-start mb-2">
                             <Link href={`/unit/${props.seoUrl}`}>
                                 <h3
-                                    className="text-xl font-bold text-gray-800 line-clamp-1 cursor-pointer hover:text-secondary transition-colors"
+                                    className="text-xl font-bold text-gray-800 line-clamp-1 cursor-pointer hover:text-secondary transition-colors dark:text-white"
                                 >
                                     <PriceConvert price={price} minDecimal='0' />
                                 </h3>
@@ -135,11 +135,14 @@ export default function UnitListBoxAI(props: any) {
                         </div>
 
                         {/* Forced height for Title (2 lines max) to ensure alignment */}
-                        <h4 className="text-sm font-medium text-gray-600 mb-2 hover:text-primary transition-colors line-clamp-2 h-10 overflow-hidden leading-tight" >
+                        <h4
+                            className="text-sm font-medium text-gray-600 mb-2 hover:text-primary transition-colors line-clamp-2 h-10 overflow-hidden leading-tight dark:text-white dark:hover:text-white"
+
+                        >
                             {props.data.marketingTitle}
                         </h4>
 
-                        <div className="flex items-center text-gray-500 text-xs mb-4">
+                        <div className="flex items-center text-gray-500 text-xs mb-4 dark:text-white">
                             <MapPin size={14} className="mr-1 shrink-0" />
                             <span className="truncate w-full">
                                 {t_u.has(`Communities.${props.data.community}`)
@@ -149,7 +152,7 @@ export default function UnitListBoxAI(props: any) {
                             </span>
                         </div>
 
-                        <div className="flex items-center gap-4 text-sm text-gray-600 mb-4 flex-wrap">
+                        <div className="flex items-center gap-4 text-sm text-gray-600 mb-4 flex-wrap dark:text-white">
                             {props.data.category !== 'Office' && props.data.category !== 'Land' && (
                                 <>
                                     <span className="flex items-center gap-1 font-bold whitespace-nowrap">
@@ -171,14 +174,14 @@ export default function UnitListBoxAI(props: any) {
                     </div>
 
                     {/* Buttons - Pushed to bottom via flex-col + flex-grow on content above */}
-                    <div className="flex gap-2 mt-auto pt-4 border-t border-gray-50">
+                    <div className="flex gap-2 mt-auto pt-4 border-t border-gray-50 dark:border-gray-700">
                         <button
                             onClick={() => setPreviewProperty(props.data)}
-                            className="cursor-pointer flex-1 border border-gray-300 text-gray-600 py-2 rounded text-sm font-medium hover:bg-gray-50 transition-colors"
+                            className="cursor-pointer flex-1 border border-gray-300 text-gray-600 py-2 rounded text-sm font-medium hover:bg-gray-50 transition-colors dark:text-white dark:border-gray-700 dark:hover:bg-gray-700"
                         >
                             {t_u('Preview')}
                         </button>
-                        <button onClick={modalHandler} className="cursor-pointer flex-1 border border-gray-300 text-gray-600 py-2 rounded text-sm font-medium hover:bg-gray-50 transition-colors">
+                        <button onClick={modalHandler} className="cursor-pointer flex-1 border border-gray-300 text-gray-600 py-2 rounded text-sm font-medium hover:bg-gray-50 transition-colors dark:text-white dark:border-gray-700 dark:hover:bg-gray-700">
                             {t_u('Inquire')}
                         </button>
                         <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20.${props.seoUrl}`} className="cursor-pointer flex-1 bg-[#25D366] text-white py-2 rounded text-sm font-medium hover:bg-[#128c7e] transition-colors flex items-center justify-center gap-1">

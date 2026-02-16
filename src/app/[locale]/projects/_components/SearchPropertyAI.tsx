@@ -45,24 +45,24 @@ export default function SearchPropertyAI({
     return (
         <div >
             {/* Filters Bar (Desktop) */}
-            <div className="hidden lg:block bg-gray-50 border-y border-gray-200 py-5 mb-12">
+            <div className="hidden lg:block bg-gray-50 border-y border-gray-200 py-5 mb-12 dark:bg-gray-800 dark:border-gray-700">
                 <div className="container mx-auto flex flex-wrap gap-6 items-center justify-between">
                     <div className="flex gap-3">
                         <button
                             onClick={() => setActiveTab('gallery')}
-                            className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer ${activeTab === 'gallery' ? 'bg-primary border border-gray-400 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'}`}
+                            className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer dark:hover:bg-primary dark:hover:text-white ${activeTab === 'gallery' ? 'bg-primary border border-gray-400 text-white dark:border-gray-500' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:text-white dark:hover:border-gray-500'}`}
                         >
                             <LayoutGrid size={16} /> Gallery
                         </button>
                         <button
                             onClick={() => setActiveTab('map')}
-                            className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer ${activeTab === 'map' ? 'bg-primary border border-gray-400 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'}`}
+                            className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer dark:hover:bg-primary dark:hover:text-white ${activeTab === 'map' ? 'bg-primary border border-gray-400 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:text-white dark:hover:border-gray-500'}`}
                         >
                             <MapIcon size={16} /> View Map
                         </button>
                         <button
                             onClick={() => setActiveTab('list')}
-                            className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer ${activeTab === 'list' ? 'bg-primary border border-gray-400 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'}`}
+                            className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer dark:hover:bg-primary dark:hover:text-white ${activeTab === 'list' ? 'bg-primary border border-gray-400 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:text-white dark:hover:border-gray-500'}`}
                         >
                             <List size={16} /> List
                         </button>
@@ -75,7 +75,7 @@ export default function SearchPropertyAI({
             </div>
 
             {/* Mobile Sticky Action Bar */}
-            <div className="fixed top-[85px] left-0 right-0 z-40 bg-white border-b border-gray-200 shadow-sm p-3 grid grid-cols-3 gap-3 lg:hidden">
+            <div className="fixed top-[85px] left-0 right-0 z-40 bg-white border-b border-gray-200 shadow-sm p-3 grid grid-cols-3 gap-3 lg:hidden dark:bg-neutral-800 dark:border-neutral-800">
                 <button
                     onClick={() => setIsSortOpen(true)}
                     className="flex-1 border border-gray-300 rounded-lg py-2.5 flex items-center justify-center gap-2 font-bold text-sm text-gray-700 active:bg-gray-50"

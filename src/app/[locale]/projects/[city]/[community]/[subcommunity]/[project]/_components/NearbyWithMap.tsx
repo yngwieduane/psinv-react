@@ -108,11 +108,11 @@ const NearbysWithMap = ({
             {loading && <p className="text-sm text-gray-500 mt-1">Loading...</p>}
             {results.length > 0 && (
                 <>
-                    <h2 className="text-3xl font-bold text-[#111954] relative inline-block">
+                    <h2 className="text-3xl font-bold text-primary relative inline-block dark:text-white">
                         Nearbys
                     </h2>
                     <h2 className="text-xl text-gray-500 mb-8">{propname}</h2>
-                    <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 content-stretch">
+                    <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 content-stretch dark:shadow-xl  dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
                         <ul role="list" className="grid grid-cols-2 md:grid-cols-2 space-y-3 space-x-3 overflow-auto h-[70vh]  py-2">
                             {data.slice(0, 20).map((post, index) => {
                                 const pointA: Coordinate = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
@@ -175,12 +175,12 @@ const NearbysWithMap = ({
                                         <div onClick={() => {
                                             handleLocationClick(pointB);
                                         }}
-                                            className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
-                                            <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center text-secondary">
+                                            className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+                                            <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center text-secondary dark:bg-gray-700 dark:border-gray-700 dark:shadow-gray-700/50">
                                                 {/* <MapPin size={28} /> */}
                                                 <DynamicIcon name={labelicon} size={20} />
                                             </div>
-                                            <h4 className="font-bold text-gray-800 text-sm mb-1">{post.landmarkEnglishName}, {post.addressLine1English}</h4>
+                                            <h4 className="font-bold text-gray-800 text-sm mb-1 dark:text-white">{post.landmarkEnglishName}, {post.addressLine1English}</h4>
                                             <p className="text-xs text-gray-400 font-bold uppercase">{distance}<span>km</span></p>
                                         </div>
                                     </li>

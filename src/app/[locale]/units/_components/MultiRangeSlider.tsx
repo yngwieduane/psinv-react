@@ -117,7 +117,7 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({
             if (val !== minVal) onChange({ min: val, max: maxVal });
             onAfterChange?.({ min: val, max: maxVal });
           }}
-          className="w-full rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-900 focus:border-[#005a9c] focus:ring-1 focus:ring-[#005a9c] outline-none transition-all"
+          className="w-full rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-900 focus:border-[#005a9c] focus:ring-1 focus:ring-[#005a9c] outline-none transition-all dark:bg-gray-800 dark:text-white dark:border-gray-700 "
         />
         <input
           type="text"
@@ -135,7 +135,7 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({
             if (val !== maxVal) onChange({ min: minVal, max: val });
             onAfterChange?.({ min: minVal, max: val });
           }}
-          className="w-full rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-900 focus:border-[#005a9c] focus:ring-1 focus:ring-[#005a9c] outline-none transition-all"
+          className="w-full rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-900 focus:border-[#005a9c] focus:ring-1 focus:ring-[#005a9c] outline-none transition-all dark:bg-gray-800 dark:text-white dark:border-gray-700 "
         />
       </div>
     </div>

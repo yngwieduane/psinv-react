@@ -88,7 +88,7 @@ export default function AutocompleteSearch({ isReset, disableRouting = false, on
   return (
     <div className="relative">
       {showLabel && (
-        <label htmlFor="email" className=" block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">
+        <label htmlFor="email" className=" block text-sm font-bold uppercase tracking-wider text-gray-500 mb-2 dark:text-white">
           Property Name {isReset}
         </label>
       )}
@@ -101,15 +101,15 @@ export default function AutocompleteSearch({ isReset, disableRouting = false, on
           //value={inputValue}
           onChange={handleInputChange}
           autoComplete="off"
-          className="col-start-1 row-start-1 block w-full rounded-xl bg-white/50 border border-gray-200 py-3.5 pr-10 pl-11 text-base text-gray-800 outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all duration-200 shadow-sm hover:bg-white/80"
+          className="col-start-1 row-start-1 block w-full rounded-xl bg-white/50 border border-gray-200 py-3.5 pr-10 pl-11 text-base text-gray-800 outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#353455]/10 focus:border-[#353455] transition-all duration-200 shadow-sm hover:bg-white/80 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white"
         />
         <MagnifyingGlassIcon
           aria-hidden="true"
-          className="pointer-events-none col-start-1 row-start-1 ml-4 size-5 self-center text-gray-500"
+          className="pointer-events-none col-start-1 row-start-1 ml-4 size-5 self-center text-gray-500 dark:text-white"
         />
       </div>
       {loading && (
-        <div className="absolute left-0 right-0 mt-2 p-4 rounded-xl backdrop-blur-xl bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.08)]">
+        <div className="absolute left-0 right-0 mt-2 p-4 rounded-xl backdrop-blur-xl bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.08)] dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
           <p className="text-gray-500 text-sm">Searching...</p>
         </div>
       )}
@@ -119,10 +119,10 @@ export default function AutocompleteSearch({ isReset, disableRouting = false, on
             <li
               key={index}
               onClick={handleOptionClick(item.propertyName, item.propertyID)}
-              className="px-4 py-3 hover:bg-[#353455]/5 cursor-pointer transition-colors duration-200 border-b border-gray-100 last:border-0"
+              className="px-4 py-3 hover:bg-[#353455]/5 cursor-pointer transition-colors duration-200 border-b border-gray-100 last:border-0 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white"
             >
-              <strong className="block text-[#353455] text-sm font-semibold">{item.propertyName}</strong>
-              <span className="text-xs text-gray-500 mt-0.5 block">{item.propertyID}</span>
+              <strong className="block text-[#353455] text-sm font-semibold dark:text-white dark:hover:text-white">{item.propertyName}</strong>
+              <span className="text-xs text-gray-500 mt-0.5 block dark:text-white dark:hover:text-white">{item.propertyID}</span>
             </li>
           ))}
         </ul>

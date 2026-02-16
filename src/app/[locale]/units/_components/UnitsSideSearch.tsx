@@ -152,25 +152,25 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
 
   return (
     <div className="w-full block">
-      <div className="p-6 grid grid-cols-1 backdrop-blur-xl bg-white/70 border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl space-y-8 transition-all duration-300">
+      <div className="p-6 grid grid-cols-1 backdrop-blur-xl bg-white/70 dark:bg-gray-800 border border-white/60 dark:border-gray-700 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl space-y-8 transition-all duration-300">
         <div className='w-full'>
           <div className="flex justify-between items-center border-b border-gray-100 pb-4">
-            <p className="font-bold text-xl text-[#353455]">{t('filters')}</p>
-            <button onClick={handleReset} className="text-gray-400 text-sm hover:text-secondary flex items-center gap-1 transition-colors">
+            <p className="font-bold text-xl text-[#353455] dark:text-white">{t('filters')}</p>
+            <button onClick={handleReset} className="text-gray-400 text-sm hover:text-secondary flex items-center gap-1 transition-colors dark:text-white dark:hover:text-gray-200">
               <RotateCcw size={14} /> {t('reset')}
             </button>
           </div>
         </div>
         {/* Beds Filter */}
         <div className="space-y-4">
-          <label className="block text-sm font-bold uppercase tracking-wider text-gray-500">{t('bedrooms')}</label>
+          <label className="block text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-white">{t('bedrooms')}</label>
           <div className="space-y-2">
 
             {/* Any Option */}
             <label className="flex items-center gap-3 cursor-pointer group">
               <div className={`
                   w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200
-                  ${beds === null ? 'border-[#353455]' : 'border-gray-300 group-hover:border-[#353455]'}
+                  ${beds === null ? 'border-[#353455]' : 'border-gray-300 group-hover:border-[#353455] dark:group-hover:border-white'}
                `}>
                 {beds === null && <div className="w-2.5 h-2.5 rounded-full bg-[#353455]" />}
               </div>
@@ -184,7 +184,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                   updateQuery('beds', null);
                 }}
               />
-              <span className={`text-sm transition-colors ${beds === null ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455]'}`}>
+              <span className={`text-sm transition-colors dark:text-white ${beds === null ? 'font-medium text-[#353455] ' : 'text-gray-600 group-hover:text-[#353455] dark:group-hover:text-white'}`}>
                 {t('any')}
               </span>
             </label>
@@ -193,9 +193,9 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
               <label key={bedCount} className="flex items-center gap-3 cursor-pointer group">
                 <div className={`
                         w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200
-                        ${beds === bedCount ? 'border-[#353455]' : 'border-gray-300 group-hover:border-[#353455]'}
+                        ${beds === bedCount ? 'border-[#353455] dark:border-white' : 'border-gray-300 group-hover:border-[#353455] dark:group-hover:border-white'}
                     `}>
-                  {beds === bedCount && <div className="w-2.5 h-2.5 rounded-full bg-[#353455]" />}
+                  {beds === bedCount && <div className="w-2.5 h-2.5 rounded-full bg-[#353455] dark:bg-white" />}
                 </div>
                 <input
                   type="radio"
@@ -207,7 +207,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                     updateQuery('beds', String(bedCount));
                   }}
                 />
-                <span className={`text-sm transition-colors ${beds === bedCount ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455]'}`}>
+                <span className={`text-sm transition-colors dark:text-white ${beds === bedCount ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455] dark:group-hover:text-white'}`}>
                   {bedCount} {bedCount === 1 ? `${t('bedroom')}` : `${t('bedrooms')}`}
                 </span>
               </label>
@@ -219,15 +219,15 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
 
         {/* Property Type Groups (Radio Buttons) */}
         <div className="space-y-4">
-          <label className="block text-sm font-bold uppercase tracking-wider text-gray-500">{t('types')}</label>
+          <label className="block text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-white">{t('types')}</label>
 
           {/* Any Option */}
           <label className="flex items-center gap-3 cursor-pointer group">
             <div className={`
-              w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200
-              ${selectedPropertyTypes.length === 0 ? 'border-[#353455]' : 'border-gray-300 group-hover:border-[#353455]'}
+              w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200 
+              ${selectedPropertyTypes.length === 0 ? 'border-[#353455] dark:border-white' : 'border-gray-300 group-hover:border-[#353455] dark:group-hover:border-white'}
             `}>
-              {selectedPropertyTypes.length === 0 && <div className="w-2.5 h-2.5 rounded-full bg-[#353455]" />}
+              {selectedPropertyTypes.length === 0 && <div className="w-2.5 h-2.5 rounded-full bg-[#353455] dark:bg-white" />}
             </div>
             <input
               type="radio"
@@ -239,7 +239,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                 updateQuery('propertyType', null);
               }}
             />
-            <span className={`text-sm transition-colors ${selectedPropertyTypes.length === 0 ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455]'}`}>
+            <span className={`text-sm transition-colors dark:text-white ${selectedPropertyTypes.length === 0 ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455] dark:group-hover:text-white'}`}>
               {t('any')}
             </span>
           </label>
@@ -254,9 +254,9 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                     <label key={type.lookupId} className="flex items-center gap-3 cursor-pointer group">
                       <div className={`
                         w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200
-                        ${isSelected ? 'border-[#353455]' : 'border-gray-300 group-hover:border-[#353455]'}
+                        ${isSelected ? 'border-[#353455] dark:border-white' : 'border-gray-300 group-hover:border-[#353455] dark:group-hover:border-white'}
                       `}>
-                        {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#353455]" />}
+                        {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#353455] dark:bg-white" />}
                       </div>
                       <input
                         type="radio"
@@ -269,7 +269,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                           updateQuery('propertyType', newType);
                         }}
                       />
-                      <span className={`text-sm transition-colors ${isSelected ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455]'}`}>
+                      <span className={`text-sm transition-colors dark:text-white ${isSelected ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455] dark:group-hover:text-white'}`}>
                         {t(type.lookupName)}
                       </span>
                     </label>
@@ -285,14 +285,14 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
         {/* Price Filter */}
         <div>
           <div className="flex justify-between items-center mb-6">
-            <p className="block text-sm font-bold uppercase tracking-wider text-gray-500">{t('price')}</p>
+            <p className="block text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-white">{t('price')}</p>
             <button
               onClick={() => {
                 setPriceRange([minPriceDefault, maxPriceDefault]);
                 updateQuery('minPrice', null);
                 updateQuery('maxPrice', null);
               }}
-              className="text-sm font-medium text-[#005a9c] hover:underline"
+              className="text-sm font-medium text-[#005a9c] hover:underline dark:text-white"
             >
               {t('reset')}
             </button>
