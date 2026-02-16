@@ -847,7 +847,38 @@
     "Warehouse": "Lagerhalle",
     "Retail": "Einzelhandel",
     "Shop": "Geschäft",
-    "Plot": "Grundstück"
+    "Plot": "Grundstück",
+    "NoImage": "Kein verfügbares Bild",
+    "For Sale": "Zu verkaufen",
+    "For Rent": "Zu vermieten",
+    "Beds": "Betten",
+    "Baths": "Badezimmer",
+    "Preview": "Vorschau",
+    "Inquire": "Anfragen",
+    "WhatsApp": "WhatsApp",
+    "Communities": {
+      "Al Raha Beach": "Al Raha Beach",
+      "Al Reem Island": "Al Reem Island",
+      "Al Reef": "Al Reef",
+      "Hamdan Street": "Hamdan Straße",
+      "Golf Gardens": "Golfgärten",
+      "Yas Island": "Yas Island",
+      "Jubail Island": "Jubail Island",
+      "Saadiyat Island": "Saadiyat Island",
+      "Al Ghadeer": "Al Ghadeer",
+      "Khalifa City A": "Khalifa Stadt A",
+      "Abu Dhabi Gate": "Abu Dhabi Tor",
+      "Electra": "Electra",
+      "Corniche Abu Dhabi": "Corniche Abu Dhabi",
+      "Danet Abu Dhabi": "Danet Abu Dhabi",
+      "Al Manhal": "Al Manhal",
+      "The Marina": "Die Marina"
+    },
+    "Category": {
+      "Apartment": "Wohnung",
+      "Villa": "Villa",
+      "Townhouse": "Reihenhaus"
+    }
 
   },
   "ProjectPage": {

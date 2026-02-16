@@ -6176,8 +6176,38 @@
     "Warehouse": "مستودع",
     "Retail": "تجزئة",
     "Shop": "متجر",
-    "Plot": "قطعة أرض"
-
+    "Plot": "قطعة أرض",
+    "NoImage": "لا توجد صورة متاحة",
+    "For Sale": "للبيع",
+    "For Rent": "للإيجار",
+    "Beds": "عدد الغرف",
+    "Baths": "عدد الحمامات",
+    "Preview": "معاينة",
+    "Inquire": "استفسر",
+    "WhatsApp": "واتساب",
+    "Communities": {
+      "Al Raha Beach": "شاطئ الراحة",
+      "Al Reem Island": "جزيرة الريم",
+      "Al Reef": "الريف",
+      "Hamdan Street": "شارع حمدان",
+      "Golf Gardens": "حدائق الجولف",
+      "Yas Island": "جزيرة ياس",
+      "Jubail Island": "جزيرة الجبيل",
+      "Saadiyat Island": "جزيرة السعديات",
+      "Al Ghadeer": "الغدير",
+      "Khalifa City A": "مدينة خليفة أ",
+      "Abu Dhabi Gate": "بوابة أبوظبي",
+      "Electra": "إلكترا",
+      "Corniche Abu Dhabi": "كورنيش أبوظبي",
+      "Danet Abu Dhabi": "دانات أبوظبي",
+      "Al Manhal": "المنهل",
+      "The Marina": "المارينا"
+    },
+    "Category": {
+      "Apartment": "شقة",
+      "Villa": "فيلا",
+      "Townhouse": "تاون هاوس"
+    }
   },
   "UnitsPage": {
     "property_name": "اسم العقار",
