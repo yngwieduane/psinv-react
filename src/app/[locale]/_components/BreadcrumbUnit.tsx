@@ -26,7 +26,7 @@ const BreadcrumbUnit = ({ data }: { data: UnitListing }) => {
     'itemListElement': itemListElement,
   };
   return (
-    <nav className="bg-white py-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <nav className="bg-white py-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide dark:bg-neutral-900 dark:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -69,11 +69,11 @@ const BreadcrumbUnit = ({ data }: { data: UnitListing }) => {
             <li key={index} className="flex items-center space-x-2">
               <span>/</span>
               {isLast ? (
-                <span className="text-sm text-dark font-medium capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
+                <span className="text-sm text-dark dark:text-white font-medium capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
                   {segment.replaceAll('-', ' ')}
                 </span>
               ) : (
-                <Link title={segment.replaceAll('-', ' ')} href={href} className="text-sm text-black hover:text-blue-600 capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
+                <Link title={segment.replaceAll('-', ' ')} href={href} className="text-sm text-black dark:text-white hover:text-blue-600 capitalize sm:max-w-[80px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
                   {segment.replaceAll('-', ' ')}
                 </Link>
               )}

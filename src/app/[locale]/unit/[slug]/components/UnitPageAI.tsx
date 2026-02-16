@@ -83,9 +83,11 @@ export default function UnitPageAI(props: any) {
         return t.has(key) ? t(key) : rawLabel;
     };
     return (
-        <div className="pt-28 md:pt-36 pb-24">
-            <div>
-                <BreadcrumbUnit data={props.data[0]} />
+        <div className="">
+            <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
+                <div className="container mx-auto">
+                    <BreadcrumbUnit data={props.data[0]} />
+                </div>
             </div>
             <div >
                 {props.data.map((post: any, index: any) => {
@@ -197,8 +199,8 @@ export default function UnitPageAI(props: any) {
                                 {/* Title Section */}
                                 <div className="flex flex-col md:flex-row justify-between items-start mb-8 md:mb-10 gap-6 md:gap-8">
                                     <div className="w-full">
-                                        <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold text-primary mb-2 md:mb-4 leading-tight">{post.marketingTitle}</h1>
-                                        <div className="flex items-center text-gray-500 text-sm md:text-base font-medium">
+                                        <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold text-primary mb-2 md:mb-4 leading-tight dark:text-white">{post.marketingTitle}</h1>
+                                        <div className="flex items-center text-gray-500 text-sm md:text-base font-medium dark:text-white">
                                             <MapPin size={18} className="text-secondary mr-2 rtl:ml-2" />
                                             {post.community}
                                         </div>
@@ -208,7 +210,7 @@ export default function UnitPageAI(props: any) {
                                         {/* Quick Actions */}
                                         <button
                                             onClick={() => toggleFavorite({ id: post.code, type: 'units', data: post })}
-                                            className={`cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold ${saved ? 'border-red-500 text-red-500 bg-red-50' : 'border-gray-200 text-gray-600 hover:bg-red-50 hover:border-red-500 hover:text-red-500'}`}
+                                            className={`dark:text-white cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold ${saved ? 'border-red-500 text-red-500 bg-red-50' : 'border-gray-200 text-gray-600 hover:bg-red-50 hover:border-red-500 hover:text-red-500'}`}
                                         >
                                             <Heart size={20} fill={saved ? "currentColor" : "none"} /> {saved ? t('buttons.saved') : t('buttons.save')}
                                         </button>
@@ -221,7 +223,7 @@ export default function UnitPageAI(props: any) {
                                                     addToCompare({ id: post.code, type: 'units', data: post });
                                                 }
                                             }}
-                                            className={`cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold ${compared ? 'bg-[#0c1356] text-white' : 'border-gray-200 text-gray-600 hover:bg-[#0c1356] hover:text-white'}`}
+                                            className={`dark:text-white cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold ${compared ? 'bg-[#0c1356] text-white' : 'border-gray-200 text-gray-600 hover:bg-[#0c1356] hover:text-white'}`}
                                         >
                                             <Shuffle size={20} /> {compared ? t('buttons.compared') : t('buttons.compare')}
                                         </button>
@@ -292,7 +294,7 @@ export default function UnitPageAI(props: any) {
                                                     key={tab.id}
                                                     className={`px-6 md:px-8 py-4 text-sm md:text-base font-bold border-b-4 transition-all whitespace-nowrap ${activeTab === tab.id
                                                         ? 'border-secondary text-secondary'
-                                                        : 'border-transparent text-gray-500 hover:text-gray-800'
+                                                        : 'border-transparent text-gray-500 hover:text-gray-800 dark:hover:text-white'
                                                         }`}
                                                     onClick={() => setActiveTab(tab.id as any)}
                                                 >
@@ -304,8 +306,8 @@ export default function UnitPageAI(props: any) {
                                         {/* Property Overview */}
                                         {activeTab === 'details' && (
                                             <div className="mb-10 md:mb-14 animate-[fadeIn_0.5s_ease-out]">
-                                                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">{t('sections.details')}</h3>
-                                                <div className="bg-gray-50 rounded-3xl p-6 md:p-10 border border-gray-100">
+                                                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8 dark:text-white">{t('sections.details')}</h3>
+                                                <div className="bg-gray-50 rounded-3xl p-6 md:p-10 border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
                                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 md:gap-y-8">
                                                         {
                                                             [
@@ -320,18 +322,18 @@ export default function UnitPageAI(props: any) {
                                                                 { label: t('labels.baths'), value: post.no_of_bathrooms, isBold: true },
                                                             ].map((item, idx) => (
                                                                 <div key={idx} className="flex justify-between items-center border-b border-gray-200 pb-4 last:border-0 md:last:border-b">
-                                                                    <span className="text-gray-500 text-sm font-bold uppercase tracking-wide">{item.label}</span>
-                                                                    <span className={`${item.isBold ? 'text-gray-900 font-bold' : 'text-primary font-semibold'} text-base`}>{item.value}</span>
+                                                                    <span className="text-gray-500 text-sm font-bold uppercase tracking-wide dark:text-white">{item.label}</span>
+                                                                    <span className={`${item.isBold ? 'text-gray-900 font-bold' : 'text-primary font-semibold'} text-base dark:text-white`}>{item.value}</span>
                                                                 </div>
                                                             ))}
                                                     </div>
                                                 </div>
                                                 <div className="mt-10">
-                                                    <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">{t('sections.unit_overview')}</h3>
-                                                    <div className={`bg-white text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line font-light mb-10 transition-all duration-300 ease-in-out relative ${!isRemarksExpanded ? 'max-h-[500px] overflow-hidden' : ''}`}>
+                                                    <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8 dark:text-white">{t('sections.unit_overview')}</h3>
+                                                    <div className={`dark:bg-neutral-900 dark:text-white bg-white text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line font-light mb-10 transition-all duration-300 ease-in-out relative ${!isRemarksExpanded ? 'max-h-[500px] overflow-hidden' : ''}`}>
                                                         <div dangerouslySetInnerHTML={{ __html: post.remarks }} />
                                                         {!isRemarksExpanded && (
-                                                            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                                                            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none dark:from-neutral-900 dark:to-transparent" />
                                                         )}
                                                     </div>
                                                     <div className="flex justify-center mb-14">
@@ -359,11 +361,11 @@ export default function UnitPageAI(props: any) {
                                         {/* Description & Amenities */}
                                         {activeTab === 'overview' && (
                                             <div className="mb-10 md:mb-14 animate-[fadeIn_0.5s_ease-out]">
-                                                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8">{t('sections.property_overview')}</h3>
-                                                <div className={`bg-white text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line font-light mb-10 transition-all duration-300 ease-in-out relative ${!isDescriptionExpanded ? 'max-h-[500px] overflow-hidden' : ''}`}>
+                                                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8 dark:text-white">{t('sections.property_overview')}</h3>
+                                                <div className={`dark:bg-neutral-900 dark:text-white bg-white text-gray-600 text-base md:text-lg leading-relaxed whitespace-pre-line font-light mb-10 transition-all duration-300 ease-in-out relative ${!isDescriptionExpanded ? 'max-h-[500px] overflow-hidden' : ''}`}>
                                                     <div dangerouslySetInnerHTML={{ __html: post.property_overview }} />
                                                     {!isDescriptionExpanded && (
-                                                        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                                                        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none dark:from-neutral-900 dark:to-transparent" />
                                                     )}
                                                 </div>
 
@@ -391,12 +393,12 @@ export default function UnitPageAI(props: any) {
                                         {/* Rich Amenities Grid */}
                                         {amenities ? (
                                             <>
-                                                <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.amenities')}</h4>
+                                                <h4 className="font-bold text-gray-900 text-xl mb-6 dark:text-white">{t('sections.amenities')}</h4>
                                                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
                                                     {(showAllAmenities ? amenities.slice(0, -1) : amenities.slice(0, -1).slice(0, 20)).map((am: string, i: number) => (
-                                                        <div key={i} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                                                        <div key={i} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100 dark:bg-neutral-900 dark:text-white dark:border-neutral-800">
                                                             <CheckCircle2 className="text-secondary shrink-0" size={20} />
-                                                            <span className="text-gray-700 font-medium">{getAmenityLabel(am)}</span>
+                                                            <span className="text-gray-700 font-medium dark:text-white">{getAmenityLabel(am)}</span>
                                                         </div>
                                                     ))}
                                                 </div>
@@ -425,16 +427,12 @@ export default function UnitPageAI(props: any) {
                                         ) : ("")}
 
                                         {/* Payment Plans Grid */}
-                                        {amenities ? (
-                                            <>
-                                                <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.payment_plans')}</h4>
-                                                <div className=" mb-10">
-                                                    <PaymentPlans
-                                                        propid={post.property_Pk}
-                                                    />
-                                                </div>
-                                            </>
-                                        ) : ("")}
+                                        <h4 className="font-bold text-gray-900 text-xl mb-6 dark:text-white">{t('sections.payment_plans')}</h4>
+                                        <div className=" mb-10">
+                                            <PaymentPlans
+                                                propid={post.property_Pk}
+                                            />
+                                        </div>
 
                                         {/* Mortgage Calculator Grid */}
                                         {category == "Sale" ? (
@@ -443,7 +441,7 @@ export default function UnitPageAI(props: any) {
                                             </div>) : ("")}
 
                                         <div className="mt-8 md:mt-12">
-                                            <h4 className="font-bold text-gray-900 text-xl mb-6">{t('sections.faq')}</h4>
+                                            <h4 className="font-bold text-gray-900 text-xl mb-6 dark:text-white">{t('sections.faq')}</h4>
                                             <AccordionTabs items={faqData} />
                                         </div>
 
@@ -457,11 +455,11 @@ export default function UnitPageAI(props: any) {
                                     <div className="lg:w-1/3 space-y-10 lg:sticky h-fit ">
                                         <Sticky stickyClassName="mt-24" boundaryElement=".mainsidebar" hideOnBoundaryHit={false}>
                                             {/* Price Card */}
-                                            <div className="bg-white border border-gray-100 rounded-3xl p-4 md:px-6 md:pt-6 md:pb-1 xl:pt-8 md:pb-1 shadow-[0_10px_50px_rgba(0,0,0,0.08)] mb-5">
+                                            <div className="dark:bg-gray-800 dark:text-white dark:border-gray-700 bg-white border border-gray-100 rounded-3xl p-4 md:px-6 md:pt-6 md:pb-1 xl:pt-8 md:pb-1 shadow-[0_10px_50px_rgba(0,0,0,0.08)] mb-5">
                                                 <div className="flex justify-between items-end mb-8 md:mb-4 xl:mb-8">
                                                     <div>
-                                                        <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-2">{t('labels.total_price')}</span>
-                                                        <span className="text-3xl md:text-3xl xl:text-4xl font-bold text-primary"><PriceConvert price={price} minDecimal='0' /></span>
+                                                        <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-2 dark:text-white">{t('labels.total_price')}</span>
+                                                        <span className="text-3xl md:text-3xl xl:text-4xl font-bold text-primary dark:text-white"><PriceConvert price={price} minDecimal='0' /></span>
                                                     </div>
                                                 </div>
 
@@ -496,7 +494,7 @@ export default function UnitPageAI(props: any) {
                                     </div>
                                 </div>
                                 {/* Similar Properties Section - Grid Update for landscape */}
-                                <div className="container mx-auto mt-20 border-t border-gray-100 pt-16">
+                                <div className="container mx-auto mt-20 border-t border-gray-100 py-16">
                                     {/* MAP */}
                                     {map !== null ? (
                                         <div className="">
@@ -514,7 +512,7 @@ export default function UnitPageAI(props: any) {
                                             />
                                         </div>) : ("")}
 
-                                    <h2 className="text-3xl font-bold text-primary mb-8 mt-10">{t('sections.similar_units')}</h2>
+                                    <h2 className="text-3xl font-bold text-primary mb-8 mt-10 dark:text-white">{t('sections.similar_units')}</h2>
                                     <SimilarUnitsGrid
                                         propid={post.property_Pk}
                                         category={category}

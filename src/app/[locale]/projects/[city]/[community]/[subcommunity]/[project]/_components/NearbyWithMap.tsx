@@ -26,12 +26,12 @@ import { RealEstateIconNearby } from "../../../../../../../../../public/icons/re
 import { MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 const normalizeKey = (value: string) =>
-  (value || "")
-    .toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/['’]/g, "")
-    .replace(/[^a-z0-9]+/g, "_")
-    .replace(/^_+|_+$/g, "");
+    (value || "")
+        .toLowerCase()
+        .replace(/&/g, "and")
+        .replace(/['’]/g, "")
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_+|_+$/g, "");
 const NearbysWithMap = ({
     latitude,
     longitude,
@@ -53,48 +53,48 @@ const NearbysWithMap = ({
 
     const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAP_API as string;
     const t = useTranslations("UnitProperties");
-const SEPS = /(\s+|,|-|\(|\)|\/|\.|:|;)/g;
+    const SEPS = /(\s+|,|-|\(|\)|\/|\.|:|;)/g;
 
-const translateDynamicText = (text: string) => {
-  if (!text) return "";
+    const translateDynamicText = (text: string) => {
+        if (!text) return "";
 
-  const phraseDict = (t.raw?.("nearby_phrases") ?? {}) as Record<string, string>;
-  const wordDict = (t.raw?.("nearby_words") ?? {}) as Record<string, string>;
+        const phraseDict = (t.raw?.("nearby_phrases") ?? {}) as Record<string, string>;
+        const wordDict = (t.raw?.("nearby_words") ?? {}) as Record<string, string>;
 
-  let out = text;
+        let out = text;
 
-  // 1) phrases: longest first
-  const phrases = Object.keys(phraseDict).sort((a, b) => b.length - a.length);
+        // 1) phrases: longest first
+        const phrases = Object.keys(phraseDict).sort((a, b) => b.length - a.length);
 
-  for (const p of phrases) {
-    const val = phraseDict[p];
-    if (!val) continue;
+        for (const p of phrases) {
+            const val = phraseDict[p];
+            if (!val) continue;
 
-    const escaped = p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            const escaped = p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-    // better than \b for mixed RTL/LTR strings
-    const re = new RegExp(`(?<![A-Za-z0-9])${escaped}(?![A-Za-z0-9])`, "gi");
+            // better than \b for mixed RTL/LTR strings
+            const re = new RegExp(`(?<![A-Za-z0-9])${escaped}(?![A-Za-z0-9])`, "gi");
 
-    out = out.replace(re, val);
-  }
+            out = out.replace(re, val);
+        }
 
-  // 2) words: split + translate tokens
-  return out
-    .split(SEPS)
-    .map((part) => {
-      if (!part || /^\s+$/.test(part)) return part;
-      if ([",", "-", "(", ")", "/", ".", ":", ";"].includes(part)) return part;
+        // 2) words: split + translate tokens
+        return out
+            .split(SEPS)
+            .map((part) => {
+                if (!part || /^\s+$/.test(part)) return part;
+                if ([",", "-", "(", ")", "/", ".", ":", ";"].includes(part)) return part;
 
-      const norm = normalizeKey(part);
+                const norm = normalizeKey(part);
 
-      // prefer raw dict lookup (more reliable than t.has)
-      if (wordDict[norm]) return wordDict[norm];
+                // prefer raw dict lookup (more reliable than t.has)
+                if (wordDict[norm]) return wordDict[norm];
 
-      const k = `nearby_words.${norm}`;
-      return t.has(k) ? t(k) : part;
-    })
-    .join("");
-};
+                const k = `nearby_words.${norm}`;
+                return t.has(k) ? t(k) : part;
+            })
+            .join("");
+    };
 
 
 
@@ -163,11 +163,11 @@ const translateDynamicText = (text: string) => {
             {loading && <p className="text-sm text-gray-500 mt-1">{t("nearby.loading")}</p>}
             {results.length > 0 && (
                 <>
-                    <h2 className="text-3xl font-bold text-[#111954] relative inline-block">
+                    <h2 className="text-3xl font-bold text-primary dark:text-white relative inline-block">
                         {t("nearby.title")}
                     </h2>
-                    <h2 className="text-xl text-gray-500 mb-8">{propname}</h2>
-                    <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 content-stretch">
+                    <h2 className="text-xl text-gray-500 mb-8 dark:text-white">{propname}</h2>
+                    <div className="dark:bg-gray-800 dark:text-white dark:border-gray-700 bg-white rounded-3xl p-8 border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 content-stretch">
                         <ul role="list" className="grid grid-cols-2 md:grid-cols-2 space-y-3 space-x-3 overflow-auto h-[70vh]  py-2">
                             {data.slice(0, 20).map((post, index) => {
                                 const pointA: Coordinate = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
@@ -230,13 +230,13 @@ const translateDynamicText = (text: string) => {
                                         <div onClick={() => {
                                             handleLocationClick(pointB);
                                         }}
-                                            className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
-                                            <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center text-secondary">
+                                            className="dark:bg-gray-800 dark:text-white dark:border-gray-700 bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+                                            <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full mx-auto mb-4 flex items-center justify-center text-secondary">
                                                 {/* <MapPin size={28} /> */}
                                                 <DynamicIcon name={labelicon} size={20} />
                                             </div>
-                                            <h4 className="font-bold text-gray-800 text-sm mb-1"> {translateDynamicText(post.landmarkEnglishName)}, {translateDynamicText(post.addressLine1English)}</h4>
-                                            <p className="text-xs text-gray-400 font-bold uppercase">    {distance}<span>{t("nearby.km")}</span></p>
+                                            <h4 className="font-bold text-gray-800 dark:text-white text-sm mb-1"> {translateDynamicText(post.landmarkEnglishName)}, {translateDynamicText(post.addressLine1English)}</h4>
+                                            <p className="text-xs text-gray-400 dark:text-gray-500 font-bold uppercase">    {distance}<span>{t("nearby.km")}</span></p>
                                         </div>
                                     </li>
                                 )
