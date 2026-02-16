@@ -29,9 +29,12 @@ export default function UnitsPageAI(props: any) {
     const beds = props.beds || '';
 
     return (
-        <div className="bg-gray-50 min-h-screen pt-32 dark:bg-neutral-900">
-            <div className="hidden">
-                <Breadcrumb />
+        <div className="bg-gray-50 min-h-screen dark:bg-neutral-900">
+            <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
+                <div className="container mx-auto">
+                    <Breadcrumb
+                    />
+                </div>
             </div>
             <div className="mx-auto container mx-auto px-4 md:px-12 mt-8 pb-20">
                 {/* Header */}
