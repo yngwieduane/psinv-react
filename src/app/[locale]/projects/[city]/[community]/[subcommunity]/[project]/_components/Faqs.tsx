@@ -42,10 +42,10 @@ const Faqs = (props: any) => {
                 <div className="flex items-center gap-4 mb-2">
                     {props.viewAllLink ? (
                         <button onClick={() => router.push(props.viewAllLink)} className="flex items-center gap-1 text-sm font-bold text-secondary hover:text-primary transition-colors">
-                            <h2 className="text-3xl font-bold text-[#111954] relative inline-block">{t("faqs")}</h2>
+                            <h2 className="text-3xl font-bold text-primary dark:text-white relative inline-block dark:text-white">{t("faqs")}</h2>
                         </button>
                     ) : (
-                        <h2 className="text-3xl font-bold text-[#111954] relative inline-block">{t("faqs")}</h2>
+                        <h2 className="text-3xl font-bold text-primary dark:text-white relative inline-block dark:text-white">{t("faqs")}</h2>
                     )}
                 </div>
                 <h2 className="text-xl text-gray-500 mb-8">{props.propname}</h2>

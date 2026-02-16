@@ -43,8 +43,8 @@ const AvailableUnits = ({
     <>
       {loading && <p className="text-sm text-gray-500 mt-1">Loading...</p>}
       {results.length > 0 && (
-        <div className="my-4 bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
-          <h2 className="font-medium text-center text-3xl my-10">
+        <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+          <h2 className="font-medium text-center text-3xl my-10 dark:text-white">
             Available for {category}
           </h2>
           <ul

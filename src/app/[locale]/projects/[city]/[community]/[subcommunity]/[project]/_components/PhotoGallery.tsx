@@ -51,10 +51,10 @@ const PhotoGallery = ({ data, limit, viewAllLink }: { data: any, limit?: number,
                         <div className="flex items-center gap-4 mb-2">
                             {viewAllLink ? (
                                 <button onClick={() => router.push(viewAllLink)} className="flex items-center gap-1 text-sm font-bold text-secondary hover:text-primary transition-colors">
-                                    <h2 className="text-3xl font-bold text-[#111954] relative inline-block">{t('gallery')}</h2>
+                                    <h2 className="text-3xl font-bold text-primary relative inline-block dark:text-white">{t('gallery')}</h2>
                                 </button>
                             ) : (
-                                <h2 className="text-3xl font-bold text-[#111954] relative inline-block">{t('gallery')}</h2>
+                                <h2 className="text-3xl font-bold text-primary relative inline-block dark:text-white">{t('gallery')}</h2>
                             )}
                         </div>
                         <h2 className="text-xl text-gray-500">{data["propertyName"]}</h2>
@@ -78,48 +78,48 @@ const PhotoGallery = ({ data, limit, viewAllLink }: { data: any, limit?: number,
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                     <FancyboxWrapper>
-        {currentGalleryImages.map((img: any, index: number) => {
-        const raw = typeof img?.imageURL === "string" ? img.imageURL : "";
-        const imagecontent = raw
-            ? raw.replace("?width=0&height=0", "?width=800&height=600")
-            : PLACEHOLDER;
+                        {currentGalleryImages.map((img: any, index: number) => {
+                            const raw = typeof img?.imageURL === "string" ? img.imageURL : "";
+                            const imagecontent = raw
+                                ? raw.replace("?width=0&height=0", "?width=800&height=600")
+                                : PLACEHOLDER;
 
-        return (
-            <a
-            title={currentTabTitle}
-            data-fancybox="gallerypopup"
-            href={raw || PLACEHOLDER}
-            key={index}
-            className={`relative group rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 aspect-[4/3]
+                            return (
+                                <a
+                                    title={currentTabTitle}
+                                    data-fancybox="gallerypopup"
+                                    href={raw || PLACEHOLDER}
+                                    key={index}
+                                    className={`relative group rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 aspect-[4/3]
                 bg-gray-100 bg-center bg-no-repeat bg-[length:140px] ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
-            style={{ backgroundImage: `url(${PLACEHOLDER})` }}
-            >
-            <img
-                src={imagecontent}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-500"
-                alt={`Gallery ${index}`}
-                loading="lazy"
-                onLoad={(e) => {
-                e.currentTarget.classList.remove("opacity-0");
-                e.currentTarget.classList.add("opacity-100");
-                }}
-                onError={(e) => {
-                e.currentTarget.src = PLACEHOLDER;
-                e.currentTarget.classList.remove("opacity-0");
-                e.currentTarget.classList.add("opacity-100");
-                }}
-            />
+                                    style={{ backgroundImage: `url(${PLACEHOLDER})` }}
+                                >
+                                    <img
+                                        src={imagecontent}
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-500"
+                                        alt={`Gallery ${index}`}
+                                        loading="lazy"
+                                        onLoad={(e) => {
+                                            e.currentTarget.classList.remove("opacity-0");
+                                            e.currentTarget.classList.add("opacity-100");
+                                        }}
+                                        onError={(e) => {
+                                            e.currentTarget.src = PLACEHOLDER;
+                                            e.currentTarget.classList.remove("opacity-0");
+                                            e.currentTarget.classList.add("opacity-100");
+                                        }}
+                                    />
 
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
 
-            {index === 0 && (
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
-                <span className="text-white font-bold text-lg drop-shadow-md">{currentTabTitle}</span>
-                </div>
-            )}
-            </a>
-        );
-        })}
+                                    {index === 0 && (
+                                        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
+                                            <span className="text-white font-bold text-lg drop-shadow-md">{currentTabTitle}</span>
+                                        </div>
+                                    )}
+                                </a>
+                            );
+                        })}
                     </FancyboxWrapper>
                 </div>
 

@@ -67,7 +67,7 @@ export default function UnitBoxAI(props: any) {
                 </div>
 
                 <Link title={props.data.propertyname} href={`/unit/${props.seoUrl}`} className="h-full block">
-                    <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 h-full flex flex-col">
+                    <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 h-full flex flex-col dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
 
                         {/* Image Section */}
                         <div className="relative aspect-[4/3] bg-gray-200 overflow-hidden">
@@ -98,12 +98,12 @@ export default function UnitBoxAI(props: any) {
                         {/* Content Section */}
                         <div className="p-5 flex flex-col flex-1">
                             <div className="mb-4">
-                                <h3 className="font-bold text-gray-900 text-lg line-clamp-1 mb-1 group-hover:text-[#111954] transition-colors">
+                                <h3 className="font-bold text-gray-900 text-lg line-clamp-1 mb-1 group-hover:text-[#111954] transition-colors dark:text-white">
                                     {props.data.marketingTitle}
                                 </h3>
                                 <div className="flex items-center gap-1.5 text-gray-500 text-sm">
-                                    <MapPin size={14} className="text-[#111954]/60" />
-                                    <span className="line-clamp-1">{props.data.propertyname}, {props.data.community}</span>
+                                    <MapPin size={14} className="text-primary/60 dark:text-white" />
+                                    <span className="line-clamp-1 dark:text-white">{props.data.propertyname}, {props.data.community}</span>
                                 </div>
                             </div>
 
