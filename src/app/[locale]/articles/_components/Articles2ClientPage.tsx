@@ -106,6 +106,22 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
     const [query, setQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const ITEMS_PER_PAGE = 6;
+    const allArticles = initialArticles;
+
+    // Recent articles excluding Area Guides
+    const recentArticles = useMemo(() => {
+        return initialArticles.filter((n) => {
+            const key = (n.categoryKey || "").toLowerCase();
+            const cat = (n.category || "").toLowerCase();
+            return key !== "area_guide" && !cat.includes("area guide");
+        });
+    }, [initialArticles]);
+    const totalPages = Math.ceil(recentArticles.length / ITEMS_PER_PAGE);
+
+        const visibleRecentArticles = recentArticles.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+        );
 
     const filtered = useMemo(() => {
         const q = query.trim().toLowerCase();
@@ -133,11 +149,11 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
     }, [query]);
 
     // Pagination Logic
-    const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-    const visibleArticles = filtered.slice(
-        (currentPage - 1) * ITEMS_PER_PAGE,
-        currentPage * ITEMS_PER_PAGE
-    );
+    // const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+    // const visibleArticles = filtered.slice(
+    //     (currentPage - 1) * ITEMS_PER_PAGE,
+    //     currentPage * ITEMS_PER_PAGE
+    // );
 
     // Removed import from here
 
@@ -189,12 +205,11 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
 
                     {/* Articles Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                        {visibleArticles.map((item) => (
-                            <RecentArticleRow
-                                key={item.id}
-                                item={item}
-                            />
-                        ))}
+                    {visibleRecentArticles.map((item) => (
+                     <RecentArticleRow key={item.id} item={item} />
+                    ))}
+
+
                     </div>
 
                     {filtered.length === 0 && (

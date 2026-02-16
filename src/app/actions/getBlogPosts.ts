@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/firebase-admin";
-import { BlogPost } from "@/data/blog";
+//import { BlogPost } from "@/data/blog";
 
 type GetBlogPostsResult = {
     posts: BlogPost[];

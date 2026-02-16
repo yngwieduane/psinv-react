@@ -33,7 +33,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         description: post.summary,
     };
 }
-
+function calculateReadTime(htmlContent?: string) {
+    if (!htmlContent) return null;
+    // Remove all HTML tags
+    const text = htmlContent.replace(/<[^>]*>/g, " ");
+    const words = text.trim().split(/\s+/).length;
+    const minutes = Math.max(1, Math.ceil(words / 200)); // assuming 200 WPM
+    return `${minutes} min read`;
+}
 export default async function BlogPostPage({ params }: PageProps) {
     const { slug, locale } = await params;
 
@@ -48,7 +55,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
     const summary = post.summary || "";
     const contentHtml = (post.contentHtml || "").replace(/&nbsp;/g, ' ');
-
+    const readTime = calculateReadTime(contentHtml);
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
@@ -116,6 +123,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                                         {post.date}
                                     </span>
                                 )}
+                                
                             </div>
 
                             <h1
@@ -137,7 +145,18 @@ export default async function BlogPostPage({ params }: PageProps) {
                             </div>
                             <div>
                                 <p className="text-sm font-bold text-gray-900">{post.author || t("defaultAuthor")}</p>
+                                
                                 <p className="text-xs text-gray-500">{t("authorRole")}</p>
+                                
+                                
+                                {readTime && (
+                                <div className="flex items-center">
+                                    <Clock size={14} className={rtl ? "ml-1" : "mr-1"} />
+                                    <span className="italic text-xs text-gray-400">
+                                    {readTime}
+                                    </span>
+                                </div>
+                                )}
                             </div>
                         </div>
                         {/* Share buttons could go here */}

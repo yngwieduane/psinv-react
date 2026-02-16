@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
-import { Search, ChevronLeft, ChevronRight, Calendar, User } from "lucide-react";
+import { Search, ChevronLeft, ChevronRight, Calendar, User, Clock } from "lucide-react";
 
 import Breadcrumb from "../_components/Breadcrumb";
 import { Link } from "@/i18n/navigation";
@@ -12,7 +12,6 @@ import { getBlogPosts } from "@/app/actions/getBlogPosts";
 
 type BlogItem = BlogPost;
 const PAGE_SIZE = 10;
-
 function PillSearch({
     value,
     onChange,
@@ -40,6 +39,24 @@ function PillSearch({
     );
 }
 
+export function calculateReadTime(content?: string) {
+    if (!content) return "1 min read";
+  
+    const text = content
+      .replace(/<[^>]*>/g, "")
+      .replace(/&nbsp;/g, " ")
+      .trim();
+  
+    if (!text) return "1 min read";
+  
+    const words = text.split(/\s+/).length;
+    const minutes = Math.max(1, Math.ceil(words / 200));
+  
+    return `${minutes} min read`;
+  }
+  
+  
+
 function BlogListRow({
     item,
     readMoreLabel,
@@ -48,10 +65,14 @@ function BlogListRow({
     item: BlogItem;
     readMoreLabel: string;
     rtl: boolean;
-}) {
+    }) {
+        console.log("ITEM:", item);
+    //console.log(item.contentHtml);
     const href = `/blog/${item.slug}`;
     const imgTitle = item.title ?? "Blog Post";
-
+    //const blogBody1 = item.body ?? "blog body";
+    const blogBody1 = item.contentHtml || "";
+    const readTime = useMemo(() => calculateReadTime(blogBody1), [blogBody1]);
     return (
         <Link href={href} title={item.title} className="group block bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
             <div className="flex flex-col md:flex-row h-full">
@@ -80,6 +101,12 @@ function BlogListRow({
                                 <User size={14} className={rtl ? "ml-1" : "mr-1"} />
                                 <span>{item.author}</span>
                             </div>
+                        )}
+                        {readTime && (
+                        <div className="flex items-center italic text-sm ">
+                            <Clock size={14} className={rtl ? "ml-1" : "mr-1"} />
+                            <span>{readTime}</span>
+                        </div>
                         )}
                     </div>
 
