@@ -91,7 +91,7 @@ const PropertyListItem = (props: any) => {
     };
 
     return (
-        <div className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+        <div className="group dark:bg-gray-800 dark:border-gray-700 bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
             <div className="flex flex-col md:flex-row h-full md:h-64">
                 {/* Image Section - Left Side */}
                 <div className="relative w-full md:w-80 h-64 md:h-full flex-shrink-0">
@@ -106,7 +106,7 @@ const PropertyListItem = (props: any) => {
                                 onError={() => setImgError(true)}
                             />
                         ) : (
-                            <div className="flex flex-col items-center justify-center text-gray-400 h-full w-full bg-gray-50">
+                            <div className="flex flex-col items-center justify-center text-gray-400 h-full w-full bg-gray-50 dark:bg-gray-700">
                                 <Home size={40} strokeWidth={1.5} />
                                 <span className="text-xs mt-2">No Available Image</span>
                             </div>
@@ -127,11 +127,11 @@ const PropertyListItem = (props: any) => {
                                 </p>
                             )}
                             <Link href={url}>
-                                <h3 className="text-xl font-bold text-gray-900 group-hover:text-secondary transition-colors mb-2">
+                                <h3 className="text-xl font-bold dark:text-white text-gray-900 group-hover:text-secondary transition-colors mb-2">
                                     {props.data["propertyName"]}
                                 </h3>
                             </Link>
-                            <p className="text-sm text-gray-500 flex items-center gap-1.5 mb-3">
+                            <p className="text-sm dark:text-white text-gray-500 flex items-center gap-1.5 mb-3">
                                 <MapPin size={16} className="text-gray-400" />
                                 {props.data["community"]}, {props.data["city"]}
                             </p>
@@ -139,7 +139,7 @@ const PropertyListItem = (props: any) => {
                             {/* Key Stats Grid */}
                             <div className="flex flex-wrap gap-y-3 gap-x-6 mt-3">
                                 {props.data["propertyType"] && (
-                                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                                    <div className="flex items-center gap-2 text-sm dark:text-white text-gray-600">
                                         <div className="p-1.5 bg-gray-50 rounded-md text-gray-400">
                                             <Square size={16} />
                                         </div>
@@ -151,7 +151,7 @@ const PropertyListItem = (props: any) => {
                                 )}
 
                                 {props.data["availableBedrooms"] && props.data["availableBedrooms"].length > 0 && (
-                                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                                    <div className="flex items-center gap-2 text-sm dark:text-white text-gray-600">
                                         <div className="p-1.5 bg-gray-50 rounded-md text-gray-400">
                                             <BedDouble size={16} />
                                         </div>
@@ -165,7 +165,7 @@ const PropertyListItem = (props: any) => {
                                 )}
 
                                 {HOdate && (
-                                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                                    <div className="flex items-center gap-2 text-sm dark:text-white text-gray-600">
                                         <div className="p-1.5 bg-gray-50 rounded-md text-gray-400">
                                             <Calendar size={16} />
                                         </div>
@@ -212,14 +212,14 @@ const PropertyListItem = (props: any) => {
                     </div>
 
                     <div className="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center text-right sm:text-left">
-                        <div className="text-primary font-bold text-lg">
+                        <div className="text-primary font-bold text-lg dark:text-white">
                             {props.data["priceFrom"] !== 0 ? (
                                 <>
-                                    <span className="text-xs text-gray-400 font-normal uppercase mr-1">From</span>
+                                    <span className="text-xs text-gray-400 font-normal uppercase mr-1 dark:text-white">From</span>
                                     {minprice} ~ {maxPrice}
                                 </>
                             ) : (
-                                <span className="text-gray-500 text-sm">Ask for Price</span>
+                                <span className="text-gray-500 text-sm dark:text-white">Ask for Price</span>
                             )}
                         </div>
                         <div className="flex gap-2">
@@ -229,7 +229,7 @@ const PropertyListItem = (props: any) => {
                                     e.preventDefault();
                                     setShowPreview(true);
                                 }}
-                                className="text-sm font-bold border border-gray-300 text-gray-700 px-5 py-2.5 rounded-lg hover:bg-gray-200 transition-colors flex items-center gap-2"
+                                className="text-sm font-bold dark:border-neutral-500 border border-gray-300 dark:text-white text-gray-700 px-5 py-2.5 rounded-lg hover:bg-gray-200 transition-colors flex items-center gap-2"
                             >
                                 <Eye size={16} /> Preview
                             </button>

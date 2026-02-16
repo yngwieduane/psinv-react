@@ -19,7 +19,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customSegments }) => {
     return parts.map((segment, index) => {
       const fixedSegment = segment === "developer" ? "developers" : segment;
 
-const url = "/" + [...parts.slice(0, index), fixedSegment].join("/");
+      const url = "/" + [...parts.slice(0, index), fixedSegment].join("/");
       return {
         name: segment.replaceAll("-", " "),
         href: url,
@@ -47,7 +47,7 @@ const url = "/" + [...parts.slice(0, index), fixedSegment].join("/");
   };
 
   return (
-    <nav className="bg-white py-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <nav className="bg-white dark:bg-neutral-900 py-4 text-gray-600 text-sm sm:text-xs md:text-sm lg:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -65,12 +65,12 @@ const url = "/" + [...parts.slice(0, index), fixedSegment].join("/");
                 <Link
                   href={seg.href}
                   title={seg.name}
-                  className="hover:text-blue-600 capitalize sm:max-w-[120px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal"
+                  className="hover:text-blue-600 dark:hover:text-blue-400 capitalize sm:max-w-[120px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal"
                 >
                   {seg.name}
                 </Link>
               ) : (
-                <span className="text-gray-900 font-medium capitalize sm:max-w-[120px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
+                <span className="text-gray-900 dark:text-white font-medium capitalize sm:max-w-[120px] sm:truncate sm:inline-block md:max-w-none md:whitespace-normal">
                   {seg.name}
                 </span>
               )}

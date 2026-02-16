@@ -68,7 +68,7 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
             />
 
             {/* Modal Content */}
-            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-5xl h-[85vh] overflow-hidden flex flex-col md:flex-row relative z-10 animate-[scaleIn_0.3s_ease-out]">
+            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl h-[85vh] overflow-hidden flex flex-col md:flex-row relative z-10 animate-[scaleIn_0.3s_ease-out]">
 
                 {/* Close Button - Absolute */}
                 <button
@@ -79,7 +79,7 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
                 </button>
 
                 {/* LEFT: Image Gallery (60%) */}
-                <div className="md:w-3/5 h-[40vh] md:h-full relative bg-gray-100 group ">
+                <div className="md:w-4/6 h-[40vh] md:h-full relative bg-gray-100 group ">
                     <div className="absolute top-4 left-4 z-20 max-w-[calc(100%-2rem)] md:max-w-xs bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/20 transition-all hover:bg-white/95 dark:bg-gray-800 dark:border dark:border-gray-700 dark:hover:bg-gray-800">
                         {/* Title & Location */}
                         <div className="mb-4">
@@ -227,7 +227,7 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
                         <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20./en/unit/${seoData.seoUrl}`} className="cursor-pointer flex-1 bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors shadow-sm">
                             <MessageCircle size={20} /> WhatsApp
                         </Link>
-                        <Link href={`tel:${phoneNumber}`} className="cursor-pointer flex-1 bg-indigo-950 border-indigo-950 hover:bg-gray-800 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors shadow-sm">
+                        <Link href={`tel:${phoneNumber}`} className="cursor-pointer flex-1 bg-primary border-primary hover:bg-primary/80 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors shadow-sm">
                             <Phone size={20} /> Call
                         </Link>
                     </div>

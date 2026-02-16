@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { APIProvider, Map, AdvancedMarker, Pin, useMap, InfoWindow } from '@vis.gl/react-google-maps';
-import { MapPin, BedDouble, ArrowRight } from 'lucide-react';
+import { MapPin, BedDouble, ArrowRight, Home } from 'lucide-react';
 import Image from 'next/image';
 
 import { Link } from '@/i18n/navigation';
@@ -17,6 +17,13 @@ const PropertyMapBox = ({ data }: PropertyMapBoxProps) => {
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const [mapCenter, setMapCenter] = useState(defaultCenter);
     const [mapZoom, setMapZoom] = useState(10);
+    const [imgError, setImgError] = useState(false);
+
+
+    useEffect(() => {
+        setImgError(false);
+    }, [data]);
+
 
     // Calculate initial center based on first property
     useEffect(() => {
@@ -45,43 +52,63 @@ const PropertyMapBox = ({ data }: PropertyMapBoxProps) => {
     }
 
     return (
-        <div className="w-full h-[600px] rounded-xl overflow-hidden shadow-sm border border-gray-100 bg-white grid grid-cols-1 lg:grid-cols-3">
+        <div className="w-full h-[600px] rounded-xl overflow-hidden shadow-sm border border-gray-100 bg-white grid grid-cols-1 lg:grid-cols-3 dark:border-gray-700">
             {/* Left Column: Property List */}
-            <div className="h-full overflow-y-auto border-r border-gray-100 bg-gray-50/50">
+            <div className="h-full overflow-y-auto border-r border-gray-100 bg-gray-50/50 dark:bg-gray-800">
                 <div className="p-4 space-y-3">
                     {data && data.map((property, index) => {
                         const isSelected = selectedId === property.propertyID;
-                        const imgFeatured = property.featuredImages && property.featuredImages.length > 0
-                            ? property.featuredImages[0].imageURL
-                            : '/images/placeholder.jpg'; // You might want a better fallback
+                        // const imgFeatured = property.featuredImages && property.featuredImages.length > 0
+                        //     ? property.featuredImages[0].imageURL
+                        //     : '/images/placeholder.jpg'; // You might want a better fallback
+                        const rawUrl = property.featuredImages?.[0]?.imageURL;
+                        const isValidUrl = rawUrl &&
+                            typeof rawUrl === "string" &&
+                            rawUrl.trim() !== "" &&
+                            rawUrl !== "null" &&
+                            rawUrl !== "undefined";
+
+                        const imgFeatured = isValidUrl
+                            ? rawUrl.replace("?width=0&height=0", "?width=400&height=300")
+                            : "";
+
+                        const hasImage = !imgError && isValidUrl;
 
                         return (
                             <div
                                 key={index}
                                 onClick={() => handleSelectProperty(property)}
-                                className={`flex gap-3 p-3 rounded-lg cursor-pointer transition-all duration-200 border ${isSelected
-                                    ? 'bg-white border-secondary shadow-md ring-1 ring-secondary'
-                                    : 'bg-white border-gray-200 hover:border-gray-300 hover:shadow-sm'
+                                className={`flex gap-3 p-3 rounded-lg cursor-pointer transition-all duration-200 border dark:border-gray-700 dark:bg-gray-800 ${isSelected
+                                    ? 'bg-white border-secondary shadow-md ring-1 ring-secondary dark:bg-secondary dark:border-secondary'
+                                    : 'bg-white border-gray-200 hover:border-gray-300 hover:shadow-sm dark:border-gray-700 dark:bg-gray-800'
                                     }`}
                             >
-                                <div className="relative w-24 h-24 flex-shrink-0 rounded-md overflow-hidden bg-gray-200">
-                                    <Image
-                                        src={imgFeatured}
-                                        alt={property.propertyName || 'Property'}
-                                        fill
-                                        className="object-cover"
-                                        sizes="96px"
-                                    />
+                                <div className="relative w-24 h-24 flex-shrink-0 rounded-md overflow-hidden bg-gray-200 ">
+                                    {hasImage ? (
+                                        <Image
+                                            src={imgFeatured}
+                                            alt={imgFeatured}
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            width={300}
+                                            height={200}
+                                            onError={() => setImgError(true)}
+                                        />
+                                    ) : (
+                                        <div className="flex flex-col items-center justify-center text-gray-400 h-full w-full bg-gray-50 dark:bg-gray-700">
+                                            <Home size={40} strokeWidth={1.5} />
+                                            <span className="text-xs mt-2">No Available Image</span>
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="flex flex-col justify-between flex-1 min-w-0">
                                     <div>
-                                        <h4 className={`font-bold text-sm line-clamp-2 mb-1 ${isSelected ? 'text-secondary' : 'text-gray-800'}`}>
+                                        <h4 className={`font-bold text-sm line-clamp-2 mb-1 ${isSelected ? 'text-white' : 'text-gray-800 dark:text-gray-200'}`}>
                                             {property.propertyName}
                                         </h4>
-                                        <p className="text-xs text-gray-500 flex items-center gap-1 truncate">
+                                        <p className="text-xs text-gray-500 flex items-center gap-1 truncate dark:text-gray-200">
                                             <MapPin size={12} /> {property.community}
                                         </p>
-                                        <p className="text-xs font-bold py-1 mt-2">
+                                        <p className="text-xs font-bold py-1 mt-2 dark:text-gray-200">
                                             {property.propertyPlan}
                                         </p>
                                     </div>

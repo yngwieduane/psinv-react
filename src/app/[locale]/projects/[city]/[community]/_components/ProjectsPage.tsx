@@ -29,8 +29,8 @@ export default async function ProjectsPage({
     const cityname = unslugify(city);
     const communityname = unslugify(community);
     return (
-        <div className="bg-white min-h-screen pb-0 mx-5 md:mx-0">
-            <div className="pt-28 md:pt-36 bg-white mt-[100px] lg:mt-0">
+        <div className="bg-white dark:bg-neutral-900 min-h-screen pb-0 mx-5 md:mx-0">
+            <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
                 <div className="container mx-auto">
                     <Breadcrumb
                     />
@@ -39,7 +39,7 @@ export default async function ProjectsPage({
             <div className="mt-5">
                 <div className="grid grid-cols-1 gap-4">
                     <div className="">
-                        <h1 className="mx-auto container text-3xl md:text-4xl font-bold text-gray-900 leading-tight truncate mb-6 md:mb-10">Real Estate Projects in {communityname}, {cityname}</h1>
+                        <h1 className="mx-auto container text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight truncate mb-6 md:mb-10">Real Estate Projects in {communityname}, {cityname}</h1>
                         <div className="">
                             <PropertyList page={page} city={city} cityId={cityId} communityId={communityId} community={community} subcommunity={subcommunity} project={project} propertyname={propertyname} isFeaturedProjectOnWeb={isFeaturedProjectOnWeb} />
                         </div>

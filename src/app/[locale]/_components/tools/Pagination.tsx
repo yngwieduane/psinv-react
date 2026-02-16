@@ -11,7 +11,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('page')) || 1;
- 
+
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', pageNumber.toString());
@@ -71,12 +71,12 @@ function PaginationNumber({
   isActive: boolean;
 }) {
   const className = clsx(
-    'flex h-10 w-10 items-center justify-center text-sm border border-gray-200',
+    'flex h-10 w-10 items-center justify-center text-sm border border-gray-200 dark:border-neutral-500',
     {
       'rounded-l-md': position === 'first' || position === 'single',
       'rounded-r-md': position === 'last' || position === 'single',
-      'z-10 bg-indigo-950 border-indigo-950 text-white': isActive,
-      'hover:bg-gray-100': !isActive && position !== 'middle',
+      'z-10 bg-indigo-950 border-indigo-950 text-white dark:border-neutral-500': isActive,
+      'hover:bg-gray-100 dark:hover:bg-primary': !isActive && position !== 'middle',
       'text-gray-500': position === 'middle',
     },
   );
@@ -100,10 +100,10 @@ function PaginationArrow({
   isDisabled?: boolean;
 }) {
   const className = clsx(
-    'flex h-10 w-10 items-center justify-center rounded-md border border-gray-200',
+    'flex h-10 w-10 items-center justify-center rounded-md border border-gray-200 dark:border-neutral-500',
     {
       'pointer-events-none text-gray-300': isDisabled,
-      'hover:bg-gray-100': !isDisabled,
+      'hover:bg-gray-100 dark:hover:bg-primary': !isDisabled,
       'mr-2 md:mr-4': direction === 'left',
       'ml-2 md:ml-4': direction === 'right',
     },

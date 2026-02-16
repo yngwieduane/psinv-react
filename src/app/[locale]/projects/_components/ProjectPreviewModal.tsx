@@ -84,7 +84,7 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
             />
 
             {/* Modal Content */}
-            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-5xl h-[85vh] overflow-hidden flex flex-col md:flex-row relative z-10 animate-[scaleIn_0.3s_ease-out]">
+            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl h-[85vh] overflow-hidden flex flex-col md:flex-row relative z-10 animate-[scaleIn_0.3s_ease-out]">
 
                 {/* Close Button - Absolute */}
                 <button
@@ -95,14 +95,14 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                 </button>
 
                 {/* LEFT: Image Gallery (60%) */}
-                <div className="md:w-3/5 h-[40vh] md:h-full relative bg-gray-100 group">
-                    <div className="absolute top-4 left-4 z-20 max-w-[calc(100%-2rem)] md:max-w-xs bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/20 transition-all hover:bg-white/95">
+                <div className="md:w-5/6 h-[40vh] md:h-full relative bg-gray-100 group">
+                    <div className="absolute top-4 left-4 z-20 max-w-[calc(100%-2rem)] md:max-w-xs bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/20 transition-all hover:bg-white/95 dark:bg-gray-800 dark:border dark:border-gray-700 dark:hover:bg-gray-800">
                         {/* Title & Location */}
                         <div className="mb-4">
-                            <h3 className="text-lg font-bold text-gray-800 leading-tight mb-1">
+                            <h3 className="text-lg font-bold text-gray-800 leading-tight mb-1 dark:text-white">
                                 {marketingTitle}
                             </h3>
-                            <div className="flex items-center text-gray-500 text-xs">
+                            <div className="flex items-center text-gray-500 text-xs dark:text-gray-400">
                                 <MapPin size={14} className="text-secondary mr-1 rtl:ml-1" />
                                 {community}, {city}
                             </div>
@@ -112,28 +112,28 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                         <div className="space-y-3">
                             {project.availableBedrooms && project.availableBedrooms.length > 0 && (
                                 <div className="flex items-center gap-3">
-                                    <div className="bg-gray-100 p-1.5 rounded-lg text-secondary"><BedDouble size={16} strokeWidth={1.5} /></div>
+                                    <div className="bg-gray-100 p-1.5 rounded-lg text-secondary dark:bg-gray-800 dark:border dark:border-gray-700"><BedDouble size={16} strokeWidth={1.5} /></div>
                                     <div>
-                                        <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5">Bedrooms</span>
-                                        <span className="block text-gray-800 font-bold text-sm leading-none">
+                                        <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5 dark:text-white">Bedrooms</span>
+                                        <span className="block text-gray-800 font-bold text-sm leading-none dark:text-white">
                                             {project.availableBedrooms.map((b: any) => b.noOfBedroom).join(', ')}
                                         </span>
                                     </div>
                                 </div>
                             )}
                             <div className="flex items-center gap-3">
-                                <div className="bg-gray-100 p-1.5 rounded-lg text-secondary"><Tag size={16} strokeWidth={1.5} /></div>
+                                <div className="bg-gray-100 p-1.5 rounded-lg text-secondary dark:bg-gray-800 dark:border dark:border-gray-700"><Tag size={16} strokeWidth={1.5} /></div>
                                 <div>
-                                    <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5">Type</span>
-                                    <span className="block text-gray-800 font-bold text-sm leading-none">{project.propertyType || 'Project'}</span>
+                                    <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5 dark:text-white">Type</span>
+                                    <span className="block text-gray-800 font-bold text-sm leading-none dark:text-white">{project.propertyType || 'Project'}</span>
                                 </div>
                             </div>
                             {HOdate && (
                                 <div className="flex items-center gap-3">
-                                    <div className="bg-gray-100 p-1.5 rounded-lg text-secondary"><Calendar size={16} strokeWidth={1.5} /></div>
+                                    <div className="bg-gray-100 p-1.5 rounded-lg text-secondary dark:bg-gray-800 dark:border dark:border-gray-700"><Calendar size={16} strokeWidth={1.5} /></div>
                                     <div>
-                                        <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5">Handover</span>
-                                        <span className="block text-gray-800 font-bold text-sm leading-none">{HOdate}</span>
+                                        <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5 dark:text-white">Handover</span>
+                                        <span className="block text-gray-800 font-bold text-sm leading-none dark:text-white">{HOdate}</span>
                                     </div>
                                 </div>
                             )}
@@ -198,10 +198,10 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                 </div>
 
                 {/* RIGHT: Details & Form (40%) */}
-                <div className="md:w-2/5 h-full bg-white flex flex-col">
+                <div className="md:w-2/5 h-full bg-white flex flex-col dark:bg-gray-800 dark:border dark:border-gray-700 dark:hover:bg-gray-800">
 
                     {/* Scrollable Content */}
-                    <div className="flex-1 overflow-y-auto p-6 md:p-8">
+                    <div className="flex-1 overflow-y-auto p-6 md:p-8 mt-10">
 
                         {/* Quick Register Form */}
                         <InquiryForm hideFeedbackButton={true} />
@@ -209,11 +209,11 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                     </div>
 
                     {/* Bottom Sticky Action Bar */}
-                    <div className="p-4 border-t border-gray-100 bg-white flex gap-3">
+                    <div className="p-4 border-t border-gray-100 flex gap-3 dark:bg-gray-800 dark:border dark:border-gray-700">
                         <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20in%20${marketingTitle}`} className="flex-1 bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors shadow-sm">
                             <MessageCircle size={20} /> WhatsApp
                         </Link>
-                        <Link href={`tel:${phoneNumber}`} className="flex-1 bg-secondary hover:bg-gray-800 hover:text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors shadow-sm">
+                        <Link href={`tel:${phoneNumber}`} className="cursor-pointer flex-1 bg-primary border-primary hover:bg-primary/80 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors shadow-sm">
                             <Phone size={20} /> Call
                         </Link>
                     </div>
