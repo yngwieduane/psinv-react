@@ -2,7 +2,7 @@ import { Clock, ChevronLeft, User, Calendar } from "lucide-react";
 import Breadcrumb from "../../_components/Breadcrumb";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { BlogPost, BlogCategoryKey, BLOG_CATEGORY_LABELS } from "@/data/blog";
+import { BlogPost, BlogCategoryKey, BLOG_CATEGORY_LABELS, calculateReadTime } from "@/data/blog";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { getBlogPostBySlug } from "@/app/actions/getBlogPosts";
@@ -33,14 +33,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         description: post.summary,
     };
 }
-function calculateReadTime(htmlContent?: string) {
-    if (!htmlContent) return null;
-    // Remove all HTML tags
-    const text = htmlContent.replace(/<[^>]*>/g, " ");
-    const words = text.trim().split(/\s+/).length;
-    const minutes = Math.max(1, Math.ceil(words / 200)); // assuming 200 WPM
-    return `${minutes} min read`;
-}
 export default async function BlogPostPage({ params }: PageProps) {
     const { slug, locale } = await params;
 
@@ -55,7 +47,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 
     const summary = post.summary || "";
     const contentHtml = (post.contentHtml || "").replace(/&nbsp;/g, ' ');
-    const readTime = calculateReadTime(contentHtml);
+    const blogBody1 = post.contentHtml || "";
+    const readTime = calculateReadTime(blogBody1);
+
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
@@ -153,7 +147,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                                 <div className="flex items-center">
                                     <Clock size={14} className={rtl ? "ml-1" : "mr-1"} />
                                     <span className="italic text-xs text-gray-400">
-                                    {readTime}
+                                    {readTime} min read
                                     </span>
                                 </div>
                                 )}

@@ -77,3 +77,19 @@ export const BLOG_NEWS: BlogItem[] = BLOG_POSTS.map(
         slug,
     })
 );
+//calculating the word count and time to read 
+export function calculateReadTime(content: string): number {
+    if (!content) return 1;
+  
+    const text = content.replace(/<[^>]*>/g, " ");
+    const cleanText = text.replace(/\s+/g, " ").trim();
+  
+    const words = cleanText.match(/\b\w+\b/g)?.length || 0;
+  
+    const wordsPerMinute = 300;
+    const minutes = Math.ceil(words / wordsPerMinute);
+  
+    return minutes > 0 ? minutes : 1;
+  }
+  
+  
