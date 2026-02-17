@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState, Suspense } from 'react';
 import { Link } from "@/i18n/navigation";
 
 import { Dialog, Disclosure, DialogPanel, DisclosureButton, DisclosurePanel, Popover, PopoverButton, PopoverGroup, PopoverPanel, Button, } from '@headlessui/react';
@@ -20,7 +20,7 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { ArrowRight, ChevronDown, Globe, Heart, Menu, Search, UserIcon, X } from 'lucide-react';
 import { useUser } from '@/context/userContext';
 import { useLocale, useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import CurrencySelector from './CurrencySelector';
 import HeaderSocial from './HeaderSocial';
 import ContactBranchSwitcherHeader from './ContactBranchSwitcherHeader';
@@ -401,6 +401,13 @@ function resolveHref(item: MenuItem) {
     return normalizeHref(raw);
 }
 
+
+
+const DevThemeToggle = () => {
+    const searchParams = useSearchParams();
+    const isDev = searchParams.get('dev') === '1';
+    return isDev ? <ThemeToggle /> : null;
+}
 
 const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     console.log(currentPage);
@@ -901,9 +908,11 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                     <BranchSwitcher css="text-gray-900 dark:text-white" />
                                     {/* <Link href='/en/contact-us'><span className='font-semibold text-xs text-gray-900 uppercase text-left px-4 hover:bg-gray-50 hover:text-secondary'>Branches</span></Link> */}
                                 </div>
-                                {/* <div className="">
-                                    <ThemeToggle />
-                                </div> */}
+                                <div className="">
+                                    <Suspense>
+                                        <DevThemeToggle />
+                                    </Suspense>
+                                </div>
 
                                 {user ? (
                                     <button

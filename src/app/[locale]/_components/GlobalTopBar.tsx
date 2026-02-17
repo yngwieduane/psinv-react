@@ -8,8 +8,14 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import ContactBranchSwitcherHeader from './ContactBranchSwitcherHeader';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
-//const ts = useTranslations('LocaleSwitcher');
+const DevThemeToggle = () => {
+    const searchParams = useSearchParams();
+    const isDev = searchParams.get('dev') === '1';
+    return isDev ? <ThemeToggle /> : null;
+}
 
 const GlobalTopBar = () => {
     return (
@@ -24,7 +30,9 @@ const GlobalTopBar = () => {
                 <div className='flex justify-between items-center gap-10'>
                     <HeaderSocial color="white" />
                     <BranchSwitcher css="text-white hover:text-gray-200" />
-                    {/* <ThemeToggle /> */}
+                    <Suspense>
+                        <DevThemeToggle />
+                    </Suspense>
                 </div>
             </div>
         </div>
