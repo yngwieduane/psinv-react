@@ -23,11 +23,11 @@ export async function generateMetadata(
     const metadesc = "Explore the photo gallery of " + result['propertyName'] + " in " + result['community'] + ", " + result['city'] + ". View facilities, amenities, and community images.";
 
     return {
-        title: metatitle,
-        description: metadesc,
+        title: metatitle + ' | ' + locale,
+        description: metadesc + ' | ' + locale,
         openGraph: {
-            title: metatitle,
-            description: metadesc,
+            title: metatitle + ' | ' + locale,
+            description: metadesc + ' | ' + locale,
             url: `${siteBaseUrl}/${locale}/projects/${city}/${community}/${subcommunity}/${project}/photo-gallery`,
             images: result['featuredImages'] && result['featuredImages'][0] ? [{ url: result['featuredImages'][0]['imageURL'] }] : undefined,
         }

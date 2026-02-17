@@ -41,11 +41,11 @@ export async function generateMetadata(
     }
 
     return {
-        title: metatitle,
-        description: metadesc,
+        title: metatitle + ' | ' + locale,
+        description: metadesc + ' | ' + locale,
         openGraph: {
-            title: metatitle,
-            description: metadesc,
+            title: metatitle + ' | ' + locale,
+            description: metadesc + ' | ' + locale,
             url: `${siteBaseUrl}/${locale}/projects/${city}/${community}/${subcommunity}/${project}`,
             images: ogImages.length > 0 ? ogImages : undefined,
         }

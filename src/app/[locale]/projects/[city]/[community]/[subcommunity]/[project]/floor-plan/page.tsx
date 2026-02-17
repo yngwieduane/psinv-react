@@ -27,11 +27,11 @@ export async function generateMetadata(
     const metadesc = "View the floor plans for " + propertyName + " in " + communityName + ", " + result?.['city'] + ". Check layouts for apartments, villas, and townhouses.";
 
     return {
-        title: metatitle,
-        description: metadesc,
+        title: metatitle + ' | ' + locale,
+        description: metadesc + ' | ' + locale,
         openGraph: {
-            title: metatitle,
-            description: metadesc,
+            title: metatitle + ' | ' + locale,
+            description: metadesc + ' | ' + locale,
             url: `${siteBaseUrl}/${locale}/projects/${city}/${community}/${subcommunity}/${project}/floor-plan`,
             images: result && result['featuredImages'] && result['featuredImages'][0] ? [{ url: result['featuredImages'][0]['imageURL'] }] : undefined,
         }

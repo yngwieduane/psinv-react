@@ -27,11 +27,11 @@ export async function generateMetadata(
     const metadesc = "View the payment plan for " + propertyName + " in " + communityName + ", " + result?.['city'] + ". Check installment details and downpayment information.";
 
     return {
-        title: metatitle,
-        description: metadesc,
+        title: metatitle + ' | ' + locale,
+        description: metadesc + ' | ' + locale,
         openGraph: {
-            title: metatitle,
-            description: metadesc,
+            title: metatitle + ' | ' + locale,
+            description: metadesc + ' | ' + locale,
             url: `${siteBaseUrl}/${locale}/projects/${city}/${community}/${subcommunity}/${project}/payment-plan`,
             images: result && result['featuredImages'] && result['featuredImages'][0] ? [{ url: result['featuredImages'][0]['imageURL'] }] : undefined,
         }
