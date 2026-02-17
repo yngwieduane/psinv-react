@@ -45,9 +45,9 @@ export default async function DeveloperPage({ params }: Props) {
 
   return (
     <div className="">
-      
-      <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white">
-        <div className="container mx-auto px-4 md:px-12">
+
+      <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
+        <div className="container mx-auto">
           <Breadcrumb
           />
         </div>
