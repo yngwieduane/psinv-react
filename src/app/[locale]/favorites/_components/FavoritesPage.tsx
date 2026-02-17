@@ -34,20 +34,20 @@ const FavoritesPage: React.FC<{}> = ({ }) => {
     if (favorites.length === 0) {
         return (
             <div className="min-h-screen pt-40 pb-20 container mx-auto px-6 text-center">
-                <div className="bg-gray-50 rounded-3xl p-20 flex flex-col items-center">
-                    <Heart size={64} className="text-gray-300 mb-6" />
-                    <h2 className="text-3xl font-serif font-bold text-gray-800 mb-2">Favorites</h2>
-                    <p className="text-gray-500 text-lg">Your favorites list is empty.</p>
+                <div className="bg-gray-50 rounded-3xl p-20 flex flex-col items-center dark:bg-gray-800">
+                    <Heart size={64} className="text-gray-300 mb-6 dark:text-gray-600" />
+                    <h2 className="text-3xl font-serif font-bold text-gray-800 mb-2 dark:text-white">Favorites</h2>
+                    <p className="text-gray-500 text-lg dark:text-gray-400">Your favorites list is empty.</p>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen pt-40 pb-20 bg-white">
+        <div className="min-h-screen pt-40 pb-20 bg-white dark:bg-neutral-900">
             <div className="container mx-auto px-6 md:px-12">
                 <div className="flex flex-col md:flex-row justify-between items-end md:items-center mb-12 gap-6">
-                    <h1 className="text-4xl font-serif font-bold text-primary">Favorites ({favorites.length})</h1>
+                    <h1 className="text-4xl font-serif font-bold text-primary dark:text-white">Favorites ({favorites.length})</h1>
 
                     <div className="flex items-center gap-4">
                         {favorites.length > 0 && (
@@ -60,12 +60,12 @@ const FavoritesPage: React.FC<{}> = ({ }) => {
                         )}
 
                         {/* Tabs */}
-                        <div className="flex bg-gray-100 p-1 rounded-xl">
+                        <div className="flex bg-gray-100 p-1 rounded-xl dark:bg-gray-800">
                             <button
                                 onClick={() => setActiveTab('project')}
                                 className={`cursor-pointer px-6 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${activeTab === 'project'
-                                    ? 'bg-white text-[#353455] shadow-sm'
-                                    : 'text-gray-500 hover:text-gray-700'
+                                    ? 'bg-white text-[#353455] shadow-sm dark:bg-gray-700 dark:text-white'
+                                    : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
                                     }`}
                             >
                                 <LayoutGrid size={16} />
@@ -74,8 +74,8 @@ const FavoritesPage: React.FC<{}> = ({ }) => {
                             <button
                                 onClick={() => setActiveTab('units')}
                                 className={`cursor-pointer px-6 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${activeTab === 'units'
-                                    ? 'bg-white text-[#353455] shadow-sm'
-                                    : 'text-gray-500 hover:text-gray-700'
+                                    ? 'bg-white text-[#353455] shadow-sm dark:bg-gray-700 dark:text-white'
+                                    : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
                                     }`}
                             >
                                 <List size={16} />
@@ -86,8 +86,8 @@ const FavoritesPage: React.FC<{}> = ({ }) => {
                 </div>
 
                 {activeList.length === 0 ? (
-                    <div className="bg-gray-50/50 rounded-2xl p-12 text-center border-2 border-dashed border-gray-100">
-                        <p className="text-gray-500 font-medium">No {activeTab} favorites yet.</p>
+                    <div className="bg-gray-50/50 rounded-2xl p-12 text-center border-2 border-dashed border-gray-100 dark:bg-gray-800/50 dark:border-gray-800">
+                        <p className="text-gray-500 font-medium dark:text-gray-400">No {activeTab} favorites yet.</p>
                     </div>
                 ) : (
                     activeTab === 'project' ? (

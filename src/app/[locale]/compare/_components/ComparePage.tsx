@@ -86,20 +86,20 @@ const ComparePage: React.FC<{}> = ({ }) => {
     if (compareList.length === 0) {
         return (
             <div className="min-h-screen pt-40 pb-20 container mx-auto px-6 text-center">
-                <div className="bg-gray-50 rounded-3xl p-20 flex flex-col items-center">
-                    <Shuffle size={64} className="text-gray-300 mb-6" />
-                    <h1 className="text-3xl font-serif font-bold text-gray-800 mb-2">{ t('unlockSection.title') }</h1>
-                    <h2 className="text-gray-500 text-lg">{ t('unlockSection.description') }</h2>
+                <div className="bg-gray-50 rounded-3xl p-20 flex flex-col items-center dark:bg-gray-800">
+                    <Shuffle size={64} className="text-gray-300 mb-6 dark:text-gray-600" />
+                    <h1 className="text-3xl font-serif font-bold text-gray-800 mb-2 dark:text-white">{t('unlockSection.title')}</h1>
+                    <h2 className="text-gray-500 text-lg dark:text-gray-400">{t('unlockSection.description')}</h2>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen pt-40 pb-20 bg-white">
+        <div className="min-h-screen pt-40 pb-20 bg-white dark:bg-neutral-900">
             <div className="container mx-auto px-6 md:px-12">
                 <div className="flex flex-col md:flex-row justify-between items-end md:items-center mb-12 gap-6">
-                    <h1 className="text-4xl font-serif font-bold text-primary">{ t('unlockSection.title') }</h1>
+                    <h1 className="text-4xl font-serif font-bold text-primary dark:text-white">{t('unlockSection.title')}</h1>
 
                     <div className="flex items-center gap-4">
                         {/* Clear All */}
@@ -108,17 +108,17 @@ const ComparePage: React.FC<{}> = ({ }) => {
                                 onClick={clearCompareList}
                                 className="text-gray-400 hover:text-red-500 transition-colors flex items-center gap-2 text-sm font-medium"
                             >
-                                <X size={16} /> { t('unlockSection.clear-all') }
+                                <X size={16} /> {t('unlockSection.clear-all')}
                             </button>
                         )}
 
                         {/* Tabs */}
-                        <div className="flex bg-gray-100 p-1 rounded-xl">
+                        <div className="flex bg-gray-100 p-1 rounded-xl dark:bg-gray-800">
                             <button
                                 onClick={() => setActiveTab('units')}
                                 className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all ${activeTab === 'units'
-                                    ? 'bg-white text-[#353455] shadow-sm'
-                                    : 'text-gray-500 hover:text-gray-700'
+                                    ? 'bg-white text-[#353455] shadow-sm dark:bg-gray-700 dark:text-white'
+                                    : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
                                     }`}
                             >
                                 Units ({unitItems.length})
@@ -126,8 +126,8 @@ const ComparePage: React.FC<{}> = ({ }) => {
                             <button
                                 onClick={() => setActiveTab('project')}
                                 className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all ${activeTab === 'project'
-                                    ? 'bg-white text-[#353455] shadow-sm'
-                                    : 'text-gray-500 hover:text-gray-700'
+                                    ? 'bg-white text-[#353455] shadow-sm dark:bg-gray-700 dark:text-white'
+                                    : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
                                     }`}
                             >
                                 Projects ({projectItems.length})
@@ -137,20 +137,20 @@ const ComparePage: React.FC<{}> = ({ }) => {
                 </div>
 
                 {activeItems.length === 0 ? (
-                    <div className="bg-gray-50/50 rounded-2xl p-12 text-center border-2 border-dashed border-gray-100">
-                        <p className="text-gray-500 font-medium">No {activeTab} added to compare yet.</p>
+                    <div className="bg-gray-50/50 rounded-2xl p-12 text-center border-2 border-dashed border-gray-100 dark:bg-gray-800/50 dark:border-gray-800">
+                        <p className="text-gray-500 font-medium dark:text-gray-400">No {activeTab} added to compare yet.</p>
                     </div>
                 ) : (
                     <div className="overflow-x-auto pb-8">
                         <table className="w-full min-w-[800px] border-collapse">
                             <thead>
                                 <tr>
-                                    <th className="p-4 text-left w-48 bg-gray-50 rounded-tl-xl">Feature</th>
+                                    <th className="p-4 text-left w-48 bg-gray-50 rounded-tl-xl dark:bg-gray-800 dark:text-gray-300">Feature</th>
                                     {activeItems.map((item: any) => (
-                                        <th key={item.propertyID || item.code} className="p-4 w-1/3 min-w-[250px] align-top bg-white border-b border-gray-100 relative group">
+                                        <th key={item.propertyID || item.code} className="p-4 w-1/3 min-w-[250px] align-top bg-white border-b border-gray-100 relative group dark:bg-neutral-900 dark:border-gray-800">
                                             <button
                                                 onClick={() => removeFromCompare(item.propertyID || item.code)}
-                                                className="absolute top-2 right-2 p-1.5 bg-gray-100 rounded-full text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors z-10 cursor-pointer"
+                                                className="absolute top-2 right-2 p-1.5 bg-gray-100 rounded-full text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors z-10 cursor-pointer dark:bg-gray-800 dark:text-gray-500 dark:hover:bg-red-900/20 dark:hover:text-red-400"
                                                 title="Remove"
                                             >
                                                 <X size={16} />
@@ -172,7 +172,7 @@ const ComparePage: React.FC<{}> = ({ }) => {
                                                     {item.status || (item.rent ? 'For Rent' : 'For Sale')}
                                                 </div>
                                             </div>
-                                            <h3 className="text-xl font-serif font-bold text-gray-900 mb-1">{item.propertyName || item.marketingTitle || item.title}</h3>
+                                            <h3 className="text-xl font-serif font-bold text-gray-900 mb-1 dark:text-white">{item.propertyName || item.marketingTitle || item.title}</h3>
                                             <p className="text-sm text-gray-500 font-normal flex items-center gap-1 mb-4">
                                                 {item.community}
                                             </p>
@@ -189,8 +189,8 @@ const ComparePage: React.FC<{}> = ({ }) => {
                                     ))}
                                     {/* Fill empty columns if less than 3 */}
                                     {[...Array(3 - activeItems.length)].map((_, i) => (
-                                        <th key={`empty-${i}`} className="p-4 w-1/3 bg-gray-50/30 border-dashed border-2 border-gray-100 rounded-lg m-2">
-                                            <div className="h-full flex flex-col items-center justify-center text-gray-300 min-h-[300px]">
+                                        <th key={`empty-${i}`} className="p-4 w-1/3 bg-gray-50/30 border-dashed border-2 border-gray-100 rounded-lg m-2 dark:bg-gray-800/30 dark:border-gray-800">
+                                            <div className="h-full flex flex-col items-center justify-center text-gray-300 min-h-[300px] dark:text-gray-600">
                                                 <Shuffle size={48} className="mb-4 opacity-20" />
                                                 <p className="font-medium">Add {activeTab}</p>
                                             </div>
@@ -200,10 +200,10 @@ const ComparePage: React.FC<{}> = ({ }) => {
                             </thead>
                             <tbody>
                                 {features.slice(0, -1).map((feature, idx) => (
-                                    <tr key={feature.key} className={idx % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
-                                        <td className="p-4 font-bold text-gray-700 border-r border-gray-100">{feature.label}</td>
+                                    <tr key={feature.key} className={idx % 2 === 0 ? "bg-white dark:bg-neutral-900" : "bg-gray-50/50 dark:bg-gray-800/50"}>
+                                        <td className="p-4 font-bold text-gray-700 border-r border-gray-100 dark:text-gray-300 dark:border-gray-800">{feature.label}</td>
                                         {activeItems.map((item: any) => (
-                                            <td key={item.propertyID || item.id} className="p-4 text-center text-gray-600 border-b border-gray-50">
+                                            <td key={item.propertyID || item.id} className="p-4 text-center text-gray-600 border-b border-gray-50 dark:text-gray-400 dark:border-gray-800">
                                                 {feature.render(item)}
                                             </td>
                                         ))}
