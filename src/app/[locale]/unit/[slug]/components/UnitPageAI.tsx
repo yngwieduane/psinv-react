@@ -91,9 +91,25 @@ export default function UnitPageAI(props: any) {
             </div>
             <div >
                 {props.data.map((post: any, index: any) => {
-                    let images, price, category, map, video, amenities, facilities, coordinates;
+                    let images, price, category, map, video, facilities, coordinates;
                     const saved = isFavorite(post.code);
                     const compared = isCompared(post.code);
+                     const amenities: string[] =
+        typeof post.unit_Amenities === "string" && post.unit_Amenities.trim()
+            ? post.unit_Amenities.split(" | ")
+            : [];
+
+    const amenitiesUnique = Array.from(
+        new Map(
+            amenities.map((am) => {
+                const rawLabel = (am.split("^")[1] || am).trim();
+                const norm = rawLabel.toLowerCase();
+                return [norm, am] as const;
+            })
+        ).values()
+    );
+
+    const amenitiesClean = amenitiesUnique.slice(0, -1);
                     {
                         post.imageurl !== null
                             ? images = post.imageurl.split('|').map((img: string) => img.replace(/^http:\/\//i, 'https://'))
@@ -113,11 +129,6 @@ export default function UnitPageAI(props: any) {
                         post.externalUrl_youtube !== null
                             ? video = post.externalUrl_youtube
                             : video = '';
-                    }
-                    {
-                        post.unit_Amenities !== null
-                            ? amenities = post.unit_Amenities.split(' | ')
-                            : amenities = '';
                     }
                     {
                         post.facilities !== null
@@ -391,18 +402,24 @@ export default function UnitPageAI(props: any) {
                                         )}
 
                                         {/* Rich Amenities Grid */}
-                                        {amenities ? (
+                                        {amenitiesClean ? (
                                             <>
-                                                <h4 className="font-bold text-gray-900 text-xl mb-6 dark:text-white">{t('sections.amenities')}</h4>
+                                                <h4 className="font-bold text-gray-900 text-xl mb-6 dark:text-white">
+                                                {t('sections.amenitiesClean')}
+                                                </h4>
                                                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                                                    {(showAllAmenities ? amenities.slice(0, -1) : amenities.slice(0, -1).slice(0, 20)).map((am: string, i: number) => (
-                                                        <div key={i} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100 dark:bg-neutral-900 dark:text-white dark:border-neutral-800">
+                                                {(showAllAmenities ? amenitiesClean : amenitiesClean.slice(0, 20)).map(
+                                                    (am: string, i: number) => (
+                                                    <div
+                                                        key={i}
+                                                        className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100 dark:bg-neutral-900 dark:text-white dark:border-neutral-800"
+                                                    >
                                                             <CheckCircle2 className="text-secondary shrink-0" size={20} />
                                                             <span className="text-gray-700 font-medium dark:text-white">{getAmenityLabel(am)}</span>
                                                         </div>
                                                     ))}
                                                 </div>
-                                                {amenities.slice(0, -1).length > 20 && (
+                                                {amenitiesClean.slice(0, -1).length > 20 && (
                                                     <div className="mt-8 flex justify-center">
                                                         <button
                                                             onClick={() => setShowAllAmenities(!showAllAmenities)}
@@ -415,7 +432,7 @@ export default function UnitPageAI(props: any) {
                                                                 </>
                                                             ) : (
                                                                 <>
-                                                                    {t('buttons.view_more')} ({amenities.length})
+                                                                    {t('buttons.view_more')} ({amenitiesClean.length})
                                                                     <ChevronDown size={18} />
                                                                 </>
                                                             )}

@@ -6560,7 +6560,7 @@
     "sections": {
       "details": "Details",
       "description": "Description",
-      "amenities": "Amenities",
+      "amenitiesClean": "Amenities",
       "payment_plans": "Payment Plans",
       "faq": "Frequently Asked Questions",
       "similar_units": "Similar Units",
@@ -6598,7 +6598,11 @@
       "childrens_play_area_outside": "Children's play area outside",
       "community_centers": "Community centers",
       "basketball_court": "Basketball court",
-      "mosque": "Mosque"
+      "mosque": "Mosque",
+      "Schools": "Schools",
+    "golf_course": "Golf Course",
+    "property_management": "Property Management",
+    "hospitals": "Hospitals"
     },
     "faq": {
       "questions": {
