@@ -6030,7 +6030,7 @@
     "sections": {
       "details": "التفاصيل",
       "description": "الوصف",
-      "amenities": "المرافق",
+      "amenitiesClean": "المرافق",
       "payment_plans": "خطط الدفع",
       "faq": "الأسئلة الشائعة",
       "similar_units": "وحدات مشابهة",
@@ -6068,7 +6068,11 @@
       "childrens_play_area_outside": "منطقة لعب للأطفال في الهواء الطلق",
       "community_centers": "مراكز مجتمعية",
       "basketball_court": "ملعب كرة سلة",
-      "mosque": "مسجد"
+      "mosque": "مسجد",
+    "schools": "مدارس",
+    "golf_course": "ملعب جولف",
+    "property_management": "إدارة العقارات",
+    "hospitals": "مستشفيات"
     },
     "faq": {
       "questions": {
