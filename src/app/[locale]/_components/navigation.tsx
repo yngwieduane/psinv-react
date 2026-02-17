@@ -665,7 +665,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
         setMounted(true);
     }, []);
 
-    const mainLogo = (mounted && resolvedTheme === 'dark') || showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
+    // const mainLogo = (mounted && resolvedTheme === 'dark') || showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
+    const mainLogo = showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
     const linkColor = showWhiteTheme ? 'text-white' : 'text-gray-800 dark:text-white';
 
     return (
