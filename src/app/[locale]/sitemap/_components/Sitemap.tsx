@@ -195,14 +195,14 @@ export default async function Sitemap() {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-50 pt-48 pb-20">
+        <div className="min-h-screen bg-gray-50 pt-48 pb-20 dark:bg-neutral-900">
             <div className="container mx-auto px-4 max-w-7xl">
                 {/* Header */}
                 <div className="mb-12 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight dark:text-white">
                         {tFooter('footer_sitemap')}
                     </h1>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto dark:text-gray-400">
                         Explore our comprehensive guide to all pages, projects, and services available on Property Shop Investment.
                     </p>
                 </div>
@@ -212,13 +212,13 @@ export default async function Sitemap() {
                     {sections.map((section, idx) => (
                         <div
                             key={idx}
-                            className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group"
+                            className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group dark:bg-gray-800 dark:border-gray-700"
                         >
                             <div className="flex items-center gap-4 mb-6">
                                 <div className={`p-3 rounded-xl ${section.bg} ${section.color} transition-transform group-hover:scale-110 duration-300`}>
                                     <section.icon size={28} strokeWidth={1.5} />
                                 </div>
-                                <h2 className="text-2xl font-bold text-gray-900 capitalize">
+                                <h2 className="text-2xl font-bold text-gray-900 capitalize dark:text-white">
                                     {section.title}
                                 </h2>
                             </div>
@@ -231,7 +231,7 @@ export default async function Sitemap() {
                                             <li key={linkIdx}>
                                                 <Link
                                                     href={link.href}
-                                                    className="flex items-center text-gray-600 hover:text-secondary hover:translate-x-1.5 transition-all duration-200 group/link"
+                                                    className="flex items-center text-gray-600 hover:text-secondary hover:translate-x-1.5 transition-all duration-200 group/link dark:text-gray-300"
                                                 >
                                                     <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover/link:bg-secondary mr-3 transition-colors"></span>
                                                     {link.label}
@@ -252,7 +252,7 @@ export default async function Sitemap() {
                                                 <li key={linkIdx}>
                                                     <Link
                                                         href={link.href}
-                                                        className="flex items-center text-gray-600 hover:text-secondary hover:translate-x-1.5 transition-all duration-200 group/link"
+                                                        className="flex items-center text-gray-600 hover:text-secondary hover:translate-x-1.5 transition-all duration-200 group/link dark:text-gray-300"
                                                     >
                                                         <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover/link:bg-secondary mr-3 transition-colors"></span>
                                                         {link.label}
@@ -268,7 +268,7 @@ export default async function Sitemap() {
                 </div>
 
                 {/* Footer Note */}
-                <div className="mt-16 text-center text-gray-500 text-sm">
+                <div className="mt-16 text-center text-gray-500 text-sm dark:text-gray-400">
                     <p>© {new Date().getFullYear()} Property Shop Investment. {tFooter('footer_rights')}</p>
                 </div>
             </div>

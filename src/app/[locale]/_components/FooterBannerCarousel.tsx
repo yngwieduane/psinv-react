@@ -52,7 +52,7 @@ export default function FooterBannerCarousel() {
   });
 
   return (
-    <section className="bg-white py-2">
+    <section className="bg-white py-2 dark:bg-neutral-900">
       <div ref={sliderRef} className="keen-slider max-w-[1280px] mx-auto">
         {banners.map((banner, index) => (
           <div key={index} className="keen-slider__slide">

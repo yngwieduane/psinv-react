@@ -73,10 +73,10 @@ export default function CareerJourney() {
   ];
 
   return (
-    <div className="relative w-full px-4 py-16 overflow-hidden bg-white">
+    <div className="relative w-full px-4 py-16 overflow-hidden bg-white dark:bg-neutral-900">
       <div className="relative max-w-[1320px] mx-auto z-10 mb-10">
         <h2
-          className={`uppercase text-[#2C2D65] text-[32px] leading-[53px] ${poppins.className}`}
+          className={`uppercase text-[#2C2D65] text-[32px] leading-[53px] ${poppins.className} dark:text-white`}
         >
           {t('title')}{' '}
           <span
@@ -86,7 +86,7 @@ export default function CareerJourney() {
           </span>
         </h2>
         <p
-          className={`text-gray-700 mt-4 text-[18px] leading-[30px] ${poppins.className}`}
+          className={`text-gray-700 mt-4 text-[18px] leading-[30px] ${poppins.className} dark:text-gray-300`}
         >
           {t('description')}
         </p>
@@ -109,7 +109,7 @@ export default function CareerJourney() {
             >
               {hovered === step.id && (
                 <div
-                  className="absolute z-20 w-[450px] h-[450px] rounded-full border-4 border-[#E35F27] bg-white transition-all duration-500 p-8 flex flex-col justify-center shadow-[0px_10px_30px_rgba(0,0,0,0.12)]"
+                  className="absolute z-20 w-[450px] h-[450px] rounded-full border-4 border-[#E35F27] bg-white transition-all duration-500 p-8 flex flex-col justify-center shadow-[0px_10px_30px_rgba(0,0,0,0.12)] dark:bg-gray-800"
                   style={{
                     top: '-250px',
                     left: '-200px',
@@ -121,7 +121,7 @@ export default function CareerJourney() {
                   <div className="flex items-start gap-2 mb-2 text-[#E35F27] text-lg"></div>
                 </div>
               )}
-              <div className="relative z-10 w-[69px] h-[69px] bg-white border-2 border-orange-500 rounded-full flex items-center justify-center text-xl font-bold text-[#2C2D65] shadow-md cursor-pointer">
+              <div className="relative z-10 w-[69px] h-[69px] bg-white border-2 border-orange-500 rounded-full flex items-center justify-center text-xl font-bold text-[#2C2D65] shadow-md cursor-pointer dark:bg-gray-800 dark:text-white">
                 {String(step.id).padStart(2, '0')}
               </div>
             </div>

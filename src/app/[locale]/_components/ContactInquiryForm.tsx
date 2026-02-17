@@ -80,20 +80,20 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
       let methodOfContact = "115747";
       let propertyCampaignId = campaignId;
       switch (source) {
-      case 'HubspotEmail':
-      case 'HubSpotEmail':
-      case 'hubspotemail':
-      case 'hubspotEmail':
-      case 'hs_email':
-      case 'Hubspot':
-      case 'hubspot':
-        mediaType = "63906";
-        mediaName = "63907";
-        break;
-      case "newsletter":
-        mediaType = "166277";
-        mediaName = "166071";
-        break;
+        case 'HubspotEmail':
+        case 'HubSpotEmail':
+        case 'hubspotemail':
+        case 'hubspotEmail':
+        case 'hs_email':
+        case 'Hubspot':
+        case 'hubspot':
+          mediaType = "63906";
+          mediaName = "63907";
+          break;
+        case "newsletter":
+          mediaType = "166277";
+          mediaName = "166071";
+          break;
         case "sms":
           mediaType = "129474";
           mediaName = "165366";
@@ -111,14 +111,14 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
 
       switch (campaign) {
         case 'DripCampaign_hubspot':
-            propertyCampaignId = "2134"; 
-            break;
+          propertyCampaignId = "2134";
+          break;
         case 'DripCampaign':
-            propertyCampaignId = "2134"; 
-            break; 
+          propertyCampaignId = "2134";
+          break;
         default:
-            propertyCampaignId = propertyCampaignId;
-            break;
+          propertyCampaignId = propertyCampaignId;
+          break;
       }
 
       const isHubspotMedia = mediaName === '63907';
@@ -195,15 +195,15 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
 
       if (isHubspotMedia) {
         const hubspotResponse = await insertHubspotLead(formDataToSend);
-        
+
         if (!hubspotResponse.ok) {
-            const text = await hubspotResponse.text();
-            throw new Error(`HubSpot API error: ${hubspotResponse.status} - ${text}`);
+          const text = await hubspotResponse.text();
+          throw new Error(`HubSpot API error: ${hubspotResponse.status} - ${text}`);
         }
         response = hubspotResponse;
       }
       else {
-       response = await fetch(
+        response = await fetch(
           "https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a",
           {
             method: "POST",
@@ -300,7 +300,7 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} dir={isRTL ? "rtl" : "ltr"} className="w-full bg-white">
+    <form onSubmit={handleSubmit(onSubmit)} dir={isRTL ? "rtl" : "ltr"} className="w-full bg-white dark:bg-transparent">
       {postId === "Success" && (
         <div className="p-3 mb-4 rounded bg-green-500 text-white">{t("alerts.success")}</div>
       )}
@@ -314,9 +314,8 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
             type="text"
             {...register("firstName")}
             placeholder={t("placeholders.firstName")}
-            className={`w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] ${
-              isRTL ? "text-right" : ""
-            }`}
+            className={`w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 ${isRTL ? "text-right" : ""
+              }`}
           />
           {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>}
         </div>
@@ -326,9 +325,8 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
             type="text"
             {...register("lastName")}
             placeholder={t("placeholders.lastName")}
-            className={`w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] ${
-              isRTL ? "text-right" : ""
-            }`}
+            className={`w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 ${isRTL ? "text-right" : ""
+              }`}
           />
           {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName.message}</p>}
         </div>
@@ -338,9 +336,8 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
             type="email"
             {...register("email")}
             placeholder={t("placeholders.email")}
-            className={`w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] ${
-              isRTL ? "text-right" : ""
-            }`}
+            className={`w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 ${isRTL ? "text-right" : ""
+              }`}
           />
           {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
         </div>
@@ -358,7 +355,7 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
                     defaultCountry="AE"
                     countryCallingCodeEditable={false}
                     placeholder={t("placeholders.phone")}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445] PhoneInput"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445] PhoneInput dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                   />
                 </div>
               )}
@@ -372,30 +369,29 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
         <textarea
           {...register("message")}
           placeholder={t("placeholders.message")}
-          className={`w-full border bg-gray-50 border border-gray-100 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 h-40 resize-none ${
-            isRTL ? "text-right" : ""
-          }`}
+          className={`w-full border bg-gray-50 border border-gray-100 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 h-40 resize-none dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 ${isRTL ? "text-right" : ""
+            }`}
         />
         {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}
       </div>
 
-       <button
+      <button
         type="submit"
-          disabled={isSubmitting}
-          className="w-full bg-[#0c1445] hover:bg-[#0c1445]/90 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
-          >
-          {isSubmitting ? (
+        disabled={isSubmitting}
+        className="w-full bg-[#0c1445] hover:bg-[#0c1445]/90 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed dark:shadow-none dark:border dark:border-white/10"
+      >
+        {isSubmitting ? (
           <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-          ) : (
+        ) : (
           <>
-           Send Message
-          <Send size={16} className="group-hover:translate-x-1 transition-transform" />
+            Send Message
+            <Send size={16} className="group-hover:translate-x-1 transition-transform" />
           </>
-           )}
-        </button>
+        )}
+      </button>
 
-      <div className="text-[10px] text-gray-500 space-y-2 mt-4">
-      <div className="my-3">
+      <div className="text-[10px] text-gray-500 space-y-2 mt-4 dark:text-gray-400">
+        <div className="my-3">
           <label className="flex items-center space-x-2">
             <span className="text-sm">{t1('byclickingsubmit.part1')} <Link href="/en/terms" title="terms">{t1('byclickingsubmit.terms')}</Link> {t1('byclickingsubmit.and')} <Link href="/en/privacy" title="privacy">{t1('byclickingsubmit.privacy')}</Link></span>
           </label>

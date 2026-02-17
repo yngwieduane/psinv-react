@@ -240,6 +240,36 @@ body {
   height: auto;
 }
 
+/* Dark Mode Overrides */
+.dark .article-body {
+  color: #e5e7eb;
+}
+
+.dark .article-body h2,
+.dark .article-body h3,
+.dark .article-body h4,
+.dark .article-body strong {
+  color: #ffffff;
+}
+
+.dark .article-body a {
+  color: #60a5fa;
+}
+
+.dark .article-body a:hover {
+  color: #93c5fd;
+}
+
+.dark .article-body blockquote {
+  background: rgba(16, 185, 129, 0.1);
+  color: #d1d5db;
+  border-left-color: #10b981;
+}
+
+[dir="rtl"].dark .article-body blockquote {
+  border-right-color: #10b981;
+}
+
 /* RTL Adjustments for Article Body */
 [dir="rtl"] .article-body ul,
 [dir="rtl"] .article-body ol {

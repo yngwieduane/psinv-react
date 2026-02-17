@@ -74,8 +74,8 @@ export default async function BlogPostPage({ params }: PageProps) {
             />
 
             {/* Navigation Bar / Breadcrumb Area */}
-            <div className="pt-28 md:pt-36 border-b border-gray-100">
-                <div className="container mx-auto px-4 md:px-12">
+            <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
+                <div className="container mx-auto">
                     <Breadcrumb
                     />
                 </div>
@@ -91,7 +91,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
             </div>
 
-            <div className="bg-white min-h-screen pb-20" dir={rtl ? "rtl" : "ltr"}>
+            <div className="bg-white min-h-screen pb-20 dark:bg-neutral-900" dir={rtl ? "rtl" : "ltr"}>
 
                 {/* Hero Section */}
                 <div className="relative w-full h-[40vh] md:h-[50vh] lg:h-[60vh] bg-gray-900 overflow-hidden">
@@ -117,7 +117,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                                         {post.date}
                                     </span>
                                 )}
-                                
+
                             </div>
 
                             <h1
@@ -129,7 +129,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
 
                 {/* Content Container */}
-                <div className="container mx-auto px-6 md:px-12 max-w-4xl -mt-10 relative z-1 p-8 md:p-12 bg-white rounded-t-3xl shadow-sm">
+                <div className="container mx-auto px-6 md:px-12 max-w-4xl -mt-10 relative z-1 p-8 md:p-12 bg-white rounded-t-3xl shadow-sm dark:bg-neutral-900 dark:shadow-none">
 
                     {/* Author Info */}
                     <div className="flex items-center justify-between border-b border-gray-100 pb-8 mb-10">
@@ -138,18 +138,18 @@ export default async function BlogPostPage({ params }: PageProps) {
                                 <User size={24} />
                             </div>
                             <div>
-                                <p className="text-sm font-bold text-gray-900">{post.author || t("defaultAuthor")}</p>
-                                
-                                <p className="text-xs text-gray-500">{t("authorRole")}</p>
-                                
-                                
+                                <p className="text-sm font-bold text-gray-900 dark:text-white">{post.author || t("defaultAuthor")}</p>
+
+                                <p className="text-xs text-gray-500 dark:text-gray-400">{t("authorRole")}</p>
+
+
                                 {readTime && (
-                                <div className="flex items-center">
-                                    <Clock size={14} className={rtl ? "ml-1" : "mr-1"} />
-                                    <span className="italic text-xs text-gray-400">
-                                    {readTime} min read
-                                    </span>
-                                </div>
+                                    <div className="flex items-center">
+                                        <Clock size={14} className={rtl ? "ml-1" : "mr-1"} />
+                                        <span className="italic text-xs text-gray-400">
+                                            {readTime} min read
+                                        </span>
+                                    </div>
                                 )}
                             </div>
                         </div>
@@ -159,7 +159,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     {/* Summary/Intro */}
                     {summary && (
                         <div
-                            className="text-xl md:text-2xl text-gray-600 font-serif leading-relaxed mb-10 italic border-l-4 border-primary pl-6"
+                            className="text-xl md:text-2xl text-gray-600 font-serif leading-relaxed mb-10 italic border-l-4 border-primary pl-6 dark:text-gray-300"
                             dangerouslySetInnerHTML={{ __html: summary }}
                         />
                     )}
@@ -174,14 +174,14 @@ export default async function BlogPostPage({ params }: PageProps) {
                     </article>
 
                     {/* Footer / Tags */}
-                    <div className="mt-16 pt-10 border-t border-gray-100">
-                        <div className="flex flex-col md:flex-row items-center justify-between p-8 bg-gray-50 rounded-2xl">
+                    <div className="mt-16 pt-10 border-t border-gray-100 dark:border-gray-800">
+                        <div className="flex flex-col md:flex-row items-center justify-between p-8 bg-gray-50 rounded-2xl dark:bg-gray-800">
                             <div className="mb-6 md:mb-0 text-center md:text-left">
-                                <h3 className="font-bold text-lg mb-2">{t("subscribeTitle")}</h3>
-                                <p className="text-gray-500 text-sm">{t("subscribeSubtitle")}</p>
+                                <h3 className="font-bold text-lg mb-2 dark:text-white">{t("subscribeTitle")}</h3>
+                                <p className="text-gray-500 text-sm dark:text-gray-400">{t("subscribeSubtitle")}</p>
                             </div>
                             <div className="flex w-full md:w-auto">
-                                <input type="email" placeholder={t("emailPlaceholder")} className="w-full md:w-64 px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:border-primary" />
+                                <input type="email" placeholder={t("emailPlaceholder")} className="w-full md:w-64 px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400" />
                                 <button className="bg-primary text-white px-6 py-3 rounded-r-lg font-bold hover:bg-primary/90 transition-colors">
                                     {t("joinButton")}
                                 </button>

@@ -171,7 +171,7 @@ export default function JobDetailsPage() {
   if (loading) return <div className="text-center py-10">Loading...</div>;
   if (!job) return notFound();
   return (
-    <div className="w-full mb-5">
+    <div className="w-full mb-5 dark:bg-neutral-900">
       {/* Hero Section */}
       <div className="relative h-[60vh] flex items-center justify-center">
         <div
@@ -200,8 +200,8 @@ export default function JobDetailsPage() {
       <section className="max-w-[1320px] mx-auto mb-10 px-4 md:px-10 py-10">
         <div className="flex items-center gap-4 mb-6">
           <Link href={`/${locale}/careers`}>
-            <div className="w-10 h-10 border-2 border-[#2C2D65] rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition">
-              <span className="text-[#2C2D65] text-xl">&#8592;</span>
+            <div className="w-10 h-10 border-2 border-[#2C2D65] rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition dark:border-white dark:hover:bg-gray-700">
+              <span className="text-[#2C2D65] text-xl dark:text-white">&#8592;</span>
             </div>
           </Link>
           <h2 className="text-[#272963] text-[18px] leading-normal md:text-[40px] md:leading-[52px] uppercase font-bold">
@@ -227,7 +227,7 @@ export default function JobDetailsPage() {
       {/* Job Content */}
       <section className="max-w-[1320px] mx-auto px-4 md:px-10 py-10 flex flex-col md:flex-row gap-8">
         {/* Sidebar Navigation */}
-        <div className="bg-[#F5F5F8] rounded-2xl p-6 w-full md:max-w-[340px]">
+        <div className="bg-[#F5F5F8] rounded-2xl p-6 w-full md:max-w-[340px] dark:bg-gray-800">
           <div className="flex flex-col gap-10">
             <div className="flex items-start gap-3">
               <div className="flex flex-col gap-6">
@@ -244,7 +244,7 @@ export default function JobDetailsPage() {
                     </p>
                     <button
                       onClick={scrollToForm}
-                      className="text-gray-500 hover:text-[#2C2D65] text-sm font-normal transition underline text-left"
+                      className="text-gray-500 hover:text-[#2C2D65] text-sm font-normal transition underline text-left dark:text-gray-400 dark:hover:text-white"
                     >
                       Apply now
                     </button>
@@ -259,12 +259,12 @@ export default function JobDetailsPage() {
         <div className="w-full">
           {/* Job Overview */}
           {job.description && (
-            <div className="bg-[#F5F5F8] rounded-2xl p-6 relative">
+            <div className="bg-[#F5F5F8] rounded-2xl p-6 relative dark:bg-gray-800">
               <h2 className="text-[20px] md:text-[24px] font-semibold text-[#E35F27] mb-4">
                 {job.name}
               </h2>
               <div
-                className="text-[#1A1A1A] text-[14px] md:text-[16px] leading-normal md:leading-[30.4px] font-poppins"
+                className="text-[#1A1A1A] text-[14px] md:text-[16px] leading-normal md:leading-[30.4px] font-poppins dark:text-gray-300"
                 dangerouslySetInnerHTML={{ __html: job.description }}
               ></div>
 
@@ -276,12 +276,12 @@ export default function JobDetailsPage() {
 
           {/* Qualifications */}
           {Array.isArray(resolvedMustHave) && resolvedMustHave.length > 0 && (
-            <div className="bg-[#F5F5F8] mt-4 p-6 rounded-2xl">
+            <div className="bg-[#F5F5F8] mt-4 p-6 rounded-2xl dark:bg-gray-800">
               <div
                 className="flex items-center justify-between cursor-pointer"
                 onClick={() => toggleAccordion(0)}
               >
-                <h3 className="text-[#2C2D65] text-lg md:text-xl font-semibold">
+                <h3 className="text-[#2C2D65] text-lg md:text-xl font-semibold dark:text-white">
                   Qualifications:
                 </h3>
                 <div className="md:w-10 md:h-10 w-7 h-7 border-2 border-[#2C2D65] rounded-full flex items-center justify-center">
@@ -291,7 +291,7 @@ export default function JobDetailsPage() {
                 </div>
               </div>
               {openIndex === 0 && (
-                <div className="mt-4 text-[#1A1A1A] text-sm md:text-base md:leading-[30.4px] font-poppins">
+                <div className="mt-4 text-[#1A1A1A] text-sm md:text-base md:leading-[30.4px] font-poppins dark:text-gray-300">
                   {resolvedMustHave.map((item, i) => (
                     <div key={i} className="mb-2">
                       {item.name
@@ -300,7 +300,7 @@ export default function JobDetailsPage() {
                         .map((line, j) => (
                           <p
                             key={j}
-                            className={`text-[14px] leading-[1.42857] text-[#333] ${poppins.className}`}
+                            className={`text-[14px] leading-[1.42857] text-[#333] ${poppins.className} dark:text-gray-300`}
                           >
                             {line.trim()}
                           </p>
@@ -314,25 +314,25 @@ export default function JobDetailsPage() {
           {/* Key Responsibilities */}
           {Array.isArray(job.responsibilities) &&
             job.responsibilities.length > 0 && (
-              <div className="bg-[#F5F5F8] mt-4 p-6 rounded-2xl">
+              <div className="bg-[#F5F5F8] mt-4 p-6 rounded-2xl dark:bg-gray-800">
                 <div
                   className="flex items-center justify-between cursor-pointer"
                   onClick={() => toggleAccordion(1)}
                 >
-                  <h3 className="text-[#2C2D65] text-lg md:text-xl font-semibold">
+                  <h3 className="text-[#2C2D65] text-lg md:text-xl font-semibold dark:text-white">
                     Key Responsibilities:
                   </h3>
-                  <div className="md:w-10 md:h-10 w-7 h-7 border-2 border-[#2C2D65] rounded-full flex items-center justify-center">
-                    <span className="text-[#2C2D65] text-sm md:text-xl">
+                  <div className="md:w-10 md:h-10 w-7 h-7 border-2 border-[#2C2D65] rounded-full flex items-center justify-center dark:border-white">
+                    <span className="text-[#2C2D65] text-sm md:text-xl dark:text-white">
                       {openIndex === 1 ? "↑" : "↓"}
                     </span>
                   </div>
                 </div>
                 {openIndex === 1 && (
-                  <div className="mt-4 text-[#1A1A1A] text-sm md:text-base md:leading-[30.4px] font-poppins">
+                  <div className="mt-4 text-[#1A1A1A] text-sm md:text-base md:leading-[30.4px] font-poppins dark:text-gray-300">
                     {job.responsibilities.map((item, i) => (
                       <p
-                        className={`text-[14px] leading-[1.42857] text-[#333] ${poppins.className}`}
+                        className={`text-[14px] leading-[1.42857] text-[#333] ${poppins.className} dark:text-gray-300`}
                         key={i}
                       >
                         {typeof item === "object" && "name" in item
@@ -347,25 +347,25 @@ export default function JobDetailsPage() {
 
           {/* Skills & Competencies */}
           {Array.isArray(job.job_skills) && job.job_skills.length > 0 && (
-            <div className="bg-[#F5F5F8] mt-4 p-6 rounded-2xl">
+            <div className="bg-[#F5F5F8] mt-4 p-6 rounded-2xl dark:bg-gray-800">
               <div
                 className="flex items-center justify-between cursor-pointer"
                 onClick={() => toggleAccordion(2)}
               >
-                <h3 className="text-[#2C2D65] text-lg md:text-xl font-semibold">
+                <h3 className="text-[#2C2D65] text-lg md:text-xl font-semibold dark:text-white">
                   Skills & Competencies:
                 </h3>
-                <div className="md:w-10 md:h-10 w-7 h-7 border-2 border-[#2C2D65] rounded-full flex items-center justify-center">
-                  <span className="text-[#2C2D65] text-sm md:text-xl">
+                <div className="md:w-10 md:h-10 w-7 h-7 border-2 border-[#2C2D65] rounded-full flex items-center justify-center dark:border-white">
+                  <span className="text-[#2C2D65] text-sm md:text-xl dark:text-white">
                     {openIndex === 2 ? "↑" : "↓"}
                   </span>
                 </div>
               </div>
               {openIndex === 2 && (
-                <div className="mt-4 text-[#1A1A1A] text-sm md:text-base md:leading-[30.4px] font-poppins">
+                <div className="mt-4 text-[#1A1A1A] text-sm md:text-base md:leading-[30.4px] font-poppins dark:text-gray-300">
                   {job.job_skills.map((item, i) => (
                     <p
-                      className={`text-[14px] leading-[1.42857] text-[#333] ${poppins.className}`}
+                      className={`text-[14px] leading-[1.42857] text-[#333] ${poppins.className} dark:text-gray-300`}
                       key={i}
                     >
                       {typeof item === "object" && "name" in item

@@ -33,8 +33,8 @@ export default function LocationsSection() {
   return (
     <>
       <div className="container mx-auto px-4 md:px-8" dir={isRTL ? 'rtl' : 'ltr'}>
-        <div className="md:flex md:justify-between items-center border-b pb-4 border-gray-200">
-          <h3 className={`text-3xl font-bold text-primary text-center mb-5 md:mb-0 ${outfit.className} ${isRTL ? 'md:text-right' : 'md:text-left'}`}>
+        <div className="md:flex md:justify-between items-center border-b pb-4 border-gray-200 dark:border-gray-800">
+          <h3 className={`text-3xl font-bold text-primary text-center mb-5 md:mb-0 ${outfit.className} ${isRTL ? 'md:text-right' : 'md:text-left'} dark:text-white`}>
             {t('title')}
           </h3>
           <div className="md:w-1/2 md:items-end items-center flex justify-center md:justify-end locationsTabHead">
@@ -45,7 +45,7 @@ export default function LocationsSection() {
             />
           </div>
         </div>
-        <p className={`text-gray-500 text-sm mt-2 mb-8 text-center ${isRTL ? 'md:text-right' : 'md:text-left'}`}>
+        <p className={`text-gray-500 text-sm mt-2 mb-8 text-center ${isRTL ? 'md:text-right' : 'md:text-left'} dark:text-gray-400`}>
           {t('desc')}
         </p>
         <div className="flex w-full mx-auto">

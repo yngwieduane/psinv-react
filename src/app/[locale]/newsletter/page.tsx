@@ -47,14 +47,14 @@ export default function NewsletterPage() {
 
   return (
     <div className="min-h-screen bg-gray-50/50">
-      <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white">
-        <div className="container mx-auto px-4 md:px-12">
+      <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
+        <div className="container mx-auto">
           <Breadcrumb
           />
         </div>
       </div>
       {/* Hero Section */}
-      <section className="relative bg-white pt-24 pb-16 overflow-hidden">
+      <section className="relative bg-white pt-24 pb-16 overflow-hidden dark:bg-neutral-900">
         <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.4] mask-image:linear-gradient(to_bottom,black,transparent)" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
@@ -65,10 +65,10 @@ export default function NewsletterPage() {
               </span>
               PSI Market Insights
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100 dark:text-white">
               Latest Insights & <span className="text-psiblue">News</span>
             </h1>
-            <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-from-bottom-5 duration-700 delay-200">
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-from-bottom-5 duration-700 delay-200 dark:text-gray-400">
               Stay ahead of the market with exclusive updates, real estate trends, and investment opportunities from PSI.
             </p>
           </div>
@@ -78,14 +78,14 @@ export default function NewsletterPage() {
       <div className="container mx-auto px-4 py-12">
         {/* Category Filters */}
         <div className="flex justify-center mb-16 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-300">
-          <div className="bg-white p-1.5 rounded-2xl shadow-sm border border-gray-100 inline-flex flex-wrap gap-1">
+          <div className="bg-white p-1.5 rounded-2xl shadow-sm border border-gray-100 inline-flex flex-wrap gap-1 dark:bg-gray-800 dark:border-gray-700">
             {[ALL_NEWSLETTER].map((category) => (
               <button
                 key={category}
                 onClick={() => handleCategoryClick(category)}
                 className={`px-6 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ${activeCategory === category
                   ? 'bg-psiblue text-white shadow-md shadow-psiblue/20'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white'
                   }`}
               >
                 {category}
@@ -101,7 +101,7 @@ export default function NewsletterPage() {
               {currentItems.map((item, idx) => (
                 <div
                   key={idx}
-                  className="group flex flex-col bg-white rounded-2xl shadow-sm hover:shadow-xl hover:shadow-psiblue/5 border border-gray-200/60 overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                  className="group flex flex-col bg-white rounded-2xl shadow-sm hover:shadow-xl hover:shadow-psiblue/5 border border-gray-200/60 overflow-hidden transition-all duration-300 hover:-translate-y-1 dark:bg-gray-800 dark:border-gray-700"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
                     <Image
@@ -124,7 +124,7 @@ export default function NewsletterPage() {
                       <span>{item.date}</span>
                     </div>
 
-                    <h2 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-psiblue transition-colors duration-200">
+                    <h2 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-psiblue transition-colors duration-200 dark:text-white">
                       {item.title}
                     </h2>
 
@@ -159,7 +159,7 @@ export default function NewsletterPage() {
               <button
                 onClick={handlePrev}
                 disabled={currentPage === 1}
-                className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 hover:text-psiblue disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-600"
+                className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 hover:text-psiblue disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:disabled:bg-gray-800 dark:disabled:text-gray-600"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -174,7 +174,7 @@ export default function NewsletterPage() {
                     }}
                     className={`w-10 h-10 font-semibold rounded-xl transition-all duration-300 ${currentPage === page
                       ? 'bg-psiblue text-white shadow-lg shadow-psiblue/20 scale-105'
-                      : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
+                      : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-700'
                       }`}
                   >
                     {page}
@@ -185,7 +185,7 @@ export default function NewsletterPage() {
               <button
                 onClick={handleNext}
                 disabled={currentPage === totalPages}
-                className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 hover:text-psiblue disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-600"
+                className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 hover:text-psiblue disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:disabled:bg-gray-800 dark:disabled:text-gray-600"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>

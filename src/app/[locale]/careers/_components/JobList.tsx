@@ -120,7 +120,7 @@ export default function JobList({ jobs: initialJobs }: JobListProps) {
                   href={`/en/careers${job.website_url}#jobform`}
                   className={`block text-center border-2 py-4 rounded-md font-semibold transition mx-auto ${activeIndex === index
                     ? "bg-[#E35F27] text-white w-[90%] border-[#E35F27]"
-                    : "bg-white text-[#272963] border-[#272963] w-[80%] hover:text-[#212529]"
+                    : "bg-white text-[#272963] border-[#272963] w-[80%] hover:text-[#212529] dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:text-white"
                     }`}
                 >
                   {job.name} <i className="fas fa-arrow-right ml-2"></i>

@@ -135,15 +135,15 @@ const AboutPageClient = () => {
                         <p className="text-sm uppercase tracking-widest text-gray-300 font-medium">{t('heroBreadcrumb')}</p>
                     </div>
                 </div>
-                <section className="py-24 container mx-auto px-4 md:px-8" dir={isRTL ? 'rtl' : 'ltr'}>
+                <section className="py-24 container mx-auto px-4 md:px-8 dark:text-gray-300" dir={isRTL ? 'rtl' : 'ltr'}>
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
                         <div className="md:col-span-4 relative">
-                            <h4 className={`text-5xl mb-2 absolute -top-8 z-10 transform ${isRTL ? 'rotate-6 -right-2' : '-rotate-6 -left-2 '} font-great-vibes text-gray-800 ${greatVibes.className}`}>{t('aboutTag')}</h4>
-                            <h2 className={`text-4xl md:text-5xl font-serif font-bold text-primary uppercase leading-none pt-4 relative z-0 ${outfit.className}`}>
+                            <h4 className={`text-5xl mb-2 absolute -top-8 z-10 transform ${isRTL ? 'rotate-6 -right-2' : '-rotate-6 -left-2 '} font-great-vibes text-gray-800 dark:text-white ${greatVibes.className}`}>{t('aboutTag')}</h4>
+                            <h2 className={`text-4xl md:text-5xl font-serif font-bold text-primary uppercase leading-none pt-4 relative z-0 dark:text-white ${outfit.className}`}>
                                 {t('mainHeading')}
                             </h2>
                         </div>
-                        <div className={`md:col-span-8 text-gray-600 font-thin text-base leading-relaxed space-y-6 text-justify ${opensans.className}`}>
+                        <div className={`md:col-span-8 text-gray-600 font-thin text-base leading-relaxed space-y-6 text-justify dark:text-gray-300 ${opensans.className}`}>
                             <p className="font-light">
                                 {t('paragraph1.part1')} <strong className="font-bold">{t('paragraph1.part2')}</strong> {t('paragraph1.part3')}
                             </p>
@@ -172,18 +172,18 @@ const AboutPageClient = () => {
                 <AboutTextSlider slides={testimonialData} />
 
                 {/* Core Values */}
-                <section className="py-24 bg-slate-50" dir={isRTL ? 'rtl' : 'ltr'}>
+                <section className="py-24 bg-slate-50 dark:bg-neutral-900" dir={isRTL ? 'rtl' : 'ltr'}>
                     <div className="container mx-auto px-4 md:px-8">
                         <div className="flex flex-col lg:flex-row gap-16 items-start">
                             <div className={`${opensans.className} lg:w-5/12`}>
-                                <h2 className={`text-5xl font-serif font-bold text-primary mb-8 ${outfit.className}`}>{t('CoreValues.title')}</h2>
-                                <p className="text-gray-600 text-base leading-relaxed mb-6 font-light">
+                                <h2 className={`text-5xl font-serif font-bold text-primary mb-8 dark:text-white ${outfit.className}`}>{t('CoreValues.title')}</h2>
+                                <p className="text-gray-600 text-base leading-relaxed mb-6 font-light dark:text-gray-300">
                                     {t('CoreValues.paragraph1')}
                                 </p>
-                                <p className="text-gray-600 text-base leading-relaxed font-light">
+                                <p className="text-gray-600 text-base leading-relaxed font-light dark:text-gray-300">
                                     {t('CoreValues.paragraph2')}
                                 </p>
-                                <p className="text-gray-600 text-base leading-relaxed font-light">
+                                <p className="text-gray-600 text-base leading-relaxed font-light dark:text-gray-300">
                                     {t('CoreValues.paragraph3')}
                                 </p>
 
@@ -191,13 +191,13 @@ const AboutPageClient = () => {
 
                             <div className="lg:w-7/12 space-y-6">
                                 {coreValues.map((val, idx) => (
-                                    <div key={idx} className={`flex gap-8 items-center bg-white p-8 rounded-lg shadow-sm  border-primary hover:border-secondary transition-colors duration-300 group ${isRTL ? 'border-r-4' : 'border-l-4'}`}>
-                                        <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center font-bold text-2xl flex-shrink-0 font-serif group-hover:bg-secondary text-[#fff] transition-colors duration-300 shadow-lg">
+                                    <div key={idx} className={`flex gap-8 items-center bg-white p-8 rounded-lg shadow-sm  border-primary hover:border-secondary transition-colors duration-300 group dark:bg-gray-800 dark:border-gray-700 ${isRTL ? 'border-r-4' : 'border-l-4'}`}>
+                                        <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center font-bold text-2xl flex-shrink-0 font-serif group-hover:bg-secondary text-[#fff] transition-colors duration-300 shadow-lg dark:bg-gray-700 dark:group-hover:bg-secondary">
                                             {idx + 1}
                                         </div>
                                         <div>
-                                            <h4 className="font-bold text-primary text-xl mb-2 uppercase tracking-wide group-hover:text-[#000]">{val.title}</h4>
-                                            <p className="text-gray-500 text-sm font-light leading-relaxed">{val.description}</p>
+                                            <h4 className="font-bold text-primary text-xl mb-2 uppercase tracking-wide group-hover:text-[#000] dark:text-white dark:group-hover:text-gray-200">{val.title}</h4>
+                                            <p className="text-gray-500 text-sm font-light leading-relaxed dark:text-gray-400">{val.description}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -291,13 +291,13 @@ const AboutPageClient = () => {
                     </div>
                 </section>
 
-                <section className="w-full bg-secondary-color py-10 text-gray-500" dir={isRTL ? "rtl" : "ltr"}>
+                <section className="w-full bg-secondary-color py-10 text-gray-500 dark:bg-gray-800 dark:text-gray-300" dir={isRTL ? "rtl" : "ltr"}>
                     <div className="max-w-(--breakpoint-xl) mx-auto bg-center bg-cover py-10 px-5" style={{ backgroundImage: "url('/assets/images/about-us/pattern-1.png')", }}>
                         {/* Heading */}
                         <div className="text-center mt-[50px] mb-[70px]">
-                            <h3 className={`text-darkblue  font-bold text-xl md:text-4xl ${Audrey.className}`}>
+                            <h3 className={`text-primary font-bold text-xl md:text-4xl dark:text-white ${Audrey.className}`}>
                                 {t("RealEstatePartner.title.part1")}{" "}
-                                <span className={`font-brittany text-orange font-light ${BrittanySignature.className} text-[#CE641D]`}>
+                                <span className={`font-brittany text-orange font-light ${BrittanySignature.className} text-[#CE641D] dark:text-orange-400`}>
                                     {t("RealEstatePartner.title.part2")}
                                 </span>{" "}
                                 {t("RealEstatePartner.title.part3")}
@@ -310,19 +310,19 @@ const AboutPageClient = () => {
                         {/* Counter Section */}
                         <div className="grid grid-cols-3 md:grid-cols-4 gap-6 text-center counter1">
                             <div>
-                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="150">  0 </span>K</h4>
+                                <h4 className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}><span className="data-count" data-count="150">  0 </span>K</h4>
                                 <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("RealEstatePartner.aboutCounter.customers")}</p>
                             </div>
                             <div>
-                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="15"> 0</span></h4>
+                                <h4 className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}><span className="data-count" data-count="15"> 0</span></h4>
                                 <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("RealEstatePartner.aboutCounter.languages")}</p>
                             </div>
                             <div>
-                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="120"> 0</span></h4>
+                                <h4 className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}> +<span className="data-count" data-count="120"> 0</span></h4>
                                 <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("RealEstatePartner.aboutCounter.projects")}</p>
                             </div>
                             <div className="hidden md:block">
-                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="10"> 0</span></h4>
+                                <h4 className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}><span className="data-count" data-count="10"> 0</span></h4>
                                 <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("RealEstatePartner.aboutCounter.locationWorldwide")}</p>
                             </div>
                         </div>
@@ -330,33 +330,33 @@ const AboutPageClient = () => {
                         {/* Second Counter Section */}
                         <div className="grid grid-cols-3 gap-6 text-center mt-10 counter2">
                             <div>
-                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="17"> 0</span></h4>
+                                <h4 className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}> +<span className="data-count" data-count="17"> 0</span></h4>
                                 <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("RealEstatePartner.aboutCounter.years")}</p>
                             </div>
                             <div>
-                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="12"> 0 </span></h4>
+                                <h4 className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}><span className="data-count" data-count="12"> 0 </span></h4>
                                 <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("RealEstatePartner.aboutCounter.branches")}</p>
                             </div>
                             <div>
-                                <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}> +<span className="data-count" data-count="700"> 0</span></h4>
+                                <h4 className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}> +<span className="data-count" data-count="700"> 0</span></h4>
                                 <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("RealEstatePartner.aboutCounter.expertEmployees")}</p>
                             </div>
                         </div>
 
                         {/* Mobile Only - Location Worldwide */}
                         <div className="mt-10 text-center md:hidden">
-                            <h4 className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}><span className="data-count" data-count="10"> 0 </span></h4>
+                            <h4 className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}><span className="data-count" data-count="10"> 0 </span></h4>
                             <p className={`md:text-lg text-sm font-medium ${montserrat.className}`}>{t("RealEstatePartner.aboutCounter.locationWorldwide")}</p>
                         </div>
                     </div>
                 </section>
 
-                <div className="w-full py-10 text-gray-500 text-center" id="awards">
+                <div className="w-full py-10 text-gray-500 text-center dark:bg-neutral-900" id="awards">
                     <div className="container mx-auto px-4 md:px-8">
-                        <h3 className="text-3xl text-gray-900 mb-4">
+                        <h3 className="text-3xl text-gray-900 mb-4 dark:text-white">
                             {t_awards("title")}
                         </h3>
-                        <p className="text-gray-500 max-w-2xl mx-auto mb-12">{t_awards("desc")}</p>
+                        <p className="text-gray-500 max-w-2xl mx-auto mb-12 dark:text-gray-400">{t_awards("desc")}</p>
                     </div>
                     <div className="w-full">
                         <div className="container mx-auto px-4 md:px-8 relative mx-auto">
@@ -365,13 +365,13 @@ const AboutPageClient = () => {
                     </div>
                 </div>
 
-                <section className="w-full py-24 bg-white text-center">
+                <section className="w-full py-24 bg-white text-center dark:bg-neutral-900">
                     <div className="container mx-auto px-4 md:px-8">
                         <div className="text-center mb-[70] ">
-                            <h3 className="font-bold text-primary mb-3 text-3xl  md:text-4xl">
+                            <h3 className="font-bold text-primary mb-3 text-3xl  md:text-4xl dark:text-white">
                                 {t('DISCOVER_title')}
                             </h3>
-                            <p className={`text-gray-500 mb-12 font-light tracking-wide`}>{t('DISCOVER_desc')}</p>
+                            <p className={`text-gray-500 mb-12 font-light tracking-wide dark:text-gray-400`}>{t('DISCOVER_desc')}</p>
                         </div>
                         <div className="max-w-5xl mx-auto">
                             <YoutubeVideoAbout videoId="f_K-ZrzuZLs" thumb="/assets/images/about-us/video-thumb.jpg" height="h-[350px] md:h-[690px]" />
@@ -379,25 +379,25 @@ const AboutPageClient = () => {
                     </div>
                 </section>
 
-                <section className="w-full pt-24 bg-white border-t border-gray-100">
+                <section className="w-full pt-24 bg-white border-t border-gray-100 dark:bg-neutral-900 dark:border-gray-800">
                     <div className="container mx-auto  max-w-6xl px-4 md:px-8 text-center">
                         <div className="text-center mb-[70] ">
-                            <h3 className="font-bold text-primary mb-3 text-3xl  md:text-4xl">
+                            <h3 className="font-bold text-primary mb-3 text-3xl  md:text-4xl dark:text-white">
                                 {t('PARTNERS_title')}
                             </h3>
-                            <p className="text-gray-500 mb-12 font-light tracking-wide">{t('PARTNERS_desc')}</p>
+                            <p className="text-gray-500 mb-12 font-light tracking-wide dark:text-gray-400">{t('PARTNERS_desc')}</p>
                         </div>
                         <PartnerSlider slides={partners} />
                     </div>
                 </section>
 
-                <section className="w-full py-24 bg-white">
+                <section className="w-full py-24 bg-white dark:bg-neutral-900">
                     <div className="container mx-auto px-4 md:px-8">
                         <div className="text-center mb-[70] ">
-                            <h3 className={`font-bold text-primary mb-3 text-3xl md:text-4xl ${outfit.className}`}>
+                            <h3 className={`font-bold text-primary mb-3 text-3xl md:text-4xl dark:text-white ${outfit.className}`}>
                                 {t('STRATEGIC_title.part1')} <span className={`${greatVibes.className} font-normal text-5xl md:text-6xl px-2`}>{t('STRATEGIC_title.part2')}</span>
                             </h3>
-                            <p className="text-gray-500 text-sm mt-2 tracking-wide">{t('STRATEGIC_desc')}</p>
+                            <p className="text-gray-500 text-sm mt-2 tracking-wide dark:text-gray-400">{t('STRATEGIC_desc')}</p>
                         </div>
 
                         <div className="aboutCards grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
@@ -415,7 +415,7 @@ const AboutPageClient = () => {
                         </div>
                     </div>
                 </section>
-                <section className="w-full my-4 locationsSection" dir={isRTL ? 'rtl' : 'ltr'}>
+                <section className="w-full my-4 locationsSection dark:bg-neutral-900" dir={isRTL ? 'rtl' : 'ltr'}>
                     <LocationsSection />
                 </section>
 

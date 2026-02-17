@@ -69,16 +69,16 @@ export default function CareersPageClient() {
                         >
                             {/* Left Text */}
                             <div className="md:w-7/12 md:pr-8 pr-2">
-                                <h2 className="text-xl md:text-3xl text-[#2C2D65] uppercase mb-4">
+                                <h2 className="text-xl md:text-3xl text-primary uppercase mb-4 dark:text-white">
                                     {t("unlockSection.title")}{" "}
                                     <span
-                                        className={`${BrittanySignature.className} text-2xl md:text-3xl capitalize  text-orange-600`}
+                                        className={`${BrittanySignature.className} text-2xl md:text-3xl capitalize  text-orange-600 dark:text-orange-400`}
                                     >
                                         {t("unlockSection.highlight")}
                                     </span>
                                 </h2>
                                 <p
-                                    className={`text-base md:text-base text-gray-700 leading-relaxed max-w-sm md:max-w-xl ${poppins.className}`}
+                                    className={`text-base md:text-base text-gray-700 leading-relaxed max-w-sm md:max-w-xl ${poppins.className} dark:text-gray-300`}
                                 >
                                     {t("unlockSection.description")}
                                 </p>
@@ -150,7 +150,7 @@ export default function CareersPageClient() {
                 </div>
             )}
             {/* Award Section */}
-            <section className="w-full bg-secondary-color py-10 text-gray-500">
+            <section className="w-full bg-secondary-color py-10 text-gray-500 dark:bg-gray-800 dark:text-gray-300">
                 <div
                     className="max-w-(--breakpoint-xl) mx-auto bg-center bg-cover py-10 px-5"
                     style={{
@@ -159,7 +159,7 @@ export default function CareersPageClient() {
                 >
                     <div className="text-center mt-[50px] mb-[70px]">
                         <h3
-                            className={`text-darkblue font-bold text-xl md:text-4xl ${Audrey.className}`}
+                            className={`text-primary font-bold text-xl md:text-4xl dark:text-white ${Audrey.className}`}
                         >
                             {t("trustedSection.title")}{" "}
                             <span
@@ -175,7 +175,7 @@ export default function CareersPageClient() {
                         {/* Counters */}
                         <div className="flex items-center gap-4">
                             <h4
-                                className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}
+                                className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}
                             >
                                 +
                                 <span className="data-count" data-count="8">
@@ -183,14 +183,14 @@ export default function CareersPageClient() {
                                 </span>
                             </h4>
                             <p
-                                className={`md:text-lg text-sm text-[#2C2D65] font-medium ${montserrat.className}`}
+                                className={`md:text-lg text-sm text-primary font-medium ${montserrat.className} dark:text-gray-300`}
                             >
                                 {t("counters.billion_population")}
                             </p>
                         </div>
                         <div className="flex items-center gap-4">
                             <h4
-                                className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}
+                                className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}
                             >
                                 +
                                 <span className="data-count" data-count="18">
@@ -198,14 +198,14 @@ export default function CareersPageClient() {
                                 </span>
                             </h4>
                             <p
-                                className={`md:text-lg text-sm text-[#2C2D65] font-medium ${montserrat.className}`}
+                                className={`md:text-lg text-sm text-primary font-medium ${montserrat.className} dark:text-gray-300`}
                             >
                                 {t("counters.years_expertise")}
                             </p>
                         </div>
                         <div className="flex items-center gap-4">
                             <h4
-                                className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}
+                                className={`text-primary font-bold md:text-6xl text-4xl ${Audrey.className} dark:text-gray-300`}
                             >
                                 +{" "}
                                 <span className="data-count" data-count="52">
@@ -213,21 +213,21 @@ export default function CareersPageClient() {
                                 </span>
                             </h4>
                             <p
-                                className={`md:text-lg text-sm font-medium text-[#2C2D65] ${montserrat.className}`}
+                                className={`md:text-lg text-sm font-medium text-primary ${montserrat.className} dark:text-gray-300`}
                             >
                                 {t("counters.nationalities")}
                             </p>
                         </div>
                         <div className="flex items-center gap-4">
                             <h4
-                                className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}
+                                className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}
                             >
                                 <span className="data-count" data-count="1384">
                                     0
                                 </span>
                             </h4>
                             <p
-                                className={`md:text-lg text-sm text-[#2C2D65] font-medium ${montserrat.className}`}
+                                className={`md:text-lg text-sm text-primary font-medium ${montserrat.className} dark:text-gray-300`}
                             >
                                 {t("counters.expert_employees")}
                             </p>
@@ -238,7 +238,7 @@ export default function CareersPageClient() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center mt-10 counter2">
                         <div className="flex items-center gap-4 justify-center">
                             <h4
-                                className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}
+                                className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}
                             >
                                 +
                                 <span className="data-count" data-count="17">
@@ -246,21 +246,21 @@ export default function CareersPageClient() {
                                 </span>
                             </h4>
                             <p
-                                className={`md:text-lg text-sm text-[#2C2D65] font-medium ${montserrat.className}`}
+                                className={`md:text-lg text-sm text-primary font-medium ${montserrat.className} dark:text-gray-300`}
                             >
                                 {t("counters.local_global_branches")}
                             </p>
                         </div>
                         <div className="flex items-center gap-4 justify-center">
                             <h4
-                                className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}
+                                className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}
                             >
                                 <span className="data-count" data-count="12">
                                     0
                                 </span>
                             </h4>
                             <p
-                                className={`md:text-lg text-sm text-[#2C2D65] font-medium ${montserrat.className}`}
+                                className={`md:text-lg text-sm text-primary font-medium ${montserrat.className} dark:text-gray-300`}
                             >
                                 {t("counters.number_one_brokerage")}
                             </p>
@@ -269,7 +269,7 @@ export default function CareersPageClient() {
                     {/* Mobile Counter */}
                     <div className="mt-10 text-center hidden">
                         <h4
-                            className={`text-darkblue font-bold md:text-6xl text-4xl ${Audrey.className}`}
+                            className={`text-primary font-bold md:text-6xl text-4xl dark:text-white ${Audrey.className}`}
                         >
                             <span className="data-count" data-count="10">
                                 0

@@ -170,8 +170,8 @@ export default async function BlogSingle({ params }: PageProps) {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
 
-            <div className="pt-28 md:pt-36 border-b border-gray-100">
-                <div className="container mx-auto px-4 md:px-12">
+            <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
+                <div className="container mx-auto">
                     <Breadcrumb
                     />
                 </div>
@@ -181,11 +181,11 @@ export default async function BlogSingle({ params }: PageProps) {
                 className="mx-auto container px-4 md:px-12 pt-5"
                 dir={rtl ? "rtl" : "ltr"}
             >
-                <p className="text-sm font-semibold uppercase text-emerald-600 mb-2 tracking-widest mt-5">
+                <p className="text-sm font-semibold uppercase text-emerald-600 mb-2 tracking-widest mt-5 dark:text-white">
                     {categoryLabel}
                 </p>
 
-                <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+                <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-4 dark:text-white">
                     {title}
                 </h1>
 
@@ -218,7 +218,7 @@ export default async function BlogSingle({ params }: PageProps) {
                 </div>
 
 
-                <div className="article-body">
+                <div className="article-body dark:text-white">
 
                     <div dangerouslySetInnerHTML={{ __html: finalParts[0] }} />
 

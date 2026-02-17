@@ -125,8 +125,8 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
     }
   };
   return (
-    <div className="rounded-[16px] border-2 border-[#E35F27] bg-[rgba(227,95,39,0.03)] p-10">
-      <h2 className="text-center text-3xl font-bold text-[#111954] mb-8">
+    <div className="rounded-[16px] border-2 border-[#E35F27] bg-[rgba(227,95,39,0.03)] p-10 dark:bg-gray-800 dark:border-gray-700">
+      <h2 className="text-center text-3xl font-bold text-[#111954] mb-8 dark:text-white">
         {t("title")} <span className="text-[#E35F27]">{t("subtitle")}</span>
       </h2>
       {statusMessage && (
@@ -142,13 +142,13 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
         className="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
         <div>
-          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
+          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans'] dark:text-gray-300">
             {t("firstName")} <span className="text-red-500">*</span>
           </label>
           <input
             {...register("firstName")}
             placeholder={t("firstNamePlaceholder")}
-            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
+            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded dark:bg-gray-700 dark:text-white dark:border-gray-600"
           />
           {errors.firstName && (
             <p className="text-red-500 text-sm mt-1">
@@ -157,13 +157,13 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
           )}
         </div>
         <div>
-          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
+          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans'] dark:text-gray-300">
             {t("lastName")} <span className="text-red-500">*</span>
           </label>
           <input
             {...register("lastName")}
             placeholder={t("lastNamePlaceholder")}
-            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
+            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded dark:bg-gray-700 dark:text-white dark:border-gray-600"
           />
           {errors.lastName && (
             <p className="text-red-500 text-sm mt-1">
@@ -172,7 +172,7 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
           )}
         </div>
         <div>
-          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
+          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans'] dark:text-gray-300">
             {t("phone")} <span className="text-red-500">*</span>
           </label>
           <Controller
@@ -183,7 +183,7 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
                 {...field}
                 international
                 defaultCountry="AE"
-                className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
+                className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded dark:bg-gray-700 dark:text-white dark:border-gray-600 [&_input]:dark:bg-gray-700 [&_input]:dark:text-white"
               />
             )}
           />
@@ -192,12 +192,12 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
           )}
         </div>
         <div>
-          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
+          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans'] dark:text-gray-300">
             {t("nationality")} <span className="text-red-500">*</span>
           </label>
           <select
             {...register("nationality")}
-            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
+            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded dark:bg-gray-700 dark:text-white dark:border-gray-600"
             defaultValue=""
             required
           >
@@ -217,25 +217,25 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
           )}
         </div>
         <div>
-          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
+          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans'] dark:text-gray-300">
             {t("email")} <span className="text-red-500">*</span>
           </label>
           <input
             {...register("email")}
             placeholder={t("emailPlaceholder")}
-            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded"
+            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded dark:bg-gray-700 dark:text-white dark:border-gray-600"
           />
           {errors.email && (
             <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
           )}
         </div>
         <div>
-          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans']">
+          <label className="text-[18px] text-[#252525] font-normal mb-[10px] block font-['Open_Sans'] dark:text-gray-300">
             {t("hearAbout")} <span className="text-red-500">*</span>
           </label>
           <select
             {...register("hearAbout")}
-            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded-md"
+            className="w-full text-[18px] font-normal font-['Open_Sans'] border border-[#a6a6a64f] bg-white shadow-[0px_20px_13px_0px_rgba(41,72,152,0.03),0px_8.148px_6.519px_0px_rgba(41,72,152,0.02)] p-[10px] h-[50px] rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600"
             defaultValue=""
           >
             <option value="" disabled>
@@ -256,7 +256,7 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
         <div>
           <label
             htmlFor="resume"
-            className="block text-sm font-medium text-[#111954] mb-1"
+            className="block text-sm font-medium text-[#111954] mb-1 dark:text-gray-300"
           >
             {t("uploadResume")} <span className="text-red-500">*</span>
           </label>
@@ -298,7 +298,7 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
                 />
               </svg>
               <span
-                className={`truncate text-center ${resumeFileName ? "text-black" : "text-[#cecece]"
+                className={`truncate text-center ${resumeFileName ? "text-black dark:text-white" : "text-[#cecece] dark:text-gray-400"
                   }`}
               >
                 {resumeFileName || t("uploadFileHere")}

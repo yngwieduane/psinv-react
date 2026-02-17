@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import { Search, Clock, User, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, Clock, User, ChevronLeft, ChevronRight, Home } from "lucide-react";
 import Breadcrumb from "../../_components/Breadcrumb";
 import { Link } from "@/i18n/navigation";
 import slugify from 'react-slugify';
@@ -42,7 +42,8 @@ function PillSearch({
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 className="w-full pl-12 pr-4 py-3 rounded-full border border-gray-200 bg-gray-50
-                   focus:bg-white focus:border-gray-300 focus:outline-none transition-all"
+                   focus:bg-white focus:border-gray-300 focus:outline-none transition-all 
+                   dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:focus:border-gray-600 dark:focus:bg-gray-700"
             />
             <Search
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
@@ -70,33 +71,76 @@ function RecentArticleRow({
 
     const href = `/articles/${categorySegment}/${item.slug}`;
     const locale = useLocale();
+    const [imageError, setImageError] = useState(false);
+
     return (
         <Link href={href} title={item.title} className="group block h-full">
-            <div className="flex flex-col md:flex-row gap-6 cursor-pointer h-full bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 p-4 border border-gray-50">
+            <div className="flex flex-col md:flex-row gap-6 cursor-pointer h-full bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 p-4 border border-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:shadow-lg">
                 <div className="md:w-48 h-32 rounded-xl overflow-hidden shrink-0 bg-gray-100 relative">
-                    <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+                    {item.image && !imageError ? (
+                        <Image
+                            src={item.image}
+                            alt={item.title}
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-700"
+                            onError={() => setImageError(true)}
+                        />
+                    ) : (
+                        <div className="flex flex-col items-center justify-center text-gray-400 dark:bg-gray-700 w-full h-full">
+                            <Home size={40} strokeWidth={1.5} />
+                            <span className="text-xs mt-2">No Image</span>
+                        </div>
+                    )}
                 </div>
 
                 <div className="grid grid-cols-1 flex-col justify-between flex-1">
                     <div>
-                        <div className="flex items-center gap-2 text-xs text-secondary font-bold uppercase tracking-wider mb-2">
+                        <div className="flex items-center gap-2 text-xs text-secondary font-bold uppercase tracking-wider mb-2 dark:text-white">
                             <span>{item.category}</span>
                         </div>
-                        <h3 className="font-bold text-lg text-gray-800 mb-2 group-hover:text-primary transition-colors line-clamp-2 truncate text-ellipsis">
+                        <h3 className="font-bold text-lg text-gray-800 mb-2 group-hover:text-primary transition-colors line-clamp-2 truncate text-ellipsis dark:text-white dark:group-hover:text-white/80">
                             {item.translations[locale].title}
                         </h3>
                     </div>
 
-                    <div className="flex items-center gap-4 text-xs text-gray-400 mt-auto">
+                    <div className="flex items-center gap-4 text-xs text-gray-400 mt-auto dark:text-white dark:group-hover:text-white/80">
                         <span className="flex items-center gap-1"><Clock size={12} /> {item.createdAt}</span>
                         <span className="flex items-center gap-1"><User size={12} /> PSI Author</span>
                     </div>
                 </div>
+            </div>
+        </Link>
+    );
+}
+
+function AreaGuideCard({ city }: { city: { name: string, image: string, count: number } }) {
+    const [imageError, setImageError] = useState(false);
+
+    return (
+        <Link
+            href={`/articles/area-guide/${slugify(city.name)}`}
+            className="group relative h-64 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all block"
+        >
+            {city.image && !imageError ? (
+                <Image
+                    src={city.image}
+                    alt={city.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    onError={() => setImageError(true)}
+                />
+            ) : (
+                <div className="flex flex-col items-center justify-center text-gray-400 dark:bg-gray-700 w-full h-full bg-gray-100">
+                    <Home size={40} strokeWidth={1.5} />
+                    <span className="text-xs mt-2">No Image</span>
+                </div>
+            )}
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                <h3 className="text-3xl font-bold mb-2">{city.name}</h3>
+                <span className="text-sm font-medium bg-white/20 backdrop-blur-md px-4 py-1 rounded-full">
+                    {city.count} Guides
+                </span>
             </div>
         </Link>
     );
@@ -118,10 +162,10 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
     }, [initialArticles]);
     const totalPages = Math.ceil(recentArticles.length / ITEMS_PER_PAGE);
 
-        const visibleRecentArticles = recentArticles.slice(
+    const visibleRecentArticles = recentArticles.slice(
         (currentPage - 1) * ITEMS_PER_PAGE,
         currentPage * ITEMS_PER_PAGE
-        );
+    );
 
     const filtered = useMemo(() => {
         const q = query.trim().toLowerCase();
@@ -183,17 +227,18 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
 
     return (
         <>
-            <div className="pt-28 md:pt-36 border-b border-gray-100">
-                <div className="container mx-auto px-4 md:px-12">
-                    <Breadcrumb />
+            <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
+                <div className="container mx-auto">
+                    <Breadcrumb
+                    />
                 </div>
             </div>
 
-            <div className="min-h-screen bg-white pb-20">
+            <div className="min-h-screen bg-white pb-20 dark:bg-neutral-900">
                 <div className="container mx-auto px-6 lg:px-8">
                     <div className="py-16 text-center">
-                        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Latest Insights</h1>
-                        <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-12">
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">Latest Insights</h1>
+                        <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-12 dark:text-neutral-400">
                             Explore expert analysis, market trends, and guides from our real estate professionals.
                         </p>
 
@@ -205,9 +250,9 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
 
                     {/* Articles Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                    {visibleRecentArticles.map((item) => (
-                     <RecentArticleRow key={item.id} item={item} />
-                    ))}
+                        {visibleRecentArticles.map((item) => (
+                            <RecentArticleRow key={item.id} item={item} />
+                        ))}
 
 
                     </div>
@@ -224,7 +269,7 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
                             <button
                                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                                 disabled={currentPage === 1}
-                                className="p-2 rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                className="p-2 rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors dark:hover:bg-gray-800 dark:text-white"
                             >
                                 <ChevronLeft size={24} className="text-gray-600" />
                             </button>
@@ -236,8 +281,8 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
                                         onClick={() => setCurrentPage(page)}
                                         className={`w-10 h-10 rounded-full flex items-center justify-center transition-all
                                             ${currentPage === page
-                                                ? "bg-gray-900 text-white font-medium"
-                                                : "hover:bg-gray-100 text-gray-600"
+                                                ? "bg-gray-900 text-white font-medium dark:bg-gray-800 dark:text-white"
+                                                : "hover:bg-gray-100 text-gray-600 dark:hover:bg-gray-800 dark:text-white"
                                             }`}
                                     >
                                         {page}
@@ -269,25 +314,7 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 {areaGuideCities.map((city) => (
-                                    <Link
-                                        key={city.name}
-                                        href={`/articles/area-guide/${slugify(city.name)}`}
-                                        className="group relative h-64 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all block"
-                                    >
-                                        <Image
-                                            src={city.image}
-                                            alt={city.name}
-                                            fill
-                                            className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                        />
-                                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors" />
-                                        <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-                                            <h3 className="text-3xl font-bold mb-2">{city.name}</h3>
-                                            <span className="text-sm font-medium bg-white/20 backdrop-blur-md px-4 py-1 rounded-full">
-                                                {city.count} Guides
-                                            </span>
-                                        </div>
-                                    </Link>
+                                    <AreaGuideCard key={city.name} city={city} />
                                 ))}
                             </div>
                         </div>

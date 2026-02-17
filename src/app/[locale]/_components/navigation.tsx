@@ -25,6 +25,7 @@ import CurrencySelector from './CurrencySelector';
 import HeaderSocial from './HeaderSocial';
 import ContactBranchSwitcherHeader from './ContactBranchSwitcherHeader';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { useTheme } from 'next-themes';
 
 
 export type Page = '/en' | '/ar' | '/ru' | '/du' | '/zh';
@@ -650,7 +651,14 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
         ? 'bg-transparent py-6 text-white transition-all duration-300'
         : 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20 text-gray-900 transition-all duration-300 dark:bg-gray-900 dark:text-white';
 
-    const mainLogo = showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
+    const { resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const mainLogo = (mounted && resolvedTheme === 'dark') || showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
     const linkColor = showWhiteTheme ? 'text-white' : 'text-gray-800 dark:text-white';
 
     return (

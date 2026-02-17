@@ -33,16 +33,16 @@ const tabs = [
 export default function SocialMediaTabs() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-useEffect(() => {
-  requestAnimationFrame(() => {
-    if (window.twttr?.widgets) {
-      window.twttr.widgets.load();
-    }
-    if (window.instgrm?.Embeds) {
-      window.instgrm.Embeds.process();
-    }
-  });
-}, [selectedIndex]);
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      if (window.twttr?.widgets) {
+        window.twttr.widgets.load();
+      }
+      if (window.instgrm?.Embeds) {
+        window.instgrm.Embeds.process();
+      }
+    });
+  }, [selectedIndex]);
 
 
   return (
@@ -57,7 +57,7 @@ useEffect(() => {
         strategy="lazyOnload"
       />
 
-      <h2 className="text-3xl font-bold mb-6">Social Media</h2>
+      <h2 className="text-3xl font-bold mb-6 dark:text-white">Social Media</h2>
 
       <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
         <Tab.List className="flex justify-center items-center gap-6 mb-6">
@@ -65,8 +65,7 @@ useEffect(() => {
             <Tab
               key={idx}
               className={({ selected }) =>
-                `w-16 h-16 rounded-full flex items-center justify-center text-xl transition-all shadow-md ${
-                  selected ? "bg-[#E35F27] text-white" : "bg-white text-[#969696]"
+                `w-16 h-16 rounded-full flex items-center justify-center text-xl transition-all shadow-md ${selected ? "bg-[#E35F27] text-white" : "bg-white text-[#969696] dark:bg-gray-800 dark:text-gray-400"
                 }`
               }
               aria-label={tab.label}
@@ -85,23 +84,23 @@ useEffect(() => {
                 "https://www.instagram.com/p/DCG8OauS3TH/",
                 "https://www.instagram.com/p/DCjWPMEyNcl/",
               ].map((url, index) => (
-<div key={index} className="p-0 m-0">
-  <div className="w-full max-w-[360px] mx-auto min-h-[500px] overflow-hidden">
-    <blockquote
-      className="instagram-media"
-      style={{
-        width: "100%",
-        maxWidth: "100%",
-        minWidth: "auto",
-        margin: "0 auto",
-      }}
-    >
-      <a title="instagram" href={url}>
-        <span style={{ display: "none" }}>instagram</span>
-      </a>
-    </blockquote>
-  </div>
-</div>
+                <div key={index} className="p-0 m-0">
+                  <div className="w-full max-w-[360px] mx-auto min-h-[500px] overflow-hidden">
+                    <blockquote
+                      className="instagram-media"
+                      style={{
+                        width: "100%",
+                        maxWidth: "100%",
+                        minWidth: "auto",
+                        margin: "0 auto",
+                      }}
+                    >
+                      <a title="instagram" href={url}>
+                        <span style={{ display: "none" }}>instagram</span>
+                      </a>
+                    </blockquote>
+                  </div>
+                </div>
               ))}
             </div>
           </Tab.Panel>
@@ -149,7 +148,7 @@ useEffect(() => {
                         className="w-full h-full"
                       ></iframe>
                     </div>
-                    <h5 className="text-base font-semibold mt-2">{video.title}</h5>
+                    <h5 className="text-base font-semibold mt-2 dark:text-white">{video.title}</h5>
                   </div>
                 </div>
               ))}

@@ -48,21 +48,24 @@ export default function ContactPage() {
   const [selectedOffice, setSelectedOffice] = useState<ContactLocation>(initialOffice);
 
   useEffect(() => {
-  const qs = typeof window !== "undefined" ? window.location.search : "";
-  if (selectedOffice.slug !== slug) {
-    router.push(`/${locale}/contact-us/${selectedOffice.slug}${qs}`, { scroll: false });
-  }
-}, [selectedOffice, slug, router, locale]);
+    const qs = typeof window !== "undefined" ? window.location.search : "";
+    if (selectedOffice.slug !== slug) {
+      router.push(`/${locale}/contact-us/${selectedOffice.slug}${qs}`, { scroll: false });
+    }
+  }, [selectedOffice, slug, router, locale]);
 
   return (
     <>
-      <div dir={isRTL ? "rtl" : "ltr"} className={isRTL ? "text-right" : ""}>
-        <div className="mx-auto pt-30">
-          <div id="contact-container" className="container mx-auto px-6 md:px-12">
-            <div className="pt-8 md:pt-8 pb-15">
-                <Breadcrumb />
+      <div dir={isRTL ? "rtl" : "ltr"} className={isRTL ? "text-right dark:bg-neutral-900" : "dark:bg-neutral-900"}>
+        <div className="mx-auto bg-white min-h-screen dark:bg-neutral-900">
+          <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
+            <div className="container mx-auto">
+              <Breadcrumb
+              />
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold text-primary mb-2 md:mb-4 leading-tight">
+          </div>
+          <div id="contact-container" className="container mx-auto px-6 md:px-12 py-10">
+            <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold text-primary mb-2 md:mb-4 leading-tight dark:text-white">
               {t("title")}
             </h1>
             <div className="w-full">
@@ -79,21 +82,21 @@ export default function ContactPage() {
                     <div
                       className={`cursor-pointer min-w-[200px] p-6 rounded-xl border transition-all group ${isRTL ? "text-right" : "text-left"
                         } ${selectedOffice.id === location.id
-                          ? "border-primary bg-white shadow-lg"
-                          : "border-gray-100 bg-gray-50 hover:bg-white hover:shadow-md"
+                          ? "border-primary bg-white shadow-lg dark:bg-gray-800 dark:border-primary"
+                          : "border-gray-100 bg-gray-50 hover:bg-white hover:shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
                         }`}
                       onClick={() => {
-  setSelectedOffice(location);
-  const qs = typeof window !== "undefined" ? window.location.search : "";
-  router.push(`/${locale}/contact-us/${location.slug}${qs}`, { scroll: false });
-}}
+                        setSelectedOffice(location);
+                        const qs = typeof window !== "undefined" ? window.location.search : "";
+                        router.push(`/${locale}/contact-us/${location.slug}${qs}`, { scroll: false });
+                      }}
                       role="button"
                       tabIndex={0}
                     >
-                      <h3 className="font-bold text-sm mb-1 text-primary font-outfit">
+                      <h3 className="font-bold text-sm mb-1 text-primary font-outfit dark:text-white">
                         {L(location.name, location.name_ar)}
                       </h3>
-                      <p className="text-xs text-gray-500 leading-tight font-outfit group-hover:text-gray-600">
+                      <p className="text-xs text-gray-500 leading-tight font-outfit group-hover:text-gray-600 dark:text-gray-400 dark:group-hover:text-gray-300">
                         {L(location.address_community, location.address_community_ar)}
                         {", "}
                         {L(location.address_city, location.address_city_ar)}
@@ -106,12 +109,12 @@ export default function ContactPage() {
             <div className="my-8 flex flex-col lg:flex-row gap-12 items-stretch">
               {/* Left */}
               <div className="order-2 lg:order-1 lg:w-5/12 space-y-6">
-                <div className="bg-white rounded-xl">
+                <div className="bg-white rounded-xl dark:bg-gray-800 p-6 shadow-sm dark:shadow-none">
                   {/* Phones */}
                   <div className="grid grid-cols-2 gap-4 mb-10">
                     <a
                       href={`tel:${selectedOffice.phone1}`}
-                      className="flex items-center justify-center gap-2 border border-primary text-primary font-bold py-3 rounded hover:bg-[#111954] hover:text-white transition-colors text-sm"
+                      className="flex items-center justify-center gap-2 border border-primary text-primary font-bold py-3 rounded hover:bg-[#111954] hover:text-white transition-colors text-sm dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-[#111954]"
                     >
                       <FontAwesomeIcon
                         icon={faPhoneAlt}
@@ -122,7 +125,7 @@ export default function ContactPage() {
                     {selectedOffice.phone2 ? (
                       <a
                         href={`tel:${selectedOffice.phone2}`}
-                        className="flex items-center justify-center gap-2 border border-primary text-primary font-bold py-3 rounded hover:bg-[#111954] hover:text-white transition-colors text-sm"
+                        className="flex items-center justify-center gap-2 border border-primary text-primary font-bold py-3 rounded hover:bg-[#111954] hover:text-white transition-colors text-sm dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-[#111954]"
                       >
                         <FontAwesomeIcon
                           icon={faPhoneAlt}
@@ -136,11 +139,11 @@ export default function ContactPage() {
                       </div>
                     )}
                   </div>
-                  <h2 className="text-2xl font-serif font-bold text-gray-900 mb-2">
+                  <h2 className="text-2xl font-serif font-bold text-gray-900 mb-2 dark:text-white">
                     {L(selectedOffice.name, selectedOffice.name_ar)}
                   </h2>
 
-                  <div className={`flex items-start gap-2 text-gray-600 ${poppins.className}`}>
+                  <div className={`flex items-start gap-2 text-gray-600 ${poppins.className} dark:text-gray-300`}>
                     <FontAwesomeIcon
                       icon={faMapMarkerAlt}
                       className="mt-1 text-[#014081] shrink-0"
@@ -166,7 +169,7 @@ export default function ContactPage() {
 
               {/* Right */}
               <div className="order-1 lg:order-2 lg:w-7/12">
-                <div className="rounded-xl overflow-hidden border border-gray-300 bg-gray-200 h-[420px] md:h-[600px] lg:h-full relative">
+                <div className="rounded-xl overflow-hidden border border-gray-300 bg-gray-200 h-[420px] md:h-[600px] lg:h-full relative dark:bg-gray-800 dark:border-gray-700">
                   <iframe
                     width="100%"
                     height="100%"
@@ -187,13 +190,13 @@ export default function ContactPage() {
 
                   {/* Map Controls */}
                   <div
-                    className={`absolute top-4 flex bg-white rounded shadow-md text-xs font-bold text-gray-700 overflow-hidden ${isRTL ? "right-4" : "left-4"
+                    className={`absolute top-4 flex bg-white rounded shadow-md text-xs font-bold text-gray-700 overflow-hidden dark:bg-gray-800 dark:text-gray-200 ${isRTL ? "right-4" : "left-4"
                       }`}
                   >
-                    <button className="px-3 py-2 hover:bg-gray-100 border-r border-gray-200">
+                    <button className="px-3 py-2 hover:bg-gray-100 border-r border-gray-200 dark:hover:bg-gray-700 dark:border-gray-700">
                       {t("map")}
                     </button>
-                    <button className="px-3 py-2 hover:bg-gray-100 text-gray-500">
+                    <button className="px-3 py-2 hover:bg-gray-100 text-gray-500 dark:hover:bg-gray-700 dark:text-gray-400">
                       {t("satellite")}
                     </button>
                   </div>
