@@ -2,7 +2,7 @@ import { Clock, ChevronLeft, User, Calendar } from "lucide-react";
 import Breadcrumb from "../../_components/Breadcrumb";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { BlogPost, BlogCategoryKey, BLOG_CATEGORY_LABELS } from "@/data/blog";
+import { BlogPost, BlogCategoryKey, BLOG_CATEGORY_LABELS, calculateReadTime } from "@/data/blog";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { getBlogPostBySlug } from "@/app/actions/getBlogPosts";
@@ -33,7 +33,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         description: post.summary,
     };
 }
-
 export default async function BlogPostPage({ params }: PageProps) {
     const { slug, locale } = await params;
 
@@ -48,6 +47,8 @@ export default async function BlogPostPage({ params }: PageProps) {
 
     const summary = post.summary || "";
     const contentHtml = (post.contentHtml || "").replace(/&nbsp;/g, ' ');
+    const blogBody1 = post.contentHtml || "";
+    const readTime = calculateReadTime(blogBody1);
 
     const jsonLd = {
         '@context': 'https://schema.org',
@@ -116,6 +117,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                                         {post.date}
                                     </span>
                                 )}
+                                
                             </div>
 
                             <h1
@@ -137,7 +139,18 @@ export default async function BlogPostPage({ params }: PageProps) {
                             </div>
                             <div>
                                 <p className="text-sm font-bold text-gray-900">{post.author || t("defaultAuthor")}</p>
+                                
                                 <p className="text-xs text-gray-500">{t("authorRole")}</p>
+                                
+                                
+                                {readTime && (
+                                <div className="flex items-center">
+                                    <Clock size={14} className={rtl ? "ml-1" : "mr-1"} />
+                                    <span className="italic text-xs text-gray-400">
+                                    {readTime} min read
+                                    </span>
+                                </div>
+                                )}
                             </div>
                         </div>
                         {/* Share buttons could go here */}

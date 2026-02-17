@@ -2,6 +2,31 @@
 
 export const newsletters = [
   {
+    title: 'Join Our Roadshow On The 14th & 15th Feb - Book Your Slot ',
+    date: '13 February 2026',
+    image: '/images/newsletter/roadshow-ohana.webp',
+    link: 'https://marketing.psinv.net/-temporary-slug-9b78a73d-e6bf-4582-8cfc-0b1ac6b893aa?hs_preview=qvCAOKnj-363638216932',
+  },
+  {
+    title: 'A New Standard Of Luxury Branded Residences ',
+    date: '12 February 2026',
+    image: '/images/newsletter/standard-of-luxury.webp',
+    link: 'https://marketing.psinv.net/-temporary-slug-d3ff5003-3afb-4d38-a72a-a15e3f5fb5f0?hs_preview=YPbwGQuG-362922399990',
+  },
+  
+  {
+    title: 'Luxury Branded Residences In Reem Island ',
+    date: '6 February 2026',
+    image: '/images/newsletter/branded-residences-in-reem-island.webp',
+    link: 'https://marketing.psinv.net/-temporary-slug-e8e36ded-eb8b-4086-b5fb-990dca1709de?hs_preview=jcZgayUr-359568176361',
+    },
+  {
+    title: 'Sirena by Palace at Emaar Beachfront',
+    date: '5 February 2026',
+    image: '/images/newsletter/Sirena.webp',
+    link: 'https://marketing.psinv.net/-temporary-slug-90c56ab7-e02c-41e8-93c4-9e9a96a86d9b?hs_preview=wSBkAdKw-358908975341',
+    },
+  {
     title: 'Experience Luxury Living at Al Raha Beach ',
     date: '23 January 2026 ',
     image: '/images/newsletter/hilton-newsltter.webp',
