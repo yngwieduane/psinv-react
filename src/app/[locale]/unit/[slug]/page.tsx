@@ -3,6 +3,7 @@ import UnitPage from "./components/UnitPage";
 import type { Metadata, ResolvingMetadata } from 'next'
 import { redirect } from 'next/navigation'
 import UnitPageAI from "./components/UnitPageAI";
+import { getTranslations } from "next-intl/server";
 
 
 type Props = {
@@ -42,17 +43,11 @@ export async function generateMetadata(
             console.error("Failed to fetch unitAssets for metadata", e);
         }
     }
-
-    // Handle case where no data is found even after fallback
     if (!posts || posts.length === 0 || !posts[0]) {
         return {
             title: 'Unit Not Found',
         }
     }
-
-    // if (!posts[0]) {
-    //     redirect('/en/units')
-    // }
 
     const propertyData = {
         bedrooms: posts[0].bedrooms,
@@ -65,13 +60,57 @@ export async function generateMetadata(
         seoStart: "",
     };
 
-    const seoData = generateSeoData(propertyData);
+const seoData = generateSeoData(propertyData);
 
-    return {
-        title: seoData.seoTitle + ' | ' + locale,
-        description: seoData.seoDescription + ' | ' + locale,
-        keywords: seoData.seoKeyword + ' | ' + locale,
-    }
+// If Arabic => translated SEO
+if (locale === "ar") {
+  const tSeo = await getTranslations({ locale, namespace: "UnitSEO" });
+
+  const typeRaw = (posts[0].category || "").toLowerCase();
+  const typeLabel =
+    typeRaw === "apartment" ? "شقة" :
+    typeRaw === "villa" ? "فيلا" :
+    typeRaw === "townhouse" ? "تاون هاوس" :
+    posts[0].category;
+
+  const adTypeLabel = category === "sale" ? "للبيع" : "للإيجار";
+  const beds = posts[0].bedrooms || "";
+
+  return {
+    title: tSeo("title", {
+      beds,
+      type: typeLabel,
+      adType: adTypeLabel,
+      community: posts[0].community,
+      emirate: posts[0].city_name,
+      refNo: posts[0].refNo
+    }),
+    description: tSeo("description", {
+      beds,
+      type: typeLabel,
+      adType: adTypeLabel,
+      community: posts[0].community,
+      emirate: posts[0].city_name,
+      refNo: posts[0].refNo
+    }),
+    keywords: tSeo("keywords", {
+      beds,
+      type: typeLabel,
+      adType: adTypeLabel,
+      community: posts[0].community,
+      emirate: posts[0].city_name,
+      refNo: posts[0].refNo
+    })
+  };
+}
+
+// Non-arabic => keep your existing SEO generator
+return {
+  title: seoData.seoTitle + " | " + locale,
+  description: seoData.seoDescription + " | " + locale,
+  keywords: seoData.seoKeyword + " | " + locale
+};
+
 }
 
 export default async function Page({ params }: Props) {

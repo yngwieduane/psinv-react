@@ -6737,6 +6737,11 @@
     "home": "Home",
     "units": "Units"
   },
+ "UnitSEO": {
+    "title": "{beds} Bedroom {type} for {adType} in {community} | Ref {refNo}",
+    "description": "Explore {beds}-bedroom {type} in {community}, {emirate}. Photos, floor plans, map, prices & details. Ref {refNo}.",
+    "keywords": "{beds} Bedroom {type}, {community}, {emirate}, photos, floor plan, map, prices, Ref {refNo}"
+  },
   "HomeSearch": {
     "Units": "Units",
     "Properties": "Properties",

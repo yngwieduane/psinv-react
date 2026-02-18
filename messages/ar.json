@@ -6207,6 +6207,11 @@
     "home": "الرئيسية",
     "units": "الوحدات"
   },
+"UnitSEO": {
+  "title": "{beds} غرف نوم {type} {adType} في {community} | رقم {refNo}",
+  "description": "شقة {beds} غرفة نوم {adType} في {community}، {emirate}. اكتشف الأسعار، المخططات، والموقع والتفاصيل الكاملة الآن. رقم {refNo}.",
+  "keywords": "{beds} غرف نوم {type}، {community}، {emirate}، عقارات، أسعار، رقم {refNo}"
+},
   "HomeSearch": {
     "Units": "الوحدات",
     "Properties": "العقارات",
