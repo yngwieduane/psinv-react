@@ -418,6 +418,13 @@
       "description": "View and manage your favorite real estate properties in the UAE. Quickly access saved properties and compare them to find your ideal home or investment with PSI."
     }
   },
+  "developers_page": {
+    "heroTitle": "Developers",
+    "metadata": {
+      "title": "Top Real Estate Developers in UAE | Property Shop Investment",
+      "description": "Explore leading real estate developers in the UAE and discover their latest residential and commercial projects with Property Shop Investment."
+    }
+  },
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, ar {🇦🇪 Arabic} en {🇺🇸 English} zh {🇨🇳 Chinese} ru {🇷🇺 Russian} de {🇩🇪 German} other {Unknown}}",
@@ -5369,6 +5376,10 @@
     }
   },
   "CryptoPage": {
+    "metadata": {
+      "title": "Buy property with CRYPTO - PSI",
+      "description": "List your property in its best light, lease it out in a whole new way, and collect rent–all online. BE with the brand you trust"
+    },
     "hero": {
       "title": {
         "part1": "Buy property with",
@@ -5771,6 +5782,10 @@
     }
   },
   "ListYourPropertyPage": {
+    "metadata": {
+      "title": "List Your Property with - PSI",
+      "description": "List your property in its best light, lease it out in a whole new way, and collect rent–all online. BE with the brand you trust"
+    },
     "nav": {
       "home": "Home",
       "about": "About",
