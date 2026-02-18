@@ -28,18 +28,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Fetch Projects
     async function getProjects() {
         try {
-            const res = await fetch("https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex=1&pageSize=500", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'apiKey': 'ONjViogekmFKvSkFhYNsgQS56WNG08EORGL9QGarF8gl5aObzzBikmJlmo2wHEQ'
-                },
-                body: JSON.stringify({ propertyName: null, cityId: null }),
-                next: { revalidate: 3600 }
-            });
-            if (!res.ok) return [];
-            const data = await res.json();
-            return Array.isArray(data) ? data : (data.result || []);
+            const propertiesRef = db.collection('properties');
+            const snapshot = await propertiesRef.get();
+            if (snapshot.empty) return [];
+
+            return snapshot.docs.map(doc => doc.data());
         } catch (e) {
             console.error("Sitemap Project Fetch Error", e);
             return [];
