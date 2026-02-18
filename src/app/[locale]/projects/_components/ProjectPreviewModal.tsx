@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, Share2, Maximize2, Tag, BedDouble, Bath, Square, MapPin, Phone, MessageCircle, Calendar, Link2, LinkIcon } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Share2, Maximize2, Tag, BedDouble, Bath, Square, MapPin, Phone, MessageCircle, Calendar, Link2, LinkIcon, House } from 'lucide-react';
 import { Link, useRouter } from '@/i18n/navigation';
 import { useFormatter } from 'next-intl';
 import slugify from 'react-slugify';
@@ -95,7 +95,7 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                 </button>
 
                 {/* LEFT: Image Gallery (60%) */}
-                <div className="md:w-5/6 h-[40vh] md:h-full relative bg-gray-100 group">
+                <div className="md:w-5/6 h-[26vh] md:h-full relative bg-gray-100 group">
                     <div className="absolute top-4 left-4 z-20 max-w-[calc(100%-2rem)] md:max-w-xs bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/20 transition-all hover:bg-white/95 dark:bg-gray-800 dark:border dark:border-gray-700 dark:hover:bg-gray-800">
                         {/* Title & Location */}
                         <div className="mb-4">
@@ -122,10 +122,10 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                                 </div>
                             )}
                             <div className="flex items-center gap-3">
-                                <div className="bg-gray-100 p-1.5 rounded-lg text-secondary dark:bg-gray-800 dark:border dark:border-gray-700"><Tag size={16} strokeWidth={1.5} /></div>
+                                <div className="bg-gray-100 p-1.5 rounded-lg text-secondary dark:bg-gray-800 dark:border dark:border-gray-700"><House size={16} strokeWidth={1.5} /></div>
                                 <div>
                                     <span className="block text-[10px] text-gray-400 font-medium uppercase leading-none mb-0.5 dark:text-white">Type</span>
-                                    <span className="block text-gray-800 font-bold text-sm leading-none dark:text-white">{project.propertyType || 'Project'}</span>
+                                    <span className="block text-gray-800 font-bold text-sm leading-none dark:text-white">{project["propertyUnitTypes"][0].unitType || 'Project'}</span>
                                 </div>
                             </div>
                             {HOdate && (
@@ -201,15 +201,13 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                 <div className="md:w-2/5 h-full bg-white flex flex-col dark:bg-gray-800 dark:border dark:border-gray-700 dark:hover:bg-gray-800">
 
                     {/* Scrollable Content */}
-                    <div className="flex-1 overflow-y-auto p-6 md:p-8 mt-10">
-
+                    <div className="flex-1 overflow-y-auto py-0 px-6 md:p-8 mt-2">
                         {/* Quick Register Form */}
                         <InquiryForm hideFeedbackButton={true} />
-
                     </div>
 
                     {/* Bottom Sticky Action Bar */}
-                    <div className="p-4 border-t border-gray-100 flex gap-3 dark:bg-gray-800 dark:border dark:border-gray-700">
+                    <div className="px-4 pt-2 pb-4 md:p-4 border-t border-gray-100 flex gap-3 dark:bg-gray-800 dark:border dark:border-gray-700">
                         <Link target='_blank' href={`https://wa.me/${wappNumber}?text=I%20am%20Interested%20in%20${marketingTitle}`} className="flex-1 bg-[#25D366] hover:bg-[#128c7e] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors shadow-sm">
                             <MessageCircle size={20} /> WhatsApp
                         </Link>

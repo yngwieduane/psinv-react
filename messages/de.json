@@ -1848,5 +1848,9 @@
     "Search": "Suchen",
     "Project": "Projekt",
     "Community": "Gemeinde"
+  },
+  "SocialMediaTabs": {
+    "title": "Soziale Medien"
   }
+
 }

@@ -5,7 +5,7 @@ import { Link } from '@/i18n/navigation';
 import slugify from 'react-slugify';
 import { useFormatter } from 'next-intl';
 import { useUser } from '@/context/userContext';
-import { Heart, MapPin, Shuffle, Share2, BedDouble, Bath, Square, Calendar, Eye, Home } from 'lucide-react';
+import { Heart, MapPin, Shuffle, Share2, BedDouble, Bath, Square, Calendar, Eye, Home, House, HandHelping } from 'lucide-react';
 import Image from 'next/image';
 import ProjectPreviewModal from './ProjectPreviewModal';
 import { useCurrency } from '@/context/currencyContext';
@@ -138,14 +138,15 @@ const PropertyListItem = (props: any) => {
 
                             {/* Key Stats Grid */}
                             <div className="flex flex-wrap gap-y-3 gap-x-6 mt-3">
-                                {props.data["propertyType"] && (
+                                {props.data["propertyUnitTypes"].length > 0 && (
                                     <div className="flex items-center gap-2 text-sm dark:text-white text-gray-600">
                                         <div className="p-1.5 bg-gray-50 rounded-md text-gray-400">
-                                            <Square size={16} />
+                                            <House size={18} />
                                         </div>
                                         <div>
-                                            <span className="block text-[10px] uppercase font-bold text-gray-400">Type</span>
-                                            <span className="font-semibold">{props.data["propertyType"]}</span>
+                                            <span className="font-semibold">
+                                                {props.data["propertyUnitTypes"][0].unitType}
+                                            </span>
                                         </div>
                                     </div>
                                 )}
@@ -153,10 +154,9 @@ const PropertyListItem = (props: any) => {
                                 {props.data["availableBedrooms"] && props.data["availableBedrooms"].length > 0 && (
                                     <div className="flex items-center gap-2 text-sm dark:text-white text-gray-600">
                                         <div className="p-1.5 bg-gray-50 rounded-md text-gray-400">
-                                            <BedDouble size={16} />
+                                            <BedDouble size={18} />
                                         </div>
                                         <div>
-                                            <span className="block text-[10px] uppercase font-bold text-gray-400">Beds</span>
                                             <span className="font-semibold">
                                                 {props.data["availableBedrooms"].map((b: any) => b.noOfBedroom).join(', ')}
                                             </span>
@@ -167,10 +167,9 @@ const PropertyListItem = (props: any) => {
                                 {HOdate && (
                                     <div className="flex items-center gap-2 text-sm dark:text-white text-gray-600">
                                         <div className="p-1.5 bg-gray-50 rounded-md text-gray-400">
-                                            <Calendar size={16} />
+                                            <HandHelping size={18} />
                                         </div>
                                         <div>
-                                            <span className="block text-[10px] uppercase font-bold text-gray-400">Handover</span>
                                             <span className="font-semibold">{HOdate}</span>
                                         </div>
                                     </div>
@@ -211,7 +210,7 @@ const PropertyListItem = (props: any) => {
                         </div>
                     </div>
 
-                    <div className="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center text-right sm:text-left">
+                    <div className="mt-4 pt-4 border-t border-gray-100 sm:flex justify-between items-center text-right sm:text-left">
                         <div className="text-primary font-bold text-lg dark:text-white">
                             {props.data["priceFrom"] !== 0 ? (
                                 <>
@@ -222,7 +221,7 @@ const PropertyListItem = (props: any) => {
                                 <span className="text-gray-500 text-sm dark:text-white">Ask for Price</span>
                             )}
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 sm:mt-0 mt-4 justify-end">
                             <button
                                 onClick={(e) => {
                                     e.stopPropagation();

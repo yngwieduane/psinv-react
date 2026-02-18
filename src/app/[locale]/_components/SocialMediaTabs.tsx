@@ -9,6 +9,7 @@ import {
   faXTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import { useTranslations } from "next-intl";
 declare global {
   interface Window {
     twttr?: {
@@ -31,6 +32,7 @@ const tabs = [
 ];
 
 export default function SocialMediaTabs() {
+  const t = useTranslations("SocialMediaTabs");
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
@@ -57,7 +59,7 @@ export default function SocialMediaTabs() {
         strategy="lazyOnload"
       />
 
-      <h2 className="text-3xl font-bold mb-6 dark:text-white">Social Media</h2>
+      <h2 className="text-3xl font-bold mb-6 dark:text-white">{t('title')}</h2>
 
       <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
         <Tab.List className="flex justify-center items-center gap-6 mb-6">
