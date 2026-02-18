@@ -12,13 +12,23 @@ const PropertyCardAI = (props: any) => {
 
     const format = useFormatter();
     let HOdate;
-
-    const propType = props.data["propertyType"] ? (<p className="text-sm">{props.data["propertyType"]}</p>) : ("");
-    const propBed = props.data["availableBedrooms"] ? (<p className="text-sm">
-        {props.data["availableBedrooms"].map((img: any) => {
-            return img['noOfBedroom'] + ',';
-        })}
-    </p>) : ("");
+    
+    const propType = props.data["propertyUnitTypes"] && props.data["propertyUnitTypes"].length > 0 ? (
+    <p className="text-[12px]">
+        {props.data["propertyUnitTypes"][0].unitType }
+    </p>
+    ) : (
+    ""
+    );
+    const propBed = props.data["availableBedrooms"] ? (
+        <p className="text-[12px]">
+            {props.data["availableBedrooms"]
+            .map((item: any) => item.noOfBedroom)
+            .join(', ')}
+        </p>
+        ) : (
+        ""
+    );
     let isReady = props.data["status"] === 'Ready';
     if (props.data["completionDate"]) {
         const dateObj = new Date(props.data["completionDate"]);
@@ -33,7 +43,7 @@ const PropertyCardAI = (props: any) => {
     const saved = isFavorite(props.data["propertyID"]);
     const compared = isCompared(props.data["propertyID"]);
 
-    const propHO = HOdate ? (<p className="text-sm">{HOdate}</p>) : ("");
+    const propHO = HOdate ? (<p className="text-[12px]">{HOdate}</p>) : ("");
     const propSize = (props.data["builtupArea_SQFT"] && props.data["builtupArea_SQFT"] !== '0') ? (<p className="text-sm">{props.data["builtupArea_SQFT"]}</p>) : ("");
     const [imgError, setImgError] = useState(false);
 
@@ -142,18 +152,18 @@ const PropertyCardAI = (props: any) => {
                             <p className="dark:text-white text-xs text-gray-400 mb-6 truncate font-medium">{props.data["masterDeveloper"]}</p>
                         )}
 
-                        <div className="mt-auto flex flex-row gap-4 border-t border-gray-100 pt-5 text-center">
-                            <div className="basis-3xs flex flex-column justify-bottom items-center">
-                                <span className="block text-[8px] dark:text-white text-gray-400 uppercase font-bold tracking-wider"><House /></span>
-                                <span className="block text-sm font-bold dark:text-white text-gray-800 mt-1">{propType}</span>
+                        <div className="mt-auto flex flex-row gap-4 border-t border-gray-100 pt-5">
+                            <div className="basis-3xs flex items-top gap-2">
+                                <span className="block text-[4px] dark:text-white text-gray-400 uppercase font-bold tracking-wider"><House size={18} /></span>
+                                <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0 leading-normal">{propType}</span>
                             </div>
-                            <div className="basis-3xs flex flex-column justify-bottom items-center">
-                                <span className="block text-[10px] dark:text-white text-gray-400 uppercase font-bold tracking-wider text-center"><BedDouble /></span>
-                                <span className="block text-sm font-bold dark:text-white text-gray-800 mt-1">{propBed}</span>
+                            <div className="basis-3xs flex items-top gap-2">
+                                <span className="block text-[4px] dark:text-white text-gray-400 uppercase font-bold tracking-wider text-center"><BedDouble size={18} /></span>
+                                <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0">{propBed}</span>
                             </div>
-                            {HOdate ? (<div className="basis-3xs flex flex-column justify-bottom items-center">
-                                <span className="block text-[10px] dark:text-white text-gray-400 uppercase font-bold tracking-wider"><HandHelping /></span>
-                                <span className="block text-sm font-bold dark:text-white text-gray-800 mt-1">{propHO}</span>
+                            {HOdate ? (<div className="basis-3xs flex items-top gap-2">
+                                <span className="block text-[10px] dark:text-white text-gray-400 uppercase font-bold tracking-wider"><HandHelping size={18} /></span>
+                                <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0">{propHO}</span>
                             </div>) : ("")}
 
                         </div>

@@ -6855,7 +6855,9 @@
       "Apartment" : "Apartment",
       "Villa" : "Villa",
       "Townhouse" : "Townhouse"
-    }
-    
+    }    
+  },
+  "SocialMediaTabs" : {
+    "title" : "Social Media"
   }
 }

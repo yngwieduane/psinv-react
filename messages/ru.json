@@ -1847,5 +1847,9 @@
     "Search": "Поиск",
     "Project": "Проект",
     "Community": "Сообщество"
+  },
+  "SocialMediaTabs": {
+    "title": "Социальные сети"
   }
+
 }

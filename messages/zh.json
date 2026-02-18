@@ -1925,5 +1925,8 @@
     "Search": "搜索",
     "Project": "项目",
     "Community": "社区"
+  },
+  "SocialMediaTabs": {
+    "title": "社交媒体"
   }
 }

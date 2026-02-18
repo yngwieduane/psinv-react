@@ -12,7 +12,7 @@ import { sendGTMEvent } from "@next/third-parties/google";
 import { TOKENS } from "@/utils/crmApiHelpers";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { UserIcon } from "./FormIcons";
+import { EmailIcon, UserIcon } from "./FormIcons";
 import { Send } from "lucide-react";
 
 
@@ -350,7 +350,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
         {/* <h2 className="text-xl font-serif font-bold text-gray-900 mb-6">{t('title')}</h2> */}
 
         <div className="grid grid-cols-1 gap-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="flex justify-between gap-3">
             <div className="relative space-y-1">
               <UserIcon />
               <input
@@ -378,6 +378,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
           </div>
 
           <div className="relative space-y-1">
+            <EmailIcon />
             <input
               type="email"
               {...register("email")}
@@ -429,7 +430,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full mb-5 bg-[#0c1445] hover:bg-[#0c1445]/90 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+          className="w-full mb-3 md:mb-5 bg-[#0c1445] hover:bg-[#0c1445]/90 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
         >
           {isSubmitting ? (
             <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -441,9 +442,9 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
           )}
         </button>
 
-        <div className="my-3">
+        <div className="my-2 md:my-3">
           <label className="flex items-center space-x-2">
-            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t_agreement('byclickingsubmit.part1')} <Link href="/terms" title="terms" className="underline">{t_agreement('byclickingsubmit.terms')}</Link> {t_agreement('byclickingsubmit.and')} <Link href="/privacy" title="privacy" className="underline">{t_agreement('byclickingsubmit.privacy')}</Link></span>
+            <span className="text-[10px] text-gray-500 space-y-2 mt-1 md:mt-4 italic">{t_agreement('byclickingsubmit.part1')} <Link href="/terms" title="terms" className="underline">{t_agreement('byclickingsubmit.terms')}</Link> {t_agreement('byclickingsubmit.and')} <Link href="/privacy" title="privacy" className="underline">{t_agreement('byclickingsubmit.privacy')}</Link></span>
           </label>
         </div>
       </form>

@@ -78,7 +78,7 @@ const HomeBanner = (props: any) => {
         onSlideChange={(swiper) => setCurrentSlide(swiper.activeIndex + 1)}
         onSwiper={(swiper: any) => (swiperElRef2.current = swiper)}
         loop={false}
-        className="home-banner-swiper h-[920px] md:h-[840px]"
+        className="home-banner-swiper h-[780px] md:h-[840px]"
       >
         {props.slides.map((slide: any, index: number) => (
           <SwiperSlide
@@ -100,10 +100,10 @@ const HomeBanner = (props: any) => {
             </div>
 
             <div className="relative container mx-auto px-6 md:px-12 h-full flex items-center">
-              <div className="max-w-4xl text-white mt-20 md:mt-0">
+              <div className="max-w-4xl text-white mt-5 md:mt-0">
                 {slide.developer_img && (
                   <div
-                    className={`mb-5 mx-0 ${slide.name === "loyalty" ? "w-[200px]" : "w-[100px]"
+                    className={`mb-5 mx-0 ${slide.name === "loyalty" ? "w-[130px]" : "w-[100px]"
                       } relative aspect-[3/2]`}
                   >
                     <Image
@@ -129,31 +129,31 @@ const HomeBanner = (props: any) => {
 
                 {index === 0 ?
                   slide.title && (
-                    <h1 className={`text-5xl md:text-8xl font-serif font-bold mb-6 leading-tight animate-[fadeIn_1.4s_ease-out] ${outfit.className}`}>
+                    <h1 className={`text-4xl md:text-8xl font-serif font-bold mb-6 leading-tight animate-[fadeIn_1.4s_ease-out] ${outfit.className}`}>
                       {slide.title}
                     </h1>
                   )
                   :
                   (
-                    <h2 className={`text-5xl md:text-8xl font-serif font-bold mb-6 leading-tight animate-[fadeIn_1.4s_ease-out] ${outfit.className}`}>
+                    <h2 className={`text-4xl md:text-8xl font-serif font-bold mb-6 leading-tight animate-[fadeIn_1.4s_ease-out] ${outfit.className}`}>
                       {slide.title}
                     </h2>
                   )
                 }
 
                 {slide.description && (
-                  <p className="text-lg md:text-xl mb-10 text-gray-100 leading-relaxed max-w-2xl font-light animate-[fadeIn_1.6s_ease-out]">
+                  <p className="text-md md:text-xl mb-10 text-gray-100 leading-normal md:leading-relaxed max-w-2xl font-light animate-[fadeIn_1.6s_ease-out]">
                     {slide.description}
                   </p>
                 )}
 
                 {slide.loyaltyTitle && (
-                  <h2 className="text-4xl md:text-6xl font-serif font-bold mb-2 leading-tight animate-[fadeIn_1.4s_ease-out]">
+                  <h2 className="text-3xl md:text-6xl font-serif font-bold mb-2 leading-tight animate-[fadeIn_1.4s_ease-out]">
                     {slide.loyaltyTitle}
                   </h2>
                 )}
                 {slide.features && (
-                  <ul className="list-disc text-white text-xl my-8 md:text-2xl ml-7 leading-normal">
+                  <ul className="list-disc text-white text-md mt-4 mb-12 md:text-2xl ml-7 leading-normal">
                     {slide.features?.map((item: any, idx: any) => (
                       <li key={idx}>{item}</li>
                     ))}
@@ -170,7 +170,7 @@ const HomeBanner = (props: any) => {
                     <div className='flex gap-4'>
                       <button aria-label="sign_up"
                         onClick={() => modalHandler(slide)}
-                        className="cursor-pointer bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
+                        className="cursor-pointer bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-3 md:py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
                         {t("sign_up_btn")}
                       </button>
                       {slide.project_url !== '' && (
@@ -179,7 +179,7 @@ const HomeBanner = (props: any) => {
                             slide.project_url.startsWith(`/${locale}/`)
                               ? slide.project_url
                               : `/${locale}${slide.project_url}`
-                          } className="flex items-center bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
+                          } className="flex items-center bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-3 md:py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
                           <span>{t("more_btn")}</span>
                           <div className="ml-1 transition group-hover:translate-x-1">
                             {isRTL && (
