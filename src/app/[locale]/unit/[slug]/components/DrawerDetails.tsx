@@ -9,10 +9,12 @@ import SwiperNormal from '@/app/[locale]/_components/SwiperNormal';
 import RequestViewing from '@/app/[locale]/_components/RequestViewing';
 import TablePaymentPlans from './TablePaymentPlans';
 import InquiryForm from '@/app/[locale]/_components/InquiryForm';
+import { useTranslations } from "next-intl";
 
 export default function DrawerDetails(props: any) {
   const [open, setOpen] = useState(props.open);
   let content, coordinates, images, details, video, title;
+  const t = useTranslations("DrawerDetails");
 
   const onCloseModal = (event: any) => {
     props.onClose(false);
@@ -21,47 +23,47 @@ export default function DrawerDetails(props: any) {
   switch (props.drawerTitle) {
     case 'details':
       details = props.drawerContent ?? "";
-      title = "Details";
+      title = t("details");
       content = <TableDetails data={details} />
       break;
     case 'video':
       video = props.drawerContent ?? "";
-      title = "Video";
+      title = t("video");
       content = <iframe src={video} allowFullScreen />;
       break;
     case 'map':
       coordinates = props.drawerContent.split(",") ?? "";
-      title = "Map";
+      title = t("map");
       content = <MapComponent latitude={coordinates['1']} longitude={coordinates['0']} fallbackImage="" height="100%" />;
       break;
     case 'gallery':
       images = props.drawerContent ?? "";
-      title = "Gallery";
+      title =  t("gallery");
       content = <SwiperNormal slides={images.slice(0, -1)} width="400" height="300" />
       break;
     case 'requestview':
       details = props.drawerContent ?? "";
-      title = "Request a Viewing";
+      title = t("requestview");
       content = <RequestViewing data={details} />
       break;
     case 'filterunitsearch':
       details = props.drawerContent ?? "";
-      title = "filterunitsearch";
+      title = t("filterunitsearch");
       content = <RequestViewing data={details} />
       break;
     case 'paymentplan':
       details = props.drawerContent ?? "";
-      title = "paymentplan";
+      title = t("paymentplan");
       content = <TablePaymentPlans data={details} />
       break;
     case 'inquire':
       content = <InquiryForm hideFeedbackButton={true} branchCode={props.branchCode} />
-      title = "Inquire Now";
+      title = t("inquire_now");
       break;
 
     default:
       details = props.drawerContent ?? "";
-      title = "Details";
+      title = t("details");
       content = <TableDetails data={details} />
       break;
   }
@@ -90,7 +92,7 @@ export default function DrawerDetails(props: any) {
                           className="relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
                         >
                           <span className="absolute -inset-2.5" />
-                          <span className="sr-only">Close panel</span>
+                          <span className="sr-only">{t("close_panel")}</span>
                           <XMarkIcon aria-hidden="true" className="size-6" />
                         </button>
                       </div>

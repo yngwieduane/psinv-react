@@ -5,12 +5,14 @@ import UnitBox from "@/app/[locale]/units/_components/UnitBox";
 import { useState, useEffect } from "react";
 import { PaymentPlansResponse } from "@/types/types";
 import DrawerDetails from "@/app/[locale]/unit/[slug]/components/DrawerDetails";
+import { useTranslations } from "next-intl";
 
 const PaymentPlans = ({
     propid
   }: {
     propid: number;
   }) => {
+    const t = useTranslations("PaymentPlans");
     const [query, setQuery] = useState("");
     const [results, setResults] = useState<PaymentPlansResponse | null>(null);
     const [loading, setLoading] = useState(0);
@@ -24,7 +26,6 @@ const PaymentPlans = ({
         setDwDataTitle(content);
         setShowDrawer(true);
     }
-  
     useEffect(() => {
         const fetchPlans = async () => {
         try {
@@ -61,18 +62,18 @@ const PaymentPlans = ({
                     return (
                         <div key={plan.propertyPaymentPlanId} className="overflow-hidden rounded-lg bg-gray-50">
                             <div className="px-4 py-5 sm:p-6">
-                                <h2 className="font-semibold mb-4">Payment Plan {index+1}</h2>
+                                <h2 className="font-semibold mb-4"> {t("title", { index: index + 1 })}</h2>
                                 <div className="grid grid-cols-2 gap-4 flex-wrap items-center">
                                     {DP && (
                                         <div className="grid gap-x-2 gap-y-0 items-center ">
                                             <p className="text-xl">{ DP?.amountPercentage * 100 } %</p>
-                                            <p className="text-sm">Downpayment</p>
+                                            <p className="text-sm">{t("downpayment")}</p>
                                         </div>
                                     )}
                                     {HO && (
                                         <div className="grid gap-x-2 gap-y-0 items-center ">
                                             <p className="text-xl">{ HO?.amountPercentage * 100 } %</p>
-                                            <p className="text-sm">Handover</p>
+                                            <p className="text-sm">{t("handover")}</p>
                                         </div>
                                     )}
                                 </div>
@@ -82,7 +83,7 @@ const PaymentPlans = ({
                                         onClick={drawerHandler('paymentplan', plan)}
                                         name="details"
                                         className="rounded-sm bg-[#0c1445] border px-2 py-1 text-xs font-semibold text-white shadow-xs hover:bg-white hover:border-[#0c1445] hover:text-[#0c1445] cursor-pointer"
-                                    >View full</button>
+                                    >{t("view_full")}</button>
                                 </div>
                             </div>
                         </div>
