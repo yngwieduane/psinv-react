@@ -28,18 +28,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Fetch Projects
     async function getProjects() {
         try {
-            const res = await fetch("https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex=1&pageSize=500", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'apiKey': 'ONjViogekmFKvSkFhYNsgQS56WNG08EORGL9QGarF8gl5aObzzBikmJlmo2wHEQ'
-                },
-                body: JSON.stringify({ propertyName: null, cityId: null }),
-                next: { revalidate: 3600 }
-            });
-            if (!res.ok) return [];
-            const data = await res.json();
-            return Array.isArray(data) ? data : (data.result || []);
+            const propertiesRef = db.collection('properties');
+            const snapshot = await propertiesRef.get();
+            if (snapshot.empty) return [];
+
+            return snapshot.docs.map(doc => doc.data());
         } catch (e) {
             console.error("Sitemap Project Fetch Error", e);
             return [];
@@ -48,30 +41,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Fetch Units
     async function getUnits() {
-        const fetchType = async (type: 'Sale' | 'Rent') => {
-            const url = type === 'Sale'
-                ? 'https://integration.psi-crm.com/ExternalApis/GetSaleListing'
-                : 'https://integration.psi-crm.com/ExternalApis/GetRentListing';
+        try {
+            const unitsRef = db.collection('units');
+            const snapshot = await unitsRef.get();
+            if (snapshot.empty) return [];
 
-            try {
-                const res = await fetch(url, {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'apiKey': 'ONjViogekmFKvSkFhYNsgQS56WNG08EORGL9QGarF8gl5aObzzBikmJlmo2wHEQ'
-                    },
-                    body: JSON.stringify({}),
-                    next: { revalidate: 3600 }
-                });
-                if (!res.ok) return [];
-                return await res.json();
-            } catch (e) {
-                console.error(`Sitemap Unit (${type}) Fetch Error`, e);
-                return [];
-            }
+            return snapshot.docs.map(doc => doc.data());
+        } catch (e) {
+            console.error("Sitemap Unit Fetch Error", e);
+            return [];
         }
-        const [sales, rents] = await Promise.all([fetchType('Sale'), fetchType('Rent')]);
-        return [...(Array.isArray(sales) ? sales : []), ...(Array.isArray(rents) ? rents : [])];
     }
 
     // Fetch Articles
@@ -186,7 +165,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // 3. Units
     units.forEach((u: any) => {
-        const adType = (u.isRent || u.rent) ? 'Rent' : 'Sale';
+        const adType = u._sourceCategory || ((u.isRent || u.rent) ? 'Rent' : 'Sale');
         const propType = u.category || "";
         const name = u.propertyname || "";
         const community = u.community || "";

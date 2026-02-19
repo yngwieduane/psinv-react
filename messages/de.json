@@ -509,6 +509,13 @@
       "description": "Bekijk en beheer uw favoriete vastgoed in de VAE. Toegang tot opgeslagen woningen en vergelijk ze snel om uw ideale huis of investering te vinden met PSI."
     }
   },
+  "developers_page": {
+    "heroTitle": "Projectontwikkelaars",
+    "metadata": {
+      "title": "Top vastgoedontwikkelaars in de VAE | Property Shop Investment",
+      "description": "Ontdek toonaangevende vastgoedontwikkelaars in de VAE en bekijk hun nieuwste residentiële en commerciële projecten met Property Shop Investment."
+    }
+  },
   "LocaleSwitcher": {
     "label": "Sprache ändern",
     "locale": "{locale, select, ar {🇦🇪 Arabisch} en {🇺🇸 Englisch} zh {🇨🇳 Chinesisch} ru {🇷🇺 Russisch} de {🇩🇪 Deutsch} other {Unbekannt}}",
@@ -992,6 +999,10 @@
     }
   },
   "CryptoPage": {
+    "metadata": {
+      "title": "Koop vastgoed met CRYPTO - PSI",
+      "description": "Koop vastgoed met cryptovaluta in het nieuwe land van kansen — zoals Bitcoin, Ethereum en Litecoin — bij een makelaarskantoor in Abu Dhabi, VAE."
+    },    
     "hero": {
       "title": {
         "part1": "Buy property with",
@@ -1394,6 +1405,10 @@
     }
   },
   "ListYourPropertyPage": {
+    "metadata": {
+      "title": "Plaats uw woning bij - PSI",
+      "description": "Presenteer uw woning op zijn best, verhuur deze op een geheel nieuwe manier en ontvang huurbetalingen volledig online. Kies voor het merk dat u vertrouwt."
+    },    
     "nav": {
       "home": "Startseite",
       "about": "Über uns",

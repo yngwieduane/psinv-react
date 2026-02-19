@@ -509,6 +509,13 @@
       "description": "查看并管理您在阿联酋收藏的房产。快速访问已保存的房产并进行对比，找到理想的住宅或投资房产，与 PSI 一起实现轻松选择。"
     }
   },
+  "developers_page": {
+    "heroTitle": "房地产开发商",
+    "metadata": {
+      "title": "阿联酋顶级房地产开发商 | Property Shop Investment",
+      "description": "探索阿联酋领先的房地产开发商，并通过 Property Shop Investment 了解其最新的住宅和商业项目。"
+    }
+  },
   "LocaleSwitcher": {
     "label": "切换语言",
     "locale": "{locale, select, ar {🇦🇪 阿拉伯语} en {🇺🇸 英语} zh {🇨🇳 中文} ru {🇷🇺 俄语} de {🇩🇪 德语} other {未知}}",
@@ -1005,6 +1012,10 @@
     }
   },
   "CryptoPage": {
+    "metadata": {
+      "title": "使用加密货币购买房产 - PSI",
+      "description": "在充满新机遇的土地上使用加密货币购买房产——例如比特币、以太坊和莱特币——阿联酋阿布扎比的房地产公司。"
+    },    
     "hero": {
       "title": {
         "part1": "使用",
@@ -1471,6 +1482,10 @@
     }
   },
   "ListYourPropertyPage": {
+    "metadata": {
+      "title": "通过 PSI 发布您的房产",
+      "description": "以最佳方式展示您的房产，以全新的方式出租，并在线收取租金。选择您信赖的品牌。"
+    },    
     "nav": {
       "home": "主页",
       "about": "关于我们",
