@@ -33,7 +33,7 @@ export default async function ProjectsPage({
     const subcommunityname = unslugify(subcommunity);
     return (
         <div className="bg-white dark:bg-neutral-900 min-h-screen pb-0 mx-5 md:mx-0">
-            <div className="pt-51 lg:pt-45 lg:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
+            <div className="pt-51 md:pt-45 lg:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
                 <div className="container mx-auto">
                     <Breadcrumb
                     />
