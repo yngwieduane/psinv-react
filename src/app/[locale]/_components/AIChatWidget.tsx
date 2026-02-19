@@ -18,7 +18,6 @@ const schema = z.object({
     email: z.string().email({ message: "Invalid email address" }),
     phone: z.string().min(7, { message: "Invalid phone number" }),
     message: z.string().optional(),
-    agreement1: z.boolean().refine((val) => val, { message: "You must agree to this" }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -236,7 +235,7 @@ const AIChatWidget = () => {
                                     </button>
                                     {/* Consent text like screenshot */}
                                     <div>
-                                        <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t('byclickingsubmit.part1')} 
+                                        <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t('byclickingsubmit.part1')}
                                             <Link href="/terms" title="terms" className="underline">{t('byclickingsubmit.terms')}</Link> {t('byclickingsubmit.and')} <Link href="/privacy" title="privacy" className="underline">{t('byclickingsubmit.privacy')}</Link>
                                         </span>
                                     </div>
