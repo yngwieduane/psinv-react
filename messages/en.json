@@ -6757,6 +6757,37 @@
     "description": "Explore {beds}-bedroom {type} in {community}, {emirate}. Photos, floor plans, map, prices & details. Ref {refNo}.",
     "keywords": "{beds} Bedroom {type}, {community}, {emirate}, photos, floor plan, map, prices, Ref {refNo}"
   },
+    "PaymentPlans": {
+  "title": "Payment Plan {index}",
+  "downpayment": "Down Payment",
+  "handover": "Handover",
+  "view_full": "View Full"
+},
+"PaymentPlansTable": {
+  "plan_name": "Plan Name",
+  "plan_type_name": "Plan Type Name",
+  "status": "Status",
+  "downpayment": "Down Payment",
+  "handover": "Handover",
+  "installment_line": "{pct}% (every {date} {freq})"
+},
+"DrawerDetails": {
+  "details": "Details",
+  "video": "Video",
+  "map": "Map",
+  "gallery": "Gallery",
+  "requestview": "Request a Viewing",
+  "filterunitsearch": "Filter Unit Search",
+  "paymentplan": "Payment Plan",
+  "inquire_now": "Inquire Now",
+  "close_panel": "Close panel"
+},
+"PaymentPlanValues": {
+  "construction_linked_plan": "Construction Linked Plan",
+  "inactive": "Inactive",
+  "active": "Active",
+  "completion": "Completion"
+},
   "HomeSearch": {
     "Units": "Units",
     "Properties": "Properties",

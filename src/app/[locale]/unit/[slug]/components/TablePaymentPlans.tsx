@@ -1,8 +1,18 @@
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
+import { useTranslations } from "next-intl";
 
 
 const TablePaymentPlans = (props: any) => {
+    const t = useTranslations("PaymentPlansTable");
+    const tv = useTranslations("PaymentPlanValues");
 
+    const valueKey = (val: unknown) =>
+    String(val ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
     const dataplans = props?.data;
 
     const DP = dataplans.propertyPlanInstallments.find((item: { installmentTypeId: number; }) => item.installmentTypeId == 20681);
@@ -19,7 +29,7 @@ const TablePaymentPlans = (props: any) => {
                     <tbody className="divide-y divide-gray-200 bg-white dark:divide-white dark:bg-gray-800">
                         <tr className="even:bg-gray-50 dark:even:bg-gray-700">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90 dark:text-white">
-                                Plan Name
+                                {t("plan_name")}
                             </td>
                             <td className="px-2 py-2 text-sm whitespace-nowrap text-gray-500 dark:text-white">
                                 {dataplans.paymentPlanName}
@@ -27,24 +37,32 @@ const TablePaymentPlans = (props: any) => {
                         </tr>
                         <tr className="even:bg-gray-50 dark:even:bg-gray-700">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90 dark:text-white">
-                                Plan Type Name
+                                {t("plan_type_name")}
                             </td>
                             <td className="px-2 py-2 text-sm whitespace-nowrap text-gray-500 dark:text-white">
-                                {dataplans.planTypeName}
+                            {(() => {
+                            const raw = dataplans.planTypeName;
+                            const key = valueKey(raw);
+                            return tv.has(key) ? tv(key) : raw;
+                            })()}
                             </td>
                         </tr>
                         <tr className="even:bg-gray-50 dark:even:bg-gray-700">
                             <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90 dark:text-white">
-                                Status
+                               {t("status")}
                             </td>
                             <td className="px-2 py-2 text-sm whitespace-nowrap text-gray-500 dark:text-white">
-                                {dataplans.statusName}
+                                {(() => {
+                                const raw = dataplans.statusName;
+                                const key = valueKey(raw);
+                                return tv.has(key) ? tv(key) : raw;
+                                })()}
                             </td>
                         </tr>
                         {DP ? (
                             <tr className="even:bg-gray-50 dark:even:bg-gray-700">
                                 <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90 dark:text-white">
-                                    Downpayment
+                                   {t("downpayment")}
                                 </td>
                                 <td className="px-2 py-2 text-sm whitespace-nowrap text-gray-500 dark:text-white">
                                     {DP?.amountPercentage * 100} %
@@ -58,7 +76,16 @@ const TablePaymentPlans = (props: any) => {
                                         {index + 1}
                                     </td>
                                     <td className="px-2 py-2 text-sm whitespace-nowrap text-gray-500 dark:text-white">
-                                        {installment?.amountPercentage * 100}% (every {installment?.instalmentDate} {installment?.frequencyName})
+                                    {t("installment_line", {
+                                    pct: Number(installment?.amountPercentage ?? 0) * 100,
+                                    date: String(installment?.instalmentDate ?? ""),
+                                    freq: (() => {
+                                        const raw = String(installment?.frequencyName ?? "");
+                                        const key = valueKey(raw);
+                                        return tv.has(key) ? tv(key) : raw;
+                                    })()
+                                    })}
+
                                     </td>
                                 </tr>
                             )
@@ -67,7 +94,7 @@ const TablePaymentPlans = (props: any) => {
                         {HO ? (
                             <tr className="even:bg-gray-50 dark:even:bg-gray-700">
                                 <td className="px-2 py-2 text-sm font-medium whitespace-nowrap text-gray-90 dark:text-white">
-                                    Handover
+                                   {t("handover")}
                                 </td>
                                 <td className="px-2 py-2 text-sm whitespace-nowrap text-gray-500 dark:text-white">
                                     {HO?.amountPercentage * 100} %

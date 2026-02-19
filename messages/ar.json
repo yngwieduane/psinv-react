@@ -6227,6 +6227,37 @@
   "description": "شقة {beds} غرفة نوم {adType} في {community}، {emirate}. اكتشف الأسعار، المخططات، والموقع والتفاصيل الكاملة الآن. رقم {refNo}.",
   "keywords": "{beds} غرف نوم {type}، {community}، {emirate}، عقارات، أسعار، رقم {refNo}"
 },
+"PaymentPlans": {
+  "title": "خطة الدفع {index}",
+  "downpayment": "الدفعة الأولى",
+  "handover": "عند التسليم",
+  "view_full": "عرض كامل"
+},
+"PaymentPlansTable": {
+  "plan_name": "اسم الخطة",
+  "plan_type_name": "نوع الخطة",
+  "status": "الحالة",
+  "downpayment": "الدفعة الأولى",
+  "handover": "عند التسليم",
+  "installment_line": "{pct}% (كل {date} {freq})"
+},
+ "DrawerDetails": {
+    "details": "التفاصيل",
+    "video": "فيديو",
+    "map": "الخريطة",
+    "gallery": "المعرض",
+    "requestview": "طلب مشاهدة",
+    "filterunitsearch": "بحث الوحدات",
+    "paymentplan": "خطة الدفع",
+    "inquire_now": "استفسر الآن",
+    "close_panel": "إغلاق اللوحة"
+  },
+"PaymentPlanValues": {
+  "construction_linked_plan": "خطة مرتبطة بالإنشاء",
+  "inactive": "غير نشط",
+  "active": "نشط",
+  "completion": "الإنجاز"
+},
   "HomeSearch": {
     "Units": "الوحدات",
     "Properties": "العقارات",
