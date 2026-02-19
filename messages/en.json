@@ -6757,6 +6757,12 @@
     "description": "Explore {beds}-bedroom {type} in {community}, {emirate}. Photos, floor plans, map, prices & details. Ref {refNo}.",
     "keywords": "{beds} Bedroom {type}, {community}, {emirate}, photos, floor plan, map, prices, Ref {refNo}"
   },
+  "PaymentPlans": {
+  "title": "Payment Plan {index}",
+  "downpayment": "Down Payment",
+  "handover": "Handover",
+  "view_full": "View Full"
+},
   "HomeSearch": {
     "Units": "Units",
     "Properties": "Properties",

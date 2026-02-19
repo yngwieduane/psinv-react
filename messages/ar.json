@@ -6227,6 +6227,12 @@
   "description": "شقة {beds} غرفة نوم {adType} في {community}، {emirate}. اكتشف الأسعار، المخططات، والموقع والتفاصيل الكاملة الآن. رقم {refNo}.",
   "keywords": "{beds} غرف نوم {type}، {community}، {emirate}، عقارات، أسعار، رقم {refNo}"
 },
+"PaymentPlans": {
+  "title": "خطة الدفع {index}",
+  "downpayment": "الدفعة الأولى",
+  "handover": "عند التسليم",
+  "view_full": "عرض كامل"
+},
   "HomeSearch": {
     "Units": "الوحدات",
     "Properties": "العقارات",
