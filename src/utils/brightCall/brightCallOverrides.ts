@@ -143,6 +143,14 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
         en: "d0f51e1ad999a6c07038ca641ef06171",
         ar: "7be46c141d116cfd62dcf1bc9233e1fc",
     },
+    "landlord-registration": {
+        en: "59cdfb8e4589ce39096d36ef759a0ecc",
+        ar: "66862adecc89e6aae567f8c620d95098",
+    },
+    "hubspot-portal-inquirers-registration": {
+        en: "6180020bed7bc62adedd3d2f100694da",
+        ar: "5a54c466c6586bd6ae9d95d7c6b9230c",
+    },
 };
 
 /**
