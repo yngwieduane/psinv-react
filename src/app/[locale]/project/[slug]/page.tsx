@@ -86,7 +86,7 @@ export default async function Page({ params, searchParams }: PageProps) {
   const h1Text = seo?.title ? seo.title.replace(/\s*\|\s*.*$/, "") : humanizeSlug(slug);
 
   return (
-    <div>
+    <div className="md:mt-45">
       <h1 className="sr-only">
         {locale === "ar" ? `سجّل اهتمامك بـ ${h1Text}` : `Register your interest for ${h1Text}`}
       </h1>
