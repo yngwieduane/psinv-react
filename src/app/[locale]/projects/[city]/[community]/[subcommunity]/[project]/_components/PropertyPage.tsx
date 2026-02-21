@@ -37,7 +37,7 @@ function PropertyPage(props: any) {
     const format = useFormatter();
     const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared, addToRecentlyViewed } = useUser();
     const { convertPrice } = useCurrency();
-    let HOdate, launchDate, completionDate, minprice, maxPrice, areaRangeMin, areaRangeMax;
+    let HOdate, launchDate, minprice, maxPrice, areaRangeMin, areaRangeMax;
 
     useEffect(() => {
         if (props.data) {
@@ -165,12 +165,22 @@ function PropertyPage(props: any) {
     } else {
         launchDate = false;
     }
-    if (props.data["completionDate"]) {
-        completionDate = new Date(props.data["completionDate"]);
-        completionDate = format.dateTime(completionDate, { year: 'numeric', month: 'short' });
+    let completionDate: string | false = false;
+    const rawCompletion = props.data["completionDate"];
+
+    if (rawCompletion && rawCompletion !== "false") {
+        // If it's an ISO string like "2028-06-30T12:11:00Z"
+        const parsedDate = new Date(rawCompletion);
+        if (!isNaN(parsedDate.getTime())) {
+            completionDate = parsedDate.toLocaleString("en-US", { month: "short", year: "numeric" });
+        }
     } else {
         completionDate = false;
     }
+
+console.log("Processed Completion Date:", completionDate);
+
+
 
     if (props.data["minPrice"] !== null && parseInt(props.data["minPrice"]) > 1) {
         minprice = convertPrice(props.data["minPrice"]).formatted;
@@ -437,7 +447,13 @@ function PropertyPage(props: any) {
                                             {props.data['propertyType'] ? (<TableRow title={t('property_type')} content={props.data['propertyType']} />) : ("")}
                                             {props.data['propertyPlan'] ? (<TableRow title={t('property_plan')} content={props.data['propertyPlan']} />) : ("")}
                                             {props.data['propertyUsage'] ? (<TableRow title={t('property_usage')} content={props.data['propertyUsage']} />) : ("")}
-                                            {completionDate ? (<TableRow title={t('completion_date')} content={completionDate} />) : ("")}
+                                            {completionDate && (
+    <TableRow
+        title={t('completion_date')}
+        content={completionDate}
+    />
+)}
+
                                             {HOdate ? (<TableRow title={t('handover_date')} content={HOdate} />) : ("")}
                                             {launchDate ? (<TableRow title={t('launch_date')} content={launchDate} />) : ("")}
                                             {props.data['zoneType'] ? (<TableRow title={t('property_types')} content={props.data['zoneType']} />) : ("")}
