@@ -67,9 +67,9 @@ const MainFooterAI: React.FC<FooterProps> = ({ onNavigate }) => {
   }));
 
   return (
-    <footer className="bg-primary text-white pt-24 pb-12 border-t border-white/5" dir={isRtl ? "rtl" : "ltr"} >
+    <footer className="bg-primary text-white pt-24 pb-28 md:pb-12 border-t border-white/5" dir={isRtl ? "rtl" : "ltr"} >
       <div className="container mx-auto px-6 md:px-12" dir={isRtl ? "rtl" : "ltr"}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-20" dir={isRtl ? "rtl" : "ltr"}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-10 md:mb-20" dir={isRtl ? "rtl" : "ltr"}>
 
           {/* Brand Column */}
           <div className="lg:col-span-1">

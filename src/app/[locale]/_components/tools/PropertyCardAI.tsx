@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useUser } from '@/context/userContext';
 import { Heart, MapPin, Shuffle, Share2, BedSingle, BedSingleIcon, LucideBedSingle, BedDouble, HandCoins, HandCoinsIcon, House, HouseIcon, Building, Key, HandHelping } from 'lucide-react';
 import { FaHandHolding, FaHandHoldingUsd, FaHandPaper } from 'react-icons/fa';
+import ProjectsThumbsImagesSwiper from "../../projects/_components/ProjectsThumbsImagesSwiper";
 
 const PropertyCardAI = (props: any) => {
 
@@ -126,7 +127,12 @@ const PropertyCardAI = (props: any) => {
             <Link title={props.data["propertyName"]} href={url} className="h-full">
                 <div className={`dark:bg-gray-800 dark:border-gray-700 bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col h-full transform hover:-translate-y-1 relative`}>
                     {/* Image Box */}
-                    <div className="relative h-64 bg-gray-200 overflow-hidden">
+                    {/* Mobile view of image thumb swiper */}
+                    <div className="block md:hidden h-full w-full">
+                        <ProjectsThumbsImagesSwiper featuredImage={imgFeatured} generalImages={props.data["generalImages"]} url={url} propertyName={props.data["propertyName"]} propertyPlan={props.data["propertyPlan"]} />
+                    </div>
+                     {/* Desktop thumb image */}
+                    <div className="relative h-64 bg-gray-200 overflow-hidden hidden md:block">
                         {hasImage ? (
                             <img
                                 src={imgFeatured}

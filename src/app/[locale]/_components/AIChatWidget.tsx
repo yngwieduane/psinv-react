@@ -105,7 +105,7 @@ const AIChatWidget = () => {
     };
 
     return (
-        <div className="fixed bottom-17 right-6 z-[9999] flex flex-col items-end pointer-events-none">
+        <div className="fixed bottom-10 md:bottom-17 right-2 md:right-6 z-[99999] flex flex-col items-end pointer-events-none">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
