@@ -21,6 +21,7 @@ import CompareFloatingButtonClient from "./_components/CompareFloatingButtonClie
 import AuthModal from "./_components/AuthModal";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
+import StickyBottomWidgetClient from "./_components/StickyBottomWidgetClient";
 
 type Props = {
   children: React.ReactNode;
@@ -212,6 +213,7 @@ export default async function LocaleLayout({
                 <ConditionalFooter />
                 <CompareFloatingButtonClient />
                 <AIChatWidgetClient />
+                <StickyBottomWidgetClient />
               </ThemeProvider>
             </NextIntlClientProvider>
           </CurrencyProvider>

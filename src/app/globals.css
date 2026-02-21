@@ -424,6 +424,8 @@ body {
 .stickyact .proptypes {
   display: none;
 }
+.footerWidgetLinkChild:active .footerWidgetLinkParent { background-color: #014081;  }
+.footerWidgetLinkChild:active  { color: #fff;  }
 
 
 /* Custom underline heartbeat animation */
