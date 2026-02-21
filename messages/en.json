@@ -1472,7 +1472,8 @@
       "email": "Email address",
       "phone": "Phone number",
       "message": "Your message"
-    }},
+    },
+  
     "buttons": {
       "submit": "Submit",
       "submitting": "Submitting..."
