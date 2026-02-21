@@ -9,6 +9,7 @@ import { Heart, MapPin, Shuffle, Share2, BedDouble, Bath, Square, Calendar, Eye,
 import Image from 'next/image';
 import ProjectPreviewModal from './ProjectPreviewModal';
 import { useCurrency } from '@/context/currencyContext';
+import ProjectsThumbsImagesSwiper from './ProjectsThumbsImagesSwiper';
 
 const PropertyListView = ({ data }: { data: any[] }) => {
     return (
@@ -95,7 +96,13 @@ const PropertyListItem = (props: any) => {
             <div className="flex flex-col md:flex-row h-full md:h-64">
                 {/* Image Section - Left Side */}
                 <div className="relative w-full md:w-80 h-64 md:h-full flex-shrink-0">
-                    <Link href={url} className="block w-full h-full">
+                    {/* Mobile view swiper Thumb */}
+                    <Link href={url} className="block md:hidden h-full w-full">
+                        <ProjectsThumbsImagesSwiper featuredImage={imgFeatured} generalImages={props.data["generalImages"]} url={url} propertyName={props.data["propertyName"]} propertyPlan={props.data["propertyPlan"]} />
+                    </Link>
+
+                    {/* Desktop view Thumb */}
+                    <Link href={url} className="hidden md:block w-full h-full">
                         {hasImage ? (
                             <Image
                                 src={imgFeatured}

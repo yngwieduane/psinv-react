@@ -1594,6 +1594,60 @@ seo: {
       }),
     },
   },
+  'landlord-registration': {
+    branch: 'auh',
+    seo: {
+      en: {
+        title: "Landlord Registration | List Your Property with PSI",
+        description:
+          "Register as a landlord with Property Shop Investment to list your property, attract verified tenants, and enjoy hassle-free property management in Abu Dhabi.",
+        keywords:
+          "landlord registration, list property Abu Dhabi, property management Abu Dhabi, landlords in UAE, PSI property listing",
+      },
+      ar: {
+        title: "تسجيل الملاك | أدرج عقارك مع PSI – خبراء العقارات في أبوظبي",
+        description: "سجّل كمالك عقار لدى شركة بروبرتي شوب إنفستمنت لإدراج عقارك، وجذب المستأجرين الموثوقين، والاستمتاع بإدارة عقارية خالية من المتاعب في أبوظبي.",
+        keywords: "تسجيل الملاك، إدراج عقار أبوظبي، إدارة العقارات أبوظبي، الملاك في الإمارات، إدراج عقارات PSI"
+      },
+    },
+    override: {      
+      remarks: 'Landlord Registration',
+      ...makeUtm({
+        'elsayed_landlord_news': {
+          campaign: 3528,
+          remarks:
+            'Rotation:  landlord newsletter - Resale',
+        },
+      }),
+    },
+  },
+  'hubspot-portal-inquirers-registration': {
+    branch: 'auh',
+    seo: {
+      en: {
+        title: "HubSpot Portal Inquirers Registration | PSI",
+        description:
+          "Register and access the HubSpot inquirers portal by Property Shop Investment. Track, manage, and convert your real estate inquiries efficiently in Abu Dhabi.",
+        keywords:
+          "HubSpot portal registration, HubSpot inquirers registration, real estate leads management, HubSpot real estate integration, property inquiries UAE",
+      },
+      ar: {
+        title: "تسجيل مستخدمي بوابة HubSpot | شركة PSI",
+        description: "سجّل وادخل إلى بوابة استفسارات HubSpot التابعة لشركة بروبرتي شوب إنفستمنت. تتبّع وأدر واستفد من استفساراتك العقارية بكفاءة في أبوظبي.",
+        keywords: "تسجيل بوابة HubSpot، تسجيل مستخدمي HubSpot، إدارة العملاء العقاريين، تكامل HubSpot للعقارات، استفسارات العقارات في الإمارات"
+      },
+    },
+    override: {      
+      remarks: 'Hubspot - Portal inquirers',
+      ...makeUtm({
+        'elsayed_portal_inquirers_news': {
+          campaign: 3529,
+          remarks:
+            'Rotation:  landlord newsletter - Resale',
+        },
+      }),
+    },
+  },
 } satisfies Record<string, PerSlug>;
 
 console.log('[projectOverrides] loaded slugs:', Object.keys(PROJECTS));

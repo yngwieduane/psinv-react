@@ -95,7 +95,7 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                 </button>
 
                 {/* LEFT: Image Gallery (60%) */}
-                <div className="md:w-5/6 h-[28vh] md:h-full relative bg-gray-100 group">
+                <div className="md:w-5/6 h-[35vh] md:h-full relative bg-gray-100 group">
                     <div className="absolute top-4 left-4 z-20 max-w-[calc(100%-2rem)] md:max-w-xs bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/20 transition-all hover:bg-white/95 dark:bg-gray-800 dark:border dark:border-gray-700 dark:hover:bg-gray-800">
                         {/* Title & Location */}
                         <div className="mb-4">
@@ -201,7 +201,7 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                 <div className="md:w-2/5 h-full flex flex-col bg-white dark:bg-gray-800 dark:border dark:border-gray-700">
 
                     {/* Scrollable Content */}
-                    <div className="flex-1 overflow-y-auto px-6 py-4 md:p-8">
+                    <div className="flex-1 overflow-y-auto px-6 py-4 md:p-8 custom-scrollbar pb-[250px] md:pb-0">
                         {/* Quick Register Form */}
                         <InquiryForm hideFeedbackButton={true} />
                     </div>

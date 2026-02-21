@@ -75,14 +75,14 @@ export default function RegistrationHeroImage({
       aria-label={`${activeSlug} hero image`}
     >
 <div className="mx-auto w-full px-4 sm:px-6 lg:max-w-6xl">
-<div className="relative overflow-hidden rounded-2xl shadow-md bg-black
-                h-[160px] sm:h-[320px] md:h-[610px]">
+<div className="relative overflow-hidden rounded-2xl shadow-md bg-black">
   <Image
     src={imageSrc}
     alt={imageAlt}
     title={imageTitle}
-    fill
-    className="object-cover object-center sm:object-cover sm:object-right md:object-top"
+    width={1200}
+    height={800}
+    className="w-full h-auto object-cover object-center sm:object-right md:object-top rounded-2xl"
     priority
     unoptimized
     onError={handleError}
