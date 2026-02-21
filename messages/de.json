@@ -516,6 +516,22 @@
       "description": "Ontdek toonaangevende vastgoedontwikkelaars in de VAE en bekijk hun nieuwste residentiële en commerciële projecten met Property Shop Investment."
     }
   },
+  "ContactPage": {
+    "title": "Kontaktieren Sie uns",
+    "inquire": "Anfrage",
+    "map": "Karte",
+    "satellite": "Satellit",
+    "phoneNA": "—"
+  },
+  "ContactInquiryForm": {
+    "placeholders": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail-Adresse",
+      "phone": "Telefonnummer",
+      "message": "Ihre Nachricht"
+    }
+  },
   "LocaleSwitcher": {
     "label": "Sprache ändern",
     "locale": "{locale, select, ar {🇦🇪 Arabisch} en {🇺🇸 Englisch} zh {🇨🇳 Chinesisch} ru {🇷🇺 Russisch} de {🇩🇪 Deutsch} other {Unbekannt}}",
