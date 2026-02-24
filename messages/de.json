@@ -516,6 +516,26 @@
       "description": "Ontdek toonaangevende vastgoedontwikkelaars in de VAE en bekijk hun nieuwste residentiële en commerciële projecten met Property Shop Investment."
     }
   },
+  "BlogPage": {
+    "metadata": {
+      "title": "UAE Immobilien Blog | Immobiliennachrichten, Markttrends & Investmenteinblicke",
+      "description": "Bleiben Sie über die neuesten Nachrichten zum Immobilienmarkt in den VAE, Markttrends, Investmenteinblicke, Community-Guides und Expertentipps für Käufer und Investoren informiert."
+    },
+    "title": "مدونتنا",
+    "searchPlaceholder": "ابحث في المقالات...",
+    "recentPosts": "أحدث المقالات",
+    "readMore": "اقرأ المزيد",
+    "categories": {
+      "market_insights": "رؤى السوق",
+      "company_news": "أخبار الشركة",
+      "lifestyle": "أسلوب الحياة"
+    },
+    "subtitle": "اكتشف أحدث الرؤى والأخبار والاتجاهات من سوق العقارات في الإمارات.",
+    "noPostsFound": "لم يتم العثور على مقالات تطابق معايير البحث.",
+    "previous": "السابق",
+    "next": "التالي",
+    "page": "صفحة"
+  },
   "ContactPage": {
     "title": "Kontaktieren Sie uns",
     "inquire": "Anfrage",
