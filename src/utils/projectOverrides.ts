@@ -20,24 +20,53 @@ export type PerSlug = {
   seo?: SeoMeta | LocalizedSeo;
 };
 export const PROJECTS: Record<string, PerSlug> = {
-   'jumeirah-residences': {
+  'modon-suhoor': {
     branch: 'auh',
     seo: {
-    en: {
-      title: 'Jumeirah Residences Al Maryah Island | Luxury Branded Living in Abu Dhabi',
-      description:
-        'Register your interest for Jumeirah Residences at Al Maryah Island. Discover ultra-luxury branded residences with world-class amenities and iconic Jumeirah living in Abu Dhabi.',
-      keywords:
-        'Jumeirah Residences Al Maryah Island, luxury branded residences Abu Dhabi, Al Maryah Island apartments, Jumeirah branded residences UAE',
+      en: {
+        title: 'RSL Modon Private Suhoor | Exclusive Ramadan Event at Modon Sales Center',
+        description:
+          'Join RSL Modon for an exclusive Private Suhoor at Modon Sales Center. Experience a refined Ramadan evening from 9:00 PM to 2:00 AM with premium hospitality and a luxurious ambiance.',
+        keywords:
+          'RSL Modon Private Suhoor, Modon Sales Center event, Ramadan suhoor Abu Dhabi, exclusive suhoor UAE, Modon Ramadan event',
+      },
+      ar: {
+        title: 'سحور خاص من RSL مودون | فعالية رمضانية حصرية في مركز مبيعات مودون',
+        description:
+          'انضم إلى RSL مودون في سحور خاص وحصري في مركز مبيعات مودون. استمتع بأمسية رمضانية راقية من الساعة 9:00 مساءً حتى 2:00 صباحًا بأجواء فاخرة وضيافة مميزة.',
+        keywords:
+          'سحور خاص RSL مودون، فعالية مركز مبيعات مودون، سحور رمضان أبوظبي، سحور حصري الإمارات، فعالية رمضان مودون',
+      },
     },
-    ar: {
-      title: 'جميرا ريزيدنسز جزيرة المارية | أسلوب حياة فاخر بعلامة جميرا في أبوظبي',
-      description:
-        'سجّل اهتمامك في جميرا ريزيدنسز جزيرة المارية. استكشف مساكن فاخرة بعلامة جميرا مع مرافق عالمية وأسلوب حياة راقٍ في أبوظبي.',
-      keywords:
-        'جميرا ريزيدنسز جزيرة المارية، مساكن فاخرة في أبوظبي، شقق جزيرة المارية، مساكن جميرا الفاخرة',
+    override: {
+      remarks: 'Modon Suhoor registration',
+      ...makeUtm({
+        'zaineh_modon_suhoor_news': {
+          campaign: 3535,
+          remarks:
+            'Rotation:  Modon Suhoor Event - Company , Campaign name: Zaineh:Modon Suhoor News',
+        },
+      }),
     },
   },
+  'jumeirah-residences': {
+    branch: 'auh',
+    seo: {
+      en: {
+        title: 'Jumeirah Residences Al Maryah Island | Luxury Branded Living in Abu Dhabi',
+        description:
+          'Register your interest for Jumeirah Residences at Al Maryah Island. Discover ultra-luxury branded residences with world-class amenities and iconic Jumeirah living in Abu Dhabi.',
+        keywords:
+          'Jumeirah Residences Al Maryah Island, luxury branded residences Abu Dhabi, Al Maryah Island apartments, Jumeirah branded residences UAE',
+      },
+      ar: {
+        title: 'جميرا ريزيدنسز جزيرة المارية | أسلوب حياة فاخر بعلامة جميرا في أبوظبي',
+        description:
+          'سجّل اهتمامك في جميرا ريزيدنسز جزيرة المارية. استكشف مساكن فاخرة بعلامة جميرا مع مرافق عالمية وأسلوب حياة راقٍ في أبوظبي.',
+        keywords:
+          'جميرا ريزيدنسز جزيرة المارية، مساكن فاخرة في أبوظبي، شقق جزيرة المارية، مساكن جميرا الفاخرة',
+      },
+    },
     override: {
       PropertyID: 25590,
       remarks: 'Jumeirah Residences - company campaign',
@@ -50,24 +79,24 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
-      'rotana-registration': {
+  'rotana-registration': {
     branch: 'auh',
-seo: {
-  en: {
-    title: 'Rotana Residences Reem Island | Branded Waterfront Living in Abu Dhabi',
-    description:
-      'Register your interest for Rotana Residences on Reem Island. Explore premium waterfront homes with modern amenities and a vibrant lifestyle in one of Abu Dhabi’s most sought-after communities.',
-    keywords:
-      'Rotana Residences Reem Island, Reem Island Abu Dhabi, branded residences Abu Dhabi, waterfront apartments Abu Dhabi, luxury living Reem Island, Abu Dhabi real estate',
-  },
-  ar: {
-    title: 'روتانا ريزيدنسز جزيرة الريم | أسلوب حياة فاخر على الواجهة البحرية في أبوظبي',
-    description:
-      'سجّل اهتمامك في روتانا ريزيدنسز بجزيرة الريم. اكتشف وحدات سكنية مميزة على الواجهة البحرية مع مرافق عصرية ونمط حياة نابض في واحدة من أبرز مناطق أبوظبي.',
-    keywords:
-      'روتانا ريزيدنسز جزيرة الريم، جزيرة الريم أبوظبي، مساكن بعلامة روتانا، شقق على الواجهة البحرية أبوظبي، سكن فاخر جزيرة الريم، عقارات أبوظبي',
-  },
-},
+    seo: {
+      en: {
+        title: 'Rotana Residences Reem Island | Branded Waterfront Living in Abu Dhabi',
+        description:
+          'Register your interest for Rotana Residences on Reem Island. Explore premium waterfront homes with modern amenities and a vibrant lifestyle in one of Abu Dhabi’s most sought-after communities.',
+        keywords:
+          'Rotana Residences Reem Island, Reem Island Abu Dhabi, branded residences Abu Dhabi, waterfront apartments Abu Dhabi, luxury living Reem Island, Abu Dhabi real estate',
+      },
+      ar: {
+        title: 'روتانا ريزيدنسز جزيرة الريم | أسلوب حياة فاخر على الواجهة البحرية في أبوظبي',
+        description:
+          'سجّل اهتمامك في روتانا ريزيدنسز بجزيرة الريم. اكتشف وحدات سكنية مميزة على الواجهة البحرية مع مرافق عصرية ونمط حياة نابض في واحدة من أبرز مناطق أبوظبي.',
+        keywords:
+          'روتانا ريزيدنسز جزيرة الريم، جزيرة الريم أبوظبي، مساكن بعلامة روتانا، شقق على الواجهة البحرية أبوظبي، سكن فاخر جزيرة الريم، عقارات أبوظبي',
+      },
+    },
     override: {
       PropertyID: 25588,
       CommunityID: 95259,
@@ -81,24 +110,24 @@ seo: {
       }),
     },
   },
-    'hilton-residences-raha-beach-registration': {
+  'hilton-residences-raha-beach-registration': {
     branch: 'auh',
-      seo: {
-    en: {
-      title: 'Hilton Residences Al Raha Beach | Luxury Waterfront Living in Abu Dhabi',
-      description:
-        'Register your interest for Hilton Residences at Al Raha Beach. Discover premium waterfront apartments with world-class amenities and iconic Hilton living in Abu Dhabi.',
-      keywords:
-        'Hilton Residences Al Raha Beach, Al Raha Beach apartments, luxury waterfront residences Abu Dhabi, Hilton branded residences UAE',
+    seo: {
+      en: {
+        title: 'Hilton Residences Al Raha Beach | Luxury Waterfront Living in Abu Dhabi',
+        description:
+          'Register your interest for Hilton Residences at Al Raha Beach. Discover premium waterfront apartments with world-class amenities and iconic Hilton living in Abu Dhabi.',
+        keywords:
+          'Hilton Residences Al Raha Beach, Al Raha Beach apartments, luxury waterfront residences Abu Dhabi, Hilton branded residences UAE',
+      },
+      ar: {
+        title: 'هيلتون ريزيدنسز شاطئ الراحة | أسلوب حياة فاخر على الواجهة البحرية في أبوظبي',
+        description:
+          'سجّل اهتمامك في هيلتون ريزيدنسز شاطئ الراحة. استمتع بشقق فاخرة على الواجهة البحرية مع خدمات عالمية وأسلوب حياة يحمل علامة هيلتون في أبوظبي.',
+        keywords:
+          'هيلتون ريزيدنسز شاطئ الراحة، شقق شاطئ الراحة، عقارات فاخرة في أبوظبي، مساكن هيلتون الفاخرة',
+      },
     },
-    ar: {
-      title: 'هيلتون ريزيدنسز شاطئ الراحة | أسلوب حياة فاخر على الواجهة البحرية في أبوظبي',
-      description:
-        'سجّل اهتمامك في هيلتون ريزيدنسز شاطئ الراحة. استمتع بشقق فاخرة على الواجهة البحرية مع خدمات عالمية وأسلوب حياة يحمل علامة هيلتون في أبوظبي.',
-      keywords:
-        'هيلتون ريزيدنسز شاطئ الراحة، شقق شاطئ الراحة، عقارات فاخرة في أبوظبي، مساكن هيلتون الفاخرة',
-    },
-  },
     override: {
       PropertyID: 25586,
       remarks: 'Al raha beach (Hilton Residences) - company campaign',
@@ -112,23 +141,23 @@ seo: {
     },
   },
   'share-address': {
-  branch: 'auh',
-  seo: {
-    en: {
-      title: 'Share Address | Register Your Interest – PSI',
-      description: 'Select a property and submit your details. Our team will contact you shortly.',
-      keywords: 'PSI registration, select property, UAE real estate, PSI Abu Dhabi',
+    branch: 'auh',
+    seo: {
+      en: {
+        title: 'Share Address | Register Your Interest – PSI',
+        description: 'Select a property and submit your details. Our team will contact you shortly.',
+        keywords: 'PSI registration, select property, UAE real estate, PSI Abu Dhabi',
+      },
+      ar: {
+        title: 'شارك العنوان | سجّل اهتمامك – PSI',
+        description: 'اختر العقار وأرسل بياناتك. سيتواصل معك فريقنا قريبًا.',
+        keywords: 'تسجيل PSI، اختيار العقار، عقارات الإمارات، PSI أبوظبي',
+      },
     },
-    ar: {
-      title: 'شارك العنوان | سجّل اهتمامك – PSI',
-      description: 'اختر العقار وأرسل بياناتك. سيتواصل معك فريقنا قريبًا.',
-      keywords: 'تسجيل PSI، اختيار العقار، عقارات الإمارات، PSI أبوظبي',
-    },
-  },
-  override: {
-    UnitType: 20,
-    remarks: 'Share Address Registration',
-          ...makeUtm({
+    override: {
+      UnitType: 20,
+      remarks: 'Share Address Registration',
+      ...makeUtm({
         'DripCampaign': {
           campaign: 2134,
           remarks:
@@ -145,37 +174,37 @@ seo: {
             'Rotation: Drip Campaign – HubSpot V2',
         },
       }),
-    form: {
-      extraFields: [
-        {
-          id: 'propertyId',
-          type: 'select',
-          label: 'Select Property',
-          required: true,
-          options: [{ value: '', label: 'Loading...' }],
-        },
-      ],
+      form: {
+        extraFields: [
+          {
+            id: 'propertyId',
+            type: 'select',
+            label: 'Select Property',
+            required: true,
+            options: [{ value: '', label: 'Loading...' }],
+          },
+        ],
+      },
     },
   },
-},
   'the-market-insight': {
     branch: 'auh',
-  seo: {
-    en: {
-      title: 'Dubai Real Estate Market Insights | Monthly Property Report by PSI',
-      description:
-        'Explore PSI’s Dubai Market Insights Monthly Report. Get the latest data on property prices, trends, demand, and investment opportunities across Dubai’s real estate market.',
-      keywords:
-        'Dubai real estate market insights, Dubai property market report, monthly real estate report Dubai, Dubai property trends, real estate investment Dubai, PSI market insights',
+    seo: {
+      en: {
+        title: 'Dubai Real Estate Market Insights | Monthly Property Report by PSI',
+        description:
+          'Explore PSI’s Dubai Market Insights Monthly Report. Get the latest data on property prices, trends, demand, and investment opportunities across Dubai’s real estate market.',
+        keywords:
+          'Dubai real estate market insights, Dubai property market report, monthly real estate report Dubai, Dubai property trends, real estate investment Dubai, PSI market insights',
+      },
+      ar: {
+        title: 'رؤى سوق العقارات في دبي | التقرير العقاري الشهري من PSI',
+        description:
+          'اطّلع على تقرير PSI الشهري لرؤى سوق العقارات في دبي. تعرّف على أحدث اتجاهات الأسعار والطلب وفرص الاستثمار في سوق دبي العقاري.',
+        keywords:
+          'رؤى سوق العقارات دبي, تقرير سوق العقارات دبي, التقرير العقاري الشهري دبي, اتجاهات العقارات في دبي, الاستثمار العقاري دبي, رؤى PSI العقارية',
+      },
     },
-    ar: {
-      title: 'رؤى سوق العقارات في دبي | التقرير العقاري الشهري من PSI',
-      description:
-        'اطّلع على تقرير PSI الشهري لرؤى سوق العقارات في دبي. تعرّف على أحدث اتجاهات الأسعار والطلب وفرص الاستثمار في سوق دبي العقاري.',
-      keywords:
-        'رؤى سوق العقارات دبي, تقرير سوق العقارات دبي, التقرير العقاري الشهري دبي, اتجاهات العقارات في دبي, الاستثمار العقاري دبي, رؤى PSI العقارية',
-    },
-  },
     override: {
       UnitType: 20,
       remarks: 'Market Insights Monthly Report Dubai - General campaign',
@@ -827,7 +856,7 @@ seo: {
       SubCommunityID: 83452,
       remarks: 'Muheira Maysan',
       ...makeUtm({
-         'metwally_muheira_newsletter_jan_2026': {
+        'metwally_muheira_newsletter_jan_2026': {
           campaign: 3465,
           remarks:
             'Rotation: Muheira Residences - company campaign , Campaign name: Metwally: Muheira - Newsletter - Jan 2026',
@@ -1610,7 +1639,7 @@ seo: {
         keywords: "تسجيل الملاك، إدراج عقار أبوظبي، إدارة العقارات أبوظبي، الملاك في الإمارات، إدراج عقارات PSI"
       },
     },
-    override: {      
+    override: {
       remarks: 'Landlord Registration',
       ...makeUtm({
         'elsayed_landlord_news': {
@@ -1637,7 +1666,7 @@ seo: {
         keywords: "تسجيل بوابة HubSpot، تسجيل مستخدمي HubSpot، إدارة العملاء العقاريين، تكامل HubSpot للعقارات، استفسارات العقارات في الإمارات"
       },
     },
-    override: {      
+    override: {
       remarks: 'Hubspot - Portal inquirers',
       ...makeUtm({
         'elsayed_portal_inquirers_news': {
