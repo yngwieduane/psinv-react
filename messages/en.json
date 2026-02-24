@@ -6332,6 +6332,10 @@
     }
   },
   "BlogPage": {
+    "metadata": {
+      "title": "UAE Real Estate Blog | Property News, Market Trends & Investment Insights",
+      "description": "Stay updated with the latest UAE real estate news, property market trends, investment insights, community guides, and expert tips for buyers and investors."
+    },
     "title": "Our Blog",
     "searchPlaceholder": "Search blog posts...",
     "recentPosts": "Recent Posts",
