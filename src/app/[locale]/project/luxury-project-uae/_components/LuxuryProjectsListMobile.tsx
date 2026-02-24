@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faTag } from "@fortawesome/free-solid-svg-icons";
 import { Montserrat } from "next/font/google";
 import { useCurrency } from "@/context/currencyContext";
+import { useTranslations } from 'next-intl';
 
 const montserratLighter = Montserrat({
   subsets: ['latin'],
@@ -33,6 +34,7 @@ interface TabProps {
 }
 
 const LuxuryProjectsListMobile = ({ tabs, onAction, loadingStatus }: TabProps) => {
+  const t = useTranslations('LuxuryProjectUAE.LuxuryProjects');
   const { convertPrice } = useCurrency();
   const [activeTab, setActiveTab] = useState(0);
 
@@ -49,7 +51,7 @@ const LuxuryProjectsListMobile = ({ tabs, onAction, loadingStatus }: TabProps) =
     <>
       <div className="min-h-[500px] pt-3 pb-7">
         {loadingStatus ? (
-          <p className="text-center text-white text-xl mt-5">Loading projects...</p>
+          <p className="text-center text-white text-xl mt-5">{t('loading')}</p>
         )
           : (
             tabs.length > 0 ? (
@@ -60,8 +62,8 @@ const LuxuryProjectsListMobile = ({ tabs, onAction, loadingStatus }: TabProps) =
                       key={index}
                       onClick={() => setActiveTab(index)}
                       className={`mb-4 text-nowrap text-[18px] font-light w-max text-center px-4 py-3 transition-all duration-200 text-[#fff] border-2   ${activeTab === index
-                          ? "border-[#F5DABC] font-semibold"
-                          : "border-[#FFFFFF1A] hover:text-[#111954]"
+                        ? "border-[#F5DABC] font-semibold"
+                        : "border-[#FFFFFF1A] hover:text-[#111954]"
                         }`}
                     >
                       {tab.propertyName}
@@ -120,12 +122,12 @@ const LuxuryProjectsListMobile = ({ tabs, onAction, loadingStatus }: TabProps) =
                               <div className="w-full space-y-3 pt-5">
                                 <button className="cursor-pointer btn text-white text-center bg-[#C19A5B] rounded-[5px] py-0 h-[40px] w-full"
                                   onClick={() => handleBtnClick({ id: tab.propertyID, name: tab.propertyName, type: tab.propertyType })}>
-                                  Sign Up
+                                  {t('signUp')}
                                 </button>
                                 {tab.projectBrochures?.[0].imageURL ? (
                                   <button className="cursor-pointer btn text-white text-center border border-2 border-[#C19A5B] bg-transparent rounded-[5px] py-0 h-[40px] w-full"
                                     onClick={() => handleBtnClick({ id: tab.propertyID, name: tab.propertyName, type: tab.propertyType })}>
-                                    Download Brochure
+                                    {t('downloadBrochure')}
                                   </button>
                                 )
                                   :
@@ -144,7 +146,7 @@ const LuxuryProjectsListMobile = ({ tabs, onAction, loadingStatus }: TabProps) =
             )
               :
               (
-                <p className="text-center text-white text-xl">No Projects to Show</p>
+                <p className="text-center text-white text-xl">{t('noProjects')}</p>
               )
           )
         }

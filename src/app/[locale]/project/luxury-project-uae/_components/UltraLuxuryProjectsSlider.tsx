@@ -13,6 +13,7 @@ import 'swiper/css/navigation';
 import "./UltraLuxuryProjectsSlider.css"
 
 import { LuxuryProjectsData } from "@/types/LuxuryProjectsTypes";
+import { useTranslations } from "next-intl";
 
 const libreBaskervilleBold = Libre_Baskerville({
   subsets: ['latin'],
@@ -41,6 +42,7 @@ interface SliderProps {
 const UltraLuxuryProjectsSlider = ({ data, slides, onAction }: SliderProps) => {
   const [activeThumb, setActiveThumb] = useState(0);
   const [pageURL, setPageUrl] = useState("");
+  const t = useTranslations("LuxuryProjectUAE.UltraLuxuryProjects.Slider");
 
   const handleBtnClick = (dataToSend: { name: string, proj_location: string, starting_price: string }) => {
     const luxuryProjectsData: LuxuryProjectsData = {
@@ -144,7 +146,7 @@ const UltraLuxuryProjectsSlider = ({ data, slides, onAction }: SliderProps) => {
                       <div className="absolute md:top-5 md:bottom-auto bottom-2 md:left-5 left-1/2 md:translate-none -translate-x-1/2 md:bg-[#00000030] md:p-5 p-2 text-center md:w-auto w-full">
                         {slide.starting_price && (
                           <>
-                            <h3 className="md:text-lg text-lg">Starting Price</h3>
+                            <h3 className="md:text-lg text-lg">{t("Starting Price")}</h3>
                             <p className="text-3xl mt-2 flex gap-2 items-baseline justify-center">
                               <FontAwesomeIcon icon={faTag} color="#fff" className="rotate-90 text-lg" />
                               {slide.starting_price} <span className="text-lg">AED </span>
@@ -206,12 +208,12 @@ const UltraLuxuryProjectsSlider = ({ data, slides, onAction }: SliderProps) => {
                               <div className="md:flex justify-stretch md:justify-start gap-3 pt-8 space-y-4 md:mb-5 mb-15">
                                 <button className="cursor-pointer btn text-white  hover:text-black text-center bg-[#C19A5B] rounded-[5px] py-0 h-[40px] px-5 md:w-auto w-full"
                                   onClick={() => handleBtnClick({ name: slide.proj_name, proj_location: slide.proj_location, starting_price: slide.starting_price })}>
-                                  Book Your Villa Now
+                                  {t("Book Your Villa Now")}
                                 </button>
                                 {slide.brochure ? (
                                   <button className="cursor-pointer btn text-center border border-2 border-[#C19A5B] text-[#C19A5B] hover:text-black bg-transparent rounded-[5px] py-0 h-[40px] px-5  md:w-auto w-full"
                                     onClick={() => handleDownloadBrochure(slide)} >
-                                    Download Brochure
+                                    {t("Download Brochure")}
                                   </button>
                                 )
                                   :

@@ -1,10 +1,11 @@
+import { getTranslations } from 'next-intl/server';
 import { headers } from "next/headers";
 import type { Metadata } from "next";
 import "../globals.css";
 import { Providers } from "./providers";
 import { GoogleTagManager } from '@next/third-parties/google'
 
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider, useTranslations } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
@@ -31,6 +32,13 @@ type Props = {
 // ✅ Dynamic metadata generator
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+
+  const t = await getTranslations({ locale, namespace: 'metaData' });
+
+  console.log("Current Locale:", locale);
+  console.log("Title Found:", t('title'));
+  console.log("Raw Title Key:", t.raw('title'));
+
   const headersList = await headers();
   const pathname = headersList.get("x-pathname") ?? "";
   // Remove duplicate slashes and ensure trailing slash for home page
@@ -64,8 +72,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   languageAlternates["x-default"] = siteBaseUrl;
 
   return {
-    title: "⚡ Abu Dhabi Real Estate  - Property Shop Investment",
-    description: "⚡ Abu Dhabi Real Estate  - PSI - Check out our stunning real estate projects - Property Shop Investments - Real Estate Projects - Buy or Rent",
+    title: t('title'),
+    description: t('description'),
     authors: [
       {
         name: 'Property Shop Investment (PSI)'
@@ -78,8 +86,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       languages: languageAlternates,
     },
     openGraph: {
-      title: "⚡ Abu Dhabi Real Estate - Property Shop Investment",
-      description: "⚡ Abu Dhabi Real Estate - PSI - Check out our stunning real estate projects - Property Shop Investments - Real Estate Projects - Buy or Rent",
+      title: t('title'),
+      description: t('description'),
       url: `${siteBaseUrl}/${currentLocale}`,
       siteName: "Property Shop Investment",
       locale: currentLocale,

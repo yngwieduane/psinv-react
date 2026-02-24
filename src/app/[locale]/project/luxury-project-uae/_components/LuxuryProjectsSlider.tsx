@@ -14,6 +14,7 @@ import { UnitListing } from "@/types/types";
 import LoadingIcon from "./LoadingIcon";
 import LuxuryProjectsListMobile from "./LuxuryProjectsListMobile";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { useTranslations } from 'next-intl';
 
 import { LuxuryProjectsData } from "@/types/LuxuryProjectsTypes";
 import { useCurrency } from "@/context/currencyContext";
@@ -44,6 +45,7 @@ interface SliderProps {
 }
 
 const LuxuryProjectsSlider = ({ data, slides, onAction, loadingStatus }: SliderProps) => {
+  const t = useTranslations('LuxuryProjectUAE.LuxuryProjects');
   const { convertPrice } = useCurrency();
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const [activeThumb, setActiveThumb] = useState(0);
@@ -113,7 +115,7 @@ const LuxuryProjectsSlider = ({ data, slides, onAction, loadingStatus }: SliderP
       {/* DESKTOP view */}
       <div className="md:min-h-[500px] pt-3 pb-7 md:block hidden">
         {loadingStatus ? (
-          <p className="text-center text-white text-xl mt-5">Loading projects...</p>
+          <p className="text-center text-white text-xl mt-5">{t('loading')}</p>
 
         )
           : (
@@ -181,12 +183,12 @@ const LuxuryProjectsSlider = ({ data, slides, onAction, loadingStatus }: SliderP
                                     <div className="flex justify-stretch md:justify-start gap-3 pt-5">
                                       <button className="cursor-pointer btn text-white text-center bg-[#C19A5B] rounded-[5px] py-0 h-[40px] w-[30%]"
                                         onClick={() => handleBtnClick({ id: slide.propertyID, name: slide.propertyName, type: slide.propertyType })}>
-                                        Sign Up
+                                        {t('signUp')}
                                       </button>
                                       {slide.projectBrochures?.[0].imageURL ? (
                                         <button className="cursor-pointer btn text-white text-center border border-2 border-[#C19A5B] bg-transparent rounded-[5px] py-0 h-[40px] w-[55%]"
                                           onClick={() => handleDownloadBrochure(slide)} >
-                                          Download Brochure
+                                          {t('downloadBrochure')}
                                         </button>
                                       )
                                         :
@@ -245,7 +247,7 @@ const LuxuryProjectsSlider = ({ data, slides, onAction, loadingStatus }: SliderP
                     </div>
                   </div>
                   <div className="w-[40%] py-5">
-                    <h3 className="text-2xl">Available Units</h3>
+                    <h3 className="text-2xl">{t('availableUnits')}</h3>
 
                     {isUnitsLoading ?
                       <LoadingIcon />
@@ -261,9 +263,9 @@ const LuxuryProjectsSlider = ({ data, slides, onAction, loadingStatus }: SliderP
                                     className="w-[70px] h-[70px] object-cover" />
                                   <div>
                                     {(typeof unit.bedrooms === "object" || unit.bedrooms === "0") ? (
-                                      <p>Studio</p>
+                                      <p>{t('studio')}</p>
                                     ) : (
-                                      <p>{unit.bedrooms} Bedrooms</p>
+                                      <p>{unit.bedrooms} {t('bedrooms')}</p>
                                     )}
 
                                     <div className="flex gap-2 mt-1">
@@ -295,7 +297,7 @@ const LuxuryProjectsSlider = ({ data, slides, onAction, loadingStatus }: SliderP
                       )
                         :
                         (
-                          <p className="text-gray-400">No units available</p>
+                          <p className="text-gray-400">{t('noUnits')}</p>
                         )
                     }
                   </div>
@@ -304,7 +306,7 @@ const LuxuryProjectsSlider = ({ data, slides, onAction, loadingStatus }: SliderP
             )
               :
               (
-                <p className="text-center text-white text-xl">No Projects to Show</p>
+                <p className="text-center text-white text-xl">{t('noProjects')}</p>
               )
           )
         }

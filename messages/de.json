@@ -1,4 +1,8 @@
 {
+  "metaData": {
+    "title": "⚡ Abu Dhabi Immobilien - Property Shop Investment",
+    "description": "⚡ Abu Dhabi Immobilien - PSI - Entdecken Sie unsere beeindruckenden Immobilienprojekte - Property Shop Investments - Immobilienprojekte - Kaufen oder Mieten"
+  },
   "HomePageBanner": {
     "sign_up_btn": "Anmelden",
     "more_btn": "Mehr entdecken",
@@ -902,7 +906,6 @@
       "Villa": "Villa",
       "Townhouse": "Reihenhaus"
     }
-
   },
   "ProjectPage": {
     "overview": "Überblick",
@@ -1018,7 +1021,7 @@
     "metadata": {
       "title": "Koop vastgoed met CRYPTO - PSI",
       "description": "Koop vastgoed met cryptovaluta in het nieuwe land van kansen — zoals Bitcoin, Ethereum en Litecoin — bij een makelaarskantoor in Abu Dhabi, VAE."
-    },    
+    },
     "hero": {
       "title": {
         "part1": "Buy property with",
@@ -1424,7 +1427,7 @@
     "metadata": {
       "title": "Plaats uw woning bij - PSI",
       "description": "Presenteer uw woning op zijn best, verhuur deze op een geheel nieuwe manier en ontvang huurbetalingen volledig online. Kies voor het merk dat u vertrouwt."
-    },    
+    },
     "nav": {
       "home": "Startseite",
       "about": "Über uns",
@@ -1882,6 +1885,278 @@
   },
   "SocialMediaTabs": {
     "title": "Soziale Medien"
+  },
+  "LuxuryProjects": [
+    {
+      "id": "luxury-project-uae",
+      "name": "Luxury Projects UAE",
+      "slug": "luxury-project-uae"
+    }
+  ],
+  "LuxuryProjectUAE": {
+    "Hero": {
+      "nav": {
+        "home": "Home",
+        "luxuryProjects": "Luxury Projects",
+        "ultraLuxuryProjects": "Ultra Luxury Projects",
+        "entertainment": "Entertainments",
+        "futureResidence": "Future Residence",
+        "vipTour": "VIP Tour",
+        "freeConsultation": "Free Consultation"
+      },
+      "title": "Discover",
+      "luxury": "Luxury",
+      "lifestyle": "Lifestyle"
+    },
+    "Opportunities": {
+      "superTitle": "Opportunities Await!",
+      "rare": "Rare",
+      "subtitle": "investment real estate opportunities available",
+      "description": "Enjoy privileged access to exclusive properties in prime destinations that are available only for the most discerning clientele.\nOur experienced specialists will ensure that each personalised experience is bespoke, seamlessly uniting sellers with ideal buyers.",
+      "callBack": "Call back",
+      "findOnWhatsapp": "Find us on WhatsApp",
+      "whatsapp": "WhatsApp"
+    },
+    "LuxuryProjects": {
+      "explore": "Explore Elegance",
+      "title": "Discover Our",
+      "luxury": "Luxury",
+      "projects": "Projects",
+      "loading": "Loading projects...",
+      "noProjects": "No Projects to Show",
+      "signUp": "Sign Up",
+      "downloadBrochure": "Download Brochure",
+      "availableUnits": "Available Units",
+      "noUnits": "No units available",
+      "studio": "Studio",
+      "bedrooms": "Bedrooms"
+    },
+    "UltraLuxuryProjects": {
+      "title": "Ultra luxury Project",
+      "Projects": {
+        "locations": {
+          "Abu Dhabi": "Abu Dhabi",
+          "Dubai": "Dubai"
+        },
+        "hudayriyat": {
+          "title1": "Hudayriyat",
+          "title2": "Island",
+          "content1": "A vibrant waterfront destination that offers various leisure and entertainment facilities, including cycling tracks, watersports activities, dining options, and outdoor spaces for relaxation and socializing.",
+          "content2": "It is a popular destination for residents and visitors seeking outdoor recreation and community events."
+        },
+        "saadiyat": {
+          "title1": "Saadiyat Island",
+          "title2": "Grove",
+          "content": "Aldar's Saadiyat Grove, nestled in Saadiyat Island's Cultural District, transforms into a vibrant mixed-use community. Offering residential spaces, retail options, and cutting-edge facilities, it boasts gyms, children's play areas, a community garden, and running tracks."
+        },
+        "bugatti": {
+          "title1": "Bugatti",
+          "title2": "Residences",
+          "content": "Indulge in an exclusive residential haven by BinGhatti, blending French Riviera charm and Bugatti allure. Redefining luxury, this unique tower offers unparalleled style, cutting-edge amenities, and spacious interiors with stunning Dubai skyline views."
+        },
+        "reemHills": {
+          "title1": "Reem Hills",
+          "title2": "Villas",
+          "content": "This gated community by Q Properties harmoniously blends living, working, and leisure elements in Abu Dhabi. Offering diverse residential options, well-crafted public spaces, retail facilities, and premium amenities for a balanced lifestyle."
+        },
+        "tilalAlGhaf": {
+          "title1": "Tilal Al",
+          "title2": "Ghaf",
+          "content": "Experience vibrant community living at Tilal Al Ghaf's amara. Developed by Majid Al Futtaim, you can escape to a luxurious haven surrounded by lush landscapes, resort-style amenities, diverse entertainment options, and more."
+        },
+        "golfPlaces": {
+          "title1": "Golf Places Terraces At",
+          "title2": "Dubai Hills",
+          "content": "Experience luxury community living at Golf Places Terraces, nestled in Dubai Hills' scenic landscape. Enjoy a lifestyle of convenience and leisure with convenient access to Dubai Hills Park, Golf Club House, and Dubai Hills Mall."
+        },
+        "districtOne": {
+          "title1": "District One",
+          "title2": "West",
+          "content": "Discover District One West by Nakheel, a prestigious gated community where nature and innovative design unite. Embrace waterfront living, lush greenery, and serene atmospheres, with easy access to city landmarks and leisure destinations."
+        },
+        "laMer": {
+          "title1": "La Mer",
+          "title2": "Masion",
+          "content": "Immerse yourself in elevated private island living at the exclusive La Mer Maisons by Merass community. Enjoy stunning sea views, world-class amenities, unrivaled exclusivity, and easy access to Jumeirah’s popular attractions."
+        }
+      },
+      "Slider": {
+        "Starting Price": "Starting Price",
+        "Book Your Villa Now": "Book Your Villa Now",
+        "Download Brochure": "Download Brochure",
+        "Facts": {
+          "bedroom": "Bedroom",
+          "type": "Type",
+          "freeHold": "Free Hold",
+          "handover": "Handover",
+          "location": "Location",
+          "downpayment": "Down Payment",
+          "skyMansions": "Sky Mansions",
+          "skyPenthouses": "Sky Penthouses"
+        },
+        "FactsValues": {
+          "hudayriyat": {
+            "bedroom": "1 - 2",
+            "type": "Apartments",
+            "freeHold": "Freehold",
+            "handover": "2017",
+            "location": "Abu Dhabi",
+            "downpayment": "10%"
+          },
+          "saadiyat": {
+            "bedroom": "Studio, 1 - 2",
+            "type": "Apartments, Penthouses",
+            "handover": "Q1 2025 (Phase 1)",
+            "location": "Saadiyat Island, Abu Dhabi",
+            "downpayment": "10%"
+          },
+          "bugatti": {
+            "skyMansions": "2 - 4 Bedroom",
+            "skyPenthouses": "5 Bedroom",
+            "type": "Mansions, Penthouses",
+            "handover": "Q2 2026",
+            "location": "Business Bay, Dubai",
+            "downpayment": "25%"
+          },
+          "reemHills": {
+            "bedroom": "5 - 7",
+            "type": "Villas, Townhouses",
+            "handover": "Q3 2025",
+            "downpayment": "10%"
+          },
+          "tilalAlGhaf": {
+            "bedroom": "4 - 6",
+            "type": "Townhouses",
+            "handover": "Q1 2022",
+            "downpayment": "10%"
+          },
+          "golfPlaces": {
+            "bedroom": "4 - 6",
+            "type": "Villas",
+            "handover": "Q1 2022 (Phase 1)",
+            "downpayment": "20%"
+          },
+          "districtOne": {
+            "bedroom": "4 - 6",
+            "type": "Villas",
+            "handover": "Q1 2027 (Phase 1)",
+            "downpayment": "20%"
+          },
+          "laMer": {
+            "bedroom": "4",
+            "type": "Land Plots",
+            "handover": "To be announced",
+            "downpayment": "10%"
+          }
+        }
+      }
+    },
+    "FutureHome": {
+      "title": "Dream Residence in UAE",
+      "subtitlePart1": "Let the journey to your ",
+      "subtitleMain": "Future Home",
+      "subtitlePart2": "Begin",
+      "learnMore": "Learn More",
+      "slides": [
+        {
+          "title": "Abu Dhabi",
+          "content": "Nestled along the azure Arabian Gulf, Abu Dhabi stands as a beacon of sophistication and opportunity. Boasting a harmonious blend of rich cultural heritage and modernity, it offers an ideal environment to live, visit, work, and invest. Experience luxury, innovation, and a thriving cosmopolitan lifestyle in this dynamic global hub."
+        },
+        {
+          "title": "Dubai",
+          "content": "The vibrant metropolis of Dubai dazzles with its iconic skyline, luxurious lifestyle, and cultural diversity. From the world's tallest building, the Burj Khalifa, to extravagant shopping malls and pristine beaches, Dubai seamlessly blends modernity with tradition, offering visitors an unforgettable fusion of experiences."
+        },
+        {
+          "title": "Ras Al Khaimah",
+          "content": "Boasting a rich tapestry of history, culture, and natural beauty, Ras Al Khaimah offers enticing adventures with its rugged mountain landscapes, ancient forts, and pristine beaches. Discover its historic charm, embark on desert safaris, or unwind at luxury resorts in a unique destination located between the Hajar Mountains and the Arabian Gulf."
+        }
+      ]
+    },
+    "VIPTour": {
+      "title": "Property Tours",
+      "bespoke": "Bespoke Property",
+      "tours": "Tours",
+      "description": "Immerse yourself in a personalised property tour, seamlessly blending in-person and virtual convenience.",
+      "schedule": "Schedule live tour"
+    },
+    "Entertainment": {
+      "title": "Entertainment",
+      "highlights": "Highlights",
+      "acrossUAE": "Across the UAE",
+      "noProjects": "No Projects to Show",
+      "slides": {
+        "yasIsland": "Yas Island",
+        "burjKhalifa": "Burj Khalifa",
+        "ferrariWorld": "Ferrari World",
+        "louvre": "Louvre Abu Dhabi",
+        "burjAlArab": "Burj Al Arab",
+        "dubaiMall": "Dubai Mall",
+        "waterWorld": "Water-World Yas Island",
+        "skyResturant": "Dubai Sky Resturant",
+        "warnerBros": "Warner Bros"
+      }
+    },
+    "Features": {
+      "readyToMove": "Ready to move in",
+      "siteVisits": "Site visits",
+      "getYourKeys": "Get your keys"
+    },
+    "FAQs": {
+      "title": "FAQS",
+      "subtitle": "Frequently asked questions",
+      "items": [
+        {
+          "question": "What distinguishes these ultra-luxury properties from other real estate offerings in terms of amenities and features?",
+          "answer": "Ultra-luxury properties distinguish themselves through unparalleled amenities and features. They often include custom-designed interiors by top-tier designers, advanced home automation systems, private pools and spas, in-house wellness facilities, and exclusive concierge services. These exclusive properties also feature personalised touches, expansive layouts, high-end finishes, panoramic views, and private access features such as elevators and entrances, which set them apart from standard real estate offerings."
+        },
+        {
+          "question": "How is the privacy and security of residents ensured in these exclusive projects?",
+          "answer": "Privacy and security in these exclusive projects are ensured through comprehensive and sophisticated measures. These include 24/7 security, gated entrances, advanced surveillance, and secure, and private parking areas, which offer residents peace of mind. Furthermore, each architectural design emphasises privacy with features like private gardens or terraces, and limited access points, providing residents with a secure and secluded living environment."
+        },
+        {
+          "question": "How does the investment potential of these ultra-luxury projects compare to traditional real estate options?",
+          "answer": "Ultra-luxury projects often offer superior investment potential compared to traditional real estate options. They are typically located in prime, highly sought-after areas, leading to greater appreciation in value. The scarcity and exclusivity of these properties further enhance their demand among affluent buyers, often resulting in higher returns on investment. Moreover, their premium quality, brand prestige, and unique features provide stability and growth even in fluctuating markets."
+        },
+        {
+          "question": "How does the resale market typically perform for luxury and ultra-luxury properties in your portfolio?",
+          "answer": "The resale market for luxury and ultra-luxury properties in our portfolio generally performs exceptionally well. These properties tend to retain or increase their value over time due to their prime locations, superior build quality, and exclusive features. They attract high-net-worth buyers looking for premium and prestigious living spaces, which creates a competitive market. Historical data shows that luxury properties in our portfolio often appreciate at rates higher than the general market, ensuring strong resale performance."
+        },
+        {
+          "question": "Why is investing in real estate a good choice?",
+          "answer": "Investing in real estate is a wise choice because it provides multiple financial benefits. It offers a steady income stream through rental payments, and properties typically increase in value over time, leading to significant long-term gains. Real estate investments also serve as a strong hedge against inflation, as property values and rental income generally increase with inflation rates. Additionally, real estate can diversify an investment portfolio, reducing overall risk."
+        },
+        {
+          "question": "What are the benefits of investing in real estate in the UAE?",
+          "answer": "Investing in UAE real estate offers substantial benefits. The country’s robust economy and strategic location make it a prime spot for international business and tourism. This ensures high demand for properties, leading to attractive rental yields and capital appreciation. Additionally, property owners can benefit from the country’s Golden Visa programme, which grants long-term residency qualifying investors, offering stability and opportunities to live, work, and study."
+        }
+      ]
+    },
+    "Contact": {
+      "title": "Let's Connect",
+      "callback": "Request A Callback",
+      "highlight": "Callback",
+      "description": "Please fill in your contact details and submit. A member of our team will contact you shortly."
+    },
+    "Footer": {
+      "luxuryProjects": "Luxury Projects",
+      "primeResidences": "Your Prime Residences",
+      "checkOut": "Check out all ultra luxury real estate projects in UAE.",
+      "findHome": "Find the perfect home for you in our diverse collection of villas and townhouses.",
+      "contactUs": "Contact us",
+      "suffix": "for more details and free consultation.",
+      "explorers": "Explorers",
+      "cities": {
+        "dubai": "Dubai",
+        "abuDhabi": "Abu Dhabi",
+        "sharjah": "Sharjah",
+        "rak": "Ras Al Khaimah"
+      },
+      "contactInfoTitle": "Contact Us",
+      "phone": "600 548 200",
+      "whatsapp": "+971 2205 2999",
+      "privacy": "Privacy",
+      "terms": "Terms of Use",
+      "rights": "© 2025 Property Shop Investment LLC. | All Rights Reserved."
+    }
   }
-
 }

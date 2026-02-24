@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { SocialMedia } from "@/types/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, } from "@fortawesome/free-solid-svg-icons";
-import { faWhatsapp, faTwitter, faInstagram, faSnapchat, faYoutube, faFacebookSquare} from "@fortawesome/free-brands-svg-icons";
+import { faWhatsapp, faTwitter, faInstagram, faSnapchat, faYoutube, faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 
 const socialMedia: SocialMedia[] = [
     {
@@ -31,8 +31,8 @@ const socialMedia: SocialMedia[] = [
         name: 'Youtube',
         href: 'https://www.youtube.com/user/propertyshopabudhabi',
         icon: faYoutube,
-    }    
-    
+    }
+
 ];
 
 const LuxuryFooter = () => {
@@ -48,10 +48,10 @@ const LuxuryFooter = () => {
                         <h3 className="font-bold text-4xl mb-4 mt-5 hidden md:block">Luxury Projects</h3>
                         <h3 className="font-bold text-3xl mb-4 mt-5 block md:hidden">Your Prime Residences</h3>
                         <p className="text-lg mb-3 hidden md:block">
-                        Check out all ultra luxury real estate projects in UAE.
+                            Check out all ultra luxury real estate projects in UAE.
                         </p>
                         <p className="text-lg mb-3 md:hidden visible">Find the perfect home for you in our diverse collection of villas and townhouses.</p>
-                        <p className="text-lg">                            
+                        <p className="text-lg">
                             <u>Contact us</u> for more details and free consultation.
                         </p>
                     </div>
@@ -65,14 +65,14 @@ const LuxuryFooter = () => {
                                 <li><Link title="sharjah" href="/sharjah-city/" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Sharjah</Link></li>
                                 <li><Link title="ras al khaimah" href="/rak/" className="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-orange-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">Ras Al Khaimah</Link></li>
                             </ul>
-                        </div>                        
+                        </div>
                         <div className="w-px bg-white sm:block md:hidden"></div>
                     </div>
                     {/* Column 4 & 5 - Centered in Mobile */}
                     <div className="md:col-span-1 border-t  border-[#4F577C] py-5">
                         <h4 className="font-bold text-xl md:text-2xl mb-4 md:text-left text-center">Contact Us</h4>
                         <div className="mt-4 space-y-4 sm:text-center text-left">
-                            <p className="flex items-center gap-2 justify-center sm:justify-start text-md sm:text-lg">                                
+                            <p className="flex items-center gap-2 justify-center sm:justify-start text-md sm:text-lg">
                                 <FontAwesomeIcon icon={faPhone} ></FontAwesomeIcon> 600 548 200
                             </p>
                             <p className="flex items-center gap-2 justify-center sm:justify-start text-md sm:text-lg">
@@ -86,7 +86,7 @@ const LuxuryFooter = () => {
                                 </Link>
                             ))}
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
 
@@ -95,8 +95,8 @@ const LuxuryFooter = () => {
                 <p className="mb-2">
                     <Link title="Privacy" href="/privacy" className="ml-1 cursor-pointer hover:underline">Privacy</Link> |
                     <Link title="Terms" href="/terms" className="ml-1 cursor-pointer hover:underline">Terms of Use</Link>
-                </p>                
-                <p>© 2025 Property Shop Investment LLC. | All Rights Reserved.</p>                
+                </p>
+                <p>© 2025 Property Shop Investment LLC. | All Rights Reserved.</p>
             </div>
         </footer>
     );
