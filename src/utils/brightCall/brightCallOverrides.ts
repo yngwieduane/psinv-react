@@ -151,6 +151,10 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
         en: "6180020bed7bc62adedd3d2f100694da",
         ar: "5a54c466c6586bd6ae9d95d7c6b9230c",
     },
+    "modon-suhoor": {
+        en: "a462a2723129287d13462a4de975aa7e",
+        ar: "710362ca11049eb7428f59d74effc89c",
+    },
 };
 
 /**

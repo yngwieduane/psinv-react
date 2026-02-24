@@ -584,7 +584,7 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
         })}        
         <div className="col-span-full text-xs text-gray-500 mt-4">
           <p className="italic">
-            {t.rich('fineprint.text', {
+            {t.rich('fineprint.agreementText', {
               terms: (chunks) => <a href={`/${locale}/terms`} className="underline">{chunks}</a>,
               privacy: (chunks) => <a href={`/${locale}/privacy`} className="underline">{chunks}</a>,
             })}
