@@ -206,7 +206,7 @@ export default function BlogPage() {
                     <div className="mb-16">
                         <PillSearch value={queryText} onChange={handleSearch} placeholder={ui("searchPlaceholder")} />
                     </div>
-
+                    
                     {/* Blog List */}
                     <div className="mb-20">
                         {loading ? (

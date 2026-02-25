@@ -1679,6 +1679,10 @@
     }
   },
   "Careers_Page": {
+      "metadata": {
+        "title": "Карьера — Property Shop Investment",
+        "description": "Присоединяйтесь к Property Shop Investment (PSI) и раскройте свой профессиональный потенциал. Мы предлагаем непрерывное обучение, семинары и путь к совершенству в сфере недвижимости."
+      },
     "heroTitle": "КАРЬЕРА",
     "heroBreadcrumb": "Главная > Карьера",
     "unlockSection": {

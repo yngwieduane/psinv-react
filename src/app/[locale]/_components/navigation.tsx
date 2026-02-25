@@ -780,9 +780,9 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                                 <div className="absolute bottom-6 left-6 text-white">
                                                     <span className="text-[10px] font-bold uppercase tracking-widest bg-secondary px-2 py-1 rounded mb-2 inline-block">{t('Featured')}</span>
                                                     <h4 className="font-serif font-bold text-2xl">{group.label}</h4>
-                                                    <div className="flex items-center gap-2 text-xs font-bold uppercase mt-2 opacity-0 group-hover/promo:opacity-100 transition-opacity transform translate-y-2 group-hover/promo:translate-y-0">
+                                                    {/* <div className="flex items-center gap-2 text-xs font-bold uppercase mt-2 opacity-0 group-hover/promo:opacity-100 transition-opacity transform translate-y-2 group-hover/promo:translate-y-0">
                                                         {t('Explore')} <ArrowRight size={12} />
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                             </div>
                                         </div>
