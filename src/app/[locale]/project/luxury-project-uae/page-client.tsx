@@ -41,15 +41,6 @@ export default function LuxuryProjectPageClient() {
     const [location, setLocation] = useState("Abu Dhabi");
     const [modalTitle, setModalTitle] = useState<string>("");
 
-    // Moved FAQs to translations but since the component expects an array, 
-    // we'll fetch them from translations if possible or keep them here if it's too complex.
-    // However, the JSON structure I proposed for FAQs was:
-    // "FAQs": { "title": "FAQS", "subtitle": "Frequently asked questions" }
-    // I should probably add the faq items there too.
-
-    // For now, let's keep the FAQ data logic in mind.
-    // I'll update the JSON later if needed.
-
     const faqs = [
         {
             id: "collapseOne",
@@ -208,19 +199,19 @@ export default function LuxuryProjectPageClient() {
                     <div className="flex flex-column items-center gap-3 relative w-1/3">
                         <div className="z-10 iconImage"
                             style={{ backgroundImage: "url('/assets/images/luxury-project-uae/icons/readytomove.svg')" }}></div>
-                        <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">Ready to move in</p>
+                        <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">{t('Features.readyToMove')}</p>
                     </div>
                     <div className="flex flex-column items-center gap-3 relative w-1/3">
                         <div className="iconSeparator"></div>
                         <div className="z-10 iconImage"
                             style={{ backgroundImage: "url('/assets/images/luxury-project-uae/icons/sitevisit.svg')" }}></div>
-                        <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">Site visits</p>
+                        <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">{t('Features.siteVisits')}</p>
                     </div>
                     <div className="flex flex-column items-center gap-3 relative w-1/3">
                         <div className="iconSeparator2"></div>
                         <div className="z-10 iconImage"
                             style={{ backgroundImage: "url('/assets/images/luxury-project-uae/icons/key.svg')" }}></div>
-                        <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">Get your keys</p>
+                        <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">{t('Features.getYourKeys')}</p>
                     </div>
                 </div>
             </div>

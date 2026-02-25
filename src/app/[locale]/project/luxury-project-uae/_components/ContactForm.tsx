@@ -10,22 +10,25 @@ import { usePathname } from "next/navigation";
 import { sendGTMEvent } from '@next/third-parties/google'
 import { nationalityOptions } from "@/data/luxuryProjects";
 import { insertHubspotLead, insertPSILead } from "@/utils/crmApiHelpers";
-
-const schema = z.object({
-  firstName: z.string().min(1, { message: "First name is required" }),
-  lastName: z.string().min(1, { message: "Last name is required" }),
-  email: z.string().email({ message: "Invalid email address" }),
-  phone: z.string().min(7, { message: "Invalid phone number" }),
-  nationality: z.string(),
-  goldenVisa: z.boolean(),
-  agreement1: z.boolean().refine((val) => val, { message: "You must agree to this" }),
-  agreement2: z.boolean().optional(),
-  agreement3: z.boolean().optional(),
-});
-
-type FormData = z.infer<typeof schema>;
+import { useTranslations } from "next-intl";
 
 const ContactForm = () => {
+  const t = useTranslations("LuxuryProjectUAE.Contact.form");
+
+  const schema = z.object({
+    firstName: z.string().min(1, { message: t("firstName.error") }),
+    lastName: z.string().min(1, { message: t("lastName.error") }),
+    email: z.string().email({ message: t("email.error") }),
+    phone: z.string().min(7, { message: t("phone.error") }),
+    nationality: z.string(),
+    goldenVisa: z.boolean(),
+    agreement1: z.boolean().refine((val) => val, { message: t("agreements.mustAgree") }),
+    agreement2: z.boolean().optional(),
+    agreement3: z.boolean().optional(),
+  });
+
+  type FormData = z.infer<typeof schema>;
+
   const pathname = usePathname();
   const locale = pathname.split("/")[1] || "en";
   const {
@@ -349,21 +352,21 @@ const ContactForm = () => {
         {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">Submission failed. Try again.</div>}
         <div className="mb-5 flex gap-4 justify-between">
           <div className="inuputGroup w-1/2">
-            <label>Your First Name</label>
+            <label>{t('firstName.label')}</label>
             <input
               type="text"
               {...register("firstName")}
-              placeholder="First Name"
+              placeholder={t('firstName.placeholder')}
               className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
           </div>
           <div className="inuputGroup w-1/2">
-            <label>Your Last Name</label>
+            <label>{t('lastName.label')}</label>
             <input
               type="text"
               {...register("lastName")}
-              placeholder="Last Name"
+              placeholder={t('lastName.placeholder')}
               className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
@@ -371,11 +374,11 @@ const ContactForm = () => {
         </div>
         <div className="mb-5">
           <div className="inuputGroup w-full">
-            <label>Email</label>
+            <label>{t('email.label')}</label>
             <input
               type="email"
               {...register("email")}
-              placeholder="yourmail@gmail.com"
+              placeholder={t('email.placeholder')}
               className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
@@ -383,7 +386,7 @@ const ContactForm = () => {
         </div>
         <div className="mb-5">
           <div className="inuputGroup w-full">
-            <label>Phone Number</label>
+            <label>{t('phone.label')}</label>
             <Controller
               name="phone"
               control={control}
@@ -402,12 +405,12 @@ const ContactForm = () => {
         </div>
         <div className="mb-5">
           <div className="inuputGroup w-full">
-            <label>Nationality</label>
+            <label>{t('nationality.label')}</label>
             <select
               {...register('nationality')}
               className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
-              <option className="text-[#000]">Select Nationality</option>
+              <option className="text-[#000]">{t('nationality.placeholder')}</option>
               {nationalityOptions.map((n) => (
                 <option key={n} value={n} className="text-[#000]">{n} </option>
               ))}
@@ -418,7 +421,7 @@ const ContactForm = () => {
 
         <div>
           <input type="checkbox" {...register('goldenVisa')} className="mr-3 border border-2 border-[#c19a5b] w-[15px] h-[15px]"></input>
-          <label className="text-[14px]! text-[#fff]!">I'm interested in the Golden Visa</label>
+          <label className="text-[14px]! text-[#fff]!">{t('goldenVisa.label')}</label>
         </div>
 
         <button
@@ -426,27 +429,8 @@ const ContactForm = () => {
           className="w-full p-3 mt-6 rounded-md hover:text-[#0c1445] hover:bg-white bg-[#c19a5b] text-white cursor-pointer"
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Submitting..." : "Call Me Back!"}
+          {isSubmitting ? t('submitButton.submitting') : t('submitButton.default')}
         </button>
-        <div className="mb-3 hidden">
-          <label className="flex items-center space-x-2">
-            <input type="checkbox" {...register("agreement1")} className="rounded border-gray-300" defaultChecked />
-            <span className="text-sm">I agree to the Terms & Conditions and Privacy Policy</span>
-          </label>
-          {errors.agreement1 && <p className="text-red-500 text-sm">{errors.agreement1.message}</p>}
-        </div>
-        <div className="mb-3 hidden">
-          <label className="flex items-center space-x-2">
-            <input type="checkbox" {...register("agreement2")} className="rounded border-gray-300" defaultChecked />
-            <span className="text-sm">Agree to receive calls and communications</span>
-          </label>
-        </div>
-        <div className="mb-3 hidden">
-          <label className="flex items-center space-x-2">
-            <input type="checkbox" {...register("agreement3")} className="rounded border-gray-300" defaultChecked />
-            <span className="text-sm">Receive calls about various projects</span>
-          </label>
-        </div>
       </form>
     </>
   );

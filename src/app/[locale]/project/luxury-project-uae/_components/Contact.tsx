@@ -1,5 +1,6 @@
 import { Montserrat, Libre_Baskerville } from "next/font/google"
 import ContactForm from "./ContactForm";
+import { useTranslations } from "next-intl";
 
 const montserratSemiBold = Montserrat({
     subsets: ['latin'],
@@ -14,6 +15,7 @@ const libreBaskervilleBold = Libre_Baskerville({
 });
 
 export default function Contact() {
+    const t = useTranslations("LuxuryProjectUAE.Contact");
 
     return (
         <>
@@ -21,16 +23,16 @@ export default function Contact() {
                 <div className="md:w-1/2  md:flex-1">
                     <div className="w-[35px] md:w-[65px] w-[25px] h-[3px] bg-[#FBD784] mb-4"></div>
                     <h2 className={`text-sm md:text-md lg:text-lg uppercase text-[#FBD784] font-bold tracking-[6] md:mb-5 mb-10 ${montserratSemiBold.className}`}>
-                        Let's Connect
+                        {t('title')}
                     </h2>
                     <h3 className={`text-[#F5DABC] text-[30px] md:text-[42px] lg:text-[52px] leading-tight ${libreBaskervilleBold.className} capitalize`}>
-                        Request A <span className="text-[#C19A5B]">Callback</span>
+                        {t('callback.part1')} <span className="text-[#C19A5B]">{t('callback.part2')}</span>
                     </h3>
                     <ContactForm />
                 </div>
 
                 <div className="md:w-1/2 md:flex-1 flex flex-column">
-                    <p className="text-lg mb-5">Please fill in your contact details and submit. A member of our team will contact you shortly.</p>
+                    <p className="text-lg mb-5">{t('description')}</p>
                     <div className="flex-1 bg-[url('/assets/images/luxury-project-uae/luxury-contact.webp')] bg-cover bg-center rounded-lg" >
                     </div>
                 </div>
