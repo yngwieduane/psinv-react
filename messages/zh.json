@@ -1978,267 +1978,310 @@
   "LuxuryProjectUAE": {
     "Hero": {
       "nav": {
-        "home": "Home",
-        "luxuryProjects": "Luxury Projects",
-        "ultraLuxuryProjects": "Ultra Luxury Projects",
-        "entertainment": "Entertainments",
-        "futureResidence": "Future Residence",
-        "vipTour": "VIP Tour",
-        "freeConsultation": "Free Consultation"
+        "home": "首页",
+        "luxuryProjects": "奢华项目",
+        "ultraLuxuryProjects": "超豪华项目",
+        "entertainment": "娱乐",
+        "futureResidence": "未来居所",
+        "vipTour": "贵宾参观",
+        "freeConsultation": "免费咨询"
       },
-      "title": "Discover",
-      "luxury": "Luxury",
-      "lifestyle": "Lifestyle"
+      "title": "发现",
+      "luxury": "奢华",
+      "lifestyle": "生活方式"
     },
     "Opportunities": {
-      "superTitle": "Opportunities Await!",
-      "rare": "Rare",
-      "subtitle": "investment real estate opportunities available",
-      "description": "Enjoy privileged access to exclusive properties in prime destinations that are available only for the most discerning clientele.\nOur experienced specialists will ensure that each personalised experience is bespoke, seamlessly uniting sellers with ideal buyers.",
-      "callBack": "Call back",
-      "findOnWhatsapp": "Find us on WhatsApp",
+      "superTitle": "机会等候！",
+      "rare": "稀有",
+      "subtitle": "可用的投资房地产机会",
+      "description": "享受在优质目的地专属物业的特权访问，这些物业仅提供给最挑剔的客户。\n我们经验丰富的专家将确保每一次个性化体验都是量身定制，将卖家与理想买家无缝连接。",
+      "callBack": "回电请求",
+      "findOnWhatsapp": "通过 WhatsApp 联系我们",
       "whatsapp": "WhatsApp"
     },
     "LuxuryProjects": {
-      "explore": "Explore Elegance",
-      "title": "Discover Our",
-      "luxury": "Luxury",
-      "projects": "Projects",
-      "loading": "Loading projects...",
-      "noProjects": "No Projects to Show",
-      "signUp": "Sign Up",
-      "downloadBrochure": "Download Brochure",
-      "availableUnits": "Available Units",
-      "noUnits": "No units available",
-      "studio": "Studio",
-      "bedrooms": "Bedrooms"
+      "explore": "探索优雅",
+      "title": "发现我们的",
+      "luxury": "奢华",
+      "projects": "项目",
+      "loading": "正在加载项目…",
+      "noProjects": "暂无可显示项目",
+      "signUp": "注册",
+      "downloadBrochure": "下载宣传册",
+      "availableUnits": "可用单位",
+      "noUnits": "暂无可用单位",
+      "studio": "单间",
+      "bedrooms": "卧室"
     },
     "UltraLuxuryProjects": {
-      "title": "Ultra luxury Project",
+      "title": "超豪华项目",
       "Projects": {
         "locations": {
-          "Abu Dhabi": "Abu Dhabi",
-          "Dubai": "Dubai"
+          "Abu Dhabi": "阿布扎比",
+          "Dubai": "迪拜"
         },
         "hudayriyat": {
-          "title1": "Hudayriyat",
-          "title2": "Island",
-          "content1": "A vibrant waterfront destination that offers various leisure and entertainment facilities, including cycling tracks, watersports activities, dining options, and outdoor spaces for relaxation and socializing.",
-          "content2": "It is a popular destination for residents and visitors seeking outdoor recreation and community events."
+          "title1": "胡代里亚特",
+          "title2": "岛",
+          "content1": "一个充满活力的滨水目的地，提供各种休闲和娱乐设施，包括自行车道、水上运动、餐饮选择以及供放松和社交的户外空间。",
+          "content2": "对于寻求户外娱乐和社区活动的居民和游客来说，这里是一个非常受欢迎的目的地。"
         },
         "saadiyat": {
-          "title1": "Saadiyat Island",
-          "title2": "Grove",
-          "content": "Aldar's Saadiyat Grove, nestled in Saadiyat Island's Cultural District, transforms into a vibrant mixed-use community. Offering residential spaces, retail options, and cutting-edge facilities, it boasts gyms, children's play areas, a community garden, and running tracks."
+          "title1": "萨迪亚特岛",
+          "title2": "格罗夫",
+          "content": "Aldar 的萨迪亚特格罗夫位于萨迪亚特岛文化区，是一个充满活力的混合用途社区。它提供住宅空间、零售选择和先进设施，包括健身房、儿童游乐区、社区花园和跑道。"
         },
         "bugatti": {
-          "title1": "Bugatti",
-          "title2": "Residences",
-          "content": "Indulge in an exclusive residential haven by BinGhatti, blending French Riviera charm and Bugatti allure. Redefining luxury, this unique tower offers unparalleled style, cutting-edge amenities, and spacious interiors with stunning Dubai skyline views."
+          "title1": "布加迪",
+          "title2": "公馆",
+          "content": "沉浸在由 BinGhatti 打造的独特住宅天堂，融合了法国里维埃拉魅力与布加迪魅力。重新定义豪华，这座独特塔楼提供无与伦比的风格、先进设施和俯瞰迪拜天际线的宽敞室内空间。"
         },
         "reemHills": {
-          "title1": "Reem Hills",
-          "title2": "Villas",
-          "content": "This gated community by Q Properties harmoniously blends living, working, and leisure elements in Abu Dhabi. Offering diverse residential options, well-crafted public spaces, retail facilities, and premium amenities for a balanced lifestyle."
+          "title1": "Reem 山",
+          "title2": "别墅",
+          "content": "Q Properties 的这个封闭社区在阿布扎比和谐融合了生活、工作和休闲元素。提供多样的住宅选择、精心设计的公共空间、零售设施和高级设施，以实现平衡的生活方式。"
         },
         "tilalAlGhaf": {
-          "title1": "Tilal Al",
-          "title2": "Ghaf",
-          "content": "Experience vibrant community living at Tilal Al Ghaf's amara. Developed by Majid Al Futtaim, you can escape to a luxurious haven surrounded by lush landscapes, resort-style amenities, diverse entertainment options, and more."
+          "title1": "蒂拉尔阿尔",
+          "title2": "加夫",
+          "content": "在 Majid Al Futtaim 开发的 Tilal Al Ghaf 的 amara 感受充满活力的社区生活。这里是一个被葱郁景观、度假式设施、多样娱乐选择等环绕的奢华天地。"
         },
         "golfPlaces": {
-          "title1": "Golf Places Terraces At",
-          "title2": "Dubai Hills",
-          "content": "Experience luxury community living at Golf Places Terraces, nestled in Dubai Hills' scenic landscape. Enjoy a lifestyle of convenience and leisure with convenient access to Dubai Hills Park, Golf Club House, and Dubai Hills Mall."
+          "title1": "迪拜山高尔夫",
+          "title2": "Terraces 社区",
+          "content": "在位于迪拜山风景区的 Golf Places Terraces 感受豪华社区生活。享受便捷通往迪拜山公园、高尔夫会所和迪拜山购物中心的便利与休闲生活方式。"
         },
         "districtOne": {
-          "title1": "District One",
-          "title2": "West",
-          "content": "Discover District One West by Nakheel, a prestigious gated community where nature and innovative design unite. Embrace waterfront living, lush greenery, and serene atmospheres, with easy access to city landmarks and leisure destinations."
+          "title1": "一区",
+          "title2": "西部",
+          "content": "探索 Nakheel 的一区西部，这是一个尊贵的封闭社区，自然与创新设计融为一体。拥抱滨水生活、郁郁葱葱的绿地和宁静氛围，并轻松抵达城市地标和休闲目的地。"
         },
         "laMer": {
-          "title1": "La Mer",
-          "title2": "Masion",
-          "content": "Immerse yourself in elevated private island living at the exclusive La Mer Maisons by Merass community. Enjoy stunning sea views, world-class amenities, unrivaled exclusivity, and easy access to Jumeirah’s popular attractions."
+          "title1": "天堂海",
+          "title2": "豪宅区",
+          "content": "在 Merass 社区的独家 La Mer 豪宅区沉浸于高端私人岛屿生活。享受壮丽的海景、世界级设施、无与伦比的独特性，并轻松抵达朱美拉的热门景点。"
         }
       },
       "Slider": {
-        "Starting Price": "Starting Price",
-        "Book Your Villa Now": "Book Your Villa Now",
-        "Download Brochure": "Download Brochure",
+        "Starting Price": "起始价格",
+        "Book Your Villa Now": "立即预订您的别墅",
+        "Download Brochure": "下载宣传册",
         "Facts": {
-          "bedroom": "Bedroom",
-          "type": "Type",
-          "freeHold": "Free Hold",
-          "handover": "Handover",
-          "location": "Location",
-          "downpayment": "Down Payment",
-          "skyMansions": "Sky Mansions",
-          "skyPenthouses": "Sky Penthouses"
+          "bedroom": "卧室",
+          "type": "类型",
+          "freeHold": "永久产权",
+          "handover": "交付时间",
+          "location": "位置",
+          "downpayment": "首付",
+          "skyMansions": "天空豪宅",
+          "skyPenthouses": "天空顶层公寓"
         },
         "FactsValues": {
           "hudayriyat": {
             "bedroom": "1 - 2",
-            "type": "Apartments",
-            "freeHold": "Freehold",
-            "handover": "2017",
-            "location": "Abu Dhabi",
+            "type": "公寓",
+            "freeHold": "永久产权",
+            "handover": "2017年",
+            "location": "阿布扎比",
             "downpayment": "10%"
           },
           "saadiyat": {
-            "bedroom": "Studio, 1 - 2",
-            "type": "Apartments, Penthouses",
-            "handover": "Q1 2025 (Phase 1)",
-            "location": "Saadiyat Island, Abu Dhabi",
+            "bedroom": "单间, 1 - 2",
+            "type": "公寓, 顶层公寓",
+            "handover": "2025年第一季度（第1期）",
+            "location": "萨迪亚特岛, 阿布扎比",
             "downpayment": "10%"
           },
           "bugatti": {
-            "skyMansions": "2 - 4 Bedroom",
-            "skyPenthouses": "5 Bedroom",
-            "type": "Mansions, Penthouses",
-            "handover": "Q2 2026",
-            "location": "Business Bay, Dubai",
+            "skyMansions": "2 - 4 室",
+            "skyPenthouses": "5 室",
+            "type": "豪宅, 顶层公寓",
+            "handover": "2026年第二季度",
+            "location": "迪拜商务湾",
             "downpayment": "25%"
           },
           "reemHills": {
             "bedroom": "5 - 7",
-            "type": "Villas, Townhouses",
-            "handover": "Q3 2025",
+            "type": "别墅, 联排别墅",
+            "handover": "2025年第三季度",
             "downpayment": "10%"
           },
           "tilalAlGhaf": {
             "bedroom": "4 - 6",
-            "type": "Townhouses",
-            "handover": "Q1 2022",
+            "type": "联排别墅",
+            "handover": "2022年第一季度",
             "downpayment": "10%"
           },
           "golfPlaces": {
             "bedroom": "4 - 6",
-            "type": "Villas",
-            "handover": "Q1 2022 (Phase 1)",
+            "type": "别墅",
+            "handover": "2022年第一季度（第1期）",
             "downpayment": "20%"
           },
           "districtOne": {
             "bedroom": "4 - 6",
-            "type": "Villas",
-            "handover": "Q1 2027 (Phase 1)",
+            "type": "别墅",
+            "handover": "2027年第一季度（第1期）",
             "downpayment": "20%"
           },
           "laMer": {
             "bedroom": "4",
-            "type": "Land Plots",
-            "handover": "To be announced",
+            "type": "地块",
+            "handover": "待公布",
             "downpayment": "10%"
           }
         }
       }
     },
     "FutureHome": {
-      "title": "Dream Residence in UAE",
-      "subtitlePart1": "Let the journey to your ",
-      "subtitleMain": "Future Home",
-      "subtitlePart2": "Begin",
-      "learnMore": "Learn More",
+      "title": "阿联酋梦想居所",
+      "subtitlePart1": "让通往您的 ",
+      "subtitleMain": "未来之家",
+      "subtitlePart2": "之旅开始",
+      "learnMore": "了解更多",
       "slides": [
         {
-          "title": "Abu Dhabi",
-          "content": "Nestled along the azure Arabian Gulf, Abu Dhabi stands as a beacon of sophistication and opportunity. Boasting a harmonious blend of rich cultural heritage and modernity, it offers an ideal environment to live, visit, work, and invest. Experience luxury, innovation, and a thriving cosmopolitan lifestyle in this dynamic global hub."
+          "title": "阿布扎比",
+          "content": "阿布扎比坐落于蔚蓝的阿拉伯海湾，象征着成熟与机遇的结合。这里文化遗产与现代性和谐共存，为居住、访问、工作和投资提供了理想环境。在这个充满活力的全球中心体验奢华、创新和繁荣的国际化生活方式。"
         },
         {
-          "title": "Dubai",
-          "content": "The vibrant metropolis of Dubai dazzles with its iconic skyline, luxurious lifestyle, and cultural diversity. From the world's tallest building, the Burj Khalifa, to extravagant shopping malls and pristine beaches, Dubai seamlessly blends modernity with tradition, offering visitors an unforgettable fusion of experiences."
+          "title": "迪拜",
+          "content": "充满活力的大都市迪拜以其标志性天际线、奢华生活方式和文化多样性令人赞叹。从世界最高建筑哈利法塔到奢华购物中心和洁净海滩，迪拜将现代与传统完美融合，提供难忘的体验。"
         },
         {
-          "title": "Ras Al Khaimah",
-          "content": "Boasting a rich tapestry of history, culture, and natural beauty, Ras Al Khaimah offers enticing adventures with its rugged mountain landscapes, ancient forts, and pristine beaches. Discover its historic charm, embark on desert safaris, or unwind at luxury resorts in a unique destination located between the Hajar Mountains and the Arabian Gulf."
+          "title": "拉斯海玛",
+          "content": "拉斯海玛以其丰富的历史、文化和自然美景闻名，拥有崎岖山地景观、古老堡垒和原生态海滩。探索其历史魅力，踏上沙漠探险，或在奢华度假村放松身心，这一独特目的地位于哈贾尔山脉和阿拉伯湾之间。"
         }
       ]
     },
     "VIPTour": {
-      "title": "Property Tours",
-      "bespoke": "Bespoke Property",
-      "tours": "Tours",
-      "description": "Immerse yourself in a personalised property tour, seamlessly blending in-person and virtual convenience.",
-      "schedule": "Schedule live tour"
+      "title": "物业参观",
+      "bespoke": "定制物业",
+      "tours": "参观",
+      "description": "沉浸于个性化物业参观体验，完美结合现场与虚拟便利。",
+      "schedule": "安排实地参观"
     },
     "Entertainment": {
-      "title": "Entertainment",
-      "highlights": "Highlights",
-      "acrossUAE": "Across the UAE",
-      "noProjects": "No Projects to Show",
+      "title": "娱乐",
+      "highlights": "亮点",
+      "acrossUAE": "遍及阿联酋",
+      "noProjects": "暂无可显示项目",
       "slides": {
-        "yasIsland": "Yas Island",
-        "burjKhalifa": "Burj Khalifa",
-        "ferrariWorld": "Ferrari World",
-        "louvre": "Louvre Abu Dhabi",
-        "burjAlArab": "Burj Al Arab",
-        "dubaiMall": "Dubai Mall",
-        "waterWorld": "Water-World Yas Island",
-        "skyResturant": "Dubai Sky Resturant",
-        "warnerBros": "Warner Bros"
+        "yasIsland": "亚斯岛",
+        "burjKhalifa": "哈利法塔",
+        "ferrariWorld": "法拉利世界",
+        "louvre": "阿布扎比卢浮宫",
+        "burjAlArab": "阿拉伯塔",
+        "dubaiMall": "迪拜购物中心",
+        "waterWorld": "亚斯岛水世界",
+        "skyResturant": "迪拜天空餐厅",
+        "warnerBros": "华纳兄弟世界"
       }
     },
     "Features": {
-      "readyToMove": "Ready to move in",
-      "siteVisits": "Site visits",
-      "getYourKeys": "Get your keys"
+      "readyToMove": "可立即入住",
+      "siteVisits": "现场参观",
+      "getYourKeys": "领取钥匙"
     },
     "FAQs": {
-      "title": "FAQS",
-      "subtitle": "Frequently asked questions",
+      "title": "常见问题",
+      "subtitle": "常见问答",
       "items": [
         {
-          "question": "What distinguishes these ultra-luxury properties from other real estate offerings in terms of amenities and features?",
-          "answer": "Ultra-luxury properties distinguish themselves through unparalleled amenities and features. They often include custom-designed interiors by top-tier designers, advanced home automation systems, private pools and spas, in-house wellness facilities, and exclusive concierge services. These exclusive properties also feature personalised touches, expansive layouts, high-end finishes, panoramic views, and private access features such as elevators and entrances, which set them apart from standard real estate offerings."
+          "question": "超豪华物业在设施和特点方面与其他房地产有什么区别？",
+          "answer": "超豪华物业以无与伦比的设施和特点脱颖而出。它们通常包括顶级设计师定制内饰、先进的智能家居系统、私人泳池和水疗中心、内部健康设施以及专属礼宾服务。这些专属物业还具有个性化细节、宽敞布局、高端装修、全景视野和私人通道，如电梯和入口，让它们区别于标准房地产。"
         },
         {
-          "question": "How is the privacy and security of residents ensured in these exclusive projects?",
-          "answer": "Privacy and security in these exclusive projects are ensured through comprehensive and sophisticated measures. These include 24/7 security, gated entrances, advanced surveillance, and secure, and private parking areas, which offer residents peace of mind. Furthermore, each architectural design emphasises privacy with features like private gardens or terraces, and limited access points, providing residents with a secure and secluded living environment."
+          "question": "如何确保这些专属项目中居民的隐私和安全？",
+          "answer": "这些专属项目通过全面且先进的安全措施确保居民的隐私和安全，包括 24 小时安保、封闭入口、先进监控和安全停车区，为居民提供安心保障。此外，每个建筑设计都强调隐私，例如私人花园或露台以及有限的出入口，为居民营造一个安全且隐秘的生活环境。"
         },
         {
-          "question": "How does the investment potential of these ultra-luxury projects compare to traditional real estate options?",
-          "answer": "Ultra-luxury projects often offer superior investment potential compared to traditional real estate options. They are typically located in prime, highly sought-after areas, leading to greater appreciation in value. The scarcity and exclusivity of these properties further enhance their demand among affluent buyers, often resulting in higher returns on investment. Moreover, their premium quality, brand prestige, and unique features provide stability and growth even in fluctuating markets."
+          "question": "这些超豪华项目的投资潜力与传统房地产相比如何？",
+          "answer": "超豪华项目通常比传统房地产选择提供更高的投资潜力。它们通常位于受追捧的核心地区，从而导致更高的价值增长。这些物业的稀缺性和独特性进一步增强了对富裕买家的吸引力，通常带来更高的投资回报率。此外，其卓越品质、品牌声望和独特特点在市场波动中也有助于稳定增长。"
         },
         {
-          "question": "How does the resale market typically perform for luxury and ultra-luxury properties in your portfolio?",
-          "answer": "The resale market for luxury and ultra-luxury properties in our portfolio generally performs exceptionally well. These properties tend to retain or increase their value over time due to their prime locations, superior build quality, and exclusive features. They attract high-net-worth buyers looking for premium and prestigious living spaces, which creates a competitive market. Historical data shows that luxury properties in our portfolio often appreciate at rates higher than the general market, ensuring strong resale performance."
+          "question": "您组合中的豪华和超豪华物业的转售市场表现如何？",
+          "answer": "我们的投资组合中，豪华和超豪华物业的转售市场通常表现非常出色。这些物业由于核心位置、卓越建造质量和独家特色而随着时间推移保持或增加其价值。它们吸引寻求高端尊贵居住空间的高净值买家，从而创造了竞争激烈的市场。历史数据显示，我们投资组合中的豪华物业通常以高于整体市场的增值率表现强劲，确保良好的二手市场表现。"
         },
         {
-          "question": "Why is investing in real estate a good choice?",
-          "answer": "Investing in real estate is a wise choice because it provides multiple financial benefits. It offers a steady income stream through rental payments, and properties typically increase in value over time, leading to significant long-term gains. Real estate investments also serve as a strong hedge against inflation, as property values and rental income generally increase with inflation rates. Additionally, real estate can diversify an investment portfolio, reducing overall risk."
+          "question": "为什么投资房地产是一个明智选择？",
+          "answer": "投资房地产是一个明智的选择，因为它提供多种财务益处。它通过租金收入提供稳定的现金流，并且房地产价值通常随着时间增长，从而带来长期显著收益。房地产投资还可作为对抗通胀的有效手段，因为房地产价值和租金收入通常随着通胀率上升。此外，房地产可以多样化投资组合，降低整体风险。"
         },
         {
-          "question": "What are the benefits of investing in real estate in the UAE?",
-          "answer": "Investing in UAE real estate offers substantial benefits. The country’s robust economy and strategic location make it a prime spot for international business and tourism. This ensures high demand for properties, leading to attractive rental yields and capital appreciation. Additionally, property owners can benefit from the country’s Golden Visa programme, which grants long-term residency qualifying investors, offering stability and opportunities to live, work, and study."
+          "question": "在阿联酋投资房地产有哪些好处？",
+          "answer": "在阿联酋投资房地产有显著优势。该国强劲的经济和战略地理位置使其成为国际商业与旅游的核心。这确保了对物业的高需求，从而带来有吸引力的租金收益和资本增值。此外，业主还可以受益于该国的黄金签证计划，为符合条件的投资者提供长期居留权，提供稳定性以及生活、工作和学习机会。"
         }
       ]
     },
     "Contact": {
-      "title": "Let's Connect",
-      "callback": "Request A Callback",
-      "highlight": "Callback",
-      "description": "Please fill in your contact details and submit. A member of our team will contact you shortly."
+      "title": "让我们联系",
+      "callback": {
+        "part1": "请求",
+        "part2": "回电"
+      },
+      "description": "请填写您的联系信息并提交。我们的团队成员会很快联系您。",
+      "form": {
+        "firstName": {
+          "label": "您的名字",
+          "placeholder": "名字",
+          "error": "名字为必填项"
+        },
+        "lastName": {
+          "label": "您的姓氏",
+          "placeholder": "姓氏",
+          "error": "姓氏为必填项"
+        },
+        "email": {
+          "label": "电子邮箱",
+          "placeholder": "yourmail@example.com",
+          "error": "无效的邮箱地址"
+        },
+        "phone": {
+          "label": "电话号码",
+          "error": "无效的电话号码"
+        },
+        "nationality": {
+          "label": "国籍",
+          "placeholder": "选择国籍",
+          "error": "请选择您的国籍"
+        },
+        "goldenVisa": {
+          "label": "我对黄金签证感兴趣"
+        },
+        "agreements": {
+          "mustAgree": "您必须同意此项",
+          "agreement1": "我同意条款与条件和隐私政策",
+          "agreement2": "同意接收电话和信息",
+          "agreement3": "接收关于各项目的电话"
+        },
+        "submitButton": {
+          "default": "回电给我！",
+          "submitting": "正在提交..."
+        },
+        "messages": {
+          "success": "表单提交成功！",
+          "error": "提交失败，请重试。"
+        }
+      }
     },
     "Footer": {
-      "luxuryProjects": "Luxury Projects",
-      "primeResidences": "Your Prime Residences",
-      "checkOut": "Check out all ultra luxury real estate projects in UAE.",
-      "findHome": "Find the perfect home for you in our diverse collection of villas and townhouses.",
-      "contactUs": "Contact us",
-      "suffix": "for more details and free consultation.",
-      "explorers": "Explorers",
+      "luxuryProjects": "奢华项目",
+      "primeResidences": "您的尊贵住所",
+      "checkOut": "查看阿联酋所有超豪华房地产项目。",
+      "findHome": "在我们多样别墅和联排别墅集合中找到理想家园。",
+      "contactUs": "联系我们",
+      "suffix": "获取更多详情和免费咨询。",
+      "explorers": "探索者",
       "cities": {
-        "dubai": "Dubai",
-        "abuDhabi": "Abu Dhabi",
-        "sharjah": "Sharjah",
-        "rak": "Ras Al Khaimah"
+        "dubai": "迪拜",
+        "abuDhabi": "阿布扎比",
+        "sharjah": "沙迦",
+        "rak": "拉斯海玛"
       },
-      "contactInfoTitle": "Contact Us",
-      "phone": "600 548 200",
-      "whatsapp": "+971 2205 2999",
-      "privacy": "Privacy",
-      "terms": "Terms of Use",
-      "rights": "© 2025 Property Shop Investment LLC. | All Rights Reserved."
+      "contactInfoTitle": "联系我们",
+      "privacy": "隐私政策",
+      "terms": "使用条款",
+      "rights": "© 2025 Property Shop Investment LLC. | 保留所有权利。"
     }
   }
 }

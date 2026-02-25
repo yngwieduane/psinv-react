@@ -1,6 +1,6 @@
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Montserrat, Libre_Baskerville } from "next/font/google"
 import { useState } from "react";
 
@@ -30,6 +30,8 @@ interface Props {
 
 export default function FAQs({ data }: Props) {
     const t = useTranslations("LuxuryProjectUAE.FAQs");
+    const locale = useLocale();
+    const isRTL = locale.toLowerCase().startsWith("ar");
     const [isActiveId, setIsActiveId] = useState<string | null>(null);
 
     const toggleAccordion = (id: string) => {
@@ -38,8 +40,8 @@ export default function FAQs({ data }: Props) {
 
     return (
         <>
-            <div className="max-w-[930px] mx-auto relative z-10 text-white px-4 ">
-                <div className={`absolute md:-top-36 -top-10 left-[30%] md:left-0 text-[60px] md:text-[140px] lg:text-[180px] font-bolder 
+            <div className="max-w-[930px] mx-auto relative z-10 text-white px-4">
+                <div className={`absolute md:-top-36 -top-10 ${isRTL ? 'right-[30%] md:right-0' : 'left-[30%] md:left-0'}  text-[60px] md:text-[140px] lg:text-[180px] font-bolder 
                 ${montserratBolder.className} text-[#fff] opacity-10`}>07</div>
                 <h2 className="lg:ml-40 sm-ml-0 ml-10 text-sm md:text-md lg:text-xl uppercase text-[#FBD784] font-bold tracking-[6] md:mb-5 mb-10 flex gap-2 md:gap-5 sm:justify-start justify-center items-center text-center md:text-start">
                     <span className="w-[35px] md:w-[65px] w-[25px] h-[3px] bg-[#FBD784]"></span>{t('title')}

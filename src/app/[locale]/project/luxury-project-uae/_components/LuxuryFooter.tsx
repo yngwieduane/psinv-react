@@ -5,7 +5,7 @@ import { SocialMedia } from "@/types/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp, faTwitter, faInstagram, faSnapchat, faYoutube, faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const socialMedia: SocialMedia[] = [
     {
@@ -38,14 +38,16 @@ const socialMedia: SocialMedia[] = [
 
 const LuxuryFooter = () => {
     const t = useTranslations('LuxuryProjectUAE.Footer');
+    const locale = useLocale();
+    const isRTL = locale.toLowerCase().startsWith("ar");
     return (
-        <footer className="bg-[#353B58] text-white w-full mb-0">
+        <footer className="bg-[#353B58] text-white w-full mb-0" dir={isRTL ? "rtl" : "ltr"}>
             {/* Full-width container */}
             <div className="max-w-screen-xl mx-auto px-4 py-10">
                 {/* Grid Layout for Footer Sections */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-6 sm:text-[14px] items-baseline">
                     {/* Column 1 - Company Info */}
-                    <div className="md:text-left text-center col-span-2">
+                    <div className={`${isRTL ? 'md:text-right' : 'md:text-left'} text-center col-span-2`}>
                         <img src="/logo-psi-white.svg" alt="logo" title="logo" className="md:mx-0 mx-auto"></img>
                         <h3 className="font-bold text-4xl mb-4 mt-5 hidden md:block">{t('luxuryProjects')}</h3>
                         <h3 className="font-bold text-3xl mb-4 mt-5 block md:hidden">{t('primeResidences')}</h3>
@@ -72,7 +74,7 @@ const LuxuryFooter = () => {
                     </div>
                     {/* Column 4 & 5 - Centered in Mobile */}
                     <div className="md:col-span-1 border-t  border-[#4F577C] py-5">
-                        <h4 className="font-bold text-xl md:text-2xl mb-4 md:text-left text-center">{t('contactInfoTitle')}</h4>
+                        <h4 className={`font-bold text-xl md:text-2xl mb-4 ${isRTL ? 'md:text-right' : 'md:text-left'} text-center`}>{t('contactInfoTitle')}</h4>
                         <div className="mt-4 space-y-4 sm:text-center text-left">
                             <p className="flex items-center gap-2 justify-center sm:justify-start text-md sm:text-lg">
                                 <FontAwesomeIcon icon={faPhone} ></FontAwesomeIcon> 600 548 200

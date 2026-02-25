@@ -2,7 +2,7 @@ import { Montserrat, Libre_Baskerville, Parisienne } from "next/font/google"
 import { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState } from "react";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import 'swiper/css';
 import { FreeMode, Thumbs } from "swiper/modules";
@@ -47,6 +47,8 @@ const staticSlidesData = [
 
 export default function FutureHome({ onAction }: Props) {
     const t = useTranslations('LuxuryProjectUAE.FutureHome');
+    const locale = useLocale();
+    const isRTL = locale.toLowerCase().startsWith("ar");
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
     const [activeThumb, setActiveThumb] = useState(0);
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -73,12 +75,12 @@ export default function FutureHome({ onAction }: Props) {
 
     return (
         <>
-            <div className="max-w-screen-xl md:flex mx-auto relative text-white md:px-4 md:py-10">
-                <div className="md:w-1/2">
+            <div className="max-w-screen-xl md:flex mx-auto relative text-white md:px-4 md:py-10" dir={isRTL ? "rtl" : "ltr"}>
+                <div className="md:w-1/2" >
                     <div className={`md:bg-none bg-[url("/assets/images/luxury-project-uae/dream-residence-mobile.webp")] bg-cover bg-center
-                    md:px-0 md:py-0 px-4 py-10`}>
+                    md:px-0 md:py-0 px-4 py-10`} dir={isRTL ? "rtl" : "ltr"}>
                         <div className="md:hidden block h-full absolute inset-0 w-full"
-                            style={{ backgroundImage: "linear-gradient(0deg, #FFFFFF00 10%, #131f52ad 100%, #131f526e 0%)" }}>
+                            style={{ backgroundImage: "linear-gradient(0deg, #FFFFFF00 10%, #131f52ad 100%, #131f526e 0%)" }} dir={isRTL ? "rtl" : "ltr"}>
                         </div>
                         <div className="md:hidden block h-[280px]"></div>
                         <div className={`md:block hidden absolute md:-top-32 -top-10 md:left-auto left-7 text-[60px] md:text-[140px] lg:text-[180px] font-bolder 
@@ -99,7 +101,7 @@ export default function FutureHome({ onAction }: Props) {
                         </h3>
                     </div>
 
-                    <div className={`md:block hidden md:mt-7 md:px-0 md:py-0 px-4 py-10`}>
+                    <div className={`md:block hidden md:mt-7 md:px-0 md:py-0 px-4 py-10`} dir="ltr">
                         <Swiper
                             onSwiper={setThumbsSwiper}
                             breakpoints={{
@@ -133,7 +135,7 @@ export default function FutureHome({ onAction }: Props) {
                         </Swiper>
                     </div>
                 </div>
-                <div className={`md:w-1/2 w-full md:h-auto h-[340px] md:px-auto px-5 md:pb-0 pb-10 md:bg-none bg-[url("/assets/images/luxury-project-uae/mask-bg.svg")] bg-cover bg-center`}>
+                <div className={`md:w-1/2 w-full md:h-auto h-[340px] md:px-auto px-5 md:pb-0 pb-10 md:bg-none bg-[url("/assets/images/luxury-project-uae/mask-bg.svg")] bg-cover bg-center`} dir="ltr">
                     <Swiper
                         thumbs={{ swiper: thumbsSwiper }}
                         onSlideChange={(swiper) => thumbChange(swiper.activeIndex)}

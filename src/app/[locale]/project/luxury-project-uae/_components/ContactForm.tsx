@@ -10,10 +10,12 @@ import { usePathname } from "next/navigation";
 import { sendGTMEvent } from '@next/third-parties/google'
 import { nationalityOptions } from "@/data/luxuryProjects";
 import { insertHubspotLead, insertPSILead } from "@/utils/crmApiHelpers";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const ContactForm = () => {
   const t = useTranslations("LuxuryProjectUAE.Contact.form");
+  const l = useLocale();
+  const isRTL = l.toLowerCase().startsWith("ar");
 
   const schema = z.object({
     firstName: z.string().min(1, { message: t("firstName.error") }),
@@ -346,7 +348,7 @@ const ContactForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full px-0 ">
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full px-0" dir={isRTL ? "rtl" : "ltr"}>
         {/* Success/Error Messages */}
         {postId === "Success" && <div className="p-3 mb-3 rounded bg-green-500 text-white">Form submitted successfully!</div>}
         {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">Submission failed. Try again.</div>}
@@ -396,7 +398,7 @@ const ContactForm = () => {
                   international
                   defaultCountry="AE"
                   placeholder="+971-536356356"
-                  className="w-full p-3 border rounded-md mb-3"
+                  className="w-full p-3 border rounded-md mb-3" dir={isRTL ? "rtl" : "ltr"}
                 />
               )}
             />
@@ -419,8 +421,8 @@ const ContactForm = () => {
           </div>
         </div>
 
-        <div>
-          <input type="checkbox" {...register('goldenVisa')} className="mr-3 border border-2 border-[#c19a5b] w-[15px] h-[15px]"></input>
+        <div dir={isRTL ? "rtl" : "ltr"}>
+          <input type="checkbox" {...register('goldenVisa')} className={`${isRTL ? 'ml-3' : 'mr-3' } border border-2 border-[#c19a5b] w-[15px] h-[15px]`}></input>
           <label className="text-[14px]! text-[#fff]!">{t('goldenVisa.label')}</label>
         </div>
 

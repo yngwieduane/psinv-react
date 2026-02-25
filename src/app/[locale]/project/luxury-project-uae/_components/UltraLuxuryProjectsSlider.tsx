@@ -13,7 +13,7 @@ import 'swiper/css/navigation';
 import "./UltraLuxuryProjectsSlider.css"
 
 import { LuxuryProjectsData } from "@/types/LuxuryProjectsTypes";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const libreBaskervilleBold = Libre_Baskerville({
   subsets: ['latin'],
@@ -43,6 +43,8 @@ const UltraLuxuryProjectsSlider = ({ data, slides, onAction }: SliderProps) => {
   const [activeThumb, setActiveThumb] = useState(0);
   const [pageURL, setPageUrl] = useState("");
   const t = useTranslations("LuxuryProjectUAE.UltraLuxuryProjects.Slider");
+  const locale = useLocale();
+  const isRTL = locale.toLowerCase().startsWith("ar");
 
   const handleBtnClick = (dataToSend: { name: string, proj_location: string, starting_price: string }) => {
     const luxuryProjectsData: LuxuryProjectsData = {
@@ -113,7 +115,7 @@ const UltraLuxuryProjectsSlider = ({ data, slides, onAction }: SliderProps) => {
 
   return (
     <>
-      <div className="md:min-h-[600px] py-3">
+      <div className="md:min-h-[600px] py-3" dir="ltr">
         {slides.length > 0 ? (
           <>
             <Swiper
@@ -124,14 +126,15 @@ const UltraLuxuryProjectsSlider = ({ data, slides, onAction }: SliderProps) => {
               spaceBetween={10}
               navigation={true}
               allowTouchMove={false}
-              className=""
+              className="ultra-luxury-swiper" 
+              dir={isRTL ? "rtl" : "ltr"}
             >
               {slides?.map((slide, index) => (
                 <SwiperSlide className="relative w-full h-full"
-                  key={index}
+                  key={index} 
                 >
 
-                  <h3 className={`lg:ml-20 text-[24px] md:text-[35px] lg:text-[45px] leading-tight ${libreBaskervilleBold.className} capitalize`}>
+                  <h3 className={`lg:ml-20 text-[24px] md:text-[35px] lg:text-[45px] leading-tight ${libreBaskervilleBold.className} capitalize ${isRTL ? 'text-right' : ''}`} dir={isRTL ? "rtl" : "ltr"}>
                     {slide.title}
                   </h3>
 
@@ -157,7 +160,7 @@ const UltraLuxuryProjectsSlider = ({ data, slides, onAction }: SliderProps) => {
 
                       </div>
                     </div>
-                    <div className="md:w-[60%]">
+                    <div className="md:w-[60%]" dir={isRTL ? "rtl" : "ltr"}>
                       <div className="flex flex-col gap-5">
                         <div>
                           <div className="rounded-md w-full h-full">
@@ -195,7 +198,7 @@ const UltraLuxuryProjectsSlider = ({ data, slides, onAction }: SliderProps) => {
                                         {fact.label}
                                       </p>
                                       {!isLastColumn && !isLastElement && (
-                                        <span className="d-md-block d-none absolute top-1/2 right-0 -translate-y-1/2">
+                                        <span className={`d-md-block d-none absolute top-1/2 ${isRTL ? 'left-0' : 'right-0'}  -translate-y-1/2`}>
                                           <img src="/assets/images/luxury-project-uae/icons/linegrad.svg" />
                                         </span>
                                       )}

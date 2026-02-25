@@ -155,6 +155,10 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
         en: "a462a2723129287d13462a4de975aa7e",
         ar: "710362ca11049eb7428f59d74effc89c",
     },
+    "damac-suhoor": {
+        en: "cd5fc311f533117c8a469529954d0aaa",
+        ar: "972e4a8cc1c1a1f21efa0b0f1c0d283b",
+    },
 };
 
 /**

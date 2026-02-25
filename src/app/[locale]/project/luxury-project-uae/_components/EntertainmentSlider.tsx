@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
 import { Parisienne, Montserrat, Libre_Baskerville } from "next/font/google";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { FreeMode, Navigation } from "swiper/modules";
 
@@ -45,10 +45,12 @@ const sliderData = [
 
 const EntertainmentSlider = () => {
   const t = useTranslations('LuxuryProjectUAE.Entertainment');
+  const locale = useLocale();
+  const isRTL = locale.toLowerCase().startsWith("ar");
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <div className="md:h-[1100px] h-[600px] w-full md:pt-25 py-5">
+    <div className="md:h-[1100px] h-[600px] w-full md:pt-25 py-5" dir="ltr">
       {sliderData.length > 0 ? (
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -58,11 +60,11 @@ const EntertainmentSlider = () => {
           spaceBetween={0}
           navigation={true}
           allowTouchMove={false}
-          className="h-full w-full z-[99999]"
+          className="ultra-luxury-swiper h-full w-full z-[99999]"  dir={isRTL ? "rtl" : "ltr"}
         >
-          <div className="absolute inset-0 z-[4] max-w-screen-xl mx-auto text-white px-4 pt-20">
+          <div className="absolute inset-0 z-[4] max-w-screen-xl mx-auto text-white px-4 pt-20" dir={isRTL ? "rtl" : "ltr"}>
             <div
-              className={`absolute z-[5] md:-top-12 top-10 left-7 text-[60px] md:text-[140px] lg:text-[180px] font-bolder ${montserratBolder.className} text-[#fff] opacity-10`}
+              className={`absolute z-[5] md:-top-12 top-10  ${isRTL ? 'right-0' : 'left-7'} text-[60px] md:text-[140px] lg:text-[180px] font-bolder ${montserratBolder.className} text-[#fff] opacity-10`}
             > 06 </div>
             <h2 className="z-[5]  lg:ml-20 ml-10 text-xs md:text-md lg:text-xl uppercase text-[#FBD784] font-bold tracking-[6px] mb-5 flex gap-2 items-center justify-start">
               <span className="z-[5] w-[35px] md:w-[65px] h-[3px] bg-[#FBD784]" />

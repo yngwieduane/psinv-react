@@ -1,7 +1,7 @@
 import { Montserrat, Libre_Baskerville, Parisienne } from "next/font/google"
 import LuxuryProjectsSlider from "./LuxuryProjectsSlider";
 import { LuxuryProjectsData } from "@/types/LuxuryProjectsTypes";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 const montserratBolder = Montserrat({
     subsets: ['latin'],
@@ -29,6 +29,8 @@ interface Props {
 
 export default function LuxuryProjects({ onAction, data, loadingStatus }: Props) {
     const t = useTranslations('LuxuryProjectUAE.LuxuryProjects');
+    const locale = useLocale();
+    const isRTL = locale.toLowerCase().startsWith("ar");
     //const [brochureUrl, setBrochureUrl] = useState<string | null>(null);
     const handlePropDataToSend = (propData?: LuxuryProjectsData) => {
         onAction(propData);
@@ -36,7 +38,7 @@ export default function LuxuryProjects({ onAction, data, loadingStatus }: Props)
 
     return (
         <>
-            <div className="max-w-screen-xl mx-auto relative z-10 text-white px-4 ">
+            <div className="max-w-screen-xl mx-auto relative z-10 text-white px-4 " dir={isRTL ? "rtl" : "ltr"}>
                 <div className={`absolute md:-top-32 -top-10 md:left-auto left-7 text-[60px] md:text-[140px] lg:text-[180px] font-bolder 
                 ${montserratBolder.className} text-[#fff] opacity-10`}>02</div>
                 <h2 className="lg:ml-20 sm-ml-0 ml-10 text-sm md:text-md lg:text-xl uppercase text-[#FBD784] font-bold tracking-[6] mb-5 flex gap-2 md:gap-5 sm:justify-start justify-center items-center text-center md:text-start">

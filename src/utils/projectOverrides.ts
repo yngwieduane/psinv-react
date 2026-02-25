@@ -1677,6 +1677,33 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
+  'damac-suhoor': {
+    branch: 'auh',
+    seo: {
+      en: {
+        title: "DAMAC Suhoor Registration | Exclusive Real Estate Event",
+        description:
+          "Register for the exclusive DAMAC Suhoor event with PSINV – join us for luxury real estate insights, special property offers, and Ramadan networking opportunities with DAMAC Properties. Secure your spot now!",
+        keywords:
+          "DAMAC Suhoor registration, DAMAC event Dubai, real estate event registration, luxury property event, DAMAC Properties offers, property networking Ramadan, PSINV DAMAC Suhoor",
+      },
+      ar: {
+        "title": "تسجيل سهور داماك | فعالية عقارية حصرية وعروض عقارية مميزة",
+        "description": "سجل لحضور فعالية سهور داماك الحصرية مع PSINV – انضم إلينا لاكتشاف أحدث رؤى العقارات الفاخرة، والعروض الخاصة من داماك للعقارات، وفرص التواصل خلال شهر رمضان. احجز مكانك الآن!",
+        "keywords": "تسجيل سهور داماك، فعالية داماك دبي، تسجيل فعالية عقارية، فعالية عقارات فاخرة، عروض داماك العقارية، تواصل عقاري في رمضان، PSINV سهور داماك"
+      },
+    },
+    override: {
+      remarks: 'DAMAC Suhoor',
+      ...makeUtm({
+        'shaza_damac_suhoor_newsletter': {
+          campaign: 3544,
+          remarks:
+            'Rotation:  DAMAC Suhoor Event - Company',
+        },
+      }),
+    },
+  },
 } satisfies Record<string, PerSlug>;
 
 console.log('[projectOverrides] loaded slugs:', Object.keys(PROJECTS));
