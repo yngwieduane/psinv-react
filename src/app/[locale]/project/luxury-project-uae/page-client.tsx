@@ -2,7 +2,7 @@
 
 import { Montserrat } from "next/font/google";
 import { useEffect, useState } from "react";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Opportunities from "./_components/Opportunities";
 import LuxuryProjects from "./_components/LuxuryProjects";
 import LuxuryInquireModal from "./_components/LuxuryInquireModal";
@@ -32,6 +32,9 @@ interface Project {
 
 export default function LuxuryProjectPageClient() {
     const t = useTranslations('LuxuryProjectUAE');
+    const locale = useLocale();
+    const isRTL = locale.toLowerCase().startsWith("ar");
+
     const [modal, setModal] = useState(false);
 
     const [currentUrl, setCurrentUrl] = useState('');
@@ -40,15 +43,6 @@ export default function LuxuryProjectPageClient() {
     const [selectedProject, setSelectedProject] = useState<LuxuryProjectsData | null>(null);
     const [location, setLocation] = useState("Abu Dhabi");
     const [modalTitle, setModalTitle] = useState<string>("");
-
-    // Moved FAQs to translations but since the component expects an array, 
-    // we'll fetch them from translations if possible or keep them here if it's too complex.
-    // However, the JSON structure I proposed for FAQs was:
-    // "FAQs": { "title": "FAQS", "subtitle": "Frequently asked questions" }
-    // I should probably add the faq items there too.
-
-    // For now, let's keep the FAQ data logic in mind.
-    // I'll update the JSON later if needed.
 
     const faqs = [
         {
@@ -164,9 +158,11 @@ export default function LuxuryProjectPageClient() {
 
     return (
         <>
-            <LuxuryHeader onAction={(modalTitle?: string) => modalHandler(undefined, modalTitle)}
-                pageURL={currentUrl} />
-            <div className={`w-full bg-[#353B58] ${montserrat.className}`}>
+            <div className="w-full" dir={isRTL ? "rtl" : "ltr"}>
+                <LuxuryHeader onAction={(modalTitle?: string) => modalHandler(undefined, modalTitle)}
+                    pageURL={currentUrl} />
+            </div>
+            <div className={`w-full bg-[#353B58] ${montserrat.className}`} dir={isRTL ? "rtl" : "ltr"}>
                 <Opportunities onAction={(modalTitle?: string) => modalHandler(undefined, modalTitle)}
                     pageURL={currentUrl} />
             </div>
@@ -185,16 +181,16 @@ export default function LuxuryProjectPageClient() {
             </div>
             <div className={`w-full relative bg-[#353B58] ${montserrat.className} 
         bg-cover bg-center bg-no-repeat bg-right md:bg-[url("/assets/images/luxury-project-uae/dream-residence.webp")] bg-none`}
-                id="future-residence">
+                id="future-residence" dir={isRTL ? "rtl" : "ltr"}>
                 <div className=" h-full absolute inset-0 w-full"
                     style={{ backgroundImage: "linear-gradient(0deg, #FFFFFF00 10%, #131f52ad 100%, #131f526e 0%)" }}>
-                </div>
+                </div> 
                 <div className="md:h-[590px] "></div>
                 <FutureHome onAction={modalHandler2} />
             </div>
 
             <div className={`w-full bg-[#353B58] ${montserrat.className} bg-[url("/assets/images/luxury-project-uae/property-tours.webp")] 
-        h-[798px] bg-cover bg-center`} id="vip-tours">
+        h-[798px] bg-cover bg-center`} id="vip-tours"  dir={isRTL ? "rtl" : "ltr"}>
                 <div style={{ background: "linear-gradient(0deg, #FFFFFF00 10%, #353B58 100%, #131f526e 0%),url('')" }} className="h-full relative">
                     <div className="h-[100px]"></div>
                     <PropertyTours onAction={modalHandler} />
@@ -208,36 +204,36 @@ export default function LuxuryProjectPageClient() {
                     <div className="flex flex-column items-center gap-3 relative w-1/3">
                         <div className="z-10 iconImage"
                             style={{ backgroundImage: "url('/assets/images/luxury-project-uae/icons/readytomove.svg')" }}></div>
-                        <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">Ready to move in</p>
+                        <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">{t('Features.readyToMove')}</p>
                     </div>
                     <div className="flex flex-column items-center gap-3 relative w-1/3">
                         <div className="iconSeparator"></div>
                         <div className="z-10 iconImage"
                             style={{ backgroundImage: "url('/assets/images/luxury-project-uae/icons/sitevisit.svg')" }}></div>
-                        <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">Site visits</p>
+                        <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">{t('Features.siteVisits')}</p>
                     </div>
                     <div className="flex flex-column items-center gap-3 relative w-1/3">
                         <div className="iconSeparator2"></div>
                         <div className="z-10 iconImage"
                             style={{ backgroundImage: "url('/assets/images/luxury-project-uae/icons/key.svg')" }}></div>
-                        <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">Get your keys</p>
+                        <p className="md:text-lg sm:text-sm text-[12px] font-bold z-10">{t('Features.getYourKeys')}</p>
                     </div>
                 </div>
             </div>
             {/* Entertainment section */}
             <div id="entertainment"
-                className={`md:min-h-[1100px] min-h-[600px] relative w-full bg-[#353B58] ${montserrat.className} md:pb-20 md:pt-10 py-5 pt-25`} >
-                <div className="absolute inset-0 z-[5]">
+                className={`md:min-h-[1100px] min-h-[600px] relative w-full bg-[#353B58] ${montserrat.className} md:pb-20 md:pt-10 py-5 pt-25`}  dir={isRTL ? "rtl" : "ltr"} >
+                <div className="absolute inset-0 z-[5]"  dir={isRTL ? "rtl" : "ltr"}>
                     <EntertainmentSlider />
                 </div>
             </div>
             {/* FAQs */}
             <div id="faqs"
-                className={`w-full bg-[#353B58] ${montserrat.className} py-35`} >
+                className={`w-full bg-[#353B58] ${montserrat.className} py-35`} dir={isRTL ? "rtl" : "ltr"}>
                 <FAQs data={faqs} />
             </div>
             { /* contact */}
-            <div id="connect" className={`w-full bg-[#353B58] ${montserrat.className} py-5`}>
+            <div id="connect" className={`w-full bg-[#353B58] ${montserrat.className} py-5`} dir={isRTL ? "rtl" : "ltr"}>
                 <Contact />
             </div>
             { /* footer */}

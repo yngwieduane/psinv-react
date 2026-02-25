@@ -2,7 +2,7 @@ import { Montserrat, Parisienne } from "next/font/google"
 import { LuxuryProjectsData } from "@/types/LuxuryProjectsTypes";
 import UltraLuxuryProjectsSlider from "./UltraLuxuryProjectsSlider";
 import { faFlag, faLocationDot, faTag } from "@fortawesome/free-solid-svg-icons";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 const montserratBolder = Montserrat({
     subsets: ['latin'],
@@ -23,6 +23,8 @@ interface Props {
 
 export default function UltraLuxuryProjects({ onAction, data, loadingStatus }: Props) {
     const t = useTranslations('LuxuryProjectUAE.UltraLuxuryProjects');
+    const locale = useLocale();
+    const isRTL = locale.toLowerCase().startsWith("ar");
     const t_projects = useTranslations("LuxuryProjectUAE.UltraLuxuryProjects.Projects");
 
     const UltraLuxuryProjectsData = [
@@ -35,7 +37,7 @@ export default function UltraLuxuryProjects({ onAction, data, loadingStatus }: P
                 {' '}
                 {t_projects('hudayriyat.title2')}
             </>),
-            proj_location: t_projects('locations.abu_dhabi'),
+            proj_location: t_projects('locations.Abu Dhabi'),
             content: (
                 <>
                     <p className="mb-5 md:mt-0 mt-3 md:text-lg text-md md:text-start text-center">{t_projects('hudayriyat.content1')}</p>
@@ -64,7 +66,7 @@ export default function UltraLuxuryProjects({ onAction, data, loadingStatus }: P
                 {' '}
                 {t_projects('saadiyat.title2')}
             </>),
-            proj_location: t_projects('locations.abu_dhabi'),
+            proj_location: t_projects('locations.Abu Dhabi'),
             content: (
                 <p className="mb-5 md:mt-0 mt-3 md:text-lg text-md md:text-start text-center">{t_projects('saadiyat.content')}</p>
             ),
@@ -89,7 +91,7 @@ export default function UltraLuxuryProjects({ onAction, data, loadingStatus }: P
                 {' '}
                 {t_projects('bugatti.title2')}
             </>),
-            proj_location: t_projects('locations.abu_dhabi'),
+            proj_location: t_projects('locations.Abu Dhabi'),
             content: (
                 <p className="mb-5 md:mt-0 mt-3 md:text-lg text-md md:text-start text-center">
                     {t_projects('bugatti.content')}
@@ -117,7 +119,7 @@ export default function UltraLuxuryProjects({ onAction, data, loadingStatus }: P
                 {' '}
                 {t_projects('reemHills.title2')}
             </>),
-            proj_location: t_projects('locations.abu_dhabi'),
+            proj_location: t_projects('locations.Abu Dhabi'),
             content: (
                 <p className="mb-5 md:mt-0 mt-3 md:text-lg text-md md:text-start text-center">
                     {t_projects('reemHills.content')}
@@ -143,7 +145,7 @@ export default function UltraLuxuryProjects({ onAction, data, loadingStatus }: P
                 {' '}
                 {t_projects('tilalAlGhaf.title2')}
             </>),
-            proj_location: t_projects('locations.abu_dhabi'),
+            proj_location: t_projects('locations.Abu Dhabi'),
             content: (
                 <p className="mb-5 md:mt-0 mt-3 md:text-lg text-md md:text-start text-center">
                     {t_projects('tilalAlGhaf.content')}
@@ -169,7 +171,7 @@ export default function UltraLuxuryProjects({ onAction, data, loadingStatus }: P
                 {' '}
                 {t_projects('golfPlaces.title2')}
             </>),
-            proj_location: t_projects('locations.dubai'),
+            proj_location: t_projects('locations.Dubai'),
             content: (
                 <p className="mb-5 md:mt-0 mt-3 md:text-lg text-md md:text-start text-center">
                     {t_projects('golfPlaces.content')}
@@ -195,7 +197,7 @@ export default function UltraLuxuryProjects({ onAction, data, loadingStatus }: P
                 {' '}
                 {t_projects('districtOne.title2')}
             </>),
-            proj_location: t_projects('locations.abu_dhabi'),
+            proj_location: t_projects('locations.Abu Dhabi'),
             content: (
                 <p className="mb-5 md:mt-0 mt-3 md:text-lg text-md md:text-start text-center">
                     {t_projects('districtOne.content')}
@@ -221,7 +223,7 @@ export default function UltraLuxuryProjects({ onAction, data, loadingStatus }: P
                 {' '}
                 {t_projects('laMer.title2')}
             </>),
-            proj_location: t_projects('locations.dubai'),
+            proj_location: t_projects('locations.Dubai'),
             content: (
                 <p className="mb-5 md:mt-0 mt-3 md:text-lg text-md md:text-start text-center">
                     {t_projects('laMer.content')}
@@ -246,10 +248,11 @@ export default function UltraLuxuryProjects({ onAction, data, loadingStatus }: P
 
     return (
         <>
-            <div className="max-w-screen-xl mx-auto relative z-10 text-white px-4 ">
+            <div className="max-w-screen-xl mx-auto relative z-10 text-white px-4" dir={isRTL ? "rtl" : "ltr"}>
                 <div className={`absolute md:-top-32 -top-10 md:left-auto left-7 text-[60px] md:text-[140px] lg:text-[180px] font-bolder 
-                ${montserratBolder.className} text-[#fff] opacity-10`}>03</div>
-                <h2 className="lg:ml-20 sm-ml-0 ml-10 text-sm md:text-md lg:text-xl uppercase text-[#FBD784] font-bold tracking-[6] mb-5 flex gap-2 md:gap-5 sm:justify-start justify-center items-center text-center md:text-start">
+                ${montserratBolder.className} text-[#fff] opacity-10`} dir={isRTL ? "rtl" : "ltr"}>03</div>
+                <h2 className="lg:ml-20 sm-ml-0 ml-10 text-sm md:text-md lg:text-xl uppercase text-[#FBD784] font-bold tracking-[6] mb-5 flex gap-2 md:gap-5 sm:justify-start justify-center items-center text-center md:text-start"
+                dir={isRTL ? "rtl" : "ltr"}>
                     <span className="w-[35px] md:w-[65px] w-[25px] h-[3px] bg-[#FBD784]"></span>{t('title')}
                 </h2>
                 <UltraLuxuryProjectsSlider data={data} slides={UltraLuxuryProjectsData} onAction={handlePropDataToSend} />

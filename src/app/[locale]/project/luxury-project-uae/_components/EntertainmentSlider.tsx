@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
 import { Parisienne, Montserrat, Libre_Baskerville } from "next/font/google";
+import { useLocale, useTranslations } from 'next-intl';
 
 import { FreeMode, Navigation } from "swiper/modules";
 
@@ -31,23 +32,25 @@ const libreBaskervilleBold = Libre_Baskerville({
 });
 
 const sliderData = [
-  { name: "Yas Island", image: "/assets/images/luxury-project-uae/yas-island.webp" },
-  { name: "Burj Khalifa", image: "/assets/images/luxury-project-uae/burj-khalifa.webp" },
-  { name: "Ferrari World", image: "/assets/images/luxury-project-uae/luxury-ferrari-world.webp" },
-  { name: "Louvre Abu Dhabi", image: "/assets/images/luxury-project-uae/luxury-louvre-abu-dhabi.webp" },
-  { name: "Burj Al Arab", image: "/assets/images/luxury-project-uae/luxury-burj-al-arab.webp" },
-  { name: "Dubai Mall", image: "/assets/images/luxury-project-uae/luxury-dubai-mall.webp" },
-  { name: "Water-World Yas Island", image: "/assets/images/luxury-project-uae/luxury-water-world.webp" },
-  { name: "Dubai Sky Resturant", image: "/assets/images/luxury-project-uae/luxury-sky-resturant.webp" },
-  { name: "Warner Bros", image: "/assets/images/luxury-project-uae/luxury-warner-bros.webp" }
+  { key: "yasIsland", image: "/assets/images/luxury-project-uae/yas-island.webp" },
+  { key: "burjKhalifa", image: "/assets/images/luxury-project-uae/burj-khalifa.webp" },
+  { key: "ferrariWorld", image: "/assets/images/luxury-project-uae/luxury-ferrari-world.webp" },
+  { key: "louvre", image: "/assets/images/luxury-project-uae/luxury-louvre-abu-dhabi.webp" },
+  { key: "burjAlArab", image: "/assets/images/luxury-project-uae/luxury-burj-al-arab.webp" },
+  { key: "dubaiMall", image: "/assets/images/luxury-project-uae/luxury-dubai-mall.webp" },
+  { key: "waterWorld", image: "/assets/images/luxury-project-uae/luxury-water-world.webp" },
+  { key: "skyResturant", image: "/assets/images/luxury-project-uae/luxury-sky-resturant.webp" },
+  { key: "warnerBros", image: "/assets/images/luxury-project-uae/luxury-warner-bros.webp" }
 ];
 
 const EntertainmentSlider = () => {
-
+  const t = useTranslations('LuxuryProjectUAE.Entertainment');
+  const locale = useLocale();
+  const isRTL = locale.toLowerCase().startsWith("ar");
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <div className="md:h-[1100px] h-[600px] w-full md:pt-25 py-5">
+    <div className="md:h-[1100px] h-[600px] w-full md:pt-25 py-5" dir="ltr">
       {sliderData.length > 0 ? (
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -57,28 +60,28 @@ const EntertainmentSlider = () => {
           spaceBetween={0}
           navigation={true}
           allowTouchMove={false}
-          className="h-full w-full z-[99999]"
+          className="ultra-luxury-swiper h-full w-full z-[99999]"  dir={isRTL ? "rtl" : "ltr"}
         >
-          <div className="absolute inset-0 z-[4] max-w-screen-xl mx-auto text-white px-4 pt-20">
+          <div className="absolute inset-0 z-[4] max-w-screen-xl mx-auto text-white px-4 pt-20" dir={isRTL ? "rtl" : "ltr"}>
             <div
-              className={`absolute z-[5] md:-top-12 top-10 left-7 text-[60px] md:text-[140px] lg:text-[180px] font-bolder ${montserratBolder.className} text-[#fff] opacity-10`}
+              className={`absolute z-[5] md:-top-12 top-10  ${isRTL ? 'right-0' : 'left-7'} text-[60px] md:text-[140px] lg:text-[180px] font-bolder ${montserratBolder.className} text-[#fff] opacity-10`}
             > 06 </div>
             <h2 className="z-[5]  lg:ml-20 ml-10 text-xs md:text-md lg:text-xl uppercase text-[#FBD784] font-bold tracking-[6px] mb-5 flex gap-2 items-center justify-start">
               <span className="z-[5] w-[35px] md:w-[65px] h-[3px] bg-[#FBD784]" />
-              Entertainment
+              {t('title')}
             </h2>
             <h3
               className={`z-[5] text-center text-[24px] md:text-[35px] lg:text-[48px] relative leading-tight ${libreBaskervilleBold.className} capitalize`}
             >
-              Entertainment{" "}
+              {t('title')}{" "}
               <span
                 className={`z-[5] ml-3 text-[40px] md:text-[55px] lg:text-[60px] relative after:bg-[#C19A5B] after:absolute after:w-full after:left-0 after:z-[-1]
                 after:h-[25px] after:top-4 md:after:h-[30px] md:after:top-7 lg:after:h-[40px] lg:after:top-6 ${parisienne.className}`}
               >
-                Highlights
+                {t('highlights')}
               </span>
               <br />
-              Across the UAE
+              {t('acrossUAE')}
             </h3>
           </div>
 
@@ -86,12 +89,12 @@ const EntertainmentSlider = () => {
             <SwiperSlide key={index} className="h-full w-full">
               <img
                 src={slide.image}
-                alt={slide.name}
+                alt={t(`slides.${slide.key}`)}
                 className="w-full h-full object-cover"
               />
               <span className="absolute z-[5] bottom-35 left-1/2 -translate-x-1/2 btn text-white text-center bg-[#C19A5B] rounded-[5px] py-2 h-[40px] px-5 md:w-auto w-auto mt-5"
               >
-                {slide.name}
+                {t(`slides.${slide.key}`)}
               </span>
               {/* desktop elements */}
               <div className="absolute inset-0 h-[500px] z-[1] pointer-events-none md:block hidden"
@@ -116,11 +119,10 @@ const EntertainmentSlider = () => {
           ))}
         </Swiper>
       ) : (
-        <p className="text-center text-white text-xl">No Projects to Show</p>
+        <p className="text-center text-white text-xl">{t('noProjects')}</p>
       )}
     </div>
   );
 };
-
 
 export default EntertainmentSlider;

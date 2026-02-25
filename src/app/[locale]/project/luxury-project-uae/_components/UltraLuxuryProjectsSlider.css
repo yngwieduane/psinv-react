@@ -1,12 +1,30 @@
-.swiper-button-prev { right: 10%; left: auto; } 
-.swiper-button-prev, .swiper-button-next { top: 20px; width: 91px; } 
-.swiper-button-prev::after, .swiper-button-next::after { content: url(/assets/images/luxury-project-uae/icons/arrow-active.svg); width: 91px; } 
-.swiper-button-prev::after { transform: scaleX(-1); }
+/* Desktop LTR */
+.ultra-luxury-swiper[dir="ltr"] .swiper-button-prev { right: 20%; left: auto !important; top: 20px; width: 91px; transform: scaleX(-1); }
+.ultra-luxury-swiper[dir="ltr"] .swiper-button-next { right: 10%; left: auto !important; top: 20px; width: 91px; transform: scaleX(1); }
 
+/* Desktop RTL (Arabic) */
+.ultra-luxury-swiper[dir="rtl"] .swiper-button-prev { left: 20%; right: auto !important; top: 20px; width: 91px; transform: scaleX(-1); }
+.ultra-luxury-swiper[dir="rtl"] .swiper-button-next { left: 10%; right: auto !important; top: 20px; width: 91px; transform: scaleX(-1); }
+
+/* Arrow icon override */
+.ultra-luxury-swiper .swiper-button-prev::after,
+.ultra-luxury-swiper .swiper-button-next::after {
+  content: url(/assets/images/luxury-project-uae/icons/arrow-active.svg);
+  width: 91px;
+}
+
+/* RTL arrow flip handled in inline transform above */
+.ultra-luxury-swiper[dir="rtl"] .swiper-button-prev::after { transform: scaleX(-1); }
+.ultra-luxury-swiper[dir="rtl"] .swiper-button-next::after { transform: scaleX(1); }
+
+/* Mobile */
 @media only screen and (max-width: 768px) {
-     
-    .swiper-button-prev, .swiper-button-next { bottom: 0px; top:unset; width: 91px; }
-    .swiper-button-prev { left: 20%; right: unset; }
-    .swiper-button-next { left: unset; right: 20%; }    
-    .swiper-button-prev::after, .swiper-button-next::after { content: url(/assets/images/luxury-project-uae/icons/arrow-active-mob.svg); width: 71px; }  
+    .ultra-luxury-swiper[dir="ltr"] .swiper-button-prev { left: unset !important; right: 100px !important; bottom: 0; top: unset; width: 71px; transform: scaleX(-1); }
+    .ultra-luxury-swiper[dir="ltr"] .swiper-button-next { left: unset !important; right: 0 !important; bottom: 0; top: unset; width: 71px; }
+
+    .ultra-luxury-swiper[dir="rtl"] .swiper-button-prev { left: 80px !important; right: unset !important; bottom: 0; top: unset; width: 71px; transform: scaleX(-1); }
+    .ultra-luxury-swiper[dir="rtl"] .swiper-button-next { left: 20px !important; right: unset !important; bottom: 0; top: unset; width: 71px; }
+
+    .ultra-luxury-swiper .swiper-button-prev::after,
+    .ultra-luxury-swiper .swiper-button-next::after { content: url(/assets/images/luxury-project-uae/icons/arrow-active-mob.svg); width: 71px; }
 }

@@ -1477,7 +1477,6 @@
       "phone": "Phone number",
       "message": "Your message"
     },
-  
     "buttons": {
       "submit": "Submit",
       "submitting": "Submitting..."
@@ -6906,12 +6905,11 @@
       "Al Manhal": "Al Manhal",
       "The Marina": "The Marina"
     },
-    "Category" : {
-      "Apartment" : "Apartment",
-      "Villa" : "Villa",
-      "Townhouse" : "Townhouse"
+    "Category": {
+      "Apartment": "Apartment",
+      "Villa": "Villa",
+      "Townhouse": "Townhouse"
     }
-    
   },
   "LuxuryProjectUAE": {
     "Hero": {
@@ -7153,9 +7151,54 @@
     },
     "Contact": {
       "title": "Let's Connect",
-      "callback": "Request A Callback",
-      "highlight": "Callback",
-      "description": "Please fill in your contact details and submit. A member of our team will contact you shortly."
+      "callback": {
+        "part1": "Request A",
+        "part2": "Callback"
+      },
+      "description": "Please fill in your contact details and submit. A member of our team will contact you shortly.",
+      "form": {
+        "firstName": {
+          "label": "Your First Name",
+          "placeholder": "First Name",
+          "error": "First name is required"
+        },
+        "lastName": {
+          "label": "Your Last Name",
+          "placeholder": "Last Name",
+          "error": "Last name is required"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "yourmail@gmail.com",
+          "error": "Invalid email address"
+        },
+        "phone": {
+          "label": "Phone Number",
+          "error": "Invalid phone number"
+        },
+        "nationality": {
+          "label": "Nationality",
+          "placeholder": "Select Nationality",
+          "error": "Please select your nationality"
+        },
+        "goldenVisa": {
+          "label": "I'm interested in the Golden Visa"
+        },
+        "agreements": {
+          "mustAgree": "You must agree to this",
+          "agreement1": "I agree to the Terms & Conditions and Privacy Policy",
+          "agreement2": "Agree to receive calls and communications",
+          "agreement3": "Receive calls about various projects"
+        },
+        "submitButton": {
+          "default": "Call Me Back!",
+          "submitting": "Submitting..."
+        },
+        "messages": {
+          "success": "Form submitted successfully!",
+          "error": "Submission failed. Try again."
+        }
+      }
     },
     "Footer": {
       "luxuryProjects": "Luxury Projects",
@@ -7172,11 +7215,46 @@
         "rak": "Ras Al Khaimah"
       },
       "contactInfoTitle": "Contact Us",
-      "phone": "600 548 200",
-      "whatsapp": "+971 2205 2999",
       "privacy": "Privacy",
       "terms": "Terms of Use",
       "rights": "© 2025 Property Shop Investment LLC. | All Rights Reserved."
+    },    
+  "ContactForm": {
+    "messages": {
+      "success": "Form submitted successfully!",
+      "error": "Submission failed. Try again."
+    },
+    "fields": {
+      "firstName": {
+        "label": "First Name",
+        "placeholder": "First Name",
+        "error": "Please enter your first name"
+      },
+      "lastName": {
+        "label": "Last Name",
+        "placeholder": "Last Name",
+        "error": "Please enter your last name"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "+971-555555555",
+        "error": "Please enter a valid phone number"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Email",
+        "error": "Please enter a valid email"
+      }
+    },
+    "button": {
+      "default": "Submit",
+      "submitting": "Submitting..."
+    },
+    "agreement": {
+      "text": "By clicking Submit, you agree to our Terms & Conditions and Privacy Policy.",
+      "terms": "Terms & Conditions",
+      "privacy": "Privacy Policy"
     }
+  }  
   }
 }
