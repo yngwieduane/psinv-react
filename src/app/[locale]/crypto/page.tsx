@@ -4,7 +4,7 @@ import CryptoPageClient from './page-client';
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
-    const t = await getTranslations("ListYourPropertyPage.metadata");
+    const t = await getTranslations("CryptoPage.metadata");
   
     return {
       title: t("title"),

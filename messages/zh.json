@@ -1015,6 +1015,26 @@
       "agreement1": "您必须同意这一点"
     }
   },
+  "BlogPage": {
+    "metadata": {
+      "title": "阿联酋房地产博客 | 房产新闻、市场趋势与投资洞察",
+      "description": "随时了解最新的阿联酋房地产新闻、市场趋势、投资洞察、社区指南以及买家和投资者的专家建议。"
+    },
+    "title": "我们的博客",
+    "searchPlaceholder": "搜索文章...",
+    "recentPosts": "最新文章",
+    "readMore": "阅读更多",
+    "categories": {
+      "market_insights": "市场洞察",
+      "company_news": "公司新闻",
+      "lifestyle": "生活方式"
+    },
+    "subtitle": "探索阿联酋房地产市场的最新见解、新闻和趋势。",
+    "noPostsFound": "未找到符合搜索条件的文章。",
+    "previous": "上一页",
+    "next": "下一页",
+    "page": "页"
+  },
   "CryptoPage": {
     "metadata": {
       "title": "使用加密货币购买房产 - PSI",

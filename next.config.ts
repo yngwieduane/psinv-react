@@ -171,6 +171,46 @@ const nextConfig: NextConfig = {
         destination: '/en/developer/emaar',
         permanent: true,
       },
+      {
+        source: '/ar/projects/abu-dhabi/al-raha-beach/subcommunity/al-zeina---beachfront-villas/:path*',
+        destination: '/ar/projects/abu-dhabi/al-raha-beach/al-zeina/al-zeina-beachfront-villas/:path*',
+        permanent: true,
+      },
+      {
+        source: '/ar/projects/abu-dhabi/al-raha-beach/subcommunity/al-zeina---residential-tower-g/:path*',
+        destination: '/ar/projects/abu-dhabi/al-raha-beach/al-zeina/al-zeina-residential-tower-g/:path*',
+        permanent: true,
+      },
+      {
+        source: '/ar/projects/abu-dhabi/al-reem-island/subcommunity/a3a-building/:path*',
+        destination: '/ar/projects/abu-dhabi/al-reem-island/marina-square/a3b-building/:path*',
+        permanent: true,
+      },
+      {
+        source: '/ar/projects/abu-dhabi/saadiyat-island/subcommunity/st-regis-hotel---saadiyat/:path*',
+        destination: '/ar/projects/abu-dhabi/saadiyat-island/saadiyat-island/st-regis-hotel-saadiyat/:path*',
+        permanent: true,
+      },
+      {
+        source: '/en/projects/abu-dhabi/abu-dhabi-gate/subcommunity/wave-tower/:path*',
+        destination: '/en/projects/abu-dhabi/abu-dhabi-gate/al-mina/silver-wave-tower/:path*',
+        permanent: true,
+      },
+      {
+        source: '/en/projects/abu-dhabi/abu-dhabi-gate/subcommunity/silver-wave-tower/:path*',
+        destination: '/en/projects/abu-dhabi/abu-dhabi-gate/al-mina/silver-wave-tower/:path*',
+        permanent: true,
+      },
+      {
+        source: '/en/projects/abu-dhabi/al-reem-island/subcommunity/al-maha-tower/:path*',
+        destination: '/en/projects/abu-dhabi/al-reem-island/marina-square/al-maha-tower/:path*',
+        permanent: true,
+      },
+      {
+        source: '/en/projects/abu-dhabi/al-reem-island/subcommunity/al-maha/:path*',
+        destination: '/en/projects/abu-dhabi/al-reem-island/marina-square/al-maha-tower/:path*',
+        permanent: true,
+      },
     ]
   },
   reactStrictMode: true,

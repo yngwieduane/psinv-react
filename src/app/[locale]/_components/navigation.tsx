@@ -858,7 +858,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                                         {({ open }) => (
                                             <>
                                                 <DisclosureButton className="flex w-full items-center justify-between rounded-lg py-3 pl-3 pr-3.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white transition-colors">
-                                                    {t(group.label.toLowerCase())}
+                                                   {group.label}
                                                     <ChevronDownIcon
                                                         className={classNames(
                                                             open ? 'rotate-180' : '',
