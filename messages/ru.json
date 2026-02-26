@@ -1899,267 +1899,347 @@
   "LuxuryProjectUAE": {
     "Hero": {
       "nav": {
-        "home": "Home",
-        "luxuryProjects": "Luxury Projects",
-        "ultraLuxuryProjects": "Ultra Luxury Projects",
-        "entertainment": "Entertainments",
-        "futureResidence": "Future Residence",
-        "vipTour": "VIP Tour",
-        "freeConsultation": "Free Consultation"
+        "home": "Главная",
+        "luxuryProjects": "Проекты класса люкс",
+        "ultraLuxuryProjects": "Ультра-люкс проекты",
+        "entertainment": "Развлечения",
+        "futureResidence": "Будущий дом",
+        "vipTour": "VIP-тур",
+        "freeConsultation": "Бесплатная консультация"
       },
-      "title": "Discover",
-      "luxury": "Luxury",
-      "lifestyle": "Lifestyle"
+      "title": "Откройте",
+      "luxury": "Роскошь",
+      "lifestyle": "Стиль жизни"
     },
     "Opportunities": {
-      "superTitle": "Opportunities Await!",
-      "rare": "Rare",
-      "subtitle": "investment real estate opportunities available",
-      "description": "Enjoy privileged access to exclusive properties in prime destinations that are available only for the most discerning clientele.\nOur experienced specialists will ensure that each personalised experience is bespoke, seamlessly uniting sellers with ideal buyers.",
-      "callBack": "Call back",
-      "findOnWhatsapp": "Find us on WhatsApp",
+      "superTitle": "Возможности ждут!",
+      "rare": "Редкие",
+      "subtitle": "инвестиционные возможности в недвижимости",
+      "description": "Получите привилегированный доступ к эксклюзивным объектам в престижных локациях, доступным только для самых взыскательных клиентов.\nНаши опытные специалисты обеспечат индивидуальный подход, бесшовно соединяя продавцов с идеальными покупателями.",
+      "callBack": "Перезвонить",
+      "findOnWhatsapp": "Связаться через WhatsApp",
       "whatsapp": "WhatsApp"
     },
     "LuxuryProjects": {
-      "explore": "Explore Elegance",
-      "title": "Discover Our",
-      "luxury": "Luxury",
-      "projects": "Projects",
-      "loading": "Loading projects...",
-      "noProjects": "No Projects to Show",
-      "signUp": "Sign Up",
-      "downloadBrochure": "Download Brochure",
-      "availableUnits": "Available Units",
-      "noUnits": "No units available",
-      "studio": "Studio",
-      "bedrooms": "Bedrooms"
+      "explore": "Исследовать элегантность",
+      "title": "Откройте наши",
+      "luxury": "Роскошные",
+      "projects": "Проекты",
+      "loading": "Загрузка проектов…",
+      "noProjects": "Проекты не найдены",
+      "signUp": "Зарегистрироваться",
+      "downloadBrochure": "Скачать брошюру",
+      "availableUnits": "Доступные объекты",
+      "noUnits": "Нет доступных объектов",
+      "studio": "Студия",
+      "bedrooms": "Спальни"
     },
     "UltraLuxuryProjects": {
-      "title": "Ultra luxury Project",
+      "title": "Проекты класса ультра-люкс",
       "Projects": {
         "locations": {
-          "Abu Dhabi": "Abu Dhabi",
-          "Dubai": "Dubai"
+          "Abu Dhabi": "Абу-Даби",
+          "Dubai": "Дубай"
         },
         "hudayriyat": {
           "title1": "Hudayriyat",
           "title2": "Island",
-          "content1": "A vibrant waterfront destination that offers various leisure and entertainment facilities, including cycling tracks, watersports activities, dining options, and outdoor spaces for relaxation and socializing.",
-          "content2": "It is a popular destination for residents and visitors seeking outdoor recreation and community events."
+          "content1": "Яркое приморское направление с разнообразными зонами отдыха и развлечений, включая велосипедные дорожки, водные виды спорта, рестораны и открытые зоны для отдыха и общения.",
+          "content2": "Это популярное место для жителей и гостей, ищущих активный отдых на свежем воздухе и мероприятия для всей семьи."
         },
         "saadiyat": {
           "title1": "Saadiyat Island",
           "title2": "Grove",
-          "content": "Aldar's Saadiyat Grove, nestled in Saadiyat Island's Cultural District, transforms into a vibrant mixed-use community. Offering residential spaces, retail options, and cutting-edge facilities, it boasts gyms, children's play areas, a community garden, and running tracks."
+          "content": "Saadiyat Grove от Aldar — это оживлённое сообщество с жилыми пространствами, торговыми зонами и современными удобствами. Здесь есть тренажёрные залы, детские площадки, общественный сад и беговые дорожки."
         },
         "bugatti": {
           "title1": "Bugatti",
           "title2": "Residences",
-          "content": "Indulge in an exclusive residential haven by BinGhatti, blending French Riviera charm and Bugatti allure. Redefining luxury, this unique tower offers unparalleled style, cutting-edge amenities, and spacious interiors with stunning Dubai skyline views."
+          "content": "Насладитесь эксклюзивным жилым пространством от BinGhatti, сочетающим шарм Французской Ривьеры и престиж Bugatti. Этот уникальный небоскрёб предлагает исключительный стиль, передовые удобства и просторные интерьеры с захватывающим видом на панораму Дубая."
         },
         "reemHills": {
           "title1": "Reem Hills",
           "title2": "Villas",
-          "content": "This gated community by Q Properties harmoniously blends living, working, and leisure elements in Abu Dhabi. Offering diverse residential options, well-crafted public spaces, retail facilities, and premium amenities for a balanced lifestyle."
+          "content": "Закрытое сообщество от Q Properties, гармонично сочетающее элементы жизни, работы и отдыха в Абу-Даби. Разнообразные жилые варианты, продуманное общественное пространство, торговые точки и первоклассные удобства обеспечивают сбалансированный образ жизни."
         },
         "tilalAlGhaf": {
           "title1": "Tilal Al",
           "title2": "Ghaf",
-          "content": "Experience vibrant community living at Tilal Al Ghaf's amara. Developed by Majid Al Futtaim, you can escape to a luxurious haven surrounded by lush landscapes, resort-style amenities, diverse entertainment options, and more."
+          "content": "Ощутите яркую жизнь сообщества Tilal Al Ghaf’s Amara от Majid Al Futtaim, окружённую пышной зеленью, курортными удобствами и разнообразными вариантами развлечений."
         },
         "golfPlaces": {
           "title1": "Golf Places Terraces At",
           "title2": "Dubai Hills",
-          "content": "Experience luxury community living at Golf Places Terraces, nestled in Dubai Hills' scenic landscape. Enjoy a lifestyle of convenience and leisure with convenient access to Dubai Hills Park, Golf Club House, and Dubai Hills Mall."
+          "content": "Насладитесь роскошным сообществом в Golf Places Terraces, расположенном в живописной местности Dubai Hills. Комфорт и отдых доступны рядом с парком Dubai Hills, гольф-клубом и Dubai Hills Mall."
         },
         "districtOne": {
           "title1": "District One",
           "title2": "West",
-          "content": "Discover District One West by Nakheel, a prestigious gated community where nature and innovative design unite. Embrace waterfront living, lush greenery, and serene atmospheres, with easy access to city landmarks and leisure destinations."
+          "content": "Откройте District One West от Nakheel — престижное закрытое сообщество, где природа и инновационный дизайн объединены. Наслаждайтесь жизнью у воды, зелёными зонами и спокойной атмосферой с лёгким доступом к достопримечательностям города."
         },
         "laMer": {
           "title1": "La Mer",
           "title2": "Masion",
-          "content": "Immerse yourself in elevated private island living at the exclusive La Mer Maisons by Merass community. Enjoy stunning sea views, world-class amenities, unrivaled exclusivity, and easy access to Jumeirah’s popular attractions."
+          "content": "Погрузитесь в исключительную жизнь на частном острове в сообществе La Mer Maisons от Merass. Вас ждут потрясающие виды на море, первоклассные удобства и непревзойдённая эксклюзивность, а также близость популярных достопримечательностей Джумейры."
         }
       },
       "Slider": {
-        "Starting Price": "Starting Price",
-        "Book Your Villa Now": "Book Your Villa Now",
-        "Download Brochure": "Download Brochure",
+        "Starting Price": "Начальная цена",
+        "Book Your Villa Now": "Забронируйте виллу сейчас",
+        "Download Brochure": "Скачать брошюру",
         "Facts": {
-          "bedroom": "Bedroom",
-          "type": "Type",
-          "freeHold": "Free Hold",
-          "handover": "Handover",
-          "location": "Location",
-          "downpayment": "Down Payment",
-          "skyMansions": "Sky Mansions",
-          "skyPenthouses": "Sky Penthouses"
+          "bedroom": "Спальня",
+          "type": "Тип",
+          "freeHold": "Полная собственность",
+          "handover": "Сдача",
+          "location": "Расположение",
+          "downpayment": "Первоначальный взнос",
+          "skyMansions": "Небесные особняки",
+          "skyPenthouses": "Небесные пентхаусы"
         },
         "FactsValues": {
           "hudayriyat": {
-            "bedroom": "1 - 2",
-            "type": "Apartments",
+            "bedroom": "1–2",
+            "type": "Апартаменты",
             "freeHold": "Freehold",
             "handover": "2017",
-            "location": "Abu Dhabi",
+            "location": "Абу-Даби",
             "downpayment": "10%"
           },
           "saadiyat": {
-            "bedroom": "Studio, 1 - 2",
-            "type": "Apartments, Penthouses",
-            "handover": "Q1 2025 (Phase 1)",
-            "location": "Saadiyat Island, Abu Dhabi",
+            "bedroom": "Студия, 1–2",
+            "type": "Апартаменты, Пентхаусы",
+            "handover": "Q1 2025 (Фаза 1)",
+            "location": "Saadiyat Island, Абу-Даби",
             "downpayment": "10%"
           },
           "bugatti": {
-            "skyMansions": "2 - 4 Bedroom",
-            "skyPenthouses": "5 Bedroom",
-            "type": "Mansions, Penthouses",
+            "skyMansions": "2–4 спальни",
+            "skyPenthouses": "5 спален",
+            "type": "Особняки, Пентхаусы",
             "handover": "Q2 2026",
-            "location": "Business Bay, Dubai",
+            "location": "Business Bay, Дубай",
             "downpayment": "25%"
           },
           "reemHills": {
-            "bedroom": "5 - 7",
-            "type": "Villas, Townhouses",
+            "bedroom": "5–7",
+            "type": "Виллы, Таунхаусы",
             "handover": "Q3 2025",
             "downpayment": "10%"
           },
           "tilalAlGhaf": {
-            "bedroom": "4 - 6",
-            "type": "Townhouses",
+            "bedroom": "4–6",
+            "type": "Таунхаусы",
             "handover": "Q1 2022",
             "downpayment": "10%"
           },
           "golfPlaces": {
-            "bedroom": "4 - 6",
-            "type": "Villas",
-            "handover": "Q1 2022 (Phase 1)",
+            "bedroom": "4–6",
+            "type": "Виллы",
+            "handover": "Q1 2022 (Фаза 1)",
             "downpayment": "20%"
           },
           "districtOne": {
-            "bedroom": "4 - 6",
-            "type": "Villas",
-            "handover": "Q1 2027 (Phase 1)",
+            "bedroom": "4–6",
+            "type": "Виллы",
+            "handover": "Q1 2027 (Фаза 1)",
             "downpayment": "20%"
           },
           "laMer": {
             "bedroom": "4",
-            "type": "Land Plots",
-            "handover": "To be announced",
+            "type": "Участки земли",
+            "handover": "Будет объявлено",
             "downpayment": "10%"
           }
         }
       }
     },
     "FutureHome": {
-      "title": "Dream Residence in UAE",
-      "subtitlePart1": "Let the journey to your ",
-      "subtitleMain": "Future Home",
-      "subtitlePart2": "Begin",
-      "learnMore": "Learn More",
+      "title": "Дом вашей мечты в ОАЭ",
+      "subtitlePart1": "Пусть путь к вашему",
+      "subtitleMain": "Будущему дому",
+      "subtitlePart2": "начнётся",
+      "learnMore": "Узнать подробнее",
       "slides": [
         {
-          "title": "Abu Dhabi",
-          "content": "Nestled along the azure Arabian Gulf, Abu Dhabi stands as a beacon of sophistication and opportunity. Boasting a harmonious blend of rich cultural heritage and modernity, it offers an ideal environment to live, visit, work, and invest. Experience luxury, innovation, and a thriving cosmopolitan lifestyle in this dynamic global hub."
+          "title": "Абу-Даби",
+          "content": "Расположенный вдоль лазурного Аравийского залива, Абу-Даби сочетает в себе богатое культурное наследие и современность, предлагая идеальные условия для жизни, отдыха, работы и инвестиций."
         },
         {
-          "title": "Dubai",
-          "content": "The vibrant metropolis of Dubai dazzles with its iconic skyline, luxurious lifestyle, and cultural diversity. From the world's tallest building, the Burj Khalifa, to extravagant shopping malls and pristine beaches, Dubai seamlessly blends modernity with tradition, offering visitors an unforgettable fusion of experiences."
+          "title": "Дубай",
+          "content": "Яркий мегаполис Дубай впечатляет своим культовым горизонтом, роскошью и культурным разнообразием. От Бурдж Халифа до премиальных торговых центров и пляжей, Дубай предлагает незабываемый опыт."
         },
         {
-          "title": "Ras Al Khaimah",
-          "content": "Boasting a rich tapestry of history, culture, and natural beauty, Ras Al Khaimah offers enticing adventures with its rugged mountain landscapes, ancient forts, and pristine beaches. Discover its historic charm, embark on desert safaris, or unwind at luxury resorts in a unique destination located between the Hajar Mountains and the Arabian Gulf."
+          "title": "Рас-Аль-Хайма",
+          "content": "Богатая история, культура и природная красота делают Рас-Аль-Хайму привлекательным направлением с горными пейзажами, древними крепостями и нетронутыми пляжами."
         }
       ]
     },
     "VIPTour": {
-      "title": "Property Tours",
-      "bespoke": "Bespoke Property",
-      "tours": "Tours",
-      "description": "Immerse yourself in a personalised property tour, seamlessly blending in-person and virtual convenience.",
-      "schedule": "Schedule live tour"
+      "title": "Туры по объектам",
+      "bespoke": "Индивидуальные",
+      "tours": "Туры",
+      "description": "Погрузитесь в персональный тур по недвижимости с удобным сочетанием личного и виртуального формата.",
+      "schedule": "Запланировать живой тур"
     },
     "Entertainment": {
-      "title": "Entertainment",
-      "highlights": "Highlights",
-      "acrossUAE": "Across the UAE",
-      "noProjects": "No Projects to Show",
+      "title": "Развлечения",
+      "highlights": "Основные моменты",
+      "acrossUAE": "По всему ОАЭ",
+      "noProjects": "Нет проектов для отображения",
       "slides": {
         "yasIsland": "Yas Island",
         "burjKhalifa": "Burj Khalifa",
         "ferrariWorld": "Ferrari World",
-        "louvre": "Louvre Abu Dhabi",
+        "louvre": "Лувр Абу-Даби",
         "burjAlArab": "Burj Al Arab",
         "dubaiMall": "Dubai Mall",
         "waterWorld": "Water-World Yas Island",
-        "skyResturant": "Dubai Sky Resturant",
+        "skyResturant": "Dubai Sky Restaurant",
         "warnerBros": "Warner Bros"
       }
     },
     "Features": {
-      "readyToMove": "Ready to move in",
-      "siteVisits": "Site visits",
-      "getYourKeys": "Get your keys"
+      "readyToMove": "Готово к заселению",
+      "siteVisits": "Посещение объекта",
+      "getYourKeys": "Получите свои ключи"
     },
     "FAQs": {
-      "title": "FAQS",
-      "subtitle": "Frequently asked questions",
+      "title": "Вопросы и ответы",
+      "subtitle": "Часто задаваемые вопросы",
       "items": [
         {
-          "question": "What distinguishes these ultra-luxury properties from other real estate offerings in terms of amenities and features?",
-          "answer": "Ultra-luxury properties distinguish themselves through unparalleled amenities and features. They often include custom-designed interiors by top-tier designers, advanced home automation systems, private pools and spas, in-house wellness facilities, and exclusive concierge services. These exclusive properties also feature personalised touches, expansive layouts, high-end finishes, panoramic views, and private access features such as elevators and entrances, which set them apart from standard real estate offerings."
+          "question": "Чем эти ультра-люкс объекты отличаются от других предложений недвижимости по удобствам и особенностям?",
+          "answer": "Ультра-люкс объекты отличаются непревзойденным уровнем удобств и особенностей. Они часто включают индивидуальные интерьеры от ведущих дизайнеров, современные системы автоматизации, частные бассейны и спа, собственные оздоровительные зоны и эксклюзивные услуги консьержа. Эти объекты также выделяются персонализированными деталями, просторными планировками, элитной отделкой, панорамными видами и приватным доступом через лифты и отдельные входы."
         },
         {
-          "question": "How is the privacy and security of residents ensured in these exclusive projects?",
-          "answer": "Privacy and security in these exclusive projects are ensured through comprehensive and sophisticated measures. These include 24/7 security, gated entrances, advanced surveillance, and secure, and private parking areas, which offer residents peace of mind. Furthermore, each architectural design emphasises privacy with features like private gardens or terraces, and limited access points, providing residents with a secure and secluded living environment."
+          "question": "Как обеспечивается конфиденциальность и безопасность жителей в этих эксклюзивных проектах?",
+          "answer": "Конфиденциальность и безопасность обеспечиваются с помощью комплексных и современных мер, включая круглосуточную охрану, закрытые въезды, продвинутые системы видеонаблюдения и защищенные частные парковки. Архитектурные решения подчеркивают приватность — наличие собственных садов, террас и ограниченных точек доступа создаёт безопасную и уединённую среду проживания."
         },
         {
-          "question": "How does the investment potential of these ultra-luxury projects compare to traditional real estate options?",
-          "answer": "Ultra-luxury projects often offer superior investment potential compared to traditional real estate options. They are typically located in prime, highly sought-after areas, leading to greater appreciation in value. The scarcity and exclusivity of these properties further enhance their demand among affluent buyers, often resulting in higher returns on investment. Moreover, their premium quality, brand prestige, and unique features provide stability and growth even in fluctuating markets."
+          "question": "Как инвестиционный потенциал этих ультра-люкс проектов сравнивается с традиционной недвижимостью?",
+          "answer": "Ультра-люкс проекты, как правило, обеспечивают более высокий инвестиционный потенциал. Они расположены в престижных и востребованных районах, что способствует росту стоимости. Их редкость и эксклюзивность повышают спрос среди состоятельных покупателей, обеспечивая высокую доходность. Кроме того, их премиальное качество, бренд и уникальные характеристики обеспечивают устойчивость и рост даже в нестабильных рыночных условиях."
         },
         {
-          "question": "How does the resale market typically perform for luxury and ultra-luxury properties in your portfolio?",
-          "answer": "The resale market for luxury and ultra-luxury properties in our portfolio generally performs exceptionally well. These properties tend to retain or increase their value over time due to their prime locations, superior build quality, and exclusive features. They attract high-net-worth buyers looking for premium and prestigious living spaces, which creates a competitive market. Historical data shows that luxury properties in our portfolio often appreciate at rates higher than the general market, ensuring strong resale performance."
+          "question": "Как обычно развивается рынок перепродажи для люксовых и ультра-люкс объектов в вашем портфеле?",
+          "answer": "Рынок перепродажи для люксовых и ультра-люкс объектов показывает отличные результаты. Такие объекты сохраняют или увеличивают свою стоимость благодаря расположению, качеству строительства и эксклюзивным особенностям. Они привлекают состоятельных покупателей, создавая высокий спрос. Исторические данные показывают, что эти объекты растут в цене быстрее, чем рынок в целом."
         },
         {
-          "question": "Why is investing in real estate a good choice?",
-          "answer": "Investing in real estate is a wise choice because it provides multiple financial benefits. It offers a steady income stream through rental payments, and properties typically increase in value over time, leading to significant long-term gains. Real estate investments also serve as a strong hedge against inflation, as property values and rental income generally increase with inflation rates. Additionally, real estate can diversify an investment portfolio, reducing overall risk."
+          "question": "Почему инвестиции в недвижимость — хороший выбор?",
+          "answer": "Инвестиции в недвижимость обеспечивают стабильный доход от аренды и долгосрочный рост стоимости. Это также надёжная защита от инфляции, поскольку стоимость и арендная плата обычно растут. Кроме того, недвижимость диверсифицирует инвестиционный портфель, снижая общий риск."
         },
         {
-          "question": "What are the benefits of investing in real estate in the UAE?",
-          "answer": "Investing in UAE real estate offers substantial benefits. The country’s robust economy and strategic location make it a prime spot for international business and tourism. This ensures high demand for properties, leading to attractive rental yields and capital appreciation. Additionally, property owners can benefit from the country’s Golden Visa programme, which grants long-term residency qualifying investors, offering stability and opportunities to live, work, and study."
+          "question": "Какие преимущества инвестирования в недвижимость ОАЭ?",
+          "answer": "Инвестиции в недвижимость ОАЭ дают значительные преимущества. Страна с сильной экономикой и стратегическим расположением привлекает международный бизнес и туризм, что обеспечивает высокий спрос, хорошие арендные доходы и рост капитала. Владельцы недвижимости также могут получить 'Золотую визу', предоставляющую долгосрочное проживание и стабильность."
         }
       ]
     },
     "Contact": {
-      "title": "Let's Connect",
-      "callback": "Request A Callback",
-      "highlight": "Callback",
-      "description": "Please fill in your contact details and submit. A member of our team will contact you shortly."
+      "title": "Свяжитесь с нами",
+      "callback": {
+        "part1": "Запросить",
+        "part2": "обратный звонок"
+      },
+      "description": "Пожалуйста, заполните контактные данные и отправьте форму. Наш представитель свяжется с вами в ближайшее время.",
+      "form": {
+        "firstName": {
+          "label": "Ваше имя",
+          "placeholder": "Имя",
+          "error": "Имя обязательно"
+        },
+        "lastName": {
+          "label": "Ваша фамилия",
+          "placeholder": "Фамилия",
+          "error": "Фамилия обязательна"
+        },
+        "email": {
+          "label": "Электронная почта",
+          "placeholder": "yourmail@gmail.com",
+          "error": "Некорректный адрес электронной почты"
+        },
+        "phone": {
+          "label": "Номер телефона",
+          "error": "Некорректный номер телефона"
+        },
+        "nationality": {
+          "label": "Гражданство",
+          "placeholder": "Выберите гражданство",
+          "error": "Пожалуйста, выберите гражданство"
+        },
+        "goldenVisa": {
+          "label": "Интересуюсь программой Золотая виза"
+        },
+        "agreements": {
+          "mustAgree": "Вы должны согласиться с этим",
+          "agreement1": "Я соглашаюсь с Условиями и Политикой конфиденциальности",
+          "agreement2": "Согласен получать звонки и сообщения",
+          "agreement3": "Получать информацию о различных проектах"
+        },
+        "submitButton": {
+          "default": "Перезвоните мне!",
+          "submitting": "Отправка..."
+        },
+        "messages": {
+          "success": "Форма успешно отправлена!",
+          "error": "Ошибка отправки. Попробуйте снова."
+        }
+      }
     },
     "Footer": {
-      "luxuryProjects": "Luxury Projects",
-      "primeResidences": "Your Prime Residences",
-      "checkOut": "Check out all ultra luxury real estate projects in UAE.",
-      "findHome": "Find the perfect home for you in our diverse collection of villas and townhouses.",
-      "contactUs": "Contact us",
-      "suffix": "for more details and free consultation.",
-      "explorers": "Explorers",
+      "luxuryProjects": "Проекты класса люкс",
+      "primeResidences": "Ваши престижные резиденции",
+      "checkOut": "Посмотрите все проекты недвижимости класса ультра-люкс в ОАЭ.",
+      "findHome": "Найдите идеальный дом среди нашей коллекции вилл и таунхаусов.",
+      "contactUs": "Свяжитесь с нами",
+      "suffix": "для получения подробностей и бесплатной консультации.",
+      "explorers": "Исследователи",
       "cities": {
-        "dubai": "Dubai",
-        "abuDhabi": "Abu Dhabi",
-        "sharjah": "Sharjah",
-        "rak": "Ras Al Khaimah"
+        "dubai": "Дубай",
+        "abuDhabi": "Абу-Даби",
+        "sharjah": "Шарджа",
+        "rak": "Рас-Аль-Хайма"
       },
-      "contactInfoTitle": "Contact Us",
-      "phone": "600 548 200",
-      "whatsapp": "+971 2205 2999",
-      "privacy": "Privacy",
-      "terms": "Terms of Use",
-      "rights": "© 2025 Property Shop Investment LLC. | All Rights Reserved."
+      "contactInfoTitle": "Контакты",
+      "privacy": "Конфиденциальность",
+      "terms": "Условия использования",
+      "rights": "© 2025 Property Shop Investment LLC. | Все права защищены."
+    },
+    "ContactForm": {
+      "messages": {
+        "success": "Форма успешно отправлена!",
+        "error": "Ошибка отправки. Попробуйте снова."
+      },
+      "fields": {
+        "firstName": {
+          "label": "Имя",
+          "placeholder": "Имя",
+          "error": "Имя обязательно"
+        },
+        "lastName": {
+          "label": "Фамилия",
+          "placeholder": "Фамилия",
+          "error": "Фамилия обязательна"
+        },
+        "phone": {
+          "label": "Телефон",
+          "error": "Некорректный номер телефона"
+        },
+        "email": {
+          "label": "Электронная почта",
+          "placeholder": "Email",
+          "error": "Некорректный адрес электронной почты"
+        }
+      },
+      "button": {
+        "default": "Отправить",
+        "submitting": "Отправка..."
+      },
+      "agreement": {
+        "text": "Нажимая «Отправить», вы соглашаетесь с нашими",
+        "terms": "Условиями и положениями",
+        "and": "и",
+        "privacy": "Политикой конфиденциальности"
+      }
     }
   }
 }

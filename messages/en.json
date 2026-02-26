@@ -7219,42 +7219,42 @@
       "terms": "Terms of Use",
       "rights": "© 2025 Property Shop Investment LLC. | All Rights Reserved."
     },    
-  "ContactForm": {
-    "messages": {
-      "success": "Form submitted successfully!",
-      "error": "Submission failed. Try again."
-    },
-    "fields": {
-      "firstName": {
-        "label": "First Name",
-        "placeholder": "First Name",
-        "error": "Please enter your first name"
+    "ContactForm": {
+      "messages": {
+        "success": "Form submitted successfully!",
+        "error": "Submission failed. Try again."
       },
-      "lastName": {
-        "label": "Last Name",
-        "placeholder": "Last Name",
-        "error": "Please enter your last name"
+      "fields": {
+        "firstName": {
+          "label": "First Name",
+          "placeholder": "First Name",
+          "error": "First name is required"
+        },
+        "lastName": {
+          "label": "Last Name",
+          "placeholder": "Last Name",
+          "error": "Last name is required"
+        },
+        "phone": {
+          "label": "Phone",
+          "error": "Invalid phone number"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Email",
+          "error": "Invalid email address"
+        }
       },
-      "phone": {
-        "label": "Phone",
-        "placeholder": "+971-555555555",
-        "error": "Please enter a valid phone number"
+      "button": {
+        "default": "Submit",
+        "submitting": "Submitting..."
       },
-      "email": {
-        "label": "Email",
-        "placeholder": "Email",
-        "error": "Please enter a valid email"
+      "agreement": {
+        "text": "By clicking Submit, you agree to our",
+        "terms": "Terms & Conditions",
+        "and" : "and",
+        "privacy": "Privacy Policy"
       }
-    },
-    "button": {
-      "default": "Submit",
-      "submitting": "Submitting..."
-    },
-    "agreement": {
-      "text": "By clicking Submit, you agree to our Terms & Conditions and Privacy Policy.",
-      "terms": "Terms & Conditions",
-      "privacy": "Privacy Policy"
-    }
-  }  
+    }  
   }
 }

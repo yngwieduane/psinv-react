@@ -1916,43 +1916,43 @@
   "LuxuryProjectUAE": {
     "Hero": {
       "nav": {
-        "home": "Home",
-        "luxuryProjects": "Luxury Projects",
-        "ultraLuxuryProjects": "Ultra Luxury Projects",
-        "entertainment": "Entertainments",
-        "futureResidence": "Future Residence",
-        "vipTour": "VIP Tour",
-        "freeConsultation": "Free Consultation"
+        "home": "Startseite",
+        "luxuryProjects": "Luxusprojekte",
+        "ultraLuxuryProjects": "Ultraluxusprojekte",
+        "entertainment": "Unterhaltung",
+        "futureResidence": "Zukünftige Residenz",
+        "vipTour": "VIP-Tour",
+        "freeConsultation": "Kostenlose Beratung"
       },
-      "title": "Discover",
-      "luxury": "Luxury",
-      "lifestyle": "Lifestyle"
+      "title": "Entdecken",
+      "luxury": "Luxus",
+      "lifestyle": "Lebensstil"
     },
     "Opportunities": {
-      "superTitle": "Opportunities Await!",
-      "rare": "Rare",
-      "subtitle": "investment real estate opportunities available",
-      "description": "Enjoy privileged access to exclusive properties in prime destinations that are available only for the most discerning clientele.\nOur experienced specialists will ensure that each personalised experience is bespoke, seamlessly uniting sellers with ideal buyers.",
-      "callBack": "Call back",
-      "findOnWhatsapp": "Find us on WhatsApp",
+      "superTitle": "Chancen erwarten Sie!",
+      "rare": "Selten",
+      "subtitle": "Immobilien-Investitionsmöglichkeiten verfügbar",
+      "description": "Genießen Sie privilegierten Zugang zu exklusiven Immobilien an erstklassigen Standorten, die nur für die anspruchsvollste Kundschaft verfügbar sind.\nUnsere erfahrenen Spezialisten sorgen dafür, dass jedes personalisierte Erlebnis individuell gestaltet wird und Verkäufer nahtlos mit idealen Käufern zusammenbringt.",
+      "callBack": "Rückruf",
+      "findOnWhatsapp": "Finden Sie uns auf WhatsApp",
       "whatsapp": "WhatsApp"
     },
     "LuxuryProjects": {
-      "explore": "Explore Elegance",
-      "title": "Discover Our",
-      "luxury": "Luxury",
-      "projects": "Projects",
-      "loading": "Loading projects...",
-      "noProjects": "No Projects to Show",
-      "signUp": "Sign Up",
-      "downloadBrochure": "Download Brochure",
-      "availableUnits": "Available Units",
-      "noUnits": "No units available",
+      "explore": "Entdecken Sie Eleganz",
+      "title": "Entdecken Sie unsere",
+      "luxury": "Luxus",
+      "projects": "Projekte",
+      "loading": "Projekte werden geladen...",
+      "noProjects": "Keine Projekte verfügbar",
+      "signUp": "Registrieren",
+      "downloadBrochure": "Broschüre herunterladen",
+      "availableUnits": "Verfügbare Einheiten",
+      "noUnits": "Keine Einheiten verfügbar",
       "studio": "Studio",
-      "bedrooms": "Bedrooms"
+      "bedrooms": "Schlafzimmer"
     },
-    "UltraLuxuryProjects": {
-      "title": "Ultra luxury Project",
+   "UltraLuxuryProjects": {
+      "title": "Ultra-Luxus-Projekt",
       "Projects": {
         "locations": {
           "Abu Dhabi": "Abu Dhabi",
@@ -1960,65 +1960,65 @@
         },
         "hudayriyat": {
           "title1": "Hudayriyat",
-          "title2": "Island",
-          "content1": "A vibrant waterfront destination that offers various leisure and entertainment facilities, including cycling tracks, watersports activities, dining options, and outdoor spaces for relaxation and socializing.",
-          "content2": "It is a popular destination for residents and visitors seeking outdoor recreation and community events."
+          "title2": "Insel",
+          "content1": "Ein lebendiges Wasserfront-Ziel mit verschiedenen Freizeit- und Unterhaltungsmöglichkeiten, darunter Radwege, Wassersportaktivitäten, gastronomische Angebote und Außenbereiche zum Entspannen und Geselligkeit.",
+          "content2": "Es ist ein beliebtes Ziel für Bewohner und Besucher, die Outdoor-Aktivitäten und Gemeinschaftsveranstaltungen suchen."
         },
         "saadiyat": {
-          "title1": "Saadiyat Island",
+          "title1": "Saadiyat Insel",
           "title2": "Grove",
-          "content": "Aldar's Saadiyat Grove, nestled in Saadiyat Island's Cultural District, transforms into a vibrant mixed-use community. Offering residential spaces, retail options, and cutting-edge facilities, it boasts gyms, children's play areas, a community garden, and running tracks."
+          "content": "Aldars Saadiyat Grove, eingebettet im Kulturviertel der Saadiyat-Insel, verwandelt sich in eine lebendige Mixed-Use-Community. Mit Wohnräumen, Einzelhandelsmöglichkeiten und modernsten Einrichtungen bietet es Fitnessstudios, Kinderspielplätze, einen Gemeinschaftsgarten und Laufstrecken."
         },
         "bugatti": {
           "title1": "Bugatti",
-          "title2": "Residences",
-          "content": "Indulge in an exclusive residential haven by BinGhatti, blending French Riviera charm and Bugatti allure. Redefining luxury, this unique tower offers unparalleled style, cutting-edge amenities, and spacious interiors with stunning Dubai skyline views."
+          "title2": "Residenzen",
+          "content": "Genießen Sie ein exklusives Wohnparadies von BinGhatti, das den Charme der französischen Riviera mit Bugatti-Flair verbindet. Dieser einzigartige Turm definiert Luxus neu und bietet unvergleichlichen Stil, modernste Annehmlichkeiten und großzügige Innenräume mit atemberaubendem Blick auf die Skyline von Dubai."
         },
         "reemHills": {
           "title1": "Reem Hills",
-          "title2": "Villas",
-          "content": "This gated community by Q Properties harmoniously blends living, working, and leisure elements in Abu Dhabi. Offering diverse residential options, well-crafted public spaces, retail facilities, and premium amenities for a balanced lifestyle."
+          "title2": "Villen",
+          "content": "Diese geschlossene Wohnanlage von Q Properties vereint harmonisch Wohnen, Arbeiten und Freizeit in Abu Dhabi. Mit verschiedenen Wohnoptionen, sorgfältig gestalteten öffentlichen Bereichen, Einzelhandelseinrichtungen und Premium-Annehmlichkeiten für einen ausgewogenen Lebensstil."
         },
         "tilalAlGhaf": {
           "title1": "Tilal Al",
           "title2": "Ghaf",
-          "content": "Experience vibrant community living at Tilal Al Ghaf's amara. Developed by Majid Al Futtaim, you can escape to a luxurious haven surrounded by lush landscapes, resort-style amenities, diverse entertainment options, and more."
+          "content": "Erleben Sie lebendige Gemeinschaftsleben im Amara von Tilal Al Ghaf. Entwickelt von Majid Al Futtaim, können Sie in ein luxuriöses Refugium eintauchen, umgeben von üppigen Landschaften, Resort-Annehmlichkeiten, vielfältigen Unterhaltungsmöglichkeiten und mehr."
         },
         "golfPlaces": {
-          "title1": "Golf Places Terraces At",
+          "title1": "Golf Places Terraces bei",
           "title2": "Dubai Hills",
-          "content": "Experience luxury community living at Golf Places Terraces, nestled in Dubai Hills' scenic landscape. Enjoy a lifestyle of convenience and leisure with convenient access to Dubai Hills Park, Golf Club House, and Dubai Hills Mall."
+          "content": "Erleben Sie luxuriöses Gemeinschaftsleben bei Golf Places Terraces, eingebettet in die malerische Landschaft von Dubai Hills. Genießen Sie einen Lebensstil voller Komfort und Freizeit mit einfachem Zugang zum Dubai Hills Park, Golf Club House und Dubai Hills Mall."
         },
         "districtOne": {
           "title1": "District One",
           "title2": "West",
-          "content": "Discover District One West by Nakheel, a prestigious gated community where nature and innovative design unite. Embrace waterfront living, lush greenery, and serene atmospheres, with easy access to city landmarks and leisure destinations."
+          "content": "Entdecken Sie District One West von Nakheel, eine prestigeträchtige geschlossene Wohnanlage, in der Natur und innovatives Design verschmelzen. Genießen Sie das Leben am Wasser, üppiges Grün und ruhige Atmosphären mit einfachem Zugang zu städtischen Sehenswürdigkeiten und Freizeitdestinationen."
         },
         "laMer": {
           "title1": "La Mer",
-          "title2": "Masion",
-          "content": "Immerse yourself in elevated private island living at the exclusive La Mer Maisons by Merass community. Enjoy stunning sea views, world-class amenities, unrivaled exclusivity, and easy access to Jumeirah’s popular attractions."
+          "title2": "Maison",
+          "content": "Tauchen Sie ein in das exklusive Insel-Leben auf La Mer Maisons von Merass. Genießen Sie atemberaubende Meeresblicke, erstklassige Annehmlichkeiten, unvergleichliche Exklusivität und einfachen Zugang zu den beliebten Attraktionen von Jumeirah."
         }
       },
       "Slider": {
-        "Starting Price": "Starting Price",
-        "Book Your Villa Now": "Book Your Villa Now",
-        "Download Brochure": "Download Brochure",
+        "Starting Price": "Startpreis",
+        "Book Your Villa Now": "Buchen Sie jetzt Ihre Villa",
+        "Download Brochure": "Broschüre herunterladen",
         "Facts": {
-          "bedroom": "Bedroom",
-          "type": "Type",
-          "freeHold": "Free Hold",
-          "handover": "Handover",
-          "location": "Location",
-          "downpayment": "Down Payment",
-          "skyMansions": "Sky Mansions",
-          "skyPenthouses": "Sky Penthouses"
+          "bedroom": "Schlafzimmer",
+          "type": "Typ",
+          "freeHold": "Eigentum",
+          "handover": "Übergabe",
+          "location": "Standort",
+          "downpayment": "Anzahlung",
+          "skyMansions": "Sky-Mansions",
+          "skyPenthouses": "Sky-Penthouses"
         },
         "FactsValues": {
           "hudayriyat": {
             "bedroom": "1 - 2",
             "type": "Apartments",
-            "freeHold": "Freehold",
+            "freeHold": "Eigentum",
             "handover": "2017",
             "location": "Abu Dhabi",
             "downpayment": "10%"
@@ -2027,12 +2027,12 @@
             "bedroom": "Studio, 1 - 2",
             "type": "Apartments, Penthouses",
             "handover": "Q1 2025 (Phase 1)",
-            "location": "Saadiyat Island, Abu Dhabi",
+            "location": "Saadiyat Insel, Abu Dhabi",
             "downpayment": "10%"
           },
           "bugatti": {
-            "skyMansions": "2 - 4 Bedroom",
-            "skyPenthouses": "5 Bedroom",
+            "skyMansions": "2 - 4 Schlafzimmer",
+            "skyPenthouses": "5 Schlafzimmer",
             "type": "Mansions, Penthouses",
             "handover": "Q2 2026",
             "location": "Business Bay, Dubai",
@@ -2040,70 +2040,70 @@
           },
           "reemHills": {
             "bedroom": "5 - 7",
-            "type": "Villas, Townhouses",
+            "type": "Villen, Reihenhäuser",
             "handover": "Q3 2025",
             "downpayment": "10%"
           },
           "tilalAlGhaf": {
             "bedroom": "4 - 6",
-            "type": "Townhouses",
+            "type": "Reihenhäuser",
             "handover": "Q1 2022",
             "downpayment": "10%"
           },
           "golfPlaces": {
             "bedroom": "4 - 6",
-            "type": "Villas",
+            "type": "Villen",
             "handover": "Q1 2022 (Phase 1)",
             "downpayment": "20%"
           },
           "districtOne": {
             "bedroom": "4 - 6",
-            "type": "Villas",
+            "type": "Villen",
             "handover": "Q1 2027 (Phase 1)",
             "downpayment": "20%"
           },
           "laMer": {
             "bedroom": "4",
-            "type": "Land Plots",
-            "handover": "To be announced",
+            "type": "Baugrundstücke",
+            "handover": "Wird bekannt gegeben",
             "downpayment": "10%"
           }
         }
       }
     },
     "FutureHome": {
-      "title": "Dream Residence in UAE",
-      "subtitlePart1": "Let the journey to your ",
-      "subtitleMain": "Future Home",
-      "subtitlePart2": "Begin",
-      "learnMore": "Learn More",
+      "title": "Traumresidenz in den VAE",
+      "subtitlePart1": "Beginnen Sie die Reise zu Ihrem ",
+      "subtitleMain": "zukünftigen Zuhause",
+      "subtitlePart2": "",
+      "learnMore": "Mehr erfahren",
       "slides": [
         {
           "title": "Abu Dhabi",
-          "content": "Nestled along the azure Arabian Gulf, Abu Dhabi stands as a beacon of sophistication and opportunity. Boasting a harmonious blend of rich cultural heritage and modernity, it offers an ideal environment to live, visit, work, and invest. Experience luxury, innovation, and a thriving cosmopolitan lifestyle in this dynamic global hub."
+          "content": "Eingebettet entlang des azurblauen Arabischen Golfs, steht Abu Dhabi als Symbol für Raffinesse und Chancen. Mit einer harmonischen Mischung aus reichhaltigem kulturellem Erbe und Modernität bietet es die ideale Umgebung zum Leben, Besuchen, Arbeiten und Investieren. Erleben Sie Luxus, Innovation und einen florierenden kosmopolitischen Lebensstil in diesem dynamischen globalen Zentrum."
         },
         {
           "title": "Dubai",
-          "content": "The vibrant metropolis of Dubai dazzles with its iconic skyline, luxurious lifestyle, and cultural diversity. From the world's tallest building, the Burj Khalifa, to extravagant shopping malls and pristine beaches, Dubai seamlessly blends modernity with tradition, offering visitors an unforgettable fusion of experiences."
+          "content": "Die pulsierende Metropole Dubai beeindruckt mit ihrer ikonischen Skyline, luxuriösem Lebensstil und kultureller Vielfalt. Vom höchsten Gebäude der Welt, dem Burj Khalifa, bis hin zu extravaganten Einkaufszentren und unberührten Stränden vereint Dubai nahtlos Moderne mit Tradition und bietet Besuchern eine unvergessliche Mischung aus Erlebnissen."
         },
         {
           "title": "Ras Al Khaimah",
-          "content": "Boasting a rich tapestry of history, culture, and natural beauty, Ras Al Khaimah offers enticing adventures with its rugged mountain landscapes, ancient forts, and pristine beaches. Discover its historic charm, embark on desert safaris, or unwind at luxury resorts in a unique destination located between the Hajar Mountains and the Arabian Gulf."
+          "content": "Mit einem reichen Geflecht aus Geschichte, Kultur und natürlicher Schönheit bietet Ras Al Khaimah faszinierende Abenteuer mit zerklüfteten Berglandschaften, alten Forts und unberührten Stränden. Entdecken Sie den historischen Charme, unternehmen Sie Wüstensafaris oder entspannen Sie in luxuriösen Resorts an einem einzigartigen Ort zwischen den Hajar-Bergen und dem Arabischen Golf."
         }
       ]
     },
     "VIPTour": {
-      "title": "Property Tours",
-      "bespoke": "Bespoke Property",
-      "tours": "Tours",
-      "description": "Immerse yourself in a personalised property tour, seamlessly blending in-person and virtual convenience.",
-      "schedule": "Schedule live tour"
+      "title": "Immobilienbesichtigungen",
+      "bespoke": "Individuelle Immobilien",
+      "tours": "Touren",
+      "description": "Tauchen Sie ein in eine personalisierte Immobilienbesichtigung, die nahtlos persönliche und virtuelle Bequemlichkeit verbindet.",
+      "schedule": "Live-Tour planen"
     },
     "Entertainment": {
-      "title": "Entertainment",
+      "title": "Unterhaltung",
       "highlights": "Highlights",
-      "acrossUAE": "Across the UAE",
-      "noProjects": "No Projects to Show",
+      "acrossUAE": "In den gesamten VAE",
+      "noProjects": "Keine Projekte verfügbar",
       "slides": {
         "yasIsland": "Yas Island",
         "burjKhalifa": "Burj Khalifa",
@@ -2112,71 +2112,151 @@
         "burjAlArab": "Burj Al Arab",
         "dubaiMall": "Dubai Mall",
         "waterWorld": "Water-World Yas Island",
-        "skyResturant": "Dubai Sky Resturant",
+        "skyResturant": "Dubai Sky Restaurant",
         "warnerBros": "Warner Bros"
       }
     },
     "Features": {
-      "readyToMove": "Ready to move in",
-      "siteVisits": "Site visits",
-      "getYourKeys": "Get your keys"
+      "readyToMove": "Bezugsfertig",
+      "siteVisits": "Besichtigungen vor Ort",
+      "getYourKeys": "Erhalten Sie Ihre Schlüssel"
     },
     "FAQs": {
-      "title": "FAQS",
-      "subtitle": "Frequently asked questions",
+      "title": "Häufige Fragen",
+      "subtitle": "Häufig gestellte Fragen",
       "items": [
         {
-          "question": "What distinguishes these ultra-luxury properties from other real estate offerings in terms of amenities and features?",
-          "answer": "Ultra-luxury properties distinguish themselves through unparalleled amenities and features. They often include custom-designed interiors by top-tier designers, advanced home automation systems, private pools and spas, in-house wellness facilities, and exclusive concierge services. These exclusive properties also feature personalised touches, expansive layouts, high-end finishes, panoramic views, and private access features such as elevators and entrances, which set them apart from standard real estate offerings."
+          "question": "Was unterscheidet diese Ultra-Luxus-Immobilien von anderen Immobilienangeboten in Bezug auf Annehmlichkeiten und Ausstattung?",
+          "answer": "Ultra-Luxus-Immobilien zeichnen sich durch unvergleichliche Annehmlichkeiten und Ausstattungen aus. Dazu gehören oft individuell gestaltete Innenräume von Spitzen-Designern, moderne Hausautomationssysteme, private Pools und Spas, hauseigene Wellness-Einrichtungen und exklusive Concierge-Dienste. Diese exklusiven Immobilien bieten zudem personalisierte Details, großzügige Grundrisse, hochwertige Oberflächen, Panoramablicke und private Zugangsoptionen wie Aufzüge und Eingänge, die sie von Standard-Immobilienangeboten abheben."
         },
         {
-          "question": "How is the privacy and security of residents ensured in these exclusive projects?",
-          "answer": "Privacy and security in these exclusive projects are ensured through comprehensive and sophisticated measures. These include 24/7 security, gated entrances, advanced surveillance, and secure, and private parking areas, which offer residents peace of mind. Furthermore, each architectural design emphasises privacy with features like private gardens or terraces, and limited access points, providing residents with a secure and secluded living environment."
+          "question": "Wie wird die Privatsphäre und Sicherheit der Bewohner in diesen exklusiven Projekten gewährleistet?",
+          "answer": "Die Privatsphäre und Sicherheit in diesen exklusiven Projekten wird durch umfassende und hochentwickelte Maßnahmen gewährleistet. Dazu gehören 24/7-Sicherheitsdienst, geschützte Zugänge, moderne Überwachungssysteme sowie sichere und private Parkmöglichkeiten, die den Bewohnern Ruhe und Sicherheit bieten. Darüber hinaus legt jedes architektonische Design Wert auf Privatsphäre, mit Merkmalen wie privaten Gärten oder Terrassen und begrenzten Zugangspunkten, um ein sicheres und abgeschiedenes Wohnumfeld zu schaffen."
         },
         {
-          "question": "How does the investment potential of these ultra-luxury projects compare to traditional real estate options?",
-          "answer": "Ultra-luxury projects often offer superior investment potential compared to traditional real estate options. They are typically located in prime, highly sought-after areas, leading to greater appreciation in value. The scarcity and exclusivity of these properties further enhance their demand among affluent buyers, often resulting in higher returns on investment. Moreover, their premium quality, brand prestige, and unique features provide stability and growth even in fluctuating markets."
+          "question": "Wie vergleicht sich das Investitionspotenzial dieser Ultra-Luxus-Projekte mit traditionellen Immobilienoptionen?",
+          "answer": "Ultra-Luxus-Projekte bieten oft ein überdurchschnittliches Investitionspotenzial im Vergleich zu traditionellen Immobilien. Sie befinden sich in erstklassigen, stark nachgefragten Lagen, was zu einer höheren Wertsteigerung führt. Die Seltenheit und Exklusivität dieser Immobilien erhöhen zusätzlich die Nachfrage wohlhabender Käufer, was oft zu höheren Renditen führt. Außerdem bieten Qualität, Markenprestige und einzigartige Eigenschaften Stabilität und Wachstum, selbst in schwankenden Märkten."
         },
         {
-          "question": "How does the resale market typically perform for luxury and ultra-luxury properties in your portfolio?",
-          "answer": "The resale market for luxury and ultra-luxury properties in our portfolio generally performs exceptionally well. These properties tend to retain or increase their value over time due to their prime locations, superior build quality, and exclusive features. They attract high-net-worth buyers looking for premium and prestigious living spaces, which creates a competitive market. Historical data shows that luxury properties in our portfolio often appreciate at rates higher than the general market, ensuring strong resale performance."
+          "question": "Wie entwickelt sich der Wiederverkaufsmarkt für Luxus- und Ultra-Luxus-Immobilien in Ihrem Portfolio?",
+          "answer": "Der Wiederverkaufsmarkt für Luxus- und Ultra-Luxus-Immobilien in unserem Portfolio entwickelt sich in der Regel hervorragend. Diese Immobilien behalten oder steigern im Laufe der Zeit ihren Wert aufgrund ihrer erstklassigen Lage, hochwertigen Bauweise und exklusiven Ausstattung. Sie ziehen Käufer mit hohem Vermögen an, die Premium- und Prestige-Wohnräume suchen, was einen wettbewerbsfähigen Markt schafft. Historische Daten zeigen, dass Luxusimmobilien in unserem Portfolio oft schneller an Wert gewinnen als der allgemeine Markt, was eine starke Wiederverkaufsleistung sicherstellt."
         },
         {
-          "question": "Why is investing in real estate a good choice?",
-          "answer": "Investing in real estate is a wise choice because it provides multiple financial benefits. It offers a steady income stream through rental payments, and properties typically increase in value over time, leading to significant long-term gains. Real estate investments also serve as a strong hedge against inflation, as property values and rental income generally increase with inflation rates. Additionally, real estate can diversify an investment portfolio, reducing overall risk."
+          "question": "Warum ist eine Investition in Immobilien eine gute Wahl?",
+          "answer": "Die Investition in Immobilien ist eine kluge Wahl, da sie mehrere finanzielle Vorteile bietet. Sie ermöglicht ein stetiges Einkommen durch Mietzahlungen, und Immobilienwerte steigen typischerweise über die Zeit, was zu langfristigen Gewinnen führt. Immobilieninvestitionen dienen zudem als effektiver Schutz gegen Inflation, da Immobilienwerte und Mieteinnahmen in der Regel mit der Inflation steigen. Außerdem kann Immobilienbesitz ein Investment-Portfolio diversifizieren und das Gesamtrisiko verringern."
         },
         {
-          "question": "What are the benefits of investing in real estate in the UAE?",
-          "answer": "Investing in UAE real estate offers substantial benefits. The country’s robust economy and strategic location make it a prime spot for international business and tourism. This ensures high demand for properties, leading to attractive rental yields and capital appreciation. Additionally, property owners can benefit from the country’s Golden Visa programme, which grants long-term residency qualifying investors, offering stability and opportunities to live, work, and study."
+          "question": "Welche Vorteile bietet eine Investition in Immobilien in den VAE?",
+          "answer": "Die Investition in Immobilien in den VAE bietet erhebliche Vorteile. Die robuste Wirtschaft des Landes und die strategische Lage machen es zu einem attraktiven Standort für internationales Geschäft und Tourismus. Dies gewährleistet eine hohe Nachfrage nach Immobilien, was zu attraktiven Mieteinnahmen und Wertsteigerungen führt. Darüber hinaus können Eigentümer vom Golden-Visa-Programm des Landes profitieren, das langfristige Aufenthaltsgenehmigungen für qualifizierte Investoren gewährt und Stabilität sowie Möglichkeiten zum Leben, Arbeiten und Studieren bietet."
         }
       ]
     },
     "Contact": {
-      "title": "Let's Connect",
-      "callback": "Request A Callback",
-      "highlight": "Callback",
-      "description": "Please fill in your contact details and submit. A member of our team will contact you shortly."
+      "title": "Kontaktieren Sie uns",
+      "callback": {
+        "part1": "Rufen Sie",
+        "part2": "zurück"
+      },
+      "description": "Bitte füllen Sie Ihre Kontaktdaten aus und senden Sie das Formular. Ein Mitglied unseres Teams wird Sie in Kürze kontaktieren.",
+      "form": {
+        "firstName": {
+          "label": "Ihr Vorname",
+          "placeholder": "Vorname",
+          "error": "Vorname ist erforderlich"
+        },
+        "lastName": {
+          "label": "Ihr Nachname",
+          "placeholder": "Nachname",
+          "error": "Nachname ist erforderlich"
+        },
+        "email": {
+          "label": "E-Mail",
+          "placeholder": "ihremail@gmail.com",
+          "error": "Ungültige E-Mail-Adresse"
+        },
+        "phone": {
+          "label": "Telefonnummer",
+          "error": "Ungültige Telefonnummer"
+        },
+        "nationality": {
+          "label": "Nationalität",
+          "placeholder": "Nationalität auswählen",
+          "error": "Bitte wählen Sie Ihre Nationalität"
+        },
+        "goldenVisa": {
+          "label": "Ich interessiere mich für das Golden Visa"
+        },
+        "agreements": {
+          "mustAgree": "Sie müssen dem zustimmen",
+          "agreement1": "Ich stimme den Allgemeinen Geschäftsbedingungen und der Datenschutzrichtlinie zu",
+          "agreement2": "Zustimmung zum Erhalt von Anrufen und Mitteilungen",
+          "agreement3": "Anrufe zu verschiedenen Projekten erhalten"
+        },
+        "submitButton": {
+          "default": "Rufen Sie mich zurück!",
+          "submitting": "Wird gesendet..."
+        },
+        "messages": {
+          "success": "Formular erfolgreich gesendet!",
+          "error": "Senden fehlgeschlagen. Bitte versuchen Sie es erneut."
+        }
+      }
     },
     "Footer": {
-      "luxuryProjects": "Luxury Projects",
-      "primeResidences": "Your Prime Residences",
-      "checkOut": "Check out all ultra luxury real estate projects in UAE.",
-      "findHome": "Find the perfect home for you in our diverse collection of villas and townhouses.",
-      "contactUs": "Contact us",
-      "suffix": "for more details and free consultation.",
-      "explorers": "Explorers",
+      "luxuryProjects": "Luxusprojekte",
+      "primeResidences": "Ihre Premium-Residenzen",
+      "checkOut": "Entdecken Sie alle Ultra-Luxus-Immobilienprojekte in den VAE.",
+      "findHome": "Finden Sie Ihr perfektes Zuhause in unserer vielfältigen Sammlung von Villen und Reihenhäusern.",
+      "contactUs": "Kontaktieren Sie uns",
+      "suffix": "für weitere Informationen und eine kostenlose Beratung.",
+      "explorers": "Entdecker",
       "cities": {
         "dubai": "Dubai",
         "abuDhabi": "Abu Dhabi",
         "sharjah": "Sharjah",
         "rak": "Ras Al Khaimah"
       },
-      "contactInfoTitle": "Contact Us",
-      "phone": "600 548 200",
-      "whatsapp": "+971 2205 2999",
-      "privacy": "Privacy",
-      "terms": "Terms of Use",
-      "rights": "© 2025 Property Shop Investment LLC. | All Rights Reserved."
+      "contactInfoTitle": "Kontaktinformationen",
+      "privacy": "Datenschutz",
+      "terms": "Nutzungsbedingungen",
+      "rights": "© 2025 Property Shop Investment LLC. | Alle Rechte vorbehalten."
+    },
+    "ContactForm": {
+      "messages": {
+        "success": "Formular erfolgreich gesendet!",
+        "error": "Übermittlung fehlgeschlagen. Bitte erneut versuchen."
+      },
+      "fields": {
+        "firstName": {
+          "label": "Vorname",
+          "placeholder": "Vorname",
+          "error": "Vorname ist erforderlich"
+        },
+        "lastName": {
+          "label": "Nachname",
+          "placeholder": "Nachname",
+          "error": "Nachname ist erforderlich"
+        },
+        "phone": {
+          "label": "Telefonnummer",
+          "error": "Ungültige Telefonnummer"
+        },
+        "email": {
+          "label": "E-Mail",
+          "placeholder": "E-Mail",
+          "error": "Ungültige E-Mail-Adresse"
+        }
+      },
+      "button": {
+        "default": "Senden",
+        "submitting": "Wird gesendet..."
+      },
+      "agreement": {
+        "text": "Durch Klicken auf Senden stimmen Sie unseren",
+        "terms": "Geschäftsbedingungen",
+        "and": "und",
+        "privacy": "Datenschutzrichtlinie"
+      }
     }
   }
 }
