@@ -1,8 +1,4 @@
 {
-  "metaData": {
-    "title": "⚡ Abu Dhabi Immobilien - Property Shop Investment",
-    "description": "⚡ Abu Dhabi Immobilien - PSI - Entdecken Sie unsere beeindruckenden Immobilienprojekte - Property Shop Investments - Immobilienprojekte - Kaufen oder Mieten"
-  },
   "HomePageBanner": {
     "sign_up_btn": "Anmelden",
     "more_btn": "Mehr entdecken",
@@ -525,20 +521,22 @@
       "title": "UAE Immobilien Blog | Immobiliennachrichten, Markttrends & Investmenteinblicke",
       "description": "Bleiben Sie über die neuesten Nachrichten zum Immobilienmarkt in den VAE, Markttrends, Investmenteinblicke, Community-Guides und Expertentipps für Käufer und Investoren informiert."
     },
-    "title": "مدونتنا",
-    "searchPlaceholder": "ابحث في المقالات...",
-    "recentPosts": "أحدث المقالات",
-    "readMore": "اقرأ المزيد",
-    "categories": {
-      "market_insights": "رؤى السوق",
-      "company_news": "أخبار الشركة",
-      "lifestyle": "أسلوب الحياة"
-    },
-    "subtitle": "اكتشف أحدث الرؤى والأخبار والاتجاهات من سوق العقارات في الإمارات.",
-    "noPostsFound": "لم يتم العثور على مقالات تطابق معايير البحث.",
-    "previous": "السابق",
-    "next": "التالي",
-    "page": "صفحة"
+
+      "title": "Unser Blog",
+      "searchPlaceholder": "Artikel durchsuchen...",
+      "recentPosts": "Neueste Artikel",
+      "readMore": "Weiterlesen",
+      "categories": {
+        "market_insights": "Markteinblicke",
+        "company_news": "Unternehmensnachrichten",
+        "lifestyle": "Lifestyle"
+      },
+      "subtitle": "Entdecken Sie die neuesten Einblicke, Nachrichten und Trends auf dem Immobilienmarkt in den VAE.",
+      "noPostsFound": "Keine Artikel entsprechen den Suchkriterien.",
+      "previous": "Zurück",
+      "next": "Weiter",
+      "page": "Seite"
+    
   },
   "ContactPage": {
     "title": "Kontaktieren Sie uns",
@@ -926,6 +924,7 @@
       "Villa": "Villa",
       "Townhouse": "Reihenhaus"
     }
+
   },
   "ProjectPage": {
     "overview": "Überblick",
@@ -1041,7 +1040,7 @@
     "metadata": {
       "title": "Koop vastgoed met CRYPTO - PSI",
       "description": "Koop vastgoed met cryptovaluta in het nieuwe land van kansen — zoals Bitcoin, Ethereum en Litecoin — bij een makelaarskantoor in Abu Dhabi, VAE."
-    },
+    },    
     "hero": {
       "title": {
         "part1": "Buy property with",
@@ -1447,7 +1446,7 @@
     "metadata": {
       "title": "Plaats uw woning bij - PSI",
       "description": "Presenteer uw woning op zijn best, verhuur deze op een geheel nieuwe manier en ontvang huurbetalingen volledig online. Kies voor het merk dat u vertrouwt."
-    },
+    },    
     "nav": {
       "home": "Startseite",
       "about": "Über uns",
@@ -1696,6 +1695,10 @@
     }
   },
   "Careers_Page": {
+    "metadata": {
+      "title": "Karriere – Property Shop Investment",
+      "description": "Werden Sie Teil von Property Shop Investment (PSI) und entfalten Sie Ihr berufliches Potenzial. Wir bieten kontinuierliche Schulungen, Workshops und einen Weg zur Exzellenz in der Immobilienbranche."
+    },
     "heroTitle": "KARRIERE",
     "heroBreadcrumb": "Startseite > Karriere",
     "unlockSection": {
@@ -1906,6 +1909,7 @@
   "SocialMediaTabs": {
     "title": "Soziale Medien"
   },
+
   "LuxuryProjects": [
     {
       "id": "luxury-project-uae",

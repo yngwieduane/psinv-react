@@ -1758,6 +1758,10 @@
     }
   },
   "Careers_Page": {
+    "metadata": {
+      "title": "职业发展 - Property Shop Investment",
+      "description": "加入 Property Shop Investment (PSI)，开启您的职业成长之路。我们提供持续培训、研讨会以及通往房地产行业卓越发展的机会。"
+    },
     "heroTitle": "招贤纳士",
     "heroBreadcrumb": "首页 > 招贤纳士",
     "unlockSection": {
