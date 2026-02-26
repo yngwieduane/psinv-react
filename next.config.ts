@@ -176,11 +176,11 @@ const nextConfig: NextConfig = {
         destination: '/en/projects/abu-dhabi/al-raha-beach/al-zeina/al-zeina-beachfront-villas/:path*',
         permanent: true,
       },
-        {
+       {
       source: '/:locale(en|ar|de|ru|zh)/projects/abu-dhabi/al-raha-beach/subcommunity/al-zeina---residential-tower-g/:path*',
       destination: '/:locale/projects/abu-dhabi/al-raha-beach/al-zeina/al-zeina-residential-tower-g/:path*',
       permanent: true,
-    },
+       },
       {
         source: '/ar/projects/abu-dhabi/al-reem-island/subcommunity/a3a-building/:path*',
         destination: '/ar/projects/abu-dhabi/al-reem-island/marina-square/a3b-building/:path*',
