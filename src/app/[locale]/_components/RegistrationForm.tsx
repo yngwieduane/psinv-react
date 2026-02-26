@@ -377,10 +377,18 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
       });
 
       const result = await res.json();
+     const receiver = Array.isArray(projectMeta.sendto)
+  ? projectMeta.sendto.join(",")
+  : projectMeta.sendto;
 
+    if (!receiver) {
+      console.error("[Email] Missing receiver (projectMeta.sendto is empty).");
+    } else {
+      console.log("[Email] receiver:", receiver);
+    }
       if (res.ok) {
         try {
-          const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
+          const mailRes = await fetch("https://registration.psinv.net/api/sendemail3.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -391,6 +399,7 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
               subject: `Registration Page - ${data.firstName} ${data.lastName}`,
               filename: "",
               filedata: "",
+              fromname: "PSI EMAIL", 
             }),
           });
 
