@@ -140,10 +140,12 @@ export async function GET(request: NextRequest) {
     case 'anantara residences north':
       finquery = 'Anantara Residences - North'
       break;
+    case 'Mag 5-Residences':
+        finquery = 'MAG 5 Residences'
+      break;
     case 'The Source Terraces':
         finquery = 'The Source - Terraces'
       break;
-      The Source - Terraces
     default:
       finquery = query
       break;
