@@ -178,7 +178,7 @@ function PropertyPage(props: any) {
         completionDate = false;
     }
 
-console.log("Processed Completion Date:", completionDate);
+    console.log("Processed Completion Date:", completionDate);
 
 
 
@@ -448,11 +448,11 @@ console.log("Processed Completion Date:", completionDate);
                                             {props.data['propertyPlan'] ? (<TableRow title={t('property_plan')} content={props.data['propertyPlan']} />) : ("")}
                                             {props.data['propertyUsage'] ? (<TableRow title={t('property_usage')} content={props.data['propertyUsage']} />) : ("")}
                                             {completionDate && (
-    <TableRow
-        title={t('completion_date')}
-        content={completionDate}
-    />
-)}
+                                                <TableRow
+                                                    title={t('completion_date')}
+                                                    content={completionDate}
+                                                />
+                                            )}
 
                                             {HOdate ? (<TableRow title={t('handover_date')} content={HOdate} />) : ("")}
                                             {launchDate ? (<TableRow title={t('launch_date')} content={launchDate} />) : ("")}
@@ -578,11 +578,13 @@ console.log("Processed Completion Date:", completionDate);
                         </div>
 
                         {/* Payment Plan (New Rich Feature) */}
-                        <section id="payment-plan" className="scroll-mt-40">
-                            <PaymentPlansAI
-                                propid={props.data["propertyID"]}
-                                propname={props.data["propertyName"]} />
-                        </section>
+                        {props.data["propertyPlan"] !== "Ready" && props.data["propertyPlan"] !== "Completed" && (
+                            <section id="payment-plan" className="scroll-mt-40">
+                                <PaymentPlansAI
+                                    propid={props.data["propertyID"]}
+                                    propname={props.data["propertyName"]} />
+                            </section>
+                        )}
 
                         <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
                             <Faqs data={props.data} propname={props.data["propertyName"]} viewAllLink={`${pathname}/faqs`} />

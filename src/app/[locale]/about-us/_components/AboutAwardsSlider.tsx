@@ -22,10 +22,84 @@ const AboutAwardsSlider = () => {
 
   const awards = [
     {
+      "title1": t("awards.aldar.title1"),
+      "title3": t("awards.aldar.title3"),
+      "image": "aldar-2022.jpg",
+    },
+    {
+      "title1": t("awards.rak.title1"),
+      "title3": t("awards.rak.title3"),
+      "image": "rak-properties-2025.webp?ver=6",
+    },
+    {
       "title1": t("awards.emaar.title1"),
-      "title2": t("awards.emaar.title2"),
       "title3": t("awards.emaar.title3"),
-      "image": "emaar-2018.webp",
+      "image": "emaar-awards-2025-2nd.webp",
+    },
+    {
+      "title1": t("awards.modon.title1"),
+      "title3": t("awards.modon.title3"),
+      "image": "modon-2023-2025.webp",
+    },
+    {
+      "title1": t("awards.emaarh1.title1"),
+      "title3": t("awards.emaarh1.title3"),
+      "image": "emaar-h1-2025.webp?ver=3",
+    },
+    {
+      "title1": t("awards.bloom.title1"),
+      "title3": t("awards.bloom.title3"),
+      "image": "bloom-top-2024.webp",
+    },
+    {
+      "title1": t("awards.rak2024.title1"),
+      "title3": t("awards.rak2024.title3"),
+      "image": "rak-rank-3-2024.webp",
+    },
+    {
+      "title1": t("awards.damac.title1"),
+      "title3": t("awards.damac.title3"),
+      "image": "damac-top-2024.webp?ver=2",
+    },
+    {
+      "title1": t("awards.imkan.title1"),
+      "title3": t("awards.imkan.title3"),
+      "image": "imkan-award-2024.webp?ver=2",
+    },
+    {
+      "title1": t("awards.binghatti.title1"),
+      "title3": t("awards.binghatti.title3"),
+      "image": "binghatti-2024.webp",
+    },
+    {
+      "title1": t("awards.deyaar.title1"),
+      "title3": t("awards.deyaar.title3"),
+      "image": "deyaar-2024.webp?ver=6",
+    },
+    {
+      "title1": t("awards.darglobal.title1"),
+      "title3": t("awards.darglobal.title3"),
+      "image": "darglobal-2023.webp?ver=2",
+    },
+    {
+      "title1": t("awards.bloom2022.title1"),
+      "title3": t("awards.bloom2022.title3"),
+      "image": "bloom-2022.webp",
+    },
+    {
+      "title1": t("awards.arada.title1"),
+      "title3": t("awards.arada.title3"),
+      "image": "arada-2022-img.webp?ver=4",
+    },
+    {
+      "title1": t("awards.bloom2.title1"),
+      "title3": t("awards.bloom2.title3"),
+      "image": "bloom-awards-2022.webp?ver=2",
+    },
+    {
+      "title1": t("awards.imkan2021.title1"),
+      "title3": t("awards.imkan2021.title3"),
+      "image": "imkan-2021.webp",
     },
     {
       "title1": t("awards.aldar2021.title1"),
@@ -33,28 +107,24 @@ const AboutAwardsSlider = () => {
       "image": "aldar-2021.webp",
     },
     {
-      "title1": t("awards.aldar2016.title1"),
-      "title2": t("awards.aldar2016.title2"),
-      "title3": t("awards.aldar2016.title3"),
-      "image": "aldar-2016.jpg",
+      "title1": t("awards.emaar2018.title1"),
+      "title3": t("awards.emaar2018.title3"),
+      "image": "emaar-2018.webp",
     },
     {
-      "title1": t("awards.aldar2020.title1"),
-      "title2": t("awards.aldar2020.title2"),
-      "title3": t("awards.aldar2020.title3"),
-      "image": "aldar-2022.jpg",
+      "title1": t("awards.aldar2018.title1"),
+      "title3": t("awards.aldar2018.title3"),
+      "image": "aldar-2018.webp?ver=3",
     },
     {
-      "title1": t("awards.aldar2022.title1"),
-      "title2": t("awards.aldar2022.title2"),
-      "title3": t("awards.aldar2022.title3"),
-      "image": "aldar-2022.jpg",
+      "title1": t("awards.bloom2017.title1"),
+      "title3": t("awards.bloom2017.title3"),
+      "image": "bloom-2017.webp?ver=3",
     },
     {
-      "title1": t("awards.imkan.title1"),
-      "title2": t("awards.imkan.title2"),
-      "title3": t("awards.imkan.title3"),
-      "image": "imkan-2021.webp",
+      "title1": t("awards.finder.title1"),
+      "title3": t("awards.finder.title3"),
+      "image": "property-finder-2016.webp?ver=2",
     }
   ];
 
