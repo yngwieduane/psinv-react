@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function AboutPage() {
-  return (
+  return ( 
     <AboutPageClient />
   )
 }
