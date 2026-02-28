@@ -340,34 +340,89 @@
     "title": "AWARDS-DRIVEN Excellence",
     "desc": "We reaffirm our commitment to redefining real estate standards. Our dedication to innovation and unwavering client focus has earned us recognition in the industry. Explore our journey of accolades that inspire us to reach new pinnacles of success.",
     "awards": {
+      "aldar": {
+        "title1": "ALDAR",
+        "title3": "TOP PERFORMING AGENCY 1ST PLACE 2011 TO 2025"
+      },
+      "rak": {
+        "title1": "RAK PROPERTIES",
+        "title3": "BROKERS AWARDS 1ST PLACE - 2025"
+      },
       "emaar": {
+        "title1": "EMAAR",     
+        "title3": "2nd PLACE EMAAR BROKERS AWARDS Q1 2025"
+      },
+      "modon": {
+        "title1": "MODON",
+        "title3": "1ST PLACE BROKER AWARDS 2023-2025"
+      },
+      "emaarh1": {
         "title1": "EMAAR",
-        "title2": "ANNUAL BROKER",
-        "title3": "AWARDS - 2018"
+        "title3": "H1 BROKER AWARDS NO3 - 2025"   
+      },
+      "bloom": {
+        "title1": "BLOOM",
+        "title3": "TOP PERFORMING BROKER - 2024"
+      },
+      "rak2024": {
+        "title1": "RAK PROPERTIES",
+        "title3": "BROKERS AWARDS AGENCY OF THE YEAR RANK 3 - 2024"
+      },
+      "damac": {
+        "title1": "DAMAC",
+        "title3": "ANNUAL AWARDS TOP AGENCIES - 2024"
+      },
+      "imkan": {
+        "title1": "IMKAN",
+        "title3": "TOP BROKER AWARDS 2024 - 2025"
+      },
+      "binghatti": {
+        "title1": "BINGHATTI",
+        "title3": "ANNUAL BROKERS AWARD 2024"
+      },
+      "deyaar": {
+        "title1": "DEYAAR",
+        "title3": "#1 CHANNEL PARTNER & TOP ACHIEVER 2024"
+      },
+      "darglobal": {
+        "title1": "DARGLOBAL",
+        "title3": "INTERNATIONAL RISING STAR - 2023"
+      },
+      "bloom2022": {
+        "title1": "BLOOM",
+        "title3": "TOP PERFORMING AGENCY 3rd PLACE 2022"
+      },
+      "arada": {
+        "title1": "ARADA",
+        "title3": "BEST PERFORMER 1st PLACE - 2022"
+      },
+      "bloom2": {
+        "title1": "BLOOM",
+        "title3": "TOP PERFORMING AGENCY 3rd PLACE 2022"
+      },
+      "imkan2021": {
+        "title1": "IMKAN",
+        "title3": "TOP PERFORMING AGENCY 1st PLACE 2021"
       },
       "aldar2021": {
         "title1": "ALDAR",
         "title3": "AMBASSADOR - 2021"
       },
-      "aldar2016": {
-        "title1": "ALDAR",
-        "title2": "TOP PERFORMING",
-        "title3": "Agency First Place - 2016"
+      "emaar2018": {
+        "title1": "EMAAR ANNUAL",
+        "title3": "BROKER AWARDS - 2018"
       },
-      "aldar2020": {
+      "aldar2018": {
         "title1": "ALDAR",
-        "title2": "TOP PERFORMING",
-        "title3": "Agency First Place - 2020"
+        "title3": "TOP PERFORMING AGENCY 1st PLACE - 2018"
       },
-      "aldar2022": {
-        "title1": "ALDAR",
-        "title2": "TOP PERFORMING",
-        "title3": "Agency First Place - 2022"
+      "bloom2017": {
+        "title1": "BLOOM",
+        "title3": "TOP PERFORMING AGENCY 2017"
       },
-      "imkan": {
-        "title1": "IMKAN",
-        "title2": "TOP PERFORMING",
-        "title3": "Agency First Place - 2021"
+      "finder": {
+        "title1": "PROPERTY FINDER",
+        "title3": "TOP PERFORMING AGENCY 1st PLACE - 2016"
       }
     }
   },
