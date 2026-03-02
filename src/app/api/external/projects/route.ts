@@ -83,9 +83,6 @@ export async function GET(request: NextRequest) {
     case 'bloom living olvera':
       finquery = 'Bloom Living - Olvera'
       break;
-    case 'the source terraces':
-      finquery = 'The Source Terraces'
-      break;
     case 'paramount tower hotel residences archive':
       finquery = 'Paramount Tower Hotel & Residences - Archive'
       break;
