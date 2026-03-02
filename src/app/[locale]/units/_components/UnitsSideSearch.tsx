@@ -47,8 +47,8 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
           ];
 
           const residential: any[] = [];
-          const commercial: any[] = [];
-
+          // const commercial: any[] = [];
+          const commercialMap = new Map<string, any>();
           data.forEach((item: any) => {
             const name = item.lookupName;
             const simplifiedName = { lookupId: item.lookupId, lookupName: name };
@@ -56,10 +56,13 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
             if (RESIDENTIAL_TYPES.includes(name)) {
               residential.push(simplifiedName);
             } else if (COMMERCIAL_TYPES.includes(name)) {
-              commercial.push(simplifiedName);
+              if (!commercialMap.has(name)) {
+                commercialMap.set(name, simplifiedName);
+              }
             }
           });
-
+          const commercial = Array.from(commercialMap.values());
+          // const commercial = Array.from(commercialMap.values());
           // Sort within groups
           residential.sort((a, b) => RESIDENTIAL_TYPES.indexOf(a.lookupName) - RESIDENTIAL_TYPES.indexOf(b.lookupName));
           commercial.sort((a, b) => COMMERCIAL_TYPES.indexOf(a.lookupName) - COMMERCIAL_TYPES.indexOf(b.lookupName));
