@@ -2,8 +2,12 @@ import { z } from "zod";
 import { isValidPhoneNumber } from "libphonenumber-js";
 
 export const FormDataSchema2 = z.object({
-    fname: z.string().min(1, 'First name is required'),
-    lname: z.string().min(1, 'Last name is required'),
+    fname: z.string().min(1, 'First name is required').regex(/^[a-zA-Z ]*$/, {
+      message: "First Name must contain only alphabets and spaces",
+    }),
+    lname: z.string().min(1, 'Last name is required').regex(/^[a-zA-Z ]*$/, {
+      message: "Last Name must contain only alphabets and spaces",
+    }),
     email: z.string().min(1, 'Email is required').email('Enter a valid email address'),
     phone: z
     .string()
