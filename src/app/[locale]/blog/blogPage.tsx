@@ -203,9 +203,39 @@ export default function BlogPage() {
                     </div>
 
                     {/* Search */}
-                    <div className="mb-16">
+                    <div className="mb-8">
                         <PillSearch value={queryText} onChange={handleSearch} placeholder={ui("searchPlaceholder")} />
                     </div>
+
+                    {/* Top Pagination */}
+                    <div className="md:hidden block mb-8">
+                    {!queryText && posts.length > 0 && (
+                        <div className="flex justify-between sm:justify-center items-center space-x-6">
+                            <button
+                                onClick={handlePrev}
+                                disabled={page === 1 || loading}
+                                className="cursor-pointer flex items-center px-6 py-3 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            >
+                                <ChevronLeft size={20} className={rtl ? "ml-2 rotate-180" : "mr-2"} />
+                                {ui("previous")}
+                            </button>
+
+                            <span className="text-gray-400 font-mono text-sm">
+                                {ui("page")} {page}
+                            </span>
+
+                            <button
+                                onClick={handleNext}
+                                disabled={!hasMore || loading}
+                                className="cursor-pointer flex items-center px-6 py-3 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            >
+                                {ui("next")}
+                                <ChevronRight size={20} className={rtl ? "mr-2 rotate-180" : "ml-2"} />
+                            </button>
+                        </div>
+                    )}
+                    </div>
+                    
                     
                     {/* Blog List */}
                     <div className="mb-20">
@@ -235,9 +265,9 @@ export default function BlogPage() {
                         )}
                     </div>
 
-                    {/* Pagination */}
+                    {/* Bottom Pagination */}
                     {!queryText && posts.length > 0 && (
-                        <div className="flex justify-center items-center space-x-6">
+                        <div className="flex justify-between sm:justify-center items-center space-x-6 mb-4">
                             <button
                                 onClick={handlePrev}
                                 disabled={page === 1 || loading}

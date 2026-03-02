@@ -56,7 +56,7 @@ const LuxuryFooter = () => {
                         </p>
                         <p className="text-lg mb-3 md:hidden visible">{t('findHome')}</p>
                         <p className="text-lg">
-                            <u>{t('contactUs')}</u> {t('suffix')}
+                            <u><Link href="#connect">{t('contactUs')}</Link></u> {t('suffix')}
                         </p>
                     </div>
                     <div className="md:col-span-1 hidden md:block">

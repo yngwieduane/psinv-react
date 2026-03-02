@@ -13,6 +13,7 @@ import { insertHubspotLead, insertPSILead } from "@/utils/crmApiHelpers";
 import Link from "next/link";
 import { EmailIcon, UserIcon } from "@/app/[locale]/_components/FormIcons";
 import { Send } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface Props {
   project?: any;
@@ -21,19 +22,17 @@ interface Props {
   onSuccessDownload?: (url: string) => void;
 }
 
-const schema = z.object({
-  firstName: z.string().min(1, { message: "First name is required" }),
-  lastName: z.string().min(1, { message: "Last name is required" }),
-  email: z.string().email({ message: "Invalid email address" }),
-  phone: z.string().min(7, { message: "Invalid phone number" }),
-  agreement1: z.boolean().refine((val) => val, { message: "You must agree to this" }),
-  agreement2: z.boolean().optional(),
-  agreement3: z.boolean().optional(),
+const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownload }: Props) => {
+  const t = useTranslations('LuxuryProjectUAE.ContactForm');
+  const schema = z.object({
+  firstName: z.string().min(1, { message: t('fields.firstName.error') }),
+  lastName: z.string().min(1, { message: t('fields.lastName.error') }),
+  email: z.string().email({ message: t('fields.email.error') }),
+  phone: z.string().min(7, { message: t('fields.phone.error') }),  
 });
 
 type FormData = z.infer<typeof schema>;
 
-const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownload }: Props) => {
   const pathname = usePathname();
   const locale = pathname.split("/")[1] || "en";
   const {
@@ -42,12 +41,7 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
     formState: { errors },
     control,
   } = useForm<FormData>({
-    resolver: zodResolver(schema),
-    defaultValues: {
-      agreement1: true,
-      agreement2: true,
-      agreement3: true,
-    },
+    resolver: zodResolver(schema),    
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -187,10 +181,7 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
 
     const isHubspotMedia = mediaName === '63907';
 
-    const remarks = `
-        Additional consent 1: ${data.agreement1 ? "Yes" : "No"} </br>
-        Additional consent 2: ${data.agreement2 ? "Yes" : "No"} </br>
-        Additional consent 3: ${data.agreement3 ? "Yes" : "No"} </br>
+    const remarks = `        
         Client Name: ${data.firstName} ${data.lastName} </br>
         Client Email: ${data.email} </br>
         Client Phone: ${data.phone} </br>
@@ -434,30 +425,30 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="w-full bg-white py-6 px-0 rounded-lg">
         {/* Success/Error Messages */}
-        {postId === "Success" && <div className="p-3 mb-3 rounded bg-green-500 text-white">Form submitted successfully!</div>}
-        {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">Submission failed. Try again.</div>}
+        {postId === "Success" && <div className="p-3 mb-3 rounded bg-green-500 text-white">{t('messages.success')}</div>}
+        {postId === "Error" && <div className="p-3 mb-3 rounded bg-red-500 text-white">{t('messages.error')}</div>}
         <div className="mb-4 flex justify-between gap-3">          
           <div>
-            <label>First Name</label>
+            <label>{t('fields.firstName.label')}</label>
             <div className="relative space-y-1 mt-2">
               <UserIcon />  
               <input
                 type="text"
                 {...register("firstName")}
-                placeholder="First Name"
+                placeholder={t('fields.firstName.placeholder')}
                 className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
               />
               {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
             </div>
           </div>
           <div>
-            <label>Last Name</label>
+            <label>{t('fields.lastName.label')}</label>
             <div className="relative space-y-1 mt-2">
               <UserIcon />  
               <input
                 type="text"
                 {...register("lastName")}
-                placeholder="Last Name"
+                placeholder={t('fields.lastName.placeholder')}
                 className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
               />
               {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
@@ -465,7 +456,7 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
           </div>
         </div>
         <div className="mb-3">
-          <label>Phone</label>
+          <label>{t('fields.phone.label')}</label>
           <Controller
             name="phone"
             control={control}
@@ -485,13 +476,13 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
           {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
         </div>
         <div>
-            <label>Email</label>
+            <label>{t('fields.email.label')}</label>
             <div className="relative space-y-1 my-2">
               <EmailIcon />
               <input
                 type="email"
                 {...register("email")}
-                placeholder="Email"
+                placeholder={t('fields.email.placeholder')}
                 className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
               />
               {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
@@ -507,7 +498,7 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
             ) : (
                 <>
-                    Submit
+                    {t('button.default')}
                     <Send size={16} className="group-hover:translate-x-1 transition-transform" />
                 </>
             )}
@@ -515,7 +506,7 @@ const LuxuryInquireForm = ({ project, location, downloadIntent, onSuccessDownloa
 
         <div className="mb-3">
           <label className="flex items-center space-x-2">
-            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">By clicking Submit, you agree to our <Link href="/en/terms" title="terms">Terms & Conditions</Link> and <a href="/en/privacy">Privacy Policy</a></span>
+            <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t('agreement.text')} <Link href="/en/terms" title="terms">{t('agreement.terms')}</Link> {t('agreement.and')} <a href="/en/privacy">{t('agreement.privacy')}</a></span>
           </label>
         </div>
       </form>

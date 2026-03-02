@@ -1027,7 +1027,8 @@
     "categories": {
       "market_insights": "市场洞察",
       "company_news": "公司新闻",
-      "lifestyle": "生活方式"
+      "lifestyle": "生活方式",
+      "abu-dhabi-real-estate": "阿布扎比房地产"
     },
     "subtitle": "探索阿联酋房地产市场的最新见解、新闻和趋势。",
     "noPostsFound": "未找到符合搜索条件的文章。",
@@ -1980,6 +1981,10 @@
     }
   ],
   "LuxuryProjectUAE": {
+    "metadata": {
+      "title": "探索阿联酋豪华房地产项目",
+      "description": "通过 Property Shop Investment 探索阿联酋最顶级的豪华房地产项目。在阿布扎比和迪拜的黄金地段寻找独家房源，享受世界级设施和壮丽景观。获取专家建议和个性化服务，助您今天就拥有梦想家园。"
+    },
     "Hero": {
       "nav": {
         "home": "首页",
@@ -2286,6 +2291,43 @@
       "privacy": "隐私政策",
       "terms": "使用条款",
       "rights": "© 2025 Property Shop Investment LLC. | 保留所有权利。"
+    },
+    "ContactForm": {
+      "messages": {
+        "success": "表单提交成功！",
+        "error": "提交失败，请重试。"
+      },
+      "fields": {
+        "firstName": {
+          "label": "名字",
+          "placeholder": "名字",
+          "error": "名字为必填项"
+        },
+        "lastName": {
+          "label": "姓氏",
+          "placeholder": "姓氏",
+          "error": "姓氏为必填项"
+        },
+        "phone": {
+          "label": "电话",
+          "error": "无效的电话号码"
+        },
+        "email": {
+          "label": "电子邮箱",
+          "placeholder": "电子邮箱",
+          "error": "无效的邮箱地址"
+        }
+      },
+      "button": {
+        "default": "提交",
+        "submitting": "正在提交..."
+      },
+      "agreement": {
+        "text": "点击提交即表示您同意我们的",
+        "terms": "条款与条件",
+        "and": "和",
+        "privacy": "隐私政策"
+      }
     }
   }
 }

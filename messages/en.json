@@ -349,7 +349,7 @@
         "title3": "BROKERS AWARDS 1ST PLACE - 2025"
       },
       "emaar": {
-        "title1": "EMAAR",     
+        "title1": "EMAAR",
         "title3": "2nd PLACE EMAAR BROKERS AWARDS Q1 2025"
       },
       "modon": {
@@ -358,7 +358,7 @@
       },
       "emaarh1": {
         "title1": "EMAAR",
-        "title3": "H1 BROKER AWARDS NO3 - 2025"   
+        "title3": "H1 BROKER AWARDS NO3 - 2025"
       },
       "bloom": {
         "title1": "BLOOM",
@@ -6397,7 +6397,8 @@
     "categories": {
       "market_insights": "Market Insights",
       "company_news": "Company News",
-      "lifestyle": "Lifestyle"
+      "lifestyle": "Lifestyle",
+      "abu-dhabi-real-estate": "Abu Dhabi Real Estate"
     },
     "subtitle": "Discover the latest insights, news, and trends from the UAE real estate market.",
     "noPostsFound": "No posts found matching your criteria.",
@@ -6815,28 +6816,26 @@
     "home": "Home",
     "units": "Units"
   },
-   "UnitSEO": {
+  "UnitSEO": {
     "title": "{beds} Bedroom {type} {adType} in {community} | Ref {refNo}",
     "description": "{beds} bedroom {type} {adType} in {community}, {emirate}. Discover pricing, floor plans, location, and full property details now. Reference {refNo}.",
     "keywords": "{beds} bedroom {type}, {community}, {emirate}, real estate, property prices, ref {refNo}"
   },
-
   "PaymentPlans": {
     "title": "Payment Plan {index}",
     "downpayment": "Down Payment",
     "handover": "On Handover",
     "view_full": "View Full"
   },
-
   "PaymentPlansTable": {
     "plan_name": "Plan Name",
     "plan_type_name": "Plan Type",
     "status": "Status",
     "downpayment": "Down Payment",
     "handover": "On Handover",
+    "installment": "Installment",
     "installment_line": "{pct}% (Every {date} {freq})"
   },
-
   "DrawerDetails": {
     "details": "Details",
     "video": "Video",
@@ -6848,7 +6847,6 @@
     "inquire_now": "Inquire Now",
     "close_panel": "Close Panel"
   },
-
   "PaymentPlanValues": {
     "construction_linked_plan": "Construction-Linked Plan",
     "inactive": "Inactive",
@@ -6971,6 +6969,10 @@
     }
   },
   "LuxuryProjectUAE": {
+    "metadata": {
+      "title": "Discover Luxury Real Estate Projects in UAE",
+      "description": "Explore the finest luxury real estate projects in UAE with Property Shop Investment. Find exclusive properties in prime locations across Abu Dhabi and Dubai, featuring world-class amenities and breathtaking views. Get expert advice and personalized service to secure your dream home today."
+    },
     "Hero": {
       "nav": {
         "home": "Home",
@@ -7277,43 +7279,43 @@
       "privacy": "Privacy",
       "terms": "Terms of Use",
       "rights": "© 2025 Property Shop Investment LLC. | All Rights Reserved."
-    },    
-  "ContactForm": {
-    "messages": {
-      "success": "Form submitted successfully!",
-      "error": "Submission failed. Try again."
     },
-    "fields": {
-      "firstName": {
-        "label": "First Name",
-        "placeholder": "First Name",
-        "error": "Please enter your first name"
+    "ContactForm": {
+      "messages": {
+        "success": "Form submitted successfully!",
+        "error": "Submission failed. Try again."
       },
-      "lastName": {
-        "label": "Last Name",
-        "placeholder": "Last Name",
-        "error": "Please enter your last name"
+      "fields": {
+        "firstName": {
+          "label": "First Name",
+          "placeholder": "First Name",
+          "error": "First name is required"
+        },
+        "lastName": {
+          "label": "Last Name",
+          "placeholder": "Last Name",
+          "error": "Last name is required"
+        },
+        "phone": {
+          "label": "Phone",
+          "error": "Invalid phone number"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Email",
+          "error": "Invalid email address"
+        }
       },
-      "phone": {
-        "label": "Phone",
-        "placeholder": "+971-555555555",
-        "error": "Please enter a valid phone number"
+      "button": {
+        "default": "Submit",
+        "submitting": "Submitting..."
       },
-      "email": {
-        "label": "Email",
-        "placeholder": "Email",
-        "error": "Please enter a valid email"
+      "agreement": {
+        "text": "By clicking Submit, you agree to our",
+        "terms": "Terms & Conditions",
+        "and": "and",
+        "privacy": "Privacy Policy"
       }
-    },
-    "button": {
-      "default": "Submit",
-      "submitting": "Submitting..."
-    },
-    "agreement": {
-      "text": "By clicking Submit, you agree to our Terms & Conditions and Privacy Policy.",
-      "terms": "Terms & Conditions",
-      "privacy": "Privacy Policy"
     }
-  }  
   }
 }
