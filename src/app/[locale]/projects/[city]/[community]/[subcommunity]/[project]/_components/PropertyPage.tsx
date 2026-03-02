@@ -29,6 +29,7 @@ import PhotoGallery from './PhotoGallery';
 import BrochureModal from './BrochureModal';
 import slugify from 'react-slugify';
 import { Link } from '@/i18n/navigation';
+import AboutDeveloper from './AboutDeveloper';
 
 
 function PropertyPage(props: any) {
@@ -585,6 +586,14 @@ function PropertyPage(props: any) {
                                     propname={props.data["propertyName"]} />
                             </section>
                         )}
+
+                        <div className="" id="developer">
+                            <AboutDeveloper
+                                masterDeveloper={props.data["masterDeveloper"]}
+                                developerDescription={props.data["developerDescription"]}
+                                propid={props.data["propertyID"]}
+                                propname={props.data["propertyName"]} />
+                        </div>
 
                         <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
                             <Faqs data={props.data} propname={props.data["propertyName"]} viewAllLink={`${pathname}/faqs`} />

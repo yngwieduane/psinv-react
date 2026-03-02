@@ -76,8 +76,8 @@ const PaymentPlansAI = ({
                                             </div>
                                         )}
                                         <div className="flex flex-col items-center text-center bg-white z-10 px-4 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
-                                            <div className="w-16 h-16 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-xl mb-4 border-4 border-orange-100 shadow-lg">
-
+                                            <div className="w-16 h-16 rounded-full bg-secondary text-black flex items-center justify-center font-bold text-xl mb-4 border-4 border-orange-100 shadow-lg dark:text-white">
+                                                {filtered[0]?.amountPercentage * 100} %
                                             </div>
                                             <h4 className="font-bold text-gray-900 text-lg mb-1 dark:text-white">During Construction</h4>
                                             <p className="text-gray-500 text-sm">Installments</p>

@@ -83,9 +83,6 @@ export async function GET(request: NextRequest) {
     case 'bloom living olvera':
       finquery = 'Bloom Living - Olvera'
       break;
-    case 'the source terraces':
-      finquery = 'The Source Terraces'
-      break;
     case 'paramount tower hotel residences archive':
       finquery = 'Paramount Tower Hotel & Residences - Archive'
       break;
@@ -141,10 +138,13 @@ export async function GET(request: NextRequest) {
       finquery = 'Anantara Residences - North'
       break;
     case 'Mag 5-Residences':
-        finquery = 'MAG 5 Residences'
+      finquery = 'MAG 5 Residences'
       break;
-    case 'The Source Terraces':
-        finquery = 'The Source - Terraces'
+    case 'the source terraces':
+      finquery = 'The Source - Terraces'
+      break;
+    case 'seven palm hotel apartments':
+      finquery = 'Seven Palm Hotel & Apartments'
       break;
     default:
       finquery = query
