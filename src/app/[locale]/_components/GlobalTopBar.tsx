@@ -9,13 +9,67 @@ import Link from 'next/link';
 import ContactBranchSwitcherHeader from './ContactBranchSwitcherHeader';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import { X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, Suspense } from 'react';
 
 const DevThemeToggle = () => {
     const searchParams = useSearchParams();
     const isDev = searchParams.get('dev') === '1';
-    return isDev ? <ThemeToggle /> : null;
-}
+
+    const [showPopover, setShowPopover] = useState(false);
+
+    useEffect(() => {
+        // Show popover only if user hasn't dismissed it
+        const hasSeenThemePopover = localStorage.getItem('hasSeenThemePopover');
+        if (!hasSeenThemePopover) {
+            // Delay to allow UI to settle.
+            const timer = setTimeout(() => setShowPopover(true), 1500);
+            return () => clearTimeout(timer);
+        }
+    }, []);
+
+    const dismissPopover = () => {
+        setShowPopover(false);
+        localStorage.setItem('hasSeenThemePopover', 'true');
+    };
+
+    return (
+        <div className="relative flex items-center">
+            {isDev ? <ThemeToggle /> : <ThemeToggle />}
+
+            <AnimatePresence>
+                {showPopover && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        className="absolute top-full right-0 mt-4 w-60 bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-700 p-4 z-[100] text-left normal-case tracking-normal font-normal"
+                    >
+                        {/* Caret pointing to button */}
+                        <div className="absolute -top-2 right-4 w-4 h-4 bg-white dark:bg-slate-800 border-l border-t border-gray-100 dark:border-gray-700 transform rotate-45 rounded-sm"></div>
+
+                        <div className="relative z-10 flex justify-between items-start gap-3">
+                            <div>
+                                <h4 className="font-bold text-sm mb-1 text-slate-800 dark:text-white">Try Dark Mode! ✨</h4>
+                                <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+                                    You can now toggle the theme for a better viewing experience.
+                                </p>
+                            </div>
+                            <button
+                                onClick={dismissPopover}
+                                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors p-1 -mt-1 -mr-1 rounded-full hover:bg-gray-100 dark:hover:bg-slate-700"
+                                aria-label="Close"
+                            >
+                                <X size={14} />
+                            </button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
 
 const GlobalTopBar = () => {
     return (
