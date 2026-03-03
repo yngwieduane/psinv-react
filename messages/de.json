@@ -7,6 +7,11 @@
   },
   "MainSliderHome": {
     "slides": {
+       "psi_awards_2025": {
+      "title": "Exzellenz, die überzeugt",
+      "location": "PSI Awards 2025",
+      "description": "Das Jahr 2025 war ein Meilenstein in unserer Unternehmensgeschichte, geprägt von Branchenanerkennung, die unsere Beständigkeit, Leistungsstärke und Führungsrolle auf dem Immobilienmarkt der VAE widerspiegelt."
+    },
       "ohana_branded_residences": {
         "title": "Ohana Markenresidenzen",
         "location": "Yas Island",
