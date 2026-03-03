@@ -12,17 +12,18 @@ import { sendGTMEvent } from '@next/third-parties/google'
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { insertHubspotLead } from "@/utils/crmApiHelpers";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faUserAlt } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
 import { EmailIcon, UserIcon } from "./FormIcons";
 import { Send } from "lucide-react";
 
 const schema = z.object({
-  firstName: z.string().min(1, { message: "First name is required" }),
-  lastName: z.string().min(1, { message: "Last name is required" }),
+  firstName: z.string().min(1, 'First name is required').regex(/^[a-zA-Z ]*$/, {
+      message: "First Name must contain only alphabets and spaces",
+    }),
+  lastName: z.string().min(1, 'Last name is required').regex(/^[a-zA-Z ]*$/, {
+      message: "Last Name must contain only alphabets and spaces",
+    }),
   email: z.string().email({ message: "Invalid email address" }),
-  phone: z.string().min(7, { message: "Invalid phone number" }),  
+  phone: z.string().min(7, { message: "Invalid phone number" }),
 });
 interface BannerFormProps {
   hideFeedbackButton?: boolean;
