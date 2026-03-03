@@ -354,7 +354,7 @@
       },
       "modon": {
         "title1": "MODON",
-        "title3": "1ST PLACE BROKER AWARDS 2023-2025"
+        "title3": "1ST PLACE BROKER AWARDS 2025"
       },
       "emaarh1": {
         "title1": "EMAAR",
@@ -6395,6 +6395,9 @@
     "recentPosts": "Recent Posts",
     "readMore": "Read More",
     "categories": {
+      "dubai-real-estate" :"Dubai Real Estate",
+      "uae-real-estate": "UAE Real Estate",
+      "uae-real-estate-trends": "UAE Real Estate Trends",
       "market_insights": "Market Insights",
       "company_news": "Company News",
       "lifestyle": "Lifestyle",
