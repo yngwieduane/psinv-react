@@ -352,6 +352,9 @@ function PropertyPage(props: any) {
                                     if (cat === "Location" && props.data["communityMapAndMasterPlan"] == null && props.data["locationMapImages"] == null) {
                                         return false; // skip
                                     }
+                                    if (cat === "Payment Plan" && (props.data["propertyPlan"] === "Ready" || props.data["propertyPlan"] === "Completed")) {
+                                        return false; // skip
+                                    }
                                     return true;
                                 }).map((tab) => {
                                     //if(tab === 'Location' && props.data["communityMapAndMasterPlan"] !== null && props.data["locationMapImages"] !== null) return null;
