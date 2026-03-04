@@ -159,7 +159,7 @@ export default function HomeSearch() {
     };
 
     return (
-        <div className="relative z-30 -mt-20 mb-10 container mx-auto px-4 " id='search-section'>
+        <div className="relative z-30 -mt-16 mb-10 container mx-auto px-4 " id='search-section'>
             <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl max-w-5xl mx-auto">
                 {/* Tabs */}
                 <div className="flex border-b border-gray-100 ">

@@ -15,4 +15,7 @@
         background: #ffffff7a;
         border: 1px solid #a9a3a37d;
     }
+    .home-banner-swiper .swiper-pagination { 
+        margin-bottom: 80px;
+    }
 }

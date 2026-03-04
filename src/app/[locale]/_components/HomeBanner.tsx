@@ -94,13 +94,13 @@ const HomeBanner = (props: any) => {
                 {...(index === 0 && { fetchPriority: "high" })}
                 sizes="100vw"
                 quality={85}
-                className={`object-cover object-center ${index === 0 ? 'animate-none' : 'animate-[zoomIn_20s_infinite_alternate]'} will-change-transform`}
+                className={`object-cover object-center ${index === 0 ? 'animate-[zoomIn_20s_infinite_alternate]' : 'animate-[zoomIn_20s_infinite_alternate]'} will-change-transform`}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
             </div>
 
             <div className="relative container mx-auto px-6 md:px-12 h-full flex items-center">
-              <div className="max-w-4xl text-white mt-5 md:mt-0">
+              <div className="max-w-4xl text-white my-5 md:mt-13">
                 {slide.developer_img && (
                   <div
                     className={`mb-5 mx-0 ${slide.name === "loyalty" ? "w-[130px]" : "w-[100px]"
@@ -135,7 +135,7 @@ const HomeBanner = (props: any) => {
                   )
                   :
                   (
-                    <h2 className={`text-4xl md:text-8xl font-serif font-bold mb-6 leading-tight animate-[fadeIn_1.4s_ease-out] ${outfit.className}`}>
+                    <h2 className={`text-4xl md:text-8xl font-serif font-bold mb-6 leading-none animate-[fadeIn_1.4s_ease-out] ${outfit.className}`}>
                       {slide.title}
                     </h2>
                   )
@@ -179,7 +179,7 @@ const HomeBanner = (props: any) => {
                             slide.project_url.startsWith(`/${locale}/`)
                               ? slide.project_url
                               : `/${locale}${slide.project_url}`
-                          } className="flex items-center bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white md:px-10 px-4 py-3 md:py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
+                          } className="flex items-center bg-white hover:bg-white/20 backdrop-blur-md border border-white/30 text-[#222] hover:text-white md:px-10 px-4 py-3 md:py-4 rounded-none text-sm uppercase tracking-widest font-bold transition-all hover:scale-105 animate-[fadeIn_1.8s_ease-out]">
                           <span>{t("more_btn")}</span>
                           <div className="ml-1 transition group-hover:translate-x-1">
                             {isRTL && (
@@ -200,7 +200,7 @@ const HomeBanner = (props: any) => {
             </div>
 
             {/* Minimalist Slider Controls */}
-            <div className={`absolute bottom-12 ${isRTL ? "left-12" : "right-12"} flex items-center gap-6 z-20 hidden md:flex`} dir={isRTL ? "rtl" : "ltr"}>
+            <div className={`absolute bottom-22 ${isRTL ? "left-12" : "right-12"} flex items-center gap-6 z-20 hidden md:flex`} dir={isRTL ? "rtl" : "ltr"}>
               {isRTL && (
                 <div className="flex gap-2">
                   <button aria-label="next" onClick={handlePrev} className="p-3 text-white/50 hover:text-white transition-colors border border-white/20 hover:border-white rounded-full">

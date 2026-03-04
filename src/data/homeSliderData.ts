@@ -35,6 +35,12 @@ export const homeSliderData = [
 //     bannerbedroom: "21935",
 //   },
   {
+    key: "psi_awards_2025",
+    type: "Apartment",
+    project_url: "/articles/uae-real-estate-trends/psi-awards-2025-a-night-of-excellence-momentum-and-unforgettable-triumphs",
+    image: "/images/banners/we_gather_awards_25.webp",
+  },
+  {
     key: "the_row",
     type: "Apartment",
     developer_img: "/images/banners/aldar-logo.svg",
