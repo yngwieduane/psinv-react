@@ -11,6 +11,11 @@
   },
   "MainSliderHome": {
     "slides": {
+      "manchester_city_residences": {
+        "title": "曼城公寓",
+        "location": "亚斯岛",
+        "description": "由 Ohana 打造的曼城公寓坐落于亚斯岛核心地段，是一座标志性的滨水住宅项目，灵感源自卓越表现与精致生活方式。"
+      },
       "psi_awards_2025": {
         "title": "卓越，实力见证",
         "location": "PSI 2025年度大奖",
