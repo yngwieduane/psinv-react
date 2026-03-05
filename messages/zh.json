@@ -1025,7 +1025,9 @@
     "open_in_google_maps": "在 Google 地图中打开",
     "facilities_and_amenities": "设施与配套",
     "community_images": "社区图片",
-    "project_gallery": "项目画廊"
+    "project_gallery": "项目画廊",
+    "unit_types": "单位类型",
+    "zone_type": "区域类型"
   },
   "InquiryForm": {
     "title": "登记信息",

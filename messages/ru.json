@@ -980,7 +980,9 @@
     "open_in_google_maps": "Открыть в Google Картах",
     "facilities_and_amenities": "Удобства и услуги",
     "community_images": "Изображения сообщества",
-    "project_gallery": "Галерея проекта"
+    "project_gallery": "Галерея проекта",
+    "unit_types": "Тип объекта",
+    "zone_type": "Тип зоны"
   },
   "CryptoPage": {
     "metadata": {

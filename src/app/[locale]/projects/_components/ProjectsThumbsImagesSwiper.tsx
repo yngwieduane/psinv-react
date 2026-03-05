@@ -55,15 +55,13 @@ const ProjectsThumbsImagesSwiper: React.FC<PropertyImageSwiperProps> = ({
         );
         return (
           <SwiperSlide key={idx}>
-            <Link href={url} className="block w-full h-full">
-              <Image
-                src={galleryImg}
-                alt={`${propertyName} - ${idx + 1}`}
-                className="w-full h-full object-cover"
-                width={400}
-                height={300}
-              />
-            </Link>
+            <Image
+              src={galleryImg}
+              alt={`${propertyName} - ${idx + 1}`}
+              className="w-full h-full object-cover"
+              width={400}
+              height={300}
+            />
           </SwiperSlide>
         );
       })}

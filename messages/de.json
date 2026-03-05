@@ -1008,7 +1008,9 @@
     "open_in_google_maps": "In Google Maps öffnen",
     "facilities_and_amenities": "Einrichtungen und Annehmlichkeiten",
     "community_images": "Gemeinschaftsbilder",
-    "project_gallery": "Projektgalerie"
+    "project_gallery": "Projektgalerie",
+    "unit_types": "Einheitstyp",
+    "zone_type": "Zonentyp"
   },
   "InquiryForm": {
     "title": "Lassen Sie uns wissen, ob Sie interessiert sind!",

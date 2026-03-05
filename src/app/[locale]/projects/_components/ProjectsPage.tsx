@@ -1,5 +1,6 @@
 import Breadcrumb from "../../_components/Breadcrumb";
 import PropertyList from "./PropertyList";
+import ProjectSearch from "./ProjectSearch";
 
 
 export default async function ProjectsPage({
@@ -11,6 +12,8 @@ export default async function ProjectsPage({
     propertyname,
     isFeaturedProjectOnWeb,
     cityId,
+    propertyUnitTypes,
+    propertyPlan
 }: {
     page: number;
     city: string;
@@ -20,6 +23,8 @@ export default async function ProjectsPage({
     propertyname: string;
     isFeaturedProjectOnWeb: string;
     cityId: string;
+    propertyUnitTypes?: string;
+    propertyPlan?: string;
 }) {
 
     return (
@@ -34,8 +39,20 @@ export default async function ProjectsPage({
                 <div className="grid grid-cols-1 gap-4">
                     <div className="">
                         <h1 className="mx-auto container text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight truncate mb-6 md:mb-10">Real Estate Projects in UAE</h1>
-                        <div className="">
-                            <PropertyList page={page} city={city} cityId={cityId} community={community} subcommunity={subcommunity} project={project} propertyname={propertyname} isFeaturedProjectOnWeb={isFeaturedProjectOnWeb} />
+                        <div className="pt-5">
+                            <ProjectSearch />
+                            <PropertyList
+                                page={page}
+                                city={city}
+                                cityId={cityId}
+                                community={community}
+                                subcommunity={subcommunity}
+                                project={project}
+                                propertyname={propertyname}
+                                isFeaturedProjectOnWeb={isFeaturedProjectOnWeb}
+                                propertyUnitTypes={propertyUnitTypes}
+                                propertyPlan={propertyPlan}
+                            />
                         </div>
                     </div>
                 </div>

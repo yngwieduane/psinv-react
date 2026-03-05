@@ -5,7 +5,6 @@ import Link from "next/link";
 import { UsersIcon, MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import PopupForm from "@/app/[locale]/_components/PopupForm";
 import InquiryForm from "@/app/[locale]/_components/InquiryForm";
 
 interface DeveloperData {
