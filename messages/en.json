@@ -31,6 +31,16 @@
   },
   "MainSliderHome": {
     "slides": {
+      "manchester_city_residences": {
+      "title": "Manchester City Residences",
+      "location": "Yas Island",
+      "description": "Located in the heart of Yas Island, Manchester City Residences by Ohana is a landmark waterfront development inspired by elite performance and refined living."
+      },
+      "psi_awards_2025": {
+      "title": "Excellence, Proven",
+      "location": "PSI Awards 2025",
+      "description": "2025 has been a milestone year, marked by industry recognition reflecting our consistency, performance, and leadership across the UAE real estate market."
+      },
       "ohana_branded_residences": {
         "title": "Ohana Branded Residences",
         "location": "Yas Island",

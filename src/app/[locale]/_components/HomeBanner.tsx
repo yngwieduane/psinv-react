@@ -94,7 +94,7 @@ const HomeBanner = (props: any) => {
                 {...(index === 0 && { fetchPriority: "high" })}
                 sizes="100vw"
                 quality={85}
-                className={`object-cover object-center ${index === 0 ? 'animate-none' : 'animate-[zoomIn_20s_infinite_alternate]'} will-change-transform`}
+                className={`object-cover object-center ${index === 0 ? 'animate-[zoomIn_20s_infinite_alternate]' : 'animate-[zoomIn_20s_infinite_alternate]'} will-change-transform`}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
             </div>

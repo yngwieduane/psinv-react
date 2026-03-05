@@ -36,6 +36,7 @@ const developerMap: Record<string, string> = {
   "bloom": "Bloom",
   "manazel-real-estate": "Manazel Real Estate",
   "dubai-properties---idama": "Dubai Properties - IDAMA",
+  "royal-development-company": "Royal Development Company"
 };
 
 export default async function DeveloperPage({ params }: Props) {
