@@ -6,7 +6,19 @@ export async function GET(request: NextRequest) {
     const query = searchParams.get('query');
 
     if (!query || query.length < 2) {
-        return NextResponse.json({ results: [] });
+        // Return popular predefined locations on empty focus
+        return NextResponse.json({
+            results: [
+                { name: 'Abu Dhabi', id: 'city_Abu Dhabi', type: 'City' },
+                { name: 'Dubai', id: 'city_Dubai', type: 'City' },
+                { name: 'Ras Al Khaimah', id: 'city_Ras Al Khaimah', type: 'City' },
+                { name: 'Sharjah', id: 'city_Sharjah', type: 'City' },
+                { name: 'Al Reem Island', id: 'comm_Al Reem Island', type: 'Community', city: 'Abu Dhabi' },
+                { name: 'Yas Island', id: 'comm_Yas Island', type: 'Community', city: 'Abu Dhabi' },
+                { name: 'Saadiyat Island', id: 'comm_Saadiyat Island', type: 'Community', city: 'Abu Dhabi' },
+                { name: 'Al Raha Beach', id: 'comm_Al Raha Beach', type: 'Community', city: 'Abu Dhabi' },
+            ]
+        });
     }
 
     // Capitalize first letter of each word to match stored format (Title Case)

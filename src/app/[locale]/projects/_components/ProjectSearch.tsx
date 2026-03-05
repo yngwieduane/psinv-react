@@ -1,5 +1,5 @@
 'use client';
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState, useEffect, useRef, Fragment } from "react";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { MagnifyingGlassIcon, ChevronUpDownIcon, CheckIcon } from "@heroicons/react/24/outline";
@@ -13,8 +13,13 @@ type SearchResult = {
     type: 'Project' | 'Community' | 'City' | 'Subcommunity';
 };
 
-export default function ProjectSearch() {
+interface ProjectSearchProps {
+    isHomeSearch?: boolean;
+}
+
+export default function ProjectSearch({ isHomeSearch = false }: ProjectSearchProps) {
     const t = useTranslations("ProjectsPage");
+    const locale = useLocale();
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -44,32 +49,39 @@ export default function ProjectSearch() {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
+    const fetchSuggestions = (searchQuery: string) => {
+        setShowDropdown(true);
+        setLoading(true);
+
+        // Using the specific projects autocomplete API
+        fetch(`/api/projects/autocomplete?query=${searchQuery}`)
+            .then(res => res.json())
+            .then(data => {
+                setResults(data.results || []);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error("Error fetching suggestions:", err);
+                setResults([]);
+                setLoading(false);
+            });
+    };
+
     useEffect(() => {
         const timeout = setTimeout(() => {
             if (query.trim() !== "") {
-                setShowDropdown(true);
-                setLoading(true);
-
-                // Using the specific projects autocomplete API
-                fetch(`/api/projects/autocomplete?query=${query}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        setResults(data.results || []);
-                        setLoading(false);
-                    })
-                    .catch(err => {
-                        console.error("Error fetching suggestions:", err);
-                        setResults([]);
-                        setLoading(false);
-                    });
+                fetchSuggestions(query);
+            } else if (showDropdown) {
+                // If it's empty but dropdown is open (e.g. from focus), fetch defaults
+                fetchSuggestions("");
             } else {
                 setResults([]);
                 setLoading(false);
                 setShowDropdown(false);
             }
-        }, 800); // 800ms delay to wait until user finishes typing
+        }, query.trim() === "" ? 0 : 800); // No delay for empty focus
         return () => clearTimeout(timeout);
-    }, [query]);
+    }, [query, showDropdown]);
 
     const handleSearchClick = () => {
         const params = new URLSearchParams(searchParams.toString());
@@ -92,7 +104,11 @@ export default function ProjectSearch() {
         // Reset to page 1 on new search
         params.set('page', '1');
 
-        router.push(`${pathname}?${params.toString()}`);
+        if (isHomeSearch) {
+            router.push(`/${locale}/projects?${params.toString()}`);
+        } else {
+            router.push(`${pathname}?${params.toString()}`);
+        }
         setShowDropdown(false);
     };
 
@@ -122,11 +138,16 @@ export default function ProjectSearch() {
         if (propertyPlan) params.set('propertyPlan', propertyPlan);
 
         params.set('page', '1');
-        router.push(`${pathname}?${params.toString()}`);
+
+        if (isHomeSearch) {
+            router.push(`/${locale}/projects?${params.toString()}`);
+        } else {
+            router.push(`${pathname}?${params.toString()}`);
+        }
     };
 
     return (
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 mb-8 mx-auto xl:w-[85%] 2xl:w-[75%] -mt-10 relative z-20">
+        <div className={isHomeSearch ? "relative z-20 w-full" : "bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 mb-8 mx-auto xl:w-[85%] 2xl:w-[75%] -mt-10 relative z-20"}>
             <div className="flex flex-col md:flex-row gap-4">
                 {/* Search Input */}
                 <div className="flex-1 relative" ref={wrapperRef}>
@@ -136,6 +157,10 @@ export default function ProjectSearch() {
                             placeholder="Search by Project, Community, or City..."
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
+                            onFocus={() => {
+                                setShowDropdown(true);
+                                fetchSuggestions(query);
+                            }}
                             onKeyDown={(e) => e.key === 'Enter' && handleSearchClick()}
                             autoComplete="off"
                             className="w-full rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 py-3.5 pl-11 pr-4 text-gray-800 dark:text-white outline-none focus:border-[#353455] focus:ring-1 focus:ring-[#353455]"
