@@ -5,12 +5,12 @@ import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
     const t = await getTranslations("developers_page.metadata");
-  
+
     return {
-      title: t("title"),
-      description: t("description"),
+        title: t("title"),
+        description: t("description"),
     };
-  }
+}
 // export const metadata = {
 //     title: "Top Real Estate Developers in UAE | Property Shop Investment",
 //     description: "Explore leading real estate developers in the UAE and discover their latest residential and commercial projects with Property Shop Investment.",
@@ -29,12 +29,9 @@ export default async function AllDevelopersPage() {
                     </div>
                 </div>
                 <div className="mx-auto container">
-                    <h1 className="text-2xl text-center truncate">Developers</h1>
+                    <h1 className="text-2xl text-center truncate mt-10">Developers</h1>
                     <div className="w-full flex my-5 justify-content-center">
                         <DevelopersList slug="" />
-                    </div>
-                    <div className="mb-5 mt-10">
-                        <DevPropertyList developer="" />
                     </div>
                 </div>
             </div>

@@ -21,6 +21,7 @@ interface InquiryFormProps {
   hideFeedbackButton?: boolean;
   branchCode?: "auh" | "dxb" | "assets";
   onSuccess?: () => void;
+  defaultMessage?: string;
 }
 type BranchCode = NonNullable<InquiryFormProps["branchCode"]>;
 
@@ -89,6 +90,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
   hideFeedbackButton = false,
   branchCode = "auh",
   onSuccess,
+  defaultMessage,
 }) => {
   const pathname = usePathname();
   const locale = pathname.split("/")[1] || "en";
@@ -115,6 +117,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({
     resolver: zodResolver(schema),
     defaultValues: {
       phone: "",
+      message: defaultMessage || "",
     },
   });
 
