@@ -35,8 +35,8 @@ export const CONRAD_AGENTS_BY_DATE: AgentsByDate = {
   "2026-03-05": [
     { "id": "9856", "name": "Tarek AbouHuwaij" },
     { "id": "6152", "name": "Bojana Popovic" },
-    { "id": "5103", "name": "Manal Moustafa Mohamed Khaled" },
-    { "id": "4260", "name": "Nada Yasser Abdalla Ibrahim" },
+    { "id": "7193", "name": "Feliphe de Freitas Santos" },
+    { "id": "7189", "name": "Majnun Mavlonazarov" },
     { "id": "9952", "name": "Mahmoud H.K. Oudah" },
     { "id": "7467", "name": "Maher Archid Hadife" }
   ],
