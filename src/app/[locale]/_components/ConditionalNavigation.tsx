@@ -9,24 +9,26 @@ export type Page = '/en' | '/ar' | '/ru' | '/du' | '/zh';
 
 export default function ConditionalNavigation() {
   const pathname = usePathname();
-const normalize = (p: string) => p.replace(/\/+$/, '');
-const current = normalize(pathname);
-  const isNoNavPage =
-    pathname.includes('/walk-in/') || // ALL walk-in pages
-    [
-      '/list-your-property',
-      '/psi-youngsters-program',
-      '/international',
-      '/luxury-project-uae',
-      '/emirati-hub',
-      '/conrad-abu-dhabi',
-      '/jbr-lead-registration-dubai',
-      '/share-your-feedback',
-      '/mobile-app-waitlist',
-    ].some((p) => {
-    const target = normalize(p);
-    return current === target || current.startsWith(`${target}/`);
-  });
+  const normalize = (p: string) => p.replace(/\/+$/, '').split(/[?#]/)[0];
+  const current = normalize(pathname);  
+  const pathwithoutlocale = current.replace(/^\/(en|ar|ru|zh|de)/, '') || '/';
+
+  const noNavPaths = [
+    '/list-your-property',
+    '/psi-youngsters-program',
+    '/international',
+    '/luxury-project-uae',
+    '/emirati-hub',
+    '/conrad-abu-dhabi',
+    '/jbr-lead-registration-dubai',
+    '/share-your-feedback',
+    '/mobile-app-waitlist',
+  ];  
+
+  // walk-in pages
+  const isWalkIn = pathwithoutlocale.startsWith('/walk-in');
+
+  const isNoNavPage = isWalkIn || noNavPaths.some((p) => pathwithoutlocale.includes(p));
 
   if (isNoNavPage) return null;
 

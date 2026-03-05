@@ -88,16 +88,20 @@ const escapeHtml = (s: string) =>
 const InquiryForm: React.FC<InquiryFormProps> = ({
   hideFeedbackButton = false,
   branchCode = "auh",
-  onSuccess,
+  onSuccess, 
 }) => {
   const pathname = usePathname();
   const locale = pathname.split("/")[1] || "en";
   const t = useTranslations('InquiryFormProject');
   const t_agreement = useTranslations('Common_Form_Agreements');
   const router = useRouter();
-  const schema = z.object({
-    firstName: z.string().min(1, { message: t('errors.firstName') }),
-    lastName: z.string().min(1, { message: t('errors.lastName') }),
+  const schema = z.object({    
+    firstName: z.string().min(1, 'First name is required').regex(/^[a-zA-Z ]*$/, {
+        message: "First Name must contain only alphabets and spaces",
+    }),
+    lastName: z.string().min(1, 'Last name is required').regex(/^[a-zA-Z ]*$/,{
+        message: "Last Name must contain only alphabets and spaces",
+    }),
     email: z.string().email({ message: t('errors.email') }),
     phone: z.string().min(7, { message: t('errors.phone') }),
     message: z.string().min(5, { message: t('errors.message') }), // Assuming key 'errors.message' exists or will be added
