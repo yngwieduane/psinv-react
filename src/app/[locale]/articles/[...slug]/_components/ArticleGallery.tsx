@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
@@ -20,11 +20,11 @@ export default function ArticleGallery({ images, rtl }: Props) {
     return (
         <div className="my-10 w-full" dir={rtl ? "rtl" : "ltr"}>
             <Swiper
-                modules={[Navigation, Pagination, Autoplay]}
+                modules={[Autoplay]}
                 spaceBetween={20}
                 slidesPerView={1}
-                navigation
-                pagination={{ clickable: true }}
+                navigation={false}
+                pagination={false}
                 loop={true}
                 autoplay={{
                     delay: 5000,
@@ -38,17 +38,17 @@ export default function ArticleGallery({ images, rtl }: Props) {
                         slidesPerView: 1,
                     },
                 }}
-                className="w-full !pb-12" // Add padding for pagination bullets
+                className="w-full" // Add padding for pagination bullets
             >
                 {images.map((img, idx) => (
-                    <SwiperSlide key={idx} className="h-auto">
-                        <div className="relative h-80 w-full rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <SwiperSlide key={idx} className="!h-full">
+                        <div className="relative w-full h-[300px] md:h-[420px] lg:h-[520px] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                             <Image
                                 src={img}
                                 alt={`Gallery image ${idx + 1}`}
                                 fill
-                                className="object-cover"
-                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                className="w-full h-auto rounded-xl object-cover"
+                                sizes="(max-width: 768px) 100vw, 100vw"
                             />
                         </div>
                     </SwiperSlide>
