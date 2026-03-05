@@ -29,7 +29,7 @@ const AboutAwardsSlider = () => {
     {
       "title1": t("awards.rak.title1"),
       "title3": t("awards.rak.title3"),
-      "image": "rak-properties-2025.webp?ver=6",
+      "image": "rak-properties.webp?ver=9",
     },
     {
       "title1": t("awards.emaar.title1"),
@@ -39,7 +39,7 @@ const AboutAwardsSlider = () => {
     {
       "title1": t("awards.modon.title1"),
       "title3": t("awards.modon.title3"),
-      "image": "modon-2023-2025.webp",
+      "image": "modon-2025.webp?ver=8",
     },
     {
       "title1": t("awards.emaarh1.title1"),

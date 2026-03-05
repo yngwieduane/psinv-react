@@ -240,7 +240,7 @@ function PropertyPage(props: any) {
         };
     }
 
-    const tabs = ['Overview', 'Gallery', 'Payment Plan', 'Floor Plans', 'Location', 'Nearby'];
+    const tabs = ['Overview', 'Gallery', 'Payment Plan', 'Floor Plans', 'Location', 'Nearby', 'FAQ'];
     //Check if the area is there or not and display accordingly
     const min = Number(String(areaRangeMin).replace(/,/g, ""));
     const max = Number(String(areaRangeMax).replace(/,/g, ""));
@@ -370,7 +370,8 @@ function PropertyPage(props: any) {
                                         tabLabel = t('nearby');
                                     else if (tab === 'Developer')
                                         tabLabel = t('developer');
-
+                                    else if (tab === 'FAQ')
+                                        tabLabel = t('faqs');
                                     return (
                                         <button
                                             key={tab}
@@ -595,10 +596,9 @@ function PropertyPage(props: any) {
                                 propname={props.data["propertyName"]} />
                         </div>
 
-                        <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+                        <div id="faq" className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50 scroll-mt-40">
                             <Faqs data={props.data} propname={props.data["propertyName"]} viewAllLink={`${pathname}/faqs`} />
                         </div>
-
                     </div>
                 </div>
             </div>
