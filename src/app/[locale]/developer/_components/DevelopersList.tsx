@@ -27,22 +27,45 @@ const DevelopersList = ({ slug }: { slug: string }) => {
   useEffect(() => {
     const fetchDevelopers = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "developers"));
-        const fetched = querySnapshot.docs.map(doc => {
-          const data = doc.data();
-          return {
-            id: doc.id,
-            name: data.name || "Unknown Developer",
-            slug: data.slug || "",
-            logo: data.logo || "",
-          } as DeveloperData;
-        });
+        const response = await fetch("/api/external/developersList");
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.result) {
+            const fetched = data.result.map((dev: any) => ({
+              id: dev.id || "",
+              name: dev.name || "Unknown Developer",
+              slug: dev.slug || "",
+              logo: dev.logo || "",
+            } as DeveloperData));
 
-        // Sort alphabetically
-        fetched.sort((a, b) => a.name.localeCompare(b.name));
-        setDevelopersData(fetched);
+            // Sort alphabetically
+            fetched.sort((a: DeveloperData, b: DeveloperData) => a.name.localeCompare(b.name));
+            setDevelopersData(fetched);
+            return; // Exit on success
+          }
+        }
+        throw new Error("Invalid API response");
       } catch (error) {
-        console.error("Failed to load developers:", error);
+        console.warn("API Fetch failed, switching to Firestore fallback:", error);
+
+        try {
+          const querySnapshot = await getDocs(collection(db, "developers"));
+          const fetched = querySnapshot.docs.map(doc => {
+            const data = doc.data();
+            return {
+              id: doc.id,
+              name: data.name || "Unknown Developer",
+              slug: data.slug || "",
+              logo: data.logo || "",
+            } as DeveloperData;
+          });
+
+          // Sort alphabetically
+          fetched.sort((a, b) => a.name.localeCompare(b.name));
+          setDevelopersData(fetched);
+        } catch (fsError) {
+          console.error("Failed to load developers from Firestore:", fsError);
+        }
       } finally {
         setLoading(false);
       }
