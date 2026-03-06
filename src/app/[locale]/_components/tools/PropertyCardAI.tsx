@@ -92,6 +92,8 @@ const PropertyCardAI = (props: any) => {
             }
         }
     };
+    const hasBedroom = props.data["availableBedrooms"] && props.data["availableBedrooms"].length > 0;
+    const itemCount = [hasBedroom,HOdate].filter(Boolean).length;
     return (
         <div className='group relative '>
 
@@ -158,15 +160,21 @@ const PropertyCardAI = (props: any) => {
                             <p className="dark:text-white text-xs text-gray-400 mb-6 truncate font-medium">{props.data["masterDeveloper"]}</p>
                         )}
 
-                        <div className="mt-auto flex flex-row gap-4 border-t border-gray-100 pt-5">
+                            <div className={`mt-auto flex ${itemCount === 1 ? 'justify-center' : 'gap-4'} border-t border-gray-100 pt-5`}>
                             <div className="basis-3xs flex items-top gap-2">
                                 <span className="block text-[4px] dark:text-white text-gray-400 uppercase font-bold tracking-wider"><House size={18} /></span>
                                 <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0 leading-normal">{propType}</span>
                             </div>
+                            {hasBedroom && (
                             <div className="basis-3xs flex items-top gap-2">
-                                <span className="block text-[4px] dark:text-white text-gray-400 uppercase font-bold tracking-wider text-center"><BedDouble size={18} /></span>
-                                <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0">{propBed}</span>
+                                <span className="block text-[4px] dark:text-white text-gray-400 uppercase font-bold tracking-wider text-center">
+                                    <BedDouble size={18} />
+                                </span>
+                                <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0">
+                                    {propBed}
+                                </span>
                             </div>
+                            )}
                             {HOdate ? (<div className="basis-3xs flex items-top gap-2">
                                 <span className="block text-[10px] dark:text-white text-gray-400 uppercase font-bold tracking-wider"><HandHelping size={18} /></span>
                                 <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0">{propHO}</span>
