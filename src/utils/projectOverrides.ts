@@ -20,6 +20,35 @@ export type PerSlug = {
   seo?: SeoMeta | LocalizedSeo;
 };
 export const PROJECTS: Record<string, PerSlug> = {
+  'tara-park-registration': {
+    branch: 'auh',
+    seo: {
+    en: {
+      title: 'Tara Park by Modon | Luxury Apartments in Al Reem Island Abu Dhabi',
+      description:
+        'Discover Tara Park by Modon in Al Reem Island, Abu Dhabi. Premium 1–3 bedroom apartments starting from AED 1.6M with only 5% down payment. Experience modern waterfront living with world-class amenities.',
+      keywords:
+        'Tara Park by Modon, Al Reem Island apartments, Modon Abu Dhabi properties, luxury apartments Abu Dhabi, Tara Park apartments, Modon real estate UAE',
+    },
+    ar: {
+      title: 'تارا بارك من مودون | شقق فاخرة في جزيرة الريم أبوظبي',
+      description:
+        'اكتشف مشروع تارا بارك من مودون في جزيرة الريم بأبوظبي. شقق فاخرة من غرفة إلى ثلاث غرف نوم تبدأ من 1.6 مليون درهم مع دفعة أولى 5٪ فقط، مع مرافق عالمية وأسلوب حياة عصري.',
+      keywords:
+        'تارا بارك مودون، شقق جزيرة الريم، عقارات مودون أبوظبي، شقق فاخرة أبوظبي، مشروع تارا بارك، عقارات الإمارات',
+    },
+    },
+    override: {
+      remarks: 'Tara Park - Company',
+      ...makeUtm({
+        'metwally_tara_park_news': {
+          campaign: 3576,
+          remarks:
+            'Rotation: Tara Park - Company, Campaign name: Metwally: Tara Park - Al Reem Island - Company - Newsletter',
+        },
+      }),
+    },
+  },
   'modon-suhoor': {
     branch: 'auh',
     seo: {
