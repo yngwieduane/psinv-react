@@ -496,7 +496,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                     items: [
                         { label: t('Offices for Sale'), href: '/units?category=Sale&propertyType=Office' },
                         { label: t('Offices for Rent'), href: '/units?category=Rent&propertyType=Office' },
-                        { label: t('Commercial plot'), href: 'units?category=Sale&propertyType=Commercial Plot' },
+                        { label: t('Commercial plot'), href: '/units?category=Sale&propertyType=Commercial Plot' },
                         { label: t('View All'), href: '/units?category=Sale' },
                     ]
                 },
