@@ -15,8 +15,12 @@ const CryptoFormModal: React.FC<{ isOpen: boolean; onClose: () => void; projectT
     const t = useTranslations('CryptoPage.form');
 
     const schema = z.object({
-        firstName: z.string().min(1, { message: t('validation.firstName') }),
-        lastName: z.string().min(1, { message: t('validation.lastName') }),
+        firstName: z.string().min(1, { message: t('validation.firstName') }).regex(/^[a-zA-Z ]*$/, {
+        message: "First Name must contain only alphabets and spaces",
+        }),
+        lastName: z.string().min(1, { message: t('validation.lastName') }).regex(/^[a-zA-Z ]*$/, {
+        message: "Last Name must contain only alphabets and spaces",
+        }),
         email: z.string().email({ message: t('validation.email') }),
         phone: z.string().min(7, { message: t('validation.phone') }),
         message: z.string().optional(),

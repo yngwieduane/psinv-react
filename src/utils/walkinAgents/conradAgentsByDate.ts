@@ -52,7 +52,7 @@ export const CONRAD_AGENTS_BY_DATE: AgentsByDate = {
     { "id": "9971", "name": "Nancy Hussam Fayez Masha" },
     // { "id": "", "name": "Rima Ayman Derbas Hassan" },
     { "id": "9949", "name": "Charles Sebastian Joseph Robson" },
-    { "id": "7211", "name": "Petronella Awad" },
+    { "id": "6987", "name": "Shadi Basem Shrafedin Abofakher" },
     { "id": "9757", "name": "Mohammad Rizik Saleh Bani Hani" },
     { "id": "7427", "name": "Youmna Ashraf Mohamed Ali Metwally" }
   ],
