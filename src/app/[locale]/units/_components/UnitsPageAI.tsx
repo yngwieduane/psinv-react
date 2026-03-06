@@ -6,7 +6,7 @@ import UnitsSidebar from "./UnitsSidebar";
 import Search from "./Search";
 import UnitsSideSearch from "./UnitsSideSearch";
 import SidebarListProperty from "./SidebarListProperty";
-import { ChevronDown, Filter, LayoutGrid, MapIcon, X } from "lucide-react";
+import { ChevronDown, Filter, LayoutGrid, MapIcon, X, Search as SearchIcon } from "lucide-react";
 import UnitsMapBox from "./UnitsMapBox";
 import { Dialog, DialogPanel } from '@headlessui/react'
 import UnitsSideSearchMapView from "./UnitsSideSearchMapView";
@@ -110,55 +110,89 @@ export default function UnitsPageAI(props: any) {
 
             {/* Full Screen Map Modal */}
             {viewMode === 'map' && (
-                <div className="fixed inset-0 z-[100] bg-white flex flex-col advanced-marker-example">
-                    {/* Top Right Controls */}
-                    <div className="absolute top-4 right-4 z-50 flex items-start gap-4 pointer-events-none">
-                        <div className="flex items-center bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg p-1 gap-2 pointer-events-auto h-[58px] dark:bg-gray-800 dark:border-gray-700">
+                <div className="fixed inset-0 z-[100] bg-gray-100 flex flex-col">
 
-                            {/* Filters Toggle */}
-                            <button
-                                onClick={() => setShowFilters(!showFilters)}
-                                className={`cursor-pointer h-full px-4 rounded-lg flex items-center gap-2 font-bold transition-colors dark:text-white ${showFilters ? 'bg-gray-200 text-gray-700 dark:bg-gray-700' : 'text-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700'}`}
-                            >
-                                <Filter size={20} />
-                                <span className="hidden md:inline">{t('filters')}</span>
-                            </button>
-
-                            <div className="w-px h-8 bg-gray-200" />
-
-                            {/* View Toggle */}
-                            <div className="flex items-center h-full">
-                                <button
-                                    onClick={() => setViewMode('list')}
-                                    className="cursor-pointer h-full px-4 rounded-lg text-gray-400 hover:text-gray-800 flex items-center justify-center transition-colors hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:text-white"
-                                >
-                                    <LayoutGrid size={20} />
-                                </button>
-                                <button
-                                    onClick={() => setViewMode('map')}
-                                    className="cursor-pointer h-[42px] px-4 rounded-lg bg-primary text-white shadow-sm flex items-center justify-center font-bold my-1 mr-1"
-                                >
-                                    <MapIcon size={20} />
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* Collapsible Filters Panel (Floating under controls) */}
-                        {showFilters && (
-                            <div className="absolute top-[68px] right-0 w-80 bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-xl p-4 pointer-events-auto dark:bg-gray-800 dark:border-gray-700">
-                                <div className="absolute top-2 right-2 z-10">
-                                    <button onClick={() => setShowFilters(false)} className="cursor-pointer text-gray-500 hover:text-gray-700 dark:text-white">
-                                        <X size={20} />
-                                    </button>
-                                </div>
-                                <UnitsSideSearchMapView onChange='' />
-                            </div>
-                        )}
+                    {/* Top Left UAE Button */}
+                    <div className="absolute top-6 left-6 z-50 pointer-events-auto hidden">
+                        <button className="bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-full font-bold text-gray-800 shadow-lg border border-white/20 hover:bg-white transition-colors dark:bg-gray-800/90 dark:text-white dark:border-gray-700">
+                            UAE
+                        </button>
                     </div>
 
+                    {/* Bottom Floating Navigation Dock */}
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-auto w-[90%] md:w-auto max-w-4xl px-4">
+                        <div className="bg-white/95 backdrop-blur-md border border-gray-100 rounded-full shadow-xl p-2 flex items-center justify-between gap-4 dark:bg-gray-800/95 dark:border-gray-700">
 
+                            {/* Search and Filters - Center */}
+                            <div className="flex-1 w-full md:w-auto flex items-center gap-2 hidden">
+                                <div className="flex-1 w-full md:w-64 bg-gray-100 rounded-full flex items-center px-4 py-2.5 dark:bg-gray-700">
+                                    <SearchIcon size={18} className="text-gray-400 mr-2 flex-shrink-0" />
+                                    <input
+                                        type="text"
+                                        placeholder={t('searchByReference')}
+                                        className="bg-transparent border-none outline-none w-full text-sm text-gray-800 dark:text-white placeholder-gray-400"
+                                    />
+                                </div>
+                                <div className="hidden lg:flex gap-2">
+                                    <button className="bg-gray-100 px-4 py-2.5 rounded-full text-sm font-semibold text-gray-700 whitespace-nowrap hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600">
+                                        All Emirates
+                                    </button>
+                                    <button className="bg-gray-100 px-4 py-2.5 rounded-full text-sm font-semibold text-gray-700 whitespace-nowrap hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600">
+                                        Select Community
+                                    </button>
+                                </div>
+                            </div>
 
-                    <div className="w-full h-full relative">
+                            {/* Actions - Right */}
+                            <div className="flex items-center w-full md:w-auto justify-between md:justify-end gap-2 pr-2">
+                                <div className="flex items-center gap-2">
+                                    <button
+                                        onClick={() => setViewMode('list')}
+                                        className="bg-gray-100 p-3 rounded-full text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors shadow-sm dark:bg-gray-700 dark:text-gray-300 dark:hover:text-white"
+                                        title="List View"
+                                    >
+                                        <LayoutGrid size={20} />
+                                    </button>
+
+                                    <button
+                                        onClick={() => setShowFilters(true)}
+                                        className={`p-3 rounded-full flex items-center justify-center transition-colors shadow-sm ${showFilters ? 'bg-primary text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-700 dark:text-gray-300 dark:hover:text-white'}`}
+                                        title={t('filters')}
+                                    >
+                                        <Filter size={20} />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Side Slide-out Filters Drawer */}
+                    <div
+                        className={`absolute top-0 right-0 h-[100dvh] w-full sm:w-80 bg-white shadow-2xl z-[60] transform transition-transform duration-300 ease-in-out flex flex-col dark:bg-gray-900 dark:border-l dark:border-gray-800 ${showFilters ? 'translate-x-0' : 'translate-x-full'}`}
+                    >
+                        <div className="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-800">
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white">{t('filters')}</h3>
+                            <button
+                                onClick={() => setShowFilters(false)}
+                                className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors dark:hover:bg-gray-800 dark:hover:text-white"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
+                        <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
+                            <UnitsSideSearchMapView onChange='' />
+                        </div>
+                        <div className="p-4 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 shrink-0">
+                            <button
+                                onClick={() => setShowFilters(false)}
+                                className="w-full bg-primary text-white font-bold py-3.5 rounded-xl shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all hover:-translate-y-0.5"
+                            >
+                                VIEW RESULTS
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-[100dvh] relative">
                         <UnitsMapBox unitid={unitid} category={category} propertyId={propertyId} beds={beds} />
                     </div>
                 </div>

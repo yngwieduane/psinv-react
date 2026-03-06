@@ -106,11 +106,10 @@ export default function UnitsSideSearchMapView({ onChange }: { onChange: any }) 
     return (
         <div className="w-full block font-sans">
             <Sticky stickyClassName="" boundaryElement=".mainsidebar" hideOnBoundaryHit={false}>
-                <div className="p-5 flex flex-col gap-6 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
+                <div className="flex flex-col gap-6 dark:bg-gray-800 ">
 
                     {/* Header */}
                     <div className="flex justify-between items-center pb-2 border-b border-gray-100 dark:border-gray-700">
-                        <h3 className="font-bold text-lg text-[#353455] dark:text-white">Filters</h3>
                         <button
                             onClick={handleReset}
                             className="text-gray-400 text-xs font-semibold uppercase tracking-wider hover:text-[#353455] flex items-center gap-1.5 transition-colors py-1 px-2 rounded-lg hover:bg-gray-50 dark:text-white"

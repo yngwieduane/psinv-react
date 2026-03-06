@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { AdvancedMarker, InfoWindow } from '@vis.gl/react-google-maps';
+import { Marker, Popup } from 'react-map-gl/mapbox';
 import { MapPin, BedDouble, Bath, Square, ChevronRight } from 'lucide-react';
 import classNames from 'classnames';
 import { Link } from '@/i18n/navigation';
@@ -52,23 +52,33 @@ export const UnitsMapMarker: FunctionComponent<Props> = ({
 
     return (
         <>
-            <AdvancedMarker
-                position={position}
-                title={'AdvancedMarker with custom html content.'}
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-                zIndex={isSelected ? 100 : 1}
-                className={classNames('real-estate-marker', { clicked: isSelected, hovered })}
-                onClick={onClick}
+            <Marker
+                longitude={position.lng}
+                latitude={position.lat}
+                onClick={(e: any) => {
+                    e.originalEvent.stopPropagation();
+                    if (onClick) onClick();
+                }}
+                style={{ zIndex: isSelected ? 100 : 1 }}
             >
-                {renderCustomPin()}
-            </AdvancedMarker>
+                <div
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                    className={classNames('real-estate-marker', { clicked: isSelected, hovered })}
+                >
+                    {renderCustomPin()}
+                </div>
+            </Marker>
             {isSelected && (
-                <InfoWindow
-                    position={position}
-                    pixelOffset={[0, -30]}
-                    onCloseClick={onClose}
-                    className="gm-style-iw-custom"
+                <Popup
+                    longitude={position.lng}
+                    latitude={position.lat}
+                    anchor="bottom"
+                    offset={30}
+                    onClose={onClose}
+                    closeButton={true}
+                    closeOnClick={false}
+                    className="mapbox-popup-custom"
                 >
                     <div className="w-[300px] bg-white rounded-xl overflow-hidden font-sans">
                         {/* Image Header with Price Overlay */}
@@ -145,7 +155,7 @@ export const UnitsMapMarker: FunctionComponent<Props> = ({
                             </button>
                         </div>
                     </div>
-                </InfoWindow>
+                </Popup>
             )}
         </>
     );

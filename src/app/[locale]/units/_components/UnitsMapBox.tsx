@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { APIProvider, Map as GoogleMap, AdvancedMarker, Pin, InfoWindow } from '@vis.gl/react-google-maps';
+import MapboxMap from 'react-map-gl/mapbox';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import { MapPin, BedDouble, ArrowRight, X } from 'lucide-react';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
@@ -16,7 +17,7 @@ interface UnitsMapBoxProps {
 }
 
 const UnitsMapBox = (props: any) => {
-    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_API;
+    const apiKey = process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN;
     const defaultCenter = { lat: 24.4539, lng: 54.3773 }; // Abu Dhabi default
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const [mapCenter, setMapCenter] = useState(defaultCenter);
@@ -118,7 +119,7 @@ const UnitsMapBox = (props: any) => {
     };
 
     if (!apiKey) {
-        return <div className="p-4 text-center text-red-500">Google Maps API Key is missing.</div>;
+        return <div className="p-4 text-center text-red-500">Mapbox API Key is missing.</div>;
     }
 
     return (
@@ -193,47 +194,45 @@ const UnitsMapBox = (props: any) => {
 
             {/* Full Width Map */}
             <div className="w-full h-full absolute top-0 left-0 bg-gray-100">
-                <APIProvider apiKey={apiKey} libraries={['marker']}>
-                    <GoogleMap
-                        mapId="units-map-box"
-                        center={mapCenter}
-                        zoom={mapZoom}
-                        onCenterChanged={(ev) => setMapCenter(ev.detail.center)}
-                        onZoomChanged={(ev) => setMapZoom(ev.detail.zoom)}
-                        gestureHandling={'greedy'}
-                        disableDefaultUI={true}
-                        className="w-full h-full"
-                    >
-                        {data && data.slice(0, 11).map((unit: any, index: number) => {
-                            let map, coordinates;
-                            map = unit.pro_google_coordinates;
-                            {
-                                map !== null
-                                    ? coordinates = map.split(",")
-                                    : coordinates = '';
-                            }
-                            const lat = parseFloat(coordinates[1]);
-                            const lng = parseFloat(coordinates[0]);
-                            if (isNaN(lat) || isNaN(lng)) return null;
+                <MapboxMap
+                    mapboxAccessToken={apiKey}
+                    longitude={mapCenter.lng}
+                    latitude={mapCenter.lat}
+                    zoom={mapZoom}
+                    onMove={(evt: any) => {
+                        setMapCenter({ lat: evt.viewState.latitude, lng: evt.viewState.longitude });
+                        setMapZoom(evt.viewState.zoom);
+                    }}
+                    mapStyle="mapbox://styles/mapbox/outdoors-v12"
+                    style={{ width: '100%', height: '100%' }}
+                >
+                    {data && data.slice(0, 11).map((unit: any, index: number) => {
+                        let map, coordinates;
+                        map = unit.pro_google_coordinates;
+                        {
+                            map !== null
+                                ? coordinates = map.split(",")
+                                : coordinates = '';
+                        }
+                        const lat = parseFloat(coordinates[1]);
+                        const lng = parseFloat(coordinates[0]);
+                        if (isNaN(lat) || isNaN(lng)) return null;
 
-                            const isSelected = (selectedId === String(unit.code || unit.id));
+                        const isSelected = (selectedId === String(unit.code || unit.id));
 
-                            return (
-                                <UnitsMapMarker
-                                    key={index}
-                                    realEstateListing={{ latitude: String(lat), longitude: String(lng), fallbackImage: unit.fallbackImage }}
-                                    unit={unit}
-                                    onClick={() => handleSelectProperty(unit)}
-                                    onClose={() => setSelectedId(null)}
-                                    isSelected={isSelected}
-                                    onPreview={handlePreview}
-                                />
-                            );
-                        })}
-
-
-                    </GoogleMap>
-                </APIProvider>
+                        return (
+                            <UnitsMapMarker
+                                key={index}
+                                realEstateListing={{ latitude: String(lat), longitude: String(lng), fallbackImage: unit.fallbackImage }}
+                                unit={unit}
+                                onClick={() => handleSelectProperty(unit)}
+                                onClose={() => setSelectedId(null)}
+                                isSelected={isSelected}
+                                onPreview={handlePreview}
+                            />
+                        );
+                    })}
+                </MapboxMap>
             </div>
 
             {/* Preview Modal */}
