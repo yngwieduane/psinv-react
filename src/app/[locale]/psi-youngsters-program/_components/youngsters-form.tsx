@@ -10,9 +10,13 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import {nationalityOptions,departmentOptions} from '@/data/youngsters';
 
-const FormDataSchema = z.object({
-  firstName: z.string().min(1, 'Required'),
-  lastName: z.string().min(1, 'Required'),
+const FormDataSchema = z.object({  
+  firstName: z.string().min(1, 'First name is required').regex(/^[a-zA-Z ]*$/, {
+    message: "First Name must contain only alphabets and spaces",
+  }),
+  lastName: z.string().min(1, 'Last name is required').regex(/^[a-zA-Z ]*$/,{
+    message: "Last Name must contain only alphabets and spaces",
+  }),
   age: z.string().min(1, 'Required'),
   email: z.string().email('Invalid email'),
   nationality: z.string().min(1, 'Required'),
@@ -175,7 +179,7 @@ const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php",
                 field === 'department' || field === 'nationality' || field === 'address' ? 'md:col-span-2' : ''
               }`}
             >
-              <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300">
+              <div className="absolute left-3 top-4 text-gray-300">
                 {iconMap[field]}
               </div>
               {field === 'nationality' ? (
