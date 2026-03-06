@@ -19,12 +19,13 @@ import MortgageCalculator from "@/app/[locale]/mortgage-calculator/MortgageCalcu
 import AgentDetails from "./AgentDetails";
 import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
 import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
-import { Bath, BedDouble, CheckCircle2, ChevronDown, ChevronUp, Heart, Link2, Mail, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
+import { Bath, BedDouble, CheckCircle2, ChevronDown, ChevronUp, Flag, Heart, Link2, Mail, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
 import { useUser } from "@/context/userContext";
 import AccordionTabs from "@/app/[locale]/_components/tools/AccordionTabs";
 import { Link } from "@/i18n/navigation";
 import { useCurrency } from "@/context/currencyContext";
 import ListPopUpWidget from "@/app/[locale]/_components/ListPopUpWidget";
+import ReportIssueModal from "./ReportIssueModal";
 
 const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap'));
 const SimilarUnitsGrid = dynamic(() => import('./SimilarUnitsGrid'));
@@ -37,6 +38,7 @@ export default function UnitPageAI(props: any) {
     const [showAllAmenities, setShowAllAmenities] = useState(false);
     const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
     const [isRemarksExpanded, setIsRemarksExpanded] = useState(false);
+    const [isReportModalOpen, setIsReportModalOpen] = useState(false);
     const drawerHandler = (content: string, valuesarray: any) => (e: any) => {
         console.log(showDrawer);
         console.log(content);
@@ -217,7 +219,7 @@ export default function UnitPageAI(props: any) {
                                         </div>
                                     </div>
 
-                                    <div className="flex gap-4 w-full md:w-auto">
+                                    <div className="flex gap-4 w-full md:w-auto pb-2 md:pb-0">
                                         {/* Quick Actions */}
                                         <button
                                             onClick={() => toggleFavorite({ id: post.code, type: 'units', data: post })}
@@ -237,6 +239,12 @@ export default function UnitPageAI(props: any) {
                                             className={`dark:text-white cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold ${compared ? 'bg-[#0c1356] text-white' : 'border-gray-200 text-gray-600 hover:bg-[#0c1356] hover:text-white'}`}
                                         >
                                             <Shuffle size={20} /> {compared ? t('buttons.compared') : t('buttons.compare')}
+                                        </button>
+                                        <button
+                                            onClick={() => setIsReportModalOpen(true)}
+                                            className="dark:text-white shrink-0 cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold border-gray-200 text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                        >
+                                            <Flag size={20} /> Report
                                         </button>
                                     </div>
                                 </div>
@@ -463,6 +471,7 @@ export default function UnitPageAI(props: any) {
                                         </div>
 
                                         <div className="mt-8 hidden">
+                                            {post.agent}
                                             <AgentDetails agent={post.agent} />
                                         </div>
 
@@ -538,6 +547,12 @@ export default function UnitPageAI(props: any) {
                                 </div>
                             </div>
                             <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} branchCode={branchCode} />
+                            <ReportIssueModal
+                                isOpen={isReportModalOpen}
+                                onClose={() => setIsReportModalOpen(false)}
+                                unitName={post.marketingTitle || post.propertyname || 'this unit'}
+                                unitRef={post.refNo}
+                            />
                         </div>
                     )
                 })}

@@ -1,8 +1,9 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { APIProvider, Map, AdvancedMarker, Pin, useMap, InfoWindow } from '@vis.gl/react-google-maps';
-import { MapPin, BedDouble, ArrowRight, Home } from 'lucide-react';
+import { MapPin, BedDouble, ArrowRight, Home, Flag } from 'lucide-react';
 import Image from 'next/image';
+import ReportIssueModal from '@/app/[locale]/unit/[slug]/components/ReportIssueModal';
 
 import { Link } from '@/i18n/navigation';
 import slugify from 'react-slugify';
@@ -18,6 +19,8 @@ const PropertyMapBox = ({ data }: PropertyMapBoxProps) => {
     const [mapCenter, setMapCenter] = useState(defaultCenter);
     const [mapZoom, setMapZoom] = useState(10);
     const [imgError, setImgError] = useState(false);
+    const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+    const [reportingProperty, setReportingProperty] = useState<any>(null);
 
 
     useEffect(() => {
@@ -121,6 +124,17 @@ const PropertyMapBox = ({ data }: PropertyMapBoxProps) => {
                                             </div>
                                         )}
                                         {/* You can add Price here if available in data */}
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setReportingProperty(property);
+                                                setIsReportModalOpen(true);
+                                            }}
+                                            className="text-gray-400 hover:text-red-500 transition-colors p-1"
+                                            title="Report Issue"
+                                        >
+                                            <Flag size={14} />
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -217,6 +231,15 @@ const PropertyMapBox = ({ data }: PropertyMapBoxProps) => {
                     </Map>
                 </APIProvider>
             </div>
+
+            {reportingProperty && (
+                <ReportIssueModal
+                    isOpen={isReportModalOpen}
+                    onClose={() => setIsReportModalOpen(false)}
+                    unitName={reportingProperty.propertyName}
+                    unitRef={reportingProperty.refNo || reportingProperty.propertyID}
+                />
+            )}
         </div>
     );
 };

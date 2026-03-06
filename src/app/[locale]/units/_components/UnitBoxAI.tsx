@@ -2,8 +2,9 @@
 import { Link } from "@/i18n/navigation";
 import { useState } from "react";
 import Modals from "../../_components/tools/Modals";
-import { Heart, MapPin, Shuffle } from "lucide-react";
+import { Flag, Heart, MapPin, Shuffle } from "lucide-react";
 import { useUser } from "@/context/userContext";
+import ReportIssueModal from "@/app/[locale]/unit/[slug]/components/ReportIssueModal";
 import { useCurrency } from "@/context/currencyContext";
 import { useFormatter } from "next-intl";
 
@@ -21,6 +22,7 @@ export default function UnitBoxAI(props: any) {
     }
 
     const [setModal, setSetModal] = useState(false);
+    const [isReportModalOpen, setIsReportModalOpen] = useState(false);
     const modalHandler = (event: any) => {
         console.log("clicked = " + setModal);
         setSetModal(true);
@@ -63,6 +65,13 @@ export default function UnitBoxAI(props: any) {
                         className={`p-2 rounded-full shadow-md transition-colors ${compared ? 'bg-primary text-white' : 'bg-white/90 text-gray-500 hover:text-primary'}`}
                     >
                         <Shuffle size={16} />
+                    </button>
+                    <button
+                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsReportModalOpen(true); }}
+                        className={`p-2 rounded-full shadow-md transition-colors bg-white/90 text-gray-500 hover:text-red-500`}
+                        title="Report Issue"
+                    >
+                        <Flag size={16} />
                     </button>
                 </div>
 
@@ -135,6 +144,12 @@ export default function UnitBoxAI(props: any) {
                 </Link>
             </div>
             <Modals modalState={setModal} onModalUpdate={modalUpdate} />
+            <ReportIssueModal
+                isOpen={isReportModalOpen}
+                onClose={() => setIsReportModalOpen(false)}
+                unitName={props.data.marketingTitle || props.data.propertyname || 'this unit'}
+                unitRef={props.data.refNo}
+            />
         </>
     );
 }

@@ -18,7 +18,7 @@ import Faqs from './Faqs';
 import NearbysWithMap from './NearbyWithMap';
 import PaymentPlans from './PaymentPlans';
 import CardGroupImage from './CardGroupImage';
-import { ArrowRight, BedDouble, CalendarCheck, CheckCircle2, CirclePlay, Clock, ExternalLink, FileText, Heart, LandPlot, LayoutGrid, MapPin, MapPinCheck, MapPinIcon, MapPinned, PlayCircle, PlayIcon, Shuffle, Square, Video } from 'lucide-react';
+import { ArrowRight, BedDouble, CalendarCheck, CheckCircle2, CirclePlay, Clock, ExternalLink, FileText, Heart, LandPlot, LayoutGrid, MapPin, MapPinCheck, MapPinIcon, MapPinned, PlayCircle, PlayIcon, Shuffle, Square, Video, Flag } from 'lucide-react';
 import { useUser } from '@/context/userContext';
 import { useCurrency } from '@/context/currencyContext';
 import TableRow from './TableRow';
@@ -30,6 +30,7 @@ import BrochureModal from './BrochureModal';
 import slugify from 'react-slugify';
 import { Link } from '@/i18n/navigation';
 import AboutDeveloper from './AboutDeveloper';
+import ReportIssueModal from '@/app/[locale]/unit/[slug]/components/ReportIssueModal';
 
 
 function PropertyPage(props: any) {
@@ -55,6 +56,7 @@ function PropertyPage(props: any) {
     const [dwDataContent, setDwDataContent] = useState('details');
     const [dwDataTitle, setDwDataTitle] = useState('details');
     const [isBrochureModalOpen, setBrochureModalOpen] = useState(false);
+    const [isReportModalOpen, setIsReportModalOpen] = useState(false);
     const tabsContainerRef = useRef<HTMLDivElement>(null);
     const tabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
     const drawerHandler = (content: string, valuesarray: any) => (e: any) => {
@@ -331,6 +333,16 @@ function PropertyPage(props: any) {
                                             }
                                         }} className={`cursor-pointer flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 backdrop-blur-md transition-colors font-bold ${compared ? 'bg-[#0c1356] text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}>
                                         <Shuffle size={20} /> {compared ? t('compared') : t('compare')}
+                                    </button>
+                                    <button
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            setIsReportModalOpen(true);
+                                        }}
+                                        className={`cursor-pointer flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 backdrop-blur-md transition-colors font-bold bg-white/10 text-white hover:bg-white/20 hover:text-red-500 hover:border-red-500`}
+                                    >
+                                        <Flag size={20} /> Report
                                     </button>
                                 </div>
                             </div>
@@ -615,6 +627,13 @@ function PropertyPage(props: any) {
                     propertyName={props.data["propertyName"]}
                     image={imgFeatured} />
             )}
+
+            <ReportIssueModal
+                isOpen={isReportModalOpen}
+                onClose={() => setIsReportModalOpen(false)}
+                unitName={props.data["propertyName"]}
+                unitRef={props.data["refNo"] || props.data["propertyID"]}
+            />
         </>
     );
 }

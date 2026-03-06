@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { X, Share2, Maximize2, BedDouble, Bath, Square, MapPin, Phone, MessageCircle, Tag, ChevronLeft, ChevronRight, LinkIcon } from 'lucide-react';
+import { X, Share2, Maximize2, BedDouble, Bath, Square, MapPin, Phone, MessageCircle, Tag, ChevronLeft, ChevronRight, LinkIcon, Flag } from 'lucide-react';
 import { UnitListing } from '@/types/types';
 import PriceConvert from '../../_components/tools/PriceConvert';
 import NumberConvert from '../../_components/tools/NumberConvert';
 import { generateSeoData } from '../../_components/functions/generateSeoData';
 import { Link } from '@/i18n/navigation';
 import InquiryForm from '../../_components/InquiryForm';
+import ReportIssueModal from '@/app/[locale]/unit/[slug]/components/ReportIssueModal';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 
@@ -23,6 +24,7 @@ interface PreviewModalProps {
 const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDetails }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const swiperRef = useRef<any>(null);
+    const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
     if (!property) return null;
 
@@ -198,6 +200,13 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
                         >
                             <LinkIcon size={18} />
                         </Link>
+                        <button
+                            onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsReportModalOpen(true); }}
+                            className="bg-white/20 hover:bg-white text-white hover:text-red-500 p-2 rounded-lg backdrop-blur-md transition-colors block"
+                            title="Report Issue"
+                        >
+                            <Flag size={18} />
+                        </button>
                     </div>
 
                     {/* Price Tag Overlay on Mobile/Desktop Image */}
@@ -237,6 +246,13 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
             <style>{`
         @keyframes scaleIn { from { transform: scale(0.98); opacity: 0; } to { transform: scale(1); opacity: 1; } }
       `}</style>
+
+            <ReportIssueModal
+                isOpen={isReportModalOpen}
+                onClose={() => setIsReportModalOpen(false)}
+                unitName={marketingTitle || property.propertyname || 'this unit'}
+                unitRef={property.refNo}
+            />
         </div>
     );
 };

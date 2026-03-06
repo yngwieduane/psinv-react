@@ -9,8 +9,9 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import Modals from "../../_components/tools/Modals";
 import { useState, useEffect } from "react";
 import { useUser } from "@/context/userContext";
-import { Heart, Home, MapPin, Shuffle } from "lucide-react";
+import { Flag, Heart, Home, MapPin, Shuffle } from "lucide-react";
 import PreviewModal from "./PreviewModal";
+import ReportIssueModal from "@/app/[locale]/unit/[slug]/components/ReportIssueModal";
 import { UnitListing } from "@/types/types";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -42,6 +43,7 @@ export default function UnitListBoxAI(props: any) {
 
     const [selectedProperty, setSelectedProperty] = useState<UnitListing | null>(null);
     const [previewProperty, setPreviewProperty] = useState<UnitListing | null>(null);
+    const [isReportModalOpen, setIsReportModalOpen] = useState(false);
     const handlePropertySelect = (property: UnitListing) => {
         setSelectedProperty(property);
         setPreviewProperty(null);
@@ -119,6 +121,13 @@ export default function UnitListBoxAI(props: any) {
                     >
                         <Shuffle size={18} />
                     </button>
+                    <button
+                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsReportModalOpen(true); }}
+                        className={`cursor-pointer p-2 rounded-full shadow-md transition-colors bg-white/90 text-gray-500 hover:text-red-500`}
+                        title="Report Issue"
+                    >
+                        <Flag size={18} />
+                    </button>
                 </div>
 
                 {/* Content Section */}
@@ -160,7 +169,7 @@ export default function UnitListBoxAI(props: any) {
                                             ? t_u(`Category.${props.data.category}`)
                                             : props.data.category
                                         }
-                                        
+
                                     </span>
                                     <span className="w-1 h-1 bg-gray-300 rounded-full" />
                                     <span className="whitespace-nowrap">{props.data.bedrooms} {t_u('Beds')}</span>
@@ -195,6 +204,12 @@ export default function UnitListBoxAI(props: any) {
                 property={previewProperty}
                 onClose={() => setPreviewProperty(null)}
                 onViewDetails={handlePropertySelect}
+            />
+            <ReportIssueModal
+                isOpen={isReportModalOpen}
+                onClose={() => setIsReportModalOpen(false)}
+                unitName={props.data.marketingTitle || props.data.propertyname || 'this unit'}
+                unitRef={props.data.refNo}
             />
         </>
     );

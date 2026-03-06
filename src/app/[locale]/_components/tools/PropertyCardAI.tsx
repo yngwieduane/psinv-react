@@ -5,29 +5,30 @@ import slugify from "react-slugify";
 import { useFormatter } from 'next-intl';
 import Image from 'next/image';
 import { useUser } from '@/context/userContext';
-import { Heart, MapPin, Shuffle, Share2, BedSingle, BedSingleIcon, LucideBedSingle, BedDouble, HandCoins, HandCoinsIcon, House, HouseIcon, Building, Key, HandHelping } from 'lucide-react';
+import { Heart, MapPin, Shuffle, Share2, BedSingle, BedSingleIcon, LucideBedSingle, BedDouble, HandCoins, HandCoinsIcon, House, HouseIcon, Building, Key, HandHelping, Flag } from 'lucide-react';
 import { FaHandHolding, FaHandHoldingUsd, FaHandPaper } from 'react-icons/fa';
 import ProjectsThumbsImagesSwiper from "../../projects/_components/ProjectsThumbsImagesSwiper";
+import ReportIssueModal from '@/app/[locale]/unit/[slug]/components/ReportIssueModal';
 
 const PropertyCardAI = (props: any) => {
 
     const format = useFormatter();
     let HOdate;
-    
+
     const propType = props.data["propertyUnitTypes"] && props.data["propertyUnitTypes"].length > 0 ? (
-    <p className="text-[12px]">
-        {props.data["propertyUnitTypes"][0].unitType }
-    </p>
+        <p className="text-[12px]">
+            {props.data["propertyUnitTypes"][0].unitType}
+        </p>
     ) : (
-    ""
+        ""
     );
     const propBed = props.data["availableBedrooms"] ? (
         <p className="text-[12px]">
             {props.data["availableBedrooms"]
-            .map((item: any) => item.noOfBedroom)
-            .join(', ')}
+                .map((item: any) => item.noOfBedroom)
+                .join(', ')}
         </p>
-        ) : (
+    ) : (
         ""
     );
     let isReady = props.data["status"] === 'Ready';
@@ -47,6 +48,7 @@ const PropertyCardAI = (props: any) => {
     const propHO = HOdate ? (<p className="text-[12px]">{HOdate}</p>) : ("");
     const propSize = (props.data["builtupArea_SQFT"] && props.data["builtupArea_SQFT"] !== '0') ? (<p className="text-sm">{props.data["builtupArea_SQFT"]}</p>) : ("");
     const [imgError, setImgError] = useState(false);
+    const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
     useEffect(() => {
         setImgError(false);
@@ -93,7 +95,7 @@ const PropertyCardAI = (props: any) => {
         }
     };
     const hasBedroom = props.data["availableBedrooms"] && props.data["availableBedrooms"].length > 0;
-    const itemCount = [hasBedroom,HOdate].filter(Boolean).length;
+    const itemCount = [hasBedroom, HOdate].filter(Boolean).length;
     return (
         <div className='group relative '>
 
@@ -125,6 +127,13 @@ const PropertyCardAI = (props: any) => {
                 >
                     <Share2 size={16} />
                 </button>
+                <button
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsReportModalOpen(true); }}
+                    className="p-2 rounded-full shadow-md transition-colors bg-white/90 text-gray-500 hover:text-red-500"
+                    title="Report Issue"
+                >
+                    <Flag size={16} />
+                </button>
             </div>
             <Link title={props.data["propertyName"]} href={url} className="h-full">
                 <div className={`dark:bg-gray-800 dark:border-gray-700 bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col h-full transform hover:-translate-y-1 relative`}>
@@ -133,7 +142,7 @@ const PropertyCardAI = (props: any) => {
                     <div className="block md:hidden h-full w-full">
                         <ProjectsThumbsImagesSwiper featuredImage={imgFeatured} generalImages={props.data["generalImages"]} url={url} propertyName={props.data["propertyName"]} propertyPlan={props.data["propertyPlan"]} />
                     </div>
-                     {/* Desktop thumb image */}
+                    {/* Desktop thumb image */}
                     <div className="relative h-64 bg-gray-200 overflow-hidden hidden md:block">
                         {hasImage ? (
                             <img
@@ -160,20 +169,20 @@ const PropertyCardAI = (props: any) => {
                             <p className="dark:text-white text-xs text-gray-400 mb-6 truncate font-medium">{props.data["masterDeveloper"]}</p>
                         )}
 
-                            <div className={`mt-auto flex ${itemCount === 1 ? 'justify-center' : 'gap-4'} border-t border-gray-100 pt-5`}>
+                        <div className={`mt-auto flex ${itemCount === 1 ? 'justify-center' : 'gap-4'} border-t border-gray-100 pt-5`}>
                             <div className="basis-3xs flex items-top gap-2">
                                 <span className="block text-[4px] dark:text-white text-gray-400 uppercase font-bold tracking-wider"><House size={18} /></span>
                                 <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0 leading-normal">{propType}</span>
                             </div>
                             {hasBedroom && (
-                            <div className="basis-3xs flex items-top gap-2">
-                                <span className="block text-[4px] dark:text-white text-gray-400 uppercase font-bold tracking-wider text-center">
-                                    <BedDouble size={18} />
-                                </span>
-                                <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0">
-                                    {propBed}
-                                </span>
-                            </div>
+                                <div className="basis-3xs flex items-top gap-2">
+                                    <span className="block text-[4px] dark:text-white text-gray-400 uppercase font-bold tracking-wider text-center">
+                                        <BedDouble size={18} />
+                                    </span>
+                                    <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0">
+                                        {propBed}
+                                    </span>
+                                </div>
                             )}
                             {HOdate ? (<div className="basis-3xs flex items-top gap-2">
                                 <span className="block text-[10px] dark:text-white text-gray-400 uppercase font-bold tracking-wider"><HandHelping size={18} /></span>
@@ -184,6 +193,12 @@ const PropertyCardAI = (props: any) => {
                     </div>
                 </div>
             </Link>
+            <ReportIssueModal
+                isOpen={isReportModalOpen}
+                onClose={() => setIsReportModalOpen(false)}
+                unitName={props.data["propertyName"]}
+                unitRef={props.data["refNo"] || props.data["propertyID"]}
+            />
         </div>
     );
 };

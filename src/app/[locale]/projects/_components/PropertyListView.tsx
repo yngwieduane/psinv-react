@@ -5,9 +5,10 @@ import { Link } from '@/i18n/navigation';
 import slugify from 'react-slugify';
 import { useFormatter } from 'next-intl';
 import { useUser } from '@/context/userContext';
-import { Heart, MapPin, Shuffle, Share2, BedDouble, Bath, Square, Calendar, Eye, Home, House, HandHelping } from 'lucide-react';
+import { Heart, MapPin, Shuffle, Share2, BedDouble, Bath, Square, Calendar, Eye, Home, House, HandHelping, Flag } from 'lucide-react';
 import Image from 'next/image';
 import ProjectPreviewModal from './ProjectPreviewModal';
+import ReportIssueModal from '@/app/[locale]/unit/[slug]/components/ReportIssueModal';
 import { useCurrency } from '@/context/currencyContext';
 import ProjectsThumbsImagesSwiper from './ProjectsThumbsImagesSwiper';
 
@@ -27,6 +28,7 @@ const PropertyListItem = (props: any) => {
     const { toggleFavorite, addToCompare, removeFromCompare, isFavorite, isCompared } = useUser();
     const [showPreview, setShowPreview] = useState(false);
     const [imgError, setImgError] = useState(false);
+    const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
 
     useEffect(() => {
@@ -214,6 +216,13 @@ const PropertyListItem = (props: any) => {
                             >
                                 <Share2 size={18} />
                             </button>
+                            <button
+                                onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsReportModalOpen(true); }}
+                                className="p-2 rounded-full border bg-white border-gray-200 text-gray-400 hover:border-gray-300 hover:text-red-500 transition-all"
+                                title="Report Issue"
+                            >
+                                <Flag size={18} />
+                            </button>
                         </div>
                     </div>
 
@@ -256,6 +265,12 @@ const PropertyListItem = (props: any) => {
                     onClose={() => setShowPreview(false)}
                 />
             )}
+            <ReportIssueModal
+                isOpen={isReportModalOpen}
+                onClose={() => setIsReportModalOpen(false)}
+                unitName={props.data["propertyName"]}
+                unitRef={props.data["refNo"] || props.data["propertyID"]}
+            />
         </div>
     );
 };
