@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { UsersIcon, MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import InquiryForm from "@/app/[locale]/_components/InquiryForm";
+import { Link } from "@/i18n/navigation";
 
 interface DeveloperData {
   id: string;
@@ -124,33 +124,36 @@ const DevelopersList = ({ slug }: { slug: string }) => {
                   key={developer.id}
                   className="group relative bg-white border border-gray-200 rounded-xl flex flex-col justify-start min-h-[300px] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden dark:bg-gray-800 dark:border-neutral-800 dark:text-white"
                 >
-                  <Link href={`/en/developer/${developer.slug || developer.id}`} className="absolute inset-0 z-10" aria-label={`View ${developer.name}`} />
 
-                  {/* Image Header Section */}
-                  <div className="relative w-full h-48 bg-gray-100 flex items-center justify-center p-6 border-b border-gray-100 overflow-hidden dark:bg-gray-800 dark:border-neutral-800 dark:text-white">
-                    {/* Placeholder Background for developers without project images to match the design's "hero" feel */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 to-gray-100/80"></div>
+                  <Link href={`/developer/${developer.slug || developer.id}`} className="" aria-label={`View ${developer.name}`}>
+                    {/* Image Header Section */}
+                    <div className="relative w-full h-48 bg-gray-100 flex items-center justify-center p-6 border-b border-gray-100 overflow-hidden dark:bg-gray-800 dark:border-neutral-800 dark:text-white">
+                      {/* Placeholder Background for developers without project images to match the design's "hero" feel */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 to-gray-100/80"></div>
 
-                    {/* Developer Logo */}
-                    <div className="relative z-20 w-32 h-32 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center p-4">
-                      {developer.logo ? (
-                        <img
-                          src={developer.logo}
-                          className="max-h-full max-w-full object-contain filter group-hover:scale-110 transition-transform duration-500 ease-out"
-                          alt={`${developer.name} logo`}
-                          loading="lazy"
-                        />
-                      ) : (
-                        <UsersIcon className="h-10 w-10 text-gray-300 group-hover:scale-110 transition-transform duration-500" />
-                      )}
+                      {/* Developer Logo */}
+                      <div className="relative z-20 w-32 h-32 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center p-4">
+                        {developer.logo ? (
+                          <img
+                            src={developer.logo}
+                            className="max-h-full max-w-full object-contain filter group-hover:scale-110 transition-transform duration-500 ease-out"
+                            alt={`${developer.name} logo`}
+                            loading="lazy"
+                          />
+                        ) : (
+                          <UsersIcon className="h-10 w-10 text-gray-300 group-hover:scale-110 transition-transform duration-500" />
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  </Link>
 
                   {/* Body Section */}
                   <div className="p-5 flex-1 flex flex-col relative z-20 bg-white dark:bg-gray-800 dark:border-neutral-800 dark:text-white">
-                    <h3 className="text-[17px] font-bold text-gray-900 uppercase tracking-tight line-clamp-1 group-hover:text-blue-600 transition-colors dark:text-white">
-                      {developer.name}
-                    </h3>
+                    <Link href={`/developer/${developer.slug || developer.id}`} className="" aria-label={`View ${developer.name}`}>
+                      <h3 className="text-[17px] font-bold text-gray-900 uppercase tracking-tight line-clamp-1 group-hover:text-blue-600 transition-colors dark:text-white">
+                        {developer.name}
+                      </h3>
+                    </Link>
                   </div>
 
                   {/* Contact / Action Footer (Matching the specs bar in image) */}
