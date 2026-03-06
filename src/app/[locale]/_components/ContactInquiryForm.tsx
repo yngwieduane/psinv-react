@@ -33,9 +33,13 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
 
   const schema = useMemo(
     () =>
-      z.object({
-        firstName: z.string().min(1, { message: t("errors.firstNameRequired") }),
-        lastName: z.string().min(1, { message: t("errors.lastNameRequired") }),
+      z.object({        
+        firstName: z.string().min(1, { message: t("errors.firstNameRequired") }).regex(/^[a-zA-Z ]*$/, {
+          message: "First Name must contain only alphabets and spaces",
+        }),
+        lastName: z.string().min(1, { message: t("errors.lastNameRequired") }).regex(/^[a-zA-Z ]*$/, {
+          message: "Last Name must contain only alphabets and spaces",
+        }),
         email: z.string().email({ message: t("errors.invalidEmail") }),
         phone: z.string().min(7, { message: t("errors.invalidPhone") }),
         message: z.string().min(5, { message: t("errors.messageRequired") }),
