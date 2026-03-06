@@ -159,6 +159,10 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
         en: "cd5fc311f533117c8a469529954d0aaa",
         ar: "972e4a8cc1c1a1f21efa0b0f1c0d283b",
     },
+    "tara-park-registration": {
+        en: "823ed572455b7f4cb85630e4a2944103",
+        ar: "afda5890496ffa6f4d9f9a3a70d4d36e",
+    },
 };
 
 /**
