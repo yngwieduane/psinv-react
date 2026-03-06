@@ -1,4 +1,8 @@
 {
+  "metaData": {
+    "title": "⚡ Immobilien in Abu Dhabi - Property Shop Investment",
+    "description": "⚡ Immobilien in Abu Dhabi - PSI - Entdecken Sie unsere beeindruckenden Immobilienprojekte - Property Shop Investment - Immobilienprojekte - Kaufen oder Mieten"
+  },
   "HomePageBanner": {
     "sign_up_btn": "Anmelden",
     "more_btn": "Mehr entdecken",
@@ -7,11 +11,16 @@
   },
   "MainSliderHome": {
     "slides": {
-       "psi_awards_2025": {
-      "title": "Exzellenz, die überzeugt",
-      "location": "PSI Awards 2025",
-      "description": "Das Jahr 2025 war ein Meilenstein in unserer Unternehmensgeschichte, geprägt von Branchenanerkennung, die unsere Beständigkeit, Leistungsstärke und Führungsrolle auf dem Immobilienmarkt der VAE widerspiegelt."
-    },
+      "manchester_city_residences": {
+        "title": "Manchester City Residences",
+        "location": "Yas Island",
+        "description": "Im Herzen von Yas Island gelegen, sind die Manchester City Residences von Ohana ein markantes Wohnprojekt am Wasser, inspiriert von Spitzenleistung und gehobenem Lebensstil."
+      },
+      "psi_awards_2025": {
+        "title": "Exzellenz, die überzeugt",
+        "location": "PSI Awards 2025",
+        "description": "Das Jahr 2025 war ein Meilenstein in unserer Unternehmensgeschichte, geprägt von Branchenanerkennung, die unsere Beständigkeit, Leistungsstärke und Führungsrolle auf dem Immobilienmarkt der VAE widerspiegelt."
+      },
       "ohana_branded_residences": {
         "title": "Ohana Markenresidenzen",
         "location": "Yas Island",
@@ -321,10 +330,30 @@
     "title": "AUSZEICHNUNGSGETRIEBENE Exzellenz",
     "desc": "Wir bekräftigen unser Engagement, die Standards im Immobiliensektor neu zu definieren. Unser Einsatz für Innovation und unser unerschütterlicher Fokus auf unsere Kunden haben uns Anerkennung in der Branche eingebracht. Entdecken Sie unsere Reise durch Auszeichnungen, die uns dazu inspirieren, neue Spitzenleistungen zu erreichen.",
     "awards": {
+      "aldar": {
+        "title1": "ALDAR",
+        "title3": "BESTLEISTENDE AGENTUR – 1. PLATZ VON 2011 BIS 2025"
+      },
+      "rak": {
+        "title1": "RAK PROPERTIES",
+        "title3": "BROKER-AUSZEICHNUNGEN – 1. PLATZ 2025"
+      },
+      "modon": {
+        "title1": "MODON",
+        "title3": "1. PLATZ – BROKER-AUSZEICHNUNGEN 2025"
+      },
       "emaar": {
         "title1": "EMAAR",
         "title2": "JÄHRLICHER MAKLER",
         "title3": "AWARDS - 2018"
+      },
+      "emaarh1": {
+        "title1": "EMAAR",
+        "title3": "H1 BROKER-AUSZEICHNUNGEN – 3. PLATZ 2025"
+      },
+      "bloom": {
+        "title1": "BLOOM",
+        "title3": "BESTER LEISTUNGSMAKLER – 2024"
       },
       "aldar2021": {
         "title1": "ALDAR",
@@ -979,7 +1008,9 @@
     "open_in_google_maps": "In Google Maps öffnen",
     "facilities_and_amenities": "Einrichtungen und Annehmlichkeiten",
     "community_images": "Gemeinschaftsbilder",
-    "project_gallery": "Projektgalerie"
+    "project_gallery": "Projektgalerie",
+    "unit_types": "Einheitstyp",
+    "zone_type": "Zonentyp"
   },
   "InquiryForm": {
     "title": "Lassen Sie uns wissen, ob Sie interessiert sind!",

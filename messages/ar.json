@@ -11,6 +11,11 @@
   },
   "MainSliderHome": {
     "slides": {
+      "manchester_city_residences": {
+        "title": "مانشستر سيتي ريزيدنسز",
+        "location": "جزيرة ياس",
+        "description": "يقع مشروع مانشستر سيتي ريزيدنسز من أوهانا في قلب جزيرة ياس، وهو مشروع سكني بارز على الواجهة المائية مستوحى من الأداء النخبوي وأسلوب الحياة الراقي."
+      },
       "psi_awards_2025": {
         "title": "التميّز... مُثبت",
         "location": "جوائز PSI 2025",
@@ -803,7 +808,9 @@
     "facilities_and_amenities": "المرافق ووسائل الراحة",
     "community_images": "صور المجمّع",
     "project_gallery": "مكتبة صور المشروع",
-    "download_brochure": "تحميل الكتيب"
+    "download_brochure": "تحميل الكتيب",
+    "unit_types": "نوع الوحدة",
+    "zone_type": "نوع المنطقة"
   },
   "Navbar": {
     "home": "الرئيسية",

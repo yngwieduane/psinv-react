@@ -11,6 +11,11 @@
   },
   "MainSliderHome": {
     "slides": {
+      "manchester_city_residences": {
+        "title": "曼城公寓",
+        "location": "亚斯岛",
+        "description": "由 Ohana 打造的曼城公寓坐落于亚斯岛核心地段，是一座标志性的滨水住宅项目，灵感源自卓越表现与精致生活方式。"
+      },
       "psi_awards_2025": {
         "title": "卓越，实力见证",
         "location": "PSI 2025年度大奖",
@@ -325,10 +330,34 @@
     "title": "以奖项驱动的卓越",
     "desc": "我们重申致力于重新定义房地产标准。我们对创新的投入以及对客户的始终专注，使我们在行业中获得认可。探索我们的奖项历程，激励我们不断攀登成功的新高峰。",
     "awards": {
+      "aldar": {
+        "title1": "ALDAR",
+        "title3": "最佳表现机构 – 2011年至2025年第一名"
+      },
+      "rak": {
+        "title1": "RAK Properties",
+        "title3": "经纪人奖 – 2025年第一名"
+      },
+      "modon": {
+        "title1": "MODON",
+        "title3": "经纪人奖 – 2025年第一名"
+      },
       "emaar": {
         "title1": "EMAAR",
         "title2": "年度经纪人",
         "title3": "奖项 - 2018"
+      },
+      "emaarh1": {
+        "title1": "EMAAR",
+        "title3": "上半年经纪人奖 – 2025年第3名"
+      },
+      "bloom": {
+        "title1": "BLOOM",
+        "title3": "最佳表现经纪人 – 2024"
+      },
+      "rak2024": {
+        "title1": "RAK PROPERTIES",
+        "title3": "经纪人奖 – 年度机构第3名 – 2024"
       },
       "aldar2021": {
         "title1": "ALDAR",
@@ -353,6 +382,54 @@
         "title1": "IMKAN",
         "title2": "最佳表现",
         "title3": "机构第一名 - 2021"
+      },
+      "damac": {
+        "title1": "DAMAC",
+        "title3": "年度大奖 – 顶级代理机构 2024"
+      },
+      "binghatti": {
+        "title1": "BINGHATTI",
+        "title3": "年度经纪人奖 2024"
+      },
+      "deyaar": {
+        "title1": "DEYAAR",
+        "title3": "第一渠道合作伙伴及最佳成就奖 2024"
+      },
+      "darglobal": {
+        "title1": "DARGLOBAL",
+        "title3": "国际新星奖 – 2023"
+      },
+      "bloom2022": {
+        "title1": "BLOOM",
+        "title3": "最佳表现机构 – 第三名 2022"
+      },
+      "arada": {
+        "title1": "ARADA",
+        "title3": "最佳表现 – 第一名 2022"
+      },
+      "bloom2": {
+        "title1": "BLOOM",
+        "title3": "最佳表现机构 – 第三名 2022"
+      },
+      "imkan2021": {
+        "title1": "IMKAN",
+        "title3": "最佳表现机构 – 第一名 2021"
+      },
+      "emaar2018": {
+        "title1": "EMAAR 年度",
+        "title3": "经纪人奖 – 2018"
+      },
+      "aldar2018": {
+        "title1": "ALDAR",
+        "title3": "最佳表现机构 – 第一名 2018"
+      },
+      "bloom2017": {
+        "title1": "BLOOM",
+        "title3": "最佳表现机构 – 2017"
+      },
+      "finder": {
+        "title1": "PROPERTY FINDER",
+        "title3": "最佳表现机构 – 第一名 2016"
       }
     }
   },
@@ -633,7 +710,8 @@
     "Waters Edge Branch": "水岸分部",
     "Palm Jumeirah Branch": "朱美拉棕榈岛分部",
     "Conrad Etihad Towers": "康莱德阿提哈德大厦",
-    "Benelux Branch": "比荷卢分部"
+    "Benelux Branch": "比荷卢分部",
+    "Blog": "博客"
   },
   "About_Us_Page": {
     "heroTitle": "关于我们",
@@ -947,7 +1025,9 @@
     "open_in_google_maps": "在 Google 地图中打开",
     "facilities_and_amenities": "设施与配套",
     "community_images": "社区图片",
-    "project_gallery": "项目画廊"
+    "project_gallery": "项目画廊",
+    "unit_types": "单位类型",
+    "zone_type": "区域类型"
   },
   "InquiryForm": {
     "title": "登记信息",

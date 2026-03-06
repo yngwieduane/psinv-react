@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from "react";
 import PropertyCard from "../../_components/tools/PropertyCard";
-import { db } from "@/lib/firebase";
-import { collection, getDocs, query, limit, orderBy } from "firebase/firestore";
 
 import SearchProperty from "./SearchProperty";
 import PropertyBox from "./PropertyBox";
@@ -21,6 +19,8 @@ interface PropertyListProps {
     propertyname: string;
     isFeaturedProjectOnWeb: string;
     cityId: string;
+    propertyUnitTypes?: string;
+    propertyPlan?: string;
 }
 
 export default function PropertyList({
@@ -31,7 +31,9 @@ export default function PropertyList({
     project,
     propertyname,
     isFeaturedProjectOnWeb,
-    cityId
+    cityId,
+    propertyUnitTypes,
+    propertyPlan
 }: PropertyListProps) {
     const [data, setData] = useState<any>(null);
     const [isLoading, setLoading] = useState(true);
@@ -43,74 +45,57 @@ export default function PropertyList({
         const fetchData = async () => {
             setLoading(true);
             try {
-                // 1. Try API Fetch
-                const response = await fetch(
-                    `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${cityId}`
-                );
+                // Determine if special filters are active
+                const hasSpecialFilters = community || subcommunity || propertyUnitTypes || propertyPlan || (city && !cityId);
 
-                if (!response.ok) {
-                    throw new Error(`API Error: ${response.status}`);
+                if (!hasSpecialFilters) {
+                    // 1. Try API Fetch (Original legacy fetch)
+                    const response = await fetch(
+                        `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${cityId}`
+                    );
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        if (result && result['result']) {
+                            setData(result);
+                            setTotalPages(Math.ceil(Number(result['totalCount']) / 24));
+                            setLoading(false);
+                            return; // Success, exit
+                        }
+                    }
                 }
 
-                const result = await response.json();
+                // 2. Fallback or Special Filters (Using our new server API to avoid full client DB dump)
+                const queryParams = new URLSearchParams();
+                queryParams.set('page', String(page));
+                if (city) queryParams.set('city', city);
+                if (community) queryParams.set('community', community);
+                if (subcommunity) queryParams.set('subcommunity', subcommunity);
+                if (propertyname) queryParams.set('propertyname', propertyname);
+                if (propertyUnitTypes) queryParams.set('propertyUnitTypes', propertyUnitTypes);
+                if (propertyPlan) queryParams.set('propertyPlan', propertyPlan);
 
-                // Validate API result structure
-                if (result && result['result']) {
-                    setData(result);
-                    setTotalPages(Math.ceil(Number(result['totalCount']) / 24));
-                    return; // Success, exit
+                const response = await fetch(`/api/projects/search?${queryParams.toString()}`);
+                if (response.ok) {
+                    const result = await response.json();
+                    setData({
+                        result: result.result,
+                        totalCount: result.totalCount
+                    });
+                    setTotalPages(Math.max(1, Math.ceil(result.totalCount / 24)));
                 } else {
-                    throw new Error("Invalid API response");
+                    console.error("Error from search API:", await response.text());
                 }
-                //throw new Error("Invalid API response");
 
             } catch (error) {
-                console.warn("API Fetch failed, switching to Firestore fallback:", error);
-
-                // 2. Firestore Fallback
-                try {
-                    const q = query(collection(db, "properties"));
-                    const querySnapshot = await getDocs(q);
-
-                    let allItems = querySnapshot.docs.map(doc => doc.data());
-                    // Client-side Filtering
-                    // if (cityId) {
-                    //     allItems = allItems.filter(item => String(item.CityID) === String(cityId));
-                    // }
-                    // if (propertyname) {
-                    //     const search = propertyname.toLowerCase();
-                    //     allItems = allItems.filter(item =>
-                    //         (item.PropertyName?.toLowerCase() || "").includes(search) ||
-                    //         (item.Title?.toLowerCase() || "").includes(search)
-                    //     );
-                    // }
-                    // Add other filters as needed
-
-                    // Pagination logic
-                    const pageSize = 24;
-                    const totalCount = allItems.length;
-                    const totalPgs = Math.ceil(totalCount / pageSize);
-
-                    const startIndex = (page - 1) * pageSize;
-                    const endIndex = startIndex + pageSize;
-                    const paginatedItems = allItems.slice(startIndex, endIndex);
-
-                    console.log("allItems=" + allItems);
-                    setData({
-                        result: paginatedItems,
-                        totalCount: totalCount
-                    });
-                    setTotalPages(Math.max(1, totalPgs));
-                } catch (fsError) {
-                    console.error("Firestore Fallback failed:", fsError);
-                }
+                console.error("Error fetching properties:", error);
             } finally {
                 setLoading(false);
             }
         };
 
         fetchData();
-    }, [page, propertyname, isFeaturedProjectOnWeb, cityId]);
+    }, [page, propertyname, isFeaturedProjectOnWeb, cityId, city, community, subcommunity, propertyUnitTypes, propertyPlan]);
 
     return (
         <div className="flex grid md:grid-cols-2 grid-cols-1">

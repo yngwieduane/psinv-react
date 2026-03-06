@@ -246,11 +246,11 @@ function PropertyPage(props: any) {
     const max = Number(String(areaRangeMax).replace(/,/g, ""));
     let areaText = "";
     if (min > 0 && max > 0) {
-        areaText = `${min} ~ ${max} Sqft`;
+        areaText = `${Number(min).toLocaleString()} ~ ${Number(max).toLocaleString()} Sqft`;
     } else if (min > 0) {
-        areaText = `From ${min} Sqft`;
+        areaText = `From ${Number(min).toLocaleString()} Sqft`;
     } else if (max > 0) {
-        areaText = `Up to ${max} Sqft`;
+        areaText = `Up to ${Number(max).toLocaleString()} Sqft`;
     }
     const scrollToSection = (id: string) => {
         setActiveTab(id);
@@ -352,6 +352,9 @@ function PropertyPage(props: any) {
                                     if (cat === "Location" && props.data["communityMapAndMasterPlan"] == null && props.data["locationMapImages"] == null) {
                                         return false; // skip
                                     }
+                                    if (cat === "Payment Plan" && (props.data["propertyPlan"] === "Ready" || props.data["propertyPlan"] === "Completed")) {
+                                        return false; // skip
+                                    }
                                     return true;
                                 }).map((tab) => {
                                     //if(tab === 'Location' && props.data["communityMapAndMasterPlan"] !== null && props.data["locationMapImages"] !== null) return null;
@@ -440,12 +443,12 @@ function PropertyPage(props: any) {
                                     <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden dark:bg-gray-800 dark:border-gray-700">
                                         <div className="bg-primary p-6 text-white"><h4 className="text-2xl font-bold">{t('facts')}</h4></div>
                                         <div className="p-2">
-                                            {availbeds ? (<TableRow title={t('available_bedrooms')} content={availbeds} />) : ("")}
-                                            {availtype ? (<TableRow title={t('property_types')} content={availtype} />) : ("")}
+                                            {availtype ? (<TableRow title={t('unit_types')} content={availtype} />) : ("")}
                                             {props.data['masterDeveloper'] && <TableRow title={t('master_developer')} content={<Link href={`/developer/${slugify(props.data['masterDeveloper'])}`} className="text-primary hover:underline font-medium dark:text-white">{props.data['masterDeveloper']}</Link>} />}
                                             {(Number(props.data['minPrice']) > 0 || Number(props.data['maxPrice']) > 0) && <TableRow title={t('price_range')} content={Number(props.data['minPrice']) > 0 && Number(props.data['maxPrice']) > 0 ? `${minprice} ~ ${maxPrice}` : Number(props.data['minPrice']) > 0 ? `From ${minprice}` : `Up to ${maxPrice}`} />}
                                             {(areaRangeMin || areaRangeMax) && (<TableRow title={t('area_range')} content={areaRangeMin && areaRangeMax ? `${areaRangeMin} ~ ${areaRangeMax} Sqft` : areaRangeMin ? `From ${areaRangeMin} Sqft` : areaRangeMax ? `Up to ${areaRangeMax} Sqft` : ''} />)}
-                                            {props.data['numberOfApartment'] && String(props.data['numberOfApartment']) !== '0' ? (<TableRow title={t('number_of_apartment')} content={props.data['numberOfApartment']} />) : ("")}
+                                            {props.data['numberOfApartment'] && String(props.data['numberOfApartment']) !== '0' ? (<TableRow title={t('number_of_apartment')} content={Number(props.data['numberOfApartment']).toLocaleString()} />) : ("")}
+                                            {availbeds ? (<TableRow title={t('available_bedrooms')} content={availbeds} />) : ("")}
                                             {props.data['propertyType'] ? (<TableRow title={t('property_type')} content={props.data['propertyType']} />) : ("")}
                                             {props.data['propertyPlan'] ? (<TableRow title={t('property_plan')} content={props.data['propertyPlan']} />) : ("")}
                                             {props.data['propertyUsage'] ? (<TableRow title={t('property_usage')} content={props.data['propertyUsage']} />) : ("")}
@@ -458,7 +461,7 @@ function PropertyPage(props: any) {
 
                                             {HOdate ? (<TableRow title={t('handover_date')} content={HOdate} />) : ("")}
                                             {launchDate ? (<TableRow title={t('launch_date')} content={launchDate} />) : ("")}
-                                            {props.data['zoneType'] ? (<TableRow title={t('property_types')} content={props.data['zoneType']} />) : ("")}
+                                            {props.data['zoneType'] ? (<TableRow title={t('zone_type')} content={props.data['zoneType']} />) : ("")}
                                         </div>
                                     </div>
                                     {/* Video Tour Placeholder */}
