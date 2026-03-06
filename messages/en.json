@@ -6398,6 +6398,10 @@
       "copyright": "© 2024 Property Shop Investment LLC | All Rights Reserved."
     }
   },
+  "NewsletterPage":{
+    "title":"UAE Real Estate Newsletter | Property News & Market Insights",
+    "description": "Subscribe to our UAE real estate newsletter to receive the latest property news, market trends, investment insights, and expert tips straight to your inbox."
+  },
   "BlogPage": {
     "metadata": {
       "title": "UAE Real Estate Blog | Property News, Market Trends & Investment Insights",
@@ -6408,7 +6412,7 @@
     "recentPosts": "Recent Posts",
     "readMore": "Read More",
     "categories": {
-      "project-launch-in-abu-dhabi": "Project Launch In Abu Dhabi",
+      "new-project-launch-in-abu-dhabi": "New Project Launch In Abu Dhabi",
       "dubai-real-estate": "Dubai Real Estate",
       "uae-real-estate": "UAE Real Estate",
       "uae-real-estate-trends": "UAE Real Estate Trends",
