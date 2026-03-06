@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 const PhotoGallery = ({ data, limit, viewAllLink }: { data: any, limit?: number, viewAllLink?: string }) => {
     const t = useTranslations('ProjectPage');
     const router = useRouter();
+    const [showAll, setShowAll] = useState(false);
 
     const imgFeatured = data["featuredImages"] ? data["featuredImages"][0]['imageURL'] : ("");
     const generalImages = data["generalImages"] ? data["generalImages"] : ("");
@@ -41,10 +42,21 @@ const PhotoGallery = ({ data, limit, viewAllLink }: { data: any, limit?: number,
     const currentGalleryImages = limit ? galleryImages.slice(0, limit) : galleryImages;
     const currentTabTitle = allGalleryData[activeGalleryIndex]?.title || t('gallery');
     const PLACEHOLDER = "/images/placeholder.jpg";
+
+    const totalImages = currentGalleryImages.length || 0;
+    const hasMoreThanFive = totalImages > 5;
+    const visibleImages = showAll 
+    ? currentGalleryImages 
+    : currentGalleryImages.slice(0,5) || [];
+    const remainingCount = hasMoreThanFive ? totalImages - 5 : 0;
+
+    const handleTabChange = (index:any) => {
+        setShowAll(false);
+        setActiveGalleryIndex(index);
+    }
+
     return (
         <div>
-
-
             <div className="container mx-auto pt-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
                     <div>
@@ -64,7 +76,7 @@ const PhotoGallery = ({ data, limit, viewAllLink }: { data: any, limit?: number,
                         {allGalleryData.map((tab, index) => (
                             <button
                                 key={index}
-                                onClick={() => setActiveGalleryIndex(index)}
+                                onClick={() => handleTabChange(index)}
                                 className={`cursor-pointer px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeGalleryIndex === index
                                     ? 'bg-white text-primary shadow-sm'
                                     : 'text-gray-500 hover:text-primary'
@@ -78,18 +90,26 @@ const PhotoGallery = ({ data, limit, viewAllLink }: { data: any, limit?: number,
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                     <FancyboxWrapper>
-                        {currentGalleryImages.map((img: any, index: number) => {
+                        {visibleImages.map((img: any, index: number) => {
                             const raw = typeof img?.imageURL === "string" ? img.imageURL : "";
                             const imagecontent = raw
                                 ? raw.replace("?width=0&height=0", "?width=800&height=600")
                                 : PLACEHOLDER;
+                            const isLastVisible = 
+                                !showAll && hasMoreThanFive && index === 4;  
 
                             return (
                                 <a
                                     title={currentTabTitle}
-                                    data-fancybox="gallerypopup"
-                                    href={raw || PLACEHOLDER}
+                                    data-fancybox={!isLastVisible ? "gallerypopup" : undefined}
+                                    href={!isLastVisible ? raw || PLACEHOLDER : "#"}
                                     key={index}
+                                    onClick={(e) => {
+                                        if(isLastVisible) {
+                                            e.preventDefault();
+                                            setShowAll(true);
+                                        }
+                                    }}
                                     className={`relative group rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 aspect-[4/3]
                 bg-gray-100 bg-center bg-no-repeat bg-[length:140px] ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
                                     style={{ backgroundImage: `url(${PLACEHOLDER})` }}
@@ -115,6 +135,12 @@ const PhotoGallery = ({ data, limit, viewAllLink }: { data: any, limit?: number,
                                     {index === 0 && (
                                         <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
                                             <span className="text-white font-bold text-lg drop-shadow-md">{currentTabTitle}</span>
+                                        </div>
+                                    )}
+                                    {isLastVisible && (
+                                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center" >
+                                            <span className="text-white font-bold text-3xl">
+                                                +{remainingCount}</span>
                                         </div>
                                     )}
                                 </a>

@@ -44,7 +44,7 @@ export const CONRAD_AGENTS_BY_DATE: AgentsByDate = {
     { "id": "6267", "name": "Ali Hekmat Fawzi" },
     { "id": "5024", "name": "Rasha Bashar Awwad Aljamaeen" },
     { "id": "6998", "name": "Doina Andreea Bita" },
-    { "id": "6697", "name": "Jamilya Abykanova" },
+    { "id": "9757", "name": "Mohammad Rizik Saleh Bani Hani" },
     { "id": "7447", "name": "Almekdad Hussam Baddour" },
     { "id": "9965", "name": "Omar Nabil Hassan Hammoud" }
   ],
