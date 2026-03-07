@@ -174,8 +174,12 @@ export default function InquiryForm({ crm, variant = "glass", className }: Inqui
   const t1 = useTranslations('Common_Form_Agreements');
   const locale = useLocale() as string;
   const schema = z.object({
-    firstName: z.string().min(1, { message: t("errors.firstName") }),
-    lastName: z.string().min(1, { message: t("errors.lastName") }),
+    firstName: z.string().min(1, { message: t("errors.firstName") }).regex(/^[a-zA-Z ]*$/, {
+      message: "First Name must contain only alphabets and spaces",
+    }),
+    lastName: z.string().min(1, { message: t("errors.lastName") }).regex(/^[a-zA-Z ]*$/, {
+      message: "Last Name must contain only alphabets and spaces",
+    }),
     email: z.string().email({ message: t("errors.email") }),
     phone: z.string().min(7, { message: t("errors.phone") }),
     consent1: z.boolean().optional(),
