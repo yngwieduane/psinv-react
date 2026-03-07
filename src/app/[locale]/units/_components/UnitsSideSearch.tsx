@@ -2,22 +2,42 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions, Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
+import { Button, Label, Listbox, ListboxButton, ListboxOption, ListboxOptions, Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { ChevronUpDownIcon } from '@heroicons/react/16/solid'
 import { CheckIcon } from '@heroicons/react/20/solid'
 import Sticky from 'react-sticky-el';
-import { RotateCcw } from 'lucide-react';
+import { ChevronDown, RotateCcw } from 'lucide-react';
 import MultiRangeSlider from './MultiRangeSlider';
 import { useTranslations } from 'next-intl';
+import { group } from 'console';
 
 const minPriceDefault = 1000;
 const maxPriceDefault = 40000000;
 
-export default function UnitsSideSearch({ onChange }: { onChange: any }) {
+export default function UnitsSideSearchNew({ onChange }: { onChange: any }) {
   const t = useTranslations('UnitsPageAI');
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const[openSeections, setOpenSections] = useState({
+    bedrooms: false,
+    proptypes: false,
+  });
+
+  const toggleSections = (section: string) => {
+    setOpenSections((prev:any) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
+  const closeSection = (section: string) => {
+    setOpenSections((prev) => ({
+        ...prev,
+        [section]: false,
+    }));
+  };
 
   const [priceRange, setPriceRange] = useState<[number, number]>([
     minPriceDefault,
@@ -29,6 +49,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
   const [selectedPropertyTypes, setSelectedPropertyTypes] = useState<string[]>([]);
   const [propertyTypesList, setPropertyTypesList] = useState<any[]>([]);
   const [areaRange, setAreaRange] = useState<[number, number]>([0, 50000]);
+  
 
   useEffect(() => {
     fetch('/api/external/fetchLookup?type=UnitType')
@@ -152,6 +173,21 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
     updatePropertyTypes(Array.from(current));
   };
 
+  const getSelectedBedLabel = () => {
+    if(beds === null) return t('any');
+    if(beds === 1) return `1 ${t('bedroom')}`;
+    return `${beds} ${t('bedrooms')}`;
+  };
+  const getSelectedPropTypeLabel = () => {
+    if(selectedPropertyTypes.length === 0) return t('any');
+    
+    const selected = propertyTypesList
+    .flatMap(group => group.items)
+    .find(item => String(item.lookupName) === selectedPropertyTypes[0]);
+
+    return selected ? t(selected.lookupName) : t('any');
+  };
+
 
   return (
     <div className="w-full block">
@@ -166,10 +202,22 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
         </div>
         {/* Beds Filter */}
         <div className="space-y-4">
-          <label className="block text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-white">{t('bedrooms')}</label>
+          <Button onClick={() => toggleSections("bedrooms")} 
+          className="block flex justify-between w-full text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-white">
+            {t('bedrooms')}
+            <ChevronDown className={`transition-transform 
+            ${openSeections.bedrooms ? "rotate-180" : ""}`} />
+            </Button>
           <div className="space-y-2">
+            {!openSeections.bedrooms ? (
+                <span className="text-sm text-gray-600 dark:text-gray-300 cursor-pointer" 
+                onClick={() => toggleSections("bedrooms")}>
+                    {getSelectedBedLabel()}
+                </span>
+            ) : (
 
-            {/* Any Option */}
+                <>
+                {/* Any Option */}
             <label className="flex items-center gap-3 cursor-pointer group">
               <div className={`
                   w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200
@@ -185,6 +233,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                 onChange={() => {
                   setBeds(null);
                   updateQuery('beds', null);
+                  closeSection("bedrooms");
                 }}
               />
               <span className={`text-sm transition-colors dark:text-white ${beds === null ? 'font-medium text-[#353455] ' : 'text-gray-600 group-hover:text-[#353455] dark:group-hover:text-white'}`}>
@@ -208,6 +257,7 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                   onChange={() => {
                     setBeds(bedCount);
                     updateQuery('beds', String(bedCount));
+                    closeSection("bedrooms");
                   }}
                 />
                 <span className={`text-sm transition-colors dark:text-white ${beds === bedCount ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455] dark:group-hover:text-white'}`}>
@@ -215,6 +265,12 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
                 </span>
               </label>
             ))}
+            
+            </>
+
+            )
+            }
+            
           </div>
         </div>
 
@@ -222,65 +278,84 @@ export default function UnitsSideSearch({ onChange }: { onChange: any }) {
 
         {/* Property Type Groups (Radio Buttons) */}
         <div className="space-y-4">
-          <label className="block text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-white">{t('types')}</label>
+          <Button onClick={() => toggleSections("proptypes")}  
+          className="flex justify-between w-full block text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-white">
+            {t('types')}
+            <ChevronDown className={`transition-transform 
+            ${openSeections.proptypes ? "rotate-180" : ""}`} />
+          </Button>
 
-          {/* Any Option */}
-          <label className="flex items-center gap-3 cursor-pointer group">
-            <div className={`
-              w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200 
-              ${selectedPropertyTypes.length === 0 ? 'border-[#353455] dark:border-white' : 'border-gray-300 group-hover:border-[#353455] dark:group-hover:border-white'}
-            `}>
-              {selectedPropertyTypes.length === 0 && <div className="w-2.5 h-2.5 rounded-full bg-[#353455] dark:bg-white" />}
-            </div>
-            <input
-              type="radio"
-              name="propertyType"
-              className="hidden"
-              checked={selectedPropertyTypes.length === 0}
-              onChange={() => {
-                setSelectedPropertyTypes([]);
-                updateQuery('propertyType', null);
-              }}
-            />
-            <span className={`text-sm transition-colors dark:text-white ${selectedPropertyTypes.length === 0 ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455] dark:group-hover:text-white'}`}>
-              {t('any')}
-            </span>
-          </label>
+        {!openSeections.proptypes ? (
+                <span className="text-sm text-gray-600 dark:text-gray-300 cursor-pointer" 
+                onClick={() => toggleSections("proptypes")}>
+                    {getSelectedPropTypeLabel()}
+                </span>
+            ) : (
+                <>
+                {/* Any Option */}
+                <label className="flex items-center gap-3 cursor-pointer group">
+                    <div className={`
+                    w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200 
+                    ${selectedPropertyTypes.length === 0 ? 'border-[#353455] dark:border-white' : 'border-gray-300 group-hover:border-[#353455] dark:group-hover:border-white'}
+                    `}>
+                    {selectedPropertyTypes.length === 0 && <div className="w-2.5 h-2.5 rounded-full bg-[#353455] dark:bg-white" />}
+                    </div>
+                    <input
+                    type="radio"
+                    name="propertyType"
+                    className="hidden"
+                    checked={selectedPropertyTypes.length === 0}
+                    onChange={() => {
+                        setSelectedPropertyTypes([]);
+                        updateQuery('propertyType', null);
+                        closeSection("proptypes");
+                    }}
+                    />
+                    <span className={`text-sm transition-colors dark:text-white ${selectedPropertyTypes.length === 0 ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455] dark:group-hover:text-white'}`}>
+                    {t('any')}
+                    </span>
+                </label>
 
-          {propertyTypesList.map((group) => (
-            <div key={group.groupName} className="space-y-3">
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{group.groupName}</p>
-              <div className="space-y-2">
-                {group.items.map((type: any) => {
-                  const isSelected = selectedPropertyTypes.includes(String(type.lookupName));
-                  return (
-                    <label key={type.lookupId} className="flex items-center gap-3 cursor-pointer group">
-                      <div className={`
-                        w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200
-                        ${isSelected ? 'border-[#353455] dark:border-white' : 'border-gray-300 group-hover:border-[#353455] dark:group-hover:border-white'}
-                      `}>
-                        {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#353455] dark:bg-white" />}
-                      </div>
-                      <input
-                        type="radio"
-                        name="propertyType"
-                        className="hidden"
-                        checked={isSelected}
-                        onChange={() => {
-                          const newType = String(type.lookupName);
-                          setSelectedPropertyTypes([newType]);
-                          updateQuery('propertyType', newType);
-                        }}
-                      />
-                      <span className={`text-sm transition-colors dark:text-white ${isSelected ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455] dark:group-hover:text-white'}`}>
-                        {t(type.lookupName)}
-                      </span>
-                    </label>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
+                {propertyTypesList.map((group) => (
+                    <div key={group.groupName} className="space-y-3">
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{group.groupName}</p>
+                    <div className="space-y-2">
+                        {group.items.map((type: any) => {
+                        const isSelected = selectedPropertyTypes.includes(String(type.lookupName));
+                        return (
+                            <label key={type.lookupId} className="flex items-center gap-3 cursor-pointer group">
+                            <div className={`
+                                w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200
+                                ${isSelected ? 'border-[#353455] dark:border-white' : 'border-gray-300 group-hover:border-[#353455] dark:group-hover:border-white'}
+                            `}>
+                                {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#353455] dark:bg-white" />}
+                            </div>
+                            <input
+                                type="radio"
+                                name="propertyType"
+                                className="hidden"
+                                checked={isSelected}
+                                onChange={() => {
+                                const newType = String(type.lookupName);
+                                setSelectedPropertyTypes([newType]);
+                                updateQuery('propertyType', newType);
+                                closeSection("proptypes");
+                                }}
+                            />
+                            <span className={`text-sm transition-colors dark:text-white ${isSelected ? 'font-medium text-[#353455]' : 'text-gray-600 group-hover:text-[#353455] dark:group-hover:text-white'}`}>
+                                {t(type.lookupName)}
+                            </span>
+                            </label>
+                        );
+                        })}
+                    </div>
+                    </div>
+                ))}
+                
+                </>
+            )
+        }
+          
         </div>
 
         <div className="border-t border-gray-100" />

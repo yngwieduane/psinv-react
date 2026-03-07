@@ -11,6 +11,7 @@ import UnitsMapBox from "./UnitsMapBox";
 import { Dialog, DialogPanel } from '@headlessui/react'
 import UnitsSideSearchMapView from "./UnitsSideSearchMapView";
 import { useTranslations } from "next-intl";
+import UnitsSideSearchNew from "./UnitsSideSearchNew";
 
 export default function UnitsPageAI(props: any) {
     const t = useTranslations('UnitsPageAI');
@@ -88,7 +89,7 @@ export default function UnitsPageAI(props: any) {
                             <div className="col-span-4 relative z-50">
                                 <Search placeholder={t('searchByReference')} />
                             </div>
-                            <div className="hidden md:block">
+                            <div className="hidden md:block ">
                                 <UnitsSideSearch onChange='' />
                             </div>
                             <div className="col-span-4 md:col-span-3">
