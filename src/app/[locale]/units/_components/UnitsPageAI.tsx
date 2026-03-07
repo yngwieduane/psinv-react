@@ -11,7 +11,6 @@ import UnitsMapBox from "./UnitsMapBox";
 import { Dialog, DialogPanel } from '@headlessui/react'
 import UnitsSideSearchMapView from "./UnitsSideSearchMapView";
 import { useTranslations } from "next-intl";
-import UnitsSideSearchNew from "./UnitsSideSearchNew";
 
 export default function UnitsPageAI(props: any) {
     const t = useTranslations('UnitsPageAI');
