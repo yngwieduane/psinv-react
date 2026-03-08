@@ -201,7 +201,14 @@
       "btn": "了解更多关于PSI国际"
     }
   },
+  "Breadcrumb": {
+    "home": "首页"
+  },
   "Mortgage_Tabs": {
+    "metadata": {
+      "title": "阿联酋房贷计算器 | Property Shop Investment",
+      "description": "计算您在阿联酋房地产的每月房贷付款。使用PSI的房贷计算器估算贷款成本并规划您的房产投资。"
+    },
     "mortgage": "按揭计算器",
     "amortization": "摊还表",
     "refinancing": "再融资",
@@ -1593,6 +1600,24 @@
         "email": "无效的电子邮箱",
         "phone": "无效的电话号码"
       }
+    }
+  },
+  "Breadcrumb": {
+    "home": "首页",
+    "segments": {
+      "contact-us": "联系我们",
+      "developers": "开发者",
+      "projects": "项目",
+      "mortgage-calculator": "抵押计算器",
+      "newsletter": "新闻通讯",
+      "articles": "文章",
+      "blog": "博客",
+      "abu-dhabi": "阿布扎比",
+      "dubai": "迪拜",
+      "sharjah": "沙迦",
+      "saadiyat-island": "萨迪亚特岛",
+      "yas-island": "亚斯岛",
+      "al-reem-island": "阿尔里姆岛"
     }
   },
   "ListYourPropertyPage": {
