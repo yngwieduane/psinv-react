@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import PhoneInput from "react-phone-number-input";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useRouter } from "next/navigation";
 import { sendGTMEvent } from "@next/third-parties/google";
@@ -33,23 +33,76 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
 
   const schema = useMemo(
     () =>
-      z.object({        
-        firstName: z.string().min(1, { message: t("errors.firstNameRequired") }).regex(/^[a-zA-Z ]*$/, {
-          message: "First Name must contain only alphabets and spaces",
-        }),
-        lastName: z.string().min(1, { message: t("errors.lastNameRequired") }).regex(/^[a-zA-Z ]*$/, {
-          message: "Last Name must contain only alphabets and spaces",
-        }),
-        email: z.string().email({ message: t("errors.invalidEmail") }),
-        phone: z.string().min(7, { message: t("errors.invalidPhone") }),
-        message: z.string().min(5, { message: t("errors.messageRequired") }),
+      z.object({
+        firstName: z
+          .string()
+          .min(1, { message: t("errors.firstNameRequired") })
+          .regex(/^[A-Za-z\u0600-\u06FF\s'-]+$/, {
+            message: "First Name must contain only letters and spaces",
+          }),
+        lastName: z
+          .string()
+          .min(1, { message: t("errors.lastNameRequired") })
+          .regex(/^[A-Za-z\u0600-\u06FF\s'-]+$/, {
+            message: "Last Name must contain only letters and spaces",
+          }),
+
+        email: z
+          .string()
+          .trim()
+          .toLowerCase()
+          .min(5, { message: t("errors.invalidEmail") })
+          .max(100, { message: t("errors.invalidEmail") })
+          .regex(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, {
+            message: t("errors.invalidEmail"),
+          }),
+        phone: z
+          .string()
+          .min(1, { message: t("errors.invalidPhone") })
+          .refine((value) => {
+            if (!value) return false;
+            const digitsOnly = value.replace(/\D/g, "");
+            if (digitsOnly.length < 8) return false;
+            return isValidPhoneNumber(value);
+          }, {
+            message: t("errors.invalidPhone"),
+          }),
+        message: z
+          .string()
+          .min(5, { message: t("errors.messageRequired") })
+          .max(1000, { message: t("errors.messageRequired") })
+          .refine(
+            (value) => !/(<script|<\/script>|select\s.+from|union\s+select|drop\s+table|insert\s+into|delete\s+from|--)/i.test(value),
+            { message: "Invalid message content" }
+          ),
         agreement1: z.boolean().refine((val) => val, { message: t("errors.mustAgree") }),
         agreement2: z.boolean().optional(),
         agreement3: z.boolean().optional(),
       }),
     [t]
   );
+  const blockPaste = (e: React.ClipboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    e.preventDefault();
+  };
 
+  const allowOnlyLetters = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const allowedKeys = [
+      "Backspace",
+      "Delete",
+      "ArrowLeft",
+      "ArrowRight",
+      "Tab",
+      "Home",
+      "End",
+      " ",
+    ];
+
+    if (allowedKeys.includes(e.key)) return;
+
+    if (!/^[A-Za-z\u0600-\u06FF'-]$/.test(e.key)) {
+      e.preventDefault();
+    }
+  };
   type FormData = z.infer<typeof schema>;
 
   const {
@@ -317,6 +370,8 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
           <input
             type="text"
             {...register("firstName")}
+            onPaste={blockPaste}
+            onKeyDown={allowOnlyLetters}
             placeholder={t("placeholders.firstName")}
             className={`w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 ${isRTL ? "text-right" : ""
               }`}
@@ -328,6 +383,8 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
           <input
             type="text"
             {...register("lastName")}
+            onPaste={blockPaste}
+            onKeyDown={allowOnlyLetters}
             placeholder={t("placeholders.lastName")}
             className={`w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 ${isRTL ? "text-right" : ""
               }`}
@@ -338,7 +395,12 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
         <div>
           <input
             type="email"
-            {...register("email")}
+            {...register("email", {
+              onChange: (e) => {
+                e.target.value = e.target.value.replace(/\s+/g, "").toLowerCase();
+              },
+            })}
+            onPaste={blockPaste}
             placeholder={t("placeholders.email")}
             className={`w-full p-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 ${isRTL ? "text-right" : ""
               }`}
@@ -358,6 +420,7 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
                     international
                     defaultCountry="AE"
                     countryCallingCodeEditable={false}
+                    onPaste={(e: React.ClipboardEvent<HTMLInputElement>) => e.preventDefault()}
                     placeholder={t("placeholders.phone")}
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445] PhoneInput dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                   />
@@ -372,6 +435,7 @@ const ContactInquiryForm: React.FC<ContactInquiryFormProps> = ({ hideFeedbackBut
       <div className="mt-4 mb-4">
         <textarea
           {...register("message")}
+          onPaste={blockPaste}
           placeholder={t("placeholders.message")}
           className={`w-full border bg-gray-50 border border-gray-100 rounded p-3 text-sm outline-none focus:border-gray-400 focus:ring-0 h-40 resize-none dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 ${isRTL ? "text-right" : ""
             }`}
