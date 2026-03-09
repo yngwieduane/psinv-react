@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
-import InquiryForm from "../../[locale]/_components/ContactInquiryForm";
+import InquiryForm from "../_components/ContactInquiryForm";
 import { Phone, MapPin } from "lucide-react";
 import { Outfit } from "next/font/google";
 import { ContactLocation, contactLocations } from "@/data/contactLocations";

@@ -1036,6 +1036,35 @@
     "unit_types": "单位类型",
     "zone_type": "区域类型"
   },
+  "ContactPage": {
+    "metadata": {
+      "title": "联系阿联酋房地产团队 | Property Shop Investment",
+      "description": "对阿联酋房产有疑问吗？立即联系 Property Shop Investment，获取关于房地产投资、新项目和房产机会的专业指导。"
+    },
+    "title": "联系我们",
+    "inquire": "咨询",
+    "map": "地图",
+    "satellite": "卫星",
+    "phoneNA": "—"
+  },
+  "ContactInquiryForm": {
+    "placeholders": {
+      "firstName": "名字",
+      "lastName": "姓氏",
+      "email": "电子邮箱",
+      "phone": "电话号码",
+      "message": "您的留言"
+    },
+    "buttons": {
+      "submit": "提交",
+      "submitting": "提交中..."
+    },
+    "alerts": {
+      "success": "您的咨询已成功发送。",
+      "error": "出现错误。",
+      "serverError": "服务器错误，请稍后再试。"
+    }
+  },
   "InquiryForm": {
     "title": "登记信息",
     "fields": {
@@ -1076,6 +1105,8 @@
       "submit": "提交",
       "submitting": "提交中…"
     },
+    
+    
     "fineprint": {
       "text": "点击“提交”即表示您同意我们的<terms>条款与条件</terms>和<privacy>隐私政策</privacy>。"
     },
