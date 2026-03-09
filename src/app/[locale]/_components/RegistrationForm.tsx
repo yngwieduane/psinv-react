@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import PhoneInput from "react-phone-number-input";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useSearchParams } from "next/navigation";
 import { useLocale } from "next-intl";
@@ -18,7 +18,7 @@ import {
   defaultsForExtraFields,
   applyExtraFieldsToPayload,
 } from '@/utils/projectMeta';
-
+ 
 const errMsg = (e: unknown): string | undefined => {
   if (!e || typeof e !== "object") return undefined;
   const m = (e as { message?: unknown }).message;
@@ -56,7 +56,28 @@ function safeSet(key: string, value: string) {
   if (typeof window === "undefined") return;
   try { window.localStorage.setItem(key, value); } catch { }
 }
+const blockPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+  e.preventDefault();
+};
 
+const allowOnlyLetters = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const allowedKeys = [
+    "Backspace",
+    "Delete",
+    "ArrowLeft",
+    "ArrowRight",
+    "Tab",
+    "Home",
+    "End",
+    " "
+  ];
+
+  if (allowedKeys.includes(e.key)) return;
+
+  if (!/^[A-Za-z\u0600-\u06FF'-]$/.test(e.key)) {
+    e.preventDefault();
+  }
+};
 const RegistrationForm: React.FC<RegistrationFormProps> = ({ slug }) => {
   const locale = useLocale();
   const t = useTranslations('InquiryForm');
@@ -66,14 +87,35 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ slug }) => {
   const [properties, setProperties] = useState<Property[]>([]);
   const [propertiesLoading, setPropertiesLoading] = useState(false);
   const baseSchema = useMemo(() => z.object({
-    firstName: z.string().min(1, 'First name is required').regex(/^[a-zA-Z ]*$/, {
-      message: "First Name must contain only alphabets and spaces",
-    }),
-    lastName: z.string().min(1, 'Last name is required').regex(/^[a-zA-Z ]*$/, {
-      message: "Last Name must contain only alphabets and spaces",
-    }),
-    email: z.string().email({ message: t('errors.email') }),
-    phone: z.string().min(7, { message: t('errors.phone') })
+firstName: z.string().min(1, 'First name is required').regex(/^[A-Za-z\u0600-\u06FF\s'-]+$/, {
+  message: "First Name must contain only letters and spaces",
+}),
+lastName: z.string().min(1, 'Last name is required').regex(/^[A-Za-z\u0600-\u06FF\s'-]+$/, {
+  message: "Last Name must contain only letters and spaces",
+}),
+    email: z
+  .string()
+  .trim()
+  .toLowerCase()
+  .min(5, { message: t("errors.email") })
+  .max(100, { message: t("errors.email") })
+  .regex(
+    /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+    { message: t("errors.email") }
+  ),
+    phone: z
+  .string()
+  .min(1, { message: t("errors.phone") })
+  .refine((value) => {
+    if (!value) return false;
+
+    const digitsOnly = value.replace(/\D/g, "");
+    if (digitsOnly.length < 8) return false;
+
+    return isValidPhoneNumber(value);
+  }, {
+    message: t("errors.phone"),
+  }),
     
   }), [t]);
   const searchParams = useSearchParams();
@@ -471,9 +513,12 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
       >
         <div>
           <label className="label-required">{t('fields.firstName.label')}</label>
-          <input id="fname"
+          <input
+            id="fname"
             {...register("firstName")}
             type="text"
+            onPaste={blockPaste}
+            onKeyDown={allowOnlyLetters}
             className={clsx(
               'w-full px-3 py-2 border border-[#cecfd0] rounded-[7px] placeholder-[#A6A6A6]',
               isRTL && 'text-right'
@@ -487,15 +532,18 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
         </div>
         <div>
           <label className="label-required">{t('fields.lastName.label')}</label>
-          <input id="lname"
-            {...register('lastName')}
-            type="text"
-            className={clsx(
-              'w-full px-3 py-2 border border-[#cecfd0] rounded-[7px] placeholder-[#A6A6A6]',
-              isRTL && 'text-right'
-            )}
-            placeholder={t('fields.lastName.placeholder')}
-          />
+          <input
+          id="lname"
+          {...register("lastName")}
+          type="text"
+          onPaste={blockPaste}
+          onKeyDown={allowOnlyLetters}
+          className={clsx(
+            'w-full px-3 py-2 border border-[#cecfd0] rounded-[7px] placeholder-[#A6A6A6]',
+            isRTL && 'text-right'
+          )}
+          placeholder={t('fields.lastName.placeholder')}
+        />
           {/* Last name */}
           {errMsg(errors.lastName) && (
             <p className="text-red-600 text-sm mt-1">{errMsg(errors.lastName)}</p>
@@ -514,6 +562,7 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
                   name="phone"
                   value={field.value ?? ''}
                   onChange={(v) => field.onChange(v ?? '')}
+                  onPaste={(e: React.ClipboardEvent<HTMLInputElement>) => e.preventDefault()}
                   international
                   defaultCountry="AE"
                   className={clsx(
@@ -532,14 +581,20 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
         </div>
         <div>
           <label className="label-required">{t('fields.email.label')}</label>
-          <input id="email"
-            {...register('email')}
+          <input
+            id="email"
             type="email"
+            {...register("email", {
+              onChange: (e) => {
+                e.target.value = e.target.value.replace(/\s+/g, "").toLowerCase();
+              },
+            })}
+            onPaste={(e: React.ClipboardEvent<HTMLInputElement>) => e.preventDefault()}
             className={clsx(
-              'w-full px-3 py-2 border border-[#cecfd0] rounded-[7px] placeholder-[#A6A6A6]',
-              isRTL && 'text-right'
+              "w-full px-3 py-2 border border-[#cecfd0] rounded-[7px] placeholder-[#A6A6A6]",
+              isRTL && "text-right"
             )}
-            placeholder={t('fields.email.placeholder')}
+            placeholder={t("fields.email.placeholder")}
           />
           {/* Email */}
           {errMsg(errors.email) && (
