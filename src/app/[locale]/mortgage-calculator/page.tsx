@@ -1,8 +1,18 @@
-'use client';
+// 'use client';
 
 import React from "react";
 import MortgageTabs from "./MortgageTabs";
 import Breadcrumb from '../_components/Breadcrumb';
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata() {
+  const t = await getTranslations("Mortgage_Tabs.metadata");
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 export default function MortgageCalculatorPage() {
   return (

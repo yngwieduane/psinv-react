@@ -201,7 +201,14 @@
       "btn": "Mehr über PSI International erfahren"
     }
   },
+  "Breadcrumb": {
+    "home": "Startseite"
+  },
   "Mortgage_Tabs": {
+    "metadata": {
+      "title": "UAE Hypothekenrechner | Property Shop Investment",
+      "description": "Berechnen Sie Ihre monatlichen Hypothekenzahlungen für Immobilien in den VAE. Verwenden Sie den PSI-Hypothekenrechner, um die Kreditkosten abzuschätzen und Ihre Immobilieninvestitionen zu planen."
+    },
     "mortgage": "Hypothekenrechner",
     "amortization": "Amortisation",
     "refinancing": "Refinanzierung",
@@ -575,7 +582,12 @@
     "next": "Weiter",
     "page": "Seite"
   },
+
   "ContactPage": {
+    "metadata": {
+      "title": "Kontaktieren Sie unser Immobilien-Team in den VAE | Property Shop Investment",
+      "description": "Haben Sie Fragen zu Immobilien in den VAE? Kontaktieren Sie Property Shop Investment noch heute für fachkundige Beratung zu Immobilieninvestitionen, neuen Projekten und Immobilienmöglichkeiten."
+    },
     "title": "Kontaktieren Sie uns",
     "inquire": "Anfrage",
     "map": "Karte",
@@ -1478,6 +1490,24 @@
       "a21": "Yes you can with PSI. Part of our all-inclusive real estate services is to increase your return on your property investment by leasing your property. Whether you want us to furnish your apartment or rent it out unfurnished, we design and manage the full cycle of leasing frameworks and agreements to ensure that your property is well-maintained and that you are receiving a good return on your real estate investment.",
       "q22": "Should I buy crypto or real estate?",
       "a22": "There are many advantages of investing your crypto in buying real estate in the UAE such as: <ul class='list-none pl-4 mt-2 space-y-2'><li>1. A tangible asset. It has intrinsic value as people will always need a place to live.</li><li>2. You can always force the appreciation of your real estate asset.</li><li>3. Passive cash flow.</li><li>4. Real estate has significantly less risk and offers more consistent returns.</li><li>5. Contact us today to explore the options PSI offers to have a steady source of income and generate a reliable income in addition to appreciation.</li></ul>"
+    }
+  },
+  "Breadcrumb": {
+    "home": "Startseite",
+    "segments": {
+      "contact-us": "Kontakt",
+      "developers": "Entwickler",
+      "projects": "Projekte",
+      "mortgage-calculator": "Hypothekenrechner",
+      "newsletter": "Newsletter",
+      "articles": "Artikel",
+      "blog": "Blog",
+      "abu-dhabi": "Abu Dhabi",
+      "dubai": "Dubai",
+      "sharjah": "Sharjah",
+      "saadiyat-island": "Saadiyat-Insel",
+      "yas-island": "Yas-Insel",
+      "al-reem-island": "Al-Reem-Insel"
     }
   },
   "ListYourPropertyPage": {
