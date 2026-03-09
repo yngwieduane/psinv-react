@@ -201,9 +201,6 @@
       "btn": "Mehr über PSI International erfahren"
     }
   },
-  "Breadcrumb": {
-    "home": "Startseite"
-  },
   "Mortgage_Tabs": {
     "metadata": {
       "title": "UAE Hypothekenrechner | Property Shop Investment",
@@ -582,7 +579,6 @@
     "next": "Weiter",
     "page": "Seite"
   },
-
   "ContactPage": {
     "metadata": {
       "title": "Kontaktieren Sie unser Immobilien-Team in den VAE | Property Shop Investment",
@@ -1494,6 +1490,7 @@
   },
   "Breadcrumb": {
     "home": "Startseite",
+    "units": "Einheiten",
     "segments": {
       "contact-us": "Kontakt",
       "developers": "Entwickler",
@@ -1507,7 +1504,17 @@
       "sharjah": "Sharjah",
       "saadiyat-island": "Saadiyat-Insel",
       "yas-island": "Yas-Insel",
-      "al-reem-island": "Al-Reem-Insel"
+      "al-reem-island": "Al-Reem-Insel",
+      "main-branch": "PSI Hauptsitz",
+      "psi-assets": "PSI Vermögenswerte",
+      "dubai-hills-branch": "Dubai Hills Filiale",
+      "mamsha-saadiyat-branch": "Mamsha Saadiyat Filiale",
+      "waters-edge-branch": "Waters Edge Filiale",
+      "st-regis-office": "St. Regis Büro",
+      "palm-jumeirah-branch": "Palm Jumeirah Filiale",
+      "conrad-abu-dhabi-etihad-towers": "Conrad Abu Dhabi Etihad Towers",
+      "benelux-branch": "Benelux Filiale",
+      "business-bay-branch": "Business Bay Filiale"
     }
   },
   "ListYourPropertyPage": {
@@ -1928,10 +1935,6 @@
         "status": "Der Status dieser Immobilie ist {status}."
       }
     }
-  },
-  "Breadcrumbs": {
-    "home": "Startseite",
-    "units": "Einheiten"
   },
   "HomeSearch": {
     "Units": "Einheiten",
