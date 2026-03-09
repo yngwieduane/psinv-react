@@ -201,9 +201,6 @@
       "btn": "تعرف أكثر على PSI الدولية"
     }
   },
-  "Breadcrumb": {
-    "home": "الرئيسية"
-  },
   "Mortgage_Tabs": {
     "metadata": {
       "title": "حاسبة الرهن العقاري في الإمارات | Property Shop Investment",
@@ -5392,7 +5389,17 @@
       "sharjah": "الشارقة",
       "saadiyat-island": "جزيرة السعديات",
       "yas-island": "جزيرة ياس",
-      "al-reem-island": "جزيرة الريم"
+      "al-reem-island": "جزيرة الريم",
+      "main-branch": "المكتب الرئيسي",
+      "psi-assets": "أصول PSI",
+      "dubai-hills-branch": "فرع دبي هيلز",
+      "mamsha-saadiyat-branch": "فرع ممشى السعديات",
+      "waters-edge-branch": "فرع ووترز إيدج",
+      "st-regis-office": "مكتب سانت ريجيس",
+      "palm-jumeirah-branch": "فرع نخلة جميرا",
+      "conrad-abu-dhabi-etihad-towers": "كونراد أبراج الاتحاد أبوظبي",
+      "benelux-branch": "فرع بنلوكس",
+      "business-bay-branch": "فرع الخليج التجاري"
     }
   },
   "ListYourPropertyPage": {

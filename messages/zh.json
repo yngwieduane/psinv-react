@@ -201,9 +201,6 @@
       "btn": "了解更多关于PSI国际"
     }
   },
-  "Breadcrumb": {
-    "home": "首页"
-  },
   "Mortgage_Tabs": {
     "metadata": {
       "title": "阿联酋房贷计算器 | Property Shop Investment",
@@ -1604,6 +1601,7 @@
   },
   "Breadcrumb": {
     "home": "首页",
+    "units": "房源",
     "segments": {
       "contact-us": "联系我们",
       "developers": "开发者",
@@ -1617,7 +1615,17 @@
       "sharjah": "沙迦",
       "saadiyat-island": "萨迪亚特岛",
       "yas-island": "亚斯岛",
-      "al-reem-island": "阿尔里姆岛"
+      "al-reem-island": "阿尔里姆岛",
+      "main-branch": "PSI 总部",
+      "psi-assets": "PSI 资产",
+      "dubai-hills-branch": "迪拜山分公司",
+      "mamsha-saadiyat-branch": "萨迪亚特漫步分公司",
+      "waters-edge-branch": "Waters Edge 分公司",
+      "st-regis-office": "瑞吉酒店办公室",
+      "palm-jumeirah-branch": "朱美拉棕榈岛分公司",
+      "conrad-abu-dhabi-etihad-towers": "阿布扎比康莱德阿提哈德塔",
+      "benelux-branch": "比荷卢分公司",
+      "business-bay-branch": "商业湾分公司"
     }
   },
   "ListYourPropertyPage": {
@@ -2038,10 +2046,6 @@
         "status": "该房产的状况为{status}。"
       }
     }
-  },
-  "Breadcrumbs": {
-    "home": "首页",
-    "units": "房源"
   },
   "HomeSearch": {
     "Units": "单元",
