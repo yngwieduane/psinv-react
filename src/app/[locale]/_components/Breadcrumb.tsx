@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 type Segment = { name: string; href?: string };
 
@@ -11,7 +12,7 @@ type BreadcrumbProps = {
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ customSegments }) => {
   const pathname = usePathname();
-
+  const t = useTranslations("Breadcrumb"); 
   const autoSegments: Segment[] = (() => {
     const parts = pathname.split("/").filter(Boolean);
     parts.shift();
@@ -20,8 +21,13 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customSegments }) => {
       const fixedSegment = segment === "developer" ? "developers" : segment;
 
       const url = "/" + [...parts.slice(0, index), fixedSegment].join("/");
+      // Translate segment name using your translation file, fallback to default
+      const translatedName = t(`segments.${fixedSegment}`, {
+        fallback: fixedSegment.replaceAll("-", " "),
+      });
       return {
-        name: segment.replaceAll("-", " "),
+        // name: segment.replaceAll("-", " "),
+        name: translatedName,
         href: url,
       };
     });
@@ -30,7 +36,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customSegments }) => {
   const segments: Segment[] =
     customSegments && customSegments.length > 0
       ? customSegments
-      : [{ name: "Home", href: "/" }, ...autoSegments];
+      : [{ name: t("home", { fallback: "Home" }), href: "/" }, ...autoSegments];
   const itemListElement = segments
     .filter((s) => s.href)
     .map((s, index) => ({

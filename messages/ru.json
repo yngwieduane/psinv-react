@@ -202,6 +202,10 @@
     }
   },
   "Mortgage_Tabs": {
+    "metadata": {
+      "title": "Калькулятор ипотеки ОАЭ | Property Shop Investment",
+      "description": "Рассчитайте ежемесячные ипотечные платежи для недвижимости в ОАЭ. Используйте калькулятор PSI, чтобы оценить стоимость кредита и спланировать инвестиции в недвижимость."
+    },
     "mortgage": "Калькулятор ипотеки",
     "amortization": "Амортизация",
     "refinancing": "Рефинансирование",
@@ -1451,6 +1455,60 @@
       }
     }
   },
+  "Breadcrumb": {
+    "home": "Главная",
+    "units": "Объекты",
+    "segments": {
+      "contact-us": "Связаться с нами",
+      "developers": "Разработчики",
+      "projects": "Проекты",
+      "mortgage-calculator": "Калькулятор ипотеки",
+      "newsletter": "Новости",
+      "articles": "Статьи",
+      "blog": "Блог",
+      "abu-dhabi": "Абу-Даби",
+      "dubai": "Дубай",
+      "sharjah": "Шарджа",
+      "saadiyat-island": "Остров Саадият",
+      "yas-island": "Остров Яс",
+      "al-reem-island": "Остров Аль-Рим",
+      "units": "Юниты",
+       "main-branch": "Главный офис PSI",
+      "psi-assets": "PSI Assets",
+      "dubai-hills-branch": "Филиал Dubai Hills",
+      "mamsha-saadiyat-branch": "Филиал Mamsha Saadiyat",
+      "waters-edge-branch": "Филиал Waters Edge",
+      "st-regis-office": "Офис St. Regis",
+      "palm-jumeirah-branch": "Филиал Palm Jumeirah",
+      "conrad-abu-dhabi-etihad-towers": "Conrad Abu Dhabi Etihad Towers",
+      "benelux-branch": "Филиал Benelux",
+      "business-bay-branch": "Филиал Business Bay",
+      "uae-real-estate-trends": "Тенденции рынка недвижимости ОАЭ",
+  "why-the-uae-offers-attractive-property-investment-opportunities": "Почему ОАЭ предлагает привлекательные возможности инвестирования в недвижимость",
+  "the-second-home-surge-why-the-world-is-buying-vacation-homes-in-the-uae": "Рост спроса на вторые дома: почему мир покупает дома для отдыха в ОАЭ",
+  "why-psi-is-your-winning-partner-in-uae-real-estate-for-2026": "Почему PSI — ваш надежный партнер в недвижимости ОАЭ на 2026 год",
+  "property-shop-investment-psi-raising-the-bar-in-the-uae-real-estate-industry": "Property Shop Investment PSI поднимает стандарты рынка недвижимости в ОАЭ",
+  "psi-awards-2025-a-night-of-excellence-momentum-and-unforgettable-triumphs": "Премия PSI 2025: ночь совершенства, динамики и незабываемых побед",
+  "property-shop-investment-psi-wins-top-1-ranking-at-rak-awards-2026": "Property Shop Investment PSI занимает первое место на RAK Awards 2026",
+  "rules-and-regulations": "Правила и положения",
+  "real-estate-regulations-shaping-the-uae-market": "Регулирование недвижимости, формирующее рынок ОАЭ",
+  "the-role-of-top-real-estate-agencies-in-shaping-abu-dhabis-property-market": "Роль ведущих агентств недвижимости в формировании рынка Абу-Даби",
+  "property-shop-investment-recognized-as-top-performing-agency-at-aldar-awards-2025": "Property Shop Investment признан лучшим агентством на Aldar Awards 2025",
+  "psi-recognized-by-modon-as-a-top-performing-real-estate-agency-in-abu-dhabi": "PSI признан Modon лучшим агентством недвижимости в Абу-Даби",
+  "current-state-of-the-uae-property-market": "Текущее состояние рынка недвижимости ОАЭ",
+  "why-capital-preservation-is-driving-high-net-worth-buyers-toward-uae-real-estate": "Почему сохранение капитала привлекает состоятельных покупателей к недвижимости ОАЭ",
+  "uae-steel-excellence-emirates-building-systems-secures-major-oman-cultural-complex-contract": "Превосходство в сталелитейной отрасли ОАЭ: Emirates Building Systems получает крупный контракт на культурный комплекс в Омане",
+  "why-uae-office-spaces-are-the-hottest-investment-of-2026": "Почему офисные площади в ОАЭ — самый горячий инвестиционный объект 2026 года",
+  "smart-cities-and-their-impact-on-uae-real-estate": "Умные города и их влияние на рынок недвижимости ОАЭ",
+  "jumeirah-residences-al-maryah-island-a-new-icon-for-abu-dhabi": "Жилой комплекс Jumeirah на острове Аль-Мария: новая икона Абу-Даби",
+  "ras-al-khaimah-property-prices-expected-to-rise-in-2026": "Ожидается рост цен на недвижимость в Рас-эль-Хайме в 2026 году",
+  "supply-and-demand-dynamics-in-the-uae-property-market": "Динамика спроса и предложения на рынке недвижимости ОАЭ",
+  "why-families-are-choosing-to-buy-earlier-in-the-uae-property-cycle": "Почему семьи предпочитают покупать раньше в цикле рынка недвижимости ОАЭ",
+  "why-buyers-are-prioritizing-community-design-over-unit-size-in-the-uae": "Почему покупатели отдают приоритет дизайну сообщества над размером квартиры в ОАЭ",
+  "why-smaller-homes-with-smart-layouts-are-gaining-popularity-in-the-uae": "Почему небольшие дома с умной планировкой становятся популярными в ОАЭ",
+  "the-rise-of-15-minute-communities-in-dubai-abu-dhabi": "Рост 15-минутных сообществ в Дубае и Абу-Даби"
+    }
+  },
   "ListYourPropertyPage": {
     "metadata": {
       "title": "Разместите свою недвижимость с - PSI",
@@ -1661,6 +1719,26 @@
       }
     }
   },
+  "ContactPage": {
+    "metadata": {
+      "title": "Свяжитесь с нашей командой по недвижимости в ОАЭ | Property Shop Investment",
+      "description": "Есть вопросы о недвижимости в ОАЭ? Свяжитесь с Property Shop Investment сегодня для получения экспертных советов по инвестициям в недвижимость, новым проектам и возможностям приобретения недвижимости."
+    },
+    "title": "Свяжитесь с нами",
+    "inquire": "Запросить информацию",
+    "map": "Карта",
+    "satellite": "Спутник",
+    "phoneNA": "—"
+  },
+  "ContactInquiryForm": {
+    "placeholders": {
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "email": "Электронная почта",
+      "phone": "Телефон",
+      "message": "Ваше сообщение"
+    }
+  },
   "InquiryFormProject": {
     "title": "Запрос",
     "fields": {
@@ -1869,10 +1947,6 @@
         "status": "Статус этого объекта: {status}."
       }
     }
-  },
-  "Breadcrumbs": {
-    "home": "Главная",
-    "units": "Объекты"
   },
   "HomeSearch": {
     "Units": "Объекты",
@@ -2087,6 +2161,7 @@
         }
       }
     },
+    
     "FutureHome": {
       "title": "Дом вашей мечты в ОАЭ",
       "subtitlePart1": "Пусть путь к вашему",

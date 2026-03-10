@@ -202,6 +202,10 @@
     }
   },
   "Mortgage_Tabs": {
+    "metadata": {
+      "title": "حاسبة الرهن العقاري في الإمارات | Property Shop Investment",
+      "description": "احسب دفعات الرهن العقاري الشهرية للعقارات في الإمارات. استخدم حاسبة الرهن العقاري من PSI لتقدير تكاليف القرض والتخطيط لاستثمارك العقاري."
+    },
     "mortgage": "حاسبة الرهن العقاري",
     "amortization": "جدول السداد",
     "refinancing": "إعادة التمويل",
@@ -1481,6 +1485,10 @@
     }
   },
   "ContactPage": {
+    "metadata": {
+      "title": "تواصل مع فريقنا للعقارات في الإمارات | Property Shop Investment",
+      "description": "هل لديك أسئلة حول العقارات في الإمارات؟ تواصل مع Property Shop Investment اليوم للحصول على إرشادات خبراء حول الاستثمارات العقارية والمشاريع الجديدة وفرص العقارات."
+    },
     "title": "تواصل معنا",
     "inquire": "استفسار",
     "map": "الخريطة",
@@ -5364,6 +5372,58 @@
       "a21": "نعم يمكنك ذلك مع PSI. نوفر خدمات إدارة التأجير طويلة الأمد، سواء كانت الوحدة مفروشة أو غير مفروشة، لضمان صيانة العقار وتحقيق عائد استثماري ثابت ومستمر.",
       "q22": "هل أستثمر في العملات الرقمية أم في العقارات؟",
       "a22": "هناك العديد من مزايا استثمار عملاتك الرقمية في شراء العقارات في الإمارات مثل: <ul class='list-none pl-4 mt-2 space-y-2'><li>1. أصل ملموس ذو قيمة حقيقية لأن الناس دائمًا بحاجة إلى السكن.</li><li>2. يمكنك دائمًا رفع قيمة عقارك بطرق متعددة.</li><li>3. تدفق نقدي سلبي ثابت.</li><li>4. العقارات أقل مخاطرة وتوفر عوائد أكثر استقرارًا.</li><li>5. تواصل معنا اليوم لاستكشاف خيارات PSI لتحقيق دخل ثابت ومستدام مع نمو في القيمة.</li></ul>"
+    }
+  },
+  "Breadcrumb": {
+    "home": "الرئيسية",
+    "segments": {
+      "contact-us": "اتصل بنا",
+      "developers": "المطورون",
+      "projects": "المشاريع",
+      "mortgage-calculator": "حاسبة الرهن العقاري",
+      "newsletter": "النشرة الإخبارية",
+      "articles": "المقالات",
+      "blog": "المدونة",
+      "abu-dhabi": "أبوظبي",
+      "dubai": "دبي",
+      "sharjah": "الشارقة",
+      "saadiyat-island": "جزيرة السعديات",
+      "yas-island": "جزيرة ياس",
+      "al-reem-island": "جزيرة الريم",
+      "main-branch": "المكتب الرئيسي",
+      "psi-assets": "أصول PSI",
+      "dubai-hills-branch": "فرع دبي هيلز",
+      "mamsha-saadiyat-branch": "فرع ممشى السعديات",
+      "waters-edge-branch": "فرع ووترز إيدج",
+      "st-regis-office": "مكتب سانت ريجيس",
+      "palm-jumeirah-branch": "فرع نخلة جميرا",
+      "conrad-abu-dhabi-etihad-towers": "كونراد أبراج الاتحاد أبوظبي",
+      "benelux-branch": "فرع بنلوكس",
+      "business-bay-branch": "فرع الخليج التجاري",
+      "uae-real-estate-trends": "اتجاهات سوق العقارات في الإمارات",
+  "why-the-uae-offers-attractive-property-investment-opportunities": "لماذا تقدم الإمارات فرص استثمارية جذابة في العقارات",
+  "the-second-home-surge-why-the-world-is-buying-vacation-homes-in-the-uae": "ارتفاع الطلب على المنازل الثانية: لماذا يشتري العالم منازل عطلات في الإمارات",
+  "why-psi-is-your-winning-partner-in-uae-real-estate-for-2026": "لماذا تعتبر PSI شريكك الفائز في سوق العقارات الإماراتي لعام 2026",
+  "property-shop-investment-psi-raising-the-bar-in-the-uae-real-estate-industry": "Property Shop Investment PSI ترفع مستوى صناعة العقارات في الإمارات",
+  "psi-awards-2025-a-night-of-excellence-momentum-and-unforgettable-triumphs": "جوائز PSI 2025: ليلة من التميز والزخم والانتصارات التي لا تُنسى",
+  "property-shop-investment-psi-wins-top-1-ranking-at-rak-awards-2026": "Property Shop Investment PSI تفوز بالمركز الأول في جوائز رأس الخيمة 2026",
+  "rules-and-regulations": "القوانين واللوائح",
+  "real-estate-regulations-shaping-the-uae-market": "لوائح العقارات التي تشكل سوق الإمارات",
+  "the-role-of-top-real-estate-agencies-in-shaping-abu-dhabis-property-market": "دور أفضل وكالات العقارات في تشكيل سوق أبوظبي",
+  "property-shop-investment-recognized-as-top-performing-agency-at-aldar-awards-2025": "تم الاعتراف بـ Property Shop Investment كأفضل وكالة أداء في جوائز الدار 2025",
+  "psi-recognized-by-modon-as-a-top-performing-real-estate-agency-in-abu-dhabi": "تم الاعتراف بـ PSI من قبل مدن كأفضل وكالة عقارية أداءً في أبوظبي",
+  "current-state-of-the-uae-property-market": "الحالة الحالية لسوق العقارات في الإمارات",
+  "why-capital-preservation-is-driving-high-net-worth-buyers-toward-uae-real-estate": "لماذا يدفع الحفاظ على رأس المال المشترين ذوي الثروات العالية نحو العقارات في الإمارات",
+  "uae-steel-excellence-emirates-building-systems-secures-major-oman-cultural-complex-contract": "تميز قطاع الحديد الإماراتي: Emirates Building Systems تحصل على عقد كبير لمجمع ثقافي في عمان",
+  "why-uae-office-spaces-are-the-hottest-investment-of-2026": "لماذا تعتبر المكاتب في الإمارات الاستثمار الأكثر رواجاً لعام 2026",
+  "smart-cities-and-their-impact-on-uae-real-estate": "المدن الذكية وتأثيرها على سوق العقارات في الإمارات",
+  "jumeirah-residences-al-maryah-island-a-new-icon-for-abu-dhabi": "مساكن جميرا جزيرة المارية: أيقونة جديدة لأبوظبي",
+  "ras-al-khaimah-property-prices-expected-to-rise-in-2026": "من المتوقع ارتفاع أسعار العقارات في رأس الخيمة عام 2026",
+  "supply-and-demand-dynamics-in-the-uae-property-market": "ديناميكيات العرض والطلب في سوق العقارات الإماراتي",
+  "why-families-are-choosing-to-buy-earlier-in-the-uae-property-cycle": "لماذا تختار العائلات الشراء مبكراً في دورة سوق العقارات الإماراتي",
+  "why-buyers-are-prioritizing-community-design-over-unit-size-in-the-uae": "لماذا يعطي المشترون الأولوية لتصميم المجتمع على حجم الوحدة في الإمارات",
+  "why-smaller-homes-with-smart-layouts-are-gaining-popularity-in-the-uae": "لماذا تزداد شعبية المنازل الصغيرة ذات التصميم الذكي في الإمارات",
+  "the-rise-of-15-minute-communities-in-dubai-abu-dhabi": "صعود المجتمعات ذات الـ 15 دقيقة في دبي وأبوظبي"
     }
   },
   "ListYourPropertyPage": {
