@@ -62,7 +62,7 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
     marketingTitle = property.marketingTitle || '';
 
     return (
-        <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[80] flex items-start justify-center p-4 pt-6 md:pt-10">
             {/* Backdrop with blur */}
             <div
                 className="absolute inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity"
@@ -70,19 +70,19 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
             />
 
             {/* Modal Content */}
-            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl h-[85vh] overflow-hidden flex flex-col md:flex-row relative z-10 animate-[scaleIn_0.3s_ease-out]">
+            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl h-[88vh] overflow-hidden flex flex-col md:flex-row relative z-10 animate-[scaleIn_0.3s_ease-out]">
 
                 {/* Close Button - Absolute */}
                 <button
                     onClick={onClose}
-                    className="cursor-pointer absolute top-4 right-4 z-50 bg-white/90 hover:bg-white text-gray-500 hover:text-red-500 p-2 rounded-full shadow-lg transition-all transform hover:scale-110"
+                    className="cursor-pointer absolute top-2 md:top-4 right-4 z-50 bg-white/90 hover:bg-white text-gray-500 hover:text-red-500 p-2 rounded-full shadow-lg transition-all transform hover:scale-110"
                 >
                     <X size={20} />
                 </button>
 
                 {/* LEFT: Image Gallery (60%) */}
                 <div className="md:w-4/6 h-[40vh] md:h-full relative bg-gray-100 group ">
-                    <div className="absolute top-4 left-4 z-20 max-w-[calc(100%-2rem)] md:max-w-xs bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/20 transition-all hover:bg-white/95 dark:bg-gray-800 dark:border dark:border-gray-700 dark:hover:bg-gray-800">
+                    <div className="absolute top-12 md:top-4 left-4 z-20 max-w-[calc(100%-2rem)] md:max-w-xs bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/20 transition-all hover:bg-white/95 dark:bg-gray-800 dark:border dark:border-gray-700 dark:hover:bg-gray-800">
                         {/* Title & Location */}
                         <div className="mb-4">
                             <h3 className="text-lg font-bold text-gray-800 leading-tight mb-1 dark:text-white">
@@ -164,14 +164,17 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
                     >
                         <ChevronRight size={24} />
                     </button>
+                    <span className="block md:hidden absolute top-2 left-5 z-50 bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium border border-white/10">
+                        {currentImageIndex + 1} / {images.length}
+                    </span>
 
                     {/* Image Counter & Tools */}
-                    <div className="absolute top-4 right-4 flex gap-2 z-20">
-                        <span className="bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium border border-white/10">
+                    <div className="absolute top-12 md:top-4 right-4 flex gap-2 z-20">
+                        <span className="hidden md:block bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium border border-white/10">
                             {currentImageIndex + 1} / {images.length}
                         </span>
                     </div>
-                    <div className="absolute bottom-4 right-4 flex gap-2 z-10">
+                    <div className="absolute bottom-10 md:bottom-4 right-4 flex gap-2 z-10">
                         <button
                             onClick={async () => {
                                 if (navigator.share) {
@@ -210,22 +213,22 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
                     </div>
 
                     {/* Price Tag Overlay on Mobile/Desktop Image */}
-                    <div className="absolute bottom-6 left-6 text-white z-10 pointer-events-none">
+                    <div className="absolute bottom-10 md:bottom-6 left-6 text-white z-10 pointer-events-none">
                         <div className="flex items-center gap-2 mb-1">
                             <span className="bg-secondary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">For {maincategory}</span>
                             {property.reraStrNo && <span className="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border border-white/30">{property.reraStrNo}</span>}
                         </div>
-                        <h2 className="text-3xl font-bold font-serif shadow-black drop-shadow-md">
+                        <h2 className="text-2xl md:text-3xl font-bold font-serif shadow-black drop-shadow-md">
                             <PriceConvert price={Number(price) || 0} minDecimal='0' />
                         </h2>
                     </div>
                 </div>
 
                 {/* RIGHT: Details & Form (40%) */}
-                <div className="md:w-2/5 h-full bg-white flex flex-col dark:bg-gray-800 dark:border dark:border-gray-700">
+                <div className="md:w-2/5 h-[48vh] md:h-full bg-white flex flex-col dark:bg-gray-800 dark:border dark:border-gray-700">
 
                     {/* Scrollable Content */}
-                    <div className="flex-1 overflow-y-auto p-6 md:p-8 mt-10">
+                    <div className="flex-1 overflow-y-auto p-6 md:p-8 mt-0 md:mt-10">
 
                         {/* Quick Register Form */}
                         <InquiryForm hideFeedbackButton={true} />
