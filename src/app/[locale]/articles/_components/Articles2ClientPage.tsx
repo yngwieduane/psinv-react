@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
 import { Search, Clock, User, ChevronLeft, ChevronRight, Home } from "lucide-react";
 import Breadcrumb from "../../_components/Breadcrumb";
@@ -147,51 +147,51 @@ function AreaGuideCard({ city }: { city: { name: string, image: string, count: n
 }
 
 export default function Articles2ClientPage({ initialArticles }: { initialArticles: FirestoreArticle[] }) {
-    const [query, setQuery] = useState("");
-    const [currentPage, setCurrentPage] = useState(1);
-    const ITEMS_PER_PAGE = 6;
-    const allArticles = initialArticles;
+const locale = useLocale();
+const [query, setQuery] = useState("");
+const [currentPage, setCurrentPage] = useState(1);
+const ITEMS_PER_PAGE = 6;
 
-    // Recent articles excluding Area Guides
-    const recentArticles = useMemo(() => {
-        return initialArticles.filter((n) => {
-            const key = (n.categoryKey || "").toLowerCase();
-            const cat = (n.category || "").toLowerCase();
-            return key !== "area_guide" && !cat.includes("area guide");
-        });
-    }, [initialArticles]);
-    const totalPages = Math.ceil(recentArticles.length / ITEMS_PER_PAGE);
+const filteredRecentArticles = useMemo(() => {
+    const q = query.trim().toLowerCase();
 
-    const visibleRecentArticles = recentArticles.slice(
-        (currentPage - 1) * ITEMS_PER_PAGE,
-        currentPage * ITEMS_PER_PAGE
-    );
+    const base = initialArticles.filter((n) => {
+        const key = (n.categoryKey || "").toLowerCase();
+        const cat = (n.category || "").toLowerCase();
+        return key !== "area_guide" && !cat.includes("area guide");
+    });
 
-    const filtered = useMemo(() => {
-        const q = query.trim().toLowerCase();
-        if (!q) return initialArticles;
+    if (!q) return base;
 
-        return initialArticles.filter((n) => {
-            const haystack = [
-                n.title,
-                n.summary,
-                n.category,
-                n.slug,
-                n.categoryKey,
-            ]
-                .filter(Boolean)
-                .join(" ")
-                .toLowerCase();
+    return base.filter((n) => {
+        const localizedTitle = n.translations?.[locale]?.title || n.title || "";
+        const localizedSummary = n.translations?.[locale]?.summary || n.summary || "";
 
-            return haystack.includes(q);
-        });
-    }, [query, initialArticles]);
+        const haystack = [
+            localizedTitle,
+            localizedSummary,
+            n.category,
+            n.slug,
+            n.categoryKey,
+        ]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
 
-    // Reset page when query changes
-    useMemo(() => {
-        setCurrentPage(1);
-    }, [query]);
+        return haystack.includes(q);
+    });
+}, [query, initialArticles, locale]);
 
+useEffect(() => {
+    setCurrentPage(1);
+}, [query]);
+
+const totalPages = Math.ceil(filteredRecentArticles.length / ITEMS_PER_PAGE);
+
+const visibleRecentArticles = filteredRecentArticles.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+);
     // Pagination Logic
     // const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
     // const visibleArticles = filtered.slice(
@@ -257,7 +257,7 @@ export default function Articles2ClientPage({ initialArticles }: { initialArticl
 
                     </div>
 
-                    {filtered.length === 0 && (
+                    {filteredRecentArticles.length === 0 && (
                         <div className="text-center py-20">
                             <p className="text-gray-400 text-lg">No articles found matching your search.</p>
                         </div>
