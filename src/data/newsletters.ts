@@ -2,6 +2,24 @@
 
 export const newsletters = [
   {
+    title: 'Tara - 1-3 Bedroom Apartments  ',
+    date: '9 March 2026',
+    image: '/images/newsletter/tara-newsletter.webp',
+    link: 'https://marketing.psinv.net/-temporary-slug-34ad4019-777e-429b-86ef-9ad9eee6713d?hs_preview=rdKWeBqS-376242799843',
+  },
+  {
+    title: 'Reserve your seat. Exclusive offers await',
+    date: '27 February 2026',
+    image: '/images/newsletter/psi-damac.webp',
+    link: 'https://marketing.psinv.net/-temporary-slug-650210c2-2860-43e3-859c-c1d050326ee5?hs_preview=uZeWHtxh-369793605848',
+  },
+  {
+    title: 'Secure Your Seat for 26 Feb Suhoor Event! ',
+    date: '24 February 2026',
+    image: '/images/newsletter/psi-modon.webp',
+    link: 'https://marketing.psinv.net/-temporary-slug-1ac6933a-548a-449d-919c-6e89d86953ed?hs_preview=RRBPNahb-368343400646',
+  },
+  {
     title: 'Join Our Roadshow On The 14th & 15th Feb - Book Your Slot ',
     date: '13 February 2026',
     image: '/images/newsletter/roadshow-ohana.webp',
