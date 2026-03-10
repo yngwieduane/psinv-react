@@ -27,10 +27,17 @@ const ProfilePage = () => {
     }
 
     return (
-        <div className="min-h-screen pt-32 pb-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
+        <div className="min-h-screen pt-42 pb-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
             <div className="container mx-auto px-6 max-w-4xl">
                 <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden transition-colors duration-300">
-                    <div className="bg-primary/5 h-32 md:h-48 relative">
+                    <div className="h-32 md:h-48 relative w-full overflow-hidden brightness-90 dark:brightness-75">
+                        <Image
+                            src="/images/psi-office-featured.webp"
+                            alt="Profile Header Background"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
                     </div>
 
                     <div className="px-8 pb-8">
