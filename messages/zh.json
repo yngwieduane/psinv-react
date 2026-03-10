@@ -1033,6 +1033,35 @@
     "unit_types": "单位类型",
     "zone_type": "区域类型"
   },
+  "ContactPage": {
+    "metadata": {
+      "title": "联系阿联酋房地产团队 | Property Shop Investment",
+      "description": "对阿联酋房产有疑问吗？立即联系 Property Shop Investment，获取关于房地产投资、新项目和房产机会的专业指导。"
+    },
+    "title": "联系我们",
+    "inquire": "咨询",
+    "map": "地图",
+    "satellite": "卫星",
+    "phoneNA": "—"
+  },
+  "ContactInquiryForm": {
+    "placeholders": {
+      "firstName": "名字",
+      "lastName": "姓氏",
+      "email": "电子邮箱",
+      "phone": "电话号码",
+      "message": "您的留言"
+    },
+    "buttons": {
+      "submit": "提交",
+      "submitting": "提交中..."
+    },
+    "alerts": {
+      "success": "您的咨询已成功发送。",
+      "error": "出现错误。",
+      "serverError": "服务器错误，请稍后再试。"
+    }
+  },
   "InquiryForm": {
     "title": "登记信息",
     "fields": {
@@ -1073,6 +1102,8 @@
       "submit": "提交",
       "submitting": "提交中…"
     },
+    
+    
     "fineprint": {
       "text": "点击“提交”即表示您同意我们的<terms>条款与条件</terms>和<privacy>隐私政策</privacy>。"
     },
@@ -1625,7 +1656,32 @@
       "palm-jumeirah-branch": "朱美拉棕榈岛分公司",
       "conrad-abu-dhabi-etihad-towers": "阿布扎比康莱德阿提哈德塔",
       "benelux-branch": "比荷卢分公司",
-      "business-bay-branch": "商业湾分公司"
+      "business-bay-branch": "商业湾分公司",
+      "uae-real-estate-trends": "阿联酋房地产趋势",
+      "why-the-uae-offers-attractive-property-investment-opportunities": "为什么阿联酋提供有吸引力的房地产投资机会",
+      "the-second-home-surge-why-the-world-is-buying-vacation-homes-in-the-uae": "第二套住房热潮：为什么全球买家在阿联酋购买度假房",
+      "why-psi-is-your-winning-partner-in-uae-real-estate-for-2026": "为什么 PSI 是您在 2026 年阿联酋房地产中的得力伙伴",
+      "property-shop-investment-psi-raising-the-bar-in-the-uae-real-estate-industry": "Property Shop Investment PSI 提升阿联酋房地产行业标准",
+      "psi-awards-2025-a-night-of-excellence-momentum-and-unforgettable-triumphs": "PSI 奖 2025：卓越之夜、动力与难忘的胜利",
+      "property-shop-investment-psi-wins-top-1-ranking-at-rak-awards-2026": "Property Shop Investment PSI 荣获 RAK 奖 2026 第一名",
+      "rules-and-regulations": "规则与条例",
+      "real-estate-regulations-shaping-the-uae-market": "塑造阿联酋市场的房地产法规",
+      "the-role-of-top-real-estate-agencies-in-shaping-abu-dhabis-property-market": "顶级房地产机构在塑造阿布扎比房地产市场中的作用",
+      "property-shop-investment-recognized-as-top-performing-agency-at-aldar-awards-2025": "Property Shop Investment 被认可为 Aldar 奖 2025 的最佳表现机构",
+      "psi-recognized-by-modon-as-a-top-performing-real-estate-agency-in-abu-dhabi": "PSI 被 Modon 认可为阿布扎比最佳表现房地产机构",
+      "current-state-of-the-uae-property-market": "阿联酋房地产市场现状",
+      "why-capital-preservation-is-driving-high-net-worth-buyers-toward-uae-real-estate": "为何资金保值驱动高净值买家投资阿联酋房地产",
+      "uae-steel-excellence-emirates-building-systems-secures-major-oman-cultural-complex-contract": "阿联酋钢铁卓越：Emirates Building Systems 获得阿曼大型文化综合体合同",
+      "why-uae-office-spaces-are-the-hottest-investment-of-2026": "为何阿联酋办公空间是 2026 年最热门投资",
+      "smart-cities-and-their-impact-on-uae-real-estate": "智慧城市及其对阿联酋房地产的影响",
+      "jumeirah-residences-al-maryah-island-a-new-icon-for-abu-dhabi": "朱美拉住宅·阿尔玛丽亚岛：阿布扎比的新地标",
+      "ras-al-khaimah-property-prices-expected-to-rise-in-2026": "拉斯海玛房地产价格预计在 2026 年上涨",
+      "supply-and-demand-dynamics-in-the-uae-property-market": "阿联酋房地产市场的供需动态",
+      "why-families-are-choosing-to-buy-earlier-in-the-uae-property-cycle": "为何家庭选择在阿联酋房地产周期中更早购房",
+      "why-buyers-are-prioritizing-community-design-over-unit-size-in-the-uae": "为何买家在阿联酋更重视社区设计而非单位面积",
+      "why-smaller-homes-with-smart-layouts-are-gaining-popularity-in-the-uae": "为何小型智能布局住宅在阿联酋越来越受欢迎",
+      "the-rise-of-15-minute-communities-in-dubai-abu-dhabi": "迪拜与阿布扎比 15 分钟社区的崛起"
+
     }
   },
   "ListYourPropertyPage": {
