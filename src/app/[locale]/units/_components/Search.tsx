@@ -18,7 +18,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
     const locale = useLocale();
     const router = useRouter();
     const { currency } = useCurrency();
-    const searchParams = useSearchParams();
+    const searchParams = useSearchParams(); 
 
     // Filter States - Initialized from URL params
     const [propertyId, setPropertyId] = useState(searchParams.get('propertyId') || '');
@@ -241,7 +241,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                 <Listbox value={propertyType} onChange={setPropertyType}>
                                     <div className="relative">
                                         <ListboxButton className="grid w-full cursor-pointer grid-cols-1 rounded-xl bg-white border border-gray-200 py-3.5 pl-4 pr-4 text-left text-gray-700 outline-none focus:border-[#353455] transition-all hover:bg-gray-50 dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400">
-                                            <span className="col-start-1 row-start-1 truncate">{getSelectedPropertyTypeName(propertyType)}</span>
+                                            <span className="col-start-1 row-start-1 truncate">{propertyType || t('any')}</span>
                                             <ChevronUpDownIcon aria-hidden="true" className="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400" />
                                         </ListboxButton>
                                         <ListboxOptions transition className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm dark:bg-gray-800 dark:border dark:border-gray-700 dark:text-white dark:focus:bg-gray-800 dark:focus:bg-gray-800 dark:focus:border-gray-400">
@@ -256,7 +256,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                                         {t(group.groupName.toLowerCase())}
                                                     </div>
                                                     {group.items.map((option: any) => (
-                                                        <ListboxOption key={option.lookupId} value={option.lookupId} className="group relative cursor-pointer py-2 pl-6 pr-9 text-gray-900 select-none data-focus:bg-gray-100 dark:text-white dark:data-focus:bg-gray-700">
+                                                        <ListboxOption key={option.lookupId} value={option.lookupName} className="group relative cursor-pointer py-2 pl-6 pr-9 text-gray-900 select-none data-focus:bg-gray-100 dark:text-white dark:data-focus:bg-gray-700">
                                                             <span className="block truncate font-normal group-data-selected:font-semibold">{option.lookupName}</span>
                                                             <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-[#353455] group-not-data-selected:hidden">
                                                                 <CheckIcon aria-hidden="true" className="size-5" />
@@ -291,7 +291,7 @@ export default function Search({ placeholder }: { placeholder?: string }) {
                                                         <button
                                                             key={b}
                                                             onClick={() => setBeds(beds === b ? null : b)}
-                                                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors dark:text-white${beds === b ? 'bg-[#353455] text-white dark:bg-gray-900' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600'}`}
+                                                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors dark:text-white ${beds === b ? 'bg-[#353455] text-white dark:bg-gray-900' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600'}`}
                                                             type="button"
                                                         >
                                                             {b}

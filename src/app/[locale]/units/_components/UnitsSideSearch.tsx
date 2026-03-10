@@ -44,7 +44,7 @@ export default function UnitsSideSearchNew({ onChange }: { onChange: any }) {
     maxPriceDefault,
   ]);
   const [beds, setBeds] = useState<number | null>(null);
-  const [baths, setBaths] = useState<number | null>(null);
+  const [baths, setBaths] = useState<number | null>(null); 
   // Changed to array for multi-select
   const [selectedPropertyTypes, setSelectedPropertyTypes] = useState<string[]>([]);
   const [propertyTypesList, setPropertyTypesList] = useState<any[]>([]);
