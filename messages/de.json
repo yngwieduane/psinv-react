@@ -976,6 +976,10 @@
     }
   },
   "ProjectPage": {
+    "metadata":{
+      "title":"Immobilien in Abu Dhabi - Property Shop Investment",
+      "description":"Immobilien in Abu Dhabi - PSI - Entdecken Sie unsere beeindruckenden Immobilienprojekte - Property Shop Investment - Immobilien zum Kaufen oder Mieten"
+    },
     "overview": "Überblick",
     "gallery": "Galerie",
     "floor_plan": "Grundriss",
