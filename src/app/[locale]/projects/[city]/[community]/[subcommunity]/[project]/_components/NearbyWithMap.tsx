@@ -118,7 +118,24 @@ const NearbysWithMap = ({
 
         return () => clearTimeout(timeout);
     }, [latitude, longitude, distance]);
-    const data = results.sort((a, b) => parseInt(b.longitude) - parseInt(a.longitude)).map((dataItem, index) => ({ ...dataItem, zIndex: index }));
+
+    //filter duplicate, then sort and add index
+    const uniqueNearBys = new Set();
+    const uniqueDataOptimized = results.filter((item) => {
+        const key = `${item.landmarkEnglishName}||${item.addressLine1English}`;
+        if(uniqueNearBys.has(key)) {
+            return false;
+        }
+        uniqueNearBys.add(key);
+        return true;
+    })
+    .sort((a, b) => parseInt(b.longitude) - parseInt(a.longitude))
+    .map((item, index) => ({
+        ...item,
+        zIndex: index,
+    }));
+
+    //const data = results.sort((a, b) => parseInt(b.longitude) - parseInt(a.longitude)).map((dataItem, index) => ({ ...dataItem, zIndex: index }));
 
     const mainlat = parseFloat(latitude);
     const mainlng = parseFloat(longitude);
@@ -169,7 +186,7 @@ const NearbysWithMap = ({
                     <h2 className="text-xl text-gray-500 mb-8 dark:text-white">{propname}</h2>
                     <div className="dark:bg-gray-800 dark:text-white dark:border-gray-700 bg-white rounded-3xl p-8 border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 content-stretch">
                         <ul role="list" className="grid grid-cols-2 md:grid-cols-2 space-y-3 space-x-3 overflow-auto h-[70vh]  py-2">
-                            {data.slice(0, 20).map((post, index) => {
+                            {uniqueDataOptimized.slice(0, 20).map((post, index) => {
                                 const pointA: Coordinate = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
                                 const pointB: Coordinate = { lat: parseFloat(post.latitude), lng: parseFloat(post.longitude) };
 
@@ -262,7 +279,7 @@ const NearbysWithMap = ({
                                     >
                                         {renderCustomPin()}
                                     </AdvancedMarker>
-                                    <Directions latitude={latitude} longitude={longitude} data={data} chosenLandmark={chosenLandmark} />
+                                    <Directions latitude={latitude} longitude={longitude} data={uniqueDataOptimized} chosenLandmark={chosenLandmark} />
                                 </Map>
                             </APIProvider>
                         </div>
