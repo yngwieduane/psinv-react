@@ -119,17 +119,21 @@ const NearbysWithMap = ({
         return () => clearTimeout(timeout);
     }, [latitude, longitude, distance]);
 
+    //filter duplicate, then sort and add index
     const uniqueNearBys = new Set();
-    const uniqueDataOptimized = results.filter(item => {
+    const uniqueDataOptimized = results.filter((item) => {
         const key = `${item.landmarkEnglishName}||${item.addressLine1English}`;
         if(uniqueNearBys.has(key)) {
             return false;
         }
-        else{
-            uniqueNearBys.add(key);
-            return true;
-        }        
-    });
+        uniqueNearBys.add(key);
+        return true;
+    })
+    .sort((a, b) => parseInt(b.longitude) - parseInt(a.longitude))
+    .map((item, index) => ({
+        ...item,
+        zIndex: index,
+    }));
 
     //const data = results.sort((a, b) => parseInt(b.longitude) - parseInt(a.longitude)).map((dataItem, index) => ({ ...dataItem, zIndex: index }));
 
