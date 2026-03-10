@@ -146,9 +146,9 @@ export async function GET(request: NextRequest) {
     case 'seven palm hotel apartments':
       finquery = 'Seven Palm Hotel & Apartments'
       break;
-      case 'bg tower':
-        finquery = 'B.G. Tower'
-        break;
+    case 'bg tower':
+      finquery = 'B.G. Tower'
+      break;
     default:
       finquery = query
       break;
@@ -163,7 +163,7 @@ export async function GET(request: NextRequest) {
   };
 
   const response = await fetch(
-    "https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex=1&pageSize=1",
+    "https://integration.psi-crm.com/ExternalApis/GetAllProperties?pageIndex=1&pageSize=5",
     {
       method: "POST",
       headers: {
