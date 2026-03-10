@@ -939,6 +939,10 @@
     }
   },
   "ProjectPage": {
+    "metadata":{
+      "title":"Недвижимость Абу-Даби - Property Shop Investment",
+      "description":"Недвижимость Абу-Даби - PSI - Ознакомьтесь с нашими лучшими проектами недвижимости - Property Shop Investment - Покупка и аренда недвижимости"
+    },
     "overview": "Обзор",
     "gallery": "Галерея",
     "floor_plan": "План этажа",

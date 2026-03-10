@@ -980,6 +980,10 @@
     }
   },
   "ProjectPage": {
+    "metadata":{
+      "title":"阿布扎比房地产 - Property Shop Investment",
+      "description":"阿布扎比房地产 - PSI - 探索我们精彩的房地产项目 - Property Shop Investment - 房地产买卖与租赁"
+    },
     "overview": "概览",
     "gallery": "画廊",
     "floor_plan": "平面图",
