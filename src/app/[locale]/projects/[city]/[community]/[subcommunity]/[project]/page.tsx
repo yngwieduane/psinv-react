@@ -20,9 +20,14 @@ export async function generateMetadata(
 
     const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
     //const data = await fetch('http://localhost:3000/api/external/projects?query='+projectId)
+    // const posts = await data.json();
+    // const result = posts['result'][0];
     const posts = await data.json();
-    const result = posts['result'][0];
 
+        const result =
+    posts['result'].find(
+        (p: any) => p.propertyName.toLowerCase() === projectId.toLowerCase()
+    ) || posts['result'][0];
     // Construct Metadata
     const metatitle = "⚡ " + result['propertyName'] + " in " + result['community'] + " " + result['city'];
     const subCommunity = result["subCommunity"] ? result["subCommunity"] : "n-a";
@@ -65,11 +70,18 @@ export default async function ProjectPage({
 
     const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
     //const data = await fetch('http://localhost:3000/api/external/projects?query='+projectId)
-    const posts = await data.json()
+    // const posts = await data.json()
+    const posts = await data.json();
+    const result =
+    posts['result'].find(
+    (p: any) => p.propertyName.toLowerCase() === projectId.toLowerCase()
+  ) || posts['result'][0];
+
 
     return (
         <>
-            <PropertyPage data={posts['result'][0]} />
+            {/* <PropertyPage data={posts['result'][0]} /> */}
+            <PropertyPage data={result} />
         </>
     );
 }
