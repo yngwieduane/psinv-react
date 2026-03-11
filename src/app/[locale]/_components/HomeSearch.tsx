@@ -65,9 +65,11 @@ export default function HomeSearch() {
                     // Keep track of all for easy name lookup
                     const allTypes = data.map((item: any) => ({ lookupId: item.lookupId, lookupName: item.lookupName }));
                     setAllPropertyTypes(allTypes);
-
+                    const seen = new Set();
                     data.forEach((item: any) => {
                         const name = item.lookupName;
+                        if (seen.has(name)) return; // prevent duplicates
+                        seen.add(name);
                         let translatedName = name;
 
                         if (RESIDENTIAL_TYPES.includes(name)) {
@@ -123,7 +125,7 @@ export default function HomeSearch() {
         if (propertyId) params.set('propertyId', propertyId);
         if (communityId) params.set('communityId', communityId);
         if (propertyName) params.set('propertyName', propertyName);
-        if (propertyName) params.set('propertyName', propertyName);
+        //if (propertyName) params.set('propertyName', propertyName);
         if (sector) params.set('sector', sector);
         if (propertyType) params.set('propertyType', propertyType);
         if (category) params.set('category', category);
