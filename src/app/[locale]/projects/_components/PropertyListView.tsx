@@ -95,9 +95,9 @@ const PropertyListItem = (props: any) => {
 
     return (
         <div className="group dark:bg-gray-800 dark:border-gray-700 bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
-            <div className="flex flex-col md:flex-row h-full md:h-64">
+            <div className="flex flex-col md:flex-row items-stretch">
                 {/* Image Section - Left Side */}
-                <div className="relative w-full md:w-80 h-64 md:h-full flex-shrink-0">
+                <div className="relative w-full md:w-80 h-64 md:h-auto md:self-stretch flex-shrink-0">
                     {/* Mobile view swiper Thumb */}
                     <Link href={url} className="block md:hidden h-full w-full">
                         <ProjectsThumbsImagesSwiper featuredImage={imgFeatured} generalImages={props.data["generalImages"]} url={url} propertyName={props.data["propertyName"]} propertyPlan={props.data["propertyPlan"]} />

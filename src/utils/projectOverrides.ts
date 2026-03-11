@@ -46,6 +46,11 @@ export const PROJECTS: Record<string, PerSlug> = {
           remarks:
             'Rotation: Tara Park - Company, Campaign name: Metwally: Tara Park - Al Reem Island - Company - Newsletter',
         },
+        'shaza_tara_newsletter': {
+          campaign: 3583,
+          remarks:
+            'Rotation: Tara Park - Company, Campaign name: shaza: Tara-Newsletter',
+        },
       }),
     },
   },
