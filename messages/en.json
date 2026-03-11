@@ -5880,12 +5880,12 @@
       "newsletter" : "Newsletter",
       "articles" : "Articles",
       "blog" :"Blog",
-      "abu-dhabi" :"Abu-Dhabi",
+      "abu-dhabi" :"Abu Dhabi",
       "dubai" : "Dubai",
       "sharjah" :"Sharjah",
       "saadiyat-island": "Saadiyat-Island",
       "yas-island":"Yas-Island",
-      "al-reem-island":"Al-reem-island",
+      "al-reem-island":"Al reem island",
       "main-branch": "PSI Head Office",
       "psi-assets": "PSI Assets",
       "dubai-hills-branch": "Dubai Hills Branch",
@@ -5958,7 +5958,13 @@
       "blockchain-in-property-transactions-in-the-uae-how-crypto-and-digital-ledgers-are-shaping-real-estate":"Blockchain in Property Transactions in the UAE: How Crypto and Digital Ledgers Are Shaping Real Estate",
       "high-rise-living-vs-low-rise-communities-whats-best-for-families":"High-Rise Living vs. Low-Rise Communities: What’s Best for Families",
       "off-plan-vs-ready-property-the-smart-investors-guide-for-2026":"Off-Plan vs. Ready Property: The Smart Investor’s Guide for 2026",
-      "dubai-real-estate-2026-rental-market-stabilizes-as-supply-restraints-prices":"Dubai Real Estate 2026: Rental Market Stabilizes as Supply Restraints Prices"
+      "dubai-real-estate-2026-rental-market-stabilizes-as-supply-restraints-prices":"Dubai Real Estate 2026: Rental Market Stabilizes as Supply Restraints Prices",
+      "al-khaleej-al-arabi-st":"Al Khaleej Al Arabi St",
+      "subcommunity":"subcommunity",
+      "sky-tower":"Sky Tower",
+      "blue-sky-tower":"blue sky tower",
+      "photo-gallery":"photo gallery",
+      "shams-gate-district":"shams gate district"
     }
   },
   "ListYourPropertyPage": {
