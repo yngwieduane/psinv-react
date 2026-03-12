@@ -206,6 +206,16 @@ const nextConfig: NextConfig = {
         destination: '/:locale/projects/abu-dhabi/al-reem-island/marina-square/al-maha-tower/:path*',
         permanent: true,
       },
+      {
+        source: '/:locale(en|ar|de|ru|zh)/projects/abu-dhabi/al-reem-island/subcommunity/sky-tower/:path*',
+        destination: '/:locale/projects/abu-dhabi/al-reem-island/shams-gate-district/sky-tower/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ar|de|ru|zh)/projects/abu-dhabi/al-khaleej-al-arabi-st/subcommunity/blue-sky-tower/:path*',
+        destination: '/:locale/projects/abu-dhabi/al-khaleej-al-arabi-st/al-khaleej-al-arabi-st/blue-sky-tower/:path*',
+        permanent: true,
+      },
     ]
   },
   reactStrictMode: true,
