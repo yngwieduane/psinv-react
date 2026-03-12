@@ -5,63 +5,57 @@ import { BlogPost } from "@/data/blog";
 
 type GetBlogPostsResult = {
     posts: BlogPost[];
-    lastDate?: string;
+    totalPages: number;
+    totalPosts: number;
+    currentPage: number;
     hasMore: boolean;
 };
 
 export async function getBlogPosts(
+    page: number = 1,
     pageSize: number = 10,
-    startAfterDate?: string,
     queryText?: string
 ): Promise<GetBlogPostsResult> {
     try {
         const postsRef = db.collection("blog_posts");
-        let query = postsRef.orderBy("date", "desc");
+        const snapshot = await postsRef.orderBy("date", "desc").get();
 
-        // Search: Fetch limit logic (e.g. 50) and filter in memory since Firestore search is weak
+        let allPosts = snapshot.docs.map((d) => d.data() as BlogPost);
+
+        // Search filter in memory
         if (queryText && queryText.trim()) {
-            const snapshot = await postsRef.orderBy("date", "desc").limit(50).get();
-            const allFetched = snapshot.docs.map((d) => d.data() as BlogPost);
-
             const qLower = queryText.toLowerCase().trim();
-            const filtered = allFetched.filter(
+
+            allPosts = allPosts.filter(
                 (p) =>
                     (p.title || "").toLowerCase().includes(qLower) ||
                     (p.summary || "").toLowerCase().includes(qLower)
             );
-
-            return {
-                posts: JSON.parse(JSON.stringify(filtered)),
-                hasMore: false, // Disable paging for search results
-            };
         }
 
-        // Normal Pagination
-        if (startAfterDate) {
-            query = query.startAfter(startAfterDate);
-        }
+        const totalPosts = allPosts.length;
+        const totalPages = Math.max(1, Math.ceil(totalPosts / pageSize));
 
-        // Fetch one extra to determine hasMore
-        const snapshot = await query.limit(pageSize + 1).get();
+        const safePage = Math.min(Math.max(page, 1), totalPages);
+        const startIndex = (safePage - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
 
-        const posts = snapshot.docs.map((d) => d.data() as BlogPost);
-        const hasMore = posts.length > pageSize;
-
-        if (hasMore) {
-            posts.pop(); // Remove the extra one
-        }
-
-        const lastDate = posts.length > 0 ? posts[posts.length - 1].date : undefined;
+        const paginatedPosts = allPosts.slice(startIndex, endIndex);
 
         return {
-            posts: JSON.parse(JSON.stringify(posts)),
-            lastDate,
-            hasMore,
+            posts: JSON.parse(JSON.stringify(paginatedPosts)),
+            totalPages,
+            totalPosts,
+            currentPage: safePage,
+            hasMore: safePage < totalPages,
         };
     } catch (error) {
         console.error("Error fetching blog posts via Server Action:", error);
         return {
             posts: [],
+            totalPages: 1,
+            totalPosts: 0,
+            currentPage: 1,
             hasMore: false,
         };
     }
