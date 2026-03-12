@@ -832,8 +832,8 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 open={isMobileMenuOpen}
                 onClose={setIsMobileMenuOpen}
             >
-                <div className="fixed inset-0 z-50 bg-gray-900/20 backdrop-blur-sm" />
-                <DialogPanel className="fixed inset-y-0 right-0 z-99 w-full overflow-y-auto bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-transform duration-500 ease-in-out">
+                <div className="fixed inset-0 z-[99999] bg-gray-900/20 backdrop-blur-sm" />
+                <DialogPanel className="fixed inset-y-0 right-0 z-[99999] w-full overflow-y-auto bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-transform duration-500 ease-in-out">
                     <div className="flex items-center justify-between border-b border-gray-100 pb-6">
                         <Link href="/" className="-m-1.5 p-1.5" title="Property Shop Investment">
                             <span className="sr-only">Property Shop Investment</span>

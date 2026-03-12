@@ -2,6 +2,7 @@
 import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import PropertyList from "./PropertyList";
 import { unslugify } from "@/utils/utils";
+import { getTranslations } from "next-intl/server";
 
 
 export default async function ProjectsPage({
@@ -24,6 +25,8 @@ export default async function ProjectsPage({
     cityId: string;
 }) {
 
+    const t = await getTranslations("ProjectsPage");
+
     const cityname = unslugify(city);
     return (
         <div className="bg-white dark:bg-neutral-900 min-h-screen pb-0 mx-5 md:mx-0">
@@ -36,7 +39,11 @@ export default async function ProjectsPage({
             <div className="mt-5">
                 <div className="grid grid-cols-1 gap-4">
                     <div className="">
-                        <h1 className="mx-auto container text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight truncate mb-6 md:mb-10">Real Estate Projects in {cityname}</h1>
+                        <h1 className="mx-auto container text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight truncate mb-6 md:mb-10">
+                            {t('mainTitle')} {t.has(`crmLocations.${cityname}`)
+                                ? t(`crmLocations.${cityname}`)
+                                : cityname }
+                        </h1>
                         <div className="">
                             <PropertyList page={page} city={city} cityId={cityId} community={community} subcommunity={subcommunity} project={project} propertyname={propertyname} isFeaturedProjectOnWeb={isFeaturedProjectOnWeb} />
                         </div>

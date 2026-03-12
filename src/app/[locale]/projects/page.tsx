@@ -38,7 +38,7 @@ export default async function Projects({
 }: {
     params: Promise<{ city: string; community: string; subcommunity: string; project: string; }>;
     searchParams: Promise<{ page?: number; propertyname?: string; isFeaturedProjectOnWeb?: string; community?: string; city?: string; subcommunity?: string; propertyUnitTypes?: string; propertyPlan?: string; }>;
-}) {
+}) {    
 
     const { city, community, subcommunity, project } = await params;
     const { page = 1, propertyname, isFeaturedProjectOnWeb, community: searchCommunity, city: searchCity, subcommunity: searchSubcommunity, propertyUnitTypes, propertyPlan } = await searchParams;

@@ -2,6 +2,7 @@
 import Breadcrumb from "@/app/[locale]/_components/Breadcrumb";
 import PropertyList from "./PropertyList";
 import { unslugify } from "@/utils/utils";
+import { getTranslations } from "next-intl/server";
 
 
 export default async function ProjectsPage({
@@ -28,6 +29,8 @@ export default async function ProjectsPage({
     subcommunityId: string;
 }) {
 
+    const t = await getTranslations("ProjectsPage");
+
     const cityname = unslugify(city);
     const communityname = unslugify(community);
     const subcommunityname = unslugify(subcommunity);
@@ -42,7 +45,15 @@ export default async function ProjectsPage({
             <div className="mt-5">
                 <div className="grid grid-cols-1 gap-4">
                     <div className="">
-                        <h1 className="mx-auto container text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight truncate mb-6 md:mb-10">Real Estate Projects in {subcommunityname}, {communityname}, {cityname}UAE</h1>
+                        <h1 className="mx-auto container text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight truncate mb-6 md:mb-10">
+                            {t('mainTitle')} {t.has(`crmLocations.${subcommunityname}`) 
+                                ? t(`crmLocations.${subcommunityname}`) 
+                                : subcommunityname}, {t.has(`crmLocations.${communityname}`) 
+                                ? t(`crmLocations.${communityname}`) 
+                                : communityname}, {t.has(`crmLocations.${cityname}`)
+                                ? t(`crmLocations.${cityname}`)
+                                : cityname } {t('UAE')}
+                        </h1>
                         <div className="">
                             <PropertyList page={page} city={city} cityId={cityId} communityId={communityId} subcommunityId={subcommunityId} community={community} subcommunity={subcommunity} project={project} propertyname={propertyname} isFeaturedProjectOnWeb={isFeaturedProjectOnWeb} />
                         </div>
