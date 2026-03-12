@@ -84,18 +84,18 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
             />
 
             {/* Modal Content */}
-            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl h-[85vh] overflow-hidden flex flex-col md:flex-row relative z-10 animate-[scaleIn_0.3s_ease-out]">
+            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl h-[83vh] overflow-hidden flex flex-col md:flex-row relative z-10 animate-[scaleIn_0.3s_ease-out]">
 
                 {/* Close Button - Absolute */}
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 z-50 bg-white/90 hover:bg-white text-gray-500 hover:text-red-500 p-2 rounded-full shadow-lg transition-all transform hover:scale-110"
+                    className="absolute top-4 right-2 md:right-4 z-50 bg-white/90 hover:bg-white text-gray-500 hover:text-red-500 p-2 rounded-full shadow-lg transition-all transform hover:scale-110"
                 >
                     <X size={20} />
                 </button>
 
                 {/* LEFT: Image Gallery (60%) */}
-                <div className="md:w-5/6 h-[35vh] md:h-full relative bg-gray-100 group">
+                <div className="md:w-5/6 h-[28vh] md:h-full relative bg-gray-100 group">
                     <div className="absolute top-4 left-4 z-20 max-w-[calc(100%-2rem)] md:max-w-xs bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/20 transition-all hover:bg-white/95 dark:bg-gray-800 dark:border dark:border-gray-700 dark:hover:bg-gray-800">
                         {/* Title & Location */}
                         <div className="mb-4">
@@ -172,7 +172,7 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
 
                     {/* Image Counter & Tools */}
                     {images.length > 0 && (
-                        <div className="absolute top-4 right-4 flex gap-2 z-20">
+                        <div className="absolute top-4 right-12 md:right-4 flex gap-2 z-20">
                             <span className="bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium border border-white/10">
                                 {currentImageIndex + 1} / {images.length}
                             </span>
@@ -198,10 +198,10 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({ project, onCl
                 </div>
 
                 {/* RIGHT: Details & Form (40%) */}
-                <div className="md:w-2/5 h-full flex flex-col bg-white dark:bg-gray-800 dark:border dark:border-gray-700">
+                <div className="md:w-2/5 h-[55vh] md:h-full flex flex-col bg-white dark:bg-gray-800 dark:border dark:border-gray-700">
 
                     {/* Scrollable Content */}
-                    <div className="flex-1 overflow-y-auto px-6 py-4 md:p-8 custom-scrollbar pb-[250px] md:pb-0">
+                    <div className="flex-1 overflow-y-auto px-6 py-4 md:p-8 custom-scrollbar pb-[60px] md:pb-[100px] md:pb-0">
                         {/* Quick Register Form */}
                         <InquiryForm hideFeedbackButton={true} />
                     </div>

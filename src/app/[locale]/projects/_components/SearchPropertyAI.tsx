@@ -3,10 +3,11 @@
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import Form from 'next/form'
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { ArrowUpDown, BarChart2, LayoutGrid, List, MapIcon, SlidersHorizontal, X } from 'lucide-react';
 import Pagination from '../../_components/tools/Pagination';
+import { getTranslations } from 'next-intl/server';
 
 export type TabType = 'gallery' | 'list' | 'map';
 
@@ -21,6 +22,9 @@ export default function SearchPropertyAI({
     setActiveTab: (tab: TabType) => void;
     totalPages: number;
 }) {
+
+    const t = useTranslations("ProjectsPage");
+
     // const [activeTab, setActiveTab] = useState<'gallery' | 'compare' | 'list' | 'map'>('gallery');
     const [isSortOpen, setIsSortOpen] = useState(false);
     const [isViewOpen, setIsViewOpen] = useState(false);
@@ -52,19 +56,19 @@ export default function SearchPropertyAI({
                             onClick={() => setActiveTab('gallery')}
                             className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer dark:hover:bg-primary dark:hover:text-white ${activeTab === 'gallery' ? 'bg-primary border border-gray-400 text-white dark:border-gray-500' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:text-white dark:hover:border-gray-500'}`}
                         >
-                            <LayoutGrid size={16} /> Gallery
+                            <LayoutGrid size={16} /> {t('Gallery')}
                         </button>
                         <button
                             onClick={() => setActiveTab('map')}
                             className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer dark:hover:bg-primary dark:hover:text-white ${activeTab === 'map' ? 'bg-primary border border-gray-400 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:text-white dark:hover:border-gray-500'}`}
                         >
-                            <MapIcon size={16} /> View Map
+                            <MapIcon size={16} /> {t('View Map')}
                         </button>
                         <button
                             onClick={() => setActiveTab('list')}
                             className={`px-5 py-2.5 rounded text-sm font-bold flex items-center gap-2 transition-colors cursor-pointer dark:hover:bg-primary dark:hover:text-white ${activeTab === 'list' ? 'bg-primary border border-gray-400 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:text-white dark:hover:border-gray-500'}`}
                         >
-                            <List size={16} /> List
+                            <List size={16} /> {t('List')}
                         </button>
                     </div>
 
