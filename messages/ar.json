@@ -6956,5 +6956,15 @@
         "privacy": "سياسة الخصوصية"
       }
     }
+  },
+  "ProjectsPage": {
+    "mainTitle": "المشاريع العقارية في",
+    "Gallery": "المعرض",
+    "View Map": "عرض الخريطة",
+    "List": "القائمة",
+    "crmLocations": {
+      "Al Reem Island": "جزيرة الريم",
+      "Abu Dhabi": "أبوظبي"
+    }
   }
 }

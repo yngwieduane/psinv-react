@@ -7446,5 +7446,19 @@
         "privacy": "Privacy Policy"
       }
     }
+  },
+  "ProjectsPage" : {
+    "mainTitle" : "Real Estate Projects in",
+    "Gallery" : "Gallery",
+    "View Map" : "View Map",
+    "List" : "List",
+    "crmLocations" : {
+      "Al Reem Island" : "Al Reem Island",
+      "Abu Dhabi" : "Abu Dhabi",
+      "Saadiyat Island" : "Saadiyat Island",
+      "Yas Island" : "Yas Island",
+      "Al Raha Beach" : "Al Raha Beach",
+      "Al Raha Gardens" : "Al Raha Gardens"
+    }
   }
 }

@@ -185,7 +185,7 @@ const NearbysWithMap = ({
                     </h2>
                     <h2 className="text-xl text-gray-500 mb-8 dark:text-white">{propname}</h2>
                     <div className="dark:bg-gray-800 dark:text-white dark:border-gray-700 bg-white rounded-3xl p-8 border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 content-stretch">
-                        <ul role="list" className="grid grid-cols-2 md:grid-cols-2 space-y-3 space-x-3 overflow-auto h-[70vh]  py-2">
+                        <ul role="list" className="items-stretch grid grid-cols-2 md:grid-cols-2 gap-3 overflow-auto h-[70vh]  py-2">
                             {uniqueDataOptimized.slice(0, 20).map((post, index) => {
                                 const pointA: Coordinate = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
                                 const pointB: Coordinate = { lat: parseFloat(post.latitude), lng: parseFloat(post.longitude) };
@@ -242,12 +242,12 @@ const NearbysWithMap = ({
                                 return (
                                     <li
                                         key={index}
-                                        className=""
+                                        className="h-full"
                                     >
                                         <div onClick={() => {
                                             handleLocationClick(pointB);
                                         }}
-                                            className="dark:bg-gray-800 dark:text-white dark:border-gray-700 bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
+                                            className="h-full dark:bg-gray-800 dark:text-white dark:border-gray-700 bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center hover:-translate-y-1 transition-transform cursor-pointer">
                                             <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full mx-auto mb-4 flex items-center justify-center text-secondary">
                                                 {/* <MapPin size={28} /> */}
                                                 <DynamicIcon name={labelicon} size={20} />
@@ -259,7 +259,7 @@ const NearbysWithMap = ({
                                 )
                             })}
                         </ul>
-                        <div className="advanced-marker-example">
+                        <div className="advanced-marker-example mt-4 md:mt-0">
                             <APIProvider apiKey={API_KEY} libraries={['marker']}>
                                 <Map
                                     mapId={'49ae42fed52588c3'}
