@@ -35,7 +35,7 @@ const ProjectSearch: FC<ProjectSearchProps> = ({ modalState, onModalUpdate }) =>
     const timeout = setTimeout(() => {
       if (query.trim() !== "") {
         setLoading(true);
-        fetch(`/api/external/search?query=${query}`)
+        fetch(`/api/external/search?query=${encodeURIComponent(query)}`)
           .then(res => res.json())
           .then(data => {
             setResults(data.result || []);
