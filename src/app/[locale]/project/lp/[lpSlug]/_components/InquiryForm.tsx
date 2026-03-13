@@ -35,18 +35,18 @@ const languageMap: Record<string, string> = {
 type MediaMap = { MediaType: number; MediaName: number; MethodOfContact?: number };
 
 const SOURCE_MAP: Record<string, MediaMap> = {
-  hubspot:    { MediaType: 63906,  MediaName: 63907 },
+  hubspot: { MediaType: 63906, MediaName: 63907 },
   newsletter: { MediaType: 166277, MediaName: 166071 },
-  sms:        { MediaType: 129474, MediaName: 165366 },
-  google:     { MediaType: 165269, MediaName: 128455 },
-  snapchat:   { MediaType: 165269, MediaName: 166858 },
-  facebook:   { MediaType: 165269, MediaName: 131010 },
-  blog:       { MediaType: 167313, MediaName: 167314 },
-  instagram:  { MediaType: 165269, MediaName: 166728 },
-  youtube:    { MediaType: 165269, MediaName: 166053 },
-  whatsapp:   { MediaType: 165269, MediaName: 166453 },
-  tiktok:     { MediaType: 165269, MediaName: 167836 },
-  chatbot:    { MediaType: 167696, MediaName: 167697, MethodOfContact: 167215 },
+  sms: { MediaType: 129474, MediaName: 165366 },
+  google: { MediaType: 165269, MediaName: 128455 },
+  snapchat: { MediaType: 165269, MediaName: 166858 },
+  facebook: { MediaType: 165269, MediaName: 131010 },
+  blog: { MediaType: 167313, MediaName: 167314 },
+  instagram: { MediaType: 165269, MediaName: 166728 },
+  youtube: { MediaType: 165269, MediaName: 166053 },
+  whatsapp: { MediaType: 165269, MediaName: 166453 },
+  tiktok: { MediaType: 165269, MediaName: 167836 },
+  chatbot: { MediaType: 167696, MediaName: 167697, MethodOfContact: 167215 },
 };
 const DEFAULT_MEDIA: MediaMap = { MediaType: 165232, MediaName: 165233 };
 // SOURCE_MAP
@@ -187,7 +187,28 @@ export default function InquiryForm({ crm, variant = "glass", className }: Inqui
     consent3: z.boolean().optional(),
   });
   type FormData = z.infer<typeof schema>;
+  const blockPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+  };
+  const allowOnlyLetters = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const allowedKeys = [
+      "Backspace",
+      "Delete",
+      "ArrowLeft",
+      "ArrowRight",
+      "Tab",
+      "Home",
+      "End",
+      " "
+    ];
 
+    if (allowedKeys.includes(e.key)) return;
+
+    // allow only letters
+    if (!/^[A-Za-z\u0600-\u06FF]$/.test(e.key)) {
+      e.preventDefault();
+    }
+  };
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const formScope = typeof window !== "undefined" ? window.location.pathname : "lp";
@@ -209,25 +230,25 @@ export default function InquiryForm({ crm, variant = "glass", className }: Inqui
       alert(t("alerts.duplicate"));
       return;
     }
-const qp = typeof window !== "undefined"
-  ? new URLSearchParams(window.location.search)
-  : new URLSearchParams();
+    const qp = typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search)
+      : new URLSearchParams();
 
-const utmFromUrl = {
-  source: qp.get("utm_source") || qp.get("source") || "",
-  medium: qp.get("utm_medium") || "",
-  campaign: qp.get("utm_campaign") || "",
-};
-const hasUTM = !!(utmFromUrl.source || utmFromUrl.medium || utmFromUrl.campaign);
-const sourceKey = normalizeSource(utmFromUrl.source);
-const mapped = sourceKey ? SOURCE_MAP[sourceKey] : undefined;
-const utmRawMeta = crm?.utmMetaMap?.[utmFromUrl.campaign] || undefined;
-const resolvedMedia = {
-  MediaType: mapped?.MediaType ?? utmRawMeta?.media_Type ?? DEFAULT_MEDIA.MediaType,
-  MediaName: mapped?.MediaName ?? utmRawMeta?.media_Name ?? DEFAULT_MEDIA.MediaName,
-  MethodOfContact:
-    mapped?.MethodOfContact ?? utmRawMeta?.MethodOfContactVal ?? crm?.MethodOfContactVal ?? 0,
-};
+    const utmFromUrl = {
+      source: qp.get("utm_source") || qp.get("source") || "",
+      medium: qp.get("utm_medium") || "",
+      campaign: qp.get("utm_campaign") || "",
+    };
+    const hasUTM = !!(utmFromUrl.source || utmFromUrl.medium || utmFromUrl.campaign);
+    const sourceKey = normalizeSource(utmFromUrl.source);
+    const mapped = sourceKey ? SOURCE_MAP[sourceKey] : undefined;
+    const utmRawMeta = crm?.utmMetaMap?.[utmFromUrl.campaign] || undefined;
+    const resolvedMedia = {
+      MediaType: mapped?.MediaType ?? utmRawMeta?.media_Type ?? DEFAULT_MEDIA.MediaType,
+      MediaName: mapped?.MediaName ?? utmRawMeta?.media_Name ?? DEFAULT_MEDIA.MediaName,
+      MethodOfContact:
+        mapped?.MethodOfContact ?? utmRawMeta?.MethodOfContactVal ?? crm?.MethodOfContactVal ?? 0,
+    };
     // util
     const stripDirectionChars = (input: string) => input.replace(/[\u202A-\u202E]/g, "");
 
@@ -299,10 +320,10 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
 
       ...(hasUTM
         ? {
-            utm_campaign: utmFromUrl.campaign,
-            utm_source: utmFromUrl.source,
-            utm_medium: utmFromUrl.medium,
-          }
+          utm_campaign: utmFromUrl.campaign,
+          utm_source: utmFromUrl.source,
+          utm_medium: utmFromUrl.medium,
+        }
         : {}),
     };
 
@@ -330,42 +351,42 @@ URL coming from: ${typeof window !== "undefined" ? window.location.href : ""}`;
         alert(t("alerts.error"));
         return;
       }
-const emailTableBody = buildEmailTableBody({
-  firstName: data.firstName,
-  lastName: data.lastName,
-  email: data.email,
-  phone: data.phone,
-  remarks: crm?.remarks || crm?.utmRemarksMap?.[utmFromUrl.campaign] || "",
-  url: typeof window !== "undefined" ? window.location.href : "",
-});
-const receiver = normalizeReceiver(crm?.sendto);
+      const emailTableBody = buildEmailTableBody({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        remarks: crm?.remarks || crm?.utmRemarksMap?.[utmFromUrl.campaign] || "",
+        url: typeof window !== "undefined" ? window.location.href : "",
+      });
+      const receiver = normalizeReceiver(crm?.sendto);
 
-if (receiver) {
-  try {
-    const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        body: emailTableBody,
-        receiver,
-        subject: `Landing Page Inquiry - ${data.firstName} ${data.lastName}`,
-        filename: "",
-        filedata: "",
-      }),
-    });
+      if (receiver) {
+        try {
+          const mailRes = await fetch("https://registration.psinv.net/api/sendemail2.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              body: emailTableBody,
+              receiver,
+              subject: `Landing Page Inquiry - ${data.firstName} ${data.lastName}`,
+              filename: "",
+              filedata: "",
+            }),
+          });
 
-    const mailText = await mailRes.text();
-    console.log("[InquiryForm] sendemail2.php status", mailRes.status, mailText);
+          const mailText = await mailRes.text();
+          console.log("[InquiryForm] sendemail2.php status", mailRes.status, mailText);
 
-    if (!mailRes.ok) {
-      console.error("Email API failed:", mailRes.status, mailText);
-    }
-  } catch (emailErr) {
-    console.error("Email failed (non-blocking):", emailErr);
-  }
-} else {
-  console.warn("Email skipped: no valid receiver");
-}
+          if (!mailRes.ok) {
+            console.error("Email API failed:", mailRes.status, mailText);
+          }
+        } catch (emailErr) {
+          console.error("Email failed (non-blocking):", emailErr);
+        }
+      } else {
+        console.warn("Email skipped: no valid receiver");
+      }
       markAsSubmitted(data.email);
       setSuccessMessage(t("alerts.success"));
       setTimeout(() => {
@@ -380,13 +401,13 @@ if (receiver) {
   };
 
   /* ---------------- wrapper style by variant ---------------- */
-const wrapper = clsx(
-  "w-full max-w-md rounded-lg p-6 md:p-8 shadow-2xl",
-  variant === "glass"
-    ? "bg-black/30 backdrop-blur-md border border-white/15 text-white"
-    : "bg-[#2B2F66] text-white",
-  className
-);
+  const wrapper = clsx(
+    "w-full max-w-md rounded-lg p-6 md:p-8 shadow-2xl",
+    variant === "glass"
+      ? "bg-black/30 backdrop-blur-md border border-white/15 text-white"
+      : "bg-[#2B2F66] text-white",
+    className
+  );
 
   const isRTL = locale === "ar";
 
@@ -409,6 +430,8 @@ const wrapper = clsx(
             <input
               type="text"
               {...register("firstName")}
+              onPaste={blockPaste}
+              onKeyDown={allowOnlyLetters}
               placeholder={t("fields.firstName.placeholder")}
               className={inputBase}
             />
@@ -424,6 +447,8 @@ const wrapper = clsx(
             <input
               type="text"
               {...register("lastName")}
+              onPaste={blockPaste}
+              onKeyDown={allowOnlyLetters}
               placeholder={t("fields.lastName.placeholder")}
               className={inputBase}
             />
@@ -441,6 +466,7 @@ const wrapper = clsx(
               render={({ field }) => (
                 <PhoneInput
                   {...field}
+                  onPaste={(e: React.ClipboardEvent<HTMLInputElement>) => e.preventDefault()}
                   international
                   defaultCountry="AE"
                   placeholder={t("fields.phone.placeholder")}
@@ -460,6 +486,7 @@ const wrapper = clsx(
             <input
               type="email"
               {...register("email")}
+              onPaste={blockPaste}
               placeholder={t("fields.email.placeholder")}
               className={inputBase}
             />
