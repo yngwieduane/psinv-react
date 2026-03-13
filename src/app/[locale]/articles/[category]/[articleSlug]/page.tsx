@@ -91,14 +91,74 @@ function isRtlLocale(locale: string) {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { articleSlug, locale } = await params;
+  const { category, articleSlug, locale } = await params;
   const article = await getArticleFromFirestore(articleSlug);
 
-  if (!article) return { title: "Article not found" };
+  if (!article) {
+    return {
+      title: "Article not found",
+      description: "The requested article could not be found.",
+    };
+  }
+
+  const localized = article.translations?.[locale] || {};
+  const title = (localized.title || article.title || "").slice(0, 58);
+
+  const rawContent = (localized.content || "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const rawDescription =
+    localized.summary ||
+    article.summary ||
+    rawContent ||
+    "Read the latest real estate insights from Property Shop Investment.";
+
+  const description =
+    rawDescription.length > 160
+      ? rawDescription.slice(0, 157).trim() + "..."
+      : rawDescription;
+
+  const canonical = `https://www.psinv.net/${locale}/articles/${category}/${article.slug}`;
+
+  const keywords = [
+    title,
+    article.category || "",
+    article.categoryKey || "",
+    "UAE real estate",
+    "Dubai real estate",
+    "Abu Dhabi real estate",
+    "property investment",
+    "Property Shop Investment",
+  ].filter(Boolean);
 
   return {
-    title: article.translations?.[locale]?.title || article.title || "Article",
-    description: article.translations?.[locale]?.summary || article.summary || "",
+    title,
+    description,
+    keywords,
+    authors: [{ name: article.author || "Property Shop Investment (PSI)" }],
+    publisher: "Property Shop Investment (PSI)",
+    alternates: {
+      canonical,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: "article",
+      images: article.image ? [{ url: article.image, alt: title }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: article.image ? [article.image] : [],
+    },
   };
 }
 
