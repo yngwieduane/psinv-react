@@ -20,8 +20,12 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
   const t = useTranslations("Job_Application");
 
   const schema = z.object({
-    firstName: z.string().min(1, { message: t("validation.firstNameRequired") }),
-    lastName: z.string().min(1, { message: t("validation.lastNameRequired") }),
+    firstName: z.string().min(1, { message: t("validation.firstNameRequired") }).regex(/^[a-zA-Z ]*$/, {
+      message: "First Name must contain only alphabets and spaces",
+    }),
+    lastName: z.string().min(1, { message: t("validation.lastNameRequired") }).regex(/^[a-zA-Z ]*$/, {
+      message: "Last Name must contain only alphabets and spaces",
+    }),
     email: z.string().email({ message: t("validation.invalidEmail") }),
     phone: z.string().min(7, { message: t("validation.invalidPhone") }),
     nationality: z.string().min(1, t("validation.nationalityRequired")),

@@ -296,7 +296,8 @@
       "Canafford": "Leistbar",
       "Totalafford": "Gesamtkaufkraft",
       "GeApprovalToday": "Heute Vorabgenehmigung erhalten"
-    }
+    },
+    "submit": "Absenden"
   },
   "ReportDownload": {
     "title": "Markteinblicke",
@@ -2494,5 +2495,21 @@
       "City Of Lights" : "City Of Lights",
       "Najmat Abu Dhabi" : "Najmat Abu Dhabi"
     }
+  },
+  "CareerSinglePage" : {
+    "Breadcrumbs":{
+      "Home" : "Startseite",
+      "Careers" : "Karriere"
+    },
+    "mainTitle" : {
+      "part1" : "BEWERBUNGSFORMULAR",
+      "part2" : "Formular"
+    },
+    "mainText" : "Diese Bewerbung dient dazu, dem Arbeitgeber die notwendigen Informationen bereitzustellen, um Ihr Profil transparent zu bewerten. Unter Wahrung eines hohen Maßes an Vertraulichkeit der angegebenen Informationen müssen alle Felder ausgefüllt werden. Dies hilft Ihnen als Kandidat, Ihre Ziele in Bezug auf Empfehlungen des Arbeitgebers zu erreichen.",
+    "Job Overview": "Stellenübersicht",
+    "Apply now" : "Jetzt bewerben",
+    "Qualifications":"Qualifikationen",
+    "Responsibilities":"Hauptaufgaben",
+    "Skills" : "Fähigkeiten & Kompetenzen"
   }
 }

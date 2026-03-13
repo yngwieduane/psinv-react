@@ -76,7 +76,7 @@ export default function LocaleSwitcherSelect({
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <PopoverPanel className="absolute right-0 z-50 mt-2 w-40 origin-top-right rounded-xl bg-white p-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
+              <PopoverPanel className="absolute right-auto left-0 md:right-0 md:left-auto z-50 mt-2 w-40 origin-top-right rounded-xl bg-white p-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
                 <div className="flex flex-col py-1">
                   {items.map((item) => (
                     <button

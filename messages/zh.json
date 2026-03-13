@@ -296,7 +296,8 @@
       "Canafford": "可承担",
       "Totalafford": "总可承受额",
       "GeApprovalToday": "立即获取预审批"
-    }
+    },
+    "submit": "提交"
   },
   "ReportDownload": {
     "title": "市场洞察",
@@ -2638,5 +2639,21 @@
       "City Of Lights": "光之城",
       "Najmat Abu Dhabi": "纳吉玛特阿布扎比"
     }
+  },
+  "CareerSinglePage": {
+    "Breadcrumbs": {
+      "Home": "首页",
+      "Careers": "招聘"
+    },
+    "mainTitle": {
+      "part1": "招聘申请",
+      "part2": "表格"
+    },
+    "mainText": "此申请表旨在为雇主提供评估您个人资料所需的信息。我们将对您提供的信息保持高度保密。所有字段均需填写完整，以帮助您作为候选人通过雇主推荐实现您的职业目标。",
+    "Job Overview": "职位概述",
+    "Apply now": "立即申请",
+    "Qualifications": "任职资格",
+    "Responsibilities": "主要职责",
+    "Skills": "技能与能力"
   }
 }

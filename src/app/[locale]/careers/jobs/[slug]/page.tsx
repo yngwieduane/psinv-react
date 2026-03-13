@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import JobApplicationForm from "../../_components/JobApplicationForm";
 import CareerJourney from "../../_components/CareerJourney";
+import { useTranslations } from "next-intl";
 const poppins = Poppins({
   weight: ["400", "700"],
   subsets: ["latin"],
@@ -28,6 +29,8 @@ interface Job {
 }
 
 export default function JobDetailsPage() {
+  const t = useTranslations('CareerSinglePage');
+
   const params = useParams();
   const slug =
     typeof params?.slug === "string"
@@ -182,14 +185,14 @@ export default function JobDetailsPage() {
         </div>
         <div className="relative z-10 text-center text-white mt-16 px-4">
           <Link href="/" className="hover:text-orange-300 transition">
-            Home
+            {t('Breadcrumbs.Home')}
           </Link>
           <span>&gt;</span>
           <Link
             href={`/${locale}/careers`}
             className="hover:text-orange-300 transition"
           >
-            Careers
+            {t('Breadcrumbs.Careers')}
           </Link>
           <span>&gt;</span>
           <span>{job.name}</span>
@@ -205,22 +208,18 @@ export default function JobDetailsPage() {
             </div>
           </Link>
           <h2 className="text-[#272963] text-[18px] leading-normal md:text-[40px] md:leading-[52px] uppercase font-bold">
-            RECRUITMENT APPLICATION
+            {t('mainTitle.part1')}
             <span
               className={`${BrittanySignature.className} capitalize text-orange-600`}
             >
-              Form
+              {t('mainTitle.part2')}
             </span>
           </h2>
         </div>
         <p
           className={`text-[#1A1A1A] text-[14px] leading-normal md:text-[16px] md:leading-[30.4px] ${poppins.className}`}
         >
-          This Application is to provide the employer with the information
-          required to evaluate your profile transparently. Keeping a high level
-          of confidentiality of the given information, all fields are required
-          to be filled, which will help you as a candidate to achieve your goals
-          in terms of the employer recommendations.
+          {t('mainText')}
         </p>
       </section>
 
@@ -240,13 +239,13 @@ export default function JobDetailsPage() {
                   </div>
                   <div className="flex flex-col gap-6">
                     <p className="text-[#E35F27] font-semibold text-base">
-                      Job Overview
+                      {t('Job Overview')}
                     </p>
                     <button
                       onClick={scrollToForm}
                       className="text-gray-500 hover:text-[#2C2D65] text-sm font-normal transition underline text-left dark:text-gray-400 dark:hover:text-white"
                     >
-                      Apply now
+                      {t('Apply now')}
                     </button>
                   </div>
                 </div>
@@ -282,7 +281,7 @@ export default function JobDetailsPage() {
                 onClick={() => toggleAccordion(0)}
               >
                 <h3 className="text-[#2C2D65] text-lg md:text-xl font-semibold dark:text-white">
-                  Qualifications:
+                  {t('Qualifications')}:
                 </h3>
                 <div className="md:w-10 md:h-10 w-7 h-7 border-2 border-[#2C2D65] rounded-full flex items-center justify-center">
                   <span className="text-[#2C2D65] text-sm md:text-xl">
@@ -320,7 +319,7 @@ export default function JobDetailsPage() {
                   onClick={() => toggleAccordion(1)}
                 >
                   <h3 className="text-[#2C2D65] text-lg md:text-xl font-semibold dark:text-white">
-                    Key Responsibilities:
+                    {t('Responsibilities')}:
                   </h3>
                   <div className="md:w-10 md:h-10 w-7 h-7 border-2 border-[#2C2D65] rounded-full flex items-center justify-center dark:border-white">
                     <span className="text-[#2C2D65] text-sm md:text-xl dark:text-white">
@@ -353,7 +352,7 @@ export default function JobDetailsPage() {
                 onClick={() => toggleAccordion(2)}
               >
                 <h3 className="text-[#2C2D65] text-lg md:text-xl font-semibold dark:text-white">
-                  Skills & Competencies:
+                  {t('Skills')}:
                 </h3>
                 <div className="md:w-10 md:h-10 w-7 h-7 border-2 border-[#2C2D65] rounded-full flex items-center justify-center dark:border-white">
                   <span className="text-[#2C2D65] text-sm md:text-xl dark:text-white">

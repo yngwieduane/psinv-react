@@ -378,7 +378,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
             <input
               {...register("firstName")}
               placeholder={t("firstName")}
-              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:focus:ring-white/10 dark:focus:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white"
+              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus:outline-none focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:focus:ring-white/10 dark:focus:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white"
             />
           </div>
           {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
@@ -388,7 +388,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
             <input
               {...register("lastName")}
               placeholder={t("lastName")}
-              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:focus:ring-white/10 dark:focus:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white"
+              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus:outline-none focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:focus:ring-white/10 dark:focus:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white"
             />
           </div>
           {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
@@ -400,7 +400,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
         <input
           {...register("email")}
           placeholder={t("email")}
-          className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:focus:ring-white/10 dark:focus:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white"
+          className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus:outline-none focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:focus:ring-white/10 dark:focus:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white"
         />
       </div>
       {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
@@ -414,7 +414,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
             dir={isRTL ? "rtl" : "ltr"}
             international
             defaultCountry="AE"
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445] dark:focus-within:ring-white/10 dark:focus-within:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white"
+            className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445] dark:focus-within:ring-white/10 dark:focus-within:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white"
             aria-label="Phone Number"
             numberInputProps={{
               className: "w-full bg-transparent focus:outline-none text-sm placeholder:text-gray-400"
@@ -426,7 +426,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ formType, city }) => {
 
       <select
         {...register("propertyPurpose")}
-        className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:focus:ring-white/10 dark:focus:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white transition-all"
+        className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] dark:focus:ring-white/10 dark:focus:border-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-white transition-all"
         aria-label="Property Purpose"
       >
         <option value="">{t("purpose")}</option>
