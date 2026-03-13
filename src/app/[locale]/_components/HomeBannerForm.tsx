@@ -425,7 +425,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
                 type="text"
                 {...register("firstName")}
                 placeholder={t_r('firstname')}
-                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
               />
             </div>
             {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
@@ -436,7 +436,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
                 type="text"
                 {...register("lastName")}
                 placeholder={t_r('lastname')}
-                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
               />
             </div>
             {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
@@ -449,7 +449,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
               type="email"
               {...register("email")}
               placeholder={t_r('email')}
-              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
             />
           </div>
           {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
@@ -464,7 +464,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
                   international
                   defaultCountry="AE"
                   placeholder="Phone Number"
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
                   numberInputProps={{
                       className: "w-full bg-transparent focus:outline-none text-sm placeholder:text-gray-400"
                   }}

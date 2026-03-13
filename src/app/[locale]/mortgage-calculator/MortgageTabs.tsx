@@ -80,7 +80,7 @@ export default function MortgageTabs(props: any) {
           {activeTab === 'houseafford' && <HouseAffordabilityCalculator modal={modal} onOpenModal={modalHandler} onModalUpdate={modalUpdate} />}
         </div>
       </div>
-      <BannerModals modalState={modal} onOpenModal={modalHandler} onModalUpdate={modalUpdate} propData="" city={props.city} />
+      <BannerModals modalState={modal} submitLabel={t('submit')} onOpenModal={modalHandler} onModalUpdate={modalUpdate} propData="" city={props.city} />
     </>
   );
 }

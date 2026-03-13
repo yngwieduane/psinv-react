@@ -317,7 +317,8 @@
       "Canafford": "Can Afford",
       "Totalafford": "Total Afford",
       "GeApprovalToday": "Get pre-approval today"
-    }
+    },
+    "submit" : "Submit"
   },
   "ReportDownload": {
     "title": "Market Insights",
@@ -7509,5 +7510,21 @@
       "City Of Lights" : "City Of Lights",
       "Najmat Abu Dhabi" : "Najmat Abu Dhabi"
     }
+  },
+  "CareerSinglePage" : {
+    "Breadcrumbs":{
+      "Home" : "Home",
+      "Careers" : "Careers"
+    },
+    "mainTitle" : {
+      "part1" : "RECRUITMENT APPLICATION",
+      "part2" : "Form"
+    },
+    "mainText" : "This Application is to provide the employer with the information required to evaluate your profile transparently. Keeping a high level of confidentiality of the given information, all fields are required to be filled, which will help you as a candidate to achieve your goals in terms of the employer recommendations.",
+    "Job Overview": "Job Overview",
+    "Apply now" : "Apply now",
+    "Qualifications":"Qualifications",
+    "Responsibilities":"Key Responsibilities",
+    "Skills" : "Skills & Competencies"
   }
 }
