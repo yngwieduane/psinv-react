@@ -134,10 +134,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         if (!p.propertyName) return;
         const city = sanitizeSlug(p.city_name || "abu-dhabi");
         const comm = sanitizeSlug(p.community || "community");
-        const sub = sanitizeSlug(p.sub_community || "subcommunity");
+        // const sub = sanitizeSlug(p.sub_community || "subcommunity");
+        const sub = p.sub_community ? sanitizeSlug(p.sub_community) : null;
         const proj = sanitizeSlug(p.propertyName);
 
-        const path = `/projects/${city}/${comm}/${sub}/${proj}`;
+        // const path = `/projects/${city}/${comm}/${sub}/${proj}`;
+        const path = sub ? `/projects/${city}/${comm}/${sub}/${proj}` : `/projects/${city}/${comm}/subcommunity/${proj}`;
 
         // Main Project Page
         locales.forEach(locale => {

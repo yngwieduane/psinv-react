@@ -296,8 +296,7 @@
       "Canafford": "يمكن التحمل",
       "Totalafford": "إجمالي القدرة على التحمل",
       "GeApprovalToday": "الحصول على الموافقة المسبقة اليوم"
-    },
-    "submit": "إرسال"
+    }
   },
   "ReportDownload": {
     "title": "رؤى السوق",
@@ -5490,7 +5489,22 @@
   "emaar":"إعمار",
   "imkan-properties-llc":"إمكان العقارية ذ.م.م",
   "meraas":"مِراس",
-  "dubai-properties---idama":"دبي العقارية - إدامة"
+  "dubai-properties---idama":"دبي العقارية - إدامة",
+  "floor-plan":"مخطط الطابق",
+  "faqs":"الأسئلة الشائعة",
+  "golf-gardens":"جولف جاردنز",
+  "al-ghadeer":"الغدير",
+  "hydra-village":"قرية هيدرا",
+  "abu-dhabi-gate":"بوابة أبوظبي",
+  "al-khalidiyah":"الخالدية",
+  "al-mushrif":"المشرف",
+  "al-muneera":"المنيرة",
+  "al-bateen":"البطين",
+  "st-regis-hotel-saadiyat":"فندق سانت ريجيس - السعديات",
+  "faqs":"الأسئلة الشائعة",
+  "al-mina":"الميناء",
+  "silver-wave-tower":"برج سيلفر ويف",
+  "floor-plan":"مخطط الطابق"
 
     }
   },
@@ -7031,21 +7045,5 @@
       "City Of Lights": "مدينة الأضواء",
       "Najmat Abu Dhabi": "نجمة أبوظبي"
     }
-  },
-  "CareerSinglePage": {
-    "Breadcrumbs": {
-      "Home": "الرئيسية",
-      "Careers": "الوظائف"
-    },
-    "mainTitle": {
-      "part1": "طلب التوظيف",
-      "part2": "نموذج"
-    },
-    "mainText": "يهدف هذا الطلب إلى تزويد صاحب العمل بالمعلومات اللازمة لتقييم ملفك الشخصي بشفافية. مع الحفاظ على مستوى عالٍ من السرية للمعلومات المقدمة، يجب تعبئة جميع الحقول المطلوبة، مما يساعدك كمرشح على تحقيق أهدافك من خلال توصيات صاحب العمل.",
-    "Job Overview": "نظرة عامة على الوظيفة",
-    "Apply now": "قدّم الآن",
-    "Qualifications": "المؤهلات",
-    "Responsibilities": "المسؤوليات الرئيسية",
-    "Skills": "المهارات والكفاءات"
   }
 }
