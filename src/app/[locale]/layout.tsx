@@ -23,6 +23,8 @@ import AuthModal from "./_components/AuthModal";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import StickyBottomWidgetClient from "./_components/StickyBottomWidgetClient";
+import InstallPrompt from "./_components/InstallPrompt";
+
 
 type Props = {
   children: React.ReactNode;
@@ -115,6 +117,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     metadataBase: new URL('https://psinv.net'),
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: 'default',
+      title: t('title'),
+    },
+    formatDetection: {
+      telephone: false,
+    },
   };
 }
 
@@ -219,6 +229,7 @@ export default async function LocaleLayout({
                 <ConditionalNavigation />
                 <Providers><main>{children}</main></Providers>
                 <ConditionalFooter />
+                <InstallPrompt />
                 <CompareFloatingButtonClient />
                 <AIChatWidgetClient />
                 <StickyBottomWidgetClient />
