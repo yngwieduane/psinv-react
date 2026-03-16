@@ -1765,6 +1765,33 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
+  'st-regis-eid-offer-employees-registration': {
+    branch: 'auh',
+    seo: {
+      en: {
+        title: "St. Regis Eid Offer – Employee Registration | Luxury Property",
+        description:
+          "Register now for the St. Regis Eid employee offer and get priority access to exclusive property deals, special pricing, and limited-time benefits.",
+        keywords:
+          "St Regis Eid offer, St Regis property offer, St Regis Eid employee offer, luxury property Eid offer, Eid special property offer for employees, St Regis luxury property employee deal",
+      },
+      "ar": {
+        "title": "عرض عيد سانت ريجيس – تسجيل الموظفين | عقارات فاخرة",
+        "description": "سجّل الآن للحصول على عرض عيد سانت ريجيس للموظفين واحصل على وصول أولوية إلى عروض عقارية حصرية، تسعير خاص، ومزايا محدودة المدة.",
+        "keywords": "عرض عيد سانت ريجيس، عرض عقارات سانت ريجيس، عرض عيد سانت ريجيس للموظفين، عرض عيد لعقارات فاخرة، عرض عقاري خاص بالعيد للموظفين، عرض عقارات فاخرة للموظفين من سانت ريجيس"
+      },
+    },
+    override: {
+      remarks: 'St Regis Eid Offer Employees',
+      ...makeUtm({
+        'irani_st_regeis_eid_offer_employees_newsletter': {
+          campaign: 3596,
+          remarks:
+            'Rotation: Sales Support',
+        },
+      }),
+    },
+  },
 } satisfies Record<string, PerSlug>;
 
 console.log('[projectOverrides] loaded slugs:', Object.keys(PROJECTS));
