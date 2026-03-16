@@ -76,7 +76,7 @@ const TablePaymentPlans = (props: any) => {
                                         {t("installment")} {/* {index + 1} */}
                                     </td>
                                     <td className="px-2 py-2 text-sm whitespace-nowrap text-gray-500 dark:text-white">
-                                        {t("installment_line", {
+                                        {installment?.instalmentDate == 0 ? `${Number(installment?.amountPercentage ?? 0) * 100} %` : t("installment_line", {
                                             pct: Number(installment?.amountPercentage ?? 0) * 100,
                                             date: String(installment?.instalmentDate ?? ""),
                                             freq: (() => {
@@ -84,9 +84,7 @@ const TablePaymentPlans = (props: any) => {
                                                 const key = valueKey(raw);
                                                 return tv.has(key) ? tv(key) : raw;
                                             })()
-                                        })}
-
-                                    </td>
+                                        })}                                    </td>
                                 </tr>
                             )
                         }
