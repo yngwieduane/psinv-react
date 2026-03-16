@@ -161,8 +161,8 @@ export default async function AreaGuidePage({ params }: { params: Promise<{ loca
 
     return (
         <main className="min-h-screen bg-gray-50/50 pb-20">
-            <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white">
-                <div className="container mx-auto px-4 md:px-12 py-4">
+            <div className="pt-28 md:pt-36 border-b border-gray-100">
+                <div className="container mx-auto px-4 md:px-12">
                     <Breadcrumb
                         customSegments={[
                             { name: "Home", href: "/" },
