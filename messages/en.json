@@ -7536,7 +7536,28 @@
       "Al Qudra" : "Al Qudra",
       "Shams Gate District" : "Shams Gate District",
       "City Of Lights" : "City Of Lights",
-      "Najmat Abu Dhabi" : "Najmat Abu Dhabi"
+      "Najmat Abu Dhabi" : "Najmat Abu Dhabi",
+      "Zayed City" : "Zayed City",
+      "Al Fahid Island" : "Al Fahid Island",
+      "Corniche Abu Dhabi" : "Corniche Abu Dhabi",
+      "Masdar City " : "Masdar City ",
+      "Al Maryah Island" : "Al Maryah Island"
+    },
+    "PropType" : {
+      "Townhouse" : "Townhouse",
+      "Apartment" : "Apartment",
+      "Villa" : "Villa",
+      "Office" : "Office"
+    },
+    "Developers" : {
+      "Aldar Properties PJSC" : "Aldar Properties PJSC",
+      "Al Badie Group" : "Al Badie Group",
+      "General Housing Company" : "General Housing Company",
+      "Hydra Properties" : "Hydra Properties",
+      "Damac" : "Damac",
+      "TAMOUH INVESTMENTS LLC" : "TAMOUH INVESTMENTS LLC",
+      "Green Emirates" : "Green Emirates",
+      "REAL ESTATE INVESTMENT & SERVICES COMPANY (REISCO)" : "REAL ESTATE INVESTMENT & SERVICES COMPANY (REISCO)"
     }
   },
   "CareerSinglePage" : {

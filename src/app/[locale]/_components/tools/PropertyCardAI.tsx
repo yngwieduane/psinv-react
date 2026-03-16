@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from '@/i18n/navigation';
 import React from "react";
 import slugify from "react-slugify";
-import { useFormatter } from 'next-intl';
+import { useFormatter, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useUser } from '@/context/userContext';
 import { Heart, MapPin, Shuffle, Share2, BedSingle, BedSingleIcon, LucideBedSingle, BedDouble, HandCoins, HandCoinsIcon, House, HouseIcon, Building, Key, HandHelping, Flag } from 'lucide-react';
@@ -11,6 +11,7 @@ import ProjectsThumbsImagesSwiper from "../../projects/_components/ProjectsThumb
 import ReportIssueModal from '@/app/[locale]/unit/[slug]/components/ReportIssueModal';
 
 const PropertyCardAI = (props: any) => {
+    const t = useTranslations("ProjectsPage");
 
     const format = useFormatter();
     let HOdate;
@@ -164,15 +165,27 @@ const PropertyCardAI = (props: any) => {
                     {/* Content */}
                     <div className="p-6 flex flex-col flex-1">
                         <h3 className="dark:text-white font-bold text-gray-900 text-lg uppercase mb-2 line-clamp-1 group-hover:text-secondary transition-colors">{props.data["propertyName"]}</h3>
-                        <p className="dark:text-white text-sm text-gray-500 mb-2 flex items-center gap-1"><MapPin size={14} /> {props.data["community"]}</p>
+                        <p className="dark:text-white text-sm text-gray-500 mb-2 flex items-center gap-1"><MapPin size={14} />
+                            {t.has(`crmLocations.${props.data["community"]}`)
+                                ? t(`crmLocations.${props.data["community"]}`)
+                                : props.data["community"] }
+                                </p>
                         {props.data["masterDeveloper"] && (
-                            <p className="dark:text-white text-xs text-gray-400 mb-6 truncate font-medium">{props.data["masterDeveloper"]}</p>
+                            <p className="dark:text-white text-xs text-gray-400 mb-6 truncate font-medium">
+                                {t.has(`Developers.${props.data["masterDeveloper"]}`)
+                                ? t(`Developers.${props.data["masterDeveloper"]}`)
+                                : props.data["masterDeveloper"] }
+                            </p>
                         )}
 
                         <div className={`mt-auto flex ${itemCount === 1 ? 'justify-center' : 'gap-4'} border-t border-gray-100 pt-5`}>
                             <div className="basis-3xs flex items-top gap-2">
                                 <span className="block text-[4px] dark:text-white text-gray-400 uppercase font-bold tracking-wider"><House size={18} /></span>
-                                <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0 leading-normal">{propType}</span>
+                                <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0 leading-normal">
+                                    {t.has(`PropType.${propType}`)
+                                    ? t(`PropType.${propType}`)
+                                    : propType }
+                                </span>
                             </div>
                             {hasBedroom && (
                                 <div className="basis-3xs flex items-top gap-2">

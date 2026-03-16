@@ -163,6 +163,10 @@ const REG_WIDGET_KEYS_BY_SLUG: Record<string, Partial<Record<Locale, string>>> =
         en: "823ed572455b7f4cb85630e4a2944103",
         ar: "afda5890496ffa6f4d9f9a3a70d4d36e",
     },
+    "st-regis-eid-offer-clients-registration": {
+        en: "4d108b8a038e6f734a52f42e25bf6f2f",
+        ar: "4369d76cfe34df759e2b01797622c206",
+    },
 };
 
 /**
