@@ -68,7 +68,8 @@ function PropertyPage(props: any) {
     };
     const t = useTranslations('ProjectPage');
 
-    const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'] : ("");
+    //const imgFeatured = props.data["featuredImages"] ? props.data["featuredImages"][0]['imageURL'] : ("");
+    const imgFeatured = props.data?.featuredImages?.[0]?.imageURL || "";
     const saved = isFavorite(props.data["propertyID"]);
     const compared = isCompared(props.data["propertyID"]);
 

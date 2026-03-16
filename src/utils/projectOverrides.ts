@@ -1738,6 +1738,33 @@ export const PROJECTS: Record<string, PerSlug> = {
       }),
     },
   },
+  'st-regis-eid-offer-clients-registration': {
+    branch: 'auh',
+    seo: {
+      en: {
+        title: "St. Regis Eid Offer – Client Registration | Luxury Property",
+        description:
+          "Sign up to access the St. Regis Eid special offer. Register today to receive exclusive deals, early access, and premium property investment opportunities.",
+        keywords:
+          "St Regis Eid offer, St Regis property offer, St Regis Eid registration, luxury property Eid offer, Dubai luxury real estate offer, St Regis residences Eid promotion, property Eid deals, luxury apartment Eid offer",
+      },
+      "ar": {
+        "title": "عرض عيد سانت ريجيس – تسجيل العملاء | عقارات فاخرة",
+        "description": "سجّل الآن للوصول إلى العرض الخاص بعيد سانت ريجيس. قم بالتسجيل اليوم للحصول على عروض حصرية، وصول مبكر، وفرص استثمار عقاري مميزة.",
+        "keywords": "عرض عيد سانت ريجيس، عرض عقارات سانت ريجيس، تسجيل عرض عيد سانت ريجيس، عرض عيد لعقارات فاخرة، عروض عقارات فاخرة دبي، عرض عيد شقق سانت ريجيس، عروض عقارية للعيد، عرض عيد لشقق فاخرة"
+      },
+    },
+    override: {
+      remarks: 'St Regis Eid Offer Clients',
+      ...makeUtm({
+        'irani_st_regeis_eid_offer_clients_newsletter': {
+          campaign: 3595,
+          remarks:
+            'Rotation: Sales Support',
+        },
+      }),
+    },
+  },
 } satisfies Record<string, PerSlug>;
 
 console.log('[projectOverrides] loaded slugs:', Object.keys(PROJECTS));

@@ -466,7 +466,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
                   placeholder="Phone Number"
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
                   numberInputProps={{
-                      className: "w-full bg-transparent focus:outline-none text-sm placeholder:text-gray-400"
+                      className: "w-full bg-transparent focus:outline-none text-[16px] md:text-sm placeholder:text-gray-400"
                   }}
               />
               
