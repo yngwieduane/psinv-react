@@ -6,6 +6,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import InquiryForm from "@/app/[locale]/_components/InquiryForm";
 import { Link } from "@/i18n/navigation";
+import slugify from "react-slugify";
 
 interface DeveloperData {
   id: string;
@@ -148,7 +149,7 @@ const DevelopersList = ({ slug }: { slug: string }) => {
                   className="group relative bg-white border border-gray-200 rounded-xl flex flex-col justify-start min-h-[300px] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden dark:bg-gray-800 dark:border-neutral-800 dark:text-white"
                 >
 
-                  <Link href={`/developer/${developer.slug || developer.id}`} className="" aria-label={`View ${developer.name}`}>
+                  <Link href={`/developer/${slugify(developer.name) || developer.id}`} className="" aria-label={`View ${developer.name}`}>
                     {/* Image Header Section */}
                     <div className="relative w-full h-48 bg-gray-100 flex items-center justify-center p-6 border-b border-gray-100 overflow-hidden dark:bg-gray-800 dark:border-neutral-800 dark:text-white">
                       {/* Placeholder Background for developers without project images to match the design's "hero" feel */}
@@ -172,7 +173,7 @@ const DevelopersList = ({ slug }: { slug: string }) => {
 
                   {/* Body Section */}
                   <div className="p-5 flex-1 flex flex-col relative z-20 bg-white dark:bg-gray-800 dark:border-neutral-800 dark:text-white">
-                    <Link href={`/developer/${developer.slug || developer.id}`} className="" aria-label={`View ${developer.name}`}>
+                    <Link href={`/developer/${slugify(developer.name) || developer.id}`} className="" aria-label={`View ${developer.name}`}>
                       <h3 className="text-[17px] font-bold text-gray-900 uppercase tracking-tight line-clamp-1 group-hover:text-blue-600 transition-colors dark:text-white">
                         {developer.name}
                       </h3>
@@ -297,7 +298,7 @@ const DevelopersList = ({ slug }: { slug: string }) => {
   return (
     <div className="flex 2xl:justify-center gap-5 xl:overflow-x-hidden overflow-x-auto w-full scroll-smooth snap-x snap-mandatory scrollbar-hide py-6 px-2 hidden">
       {sortedForSlider.map((developer) => {
-        const isActive = slug === developer.slug;
+        const isActive = slug === slugify(developer.name);
         return (
           <div
             key={developer.id}
@@ -307,7 +308,7 @@ const DevelopersList = ({ slug }: { slug: string }) => {
                 : "bg-white border border-gray-100 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-2 hover:border-gray-200"
               }`}
           >
-            <Link href={`/en/developer/${developer.slug || developer.id}`} className="absolute inset-0 z-10" aria-label={`View ${developer.name}`} />
+            <Link href={`/en/developer/${slugify(developer.name) || developer.id}`} className="absolute inset-0 z-10" aria-label={`View ${developer.name}`} />
 
             <div className="flex-1 w-full flex items-center justify-center">
               {developer.logo ? (
