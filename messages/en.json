@@ -7547,7 +7547,16 @@
       "Townhouse" : "Townhouse",
       "Apartment" : "Apartment",
       "Villa" : "Villa",
-      "Office" : "Office"
+      "Office" : "Office",
+      "Retail" : "Retail",
+      "Duplex" : "Duplex",
+      "Mixed Used Building" : "Mixed Used Building",
+      "Penthouse" : "Penthouse",
+      "Plot" : "Plot",
+      "Residential Land" : "Residential Land",
+      "Studio" : "Studio",
+      "Mixed Used Plots" : "Mixed Used Plots",
+      "Furnished Apartment" : "Furnished Apartment"
     },
     "Developers" : {
       "Aldar Properties PJSC" : "Aldar Properties PJSC",
@@ -7557,7 +7566,24 @@
       "Damac" : "Damac",
       "TAMOUH INVESTMENTS LLC" : "TAMOUH INVESTMENTS LLC",
       "Green Emirates" : "Green Emirates",
-      "REAL ESTATE INVESTMENT & SERVICES COMPANY (REISCO)" : "REAL ESTATE INVESTMENT & SERVICES COMPANY (REISCO)"
+      "REAL ESTATE INVESTMENT & SERVICES COMPANY (REISCO)" : "REAL ESTATE INVESTMENT & SERVICES COMPANY (REISCO)",
+      "NSHAMA" : "NSHAMA",
+      "Emaar Properties" : "Emaar Properties",
+      "MAG EYE Real Estate Development" : "MAG EYE Real Estate Development",
+      "Dubai Properties - IDAMA" : "Dubai Properties - IDAMA",
+      "FEDERAL PROPRTIES LIMITED – Sole Proprietorship L.L.C" : "FEDERAL PROPRTIES LIMITED – Sole Proprietorship L.L.C",
+      "TDIC - Tourism Development & Investment Company" : "TDIC - Tourism Development & Investment Company",
+      "FAB Properties" : "FAB Properties",
+      "Al Wifaq Properties LLC" : "Al Wifaq Properties LLC",
+      "Al Ain" : "Al Ain",
+      "Emirates Properties Group" : "Emirates Properties Group",
+      "Al Hamid Group" : "Al Hamid Group",
+      "International Capital Trading " : "International Capital Trading ",
+      "Mubadala Investment Company" : "Mubadala Investment Company",
+      "Sheikh Suroor Bin Mohd Alnehayan" : "Sheikh Suroor Bin Mohd Alnehayan",
+      "Sorouh Real Estate PJSC" : "Sorouh Real Estate PJSC",
+      "GAF PROPERTY LLC" : "GAF PROPERTY LLC",
+      "AL SADIYAAT DEVELOPMENT AND INVESTMENT COMPANY - SOLE PROPRIETORSHIP L.L.C." : "AL SADIYAAT DEVELOPMENT AND INVESTMENT COMPANY - SOLE PROPRIETORSHIP L.L.C."
     }
   },
   "CareerSinglePage" : {
