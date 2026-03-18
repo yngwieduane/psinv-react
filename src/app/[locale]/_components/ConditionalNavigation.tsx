@@ -28,7 +28,8 @@ export default function ConditionalNavigation() {
   // walk-in pages
   const isWalkIn = pathwithoutlocale.startsWith('/walk-in');
 
-  const isNoNavPage = isWalkIn || noNavPaths.some((p) => pathwithoutlocale.includes(p));
+  const isNoNavPage =
+  isWalkIn || noNavPaths.some((p) => pathwithoutlocale === p || pathwithoutlocale.startsWith(`${p}/`));
 
   if (isNoNavPage) return null;
 
