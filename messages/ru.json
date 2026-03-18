@@ -1817,14 +1817,37 @@
     "phoneNA": "—"
   },
   "ContactInquiryForm": {
-    "placeholders": {
-      "firstName": "Имя",
-      "lastName": "Фамилия",
-      "email": "Электронная почта",
-      "phone": "Телефон",
-      "message": "Ваше сообщение"
-    }
+  "placeholders": {
+    "firstName": "Имя",
+    "lastName": "Фамилия",
+    "email": "Электронная почта",
+    "phone": "Номер телефона",
+    "message": "Ваше сообщение"
   },
+  "buttons": {
+    "submit": "Отправить",
+    "submitting": "Отправка..."
+  },
+  "alerts": {
+    "success": "Ваш запрос успешно отправлен.",
+    "error": "Что-то пошло не так.",
+    "serverError": "Ошибка сервера. Пожалуйста, попробуйте снова."
+  },
+  "fineprint": {
+    "agreementText": "Отправляя эту форму, вы соглашаетесь с нашими условиями и политикой конфиденциальности."
+  },
+  "consents": {
+    "c1": "Я согласен получать сообщения от PSI через различные каналы связи."
+  },
+  "errors": {
+    "firstNameRequired": "Имя обязательно",
+    "lastNameRequired": "Фамилия обязательна",
+    "invalidEmail": "Неверный адрес электронной почты",
+    "invalidPhone": "Неверный номер телефона",
+    "messageRequired": "Сообщение обязательно",
+    "mustAgree": "Вы должны согласиться, чтобы продолжить"
+  }
+},
   "InquiryFormProject": {
     "title": "Запрос",
     "fields": {

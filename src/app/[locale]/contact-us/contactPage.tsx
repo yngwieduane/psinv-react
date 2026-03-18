@@ -26,7 +26,13 @@ export default function ContactPage() {
   const t = useTranslations("ContactPage");
   const isRTL = locale.toLowerCase().startsWith("ar");
 
-  const L = (en: string, ar?: string) => (isRTL && ar ? ar : en);
+const L = (
+  field?: string | { en: string; ar?: string; de?: string; ru?: string; zh?: string }
+) => {
+  if (!field) return "";
+  if (typeof field === "string") return field;
+  return field[locale as keyof typeof field] || field.en || "";
+};
 
   const router = useRouter();
   const [selectedLocation, setSelectedLocation] = useState<ContactLocation>(
@@ -86,12 +92,12 @@ export default function ContactPage() {
                         : "text-gray-700 dark:text-gray-300"
                         }`}
                     >
-                      {L(location.name, location.name_ar)}
+                      {L(location.name)}
                     </h4>
                     <p className="text-xs text-gray-500 leading-tight group-hover:text-gray-600 dark:text-gray-400 dark:group-hover:text-gray-300">
-                      {L(location.address_community, location.address_community_ar)}
-                      {", "}
-                      {L(location.address_city, location.address_city_ar)}
+                  {L(location.address_community)}
+                  {", "}
+                  {L(location.address_city)}
                     </p>
                   </button>
                 </SwiperSlide>
@@ -128,20 +134,20 @@ export default function ContactPage() {
                     )}
                   </div>
                   <h2 className="text-3xl font-normal text-[#333333] mb-4 dark:text-white">
-                    {L(selectedLocation.name, selectedLocation.name_ar)}
+                    {L(selectedLocation.name)}
                   </h2>
                   <div className="flex items-start gap-3 text-gray-600 dark:text-gray-300">
                     <MapPin size={18} className="mt-1 text-secondary shrink-0" />
                     <p className="text-sm leading-relaxed break-words">
-                      {L(selectedLocation.off_address, selectedLocation.off_address_ar)
-                        .split(", ")
-                        .map((line, index) => (
-                          <span key={index}>
-                            {line}
-                            <br />
-                          </span>
-                        ))}
-                    </p>
+                     {L(selectedLocation.off_address)
+                    .split(", ")
+                    .map((line, index) => (
+                      <span key={index}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
+                   </p>
                   </div>
                   <div className="mt-10">
                     <h3 className="text-xl font-serif font-bold text-gray-900 mb-6 dark:text-white">
