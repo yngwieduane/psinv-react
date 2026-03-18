@@ -1055,23 +1055,37 @@
     "phoneNA": "—"
   },
   "ContactInquiryForm": {
-    "placeholders": {
-      "firstName": "名字",
-      "lastName": "姓氏",
-      "email": "电子邮箱",
-      "phone": "电话号码",
-      "message": "您的留言"
-    },
-    "buttons": {
-      "submit": "提交",
-      "submitting": "提交中..."
-    },
-    "alerts": {
-      "success": "您的咨询已成功发送。",
-      "error": "出现错误。",
-      "serverError": "服务器错误，请稍后再试。"
-    }
+   "placeholders": {
+    "firstName": "名字",
+    "lastName": "姓氏",
+    "email": "电子邮箱地址",
+    "phone": "电话号码",
+    "message": "您的留言"
   },
+  "buttons": {
+    "submit": "提交",
+    "submitting": "提交中..."
+  },
+  "alerts": {
+    "success": "您的咨询已成功发送。",
+    "error": "出现错误。",
+    "serverError": "服务器错误，请重试。"
+  },
+  "fineprint": {
+    "agreementText": "提交此表单即表示您同意我们的条款和隐私政策。"
+  },
+  "consents": {
+    "c1": "我同意通过不同的沟通渠道接收来自 PSI 的联系。"
+  },
+  "errors": {
+    "firstNameRequired": "名字为必填项",
+    "lastNameRequired": "姓氏为必填项",
+    "invalidEmail": "无效的电子邮箱地址",
+    "invalidPhone": "无效的电话号码",
+    "messageRequired": "留言为必填项",
+    "mustAgree": "您必须同意才能继续"
+  }
+},
   "InquiryForm": {
     "title": "登记信息",
     "fields": {

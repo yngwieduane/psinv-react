@@ -35,7 +35,13 @@ export default function ContactPage() {
   const t = useTranslations("ContactPage");
   const isRTL = locale.toLowerCase().startsWith("ar");
 
-  const L = (en: string, ar?: string) => (isRTL && ar ? ar : en);
+  const L = (
+  field?: string | { en: string; ar?: string; de?: string; ru?: string; zh?: string }
+) => {
+  if (!field) return "";
+  if (typeof field === "string") return field;
+  return field[locale as keyof typeof field] || field.en || "";
+};
 
   const params = useParams();
   const router = useRouter();
@@ -94,12 +100,12 @@ export default function ContactPage() {
                       tabIndex={0}
                     >
                       <h3 className="font-bold text-sm mb-1 text-primary font-outfit dark:text-white">
-                        {L(location.name, location.name_ar)}
+                        {L(location.name)}
                       </h3>
                       <p className="text-xs text-gray-500 leading-tight font-outfit group-hover:text-gray-600 dark:text-gray-400 dark:group-hover:text-gray-300">
-                        {L(location.address_community, location.address_community_ar)}
+                        {L(location.address_community)}
                         {", "}
-                        {L(location.address_city, location.address_city_ar)}
+                        {L(location.address_city)}
                       </p>
                     </div>
                   </SwiperSlide>
@@ -140,7 +146,7 @@ export default function ContactPage() {
                     )}
                   </div>
                   <h2 className="text-2xl font-serif font-bold text-gray-900 mb-2 dark:text-white">
-                    {L(selectedOffice.name, selectedOffice.name_ar)}
+                    {L(selectedOffice.name)}
                   </h2>
 
                   <div className={`flex items-start gap-2 text-gray-600 ${poppins.className} dark:text-gray-300`}>
@@ -149,9 +155,9 @@ export default function ContactPage() {
                       className="mt-1 text-[#014081] shrink-0"
                     />
                     <p className="text-sm leading-relaxed break-words text-gray-600">
-                      {L(selectedOffice.off_address, selectedOffice.off_address_ar)
-                        .split(", ")
-                        .map((line, index) => (
+                      {L(selectedOffice.off_address)
+                      .split(", ")
+                      .map((line, index) => (
                           <span key={index}>
                             {line}
                             <br />

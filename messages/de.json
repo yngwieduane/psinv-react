@@ -596,15 +596,38 @@
     "satellite": "Satellit",
     "phoneNA": "—"
   },
-  "ContactInquiryForm": {
-    "placeholders": {
-      "firstName": "Vorname",
-      "lastName": "Nachname",
-      "email": "E-Mail-Adresse",
-      "phone": "Telefonnummer",
-      "message": "Ihre Nachricht"
-    }
+ "ContactInquiryForm": {
+  "placeholders": {
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail-Adresse",
+    "phone": "Telefonnummer",
+    "message": "Ihre Nachricht"
   },
+  "buttons": {
+    "submit": "Senden",
+    "submitting": "Wird gesendet..."
+  },
+  "alerts": {
+    "success": "Ihre Anfrage wurde erfolgreich gesendet.",
+    "error": "Etwas ist schiefgelaufen.",
+    "serverError": "Serverfehler. Bitte versuchen Sie es erneut."
+  },
+  "fineprint": {
+    "agreementText": "Durch das Absenden dieses Formulars stimmen Sie unseren Bedingungen und Datenschutzrichtlinien zu."
+  },
+  "consents": {
+    "c1": "Ich stimme zu, von PSI über verschiedene Kommunikationskanäle kontaktiert zu werden."
+  },
+  "errors": {
+    "firstNameRequired": "Vorname ist erforderlich",
+    "lastNameRequired": "Nachname ist erforderlich",
+    "invalidEmail": "Ungültige E-Mail-Adresse",
+    "invalidPhone": "Ungültige Telefonnummer",
+    "messageRequired": "Nachricht ist erforderlich",
+    "mustAgree": "Sie müssen zustimmen, um fortzufahren"
+  }
+},
   "LocaleSwitcher": {
     "label": "Sprache ändern",
     "locale": "{locale, select, ar {🇦🇪 Arabisch} en {🇺🇸 Englisch} zh {🇨🇳 Chinesisch} ru {🇷🇺 Russisch} de {🇩🇪 Deutsch} other {Unbekannt}}",
