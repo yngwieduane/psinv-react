@@ -18,7 +18,12 @@ const PropertyCardAI = (props: any) => {
 
     const propType = props.data["propertyUnitTypes"] && props.data["propertyUnitTypes"].length > 0 ? (
         <p className="text-[12px]">
-            {props.data["propertyUnitTypes"][0].unitType}
+            {t.has(`PropType.${props.data["propertyUnitTypes"][0].unitType}`)
+            ?
+            t(`PropType.${props.data["propertyUnitTypes"][0].unitType}`)
+            :
+            props.data["propertyUnitTypes"][0].unitType
+            }            
         </p>
     ) : (
         ""

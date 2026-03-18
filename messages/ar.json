@@ -7048,7 +7048,41 @@
       "Al Qudra": "القدرة",
       "Shams Gate District": "منطقة شمس جيت",
       "City Of Lights": "مدينة الأضواء",
-      "Najmat Abu Dhabi": "نجمة أبوظبي"
+      "Najmat Abu Dhabi": "نجمة أبوظبي",
+      "Zayed City": "مدينة زايد",
+      "Al Fahid Island": "جزيرة الفهيد",
+      "Corniche Abu Dhabi": "كورنيش أبوظبي",
+      "Masdar City ": "مدينة مصدر ",
+      "Al Maryah Island": "جزيرة المارية"
+    },
+    "PropType": {
+      "Townhouse": "تاون هاوس",
+      "Apartment": "شقة",
+      "Villa": "فيلا",
+      "Office": "مكتب",
+      "Retail": "تجزئة",
+      "Duplex": "دوبلكس",
+      "Mixed Used Building": "مبنى متعدد الاستخدامات",
+      "Penthouse": "بنتهاوس",
+      "Plot": "قطعة أرض",
+      "Residential Land": "أرض سكنية",
+      "Studio": "استوديو",
+      "Mixed Used Plots": "أراضٍ متعددة الاستخدامات",
+      "Furnished Apartment": "شقة مفروشة"
+    },
+    "Developers": {
+      "Aldar Properties PJSC": "الدار العقارية ش.م.ع",
+      "Al Badie Group": "مجموعة البادي",
+      "General Housing Company": "شركة الإسكان العامة",
+      "Hydra Properties": "هيدرا العقارية",
+      "Damac": "داماك",
+      "TAMOUH INVESTMENTS LLC": "تموح للاستثمارات ذ.م.م",
+      "Green Emirates": "جرين الإمارات",
+      "REAL ESTATE INVESTMENT & SERVICES COMPANY (REISCO)": "شركة الاستثمار والخدمات العقارية (ريسكو)",
+      "NSHAMA": "نشاما",
+      "Emaar Properties": "إعمار العقارية",
+      "MAG EYE Real Estate Development": "ماج آي للتطوير العقاري",
+      "Dubai Properties - IDAMA": "دبي العقارية - إدامة"
     }
   },
   "CareerSinglePage": {
