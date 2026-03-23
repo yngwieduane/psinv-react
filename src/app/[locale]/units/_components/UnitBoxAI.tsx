@@ -12,8 +12,12 @@ export default function UnitBoxAI(props: any) {
     let images, price;
     {
         props.data.imageurl !== null
-            ? images = props.data.imageurl.split('|').slice(0, -1)
+            ? images = props.data.imageurl
+  .split('|')
+  .filter(Boolean)
+  .map((url: string) => url.trim().replace(/&amp;/g, '&'))
             : images = '';
+
     }
     {
         props.data.sellprice !== null
@@ -48,7 +52,7 @@ export default function UnitBoxAI(props: any) {
     const propBed = props.data.bedrooms ? (<p className="text-sm font-medium">{props.data.bedrooms}</p>) : ("");
     const propBaths = props.data.no_of_bathrooms ? (<p className="text-sm font-medium">{props.data.no_of_bathrooms}</p>) : ("");
     const propArea = props.data.built_upArea ? (<p className="text-sm font-medium">{format.number(props.data.built_upArea)} sqft</p>) : ("");
-
+//console.log("imageis", images[0]);
     return (
         <>
             <div className='group relative h-full '>
@@ -81,8 +85,11 @@ export default function UnitBoxAI(props: any) {
                         {/* Image Section */}
                         <div className="relative aspect-[4/3] bg-gray-200 overflow-hidden">
                             <img
-                                src={images[0]}
+                                src={images[0] || "/images/placeholder.jpg"}
                                 alt={props.data['propertyName']}
+                                onError={(e) => {
+                                    e.currentTarget.src = "/images/placeholder.jpg";
+                                }}
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
 
