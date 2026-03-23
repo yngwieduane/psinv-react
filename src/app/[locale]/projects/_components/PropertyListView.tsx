@@ -228,10 +228,14 @@ const PropertyListItem = (props: any) => {
 
                     <div className="mt-4 pt-4 border-t border-gray-100 sm:flex justify-between items-center text-right sm:text-left">
                         <div className="text-primary font-bold text-lg dark:text-white">
-                            {props.data["priceFrom"] !== 0 ? (
+                                {minprice || maxPrice ? (
                                 <>
-                                    <span className="text-xs text-gray-400 font-normal uppercase mr-1 dark:text-white">From</span>
-                                    {minprice} ~ {maxPrice}
+                                    <span className="text-xs text-gray-400 font-normal uppercase mr-1 dark:text-white">
+                                        From
+                                    </span>
+                                    {minprice && maxPrice
+                                        ? `${minprice} ~ ${maxPrice}`
+                                        : minprice || maxPrice}
                                 </>
                             ) : (
                                 <span className="text-gray-500 text-sm dark:text-white">Ask for Price</span>
