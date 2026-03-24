@@ -41,30 +41,37 @@ const UnitsMapBox = (props: any) => {
     const category = searchParams.get('category') || props.category || '';
     const propertyId = searchParams.get('propertyId') || props.propertyId || '';
     const beds = searchParams.get('beds') || props.beds || '';
+    const communityId = searchParams.get('communityId') || props.communityId || '';
+    const baths = searchParams.get('baths') || props.baths || '';
+    const propertyType = searchParams.get('propertyType') || props.propertyType || '';
+    const minPrice = searchParams.get('minPrice') || props.minPrice || '';
+    const maxPrice = searchParams.get('maxPrice') || props.maxPrice || '';
+    const minArea = searchParams.get('minArea') || props.minArea || '';
+    const maxArea = searchParams.get('maxArea') || props.maxArea || '';
+    const currentPage = searchParams.get('currentPage') || props.currentPage || '';
+
+    const pageNum = Number(currentPage) || 1;
 
     // Fetch Data
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const p1 = fetch(`/api/external/units?propertyId=${propertyId}&category=${category}&beds=${beds}`)
-                    .then(res => res.ok ? res.json() : [])
-                    .then(data => data.map((item: any) => ({ ...item, source: 'main' })))
-                    .catch(err => {
-                        console.error("Units API failed", err);
-                        return [];
-                    });
+                // Fetch from our internal Firestore-backed API mapping the same filters as UnitsList
+                const url = `/api/units?propertyId=${propertyId}&category=${category}&beds=${beds}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}&minArea=${minArea}&maxArea=${maxArea}&communityId=${communityId}&unitid=${unitid}&page=${pageNum}&limit=50`;
 
-                const p2 = fetch(`/api/external/unitsAssets?propertyId=${propertyId}&category=${category}&beds=${beds}`)
-                    .then(res => res.ok ? res.json() : [])
-                    .then(data => data.map((item: any) => ({ ...item, source: 'assets' })))
-                    .catch(err => {
-                        console.error("UnitsAssets API failed", err);
-                        return [];
-                    });
+                const res = await fetch(url);
+                let responseData = { units: [], total: 0 };
+                
+                if (res.ok) {
+                    responseData = await res.json();
+                } else {
+                    console.error("Units API failed", res.status);
+                }
 
-                const [data1, data2] = await Promise.all([p1, p2]);
-                setData([...data1, ...data2]);
+                // If response is the old array format (fallback), handle it
+                const fetchedUnits = Array.isArray(responseData) ? responseData : (responseData.units || []);
+                setData(fetchedUnits);
             } catch (error) {
                 console.error("API fetch failed", error);
             } finally {
@@ -73,7 +80,7 @@ const UnitsMapBox = (props: any) => {
         };
 
         fetchData();
-    }, [unitid, category, propertyId, beds]);
+    }, [unitid, category, propertyId, beds, baths, propertyType, maxPrice, minPrice, minArea, maxArea, communityId, pageNum]);
 
 
     // Calculate initial center based on first property with coordinates
