@@ -19,13 +19,12 @@ import MortgageCalculator from "@/app/[locale]/mortgage-calculator/MortgageCalcu
 import AgentDetails from "./AgentDetails";
 import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
 import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
-import { Bath, BedDouble, CheckCircle2, ChevronDown, ChevronUp, Flag, Heart, Link2, Mail, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
+import { Bath, BedDouble, CheckCircle2, ChevronDown, ChevronUp, Heart, Link2, Mail, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
 import { useUser } from "@/context/userContext";
 import AccordionTabs from "@/app/[locale]/_components/tools/AccordionTabs";
 import { Link } from "@/i18n/navigation";
 import { useCurrency } from "@/context/currencyContext";
 import ListPopUpWidget from "@/app/[locale]/_components/ListPopUpWidget";
-import ReportIssueModal from "./ReportIssueModal";
 
 const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap'));
 const SimilarUnitsGrid = dynamic(() => import('./SimilarUnitsGrid'));
@@ -38,7 +37,6 @@ export default function UnitPageAI(props: any) {
     const [showAllAmenities, setShowAllAmenities] = useState(false);
     const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
     const [isRemarksExpanded, setIsRemarksExpanded] = useState(false);
-    const [isReportModalOpen, setIsReportModalOpen] = useState(false);
     const drawerHandler = (content: string, valuesarray: any) => (e: any) => {
         console.log(showDrawer);
         console.log(content);
@@ -96,22 +94,22 @@ export default function UnitPageAI(props: any) {
                     let images, price, category, map, video, facilities, coordinates;
                     const saved = isFavorite(post.code);
                     const compared = isCompared(post.code);
-                    const amenities: string[] =
-                        typeof post.unit_Amenities === "string" && post.unit_Amenities.trim()
-                            ? post.unit_Amenities.split(" | ")
-                            : [];
+                     const amenities: string[] =
+        typeof post.unit_Amenities === "string" && post.unit_Amenities.trim()
+            ? post.unit_Amenities.split(" | ")
+            : [];
 
-                    const amenitiesUnique = Array.from(
-                        new Map(
-                            amenities.map((am) => {
-                                const rawLabel = (am.split("^")[1] || am).trim();
-                                const norm = rawLabel.toLowerCase();
-                                return [norm, am] as const;
-                            })
-                        ).values()
-                    );
+    const amenitiesUnique = Array.from(
+        new Map(
+            amenities.map((am) => {
+                const rawLabel = (am.split("^")[1] || am).trim();
+                const norm = rawLabel.toLowerCase();
+                return [norm, am] as const;
+            })
+        ).values()
+    );
 
-                    const amenitiesClean = amenitiesUnique.slice(0, -1);
+    const amenitiesClean = amenitiesUnique.slice(0, -1);
                     {
                         post.imageurl !== null
                             ? images = post.imageurl.split('|').map((img: string) => img.replace(/^http:\/\//i, 'https://'))
@@ -219,7 +217,7 @@ export default function UnitPageAI(props: any) {
                                         </div>
                                     </div>
 
-                                    <div className="flex gap-4 w-full md:w-auto pb-2 md:pb-0">
+                                    <div className="flex gap-4 w-full md:w-auto">
                                         {/* Quick Actions */}
                                         <button
                                             onClick={() => toggleFavorite({ id: post.code, type: 'units', data: post })}
@@ -239,12 +237,6 @@ export default function UnitPageAI(props: any) {
                                             className={`dark:text-white cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold ${compared ? 'bg-[#0c1356] text-white' : 'border-gray-200 text-gray-600 hover:bg-[#0c1356] hover:text-white'}`}
                                         >
                                             <Shuffle size={20} /> {compared ? t('buttons.compared') : t('buttons.compare')}
-                                        </button>
-                                        <button
-                                            onClick={() => setIsReportModalOpen(true)}
-                                            className="dark:text-white shrink-0 cursor-pointer flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 transition-colors font-bold border-gray-200 text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800"
-                                        >
-                                            <Flag size={20} /> Report
                                         </button>
                                     </div>
                                 </div>
@@ -413,19 +405,19 @@ export default function UnitPageAI(props: any) {
                                         {amenitiesClean ? (
                                             <>
                                                 <h4 className="font-bold text-gray-900 text-xl mb-6 dark:text-white">
-                                                    {t('sections.amenitiesClean')}
+                                                {t('sections.amenitiesClean')}
                                                 </h4>
                                                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                                                    {(showAllAmenities ? amenitiesClean : amenitiesClean.slice(0, 20)).map(
-                                                        (am: string, i: number) => (
-                                                            <div
-                                                                key={i}
-                                                                className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100 dark:bg-neutral-900 dark:text-white dark:border-neutral-800"
-                                                            >
-                                                                <CheckCircle2 className="text-secondary shrink-0" size={20} />
-                                                                <span className="text-gray-700 font-medium dark:text-white">{getAmenityLabel(am)}</span>
-                                                            </div>
-                                                        ))}
+                                                {(showAllAmenities ? amenitiesClean : amenitiesClean.slice(0, 20)).map(
+                                                    (am: string, i: number) => (
+                                                    <div
+                                                        key={i}
+                                                        className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100 dark:bg-neutral-900 dark:text-white dark:border-neutral-800"
+                                                    >
+                                                            <CheckCircle2 className="text-secondary shrink-0" size={20} />
+                                                            <span className="text-gray-700 font-medium dark:text-white">{getAmenityLabel(am)}</span>
+                                                        </div>
+                                                    ))}
                                                 </div>
                                                 {amenitiesClean.slice(0, -1).length > 20 && (
                                                     <div className="mt-8 flex justify-center">
@@ -471,7 +463,6 @@ export default function UnitPageAI(props: any) {
                                         </div>
 
                                         <div className="mt-8 hidden">
-                                            {post.agent}
                                             <AgentDetails agent={post.agent} />
                                         </div>
 
@@ -538,7 +529,7 @@ export default function UnitPageAI(props: any) {
                                             />
                                         </div>) : ("")}
 
-                                    <h2 className="text-3xl font-bold text-primary mb-8 mt-10 dark:text-white">{t('sections.similar_units')}</h2>
+                                    {/* <h2 className="text-3xl font-bold text-primary mb-8 mt-10 dark:text-white">{t('sections.similar_units')}</h2> */}
                                     <SimilarUnitsGrid
                                         propid={post.property_Pk}
                                         category={category}
@@ -547,12 +538,6 @@ export default function UnitPageAI(props: any) {
                                 </div>
                             </div>
                             <DrawerDetails open={showDrawer} onClose={setShowDrawer} drawerTitle={dwDataTitle} drawerContent={dwDataContent} branchCode={branchCode} />
-                            <ReportIssueModal
-                                isOpen={isReportModalOpen}
-                                onClose={() => setIsReportModalOpen(false)}
-                                unitName={post.marketingTitle || post.propertyname || 'this unit'}
-                                unitRef={post.refNo}
-                            />
                         </div>
                     )
                 })}

@@ -111,11 +111,16 @@ const SimilarUnitsGrid = ({
     return () => clearTimeout(timeout);
   }, [query]);
 
+  if (!loading && results.length === 0) return null;
   return (
     <>
       {loading && <p className="text-sm text-gray-500 mt-1">Loading...</p>}
       {results.length > 0 && (
         <>
+          {/* ✅ TITLE MOVED HERE */}
+          <h2 className="text-3xl font-bold text-primary mb-8 mt-10 dark:text-white">
+            Similar Units
+          </h2>
           <div
             className="grid grid-cols-1 md:grid-cols-3 gap-5"
           >
