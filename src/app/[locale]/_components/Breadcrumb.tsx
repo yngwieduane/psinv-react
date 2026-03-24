@@ -12,31 +12,42 @@ type BreadcrumbProps = {
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ customSegments }) => {
   const pathname = usePathname();
-  const t = useTranslations("Breadcrumb"); 
+  const t = useTranslations("Breadcrumb");
+
+  const formatSegment = (text: string) =>
+    text
+      .replaceAll("-", " ")
+      .replace(/\b\w/g, (char) => char.toUpperCase());
+
   const autoSegments: Segment[] = (() => {
     const parts = pathname.split("/").filter(Boolean);
-    parts.shift();
+    parts.shift(); // remove locale
 
     return parts.map((segment, index) => {
-      const fixedSegment = segment === "developer" ? "developers" : segment;
+      const fixedSegment =
+        segment === "developer" ? "developers" : segment;
 
-      const url = "/" + [...parts.slice(0, index), fixedSegment].join("/");
-      // Translate segment name using your translation file, fallback to default
-      const translatedName = t(`segments.${fixedSegment}`, {
-        fallback: fixedSegment.replaceAll("-", " "),
-      });
+      const url = "/" + parts.slice(0, index + 1).join("/");
+
+      const key = `segments.${fixedSegment}`;
+      const translatedName = t.has(key)
+        ? t(key)
+        : formatSegment(fixedSegment);
+
       return {
-        // name: segment.replaceAll("-", " "),
         name: translatedName,
         href: url,
       };
     });
   })();
 
+  const homeLabel = t.has("home") ? t("home") : "Home";
+
   const segments: Segment[] =
     customSegments && customSegments.length > 0
       ? customSegments
-      : [{ name: t("home", { fallback: "Home" }), href: "/" }, ...autoSegments];
+      : [{ name: homeLabel, href: "/" }, ...autoSegments];
+
   const itemListElement = segments
     .filter((s) => s.href)
     .map((s, index) => ({
@@ -64,7 +75,10 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customSegments }) => {
           const isLast = index === segments.length - 1;
 
           return (
-            <li key={`${seg.name}-${index}`} className="text-sm flex items-center space-x-2">
+            <li
+              key={`${seg.name}-${index}`}
+              className="text-sm flex items-center space-x-2"
+            >
               {index !== 0 && <span>/</span>}
 
               {seg.href && !isLast ? (
