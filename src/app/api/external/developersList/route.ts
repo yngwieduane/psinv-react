@@ -1,21 +1,44 @@
 
 import { NextResponse } from "next/server";
 
+function normalizeDeveloperName(name: string = "") {
+  return name
+    .toLowerCase()
+    .replace(/\bpjsc\b/g, "")
+    .replace(/\bllc\b/g, "")
+    .replace(/\bltd\b/g, "")
+    .replace(/[^\w\s]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function sortDevelopers(developers: any[]) {
-  const checked : any[] = [];
-  const unchecked : any[] = [];
+  const checked: any[] = [];
+  const unchecked: any[] = [];
+  const uniqueMap = new Map<string, any>();
 
   developers.forEach((developer) => {
-    const tmp = {
-      id : developer.id,
-      name: developer.name,
-      slug: developer.slug,
-      logo: developer.logo,
-      checked: false,
-    };
+    const normalizedKey = normalizeDeveloperName(developer.name);
 
-    unchecked.push(tmp);
+    if (!uniqueMap.has(normalizedKey)) {
+      uniqueMap.set(normalizedKey, {
+        id: developer.id,
+        name: developer.name,
+        slug: developer.slug,
+        logo: developer.logo,
+        checked: false,
+      });
+    }
   });
+
+  uniqueMap.forEach((developer) => {
+    if (developer.checked) {
+      checked.push(developer);
+    } else {
+      unchecked.push(developer);
+    }
+  });
+
   return [...checked, ...unchecked];
 }
 
@@ -30,14 +53,14 @@ export async function GET() {
       },
     });
 
-    if (!response.ok) {
+      if (!response.ok) {
       throw new Error(`API Error: ${response.status}`);
     }
 
     const data = await response.json();
     const sortedDevelopers = sortDevelopers(data);
+
     return NextResponse.json({ result: sortedDevelopers });
-    
   } catch (error) {
     console.error("Error fetching developer list:", error);
     return NextResponse.json({ result: [] }, { status: 500 });
