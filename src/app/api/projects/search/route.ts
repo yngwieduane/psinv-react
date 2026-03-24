@@ -31,6 +31,25 @@ export async function GET(request: NextRequest) {
             lastFetchTime = now;
         }
 
+        const todayStr = new Date().toISOString().split('T')[0];
+        allItems = allItems.filter((item: any) => {
+            if (!item._syncedAt) return false;
+            try {
+                // Ensure the date is correctly converted regardless of the stored format
+                let date;
+                if (typeof item._syncedAt.toDate === 'function') {
+                    date = item._syncedAt.toDate();
+                } else if (item._syncedAt._seconds) {
+                    date = new Date(item._syncedAt._seconds * 1000);
+                } else {
+                    date = new Date(item._syncedAt);
+                }
+                return date.toISOString().split('T')[0] === todayStr;
+            } catch {
+                return false;
+            }
+        });
+
         // Apply filters
         if (city) {
             allItems = allItems.filter(item => (item.city?.toLowerCase() || "").includes(city));
