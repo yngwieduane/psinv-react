@@ -82,6 +82,7 @@ export default function UnitPageAI(props: any) {
         const key = `amenities_values.${amenityKey(rawLabel)}`;
         return t.has(key) ? t(key) : rawLabel;
     };
+    
     return (
         <div className="">
             <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
@@ -199,7 +200,7 @@ export default function UnitPageAI(props: any) {
                             (post.category || "").toLowerCase() === "townhouse" ? t("values.townhouse") :
                                 (post.category || "").toLowerCase() === "villa" ? t("values.villa") :
                                     post.category;
-
+                    
                     return (
                         <div key={index} >
                             <script
@@ -532,6 +533,7 @@ export default function UnitPageAI(props: any) {
                                     {/* <h2 className="text-3xl font-bold text-primary mb-8 mt-10 dark:text-white">{t('sections.similar_units')}</h2> */}
                                     <SimilarUnitsGrid
                                         propid={post.property_Pk}
+                                        community={post.community}
                                         category={category}
                                         display={3}
                                     />
