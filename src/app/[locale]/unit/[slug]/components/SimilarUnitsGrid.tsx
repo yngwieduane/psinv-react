@@ -79,12 +79,12 @@ type Units = {
   furnish_status: string;
 };
 const SimilarUnitsGrid = ({
-  community,
+  // community,
   propid,
   category,
   display
 }: {
-  community: number;
+  // community: number;
   propid: number;
   category: string;
   display: number;

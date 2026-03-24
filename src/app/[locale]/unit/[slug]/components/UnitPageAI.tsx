@@ -533,7 +533,7 @@ export default function UnitPageAI(props: any) {
                                     {/* <h2 className="text-3xl font-bold text-primary mb-8 mt-10 dark:text-white">{t('sections.similar_units')}</h2> */}
                                     <SimilarUnitsGrid
                                         propid={post.property_Pk}
-                                        community={post.community}
+                                        // community={post.community}
                                         category={category}
                                         display={3}
                                     />
