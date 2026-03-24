@@ -5979,7 +5979,6 @@
       "meraas":"Meraas",
       "dubai-properties---idama":"Dubai Properties - IDAMA",
       "floor-plan":"Floor Plan",
-      "faqs":"faqs",
       "golf-gardens":"Golf Gardens",
       "al-ghadeer":"Al Ghadeer",
       "hydra-village":"Hydra Village",
@@ -5992,10 +5991,19 @@
       "faqs":"Faqs",
       "al-mina":"Al mina",
       "silver-wave-tower":"Silver Wave Tower",
-      "floor-plan":"Floor Plan",
-      "residential-vs-commercial-property-demand-in-the-uae-2026":"Residential vs Commercial Property Demand in the UAE 2026"
-
-    }
+      "residential-vs-commercial-property-demand-in-the-uae-2026":"Residential vs Commercial Property Demand in the UAE 2026",
+      "the-ai-managed-home-how-proptech-is-changing-the-tenant-experience":"The AI-Managed Home: How PropTech is Changing the Tenant Experience",
+      "the-multi-gen-home-the-return-of-the-large-family-estate":"The Multi-Gen Home: The Return of the Large Family Estate",
+      "retirement-in-the-sun-navigating-the-uae-retirement-visa-via-property":"Retirement in the Sun: Navigating the UAE Retirement Visa via Property",
+      "bashayer-by-modon-properties-seaside-living-on-hudayriyat-island":"Bashayer Residences by Modon Properties Seaside Living on Hudayriyat Island",
+      "abu-dhabi-real-estate-market-outlook-2026-15900-new-homes-set-to-enter-the-market":"Abu Dhabi Real Estate Market Outlook 2026: 15,900 New Homes Set to Enter the Market",
+      "5-essential-home-upgrades-that-actually-increase-your-resale-value":"5 Essential Home Upgrades That Actually Increase Your Resale Value",
+      "lifestyle-trends-shaping-uae-residential-developments":"Lifestyle Trends Shaping UAE Residential Developments",
+      "rotana-residences":"Rotana Residences",
+      "property-shop-investment-psi-international-expanding-real-estate-opportunities-beyond-borders":"Property Shop Investment International Expanding Real Estate Opportunities Beyond Borders",
+      "navigating-the-summer-move-tips-for-a-stress-free-relocation-in-the-uae-heat":"Navigating the Summer Move Tips for a Stress-Free Relocation in the UAE Heat",
+      "zayed-city":"zayed city"
+      }
   },
   "ListYourPropertyPage": {
     "metadata": {
@@ -7548,17 +7556,8 @@
       "Townhouse" : "Townhouse",
       "Apartment" : "Apartment",
       "Villa" : "Villa",
-      "Office" : "Office",
-      "Retail" : "Retail",
-      "Duplex" : "Duplex",
-      "Mixed Used Building" : "Mixed Used Building",
-      "Penthouse" : "Penthouse",
-      "Plot" : "Plot",
-      "Residential Land" : "Residential Land",
-      "Studio" : "Studio",
-      "Mixed Used Plots" : "Mixed Used Plots",
-      "Furnished Apartment" : "Furnished Apartment"
-    },
+      "Office" : "Office"
+    },    
     "Developers" : {
       "Aldar Properties PJSC " : "Aldar Properties PJSC ",
       "Aldar Properties PJSC" : "Aldar Properties PJSC ",

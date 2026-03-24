@@ -129,17 +129,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         });
     });
 
+    const todayStr = new Date().toISOString().split('T')[0];
+    const isSyncedToday = (data: any) => {
+        if (!data._syncedAt) return false;
+        try {
+            const date = data._syncedAt.toDate ? data._syncedAt.toDate() : new Date(data._syncedAt);
+            return date.toISOString().split('T')[0] === todayStr;
+        } catch {
+            return false;
+        }
+    };
+
     // 2. Projects
     projects.forEach((p: any) => {
         if (!p.propertyName) return;
+        if (!isSyncedToday(p)) return;
         const city = sanitizeSlug(p.city_name || "abu-dhabi");
         const comm = sanitizeSlug(p.community || "community");
-        // const sub = sanitizeSlug(p.sub_community || "subcommunity");
-        const sub = p.sub_community ? sanitizeSlug(p.sub_community) : null;
+        const sub = sanitizeSlug(p.subCommunity || "subcommunity");
+        //const sub = p.sub_community ? sanitizeSlug(p.sub_community) : null;
         const proj = sanitizeSlug(p.propertyName);
 
-        // const path = `/projects/${city}/${comm}/${sub}/${proj}`;
-        const path = sub ? `/projects/${city}/${comm}/${sub}/${proj}` : `/projects/${city}/${comm}/subcommunity/${proj}`;
+        const path = `/projects/${city}/${comm}/${sub}/${proj}`;
+        //const path = sub ? `/projects/${city}/${comm}/${sub}/${proj}` : `/projects/${city}/${comm}/subcommunity/${proj}`;
 
         // Main Project Page
         locales.forEach(locale => {
@@ -167,6 +179,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // 3. Units
     units.forEach((u: any) => {
+        if (!isSyncedToday(u)) return;
+
         const adType = u._sourceCategory || ((u.isRent || u.rent) ? 'Rent' : 'Sale');
         const propType = u.category || "";
         const name = u.propertyname || "";

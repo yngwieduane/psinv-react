@@ -42,21 +42,21 @@ const CITY_CONFIG: Record<string, { email: string; apiUrl: string; referredTo?: 
         referredTo: 4421,
         referredBy: 4421,
         assignedTo: 4421,
-        report : 'https://drive.google.com/file/d/1vfpX4Ltea1aBgspJ9m9Bocaae_LJFd4X/view?_hsenc=p2ANqtz-9PCpn4uxQThccsRSD-PGp1qVVO7OMRri9gea7ZoFIdKHl6j8kYrPznmSylaHlB_l7lbNBo',
+        report : 'https://drive.google.com/file/d/1KwjftOFbd3PMBOVzUYGeod_sdH6_wXea/view?_hsenc=p2ANqtz-9qLNAVL_lGowfbapw4AMktRmWBuncf0dyssmlFjW6oEc25VpyTmSq7bWFbs3oM1iK4EyH_',
     },
     'Abu Dhabi': {
         email: 'callcenter@psinv.net, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
         referredTo: 3458,
         referredBy: 3458,
-        report : 'https://drive.google.com/file/d/1tzVe0OU_ds3s-3uvjhkXvqFlyT4JixbG/view?_hsenc=p2ANqtz--v6OO7Fr5ne2eezbPRFjgiYOX5XPSujYhTQ1yRUZI1OpCeTyfEbcPKzVAGXF3cfx35cPAD',
+        report : 'https://drive.google.com/file/d/1a96VASuybV9lixRqCmjyCJwXu8GNOmx7/view?_hsenc=p2ANqtz-8tk74NuUyXZlx9oM0--0bfvARapRoxuoFxCUYfHdxh4FVtaheFIVesERh9KkkrdXoe3Q1k',
     },
     'DEFAULT': {
         email: 'callcenter@psinv.net, yngwie.g@psinv.net',
         apiUrl: 'https://api.portal.psi-crm.com/leads?APIKEY=160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a',
         referredTo: 3458,
         referredBy: 3458,
-        report : 'https://drive.google.com/file/d/1tzVe0OU_ds3s-3uvjhkXvqFlyT4JixbG/view?_hsenc=p2ANqtz--v6OO7Fr5ne2eezbPRFjgiYOX5XPSujYhTQ1yRUZI1OpCeTyfEbcPKzVAGXF3cfx35cPAD',
+        report : 'https://drive.google.com/file/d/1a96VASuybV9lixRqCmjyCJwXu8GNOmx7/view?_hsenc=p2ANqtz-8tk74NuUyXZlx9oM0--0bfvARapRoxuoFxCUYfHdxh4FVtaheFIVesERh9KkkrdXoe3Q1k',
     }
 };
 
