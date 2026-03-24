@@ -140,14 +140,19 @@ export default function PropertyList({
             <BlogItem />
           </div>
         ) : activeTab === 'list' ? (
-          <PropertyListView data={data['result']} />
+          <PropertyListView data={data?.result || []} />
         ) : (
-          <PropertyBox data={data['result']} />
+          <PropertyBox data={data?.result || []} />
         )}
-        {!isLoading && activeTab !== 'map' && !data ? (
-          <p>No properties found.</p>
-        ) : (
-          <></>
+        {!isLoading && activeTab !== 'map' && data?.result?.length === 0 && (
+           <div className="text-center py-20">
+    <h2 className="text-xl font-semibold text-gray-800">
+      No projects found
+    </h2>
+    <p className="text-gray-500 mt-2">
+      There are currently no projects available in this area.
+    </p>
+  </div>
         )}
       </div>
       <div className="col-span-2 mt-10">
