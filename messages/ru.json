@@ -1992,7 +1992,25 @@
     }
   },
   "Job_List": {
-    "loading": "Загрузка вакансий..."
+    "loading": "Загрузка вакансий...",
+    "Jobs": {
+      "IT Support - PSI AUH": "Специалист технической поддержки - PSI AUH",
+      "Lead Owner Officer - PSI AUH": "Менеджер по работе с владельцами - PSI AUH",
+      "Learning and Development Specialist - PSI AUH": "Специалист по обучению и развитию - PSI AUH",
+      "Leasing Agent - PSI Assets": "Агент по аренде - PSI Assets",
+      "Listing Agent - PSI Assets": "Агент по размещению объектов - PSI Assets",
+      "Real Estate Consultant- PSI Assets": "Консультант по недвижимости - PSI Assets",
+      "Resale Agent": "Агент по перепродаже",
+      "Resale Agent - PSI AUH": "Агент по перепродаже - PSI AUH",
+      "Senior Campaign Supervisor - PSI AUH": "Старший менеджер рекламных кампаний - PSI AUH",
+      "Talent Acquisition Specialist - PSI AUH": "Специалист по подбору персонала - PSI AUH",
+      "Telesales Agent": "Менеджер по телефонным продажам",
+      "Trainer - PSI AUH ": "Тренер - PSI AUH",
+      "Campaign Specialist - PSI AUH": "Специалист по рекламным кампаниям - PSI AUH",
+      "Chief Accountant": "Главный бухгалтер",
+      "Digital Adoption Lead - PSI AUH": "Руководитель по внедрению цифровых решений - PSI AUH",
+      "HCM Supervisor - PSI Assets": "Руководитель HCM - PSI Assets"
+    }
   },
   "Units": {
     "ResgisterTitle": "Оставить заявку",

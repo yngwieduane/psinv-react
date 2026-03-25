@@ -8,6 +8,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { nationalityOptions } from "@/data/jobApplication";
 
 interface JobApplicationFormProps {
   jobId: string | number;
@@ -208,9 +209,14 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
             <option value="" disabled>
               {t("selectNationality")}
             </option>
-            {nationalities.map((n) => (
+            {/* {nationalities.map((n) => (
               <option key={n.id} value={n.id}>
                 {n.name}
+              </option>
+            ))} */}
+            {nationalityOptions.map((n) => (
+              <option key={n} value={n}>
+                {n}
               </option>
             ))}
           </select>

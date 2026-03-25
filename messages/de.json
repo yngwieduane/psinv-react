@@ -2005,7 +2005,25 @@
     }
   },
   "Job_List": {
-    "loading": "Lade Jobs..."
+    "loading": "Lade Jobs...",
+    "Jobs" : {
+      "IT Support - PSI AUH" : "IT-Support - PSI AUH",
+      "Lead Owner Officer - PSI AUH" : "Lead-Owner-Beauftragter - PSI AUH",
+      "Learning and Development Specialist - PSI AUH" : "Spezialist für Lernen und Entwicklung - PSI AUH",
+      "Leasing Agent - PSI Assets" : "Vermietungsberater - PSI Assets",
+      "Listing Agent - PSI Assets" : "Angebotsmanager - PSI Assets",
+      "Real Estate Consultant- PSI Assets" : "Immobilienberater - PSI Assets",
+      "Resale Agent" : "Wiederverkaufsberater",
+      "Resale Agent - PSI AUH" : "Wiederverkaufsberater - PSI AUH",
+      "Senior Campaign Supervisor - PSI AUH" : "Senior Kampagnenleiter - PSI AUH",
+      "Talent Acquisition Specialist - PSI AUH" : "Talent Acquisition Spezialist - PSI AUH",
+      "Telesales Agent" : "Telesales-Berater",
+      "Trainer - PSI AUH " : "Trainer - PSI AUH",
+      "Campaign Specialist - PSI AUH" : "Kampagnen Spezialist - PSI AUH",
+      "Chief Accountant" : "Leitender Buchhalter",
+      "Digital Adoption Lead - PSI AUH" : "Leiter für digitale Transformation - PSI AUH",
+      "HCM Supervisor - PSI Assets" : "HCM Supervisor - PSI Assets"
+    }
   },
   "Units": {
     "ResgisterTitle": "Interesse anmelden",

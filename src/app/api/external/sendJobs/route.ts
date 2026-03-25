@@ -65,6 +65,8 @@ export async function POST(req: NextRequest) {
     );
 
 const result = await response.json();
+// console.log("=== PSI API RESPONSE ===");
+// console.log(result);
 return NextResponse.json(result);
 
   } catch (error) {
