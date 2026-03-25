@@ -82,7 +82,7 @@ export default function UnitPageAI(props: any) {
         const key = `amenities_values.${amenityKey(rawLabel)}`;
         return t.has(key) ? t(key) : rawLabel;
     };
-    
+    const uniqueData = Array.from(new Map(props.data.map((item: { code: any; }) => [item.code, item])).values());
     return (
         <div className="">
             <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
@@ -91,7 +91,8 @@ export default function UnitPageAI(props: any) {
                 </div>
             </div>
             <div >
-                {props.data.map((post: any, index: any) => {
+                {/* {props.data.map((post: any, index: any) => { */}
+                {uniqueData .map((post: any, index: any) => {
                     let images, price, category, map, video, facilities, coordinates;
                     const saved = isFavorite(post.code);
                     const compared = isCompared(post.code);
