@@ -499,7 +499,13 @@ function PropertyPage(props: any) {
 
                         {/* Gallery Grid */}
                         <section id="gallery" className="scroll-mt-40">
-                            <PhotoGallery data={props.data} limit={9} viewAllLink={`${pathname}/photo-gallery`} />
+                            {/* <PhotoGallery data={props.data} limit={9} viewAllLink={`${pathname}/photo-gallery`} /> */}
+                            <PhotoGallery 
+                            key={props.data?.propertyID} 
+                            data={props.data} 
+                            limit={9} 
+                            viewAllLink={`${pathname}/photo-gallery`} 
+                            />
                         </section>
 
                         {/* Floor Plans */}

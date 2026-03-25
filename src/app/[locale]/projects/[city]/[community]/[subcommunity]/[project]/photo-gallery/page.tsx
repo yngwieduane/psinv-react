@@ -11,14 +11,20 @@ export async function generateMetadata(
     { params }: Props,
 ): Promise<Metadata> {
     const { locale, city, community, subcommunity, project } = await params;
-
-    const classify = (project: string) => project.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
+    const classify = (project: string) =>project.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    // const classify = (project: string) => project.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
     const projectId = classify(project);
-
-    const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
-    const posts = await data.json();
-    const result = posts['result'][0];
-
+    const data = await fetch(
+        `https://psinv-react-gilt.vercel.app/api/external/projects?query=${projectId}`,
+        { cache: 'no-store' } // ✅ prevent caching issues
+      );
+    // const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
+     const posts = await data.json();
+    // const result = posts['result'][0];
+    const result = posts['result']?.find(
+        (item: any) =>
+          item.propertyName.toLowerCase().replace(/\s+/g, '-') === project
+      );
     const metatitle = result['propertyName'] + " Photo Gallery - " + result['community'];
     const metadesc = "Explore the photo gallery of " + result['propertyName'] + " in " + result['community'] + ", " + result['city'] + ". View facilities, amenities, and community images.";
 
@@ -41,11 +47,21 @@ export default async function Page({
 }) {
     const { project } = await params;
 
-    const classify = (project: string) => project.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
-    const projectId = classify(project);
-
-    const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
-    const posts = await data.json()
+    // const classify = (project: string) => project.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
+    const classify = (project: string) =>
+  project.split('-') .map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+     const projectId = classify(project);
+     
+    // const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
+    const data = await fetch(
+        `https://psinv-react-gilt.vercel.app/api/external/projects?query=${projectId}`,
+        { cache: 'no-store' } // ✅ prevent caching issues
+      );
+    const posts = await data.json();
+    const result = posts['result']?.find(
+        (item: any) =>
+          item.propertyName.toLowerCase().replace(/\s+/g, '-') === project
+      );
 
     return (
         <div className="pb-10">
@@ -55,7 +71,7 @@ export default async function Page({
                     />
                 </div>
             </div>
-            <PhotoGallery data={posts['result'][0]} />
+            <PhotoGallery data={result} />
         </div>
     );
 }
