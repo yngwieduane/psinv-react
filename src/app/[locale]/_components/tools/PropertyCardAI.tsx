@@ -173,7 +173,7 @@ const PropertyCardAI = (props: any) => {
                         <p className="dark:text-white text-sm text-gray-500 mb-2 flex items-center gap-1"><MapPin size={14} />
                             {t.has(`crmLocations.${props.data["community"]}`)
                                 ? t(`crmLocations.${props.data["community"]}`)
-                                : props.data["community"] }
+                                : props.data["community"] } 
                                 </p>
                         {props.data["masterDeveloper"] && (
                             <p className="dark:text-white text-xs text-gray-400 mb-6 truncate font-medium">

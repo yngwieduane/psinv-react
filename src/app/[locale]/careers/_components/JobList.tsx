@@ -123,7 +123,9 @@ export default function JobList({ jobs: initialJobs }: JobListProps) {
                     : "bg-white text-[#272963] border-[#272963] w-[80%] hover:text-[#212529] dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:text-white"
                     }`}
                 >
-                  {job.name} <i className="fas fa-arrow-right ml-2"></i>
+                  {t.has(`Jobs.${job.name}`)
+                  ? t(`Jobs.${job.name}`)
+                  : job.name } <i className="fas fa-arrow-right ml-2"></i>
                 </a>
               </SwiperSlide>
             ))}

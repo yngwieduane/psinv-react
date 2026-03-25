@@ -6773,7 +6773,25 @@
     }
   },
   "Job_List": {
-    "loading": "Loading jobs..."
+    "loading": "Loading jobs...",
+    "Jobs" : {
+      "IT Support - PSI AUH" : "IT Support - PSI AUH",
+      "Lead Owner Officer - PSI AUH" : "Lead Owner Officer - PSI AUH",
+      "Learning and Development Specialist - PSI AUH" : "Learning and Development Specialist - PSI AUH",
+      "Leasing Agent - PSI Assets" : "Leasing Agent - PSI Assets",
+      "Listing Agent - PSI Assets" : "Listing Agent - PSI Assets",
+      "Real Estate Consultant- PSI Assets" : "Real Estate Consultant- PSI Assets",
+      "Resale Agent" : "Resale Agent",
+      "Resale Agent - PSI AUH" : "Resale Agent - PSI AUH",
+      "Senior Campaign Supervisor - PSI AUH" : "Senior Campaign Supervisor - PSI AUH",
+      "Talent Acquisition Specialist - PSI AUH" : "Talent Acquisition Specialist - PSI AUH",
+      "Telesales Agent" : "Telesales Agent",
+      "Trainer - PSI AUH " : "Trainer - PSI AUH",
+      "Campaign Specialist - PSI AUH" : "Campaign Specialist - PSI AUH",
+      "Chief Accountant" : "Chief Accountant",
+      "Digital Adoption Lead - PSI AUH" : "Digital Adoption Lead - PSI AUH",
+      "HCM Supervisor - PSI Assets" : "HCM Supervisor - PSI Assets"
+    }
   },
   "Units": {
     "ResgisterTitle": "Register Interest",

@@ -6239,7 +6239,25 @@
     }
   },
   "Job_List": {
-    "loading": "جارٍ تحميل الوظائف..."
+    "loading": "جارٍ تحميل الوظائف...",
+    "Jobs": {
+      "IT Support - PSI AUH": "دعم تقنية المعلومات - PSI أبوظبي",
+      "Lead Owner Officer - PSI AUH": "مسؤول مالك العملاء المحتملين - PSI أبوظبي",
+      "Learning and Development Specialist - PSI AUH": "أخصائي التعلم والتطوير - PSI أبوظبي",
+      "Leasing Agent - PSI Assets": "وكيل تأجير - PSI للأصول",
+      "Listing Agent - PSI Assets": "وكيل إدراج عقارات - PSI للأصول",
+      "Real Estate Consultant- PSI Assets": "مستشار عقاري - PSI للأصول",
+      "Resale Agent": "وكيل إعادة بيع",
+      "Resale Agent - PSI AUH": "وكيل إعادة بيع - PSI أبوظبي",
+      "Senior Campaign Supervisor - PSI AUH": "مشرف حملات أول - PSI أبوظبي",
+      "Talent Acquisition Specialist - PSI AUH": "أخصائي استقطاب المواهب - PSI أبوظبي",
+      "Telesales Agent": "وكيل مبيعات عبر الهاتف",
+      "Trainer - PSI AUH ": "مدرب - PSI أبوظبي",
+      "Campaign Specialist - PSI AUH": "أخصائي حملات - PSI أبوظبي",
+      "Chief Accountant": "رئيس الحسابات",
+      "Digital Adoption Lead - PSI AUH": "قائد التحول الرقمي - PSI أبوظبي",
+      "HCM Supervisor - PSI Assets": "مشرف إدارة رأس المال البشري - PSI للأصول"
+    }
   },
   "Units": {
     "ResgisterTitle": "سجّل اهتمامك",

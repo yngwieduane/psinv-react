@@ -2141,7 +2141,25 @@
     }
   },
   "Job_List": {
-    "loading": "正在加载职位..."
+    "loading": "正在加载职位...",
+    "Jobs": {
+      "IT Support - PSI AUH": "IT支持工程师 - PSI阿布扎比",
+      "Lead Owner Officer - PSI AUH": "客户负责人 - PSI阿布扎比",
+      "Learning and Development Specialist - PSI AUH": "学习与发展专员 - PSI阿布扎比",
+      "Leasing Agent - PSI Assets": "租赁顾问 - PSI资产",
+      "Listing Agent - PSI Assets": "房源招商主管 - PSI资产",
+      "Real Estate Consultant- PSI Assets": "房地产顾问 - PSI资产",
+      "Resale Agent": "二手房销售顾问",
+      "Resale Agent - PSI AUH": "二手房销售顾问 - PSI阿布扎比",
+      "Senior Campaign Supervisor - PSI AUH": "高级营销活动主管 - PSI阿布扎比",
+      "Talent Acquisition Specialist - PSI AUH": "招聘专员 - PSI阿布扎比",
+      "Telesales Agent": "电话销售专员",
+      "Trainer - PSI AUH ": "培训师 - PSI阿布扎比",
+      "Campaign Specialist - PSI AUH": "营销活动专员 - PSI阿布扎比",
+      "Chief Accountant": "首席会计师",
+      "Digital Adoption Lead - PSI AUH": "数字化推广负责人 - PSI阿布扎比",
+      "HCM Supervisor - PSI Assets": "人力资本管理主管 - PSI资产"
+    }
   },
   "Units": {
     "ResgisterTitle": "登记意向",
