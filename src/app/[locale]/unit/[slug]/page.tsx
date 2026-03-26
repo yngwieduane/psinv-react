@@ -168,8 +168,6 @@ export default async function Page({ params }: Props) {
     return (
         <>
             <UnitPageAI data={posts} />
-            {secondLastString}
-            {URL}
         </>
     );
 }
