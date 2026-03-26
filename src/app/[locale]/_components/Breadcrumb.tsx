@@ -21,24 +21,28 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customSegments }) => {
 
   const autoSegments: Segment[] = (() => {
     const parts = pathname.split("/").filter(Boolean);
-    parts.shift(); // remove locale
+    parts.shift();
 
-    return parts.map((segment, index) => {
-      const fixedSegment =
-        segment === "developer" ? "developers" : segment;
+return parts.map((segment, index) => {
+  const fixedSegment =
+    segment === "developer" ? "developers" : segment;
 
-      const url = "/" + parts.slice(0, index + 1).join("/");
+  const breadcrumbParts = parts.slice(0, index + 1).map((part) =>
+    part === "developer" ? "developers" : part
+  );
 
-      const key = `segments.${fixedSegment}`;
-      const translatedName = t.has(key)
-        ? t(key)
-        : formatSegment(fixedSegment);
+  const url = "/" + breadcrumbParts.join("/");
 
-      return {
-        name: translatedName,
-        href: url,
-      };
-    });
+  const key = `segments.${fixedSegment}`;
+  const translatedName = t.has(key)
+    ? t(key)
+    : formatSegment(fixedSegment);
+
+  return {
+    name: translatedName,
+    href: url,
+  };
+});
   })();
 
   const homeLabel = t.has("home") ? t("home") : "Home";
