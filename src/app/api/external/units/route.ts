@@ -51,10 +51,15 @@ export async function GET(request: NextRequest) {
 
   const projects = await response.json();
 
+  // Add source: "auh" to each item if it's an array
+  const modifiedProjects = Array.isArray(projects)
+    ? projects.map((item: any) => ({ ...item, source: "auh" }))
+    : projects;
+
   //setLoading(false);
   //return projects;
 
-  return new Response(JSON.stringify(projects), {
+  return new Response(JSON.stringify(modifiedProjects), {
     headers: { 'Content-Type': 'application/json' },
   });
 }

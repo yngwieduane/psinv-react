@@ -66,7 +66,12 @@ export async function GET(request: NextRequest) {
   }
 
 
-  return new Response(JSON.stringify(projects), {
+  // Add source: "assets" to each item if it's an array
+  const modifiedProjects = Array.isArray(projects)
+    ? projects.map((item: any) => ({ ...item, source: "assets" }))
+    : projects;
+
+  return new Response(JSON.stringify(modifiedProjects), {
     headers: { 'Content-Type': 'application/json' },
   });
 }

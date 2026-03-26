@@ -140,6 +140,7 @@ export default function UnitsList(props: any) {
                                     emirate: post.city_name,
                                     refNo: post.refNo,
                                     code: post.code,
+                                    source: post.source,
                                     seoStart: "",
                                 };
                                 const seoData = generateSeoData(propertyData);
