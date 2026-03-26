@@ -22,15 +22,20 @@ function isRtlLocale(locale: string) {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const { slug } = await params;
+    const { slug,locale } = await params;
     const post = await getBlogPostBySlug(slug);
     if (!post) return { title: "Post not found" };
 
+    // normalize locale
+    const safeLocale = ['en', 'ar', 'de', 'zh', 'ru'].includes(locale)
+        ? locale
+        : 'en';
+
     return {
         title: {
-            absolute: post.title || "Untitled" // Use absolute to avoid duplicating site name if simpler
+            absolute: `${post.title || "Untitled"} | ${safeLocale}`
         },
-        description: post.summary,
+        description: `${post.summary || ""} | ${safeLocale}`,
     };
 }
 export default async function BlogPostPage({ params }: PageProps) {
