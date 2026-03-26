@@ -35,34 +35,38 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
 
-  const t = await getTranslations({ locale, namespace: 'metaData' });
+  let title = "Property Shop Investment";
+  let description =
+    "Discover properties, projects, and real estate opportunities with Property Shop Investment.";
 
-  console.log("Current Locale:", locale);
-  console.log("Title Found:", t('title'));
-  console.log("Raw Title Key:", t.raw('title'));
+  try {
+    const t = await getTranslations({ locale, namespace: "metaData" });
+    title = t("title");
+    description = t("description");
+  } catch (error) {
+    console.error("generateMetadata translations failed:", error);
+  }
 
   const headersList = await headers();
   const pathname = headersList.get("x-pathname") ?? "";
-  // Remove duplicate slashes and ensure trailing slash for home page
-  let canonicalPath = pathname.replace(/\/+/g, '/');
-  // Add trailing slash only for root locale page
-  if (canonicalPath === '/en') {
-    canonicalPath = '/en/';
-  } else if (canonicalPath === '/ar') {
-    canonicalPath = '/ar/';
+
+  let canonicalPath = pathname.replace(/\/+/g, "/");
+
+  if (canonicalPath === "/en") {
+    canonicalPath = "/en/";
+  } else if (canonicalPath === "/ar") {
+    canonicalPath = "/ar/";
   }
-  // Ensure locale is valid (fallback to default)
+
   const currentLocale = locales.includes(locale as any) ? locale : defaultLocale;
 
-  // Build alternates dynamically
   const languageAlternates: Record<string, string> = {};
-
   const hreflangMap: Record<string, string> = {
-    en: 'en',
-    ar: 'ar',
-    ru: 'ru',
-    zh: 'zh-CN',
-    de: 'de',
+    en: "en",
+    ar: "ar",
+    ru: "ru",
+    zh: "zh-CN",
+    de: "de",
   };
 
   locales.forEach((lang) => {
@@ -70,37 +74,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     languageAlternates[hreflang] = `${siteBaseUrl}/${lang}`;
   });
 
-  // Add x-default
   languageAlternates["x-default"] = siteBaseUrl;
 
   return {
-    title: t('title'),
-    description: t('description'),
+    title,
+    description,
     authors: [
       {
-        name: 'Property Shop Investment (PSI)'
+        name: "Property Shop Investment (PSI)",
       },
     ],
-    publisher: 'Property Shop Investment (PSI)',
-
+    publisher: "Property Shop Investment (PSI)",
     alternates: {
       canonical: `${siteBaseUrl}${canonicalPath}`,
       languages: languageAlternates,
     },
     openGraph: {
-      title: t('title'),
-      description: t('description'),
+      title,
+      description,
       url: `${siteBaseUrl}/${currentLocale}`,
       siteName: "Property Shop Investment",
       locale: currentLocale,
       type: "website",
       images: [
         {
-          url: '/assets/images/about-us/main-office.webp',
+          url: "/assets/images/about-us/main-office.webp",
           width: 1200,
           height: 630,
           alt: "Property Shop Investment",
-        }
+        },
       ],
     },
     robots: {
@@ -111,16 +113,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         index: true,
         follow: true,
         noimageindex: false,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
     },
-    metadataBase: new URL('https://psinv.net'),
+    metadataBase: new URL("https://psinv.net"),
     appleWebApp: {
       capable: true,
-      statusBarStyle: 'default',
-      title: t('title'),
+      statusBarStyle: "default",
+      title,
     },
     formatDetection: {
       telephone: false,
@@ -142,9 +144,12 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
-  const messages = await getMessages();
+  let messages = null;
+try {
+  messages = await getMessages();
+} catch (error) {
+  console.error("getMessages failed:", error);
+}
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -224,7 +229,19 @@ export default async function LocaleLayout({
         <UserProvider>
           <AuthModal />
           <CurrencyProvider>
-            <NextIntlClientProvider messages={messages}>
+            {messages ? (
+              <NextIntlClientProvider messages={messages}>
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem={false}>
+                  <ConditionalNavigation />
+                  <Providers><main>{children}</main></Providers>
+                  <ConditionalFooter />
+                  <InstallPrompt />
+                  <CompareFloatingButtonClient />
+                  <AIChatWidgetClient />
+                  <StickyBottomWidgetClient />
+                </ThemeProvider>
+              </NextIntlClientProvider>
+            ) : (
               <ThemeProvider attribute="class" defaultTheme="system" enableSystem={false}>
                 <ConditionalNavigation />
                 <Providers><main>{children}</main></Providers>
@@ -234,7 +251,7 @@ export default async function LocaleLayout({
                 <AIChatWidgetClient />
                 <StickyBottomWidgetClient />
               </ThemeProvider>
-            </NextIntlClientProvider>
+            )}
           </CurrencyProvider>
         </UserProvider>
         {/* <GoogleTagManager gtmId="GTM-KDDP2SR" /> */}
