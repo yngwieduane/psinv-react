@@ -51,7 +51,7 @@ export default function PropertyList({
                 if (!hasSpecialFilters) {
                     // 1. Try API Fetch (Original legacy fetch)
                     const response = await fetch(
-                        `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${cityId}`
+                        `/api/external/allprojects?page=${page}`
                     );
 
                     if (response.ok) {

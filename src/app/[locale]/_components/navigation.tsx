@@ -643,6 +643,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
     const darkHeroBasePaths = ['/en', '/ar', '/ru', '/du', '/cn'];
 
+    const currentTheme = useTheme().resolvedTheme;
+    const isDarkTheme = currentTheme === 'dark';
+    //console.log("Theme----", isDarkTheme);
+
     // Add dynamic job pages pattern
     const isDarkHeroPage =
         darkHeroBasePaths.includes(pathname) ||
@@ -650,9 +654,10 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
     const pages = ['/about-us', '/crypto', '/careers'];
     const isTargetPage = pages.some(page => pathname.endsWith(page)) || /^\/projects\/[^/]+\/[^/]+\/[^/]+$/.test(pathname);
+ 
 
-
-    const showWhiteTheme = (isDarkHeroPage || isTargetPage) && !isScrolled && !hoveredMenu;
+    const showWhiteTheme = (isDarkHeroPage || isTargetPage ) && !isScrolled && !hoveredMenu;
+    const isDarkThemeLogo = isDarkTheme && (isScrolled || !isDarkHeroPage || hoveredMenu);
 
     const navbarClasses = showWhiteTheme
         ? 'bg-transparent py-6 text-white transition-all duration-300'
@@ -666,7 +671,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
     }, []);
 
     // const mainLogo = (mounted && resolvedTheme === 'dark') || showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
-    const mainLogo = showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
+    const mainLogo = showWhiteTheme || isDarkThemeLogo ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
     const linkColor = showWhiteTheme ? 'text-white' : 'text-gray-800 dark:text-white';
 
     return (
