@@ -643,9 +643,19 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
 
     const darkHeroBasePaths = ['/en', '/ar', '/ru', '/du', '/cn'];
 
-    const currentTheme = useTheme().resolvedTheme;
+    const { theme, resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) return null;
+
+    //const currentTheme = useTheme().resolvedTheme;
+    const currentTheme = theme === 'system' ? resolvedTheme : theme;
     const isDarkTheme = currentTheme === 'dark';
-    //console.log("Theme----", isDarkTheme);
+    console.log("Theme is----", currentTheme);
 
     // Add dynamic job pages pattern
     const isDarkHeroPage =
@@ -663,12 +673,6 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
         ? 'bg-transparent py-6 text-white transition-all duration-300'
         : 'bg-white/80 backdrop-blur-xl shadow-sm py-4 border-b border-white/20 text-gray-900 transition-all duration-300 dark:bg-gray-900 dark:text-white';
 
-    const { resolvedTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     // const mainLogo = (mounted && resolvedTheme === 'dark') || showWhiteTheme ? '/logo-psi-white.svg' : '/PSI-Logo.svg';
     const mainLogo = showWhiteTheme || isDarkThemeLogo ? '/logo-psi-white.svg' : '/PSI-Logo.svg';

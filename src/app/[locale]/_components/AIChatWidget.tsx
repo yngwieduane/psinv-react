@@ -162,7 +162,8 @@ const AIChatWidget = () => {
                                                 <input
                                                     {...register("firstName")}
                                                     placeholder="First Name"
-                                                    className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+                                                    className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]
+                                                    placeholder:text-gray-400 text-[#000]"
                                                 />
                                             </div>
                                             {errors.firstName && <p className="text-red-500 text-[10px] ml-1">{errors.firstName.message}</p>}
@@ -171,7 +172,8 @@ const AIChatWidget = () => {
                                             <input
                                                 {...register("lastName")}
                                                 placeholder="Last Name"
-                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]
+                                                placeholder:text-gray-400 text-[#000]"
                                             />
                                             {errors.lastName && <p className="text-red-500 text-[10px] ml-1">{errors.lastName.message}</p>}
                                         </div>
@@ -184,7 +186,8 @@ const AIChatWidget = () => {
                                                 type="email"
                                                 {...register("email")}
                                                 placeholder="Email Address"
-                                                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+                                                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]
+                                                placeholder:text-gray-400 text-[#000]"
                                             />
                                         </div>
                                         {errors.email && <p className="text-red-500 text-[10px] ml-1">{errors.email.message}</p>}
@@ -200,7 +203,7 @@ const AIChatWidget = () => {
                                                     international
                                                     defaultCountry="AE"
                                                     placeholder="Phone Number"
-                                                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
+                                                    className="phone-input-wrapper w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
                                                     numberInputProps={{
                                                         className: "w-full bg-transparent focus:outline-none text-sm placeholder:text-gray-400"
                                                     }}
@@ -215,7 +218,8 @@ const AIChatWidget = () => {
                                             {...register("message")}
                                             rows={3}
                                             placeholder="How can we help you?"
-                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] resize-none"
+                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445] resize-none
+                                            placeholder:text-gray-400 text-[#000]"
                                         />
                                     </div>
 
@@ -236,7 +240,7 @@ const AIChatWidget = () => {
                                     {/* Consent text like screenshot */}
                                     <div>
                                         <span className="text-[10px] text-gray-500 space-y-2 mt-4 italic">{t('byclickingsubmit.part1')}
-                                            <Link href="/terms" title="terms" className="underline">{t('byclickingsubmit.terms')}</Link> {t('byclickingsubmit.and')} <Link href="/privacy" title="privacy" className="underline">{t('byclickingsubmit.privacy')}</Link>
+                                            <Link href="/en/terms" title="terms" className="underline">{t('byclickingsubmit.terms')}</Link> {t('byclickingsubmit.and')} <Link href="/en/privacy" title="privacy" className="underline">{t('byclickingsubmit.privacy')}</Link>
                                         </span>
                                     </div>
                                 </form>
