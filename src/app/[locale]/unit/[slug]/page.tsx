@@ -17,7 +17,6 @@ export async function generateMetadata(
 
     const slugString = Array.isArray(slug) ? slug[0] : slug || "";
     const lastString = slugString.split("-").pop() ?? "";
-    const secondLastString = slugString.split("-")[slugString.split("-").length - 2] ?? "";
 
     const code = lastString.replace(/\D/g, "");
     let category = 'rent';
@@ -29,23 +28,21 @@ export async function generateMetadata(
     }
     // fetch data
     let posts = [];
-    let URL = `https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`;
-
-    switch (secondLastString) {
-        case 'auh':
-            URL = `https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`;
-            break;
-        case 'assets':
-            URL = `https://www.psinv.net/api/external/unitAssets?unitid=${code}&category=${category}`;
-            break;
-    }
     try {
-        const data = await fetch(URL);
+        const data = await fetch(`https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`);
         posts = await data.json();
     } catch (e) {
         console.error("Failed to fetch unit for metadata", e);
     }
 
+    if (!posts || posts.length === 0 || !posts[0]) {
+        try {
+            const data = await fetch(`https://www.psinv.net/api/external/unitAssets?unitid=${code}&category=${category}`);
+            posts = await data.json();
+        } catch (e) {
+            console.error("Failed to fetch unitAssets for metadata", e);
+        }
+    }
     if (!posts || posts.length === 0 || !posts[0]) {
         return {
             title: 'Unit Not Found',
@@ -126,7 +123,6 @@ export default async function Page({ params }: Props) {
 
     const slugString = Array.isArray(slug) ? slug[0] : slug || "";
     const lastString = slugString.split("-").pop() ?? "";
-    const secondLastString = slugString.split("-")[slugString.split("-").length - 2] ?? "";
 
     // Extract only numeric part
     const code = lastString.replace(/\D/g, "");
@@ -139,31 +135,36 @@ export default async function Page({ params }: Props) {
     }
 
     let posts = [];
-    let URL = `https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`;
     let source = '';
-
-    switch (secondLastString) {
-        case 'auh':
-            URL = `https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`;
-            source = 'auh';
-            break;
-        case 'assets':
-            URL = `https://www.psinv.net/api/external/unitAssets?unitid=${code}&category=${category}`;
-            source = 'assets';
-            break;
-    }
-
     try {
-        const data = await fetch(URL);
+        const data = await fetch(`https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`);
         posts = await data.json();
+        if (posts && posts.length > 0 && posts[0]) {
+            source = 'auh';
+        }
     } catch (e) {
         console.error("Failed to fetch unit", e);
+    }
+
+    if (!posts || posts.length === 0 || !posts[0]) {
+        try {
+            const data = await fetch(`https://www.psinv.net/api/external/unitAssets?unitid=${code}&category=${category}`);
+            posts = await data.json();
+            if (posts && posts.length > 0 && posts[0]) {
+                source = 'assets';
+            }
+        } catch (e) {
+            console.error("Failed to fetch unitAssets", e);
+        }
     }
 
     if (posts && posts.length > 0) {
         posts = posts.map((post: any) => ({ ...post, source }));
     }
 
+    if (!posts || posts.length === 0 || !posts[0]) {
+        return <></>;
+    }
 
     return (
         <>
