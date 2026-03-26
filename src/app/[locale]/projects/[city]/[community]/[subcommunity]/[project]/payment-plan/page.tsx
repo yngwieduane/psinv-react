@@ -12,13 +12,21 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     const { locale, city, community, subcommunity, project } = await params;
 
-    const classify = (project: string) => project.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
+    //const classify = (project: string) => project.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
+    const classify = (project: string) =>project.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     const projectId = classify(project);
 
-    const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
+    //const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
+    const data = await fetch(
+        `https://psinv-react-gilt.vercel.app/api/external/projects?query=${projectId}`,
+        { cache: 'no-store' } // ✅ prevent caching issues
+      );
     const posts = await data.json();
-    const result = posts['result'][0];
-
+    //const result = posts['result'][0];
+    const result = posts['result']?.find(
+        (item: any) =>
+          item.propertyName.toLowerCase().replace(/\s+/g, '-') === project
+      );
     // Fallback if result or propertyName is missing to avoid build errors if data is incomplete
     const propertyName = result?.['propertyName'] || projectId;
     const communityName = result?.['community'] || community;
@@ -45,13 +53,23 @@ export default async function Page({
 }) {
     const { project } = await params;
 
-    const classify = (project: string) => project.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
+    //const classify = (project: string) => project.replace(/[a-z][a-z]*-?/g, ([f, ...rest]) => f.toUpperCase() + rest.join('').replace('-', ' '));
+    const classify = (project: string) =>project.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
     const projectId = classify(project);
 
-    const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
+    //const data = await fetch('https://psinv-react-gilt.vercel.app/api/external/projects?query=' + projectId)
+    const data = await fetch(
+        `https://psinv-react-gilt.vercel.app/api/external/projects?query=${projectId}`,
+        { cache: 'no-store' } // ✅ prevent caching issues
+      );
     const posts = await data.json()
-    const result = posts['result'][0];
-
+    // const result = posts['result'][0];
+    const result = posts['result']?.find(
+        (item: any) =>
+          item.propertyName.toLowerCase().replace(/\s+/g, '-') === project
+      );
+      const propertyName = result?.propertyName || projectId;
     return (
         <div className="pb-10">
             <div className="pt-28 md:pt-36 border-b border-gray-100 bg-white dark:border-neutral-800 bg-white dark:bg-neutral-900">
@@ -62,7 +80,7 @@ export default async function Page({
             </div>
             <div className="container mx-auto px-4 md:px-12 py-8">
                 {result && result.propertyID && (
-                    <PaymentPlansAI propid={result.propertyID} propname={result.propertyName} />
+                    <PaymentPlansAI propid={result.propertyID} propname={propertyName} />
                 )}
             </div>
         </div>
