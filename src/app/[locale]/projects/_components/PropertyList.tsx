@@ -46,13 +46,29 @@ export default function PropertyList({
             setLoading(true);
             try {
                 // Determine if special filters are active
-                const hasSpecialFilters = community || subcommunity || propertyUnitTypes || propertyPlan || (city && !cityId);
+                // const hasSpecialFilters = community || subcommunity || propertyUnitTypes || propertyPlan || (city && !cityId);
+                const hasSpecialFilters =
+                !!(
+                    community ||
+                    subcommunity ||
+                    propertyUnitTypes ||
+                    propertyPlan ||
+                    (city && !cityId)
+                );
+
+                let finalResult = { result: [], totalCount: 0 };
 
                 if (!hasSpecialFilters) {
-                    // 1. Try API Fetch (Original legacy fetch)
+
+                    const queryParams = new URLSearchParams();
+                    queryParams.set("page", String(page));
+
+                    if (propertyname) queryParams.set("propertyname", propertyname);
+                    if (cityId) queryParams.set("city", cityId);
+
                     const response = await fetch(
-                        `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${cityId}`
-                    );
+                        `/api/external/allprojects?${queryParams.toString()}`
+                    ); 
 
                     if (response.ok) {
                         const result = await response.json();
