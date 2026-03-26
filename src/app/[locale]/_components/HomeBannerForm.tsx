@@ -425,7 +425,8 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
                 type="text"
                 {...register("firstName")}
                 placeholder={t_r('firstname')}
-                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]
+                placeholder:text-gray-400 text-[#000]"
               />
             </div>
             {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
@@ -436,7 +437,8 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
                 type="text"
                 {...register("lastName")}
                 placeholder={t_r('lastname')}
-                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+                className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]
+                placeholder:text-gray-400 text-[#000]"
               />
             </div>
             {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
@@ -449,7 +451,8 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
               type="email"
               {...register("email")}
               placeholder={t_r('email')}
-              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]"
+              className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0c1445]/10 focus:border-[#0c1445]
+              placeholder:text-gray-400 text-[#000]"
             />
           </div>
           {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
@@ -464,9 +467,9 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
                   international
                   defaultCountry="AE"
                   placeholder="Phone Number"
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
+                  className="phone-input-wrapper w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-[16px] md:text-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0c1445]/10 focus-within:border-[#0c1445]"
                   numberInputProps={{
-                      className: "w-full bg-transparent focus:outline-none text-[16px] md:text-sm placeholder:text-gray-400"
+                      className: "w-full bg-transparent focus:outline-none text-[16px] md:text-sm "
                   }}
               />
               
@@ -490,7 +493,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
             )}
         </button>
         <div className="md:flex w-full gap-5 md:space-y-0 space-y-3">
-          <a title="Whatsapp" target="_blank" className="border border-1 border-[#c3c3c3] text-center py-2 rounded-md w-full md:w-1/2 flex items-center gap-2 justify-center"
+          <a title="Whatsapp" target="_blank" className="text-[#000] dark:text-[#000] border border-1 border-[#c3c3c3] text-center py-2 rounded-md w-full md:w-1/2 flex items-center gap-2 justify-center"
             href={`https://wa.me/97122052888?text=*${propData?.title || propData?.name || ""}* %0AI%20am%20Interested%20.%20Kindly%20send%20me%20more%20information.%0A%0A`}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fillRule="evenodd" clipRule="evenodd" d="M10 19.375C14.8325 19.375 18.75 15.4575 18.75 10.625C18.75 5.79251 14.8325 1.875 10 1.875C5.16751 1.875 1.25 5.79251 1.25 10.625C1.25 12.1943 1.66312 13.6671 2.38655 14.9406L1.25 19.375L5.82179 18.3149C7.06336 18.9909 8.48682 19.375 10 19.375ZM10 18.0288C14.089 18.0288 17.4038 14.714 17.4038 10.625C17.4038 6.53597 14.089 3.22115 10 3.22115C5.91097 3.22115 2.59615 6.53597 2.59615 10.625C2.59615 12.2038 3.09031 13.6672 3.9324 14.8689L3.26923 17.3558L5.79996 16.7231C6.99335 17.5466 8.44036 18.0288 10 18.0288Z" fill="#BFC8D0"></path>
@@ -500,7 +503,7 @@ const HomeBannerForm: React.FC<Partial<BannerFormProps>> = ({
               <defs><linearGradient id="paint0_linear_2027_564" x1="16.5625" y1="4.375" x2="2.5" y2="17.5" gradientUnits="userSpaceOnUse"><stop stopColor="#5BD066"></stop><stop offset="1" stopColor="#27B43E"></stop></linearGradient></defs>
             </svg> <span className="text-[15px]">{t_r('Whatsapp')}</span>
           </a>
-          <a title="phone number" className="border border-1 border-[#c3c3c3] text-center py-2 rounded-md w-full md:w-1/2 flex items-center gap-2 justify-center"
+          <a title="phone number" className="text-[#000] dark:text-[#000] border border-1 border-[#c3c3c3] text-center py-2 rounded-md w-full md:w-1/2 flex items-center gap-2 justify-center"
             href="tel:+971600548200">
             <svg width="15" height="17" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M17.8332 14.1V16.6C17.8341 16.8321 17.7866 17.0618 17.6936 17.2744C17.6006 17.4871 17.4643 17.678 17.2933 17.8349C17.1222 17.9918 16.9203 18.1112 16.7005 18.1856C16.4806 18.2599 16.2477 18.2875 16.0165 18.2666C13.4522 17.988 10.989 17.1118 8.82486 15.7083C6.81139 14.4289 5.10431 12.7218 3.82486 10.7083C2.41651 8.53432 1.54007 6.05914 1.26653 3.48331C1.2457 3.25287 1.27309 3.02061 1.34695 2.80133C1.4208 2.58205 1.53951 2.38055 1.6955 2.20966C1.8515 2.03877 2.04137 1.90224 2.25302 1.80875C2.46468 1.71526 2.69348 1.66686 2.92486 1.66665H5.42486C5.82928 1.66267 6.22136 1.80588 6.528 2.06959C6.83464 2.3333 7.03493 2.69952 7.09153 3.09998C7.19705 3.90003 7.39274 4.68558 7.67486 5.44165C7.78698 5.73992 7.81125 6.06407 7.74478 6.37571C7.67832 6.68735 7.52392 6.9734 7.29986 7.19998L6.24153 8.25831C7.42783 10.3446 9.15524 12.072 11.2415 13.2583L12.2999 12.2C12.5264 11.9759 12.8125 11.8215 13.1241 11.7551C13.4358 11.6886 13.7599 11.7129 14.0582 11.825C14.8143 12.1071 15.5998 12.3028 16.3999 12.4083C16.8047 12.4654 17.1744 12.6693 17.4386 12.9812C17.7029 13.2931 17.8433 13.6913 17.8332 14.1Z" stroke="#212529" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>

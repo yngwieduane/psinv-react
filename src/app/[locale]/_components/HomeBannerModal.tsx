@@ -55,7 +55,7 @@ const BannerModals = (props: any) => {
                       <div className="col-span-2">
                         <DialogTitle
                           as="h3"
-                          className="text-start font-semibold md:text-2xl text-xl"
+                          className="text-start font-semibold md:text-2xl text-xl text-[#000] dark:text-light"
                         >
                         {props.title || t('register') || "Register Your Interest" }  
                         </DialogTitle>

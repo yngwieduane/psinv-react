@@ -67,7 +67,7 @@ export default function PropertyList({
                     if (cityId) queryParams.set("city", cityId);
 
                     const response = await fetch(
-                        `/api/external/allprojects?${queryParams.toString()}`
+                        `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${cityId}`
                     ); 
 
                     if (response.ok) {
