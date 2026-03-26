@@ -9,11 +9,12 @@ import { useLocale, useTranslations } from 'next-intl';
 
 import { HomeCalculatorClientWrapper } from '../_components/HomeClientWrapperElements';
 import { Suspense } from 'react';
-import {sharjahSliderData } from '@/data/homeSliderData';
+import { sharjahSliderData } from '@/data/homeSliderData';
 import { getSharjahCitiesData } from '@/utils/citiesDataSharjah';
 import ListPropertyForm from '../_components/ListPropertyForm';
 import WhyPSI from '../_components/WhyPSI';
 import CitiesTabSharjah from './components/CitiesTabSharjah';
+import HomeSearch from '../_components/HomeSearch';
 
 const AwardSlider = dynamic(
   () => import('../../[locale]/about-us/_components/AboutAwardsSlider'),
@@ -28,7 +29,7 @@ const ReportDownloadDubai = dynamic(() => import('../dubai/components/ReportDown
 const montserrat = Montserrat({ subsets: ['latin'], display: 'swap', });
 const outfit = Outfit({ subsets: ['latin'], display: 'swap', })
 
-export default function SharjahHomePageClient() {    
+export default function SharjahHomePageClient() {
 
   const organizationSchema: WithContext<Organization> = {
     "@context": "https://schema.org",
@@ -51,7 +52,7 @@ export default function SharjahHomePageClient() {
   const t_slider = useTranslations('MainSliderHome');
   const t_cities = useTranslations('citiesHome');
 
-  const mainSliderData = sharjahSliderData.map((item) => {    
+  const mainSliderData = sharjahSliderData.map((item) => {
     return {
       ...item,
       title: t_slider(`slides.${item.key}.title`),
@@ -78,24 +79,24 @@ export default function SharjahHomePageClient() {
       />
 
       <section className={`relative min-h-[600px] ${outfit.className}`}>
-        <HomeBanner slidePerView="1" slides={mainSliderData} city="Dubai" />
-        {/* <HomeSearch /> */}
+        <HomeBanner slidePerView="1" cityFocus="sharjah" />
+        <HomeSearch />
       </section>
 
       <section className="bg-gray-50">
         {/* <CitiesTab  cities={citiesData}  /> */}
         <CitiesTabSharjah cities={citiesData} />
-      </section> 
+      </section>
 
       <div className="my-10 bg-white min-h-[400px]">
         <ListPropertyForm city="Dubai" />
-    </div>
-    <div className="my-10 bg-gray-50 ">
+      </div>
+      <div className="my-10 bg-gray-50 ">
         <WhyPSI />
-    </div>
-    <div className="container mx-auto my-10">
+      </div>
+      <div className="container mx-auto my-10">
         <HomeCalculatorClientWrapper />
-    </div>     
+      </div>
 
       <div className="bg-gray-50 px-4">
         <ReportDownloadDubai />

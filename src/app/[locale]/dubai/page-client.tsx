@@ -15,6 +15,7 @@ import { getDubaiCitiesData } from '@/utils/citiesDataDubai';
 import CitiesTabDubai from './components/CitiesTabDubai';
 import ListPropertyForm from '../_components/ListPropertyForm';
 import WhyPSI from '../_components/WhyPSI';
+import HomeSearch from '../_components/HomeSearch';
 
 const AwardSlider = dynamic(
   () => import('../../[locale]/about-us/_components/AboutAwardsSlider'),
@@ -29,7 +30,7 @@ const ReportDownloadDubai = dynamic(() => import('./components/ReportDownloadDub
 const montserrat = Montserrat({ subsets: ['latin'], display: 'swap', });
 const outfit = Outfit({ subsets: ['latin'], display: 'swap', })
 
-export default function DubaiHomePageClient() {    
+export default function DubaiHomePageClient() {
 
   const organizationSchema: WithContext<Organization> = {
     "@context": "https://schema.org",
@@ -52,7 +53,7 @@ export default function DubaiHomePageClient() {
   const t_slider = useTranslations('MainSliderHome');
   const t_cities = useTranslations('citiesHome');
 
-  const mainSliderData = dubaiSliderData.map((item) => {    
+  const mainSliderData = dubaiSliderData.map((item) => {
     return {
       ...item,
       title: t_slider(`slides.${item.key}.title`),
@@ -79,24 +80,24 @@ export default function DubaiHomePageClient() {
       />
 
       <section className={`relative min-h-[600px] ${outfit.className}`}>
-        <HomeBanner slidePerView="1" slides={mainSliderData} city="Dubai" />
-        {/* <HomeSearch /> */}
+        <HomeBanner slidePerView="1" cityFocus="dubai" />
+        <HomeSearch />
       </section>
 
       <section className="bg-gray-50">
         {/* <CitiesTab  cities={citiesData}  /> */}
         <CitiesTabDubai cities={citiesData} />
-      </section> 
+      </section>
 
       <div className="my-10 bg-white min-h-[400px]">
         <ListPropertyForm city="Dubai" />
-    </div>
-    <div className="my-10 bg-gray-50 ">
+      </div>
+      <div className="my-10 bg-gray-50 ">
         <WhyPSI />
-    </div>
-    <div className="container mx-auto my-10">
+      </div>
+      <div className="container mx-auto my-10">
         <HomeCalculatorClientWrapper city="Dubai" />
-    </div>     
+      </div>
 
       <div className="bg-gray-50 px-4">
         <ReportDownloadDubai />

@@ -90,7 +90,7 @@ export default function HomePage() {
       />
 
       <section className={`relative min-h-[600px] ${outfit.className}`}>
-        <HomeBanner slidePerView="1" slides={mainSliderData} />
+        <HomeBanner slidePerView="1" cityFocus="abu dhabi" />
         <HomeSearch />
       </section>
 

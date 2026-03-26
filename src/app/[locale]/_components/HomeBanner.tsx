@@ -21,7 +21,8 @@ const outfit = Outfit({
 });
 
 const HomeBanner = (props: any) => {
-  const totalSlides = props.slides.length;
+  const [slides, setSlides] = useState<any[]>(props.slides || []);
+  const totalSlides = slides.length;
   const locale = useLocale();
   const t = useTranslations("HomePageBanner");
   const isRTL = locale.toLowerCase().startsWith("ar");
@@ -53,6 +54,39 @@ const HomeBanner = (props: any) => {
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
+  useEffect(() => {
+    const fetchBanners = async () => {
+      try {
+        const response = await fetch('/api/banners');
+        if (!response.ok) throw new Error('Network response was not ok');
+        const rawBanners = await response.json();
+
+        // "display by default if city is abu dhabi and there's no city assigned means it is global"
+        const targetCity = props.cityFocus ? props.cityFocus.toLowerCase() : 'abu dhabi';
+
+        let filteredBanners = rawBanners.filter((b: { rawCity: string; featured: any; }) => {
+          const bannerCity = b.rawCity.toLowerCase();
+          return b.featured || bannerCity === targetCity || bannerCity === '';
+        });
+
+        // "display first if the banner has featured = true"
+        filteredBanners.sort((a: { featured: any; }, b: { featured: any; }) => {
+          if (a.featured && !b.featured) return -1;
+          if (!a.featured && b.featured) return 1;
+          return 0;
+        });
+
+        if (filteredBanners.length > 0) {
+          setSlides(filteredBanners);
+        }
+      } catch (error) {
+        console.error("Error fetching banners:", error);
+      }
+    };
+
+    fetchBanners();
+  }, []);
+
   const [setModal, setSetModal] = useState(false);
   const [selectedSlide, setSelectedSlide] = useState<any>(null);
 
@@ -80,9 +114,9 @@ const HomeBanner = (props: any) => {
         loop={false}
         className="home-banner-swiper h-[780px] md:h-[840px]"
       >
-        {props.slides.map((slide: any, index: number) => (
+        {slides.map((slide: any, index: number) => (
           <SwiperSlide
-            key={index}
+            key={slide.id || index}
           >
             <div className="absolute inset-0 w-full h-full overflow-hidden">
               <Image
