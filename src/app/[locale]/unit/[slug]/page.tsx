@@ -17,6 +17,7 @@ export async function generateMetadata(
 
     const slugString = Array.isArray(slug) ? slug[0] : slug || "";
     const lastString = slugString.split("-").pop() ?? "";
+    const secondLastString = slugString.split("-")[slugString.split("-").length - 2] ?? "";
 
     const code = lastString.replace(/\D/g, "");
     let category = 'rent';
@@ -28,21 +29,23 @@ export async function generateMetadata(
     }
     // fetch data
     let posts = [];
+    let URL = `https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`;
+
+    switch (secondLastString) {
+        case 'auh':
+            URL = `https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`;
+            break;
+        case 'assets':
+            URL = `https://www.psinv.net/api/external/unitAssets?unitid=${code}&category=${category}`;
+            break;
+    }
     try {
-        const data = await fetch(`https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`);
+        const data = await fetch(URL);
         posts = await data.json();
     } catch (e) {
         console.error("Failed to fetch unit for metadata", e);
     }
 
-    if (!posts || posts.length === 0 || !posts[0]) {
-        try {
-            const data = await fetch(`https://www.psinv.net/api/external/unitAssets?unitid=${code}&category=${category}`);
-            posts = await data.json();
-        } catch (e) {
-            console.error("Failed to fetch unitAssets for metadata", e);
-        }
-    }
     if (!posts || posts.length === 0 || !posts[0]) {
         return {
             title: 'Unit Not Found',
@@ -60,56 +63,56 @@ export async function generateMetadata(
         seoStart: "",
     };
 
-const seoData = generateSeoData(propertyData);
+    const seoData = generateSeoData(propertyData);
 
-// If Arabic => translated SEO
-if (locale === "ar") {
-  const tSeo = await getTranslations({ locale, namespace: "UnitSEO" });
+    // If Arabic => translated SEO
+    if (locale === "ar") {
+        const tSeo = await getTranslations({ locale, namespace: "UnitSEO" });
 
-  const typeRaw = (posts[0].category || "").toLowerCase();
-  const typeLabel =
-    typeRaw === "apartment" ? "شقة" :
-    typeRaw === "villa" ? "فيلا" :
-    typeRaw === "townhouse" ? "تاون هاوس" :
-    posts[0].category;
+        const typeRaw = (posts[0].category || "").toLowerCase();
+        const typeLabel =
+            typeRaw === "apartment" ? "شقة" :
+                typeRaw === "villa" ? "فيلا" :
+                    typeRaw === "townhouse" ? "تاون هاوس" :
+                        posts[0].category;
 
-  const adTypeLabel = category === "sale" ? "للبيع" : "للإيجار";
-  const beds = posts[0].bedrooms || "";
+        const adTypeLabel = category === "sale" ? "للبيع" : "للإيجار";
+        const beds = posts[0].bedrooms || "";
 
-  return {
-    title: tSeo("title", {
-      beds,
-      type: typeLabel,
-      adType: adTypeLabel,
-      community: posts[0].community,
-      emirate: posts[0].city_name,
-      refNo: posts[0].refNo
-    }),
-    description: tSeo("description", {
-      beds,
-      type: typeLabel,
-      adType: adTypeLabel,
-      community: posts[0].community,
-      emirate: posts[0].city_name,
-      refNo: posts[0].refNo
-    }),
-    keywords: tSeo("keywords", {
-      beds,
-      type: typeLabel,
-      adType: adTypeLabel,
-      community: posts[0].community,
-      emirate: posts[0].city_name,
-      refNo: posts[0].refNo
-    })
-  };
-}
+        return {
+            title: tSeo("title", {
+                beds,
+                type: typeLabel,
+                adType: adTypeLabel,
+                community: posts[0].community,
+                emirate: posts[0].city_name,
+                refNo: posts[0].refNo
+            }),
+            description: tSeo("description", {
+                beds,
+                type: typeLabel,
+                adType: adTypeLabel,
+                community: posts[0].community,
+                emirate: posts[0].city_name,
+                refNo: posts[0].refNo
+            }),
+            keywords: tSeo("keywords", {
+                beds,
+                type: typeLabel,
+                adType: adTypeLabel,
+                community: posts[0].community,
+                emirate: posts[0].city_name,
+                refNo: posts[0].refNo
+            })
+        };
+    }
 
-// Non-arabic => keep your existing SEO generator
-return {
-  title: seoData.seoTitle + " | " + locale,
-  description: seoData.seoDescription + " | " + locale,
-  keywords: seoData.seoKeyword + " | " + locale
-};
+    // Non-arabic => keep your existing SEO generator
+    return {
+        title: seoData.seoTitle + " | " + locale,
+        description: seoData.seoDescription + " | " + locale,
+        keywords: seoData.seoKeyword + " | " + locale
+    };
 
 }
 
@@ -123,6 +126,7 @@ export default async function Page({ params }: Props) {
 
     const slugString = Array.isArray(slug) ? slug[0] : slug || "";
     const lastString = slugString.split("-").pop() ?? "";
+    const secondLastString = slugString.split("-")[slugString.split("-").length - 2] ?? "";
 
     // Extract only numeric part
     const code = lastString.replace(/\D/g, "");
@@ -135,40 +139,37 @@ export default async function Page({ params }: Props) {
     }
 
     let posts = [];
+    let URL = `https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`;
     let source = '';
-    try {
-        const data = await fetch(`https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`);
-        posts = await data.json();
-        if (posts && posts.length > 0 && posts[0]) {
+
+    switch (secondLastString) {
+        case 'auh':
+            URL = `https://www.psinv.net/api/external/unit?unitid=${code}&category=${category}`;
             source = 'auh';
-        }
-    } catch (e) {
-        console.error("Failed to fetch unit", e);
+            break;
+        case 'assets':
+            URL = `https://www.psinv.net/api/external/unitAssets?unitid=${code}&category=${category}`;
+            source = 'assets';
+            break;
     }
 
-    if (!posts || posts.length === 0 || !posts[0]) {
-        try {
-            const data = await fetch(`https://www.psinv.net/api/external/unitAssets?unitid=${code}&category=${category}`);
-            posts = await data.json();
-            if (posts && posts.length > 0 && posts[0]) {
-                source = 'assets';
-            }
-        } catch (e) {
-            console.error("Failed to fetch unitAssets", e);
-        }
+    try {
+        const data = await fetch(URL);
+        posts = await data.json();
+    } catch (e) {
+        console.error("Failed to fetch unit", e);
     }
 
     if (posts && posts.length > 0) {
         posts = posts.map((post: any) => ({ ...post, source }));
     }
 
-    if (!posts || posts.length === 0 || !posts[0]) {
-        return <></>;
-    }
 
     return (
         <>
             <UnitPageAI data={posts} />
+            {secondLastString}
+            {URL}
         </>
     );
 }
