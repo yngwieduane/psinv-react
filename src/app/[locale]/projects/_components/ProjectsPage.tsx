@@ -7,8 +7,8 @@ import { getTranslations } from "next-intl/server";
 export default async function ProjectsPage({
     page,
     city,
+    district,
     community,
-    subcommunity,
     project,
     propertyname,
     isFeaturedProjectOnWeb,
@@ -18,8 +18,8 @@ export default async function ProjectsPage({
 }: {
     page: number;
     city: string;
+    district: string;
     community: string;
-    subcommunity: string;
     project: string;
     propertyname: string;
     isFeaturedProjectOnWeb: string;
@@ -50,8 +50,8 @@ export default async function ProjectsPage({
                                 page={page}
                                 city={city}
                                 cityId={cityId}
+                                district={district}
                                 community={community}
-                                subcommunity={subcommunity}
                                 project={project}
                                 propertyname={propertyname}
                                 isFeaturedProjectOnWeb={isFeaturedProjectOnWeb}

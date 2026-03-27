@@ -52,7 +52,7 @@ const PropertyListItem = (props: any) => {
     const saved = isFavorite(props.data["propertyID"]);
     const compared = isCompared(props.data["propertyID"]);
     const subCommunity = props.data["subCommunity"] ? props.data["subCommunity"] : "n-a";
-    const url = '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['community']) + "/" + slugify(subCommunity) + "/" + slugify(props.data['propertyName']);
+    const url = '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['district']) + "/" + slugify(props.data['community']) + "/" + slugify(props.data['propertyName']);
 
     let HOdate;
     if (props.data["handoverDate"]) {
@@ -228,7 +228,7 @@ const PropertyListItem = (props: any) => {
 
                     <div className="mt-4 pt-4 border-t border-gray-100 sm:flex justify-between items-center text-right sm:text-left">
                         <div className="text-primary font-bold text-lg dark:text-white">
-                                {minprice || maxPrice ? (
+                            {minprice || maxPrice ? (
                                 <>
                                     <span className="text-xs text-gray-400 font-normal uppercase mr-1 dark:text-white">
                                         From

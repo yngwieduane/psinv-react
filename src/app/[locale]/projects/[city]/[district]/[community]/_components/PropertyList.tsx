@@ -4,35 +4,37 @@ import { useState, useEffect } from "react";
 import { db } from "@/lib/firebase";
 import { unslugify } from "@/utils/utils";
 import { collection, getDocs, query, limit, orderBy } from "firebase/firestore";
-import SearchPropertyAI, { TabType } from "../../../_components/SearchPropertyAI";
-import PropertyMapBox from "../../../_components/PropertyMapBox";
+import SearchPropertyAI, { TabType } from "../../../../_components/SearchPropertyAI";
+import PropertyMapBox from "../../../../_components/PropertyMapBox";
 import { BlogItem } from "@/app/[locale]/_components/tools/Skeleteon";
-import PropertyListView from "../../../_components/PropertyListView";
-import PropertyBox from "../../../_components/PropertyBox";
+import PropertyListView from "../../../../_components/PropertyListView";
+import PropertyBox from "../../../../_components/PropertyBox";
 
 
 interface PropertyListProps {
   page: number;
   city: string;
+  district: string;
   community: string;
-  subcommunity: string;
   project: string;
   propertyname: string;
   isFeaturedProjectOnWeb: string;
   cityId: string;
   communityId: string;
+  districtId: string;
 }
 
 export default function PropertyList({
   page,
   city,
+  district,
   community,
-  subcommunity,
   project,
   propertyname,
   isFeaturedProjectOnWeb,
   cityId,
-  communityId
+  communityId,
+  districtId
 }: PropertyListProps) {
   const [data, setData] = useState<any>(null);
   const [isLoading, setLoading] = useState(true);
@@ -46,7 +48,7 @@ export default function PropertyList({
       try {
         // 1. Try API Fetch
         const response = await fetch(
-          `/api/external/allprojects/community?page=${page}&propertyname=${propertyname}&city=${cityId}&community=${communityId}`
+          `/api/external/allprojects/community?page=${page}&propertyname=${propertyname}&city=${cityId}&district=${districtId}&community=${communityId}`
         );
 
         if (!response.ok) {
@@ -145,14 +147,14 @@ export default function PropertyList({
           <PropertyBox data={data?.result || []} />
         )}
         {!isLoading && activeTab !== 'map' && data?.result?.length === 0 && (
-           <div className="text-center py-20">
-    <h2 className="text-xl font-semibold text-gray-800">
-      No projects found
-    </h2>
-    <p className="text-gray-500 mt-2">
-      There are currently no projects available in this area.
-    </p>
-  </div>
+          <div className="text-center py-20">
+            <h2 className="text-xl font-semibold text-gray-800">
+              No projects found
+            </h2>
+            <p className="text-gray-500 mt-2">
+              There are currently no projects available in this area.
+            </p>
+          </div>
         )}
       </div>
       <div className="col-span-2 mt-10">

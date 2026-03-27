@@ -19,11 +19,11 @@ const PropertyCardAI = (props: any) => {
     const propType = props.data["propertyUnitTypes"] && props.data["propertyUnitTypes"].length > 0 ? (
         <p className="text-[12px]">
             {t.has(`PropType.${props.data["propertyUnitTypes"][0].unitType}`)
-            ?
-            t(`PropType.${props.data["propertyUnitTypes"][0].unitType}`)
-            :
-            props.data["propertyUnitTypes"][0].unitType
-            }            
+                ?
+                t(`PropType.${props.data["propertyUnitTypes"][0].unitType}`)
+                :
+                props.data["propertyUnitTypes"][0].unitType
+            }
         </p>
     ) : (
         ""
@@ -74,7 +74,7 @@ const PropertyCardAI = (props: any) => {
     const hasImage = !imgError && isValidUrl;
     const subCommunity = props.data["subCommunity"] ? props.data["subCommunity"] : "n-a";
 
-    const url = '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['community']) + "/" + slugify(subCommunity) + "/" + slugify(props.data['propertyName']);
+    const url = '/projects/' + slugify(props.data['city']) + "/" + slugify(props.data['district']) + "/" + slugify(props.data['community']) + "/" + slugify(props.data['propertyName']);
 
     const handleShare = async (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -173,13 +173,13 @@ const PropertyCardAI = (props: any) => {
                         <p className="dark:text-white text-sm text-gray-500 mb-2 flex items-center gap-1"><MapPin size={14} />
                             {t.has(`crmLocations.${props.data["community"]}`)
                                 ? t(`crmLocations.${props.data["community"]}`)
-                                : props.data["community"] } 
-                                </p>
+                                : props.data["community"]}
+                        </p>
                         {props.data["masterDeveloper"] && (
                             <p className="dark:text-white text-xs text-gray-400 mb-6 truncate font-medium">
                                 {t.has(`Developers.${props.data["masterDeveloper"]}`)
-                                ? t(`Developers.${props.data["masterDeveloper"]}`)
-                                : props.data["masterDeveloper"] }
+                                    ? t(`Developers.${props.data["masterDeveloper"]}`)
+                                    : props.data["masterDeveloper"]}
                             </p>
                         )}
 
@@ -188,8 +188,8 @@ const PropertyCardAI = (props: any) => {
                                 <span className="block text-[4px] dark:text-white text-gray-400 uppercase font-bold tracking-wider"><House size={18} /></span>
                                 <span className="block text-xs font-bold dark:text-white text-gray-800 mt-0 leading-normal">
                                     {t.has(`PropType.${propType}`)
-                                    ? t(`PropType.${propType}`)
-                                    : propType }
+                                        ? t(`PropType.${propType}`)
+                                        : propType}
                                 </span>
                             </div>
                             {hasBedroom && (

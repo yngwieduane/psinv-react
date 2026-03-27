@@ -145,13 +145,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         if (!p.propertyName) return;
         if (!isSyncedToday(p)) return;
         const city = sanitizeSlug(p.city_name || "abu-dhabi");
+        const district = sanitizeSlug(p.district || "district");
         const comm = sanitizeSlug(p.community || "community");
         const sub = sanitizeSlug(p.subCommunity || "subcommunity");
         //const sub = p.sub_community ? sanitizeSlug(p.sub_community) : null;
         const proj = sanitizeSlug(p.propertyName);
 
-        const path = `/projects/${city}/${comm}/${sub}/${proj}`;
-        //const path = sub ? `/projects/${city}/${comm}/${sub}/${proj}` : `/projects/${city}/${comm}/subcommunity/${proj}`;
+        const path = `/projects/${city}/${district}/${comm}/${proj}`;
 
         // Main Project Page
         locales.forEach(locale => {

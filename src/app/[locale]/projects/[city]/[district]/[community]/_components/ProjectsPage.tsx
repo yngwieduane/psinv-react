@@ -9,23 +9,25 @@ import { getTranslations } from "next-intl/server";
 export default async function ProjectsPage({
     page,
     city,
+    district,
     community,
-    subcommunity,
     project,
     propertyname,
     isFeaturedProjectOnWeb,
     cityId,
     communityId,
+    districtId
 }: {
     page: number;
     city: string;
+    district: string;
     community: string;
-    subcommunity: string;
     project: string;
     propertyname: string;
     isFeaturedProjectOnWeb: string;
     cityId: string;
     communityId: string;
+    districtId: string;
 }) {
 
     const t = await getTranslations("ProjectsPage");
@@ -44,14 +46,14 @@ export default async function ProjectsPage({
                 <div className="grid grid-cols-1 gap-4">
                     <div className="">
                         <h1 className="mx-auto container text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight truncate mb-6 md:mb-10">
-                            {t('mainTitle')} {t.has(`crmLocations.${communityname}`) 
-                                ? t(`crmLocations.${communityname}`) 
+                            {t('mainTitle')} {t.has(`crmLocations.${communityname}`)
+                                ? t(`crmLocations.${communityname}`)
                                 : communityname}, {t.has(`crmLocations.${cityname}`)
-                                ? t(`crmLocations.${cityname}`)
-                                : cityname }
+                                    ? t(`crmLocations.${cityname}`)
+                                    : cityname}
                         </h1>
                         <div className="">
-                            <PropertyList page={page} city={city} cityId={cityId} communityId={communityId} community={community} subcommunity={subcommunity} project={project} propertyname={propertyname} isFeaturedProjectOnWeb={isFeaturedProjectOnWeb} />
+                            <PropertyList page={page} city={city} cityId={cityId} district={district} districtId={districtId} communityId={communityId} community={community} project={project} propertyname={propertyname} isFeaturedProjectOnWeb={isFeaturedProjectOnWeb} />
                         </div>
                     </div>
                 </div>

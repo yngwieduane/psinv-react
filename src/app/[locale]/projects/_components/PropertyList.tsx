@@ -13,8 +13,8 @@ import SearchPropertyAI, { TabType } from "./SearchPropertyAI";
 interface PropertyListProps {
     page: number;
     city: string;
+    district: string;
     community: string;
-    subcommunity: string;
     project: string;
     propertyname: string;
     isFeaturedProjectOnWeb: string;
@@ -26,8 +26,8 @@ interface PropertyListProps {
 export default function PropertyList({
     page,
     city,
+    district,
     community,
-    subcommunity,
     project,
     propertyname,
     isFeaturedProjectOnWeb,
@@ -48,13 +48,13 @@ export default function PropertyList({
                 // Determine if special filters are active
                 // const hasSpecialFilters = community || subcommunity || propertyUnitTypes || propertyPlan || (city && !cityId);
                 const hasSpecialFilters =
-                !!(
-                    community ||
-                    subcommunity ||
-                    propertyUnitTypes ||
-                    propertyPlan ||
-                    (city && !cityId)
-                );
+                    !!(
+                        district ||
+                        community ||
+                        propertyUnitTypes ||
+                        propertyPlan ||
+                        (city && !cityId)
+                    );
 
                 let finalResult = { result: [], totalCount: 0 };
 
@@ -68,7 +68,7 @@ export default function PropertyList({
 
                     const response = await fetch(
                         `/api/external/allprojects?page=${page}&propertyname=${propertyname}&city=${cityId}`
-                    ); 
+                    );
 
                     if (response.ok) {
                         const result = await response.json();
@@ -85,8 +85,8 @@ export default function PropertyList({
                 const queryParams = new URLSearchParams();
                 queryParams.set('page', String(page));
                 if (city) queryParams.set('city', city);
+                if (district) queryParams.set('district', district);
                 if (community) queryParams.set('community', community);
-                if (subcommunity) queryParams.set('subcommunity', subcommunity);
                 if (propertyname) queryParams.set('propertyname', propertyname);
                 if (propertyUnitTypes) queryParams.set('propertyUnitTypes', propertyUnitTypes);
                 if (propertyPlan) queryParams.set('propertyPlan', propertyPlan);
@@ -111,7 +111,7 @@ export default function PropertyList({
         };
 
         fetchData();
-    }, [page, propertyname, isFeaturedProjectOnWeb, cityId, city, community, subcommunity, propertyUnitTypes, propertyPlan]);
+    }, [page, propertyname, isFeaturedProjectOnWeb, cityId, city, district, community, propertyUnitTypes, propertyPlan]);
 
     return (
         <div className="flex grid md:grid-cols-2 grid-cols-1">

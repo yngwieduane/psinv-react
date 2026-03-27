@@ -8,9 +8,10 @@ import { Listbox, Popover, Transition, ListboxButton, ListboxOption, ListboxOpti
 type SearchResult = {
     name: string;
     city: string;
+    district: string;
     community: string;
     id: string;
-    type: 'Project' | 'Community' | 'City' | 'Subcommunity';
+    type: 'Project' | 'Community' | 'City' | 'District';
 };
 
 interface ProjectSearchProps {
@@ -25,7 +26,7 @@ export default function ProjectSearch({ isHomeSearch = false }: ProjectSearchPro
     const searchParams = useSearchParams();
 
     // Form states
-    const [query, setQuery] = useState(searchParams.get('propertyname') || searchParams.get('community') || searchParams.get('city') || searchParams.get('subcommunity') || "");
+    const [query, setQuery] = useState(searchParams.get('propertyname') || searchParams.get('community') || searchParams.get('city') || searchParams.get('district') || "");
     const [propertyUnitType, setPropertyUnitType] = useState<string | null>(searchParams.get('propertyUnitTypes'));
     const [propertyPlan, setPropertyPlan] = useState<string | null>(searchParams.get('propertyPlan'));
 
@@ -89,7 +90,7 @@ export default function ProjectSearch({ isHomeSearch = false }: ProjectSearchPro
         params.delete('propertyname');
         params.delete('community');
         params.delete('city');
-        params.delete('subcommunity');
+        params.delete('district');
 
         if (query) {
             params.set('propertyname', query); // Fallback to property name search if no specific item clicked
@@ -120,7 +121,7 @@ export default function ProjectSearch({ isHomeSearch = false }: ProjectSearchPro
         params.delete('propertyname');
         params.delete('community');
         params.delete('city');
-        params.delete('subcommunity');
+        params.delete('district');
 
         if (item.type === 'Project') {
             params.set('propertyname', item.name);
@@ -128,8 +129,8 @@ export default function ProjectSearch({ isHomeSearch = false }: ProjectSearchPro
             params.set('community', item.name);
         } else if (item.type === 'City') {
             params.set('city', item.name);
-        } else if (item.type === 'Subcommunity') {
-            params.set('subcommunity', item.name);
+        } else if (item.type === 'District') {
+            params.set('district', item.name);
         } else {
             params.set('propertyname', item.name);
         }
@@ -154,7 +155,7 @@ export default function ProjectSearch({ isHomeSearch = false }: ProjectSearchPro
                     <div className="relative">
                         <input
                             type="text"
-                            placeholder="Search by Project, Community, or City..."
+                            placeholder="Search by Project, District, Community, or City..."
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                             onFocus={() => {

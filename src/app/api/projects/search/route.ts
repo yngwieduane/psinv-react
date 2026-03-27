@@ -11,8 +11,8 @@ export async function GET(request: NextRequest) {
     const pageStr = searchParams.get('page');
     const page = pageStr ? parseInt(pageStr, 10) : 1;
     const city = searchParams.get('city')?.toLowerCase() || '';
+    const district = searchParams.get('district')?.toLowerCase() || '';
     const community = searchParams.get('community')?.toLowerCase() || '';
-    const subcommunity = searchParams.get('subcommunity')?.toLowerCase() || '';
     const propertyname = searchParams.get('propertyname')?.toLowerCase() || '';
     const propertyUnitTypes = searchParams.get('propertyUnitTypes')?.toLowerCase() || '';
     const propertyPlan = searchParams.get('propertyPlan')?.toLowerCase() || '';
@@ -55,12 +55,12 @@ export async function GET(request: NextRequest) {
             allItems = allItems.filter(item => (item.city?.toLowerCase() || "").includes(city));
         }
 
-        if (community) {
-            allItems = allItems.filter(item => (item.community?.toLowerCase() || "").includes(community));
+        if (district) {
+            allItems = allItems.filter(item => (item.district?.toLowerCase() || "").includes(district));
         }
 
-        if (subcommunity) {
-            allItems = allItems.filter(item => (item.subCommunity?.toLowerCase() || "").includes(subcommunity));
+        if (community) {
+            allItems = allItems.filter(item => (item.community?.toLowerCase() || "").includes(community));
         }
 
         if (propertyname) {

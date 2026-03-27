@@ -18,9 +18,9 @@ import { faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
 import MortgageCalculator from "@/app/[locale]/mortgage-calculator/MortgageCalculator";
 import AgentDetails from "./AgentDetails";
 import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
-import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
+import PaymentPlans from "@/app/[locale]/projects/[city]/[district]/[community]/[project]/_components/PaymentPlans";
 
-const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap'));
+const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[district]/[community]/[project]/_components/NearbyWithMap'));
 const SimilarUnitsGrid = dynamic(() => import('./SimilarUnitsGrid'));
 
 export default function UnitPage(props: any) {

@@ -50,10 +50,10 @@ export async function GET(request: NextRequest) {
             .limit(10)
             .get();
 
-        // Query 4: Subcommunity
-        const subcommunitiesSnapshot = await propertiesRef
-            .where('subCommunity', '>=', capitalizedQuery)
-            .where('subCommunity', '<=', capitalizedQuery + '\uf8ff')
+        // Query 4: District
+        const districtsSnapshot = await propertiesRef
+            .where('district', '>=', capitalizedQuery)
+            .where('district', '<=', capitalizedQuery + '\uf8ff')
             .limit(10)
             .get();
 
@@ -82,6 +82,22 @@ export async function GET(request: NextRequest) {
             }
         });
 
+        // Process Districts
+        districtsSnapshot.forEach(doc => {
+            const data = doc.data();
+            if (data.district && data.district !== "n-a") {
+                // Key by subCommunity to deduplicate Districts
+                if (!results.has(`district_${data.district}`)) {
+                    results.set(`district_${data.district}`, {
+                        name: data.district,
+                        id: `district_${data.district}`,
+                        type: 'District',
+                        city: data.city
+                    });
+                }
+            }
+        });
+
         // Process Communities
         communitiesSnapshot.forEach(doc => {
             const data = doc.data();
@@ -92,23 +108,6 @@ export async function GET(request: NextRequest) {
                         name: data.community,
                         id: `comm_${data.community}`,
                         type: 'Community',
-                        city: data.city
-                    });
-                }
-            }
-        });
-
-        // Process Subcommunities
-        subcommunitiesSnapshot.forEach(doc => {
-            const data = doc.data();
-            if (data.subCommunity && data.subCommunity !== "n-a") {
-                // Key by subCommunity to deduplicate subCommunities
-                if (!results.has(`subcomm_${data.subCommunity}`)) {
-                    results.set(`subcomm_${data.subCommunity}`, {
-                        name: data.subCommunity,
-                        id: `subcomm_${data.subCommunity}`,
-                        type: 'Subcommunity',
-                        community: data.community,
                         city: data.city
                     });
                 }

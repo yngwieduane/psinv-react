@@ -194,7 +194,7 @@ const PropertyMapBox = ({ data }: PropertyMapBoxProps) => {
 
 
                             const subCommunity = selectedProperty.subCommunity ? selectedProperty.subCommunity : "n-a";
-                            const url = '/projects/' + slugify(selectedProperty.city) + "/" + slugify(selectedProperty.community) + "/" + slugify(subCommunity) + "/" + slugify(selectedProperty.propertyName);
+                            const url = '/projects/' + slugify(selectedProperty.city) + "/" + slugify(selectedProperty.district) + "/" + slugify(selectedProperty.community) + "/" + slugify(selectedProperty.propertyName);
 
                             return (
                                 <InfoWindow
@@ -216,7 +216,7 @@ const PropertyMapBox = ({ data }: PropertyMapBoxProps) => {
                                         </div>
                                         <h3 className="text-sm font-bold text-gray-900 mb-1">{selectedProperty.propertyName}</h3>
                                         <p className="text-xs text-gray-500 flex items-center gap-1 mb-3">
-                                            <MapPin size={10} /> {selectedProperty.community}
+                                            <MapPin size={10} /> {selectedProperty.district}
                                         </p>
                                         <Link
                                             href={url}

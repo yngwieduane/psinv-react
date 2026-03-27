@@ -20,11 +20,11 @@ import {
 export type AnchorPointName = keyof typeof AdvancedMarkerAnchorPoint;
 
 import './NearbyWithMap.css';
-import { RealEstateIcon } from "../../../../../../../../../public/icons/real-estate-icon";
-import { DynamicIcon } from "lucide-react/dynamic";
-import { RealEstateIconNearby } from "../../../../../../../../../public/icons/real-estate-icon-nearbys";
 import { MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { DynamicIcon } from "lucide-react/dynamic";
+import { RealEstateIconNearby } from "../../../../../../../../../public/icons/real-estate-icon-nearbys";
+import { RealEstateIcon } from "../../../../../../../../../public/icons/real-estate-icon";
 const normalizeKey = (value: string) =>
     (value || "")
         .toLowerCase()
@@ -123,17 +123,17 @@ const NearbysWithMap = ({
     const uniqueNearBys = new Set();
     const uniqueDataOptimized = results.filter((item) => {
         const key = `${item.landmarkEnglishName}||${item.addressLine1English}`;
-        if(uniqueNearBys.has(key)) {
+        if (uniqueNearBys.has(key)) {
             return false;
         }
         uniqueNearBys.add(key);
         return true;
     })
-    .sort((a, b) => parseInt(b.longitude) - parseInt(a.longitude))
-    .map((item, index) => ({
-        ...item,
-        zIndex: index,
-    }));
+        .sort((a, b) => parseInt(b.longitude) - parseInt(a.longitude))
+        .map((item, index) => ({
+            ...item,
+            zIndex: index,
+        }));
 
     //const data = results.sort((a, b) => parseInt(b.longitude) - parseInt(a.longitude)).map((dataItem, index) => ({ ...dataItem, zIndex: index }));
 

@@ -65,15 +65,15 @@ export async function GET(
 
                 // Cities/Communities for URL structure
                 const citySlug = sanitizeSlug(item.city);
+                const districtSlug = sanitizeSlug(item.district);
                 const communitySlug = sanitizeSlug(item.community);
-                const subCommunitySlug = sanitizeSlug(item.subCommunity);
                 const projectSlug = sanitizeSlug(item.propertyName);
 
                 const isAr = lang === 'ar';
 
                 // 1. Page URL
                 // /projects/[city]/[community]/[subcommunity]/[project]
-                const finalUrl = `https://psinv.net/${lang}/projects/${citySlug}/${communitySlug}/${subCommunitySlug}/${projectSlug}`;
+                const finalUrl = `https://psinv.net/${lang}/projects/${citySlug}/${districtSlug}/${communitySlug}/${projectSlug}`;
 
                 // 2. Custom Label
                 // Format: City;Community;ProjectName

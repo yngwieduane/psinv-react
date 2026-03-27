@@ -18,7 +18,7 @@ import { faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
 import MortgageCalculator from "@/app/[locale]/mortgage-calculator/MortgageCalculator";
 import AgentDetails from "./AgentDetails";
 import BreadcrumbUnit from "@/app/[locale]/_components/BreadcrumbUnit";
-import PaymentPlans from "@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/PaymentPlans";
+import PaymentPlans from "@/app/[locale]/projects/[city]/[district]/[community]/[project]/_components/PaymentPlans";
 import { Bath, BedDouble, CheckCircle2, ChevronDown, ChevronUp, Heart, Link2, Mail, MapPin, MessageCircle, Phone, Shuffle, Square } from "lucide-react";
 import { useUser } from "@/context/userContext";
 import AccordionTabs from "@/app/[locale]/_components/tools/AccordionTabs";
@@ -26,7 +26,7 @@ import { Link } from "@/i18n/navigation";
 import { useCurrency } from "@/context/currencyContext";
 import ListPopUpWidget from "@/app/[locale]/_components/ListPopUpWidget";
 
-const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[community]/[subcommunity]/[project]/_components/NearbyWithMap'));
+const NearbysWithMap = dynamic(() => import('@/app/[locale]/projects/[city]/[district]/[community]/[project]/_components/NearbyWithMap'));
 const SimilarUnitsGrid = dynamic(() => import('./SimilarUnitsGrid'));
 
 export default function UnitPageAI(props: any) {
@@ -92,26 +92,26 @@ export default function UnitPageAI(props: any) {
             </div>
             <div >
                 {/* {props.data.map((post: any, index: any) => { */}
-                {uniqueData .map((post: any, index: any) => {
+                {uniqueData.map((post: any, index: any) => {
                     let images, price, category, map, video, facilities, coordinates;
                     const saved = isFavorite(post.code);
                     const compared = isCompared(post.code);
-                     const amenities: string[] =
-        typeof post.unit_Amenities === "string" && post.unit_Amenities.trim()
-            ? post.unit_Amenities.split(" | ")
-            : [];
+                    const amenities: string[] =
+                        typeof post.unit_Amenities === "string" && post.unit_Amenities.trim()
+                            ? post.unit_Amenities.split(" | ")
+                            : [];
 
-    const amenitiesUnique = Array.from(
-        new Map(
-            amenities.map((am) => {
-                const rawLabel = (am.split("^")[1] || am).trim();
-                const norm = rawLabel.toLowerCase();
-                return [norm, am] as const;
-            })
-        ).values()
-    );
+                    const amenitiesUnique = Array.from(
+                        new Map(
+                            amenities.map((am) => {
+                                const rawLabel = (am.split("^")[1] || am).trim();
+                                const norm = rawLabel.toLowerCase();
+                                return [norm, am] as const;
+                            })
+                        ).values()
+                    );
 
-    const amenitiesClean = amenitiesUnique.slice(0, -1);
+                    const amenitiesClean = amenitiesUnique.slice(0, -1);
                     {
                         post.imageurl !== null
                             ? images = post.imageurl.split('|').map((img: string) => img.replace(/^http:\/\//i, 'https://'))
@@ -201,7 +201,7 @@ export default function UnitPageAI(props: any) {
                             (post.category || "").toLowerCase() === "townhouse" ? t("values.townhouse") :
                                 (post.category || "").toLowerCase() === "villa" ? t("values.villa") :
                                     post.category;
-                    
+
                     return (
                         <div key={index} >
                             <script
@@ -407,19 +407,19 @@ export default function UnitPageAI(props: any) {
                                         {amenitiesClean ? (
                                             <>
                                                 <h4 className="font-bold text-gray-900 text-xl mb-6 dark:text-white">
-                                                {t('sections.amenitiesClean')}
+                                                    {t('sections.amenitiesClean')}
                                                 </h4>
                                                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                                                {(showAllAmenities ? amenitiesClean : amenitiesClean.slice(0, 20)).map(
-                                                    (am: string, i: number) => (
-                                                    <div
-                                                        key={i}
-                                                        className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100 dark:bg-neutral-900 dark:text-white dark:border-neutral-800"
-                                                    >
-                                                            <CheckCircle2 className="text-secondary shrink-0" size={20} />
-                                                            <span className="text-gray-700 font-medium dark:text-white">{getAmenityLabel(am)}</span>
-                                                        </div>
-                                                    ))}
+                                                    {(showAllAmenities ? amenitiesClean : amenitiesClean.slice(0, 20)).map(
+                                                        (am: string, i: number) => (
+                                                            <div
+                                                                key={i}
+                                                                className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100 dark:bg-neutral-900 dark:text-white dark:border-neutral-800"
+                                                            >
+                                                                <CheckCircle2 className="text-secondary shrink-0" size={20} />
+                                                                <span className="text-gray-700 font-medium dark:text-white">{getAmenityLabel(am)}</span>
+                                                            </div>
+                                                        ))}
                                                 </div>
                                                 {amenitiesClean.slice(0, -1).length > 20 && (
                                                     <div className="mt-8 flex justify-center">

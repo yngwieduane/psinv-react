@@ -4,37 +4,35 @@ import { useState, useEffect } from "react";
 import { db } from "@/lib/firebase";
 import { unslugify } from "@/utils/utils";
 import { collection, getDocs, query, limit, orderBy } from "firebase/firestore";
-import SearchPropertyAI, { TabType } from "@/app/[locale]/projects/_components/SearchPropertyAI";
-import PropertyMapBox from "@/app/[locale]/projects/_components/PropertyMapBox";
+import SearchPropertyAI, { TabType } from "../../../_components/SearchPropertyAI";
+import PropertyMapBox from "../../../_components/PropertyMapBox";
 import { BlogItem } from "@/app/[locale]/_components/tools/Skeleteon";
-import PropertyListView from "@/app/[locale]/projects/_components/PropertyListView";
-import PropertyBox from "@/app/[locale]/projects/_components/PropertyBox";
+import PropertyListView from "../../../_components/PropertyListView";
+import PropertyBox from "../../../_components/PropertyBox";
 
 
 interface PropertyListProps {
     page: number;
     city: string;
     community: string;
-    subcommunity: string;
+    district: string;
     project: string;
     propertyname: string;
     isFeaturedProjectOnWeb: string;
     cityId: string;
-    communityId: string;
-    subcommunityId: string;
+    districtId: string;
 }
 
 export default function PropertyList({
     page,
     city,
     community,
-    subcommunity,
+    district,
     project,
     propertyname,
     isFeaturedProjectOnWeb,
     cityId,
-    communityId,
-    subcommunityId
+    districtId
 }: PropertyListProps) {
     const [data, setData] = useState<any>(null);
     const [isLoading, setLoading] = useState(true);
@@ -48,7 +46,7 @@ export default function PropertyList({
             try {
                 // 1. Try API Fetch
                 const response = await fetch(
-                    `/api/external/allprojects/community/subcommunity?page=${page}&propertyname=${propertyname}&city=${cityId}&community=${communityId}&subcommunity=${subcommunityId}`
+                    `/api/external/allprojects/community?page=${page}&propertyname=${propertyname}&city=${cityId}&district=${districtId}`
                 );
 
                 if (!response.ok) {
@@ -85,10 +83,6 @@ export default function PropertyList({
                     if (community) {
                         const communityName = unslugify(community).toLowerCase();
                         allItems = allItems.filter(item => (item.community || "").toLowerCase().includes(communityName));
-                    }
-                    if (subcommunity) {
-                        const subcommunityName = unslugify(subcommunity).toLowerCase();
-                        allItems = allItems.filter(item => (item.subCommunity || "").toLowerCase().includes(subcommunityName));
                     }
                     // if (propertyname) {
                     //   const search = propertyname.toLowerCase();
@@ -146,14 +140,19 @@ export default function PropertyList({
                         <BlogItem />
                     </div>
                 ) : activeTab === 'list' ? (
-                    <PropertyListView data={data['result']} />
+                    <PropertyListView data={data?.result || []} />
                 ) : (
-                    <PropertyBox data={data['result']} />
+                    <PropertyBox data={data?.result || []} />
                 )}
-                {!isLoading && activeTab !== 'map' && !data ? (
-                    <p>No properties found.</p>
-                ) : (
-                    <></>
+                {!isLoading && activeTab !== 'map' && data?.result?.length === 0 && (
+                    <div className="text-center py-20">
+                        <h2 className="text-xl font-semibold text-gray-800">
+                            No projects found
+                        </h2>
+                        <p className="text-gray-500 mt-2">
+                            There are currently no projects available in this area.
+                        </p>
+                    </div>
                 )}
             </div>
             <div className="col-span-2 mt-10">
