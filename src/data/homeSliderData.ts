@@ -66,7 +66,7 @@ export const homeSliderData = [
     image: "/images/banners/the-row-saadiyat-banner-new.webp",
     bannerpropertyid: "25405",
     bannerunittype: "19",
-    bannersubcommunityid: "130713",
+    bannersubcommunityid: "",
     bannercommunityid: "97198",
     bannerdistrictid: "102625",
     bannercityid: "91823",
