@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { BrittanySignature } from '@/utils/fonts';
 import { Poppins } from 'next/font/google';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
@@ -14,6 +14,9 @@ const poppins = Poppins({
 export default function CareerJourney() {
   const [hovered, setHovered] = useState<number | null>(null);
   const t = useTranslations('Career_Journey');
+
+  const locale = useLocale();
+  const isRTL = locale.toLowerCase().startsWith("ar");
 
   const hoverSteps = [
     {
@@ -93,10 +96,10 @@ export default function CareerJourney() {
       </div>
       <div className="relative w-full h-[300px] md:h-[600px]">
         <Image
-          src="/images/career/careers-roadmap.svg"
+          src={`${isRTL ? '/images/career/careers-roadmap-arabic.svg' : '/images/career/careers-roadmap.svg'}`}
           alt="Career Journey Roadmap"
           fill
-          className="object-contain"
+          className={`object-contain ${isRTL ? '' : ''}`}
         />
         <div className="hidden md:block">
           {hoverSteps.map((step) => (

@@ -142,7 +142,7 @@ const PropertyCardAI = (props: any) => {
                 </button>
             </div>
             <Link title={props.data["propertyName"]} href={url} className="h-full">
-                <div className={`dark:bg-gray-800 dark:border-gray-700 bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col h-full transform hover:-translate-y-1 relative`}>
+                <div className={`dark:bg-gray-800 dark:border-gray-700 bg-white rounded-xl border-2 md:border border-gray-200 md:border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col h-full transform hover:-translate-y-1 relative`}>
                     {/* Image Box */}
                     {/* Mobile view of image thumb swiper */}
                     <div className="block md:hidden h-full w-full">

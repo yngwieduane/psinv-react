@@ -133,6 +133,17 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
                         onBeforeInit={(swiper) => {
                             swiperRef.current = swiper;
                         }}
+                        breakpoints={{
+                            0: {
+                                pagination: false,
+                            },
+                            768: {
+                                pagination: {
+                                    el: '.swiper-pagination',
+                                    clickable: true,
+                                },
+                            }
+                        }}
                         onSlideChange={(swiper) => setCurrentImageIndex(swiper.activeIndex)}
                         className="h-full w-full"
                     >
@@ -151,19 +162,37 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ property, onClose, onViewDe
                         ))}
                     </Swiper>
 
-                    {/* Custom Navigation Arrows */}
+                    {/* Custom Navigation Arrows Desktop */}
                     <button
                         onClick={() => swiperRef.current?.slidePrev()}
-                        className="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/90 text-white hover:text-gray-900 p-3 rounded-full backdrop-blur-md transition-all shadow-lg opacity-0 group-hover:opacity-100"
+                        className="hidden md:block cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/90 text-white hover:text-gray-900 p-3 rounded-full backdrop-blur-md transition-all shadow-lg opacity-0 group-hover:opacity-100"
                     >
                         <ChevronLeft size={24} />
                     </button>
                     <button
                         onClick={() => swiperRef.current?.slideNext()}
-                        className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/90 text-white hover:text-gray-900 p-3 rounded-full backdrop-blur-md transition-all shadow-lg opacity-0 group-hover:opacity-100"
+                        className="hidden md:block cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/90 text-white hover:text-gray-900 p-3 rounded-full backdrop-blur-md transition-all shadow-lg opacity-0 group-hover:opacity-100"
                     >
                         <ChevronRight size={24} />
                     </button>
+
+                    {/* Custom Navigation Arrows MOBILE */}
+                    <div className='flex z-20 md:hidden justify-center gap-4 absolute bottom-[6px] left-1/2 -translate-x-1/2'>
+                        <button
+                            onClick={() => swiperRef.current?.slidePrev()}
+                            className=" cursor-pointer bg-white/20 hover:bg-white/90 text-white hover:text-gray-900 p-1.5 rounded-full backdrop-blur-md transition-all shadow-lg"
+                        >
+                            <ChevronLeft size={16} />
+                        </button>
+                        <button
+                            onClick={() => swiperRef.current?.slideNext()}
+                            className="cursor-pointer bg-white/20 hover:bg-white/90 text-white hover:text-gray-900 p-1.5 rounded-full backdrop-blur-md transition-all shadow-lg"
+                        >
+                            <ChevronRight size={16} />
+                        </button>
+                    </div>
+                    
+                    
                     <span className="block md:hidden absolute top-2 left-5 z-50 bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium border border-white/10">
                         {currentImageIndex + 1} / {images.length}
                     </span>

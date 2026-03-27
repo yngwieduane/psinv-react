@@ -231,7 +231,7 @@ try {
           <CurrencyProvider>
             {messages ? (
               <NextIntlClientProvider messages={messages}>
-                <ThemeProvider attribute="class" defaultTheme="system" enableSystem={false}>
+                <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
                   <ConditionalNavigation />
                   <Providers><main>{children}</main></Providers>
                   <ConditionalFooter />
