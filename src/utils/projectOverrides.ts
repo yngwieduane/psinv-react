@@ -385,7 +385,6 @@ export const PROJECTS: Record<string, PerSlug> = {
       PropertyID: 20422,
       DistrictID: 165218,
       CommunityID: 165219,
-      SubCommunityID: 165220,
       UnitType: 20,
       remarks: 'Jubail landlord listing rotation,Jubail island project',
       ...makeUtm({
@@ -448,7 +447,6 @@ export const PROJECTS: Record<string, PerSlug> = {
     override: {
       PropertyID: 23310,
       CommunityID: 97198,
-      SubCommunityID: 130713,
       UnitType: 20,
       remarks: 'Saadiyat Lagoons - Last Phase- PSI AUH saadiayt lagoons last phase',
       ...makeUtm({
@@ -887,7 +885,6 @@ export const PROJECTS: Record<string, PerSlug> = {
     override: {
       PropertyID: 24389,
       CommunityID: 95259,
-      SubCommunityID: 83452,
       remarks: 'Muheira Maysan',
       ...makeUtm({
         'metwally_muheira_newsletter_jan_2026': {
@@ -1296,7 +1293,6 @@ export const PROJECTS: Record<string, PerSlug> = {
     override: {
       PropertyID: 24466,
       CommunityID: 165011,
-      SubCommunityID: 63724,
       remarks: 'Wadi Yemm Ras El Hekma',
       ...makeUtm({
         'ali-wadi-yemm-newsletter-oct25': {
@@ -1328,7 +1324,6 @@ export const PROJECTS: Record<string, PerSlug> = {
     override: {
       PropertyID: 25380,
       CommunityID: 95797,
-      SubCommunityID: 167301,
       remarks: 'Company',
       ...makeUtm({
         'irani-bloom-living-newsletter': {
@@ -1360,7 +1355,6 @@ export const PROJECTS: Record<string, PerSlug> = {
     override: {
       PropertyID: 25399,
       CommunityID: 70777,
-      SubCommunityID: 167301,
       remarks: 'Company',
       ...makeUtm({
         'ali_juman_2_newsletter_oct25': {
@@ -1426,7 +1420,6 @@ export const PROJECTS: Record<string, PerSlug> = {
     override: {
       PropertyID: 25397,
       CommunityID: 165011,
-      SubCommunityID: 165012,
       remarks: 'Yas Living',
       ...makeUtm({
         'ali_yas_living_newsletter_oct2025': {
@@ -1584,7 +1577,6 @@ export const PROJECTS: Record<string, PerSlug> = {
     override: {
       PropertyID: 14524,
       CommunityID: 165011,
-      SubCommunityID: 167636,
       remarks: 'Company',
       ...makeUtm({
         'Irani-Yas-Acres-Open-House-News': {
