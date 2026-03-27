@@ -234,6 +234,7 @@ const NAV_GROUPS = [
         columns: [
             {
                 title: 'Residential',
+                url: '/units?category=Sale&propertyType=Apartment',
                 items: [
                     { label: 'Buy Apartments', page: 'search' },
                     { label: 'Buy Villas', page: 'search' },
@@ -243,6 +244,7 @@ const NAV_GROUPS = [
             },
             {
                 title: 'Commercial',
+                url: '/units?category=Sale&propertyType=Office',
                 items: [
                     { label: 'Offices for Sale', page: 'search' },
                     { label: 'Offices for Rent', page: 'search' },
@@ -251,6 +253,7 @@ const NAV_GROUPS = [
             },
             {
                 title: 'Popular Areas',
+                url: '/',
                 items: [
                     { label: 'Al Reem Island', page: 'search' },
                     { label: 'Yas Island', page: 'search' },
@@ -484,6 +487,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
             columns: [
                 {
                     title: t('Residential'),
+                    link: '/units?category=Sale&propertyType=Apartment',
                     items: [
                         { label: t('Buy Apartments'), href: '/units?category=Sale&propertyType=Apartment' },
                         { label: t('Buy Villas'), href: '/units?category=Sale&propertyType=Villa' },
@@ -493,6 +497,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 },
                 {
                     title: t('Commercial'),
+                    link: '/units?category=Sale&propertyType=Office',
                     items: [
                         { label: t('Offices for Sale'), href: '/units?category=Sale&propertyType=Office' },
                         { label: t('Offices for Rent'), href: '/units?category=Rent&propertyType=Office' },
@@ -502,6 +507,7 @@ const Navigation: FC<{ currentPage: Page }> = ({ currentPage }) => {
                 },
                 {
                     title: t('Bedrooms'),
+                    url: '/units?category=Sale',
                     items: [
                         { label: t('1 Bedroom'), href: '/units?category=Sale&beds=1' },
                         { label: t('2 Bedrooms'), href: '/units?category=Sale&beds=2' },
