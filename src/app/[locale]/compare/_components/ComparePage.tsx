@@ -108,7 +108,7 @@ const ComparePage: React.FC<{}> = ({ }) => {
                                 onClick={clearCompareList}
                                 className="text-gray-400 hover:text-red-500 transition-colors flex items-center gap-2 text-sm font-medium"
                             >
-                                <X size={16} /> {t('unlockSection.clear-all')}
+                                <X size={16} /> {t('unlockSection.clearAll')}
                             </button>
                         )}
 

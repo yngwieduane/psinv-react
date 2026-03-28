@@ -543,7 +543,7 @@
     "unlockSection": {
       "title": "Vergelijk Vastgoed",
       "description": "Je vergelijkingslijst is leeg. Voeg woningen toe om ze naast elkaar te vergelijken.",
-      "clear-all": "Alles wissen"
+      "clearAll": "Alles wissen"
     }
   },
   "favorites_page": {

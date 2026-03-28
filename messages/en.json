@@ -488,7 +488,8 @@
     "heroBreadcrumb": "Home > Compare",
     "unlockSection": {
       "title": "Compare Properties",
-      "description": "Your comparison list is empty. Add properties to compare them side-by-side."
+      "description": "Your comparison list is empty. Add properties to compare them side-by-side.",
+      "clearAll": "Clear All"
     }
   },
   "favorites_page": {
@@ -6571,8 +6572,7 @@
       "market_insights": "Market Insights",
       "company_news": "Company News",
       "lifestyle": "Lifestyle",
-      "abu-dhabi-real-estate": "Abu Dhabi Real Estate",
-      "new-project-launch-in-dubai":"New Project Launch in Dubai"
+      "abu-dhabi-real-estate": "Abu Dhabi Real Estate"
     },
     "subtitle": "Discover the latest insights, news, and trends from the UAE real estate market.",
     "noPostsFound": "No posts found matching your criteria.",
