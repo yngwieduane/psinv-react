@@ -20,56 +20,32 @@ export default function CareerJourney() {
 
   const hoverSteps = [
     {
-      id: 1,
-      top: '57%',
-      left: '15.5%',
-      bgPos: '-132px -539px',
-      size: '538%',
+      id: 1, top: '62.5%', left: '17.3%', bgPos: '-132px -539px', size: '538%',
       title: t('steps.1.title'),
       description: t('steps.1.description'),
     },
     {
-      id: 2,
-      top: '27%',
-      left: '19.5%',
-      bgPos: '-412px -289px',
-      size: '650%',
+      id: 2, top: '33.5%', left: '21.5%', bgPos: '-412px -289px', size: '650%',
       title: t('steps.2.title'),
       description: t('steps.2.description'),
     },
     {
-      id: 3,
-      top: '19%',
-      left: '41%',
-      bgPos: '-1002px -80px',
-      size: '708%',
+      id: 3, top: '24.5%',   left: '43.5%', bgPos: '-1002px -80px', size: '708%',
       title: t('steps.3.title'),
       description: t('steps.3.description'),
     },
     {
-      id: 4,
-      top: '62%',
-      left: '54%',
-      bgPos: '-1308px -607px',
-      size: '669%',
+      id: 4, top: '68%', left: '56.5%', bgPos: '-1308px -607px', size: '669%',
       title: t('steps.4.title'),
       description: t('steps.4.description'),
     },
     {
-      id: 5,
-      top: '57.5%',
-      left: '76%',
-      bgPos: '-2162px -697px',
-      size: '687%',
+      id: 5, top: '63.8%', left: '79%', bgPos: '-2162px -697px', size: '687%',
       title: t('steps.5.title'),
       description: t('steps.5.description'),
     },
     {
-      id: 6,
-      top: '27%',
-      left: '80.5%',
-      bgPos: '-2394px -86px',
-      size: '711%',
+      id: 6, top: '32.8%', left: '83.5%',   bgPos: '-2394px -86px', size: '711%',
       title: t('steps.6.title'),
       description: t('steps.6.description'),
     },
@@ -94,19 +70,25 @@ export default function CareerJourney() {
           {t('description')}
         </p>
       </div>
-      <div className="relative w-full h-[300px] md:h-[600px]">
+      <div className="relative w-full aspect-[2.4/1] max-w-[1320px] mx-auto">
         <Image
           src={`${isRTL ? '/images/career/careers-roadmap-arabic.svg' : '/images/career/careers-roadmap.svg'}`}
           alt="Career Journey Roadmap"
           fill
-          className={`object-contain ${isRTL ? '' : ''}`}
+          priority
+          className="object-contain"
         />
-        <div className="hidden md:block">
+        <div className="absolute inset-0 hidden md:block">
           {hoverSteps.map((step) => (
             <div
               key={step.id}
-              className="absolute"
-              style={{ top: step.top, left: step.left }}
+              className="absolute transition-transform hover:scale-110"
+              style={{
+                top: step.top,
+                left: step.left,
+                transform: 'translate(-50%, -50%)',
+                zIndex: hovered === step.id ? 50 : 10,
+              }}
               onMouseEnter={() => setHovered(step.id)}
               onMouseLeave={() => setHovered(null)}
             >
