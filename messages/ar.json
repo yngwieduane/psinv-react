@@ -467,7 +467,7 @@
     "unlockSection": {
       "title": "قارن العقارات",
       "description": "قائمة المقارنة فارغة. أضف عقارات لمقارنتها جنبًا إلى جنب.",
-      "clear-all": "مسح الكل"
+      "clearAll": "مسح الكل"
     }
   },
   "favorites_page": {
