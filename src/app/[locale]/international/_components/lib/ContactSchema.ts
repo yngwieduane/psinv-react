@@ -13,8 +13,5 @@ export const contactSchema = z.object({
     .refine((val) => isValidPhoneNumber(val), {
         message:"Enter a valid international phone number (e.g., +971...)",
     }),
-    message: z.string(),
-    agreement1: z.boolean().refine((val) => val, { message: "You must agree this"} ),
-    agreement2: z.boolean().optional(),
-    agreement3: z.boolean().optional(),
+    message: z.string(),    
 })

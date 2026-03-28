@@ -25,6 +25,7 @@ interface props {
 type FormData = z.infer<typeof formSchema>
 
 import { useTranslations } from 'next-intl';
+import { sendGTMEvent } from "@next/third-parties/google"
 
 const InquireForm = (props: any) => {
     const t = useTranslations('InternationalPage.form_section');
@@ -37,6 +38,7 @@ const InquireForm = (props: any) => {
     const [gclidField, setGclidField] = useState('');
     const [postId, setPostId] = useState<string | null>(null);
     const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
+
 
     const {
         register,
@@ -59,11 +61,9 @@ const InquireForm = (props: any) => {
         setFormValue({ ...formValue, [e.target.name]: e.target.value });
     }
 
-    const onSubmit = async (data: FormData) => {
+    const onSubmit = async (data: FormData) => {        
 
         if (typeof window === 'undefined') return; //ensure code runs only in browser
-
-        //const APIKey = '160c2879807f44981a4f85fe5751272f4bf57785fb6f39f80330ab3d1604e050787d7abff8c5101a';
         const sendToMail = "callcenter@psinv.net";
 
         const lastSubmitTime = localStorage.getItem("formSubmitTime");
@@ -89,11 +89,8 @@ const InquireForm = (props: any) => {
 
             setGclidField(gclid);
 
-            if (gclidField !== '') {
+            if (gclid !== '') {
                 source = 'google_ads';
-            }
-            else {
-                source = source;
             }
 
             // Default values for media types
@@ -220,8 +217,8 @@ const InquireForm = (props: any) => {
                         const text = await psiResponse.text();
                         console.error(`PSI API error: ${psiResponse.status} - ${text}`);
                     } else {
-                        const psiData = await psiResponse.json();
-                        // console.log("PSI success:", psiData);
+                        const text = await psiResponse.text();
+                        const psiData = text ? JSON.parse(text) : {};
                     }
                 }
             } catch (crmError) {
@@ -388,11 +385,14 @@ const InquireForm = (props: any) => {
             setIsSubmitting(false);
         }
 
+
     }
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit, (errors) => {
+                console.log("Validation errors:", errors);
+            })}>
                 <div className="w-full flex flex-column gap-4">
                     <div className="inputGroup  w-full mb-2">
                         <label htmlFor="fname" className="hidden">{t('fname')}</label>
@@ -435,12 +435,10 @@ const InquireForm = (props: any) => {
                                 <div>
                                     <PhoneInput
                                         international
-                                        {...field}
-                                        {...register('phone')}
                                         defaultCountry="AE"
-                                        className={`w-full block px-5 py-3 border rounded-md border border-[#A6A6A6] 
-                                rounded-[7px] placeholder-[#A6A6A6] ${styles.phoneField}`}
-                                        onChange={(value) => field.onChange(value)}
+                                        value={field.value}
+                                        onChange={field.onChange}
+                                        className={`w-full px-5 py-3 border rounded-md border-[#A6A6A6] ${styles.phoneField}`}
                                     />
                                     {errors.phone && <p className="text-red-500 text-sm mt-[0px]">{errors.phone.message}</p>}
                                 </div>
